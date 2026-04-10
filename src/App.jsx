@@ -1,6 +1,70 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 
 // ═══════════════════════════════════════════════════════════════
+//  SUPABASE
+// ═══════════════════════════════════════════════════════════════
+
+const SUPABASE_URL = "https://qszqparrqyhegfznyaby.supabase.co";
+const SUPABASE_KEY = "sb_publishable_6-Apb1INDlRXfchxEY1GyQ_vKC7bEOD";
+
+async function sbFetch(path, options={}) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    ...options,
+    headers: {
+      "apikey": SUPABASE_KEY,
+      "Authorization": `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json",
+      "Prefer": options.prefer || "",
+      ...(options.headers||{}),
+    },
+  });
+  if(!res.ok) { const t=await res.text(); throw new Error(t); }
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+// Puzzle shape in Supabase: { id, date, title, author, difficulty, status, clues, cards, solution }
+// clues/cards/solution are stored as JSONB
+
+async function dbLoadTodayPuzzle() {
+  const today = new Date().toISOString().split("T")[0];
+  const rows = await sbFetch(`puzzles?date=eq.${today}&status=eq.published&limit=1`);
+  return rows?.[0] || null;
+}
+
+async function dbLoadAllPuzzles() {
+  const rows = await sbFetch(`puzzles?order=date.desc`);
+  return rows || [];
+}
+
+async function dbSavePuzzle(puzzle) {
+  // Upsert by id
+  await sbFetch(`puzzles?id=eq.${puzzle.id}`, {
+    method: "DELETE",
+    prefer: "return=minimal",
+  }).catch(()=>{});
+  await sbFetch(`puzzles`, {
+    method: "POST",
+    prefer: "return=minimal",
+    body: JSON.stringify({
+      id: puzzle.id,
+      date: puzzle.date,
+      title: puzzle.title,
+      author: puzzle.author || "",
+      difficulty: puzzle.difficulty,
+      status: puzzle.status,
+      clues: puzzle.clues,
+      cards: puzzle.cards,
+      solution: puzzle.solution,
+    }),
+  });
+}
+
+async function dbDeletePuzzle(id) {
+  await sbFetch(`puzzles?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" });
+}
+
+// ═══════════════════════════════════════════════════════════════
 //  CONSTANTS
 // ═══════════════════════════════════════════════════════════════
 
@@ -2213,49 +2277,52 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
 // ═══════════════════════════════════════════════════════════════
 
 function AdminView({ onPublish }) {
-  const [puzzles,setPuzzles]   = useState(()=>loadLS("clover_puzzles",[]));
-  const [unused,setUnused]     = useState(()=>loadLS("clover_unused",[]));
+  const [puzzles,setPuzzles]   = useState([]);
+  const [loading,setLoading]   = useState(true);
   const [wordBank,setWordBank] = useState(()=>loadLS("clover_wb",
     ["BLAZE","EMBER","PEAK","STORM","WAVE","CLIFF","DRIFT","GROVE","MIST","SPARK","REEF","VALE"]
   ));
-  const [tab,setTab]         = useState("list"); // list | editor | wb | unused
+  const [tab,setTab]         = useState("list");
   const [editPuzzle,setEditP] = useState(null);
   const [newWord,setNewWord] = useState("");
   const [wbSearch,setWbSearch] = useState("");
 
-  useEffect(()=>saveLS("clover_puzzles",puzzles),[puzzles]);
-  useEffect(()=>saveLS("clover_unused",unused),[unused]);
   useEffect(()=>saveLS("clover_wb",wordBank),[wordBank]);
 
-  const handleSave = (puzzle, displacedPuzzle=null) => {
-    if(displacedPuzzle){
-      setUnused(prev=>[...prev.filter(p=>p.id!==displacedPuzzle.id),
-        {...displacedPuzzle, status:"unused"}]);
-      setPuzzles(prev=>prev.filter(p=>p.id!==displacedPuzzle.id));
+  // Load puzzles from Supabase on mount
+  useEffect(()=>{
+    setLoading(true);
+    dbLoadAllPuzzles().then(rows=>{
+      setPuzzles(rows);
+      setLoading(false);
+    }).catch(()=>setLoading(false));
+  },[tab==="list"]);
+
+  const handleSave = async (puzzle, displacedPuzzle=null) => {
+    try {
+      if(displacedPuzzle) {
+        await dbSavePuzzle({...displacedPuzzle, status:"unused"});
+      }
+      await dbSavePuzzle(puzzle);
+      if(puzzle.status==="published") onPublish?.();
+      // Reload list
+      const rows = await dbLoadAllPuzzles();
+      setPuzzles(rows);
+      setTab("list");
+    } catch(e) {
+      alert("Error saving puzzle: " + e.message);
     }
-    setPuzzles(prev=>{
-      const i=prev.findIndex(p=>p.id===puzzle.id);
-      return i>=0 ? prev.map((p,j)=>j===i?puzzle:p) : [...prev,puzzle];
-    });
-    // If publishing for today, notify App to refresh todayPuzzle
-    if(puzzle.status==="published") onPublish?.();
-    setTab("list");
   };
 
-  const handleDelete = id => {
-    if(window.confirm("Delete this puzzle?")) setPuzzles(p=>p.filter(x=>x.id!==id));
+  const handleDelete = async id => {
+    if(window.confirm("Delete this puzzle?")) {
+      await dbDeletePuzzle(id);
+      setPuzzles(p=>p.filter(x=>x.id!==id));
+    }
   };
 
-  const handleDeleteUnused = id => {
-    if(window.confirm("Permanently delete this unused puzzle?"))
-      setUnused(p=>p.filter(x=>x.id!==id));
-  };
-
-  const restoreUnused = puzzle => {
-    // Move back to active puzzles as draft
-    setPuzzles(prev=>[...prev.filter(p=>p.id!==puzzle.id), {...puzzle,status:"draft"}]);
-    setUnused(prev=>prev.filter(p=>p.id!==puzzle.id));
-  };
+  const unused = puzzles.filter(p=>p.status==="unused");
+  const activePuzzles = puzzles.filter(p=>p.status!=="unused");
 
   if(tab==="editor") return (
     <AdminBoardEditor
@@ -2281,10 +2348,12 @@ function AdminView({ onPublish }) {
             <div className="sh" style={{margin:0}}>Puzzles</div>
             <button className="abtn p sm" onClick={()=>{setEditP(null);setTab("editor");}}>+ New Puzzle</button>
           </div>
-          {puzzles.length===0
+          {loading
+            ? <div className="mhint">Loading puzzles…</div>
+            : activePuzzles.length===0
             ? <div className="mhint">No puzzles yet. Create your first one!</div>
             : <div className="plist">
-                {puzzles.map(p=>(
+                {activePuzzles.map(p=>(
                   <div key={p.id} className="pcard" onClick={()=>{setEditP(p);setTab("editor");}}>
                     <div className="ptitle">{p.title}</div>
                     <div className="pmeta">
@@ -2303,7 +2372,6 @@ function AdminView({ onPublish }) {
           <div className="sh">Unused Puzzles</div>
           <p style={{fontSize:12,color:"var(--muted)",marginBottom:14}}>
             Puzzles displaced when another was published on the same date.
-            Edit to restore as a draft, or delete permanently.
           </p>
           {unused.length===0
             ? <div className="mhint">No unused puzzles.</div>
@@ -2320,10 +2388,18 @@ function AdminView({ onPublish }) {
                       <button className="abtn s sm" onClick={()=>{setEditP({...p,status:"draft"});setTab("editor");}}>
                         Edit
                       </button>
-                      <button className="abtn s sm" onClick={()=>restoreUnused(p)}>
+                      <button className="abtn s sm" onClick={async()=>{
+                        await dbSavePuzzle({...p,status:"draft"});
+                        const rows=await dbLoadAllPuzzles(); setPuzzles(rows);
+                      }}>
                         Restore as Draft
                       </button>
-                      <button className="abtn d sm" onClick={()=>handleDeleteUnused(p.id)}>
+                      <button className="abtn d sm" onClick={async()=>{
+                        if(window.confirm("Permanently delete?")) {
+                          await dbDeletePuzzle(p.id);
+                          const rows=await dbLoadAllPuzzles(); setPuzzles(rows);
+                        }
+                      }}>
                         Delete
                       </button>
                     </div>
@@ -2516,20 +2592,23 @@ const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov
 function ArchiveView({ onPlay }) {
   const completions = loadCompletions();
   const today = new Date().toISOString().split("T")[0];
+  const [allPuzzles, setAllPuzzles] = useState([]);
 
-  // Merge admin-created published puzzles + demo archive, deduplicate by id
-  const adminPuzzles = loadLS("clover_puzzles", []).filter(p => p.status === "published");
-  const allPuzzles = [...adminPuzzles];
-  DEMO_ARCHIVE.forEach(p => { if(!allPuzzles.find(x=>x.id===p.id)) allPuzzles.push(p); });
-
-  // Sort newest first, exclude future dates
-  const past = allPuzzles
-    .filter(p => p.date <= today)
-    .sort((a,b) => b.date.localeCompare(a.date));
+  useEffect(()=>{
+    dbLoadAllPuzzles().then(rows=>{
+      const published = rows.filter(p=>p.status==="published" && p.date<=today);
+      // Merge with DEMO_ARCHIVE, admin puzzles take priority
+      const merged = [...published];
+      DEMO_ARCHIVE.forEach(p=>{ if(!merged.find(x=>x.id===p.id)) merged.push(p); });
+      setAllPuzzles(merged.sort((a,b)=>b.date.localeCompare(a.date)));
+    }).catch(()=>{
+      setAllPuzzles(DEMO_ARCHIVE.filter(p=>p.date<=today).sort((a,b)=>b.date.localeCompare(a.date)));
+    });
+  },[]);
 
   // Group by month
   const groups = [];
-  past.forEach(p => {
+  allPuzzles.forEach(p => {
     const d = new Date(p.date + "T12:00:00");
     const key = `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
     let g = groups.find(g => g.key === key);
@@ -2544,7 +2623,7 @@ function ArchiveView({ onPlay }) {
         <div className="arch-sub">Past puzzles — tap any to play</div>
       </div>
 
-      {past.length === 0 ? (
+      {allPuzzles.length === 0 ? (
         <div className="arch-empty">
           <div className="arch-empty-icon">📅</div>
           No past puzzles yet.<br/>
@@ -2691,13 +2770,12 @@ export default function App() {
   },[]);
 
   const [publishTick, setPublishTick] = useState(0);
+  const [todayPuzzle, setTodayPuzzle] = useState(DEFAULT_PUZZLE);
 
-  const todayPuzzle = useMemo(()=>{
-    const all  = loadLS("clover_puzzles",[]);
-    const today = new Date().toISOString().split("T")[0];
-    const fromAdmin = all.find(p=>p.date===today&&p.status==="published");
-    const fromDemo  = DEMO_ARCHIVE.find(p=>p.date===today);
-    return fromAdmin || fromDemo || DEFAULT_PUZZLE;
+  useEffect(()=>{
+    dbLoadTodayPuzzle().then(p => {
+      if(p) setTodayPuzzle(p);
+    }).catch(()=>{});
   },[publishTick]);
 
   useEffect(()=>{
