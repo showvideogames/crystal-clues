@@ -38,8 +38,9 @@ async function dbLoadAllPuzzles() {
 }
 
 async function dbSavePuzzle(puzzle) {
-  // Upsert by id
-  await sbFetch(`puzzles?id=eq.${puzzle.id}`, {
+  const numId = Number(puzzle.id);
+  const id = isNaN(numId) ? puzzle.id : numId;
+  await sbFetch(`puzzles?id=eq.${id}`, {
     method: "DELETE",
     prefer: "return=minimal",
   }).catch(()=>{});
@@ -47,11 +48,11 @@ async function dbSavePuzzle(puzzle) {
     method: "POST",
     prefer: "return=minimal",
     body: JSON.stringify({
-      id: puzzle.id,
+      id,
       date: puzzle.date,
       title: puzzle.title,
       author: puzzle.author || "",
-      difficulty: puzzle.difficulty,
+      difficulty: puzzle.difficulty || "standard",
       status: puzzle.status,
       clues: puzzle.clues,
       cards: puzzle.cards,
@@ -1944,7 +1945,7 @@ function initAdminState(existing = null) {
   const cards={};
   ids.forEach(id=>cards[id]={id,words:["","","",""]});
   return {
-    id:`p${Date.now()}`, title:"", status:"draft", author:"",
+    id:`${Date.now()}`, title:"", status:"draft", author:"",
     date:new Date().toISOString().split("T")[0],
     clues:["","","",""],
     cards,
@@ -2466,7 +2467,7 @@ function AdminView({ onPublish }) {
           <p style={{fontSize:12,color:"var(--muted)",marginBottom:12}}>
             Store words to quickly add during puzzle creation. 1–2 words = one entry. 3+ words = separate entries.
           </p>
-          {wbLoading ? <div className="mhint">Loading…</div> : (()=>{
+          {(()=>{
             const addWords = async () => {
               const raw = newWord.trim().toUpperCase();
               if(!raw) return;
