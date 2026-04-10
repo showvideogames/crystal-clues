@@ -71,12 +71,21 @@ async function dbLoadWordBank() {
 
 async function dbAddWords(newWords) {
   if(!newWords.length) return;
-  await sbFetch(`wordbank`, {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/wordbank`, {
     method: "POST",
-    prefer: "return=minimal,resolution=ignore-duplicates",
-    headers: { "Prefer": "return=minimal,resolution=ignore-duplicates" },
+    headers: {
+      "apikey": SUPABASE_KEY,
+      "Authorization": `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json",
+      "Prefer": "return=minimal,resolution=ignore-duplicates",
+    },
     body: JSON.stringify(newWords.map(word => ({ word }))),
   });
+  // 409 conflict just means word already exists — that's fine
+  if(!res.ok && res.status !== 409) {
+    const t = await res.text();
+    throw new Error(t);
+  }
 }
 
 async function dbDeleteWord(word) {
@@ -2326,10 +2335,9 @@ function AdminView({ onPublish }) {
   // Load word bank from Supabase
   useEffect(()=>{
     dbLoadWordBank().then(words=>{
-      setWordBank(words.length ? words : ["BLAZE","EMBER","PEAK","STORM","WAVE","CLIFF","DRIFT","GROVE","MIST","SPARK","REEF","VALE"]);
+      setWordBank(words);
       setWbLoading(false);
     }).catch(()=>{
-      setWordBank(["BLAZE","EMBER","PEAK","STORM","WAVE","CLIFF","DRIFT","GROVE","MIST","SPARK","REEF","VALE"]);
       setWbLoading(false);
     });
   },[]);
