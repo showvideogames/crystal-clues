@@ -69,14 +69,20 @@ async function dbLoadWordBank() {
   return (rows || []).map(r => r.word);
 }
 
-async function dbSaveWordBank(words) {
-  // Replace entire word bank: delete all then insert
-  await sbFetch(`wordbank`, { method: "DELETE", prefer: "return=minimal" });
-  if(words.length === 0) return;
+async function dbAddWords(newWords) {
+  if(!newWords.length) return;
   await sbFetch(`wordbank`, {
     method: "POST",
+    prefer: "return=minimal,resolution=ignore-duplicates",
+    headers: { "Prefer": "return=minimal,resolution=ignore-duplicates" },
+    body: JSON.stringify(newWords.map(word => ({ word }))),
+  });
+}
+
+async function dbDeleteWord(word) {
+  await sbFetch(`wordbank?word=eq.${encodeURIComponent(word)}`, {
+    method: "DELETE",
     prefer: "return=minimal",
-    body: JSON.stringify(words.map(word => ({ word }))),
   });
 }
 
@@ -2458,16 +2464,16 @@ function AdminView({ onPublish }) {
               if(!raw) return;
               const tokens = raw.split(/\s+/).filter(Boolean);
               const words = tokens.length >= 3 ? tokens : [raw];
-              const next = [...wordBank];
-              words.forEach(w => { if(!next.includes(w)) next.push(w); });
+              const toAdd = words.filter(w => !wordBank.includes(w));
+              if(!toAdd.length) { setNewWord(""); return; }
+              const next = [...wordBank, ...toAdd];
               setWordBank(next);
               setNewWord("");
-              await dbSaveWordBank(next).catch(()=>{});
+              await dbAddWords(toAdd).catch(e => console.error("WB add error:", e));
             };
             const deleteWord = async (w) => {
-              const next = wordBank.filter(x=>x!==w);
-              setWordBank(next);
-              await dbSaveWordBank(next).catch(()=>{});
+              setWordBank(prev => prev.filter(x => x !== w));
+              await dbDeleteWord(w).catch(e => console.error("WB delete error:", e));
             };
             const sorted = [...wordBank].sort((a,b)=>a.localeCompare(b));
             const query = wbSearch.trim().toUpperCase();
