@@ -64,11 +64,28 @@ async function dbDeletePuzzle(id) {
   await sbFetch(`puzzles?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" });
 }
 
+async function dbLoadWordBank() {
+  const rows = await sbFetch(`wordbank?order=word.asc`);
+  return (rows || []).map(r => r.word);
+}
+
+async function dbSaveWordBank(words) {
+  // Replace entire word bank: delete all then insert
+  await sbFetch(`wordbank`, { method: "DELETE", prefer: "return=minimal" });
+  if(words.length === 0) return;
+  await sbFetch(`wordbank`, {
+    method: "POST",
+    prefer: "return=minimal",
+    body: JSON.stringify(words.map(word => ({ word }))),
+  });
+}
+
 // ═══════════════════════════════════════════════════════════════
 //  CONSTANTS
 // ═══════════════════════════════════════════════════════════════
 
-const CW_FROM = [3, 0, 1, 2]; // newSlots[i] = oldSlots[CW_FROM[i]]
+const CW_FROM = [3, 0, 1, 2];
+// Puzzles always have 3 extras; difficulty controls how many the player sees
 const DIFFICULTY_EXTRA  = { easy:0, standard:1, expert:2, hardcore:3 };
 const DIFFICULTY_LABELS = { easy:"Easy", standard:"Standard", expert:"Expert", hardcore:"Hardcore" };
 const SLOT_LABELS = ["TL","TR","BR","BL"];
@@ -94,7 +111,7 @@ const vw = (card, orientation) =>
 // Extra(c5): FROST/PINE/HAWK/DUNE
 
 const DEFAULT_PUZZLE = {
-  id:"demo-001", title:"Elements", difficulty:"standard", status:"published",
+  id:"demo-001", title:"Elements", status:"published",
   date: new Date().toISOString().split("T")[0],
   clues: ["HEAT","TALL","BLUE","WILD"],
   cards: {
@@ -103,8 +120,11 @@ const DEFAULT_PUZZLE = {
     c3:{id:"c3",words:["CLIFF","TOWER","OCEAN","BOULDER"]},
     c4:{id:"c4",words:["THUNDER","BUSH","SKY","STORM"]},
     c5:{id:"c5",words:["FROST","PINE","HAWK","DUNE"]},
+    c6:{id:"c6",words:["GUST","BLAZE","TIDE","CRAG"]},
+    c7:{id:"c7",words:["MARSH","VALE","CREST","SMOKE"]},
   },
-  solution:{ slotCards:["c1","c2","c3","c4"], orientations:[0,0,0,0] },
+  solution:{ slotCards:["c1","c2","c3","c4"], orientations:[0,0,0,0],
+    extraCards:["c5","c6","c7"] },
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -1121,23 +1141,31 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
 //  GAME VIEW
 // ═══════════════════════════════════════════════════════════════
 
-function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forceFresh=false, admireMode=false }) {
-  const numExtra = DIFFICULTY_EXTRA[puzzle.difficulty]??0;
-  const totalSlots = 4+numExtra;
+function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forceFresh=false, admireMode=false, difficulty="hardcore" }) {
+  // Puzzles always have exactly 3 extra cards stored in solution.extraCards
+  // Difficulty controls how many the player SEES (removed from end: #3 first, then #2, then #1)
+  const numExtra = DIFFICULTY_EXTRA[difficulty] ?? 3;
+  const totalSlots = 4 + numExtra;
+
+  // Get the fixed ordered extra cards from the puzzle
+  const extraCardIds = puzzle.solution.extraCards || 
+    Object.keys(puzzle.cards).filter(id => !puzzle.solution.slotCards.includes(id)).slice(0,3);
+
+  // Player sees only the first numExtra extras (removing from end)
+  const visibleExtraIds = extraCardIds.slice(0, numExtra);
+
   const cardIds = Object.keys(puzzle.cards);
   const solutionSet = new Set(puzzle.solution.slotCards);
 
   const initSlots = useCallback(()=>{
     if(admireMode){
-      // Show the correct solution, locked in place
       return puzzle.solution.slotCards.map((cardId,i)=>({
         cardId, orientation: puzzle.solution.orientations[i]
       }));
     }
     const solCards = [...puzzle.solution.slotCards];
-    const nonSol = shuffleArr(cardIds.filter(id=>!solutionSet.has(id)));
-    const extra = nonSol.slice(0, numExtra);
-    const chosen = [...solCards, ...extra];
+    // Use the fixed visible extras (ordered, not random)
+    const chosen = [...solCards, ...visibleExtraIds];
     return biasedShuffle(chosen, puzzle.solution);
   },[puzzle.id, numExtra, admireMode]);
 
@@ -1649,7 +1677,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   })) : [], [showParticles]);
 
   const puzzleDate = new Date(puzzle.date + "T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});
-  const diffLabel=DIFFICULTY_LABELS[puzzle.difficulty]||puzzle.difficulty;
+  const diffLabel = DIFFICULTY_LABELS[difficulty] || difficulty;
   const isRevealing = !!revealPhase;
   const gameOver = solved || lost;
 
@@ -1876,29 +1904,36 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
 
 function initAdminState(existing = null) {
   if(existing) {
-    const extra = Object.keys(existing.cards)
-      .filter(id => !existing.solution.slotCards.includes(id))
-      .map(id => ({ cardId: id, orientation: 0 }));
+    // Get extras in order: from solution.extraCards if available, else derive
+    const extraIds = existing.solution.extraCards ||
+      Object.keys(existing.cards).filter(id => !existing.solution.slotCards.includes(id)).slice(0,3);
+    // Pad to exactly 3 extras
+    const allExtra = [...extraIds];
+    while(allExtra.length < 3) { const id=uid(); allExtra.push(id); }
+    const extraSlots = allExtra.slice(0,3).map(id => ({ cardId: id, orientation: 0 }));
+    // Ensure extra cards exist in cards object
+    const cards = {...existing.cards};
+    extraSlots.forEach(s => { if(!cards[s.cardId]) cards[s.cardId]={id:s.cardId,words:["","","",""]}; });
     return {
       id:existing.id, title:existing.title, date:existing.date,
-      difficulty:existing.difficulty, status:existing.status,
-      author:existing.author||"",
-      clues:[...existing.clues],
-      cards:{...existing.cards},
+      status:existing.status, author:existing.author||"",
+      clues:[...existing.clues], cards,
       slots:[
         ...existing.solution.slotCards.map((id,i)=>({cardId:id,orientation:existing.solution.orientations[i]})),
-        ...extra,
+        ...extraSlots,
       ],
     };
   }
-  const ids=[uid(),uid(),uid(),uid()];
+  // New puzzle: 4 solution slots + exactly 3 extra slots
+  const ids=[uid(),uid(),uid(),uid(),uid(),uid(),uid()];
   const cards={};
   ids.forEach(id=>cards[id]={id,words:["","","",""]});
   return {
     id:`p${Date.now()}`, title:"", status:"draft", author:"",
     date:new Date().toISOString().split("T")[0],
-    difficulty:"standard", clues:["","","",""],
-    cards, slots:ids.map(id=>({cardId:id,orientation:0})),
+    clues:["","","",""],
+    cards,
+    slots:ids.map(id=>({cardId:id,orientation:0})),
   };
 }
 
@@ -2073,19 +2108,19 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
   };
 
   const handleSave = (status) => {
-    const { id,title,date,difficulty,author,clues,cards,slots } = admin;
+    const { id,title,date,author,clues,cards,slots } = admin;
     const puzzle = {
-      id, title:title||"Untitled", date, difficulty,
+      id, title:title||"Untitled", date,
       author:author?.trim()||"",
       clues:clues.map(c=>c||"?"),
       cards,
       solution:{
         slotCards:slots.slice(0,4).map(s=>s.cardId),
         orientations:slots.slice(0,4).map(s=>s.orientation),
+        extraCards:slots.slice(4,7).map(s=>s.cardId), // always exactly 3
       },
       status,
     };
-    // If there's a conflict and we haven't confirmed replace yet, show warning
     if(dateConflict && !confirmReplace && status !== "draft"){
       setConfirmReplace(true);
       return;
@@ -2144,13 +2179,6 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
             <input className={`fi-sm${dateConflict?" date-used":""}`} type="date" value={admin.date}
               onChange={e=>{setAdmin(p=>({...p,date:e.target.value}));setConfirmReplace(false);}}
               style={{width:130}}/>
-            <select className="asel" value={admin.difficulty}
-              onChange={e=>setAdmin(p=>({...p,difficulty:e.target.value}))}>
-              <option value="easy">Easy</option>
-              <option value="standard">Standard</option>
-              <option value="expert">Expert</option>
-              <option value="hardcore">Hardcore</option>
-            </select>
           </div>
           <div style={{width:"100%"}}>
             <input className="fi-sm" value={admin.author||""}
@@ -2166,12 +2194,16 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
               {confirmReplace && (
                 <div className="date-conflict-btns">
                   <button className="abtn d sm" onClick={()=>{
-                    const { id,title,date,difficulty,author,clues,cards,slots } = admin;
+                    const { id,title,date,author,clues,cards,slots } = admin;
                     const puzzle = {
-                      id, title:title||"Untitled", date, difficulty,
+                      id, title:title||"Untitled", date,
                       author:author?.trim()||"",
                       clues:clues.map(c=>c||"?"), cards,
-                      solution:{slotCards:slots.slice(0,4).map(s=>s.cardId),orientations:slots.slice(0,4).map(s=>s.orientation)},
+                      solution:{
+                        slotCards:slots.slice(0,4).map(s=>s.cardId),
+                        orientations:slots.slice(0,4).map(s=>s.orientation),
+                        extraCards:slots.slice(4,7).map(s=>s.cardId),
+                      },
                       status:"published",
                     };
                     onSave(puzzle, dateConflict);
@@ -2197,14 +2229,14 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
             <EditableClueTab text={admin.clues[2]} pos="bot" onChange={val=>updateClue(2,val)}/>
           </div>
 
-          {/* Extra cards area */}
+          {/* Extra cards area — always exactly 3 */}
           <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,width:"100%"}}>
             <span style={{color:"rgba(255,255,255,.55)",fontSize:10,fontWeight:600,
               letterSpacing:".09em",textTransform:"uppercase"}}>
-              Extra cards
+              Extra cards (3)
             </span>
             <div style={{display:"flex",gap:10,flexWrap:"wrap",justifyContent:"center"}}>
-              {extraSlots.map((s,i)=>{
+              {extraSlots.slice(0,3).map((s,i)=>{
                 const si=4+i,card=admin.cards[s.cardId];
                 const isSel=s.cardId===selectedId;
                 return (
@@ -2216,7 +2248,6 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
                   </div>
                 );
               })}
-              <button className="add-card-btn" onClick={addExtraCard} title="Add extra card">+</button>
             </div>
           </div>
 
@@ -2279,15 +2310,23 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
 function AdminView({ onPublish }) {
   const [puzzles,setPuzzles]   = useState([]);
   const [loading,setLoading]   = useState(true);
-  const [wordBank,setWordBank] = useState(()=>loadLS("clover_wb",
-    ["BLAZE","EMBER","PEAK","STORM","WAVE","CLIFF","DRIFT","GROVE","MIST","SPARK","REEF","VALE"]
-  ));
+  const [wordBank,setWordBank] = useState([]);
+  const [wbLoading,setWbLoading] = useState(true);
   const [tab,setTab]         = useState("list");
   const [editPuzzle,setEditP] = useState(null);
   const [newWord,setNewWord] = useState("");
   const [wbSearch,setWbSearch] = useState("");
 
-  useEffect(()=>saveLS("clover_wb",wordBank),[wordBank]);
+  // Load word bank from Supabase
+  useEffect(()=>{
+    dbLoadWordBank().then(words=>{
+      setWordBank(words.length ? words : ["BLAZE","EMBER","PEAK","STORM","WAVE","CLIFF","DRIFT","GROVE","MIST","SPARK","REEF","VALE"]);
+      setWbLoading(false);
+    }).catch(()=>{
+      setWordBank(["BLAZE","EMBER","PEAK","STORM","WAVE","CLIFF","DRIFT","GROVE","MIST","SPARK","REEF","VALE"]);
+      setWbLoading(false);
+    });
+  },[]);
 
   // Load puzzles from Supabase on mount
   useEffect(()=>{
@@ -2413,18 +2452,22 @@ function AdminView({ onPublish }) {
           <p style={{fontSize:12,color:"var(--muted)",marginBottom:12}}>
             Store words to quickly add during puzzle creation. 1–2 words = one entry. 3+ words = separate entries.
           </p>
-          {(() => {
-            const addWords = () => {
+          {wbLoading ? <div className="mhint">Loading…</div> : (()=>{
+            const addWords = async () => {
               const raw = newWord.trim().toUpperCase();
               if(!raw) return;
               const tokens = raw.split(/\s+/).filter(Boolean);
               const words = tokens.length >= 3 ? tokens : [raw];
-              setWordBank(b => {
-                const next = [...b];
-                words.forEach(w => { if(!next.includes(w)) next.push(w); });
-                return next;
-              });
+              const next = [...wordBank];
+              words.forEach(w => { if(!next.includes(w)) next.push(w); });
+              setWordBank(next);
               setNewWord("");
+              await dbSaveWordBank(next).catch(()=>{});
+            };
+            const deleteWord = async (w) => {
+              const next = wordBank.filter(x=>x!==w);
+              setWordBank(next);
+              await dbSaveWordBank(next).catch(()=>{});
             };
             const sorted = [...wordBank].sort((a,b)=>a.localeCompare(b));
             const query = wbSearch.trim().toUpperCase();
@@ -2435,7 +2478,7 @@ function AdminView({ onPublish }) {
               <input className="fi" value={wbSearch}
                 onChange={e=>setWbSearch(e.target.value)}
                 placeholder="Search words…"
-                style={{background:"var(--surface)"}}/>
+                style={{background:"rgba(18,10,45,.9)"}}/>
             </div>
           )}
           <div className="wchips">
@@ -2445,7 +2488,7 @@ function AdminView({ onPublish }) {
                 </div>
               : filtered.map(w=>(
                 <div key={w} className="wchip">{w}
-                  <span className="wdel" onClick={()=>setWordBank(b=>b.filter(x=>x!==w))}>×</span>
+                  <span className="wdel" onClick={()=>deleteWord(w)}>×</span>
                 </div>
               ))
             }
@@ -2853,7 +2896,7 @@ export default function App() {
               completedData={completedData||null}
               onAdmire={()=>{ setAdmireMode(true); setLobbyDone(true); }}
             />
-          : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onGameStart={handleGameStart} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode}/>;
+          : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onGameStart={handleGameStart} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
       })()}
       {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive}/>}
       {view==="admin"  && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
