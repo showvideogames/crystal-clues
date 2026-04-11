@@ -167,24 +167,7 @@ body{font-family:var(--fu);background:var(--bg);color:var(--text);
   user-select:none;-webkit-user-select:none;touch-action:none}
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(88,28,135,0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(109,40,217,0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 85%, rgba(76,29,149,0.12) 0%, transparent 50%),
-    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.55) 0%, transparent 100%),
-    radial-gradient(1px 1px at 27% 42%, rgba(255,255,255,.35) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 43% 9%, rgba(255,255,255,.65) 0%, transparent 100%),
-    radial-gradient(1px 1px at 58% 28%, rgba(255,255,255,.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 72% 63%, rgba(255,255,255,.35) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 87% 14%, rgba(255,255,255,.55) 0%, transparent 100%),
-    radial-gradient(1px 1px at 93% 47%, rgba(200,150,255,.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 9% 72%, rgba(255,255,255,.45) 0%, transparent 100%),
-    radial-gradient(1px 1px at 32% 88%, rgba(200,150,255,.35) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 62% 96%, rgba(255,255,255,.55) 0%, transparent 100%),
-    radial-gradient(1px 1px at 79% 82%, rgba(255,255,255,.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 47% 57%, rgba(200,150,255,.45) 0%, transparent 100%),
-    radial-gradient(1px 1px at 16% 93%, rgba(255,255,255,.35) 0%, transparent 100%),
-    radial-gradient(1px 1px at 91% 76%, rgba(200,150,255,.35) 0%, transparent 100%);
+  background:url('/assets/Ethereal starry sky and nebula.png') center center / cover no-repeat;
 }
 #root{height:100vh;display:flex;flex-direction:column;max-width:440px;margin:0 auto;position:relative;z-index:1}
 
