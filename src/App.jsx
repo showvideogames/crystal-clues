@@ -2855,7 +2855,7 @@ export default function App() {
       <header className="hdr">
         <div className="logo">
           <div className="logo-g">🔮</div>
-          Crystal Clues
+          Crystal Clues Test
         </div>
         <div className="nav">
           <button className={`nbtn${view==="game"?" on":""}`}
