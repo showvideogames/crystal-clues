@@ -160,7 +160,7 @@ const CSS = `
   --purple:#8b5cf6;--purple-bright:#c4b5fd;--purple-glow:rgba(139,92,246,0.5);
   --gold:#ffd700;--gold-dim:#b8960a;
   --fc:'Cinzel',serif;--fu:'Raleway',sans-serif;
-  --cs:104px;--cg:8px;
+  --cs:110px;--cg:8px;
 }
 html,body{height:100%;overflow:hidden}
 body{font-family:var(--fu);background:var(--bg);color:var(--text);
@@ -342,19 +342,19 @@ body::before{
 .eslot{position:relative;width:var(--cs);height:var(--cs)}
 
 /* CONTROLS */
-.ctrls{display:flex;gap:5px;align-items:center;flex-shrink:0;margin-top:0}
-.cbtn{display:flex;align-items:center;gap:5px;padding:6px 12px;
+.ctrls{display:flex;gap:7px;align-items:center;flex-shrink:0;margin-top:8px}
+.cbtn{display:flex;align-items:center;gap:6px;padding:8px 15px;
   background:rgba(25,14,62,.82);border:1px solid rgba(100,55,200,.38);border-radius:50px;
-  font-family:var(--fu);font-size:10px;font-weight:700;color:var(--muted);
+  font-family:var(--fu);font-size:11px;font-weight:700;color:var(--muted);
   cursor:pointer;transition:all .15s;letter-spacing:.05em;text-transform:uppercase}
 .cbtn:hover{background:rgba(75,38,155,.42);border-color:rgba(139,92,246,.6);
   color:var(--purple-bright);transform:translateY(-1px);
   box-shadow:0 4px 18px rgba(75,38,155,.32)}
 .cbtn:active{transform:translateY(0)}
-.cbtn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.cbtn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 
 /* Feedback */
-.fbk{font-size:11px;font-weight:600;color:var(--muted);min-height:16px;
+.fbk{font-size:11px;font-weight:600;color:var(--muted);min-height:10px;
   text-align:center;padding:0 12px;letter-spacing:.03em;transition:opacity .5s ease;
   font-family:var(--fc)}
 .fbk.fading{opacity:0}
@@ -886,7 +886,7 @@ function Board({ clues, renderClue, renderSlot }) {
   const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={180} textShiftX={0} textShiftY={0}/>;
 
   return (
-    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:54,transform:"translateX(-10px)"}}>
+    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:14,transform:"translateX(-10px)"}}>
 
       {/* TOP CLOUD */}
       <div style={{width:CHW,height:CHH,zIndex:5,marginBottom:-8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
@@ -1744,7 +1744,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         </div>
       </div>
       <Board clues={clues} renderSlot={renderSlot}/>
-      <div style={{marginTop:92,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:6,padding:"0 10px"}}>
+      <div style={{marginTop:52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:6,padding:"0 10px"}}>
       {numExtra>0&&(
         <div className="extra">
           <span className="elabel">Extra cards</span>
