@@ -905,7 +905,6 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
         backgroundPosition:"center",
         backgroundRepeat:"no-repeat",
         backgroundSize:"contain",
-        filter:"drop-shadow(0 8px 18px rgba(44, 16, 92, 0.28))",
         opacity:0.92
       }}/>
       <span style={{
@@ -952,8 +951,10 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0 }) {
   const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18}/>;
   const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={-90} textShiftX={0} textShiftY={0}/>;
 
+  const boardShiftX = compactLevel >= 2 ? -18 : compactLevel === 1 ? -14 : -10;
+
   return (
-    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:compactLevel >= 2 ? 8 : compactLevel === 1 ? 11 : 14,transform:"translateX(-10px)"}}>
+    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:compactLevel >= 2 ? 8 : compactLevel === 1 ? 11 : 14,transform:`translateX(${boardShiftX}px)`}}>
 
       {/* TOP CLOUD */}
       <div style={{width:CHW,height:CHH,zIndex:5,marginBottom:compactLevel >= 2 ? -5 : -8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
