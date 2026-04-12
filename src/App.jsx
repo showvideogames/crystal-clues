@@ -891,7 +891,7 @@ function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8 })
   );
 }
 
-function CloudV({ text, animClass, rotation, textRotation=180, textShiftX=0, textShiftY=0 }) {
+function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, textShiftY=0 }) {
   return (
     <div className={`cloud-wrap cloud-v ${animClass||""}`} style={{
       position:"relative",display:"flex",alignItems:"center",justifyContent:"center"
@@ -914,9 +914,11 @@ function CloudV({ text, animClass, rotation, textRotation=180, textShiftX=0, tex
         letterSpacing:"0.05em",textTransform:"uppercase",
         color:"#17111f",
         textShadow:"0 1px 0 rgba(255,255,255,0.18), 0 2px 6px rgba(0,0,0,0.08)",
-        writingMode:"vertical-rl",
+        display:"inline-block",
+        whiteSpace:"nowrap",
         transform:`translate(${textShiftX}px, ${textShiftY}px) rotate(${textRotation}deg)`,
-        padding:"10px 0"
+        transformOrigin:"center center",
+        padding:"0 10px"
       }}>{text}</span>
     </div>
   );
@@ -924,10 +926,10 @@ function CloudV({ text, animClass, rotation, textRotation=180, textShiftX=0, tex
 
 // ── BOARD ────────────────────────────────────────────────────────
 
-function Board({ clues, renderClue, renderSlot }) {
+function Board({ clues, renderClue, renderSlot, compactLevel=0 }) {
   // Card grid: 104*2 + 8 gap + 24 padding = 240px square
-  const SURF = 240;
-  const BALL = 420;
+  const SURF = compactLevel >= 2 ? 212 : compactLevel === 1 ? 226 : 240;
+  const BALL = compactLevel >= 2 ? 390 : compactLevel === 1 ? 404 : 420;
 
   // The ball PNG: sphere occupies top ~65% of image, base the bottom 35%.
   // Sphere center sits at ~32% from top of the image = 0.32 * BALL from top.
@@ -936,25 +938,25 @@ function Board({ clues, renderClue, renderSlot }) {
   // As an offset from the card grid center: shift ball UP by (0.32*BALL - SURF/2)
   // Shift ball DOWN — sphere needs to wrap the cards, not sit below them
   // Negative ballShiftUp = move ball down
-  const ballShiftUp = -70;
+  const ballShiftUp = compactLevel >= 2 ? -58 : compactLevel === 1 ? -64 : -70;
 
   // Clouds
-  const CHW = 286;
-  const CHH = 60;
-  const CVW = 60;
-  const CVH = 286;
-  const FOREGROUND_SHIFT_Y = 18;
+  const CHW = compactLevel >= 2 ? 262 : compactLevel === 1 ? 274 : 286;
+  const CHH = compactLevel >= 2 ? 54 : compactLevel === 1 ? 57 : 60;
+  const CVW = compactLevel >= 2 ? 54 : compactLevel === 1 ? 57 : 60;
+  const CVH = compactLevel >= 2 ? 262 : compactLevel === 1 ? 274 : 286;
+  const FOREGROUND_SHIFT_Y = compactLevel >= 2 ? 10 : compactLevel === 1 ? 14 : 18;
 
-  const topClue   = renderClue ? renderClue(0,"top") : <CloudH text={clues[0]||""} animClass="float-top" textShiftX={10} textShiftY={-18}/>;
-  const rightClue = renderClue ? renderClue(1,"rgt") : <CloudV text={clues[1]||""} animClass="float-right" rotation={90} textRotation={0} textShiftX={0} textShiftY={0}/>;
-  const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={-18}/>;
-  const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={180} textShiftX={0} textShiftY={0}/>;
+  const topClue   = renderClue ? renderClue(0,"top") : <CloudH text={clues[0]||""} animClass="float-top" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18}/>;
+  const rightClue = renderClue ? renderClue(1,"rgt") : <CloudV text={clues[1]||""} animClass="float-right" rotation={90} textRotation={90} textShiftX={0} textShiftY={0}/>;
+  const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18}/>;
+  const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={-90} textShiftX={0} textShiftY={0}/>;
 
   return (
-    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:14,transform:"translateX(-10px)"}}>
+    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:compactLevel >= 2 ? 8 : compactLevel === 1 ? 11 : 14,transform:"translateX(-10px)"}}>
 
       {/* TOP CLOUD */}
-      <div style={{width:CHW,height:CHH,zIndex:5,marginBottom:-8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+      <div style={{width:CHW,height:CHH,zIndex:5,marginBottom:compactLevel >= 2 ? -5 : -8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
         {topClue}
       </div>
 
@@ -962,7 +964,7 @@ function Board({ clues, renderClue, renderSlot }) {
       <div style={{display:"flex",alignItems:"center",gap:0,position:"relative"}}>
 
         {/* LEFT CLOUD */}
-        <div style={{width:CVW,height:CVH,zIndex:5,marginRight:26,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+        <div style={{width:CVW,height:CVH,zIndex:5,marginRight:compactLevel >= 2 ? 20 : compactLevel === 1 ? 23 : 26,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
           {leftClue}
         </div>
 
@@ -1009,13 +1011,13 @@ function Board({ clues, renderClue, renderSlot }) {
         </div>
 
         {/* RIGHT CLOUD */}
-        <div style={{width:CVW,height:CVH,zIndex:5,marginLeft:10,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+        <div style={{width:CVW,height:CVH,zIndex:5,marginLeft:compactLevel >= 2 ? 6 : compactLevel === 1 ? 8 : 10,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
           {rightClue}
         </div>
       </div>
 
       {/* BOTTOM CLOUD */}
-      <div style={{width:CHW,height:CHH,zIndex:5,marginTop:-8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+      <div style={{width:CHW,height:CHH,zIndex:5,marginTop:compactLevel >= 2 ? -5 : -8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
         {botClue}
       </div>
 
@@ -1313,6 +1315,36 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const playFitOuterRef = useRef(null);
   const playFitInnerRef = useRef(null);
   const [playScale,setPlayScale] = useState(1);
+  const [viewportSize,setViewportSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(()=>{
+    const updateViewportSize = () => {
+      setViewportSize({
+        width: window.visualViewport?.width || window.innerWidth,
+        height: window.visualViewport?.height || window.innerHeight,
+      });
+    };
+
+    updateViewportSize();
+    window.addEventListener("resize", updateViewportSize);
+    window.visualViewport?.addEventListener("resize", updateViewportSize);
+    window.visualViewport?.addEventListener("scroll", updateViewportSize);
+
+    return () => {
+      window.removeEventListener("resize", updateViewportSize);
+      window.visualViewport?.removeEventListener("resize", updateViewportSize);
+      window.visualViewport?.removeEventListener("scroll", updateViewportSize);
+    };
+  },[]);
+
+  const compactLevel = useMemo(()=>{
+    if(viewportSize.height <= 690 || viewportSize.width <= 320) return 2;
+    if(viewportSize.height <= 780 || viewportSize.width <= 390) return 1;
+    return 0;
+  },[viewportSize.height, viewportSize.width]);
 
   useEffect(()=>{
     const outer = playFitOuterRef.current;
@@ -1323,12 +1355,15 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     const updateScale = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        const availableHeight = outer.clientHeight;
+        const outerTop = outer.getBoundingClientRect().top;
+        const viewportHeight = window.visualViewport?.height || window.innerHeight;
+        const visualAvailableHeight = Math.max(0, viewportHeight - outerTop - 8);
+        const availableHeight = Math.min(outer.clientHeight, visualAvailableHeight || outer.clientHeight);
         const availableWidth = outer.clientWidth;
         const naturalHeight = inner.scrollHeight;
         const naturalWidth = inner.scrollWidth;
         if(!availableHeight || !availableWidth || !naturalHeight || !naturalWidth) return;
-        const nextScale = Math.min(1, availableHeight / naturalHeight, availableWidth / naturalWidth);
+        const nextScale = Math.min(1, (availableHeight - 4) / naturalHeight, (availableWidth - 4) / naturalWidth);
         setPlayScale(prev => Math.abs(prev - nextScale) > 0.01 ? nextScale : prev);
       });
     };
@@ -1337,18 +1372,22 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     ro.observe(outer);
     ro.observe(inner);
     window.addEventListener("resize", updateScale);
+    window.visualViewport?.addEventListener("resize", updateScale);
+    window.visualViewport?.addEventListener("scroll", updateScale);
     updateScale();
 
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
       window.removeEventListener("resize", updateScale);
+      window.visualViewport?.removeEventListener("resize", updateScale);
+      window.visualViewport?.removeEventListener("scroll", updateScale);
     };
-  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating]);
+  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel]);
 
   const playAreaStyle = useMemo(()=>({
     transform:`scale(${playScale})`,
-    marginBottom: playScale < 1 ? `${Math.max(0, (1 - playScale) * 120)}px` : "0px",
+    marginBottom: playScale < 1 ? `${-1 * Math.max(0, (1 - playScale) * 260)}px` : "0px",
   }),[playScale]);
 
   // Web Audio victory fanfare — leprechaun-y ascending arpeggio
@@ -1910,8 +1949,8 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       </div>
       <div ref={playFitOuterRef} className="play-fit-outer">
         <div ref={playFitInnerRef} className="play-fit-inner" style={playAreaStyle}>
-          <Board clues={clues} renderSlot={renderSlot}/>
-          <div style={{marginTop:52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:6,padding:"0 10px"}}>
+          <Board clues={clues} renderSlot={renderSlot} compactLevel={compactLevel}/>
+          <div style={{marginTop:compactLevel >= 2 ? 28 : compactLevel === 1 ? 38 : 52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px"}}>
             <div className="extra">
         {numExtra>0 ? (
           <>
