@@ -160,7 +160,7 @@ const CSS = `
   --purple:#8b5cf6;--purple-bright:#c4b5fd;--purple-glow:rgba(139,92,246,0.5);
   --gold:#ffd700;--gold-dim:#b8960a;
   --fc:'Cinzel',serif;--fu:'Raleway',sans-serif;
-  --cs:110px;--cg:8px;
+  --cs:110px;--cg:8px;--step:calc(var(--cs) + var(--cg));
 }
 html,body{height:100%;overflow:hidden}
 body{font-family:var(--fu);background:var(--bg);color:var(--text);
@@ -192,13 +192,15 @@ body::before{
 
 /* GAME AREA */
 .game{flex:1;display:flex;flex-direction:column;align-items:center;
-  padding:10px 0 2px;gap:0;overflow:hidden;overflow-x:visible;touch-action:pan-y}
+  padding:8px 0 max(2px, env(safe-area-inset-bottom));gap:0;overflow:hidden;overflow-x:visible;touch-action:pan-y}
 .sbar{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);font-weight:600;
   width:100%;padding:2px 14px 8px;line-height:1.15}
 .sdate{color:var(--gold);font-weight:700;font-size:17px;font-family:var(--fc);letter-spacing:.05em}
 .dchip{padding:4px 12px;background:rgba(139,92,246,.2);color:var(--purple-bright);
   border:1px solid rgba(139,92,246,.35);
   border-radius:14px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.play-fit-outer{flex:1;min-height:0;width:100%;display:flex;justify-content:center;align-items:flex-start;overflow:hidden;padding:0 6px 2px}
+.play-fit-inner{width:max-content;max-width:100%;display:flex;flex-direction:column;align-items:center;transform-origin:top center;will-change:transform}
 
 /* BOARD */
 .board{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;overflow:visible}
@@ -266,7 +268,7 @@ body::before{
 
 /* CARD SLOT */
 .cslot{position:relative;width:var(--cs);height:var(--cs);border-radius:14px;perspective:600px}
-.cslot.over::after{content:'';position:absolute;inset:-3px;
+.cslot.over::after,.cslot.source::after,.eslot.source::after{content:'';position:absolute;inset:-3px;
   border:2px dashed rgba(167,139,250,.8);border-radius:17px;pointer-events:none;z-index:2}
 .cslot.empty{border:1.5px dashed rgba(167,139,250,.3);border-radius:14px}
 
@@ -287,7 +289,7 @@ body::before{
 .ctile.wrong-red{
   background:#ffe8ea;
   border-color:rgba(255,68,85,.45)}
-.ctile.dim{opacity:.18;pointer-events:none;transform:none}
+.ctile.dim{opacity:0;pointer-events:none;transform:none}
 .ctile.selected{border:2px solid var(--gold);
   box-shadow:0 0 18px rgba(255,215,0,.3),0 2px 14px rgba(0,0,0,.3)}
 
@@ -333,13 +335,29 @@ body::before{
   45%{transform:rotate(calc(var(--sd,1)*180deg)) scale(.88)}
   100%{transform:rotate(calc(var(--sd,1)*360deg))}}
 .ctile.spinning{animation:shuffleSpin .44s ease}
+@keyframes swapPop{0%{transform:scale(1)}45%{transform:scale(1.12)}100%{transform:scale(1)}}
+.ctile.swap-pop{animation:swapPop .18s ease-out}
+@keyframes rotateMoveRight{0%{transform:translate(0,0) scale(1)}100%{transform:translateX(var(--step)) scale(.98)}}
+@keyframes rotateMoveDown{0%{transform:translate(0,0) scale(1)}100%{transform:translateY(var(--step)) scale(.98)}}
+@keyframes rotateMoveLeft{0%{transform:translate(0,0) scale(1)}100%{transform:translateX(calc(-1 * var(--step))) scale(.98)}}
+@keyframes rotateMoveUp{0%{transform:translate(0,0) scale(1)}100%{transform:translateY(calc(-1 * var(--step))) scale(.98)}}
+.ctile.rotate-move-right{animation:rotateMoveRight .24s ease-in-out forwards}
+.ctile.rotate-move-down{animation:rotateMoveDown .24s ease-in-out forwards}
+.ctile.rotate-move-left{animation:rotateMoveLeft .24s ease-in-out forwards}
+.ctile.rotate-move-up{animation:rotateMoveUp .24s ease-in-out forwards}
+.ctile-inner{position:absolute;inset:0;border-radius:inherit}
+@keyframes rotateSpinInner{0%{transform:rotate(0deg)}100%{transform:rotate(90deg)}}
+.ctile-inner.rotate-spin{animation:rotateSpinInner .24s ease-in-out forwards}
 
 /* EXTRA CARDS */
-.extra{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:0}
-.elabel{font-size:16px;font-weight:700;letter-spacing:.11em;
-  text-transform:uppercase;color:var(--muted);font-family:var(--fc)}
+.extra{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:0;position:relative;padding-top:22px}
+.elabel{position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  font-size:18px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:rgba(216,198,255,.82);font-family:var(--fc);
+  text-shadow:0 2px 10px rgba(10, 4, 24, 0.55);z-index:3;white-space:nowrap}
 .eslots{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .eslot{position:relative;width:var(--cs);height:var(--cs)}
+.extra-spacer{height:156px;width:100%}
 
 /* CONTROLS */
 .ctrls{display:flex;gap:7px;align-items:center;flex-shrink:0;margin-top:8px}
@@ -380,9 +398,9 @@ body::before{
 
 /* DRAG GHOST */
 .ghost{position:fixed;pointer-events:none;z-index:9999;width:var(--cs);height:var(--cs);
-  background:linear-gradient(145deg,#281845 0%,#190e38 100%);
-  border:1.5px solid rgba(139,92,246,.82);border-radius:14px;
-  box-shadow:0 14px 40px rgba(0,0,0,.6),0 0 22px rgba(139,92,246,.45);opacity:.95}
+  background:#f5f0ff;
+  border:1px solid rgba(180,160,220,.65);border-radius:14px;
+  box-shadow:0 14px 40px rgba(0,0,0,.28),0 0 16px rgba(139,92,246,.18);opacity:.96}
 
 /* SOLVED OVERLAY */
 .sovr{position:fixed;inset:0;z-index:100;
@@ -406,6 +424,43 @@ body::before{
 .lives{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:600}
 .life{font-size:24px;line-height:1;transition:all .2s}
 .life.lost{opacity:.18;filter:grayscale(1)}
+
+@media (max-width:390px){
+  :root{--cs:102px;--cg:7px}
+  .sbar{gap:8px;padding:2px 12px 8px}
+  .sdate{font-size:16px}
+  .dchip{padding:4px 10px;font-size:11px}
+  .lives{gap:6px}
+  .life{font-size:22px}
+  .elabel{font-size:16px}
+}
+
+@media (max-width:375px), (max-height:740px){
+  :root{--cs:96px;--cg:7px}
+  .sbar{gap:7px;padding:1px 10px 7px;font-size:13px}
+  .sdate{font-size:15px}
+  .dchip{padding:3px 9px;font-size:10px}
+  .lives{gap:5px}
+  .life{font-size:21px}
+  .extra{padding-top:18px}
+  .elabel{font-size:15px}
+  .ctrls{margin-top:6px;gap:6px}
+  .cbtn{padding:7px 13px;font-size:10px}
+  .sbtn{padding:11px;font-size:12px}
+}
+
+@media (max-width:320px), (max-height:680px){
+  :root{--cs:88px;--cg:6px}
+  .sbar{gap:6px;padding:1px 9px 6px;font-size:12px}
+  .sdate{font-size:14px}
+  .dchip{padding:3px 8px;font-size:9px}
+  .lives{gap:4px}
+  .life{font-size:19px}
+  .extra{padding-top:16px}
+  .elabel{font-size:14px}
+  .cbtn{padding:6px 11px;font-size:9px}
+  .sbtn{padding:10px;font-size:11px}
+}
 
 /* Stats overlay */
 .stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;padding:0 4px;margin:6px 0}
@@ -743,13 +798,19 @@ function bestSubmit(slots4, solution, locked, currentClues, originalClues) {
 
 const loadLS = (k,fb) => { try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch{return fb;} };
 const saveLS = (k,v) => { try{localStorage.setItem(k,JSON.stringify(v));}catch{} };
+const removeLS = (k) => { try{localStorage.removeItem(k);}catch{} };
+
+// Easy drag UX experiment toggle:
+// true  -> show floating drag preview
+// false -> hide the preview and leave the source slot visually empty while dragging
+const SHOW_DRAG_GHOST = true;
 
 // ═══════════════════════════════════════════════════════════════
 //  CARD TILE — 4 edge words, no CSS rotation of card
 // ═══════════════════════════════════════════════════════════════
 
 function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim, spinning, spinDir=1,
-                    selected, noclick, onPointerDown }) {
+                    popping, rotateMoveClass='', rotateSpin=false, selected, noclick, onPointerDown }) {
   const [t,r,b,l] = vw(card, orientation);
   let cls="ctile";
   if(locked)                  cls+=" locked";
@@ -757,17 +818,21 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   if(shaking)  cls+=" shaking";
   if(dim)      cls+=" dim";
   if(spinning) cls+=" spinning";
+  if(popping)  cls+=" swap-pop";
+  if(rotateMoveClass) cls+=` ${rotateMoveClass}`;
   if(selected) cls+=" selected";
   if(noclick)  cls+=" noclick";
   if(extraCls) cls+=extraCls;
 
   return (
     <div className={cls} style={{"--sd":spinDir}} onPointerDown={onPointerDown}>
-      <span className="ew et">{t}</span>
-      <span className="ew er">{r}</span>
-      <span className="ew eb">{b}</span>
-      <span className="ew el">{l}</span>
-      <div className="cmark"/>
+      <div className={`ctile-inner${rotateSpin ? " rotate-spin" : ""}`}>
+        <span className="ew et">{t}</span>
+        <span className="ew er">{r}</span>
+        <span className="ew eb">{b}</span>
+        <span className="ew el">{l}</span>
+        <div className="cmark"/>
+      </div>
     </div>
   );
 }
@@ -1204,12 +1269,26 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
 
   const MAX_LIVES = 3;
   const alreadySolved = admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
-  const [slots,setSlots]     = useState(initSlots);
-  const [clues,setClues]     = useState([...puzzle.clues]);
-  const [locked,setLocked]   = useState(()=> alreadySolved ? new Set([0,1,2,3]) : new Set());
-  const [wrong,setWrong]     = useState(new Set());
-  const [knownBad,setKnownBad] = useState(()=>new Map());
+  const progressKey = `clover_progress_${puzzle.id}`;
+  const savedProgress = (!admireMode && !alreadySolved && !forceFresh)
+    ? loadLS(progressKey, null)
+    : null;
+  const canRestoreProgress = !!savedProgress &&
+    savedProgress.totalSlots === totalSlots &&
+    Array.isArray(savedProgress.slots) &&
+    Array.isArray(savedProgress.clues);
+  const [slots,setSlots]     = useState(()=> canRestoreProgress ? savedProgress.slots : initSlots());
+  const [clues,setClues]     = useState(()=> canRestoreProgress ? savedProgress.clues : [...puzzle.clues]);
+  const [locked,setLocked]   = useState(()=> alreadySolved
+    ? new Set([0,1,2,3])
+    : canRestoreProgress ? new Set(savedProgress.locked || []) : new Set());
+  const [wrong,setWrong]     = useState(()=> canRestoreProgress ? new Set(savedProgress.wrong || []) : new Set());
+  const [knownBad,setKnownBad] = useState(()=> canRestoreProgress
+    ? new Map((savedProgress.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
+    : new Map());
   const [spinning,setSpinning] = useState(new Set());
+  const [swapPopping,setSwapPopping] = useState(new Set());
+  const [rotateAnimating,setRotateAnimating] = useState(false);
   const [flipReveal,setFlipReveal] = useState({}); // {slotIdx: 'down'|'up'}
   const [ghost,setGhost]     = useState(null);
   const [dragSrc,setDragSrc] = useState(null);
@@ -1217,10 +1296,10 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const [dragOver,setDragOver] = useState(null);
   const [feedback,setFeedback]       = useState(admireMode ? "The vision is clear 🔮" : alreadySolved?"Already revealed — well done!":"");
   const [feedbackFading,setFbFading] = useState(false);
-  const [solved,setSolved]   = useState(alreadySolved);
-  const [lost,setLost]       = useState(false);
-  const [lives,setLives]     = useState(MAX_LIVES);
-  const [guessHistory,setGuessHistory] = useState([]); // array of {row: [emoji,emoji,emoji,emoji]}
+  const [solved,setSolved]   = useState(()=> alreadySolved || !!savedProgress?.solved);
+  const [lost,setLost]       = useState(()=> !!savedProgress?.lost);
+  const [lives,setLives]     = useState(()=> savedProgress?.lives ?? MAX_LIVES);
+  const [guessHistory,setGuessHistory] = useState(()=> savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
   const [showOvr,setShowOvr] = useState(false);
   const [copied,setCopied]   = useState(false);
   const [stats,setStats]     = useState(loadStats);
@@ -1228,7 +1307,49 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const [revealPhase,setRevealPhase] = useState(null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   const [showParticles,setShowParticles] = useState(false);
-  const [tries,setTries]     = useState(()=> completions[puzzle.id]?.tries ?? 0);
+  const [tries,setTries]     = useState(()=> savedProgress?.tries ?? completions[puzzle.id]?.tries ?? 0);
+  const swapPopTimer = useRef(null);
+  const rotateTimer = useRef(null);
+  const playFitOuterRef = useRef(null);
+  const playFitInnerRef = useRef(null);
+  const [playScale,setPlayScale] = useState(1);
+
+  useEffect(()=>{
+    const outer = playFitOuterRef.current;
+    const inner = playFitInnerRef.current;
+    if(!outer || !inner) return;
+
+    let raf = 0;
+    const updateScale = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const availableHeight = outer.clientHeight;
+        const availableWidth = outer.clientWidth;
+        const naturalHeight = inner.scrollHeight;
+        const naturalWidth = inner.scrollWidth;
+        if(!availableHeight || !availableWidth || !naturalHeight || !naturalWidth) return;
+        const nextScale = Math.min(1, availableHeight / naturalHeight, availableWidth / naturalWidth);
+        setPlayScale(prev => Math.abs(prev - nextScale) > 0.01 ? nextScale : prev);
+      });
+    };
+
+    const ro = new ResizeObserver(updateScale);
+    ro.observe(outer);
+    ro.observe(inner);
+    window.addEventListener("resize", updateScale);
+    updateScale();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      window.removeEventListener("resize", updateScale);
+    };
+  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating]);
+
+  const playAreaStyle = useMemo(()=>({
+    transform:`scale(${playScale})`,
+    marginBottom: playScale < 1 ? `${Math.max(0, (1 - playScale) * 120)}px` : "0px",
+  }),[playScale]);
 
   // Web Audio victory fanfare — leprechaun-y ascending arpeggio
   const playVictorySound = useCallback(()=>{
@@ -1343,6 +1464,32 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
 
   const [showRepeatWarning, setShowRepeatWarning] = useState(false);
   const repeatWarnTimer = useRef(null);
+  useEffect(()=>{
+    if(admireMode || alreadySolved || solved){
+      removeLS(progressKey);
+      return;
+    }
+    if(isDragging || revealPhase || rotateAnimating) return;
+    saveLS(progressKey, {
+      puzzleId: puzzle.id,
+      totalSlots,
+      slots,
+      clues,
+      locked: [...locked],
+      wrong: [...wrong],
+      knownBad: [...knownBad.entries()].map(([k,v])=>[k, [...v]]),
+      lives,
+      guessHistory,
+      tries,
+      lost,
+      solved,
+    });
+  },[
+    admireMode, alreadySolved, solved, isDragging, revealPhase, rotateAnimating,
+    progressKey, puzzle.id, totalSlots, slots, clues, locked, wrong, knownBad,
+    lives, guessHistory, tries, lost
+  ]);
+
   // Fade the warning out when all red cards are moved
   useEffect(()=>{
     if(repeatedBad.size === 0 && showRepeatWarning){
@@ -1380,11 +1527,14 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       if(!dragRef.current.moved && Math.sqrt(dx*dx+dy*dy)>8){
         dragRef.current.moved=true;
         setIsDragging(true);
-        // Only now create the ghost
-        setGhost({x:ev.clientX,y:ev.clientY,card,orientation:s.orientation,sz});
+        if(SHOW_DRAG_GHOST){
+          setGhost({x:ev.clientX,y:ev.clientY,card,orientation:s.orientation,sz});
+        }
       }
       if(dragRef.current.moved){
-        setGhost(g=>g?{...g,x:ev.clientX,y:ev.clientY}:null);
+        if(SHOW_DRAG_GHOST){
+          setGhost(g=>g?{...g,x:ev.clientX,y:ev.clientY}:null);
+        }
         setDragOver(getSlotAt(ev.clientX,ev.clientY,si));
       }
     };
@@ -1402,6 +1552,9 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         if(tgt>=0){
           setSlots(p=>{const n=[...p];[n[si],n[tgt]]=[n[tgt],n[si]];return n;});
           setWrong(p=>{const s=new Set(p);s.delete(si);s.delete(tgt);return s;});
+          setSwapPopping(new Set([si,tgt]));
+          if(swapPopTimer.current) clearTimeout(swapPopTimer.current);
+          swapPopTimer.current = setTimeout(()=>setSwapPopping(new Set()), 190);
         }
       }
     };
@@ -1410,14 +1563,20 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   },[slots,locked,lost,puzzle,getSlotAt]);
 
   const handleRotate = useCallback(()=>{
-    setSlots(p=>{
-      const nc=CW_FROM.map(f=>{const s=p[f];return s?{...s,orientation:(s.orientation+1)%4}:null;});
-      return [...nc,...p.slice(4)];
-    });
-    setClues(p=>CW_FROM.map(i=>p[i]));
-    setLocked(p=>{const n=new Set();p.forEach(i=>{n.add(i<4?CW_FROM.indexOf(i):i);});return n;});
-    setWrong(new Set());
-  },[]);
+    if(rotateAnimating) return;
+    setRotateAnimating(true);
+    if(rotateTimer.current) clearTimeout(rotateTimer.current);
+    rotateTimer.current = setTimeout(()=>{
+      setSlots(p=>{
+        const nc=CW_FROM.map(f=>{const s=p[f];return s?{...s,orientation:(s.orientation+1)%4}:null;});
+        return [...nc,...p.slice(4)];
+      });
+      setClues(p=>CW_FROM.map(i=>p[i]));
+      setLocked(p=>{const n=new Set();p.forEach(i=>{n.add(i<4?CW_FROM.indexOf(i):i);});return n;});
+      setWrong(new Set());
+      setRotateAnimating(false);
+    }, 240);
+  },[rotateAnimating]);
 
   const prevDifficultyRef = useRef(puzzle.difficulty);
 
@@ -1679,10 +1838,13 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     if(isRevealRed)   extraCls=' flipping';
     if(flipPhase==='down') extraCls=' flip-down';
     if(flipPhase==='up')   extraCls=' flip-up';
+    const rotateMoveClass = rotateAnimating
+      ? ({0:' rotate-move-right',1:' rotate-move-down',2:' rotate-move-left',3:' rotate-move-up'}[si] || '')
+      : '';
 
     return (
       <div key={si} ref={el=>slotRefs.current[si]=el}
-        className={`cslot${dragOver===si?" over":""}${!card?" empty":""}`}>
+        className={`cslot${dragOver===si?" over":""}${isDragging && dragSrc===si?" source":""}${!card?" empty":""}`}>
         {card&&<CardTile
           key={isWrong ? `${si}-shake-${shakeKey}` : si}
           card={card} orientation={s.orientation}
@@ -1692,11 +1854,14 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
           shaking={isWrong}
           extraCls={extraCls}
           dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
+          popping={swapPopping.has(si)}
+          rotateMoveClass={rotateMoveClass}
+          rotateSpin={rotateAnimating && si < 4}
           spinDir={si%2===0?1:-1}
           onPointerDown={e=>handlePD(e,si)}/>}
       </div>
     );
-  },[slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,isDragging,dragSrc,spinning,dragOver,handlePD]);
+  },[slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,isDragging,dragSrc,spinning,swapPopping,rotateAnimating,dragOver,handlePD]);
 
   // Victory particles — leprechaun coins and rainbows
   const PARTICLES = ['🔮','✨','⭐','🌟','💫','✨','🔮','⭐','💫','🌟','✨','🔮'];
@@ -1743,28 +1908,35 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
           ))}
         </div>
       </div>
-      <Board clues={clues} renderSlot={renderSlot}/>
-      <div style={{marginTop:52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:6,padding:"0 10px"}}>
-      {numExtra>0&&(
-        <div className="extra">
-          <span className="elabel">Extra cards</span>
-          <div className="eslots">
-            {Array.from({length:numExtra},(_,i)=>{
-              const si=4+i,s=slots[si],card=s?puzzle.cards[s.cardId]:null;
-              return (
-                <div key={si} ref={el=>slotRefs.current[si]=el}
-                  className={`eslot${dragOver===si?" over":""}`}>
-                  {card&&<CardTile card={card} orientation={s.orientation}
-                    locked={locked.has(si)} wrong={wrong.has(si)}
-                    dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
-                    spinDir={i%2===0?1:-1}
-                    onPointerDown={e=>handlePD(e,si)}/>}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <div ref={playFitOuterRef} className="play-fit-outer">
+        <div ref={playFitInnerRef} className="play-fit-inner" style={playAreaStyle}>
+          <Board clues={clues} renderSlot={renderSlot}/>
+          <div style={{marginTop:52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:6,padding:"0 10px"}}>
+            <div className="extra">
+        {numExtra>0 ? (
+          <>
+            <span className="elabel">Extra cards</span>
+            <div className="eslots">
+              {Array.from({length:numExtra},(_,i)=>{
+                const si=4+i,s=slots[si],card=s?puzzle.cards[s.cardId]:null;
+                return (
+                  <div key={si} ref={el=>slotRefs.current[si]=el}
+                    className={`eslot${dragOver===si?" over":""}${isDragging && dragSrc===si?" source":""}`}>
+                    {card&&<CardTile card={card} orientation={s.orientation}
+                      locked={locked.has(si)} wrong={wrong.has(si)}
+                      dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
+                      popping={swapPopping.has(si)}
+                      spinDir={i%2===0?1:-1}
+                      onPointerDown={e=>handlePD(e,si)}/>}
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <div className="extra-spacer" />
+        )}
+      </div>
       <div className="ctrls">
         <button className="cbtn" onClick={handleRotate}>
           <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-9-9c2.52 0 4.8 1 6.46 2.54L21 8"/><path d="M21 3v5h-5"/></svg>
@@ -1791,6 +1963,8 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
           {solved ? "✓ Solved!" : lost ? "No lives left" : admireMode ? "Gazing 🔮" : "Submit"}
         </button>
       </div>
+          </div>
+        </div>
       </div>
     </div>
     <DragGhost ghost={ghost}/>
@@ -2007,12 +2181,16 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     const cx=e.clientX,cy=e.clientY;
     dragRef.current={src:si,x0:cx,y0:cy,moved:false};
     setDragSrc(si);
-    setGhost({x:cx,y:cy,card,orientation:s.orientation,sz});
+    if(SHOW_DRAG_GHOST){
+      setGhost({x:cx,y:cy,card,orientation:s.orientation,sz});
+    }
     const onMove=ev=>{
       ev.preventDefault();
       if(Math.abs(ev.clientX-dragRef.current.x0)>6||Math.abs(ev.clientY-dragRef.current.y0)>6)
         dragRef.current.moved=true;
-      setGhost(g=>g?{...g,x:ev.clientX,y:ev.clientY}:null);
+      if(SHOW_DRAG_GHOST){
+        setGhost(g=>g?{...g,x:ev.clientX,y:ev.clientY}:null);
+      }
       setDragOver(getSlotAt(ev.clientX,ev.clientY,si));
     };
     const onUp=ev=>{
