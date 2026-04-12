@@ -4,10 +4,18 @@ import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 //  SUPABASE
 // ═══════════════════════════════════════════════════════════════
 
-const SUPABASE_URL = "https://qszqparrqyhegfznyaby.supabase.co";
-const SUPABASE_KEY = "sb_publishable_6-Apb1INDlRXfchxEY1GyQ_vKC7bEOD";
+const SUPABASE_URL = (import.meta.env.VITE_SUPABASE_URL || "").trim();
+const SUPABASE_KEY = (import.meta.env.VITE_SUPABASE_ANON_KEY || "").trim();
+const ADMIN_ENABLED = import.meta.env.DEV || import.meta.env.VITE_ENABLE_ADMIN === "true";
+
+function assertSupabaseConfigured() {
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    throw new Error("Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY.");
+  }
+}
 
 async function sbFetch(path, options={}) {
+  assertSupabaseConfigured();
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     ...options,
     headers: {
@@ -38,6 +46,9 @@ async function dbLoadAllPuzzles() {
 }
 
 async function dbSavePuzzle(puzzle) {
+  if (!ADMIN_ENABLED) {
+    throw new Error("Admin mode is disabled for this deployment.");
+  }
   const numId = Number(puzzle.id);
   const id = isNaN(numId) ? puzzle.id : numId;
   await sbFetch(`puzzles?id=eq.${id}`, {
@@ -62,6 +73,9 @@ async function dbSavePuzzle(puzzle) {
 }
 
 async function dbDeletePuzzle(id) {
+  if (!ADMIN_ENABLED) {
+    throw new Error("Admin mode is disabled for this deployment.");
+  }
   await sbFetch(`puzzles?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" });
 }
 
@@ -71,7 +85,11 @@ async function dbLoadWordBank() {
 }
 
 async function dbAddWords(newWords) {
+  if (!ADMIN_ENABLED) {
+    throw new Error("Admin mode is disabled for this deployment.");
+  }
   if(!newWords.length) return;
+  assertSupabaseConfigured();
   const res = await fetch(`${SUPABASE_URL}/rest/v1/wordbank`, {
     method: "POST",
     headers: {
@@ -90,6 +108,9 @@ async function dbAddWords(newWords) {
 }
 
 async function dbDeleteWord(word) {
+  if (!ADMIN_ENABLED) {
+    throw new Error("Admin mode is disabled for this deployment.");
+  }
   await sbFetch(`wordbank?word=eq.${encodeURIComponent(word)}`, {
     method: "DELETE",
     prefer: "return=minimal",
@@ -874,7 +895,6 @@ function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8 })
         backgroundPosition:"center top",
         backgroundRepeat:"no-repeat",
         backgroundSize:"contain",
-        filter:"drop-shadow(0 8px 18px rgba(44, 16, 92, 0.28))",
         opacity:0.92,
         transform:`translateY(-8px) rotate(${artRotation}deg)`
       }}/>
@@ -951,7 +971,7 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0 }) {
   const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18}/>;
   const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={-90} textShiftX={0} textShiftY={0}/>;
 
-  const boardShiftX = compactLevel >= 2 ? -22 : compactLevel === 1 ? -17 : -10;
+  const boardShiftX = compactLevel >= 2 ? -38 : compactLevel === 1 ? -28 : -10;
 
   return (
     <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:compactLevel >= 2 ? 8 : compactLevel === 1 ? 11 : 14,transform:`translateX(${boardShiftX}px)`}}>
@@ -3117,9 +3137,11 @@ export default function App() {
           <button className={`nbtn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}>
             Archive
           </button>
-          <button className={`nbtn${view==="admin"?" on":""}`} onClick={()=>setView("admin")}>
-            Admin
-          </button>
+          {ADMIN_ENABLED && (
+            <button className={`nbtn${view==="admin"?" on":""}`} onClick={()=>setView("admin")}>
+              Admin
+            </button>
+          )}
           <button className="gear-btn" onClick={()=>setShowSettings(true)} title="Settings">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
           </button>
@@ -3149,7 +3171,7 @@ export default function App() {
           : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onGameStart={handleGameStart} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
       })()}
       {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive}/>}
-      {view==="admin"  && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
+      {view==="admin" && ADMIN_ENABLED && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
 
       {showSettings && (
         <SettingsSheet
