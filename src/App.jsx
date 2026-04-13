@@ -105,6 +105,47 @@ const CW_FROM = [3, 0, 1, 2];
 const DIFFICULTY_EXTRA  = { easy:0, standard:1, expert:2, hardcore:3 };
 const DIFFICULTY_LABELS = { easy:"Easy", standard:"Standard", expert:"Expert", hardcore:"Hardcore" };
 const SLOT_LABELS = ["TL","TR","BR","BL"];
+const MAX_LIVES = 3;
+
+const DEFAULT_STATS = {
+  currentStreak:0,
+  maxStreak:0,
+  lastSolvedDate:null,
+  totalPlayed:0,
+  totalWon:0,
+  livesUsedDist:{ '0':0, '1':0, '2':0, X:0 },
+  difficultyWins:{ easy:0, standard:0, expert:0, hardcore:0 },
+};
+
+const formatLivesUsed = (livesUsed) => {
+  if(livesUsed <= 0) return "Perfect — no lives used";
+  return `${livesUsed} ${livesUsed===1 ? "life" : "lives"} used`;
+};
+
+const formatLivesUsedCompact = (livesUsed) => {
+  if(livesUsed <= 0) return "Perfect";
+  return `${livesUsed} ${livesUsed===1 ? "life" : "lives"} used`;
+};
+
+const normalizeStats = (raw={}) => ({
+  currentStreak: raw.currentStreak || 0,
+  maxStreak: raw.maxStreak || 0,
+  lastSolvedDate: raw.lastSolvedDate || null,
+  totalPlayed: raw.totalPlayed || 0,
+  totalWon: raw.totalWon || 0,
+  livesUsedDist: {
+    '0': raw.livesUsedDist?.['0'] || 0,
+    '1': raw.livesUsedDist?.['1'] || 0,
+    '2': raw.livesUsedDist?.['2'] || 0,
+    X: raw.livesUsedDist?.X || 0,
+  },
+  difficultyWins: {
+    easy: raw.difficultyWins?.easy || 0,
+    standard: raw.difficultyWins?.standard || 0,
+    expert: raw.difficultyWins?.expert || 0,
+    hardcore: raw.difficultyWins?.hardcore || 0,
+  },
+});
 
 let _uid = 0;
 const uid = () => `u${++_uid}`;
@@ -609,9 +650,12 @@ body::before{
 .lobby-title{font-family:var(--fc);font-size:22px;font-weight:700;
   color:var(--gold);letter-spacing:.06em;margin-bottom:4px;
   text-shadow:0 0 24px rgba(255,215,0,.38)}
-.lobby-date{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:28px}
-.lobby-diff-label{font-size:9px;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-family:var(--fc)}
+.lobby-date{font-size:21px;color:#fff;font-weight:700;line-height:1.2;margin-bottom:14px;
+  text-shadow:0 2px 18px rgba(255,255,255,.14)}
+.lobby-author{font-size:18px;color:rgba(255,255,255,.92);font-weight:600;margin-bottom:18px;line-height:1.2}
+.lobby-diff-label{font-size:16px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:#fff;margin-bottom:12px;font-family:var(--fc);
+  text-shadow:0 2px 18px rgba(255,255,255,.12)}
 .lobby-diff-opts{display:flex;flex-direction:column;gap:7px;width:100%;max-width:280px;margin-bottom:28px}
 .lobby-diff-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;
   border-radius:12px;border:1px solid rgba(100,55,200,.35);background:rgba(18,10,45,.9);
@@ -769,7 +813,7 @@ body::before{
   box-shadow:0 10px 20px rgba(15,6,37,.22), inset 0 1px 0 rgba(255,255,255,.16);
 }
 .arch-day-num{font-family:var(--fc);font-size:18px;font-weight:700;line-height:1}
-.arch-day.completed{
+.arch-day.played{
   background:linear-gradient(180deg, rgba(52,211,153,.3), rgba(22,163,74,.42));
   border-color:rgba(134,239,172,.55);
   box-shadow:0 10px 26px rgba(22,163,74,.22), inset 0 1px 0 rgba(255,255,255,.18);
@@ -779,14 +823,13 @@ body::before{
   border-color:rgba(231,211,255,.42);
   color:#f6edff;
 }
-.arch-day.missed{
-  background:linear-gradient(180deg, rgba(253,224,71,.28), rgba(234,179,8,.34));
-  border-color:rgba(253,240,138,.5);
-  color:#fff7d1;
-}
 .arch-day.today{
   border-color:rgba(255,236,188,.6);
   box-shadow:0 0 0 1px rgba(255,236,188,.24), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.arch-day-star{
+  position:absolute;top:-4px;right:-4px;width:16px;height:16px;object-fit:contain;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.24));
 }
 .arch-day.no-puzzle{
   background:rgba(255,255,255,.025);
@@ -807,9 +850,9 @@ body::before{
   color:rgba(240,231,255,.88);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
 }
 .arch-legend-dot{width:14px;height:14px;border-radius:5px;border:1px solid rgba(255,255,255,.18);flex-shrink:0}
-.arch-legend-dot.completed{background:linear-gradient(180deg, rgba(52,211,153,.55), rgba(22,163,74,.72))}
+.arch-legend-dot.played{background:linear-gradient(180deg, rgba(52,211,153,.55), rgba(22,163,74,.72))}
 .arch-legend-dot.unplayed{background:transparent;border-color:rgba(231,211,255,.42)}
-.arch-legend-dot.missed{background:linear-gradient(180deg, rgba(253,224,71,.45), rgba(234,179,8,.58))}
+.arch-legend-star{width:14px;height:14px;object-fit:contain;flex-shrink:0}
 .arch-empty{
   min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:20px;color:var(--muted);font-size:13px;line-height:1.7;font-weight:500;font-family:var(--fc)
@@ -828,6 +871,9 @@ body::before{
   .arch-monthtitle{font-size:19px}
   .arch-weekday{font-size:10px;letter-spacing:.12em}
   .arch-day-num{font-size:15px}
+  .lobby-date{font-size:18px}
+  .lobby-author{font-size:16px}
+  .lobby-diff-label{font-size:14px}
 }
 
 /* Playing-from-archive banner */
@@ -1174,8 +1220,7 @@ function DragGhost({ ghost }) {
 //  STATS OVERLAY — shared by GameView (post-solve) and PuzzleLobby
 // ═══════════════════════════════════════════════════════════════
 
-function StatsOverlay({ lost, tries, stats, onClose, onShare, copied }) {
-  const MAX_LIVES = 3;
+function StatsOverlay({ lost, livesUsed, stats, onClose, onShare, copied, difficulty }) {
   return (
     <div className="sovr" onClick={onClose}>
       <div className="sovr-emoji">{lost ? "🌙" : "🔮"}</div>
@@ -1183,8 +1228,7 @@ function StatsOverlay({ lost, tries, stats, onClose, onShare, copied }) {
       <div className="sovr-sub">
         {lost
           ? `You used all ${MAX_LIVES} lives`
-          : tries===1 ? "First try — truly gifted!"
-          : `Revealed in ${tries} tr${tries===1?"y":"ies"}`
+          : formatLivesUsed(livesUsed)
         }
       </div>
       <div className="sovr-divider"/>
@@ -1205,10 +1249,10 @@ function StatsOverlay({ lost, tries, stats, onClose, onShare, copied }) {
         </div>
       </div>
       {(()=>{
-        const dist=stats.distribution||{'1':0,'2':0,'3':0,'0':0};
+        const dist=stats.livesUsedDist||DEFAULT_STATS.livesUsedDist;
         const maxVal=Math.max(1,...Object.values(dist).map(Number));
-        const currentKey=lost?'0':String(tries);
-        const rows=[{key:'1',label:'1'},{key:'2',label:'2'},{key:'3',label:'3'},{key:'0',label:'✕'}];
+        const currentKey=lost?'X':String(Math.min(2, Math.max(0, livesUsed ?? 0)));
+        const rows=[{key:'0',label:'0'},{key:'1',label:'1'},{key:'2',label:'2'},{key:'X',label:'X'}];
         return (
           <div className="dist" onClick={e=>e.stopPropagation()}>
             {rows.map(({key,label})=>{
@@ -1219,7 +1263,7 @@ function StatsOverlay({ lost, tries, stats, onClose, onShare, copied }) {
                 <div key={key} className="dist-row">
                   <div className="dist-key">{label}</div>
                   <div className="dist-bar-wrap">
-                    <div className={`dist-bar${isCurrent?' current':key==='0'?' loss':' win'}`}
+                    <div className={`dist-bar${isCurrent?' current':key==='X'?' loss':' win'}`}
                       style={{width:`${pct}%`}}>{count}</div>
                   </div>
                 </div>
@@ -1228,6 +1272,14 @@ function StatsOverlay({ lost, tries, stats, onClose, onShare, copied }) {
           </div>
         );
       })()}
+      {!!difficulty && !lost && (
+        <>
+          <div className="sovr-divider"/>
+          <div style={{fontSize:12,color:"rgba(240,231,255,.82)",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase"}}>
+            Solved On {DIFFICULTY_LABELS[difficulty] || difficulty}
+          </div>
+        </>
+      )}
       <div className="sovr-divider"/>
       <button className="sovr-btn" onClick={e=>{e.stopPropagation();onShare();}}>
         {copied?"✓ Copied!":"Share Results"}
@@ -1276,9 +1328,13 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
     if(!completedData) return;
     const d2 = new Date(puzzle.date+'T12:00:00');
     const label = `${d2.getMonth()+1}·${String(d2.getDate()).padStart(2,'0')}·${d2.getFullYear()}`;
+    const solvedDifficulty = completedData.difficulty || puzzle.difficulty;
     const diffIcons = {easy:'🌙',standard:'🔮',expert:'✨',hardcore:'🌑'};
-    const icon = diffIcons[puzzle.difficulty]||'🔮';
-    const text = `Crystal Clues ${label} ${icon}\n(Revealed in ${completedData.tries} tr${completedData.tries===1?"y":"ies"})`;
+    const icon = diffIcons[solvedDifficulty]||'🔮';
+    const resultLine = completedData.livesUsed == null
+      ? `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty}`
+      : `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty} · ${formatLivesUsedCompact(completedData.livesUsed)}`;
+    const text = `Crystal Clues ${label} ${icon}\n(${resultLine})`;
     const doCopy = () => {
       try {
         const ta=document.createElement('textarea');
@@ -1301,12 +1357,12 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
           <div className="lobby-title">{puzzle.title || "Today's Puzzle"}</div>
           <div className="lobby-date">{dateStr}</div>
           {puzzle.author && (
-            <div style={{fontSize:12,color:"var(--muted)",fontWeight:500,marginBottom:4,marginTop:-8}}>
+            <div className="lobby-author">
               by {puzzle.author}
             </div>
           )}
           <div style={{fontSize:13,color:"var(--correct)",fontWeight:700,marginBottom:20}}>
-            ✓ Completed in {completedData.tries} tr{completedData.tries===1?"y":"ies"}
+            ✓ Solved{completedData.difficulty ? ` on ${DIFFICULTY_LABELS[completedData.difficulty]}` : ""}{completedData.livesUsed == null ? "" : ` · ${formatLivesUsedCompact(completedData.livesUsed)}`}
           </div>
 
           <div style={{display:"flex",flexDirection:"column",gap:10,width:"100%",maxWidth:280}}>
@@ -1330,8 +1386,9 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
         {showStats && (
           <StatsOverlay
             lost={false}
-            tries={completedData.tries}
+            livesUsed={completedData.livesUsed ?? 0}
             stats={loadStats()}
+            difficulty={completedData.difficulty || puzzle.difficulty}
             onClose={()=>setShowStats(false)}
             onShare={handleShare}
             copied={copied}
@@ -1348,7 +1405,7 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
       <div className="lobby-title">{puzzle.title || "Today's Puzzle"}</div>
       <div className="lobby-date">{dateStr}</div>
       {puzzle.author && (
-        <div style={{fontSize:12,color:"var(--muted)",fontWeight:500,marginBottom:4,marginTop:-8}}>
+        <div className="lobby-author">
           by {puzzle.author}
         </div>
       )}
@@ -1417,7 +1474,6 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     return biasedShuffle(chosen, puzzle.solution);
   },[puzzle.id, numExtra, admireMode]);
 
-  const MAX_LIVES = 3;
   const alreadySolved = admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
   const progressKey = `clover_progress_${puzzle.id}`;
   const savedProgress = (!admireMode && !alreadySolved && !forceFresh)
@@ -1457,7 +1513,6 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const [revealPhase,setRevealPhase] = useState(null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   const [showParticles,setShowParticles] = useState(false);
-  const [tries,setTries]     = useState(()=> savedProgress?.tries ?? completions[puzzle.id]?.tries ?? 0);
   const swapPopTimer = useRef(null);
   const rotateTimer = useRef(null);
   const playFitOuterRef = useRef(null);
@@ -1667,14 +1722,13 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       knownBad: [...knownBad.entries()].map(([k,v])=>[k, [...v]]),
       lives,
       guessHistory,
-      tries,
       lost,
       solved,
     });
   },[
     admireMode, alreadySolved, solved, isDragging, revealPhase, rotateAnimating,
     progressKey, puzzle.id, totalSlots, slots, clues, locked, wrong, knownBad,
-    lives, guessHistory, tries, lost
+    lives, guessHistory, lost
   ]);
 
   // Fade the warning out when all red cards are moved
@@ -1829,7 +1883,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     setRevealPhase(null); setRevealColors({}); setShowParticles(false); setFlipReveal({});
     setFeedback(""); setSolved(false); setLost(false);
     setLives(MAX_LIVES); setGuessHistory([]);
-    setShowOvr(false); setTries(0); setCopied(false);
+    setShowOvr(false); setCopied(false);
     onReset?.();
   },[initSlots,puzzle,onReset]);
 
@@ -1863,13 +1917,13 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
             setTimeout(()=>{
               setRevealPhase('done');
               if(isWin){
-                const newTries = tries+1;
                 const livesLeft = lives; // lives haven't been decremented on a win
+                const livesUsed = MAX_LIVES - livesLeft;
                 const finalHistory = [...guessHistory, guessRow];
                 setGuessHistory(finalHistory);
                 setLocked(new Set([0,1,2,3])); setWrong(new Set());
-                setSolved(true); setTries(newTries);
-                setStats(updateStats(true, newTries));
+                setSolved(true);
+                setStats(updateStats(true, livesUsed, difficulty));
                 // Set an encouraging message based on lives remaining
                 if(livesLeft === MAX_LIVES)      setFeedback("Perfect solve — not a life lost! ✨");
                 else if(livesLeft === MAX_LIVES-1) setFeedback(`Solved with ${livesLeft} ${livesLeft===1?"life":"lives"} to spare! 🔮`);
@@ -1879,7 +1933,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
                 setShowParticles(true);
                 setTimeout(()=>setShowOvr(true), 900);
                 setTimeout(()=>setShowParticles(false), 5000);
-                onSolved?.(puzzle.id, newTries);
+                onSolved?.(puzzle.id, { livesUsed, difficulty });
               } else {
                 // record bad placements
                 setKnownBad(prev=>{
@@ -1897,7 +1951,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
                 setGuessHistory(newHistory);
                 setShakeKey(k=>k+1);
                 const nl=new Set([...locked,...res.correct]);
-                setLocked(nl); setWrong(res.wrong); setTries(c=>c+1);
+                setLocked(nl); setWrong(res.wrong);
                 setLives(newLives);
                 playWrongSound();
 
@@ -1972,7 +2026,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
                       // 5. After last card, show overlay
                       if(idx===unlockedSlots.length-1){
                         setTimeout(()=>{
-                          setStats(updateStats(false,MAX_LIVES));
+                          setStats(updateStats(false, MAX_LIVES, difficulty));
                           setLost(true);
                           setFeedback("");
                           setTimeout(()=>setShowOvr(true),700);
@@ -1981,7 +2035,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
                     });
 
                     if(unlockedSlots.length===0){
-                      setStats(updateStats(false,MAX_LIVES));
+                      setStats(updateStats(false, MAX_LIVES, difficulty));
                       setLost(true);
                       setTimeout(()=>setShowOvr(true),500);
                     }
@@ -2004,7 +2058,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         }, idx * 160);
       });
     }, 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,tries,lives,guessHistory,playVictorySound,playWrongSound]);
+  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,playVictorySound,playWrongSound,difficulty,onSolved]);
 
   const renderSlot = useCallback(si=>{
     const s=slots[si];
@@ -2169,7 +2223,8 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     <DragGhost ghost={ghost}/>
     {showOvr&&(
       <StatsOverlay
-        lost={lost} tries={tries} stats={stats}
+        lost={lost} livesUsed={lost ? MAX_LIVES : (MAX_LIVES - lives)} stats={stats}
+        difficulty={difficulty}
         onClose={()=>setShowOvr(false)}
         onShare={handleShare}
         copied={copied}
@@ -2994,7 +3049,7 @@ const DEMO_ARCHIVE = [
   },
 ];
 
-// Completion state: { [puzzleId]: { solved: bool, tries: number, solvedAt: string } }
+// Completion state: { [puzzleId]: { solved: bool, livesUsed?: number, difficulty?: string, solvedAt: string } }
 const loadCompletions = () => loadLS("clover_completions", {});
 const saveCompletion  = (id, data) => {
   const all = loadCompletions();
@@ -3005,30 +3060,32 @@ const loadUnused  = ()        => loadLS("clover_unused", []);
 const saveUnused  = (list)    => saveLS("clover_unused", list);
 const addToUnused = (puzzle)  => saveUnused([...loadUnused().filter(p=>p.id!==puzzle.id), {...puzzle, status:"unused"}]);
 
-// Stats: { currentStreak, maxStreak, lastSolvedDate, totalPlayed, totalWon, distribution:{1,2,3,0} }
-const loadStats = () => loadLS("clover_stats", {
-  currentStreak:0, maxStreak:0, lastSolvedDate:null,
-  totalPlayed:0, totalWon:0,
-  distribution:{'1':0,'2':0,'3':0,'0':0},
-});
+const loadStats = () => normalizeStats(loadLS("clover_stats", DEFAULT_STATS));
 
-const updateStats = (won, triesUsed) => {
+const updateStats = (won, livesUsed, difficulty) => {
   const s = loadStats();
   const today = new Date().toISOString().split('T')[0];
   const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
   const newStreak = won
     ? (s.lastSolvedDate===yesterday || s.lastSolvedDate===today ? s.currentStreak+1 : 1)
     : 0;
-  const dist = {...(s.distribution||{'1':0,'2':0,'3':0,'0':0})};
-  const key = won ? String(triesUsed) : '0';
-  dist[key] = (dist[key]||0)+1;
+  const dist = { ...(s.livesUsedDist || DEFAULT_STATS.livesUsedDist) };
+  const key = won ? String(Math.min(2, Math.max(0, livesUsed))) : 'X';
+  dist[key] = (dist[key] || 0) + 1;
+  const difficultyWins = {
+    ...(s.difficultyWins || DEFAULT_STATS.difficultyWins),
+  };
+  if(won && difficultyWins[difficulty] !== undefined){
+    difficultyWins[difficulty] += 1;
+  }
   const updated = {
     currentStreak: newStreak,
     maxStreak: Math.max(s.maxStreak||0, newStreak),
     lastSolvedDate: won ? today : s.lastSolvedDate,
     totalPlayed: (s.totalPlayed||0)+1,
     totalWon: (s.totalWon||0)+(won?1:0),
-    distribution: dist,
+    livesUsedDist: dist,
+    difficultyWins,
   };
   saveLS("clover_stats", updated);
   return updated;
@@ -3105,13 +3162,12 @@ function ArchiveView({ onPlay }) {
     const isFuture = dateStr > today;
     let status = "none";
     if(puzzle){
-      if(comp?.solved) status = "completed";
-      else if(dateStr < today) status = "missed";
+      if(comp?.solved || dateStr < today) status = "played";
       else status = "unplayed";
     } else if(isFuture){
       status = "future";
     }
-    gridCells.push({ kind:"day", key:dateStr, dateStr, day, puzzle, status, isToday });
+    gridCells.push({ kind:"day", key:dateStr, dateStr, day, puzzle, status, isToday, isSolved: !!comp?.solved });
   }
   for(let i=0;i<trailingEmpty;i++) gridCells.push({ kind:"empty", key:`trail-${i}` });
 
@@ -3168,17 +3224,25 @@ function ArchiveView({ onPlay }) {
                 if(cell.kind === "empty"){
                   return <div key={cell.key} className="arch-cell empty" />;
                 }
-                const { puzzle, status, isToday, day, dateStr } = cell;
+                const { puzzle, status, isToday, day, dateStr, isSolved } = cell;
                 const clickable = !!puzzle;
                 return (
                   <button
                     key={cell.key}
                     type="button"
-                    className={`arch-day${clickable?" clickable":""}${status==="completed"?" completed":""}${status==="missed"?" missed":""}${status==="unplayed"?" unplayed":""}${status==="none"?" no-puzzle":""}${status==="future"?" future":""}${isToday?" today":""}`}
+                    className={`arch-day${clickable?" clickable":""}${status==="played"?" played":""}${status==="unplayed"?" unplayed":""}${status==="none"?" no-puzzle":""}${status==="future"?" future":""}${isToday?" today":""}`}
                     onClick={()=>{ if(puzzle) onPlay(puzzle); }}
                     disabled={!clickable}
                     title={puzzle ? `${puzzle.title} • ${dateStr}` : dateStr}
                   >
+                    {isSolved && (
+                      <img
+                        className="arch-day-star"
+                        src={STAR_LIFE_ASSET}
+                        alt=""
+                        aria-hidden="true"
+                      />
+                    )}
                     <div className="arch-day-num">{day}</div>
                   </button>
                 );
@@ -3186,9 +3250,9 @@ function ArchiveView({ onPlay }) {
             </div>
 
             <div className="arch-legend">
-              <div className="arch-legend-item"><span className="arch-legend-dot completed"/>Completed</div>
+              <div className="arch-legend-item"><span className="arch-legend-dot played"/>Played</div>
               <div className="arch-legend-item"><span className="arch-legend-dot unplayed"/>Unplayed</div>
-              <div className="arch-legend-item"><span className="arch-legend-dot missed"/>Missed</div>
+              <div className="arch-legend-item"><img className="arch-legend-star" src={STAR_LIFE_ASSET} alt="" aria-hidden="true"/>Beaten</div>
             </div>
           </div>
         )}
@@ -3315,11 +3379,16 @@ export default function App() {
     setView("game");
   };
 
-  const handleSolved = useCallback((puzzleId, tries) => {
-    const data = { solved:true, tries, solvedAt:new Date().toISOString() };
+  const handleSolved = useCallback((puzzleId, result) => {
+    const data = {
+      solved:true,
+      livesUsed: result?.livesUsed ?? 0,
+      difficulty: result?.difficulty || difficulty,
+      solvedAt:new Date().toISOString(),
+    };
     saveCompletion(puzzleId, data);
     setComps(loadCompletions());
-  },[]);
+  },[difficulty]);
 
   return (
     <div style={{height:"100vh",display:"flex",flexDirection:"column",maxWidth:500,margin:"0 auto"}}>
