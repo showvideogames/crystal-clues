@@ -677,42 +677,158 @@ body::before{
   stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* Archive */
-.arch{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.arch-hdr{padding:16px 16px 10px;flex-shrink:0;border-bottom:1px solid rgba(100,55,200,.22)}
-.arch-title{font-family:var(--fc);font-size:18px;font-weight:700;color:var(--gold);
-  margin-bottom:2px;letter-spacing:.06em;text-shadow:0 0 20px rgba(255,215,0,.3)}
-.arch-sub{font-size:12px;color:var(--muted);font-weight:500}
-.arch-list{flex:1;overflow-y:auto;padding:10px 14px 20px;touch-action:pan-y;
-  display:flex;flex-direction:column;gap:8px}
-.arch-month{display:flex;flex-direction:column;gap:6px}
-.arch-month-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted);padding:8px 0 2px;font-family:var(--fc)}
-.apc{display:flex;align-items:center;gap:12px;background:rgba(18,10,45,.9);
-  border:1px solid rgba(100,55,200,.28);border-radius:14px;padding:14px 16px;
-  cursor:pointer;transition:all .15s;position:relative}
-.apc:hover{box-shadow:0 4px 20px rgba(0,0,0,.5);border-color:rgba(139,92,246,.45)}
-.apc.solved-card{border-color:rgba(124,77,255,.5);background:rgba(28,16,65,.9)}
-.apc.today-card{border-color:rgba(255,215,0,.4);background:rgba(30,20,55,.9)}
-.apc-date{display:flex;flex-direction:column;align-items:center;justify-content:center;
-  width:40px;flex-shrink:0}
-.apc-day{font-family:var(--fc);font-size:24px;font-weight:700;color:var(--text);
-  line-height:1;letter-spacing:-.02em}
-.apc-dow{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.apc-info{flex:1;min-width:0}
-.apc-name{font-family:var(--fc);font-size:13px;font-weight:600;color:var(--text);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px;letter-spacing:.03em}
-.apc-meta{display:flex;gap:6px;align-items:center;font-size:11px;color:var(--muted);font-weight:500}
-.apc-badge{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px}
-.badge-solved{width:30px;height:30px;background:var(--purple);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;font-size:13px;color:#FFF;font-weight:700;
-  box-shadow:0 0 12px rgba(124,77,255,.5)}
-.badge-today{width:30px;height:30px;background:rgba(255,215,0,.2);border:1.5px solid rgba(255,215,0,.5);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px}
-.badge-open{width:30px;height:30px;border:1px solid rgba(100,55,200,.3);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)}
-.arch-empty{text-align:center;padding:56px 20px;color:var(--muted);font-size:13px;
-  line-height:1.7;font-weight:500;font-family:var(--fc)}
+.arch{flex:1;display:flex;flex-direction:column;overflow:hidden;padding:14px 14px 18px}
+.arch-shell{
+  flex:1;overflow-y:auto;touch-action:pan-y;position:relative;
+  background:
+    radial-gradient(circle at top, rgba(214,168,255,.2), transparent 32%),
+    linear-gradient(180deg, rgba(45,16,92,.78), rgba(22,10,55,.88));
+  border:1px solid rgba(207,166,255,.22);
+  border-radius:26px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 14px 44px rgba(10,4,26,.38);
+  padding:16px 12px 18px;
+}
+.arch-shell::before{
+  content:"";position:absolute;inset:10px;border-radius:22px;
+  border:1px solid rgba(235,214,255,.16);pointer-events:none;
+}
+.arch-head{
+  position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:4px;
+  margin-bottom:16px;
+}
+.arch-kicker{
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(228,211,255,.78);
+}
+.arch-title{
+  font-family:var(--fc);font-size:34px;font-weight:700;letter-spacing:.02em;
+  color:#f5e9ff;text-shadow:0 0 24px rgba(223,177,255,.28);
+}
+.arch-sub{font-size:13px;color:rgba(227,213,255,.74);font-weight:500;text-align:center}
+.arch-panel{
+  position:relative;z-index:1;
+  background:linear-gradient(180deg, rgba(144,86,255,.12), rgba(69,33,128,.12));
+  border:1px solid rgba(214,171,255,.24);
+  border-radius:24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 40px rgba(207,148,255,.08);
+  padding:14px 10px 12px;
+}
+.arch-toolbar{
+  display:grid;grid-template-columns:40px 1fr 40px;align-items:center;gap:6px;
+  margin-bottom:12px;
+}
+.arch-navbtn{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(218,183,255,.3);
+  background:linear-gradient(180deg, rgba(109,57,197,.56), rgba(67,30,122,.66));
+  color:#f5e9ff;font-size:24px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 20px rgba(19,8,43,.28), inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .15s, border-color .15s, box-shadow .15s;
+}
+.arch-navbtn:hover:not(:disabled){
+  transform:translateY(-1px);
+  border-color:rgba(236,215,255,.45);
+  box-shadow:0 10px 24px rgba(19,8,43,.34), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.arch-navbtn:disabled{opacity:.34;cursor:default;box-shadow:none}
+.arch-monthhead{text-align:center}
+.arch-monthtitle{
+  font-family:var(--fc);font-size:24px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:#fff0ff;
+}
+.arch-monthmeta{
+  margin-top:3px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(225,211,255,.62);
+}
+.arch-weekdays{
+  display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;
+  margin-bottom:8px;padding:0 1px;
+}
+.arch-weekday{
+  text-align:center;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(231,217,255,.74);
+}
+.arch-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.arch-cell{min-height:0;border-radius:14px;border:1px solid rgba(219,192,255,.12);background:rgba(255,255,255,.03)}
+.arch-cell.empty{background:transparent;border-color:transparent}
+.arch-day{
+  appearance:none;-webkit-appearance:none;
+  padding:0;margin:0;width:100%;aspect-ratio:1/1;min-height:0;border-radius:14px;
+  border:1px solid rgba(223,200,255,.2);
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+  color:#f5ebff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;position:relative;
+  transition:transform .14s, border-color .14s, background .14s, box-shadow .14s;
+}
+.arch-day.clickable{cursor:pointer}
+.arch-day.clickable:hover{
+  transform:translateY(-1px);
+  border-color:rgba(237,220,255,.42);
+  box-shadow:0 10px 20px rgba(15,6,37,.22), inset 0 1px 0 rgba(255,255,255,.16);
+}
+.arch-day-num{font-family:var(--fc);font-size:18px;font-weight:700;line-height:1}
+.arch-day.completed{
+  background:linear-gradient(180deg, rgba(52,211,153,.3), rgba(22,163,74,.42));
+  border-color:rgba(134,239,172,.55);
+  box-shadow:0 10px 26px rgba(22,163,74,.22), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.arch-day.unplayed{
+  background:linear-gradient(180deg, rgba(255,255,255,.18), rgba(244,234,255,.14));
+  border-color:rgba(231,211,255,.42);
+  color:#f6edff;
+}
+.arch-day.missed{
+  background:linear-gradient(180deg, rgba(253,224,71,.28), rgba(234,179,8,.34));
+  border-color:rgba(253,240,138,.5);
+  color:#fff7d1;
+}
+.arch-day.today{
+  border-color:rgba(255,236,188,.6);
+  box-shadow:0 0 0 1px rgba(255,236,188,.24), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.arch-day.no-puzzle{
+  background:rgba(255,255,255,.025);
+  color:rgba(217,198,245,.26);
+  border-color:rgba(208,185,240,.08);
+}
+.arch-day.future{
+  background:rgba(255,255,255,.015);
+  color:rgba(214,197,241,.16);
+  border-color:rgba(208,185,240,.05);
+}
+.arch-legend{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px;
+}
+.arch-legend-item{
+  display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+  background:rgba(27,11,62,.48);border:1px solid rgba(210,185,255,.18);
+  color:rgba(240,231,255,.88);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+}
+.arch-legend-dot{width:14px;height:14px;border-radius:5px;border:1px solid rgba(255,255,255,.18);flex-shrink:0}
+.arch-legend-dot.completed{background:linear-gradient(180deg, rgba(52,211,153,.55), rgba(22,163,74,.72))}
+.arch-legend-dot.unplayed{background:transparent;border-color:rgba(231,211,255,.42)}
+.arch-legend-dot.missed{background:linear-gradient(180deg, rgba(253,224,71,.45), rgba(234,179,8,.58))}
+.arch-empty{
+  min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;color:var(--muted);font-size:13px;line-height:1.7;font-weight:500;font-family:var(--fc)
+}
 .arch-empty-icon{font-size:40px;margin-bottom:14px}
+@media (max-width:390px){
+  .arch{padding:10px 10px 14px}
+  .arch-title{font-size:30px}
+  .arch-panel{padding:12px 8px 10px}
+  .arch-monthtitle{font-size:21px}
+  .arch-grid,.arch-weekdays{gap:5px}
+  .arch-day-num{font-size:16px}
+}
+@media (max-width:360px){
+  .arch-title{font-size:27px}
+  .arch-monthtitle{font-size:19px}
+  .arch-weekday{font-size:10px;letter-spacing:.12em}
+  .arch-day-num{font-size:15px}
+}
 
 /* Playing-from-archive banner */
 .playing-banner{background:rgba(88,28,135,.85);color:var(--purple-bright);padding:8px 16px;
@@ -1005,7 +1121,6 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0 }) {
                 backgroundPosition:"center",
                 backgroundRepeat:"no-repeat",
                 backgroundSize:"contain",
-                filter:"drop-shadow(0 14px 24px rgba(0, 0, 0, 0.28))",
               }}
             />
           </div>
@@ -2924,100 +3039,160 @@ const updateStats = (won, triesUsed) => {
 // ═══════════════════════════════════════════════════════════════
 
 const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const DOW_MIN = ["S","M","T","W","T","F","S"];
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONTHS_FULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 function ArchiveView({ onPlay }) {
   const completions = loadCompletions();
   const today = new Date().toISOString().split("T")[0];
   const [allPuzzles, setAllPuzzles] = useState([]);
+  const [activeMonthKey, setActiveMonthKey] = useState("");
 
   useEffect(()=>{
     dbLoadAllPuzzles().then(rows=>{
       const published = rows.filter(p=>p.status==="published" && p.date<=today);
-      // Merge with DEMO_ARCHIVE, admin puzzles take priority
-      const merged = [...published];
-      DEMO_ARCHIVE.forEach(p=>{ if(!merged.find(x=>x.id===p.id)) merged.push(p); });
-      setAllPuzzles(merged.sort((a,b)=>b.date.localeCompare(a.date)));
+      setAllPuzzles(published.sort((a,b)=>b.date.localeCompare(a.date)));
     }).catch(()=>{
-      setAllPuzzles(DEMO_ARCHIVE.filter(p=>p.date<=today).sort((a,b)=>b.date.localeCompare(a.date)));
+      setAllPuzzles([]);
     });
   },[]);
 
-  // Group by month
-  const groups = [];
-  allPuzzles.forEach(p => {
-    const d = new Date(p.date + "T12:00:00");
-    const key = `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
-    let g = groups.find(g => g.key === key);
-    if(!g) { g = {key, puzzles:[]}; groups.push(g); }
-    g.puzzles.push(p);
-  });
+  const monthMap = useMemo(()=>{
+    const map = new Map();
+    allPuzzles.forEach(p=>{
+      const monthKey = p.date.slice(0,7);
+      if(!map.has(monthKey)) map.set(monthKey, []);
+      map.get(monthKey).push(p);
+    });
+    return map;
+  },[allPuzzles]);
+
+  const monthKeys = useMemo(
+    ()=>Array.from(monthMap.keys()).sort((a,b)=>b.localeCompare(a)),
+    [monthMap]
+  );
+
+  useEffect(()=>{
+    if(monthKeys.length && !monthKeys.includes(activeMonthKey)){
+      setActiveMonthKey(monthKeys[0]);
+    }
+  },[monthKeys, activeMonthKey]);
+
+  const activeMonthPuzzles = monthMap.get(activeMonthKey) || [];
+  const puzzleByDate = useMemo(
+    ()=>new Map(activeMonthPuzzles.map(p=>[p.date,p])),
+    [activeMonthPuzzles]
+  );
+
+  const activeMonthParts = activeMonthKey ? activeMonthKey.split("-").map(Number) : null;
+  const activeYear = activeMonthParts?.[0] || new Date().getFullYear();
+  const activeMonthIndex = activeMonthParts ? activeMonthParts[1] - 1 : new Date().getMonth();
+  const firstOfMonth = new Date(activeYear, activeMonthIndex, 1, 12);
+  const daysInMonth = new Date(activeYear, activeMonthIndex + 1, 0).getDate();
+  const leadingEmpty = firstOfMonth.getDay();
+  const trailingEmpty = (7 - ((leadingEmpty + daysInMonth) % 7)) % 7;
+  const activeMonthLabel = `${MONTHS_FULL[activeMonthIndex]} ${activeYear}`;
+  const currentMonthIndex = monthKeys.indexOf(activeMonthKey);
+
+  const gridCells = [];
+  for(let i=0;i<leadingEmpty;i++) gridCells.push({ kind:"empty", key:`lead-${i}` });
+  for(let day=1; day<=daysInMonth; day++){
+    const dateStr = `${activeYear}-${String(activeMonthIndex+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+    const puzzle = puzzleByDate.get(dateStr);
+    const comp = puzzle ? completions[puzzle.id] : null;
+    const isToday = dateStr === today;
+    const isFuture = dateStr > today;
+    let status = "none";
+    if(puzzle){
+      if(comp?.solved) status = "completed";
+      else if(dateStr < today) status = "missed";
+      else status = "unplayed";
+    } else if(isFuture){
+      status = "future";
+    }
+    gridCells.push({ kind:"day", key:dateStr, dateStr, day, puzzle, status, isToday });
+  }
+  for(let i=0;i<trailingEmpty;i++) gridCells.push({ kind:"empty", key:`trail-${i}` });
 
   return (
     <div className="arch">
-      <div className="arch-hdr">
-        <div className="arch-title">Archive</div>
-        <div className="arch-sub">Past puzzles — tap any to play</div>
-      </div>
-
-      {allPuzzles.length === 0 ? (
-        <div className="arch-empty">
-          <div className="arch-empty-icon">📅</div>
-          No past puzzles yet.<br/>
-          Publish puzzles with past dates in Admin to see them here.
+      <div className="arch-shell">
+        <div className="arch-head">
+          <div className="arch-kicker">Archive</div>
+          <div className="arch-title">Past Puzzles</div>
+          <div className="arch-sub">Tap any published day to open that puzzle.</div>
         </div>
-      ) : (
-        <div className="arch-list">
-          {groups.map(g => (
-            <div key={g.key} className="arch-month">
-              <div className="arch-month-label">{g.key}</div>
-              {g.puzzles.map(p => {
-                const d     = new Date(p.date + "T12:00:00");
-                const day   = d.getDate();
-                const dow   = DOW[d.getDay()];
-                const comp  = completions[p.id];
-                const isTod = p.date === today;
-                const diff  = DIFFICULTY_LABELS[p.difficulty] || p.difficulty;
 
+        {allPuzzles.length === 0 ? (
+          <div className="arch-empty">
+            <div className="arch-empty-icon">??</div>
+            No past puzzles yet.<br/>
+            Publish puzzles with past dates in Admin to see them here.
+          </div>
+        ) : (
+          <div className="arch-panel">
+            <div className="arch-toolbar">
+              <button
+                type="button"
+                className="arch-navbtn"
+                onClick={()=>setActiveMonthKey(monthKeys[currentMonthIndex + 1] || activeMonthKey)}
+                disabled={currentMonthIndex === monthKeys.length - 1}
+                aria-label="Previous month"
+              >
+                ‹
+              </button>
+              <div className="arch-monthhead">
+                <div className="arch-monthtitle">{activeMonthLabel}</div>
+                <div className="arch-monthmeta">
+                  {activeMonthPuzzles.length} published puzzle{activeMonthPuzzles.length===1?"":"s"}
+                </div>
+              </div>
+              <button
+                type="button"
+                className="arch-navbtn"
+                onClick={()=>setActiveMonthKey(monthKeys[currentMonthIndex - 1] || activeMonthKey)}
+                disabled={currentMonthIndex <= 0}
+                aria-label="Next month"
+              >
+                ›
+              </button>
+            </div>
+
+            <div className="arch-weekdays">
+              {DOW_MIN.map((label, i)=><div key={`${label}-${i}`} className="arch-weekday">{label}</div>)}
+            </div>
+
+            <div className="arch-grid">
+              {gridCells.map(cell=>{
+                if(cell.kind === "empty"){
+                  return <div key={cell.key} className="arch-cell empty" />;
+                }
+                const { puzzle, status, isToday, day, dateStr } = cell;
+                const clickable = !!puzzle;
                 return (
-                  <div
-                    key={p.id}
-                    className={`apc${comp?.solved?" solved-card":""}${isTod?" today-card":""}`}
-                    onClick={() => onPlay(p)}
+                  <button
+                    key={cell.key}
+                    type="button"
+                    className={`arch-day${clickable?" clickable":""}${status==="completed"?" completed":""}${status==="missed"?" missed":""}${status==="unplayed"?" unplayed":""}${status==="none"?" no-puzzle":""}${status==="future"?" future":""}${isToday?" today":""}`}
+                    onClick={()=>{ if(puzzle) onPlay(puzzle); }}
+                    disabled={!clickable}
+                    title={puzzle ? `${puzzle.title} • ${dateStr}` : dateStr}
                   >
-                    <div className="apc-date">
-                      <div className="apc-day">{day}</div>
-                      <div className="apc-dow">{dow}</div>
-                    </div>
-                    <div className="apc-info">
-                      <div className="apc-name">{p.title}</div>
-                      <div className="apc-meta">
-                        <span>{diff}</span>
-                        {comp?.solved && (
-                          <span style={{color:"var(--correct)",fontWeight:600}}>
-                            · Solved in {comp.tries} tr{comp.tries===1?"y":"ies"}
-                          </span>
-                        )}
-                        {isTod && !comp?.solved && (
-                          <span style={{color:"var(--amber)",fontWeight:600}}>· Today</span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="apc-badge">
-                      {comp?.solved
-                        ? <div className="badge-solved">✓</div>
-                        : isTod
-                          ? <div className="badge-today">★</div>
-                          : <div className="badge-open">→</div>
-                      }
-                    </div>
-                  </div>
+                    <div className="arch-day-num">{day}</div>
+                  </button>
                 );
               })}
             </div>
-          ))}
-        </div>
-      )}
+
+            <div className="arch-legend">
+              <div className="arch-legend-item"><span className="arch-legend-dot completed"/>Completed</div>
+              <div className="arch-legend-item"><span className="arch-legend-dot unplayed"/>Unplayed</div>
+              <div className="arch-legend-item"><span className="arch-legend-dot missed"/>Missed</div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
