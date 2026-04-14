@@ -342,6 +342,10 @@ body::before{
 .ew.eb{bottom:9px;left:50%;transform:translateX(-50%);max-width:calc(var(--cs) - 24px)}
 .ew.er{right:7px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%);max-height:calc(var(--cs) - 22px)}
 .ew.el{left:7px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg);max-height:calc(var(--cs) - 22px)}
+.ctile.admin-mode .ew{
+  font-size:6px;
+  letter-spacing:0;
+}
 
 /* Diamond center mark */
 .cmark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);
@@ -541,12 +545,16 @@ body::before{
 .acnt{flex:1;overflow-y:auto;padding:14px;touch-action:pan-y}
 .acnt input,.acnt select,.acnt textarea{-webkit-user-select:text;user-select:text;touch-action:auto}
 .aboard-wrap{display:flex;flex-direction:column;align-items:center;
-  background:rgba(15,8,40,.9);border-radius:18px;padding:14px;gap:10px;
+  background:rgba(15,8,40,.9);border-radius:18px;padding:16px;gap:14px;
   border:1px solid rgba(100,55,200,.28)}
+.admin-sec{width:100%;background:rgba(21,10,48,.5);border:1px solid rgba(139,92,246,.18);
+  border-radius:14px;padding:12px}
+.admin-sec-title{font-family:var(--fc);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--purple-bright);margin-bottom:9px}
 .ameta{display:flex;gap:8px;align-items:center;width:100%;flex-wrap:wrap}
 .ameta-title{flex:1;min-width:0}
-.fi-sm{padding:8px 11px;border:1px solid rgba(100,55,200,.38);border-radius:10px;
-  background:rgba(25,14,62,.85);font-family:var(--fu);font-size:13px;font-weight:500;
+.fi-sm{padding:10px 12px;border:1px solid rgba(100,55,200,.38);border-radius:10px;
+  background:rgba(25,14,62,.85);font-family:var(--fu);font-size:15px;font-weight:600;
   color:var(--text);outline:none;width:100%;transition:border-color .15s;
   -webkit-user-select:text;user-select:text;touch-action:auto}
 .fi-sm:focus{border-color:rgba(139,92,246,.72)}
@@ -566,13 +574,13 @@ body::before{
   border:1px solid rgba(100,55,200,.3);margin-top:6px;
   box-shadow:0 4px 24px rgba(0,0,0,.45)}
 .ced-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.ced-title{font-family:var(--fc);font-size:12px;font-weight:700;color:var(--purple-bright)}
+.ced-title{font-family:var(--fc);font-size:13px;font-weight:700;color:var(--purple-bright)}
 .ced-close{background:none;border:none;color:var(--muted);cursor:pointer;
   font-size:18px;padding:2px 6px;border-radius:6px;transition:color .12s;line-height:1}
 .ced-close:hover{color:var(--text)}
 .ced-cross{display:grid;
   grid-template-areas:'. top .''left preview right''. bot .';
-  grid-template-columns:92px 82px 92px;
+  grid-template-columns:100px 92px 100px;
   grid-template-rows:auto auto auto;gap:8px;align-items:center;
   justify-items:center;margin:0 auto 14px;width:fit-content}
 .ced-cross>[data-a=top]{grid-area:top}
@@ -581,12 +589,15 @@ body::before{
 .ced-cross>[data-a=right]{grid-area:right}
 .ced-cross>[data-a=bot]{grid-area:bot}
 .ced-fi{border:1px solid rgba(100,55,200,.38);border-radius:8px;background:rgba(25,14,62,.85);
-  font-family:var(--fu);font-size:11px;font-weight:700;letter-spacing:.04em;
-  text-align:center;text-transform:uppercase;color:var(--text);padding:6px 8px;
+  font-family:var(--fu);font-size:13px;font-weight:700;letter-spacing:.02em;
+  text-align:center;text-transform:uppercase;color:var(--text);padding:9px 10px;
   width:100%;outline:none;-webkit-user-select:text;user-select:text;touch-action:auto}
 .ced-fi:focus{border-color:rgba(139,92,246,.72)}
 .ced-fi::placeholder{text-transform:none;font-weight:400;font-size:10px;color:var(--muted)}
-.ced-pv{position:relative;width:82px;height:82px;--cs:82px}
+.ced-pv{position:relative;width:92px;height:92px;--cs:92px}
+.ced-quick{display:flex;gap:8px;align-items:center;margin:-2px 0 10px}
+.ced-quick .ced-fi{flex:1}
+.ced-tip{font-size:11px;color:rgba(255,255,255,.52);line-height:1.35;margin:-2px 0 12px}
 .ced-actions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
 .abtn{padding:8px 14px;border-radius:50px;font-family:var(--fu);font-size:11px;
   font-weight:700;cursor:pointer;transition:all .12s;letter-spacing:.04em;text-transform:uppercase}
@@ -976,7 +987,7 @@ const SHOW_DRAG_GHOST = true;
 // ═══════════════════════════════════════════════════════════════
 
 function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim, spinning, spinDir=1,
-                    popping, rotateMoveClass='', rotateSpin=false, selected, noclick, onPointerDown }) {
+                    popping, rotateMoveClass='', rotateSpin=false, selected, noclick, adminMode=false, onPointerDown }) {
   const [t,r,b,l] = vw(card, orientation);
   let cls="ctile";
   if(locked)                  cls+=" locked";
@@ -988,6 +999,7 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   if(rotateMoveClass) cls+=` ${rotateMoveClass}`;
   if(selected) cls+=" selected";
   if(noclick)  cls+=" noclick";
+  if(adminMode) cls+=" admin-mode";
   if(extraCls) cls+=extraCls;
 
   return (
@@ -2265,10 +2277,71 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
   const EDGE_LABELS = ["Top","Right","Bottom","Left"];
   const [wbQuery, setWbQuery] = useState("");
   const [wbOpen, setWbOpen]   = useState(true);
+  const [quickFill, setQuickFill] = useState("");
+  const inputRefs = useRef([]);
+
+  const focusField = (wi) => {
+    const el = inputRefs.current[wi];
+    if(!el) return;
+    requestAnimationFrame(() => {
+      el.focus();
+      el.select();
+    });
+  };
+
+  useEffect(()=>{
+    const firstEmpty = words.findIndex(w=>!w?.trim());
+    focusField(firstEmpty >= 0 ? firstEmpty : 0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[card?.id]);
+
+  const parseWordTokens = (text) =>
+    (text || "")
+      .toUpperCase()
+      .split(/[\n,\t|;]+/)
+      .map(s=>s.trim())
+      .filter(Boolean);
+
+  const applyTokensFrom = (startIdx, tokens=[]) => {
+    if(!tokens.length) return;
+    for(let i=0;i<Math.min(tokens.length,4);i++){
+      onWordChange((startIdx + i) % 4, tokens[i]);
+    }
+  };
+
+  const applyQuickFill = () => {
+    const tokens = parseWordTokens(quickFill);
+    if(tokens.length < 4) return;
+    applyTokensFrom(0, tokens.slice(0,4));
+    setQuickFill("");
+    focusField(0);
+  };
 
   const fillFromBank = word => {
     const fi = words.findIndex(w=>!w.trim());
-    if(fi>=0) onWordChange(fi, word);
+    if(fi>=0){
+      onWordChange(fi, word);
+      focusField((fi+1)%4);
+      return;
+    }
+    onWordChange(0, word);
+    focusField(1);
+  };
+
+  const handleWordKeyDown = (wi, e) => {
+    if(e.key === "Enter"){
+      e.preventDefault();
+      focusField((wi + 1) % 4);
+    }
+  };
+
+  const handleWordPaste = (wi, e) => {
+    const text = e.clipboardData?.getData("text") || "";
+    const tokens = parseWordTokens(text);
+    if(tokens.length < 2) return;
+    e.preventDefault();
+    applyTokensFrom(wi, tokens);
+    focusField((wi + Math.min(tokens.length, 4)) % 4);
   };
 
   const sortedBank = [...wordBank].sort((a,b)=>a.localeCompare(b));
@@ -2291,30 +2364,59 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
         <div data-a="top" style={{width:"100%"}}>
           <input className="ced-fi" value={words[0]}
             onChange={e=>onWordChange(0,e.target.value)}
+            onKeyDown={e=>handleWordKeyDown(0,e)}
+            onPaste={e=>handleWordPaste(0,e)}
+            ref={el=>{inputRefs.current[0]=el;}}
             placeholder={EDGE_LABELS[0]}/>
         </div>
         {/* Left input */}
         <div data-a="left" style={{width:"100%"}}>
           <input className="ced-fi" value={words[3]}
             onChange={e=>onWordChange(3,e.target.value)}
+            onKeyDown={e=>handleWordKeyDown(3,e)}
+            onPaste={e=>handleWordPaste(3,e)}
+            ref={el=>{inputRefs.current[3]=el;}}
             placeholder={EDGE_LABELS[3]}/>
         </div>
         {/* Mini card preview */}
         <div data-a="preview" className="ced-pv">
-          <CardTile card={card} orientation={orientation} noclick/>
+          <CardTile card={card} orientation={orientation} adminMode noclick/>
         </div>
         {/* Right input */}
         <div data-a="right" style={{width:"100%"}}>
           <input className="ced-fi" value={words[1]}
             onChange={e=>onWordChange(1,e.target.value)}
+            onKeyDown={e=>handleWordKeyDown(1,e)}
+            onPaste={e=>handleWordPaste(1,e)}
+            ref={el=>{inputRefs.current[1]=el;}}
             placeholder={EDGE_LABELS[1]}/>
         </div>
         {/* Bottom input */}
         <div data-a="bot" style={{width:"100%"}}>
           <input className="ced-fi" value={words[2]}
             onChange={e=>onWordChange(2,e.target.value)}
+            onKeyDown={e=>handleWordKeyDown(2,e)}
+            onPaste={e=>handleWordPaste(2,e)}
+            ref={el=>{inputRefs.current[2]=el;}}
             placeholder={EDGE_LABELS[2]}/>
         </div>
+      </div>
+
+      <div className="ced-quick">
+        <input
+          className="ced-fi"
+          value={quickFill}
+          onChange={e=>setQuickFill(e.target.value)}
+          onKeyDown={e=>{ if(e.key==="Enter"){ e.preventDefault(); applyQuickFill(); } }}
+          placeholder="Quick paste: TOP, RIGHT, BOTTOM, LEFT"
+          style={{textTransform:"none",fontWeight:600}}
+        />
+        <button className="abtn s sm" onClick={applyQuickFill} disabled={parseWordTokens(quickFill).length < 4}>
+          Apply 4
+        </button>
+      </div>
+      <div className="ced-tip">
+        Tip: paste 4 words separated by commas/new lines, or press Enter to jump to the next side.
       </div>
 
       {/* Rotate + actions */}
@@ -2569,7 +2671,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
       // Clear clues so creator fills them in fresh
       clues: ['','','',''],
     }));
-    setSelId(null);
+    setSelId(newSlots[0]?.cardId || null);
   };
 
   const handleSave = (status) => {
@@ -2612,7 +2714,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     return (
       <div key={si} ref={el=>slotRefs.current[si]=el}
         className={`cslot${dragOver===si?" over":""}${!card?" empty":""}`}>
-        {card&&<CardTile card={card} orientation={s.orientation}
+        {card&&<CardTile card={card} orientation={s.orientation} adminMode
           dim={dragSrc===si} selected={isSel}
           onPointerDown={e=>handlePD(e,si)}/>}
       </div>
@@ -2635,71 +2737,73 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
       <div className="acnt" style={{touchAction:"pan-y"}}>
         {/* Meta row inside the board-coloured wrapper */}
         <div className="aboard-wrap">
-          <div className="ameta">
-            <div className="ameta-title">
-              <input className="fi-sm" value={admin.title}
-                onChange={e=>setAdmin(p=>({...p,title:e.target.value}))}
-                placeholder="Puzzle title"/>
-            </div>
-            <input className={`fi-sm${dateConflict?" date-used":""}`} type="date" value={admin.date}
-              onChange={e=>{setAdmin(p=>({...p,date:e.target.value}));setConfirmReplace(false);}}
-              style={{width:130}}/>
-          </div>
-          <div style={{width:"100%"}}>
-            <input className="fi-sm" value={admin.author||""}
-              onChange={e=>setAdmin(p=>({...p,author:e.target.value}))}
-              placeholder="Author name (optional)"/>
-          </div>
-
-          {/* Date conflict warning */}
-          {dateConflict && (
-            <div className="date-conflict" onClick={e=>e.stopPropagation()}>
-              <strong>⚠️ {admin.date} already has a puzzle</strong>
-              "{dateConflict.title}" is scheduled for this date. Publishing will move it to Unused Puzzles.
-              {confirmReplace && (
-                <div className="date-conflict-btns">
-                  <button className="abtn d sm" onClick={()=>{
-                    const { id,title,date,author,clues,cards,slots } = admin;
-                    const puzzle = {
-                      id, title:title||"Untitled", date,
-                      author:author?.trim()||"",
-                      clues:clues.map(c=>c||"?"), cards,
-                      solution:{
-                        slotCards:slots.slice(0,4).map(s=>s.cardId),
-                        orientations:slots.slice(0,4).map(s=>s.orientation),
-                        extraCards:slots.slice(4,7).map(s=>s.cardId),
-                      },
-                      status:"published",
-                    };
-                    onSave(puzzle, dateConflict);
-                    setConfirmReplace(false);
-                  }}>Replace & move old to Unused</button>
-                  <button className="abtn s sm" onClick={()=>setConfirmReplace(false)}>Cancel</button>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Admin board — simple layout, no crystal ball */}
-          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0}}>
-            <EditableClueTab text={admin.clues[0]} pos="top" onChange={val=>updateClue(0,val)}/>
-            <div style={{display:"flex",alignItems:"center",gap:0}}>
-              <EditableClueTab text={admin.clues[3]} pos="lft" onChange={val=>updateClue(3,val)}/>
-              <div className="csurface" style={{background:"rgba(20,10,50,0.8)"}}>
-                {renderSlot(0)}{renderSlot(1)}
-                {renderSlot(3)}{renderSlot(2)}
+          <div className="admin-sec">
+            <div className="admin-sec-title">Puzzle Info</div>
+            <div className="ameta">
+              <div className="ameta-title">
+                <input className="fi-sm" value={admin.title}
+                  onChange={e=>setAdmin(p=>({...p,title:e.target.value}))}
+                  placeholder="Puzzle title"/>
               </div>
-              <EditableClueTab text={admin.clues[1]} pos="rgt" onChange={val=>updateClue(1,val)}/>
+              <input className={`fi-sm${dateConflict?" date-used":""}`} type="date" value={admin.date}
+                onChange={e=>{setAdmin(p=>({...p,date:e.target.value}));setConfirmReplace(false);}}
+                style={{width:160}}/>
             </div>
-            <EditableClueTab text={admin.clues[2]} pos="bot" onChange={val=>updateClue(2,val)}/>
+            <div style={{width:"100%",marginTop:8}}>
+              <input className="fi-sm" value={admin.author||""}
+                onChange={e=>setAdmin(p=>({...p,author:e.target.value}))}
+                placeholder="Author name (optional)"/>
+            </div>
+            {dateConflict && (
+              <div className="date-conflict" onClick={e=>e.stopPropagation()}>
+                <strong>⚠️ {admin.date} already has a puzzle</strong>
+                "{dateConflict.title}" is scheduled for this date. Publishing will move it to Unused Puzzles.
+                {confirmReplace && (
+                  <div className="date-conflict-btns">
+                    <button className="abtn d sm" onClick={()=>{
+                      const { id,title,date,author,clues,cards,slots } = admin;
+                      const puzzle = {
+                        id, title:title||"Untitled", date,
+                        author:author?.trim()||"",
+                        clues:clues.map(c=>c||"?"), cards,
+                        solution:{
+                          slotCards:slots.slice(0,4).map(s=>s.cardId),
+                          orientations:slots.slice(0,4).map(s=>s.orientation),
+                          extraCards:slots.slice(4,7).map(s=>s.cardId),
+                        },
+                        status:"published",
+                      };
+                      onSave(puzzle, dateConflict);
+                      setConfirmReplace(false);
+                    }}>Replace & move old to Unused</button>
+                    <button className="abtn s sm" onClick={()=>setConfirmReplace(false)}>Cancel</button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
-          {/* Extra cards area — always exactly 3 */}
-          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,width:"100%"}}>
-            <span style={{color:"rgba(255,255,255,.55)",fontSize:10,fontWeight:600,
-              letterSpacing:".09em",textTransform:"uppercase"}}>
-              Extra cards (3)
-            </span>
+          <div className="admin-sec">
+            <div className="admin-sec-title">Board & Clues</div>
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0}}>
+              <EditableClueTab text={admin.clues[0]} pos="top" onChange={val=>updateClue(0,val)}/>
+              <div style={{display:"flex",alignItems:"center",gap:0}}>
+                <EditableClueTab text={admin.clues[3]} pos="lft" onChange={val=>updateClue(3,val)}/>
+                <div className="csurface" style={{background:"rgba(20,10,50,0.8)"}}>
+                  {renderSlot(0)}{renderSlot(1)}
+                  {renderSlot(3)}{renderSlot(2)}
+                </div>
+                <EditableClueTab text={admin.clues[1]} pos="rgt" onChange={val=>updateClue(1,val)}/>
+              </div>
+              <EditableClueTab text={admin.clues[2]} pos="bot" onChange={val=>updateClue(2,val)}/>
+            </div>
+            <div style={{color:"rgba(255,255,255,.56)",fontSize:11,marginTop:8,textAlign:"center"}}>
+              Long words save fully. Card preview may scale smaller for readability.
+            </div>
+          </div>
+
+          <div className="admin-sec">
+            <div className="admin-sec-title">Extra Cards (3)</div>
             <div style={{display:"flex",gap:10,flexWrap:"wrap",justifyContent:"center"}}>
               {extraSlots.slice(0,3).map((s,i)=>{
                 const si=4+i,card=admin.cards[s.cardId];
@@ -2707,7 +2811,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
                 return (
                   <div key={si} ref={el=>slotRefs.current[si]=el}
                     className={`eslot${dragOver===si?" over":""}`}>
-                    {card&&<CardTile card={card} orientation={s.orientation}
+                    {card&&<CardTile card={card} orientation={s.orientation} adminMode
                       dim={dragSrc===si} selected={isSel}
                       onPointerDown={e=>handlePD(e,si)}/>}
                   </div>
@@ -2716,26 +2820,28 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
             </div>
           </div>
 
-          {/* Hint text + deal button */}
-          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,width:"100%"}}>
-            <button
-              onClick={dealRandomCards}
-              disabled={wordBank.length<4}
-              style={{
-                padding:"9px 20px",background:"rgba(255,255,255,.15)",
-                border:"1.5px solid rgba(255,255,255,.4)",borderRadius:"50px",
-                color:"#FFF",fontFamily:"var(--fu)",fontSize:12,fontWeight:700,
-                cursor:wordBank.length<4?"not-allowed":"pointer",
-                opacity:wordBank.length<4?.45:1,
-                letterSpacing:".04em",transition:"background .15s",
-              }}
-              onMouseOver={e=>e.currentTarget.style.background="rgba(255,255,255,.25)"}
-              onMouseOut={e=>e.currentTarget.style.background="rgba(255,255,255,.15)"}
-            >
-              🎲 Deal Random Cards
-            </button>
-            <div style={{color:"rgba(255,255,255,.4)",fontSize:10,textAlign:"center",lineHeight:1.5}}>
-              Tap a card to edit · Tap a clue tab to edit · Drag to reposition
+          <div className="admin-sec">
+            <div className="admin-sec-title">Quick Fill</div>
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,width:"100%"}}>
+              <button
+                onClick={dealRandomCards}
+                disabled={wordBank.length<4}
+                style={{
+                  padding:"9px 20px",background:"rgba(255,255,255,.15)",
+                  border:"1.5px solid rgba(255,255,255,.4)",borderRadius:"50px",
+                  color:"#FFF",fontFamily:"var(--fu)",fontSize:12,fontWeight:700,
+                  cursor:wordBank.length<4?"not-allowed":"pointer",
+                  opacity:wordBank.length<4?.45:1,
+                  letterSpacing:".04em",transition:"background .15s",
+                }}
+                onMouseOver={e=>e.currentTarget.style.background="rgba(255,255,255,.25)"}
+                onMouseOut={e=>e.currentTarget.style.background="rgba(255,255,255,.15)"}
+              >
+                🎲 Deal Random Cards
+              </button>
+              <div style={{color:"rgba(255,255,255,.4)",fontSize:10,textAlign:"center",lineHeight:1.5}}>
+                Tap a card to edit · Tap a clue tab to edit · Drag to reposition
+              </div>
             </div>
           </div>
         </div>
