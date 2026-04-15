@@ -204,7 +204,7 @@ const CSS = `
   --fc:'Cinzel',serif;--fu:'Raleway',sans-serif;
   --cs:110px;--cg:8px;--step:calc(var(--cs) + var(--cg));
 }
-html,body{height:100%;width:100%;overflow:hidden}
+html,body{height:100%;width:100%;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:var(--fu);background:var(--bg);color:var(--text);
   user-select:none;-webkit-user-select:none;touch-action:none}
 body::before{
@@ -220,12 +220,13 @@ body::before{
   backdrop-filter:blur(12px);
   box-shadow:0 2px 24px rgba(0,0,0,.6)}
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--fc);
-  font-size:16px;font-weight:700;color:var(--gold);letter-spacing:.1em;flex-shrink:0;
+  font-size:16px;line-height:1;font-weight:700;color:var(--gold);letter-spacing:.1em;flex-shrink:0;
   text-shadow:0 0 24px rgba(255,215,0,.45)}
 .logo-g{font-size:20px;line-height:1}
-.nav{display:flex;gap:1px;align-items:center}
-.nbtn{padding:6px 10px;border:1px solid transparent;background:transparent;
-  color:var(--muted);border-radius:20px;font-family:var(--fu);font-size:10px;
+.nav{display:flex;gap:4px;align-items:center;flex-shrink:0}
+.nbtn{height:32px;padding:0 10px;border:1px solid transparent;background:transparent;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:var(--muted);border-radius:20px;font-family:var(--fu);font-size:11px;line-height:1;
   font-weight:700;cursor:pointer;transition:all .15s;letter-spacing:.07em;
   white-space:nowrap;text-transform:uppercase}
 .nbtn:hover{background:rgba(139,92,246,.15);color:var(--purple-bright)}
@@ -265,7 +266,7 @@ body::before{
 /* CTAB (admin editable version only — game uses SVG clouds) */
 .ctab{
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--fc);font-weight:700;font-size:10px;letter-spacing:.14em;
+  font-family:var(--fc);font-weight:700;font-size:11px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gold);
   background:radial-gradient(ellipse at 50% 38%, rgba(72,35,175,.92) 0%, rgba(35,14,88,.97) 100%);
   border:1.5px solid rgba(150,110,255,.48);
@@ -274,31 +275,31 @@ body::before{
   box-shadow:0 0 20px rgba(90,50,210,.65),inset 0 1px 5px rgba(255,255,255,.07);
 }
 .ctab.top,.ctab.bot{
-  width:calc(2*var(--cs) + var(--cg) + 24px);height:38px;
+  width:calc(2*var(--cs) + var(--cg) + 28px);height:42px;
   border-radius:50px;z-index:4}
-.ctab.top{margin-bottom:-14px}
-.ctab.bot{margin-top:-14px}
+.ctab.top{margin-bottom:12px}
+.ctab.bot{margin-top:12px}
 .ctab.lft,.ctab.rgt{
-  width:38px;height:calc(2*var(--cs) + var(--cg) + 24px);
+  width:42px;height:calc(2*var(--cs) + var(--cg) + 28px);
   writing-mode:vertical-rl;letter-spacing:.12em;
   border-radius:50px;z-index:4}
-.ctab.lft{transform:rotate(180deg);margin-right:-14px}
-.ctab.rgt{margin-left:-14px}
+.ctab.lft{transform:rotate(180deg);margin-right:14px}
+.ctab.rgt{margin-left:14px}
 
 /* Editable clue tabs */
 .ctab.editable{cursor:pointer;transition:filter .15s}
 .ctab.editable:hover{filter:brightness(1.15)}
 .ctab.editing{cursor:text;animation:none !important;
   border:2px solid rgba(255,215,0,.7);
-  font-family:var(--fc);font-weight:700;font-size:10px;letter-spacing:.14em;
+  font-family:var(--fc);font-weight:700;font-size:11px;letter-spacing:.14em;
   text-align:center;text-transform:uppercase;color:var(--gold);outline:none}
 .ctab.editing.top,.ctab.editing.bot{
-  width:calc(2*var(--cs) + var(--cg) + 24px);height:38px;border-radius:50px;padding:0 8px}
+  width:calc(2*var(--cs) + var(--cg) + 28px);height:42px;border-radius:50px;padding:0 12px}
 .ctab.editing.lft,.ctab.editing.rgt{
-  width:38px;height:calc(2*var(--cs) + var(--cg) + 24px);
+  width:42px;height:calc(2*var(--cs) + var(--cg) + 28px);
   writing-mode:vertical-rl;border-radius:50px;padding:8px 0}
 .ctab.editing.lft{transform:rotate(180deg)}
-.ctab-ph{opacity:.45;font-style:normal;letter-spacing:.06em;font-size:9px;font-weight:600}
+.ctab-ph{opacity:.45;font-style:normal;letter-spacing:.06em;font-size:10px;font-weight:600}
 
 /* CLOVER SURFACE — transparent so ball shows through */
 .csurface{
@@ -344,9 +345,48 @@ body::before{
 .ew.er{right:7px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%);max-height:calc(var(--cs) - 22px)}
 .ew.el{left:7px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg);max-height:calc(var(--cs) - 22px)}
 .ctile.admin-mode .ew{
-  font-size:6px;
-  letter-spacing:0;
+  font-size:8px;
+  letter-spacing:.02em;
 }
+.admin-card-hit{position:absolute;inset:0;border:none;background:transparent;cursor:pointer;z-index:1}
+.admin-word-wrap{position:absolute;z-index:3}
+.admin-word-wrap.top{top:8px;left:50%;transform:translateX(-50%)}
+.admin-word-wrap.bottom{bottom:8px;left:50%;transform:translateX(-50%)}
+.admin-word-wrap.left{left:7px;top:50%;transform:translateY(-50%)}
+.admin-word-wrap.right{right:7px;top:50%;transform:translateY(-50%)}
+.admin-word-btn,.admin-word-input{
+  border:none;background:transparent;color:#2d1060;font-family:var(--fu);font-weight:800;
+  text-transform:uppercase;text-align:center;outline:none
+}
+.admin-word-btn{
+  cursor:text;padding:2px 4px;line-height:1.05;border-radius:7px;
+  font-size:10px;letter-spacing:.03em;max-width:calc(var(--cs) - 22px);
+}
+.admin-word-btn:hover{background:rgba(139,92,246,.08)}
+.admin-word-btn.left,.admin-word-btn.right{
+  font-size:9px;max-width:none;width:16px;white-space:nowrap
+}
+.admin-word-btn.left{writing-mode:vertical-rl;transform:rotate(180deg)}
+.admin-word-btn.right{writing-mode:vertical-rl}
+.admin-word-input{
+  background:#fff;border:1px solid rgba(139,92,246,.45);box-shadow:0 6px 18px rgba(0,0,0,.18);
+  border-radius:9px;padding:5px 8px;font-size:10px;min-width:86px
+}
+.admin-word-input.left,.admin-word-input.right{
+  min-width:92px
+}
+.admin-word-input.left{transform:translateX(-74px)}
+.admin-word-input.right{transform:translateX(74px)}
+.admin-word-input.top{transform:translateY(-28px)}
+.admin-word-input.bottom{transform:translateY(28px)}
+.admin-rotate-btn{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:28px;height:28px;border:none;border-radius:999px;
+  background:rgba(124,77,255,.94);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;cursor:pointer;z-index:4;
+  box-shadow:0 6px 16px rgba(61,24,131,.35)
+}
+.admin-rotate-btn:hover{background:#8b5cf6}
 
 /* Diamond center mark */
 .cmark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);
@@ -394,6 +434,13 @@ body::before{
 .ctile-inner{position:absolute;inset:0;border-radius:inherit}
 @keyframes rotateSpinInner{0%{transform:rotate(0deg)}100%{transform:rotate(90deg)}}
 .ctile-inner.rotate-spin{animation:rotateSpinInner .24s ease-in-out forwards}
+.cloud-label{
+  transition:opacity .14s ease,filter .14s ease;
+}
+.cloud-label.clue-rotating{
+  opacity:.68;
+  filter:brightness(1.14);
+}
 
 /* EXTRA CARDS */
 .extra{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:0;position:relative;padding-top:22px}
@@ -536,32 +583,44 @@ body::before{
 
 /* ══ ADMIN ══ */
 .awrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.atabs{display:flex;background:rgba(8,5,20,.95);border-bottom:1px solid rgba(100,55,200,.28);flex-shrink:0}
+.atabs{display:flex;align-items:center;gap:6px;padding:5px 6px 5px 8px;background:rgba(8,5,20,.95);border-bottom:1px solid rgba(100,55,200,.28);flex-shrink:0;min-width:0}
 .atab{flex:1;padding:12px 8px;font-family:var(--fu);font-size:10px;font-weight:700;
   border:none;background:transparent;color:var(--muted);cursor:pointer;
   border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:all .15s;
   text-transform:uppercase;letter-spacing:.07em}
 .atab:hover:not(.on){color:var(--purple-bright)}
 .atab.on{color:var(--purple-bright);border-bottom-color:var(--purple)}
-.acnt{flex:1;overflow-y:auto;padding:14px;touch-action:pan-y}
+.admin-topbar-back{flex:none;max-width:none;padding:6px 4px;font-size:10px;letter-spacing:.03em}
+.admin-topbar-title{flex:1;min-width:0;padding:0 2px;font-size:12px;font-weight:600;color:var(--clue-tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-topbar-publish{flex:0 0 auto;min-width:auto;padding:5px 8px;font-size:9px;letter-spacing:.02em;white-space:nowrap}
+.acnt{flex:1;overflow-y:auto;padding:10px;touch-action:pan-y}
 .acnt input,.acnt select,.acnt textarea{-webkit-user-select:text;user-select:text;touch-action:auto}
 .aboard-wrap{display:flex;flex-direction:column;align-items:center;
-  background:rgba(15,8,40,.9);border-radius:18px;padding:16px;gap:14px;
+  background:rgba(15,8,40,.9);border-radius:18px;padding:9px;gap:8px;
   border:1px solid rgba(100,55,200,.28)}
 .admin-sec{width:100%;background:rgba(21,10,48,.5);border:1px solid rgba(139,92,246,.18);
-  border-radius:14px;padding:12px}
+  border-radius:14px;padding:8px}
 .admin-sec-title{font-family:var(--fc);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--purple-bright);margin-bottom:9px}
-.admin-checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  color:var(--purple-bright);margin-bottom:5px}
+.admin-board-stage{
+  --cs:112px;--cg:8px;
+  width:100%;display:flex;flex-direction:column;align-items:center;gap:0;
+  padding:8px 4px 2px;
+  overflow:hidden;
+}
+.admin-board-note{color:rgba(255,255,255,.68);font-size:12px;line-height:1.5;margin-top:12px;text-align:center}
+.admin-extra-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:4px 0 2px}
+.admin-checks{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .admin-check{padding:5px 10px;border-radius:999px;border:1px solid rgba(139,92,246,.4);
-  font-size:11px;font-weight:700;letter-spacing:.03em}
+  font-size:9px;font-weight:700;letter-spacing:.02em}
 .admin-check.ok{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.45);color:#bbf7d0}
 .admin-check.warn{background:rgba(245,158,11,.16);border-color:rgba(245,158,11,.45);color:#fde68a}
 .admin-check.err{background:rgba(239,68,68,.16);border-color:rgba(239,68,68,.45);color:#fecaca}
-.ameta{display:flex;gap:8px;align-items:center;width:100%;flex-wrap:wrap}
-.ameta-title{flex:1;min-width:0}
-.fi-sm{padding:10px 12px;border:1px solid rgba(100,55,200,.38);border-radius:10px;
-  background:rgba(25,14,62,.85);font-family:var(--fu);font-size:15px;font-weight:600;
+.ameta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;align-items:center;width:100%}
+.ameta-title{min-width:0}
+.ameta-calendar{width:100%}
+.fi-sm{padding:8px 10px;border:1px solid rgba(100,55,200,.38);border-radius:10px;
+  background:rgba(25,14,62,.85);font-family:var(--fu);font-size:13px;font-weight:600;
   color:var(--text);outline:none;width:100%;transition:border-color .15s;
   -webkit-user-select:text;user-select:text;touch-action:auto}
 .fi-sm:focus{border-color:rgba(139,92,246,.72)}
@@ -638,10 +697,53 @@ body::before{
 .spill.draft{background:rgba(255,255,255,.07);color:var(--muted)}
 .spill.scheduled{background:rgba(255,215,0,.15);color:var(--gold)}
 .date-conflict{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.3);border-radius:10px;
-  padding:10px 12px;margin-top:6px;font-size:12px;color:rgba(255,215,0,.85);line-height:1.5}
-.date-conflict strong{font-weight:700;display:block;margin-bottom:4px}
+  padding:5px 8px;margin-top:5px;font-size:10px;color:rgba(255,215,0,.92);line-height:1.2;text-align:center}
+.date-conflict strong{font-weight:700;display:block;margin-bottom:0}
 .date-conflict-btns{display:flex;gap:7px;margin-top:8px}
 .date-used{border-color:rgba(255,215,0,.5) !important}
+.admin-cal{margin-top:6px;padding:7px;border:1px solid rgba(139,92,246,.18);border-radius:12px;
+  background:rgba(26,14,58,.52)}
+.admin-cal-toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border:none;border-radius:12px;background:rgba(48,24,102,.55);color:#f6edff;
+  padding:7px 9px;cursor:pointer;text-align:left
+}
+.admin-cal-toggle-main{display:flex;flex-direction:column;gap:2px}
+.admin-cal-toggle-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(231,217,255,.72)}
+.admin-cal-toggle-date{font-family:var(--fc);font-size:14px;font-weight:700;color:#fff0ff}
+.admin-cal-toggle-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.admin-cal-toggle-arrow{font-size:14px;color:rgba(231,217,255,.86)}
+.admin-cal-mini-chip{padding:3px 7px;border-radius:999px;border:1px solid rgba(139,92,246,.24);font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.admin-cal-mini-chip.published{background:rgba(22,163,74,.2);color:#bbf7d0;border-color:rgba(34,197,94,.42)}
+.admin-cal-mini-chip.scheduled{background:rgba(202,138,4,.18);color:#fde68a;border-color:rgba(250,204,21,.4)}
+.admin-cal-mini-chip.open{background:rgba(255,255,255,.04);color:rgba(231,217,255,.74);border-color:rgba(223,200,255,.14)}
+.admin-cal-panel{margin-top:10px}
+.admin-cal-head{display:grid;grid-template-columns:34px 1fr 34px;gap:8px;align-items:center;margin-bottom:10px}
+.admin-cal-nav{width:34px;height:34px;border-radius:999px;border:1px solid rgba(139,92,246,.3);
+  background:rgba(59,31,120,.6);color:#f6edff;cursor:pointer;font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center}
+.admin-cal-title{text-align:center;font-family:var(--fc);font-size:17px;font-weight:700;color:#f5e9ff;letter-spacing:.06em}
+.admin-cal-weekdays,.admin-cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.admin-cal-weekday{text-align:center;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(231,217,255,.72)}
+.admin-cal-empty{aspect-ratio:1/1}
+.admin-cal-day{appearance:none;-webkit-appearance:none;width:100%;aspect-ratio:1/1;border-radius:12px;
+  border:1px solid rgba(223,200,255,.16);background:rgba(255,255,255,.04);color:#f6edff;
+  font-family:var(--fc);font-size:16px;font-weight:700;cursor:pointer;position:relative;
+  transition:transform .14s,border-color .14s,background .14s,box-shadow .14s}
+.admin-cal-day:hover{transform:translateY(-1px);border-color:rgba(237,220,255,.34)}
+.admin-cal-day.open{background:rgba(255,255,255,.02);border-color:rgba(223,200,255,.12)}
+.admin-cal-day.published{background:linear-gradient(180deg, rgba(52,211,153,.28), rgba(22,163,74,.38));
+  border-color:rgba(134,239,172,.52);box-shadow:0 8px 18px rgba(22,163,74,.16)}
+.admin-cal-day.scheduled{background:linear-gradient(180deg, rgba(250,204,21,.22), rgba(202,138,4,.28));
+  border-color:rgba(253,224,71,.48);box-shadow:0 8px 18px rgba(202,138,4,.15);color:#fff5cf}
+.admin-cal-day.selected{border-color:rgba(255,236,188,.72);box-shadow:0 0 0 1px rgba(255,236,188,.24), inset 0 1px 0 rgba(255,255,255,.14)}
+.admin-cal-day.today{box-shadow:inset 0 0 0 1px rgba(196,181,253,.28)}
+.admin-cal-legend{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.admin-cal-chip{padding:5px 10px;border-radius:999px;border:1px solid rgba(139,92,246,.24);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.admin-cal-chip.published{background:rgba(22,163,74,.2);color:#bbf7d0;border-color:rgba(34,197,94,.42)}
+.admin-cal-chip.scheduled{background:rgba(202,138,4,.18);color:#fde68a;border-color:rgba(250,204,21,.4)}
+.admin-cal-chip.open{background:rgba(255,255,255,.04);color:rgba(231,217,255,.74);border-color:rgba(223,200,255,.14)}
+.admin-cal-selected{margin-top:10px;text-align:center;font-size:12px;color:rgba(231,217,255,.8);font-weight:600}
 .mhint{color:var(--muted);font-size:13px;text-align:center;padding:32px 20px;line-height:1.6;font-family:var(--fc)}
 .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
 .fl{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
@@ -660,6 +762,37 @@ body::before{
 .awrow{display:flex;gap:8px}
 .awrow .fi{flex:1}
 .brow2{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+
+@media (max-width:390px){
+  .atabs{gap:4px;padding:4px 4px 4px 6px}
+  .admin-topbar-back{padding:8px 4px;font-size:10px}
+  .admin-topbar-title{font-size:12px}
+  .admin-topbar-publish{padding:4px 6px;font-size:8px}
+  .ameta{grid-template-columns:1fr}
+  .admin-board-stage{--cs:102px;--cg:8px;padding-inline:0}
+  .ctab.top,.ctab.bot,.ctab.editing.top,.ctab.editing.bot{height:40px}
+  .ctab.lft,.ctab.rgt,.ctab.editing.lft,.ctab.editing.rgt{width:38px}
+  .ctab.lft{margin-right:10px}
+  .ctab.rgt{margin-left:10px}
+  .admin-extra-grid{gap:10px}
+}
+
+@media (max-width:360px){
+  .acnt{padding:8px}
+  .aboard-wrap{padding:8px}
+  .admin-board-stage{--cs:96px;--cg:7px}
+  .ctab.top,.ctab.bot,.ctab.editing.top,.ctab.editing.bot{
+    width:calc(2*var(--cs) + var(--cg) + 22px);height:38px
+  }
+  .ctab.lft,.ctab.rgt,.ctab.editing.lft,.ctab.editing.rgt{
+    width:34px;height:calc(2*var(--cs) + var(--cg) + 22px)
+  }
+  .ctab.lft{margin-right:8px}
+  .ctab.rgt{margin-left:8px}
+  .admin-extra-grid{gap:8px}
+  .admin-cal-weekdays,.admin-cal-grid{gap:4px}
+  .admin-cal-day{font-size:14px;border-radius:10px}
+}
 
 /* ══ LOBBY ══ */
 .lobby{flex:1;display:flex;flex-direction:column;align-items:center;
@@ -1007,7 +1140,8 @@ const SHOW_DRAG_GHOST = true;
 // ═══════════════════════════════════════════════════════════════
 
 function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim, spinning, spinDir=1,
-                    popping, rotateMoveClass='', rotateSpin=false, selected, noclick, adminMode=false, onPointerDown }) {
+                    popping, rotateMoveClass='', rotateSpin=false, selected, noclick, adminMode=false, onPointerDown,
+                    hideWords=false, hideCenterMark=false, children=null }) {
   const [t,r,b,l] = vw(card, orientation);
   let cls="ctile";
   if(locked)                  cls+=" locked";
@@ -1025,13 +1159,90 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   return (
     <div className={cls} style={{"--sd":spinDir}} onPointerDown={onPointerDown}>
       <div className={`ctile-inner${rotateSpin ? " rotate-spin" : ""}`}>
-        <span className="ew et">{t}</span>
-        <span className="ew er">{r}</span>
-        <span className="ew eb">{b}</span>
-        <span className="ew el">{l}</span>
-        <div className="cmark"/>
+        {!hideWords && (
+          <>
+            <span className="ew et">{t}</span>
+            <span className="ew er">{r}</span>
+            <span className="ew eb">{b}</span>
+            <span className="ew el">{l}</span>
+          </>
+        )}
+        {!hideCenterMark && <div className="cmark"/>}
+        {children}
       </div>
     </div>
+  );
+}
+
+function AdminPreviewCard({
+  card, orientation=0, selected, dim, dragSrc=false, onPointerDown, onRotate, onSelect,
+  editingWord=null, editDraft="", onStartEdit, onEditDraftChange, onCommitEdit, onCancelEdit,
+}) {
+  const [t,r,b,l] = vw(card, orientation);
+  const words = [t,r,b,l];
+  const inputRef = useRef(null);
+
+  useEffect(()=>{
+    if(editingWord == null) return;
+    requestAnimationFrame(()=>{
+      inputRef.current?.focus();
+      inputRef.current?.select();
+    });
+  },[editingWord]);
+
+  const stop = e => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  return (
+    <CardTile
+      card={card}
+      orientation={orientation}
+      adminMode
+      dim={dragSrc}
+      selected={selected}
+      hideWords
+      hideCenterMark
+      onPointerDown={onPointerDown}
+    >
+      <button className="admin-card-hit" onClick={onSelect} aria-label="Select card" />
+      {[["top",0],["right",1],["bottom",2],["left",3]].map(([pos, idx])=>(
+        <div key={pos} className={`admin-word-wrap ${pos}`} onPointerDown={stop} onMouseDown={stop}>
+          {editingWord === idx ? (
+            <input
+              ref={inputRef}
+              className={`admin-word-input ${pos}`}
+              value={editDraft}
+              onChange={e=>onEditDraftChange(e.target.value)}
+              onBlur={onCommitEdit}
+              onKeyDown={e=>{
+                if(e.key==="Enter"){ e.preventDefault(); onCommitEdit(); }
+                if(e.key==="Escape"){ e.preventDefault(); onCancelEdit(); }
+              }}
+            />
+          ) : (
+            <button
+              className={`admin-word-btn ${pos}`}
+              onClick={e=>{ stop(e); onStartEdit(idx, words[idx] || ""); }}
+              title="Edit word"
+            >
+              {words[idx] || "+"}
+            </button>
+          )}
+        </div>
+      ))}
+      <button
+        className="admin-rotate-btn"
+        onPointerDown={stop}
+        onMouseDown={stop}
+        onClick={e=>{ stop(e); onRotate(); }}
+        title="Rotate card"
+        aria-label="Rotate card"
+      >
+        ↻
+      </button>
+    </CardTile>
   );
 }
 
@@ -1066,7 +1277,7 @@ const CLOUD_VERTICAL_ASSET = "/assets/cloud-horizontal.png";
 const STAR_LIFE_ASSET = "/assets/star-life.png";
 const CELEBRATION_PARTICLES = ['🔮','✨','⭐','🌟','💫','✨','🔮','⭐','💫','🌟','✨','🔮'];
 
-function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8 }) {
+function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8, textAnimClass="" }) {
   return (
     <div className={`cloud-wrap cloud-h ${animClass||""}`} style={{
       position:"relative",display:"flex",alignItems:"center",justifyContent:"center"
@@ -1080,7 +1291,7 @@ function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8 })
         opacity:0.92,
         transform:`translateY(-8px) rotate(${artRotation}deg)`
       }}/>
-      <span style={{
+      <span className={`cloud-label ${textAnimClass}`.trim()} style={{
         position:"relative",zIndex:1,
         fontFamily:"'Bungee',sans-serif",fontWeight:400,fontSize:"20px",
         letterSpacing:"0.06em",textTransform:"uppercase",
@@ -1093,7 +1304,7 @@ function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8 })
   );
 }
 
-function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, textShiftY=0 }) {
+function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, textShiftY=0, textAnimClass="" }) {
   return (
     <div className={`cloud-wrap cloud-v ${animClass||""}`} style={{
       position:"relative",display:"flex",alignItems:"center",justifyContent:"center"
@@ -1109,7 +1320,7 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
         backgroundSize:"contain",
         opacity:0.92
       }}/>
-      <span style={{
+      <span className={`cloud-label ${textAnimClass}`.trim()} style={{
         position:"relative",zIndex:1,
         fontFamily:"'Bungee',sans-serif",fontWeight:400,fontSize:"20px",
         letterSpacing:"0.05em",textTransform:"uppercase",
@@ -1127,7 +1338,7 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
 
 // ── BOARD ────────────────────────────────────────────────────────
 
-function Board({ clues, renderClue, renderSlot, compactLevel=0 }) {
+function Board({ clues, renderClue, renderSlot, compactLevel=0, cluesRotating=false }) {
   // Card grid: 104*2 + 8 gap + 24 padding = 240px square
   const SURF = compactLevel >= 2 ? 212 : compactLevel === 1 ? 226 : 240;
   const BALL = compactLevel >= 2 ? 390 : compactLevel === 1 ? 404 : 420;
@@ -1147,11 +1358,12 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0 }) {
   const CVW = compactLevel >= 2 ? 54 : compactLevel === 1 ? 57 : 60;
   const CVH = compactLevel >= 2 ? 262 : compactLevel === 1 ? 274 : 286;
   const FOREGROUND_SHIFT_Y = compactLevel >= 2 ? 10 : compactLevel === 1 ? 14 : 18;
+  const clueTextAnimClass = cluesRotating ? "clue-rotating" : "";
 
-  const topClue   = renderClue ? renderClue(0,"top") : <CloudH text={clues[0]||""} animClass="float-top" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18}/>;
-  const rightClue = renderClue ? renderClue(1,"rgt") : <CloudV text={clues[1]||""} animClass="float-right" rotation={90} textRotation={90} textShiftX={0} textShiftY={0}/>;
-  const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18}/>;
-  const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={-90} textShiftX={0} textShiftY={0}/>;
+  const topClue   = renderClue ? renderClue(0,"top") : <CloudH text={clues[0]||""} animClass="float-top" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18} textAnimClass={clueTextAnimClass}/>;
+  const rightClue = renderClue ? renderClue(1,"rgt") : <CloudV text={clues[1]||""} animClass="float-right" rotation={90} textRotation={90} textShiftX={0} textShiftY={0} textAnimClass={clueTextAnimClass}/>;
+  const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18} textAnimClass={clueTextAnimClass}/>;
+  const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={-90} textShiftX={0} textShiftY={0} textAnimClass={clueTextAnimClass}/>;
 
   const boardShiftX = compactLevel >= 2 ? -4 : compactLevel === 1 ? -6 : -10;
 
@@ -2203,7 +2415,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       </div>
       <div ref={playFitOuterRef} className="play-fit-outer">
         <div ref={playFitInnerRef} className="play-fit-inner" style={playAreaStyle}>
-          <Board clues={clues} renderSlot={renderSlot} compactLevel={compactLevel}/>
+          <Board clues={clues} renderSlot={renderSlot} compactLevel={compactLevel} cluesRotating={rotateAnimating}/>
           <div style={{marginTop:compactLevel >= 2 ? 28 : compactLevel === 1 ? 38 : 52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px"}}>
             <div className="extra">
         {numExtra>0 ? (
@@ -2492,6 +2704,102 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
   );
 }
 
+function AdminDateCalendar({ selectedDate, occupancyByDate, onSelectDate }) {
+  const [visibleMonthKey, setVisibleMonthKey] = useState(() => (selectedDate || new Date().toISOString().split("T")[0]).slice(0,7));
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(()=>{
+    if(selectedDate?.slice(0,7) !== visibleMonthKey){
+      setVisibleMonthKey(selectedDate.slice(0,7));
+    }
+  },[selectedDate, visibleMonthKey]);
+
+  const [year, month] = visibleMonthKey.split("-").map(Number);
+  const firstOfMonth = new Date(year, month - 1, 1, 12);
+  const daysInMonth = new Date(year, month, 0).getDate();
+  const leadingEmpty = firstOfMonth.getDay();
+  const trailingEmpty = (7 - ((leadingEmpty + daysInMonth) % 7)) % 7;
+  const label = `${MONTHS_FULL[month - 1]} ${year}`;
+  const today = new Date().toISOString().split("T")[0];
+  const selectedOccupancy = occupancyByDate[selectedDate] || "open";
+
+  const shiftMonth = delta => {
+    const next = new Date(year, month - 1 + delta, 1, 12);
+    const nextKey = `${next.getFullYear()}-${String(next.getMonth()+1).padStart(2,"0")}`;
+    setVisibleMonthKey(nextKey);
+  };
+
+  const cells = [];
+  for(let i=0;i<leadingEmpty;i++) cells.push({ kind:"empty", key:`lead-${i}` });
+  for(let day=1; day<=daysInMonth; day++){
+    const date = `${visibleMonthKey}-${String(day).padStart(2,"0")}`;
+    const occupancy = occupancyByDate[date] || "open";
+    cells.push({ kind:"day", key:date, day, date, occupancy });
+  }
+  for(let i=0;i<trailingEmpty;i++) cells.push({ kind:"empty", key:`trail-${i}` });
+
+  return (
+    <div className="admin-cal">
+      <button type="button" className="admin-cal-toggle" onClick={()=>setIsOpen(v=>!v)}>
+        <div className="admin-cal-toggle-main">
+          <div className="admin-cal-toggle-label">Puzzle Date</div>
+          <div className="admin-cal-toggle-date">{formatAdminDate(selectedDate)}</div>
+          <div className="admin-cal-toggle-meta">
+            <span className={`admin-cal-mini-chip ${selectedOccupancy}`}>{selectedOccupancy}</span>
+          </div>
+        </div>
+        <span className="admin-cal-toggle-arrow" aria-hidden="true">{isOpen ? "▲" : "▼"}</span>
+      </button>
+      {isOpen && (
+        <div className="admin-cal-panel">
+          <div className="admin-cal-head">
+            <button type="button" className="admin-cal-nav" onClick={()=>shiftMonth(-1)} aria-label="Previous month">‹</button>
+            <div className="admin-cal-title">{label}</div>
+            <button type="button" className="admin-cal-nav" onClick={()=>shiftMonth(1)} aria-label="Next month">›</button>
+          </div>
+          <div className="admin-cal-weekdays">
+            {DOW_MIN.map((label, i)=><div key={`${label}-${i}`} className="admin-cal-weekday">{label}</div>)}
+          </div>
+          <div className="admin-cal-grid">
+            {cells.map(cell=>{
+              if(cell.kind === "empty") return <div key={cell.key} className="admin-cal-empty" />;
+              const isSelected = cell.date === selectedDate;
+              const isToday = cell.date === today;
+              return (
+                <button
+                  key={cell.key}
+                  type="button"
+                  className={`admin-cal-day ${cell.occupancy}${isSelected ? " selected" : ""}${isToday ? " today" : ""}`}
+                  onClick={()=>{
+                    onSelectDate(cell.date);
+                    setIsOpen(false);
+                  }}
+                  title={cell.date}
+                >
+                  {cell.day}
+                </button>
+              );
+            })}
+          </div>
+          <div className="admin-cal-legend">
+            <span className="admin-cal-chip published">Published</span>
+            <span className="admin-cal-chip scheduled">Scheduled</span>
+            <span className="admin-cal-chip open">Open</span>
+          </div>
+          <div className="admin-cal-selected">Selected date: {formatAdminDate(selectedDate)}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function formatAdminDate(dateStr) {
+  if(!dateStr) return "";
+  const [year, month, day] = dateStr.split("-");
+  if(!year || !month || !day) return dateStr;
+  return `${month}-${day}-${year}`;
+}
+
 // ═══════════════════════════════════════════════════════════════
 //  ADMIN BOARD EDITOR
 // ═══════════════════════════════════════════════════════════════
@@ -2534,6 +2842,8 @@ function initAdminState(existing = null) {
 function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBack }) {
   const [admin,setAdmin]         = useState(()=>initAdminState(initialPuzzle));
   const [selectedId,setSelId]    = useState(null);
+  const [inlineEdit,setInlineEdit] = useState(null);
+  const [inlineDraft,setInlineDraft] = useState("");
   const [ghost,setGhost]         = useState(null);
   const [dragSrc,setDragSrc]     = useState(null);
   const [dragOver,setDragOver]   = useState(null);
@@ -2545,6 +2855,20 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
   const dateConflict = useMemo(()=>
     allPuzzles.find(p => p.date === admin.date && p.id !== admin.id) || null
   ,[allPuzzles, admin.date, admin.id]);
+
+  const occupancyByDate = useMemo(()=>{
+    const map = {};
+    allPuzzles.forEach(p=>{
+      if(!p?.date || p.id === admin.id) return;
+      if(p.status !== "published" && p.status !== "scheduled") return;
+      if(p.status === "published"){
+        map[p.date] = "published";
+      } else if(!map[p.date]){
+        map[p.date] = "scheduled";
+      }
+    });
+    return map;
+  },[allPuzzles, admin.id]);
 
   const getSlotAt = useCallback((x,y,exc)=>{
     for(let i=0;i<admin.slots.length;i++){
@@ -2608,6 +2932,24 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     setAdmin(p=>({...p,cards:{...p.cards,
       [cardId]:{...p.cards[cardId],words:p.cards[cardId].words.map((w,i)=>i===wi?val.toUpperCase():w)}
     }}));
+
+  const startInlineEdit = useCallback((cardId, wordIndex, value="")=>{
+    setSelId(cardId);
+    setInlineEdit({cardId, wordIndex});
+    setInlineDraft(value || "");
+  },[]);
+
+  const cancelInlineEdit = useCallback(()=>{
+    setInlineEdit(null);
+    setInlineDraft("");
+  },[]);
+
+  const commitInlineEdit = useCallback(()=>{
+    if(!inlineEdit) return;
+    updateWord(inlineEdit.cardId, inlineEdit.wordIndex, inlineDraft);
+    setInlineEdit(null);
+    setInlineDraft("");
+  },[inlineDraft, inlineEdit]);
 
   const rotateCard = (cardId,delta) =>
     setAdmin(p=>({...p,slots:p.slots.map(s=>
@@ -2762,27 +3104,41 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     const s=admin.slots[si];
     const card=s?admin.cards[s.cardId]:null;
     const isSel = s?.cardId===selectedId;
+    const editingWord = inlineEdit?.cardId===s?.cardId ? inlineEdit.wordIndex : null;
     return (
       <div key={si} ref={el=>slotRefs.current[si]=el}
         className={`cslot${dragOver===si?" over":""}${!card?" empty":""}`}>
-        {card&&<CardTile card={card} orientation={s.orientation} adminMode
-          dim={dragSrc===si} selected={isSel}
-          onPointerDown={e=>handlePD(e,si)}/>}
+        {card&&<AdminPreviewCard
+          card={card}
+          orientation={s.orientation}
+          selected={isSel}
+          dim={dragSrc===si}
+          dragSrc={dragSrc===si}
+          onPointerDown={e=>handlePD(e,si)}
+          onRotate={()=>rotateCard(s.cardId,1)}
+          onSelect={()=>setSelId(s.cardId)}
+          editingWord={editingWord}
+          editDraft={editingWord!=null ? inlineDraft : ""}
+          onStartEdit={(wordIndex, value)=>startInlineEdit(s.cardId, wordIndex, value)}
+          onEditDraftChange={setInlineDraft}
+          onCommitEdit={commitInlineEdit}
+          onCancelEdit={cancelInlineEdit}
+        />}
       </div>
     );
   };
 
   const extraSlots = admin.slots.slice(4);
+  const adminDateLabel = formatAdminDate(admin.date);
 
   return (
     <div className="awrap">
       <div className="atabs">
-        <button className="atab" style={{maxWidth:80,flex:"none"}} onClick={onBack}>← Back</button>
-        <div style={{flex:1,display:"flex",alignItems:"center",padding:"0 8px",
-          fontSize:13,fontWeight:600,color:"var(--clue-tx)"}}>
+        <button className="atab admin-topbar-back" onClick={onBack}>← Back</button>
+        <div className="admin-topbar-title">
           {admin.title||"New Puzzle"}
         </div>
-        <button className="abtn p sm" style={{margin:"10px 8px"}} onClick={()=>handleSave("published")}
+        <button className="abtn p sm admin-topbar-publish" onClick={()=>handleSave("published")}
           disabled={!validation.canPublish}
           title={!validation.canPublish ? "Fill all clues and card edges before publishing." : ""}>
           Publish
@@ -2800,19 +3156,20 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
                   onChange={e=>setAdmin(p=>({...p,title:e.target.value}))}
                   placeholder="Puzzle title"/>
               </div>
-              <input className={`fi-sm${dateConflict?" date-used":""}`} type="date" value={admin.date}
-                onChange={e=>{setAdmin(p=>({...p,date:e.target.value}));setConfirmReplace(false);}}
-                style={{width:160}}/>
-            </div>
-            <div style={{width:"100%",marginTop:8}}>
               <input className="fi-sm" value={admin.author||""}
                 onChange={e=>setAdmin(p=>({...p,author:e.target.value}))}
                 placeholder="Author name (optional)"/>
             </div>
+            <div className="ameta-calendar">
+              <AdminDateCalendar
+                selectedDate={admin.date}
+                occupancyByDate={occupancyByDate}
+                onSelectDate={(date)=>{setAdmin(p=>({...p,date}));setConfirmReplace(false);}}
+              />
+            </div>
             {dateConflict && (
               <div className="date-conflict" onClick={e=>e.stopPropagation()}>
-                <strong>⚠️ {admin.date} already has a puzzle</strong>
-                "{dateConflict.title}" is scheduled for this date. Publishing will move it to Unused Puzzles.
+                <strong>⚠️ This date already has a puzzle</strong>
                 {confirmReplace && (
                   <div className="date-conflict-btns">
                     <button className="abtn d sm" onClick={()=>{
@@ -2851,7 +3208,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
 
           <div className="admin-sec">
             <div className="admin-sec-title">Board & Clues</div>
-            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0}}>
+            <div className="admin-board-stage">
               <EditableClueTab text={admin.clues[0]} pos="top" onChange={val=>updateClue(0,val)}/>
               <div style={{display:"flex",alignItems:"center",gap:0}}>
                 <EditableClueTab text={admin.clues[3]} pos="lft" onChange={val=>updateClue(3,val)}/>
@@ -2863,23 +3220,37 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
               </div>
               <EditableClueTab text={admin.clues[2]} pos="bot" onChange={val=>updateClue(2,val)}/>
             </div>
-            <div style={{color:"rgba(255,255,255,.56)",fontSize:11,marginTop:8,textAlign:"center"}}>
-              Long words save fully. Card preview may scale smaller for readability.
+            <div className="admin-board-note">
+              Tap any clue or card word to edit it in place. Use the center rotate button when you want to change a card's orientation.
             </div>
           </div>
 
           <div className="admin-sec">
             <div className="admin-sec-title">Extra Cards (3)</div>
-            <div style={{display:"flex",gap:10,flexWrap:"wrap",justifyContent:"center"}}>
+            <div className="admin-extra-grid" style={{"--cs":"118px"}}>
               {extraSlots.slice(0,3).map((s,i)=>{
                 const si=4+i,card=admin.cards[s.cardId];
                 const isSel=s.cardId===selectedId;
+                const editingWord = inlineEdit?.cardId===s?.cardId ? inlineEdit.wordIndex : null;
                 return (
                   <div key={si} ref={el=>slotRefs.current[si]=el}
                     className={`eslot${dragOver===si?" over":""}`}>
-                    {card&&<CardTile card={card} orientation={s.orientation} adminMode
-                      dim={dragSrc===si} selected={isSel}
-                      onPointerDown={e=>handlePD(e,si)}/>}
+                    {card&&<AdminPreviewCard
+                      card={card}
+                      orientation={s.orientation}
+                      selected={isSel}
+                      dim={dragSrc===si}
+                      dragSrc={dragSrc===si}
+                      onPointerDown={e=>handlePD(e,si)}
+                      onRotate={()=>rotateCard(s.cardId,1)}
+                      onSelect={()=>setSelId(s.cardId)}
+                      editingWord={editingWord}
+                      editDraft={editingWord!=null ? inlineDraft : ""}
+                      onStartEdit={(wordIndex, value)=>startInlineEdit(s.cardId, wordIndex, value)}
+                      onEditDraftChange={setInlineDraft}
+                      onCommitEdit={commitInlineEdit}
+                      onCancelEdit={cancelInlineEdit}
+                    />}
                   </div>
                 );
               })}
