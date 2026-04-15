@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { seeded01, shuffleArr } from "./utils/random";
 
 // ═══════════════════════════════════════════════════════════════
 //  SUPABASE
@@ -551,6 +552,12 @@ body::before{
   border-radius:14px;padding:12px}
 .admin-sec-title{font-family:var(--fc);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--purple-bright);margin-bottom:9px}
+.admin-checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.admin-check{padding:5px 10px;border-radius:999px;border:1px solid rgba(139,92,246,.4);
+  font-size:11px;font-weight:700;letter-spacing:.03em}
+.admin-check.ok{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.45);color:#bbf7d0}
+.admin-check.warn{background:rgba(245,158,11,.16);border-color:rgba(245,158,11,.45);color:#fde68a}
+.admin-check.err{background:rgba(239,68,68,.16);border-color:rgba(239,68,68,.45);color:#fecaca}
 .ameta{display:flex;gap:8px;align-items:center;width:100%;flex-wrap:wrap}
 .ameta-title{flex:1;min-width:0}
 .fi-sm{padding:10px 12px;border:1px solid rgba(100,55,200,.38);border-radius:10px;
@@ -904,12 +911,6 @@ body::before{
 //  HELPERS
 // ═══════════════════════════════════════════════════════════════
 
-const shuffleArr = a => {
-  const r=[...a];
-  for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
-  return r;
-};
-
 // Biased shuffle: keeps re-shuffling until fewer than 2 solution slots are accidentally correct.
 // Caps at 10 attempts so it never hangs. Also seeds with a time+random mix for better entropy.
 function biasedShuffle(cardIds, solution) {
@@ -973,9 +974,28 @@ function bestSubmit(slots4, solution, locked, currentClues, originalClues) {
   return {correct:new Set(),wrong:new Set([0,1,2,3])};
 }
 
-const loadLS = (k,fb) => { try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch{return fb;} };
-const saveLS = (k,v) => { try{localStorage.setItem(k,JSON.stringify(v));}catch{} };
-const removeLS = (k) => { try{localStorage.removeItem(k);}catch{} };
+const loadLS = (k,fb) => {
+  try{
+    const v=localStorage.getItem(k);
+    return v?JSON.parse(v):fb;
+  } catch{
+    return fb;
+  }
+};
+const saveLS = (k,v) => {
+  try{
+    localStorage.setItem(k,JSON.stringify(v));
+  } catch{
+    // ignore storage write failures (private mode/quota)
+  }
+};
+const removeLS = (k) => {
+  try{
+    localStorage.removeItem(k);
+  } catch{
+    // ignore storage remove failures
+  }
+};
 
 // Easy drag UX experiment toggle:
 // true  -> show floating drag preview
@@ -1044,6 +1064,7 @@ const CRYSTAL_BALL_ASSET = USE_PRETTY_CRYSTAL_BALL ? PRETTY_CRYSTAL_BALL_ASSET :
 const CLOUD_HORIZONTAL_ASSET = "/assets/cloud-horizontal.png";
 const CLOUD_VERTICAL_ASSET = "/assets/cloud-horizontal.png";
 const STAR_LIFE_ASSET = "/assets/star-life.png";
+const CELEBRATION_PARTICLES = ['🔮','✨','⭐','🌟','💫','✨','🔮','⭐','💫','🌟','✨','🔮'];
 
 function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8 }) {
   return (
@@ -1341,8 +1362,8 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
     const d2 = new Date(puzzle.date+'T12:00:00');
     const label = `${d2.getMonth()+1}·${String(d2.getDate()).padStart(2,'0')}·${d2.getFullYear()}`;
     const solvedDifficulty = completedData.difficulty || puzzle.difficulty;
-    const diffIcons = {easy:'🌙',standard:'🔮',expert:'✨',hardcore:'🌑'};
-    const icon = diffIcons[solvedDifficulty]||'🔮';
+    const diffIcons = {easy:'✨',standard:'🌙',expert:'🌕',hardcore:'🌑'};
+    const icon = diffIcons[solvedDifficulty]||'🌙';
     const resultLine = completedData.livesUsed == null
       ? `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty}`
       : `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty} · ${formatLivesUsedCompact(completedData.livesUsed)}`;
@@ -1354,7 +1375,9 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
         document.body.appendChild(ta); ta.focus(); ta.select();
         document.execCommand('copy'); document.body.removeChild(ta);
         setCopied(true); setTimeout(()=>setCopied(false),2000);
-      } catch(e){}
+      } catch{
+        // fallback handled below
+      }
     };
     if(navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2000);}).catch(doCopy);
     else doCopy();
@@ -1471,9 +1494,6 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   // Player sees only the first numExtra extras (removing from end)
   const visibleExtraIds = extraCardIds.slice(0, numExtra);
 
-  const cardIds = Object.keys(puzzle.cards);
-  const solutionSet = new Set(puzzle.solution.slotCards);
-
   const initSlots = useCallback(()=>{
     if(admireMode){
       return puzzle.solution.slotCards.map((cardId,i)=>({
@@ -1484,7 +1504,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     // Use the fixed visible extras (ordered, not random)
     const chosen = [...solCards, ...visibleExtraIds];
     return biasedShuffle(chosen, puzzle.solution);
-  },[puzzle.id, numExtra, admireMode]);
+  },[admireMode, puzzle.solution, visibleExtraIds]);
 
   const alreadySolved = admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
   const progressKey = `clover_progress_${puzzle.id}`;
@@ -1623,7 +1643,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         osc.start(t); osc.stop(t + 0.5);
       });
       // final shimmer chord
-      [1046.5,1318.5,1568].forEach((freq,i)=>{
+      [1046.5,1318.5,1568].forEach((freq)=>{
         const osc=ctx.createOscillator(); const gain=ctx.createGain();
         osc.connect(gain); gain.connect(ctx.destination);
         osc.type='sine'; osc.frequency.value=freq;
@@ -1633,7 +1653,9 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         gain.gain.exponentialRampToValueAtTime(0.001,t+1.2);
         osc.start(t); osc.stop(t+1.3);
       });
-    } catch(e){}
+    } catch{
+      // audio not available
+    }
   },[]);
 
   // Wrong guess sound — two low boing tones
@@ -1650,15 +1672,17 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         gain.gain.exponentialRampToValueAtTime(0.001,t+0.35);
         osc.start(t); osc.stop(t+0.4);
       });
-    } catch(e){}
+    } catch{
+      // audio not available
+    }
   },[]);
 
   // Share helpers
   const buildShareText = useCallback((history)=>{
     const d = new Date(puzzle.date+'T12:00:00');
     const label = `${d.getMonth()+1}·${String(d.getDate()).padStart(2,'0')}·${d.getFullYear()}`;
-    const diffIcons = {easy:'🌱',standard:'🔮',expert:'✨',hardcore:'🌙'};
-    const icon = diffIcons[puzzle.difficulty] || '🔮';
+    const diffIcons = {easy:'✨',standard:'🌙',expert:'🌕',hardcore:'🌑'};
+    const icon = diffIcons[puzzle.difficulty] || '🌙';
     const header = `Crystal Clues ${label} ${icon}`;
     // Each guess is a 2x2 block — lay all guesses side by side, top row then bottom row
     const topRow = history.map(rows => `${rows[0][0]}${rows[0][1]}`).join(' ');
@@ -1680,7 +1704,9 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         document.body.removeChild(ta);
         setCopied(true);
         setTimeout(()=>setCopied(false), 2000);
-      } catch(e){}
+      } catch{
+        // clipboard fallback failed
+      }
     };
     if(navigator.clipboard?.writeText) {
       navigator.clipboard.writeText(text).then(()=>{
@@ -1748,10 +1774,10 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     if(repeatedBad.size === 0 && showRepeatWarning){
       clearTimeout(repeatWarnTimer.current);
       repeatWarnTimer.current = setTimeout(()=>setShowRepeatWarning(false), 500);
-      setFbFading(true);
+      setTimeout(()=>setFbFading(true), 0);
       setTimeout(()=>setFbFading(false), 500);
     }
-  },[repeatedBad.size]);
+  },[repeatedBad.size, showRepeatWarning]);
 
   const getSlotAt = useCallback((x,y,exc)=>{
     for(let i=0;i<totalSlots;i++){
@@ -1846,6 +1872,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     const solutionIds = new Set(puzzle.solution.slotCards);
     const toRemove = prevExtra - curExtra;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSlots(p=>{
       let n=[...p];
 
@@ -1870,7 +1897,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     setKnownBad(new Map());
     setFeedback("Difficulty lowered — board reshuffled.");
     setTimeout(()=>fadeFeedback(), 2500);
-  },[puzzle.difficulty]);
+  },[puzzle.difficulty, puzzle.solution.slotCards, locked, fadeFeedback]);
 
   const handleShuffle = useCallback(()=>{
     const free=Array.from({length:totalSlots},(_,i)=>i).filter(i=>!locked.has(i));
@@ -1990,7 +2017,9 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
                         gain.gain.linearRampToValueAtTime(0.12,t+0.02);
                         gain.gain.exponentialRampToValueAtTime(0.001,t+0.18);
                         osc.start(t); osc.stop(t+0.2);
-                      } catch(e){}
+                      } catch{
+                        // audio not available
+                      }
                     };
 
                     // Reset clues to original orientation so board matches solution
@@ -2070,7 +2099,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         }, idx * 160);
       });
     }, 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,playVictorySound,playWrongSound,difficulty,onSolved]);
+  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart]);
 
   const renderSlot = useCallback(si=>{
     const s=slots[si];
@@ -2117,14 +2146,13 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   },[slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,isDragging,dragSrc,spinning,swapPopping,rotateAnimating,dragOver,handlePD]);
 
   // Victory particles — leprechaun coins and rainbows
-  const PARTICLES = ['🔮','✨','⭐','🌟','💫','✨','🔮','⭐','💫','🌟','✨','🔮'];
   const particles = useMemo(()=>showParticles ? Array.from({length:28},(_,i)=>({
     id:i,
-    emoji: PARTICLES[i % PARTICLES.length],
-    left: Math.random()*100,
-    delay: Math.random()*1.8,
-    dur: 2.2 + Math.random()*1.6,
-    size: 84 + Math.floor(Math.random()*72),
+    emoji: CELEBRATION_PARTICLES[i % CELEBRATION_PARTICLES.length],
+    left: seeded01(i + 1) * 100,
+    delay: seeded01(i + 101) * 1.8,
+    dur: 2.2 + seeded01(i + 201) * 1.6,
+    size: 84 + Math.floor(seeded01(i + 301) * 72),
   })) : [], [showParticles]);
 
   const puzzleDate = new Date(puzzle.date + "T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});
@@ -2251,8 +2279,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
 
 function EditableClueTab({ text, pos, onChange }) {
   const [editing,setEditing] = useState(false);
-  const [val,setVal]         = useState(text);
-  useEffect(()=>setVal(text),[text]);
+  const [val,setVal]         = useState(text || "");
   const commit = () => { setEditing(false); onChange(val.trim().toUpperCase()||""); };
   return editing ? (
     <input className={`ctab editing ${pos}`} value={val}
@@ -2261,7 +2288,7 @@ function EditableClueTab({ text, pos, onChange }) {
       onKeyDown={e=>{if(e.key==="Enter")e.target.blur();if(e.key==="Escape"){setVal(text);setEditing(false);}}}
       autoFocus/>
   ) : (
-    <div className={`ctab ${pos} editable`} onClick={()=>{setVal(text);setEditing(true);}}>
+    <div className={`ctab ${pos} editable`} onClick={()=>{setVal(text || "");setEditing(true);}}>
       {text||<span className="ctab-ph">+ clue</span>}
     </div>
   );
@@ -2272,7 +2299,7 @@ function EditableClueTab({ text, pos, onChange }) {
 // ═══════════════════════════════════════════════════════════════
 
 function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
-                           onMoveToExtras, onMoveToSolution, onDelete, onClose, wordBank, isInClover }) {
+                           onMoveToExtras, onMoveToSolution, onDelete, onClose, onPrev, onNext, wordBank, isInClover }) {
   const words = card?.words || ["","","",""];
   const EDGE_LABELS = ["Top","Right","Bottom","Left"];
   const [wbQuery, setWbQuery] = useState("");
@@ -2355,7 +2382,11 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
         <span className="ced-title">
           {isInClover ? `Editing: ${SLOT_LABELS[slotIdx]} card` : "Editing: Extra card"}
         </span>
-        <button className="ced-close" onClick={onClose}>×</button>
+        <div style={{display:"flex",alignItems:"center",gap:6}}>
+          <button className="abtn s sm" onClick={onPrev} title="Previous card">← Prev</button>
+          <button className="abtn s sm" onClick={onNext} title="Next card">Next →</button>
+          <button className="ced-close" onClick={onClose}>×</button>
+        </div>
       </div>
 
       {/* Visual cross layout */}
@@ -2515,9 +2546,6 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     allPuzzles.find(p => p.date === admin.date && p.id !== admin.id) || null
   ,[allPuzzles, admin.date, admin.id]);
 
-  const numExtra = DIFFICULTY_EXTRA[admin.difficulty]??0;
-  const totalSlots = 4 + Math.max(numExtra, admin.slots.length-4);
-
   const getSlotAt = useCallback((x,y,exc)=>{
     for(let i=0;i<admin.slots.length;i++){
       if(i===exc) continue;
@@ -2585,15 +2613,6 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     setAdmin(p=>({...p,slots:p.slots.map(s=>
       s.cardId===cardId?{...s,orientation:(s.orientation+delta+4)%4}:s
     )}));
-
-  const addExtraCard = () => {
-    const id=uid();
-    setAdmin(p=>({...p,
-      cards:{...p.cards,[id]:{id,words:["","","",""]}},
-      slots:[...p.slots,{cardId:id,orientation:0}],
-    }));
-    setSelId(id);
-  };
 
   const moveToExtras = cardId => {
     // Swap solution slot with an extra slot (or just move to end)
@@ -2701,11 +2720,43 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
   const selCard    = selectedId ? admin.cards[selectedId] : null;
   const selOrient  = selSlotIdx>=0 ? admin.slots[selSlotIdx].orientation : 0;
   const selInClover = selSlotIdx>=0 && selSlotIdx<4;
+  const slotCardIds = admin.slots.map(s=>s.cardId);
+  const selectAdjacentCard = useCallback((delta)=>{
+    if(slotCardIds.length===0) return;
+    const curIdx = selectedId ? slotCardIds.indexOf(selectedId) : 0;
+    const baseIdx = curIdx >= 0 ? curIdx : 0;
+    const nextIdx = (baseIdx + delta + slotCardIds.length) % slotCardIds.length;
+    setSelId(slotCardIds[nextIdx]);
+  },[slotCardIds, selectedId]);
+  const selectPrevCard = useCallback(()=>selectAdjacentCard(-1),[selectAdjacentCard]);
+  const selectNextCard = useCallback(()=>selectAdjacentCard(1),[selectAdjacentCard]);
 
-  const renderClue = (idx,pos) => (
-    <EditableClueTab key={pos} text={admin.clues[idx]} pos={pos}
-      onChange={val=>updateClue(idx,val)}/>
-  );
+  const validation = useMemo(()=>{
+    const clueCount = admin.clues.filter(c=>c?.trim()).length;
+    const missingClues = Math.max(0, 4 - clueCount);
+    const activeSlots = admin.slots.slice(0,7);
+    let blankEdges = 0;
+    const seen = new Set();
+    const duplicates = new Set();
+    activeSlots.forEach(s=>{
+      const words = admin.cards[s.cardId]?.words || [];
+      words.forEach((w)=>{
+        const v = (w || "").trim().toUpperCase();
+        if(!v){
+          blankEdges += 1;
+          return;
+        }
+        if(seen.has(v)) duplicates.add(v);
+        seen.add(v);
+      });
+    });
+    return {
+      missingClues,
+      blankEdges,
+      duplicateCount: duplicates.size,
+      canPublish: missingClues===0 && blankEdges===0,
+    };
+  },[admin.clues, admin.slots, admin.cards]);
 
   const renderSlot = si => {
     const s=admin.slots[si];
@@ -2731,7 +2782,11 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
           fontSize:13,fontWeight:600,color:"var(--clue-tx)"}}>
           {admin.title||"New Puzzle"}
         </div>
-        <button className="abtn p sm" style={{margin:"10px 8px"}} onClick={()=>handleSave("published")}>Publish</button>
+        <button className="abtn p sm" style={{margin:"10px 8px"}} onClick={()=>handleSave("published")}
+          disabled={!validation.canPublish}
+          title={!validation.canPublish ? "Fill all clues and card edges before publishing." : ""}>
+          Publish
+        </button>
       </div>
 
       <div className="acnt" style={{touchAction:"pan-y"}}>
@@ -2781,6 +2836,17 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
                 )}
               </div>
             )}
+            <div className="admin-checks">
+              <span className={`admin-check ${validation.missingClues===0 ? "ok" : "err"}`}>
+                {validation.missingClues===0 ? "Clues complete" : `${validation.missingClues} clue${validation.missingClues===1?"":"s"} missing`}
+              </span>
+              <span className={`admin-check ${validation.blankEdges===0 ? "ok" : "err"}`}>
+                {validation.blankEdges===0 ? "All card edges filled" : `${validation.blankEdges} blank edge${validation.blankEdges===1?"":"s"}`}
+              </span>
+              <span className={`admin-check ${validation.duplicateCount===0 ? "ok" : "warn"}`}>
+                {validation.duplicateCount===0 ? "No duplicate words" : `${validation.duplicateCount} duplicate word${validation.duplicateCount===1?"":"s"}`}
+              </span>
+            </div>
           </div>
 
           <div className="admin-sec">
@@ -2858,14 +2924,22 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
             onMoveToSolution={()=>moveToSolution(selectedId)}
             onDelete={()=>deleteCard(selectedId)}
             onClose={()=>setSelId(null)}
+            onPrev={selectPrevCard}
+            onNext={selectNextCard}
             wordBank={wordBank}/>
         )}
 
         {/* Save controls */}
         <div className="brow2" style={{marginTop:14}}>
-          <button className="abtn p" onClick={()=>handleSave("published")}>Publish</button>
+          <button className="abtn p" onClick={()=>handleSave("published")} disabled={!validation.canPublish}
+            title={!validation.canPublish ? "Fill all clues and card edges before publishing." : ""}>
+            Publish
+          </button>
           <button className="abtn s" onClick={()=>handleSave("draft")}>Save Draft</button>
-          <button className="abtn s" onClick={()=>handleSave("scheduled")}>Schedule</button>
+          <button className="abtn s" onClick={()=>handleSave("scheduled")} disabled={!validation.canPublish}
+            title={!validation.canPublish ? "Fill all clues and card edges before scheduling." : ""}>
+            Schedule
+          </button>
         </div>
       </div>
 
@@ -2882,7 +2956,6 @@ function AdminView({ onPublish }) {
   const [puzzles,setPuzzles]   = useState([]);
   const [loading,setLoading]   = useState(true);
   const [wordBank,setWordBank] = useState([]);
-  const [wbLoading,setWbLoading] = useState(true);
   const [tab,setTab]         = useState("list");
   const [editPuzzle,setEditP] = useState(null);
   const [newWord,setNewWord] = useState("");
@@ -2892,20 +2965,26 @@ function AdminView({ onPublish }) {
   useEffect(()=>{
     dbLoadWordBank().then(words=>{
       setWordBank(words);
-      setWbLoading(false);
     }).catch(()=>{
-      setWbLoading(false);
+      // keep empty word bank on error
     });
   },[]);
 
-  // Load puzzles from Supabase on mount
+  const shouldLoadList = tab==="list";
+  // Load puzzles from Supabase when viewing puzzle lists
   useEffect(()=>{
-    setLoading(true);
+    if(!shouldLoadList) return;
+    let cancelled = false;
     dbLoadAllPuzzles().then(rows=>{
+      if(cancelled) return;
       setPuzzles(rows);
       setLoading(false);
-    }).catch(()=>setLoading(false));
-  },[tab==="list"]);
+    }).catch(()=>{
+      if(cancelled) return;
+      setLoading(false);
+    });
+    return ()=>{ cancelled = true; };
+  },[shouldLoadList]);
 
   const handleSave = async (puzzle, displacedPuzzle=null) => {
     try {
@@ -2917,6 +2996,7 @@ function AdminView({ onPublish }) {
       // Reload list
       const rows = await dbLoadAllPuzzles();
       setPuzzles(rows);
+      setLoading(true);
       setTab("list");
     } catch(e) {
       alert("Error saving puzzle: " + e.message);
@@ -2939,13 +3019,13 @@ function AdminView({ onPublish }) {
       wordBank={wordBank}
       allPuzzles={puzzles}
       onSave={handleSave}
-      onBack={()=>setTab("list")}/>
+      onBack={()=>{setLoading(true);setTab("list");}}/>
   );
 
   return (
     <div className="awrap">
       <div className="atabs">
-        <button className={`atab${tab==="list"?" on":""}`} onClick={()=>setTab("list")}>Puzzles</button>
+        <button className={`atab${tab==="list"?" on":""}`} onClick={()=>{setLoading(true);setTab("list");}}>Puzzles</button>
         <button className={`atab${tab==="unused"?" on":""}`} onClick={()=>setTab("unused")}>
           Unused{unused.length>0?` (${unused.length})`:""}
         </button>
@@ -3162,10 +3242,6 @@ const saveCompletion  = (id, data) => {
   saveLS("clover_completions", { ...all, [id]: data });
 };
 
-const loadUnused  = ()        => loadLS("clover_unused", []);
-const saveUnused  = (list)    => saveLS("clover_unused", list);
-const addToUnused = (puzzle)  => saveUnused([...loadUnused().filter(p=>p.id!==puzzle.id), {...puzzle, status:"unused"}]);
-
 const loadStats = () => normalizeStats(loadLS("clover_stats", DEFAULT_STATS));
 
 const updateStats = (won, livesUsed, difficulty) => {
@@ -3210,7 +3286,7 @@ function ArchiveView({ onPlay }) {
   const completions = loadCompletions();
   const today = new Date().toISOString().split("T")[0];
   const [allPuzzles, setAllPuzzles] = useState([]);
-  const [activeMonthKey, setActiveMonthKey] = useState("");
+  const [desiredMonthKey, setDesiredMonthKey] = useState("");
 
   useEffect(()=>{
     dbLoadAllPuzzles().then(rows=>{
@@ -3219,7 +3295,7 @@ function ArchiveView({ onPlay }) {
     }).catch(()=>{
       setAllPuzzles([]);
     });
-  },[]);
+  },[today]);
 
   const monthMap = useMemo(()=>{
     const map = new Map();
@@ -3236,13 +3312,11 @@ function ArchiveView({ onPlay }) {
     [monthMap]
   );
 
-  useEffect(()=>{
-    if(monthKeys.length && !monthKeys.includes(activeMonthKey)){
-      setActiveMonthKey(monthKeys[0]);
-    }
-  },[monthKeys, activeMonthKey]);
-
-  const activeMonthPuzzles = monthMap.get(activeMonthKey) || [];
+  const activeMonthKey = monthKeys.includes(desiredMonthKey) ? desiredMonthKey : (monthKeys[0] || "");
+  const activeMonthPuzzles = useMemo(
+    ()=>monthMap.get(activeMonthKey) || [],
+    [monthMap, activeMonthKey]
+  );
   const puzzleByDate = useMemo(
     ()=>new Map(activeMonthPuzzles.map(p=>[p.date,p])),
     [activeMonthPuzzles]
@@ -3298,7 +3372,7 @@ function ArchiveView({ onPlay }) {
               <button
                 type="button"
                 className="arch-navbtn"
-                onClick={()=>setActiveMonthKey(monthKeys[currentMonthIndex + 1] || activeMonthKey)}
+                onClick={()=>setDesiredMonthKey(monthKeys[currentMonthIndex + 1] || activeMonthKey)}
                 disabled={currentMonthIndex === monthKeys.length - 1}
                 aria-label="Previous month"
               >
@@ -3313,7 +3387,7 @@ function ArchiveView({ onPlay }) {
               <button
                 type="button"
                 className="arch-navbtn"
-                onClick={()=>setActiveMonthKey(monthKeys[currentMonthIndex - 1] || activeMonthKey)}
+                onClick={()=>setDesiredMonthKey(monthKeys[currentMonthIndex - 1] || activeMonthKey)}
                 disabled={currentMonthIndex <= 0}
                 aria-label="Next month"
               >
@@ -3372,10 +3446,10 @@ function ArchiveView({ onPlay }) {
 // ═══════════════════════════════════════════════════════════════
 
 const DIFF_OPTIONS = [
-  { key:"easy",     icon:"🌙", name:"Easy",     desc:"4 cards, no extras" },
-  { key:"standard", icon:"🔮",  name:"Standard", desc:"4 cards + 1 extra" },
-  { key:"expert",   icon:"✨", name:"Expert",   desc:"4 cards + 2 extras" },
-  { key:"hardcore", icon:"🌑", name:"Hardcore", desc:"4 cards + 3 extras" },
+  { key:"easy",     icon:"✨", name:"Easy",         desc:"4 cards, no extras" },
+  { key:"standard", icon:"🌙", name:"Standard",    desc:"4 cards + 1 extra" },
+  { key:"expert",   icon:"🌕", name:"Expert",       desc:"4 cards + 2 extras" },
+  { key:"hardcore", icon:"🌑", name:"Hardcore",     desc:"4 cards + 3 extras" },
 ];
 
 const DIFF_RANK = { easy:0, standard:1, expert:2, hardcore:3 };
@@ -3431,7 +3505,6 @@ export default function App() {
   const [completions,setComps]   = useState(loadCompletions);
   const [showSettings,setShowSettings] = useState(false);
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
-  const [gameStarted,setGameStarted] = useState(false);
   const [lobbyDone,setLobbyDone]     = useState(false);
   const [resetCount,setResetCount]   = useState(0);
   const [forceFresh,setForceFresh]   = useState(false);
@@ -3442,10 +3515,8 @@ export default function App() {
     saveLS("clover_difficulty",d);
   },[]);
 
-  const handleGameStart = useCallback(()=>{ setGameStarted(true); },[]);
   const handleGameReset = useCallback(()=>{
     setLobbyDone(false);
-    setGameStarted(false);
     setResetCount(c=>c+1);
     setAdmireMode(false);
     // forceFresh stays as-is — if user chose Replay it stays true for subsequent resets
@@ -3474,9 +3545,6 @@ export default function App() {
 
   // Key only on puzzle id — difficulty changes mid-game should NOT reset the board
   const activePuzzleKey = activePuzzle.id;
-  useEffect(()=>setGameStarted(false),[activePuzzleKey]);
-  // Reset lobby state when puzzle changes
-  useEffect(()=>{ setForceFresh(false); setLobbyDone(false); setResetCount(0); setAdmireMode(false); },[activePuzzle.id]);
 
   const isArchivePlay = view==="game" && archivePuzzle && archivePuzzle.id !== todayPuzzle.id;
 
@@ -3524,7 +3592,7 @@ export default function App() {
       {view==="game" && isArchivePlay && (
         <div className="playing-banner">
           <span>📅 Playing: {activePuzzle.title} · {activePuzzle.date}</span>
-          <button onClick={()=>{setAP(null);}}>Today's puzzle</button>
+          <button onClick={()=>{setAP(null);setForceFresh(false);setAdmireMode(false);setLobbyDone(false);setResetCount(0);}}>Today's puzzle</button>
         </div>
       )}
 
@@ -3540,7 +3608,7 @@ export default function App() {
               completedData={completedData||null}
               onAdmire={()=>{ setAdmireMode(true); setLobbyDone(true); }}
             />
-          : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onGameStart={handleGameStart} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
+          : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
       })()}
       {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive}/>}
       {view==="admin"  && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
