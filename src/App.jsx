@@ -514,6 +514,72 @@ body::before{
   transition:all .15s;letter-spacing:.08em;text-transform:uppercase}
 .sovr-btn:hover{background:rgba(139,92,246,.3);box-shadow:0 0 22px rgba(139,92,246,.32)}
 
+/* Tutorial */
+.tut-ovr{position:fixed;inset:0;z-index:220;background:rgba(5,2,18,.78);
+  display:flex;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(14px)}
+.tut-card{width:100%;max-width:360px;background:linear-gradient(180deg, rgba(27,14,61,.97), rgba(16,8,38,.98));
+  border:1px solid rgba(139,92,246,.28);border-radius:24px;padding:20px 18px 18px;
+  display:flex;flex-direction:column;height:min(760px, calc(100dvh - 36px));max-height:calc(100dvh - 36px);
+  box-shadow:0 24px 60px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.08)}
+.tut-card .game{width:100%;height:100%;min-height:0;align-items:stretch}
+.tut-card .play-fit-outer{flex:1;min-height:0}
+.tut-card .play-fit-inner.tutorial-layout{height:100%;min-height:100%}
+.tutorial-copy-wrap{width:100%;height:132px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.tutorial-controls-wrap{margin-top:auto;width:100%;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 10px}
+.tut-step{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(228,211,255,.72);margin-bottom:8px}
+.tut-title{font-family:var(--fc);font-size:24px;font-weight:700;letter-spacing:.03em;color:#f5e9ff;margin-bottom:10px}
+.tut-body{font-size:14px;line-height:1.55;color:rgba(236,227,255,.88);margin-bottom:14px}
+.tut-note{font-size:12px;line-height:1.5;color:rgba(231,217,255,.72);margin-bottom:12px}
+.tut-board-wrap{display:flex;justify-content:center;margin:6px 0 14px}
+.tut-board{--cs:90px;--cg:8px;transform:scale(.96);transform-origin:top center}
+.tut-clue{display:flex;align-items:center;justify-content:center;font-family:var(--fc);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#f5e9ff;border-radius:999px;
+  background:rgba(72,35,175,.88);border:1px solid rgba(150,110,255,.42);box-shadow:0 0 18px rgba(90,50,210,.38)}
+.tut-clue.top,.tut-clue.bottom{width:calc(2*var(--cs) + var(--cg) + 18px);height:34px}
+.tut-clue.left,.tut-clue.right{width:34px;height:calc(2*var(--cs) + var(--cg) + 18px);writing-mode:vertical-rl}
+.tut-clue.left{transform:rotate(180deg)}
+.tut-board-row{display:flex;align-items:center;gap:10px}
+.tut-board-col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.tut-slot{position:relative;width:var(--cs);height:var(--cs);border-radius:14px;transition:opacity .18s ease,filter .18s ease,transform .18s ease}
+.tut-slot.dim{opacity:.62;filter:saturate(.86)}
+.tut-slot.expected::after{content:"";position:absolute;inset:-5px;border:2px dashed rgba(255,215,0,.78);border-radius:18px;pointer-events:none}
+.tut-clue-shell{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:opacity .18s ease,filter .18s ease}
+.tut-clue-shell.dim{opacity:1;filter:none}
+.tut-clue-shell.on{filter:drop-shadow(0 0 16px rgba(168,116,255,.38))}
+.tut-card-selected{box-shadow:0 0 0 2px rgba(255,215,0,.8),0 0 18px rgba(255,215,0,.32)}
+.tut-msg{font-size:17px;line-height:1.45;color:rgba(236,227,255,.96);text-align:center;margin-bottom:12px;min-height:56px;font-weight:500}
+.tut-msg strong{font-weight:800;color:#fff}
+.tut-controls{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
+.tut-nav{z-index:18;width:100%;display:flex;flex-direction:column;align-items:center;gap:10px}
+.tut-next-row{width:100%;display:flex;justify-content:center}
+.tut-footer-bar{width:100%;display:flex;align-items:center;justify-content:space-between}
+.tut-footer-bar.done{justify-content:center}
+.tut-dots{display:flex;gap:10px;justify-content:flex-start}
+.tut-dots.done{display:none}
+.tut-dot{width:12px;height:12px;border-radius:50%;background:rgba(223,200,255,.18)}
+.tut-dot.on{background:var(--purple-bright);box-shadow:0 0 10px rgba(196,181,253,.5)}
+.tut-actions{display:flex;justify-content:flex-end}
+.tut-actions.done{justify-content:center}
+.tut-actions .abtn.sm{font-size:16px;padding:12px 20px;border-radius:16px}
+.tut-next-row .abtn{
+  font-size:34px;
+  font-family:var(--fu);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.05em;
+  height:64px;
+  min-width:150px;
+  padding:0 28px;
+  border-radius:999px;
+  box-shadow:0 10px 24px rgba(124,77,255,.28)
+}
+.tut-next-row .sbtn-wrap{width:auto;padding:0;margin:0}
+.tut-next-row .sbtn{width:auto;min-width:170px;padding:18px 32px;border-radius:999px}
+.tut-open{width:100%;max-width:280px;margin-top:10px;padding:11px 14px;border-radius:12px;
+  border:1px solid rgba(139,92,246,.42);background:rgba(24,12,58,.92);color:var(--purple-bright);
+  font-family:var(--fu);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.tut-open:hover{border-color:rgba(139,92,246,.65);background:rgba(35,18,85,.94)}
+
 /* Lives */
 .lives{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:600}
 .life{display:flex;align-items:center;justify-content:center;width:24px;height:24px;line-height:1;transition:all .2s}
@@ -1277,7 +1343,7 @@ const CLOUD_VERTICAL_ASSET = "/assets/cloud-horizontal.png";
 const STAR_LIFE_ASSET = "/assets/star-life.png";
 const CELEBRATION_PARTICLES = ['🔮','✨','⭐','🌟','💫','✨','🔮','⭐','💫','🌟','✨','🔮'];
 
-function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8, textAnimClass="" }) {
+function CloudH({ text, animClass, artRotation=0, artOpacity=0.92, artTranslateY=-8, textShiftX=0, textShiftY=-8, textAnimClass="" }) {
   return (
     <div className={`cloud-wrap cloud-h ${animClass||""}`} style={{
       position:"relative",display:"flex",alignItems:"center",justifyContent:"center"
@@ -1288,8 +1354,8 @@ function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8, t
         backgroundPosition:"center top",
         backgroundRepeat:"no-repeat",
         backgroundSize:"contain",
-        opacity:0.92,
-        transform:`translateY(-8px) rotate(${artRotation}deg)`
+        opacity:artOpacity,
+        transform:`translateY(${artTranslateY}px) rotate(${artRotation}deg)`
       }}/>
       <span className={`cloud-label ${textAnimClass}`.trim()} style={{
         position:"relative",zIndex:1,
@@ -1304,7 +1370,7 @@ function CloudH({ text, animClass, artRotation=0, textShiftX=0, textShiftY=-8, t
   );
 }
 
-function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, textShiftY=0, textAnimClass="" }) {
+function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, textShiftY=0, textAnimClass="", artOpacity=0.92 }) {
   return (
     <div className={`cloud-wrap cloud-v ${animClass||""}`} style={{
       position:"relative",display:"flex",alignItems:"center",justifyContent:"center"
@@ -1318,7 +1384,7 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
         backgroundPosition:"center",
         backgroundRepeat:"no-repeat",
         backgroundSize:"contain",
-        opacity:0.92
+        opacity:artOpacity
       }}/>
       <span className={`cloud-label ${textAnimClass}`.trim()} style={{
         position:"relative",zIndex:1,
@@ -1537,11 +1603,112 @@ function StatsOverlay({ lost, livesUsed, stats, onClose, onShare, copied, diffic
   );
 }
 
+const TUTORIAL_PUZZLE = {
+  id:"tutorial-001",
+  title:"Tutorial",
+  status:"published",
+  date:"2000-01-01",
+  author:"",
+  clues:["SPACE","BARNEY","CHEESE","FROZEN"],
+  cards:{
+    t1:{id:"t1",words:["MOON","SCIENCE","DOG","ICE"]},
+    t2:{id:"t2",words:["STAR","DINOSAUR","HOUSE","SANTA"]},
+    t3:{id:"t3",words:["LETTER","FIRE","PIZZA","PRINCESS"]},
+    t4:{id:"t4",words:["MAFIA","PURPLE","MOUSE","PAN"]},
+  },
+  solution:{slotCards:["t1","t2","t4","t3"],orientations:[0,0,0,0],extraCards:[]},
+};
+
+const TUTORIAL_INITIAL_SLOTS = [
+  { cardId:"t2", orientation:1 },
+  { cardId:"t1", orientation:0 },
+  { cardId:"t3", orientation:1 },
+  { cardId:"t4", orientation:1 },
+];
+
+const TUTORIAL_FINAL_SUCCESS =
+  "Beautiful. You solved the practice board. Go play today's puzzle! New puzzles are uploaded every day.";
+
+function renderTutorialCopy(text){
+  if(!text) return "";
+  const parts = String(text).split("**");
+  return parts.map((part, index)=>(
+    index % 2 === 1 ? <strong key={`tut-copy-${index}`}>{part}</strong> : <span key={`tut-copy-${index}`}>{part}</span>
+  ));
+}
+
+const TUTORIAL_FLOW = [
+  {
+    step:"",
+    title:"How To Play",
+    body:"Place the correct 4 cards in the crystal ball. Each cloud clue connects to the 2 words facing it. Both words must work.",
+    highlightedSlots:[],
+    highlightedClues:[0,1,2,3],
+    allowTapSlots:[],
+    allowDragPairs:[],
+  },
+  {
+    step:"",
+    title:"Drag And Drop",
+    body:"Pick up the top-right card and place it so that **Ice** is facing **Frozen**, and **Moon** is facing **Space**.",
+    highlightedSlots:[0,1],
+    dimmedSlots:[2,3],
+    highlightedClues:[0,1,3],
+    allowTapSlots:[],
+    allowDragPairs:[[0,1]],
+  },
+  {
+    step:"",
+    title:"Rotating Cards",
+    body:"Tap the top-right card until **Star** is facing **Space**, and **Dinosaur** is facing **Barney**.",
+    highlightedSlots:[1],
+    dimmedSlots:[0,2,3],
+    highlightedClues:[0,1,3],
+    allowTapSlots:[1],
+    allowDragPairs:[],
+  },
+  {
+    step:"",
+    title:"Solve The Rest",
+    body:"Amazing! Now solve the bottom two using what you've learned. Good luck! Press **Submit** when you think you have the right answer.",
+    highlightedSlots:[2,3],
+    highlightedClues:[1,2,3],
+    allowTapSlots:[2,3],
+    allowDragPairs:[[2,3]],
+  },
+  {
+    step:"",
+    title:"Tutorial Complete",
+    body:"That’s the loop: rotate for perspective, move cards into place, then submit.",
+    highlightedSlots:[0,1,2,3],
+    highlightedClues:[0,1,2,3],
+    allowTapSlots:[],
+    allowDragPairs:[],
+  },
+];
+
+function TutorialPracticeOverlay({ onClose }) {
+  return (
+    <div className="tut-ovr" onClick={onClose}>
+      <div className="tut-card" onClick={e=>e.stopPropagation()} style={{maxWidth:392,padding:"18px 14px 14px"}}>
+        <GameView
+          puzzle={TUTORIAL_PUZZLE}
+          forceFresh
+          admireMode={false}
+          difficulty="easy"
+          tutorialConfig={{ initialSlots:TUTORIAL_INITIAL_SLOTS, steps:TUTORIAL_FLOW }}
+          onTutorialClose={onClose}
+        />
+      </div>
+    </div>
+  );
+}
+
 // ═══════════════════════════════════════════════════════════════
 //  PUZZLE LOBBY — shown before game starts
 // ═══════════════════════════════════════════════════════════════
 
-function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, completedData, onAdmire }) {
+function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, completedData, onAdmire, onOpenTutorial }) {
   const d = new Date(puzzle.date + "T12:00:00");
   const dateStr = d.toLocaleDateString("en-US", { weekday:"long", month:"long", day:"numeric" });
   const [showReplay, setShowReplay] = useState(false);
@@ -1678,6 +1845,7 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
       <button className="lobby-start" type="button"
         onPointerDown={handleTouchButton(onStart)}
         onClick={handleClickAfterTouch(onStart)}>Start Puzzle</button>
+      <button className="tut-open" type="button" onClick={onOpenTutorial}>How To Play</button>
       {completedData && (
         <button style={{marginTop:8,background:"none",border:"none",color:"var(--muted)",
           fontSize:12,fontWeight:500,cursor:"pointer",textDecoration:"underline"}}
@@ -1693,11 +1861,24 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
 //  GAME VIEW
 // ═══════════════════════════════════════════════════════════════
 
-function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forceFresh=false, admireMode=false, difficulty="hardcore" }) {
+function GameView({
+  puzzle,
+  onSolved,
+  completions={},
+  onGameStart,
+  onReset,
+  forceFresh=false,
+  admireMode=false,
+  difficulty="hardcore",
+  tutorialConfig=null,
+  onTutorialClose,
+}) {
   // Puzzles always have exactly 3 extra cards stored in solution.extraCards
   // Difficulty controls how many the player SEES (removed from end: #3 first, then #2, then #1)
   const numExtra = DIFFICULTY_EXTRA[difficulty] ?? 3;
   const totalSlots = 4 + numExtra;
+  const tutorialActive = !!tutorialConfig;
+  const tutorialSteps = tutorialConfig?.steps || [];
 
   // Get the fixed ordered extra cards from the puzzle
   const extraCardIds = puzzle.solution.extraCards || 
@@ -1707,6 +1888,9 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const visibleExtraIds = extraCardIds.slice(0, numExtra);
 
   const initSlots = useCallback(()=>{
+    if(tutorialActive){
+      return (tutorialConfig?.initialSlots || []).map(slot=>({ ...slot }));
+    }
     if(admireMode){
       return puzzle.solution.slotCards.map((cardId,i)=>({
         cardId, orientation: puzzle.solution.orientations[i]
@@ -1716,11 +1900,11 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     // Use the fixed visible extras (ordered, not random)
     const chosen = [...solCards, ...visibleExtraIds];
     return biasedShuffle(chosen, puzzle.solution);
-  },[admireMode, puzzle.solution, visibleExtraIds]);
+  },[admireMode, puzzle.solution, tutorialActive, tutorialConfig?.initialSlots, visibleExtraIds]);
 
-  const alreadySolved = admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
+  const alreadySolved = tutorialActive ? false : admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
   const progressKey = `clover_progress_${puzzle.id}`;
-  const savedProgress = (!admireMode && !alreadySolved && !forceFresh)
+  const savedProgress = (!tutorialActive && !admireMode && !alreadySolved && !forceFresh)
     ? loadLS(progressKey, null)
     : null;
   const canRestoreProgress = !!savedProgress &&
@@ -1746,10 +1930,10 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const [dragOver,setDragOver] = useState(null);
   const [feedback,setFeedback]       = useState(admireMode ? "The vision is clear 🔮" : alreadySolved?"Already revealed — well done!":"");
   const [feedbackFading,setFbFading] = useState(false);
-  const [solved,setSolved]   = useState(()=> alreadySolved || !!savedProgress?.solved);
+  const [solved,setSolved]   = useState(()=> tutorialActive ? false : alreadySolved || !!savedProgress?.solved);
   const [lost,setLost]       = useState(()=> !!savedProgress?.lost);
-  const [lives,setLives]     = useState(()=> savedProgress?.lives ?? MAX_LIVES);
-  const [guessHistory,setGuessHistory] = useState(()=> savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
+  const [lives,setLives]     = useState(()=> tutorialActive ? MAX_LIVES : savedProgress?.lives ?? MAX_LIVES);
+  const [guessHistory,setGuessHistory] = useState(()=> tutorialActive ? [] : savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
   const [showOvr,setShowOvr] = useState(false);
   const [copied,setCopied]   = useState(false);
   const [stats,setStats]     = useState(loadStats);
@@ -1766,6 +1950,9 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const [tutorialStepIndex,setTutorialStepIndex] = useState(0);
+  const [tutorialReadyForNext,setTutorialReadyForNext] = useState(()=>tutorialActive);
+  const [tutorialComplete,setTutorialComplete] = useState(false);
 
   useEffect(()=>{
     const updateViewportSize = () => {
@@ -1836,6 +2023,74 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     transform:`scale(${playScale})`,
     marginBottom: playScale < 1 ? `${-1 * Math.max(0, (1 - playScale) * 260)}px` : "0px",
   }),[playScale]);
+
+  const tutorialStep = tutorialActive ? tutorialSteps[tutorialStepIndex] : null;
+  const tutorialHighlightedSlots = tutorialStep?.highlightedSlots || [];
+  const tutorialHighlightedClues = tutorialStep?.highlightedClues || [];
+  const tutorialAllowTapSlots = tutorialStep?.allowTapSlots || [];
+  const tutorialAllowDragPairs = tutorialStep?.allowDragPairs || [];
+  const tutorialPairAllowed = useCallback((from,to)=>
+    tutorialAllowDragPairs.some(([a,b])=>(a===from && b===to) || (a===to && b===from))
+  ,[tutorialAllowDragPairs]);
+  const tutorialSlotMatchesSolution = useCallback((slotIndex)=>
+    slots[slotIndex]?.cardId === puzzle.solution.slotCards[slotIndex] &&
+    slots[slotIndex]?.orientation === puzzle.solution.orientations[slotIndex]
+  ,[slots, puzzle.solution.orientations, puzzle.solution.slotCards]);
+
+  useEffect(()=>{
+    if(tutorialActive) setFeedback("");
+  },[tutorialActive]);
+
+  const handleTutorialNext = useCallback(()=>{
+    if(!tutorialActive || !tutorialReadyForNext) return;
+    if(tutorialStepIndex === 0){
+      setTutorialStepIndex(1);
+      setTutorialReadyForNext(false);
+      setFeedback("");
+      return;
+    }
+    if(tutorialStepIndex === 1){
+      setTutorialStepIndex(2);
+      setTutorialReadyForNext(false);
+      setFeedback("Tap the top-right card until **Star** is facing **Space**, and **Dinosaur** is facing **Barney**.");
+      return;
+    }
+    if(tutorialStepIndex === 2){
+      setTutorialStepIndex(3);
+      setTutorialReadyForNext(false);
+      setFeedback("");
+    }
+  },[tutorialActive, tutorialReadyForNext, tutorialStepIndex]);
+
+  useEffect(()=>{
+    if(!tutorialActive || tutorialComplete) return;
+    const topSwapped =
+      slots[0]?.cardId === puzzle.solution.slotCards[0] &&
+      slots[0]?.orientation === puzzle.solution.orientations[0] &&
+      slots[1]?.cardId === puzzle.solution.slotCards[1];
+    const topSolved = [0,1].every(tutorialSlotMatchesSolution);
+    if(tutorialStepIndex === 1 && topSwapped && !tutorialReadyForNext){
+      setLocked(prev => new Set([...prev, 0]));
+      setTutorialReadyForNext(true);
+      setFeedback("Perfect! That card is green which means it's correct.");
+      return;
+    }
+    if(tutorialStepIndex === 2 && topSolved && !tutorialReadyForNext){
+      setLocked(prev => new Set([...prev, 0, 1]));
+      setTutorialReadyForNext(true);
+      setFeedback("Perfect! The top row is solved.");
+      return;
+    }
+  },[
+    tutorialActive,
+    tutorialComplete,
+    tutorialReadyForNext,
+    tutorialSlotMatchesSolution,
+    tutorialStepIndex,
+    slots,
+    puzzle.solution.orientations,
+    puzzle.solution.slotCards,
+  ]);
 
   // Web Audio victory fanfare — leprechaun-y ascending arpeggio
   const playVictorySound = useCallback(()=>{
@@ -1957,7 +2212,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const [showRepeatWarning, setShowRepeatWarning] = useState(false);
   const repeatWarnTimer = useRef(null);
   useEffect(()=>{
-    if(admireMode || alreadySolved || solved){
+    if(tutorialActive || admireMode || alreadySolved || solved){
       removeLS(progressKey);
       return;
     }
@@ -1976,7 +2231,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       solved,
     });
   },[
-    admireMode, alreadySolved, solved, isDragging, revealPhase, rotateAnimating,
+    tutorialActive, admireMode, alreadySolved, solved, isDragging, revealPhase, rotateAnimating,
     progressKey, puzzle.id, totalSlots, slots, clues, locked, wrong, knownBad,
     lives, guessHistory, lost
   ]);
@@ -2002,9 +2257,20 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   },[totalSlots,locked]);
 
   const handlePD = useCallback((e,si)=>{
-    if(locked.has(si) || lost) return;
+    if(locked.has(si) || lost || tutorialComplete) return;
+    if(tutorialActive && tutorialStepIndex === 0){
+      return;
+    }
+    if(tutorialActive && tutorialReadyForNext){
+      return;
+    }
     const s=slots[si]; if(!s) return;
     const card=puzzle.cards[s.cardId]; if(!card) return;
+    const tutorialCanTap = !tutorialActive || tutorialAllowTapSlots.includes(si);
+    const tutorialCanDragFrom = !tutorialActive || tutorialAllowDragPairs.some(([a,b])=>a===si || b===si);
+    if(tutorialActive && !tutorialCanTap && !tutorialCanDragFrom){
+      return;
+    }
     e.preventDefault(); e.stopPropagation();
     const el=slotRefs.current[si];
     const sz=el?el.getBoundingClientRect().width:100;
@@ -2016,6 +2282,9 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       ev.preventDefault();
       const dx=ev.clientX-dragRef.current.x0, dy=ev.clientY-dragRef.current.y0;
       if(!dragRef.current.moved && Math.sqrt(dx*dx+dy*dy)>8){
+        if(tutorialActive && !tutorialCanDragFrom){
+          return;
+        }
         dragRef.current.moved=true;
         setIsDragging(true);
         if(SHOW_DRAG_GHOST){
@@ -2026,7 +2295,8 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         if(SHOW_DRAG_GHOST){
           setGhost(g=>g?{...g,x:ev.clientX,y:ev.clientY}:null);
         }
-        setDragOver(getSlotAt(ev.clientX,ev.clientY,si));
+        const hoverTarget = getSlotAt(ev.clientX,ev.clientY,si);
+        setDragOver(tutorialActive && hoverTarget >= 0 && !tutorialPairAllowed(si, hoverTarget) ? -1 : hoverTarget);
       }
     };
     const onUp=ev=>{
@@ -2037,10 +2307,16 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       if(!dr) return;
       if(!dr.moved){
         // Pure tap — rotate in place, no ghost was ever shown
+        if(tutorialActive && !tutorialCanTap){
+          return;
+        }
+        if(tutorialActive && tutorialStepIndex === 3){
+          setWrong(prev=>{const next=new Set(prev);next.delete(si);return next;});
+        }
         setSlots(p=>{const n=[...p];n[si]={...n[si],orientation:(n[si].orientation+1)%4};return n;});
       } else {
         const tgt=getSlotAt(ev.clientX,ev.clientY,si);
-        if(tgt>=0){
+        if(tgt>=0 && (!tutorialActive || tutorialPairAllowed(si, tgt))){
           setSlots(p=>{const n=[...p];[n[si],n[tgt]]=[n[tgt],n[si]];return n;});
           setWrong(p=>{const s=new Set(p);s.delete(si);s.delete(tgt);return s;});
           setSwapPopping(new Set([si,tgt]));
@@ -2051,9 +2327,13 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     };
     document.addEventListener("pointermove",onMove,{passive:false});
     document.addEventListener("pointerup",onUp);
-  },[slots,locked,lost,puzzle,getSlotAt]);
+  },[
+    slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
+    tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext
+  ]);
 
   const handleRotate = useCallback(()=>{
+    if(tutorialActive) return;
     if(rotateAnimating) return;
     setRotateAnimating(true);
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
@@ -2067,7 +2347,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       setWrong(new Set());
       setRotateAnimating(false);
     }, 240);
-  },[rotateAnimating]);
+  },[rotateAnimating, tutorialActive]);
 
   const prevDifficultyRef = useRef(puzzle.difficulty);
 
@@ -2112,6 +2392,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   },[puzzle.difficulty, puzzle.solution.slotCards, locked, fadeFeedback]);
 
   const handleShuffle = useCallback(()=>{
+    if(tutorialActive) return;
     const free=Array.from({length:totalSlots},(_,i)=>i).filter(i=>!locked.has(i));
     if(free.length<2) return;
     setSpinning(new Set(free));
@@ -2126,9 +2407,10 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
       });
       setWrong(new Set()); setSpinning(new Set());
     },440);
-  },[totalSlots,locked]);
+  },[totalSlots,locked,tutorialActive]);
 
   const handleReset = useCallback(()=>{
+    if(tutorialActive) return;
     setSlots(initSlots()); setClues([...puzzle.clues]);
     setLocked(new Set()); setWrong(new Set()); setKnownBad(new Map());
     setRevealPhase(null); setRevealColors({}); setShowParticles(false); setFlipReveal({});
@@ -2136,9 +2418,36 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     setLives(MAX_LIVES); setGuessHistory([]);
     setShowOvr(false); setCopied(false);
     onReset?.();
-  },[initSlots,puzzle,onReset]);
+  },[initSlots,puzzle,onReset,tutorialActive]);
 
   const handleSubmit = useCallback(()=>{
+    if(tutorialActive){
+      if(tutorialStepIndex !== 3 || tutorialComplete) return;
+      const res=bestSubmit(slots.slice(0,4),puzzle.solution,locked,clues,puzzle.clues);
+      const nextLocked = new Set([...locked, ...res.correct]);
+      setKnownBad(prev=>{
+        const next=new Map(prev);
+        res.wrong.forEach(si=>{
+          const s=slots[si]; if(!s) return;
+          const k=badKey(s);
+          if(!next.has(si)) next.set(si,new Set());
+          next.get(si).add(k);
+        });
+        return next;
+      });
+      setLocked(nextLocked);
+      setWrong(res.wrong);
+      if(res.correct.size===4){
+        setLocked(new Set([0,1,2,3]));
+        setTutorialComplete(true);
+        setTutorialReadyForNext(false);
+        setTutorialStepIndex(Math.max(0, tutorialSteps.length - 1));
+        setFeedback(TUTORIAL_FINAL_SUCCESS);
+      } else {
+        setFeedback("Not quite. Adjust the red cards and tap Submit again.");
+      }
+      return;
+    }
     if(solved || lost || revealPhase) return;
     if(repeatedBad.size > 0){ setShowRepeatWarning(true); return; }
     onGameStart?.();
@@ -2311,7 +2620,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         }, idx * 160);
       });
     }, 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart]);
+  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart,tutorialActive]);
 
   const renderSlot = useCallback(si=>{
     const s=slots[si];
@@ -2325,6 +2634,8 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
     const isRevealGreen = inReveal && revealColor==='green';
     const isRevealRed = inReveal && revealColor==='red';
     const flipPhase = flipReveal[si]; // 'down' | 'up' | undefined
+    const tutorialExpected = tutorialActive && tutorialHighlightedSlots.includes(si);
+    const tutorialDim = tutorialActive && !tutorialComplete && !isLocked && tutorialHighlightedSlots.length > 0 && !tutorialHighlightedSlots.includes(si);
 
     let extraCls = '';
     if(isRevealGrey)  extraCls=' reveal-grey reveal-shaking';
@@ -2338,7 +2649,7 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
 
     return (
       <div key={si} ref={el=>slotRefs.current[si]=el}
-        className={`cslot${dragOver===si?" over":""}${isDragging && dragSrc===si?" source":""}${!card?" empty":""}`}>
+        className={`cslot${tutorialActive?" tut-slot":""}${tutorialExpected?" expected":""}${tutorialDim?" dim":""}${dragOver===si?" over":""}${isDragging && dragSrc===si?" source":""}${!card?" empty":""}`}>
         {card&&<CardTile
           key={isWrong ? `${si}-shake-${shakeKey}` : si}
           card={card} orientation={s.orientation}
@@ -2355,9 +2666,43 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
           onPointerDown={e=>handlePD(e,si)}/>}
       </div>
     );
-  },[slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,isDragging,dragSrc,spinning,swapPopping,rotateAnimating,dragOver,handlePD]);
+  },[
+    slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,
+    isDragging,dragSrc,spinning,swapPopping,rotateAnimating,dragOver,handlePD,
+    tutorialActive,tutorialHighlightedSlots,tutorialComplete
+  ]);
 
   // Victory particles — leprechaun coins and rainbows
+  const renderTutorialClue = useCallback((index, pos)=>{
+    const highlighted = tutorialHighlightedClues.includes(index);
+    const dimmed = tutorialActive && !tutorialComplete && tutorialHighlightedClues.length > 0 && !highlighted;
+    const cls = `tut-clue-shell${highlighted ? " on" : ""}${dimmed ? " dim" : ""}`;
+    if(index === 0){
+      return (
+        <div className={cls} style={{transform:"translateY(18px)"}}>
+          <CloudH text={clues[index] || ""} artOpacity={1} textShiftX={10} textShiftY={-14} />
+        </div>
+      );
+    }
+    if(index === 2){
+      return (
+        <div className={cls} style={{position:"relative", zIndex:7, transform:"translateY(28px)"}}>
+          <CloudH text={clues[index] || ""} artOpacity={1} artTranslateY={-14} textShiftX={10} textShiftY={-24} />
+        </div>
+      );
+    }
+    return (
+      <div className={cls} style={{transform: pos === "lft" ? "translateX(14px)" : "translateX(-2px)"}}>
+        <CloudV
+          text={clues[index] || ""}
+          rotation={pos === "rgt" ? 90 : -90}
+          textRotation={pos === "rgt" ? 90 : -90}
+          artOpacity={1}
+        />
+      </div>
+    );
+  },[clues, tutorialActive, tutorialComplete, tutorialHighlightedClues]);
+
   const particles = useMemo(()=>showParticles ? Array.from({length:28},(_,i)=>({
     id:i,
     emoji: CELEBRATION_PARTICLES[i % CELEBRATION_PARTICLES.length],
@@ -2370,7 +2715,10 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
   const puzzleDate = new Date(puzzle.date + "T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});
   const diffLabel = DIFFICULTY_LABELS[difficulty] || difficulty;
   const isRevealing = !!revealPhase;
-  const gameOver = solved || lost;
+  const gameOver = tutorialActive ? tutorialComplete : solved || lost;
+  const tutorialMessage = tutorialComplete
+    ? TUTORIAL_FINAL_SUCCESS
+    : feedback || tutorialStep?.body || "";
 
   return (<>
     {showParticles && (
@@ -2385,7 +2733,15 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
         ))}
       </div>
     )}
-    <div className="game">
+      <div className="game">
+      {tutorialActive ? (
+          <div className="tutorial-copy-wrap">
+            <div className="tut-title" style={{fontSize:22, marginBottom:8}}>{tutorialStep?.title || "Practice Board"}</div>
+            <div className="tut-msg" style={{marginTop:0, marginBottom:10, minHeight:0}}>
+              {renderTutorialCopy(tutorialMessage)}
+            </div>
+          </div>
+      ) : (
       <div className="sbar">
         <span className="sdate">{puzzleDate}</span>
         {puzzle.author && <>
@@ -2412,11 +2768,48 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
             </span>
           ))}
         </div>
-      </div>
+      </div>)}
       <div ref={playFitOuterRef} className="play-fit-outer">
-        <div ref={playFitInnerRef} className="play-fit-inner" style={playAreaStyle}>
-          <Board clues={clues} renderSlot={renderSlot} compactLevel={compactLevel} cluesRotating={rotateAnimating}/>
-          <div style={{marginTop:compactLevel >= 2 ? 28 : compactLevel === 1 ? 38 : 52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px"}}>
+        <div ref={playFitInnerRef} className={`play-fit-inner${tutorialActive ? " tutorial-layout" : ""}`} style={playAreaStyle}>
+          <Board
+            clues={clues}
+            renderSlot={renderSlot}
+            renderClue={tutorialActive ? renderTutorialClue : undefined}
+            compactLevel={compactLevel}
+            cluesRotating={rotateAnimating}
+          />
+          <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:compactLevel >= 2 ? 28 : compactLevel === 1 ? 38 : 52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px"}}>
+            {tutorialActive ? (
+              <>
+                <div className="tut-nav">
+                  {(tutorialReadyForNext && !tutorialComplete) || (tutorialStepIndex === 3 && !tutorialComplete) ? (
+                    <div className="tut-next-row">
+                      {tutorialStepIndex === 3 && !tutorialComplete ? (
+                        <div className="sbtn-wrap">
+                          <button className="sbtn" onClick={handleSubmit}>
+                            Submit
+                          </button>
+                        </div>
+                      ) : (
+                        <button className="abtn p" onClick={handleTutorialNext}>Next</button>
+                      )}
+                    </div>
+                  ) : null}
+                  <div className={`tut-footer-bar${tutorialComplete ? " done" : ""}`}>
+                    <div className={`tut-dots${tutorialComplete ? " done" : ""}`}>
+                      {tutorialSteps.map((_, i)=><span key={i} className={`tut-dot${i===tutorialStepIndex ? " on" : ""}`} />)}
+                    </div>
+                    <div className={`tut-actions${tutorialComplete ? " done" : ""}`}>
+                      {!tutorialComplete && <button className="abtn s sm" onClick={onTutorialClose}>Skip</button>}
+                      {tutorialComplete && (
+                        <button className="abtn p sm" onClick={onTutorialClose}>Start Playing</button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
             <div className="extra">
         {numExtra>0 ? (
           <>
@@ -2468,6 +2861,8 @@ function GameView({ puzzle, onSolved, completions={}, onGameStart, onReset, forc
           {solved ? "✓ Solved!" : lost ? "No lives left" : admireMode ? "Gazing 🔮" : "Submit"}
         </button>
       </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -3875,6 +4270,7 @@ export default function App() {
   const [archivePuzzle,setAP]    = useState(null);
   const [completions,setComps]   = useState(loadCompletions);
   const [showSettings,setShowSettings] = useState(false);
+  const [showTutorial,setShowTutorial] = useState(()=>!loadLS("clover_tutorial_seen", false));
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
   const [lobbyDone,setLobbyDone]     = useState(false);
   const [resetCount,setResetCount]   = useState(0);
@@ -3895,6 +4291,12 @@ export default function App() {
 
   const [publishTick, setPublishTick] = useState(0);
   const [todayPuzzle, setTodayPuzzle] = useState(DEFAULT_PUZZLE);
+
+  const openTutorial = useCallback(()=>setShowTutorial(true),[]);
+  const closeTutorial = useCallback(()=>{
+    setShowTutorial(false);
+    saveLS("clover_tutorial_seen", true);
+  },[]);
 
   useEffect(()=>{
     dbLoadTodayPuzzle().then(p => {
@@ -3978,11 +4380,13 @@ export default function App() {
               onStart={()=>{ setForceFresh(true); setAdmireMode(false); setResetCount(c=>c+1); setLobbyDone(true); }}
               completedData={completedData||null}
               onAdmire={()=>{ setAdmireMode(true); setLobbyDone(true); }}
+              onOpenTutorial={openTutorial}
             />
           : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
       })()}
       {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive}/>}
       {view==="admin"  && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
+      {showTutorial && <TutorialPracticeOverlay onClose={closeTutorial} />}
 
       {showSettings && (
         <SettingsSheet
@@ -3995,3 +4399,5 @@ export default function App() {
     </div>
   );
 }
+
+
