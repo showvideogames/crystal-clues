@@ -8,6 +8,15 @@ import { seeded01, shuffleArr } from "./utils/random";
 const SUPABASE_URL = "https://qszqparrqyhegfznyaby.supabase.co";
 const SUPABASE_KEY = "sb_publishable_6-Apb1INDlRXfchxEY1GyQ_vKC7bEOD";
 
+const pad2 = (n) => String(n).padStart(2, "0");
+const getLocalISODate = (date = new Date()) =>
+  `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+const addLocalDays = (date, days) => {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
+  d.setDate(d.getDate() + days);
+  return d;
+};
+
 async function sbFetch(path, options={}) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     ...options,
@@ -28,7 +37,7 @@ async function sbFetch(path, options={}) {
 // clues/cards/solution are stored as JSONB
 
 async function dbLoadTodayPuzzle() {
-  const today = new Date().toISOString().split("T")[0];
+  const today = getLocalISODate();
   const rows = await sbFetch(`puzzles?date=eq.${today}&status=eq.published&limit=1`);
   return rows?.[0] || null;
 }
@@ -170,7 +179,7 @@ const vw = (card, orientation) =>
 
 const DEFAULT_PUZZLE = {
   id:"demo-001", title:"Elements", status:"published",
-  date: new Date().toISOString().split("T")[0],
+  date: getLocalISODate(),
   clues: ["HEAT","TALL","BLUE","WILD"],
   cards: {
     c1:{id:"c1",words:["BLAZE","RIVER","CAVE","WOLF"]},
@@ -562,7 +571,7 @@ body::before{
 .tut-actions.done{justify-content:center}
 .tut-actions .abtn.sm{font-size:16px;padding:12px 20px;border-radius:16px}
 .tut-next-row .abtn{
-  font-size:34px;
+  font-size:31px;
   font-family:var(--fu);
   font-weight:800;
   line-height:1;
@@ -571,8 +580,11 @@ body::before{
   min-width:150px;
   padding:0 28px;
   border-radius:999px;
-  box-shadow:0 10px 24px rgba(124,77,255,.28)
+  box-shadow:0 10px 24px rgba(124,77,255,.28);
+  transition:opacity .22s ease, transform .22s ease, box-shadow .15s ease
 }
+.tut-next-row .abtn.is-hidden{opacity:0;transform:translateY(6px);pointer-events:none}
+.tut-next-row .abtn.is-visible{opacity:1;transform:translateY(0)}
 .tut-next-row .sbtn-wrap{width:auto;padding:0;margin:0}
 .tut-next-row .sbtn{width:auto;min-width:170px;padding:18px 32px;border-radius:999px}
 .tut-open{width:100%;max-width:280px;margin-top:10px;padding:11px 14px;border-radius:12px;
@@ -936,6 +948,7 @@ body::before{
 .gear-btn:hover{color:var(--purple-bright);background:rgba(139,92,246,.15)}
 .gear-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;
   stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.help-btn{font-family:var(--fc);font-size:16px;font-weight:700;line-height:1}
 
 /* Archive */
 .arch{flex:1;display:flex;flex-direction:column;overflow:hidden;padding:14px 14px 18px}
@@ -1620,10 +1633,10 @@ const TUTORIAL_PUZZLE = {
 };
 
 const TUTORIAL_INITIAL_SLOTS = [
-  { cardId:"t2", orientation:1 },
+  { cardId:"t2", orientation:2 },
   { cardId:"t1", orientation:0 },
   { cardId:"t3", orientation:1 },
-  { cardId:"t4", orientation:1 },
+  { cardId:"t4", orientation:2 },
 ];
 
 const TUTORIAL_FINAL_SUCCESS =
@@ -1632,16 +1645,27 @@ const TUTORIAL_FINAL_SUCCESS =
 function renderTutorialCopy(text){
   if(!text) return "";
   const parts = String(text).split("**");
-  return parts.map((part, index)=>(
-    index % 2 === 1 ? <strong key={`tut-copy-${index}`}>{part}</strong> : <span key={`tut-copy-${index}`}>{part}</span>
-  ));
+  return parts.flatMap((part, index) => {
+    const lines = part.split("\n");
+    return lines.flatMap((line, lineIndex) => {
+      const nodes = [
+        index % 2 === 1
+          ? <strong key={`tut-copy-${index}-${lineIndex}`}>{line}</strong>
+          : <span key={`tut-copy-${index}-${lineIndex}`}>{line}</span>
+      ];
+      if(lineIndex < lines.length - 1){
+        nodes.push(<br key={`tut-copy-br-${index}-${lineIndex}`} />);
+      }
+      return nodes;
+    });
+  });
 }
 
 const TUTORIAL_FLOW = [
   {
     step:"",
     title:"How To Play",
-    body:"Place the correct 4 cards in the crystal ball. Each cloud clue connects to the 2 words facing it. Both words must work.",
+    body:"Place the correct 4 cards in the crystal ball. Each cloud clue connects to the 2 words facing it. Both words must work.\nTry to read the mind of the author.",
     highlightedSlots:[],
     highlightedClues:[0,1,2,3],
     allowTapSlots:[],
@@ -1669,8 +1693,8 @@ const TUTORIAL_FLOW = [
   },
   {
     step:"",
-    title:"Solve The Rest",
-    body:"Amazing! Now solve the bottom two using what you've learned. Good luck! Press **Submit** when you think you have the right answer.",
+    title:"Test Your Skills",
+    body:"Now solve the bottom row using what you've learned.\nPress **Submit** when you think you have the right answers.",
     highlightedSlots:[2,3],
     highlightedClues:[1,2,3],
     allowTapSlots:[2,3],
@@ -2078,7 +2102,7 @@ function GameView({
     if(tutorialStepIndex === 2 && topSolved && !tutorialReadyForNext){
       setLocked(prev => new Set([...prev, 0, 1]));
       setTutorialReadyForNext(true);
-      setFeedback("Perfect! The top row is solved.");
+      setFeedback("Amazing! The top row is solved.");
       return;
     }
   },[
@@ -2443,6 +2467,7 @@ function GameView({
         setTutorialReadyForNext(false);
         setTutorialStepIndex(Math.max(0, tutorialSteps.length - 1));
         setFeedback(TUTORIAL_FINAL_SUCCESS);
+        playVictorySound();
       } else {
         setFeedback("Not quite. Adjust the red cards and tap Submit again.");
       }
@@ -2780,22 +2805,27 @@ function GameView({
           />
           <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:compactLevel >= 2 ? 28 : compactLevel === 1 ? 38 : 52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px"}}>
             {tutorialActive ? (
-              <>
-                <div className="tut-nav">
-                  {(tutorialReadyForNext && !tutorialComplete) || (tutorialStepIndex === 3 && !tutorialComplete) ? (
-                    <div className="tut-next-row">
-                      {tutorialStepIndex === 3 && !tutorialComplete ? (
-                        <div className="sbtn-wrap">
-                          <button className="sbtn" onClick={handleSubmit}>
-                            Submit
+                <>
+                  <div className="tut-nav">
+                    {(tutorialStepIndex < 3 && !tutorialComplete) || (tutorialStepIndex === 3 && !tutorialComplete) ? (
+                      <div className="tut-next-row">
+                        {tutorialStepIndex === 3 && !tutorialComplete ? (
+                          <div className="sbtn-wrap">
+                            <button className="sbtn" onClick={handleSubmit}>
+                              Submit
+                            </button>
+                          </div>
+                        ) : (
+                          <button
+                            className={`abtn p ${tutorialStepIndex === 0 || tutorialReadyForNext ? "is-visible" : "is-hidden"}`}
+                            onClick={handleTutorialNext}
+                          >
+                            {tutorialStepIndex === 0 ? "Start" : "Next"}
                           </button>
-                        </div>
-                      ) : (
-                        <button className="abtn p" onClick={handleTutorialNext}>Next</button>
-                      )}
-                    </div>
-                  ) : null}
-                  <div className={`tut-footer-bar${tutorialComplete ? " done" : ""}`}>
+                        )}
+                      </div>
+                    ) : null}
+                    <div className={`tut-footer-bar${tutorialComplete ? " done" : ""}`}>
                     <div className={`tut-dots${tutorialComplete ? " done" : ""}`}>
                       {tutorialSteps.map((_, i)=><span key={i} className={`tut-dot${i===tutorialStepIndex ? " on" : ""}`} />)}
                     </div>
@@ -3100,7 +3130,7 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
 }
 
 function AdminDateCalendar({ selectedDate, occupancyByDate, onSelectDate }) {
-  const [visibleMonthKey, setVisibleMonthKey] = useState(() => (selectedDate || new Date().toISOString().split("T")[0]).slice(0,7));
+  const [visibleMonthKey, setVisibleMonthKey] = useState(() => (selectedDate || getLocalISODate()).slice(0,7));
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(()=>{
@@ -3115,7 +3145,7 @@ function AdminDateCalendar({ selectedDate, occupancyByDate, onSelectDate }) {
   const leadingEmpty = firstOfMonth.getDay();
   const trailingEmpty = (7 - ((leadingEmpty + daysInMonth) % 7)) % 7;
   const label = `${MONTHS_FULL[month - 1]} ${year}`;
-  const today = new Date().toISOString().split("T")[0];
+  const today = getLocalISODate();
   const selectedOccupancy = occupancyByDate[selectedDate] || "open";
 
   const shiftMonth = delta => {
@@ -3226,11 +3256,11 @@ function initAdminState(existing = null) {
   const cards={};
   ids.forEach(id=>cards[id]={id,words:["","","",""]});
   return {
-    id:`${Date.now()}`, title:"", status:"draft", author:"",
-    date:new Date().toISOString().split("T")[0],
-    clues:["","","",""],
-    cards,
-    slots:ids.map(id=>({cardId:id,orientation:0})),
+      id:`${Date.now()}`, title:"", status:"draft", author:"",
+    date:getLocalISODate(),
+      clues:["","","",""],
+      cards,
+      slots:ids.map(id=>({cardId:id,orientation:0})),
   };
 }
 
@@ -3928,8 +3958,7 @@ function AdminView({ onPublish }) {
 // ═══════════════════════════════════════════════════════════════
 
 function makePastDate(daysAgo) {
-  const d = new Date(); d.setDate(d.getDate() - daysAgo);
-  return d.toISOString().split("T")[0];
+  return getLocalISODate(addLocalDays(new Date(), -daysAgo));
 }
 
 const DEMO_ARCHIVE = [
@@ -4012,8 +4041,8 @@ const loadStats = () => normalizeStats(loadLS("clover_stats", DEFAULT_STATS));
 
 const updateStats = (won, livesUsed, difficulty) => {
   const s = loadStats();
-  const today = new Date().toISOString().split('T')[0];
-  const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+  const today = getLocalISODate();
+  const yesterday = getLocalISODate(addLocalDays(new Date(), -1));
   const newStreak = won
     ? (s.lastSolvedDate===yesterday || s.lastSolvedDate===today ? s.currentStreak+1 : 1)
     : 0;
@@ -4050,7 +4079,7 @@ const MONTHS_FULL = ["January","February","March","April","May","June","July","A
 
 function ArchiveView({ onPlay }) {
   const completions = loadCompletions();
-  const today = new Date().toISOString().split("T")[0];
+  const today = getLocalISODate();
   const [allPuzzles, setAllPuzzles] = useState([]);
   const [desiredMonthKey, setDesiredMonthKey] = useState("");
 
@@ -4270,7 +4299,7 @@ export default function App() {
   const [archivePuzzle,setAP]    = useState(null);
   const [completions,setComps]   = useState(loadCompletions);
   const [showSettings,setShowSettings] = useState(false);
-  const [showTutorial,setShowTutorial] = useState(()=>!loadLS("clover_tutorial_seen", false));
+  const [showTutorial,setShowTutorial] = useState(false);
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
   const [lobbyDone,setLobbyDone]     = useState(false);
   const [resetCount,setResetCount]   = useState(0);
@@ -4303,6 +4332,29 @@ export default function App() {
       if(p) setTodayPuzzle(p);
     }).catch(()=>{});
   },[publishTick]);
+
+  useEffect(()=>{
+    let midnightTimer;
+    const scheduleMidnightRefresh = () => {
+      const now = new Date();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 1, 0);
+      midnightTimer = window.setTimeout(() => {
+        setPublishTick(t=>t+1);
+        scheduleMidnightRefresh();
+      }, Math.max(1000, nextMidnight.getTime() - now.getTime()));
+    };
+    const handleVisibilityRefresh = () => {
+      if(document.visibilityState === "visible"){
+        setPublishTick(t=>t+1);
+      }
+    };
+    scheduleMidnightRefresh();
+    document.addEventListener("visibilitychange", handleVisibilityRefresh);
+    return () => {
+      if(midnightTimer) window.clearTimeout(midnightTimer);
+      document.removeEventListener("visibilitychange", handleVisibilityRefresh);
+    };
+  },[]);
 
   useEffect(()=>{
     const el=document.createElement("style");
@@ -4344,20 +4396,23 @@ export default function App() {
           <div className="logo-g">🔮</div>
           Crystal Clues
         </div>
-        <div className="nav">
-          <button className={`nbtn${view==="game"?" on":""}`}
-            onClick={()=>{setView("game"); if(!archivePuzzle||archivePuzzle.id===todayPuzzle.id) setAP(null);}}>
-            Play
-          </button>
-          <button className={`nbtn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}>
-            Archive
-          </button>
-          <button className={`nbtn${view==="admin"?" on":""}`} onClick={()=>setView("admin")}>
-            Admin
-          </button>
-          <button className="gear-btn" onClick={()=>setShowSettings(true)} title="Settings">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-          </button>
+          <div className="nav">
+            <button className={`nbtn${view==="game"?" on":""}`}
+              onClick={()=>{setView("game"); if(!archivePuzzle||archivePuzzle.id===todayPuzzle.id) setAP(null);}}>
+              Play
+            </button>
+            <button className={`nbtn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}>
+              Archive
+            </button>
+            <button className={`nbtn${view==="admin"?" on":""}`} onClick={()=>setView("admin")}>
+              Admin
+            </button>
+            <button className="gear-btn help-btn" onClick={openTutorial} title="How To Play" aria-label="How To Play">
+              ?
+            </button>
+            <button className="gear-btn" onClick={()=>setShowSettings(true)} title="Settings">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            </button>
         </div>
       </header>
 
