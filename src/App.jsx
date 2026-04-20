@@ -231,7 +231,7 @@ body::before{
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--fc);
   font-size:15px;line-height:1;font-weight:700;color:var(--gold);letter-spacing:.08em;flex-shrink:1;min-width:0;
   text-shadow:0 0 24px rgba(255,215,0,.45)}
-.logo-g{font-size:18px;line-height:1}
+.logo-g{font-size:22px;line-height:1}
 .nav{display:flex;gap:2px;align-items:center;flex-shrink:0}
 .nbtn{height:32px;padding:0 8px;border:1px solid transparent;background:transparent;
   display:inline-flex;align-items:center;justify-content:center;
@@ -555,7 +555,7 @@ body::before{
 .tut-clue.left{transform:rotate(180deg)}
 .tut-board-row{display:flex;align-items:center;gap:10px}
 .tut-board-col{display:flex;flex-direction:column;align-items:center;gap:10px}
-.tut-slot{position:relative;width:var(--cs);height:var(--cs);border-radius:14px;transition:opacity .18s ease,filter .18s ease,transform .18s ease}
+.tut-slot{position:relative;width:var(--cs);height:var(--cs);border-radius:14px;transition:opacity .18s ease,filter .18s ease}
 .tut-slot.dim{opacity:.62;filter:saturate(.86)}
 .tut-slot.expected::after{content:"";position:absolute;inset:-5px;border:2px dashed rgba(255,215,0,.78);border-radius:18px;pointer-events:none}
 .tut-clue-shell{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:opacity .18s ease,filter .18s ease}
@@ -880,24 +880,28 @@ body::before{
 
 /* ══ LOBBY ══ */
 .lobby{flex:1;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:24px 28px;gap:0;text-align:center}
-.lobby-icon{font-size:52px;margin-bottom:16px;line-height:1}
+  justify-content:center;padding:18px 28px;gap:0;text-align:center}
+.lobby-icon{font-size:48px;margin-bottom:10px;line-height:1}
 .lobby-title{font-family:var(--fc);font-size:22px;font-weight:700;
   color:var(--gold);letter-spacing:.06em;margin-bottom:4px;
   text-shadow:0 0 24px rgba(255,215,0,.38)}
-.lobby-date{font-size:21px;color:#fff;font-weight:700;line-height:1.2;margin-bottom:14px;
+.lobby-date{font-size:21px;color:#fff;font-weight:700;line-height:1.2;margin-bottom:10px;
   text-shadow:0 2px 18px rgba(255,255,255,.14)}
-.lobby-author{font-size:18px;color:rgba(255,255,255,.92);font-weight:600;margin-bottom:18px;line-height:1.2}
+.lobby-author{font-size:18px;color:rgba(255,255,255,.92);font-weight:600;margin-bottom:14px;line-height:1.2}
 .lobby-diff-label{font-size:16px;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:#fff;margin-bottom:12px;font-family:var(--fc);
+  text-transform:uppercase;color:#fff;margin-bottom:8px;font-family:var(--fc);
   text-shadow:0 2px 18px rgba(255,255,255,.12)}
-.lobby-diff-opts{display:flex;flex-direction:column;gap:7px;width:100%;max-width:280px;margin-bottom:28px}
-.lobby-diff-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;
+.lobby-diff-opts{display:flex;flex-direction:column;gap:6px;width:100%;max-width:280px;margin-bottom:20px}
+.lobby-diff-opt{position:relative;display:flex;align-items:center;gap:10px;padding:10px 14px;
   border-radius:12px;border:1px solid rgba(100,55,200,.35);background:rgba(18,10,45,.9);
   cursor:pointer;transition:all .15s;text-align:left;font-family:var(--fu);
   touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .lobby-diff-opt:hover{border-color:rgba(139,92,246,.6);background:rgba(35,18,85,.9)}
 .lobby-diff-opt.active{border-color:rgba(139,92,246,.7);background:rgba(45,22,105,.9)}
+.lobby-diff-opt.recommended{border-color:rgba(255,215,0,.72);box-shadow:0 0 0 1px rgba(255,215,0,.34),0 0 20px rgba(255,215,0,.16);padding-top:18px}
+.lobby-recommended-tag{position:absolute;top:4px;left:50%;transform:translateX(-50%);
+  font-family:var(--fc);font-size:8px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gold);text-shadow:0 0 10px rgba(255,215,0,.45);pointer-events:none}
 .lobby-diff-icon{font-size:18px;width:24px;text-align:center;flex-shrink:0}
 .lobby-diff-name{font-size:13px;font-weight:700;color:var(--text);flex:1}
 .lobby-diff-desc{font-size:11px;color:var(--muted)}
@@ -1860,11 +1864,12 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
         {DIFF_OPTIONS.map(opt => (
           <button
             key={opt.key}
-            className={`lobby-diff-opt${difficulty===opt.key?" active":""}`}
+            className={`lobby-diff-opt${difficulty===opt.key?" active":""}${opt.key==="standard"?" recommended":""}`}
             type="button"
             onPointerDown={handleTouchButton(()=>handleDifficultyPress(opt.key))}
             onClick={handleClickAfterTouch(()=>handleDifficultyPress(opt.key))}
           >
+            {opt.key==="standard" && <span className="lobby-recommended-tag">Recommended</span>}
             <span className="lobby-diff-icon">{opt.icon}</span>
             <span className="lobby-diff-name">{opt.name}</span>
             <span className="lobby-diff-desc">{opt.desc}</span>
@@ -2034,6 +2039,7 @@ function GameView({
         const naturalHeight = inner.scrollHeight;
         const naturalWidth = inner.scrollWidth;
         if(!availableHeight || !availableWidth || !naturalHeight || !naturalWidth) return;
+        if(tutorialActive && (isDragging || swapPopping.size > 0 || tapRotating.size > 0)) return;
         const nextScale = Math.min(1, (availableHeight - 4) / naturalHeight, (availableWidth - 4) / naturalWidth);
         setPlayScale(prev => Math.abs(prev - nextScale) > 0.01 ? nextScale : prev);
       });
@@ -2054,7 +2060,7 @@ function GameView({
       window.visualViewport?.removeEventListener("resize", updateScale);
       window.visualViewport?.removeEventListener("scroll", updateScale);
     };
-  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel]);
+  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging, swapPopping, tapRotating]);
 
   const playAreaStyle = useMemo(()=>({
     transform:`scale(${playScale})`,
@@ -4416,7 +4422,6 @@ export default function App() {
       <header className="hdr">
         <div className="logo">
           <div className="logo-g">🔮</div>
-          Crystal Clues
         </div>
           <div className="nav">
             <button className={`nbtn${view==="game"?" on":""}`}
