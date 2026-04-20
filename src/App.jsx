@@ -225,17 +225,17 @@ body::before{
 /* HEADER */
 .hdr{height:54px;background:rgba(8,5,20,0.92);border-bottom:1px solid rgba(139,92,246,0.25);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 10px 0 16px;flex-shrink:0;z-index:10;position:relative;
+  padding:0 8px 0 10px;flex-shrink:0;z-index:10;position:relative;
   backdrop-filter:blur(12px);
   box-shadow:0 2px 24px rgba(0,0,0,.6)}
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--fc);
-  font-size:16px;line-height:1;font-weight:700;color:var(--gold);letter-spacing:.1em;flex-shrink:0;
+  font-size:15px;line-height:1;font-weight:700;color:var(--gold);letter-spacing:.08em;flex-shrink:1;min-width:0;
   text-shadow:0 0 24px rgba(255,215,0,.45)}
-.logo-g{font-size:20px;line-height:1}
-.nav{display:flex;gap:4px;align-items:center;flex-shrink:0}
-.nbtn{height:32px;padding:0 10px;border:1px solid transparent;background:transparent;
+.logo-g{font-size:18px;line-height:1}
+.nav{display:flex;gap:2px;align-items:center;flex-shrink:0}
+.nbtn{height:32px;padding:0 8px;border:1px solid transparent;background:transparent;
   display:inline-flex;align-items:center;justify-content:center;
-  color:var(--muted);border-radius:20px;font-family:var(--fu);font-size:11px;line-height:1;
+  color:var(--muted);border-radius:20px;font-family:var(--fu);font-size:10px;line-height:1;
   font-weight:700;cursor:pointer;transition:all .15s;letter-spacing:.07em;
   white-space:nowrap;text-transform:uppercase}
 .nbtn:hover{background:rgba(139,92,246,.15);color:var(--purple-bright)}
@@ -348,11 +348,11 @@ body::before{
 /* Edge words — dark on white cards */
 .ew{position:absolute;font-family:var(--fu);font-size:9px;font-weight:700;
   letter-spacing:.05em;color:#2d1060;pointer-events:none;
-  text-align:center;white-space:nowrap;overflow:hidden;text-transform:uppercase}
-.ew.et{top:9px;left:50%;transform:translateX(-50%);max-width:calc(var(--cs) - 24px)}
-.ew.eb{bottom:9px;left:50%;transform:translateX(-50%);max-width:calc(var(--cs) - 24px)}
-.ew.er{right:7px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%);max-height:calc(var(--cs) - 22px)}
-.ew.el{left:7px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg);max-height:calc(var(--cs) - 22px)}
+  line-height:1;text-align:center;white-space:nowrap;overflow:hidden;text-transform:uppercase}
+.ew.et{top:8px;left:50%;transform:translateX(-50%);max-width:calc(var(--cs) - 24px)}
+.ew.eb{bottom:8px;left:50%;transform:translateX(-50%);max-width:calc(var(--cs) - 24px)}
+.ew.er{right:8px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%);max-height:calc(var(--cs) - 24px)}
+.ew.el{left:8px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg);max-height:calc(var(--cs) - 24px)}
 .ctile.admin-mode .ew{
   font-size:8px;
   letter-spacing:.02em;
@@ -443,6 +443,12 @@ body::before{
 .ctile-inner{position:absolute;inset:0;border-radius:inherit}
 @keyframes rotateSpinInner{0%{transform:rotate(0deg)}100%{transform:rotate(90deg)}}
 .ctile-inner.rotate-spin{animation:rotateSpinInner .24s ease-in-out forwards}
+@keyframes tapRotateCard{
+  0%{transform:rotate(0deg)}
+  45%{transform:rotate(72deg)}
+  100%{transform:rotate(90deg)}
+}
+.ctile.tap-rotate{animation:tapRotateCard .22s cubic-bezier(.2,.9,.25,1)}
 .cloud-label{
   transition:opacity .14s ease,filter .14s ease;
 }
@@ -1219,7 +1225,7 @@ const SHOW_DRAG_GHOST = true;
 // ═══════════════════════════════════════════════════════════════
 
 function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim, spinning, spinDir=1,
-                    popping, rotateMoveClass='', rotateSpin=false, selected, noclick, adminMode=false, onPointerDown,
+                    popping, rotateMoveClass='', rotateSpin=false, tapRotating=false, selected, noclick, adminMode=false, onPointerDown,
                     hideWords=false, hideCenterMark=false, children=null }) {
   const [t,r,b,l] = vw(card, orientation);
   let cls="ctile";
@@ -1229,6 +1235,7 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   if(dim)      cls+=" dim";
   if(spinning) cls+=" spinning";
   if(popping)  cls+=" swap-pop";
+  if(tapRotating) cls+=" tap-rotate";
   if(rotateMoveClass) cls+=` ${rotateMoveClass}`;
   if(selected) cls+=" selected";
   if(noclick)  cls+=" noclick";
@@ -1946,6 +1953,7 @@ function GameView({
     : new Map());
   const [spinning,setSpinning] = useState(new Set());
   const [swapPopping,setSwapPopping] = useState(new Set());
+  const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
   const [flipReveal,setFlipReveal] = useState({}); // {slotIdx: 'down'|'up'}
   const [ghost,setGhost]     = useState(null);
@@ -1966,6 +1974,7 @@ function GameView({
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   const [showParticles,setShowParticles] = useState(false);
   const swapPopTimer = useRef(null);
+  const tapRotateTimer = useRef(null);
   const rotateTimer = useRef(null);
   const playFitOuterRef = useRef(null);
   const playFitInnerRef = useRef(null);
@@ -1977,6 +1986,10 @@ function GameView({
   const [tutorialStepIndex,setTutorialStepIndex] = useState(0);
   const [tutorialReadyForNext,setTutorialReadyForNext] = useState(()=>tutorialActive);
   const [tutorialComplete,setTutorialComplete] = useState(false);
+
+  useEffect(()=>()=> {
+    if(tapRotateTimer.current) clearTimeout(tapRotateTimer.current);
+  },[]);
 
   useEffect(()=>{
     const updateViewportSize = () => {
@@ -2282,6 +2295,7 @@ function GameView({
 
   const handlePD = useCallback((e,si)=>{
     if(locked.has(si) || lost || tutorialComplete) return;
+    if(tapRotating.size > 0) return;
     if(tutorialActive && tutorialStepIndex === 0){
       return;
     }
@@ -2337,7 +2351,12 @@ function GameView({
         if(tutorialActive && tutorialStepIndex === 3){
           setWrong(prev=>{const next=new Set(prev);next.delete(si);return next;});
         }
-        setSlots(p=>{const n=[...p];n[si]={...n[si],orientation:(n[si].orientation+1)%4};return n;});
+        setTapRotating(new Set([si]));
+        if(tapRotateTimer.current) clearTimeout(tapRotateTimer.current);
+        tapRotateTimer.current = setTimeout(()=>{
+          setSlots(p=>{const n=[...p];n[si]={...n[si],orientation:(n[si].orientation+1)%4};return n;});
+          setTapRotating(new Set());
+        }, 230);
       } else {
         const tgt=getSlotAt(ev.clientX,ev.clientY,si);
         if(tgt>=0 && (!tutorialActive || tutorialPairAllowed(si, tgt))){
@@ -2353,7 +2372,8 @@ function GameView({
     document.addEventListener("pointerup",onUp);
   },[
     slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
-    tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext
+    tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext,
+    tapRotating
   ]);
 
   const handleRotate = useCallback(()=>{
@@ -2480,7 +2500,7 @@ function GameView({
     const isWin = res.correct.size===4;
 
     // Build 2x2 emoji grid: slots 0=TL,1=TR,3=BL,2=BR (board grid order)
-    const e = (si) => (locked.has(si) || res.correct.has(si)) ? '🔮' : '⬛';
+    const e = (si) => (locked.has(si) || res.correct.has(si)) ? '🔮' : '⚫';
     const guessRow = [
       [e(0), e(1)],
       [e(3), e(2)],
@@ -2683,17 +2703,18 @@ function GameView({
           repeatBad={!inReveal && isRepeatBad}
           shaking={isWrong}
           extraCls={extraCls}
-          dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
-          popping={swapPopping.has(si)}
-          rotateMoveClass={rotateMoveClass}
-          rotateSpin={rotateAnimating && si < 4}
-          spinDir={si%2===0?1:-1}
-          onPointerDown={e=>handlePD(e,si)}/>}
+            dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
+            popping={swapPopping.has(si)}
+            rotateMoveClass={rotateMoveClass}
+            rotateSpin={rotateAnimating && si < 4}
+            tapRotating={tapRotating.has(si)}
+            spinDir={si%2===0?1:-1}
+            onPointerDown={e=>handlePD(e,si)}/>}
       </div>
     );
   },[
     slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,
-    isDragging,dragSrc,spinning,swapPopping,rotateAnimating,dragOver,handlePD,
+      isDragging,dragSrc,spinning,swapPopping,tapRotating,rotateAnimating,dragOver,handlePD,
     tutorialActive,tutorialHighlightedSlots,tutorialComplete
   ]);
 
@@ -2854,6 +2875,7 @@ function GameView({
                       locked={locked.has(si)} wrong={wrong.has(si)}
                       dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
                       popping={swapPopping.has(si)}
+                      tapRotating={tapRotating.has(si)}
                       spinDir={i%2===0?1:-1}
                       onPointerDown={e=>handlePD(e,si)}/>}
                   </div>
@@ -4389,8 +4411,8 @@ export default function App() {
     setComps(loadCompletions());
   },[difficulty]);
 
-  return (
-    <div style={{height:"100vh",display:"flex",flexDirection:"column",maxWidth:500,margin:"0 auto"}}>
+    return (
+      <div style={{height:"100vh",height:"100dvh",width:"100%",display:"flex",flexDirection:"column"}}>
       <header className="hdr">
         <div className="logo">
           <div className="logo-g">🔮</div>
