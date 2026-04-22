@@ -330,10 +330,16 @@ body::before{
   border:1px solid rgba(180,160,220,.5);
   border-radius:14px;cursor:pointer;touch-action:none;
   box-shadow:0 2px 14px rgba(0,0,0,.35);
+  transform-origin:center center;-webkit-transform-origin:center center;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  will-change:transform;
   transition:box-shadow .15s,transform .1s,border-color .15s}
 .ctile:not(.locked):not(.noclick):hover{
   box-shadow:0 0 22px rgba(139,92,246,.5),0 4px 18px rgba(0,0,0,.3);
-  transform:scale(1.025);border-color:rgba(139,92,246,.7)}
+  border-color:rgba(139,92,246,.7)}
+@media (hover:hover) and (pointer:fine){
+  .ctile:not(.locked):not(.noclick):hover{transform:scale(1.025)}
+}
 .ctile.locked{
   background:#edf9f1;
   border-color:rgba(34,197,94,.62);
@@ -444,11 +450,20 @@ body::before{
 @keyframes rotateSpinInner{0%{transform:rotate(0deg)}100%{transform:rotate(90deg)}}
 .ctile-inner.rotate-spin{animation:rotateSpinInner .24s ease-in-out forwards}
 @keyframes tapRotateCard{
-  0%{transform:rotate(0deg)}
-  45%{transform:rotate(72deg)}
-  100%{transform:rotate(90deg)}
+  0%{transform:translateZ(0) rotateZ(0deg)}
+  45%{transform:translateZ(0) rotateZ(72deg)}
+  100%{transform:translateZ(0) rotateZ(90deg)}
 }
-.ctile.tap-rotate{animation:tapRotateCard .22s cubic-bezier(.2,.9,.25,1)}
+@-webkit-keyframes tapRotateCard{
+  0%{-webkit-transform:translateZ(0) rotateZ(0deg)}
+  45%{-webkit-transform:translateZ(0) rotateZ(72deg)}
+  100%{-webkit-transform:translateZ(0) rotateZ(90deg)}
+}
+.ctile.tap-rotate{
+  animation:tapRotateCard .22s cubic-bezier(.2,.9,.25,1);
+  -webkit-animation:tapRotateCard .22s cubic-bezier(.2,.9,.25,1);
+  transition:box-shadow .15s,border-color .15s;
+}
 .cloud-label{
   transition:opacity .14s ease,filter .14s ease;
 }
