@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { flushSync } from "react-dom";
 import { seeded01, shuffleArr } from "./utils/random";
 
 // ═══════════════════════════════════════════════════════════════
@@ -1254,7 +1255,6 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   if(dim)      cls+=" dim";
   if(spinning) cls+=" spinning";
   if(popping)  cls+=" swap-pop";
-  if(tapRotating) cls+=" tap-rotate";
   if(rotateMoveClass) cls+=` ${rotateMoveClass}`;
   if(selected) cls+=" selected";
   if(noclick)  cls+=" noclick";
@@ -2372,12 +2372,36 @@ function GameView({
         if(tutorialActive && tutorialStepIndex === 3){
           setWrong(prev=>{const next=new Set(prev);next.delete(si);return next;});
         }
-        setTapRotating(new Set([si]));
         if(tapRotateTimer.current) clearTimeout(tapRotateTimer.current);
-        tapRotateTimer.current = setTimeout(()=>{
-          setSlots(p=>{const n=[...p];n[si]={...n[si],orientation:(n[si].orientation+1)%4};return n;});
+        let finished = false;
+        const finishRotation = () => {
+          if(finished) return;
+          finished = true;
+          if(tapRotateTimer.current) clearTimeout(tapRotateTimer.current);
+          tapRotateTimer.current = null;
           setTapRotating(new Set());
-        }, 230);
+        };
+        flushSync(()=>{
+          setTapRotating(new Set([si]));
+          setSlots(p=>{const n=[...p];n[si]={...n[si],orientation:(n[si].orientation+1)%4};return n;});
+        });
+        const tile = slotRefs.current[si]?.querySelector?.(".ctile");
+        const animation = tile?.animate?.([
+          { transform:"translate3d(0,0,0) rotateZ(-90deg)", offset:0 },
+          { transform:"translate3d(0,0,0) rotateZ(-18deg)", offset:.55 },
+          { transform:"translate3d(0,0,0) rotateZ(0deg)", offset:1 },
+        ], {
+          duration:260,
+          easing:"cubic-bezier(.2,.9,.25,1)",
+          fill:"none",
+        });
+        if(animation){
+          animation.onfinish = finishRotation;
+          animation.oncancel = finishRotation;
+          tapRotateTimer.current = setTimeout(finishRotation, 340);
+        } else {
+          tapRotateTimer.current = setTimeout(finishRotation, 260);
+        }
       } else {
         const tgt=getSlotAt(ev.clientX,ev.clientY,si);
         if(tgt>=0 && (!tutorialActive || tutorialPairAllowed(si, tgt))){
