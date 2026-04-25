@@ -201,6 +201,11 @@ const DEFAULT_PUZZLE = {
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Bungee:wght@400&family=Cinzel:wght@400;600;700;900&family=Raleway:wght@400;500;600;700;800&display=swap');
+@font-face{
+  font-family:'MagicTrickCloud';
+  src:url('/assets/magic-trick.otf') format('opentype');
+  font-display:swap;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#080514;--surface:#110c22;--board:#150e2a;
@@ -277,7 +282,7 @@ body::before{
 .ctab{
   display:flex;align-items:center;justify-content:center;
   font-family:var(--fc);font-weight:700;font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--gold);
+  color:var(--gold);
   background:radial-gradient(ellipse at 50% 38%, rgba(72,35,175,.92) 0%, rgba(35,14,88,.97) 100%);
   border:1.5px solid rgba(150,110,255,.48);
   text-shadow:0 0 14px rgba(255,215,0,.5);
@@ -302,7 +307,7 @@ body::before{
 .ctab.editing{cursor:text;animation:none !important;
   border:2px solid rgba(255,215,0,.7);
   font-family:var(--fc);font-weight:700;font-size:11px;letter-spacing:.14em;
-  text-align:center;text-transform:uppercase;color:var(--gold);outline:none}
+  text-align:center;color:var(--gold);outline:none}
 .ctab.editing.top,.ctab.editing.bot{
   width:calc(2*var(--cs) + var(--cg) + 28px);height:42px;border-radius:50px;padding:0 12px}
 .ctab.editing.lft,.ctab.editing.rgt{
@@ -468,9 +473,16 @@ body::before{
 .cloud-label{
   transition:opacity .14s ease,filter .14s ease;
 }
-.cloud-label.clue-rotating{
-  opacity:.68;
-  filter:brightness(1.14);
+@keyframes clueWordFadeIn{
+  0%{opacity:0;filter:brightness(1)}
+  100%{opacity:1;filter:brightness(1)}
+}
+.cloud-label.clue-rotating-out{
+  opacity:0;
+  filter:brightness(1);
+}
+.cloud-label.clue-rotating-in{
+  animation:clueWordFadeIn .16s ease-out both;
 }
 
 /* EXTRA CARDS */
@@ -631,7 +643,7 @@ body::before{
 }
 
 @media (max-width:375px), (max-height:740px){
-  :root{--cs:96px;--cg:7px}
+  :root{--cs:101px;--cg:7px}
   .sbar{gap:7px;padding:1px 10px 7px;font-size:13px}
   .sdate{font-size:15px}
   .dchip{padding:3px 9px;font-size:10px}
@@ -645,7 +657,7 @@ body::before{
 }
 
 @media (max-width:320px), (max-height:680px){
-  :root{--cs:88px;--cg:6px}
+  :root{--cs:94px;--cg:6px}
   .sbar{gap:6px;padding:1px 9px 6px;font-size:12px}
   .sdate{font-size:14px}
   .dchip{padding:3px 8px;font-size:9px}
@@ -1133,14 +1145,9 @@ body::before{
 }
 
 /* Playing-from-archive banner */
-.playing-banner{background:rgba(88,28,135,.85);color:var(--purple-bright);padding:8px 16px;
-  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
-  font-size:12px;font-weight:600;border-bottom:1px solid rgba(139,92,246,.3);
-  backdrop-filter:blur(8px)}
-.playing-banner button{background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.4);
-  color:var(--purple-bright);border-radius:50px;padding:4px 12px;font-size:11px;font-weight:700;
-  cursor:pointer;transition:background .15s}
-.playing-banner button:hover{background:rgba(139,92,246,.38)}
+.today-nav-btn{border-color:rgba(255,215,0,.38);color:var(--gold);
+  background:rgba(255,215,0,.08);padding-inline:9px}
+.today-nav-btn:hover{background:rgba(255,215,0,.14);color:#ffe680}
 
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(100,55,200,.35);border-radius:4px}
@@ -1398,8 +1405,8 @@ function CloudH({ text, animClass, artRotation=0, artOpacity=0.92, artTranslateY
       }}/>
       <span className={`cloud-label ${textAnimClass}`.trim()} style={{
         position:"relative",zIndex:1,
-        fontFamily:"'Bungee',sans-serif",fontWeight:400,fontSize:"20px",
-        letterSpacing:"0.06em",textTransform:"uppercase",
+        fontFamily:"'MagicTrickCloud','Bungee',sans-serif",fontWeight:700,fontSize:"40px",
+        letterSpacing:"0.04em",
         color:"#17111f",
         textShadow:"0 1px 0 rgba(255,255,255,0.18), 0 2px 6px rgba(0,0,0,0.08)",
         padding:"0 12px",
@@ -1427,8 +1434,8 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
       }}/>
       <span className={`cloud-label ${textAnimClass}`.trim()} style={{
         position:"relative",zIndex:1,
-        fontFamily:"'Bungee',sans-serif",fontWeight:400,fontSize:"20px",
-        letterSpacing:"0.05em",textTransform:"uppercase",
+        fontFamily:"'MagicTrickCloud','Bungee',sans-serif",fontWeight:700,fontSize:"40px",
+        letterSpacing:"0.03em",
         color:"#17111f",
         textShadow:"0 1px 0 rgba(255,255,255,0.18), 0 2px 6px rgba(0,0,0,0.08)",
         display:"inline-block",
@@ -1443,10 +1450,10 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
 
 // ── BOARD ────────────────────────────────────────────────────────
 
-function Board({ clues, renderClue, renderSlot, compactLevel=0, cluesRotating=false }) {
+function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase="" }) {
   // Card grid: 104*2 + 8 gap + 24 padding = 240px square
-  const SURF = compactLevel >= 2 ? 212 : compactLevel === 1 ? 226 : 240;
-  const BALL = compactLevel >= 2 ? 390 : compactLevel === 1 ? 404 : 420;
+  const SURF = compactLevel >= 2 ? 218 : compactLevel === 1 ? 233 : 240;
+  const BALL = compactLevel >= 2 ? 398 : compactLevel === 1 ? 412 : 420;
 
   // The ball PNG: sphere occupies top ~65% of image, base the bottom 35%.
   // Sphere center sits at ~32% from top of the image = 0.32 * BALL from top.
@@ -1463,11 +1470,11 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, cluesRotating=fa
   const CVW = compactLevel >= 2 ? 54 : compactLevel === 1 ? 57 : 60;
   const CVH = compactLevel >= 2 ? 262 : compactLevel === 1 ? 274 : 286;
   const FOREGROUND_SHIFT_Y = compactLevel >= 2 ? 10 : compactLevel === 1 ? 14 : 18;
-  const clueTextAnimClass = cluesRotating ? "clue-rotating" : "";
+  const clueTextAnimClass = clueTextPhase ? `clue-rotating-${clueTextPhase}` : "";
 
-  const topClue   = renderClue ? renderClue(0,"top") : <CloudH text={clues[0]||""} animClass="float-top" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18} textAnimClass={clueTextAnimClass}/>;
+  const topClue   = renderClue ? renderClue(0,"top") : <CloudH text={clues[0]||""} animClass="float-top" textShiftX={10} textShiftY={compactLevel >= 2 ? -18 : -22} textAnimClass={clueTextAnimClass}/>;
   const rightClue = renderClue ? renderClue(1,"rgt") : <CloudV text={clues[1]||""} animClass="float-right" rotation={90} textRotation={90} textShiftX={0} textShiftY={0} textAnimClass={clueTextAnimClass}/>;
-  const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -14 : -18} textAnimClass={clueTextAnimClass}/>;
+  const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -18 : -22} textAnimClass={clueTextAnimClass}/>;
   const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={-90} textShiftX={0} textShiftY={0} textAnimClass={clueTextAnimClass}/>;
 
   const boardShiftX = compactLevel >= 2 ? -4 : compactLevel === 1 ? -6 : -10;
@@ -1924,16 +1931,18 @@ function GameView({
   tutorialConfig=null,
   onTutorialClose,
 }) {
-  // Puzzles always have exactly 3 extra cards stored in solution.extraCards
-  // Difficulty controls how many the player SEES (removed from end: #3 first, then #2, then #1)
-  const numExtra = DIFFICULTY_EXTRA[difficulty] ?? 3;
+  // Get the fixed ordered extra cards from the puzzle
+  const extraCardIds = useMemo(() => (
+    puzzle.solution.extraCards || 
+    Object.keys(puzzle.cards).filter(id => !puzzle.solution.slotCards.includes(id)).slice(0,3)
+  ), [puzzle.cards, puzzle.solution.extraCards, puzzle.solution.slotCards]);
+
+  // Puzzles always have exactly 3 extra cards stored in solution.extraCards.
+  // Difficulty controls how many the player sees, but admire mode should reveal all extras.
+  const numExtra = admireMode ? extraCardIds.length : DIFFICULTY_EXTRA[difficulty] ?? 3;
   const totalSlots = 4 + numExtra;
   const tutorialActive = !!tutorialConfig;
   const tutorialSteps = tutorialConfig?.steps || [];
-
-  // Get the fixed ordered extra cards from the puzzle
-  const extraCardIds = puzzle.solution.extraCards || 
-    Object.keys(puzzle.cards).filter(id => !puzzle.solution.slotCards.includes(id)).slice(0,3);
 
   // Player sees only the first numExtra extras (removing from end)
   const visibleExtraIds = extraCardIds.slice(0, numExtra);
@@ -1943,15 +1952,17 @@ function GameView({
       return (tutorialConfig?.initialSlots || []).map(slot=>({ ...slot }));
     }
     if(admireMode){
-      return puzzle.solution.slotCards.map((cardId,i)=>({
+      const solvedBoard = puzzle.solution.slotCards.map((cardId,i)=>({
         cardId, orientation: puzzle.solution.orientations[i]
       }));
+      const extraSlots = extraCardIds.map(cardId=>({ cardId, orientation: 0 }));
+      return [...solvedBoard, ...extraSlots];
     }
     const solCards = [...puzzle.solution.slotCards];
     // Use the fixed visible extras (ordered, not random)
     const chosen = [...solCards, ...visibleExtraIds];
     return biasedShuffle(chosen, puzzle.solution);
-  },[admireMode, puzzle.solution, tutorialActive, tutorialConfig?.initialSlots, visibleExtraIds]);
+  },[admireMode, extraCardIds, puzzle.solution, tutorialActive, tutorialConfig?.initialSlots, visibleExtraIds]);
 
   const alreadySolved = tutorialActive ? false : admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
   const progressKey = `clover_progress_${puzzle.id}`;
@@ -1975,6 +1986,7 @@ function GameView({
   const [swapPopping,setSwapPopping] = useState(new Set());
   const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
+  const [clueRotatePhase,setClueRotatePhase] = useState("");
   const [flipReveal,setFlipReveal] = useState({}); // {slotIdx: 'down'|'up'}
   const [ghost,setGhost]     = useState(null);
   const [dragSrc,setDragSrc] = useState(null);
@@ -1994,8 +2006,11 @@ function GameView({
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   const [showParticles,setShowParticles] = useState(false);
   const swapPopTimer = useRef(null);
-  const tapRotateTimer = useRef(null);
+  const tapRotateTimers = useRef(new Map());
+  const tapRotateQueued = useRef(new Map());
+  const tapRotateActive = useRef(new Set());
   const rotateTimer = useRef(null);
+  const clueRotateTimer = useRef(null);
   const playFitOuterRef = useRef(null);
   const playFitInnerRef = useRef(null);
   const [playScale,setPlayScale] = useState(1);
@@ -2008,7 +2023,12 @@ function GameView({
   const [tutorialComplete,setTutorialComplete] = useState(false);
 
   useEffect(()=>()=> {
-    if(tapRotateTimer.current) clearTimeout(tapRotateTimer.current);
+    tapRotateTimers.current.forEach(timer=>clearTimeout(timer));
+    tapRotateTimers.current.clear();
+    tapRotateQueued.current.clear();
+    tapRotateActive.current.clear();
+    if(rotateTimer.current) clearTimeout(rotateTimer.current);
+    if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
   },[]);
 
   useEffect(()=>{
@@ -2314,9 +2334,68 @@ function GameView({
     return -1;
   },[totalSlots,locked]);
 
+  const startTapRotation = useCallback((si)=>{
+    tapRotateActive.current.add(si);
+    setTapRotating(prev=>{
+      const next = new Set(prev);
+      next.add(si);
+      return next;
+    });
+
+    flushSync(()=>{
+      setSlots(p=>{
+        const n=[...p];
+        if(!n[si]) return n;
+        n[si]={...n[si],orientation:(n[si].orientation+1)%4};
+        return n;
+      });
+    });
+
+    const finishRotation = () => {
+      const timer = tapRotateTimers.current.get(si);
+      if(timer){
+        clearTimeout(timer);
+        tapRotateTimers.current.delete(si);
+      }
+
+      const queued = tapRotateQueued.current.get(si) || 0;
+      if(queued > 0){
+        tapRotateQueued.current.set(si, queued - 1);
+        startTapRotation(si);
+        return;
+      }
+
+      tapRotateQueued.current.delete(si);
+      tapRotateActive.current.delete(si);
+      setTapRotating(prev=>{
+        const next = new Set(prev);
+        next.delete(si);
+        return next;
+      });
+    };
+
+    const tile = slotRefs.current[si]?.querySelector?.(".ctile");
+    const animation = tile?.animate?.([
+      { transform:"translate3d(0,0,0) rotateZ(-90deg)", offset:0 },
+      { transform:"translate3d(0,0,0) rotateZ(-18deg)", offset:.55 },
+      { transform:"translate3d(0,0,0) rotateZ(0deg)", offset:1 },
+    ], {
+      duration:260,
+      easing:"cubic-bezier(.2,.9,.25,1)",
+      fill:"none",
+    });
+
+    const fallbackTimer = setTimeout(finishRotation, animation ? 340 : 260);
+    tapRotateTimers.current.set(si, fallbackTimer);
+
+    if(animation){
+      animation.onfinish = finishRotation;
+      animation.oncancel = finishRotation;
+    }
+  },[]);
+
   const handlePD = useCallback((e,si)=>{
     if(locked.has(si) || lost || tutorialComplete) return;
-    if(tapRotating.size > 0) return;
     if(tutorialActive && tutorialStepIndex === 0){
       return;
     }
@@ -2372,35 +2451,10 @@ function GameView({
         if(tutorialActive && tutorialStepIndex === 3){
           setWrong(prev=>{const next=new Set(prev);next.delete(si);return next;});
         }
-        if(tapRotateTimer.current) clearTimeout(tapRotateTimer.current);
-        let finished = false;
-        const finishRotation = () => {
-          if(finished) return;
-          finished = true;
-          if(tapRotateTimer.current) clearTimeout(tapRotateTimer.current);
-          tapRotateTimer.current = null;
-          setTapRotating(new Set());
-        };
-        flushSync(()=>{
-          setTapRotating(new Set([si]));
-          setSlots(p=>{const n=[...p];n[si]={...n[si],orientation:(n[si].orientation+1)%4};return n;});
-        });
-        const tile = slotRefs.current[si]?.querySelector?.(".ctile");
-        const animation = tile?.animate?.([
-          { transform:"translate3d(0,0,0) rotateZ(-90deg)", offset:0 },
-          { transform:"translate3d(0,0,0) rotateZ(-18deg)", offset:.55 },
-          { transform:"translate3d(0,0,0) rotateZ(0deg)", offset:1 },
-        ], {
-          duration:260,
-          easing:"cubic-bezier(.2,.9,.25,1)",
-          fill:"none",
-        });
-        if(animation){
-          animation.onfinish = finishRotation;
-          animation.oncancel = finishRotation;
-          tapRotateTimer.current = setTimeout(finishRotation, 340);
+        if(tapRotateActive.current.has(si)){
+          tapRotateQueued.current.set(si, (tapRotateQueued.current.get(si) || 0) + 1);
         } else {
-          tapRotateTimer.current = setTimeout(finishRotation, 260);
+          startTapRotation(si);
         }
       } else {
         const tgt=getSlotAt(ev.clientX,ev.clientY,si);
@@ -2418,14 +2472,16 @@ function GameView({
   },[
     slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
     tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext,
-    tapRotating
+    startTapRotation
   ]);
 
   const handleRotate = useCallback(()=>{
     if(tutorialActive) return;
     if(rotateAnimating) return;
     setRotateAnimating(true);
+    setClueRotatePhase("out");
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
+    if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
     rotateTimer.current = setTimeout(()=>{
       setSlots(p=>{
         const nc=CW_FROM.map(f=>{const s=p[f];return s?{...s,orientation:(s.orientation+1)%4}:null;});
@@ -2435,6 +2491,11 @@ function GameView({
       setLocked(p=>{const n=new Set();p.forEach(i=>{n.add(i<4?CW_FROM.indexOf(i):i);});return n;});
       setWrong(new Set());
       setRotateAnimating(false);
+      setClueRotatePhase("in");
+      clueRotateTimer.current = setTimeout(()=>{
+        setClueRotatePhase("");
+        clueRotateTimer.current = null;
+      }, 170);
     }, 240);
   },[rotateAnimating, tutorialActive]);
 
@@ -2867,7 +2928,7 @@ function GameView({
             renderSlot={renderSlot}
             renderClue={tutorialActive ? renderTutorialClue : undefined}
             compactLevel={compactLevel}
-            cluesRotating={rotateAnimating}
+            clueTextPhase={clueRotatePhase}
           />
           <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:compactLevel >= 2 ? 28 : compactLevel === 1 ? 38 : 52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px"}}>
             {tutorialActive ? (
@@ -2984,7 +3045,7 @@ function GameView({
 function EditableClueTab({ text, pos, onChange }) {
   const [editing,setEditing] = useState(false);
   const [val,setVal]         = useState(text || "");
-  const commit = () => { setEditing(false); onChange(val.trim().toUpperCase()||""); };
+  const commit = () => { setEditing(false); onChange(val.trim()||""); };
   return editing ? (
     <input className={`ctab editing ${pos}`} value={val}
       onChange={e=>setVal(e.target.value)}
@@ -4445,6 +4506,15 @@ export default function App() {
     setView("game");
   };
 
+  const handleReturnToToday = useCallback(() => {
+    setAP(null);
+    setView("game");
+    setForceFresh(false);
+    setAdmireMode(false);
+    setLobbyDone(false);
+    setResetCount(0);
+  },[]);
+
   const handleSolved = useCallback((puzzleId, result) => {
     const data = {
       solved:true,
@@ -4463,6 +4533,11 @@ export default function App() {
           <div className="logo-g">🔮</div>
         </div>
           <div className="nav">
+            {view==="game" && isArchivePlay && (
+              <button className="nbtn today-nav-btn" onClick={handleReturnToToday}>
+                Today's Puzzle
+              </button>
+            )}
             <button className={`nbtn${view==="game"?" on":""}`}
               onClick={()=>{setView("game"); if(!archivePuzzle||archivePuzzle.id===todayPuzzle.id) setAP(null);}}>
               Play
@@ -4481,14 +4556,6 @@ export default function App() {
             </button>
         </div>
       </header>
-
-      {/* Banner when playing an archived puzzle */}
-      {view==="game" && isArchivePlay && (
-        <div className="playing-banner">
-          <span>📅 Playing: {activePuzzle.title} · {activePuzzle.date}</span>
-          <button onClick={()=>{setAP(null);setForceFresh(false);setAdmireMode(false);setLobbyDone(false);setResetCount(0);}}>Today's puzzle</button>
-        </div>
-      )}
 
       {view==="game" && (() => {
         const completedData = loadCompletions()[activePuzzle.id];
