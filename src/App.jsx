@@ -229,19 +229,19 @@ body::before{
 #root{height:100vh;height:100dvh;width:100%;max-width:440px;margin:0 auto;position:relative;z-index:1;overflow:hidden}
 
 /* HEADER */
-.hdr{height:54px;background:rgba(8,5,20,0.92);border-bottom:1px solid rgba(139,92,246,0.25);
+.hdr{height:36px;background:rgba(8,5,20,0.92);border-bottom:1px solid rgba(139,92,246,0.25);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 8px 0 10px;flex-shrink:0;z-index:10;position:relative;
+  padding:0 6px 0 8px;flex-shrink:0;z-index:10;position:relative;
   backdrop-filter:blur(12px);
-  box-shadow:0 2px 24px rgba(0,0,0,.6)}
+  box-shadow:0 2px 18px rgba(0,0,0,.52)}
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--fc);
   font-size:15px;line-height:1;font-weight:700;color:var(--gold);letter-spacing:.08em;flex-shrink:1;min-width:0;
   text-shadow:0 0 24px rgba(255,215,0,.45)}
-.logo-g{font-size:22px;line-height:1}
+.logo-g{font-size:20px;line-height:1}
 .nav{display:flex;gap:2px;align-items:center;flex-shrink:0}
-.nbtn{height:32px;padding:0 8px;border:1px solid transparent;background:transparent;
+.nbtn{height:24px;padding:0 8px;border:1px solid transparent;background:transparent;
   display:inline-flex;align-items:center;justify-content:center;
-  color:var(--muted);border-radius:20px;font-family:var(--fu);font-size:10px;line-height:1;
+  color:var(--muted);border-radius:999px;font-family:var(--fu);font-size:9px;line-height:1;
   font-weight:700;cursor:pointer;transition:all .15s;letter-spacing:.07em;
   white-space:nowrap;text-transform:uppercase}
 .nbtn:hover{background:rgba(139,92,246,.15);color:var(--purple-bright)}
@@ -250,7 +250,7 @@ body::before{
 
 /* GAME AREA */
 .game{flex:1;display:flex;flex-direction:column;align-items:center;
-  padding:8px 0 max(2px, env(safe-area-inset-bottom));gap:0;overflow:hidden;overflow-x:visible;touch-action:pan-y}
+  padding:2px 0 max(2px, env(safe-area-inset-bottom));gap:0;overflow:hidden;overflow-x:visible;touch-action:pan-y;position:relative}
 .sbar{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);font-weight:600;
   width:100%;padding:2px 14px 8px;line-height:1.15}
 .sdate{color:var(--gold);font-weight:700;font-size:17px;font-family:var(--fc);letter-spacing:.05em}
@@ -259,6 +259,7 @@ body::before{
   border-radius:14px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .play-fit-outer{flex:1;min-height:0;width:100%;display:flex;justify-content:center;align-items:flex-start;overflow:hidden;padding:0 6px 2px}
 .play-fit-inner{width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center;transform-origin:top center;will-change:transform}
+.game-lives{position:absolute;top:8px;right:10px;z-index:8;pointer-events:none}
 
 /* BOARD */
 .board{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;overflow:visible}
@@ -486,12 +487,7 @@ body::before{
 }
 
 /* EXTRA CARDS */
-.extra{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:0;position:relative;padding-top:22px}
-.elabel{position:absolute;top:-10px;left:50%;transform:translateX(-50%);
-  font-size:18px;font-weight:900;letter-spacing:.11em;
-  text-transform:uppercase;color:#b7ff8a;font-family:var(--fc);
-  text-shadow:0 2px 3px rgba(18, 48, 16, 0.95),0 0 10px rgba(80, 190, 90, 0.28);
-  z-index:3;white-space:nowrap}
+.extra{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:0;position:relative;padding-top:4px}
 .eslots{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .eslot{position:relative;width:var(--cs);height:var(--cs)}
 .extra-spacer{height:156px;width:100%}
@@ -639,7 +635,6 @@ body::before{
   .dchip{padding:4px 10px;font-size:11px}
   .lives{gap:6px}
   .life{width:22px;height:22px}
-  .elabel{font-size:16px}
 }
 
 @media (max-width:375px), (max-height:740px){
@@ -649,8 +644,7 @@ body::before{
   .dchip{padding:3px 9px;font-size:10px}
   .lives{gap:5px}
   .life{width:21px;height:21px}
-  .extra{padding-top:18px}
-  .elabel{font-size:15px}
+  .extra{padding-top:3px}
   .ctrls{margin-top:6px;gap:6px}
   .cbtn{padding:7px 13px;font-size:10px}
   .sbtn{padding:11px;font-size:12px}
@@ -663,8 +657,7 @@ body::before{
   .dchip{padding:3px 8px;font-size:9px}
   .lives{gap:4px}
   .life{width:19px;height:19px}
-  .extra{padding-top:16px}
-  .elabel{font-size:14px}
+  .extra{padding-top:2px}
   .cbtn{padding:6px 11px;font-size:9px}
   .sbtn{padding:10px;font-size:11px}
 }
@@ -980,13 +973,13 @@ body::before{
   box-shadow:0 0 10px rgba(124,77,255,.5)}
 
 /* Gear btn */
-.gear-btn{width:32px;height:32px;border:none;background:transparent;
+.gear-btn{width:28px;height:28px;border:none;background:transparent;
   color:var(--muted);cursor:pointer;display:flex;align-items:center;
   justify-content:center;border-radius:8px;transition:all .15s;padding:0;flex-shrink:0}
 .gear-btn:hover{color:var(--purple-bright);background:rgba(139,92,246,.15)}
-.gear-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;
+.gear-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;
   stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.help-btn{font-family:var(--fc);font-size:16px;font-weight:700;line-height:1}
+.help-btn{font-family:var(--fc);font-size:14px;font-weight:700;line-height:1}
 
 /* Archive */
 .arch{flex:1;display:flex;flex-direction:column;overflow:hidden;padding:14px 14px 18px}
@@ -1451,9 +1444,10 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
 // ── BOARD ────────────────────────────────────────────────────────
 
 function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase="" }) {
-  // Card grid: 104*2 + 8 gap + 24 padding = 240px square
-  const SURF = compactLevel >= 2 ? 218 : compactLevel === 1 ? 233 : 240;
-  const BALL = compactLevel >= 2 ? 398 : compactLevel === 1 ? 412 : 420;
+  const MAIN_CARD_SIZE = compactLevel >= 2 ? 110 : compactLevel === 1 ? 114 : 122;
+  const MAIN_CARD_GAP = compactLevel >= 2 ? 6 : compactLevel === 1 ? 7 : 8;
+  const SURF = MAIN_CARD_SIZE * 2 + MAIN_CARD_GAP + 24;
+  const BALL = compactLevel >= 2 ? 420 : compactLevel === 1 ? 438 : 452;
 
   // The ball PNG: sphere occupies top ~65% of image, base the bottom 35%.
   // Sphere center sits at ~32% from top of the image = 0.32 * BALL from top.
@@ -1462,7 +1456,7 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase=""
   // As an offset from the card grid center: shift ball UP by (0.32*BALL - SURF/2)
   // Shift ball DOWN — sphere needs to wrap the cards, not sit below them
   // Negative ballShiftUp = move ball down
-  const ballShiftUp = compactLevel >= 2 ? -58 : compactLevel === 1 ? -64 : -70;
+  const ballShiftUp = compactLevel >= 2 ? -62 : compactLevel === 1 ? -68 : -74;
 
   // Clouds
   const CHW = compactLevel >= 2 ? 262 : compactLevel === 1 ? 274 : 286;
@@ -1529,7 +1523,10 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase=""
           </div>
           {/* Cards centered in card grid, floating above ball interior */}
           <div style={{position:"relative",zIndex:2,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
-            <div className="csurface">
+            <div
+              className="csurface"
+              style={{"--cs": `${MAIN_CARD_SIZE}px`, "--cg": `${MAIN_CARD_GAP}px`}}
+            >
               {renderSlot(0)}{renderSlot(1)}
               {renderSlot(3)}{renderSlot(2)}
             </div>
@@ -2011,6 +2008,8 @@ function GameView({
   const tapRotateActive = useRef(new Set());
   const rotateTimer = useRef(null);
   const clueRotateTimer = useRef(null);
+  const introShuffleTimer = useRef(null);
+  const introShuffleDone = useRef(false);
   const playFitOuterRef = useRef(null);
   const playFitInnerRef = useRef(null);
   const [playScale,setPlayScale] = useState(1);
@@ -2029,6 +2028,7 @@ function GameView({
     tapRotateActive.current.clear();
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
     if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
+    if(introShuffleTimer.current) clearTimeout(introShuffleTimer.current);
   },[]);
 
   useEffect(()=>{
@@ -2541,7 +2541,7 @@ function GameView({
     setTimeout(()=>fadeFeedback(), 2500);
   },[puzzle.difficulty, puzzle.solution.slotCards, locked, fadeFeedback]);
 
-  const handleShuffle = useCallback(()=>{
+  const triggerShuffle = useCallback(()=>{
     if(tutorialActive) return;
     const free=Array.from({length:totalSlots},(_,i)=>i).filter(i=>!locked.has(i));
     if(free.length<2) return;
@@ -2558,6 +2558,20 @@ function GameView({
       setWrong(new Set()); setSpinning(new Set());
     },440);
   },[totalSlots,locked,tutorialActive]);
+
+  const handleShuffle = useCallback(()=>{
+    triggerShuffle();
+  },[triggerShuffle]);
+
+  useEffect(()=>{
+    if(introShuffleDone.current) return;
+    if(tutorialActive || admireMode || alreadySolved || canRestoreProgress) return;
+    introShuffleDone.current = true;
+    introShuffleTimer.current = setTimeout(()=>{
+      triggerShuffle();
+      introShuffleTimer.current = null;
+    }, 220);
+  },[tutorialActive, admireMode, alreadySolved, canRestoreProgress, triggerShuffle]);
 
   const handleReset = useCallback(()=>{
     if(tutorialActive) return;
@@ -2871,6 +2885,8 @@ function GameView({
   const tutorialMessage = tutorialComplete
     ? TUTORIAL_FINAL_SUCCESS
     : feedback || tutorialStep?.body || "";
+  const playCardSize = compactLevel >= 2 ? 110 : compactLevel === 1 ? 114 : 122;
+  const playCardGap = compactLevel >= 2 ? 6 : compactLevel === 1 ? 7 : 8;
 
   return (<>
     {showParticles && (
@@ -2894,16 +2910,7 @@ function GameView({
             </div>
           </div>
       ) : (
-      <div className="sbar">
-        <span className="sdate">{puzzleDate}</span>
-        {puzzle.author && <>
-          <span style={{color:"var(--muted)"}}>·</span>
-          <span style={{fontSize:14,color:"var(--muted)",fontWeight:600}}>by {puzzle.author}</span>
-        </>}
-        <span style={{color:"var(--muted)"}}>·</span>
-        <span className="dchip">{diffLabel}</span>
-        <span style={{flex:1}}/>
-        <div className="lives">
+        <div className="lives game-lives">
           {Array.from({length:MAX_LIVES},(_,i)=>(
             <span
               key={i}
@@ -2920,7 +2927,7 @@ function GameView({
             </span>
           ))}
         </div>
-      </div>)}
+      )}
       <div ref={playFitOuterRef} className="play-fit-outer">
         <div ref={playFitInnerRef} className={`play-fit-inner${tutorialActive ? " tutorial-layout" : ""}`} style={playAreaStyle}>
           <Board
@@ -2930,7 +2937,7 @@ function GameView({
             compactLevel={compactLevel}
             clueTextPhase={clueRotatePhase}
           />
-          <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:compactLevel >= 2 ? 28 : compactLevel === 1 ? 38 : 52,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px"}}>
+          <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:compactLevel >= 2 ? 4 : compactLevel === 1 ? 10 : 16,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px","--cs":`${playCardSize}px`,"--cg":`${playCardGap}px`}}>
             {tutorialActive ? (
                 <>
                   <div className="tut-nav">
@@ -2970,7 +2977,6 @@ function GameView({
             <div className="extra">
         {numExtra>0 ? (
           <>
-            <span className="elabel">Extra cards</span>
             <div className="eslots">
               {Array.from({length:numExtra},(_,i)=>{
                 const si=4+i,s=slots[si],card=s?puzzle.cards[s.cardId]:null;
