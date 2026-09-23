@@ -1328,6 +1328,43 @@ body::before{
 .spill.scheduled{background:#fbf0d6;color:#8a6508}
 .date-conflict{background:#fdf6e3;border:1px solid rgba(217,165,33,.4);color:#7a5a06}
 
+/* ── Version A's play-screen proportions ────────────────────────────────
+   One responsive card size drives the board, the ring, the sparkle field and
+   the clue pills, so everything scales together instead of stepping between
+   fixed tiers. 112px on a 390px phone, shrinking just enough that three
+   available cards always sit on one row:
+     3*cs + 2*10 gap + 2*18 margin = viewport.
+   Declared after the width tiers above so it supersedes them at every size. */
+:root{
+  --cs:min(112px, calc((100vw - 56px) / 3));
+  --cg:8px;
+  --step:calc(var(--cs) + var(--cg));
+}
+.ballmotif{width:calc(2*var(--cs) + var(--cg) + 62px);
+  height:calc(2*var(--cs) + var(--cg) + 62px)}
+.sparkfield{width:calc(2*var(--cs) + var(--cg) + 116px);
+  height:calc(2*var(--cs) + var(--cg) + 116px)}
+.ctab.top,.ctab.bot,.ctab.editing.top,.ctab.editing.bot{
+  width:calc(var(--cs) + 24px);height:34px}
+.ctab.lft,.ctab.rgt,.ctab.editing.lft,.ctab.editing.rgt{
+  width:34px;height:calc(var(--cs) + 24px)}
+/* The tutorial shows the same board inside a narrower card, so it runs one
+   size down and keeps a comfortable margin either side of the clue pills. */
+.tut-card{--cs:98px}
+
+/* Spacing down the column: board → available cards → controls → Submit.
+   The block below the board is a 10px-gap flex column, so each step only
+   needs its own rules reset to zero and the rhythm comes from the gap. */
+.extra{width:100%;padding:0;gap:10px;margin-top:0}
+.eslots{gap:10px}
+.ctrls{margin-top:0}
+.fbk{min-height:16px;margin-top:0}
+.sbtn-wrap{margin-top:0}
+
+/* A taller, more substantial Submit. The tutorial's own pill button sets its
+   own padding, so it is unaffected. */
+.sbtn{padding:18px;font-size:17px;border-radius:16px;letter-spacing:.14em}
+
 /* ── Version A's card face ──────────────────────────────────────────────
    A prints the edge words a size larger and heavier with a little more
    breathing room, and gives the centre diamond an extra pixel. The drag
@@ -1685,32 +1722,26 @@ function Sparkle({ size=12, delay=0, style }) {
 // The float keyframes and .ctab.lft's rotate(180deg) both set `transform` and a
 // running animation beats a normal declaration, so they sit on separate
 // elements — otherwise the left clue's reading direction silently flips.
-function ClueTab({ text, pos, animClass, clueTextPhase="", thickness, length }) {
+function ClueTab({ text, pos, animClass, clueTextPhase="" }) {
   const phaseCls = clueTextPhase ? ` clue-rotating-${clueTextPhase}` : "";
-  const size = (pos==="lft"||pos==="rgt")
-    ? {width:thickness, height:length}
-    : {width:length, height:thickness};
   return (
     <div className={`ctab-float ${animClass||""}`}>
-      <div className={`ctab ${pos}${phaseCls}`} style={size}>{text}</div>
+      <div className={`ctab ${pos}${phaseCls}`}>{text}</div>
     </div>
   );
 }
 
 function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase="" }) {
-  const MAIN_CARD_SIZE = compactLevel >= 2 ? 110 : compactLevel === 1 ? 114 : 122;
-  const MAIN_CARD_GAP = compactLevel >= 2 ? 6 : compactLevel === 1 ? 7 : 8;
-  const SURF = MAIN_CARD_SIZE * 2 + MAIN_CARD_GAP + 24;
-  const RING = SURF + 58;   // quiet crystal-ball motif behind the 2x2 grid
-  const FIELD = SURF + 112; // sparkles sit in the corners outside the ring
+  // Card grid is 2*--cs + --cg + 24px padding square. The ring motif, the
+  // sparkle field and the clue pills all size themselves off the same vars,
+  // so the whole board scales with the viewport (see CSS).
+  const SURF = "calc(2*var(--cs) + var(--cg) + 24px)";
 
   const PILL_GAP = 8;  // breathing room between a pill and the board
 
-  const PILL_T = compactLevel >= 2 ? 30 : compactLevel === 1 ? 32 : 34;
-  const PILL_L = MAIN_CARD_SIZE + 24;
   const pill = (i,pos,anim) => (
     <ClueTab text={clues[i]||""} pos={pos} animClass={anim}
-      clueTextPhase={clueTextPhase} thickness={PILL_T} length={PILL_L}/>
+      clueTextPhase={clueTextPhase}/>
   );
   const topClue   = renderClue ? renderClue(0,"top") : pill(0,"top","float-top");
   const rightClue = renderClue ? renderClue(1,"rgt") : pill(1,"rgt","float-right");
@@ -1743,8 +1774,8 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase=""
           justifyContent:"center",
         }}>
           {/* Decorative art stays behind the live board so existing interaction layers remain unchanged. */}
-          <div className="ballmotif" aria-hidden="true" style={{width:RING,height:RING}}/>
-          <div className="sparkfield" aria-hidden="true" style={{width:FIELD,height:FIELD}}>
+          <div className="ballmotif" aria-hidden="true"/>
+          <div className="sparkfield" aria-hidden="true">
             <Sparkle size={13} delay={0}   style={{left:"4%",top:"15%"}}/>
             <Sparkle size={9}  delay={1.1} style={{left:"17%",top:"3%"}}/>
             <Sparkle size={8}  delay={2.3} style={{right:"6%",top:"18%"}}/>
@@ -1758,8 +1789,7 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase=""
           <div style={{position:"relative",zIndex:2}}>
             <div
               className="csurface"
-              style={{"--cs": `${MAIN_CARD_SIZE}px`, "--cg": `${MAIN_CARD_GAP}px`,
-                      "--step": `${MAIN_CARD_SIZE + MAIN_CARD_GAP}px`}}
+            
             >
               {renderSlot(0)}{renderSlot(1)}
               {renderSlot(3)}{renderSlot(2)}
@@ -3031,8 +3061,6 @@ function GameView({
   const tutorialMessage = tutorialComplete
     ? TUTORIAL_FINAL_SUCCESS
     : feedback || tutorialStep?.body || "";
-  const playCardSize = compactLevel >= 2 ? 110 : compactLevel === 1 ? 114 : 122;
-  const playCardGap = compactLevel >= 2 ? 6 : compactLevel === 1 ? 7 : 8;
 
   return (<>
     {showParticles && (
@@ -3083,7 +3111,7 @@ function GameView({
             compactLevel={compactLevel}
             clueTextPhase={clueRotatePhase}
           />
-          <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:compactLevel >= 2 ? 4 : compactLevel === 1 ? 10 : 16,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px","--cs":`${playCardSize}px`,"--cg":`${playCardGap}px`}}>
+          <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:24,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:10,padding:"0 10px"}}>
             {tutorialActive ? (
                 <>
                   <div className="tut-nav">
