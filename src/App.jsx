@@ -1333,36 +1333,61 @@ body::before{
 .play-fit-outer{overflow-y:auto;overflow-x:hidden;touch-action:pan-y}
 .tut-card .play-fit-outer{overflow:hidden;touch-action:none}
 
-/* ── Banner header ──────────────────────────────────────────────────────
-   The crystal ball and wordmark on their own line, the controls beneath.
-   Five controls plus a wordmark will not fit one row at 360px without
-   shrinking the labels or the tap targets, so the header takes two rows and
-   keeps both at a comfortable size. */
-.hdr{height:auto;flex-direction:column;justify-content:center;align-items:center;
-  gap:4px;padding:8px 10px 7px;overflow:visible}
-.logo{width:100%;justify-content:center;gap:9px;overflow:visible;
-  font-family:var(--fc);font-size:20px;font-weight:700;
-  letter-spacing:.02em;color:var(--text);line-height:1.15}
+/* ── One-row header ─────────────────────────────────────────────────────
+   Crystal ball and wordmark on the left, the five controls on the right.
+   "Cluevoyance" is shorter than the old wordmark, which buys back most of
+   the width the extra ? button needs; the rest comes from tighter button
+   padding as the screen narrows. Nothing is hidden at any tested width. */
+.hdr{height:54px;flex-direction:row;justify-content:space-between;align-items:center;
+  gap:6px;padding:0 8px 0 13px;overflow:visible}
+.logo{width:auto;justify-content:flex-start;gap:7px;overflow:visible;
+  flex-shrink:0;min-width:0;
+  font-family:var(--fc);font-size:14px;font-weight:700;letter-spacing:.01em;
+  color:var(--text);line-height:1.2}
 .logo-name{white-space:nowrap}
-/* A line box of its own with room to spare, so the glyph is never cropped. */
-.logo-g{font-size:27px;line-height:1.2;flex-shrink:0;overflow:visible;
+/* A line box with room to spare, so the glyph is never cropped. */
+.logo-g{font-size:19px;line-height:1.35;flex-shrink:0;overflow:visible;
   display:flex;align-items:center;justify-content:center}
-.nav{width:100%;justify-content:center;gap:3px;flex-wrap:nowrap}
-.nbtn{height:30px;padding:0 9px;font-size:10px}
-.gear-btn{width:32px;height:32px}
-.gear-btn svg{width:20px;height:20px}
-.help-btn{font-size:17px}
-/* Short phones (a 360x740 screen, say) have no room to spare below Submit,
-   so the banner tightens there rather than pushing the puzzle down. The ball
-   and the wordmark stay, and the tap targets stay at 28px. */
-@media (max-height: 780px){
-  .hdr{padding:5px 10px 5px;gap:2px}
-  .logo{font-size:18px}
-  .logo-g{font-size:24px}
-  .nbtn{height:28px;padding:0 8px}
-  .gear-btn{width:30px;height:30px}
-  .gear-btn svg{width:19px;height:19px}
+.nav{width:auto;justify-content:flex-end;gap:1px;flex-wrap:nowrap;flex-shrink:0}
+/* Taller than the label needs, so the touch area stays comfortable. */
+.nbtn{height:auto;min-height:30px;padding:5px 5px;font-size:9.5px;
+  letter-spacing:.03em;line-height:1.2}
+.gear-btn{width:28px;height:30px}
+.gear-btn svg{width:18px;height:18px}
+.help-btn{font-size:15px}
+
+/* Narrower screens step the wordmark and the labels down a little at a
+   time. The touch height stays 30px throughout; only type and side padding
+   give way, and no control is ever dropped. */
+@media (max-width:430px){
+  .hdr{padding:0 4px 0 8px}
+  .logo{font-size:12.5px;gap:5px}
+  .logo-g{font-size:17px}
+  .nbtn{padding:5px 3px;font-size:8.5px}
+  .gear-btn{width:26px;height:30px}
+  .gear-btn svg{width:16px;height:16px}
+  .help-btn{font-size:14px}
 }
+@media (max-width:374px){
+  .hdr{padding:0 3px 0 7px}
+  .logo{font-size:11.5px;gap:4px}
+  .logo-g{font-size:16px}
+  .nbtn{padding:5px 2px;font-size:8px}
+  .gear-btn{width:25px;height:30px}
+  .gear-btn svg{width:15px;height:15px}
+  .help-btn{font-size:13px}
+}
+
+/* ── Stars, and the room beneath the header ─────────────────────────────
+   The stars sit in the flow rather than floating over the board, so the
+   puzzle starts below them and the top clue is not pressed against the
+   header. Same glyph, size, spacing and gold shadow as the earlier version. */
+.game-lives{position:static;top:auto;right:auto;
+  width:100%;display:flex;justify-content:flex-end;align-items:center;
+  gap:6px;padding:8px 18px 0;flex-shrink:0;pointer-events:none}
+.life{width:auto;height:auto;font-size:22px;line-height:1;
+  filter:drop-shadow(0 1px 1px rgba(160,120,10,.22));transition:all .2s}
+.life.lost{opacity:.2;filter:grayscale(1)}
 
 /* ── Version A's play-screen proportions ────────────────────────────────
    One responsive card size drives the board, the ring, the sparkle field and
@@ -3142,21 +3167,9 @@ function GameView({
             </div>
           </div>
       ) : (
-        <div className="lives game-lives">
+        <div className="lives game-lives" title={`${lives} of ${MAX_LIVES} lives left`}>
           {Array.from({length:MAX_LIVES},(_,i)=>(
-            <span
-              key={i}
-              className={`life${i>=lives?" lost":""}`}
-              style={{flex:"0 0 auto"}}
-            >
-              <img
-                className="life-img"
-                src={STAR_LIFE_ASSET}
-                alt=""
-                aria-hidden="true"
-                style={{display:"block", width:"100%", height:"100%", maxWidth:"24px", maxHeight:"24px", objectFit:"contain"}}
-              />
-            </span>
+            <span key={i} className={`life${i>=lives?" lost":""}`}>⭐</span>
           ))}
         </div>
       )}
