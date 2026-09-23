@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
-import { flushSync } from "react-dom";
 import { seeded01, shuffleArr } from "./utils/random";
 
 // ═══════════════════════════════════════════════════════════════
@@ -1329,6 +1328,26 @@ body::before{
 .spill.scheduled{background:#fbf0d6;color:#8a6508}
 .date-conflict{background:#fdf6e3;border:1px solid rgba(217,165,33,.4);color:#7a5a06}
 
+/* ── Version A's card face ──────────────────────────────────────────────
+   A prints the edge words a size larger and heavier with a little more
+   breathing room, and gives the centre diamond an extra pixel. The drag
+   source fades to 18% instead of vanishing, so you can still see where the
+   card came from. */
+.ew{font-size:10px;font-weight:800;line-height:1.45}
+.ew.et{top:9px;max-width:calc(var(--cs) - 24px)}
+.ew.eb{bottom:9px;max-width:calc(var(--cs) - 24px)}
+.ew.er{right:7px;max-height:calc(var(--cs) - 22px)}
+.ew.el{left:7px;max-height:calc(var(--cs) - 22px)}
+.cmark{width:11px;height:11px}
+.ctile.dim{opacity:.18}
+
+/* ── Version A's clue-word motion ───────────────────────────────────────
+   The fade rules were written for the old .cloud-label span, so once the
+   banners became pills the clue words hard-swapped mid-rotation instead of
+   fading. Same keyframes, now pointed at the pills. */
+.ctab.clue-rotating-out{opacity:0}
+.ctab.clue-rotating-in{animation:clueWordFadeIn .16s ease-out both}
+
 /* Tutorial — keep its own layout, repaint its surfaces */
 .tut-ovr{background:rgba(43,15,82,.34)}
 .tut-card{background:#fff;border-color:var(--line-strong);
@@ -1455,7 +1474,7 @@ const SHOW_DRAG_GHOST = true;
 // ═══════════════════════════════════════════════════════════════
 
 function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim, spinning, spinDir=1,
-                    popping, rotateMoveClass='', rotateSpin=false, tapRotating=false, selected, noclick, adminMode=false, onPointerDown,
+                    rotateMoveClass='', rotateSpin=false, selected, noclick, adminMode=false, onPointerDown,
                     hideWords=false, hideCenterMark=false, children=null }) {
   const [t,r,b,l] = vw(card, orientation);
   let cls="ctile";
@@ -1464,7 +1483,6 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   if(shaking)  cls+=" shaking";
   if(dim)      cls+=" dim";
   if(spinning) cls+=" spinning";
-  if(popping)  cls+=" swap-pop";
   if(rotateMoveClass) cls+=` ${rotateMoveClass}`;
   if(selected) cls+=" selected";
   if(noclick)  cls+=" noclick";
@@ -1740,7 +1758,8 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase=""
           <div style={{position:"relative",zIndex:2}}>
             <div
               className="csurface"
-              style={{"--cs": `${MAIN_CARD_SIZE}px`, "--cg": `${MAIN_CARD_GAP}px`}}
+              style={{"--cs": `${MAIN_CARD_SIZE}px`, "--cg": `${MAIN_CARD_GAP}px`,
+                      "--step": `${MAIN_CARD_SIZE + MAIN_CARD_GAP}px`}}
             >
               {renderSlot(0)}{renderSlot(1)}
               {renderSlot(3)}{renderSlot(2)}
@@ -2195,8 +2214,6 @@ function GameView({
     ? new Map((savedProgress.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
     : new Map());
   const [spinning,setSpinning] = useState(new Set());
-  const [swapPopping,setSwapPopping] = useState(new Set());
-  const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
   const [clueRotatePhase,setClueRotatePhase] = useState("");
   const [flipReveal,setFlipReveal] = useState({}); // {slotIdx: 'down'|'up'}
@@ -2217,10 +2234,6 @@ function GameView({
   const [revealPhase,setRevealPhase] = useState(null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   const [showParticles,setShowParticles] = useState(false);
-  const swapPopTimer = useRef(null);
-  const tapRotateTimers = useRef(new Map());
-  const tapRotateQueued = useRef(new Map());
-  const tapRotateActive = useRef(new Set());
   const rotateTimer = useRef(null);
   const clueRotateTimer = useRef(null);
   const introShuffleTimer = useRef(null);
@@ -2237,10 +2250,6 @@ function GameView({
   const [tutorialComplete,setTutorialComplete] = useState(false);
 
   useEffect(()=>()=> {
-    tapRotateTimers.current.forEach(timer=>clearTimeout(timer));
-    tapRotateTimers.current.clear();
-    tapRotateQueued.current.clear();
-    tapRotateActive.current.clear();
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
     if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
     if(introShuffleTimer.current) clearTimeout(introShuffleTimer.current);
@@ -2289,7 +2298,7 @@ function GameView({
         const naturalHeight = inner.scrollHeight;
         const naturalWidth = inner.scrollWidth;
         if(!availableHeight || !availableWidth || !naturalHeight || !naturalWidth) return;
-        if(tutorialActive && (isDragging || swapPopping.size > 0 || tapRotating.size > 0)) return;
+        if(tutorialActive && isDragging) return;
         const nextScale = Math.min(1, (availableHeight - 4) / naturalHeight, (availableWidth - 4) / naturalWidth);
         setPlayScale(prev => Math.abs(prev - nextScale) > 0.01 ? nextScale : prev);
       });
@@ -2310,7 +2319,7 @@ function GameView({
       window.visualViewport?.removeEventListener("resize", updateScale);
       window.visualViewport?.removeEventListener("scroll", updateScale);
     };
-  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging, swapPopping, tapRotating]);
+  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging]);
 
   const playAreaStyle = useMemo(()=>({
     transform:`scale(${playScale})`,
@@ -2550,63 +2559,12 @@ function GameView({
   },[totalSlots,locked]);
 
   const startTapRotation = useCallback((si)=>{
-    tapRotateActive.current.add(si);
-    setTapRotating(prev=>{
-      const next = new Set(prev);
-      next.add(si);
-      return next;
+    setSlots(p=>{
+      const n=[...p];
+      if(!n[si]) return n;
+      n[si]={...n[si],orientation:(n[si].orientation+1)%4};
+      return n;
     });
-
-    flushSync(()=>{
-      setSlots(p=>{
-        const n=[...p];
-        if(!n[si]) return n;
-        n[si]={...n[si],orientation:(n[si].orientation+1)%4};
-        return n;
-      });
-    });
-
-    const finishRotation = () => {
-      const timer = tapRotateTimers.current.get(si);
-      if(timer){
-        clearTimeout(timer);
-        tapRotateTimers.current.delete(si);
-      }
-
-      const queued = tapRotateQueued.current.get(si) || 0;
-      if(queued > 0){
-        tapRotateQueued.current.set(si, queued - 1);
-        startTapRotation(si);
-        return;
-      }
-
-      tapRotateQueued.current.delete(si);
-      tapRotateActive.current.delete(si);
-      setTapRotating(prev=>{
-        const next = new Set(prev);
-        next.delete(si);
-        return next;
-      });
-    };
-
-    const tile = slotRefs.current[si]?.querySelector?.(".ctile");
-    const animation = tile?.animate?.([
-      { transform:"translate3d(0,0,0) rotateZ(-90deg)", offset:0 },
-      { transform:"translate3d(0,0,0) rotateZ(-18deg)", offset:.55 },
-      { transform:"translate3d(0,0,0) rotateZ(0deg)", offset:1 },
-    ], {
-      duration:260,
-      easing:"cubic-bezier(.2,.9,.25,1)",
-      fill:"none",
-    });
-
-    const fallbackTimer = setTimeout(finishRotation, animation ? 340 : 260);
-    tapRotateTimers.current.set(si, fallbackTimer);
-
-    if(animation){
-      animation.onfinish = finishRotation;
-      animation.oncancel = finishRotation;
-    }
   },[]);
 
   const handlePD = useCallback((e,si)=>{
@@ -2666,19 +2624,12 @@ function GameView({
         if(tutorialActive && tutorialStepIndex === 3){
           setWrong(prev=>{const next=new Set(prev);next.delete(si);return next;});
         }
-        if(tapRotateActive.current.has(si)){
-          tapRotateQueued.current.set(si, (tapRotateQueued.current.get(si) || 0) + 1);
-        } else {
-          startTapRotation(si);
-        }
+        startTapRotation(si);
       } else {
         const tgt=getSlotAt(ev.clientX,ev.clientY,si);
         if(tgt>=0 && (!tutorialActive || tutorialPairAllowed(si, tgt))){
           setSlots(p=>{const n=[...p];[n[si],n[tgt]]=[n[tgt],n[si]];return n;});
           setWrong(p=>{const s=new Set(p);s.delete(si);s.delete(tgt);return s;});
-          setSwapPopping(new Set([si,tgt]));
-          if(swapPopTimer.current) clearTimeout(swapPopTimer.current);
-          swapPopTimer.current = setTimeout(()=>setSwapPopping(new Set()), 190);
         }
       }
     };
@@ -3039,17 +2990,15 @@ function GameView({
           shaking={isWrong}
           extraCls={extraCls}
             dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
-            popping={swapPopping.has(si)}
             rotateMoveClass={rotateMoveClass}
             rotateSpin={rotateAnimating && si < 4}
-            tapRotating={tapRotating.has(si)}
             spinDir={si%2===0?1:-1}
             onPointerDown={e=>handlePD(e,si)}/>}
       </div>
     );
   },[
     slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,
-      isDragging,dragSrc,spinning,swapPopping,tapRotating,rotateAnimating,dragOver,handlePD,
+      isDragging,dragSrc,spinning,rotateAnimating,dragOver,handlePD,
     tutorialActive,tutorialHighlightedSlots,tutorialComplete
   ]);
 
@@ -3184,8 +3133,6 @@ function GameView({
                     {card&&<CardTile card={card} orientation={s.orientation}
                       locked={locked.has(si)} wrong={wrong.has(si)}
                       dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
-                      popping={swapPopping.has(si)}
-                      tapRotating={tapRotating.has(si)}
                       spinDir={i%2===0?1:-1}
                       onPointerDown={e=>handlePD(e,si)}/>}
                   </div>
