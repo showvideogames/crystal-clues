@@ -1328,6 +1328,37 @@ body::before{
 .spill.scheduled{background:#fbf0d6;color:#8a6508}
 .date-conflict{background:#fdf6e3;border:1px solid rgba(217,165,33,.4);color:#7a5a06}
 
+/* ── Banner header ──────────────────────────────────────────────────────
+   The crystal ball and wordmark on their own line, the controls beneath.
+   Five controls plus a wordmark will not fit one row at 360px without
+   shrinking the labels or the tap targets, so the header takes two rows and
+   keeps both at a comfortable size. */
+.hdr{height:auto;flex-direction:column;justify-content:center;align-items:center;
+  gap:4px;padding:8px 10px 7px;overflow:visible}
+.logo{width:100%;justify-content:center;gap:9px;overflow:visible;
+  font-family:var(--fc);font-size:20px;font-weight:700;
+  letter-spacing:.02em;color:var(--text);line-height:1.15}
+.logo-name{white-space:nowrap}
+/* A line box of its own with room to spare, so the glyph is never cropped. */
+.logo-g{font-size:27px;line-height:1.2;flex-shrink:0;overflow:visible;
+  display:flex;align-items:center;justify-content:center}
+.nav{width:100%;justify-content:center;gap:3px;flex-wrap:nowrap}
+.nbtn{height:30px;padding:0 9px;font-size:10px}
+.gear-btn{width:32px;height:32px}
+.gear-btn svg{width:20px;height:20px}
+.help-btn{font-size:17px}
+/* Short phones (a 360x740 screen, say) have no room to spare below Submit,
+   so the banner tightens there rather than pushing the puzzle down. The ball
+   and the wordmark stay, and the tap targets stay at 28px. */
+@media (max-height: 780px){
+  .hdr{padding:5px 10px 5px;gap:2px}
+  .logo{font-size:18px}
+  .logo-g{font-size:24px}
+  .nbtn{height:28px;padding:0 8px}
+  .gear-btn{width:30px;height:30px}
+  .gear-btn svg{width:19px;height:19px}
+}
+
 /* ── Version A's play-screen proportions ────────────────────────────────
    One responsive card size drives the board, the ring, the sparkle field and
    the clue pills, so everything scales together instead of stepping between
@@ -4710,6 +4741,7 @@ export default function App() {
       <header className="hdr">
         <div className="logo">
           <div className="logo-g">🔮</div>
+          <span className="logo-name">Cluevoyance</span>
         </div>
           <div className="nav">
             {view==="game" && isArchivePlay && (
