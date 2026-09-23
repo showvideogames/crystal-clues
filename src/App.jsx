@@ -1328,6 +1328,11 @@ body::before{
 .spill.scheduled{background:#fbf0d6;color:#8a6508}
 .date-conflict{background:#fdf6e3;border:1px solid rgba(217,165,33,.4);color:#7a5a06}
 
+/* The play screen renders at full size and scrolls if the window is short,
+   rather than being scaled down to fit. */
+.play-fit-outer{overflow-y:auto;overflow-x:hidden;touch-action:pan-y}
+.tut-card .play-fit-outer{overflow:hidden;touch-action:none}
+
 /* ── Banner header ──────────────────────────────────────────────────────
    The crystal ball and wordmark on their own line, the controls beneath.
    Five controls plus a wordmark will not fit one row at 360px without
@@ -2347,6 +2352,9 @@ function GameView({
     const inner = playFitInnerRef.current;
     if(!outer || !inner) return;
 
+    // Only the tutorial measures itself; the play screen never scales.
+    if(!tutorialActive) return;
+
     let raf = 0;
     const updateScale = () => {
       cancelAnimationFrame(raf);
@@ -2382,10 +2390,15 @@ function GameView({
     };
   }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging]);
 
+  // The play screen renders at its true size and scrolls if the window is
+  // short. Only the tutorial, whose board sits in a fixed-height card, is
+  // scaled to fit — scaling the play screen resampled the text instead of
+  // re-laying it out, which softened every word at high browser zoom.
+  const appliedScale = tutorialActive ? playScale : 1;
   const playAreaStyle = useMemo(()=>({
-    transform:`scale(${playScale})`,
-    marginBottom: playScale < 1 ? `${-1 * Math.max(0, (1 - playScale) * 260)}px` : "0px",
-  }),[playScale]);
+    transform:`scale(${appliedScale})`,
+    marginBottom: appliedScale < 1 ? `${-1 * Math.max(0, (1 - appliedScale) * 260)}px` : "0px",
+  }),[appliedScale]);
 
   const tutorialStep = tutorialActive ? tutorialSteps[tutorialStepIndex] : null;
   const tutorialHighlightedSlots = tutorialStep?.highlightedSlots || [];
