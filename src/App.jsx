@@ -1401,6 +1401,20 @@ body::before{
    own padding, so it is unaffected. */
 .sbtn{padding:18px;font-size:17px;border-radius:16px;letter-spacing:.14em}
 
+/* ── Hover feedback, without geometry ───────────────────────────────────
+   Scaling the card by 1.025 stretched its already-rasterised contents and
+   put its edges on fractional pixels, which softened the words. Hover now
+   changes only paint, so the card stays exactly where it is and the text
+   keeps rendering at its true size. Applies to board and spare cards alike.
+   The rotation, shuffle and flip animations are unaffected: a running
+   animation outranks these declarations. */
+.ctile:not(.locked):not(.noclick):hover{
+  transform:none;
+  background:#fdfcff;
+  border-color:rgba(124,58,237,.55);
+  box-shadow:0 0 0 2px rgba(124,58,237,.18),0 6px 18px rgba(91,33,182,.16)}
+.ctile{transition:box-shadow .15s,transform .1s,border-color .15s,background-color .15s}
+
 /* ── Version A's card face ──────────────────────────────────────────────
    A prints the edge words a size larger and heavier with a little more
    breathing room, and gives the centre diamond an extra pixel. The drag
