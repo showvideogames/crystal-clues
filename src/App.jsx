@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { flushSync } from "react-dom";
 import { seeded01, shuffleArr } from "./utils/random";
 
 // ═══════════════════════════════════════════════════════════════
@@ -2319,6 +2320,7 @@ function GameView({
     ? new Map((savedProgress.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
     : new Map());
   const [spinning,setSpinning] = useState(new Set());
+  const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
   const [clueRotatePhase,setClueRotatePhase] = useState("");
   const [flipReveal,setFlipReveal] = useState({}); // {slotIdx: 'down'|'up'}
@@ -2339,6 +2341,9 @@ function GameView({
   const [revealPhase,setRevealPhase] = useState(null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   const [showParticles,setShowParticles] = useState(false);
+  const tapRotateTimers = useRef(new Map());
+  const tapRotateQueued = useRef(new Map());
+  const tapRotateActive = useRef(new Set());
   const rotateTimer = useRef(null);
   const clueRotateTimer = useRef(null);
   const introShuffleTimer = useRef(null);
@@ -2355,6 +2360,10 @@ function GameView({
   const [tutorialComplete,setTutorialComplete] = useState(false);
 
   useEffect(()=>()=> {
+    tapRotateTimers.current.forEach(timer=>clearTimeout(timer));
+    tapRotateTimers.current.clear();
+    tapRotateQueued.current.clear();
+    tapRotateActive.current.clear();
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
     if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
     if(introShuffleTimer.current) clearTimeout(introShuffleTimer.current);
@@ -2406,7 +2415,7 @@ function GameView({
         const naturalHeight = inner.scrollHeight;
         const naturalWidth = inner.scrollWidth;
         if(!availableHeight || !availableWidth || !naturalHeight || !naturalWidth) return;
-        if(tutorialActive && isDragging) return;
+        if(tutorialActive && (isDragging || tapRotating.size > 0)) return;
         const nextScale = Math.min(1, (availableHeight - 4) / naturalHeight, (availableWidth - 4) / naturalWidth);
         setPlayScale(prev => Math.abs(prev - nextScale) > 0.01 ? nextScale : prev);
       });
@@ -2427,7 +2436,7 @@ function GameView({
       window.visualViewport?.removeEventListener("resize", updateScale);
       window.visualViewport?.removeEventListener("scroll", updateScale);
     };
-  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging]);
+  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging, tapRotating]);
 
   // The play screen renders at its true size and scrolls if the window is
   // short. Only the tutorial, whose board sits in a fixed-height card, is
@@ -2672,12 +2681,81 @@ function GameView({
   },[totalSlots,locked]);
 
   const startTapRotation = useCallback((si)=>{
-    setSlots(p=>{
-      const n=[...p];
-      if(!n[si]) return n;
-      n[si]={...n[si],orientation:(n[si].orientation+1)%4};
-      return n;
+    tapRotateActive.current.add(si);
+    setTapRotating(prev=>{
+      const next = new Set(prev);
+      next.add(si);
+      return next;
     });
+
+    flushSync(()=>{
+      setSlots(p=>{
+        const n=[...p];
+        if(!n[si]) return n;
+        n[si]={...n[si],orientation:(n[si].orientation+1)%4};
+        return n;
+      });
+    });
+
+    let animation = null;
+
+    const finishRotation = () => {
+      const timer = tapRotateTimers.current.get(si);
+      if(timer){
+        clearTimeout(timer);
+        tapRotateTimers.current.delete(si);
+      }
+
+      if(animation && animation.playState !== "finished" && animation.playState !== "idle"){
+        // The browser can fail to ever start/finish this animation if it
+        // overlaps another transform animation on the same tile — force it
+        // off so the card can't get stuck mid-turn.
+        animation.onfinish = null;
+        animation.oncancel = null;
+        animation.cancel();
+      }
+
+      const queued = tapRotateQueued.current.get(si) || 0;
+      if(queued > 0){
+        tapRotateQueued.current.set(si, queued - 1);
+        startTapRotation(si);
+        return;
+      }
+
+      tapRotateQueued.current.delete(si);
+      tapRotateActive.current.delete(si);
+      setTapRotating(prev=>{
+        const next = new Set(prev);
+        next.delete(si);
+        return next;
+      });
+    };
+
+    const prefersReducedMotion = typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if(prefersReducedMotion){
+      finishRotation();
+      return;
+    }
+
+    const tile = slotRefs.current[si]?.querySelector?.(".ctile");
+    animation = tile?.animate?.([
+      { transform:"translate3d(0,0,0) rotateZ(-90deg)", offset:0 },
+      { transform:"translate3d(0,0,0) rotateZ(-18deg)", offset:.55 },
+      { transform:"translate3d(0,0,0) rotateZ(0deg)", offset:1 },
+    ], {
+      duration:260,
+      easing:"cubic-bezier(.2,.9,.25,1)",
+      fill:"none",
+    });
+
+    const fallbackTimer = setTimeout(finishRotation, animation ? 340 : 260);
+    tapRotateTimers.current.set(si, fallbackTimer);
+
+    if(animation){
+      animation.onfinish = finishRotation;
+      animation.oncancel = finishRotation;
+    }
   },[]);
 
   const handlePD = useCallback((e,si)=>{
@@ -2737,7 +2815,14 @@ function GameView({
         if(tutorialActive && tutorialStepIndex === 3){
           setWrong(prev=>{const next=new Set(prev);next.delete(si);return next;});
         }
-        startTapRotation(si);
+        if(rotateAnimating && si < 4){
+          // The whole-board rotate animates this same tile's transform; skip
+          // to avoid the two transform animations colliding on the DOM node.
+        } else if(tapRotateActive.current.has(si)){
+          tapRotateQueued.current.set(si, (tapRotateQueued.current.get(si) || 0) + 1);
+        } else {
+          startTapRotation(si);
+        }
       } else {
         const tgt=getSlotAt(ev.clientX,ev.clientY,si);
         if(tgt>=0 && (!tutorialActive || tutorialPairAllowed(si, tgt))){
@@ -2751,7 +2836,7 @@ function GameView({
   },[
     slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
     tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext,
-    startTapRotation
+    startTapRotation, rotateAnimating
   ]);
 
   const handleRotate = useCallback(()=>{
