@@ -240,7 +240,6 @@ body::before{
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--fc);
   font-size:15px;line-height:1;font-weight:700;color:var(--gold);letter-spacing:.08em;flex-shrink:1;min-width:0;
   text-shadow:0 0 24px rgba(255,215,0,.45)}
-.logo-g{font-size:20px;line-height:1}
 .nav{display:flex;gap:2px;align-items:center;flex-shrink:0}
 .nbtn{height:24px;padding:0 8px;border:1px solid transparent;background:transparent;
   display:inline-flex;align-items:center;justify-content:center;
@@ -1335,20 +1334,20 @@ body::before{
 .tut-card .play-fit-outer{overflow:hidden;touch-action:none}
 
 /* ── One-row header ─────────────────────────────────────────────────────
-   Crystal ball and wordmark on the left, the five controls on the right.
-   "Cluevoyance" is shorter than the old wordmark, which buys back most of
-   the width the extra ? button needs; the rest comes from tighter button
-   padding as the screen narrows. Nothing is hidden at any tested width. */
+   The logo mark on the left, the remaining controls on the right. Removing
+   the old Play button (the logo itself now returns to today's puzzle) buys
+   back the width the extra ? button needs; the rest comes from tighter
+   button padding as the screen narrows. Nothing is hidden at any tested width. */
 .hdr{height:54px;flex-direction:row;justify-content:space-between;align-items:center;
   gap:6px;padding:0 8px 0 13px;overflow:visible}
-.logo{width:auto;justify-content:flex-start;gap:7px;overflow:visible;
+.logo{width:auto;justify-content:flex-start;overflow:visible;
   flex-shrink:0;min-width:0;
-  font-family:var(--fc);font-size:14px;font-weight:700;letter-spacing:.01em;
-  color:var(--text);line-height:1.2}
-.logo-name{white-space:nowrap}
-/* A line box with room to spare, so the glyph is never cropped. */
-.logo-g{font-size:19px;line-height:1.35;flex-shrink:0;overflow:visible;
-  display:flex;align-items:center;justify-content:center}
+  border:none;background:transparent;padding:0;margin:0;cursor:pointer;
+  border-radius:8px}
+.logo:focus-visible{outline:2px solid var(--purple-bright);outline-offset:3px}
+/* Sized by the visible artwork — height only, width follows the PNG's own
+   aspect ratio so the mark is never stretched or boxed. */
+.logo-img{display:block;height:40px;width:auto}
 .nav{width:auto;justify-content:flex-end;gap:1px;flex-wrap:nowrap;flex-shrink:0}
 /* Taller than the label needs, so the touch area stays comfortable. */
 .nbtn{height:auto;min-height:30px;padding:5px 5px;font-size:9.5px;
@@ -1357,13 +1356,12 @@ body::before{
 .gear-btn svg{width:18px;height:18px}
 .help-btn{font-size:15px}
 
-/* Narrower screens step the wordmark and the labels down a little at a
-   time. The touch height stays 30px throughout; only type and side padding
-   give way, and no control is ever dropped. */
+/* Narrower screens step the logo and the labels down a little at a time.
+   The touch height stays 30px throughout; only size and side padding give
+   way, and no control is ever dropped. */
 @media (max-width:430px){
   .hdr{padding:0 4px 0 8px}
-  .logo{font-size:12.5px;gap:5px}
-  .logo-g{font-size:17px}
+  .logo-img{height:32px}
   .nbtn{padding:5px 3px;font-size:8.5px}
   .gear-btn{width:26px;height:30px}
   .gear-btn svg{width:16px;height:16px}
@@ -1371,8 +1369,7 @@ body::before{
 }
 @media (max-width:374px){
   .hdr{padding:0 3px 0 7px}
-  .logo{font-size:11.5px;gap:4px}
-  .logo-g{font-size:16px}
+  .logo-img{height:30px}
   .nbtn{padding:5px 2px;font-size:8px}
   .gear-btn{width:25px;height:30px}
   .gear-btn svg{width:15px;height:15px}
@@ -4864,20 +4861,17 @@ export default function App() {
     return (
       <div style={{height:"100vh",height:"100dvh",width:"100%",display:"flex",flexDirection:"column"}}>
       <header className="hdr">
-        <div className="logo">
-          <div className="logo-g">🔮</div>
-          <span className="logo-name">Cluevoyance</span>
-        </div>
+        <button type="button" className="logo logo-link"
+          onClick={()=>{setView("game"); if(!archivePuzzle||archivePuzzle.id===todayPuzzle.id) setAP(null);}}
+          aria-label="Cluevoyance — go to today's puzzle">
+          <img src="/assets/cluevoyance-logo-b.png" alt="" className="logo-img" />
+        </button>
           <div className="nav">
             {view==="game" && isArchivePlay && (
               <button className="nbtn today-nav-btn" onClick={handleReturnToToday}>
                 Today's Puzzle
               </button>
             )}
-            <button className={`nbtn${view==="game"?" on":""}`}
-              onClick={()=>{setView("game"); if(!archivePuzzle||archivePuzzle.id===todayPuzzle.id) setAP(null);}}>
-              Play
-            </button>
             <button className={`nbtn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}>
               Archive
             </button>
