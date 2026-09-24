@@ -208,14 +208,15 @@ const CSS = `
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#080514;--surface:#110c22;--board:#150e2a;
-  --card:#1b1133;--card-b:#3a2866;
-  --clue-bg:#221650;--clue-tx:#e8d5ff;
-  --text:#e8d5ff;--muted:#8b75b8;
-  --correct:#7c4dff;--wrong:#ff4455;
-  --lock-bg:#1c1244;--wrong-bg:#2a0f18;--amber:#ffd700;
-  --purple:#8b5cf6;--purple-bright:#c4b5fd;--purple-glow:rgba(139,92,246,0.5);
-  --gold:#ffd700;--gold-dim:#b8960a;
+  --bg:#faf7fa;--surface:#ffffff;--board:#ffffff;
+  --card:#ffffff;--card-b:#e7dff4;
+  --clue-bg:#ece3fb;--clue-tx:#3a1a6e;
+  --text:#2b0f52;--muted:#7d6d99;
+  --correct:#6d28d9;--wrong:#d92c45;
+  --lock-bg:#f3eeff;--wrong-bg:#fdeaec;--amber:#d9a521;
+  --purple:#7c3aed;--purple-bright:#5b21b6;--purple-glow:rgba(124,58,237,0.18);
+  --gold:#d9a521;--gold-dim:#b8860b;
+  --line:#ece5f5;--line-strong:#ddd2ee;
   --fc:'Cinzel',serif;--fu:'Raleway',sans-serif;
   --cs:110px;--cg:8px;--step:calc(var(--cs) + var(--cg));
 }
@@ -224,7 +225,9 @@ body{font-family:var(--fu);background:var(--bg);color:var(--text);
   user-select:none;-webkit-user-select:none;touch-action:none}
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:url('/assets/Ethereal starry sky and nebula.png') center center / cover no-repeat;
+  background:
+    radial-gradient(1100px 620px at 50% -8%, rgba(139,92,246,.055) 0%, rgba(139,92,246,0) 62%),
+    linear-gradient(180deg,#fbf8fb 0%,#f8f5fa 55%,#f7f3f8 100%);
 }
 #root{height:100vh;height:100dvh;width:100%;max-width:440px;margin:0 auto;position:relative;z-index:1;overflow:hidden}
 
@@ -1144,6 +1147,345 @@ body::before{
 
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(100,55,200,.35);border-radius:4px}
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT THEME — play-screen redesign.
+   Appended last so it repaints the rules above without touching
+   their geometry, the tutorial, or any animation timing.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Header */
+.hdr{background:rgba(255,255,255,.9);border-bottom:1px solid var(--line);
+  box-shadow:0 1px 0 rgba(43,15,82,.02)}
+.logo{color:var(--text);text-shadow:none}
+.nbtn{color:var(--muted)}
+.nbtn:hover{background:rgba(124,58,237,.07);color:var(--purple-bright)}
+.nbtn.on{background:#efe7fc;color:var(--purple-bright);border-color:rgba(124,58,237,.16)}
+.gear-btn{color:var(--muted)}
+.gear-btn:hover{color:var(--purple-bright);background:rgba(124,58,237,.08)}
+
+/* Crystal-ball motif — quiet ring standing in for the photo */
+.ballmotif{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  pointer-events:none;z-index:0;border-radius:50%;
+  background:radial-gradient(circle at 50% 36%, rgba(255,255,255,.95) 0%, rgba(247,242,255,.8) 44%, rgba(238,229,252,.5) 74%, rgba(238,229,252,.12) 100%);
+  border:1.5px solid rgba(154,113,231,.30);
+  box-shadow:0 0 0 8px rgba(238,230,252,.4),0 12px 36px rgba(91,33,182,.07)}
+.ballmotif::after{content:"";position:absolute;inset:9%;border-radius:50%;
+  border:1px solid rgba(172,138,238,.2)}
+.sparkfield{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  pointer-events:none;z-index:1}
+.spark{position:absolute;pointer-events:none;color:#c0a1ef;line-height:0;
+  animation:twinkle 4.4s ease-in-out infinite}
+.spark svg{display:block;width:100%;height:100%;fill:currentColor}
+@keyframes twinkle{0%,100%{opacity:.45;transform:scale(.88)}50%{opacity:1;transform:scale(1)}}
+
+/* Clue pills — the float lives on the wrapper so it cannot overwrite
+   .ctab.lft's rotate(180deg) and flip the left clue's reading direction. */
+.ctab-float{display:flex;align-items:center;justify-content:center}
+.ctab{font-family:var(--fc);font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--clue-tx);background:var(--clue-bg);
+  border:1px solid rgba(160,122,235,.28);border-radius:50px;
+  text-shadow:none;box-shadow:0 1px 3px rgba(91,33,182,.05);
+  display:flex;align-items:center;justify-content:center;font-size:15px}
+.ctab.top,.ctab.bot{width:calc(var(--cs) + 24px);height:34px;margin:0}
+.ctab.lft,.ctab.rgt{width:34px;height:calc(var(--cs) + 24px);margin:0;
+  writing-mode:vertical-rl;letter-spacing:.1em}
+.ctab.lft{transform:rotate(180deg)}
+.ctab.rgt{transform:none}
+.ctab.editing{background:#fff;border:2px solid rgba(124,58,237,.55);color:var(--clue-tx)}
+
+/* Cards */
+.ctile{background:#ffffff;border:1px solid var(--card-b);border-radius:16px;
+  box-shadow:0 2px 10px rgba(63,26,114,.07),0 1px 2px rgba(63,26,114,.05)}
+.ctile:not(.locked):not(.noclick):hover{
+  box-shadow:0 6px 18px rgba(91,33,182,.14);border-color:rgba(124,58,237,.4)}
+.ctile.locked{background:#f6f1ff;border-color:rgba(124,58,237,.45);
+  box-shadow:0 2px 10px rgba(124,58,237,.12)}
+.ctile.wrong-red{background:#fdeef0;border-color:rgba(217,44,69,.35)}
+.ctile.selected{border:2px solid var(--gold);
+  box-shadow:0 0 0 3px rgba(217,165,33,.16),0 2px 10px rgba(63,26,114,.08)}
+.ctile.reveal-grey{background:#efecf4;border-color:rgba(120,105,150,.3)}
+.ctile.reveal-grey .ew{color:rgba(105,92,133,.85)}
+.ctile.reveal-grey .cmark{background:rgba(140,126,166,.7)}
+.ew{color:#2d1060;font-weight:800}
+.locked .ew{color:#4c1d95}
+.wrong-red .ew{color:#9f1239}
+.cmark{background:#a78bfa;box-shadow:none}
+.locked .cmark{background:var(--purple);box-shadow:none}
+.wrong-red .cmark{background:#e0344c;box-shadow:none}
+.cslot.empty{border:1.5px dashed rgba(160,122,235,.35);background:rgba(255,255,255,.5)}
+.cslot.over::after{border-color:rgba(124,58,237,.6)}
+.ghost{background:#ffffff;border:1.5px solid rgba(124,58,237,.5);border-radius:16px;
+  box-shadow:0 16px 34px rgba(63,26,114,.22)}
+
+/* Available cards */
+.elabel{display:flex;align-items:center;gap:12px;width:100%;
+  font-family:var(--fu);font-size:10px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--purple-bright);text-shadow:none}
+.elabel::before,.elabel::after{content:"";flex:1;height:1px;background:var(--line-strong)}
+
+/* Controls — text and icon, separated by hairlines */
+.ctrls{gap:0;justify-content:center;width:100%}
+.cbtn{background:transparent;border:none;border-radius:12px;color:var(--text);
+  font-family:var(--fu);font-size:13px;font-weight:600;letter-spacing:.01em;
+  text-transform:none;position:relative;flex:1;min-height:44px;gap:8px;
+  justify-content:center;box-shadow:none}
+.cbtn+.cbtn::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:1px;height:22px;background:var(--line-strong)}
+.cbtn:hover{background:rgba(124,58,237,.06);color:var(--purple-bright);
+  transform:none;box-shadow:none}
+.cbtn svg{width:19px;height:19px}
+
+/* Submit */
+.sbtn{background:#6d28d9;color:#fff;border-radius:16px;
+  font-family:var(--fu);font-weight:700;letter-spacing:.14em;
+  box-shadow:0 6px 18px rgba(109,40,217,.26)}
+.sbtn:hover{background:#5b21b6;box-shadow:0 8px 22px rgba(109,40,217,.32)}
+.sbtn.blocked{background:#b91c1c;box-shadow:0 6px 18px rgba(185,28,28,.24)}
+.sbtn.solved{background:#4c1d95}
+
+/* Feedback and status */
+.fbk{font-family:var(--fu);color:var(--muted)}
+.fbk.ok{color:var(--purple-bright)}
+.fbk.err{color:#c4243c}
+.sdate{color:var(--purple-bright)}
+.dchip{background:#f0e9fc;color:var(--purple-bright);border:1px solid rgba(124,58,237,.18)}
+.life.lost{opacity:.2;filter:grayscale(1)}
+
+/* Overlays, lobby, sheets */
+.sovr{background:rgba(250,247,250,.97);padding:0 20px}
+.sovr-title{color:var(--text);text-shadow:none;text-align:center;line-height:1.25}
+.sovr-sub{color:var(--muted)}
+.sovr-btn{background:#f1eafd;border:1.5px solid rgba(124,58,237,.3);color:var(--purple-bright)}
+.sovr-btn:hover{background:#e7dbfb;box-shadow:0 3px 12px rgba(124,58,237,.14)}
+.sovr-divider{background:var(--line-strong)}
+.stat-val{color:var(--purple-bright);text-shadow:none}
+.stat-lbl{color:var(--muted)}
+.dist-bar-wrap{background:#f0ebf7}
+.dist-bar.current{background:#7c3aed}
+.dist-bar.win{background:#b8a4ee}
+.dist-bar.loss{background:#e2909c}
+.lobby-title{color:var(--text);text-shadow:none}
+.lobby-date,.lobby-diff-label,.lobby-diff-desc{color:var(--muted)}
+.lobby-diff-opt{background:#fff;border:1px solid var(--line-strong)}
+.lobby-diff-opt:hover{border-color:rgba(124,58,237,.45);background:#faf6ff}
+.lobby-diff-opt.active{border-color:rgba(124,58,237,.6);background:#f3ecfe}
+.lobby-diff-name{color:var(--text)}
+.lobby-diff-check{border:1.5px solid var(--line-strong)}
+.lobby-diff-opt.active .lobby-diff-check{background:var(--purple);border-color:var(--purple);box-shadow:none}
+.lobby-start,.tut-open{background:#6d28d9;color:#fff;border:none;border-radius:16px;
+  box-shadow:0 6px 18px rgba(109,40,217,.26)}
+.lobby-start:hover,.tut-open:hover{background:#5b21b6;box-shadow:0 8px 22px rgba(109,40,217,.32)}
+.settings-backdrop{background:rgba(43,15,82,.28)}
+.settings-sheet{background:#fff;border:1px solid var(--line-strong);
+  box-shadow:0 -10px 40px rgba(63,26,114,.14)}
+.settings-handle{background:var(--line-strong)}
+.settings-title{color:var(--text)}
+.settings-sub,.diff-opt-desc{color:var(--muted)}
+.diff-opt{background:#fff;border:1px solid var(--line-strong)}
+.diff-opt:hover{border-color:rgba(124,58,237,.45);background:#faf6ff}
+.diff-opt.active{border-color:rgba(124,58,237,.6);background:#f3ecfe}
+.diff-opt-name{color:var(--text)}
+.diff-opt-check{border:1.5px solid var(--line-strong)}
+.diff-opt.active .diff-opt-check{background:var(--purple);border-color:var(--purple);box-shadow:none}
+
+/* Archive */
+.arch-hdr{border-bottom:1px solid var(--line)}
+.arch-title{color:var(--text);text-shadow:none}
+.arch-sub,.arch-month-label,.apc-dow,.apc-meta,.arch-empty{color:var(--muted)}
+.apc{background:#fff;border:1px solid var(--line-strong)}
+.apc:hover{box-shadow:0 4px 16px rgba(63,26,114,.08);border-color:rgba(124,58,237,.35)}
+.apc.solved-card{border-color:rgba(124,58,237,.45);background:#f8f4ff}
+.apc.today-card{border-color:rgba(217,165,33,.5);background:#fffdf5}
+.apc-day,.apc-name{color:var(--text)}
+.badge-solved{background:var(--purple);box-shadow:0 2px 8px rgba(124,58,237,.3)}
+.badge-today{background:#fdf3d8;border:1.5px solid rgba(217,165,33,.5)}
+.badge-open{border:1px solid var(--line-strong);color:var(--muted)}
+.playing-banner{background:#f1eafd;color:var(--purple-bright);border-bottom:1px solid var(--line-strong)}
+.playing-banner button{background:#fff;border:1px solid rgba(124,58,237,.3);color:var(--purple-bright)}
+.playing-banner button:hover{background:#e7dbfb}
+
+/* Admin */
+.atabs{background:#fff;border-bottom:1px solid var(--line)}
+.atab{color:var(--muted)}
+.atab.on{color:var(--purple-bright);border-bottom-color:var(--purple)}
+.aboard-wrap,.ced,.pcard,.wchip,.wb-chip{background:#fff;border:1px solid var(--line-strong)}
+.ced{box-shadow:0 4px 18px rgba(63,26,114,.07)}
+.pcard:hover{box-shadow:0 4px 16px rgba(63,26,114,.08);border-color:rgba(124,58,237,.35)}
+.fi,.fi-sm,.asel,.ced-fi{background:#fff;border:1px solid var(--line-strong);color:var(--text)}
+.fi:focus,.fi-sm:focus,.ced-fi:focus{border-color:rgba(124,58,237,.6)}
+.asel option{background:#fff;color:var(--text)}
+.fl,.ced-wb-label,.pmeta,.mhint,.wdel{color:var(--muted)}
+.sh,.ptitle{color:var(--text);text-shadow:none}
+.abtn.p{background:#6d28d9;color:#fff;border:none;box-shadow:0 3px 10px rgba(109,40,217,.24)}
+.abtn.p:hover{background:#5b21b6}
+.abtn.s{background:#fff;color:var(--muted);border:1px solid var(--line-strong)}
+.abtn.s:hover{border-color:rgba(124,58,237,.5);color:var(--purple-bright)}
+.abtn.d{background:#fdecee;color:#b91c1c;border:1px solid rgba(217,44,69,.3)}
+.add-card-btn{border:1.5px dashed rgba(124,58,237,.3);background:rgba(124,58,237,.04);
+  color:rgba(91,33,182,.6)}
+.spill.unused,.spill.published{background:#ede5fb;color:var(--purple-bright)}
+.spill.draft{background:#f1eef5;color:var(--muted)}
+.spill.scheduled{background:#fbf0d6;color:#8a6508}
+.date-conflict{background:#fdf6e3;border:1px solid rgba(217,165,33,.4);color:#7a5a06}
+
+/* The play screen renders at full size and scrolls if the window is short,
+   rather than being scaled down to fit. */
+.play-fit-outer{overflow-y:auto;overflow-x:hidden;touch-action:pan-y}
+.tut-card .play-fit-outer{overflow:hidden;touch-action:none}
+
+/* ── One-row header ─────────────────────────────────────────────────────
+   Crystal ball and wordmark on the left, the five controls on the right.
+   "Cluevoyance" is shorter than the old wordmark, which buys back most of
+   the width the extra ? button needs; the rest comes from tighter button
+   padding as the screen narrows. Nothing is hidden at any tested width. */
+.hdr{height:54px;flex-direction:row;justify-content:space-between;align-items:center;
+  gap:6px;padding:0 8px 0 13px;overflow:visible}
+.logo{width:auto;justify-content:flex-start;gap:7px;overflow:visible;
+  flex-shrink:0;min-width:0;
+  font-family:var(--fc);font-size:14px;font-weight:700;letter-spacing:.01em;
+  color:var(--text);line-height:1.2}
+.logo-name{white-space:nowrap}
+/* A line box with room to spare, so the glyph is never cropped. */
+.logo-g{font-size:19px;line-height:1.35;flex-shrink:0;overflow:visible;
+  display:flex;align-items:center;justify-content:center}
+.nav{width:auto;justify-content:flex-end;gap:1px;flex-wrap:nowrap;flex-shrink:0}
+/* Taller than the label needs, so the touch area stays comfortable. */
+.nbtn{height:auto;min-height:30px;padding:5px 5px;font-size:9.5px;
+  letter-spacing:.03em;line-height:1.2}
+.gear-btn{width:28px;height:30px}
+.gear-btn svg{width:18px;height:18px}
+.help-btn{font-size:15px}
+
+/* Narrower screens step the wordmark and the labels down a little at a
+   time. The touch height stays 30px throughout; only type and side padding
+   give way, and no control is ever dropped. */
+@media (max-width:430px){
+  .hdr{padding:0 4px 0 8px}
+  .logo{font-size:12.5px;gap:5px}
+  .logo-g{font-size:17px}
+  .nbtn{padding:5px 3px;font-size:8.5px}
+  .gear-btn{width:26px;height:30px}
+  .gear-btn svg{width:16px;height:16px}
+  .help-btn{font-size:14px}
+}
+@media (max-width:374px){
+  .hdr{padding:0 3px 0 7px}
+  .logo{font-size:11.5px;gap:4px}
+  .logo-g{font-size:16px}
+  .nbtn{padding:5px 2px;font-size:8px}
+  .gear-btn{width:25px;height:30px}
+  .gear-btn svg{width:15px;height:15px}
+  .help-btn{font-size:13px}
+}
+
+/* ── Stars, and the room beneath the header ─────────────────────────────
+   The stars sit in the flow rather than floating over the board, so the
+   puzzle starts below them and the top clue is not pressed against the
+   header. Same glyph, size, spacing and gold shadow as the earlier version. */
+.game-lives{position:static;top:auto;right:auto;
+  width:100%;display:flex;justify-content:flex-end;align-items:center;
+  gap:6px;padding:8px 18px 0;flex-shrink:0;pointer-events:none}
+.life{width:auto;height:auto;font-size:22px;line-height:1;
+  filter:drop-shadow(0 1px 1px rgba(160,120,10,.22));transition:all .2s}
+.life.lost{opacity:.2;filter:grayscale(1)}
+
+/* ── Version A's play-screen proportions ────────────────────────────────
+   One responsive card size drives the board, the ring, the sparkle field and
+   the clue pills, so everything scales together instead of stepping between
+   fixed tiers. 112px on a 390px phone, shrinking just enough that three
+   available cards always sit on one row:
+     3*cs + 2*10 gap + 2*18 margin = viewport.
+   Declared after the width tiers above so it supersedes them at every size. */
+:root{
+  --cs:min(112px, calc((100vw - 56px) / 3));
+  --cg:8px;
+  --step:calc(var(--cs) + var(--cg));
+}
+.ballmotif{width:calc(2*var(--cs) + var(--cg) + 62px);
+  height:calc(2*var(--cs) + var(--cg) + 62px)}
+.sparkfield{width:calc(2*var(--cs) + var(--cg) + 116px);
+  height:calc(2*var(--cs) + var(--cg) + 116px)}
+.ctab.top,.ctab.bot,.ctab.editing.top,.ctab.editing.bot{
+  width:calc(var(--cs) + 24px);height:34px}
+.ctab.lft,.ctab.rgt,.ctab.editing.lft,.ctab.editing.rgt{
+  width:34px;height:calc(var(--cs) + 24px)}
+/* The tutorial shows the same board inside a narrower card, so it runs one
+   size down and keeps a comfortable margin either side of the clue pills. */
+.tut-card{--cs:98px}
+
+/* Spacing down the column: board → available cards → controls → Submit.
+   The block below the board is a 10px-gap flex column, so each step only
+   needs its own rules reset to zero and the rhythm comes from the gap. */
+.extra{width:100%;padding:0;gap:10px;margin-top:0}
+.eslots{gap:10px}
+.ctrls{margin-top:0}
+.fbk{min-height:16px;margin-top:0}
+.sbtn-wrap{margin-top:0}
+
+/* A taller, more substantial Submit. The tutorial's own pill button sets its
+   own padding, so it is unaffected. */
+.sbtn{padding:18px;font-size:17px;border-radius:16px;letter-spacing:.14em}
+
+/* ── Hover feedback, without geometry ───────────────────────────────────
+   Scaling the card by 1.025 stretched its already-rasterised contents and
+   put its edges on fractional pixels, which softened the words. Hover now
+   changes only paint, so the card stays exactly where it is and the text
+   keeps rendering at its true size. Applies to board and spare cards alike.
+   The rotation, shuffle and flip animations are unaffected: a running
+   animation outranks these declarations. */
+.ctile:not(.locked):not(.noclick):hover{
+  transform:none;
+  background:#fdfcff;
+  border-color:rgba(124,58,237,.55);
+  box-shadow:0 0 0 2px rgba(124,58,237,.18),0 6px 18px rgba(91,33,182,.16)}
+.ctile{transition:box-shadow .15s,transform .1s,border-color .15s,background-color .15s}
+
+/* ── Version A's card face ──────────────────────────────────────────────
+   A prints the edge words a size larger and heavier with a little more
+   breathing room, and gives the centre diamond an extra pixel. The drag
+   source fades to 18% instead of vanishing, so you can still see where the
+   card came from. */
+.ew{font-size:10px;font-weight:800;line-height:1.45}
+.ew.et{top:9px;max-width:calc(var(--cs) - 24px)}
+.ew.eb{bottom:9px;max-width:calc(var(--cs) - 24px)}
+.ew.er{right:7px;max-height:calc(var(--cs) - 22px)}
+.ew.el{left:7px;max-height:calc(var(--cs) - 22px)}
+.cmark{width:11px;height:11px}
+.ctile.dim{opacity:.18}
+
+/* ── Version A's clue-word motion ───────────────────────────────────────
+   The fade rules were written for the old .cloud-label span, so once the
+   banners became pills the clue words hard-swapped mid-rotation instead of
+   fading. Same keyframes, now pointed at the pills. */
+.ctab.clue-rotating-out{opacity:0}
+.ctab.clue-rotating-in{animation:clueWordFadeIn .16s ease-out both}
+
+/* Tutorial — keep its own layout, repaint its surfaces */
+.tut-ovr{background:rgba(43,15,82,.34)}
+.tut-card{background:#fff;border-color:var(--line-strong);
+  box-shadow:0 18px 48px rgba(63,26,114,.18)}
+.tut-step{color:var(--muted)}
+.tut-title{color:var(--text)}
+.tut-body,.tut-msg{color:#3c2a5e}
+.tut-msg strong{color:var(--text)}
+.tut-note{color:var(--muted)}
+.tut-clue{color:var(--clue-tx);background:var(--clue-bg);
+  border:1px solid rgba(160,122,235,.28)}
+.tut-slot.expected::after{border-color:rgba(217,165,33,.85)}
+.tut-clue-shell.on{filter:drop-shadow(0 0 12px rgba(124,58,237,.3))}
+.tut-card-selected{box-shadow:0 0 0 2px rgba(217,165,33,.85),0 0 14px rgba(217,165,33,.28)}
+.tut-dot{background:rgba(124,58,237,.18)}
+.tut-dot.on{background:var(--purple);box-shadow:none}
+/* Pills are shorter than the old cloud art, so let the intro copy take the
+   room it needs instead of overlapping the board beneath it. */
+.tutorial-copy-wrap{height:auto;min-height:132px}
+.tut-board-wrap{margin-top:16px}
+.tut-card{background:#fff;border-color:var(--line-strong)}
+.cloud-label{color:var(--clue-tx);text-shadow:none}
+
+::-webkit-scrollbar-thumb{background:rgba(124,58,237,.25)}
+
 `;
 // ═══════════════════════════════════════════════════════════════
 //  HELPERS
@@ -1245,7 +1587,7 @@ const SHOW_DRAG_GHOST = true;
 // ═══════════════════════════════════════════════════════════════
 
 function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim, spinning, spinDir=1,
-                    popping, rotateMoveClass='', rotateSpin=false, tapRotating=false, selected, noclick, adminMode=false, onPointerDown,
+                    rotateMoveClass='', rotateSpin=false, selected, noclick, adminMode=false, onPointerDown,
                     hideWords=false, hideCenterMark=false, children=null }) {
   const [t,r,b,l] = vw(card, orientation);
   let cls="ctile";
@@ -1254,7 +1596,6 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   if(shaking)  cls+=" shaking";
   if(dim)      cls+=" dim";
   if(spinning) cls+=" spinning";
-  if(popping)  cls+=" swap-pop";
   if(rotateMoveClass) cls+=` ${rotateMoveClass}`;
   if(selected) cls+=" selected";
   if(noclick)  cls+=" noclick";
@@ -1443,49 +1784,59 @@ function CloudV({ text, animClass, rotation, textRotation=-90, textShiftX=0, tex
 
 // ── BOARD ────────────────────────────────────────────────────────
 
+function Sparkle({ size=12, delay=0, style }) {
+  return (
+    <span className="spark" style={{width:size,height:size,animationDelay:`${delay}s`,...style}}>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12z"/>
+      </svg>
+    </span>
+  );
+}
+
+// Clue pill — pale lavender tab hugging one side of the board.
+// The float keyframes and .ctab.lft's rotate(180deg) both set `transform` and a
+// running animation beats a normal declaration, so they sit on separate
+// elements — otherwise the left clue's reading direction silently flips.
+function ClueTab({ text, pos, animClass, clueTextPhase="" }) {
+  const phaseCls = clueTextPhase ? ` clue-rotating-${clueTextPhase}` : "";
+  return (
+    <div className={`ctab-float ${animClass||""}`}>
+      <div className={`ctab ${pos}${phaseCls}`}>{text}</div>
+    </div>
+  );
+}
+
 function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase="" }) {
-  const MAIN_CARD_SIZE = compactLevel >= 2 ? 110 : compactLevel === 1 ? 114 : 122;
-  const MAIN_CARD_GAP = compactLevel >= 2 ? 6 : compactLevel === 1 ? 7 : 8;
-  const SURF = MAIN_CARD_SIZE * 2 + MAIN_CARD_GAP + 24;
-  const BALL = compactLevel >= 2 ? 420 : compactLevel === 1 ? 438 : 452;
+  // Card grid is 2*--cs + --cg + 24px padding square. The ring motif, the
+  // sparkle field and the clue pills all size themselves off the same vars,
+  // so the whole board scales with the viewport (see CSS).
+  const SURF = "calc(2*var(--cs) + var(--cg) + 24px)";
 
-  // The ball PNG: sphere occupies top ~65% of image, base the bottom 35%.
-  // Sphere center sits at ~32% from top of the image = 0.32 * BALL from top.
-  // We want sphere center to align with the card grid center (SURF/2 = 120px).
-  // Ball top = cardCenter - sphereCenter = 120 - (0.32 * BALL)
-  // As an offset from the card grid center: shift ball UP by (0.32*BALL - SURF/2)
-  // Shift ball DOWN — sphere needs to wrap the cards, not sit below them
-  // Negative ballShiftUp = move ball down
-  const ballShiftUp = compactLevel >= 2 ? -62 : compactLevel === 1 ? -68 : -74;
+  const PILL_GAP = 8;  // breathing room between a pill and the board
 
-  // Clouds
-  const CHW = compactLevel >= 2 ? 262 : compactLevel === 1 ? 274 : 286;
-  const CHH = compactLevel >= 2 ? 54 : compactLevel === 1 ? 57 : 60;
-  const CVW = compactLevel >= 2 ? 54 : compactLevel === 1 ? 57 : 60;
-  const CVH = compactLevel >= 2 ? 262 : compactLevel === 1 ? 274 : 286;
-  const FOREGROUND_SHIFT_Y = compactLevel >= 2 ? 10 : compactLevel === 1 ? 14 : 18;
-  const clueTextAnimClass = clueTextPhase ? `clue-rotating-${clueTextPhase}` : "";
-
-  const topClue   = renderClue ? renderClue(0,"top") : <CloudH text={clues[0]||""} animClass="float-top" textShiftX={10} textShiftY={compactLevel >= 2 ? -18 : -22} textAnimClass={clueTextAnimClass}/>;
-  const rightClue = renderClue ? renderClue(1,"rgt") : <CloudV text={clues[1]||""} animClass="float-right" rotation={90} textRotation={90} textShiftX={0} textShiftY={0} textAnimClass={clueTextAnimClass}/>;
-  const botClue   = renderClue ? renderClue(2,"bot") : <CloudH text={clues[2]||""} animClass="float-bot" textShiftX={10} textShiftY={compactLevel >= 2 ? -18 : -22} textAnimClass={clueTextAnimClass}/>;
-  const leftClue  = renderClue ? renderClue(3,"lft") : <CloudV text={clues[3]||""} animClass="float-left" rotation={-90} textRotation={-90} textShiftX={0} textShiftY={0} textAnimClass={clueTextAnimClass}/>;
-
-  const boardShiftX = compactLevel >= 2 ? -4 : compactLevel === 1 ? -6 : -10;
+  const pill = (i,pos,anim) => (
+    <ClueTab text={clues[i]||""} pos={pos} animClass={anim}
+      clueTextPhase={clueTextPhase}/>
+  );
+  const topClue   = renderClue ? renderClue(0,"top") : pill(0,"top","float-top");
+  const rightClue = renderClue ? renderClue(1,"rgt") : pill(1,"rgt","float-right");
+  const botClue   = renderClue ? renderClue(2,"bot") : pill(2,"bot","float-bot");
+  const leftClue  = renderClue ? renderClue(3,"lft") : pill(3,"lft","float-left");
 
   return (
-    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:compactLevel >= 2 ? 8 : compactLevel === 1 ? 11 : 14,transform:`translateX(${boardShiftX}px)`}}>
+    <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,marginTop:compactLevel >= 2 ? 8 : compactLevel === 1 ? 11 : 14}}>
 
-      {/* TOP CLOUD */}
-      <div style={{width:CHW,height:CHH,zIndex:5,marginBottom:compactLevel >= 2 ? -5 : -8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+      {/* TOP CLUE */}
+      <div style={{zIndex:5,marginBottom:PILL_GAP,display:"flex",justifyContent:"center"}}>
         {topClue}
       </div>
 
       {/* MIDDLE ROW */}
       <div style={{display:"flex",alignItems:"center",gap:0,position:"relative"}}>
 
-        {/* LEFT CLOUD */}
-        <div style={{width:CVW,height:CVH,zIndex:5,marginRight:compactLevel >= 2 ? 20 : compactLevel === 1 ? 23 : 26,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+        {/* LEFT CLUE */}
+        <div style={{zIndex:5,marginRight:PILL_GAP,display:"flex",alignItems:"center"}}>
           {leftClue}
         </div>
 
@@ -1499,33 +1850,22 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase=""
           justifyContent:"center",
         }}>
           {/* Decorative art stays behind the live board so existing interaction layers remain unchanged. */}
-          <div style={{
-            position:"absolute",
-            width:BALL,
-            height:BALL,
-            left:"50%",
-            top:"50%",
-            transform:`translate(-50%, calc(-50% - ${ballShiftUp}px))`,
-            pointerEvents:"none",
-            zIndex:0,
-          }}>
-            <div
-              style={{
-                width:"100%",
-                height:"100%",
-                userSelect:"none",
-                backgroundImage:`url("${CRYSTAL_BALL_ASSET}")`,
-                backgroundPosition:"center",
-                backgroundRepeat:"no-repeat",
-                backgroundSize:"contain",
-              }}
-            />
+          <div className="ballmotif" aria-hidden="true"/>
+          <div className="sparkfield" aria-hidden="true">
+            <Sparkle size={13} delay={0}   style={{left:"4%",top:"15%"}}/>
+            <Sparkle size={9}  delay={1.1} style={{left:"17%",top:"3%"}}/>
+            <Sparkle size={8}  delay={2.3} style={{right:"6%",top:"18%"}}/>
+            <Sparkle size={12} delay={.5}  style={{right:"16%",top:"4%"}}/>
+            <Sparkle size={9}  delay={1.7} style={{left:"1%",bottom:"26%"}}/>
+            <Sparkle size={11} delay={2.9} style={{right:"1%",bottom:"29%"}}/>
+            <Sparkle size={10} delay={.8}  style={{left:"12%",bottom:"3%"}}/>
+            <Sparkle size={8}  delay={2.1} style={{right:"13%",bottom:"5%"}}/>
           </div>
           {/* Cards centered in card grid, floating above ball interior */}
-          <div style={{position:"relative",zIndex:2,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+          <div style={{position:"relative",zIndex:2}}>
             <div
               className="csurface"
-              style={{"--cs": `${MAIN_CARD_SIZE}px`, "--cg": `${MAIN_CARD_GAP}px`}}
+            
             >
               {renderSlot(0)}{renderSlot(1)}
               {renderSlot(3)}{renderSlot(2)}
@@ -1533,14 +1873,14 @@ function Board({ clues, renderClue, renderSlot, compactLevel=0, clueTextPhase=""
           </div>
         </div>
 
-        {/* RIGHT CLOUD */}
-        <div style={{width:CVW,height:CVH,zIndex:5,marginLeft:compactLevel >= 2 ? 6 : compactLevel === 1 ? 8 : 10,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+        {/* RIGHT CLUE */}
+        <div style={{zIndex:5,marginLeft:PILL_GAP,display:"flex",alignItems:"center"}}>
           {rightClue}
         </div>
       </div>
 
-      {/* BOTTOM CLOUD */}
-      <div style={{width:CHW,height:CHH,zIndex:5,marginTop:compactLevel >= 2 ? -5 : -8,transform:`translateY(${FOREGROUND_SHIFT_Y}px)`}}>
+      {/* BOTTOM CLUE */}
+      <div style={{zIndex:5,marginTop:PILL_GAP,display:"flex",justifyContent:"center"}}>
         {botClue}
       </div>
 
@@ -1980,7 +2320,6 @@ function GameView({
     ? new Map((savedProgress.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
     : new Map());
   const [spinning,setSpinning] = useState(new Set());
-  const [swapPopping,setSwapPopping] = useState(new Set());
   const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
   const [clueRotatePhase,setClueRotatePhase] = useState("");
@@ -2002,7 +2341,6 @@ function GameView({
   const [revealPhase,setRevealPhase] = useState(null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   const [showParticles,setShowParticles] = useState(false);
-  const swapPopTimer = useRef(null);
   const tapRotateTimers = useRef(new Map());
   const tapRotateQueued = useRef(new Map());
   const tapRotateActive = useRef(new Set());
@@ -2062,6 +2400,9 @@ function GameView({
     const inner = playFitInnerRef.current;
     if(!outer || !inner) return;
 
+    // Only the tutorial measures itself; the play screen never scales.
+    if(!tutorialActive) return;
+
     let raf = 0;
     const updateScale = () => {
       cancelAnimationFrame(raf);
@@ -2074,7 +2415,7 @@ function GameView({
         const naturalHeight = inner.scrollHeight;
         const naturalWidth = inner.scrollWidth;
         if(!availableHeight || !availableWidth || !naturalHeight || !naturalWidth) return;
-        if(tutorialActive && (isDragging || swapPopping.size > 0 || tapRotating.size > 0)) return;
+        if(tutorialActive && (isDragging || tapRotating.size > 0)) return;
         const nextScale = Math.min(1, (availableHeight - 4) / naturalHeight, (availableWidth - 4) / naturalWidth);
         setPlayScale(prev => Math.abs(prev - nextScale) > 0.01 ? nextScale : prev);
       });
@@ -2095,12 +2436,17 @@ function GameView({
       window.visualViewport?.removeEventListener("resize", updateScale);
       window.visualViewport?.removeEventListener("scroll", updateScale);
     };
-  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging, swapPopping, tapRotating]);
+  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging, tapRotating]);
 
+  // The play screen renders at its true size and scrolls if the window is
+  // short. Only the tutorial, whose board sits in a fixed-height card, is
+  // scaled to fit — scaling the play screen resampled the text instead of
+  // re-laying it out, which softened every word at high browser zoom.
+  const appliedScale = tutorialActive ? playScale : 1;
   const playAreaStyle = useMemo(()=>({
-    transform:`scale(${playScale})`,
-    marginBottom: playScale < 1 ? `${-1 * Math.max(0, (1 - playScale) * 260)}px` : "0px",
-  }),[playScale]);
+    transform:`scale(${appliedScale})`,
+    marginBottom: appliedScale < 1 ? `${-1 * Math.max(0, (1 - appliedScale) * 260)}px` : "0px",
+  }),[appliedScale]);
 
   const tutorialStep = tutorialActive ? tutorialSteps[tutorialStepIndex] : null;
   const tutorialHighlightedSlots = tutorialStep?.highlightedSlots || [];
@@ -2351,11 +2697,22 @@ function GameView({
       });
     });
 
+    let animation = null;
+
     const finishRotation = () => {
       const timer = tapRotateTimers.current.get(si);
       if(timer){
         clearTimeout(timer);
         tapRotateTimers.current.delete(si);
+      }
+
+      if(animation && animation.playState !== "finished" && animation.playState !== "idle"){
+        // The browser can fail to ever start/finish this animation if it
+        // overlaps another transform animation on the same tile — force it
+        // off so the card can't get stuck mid-turn.
+        animation.onfinish = null;
+        animation.oncancel = null;
+        animation.cancel();
       }
 
       const queued = tapRotateQueued.current.get(si) || 0;
@@ -2374,8 +2731,15 @@ function GameView({
       });
     };
 
+    const prefersReducedMotion = typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if(prefersReducedMotion){
+      finishRotation();
+      return;
+    }
+
     const tile = slotRefs.current[si]?.querySelector?.(".ctile");
-    const animation = tile?.animate?.([
+    animation = tile?.animate?.([
       { transform:"translate3d(0,0,0) rotateZ(-90deg)", offset:0 },
       { transform:"translate3d(0,0,0) rotateZ(-18deg)", offset:.55 },
       { transform:"translate3d(0,0,0) rotateZ(0deg)", offset:1 },
@@ -2451,7 +2815,10 @@ function GameView({
         if(tutorialActive && tutorialStepIndex === 3){
           setWrong(prev=>{const next=new Set(prev);next.delete(si);return next;});
         }
-        if(tapRotateActive.current.has(si)){
+        if(rotateAnimating && si < 4){
+          // The whole-board rotate animates this same tile's transform; skip
+          // to avoid the two transform animations colliding on the DOM node.
+        } else if(tapRotateActive.current.has(si)){
           tapRotateQueued.current.set(si, (tapRotateQueued.current.get(si) || 0) + 1);
         } else {
           startTapRotation(si);
@@ -2461,9 +2828,6 @@ function GameView({
         if(tgt>=0 && (!tutorialActive || tutorialPairAllowed(si, tgt))){
           setSlots(p=>{const n=[...p];[n[si],n[tgt]]=[n[tgt],n[si]];return n;});
           setWrong(p=>{const s=new Set(p);s.delete(si);s.delete(tgt);return s;});
-          setSwapPopping(new Set([si,tgt]));
-          if(swapPopTimer.current) clearTimeout(swapPopTimer.current);
-          swapPopTimer.current = setTimeout(()=>setSwapPopping(new Set()), 190);
         }
       }
     };
@@ -2472,7 +2836,7 @@ function GameView({
   },[
     slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
     tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext,
-    startTapRotation
+    startTapRotation, rotateAnimating
   ]);
 
   const handleRotate = useCallback(()=>{
@@ -2824,17 +3188,15 @@ function GameView({
           shaking={isWrong}
           extraCls={extraCls}
             dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
-            popping={swapPopping.has(si)}
             rotateMoveClass={rotateMoveClass}
             rotateSpin={rotateAnimating && si < 4}
-            tapRotating={tapRotating.has(si)}
             spinDir={si%2===0?1:-1}
             onPointerDown={e=>handlePD(e,si)}/>}
       </div>
     );
   },[
     slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,
-      isDragging,dragSrc,spinning,swapPopping,tapRotating,rotateAnimating,dragOver,handlePD,
+      isDragging,dragSrc,spinning,rotateAnimating,dragOver,handlePD,
     tutorialActive,tutorialHighlightedSlots,tutorialComplete
   ]);
 
@@ -2843,28 +3205,10 @@ function GameView({
     const highlighted = tutorialHighlightedClues.includes(index);
     const dimmed = tutorialActive && !tutorialComplete && tutorialHighlightedClues.length > 0 && !highlighted;
     const cls = `tut-clue-shell${highlighted ? " on" : ""}${dimmed ? " dim" : ""}`;
-    if(index === 0){
-      return (
-        <div className={cls} style={{transform:"translateY(18px)"}}>
-          <CloudH text={clues[index] || ""} artOpacity={1} textShiftX={10} textShiftY={-14} />
-        </div>
-      );
-    }
-    if(index === 2){
-      return (
-        <div className={cls} style={{position:"relative", zIndex:7, transform:"translateY(28px)"}}>
-          <CloudH text={clues[index] || ""} artOpacity={1} artTranslateY={-14} textShiftX={10} textShiftY={-24} />
-        </div>
-      );
-    }
+    const anim = {0:"float-top",1:"float-right",2:"float-bot",3:"float-left"}[index] || "";
     return (
-      <div className={cls} style={{transform: pos === "lft" ? "translateX(14px)" : "translateX(-2px)"}}>
-        <CloudV
-          text={clues[index] || ""}
-          rotation={pos === "rgt" ? 90 : -90}
-          textRotation={pos === "rgt" ? 90 : -90}
-          artOpacity={1}
-        />
+      <div className={cls}>
+        <ClueTab text={clues[index] || ""} pos={pos} animClass={anim}/>
       </div>
     );
   },[clues, tutorialActive, tutorialComplete, tutorialHighlightedClues]);
@@ -2885,8 +3229,6 @@ function GameView({
   const tutorialMessage = tutorialComplete
     ? TUTORIAL_FINAL_SUCCESS
     : feedback || tutorialStep?.body || "";
-  const playCardSize = compactLevel >= 2 ? 110 : compactLevel === 1 ? 114 : 122;
-  const playCardGap = compactLevel >= 2 ? 6 : compactLevel === 1 ? 7 : 8;
 
   return (<>
     {showParticles && (
@@ -2910,21 +3252,9 @@ function GameView({
             </div>
           </div>
       ) : (
-        <div className="lives game-lives">
+        <div className="lives game-lives" title={`${lives} of ${MAX_LIVES} lives left`}>
           {Array.from({length:MAX_LIVES},(_,i)=>(
-            <span
-              key={i}
-              className={`life${i>=lives?" lost":""}`}
-              style={{flex:"0 0 auto"}}
-            >
-              <img
-                className="life-img"
-                src={STAR_LIFE_ASSET}
-                alt=""
-                aria-hidden="true"
-                style={{display:"block", width:"100%", height:"100%", maxWidth:"24px", maxHeight:"24px", objectFit:"contain"}}
-              />
-            </span>
+            <span key={i} className={`life${i>=lives?" lost":""}`}>⭐</span>
           ))}
         </div>
       )}
@@ -2937,7 +3267,7 @@ function GameView({
             compactLevel={compactLevel}
             clueTextPhase={clueRotatePhase}
           />
-          <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:compactLevel >= 2 ? 4 : compactLevel === 1 ? 10 : 16,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:compactLevel >= 2 ? 4 : 6,padding:"0 10px","--cs":`${playCardSize}px`,"--cg":`${playCardGap}px`}}>
+          <div className={tutorialActive ? "tutorial-controls-wrap" : ""} style={tutorialActive ? undefined : {marginTop:24,width:"100%",display:"flex",flexDirection:"column",alignItems:"center",gap:10,padding:"0 10px"}}>
             {tutorialActive ? (
                 <>
                   <div className="tut-nav">
@@ -2977,6 +3307,7 @@ function GameView({
             <div className="extra">
         {numExtra>0 ? (
           <>
+            <span className="elabel">Available cards</span>
             <div className="eslots">
               {Array.from({length:numExtra},(_,i)=>{
                 const si=4+i,s=slots[si],card=s?puzzle.cards[s.cardId]:null;
@@ -2986,8 +3317,6 @@ function GameView({
                     {card&&<CardTile card={card} orientation={s.orientation}
                       locked={locked.has(si)} wrong={wrong.has(si)}
                       dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
-                      popping={swapPopping.has(si)}
-                      tapRotating={tapRotating.has(si)}
                       spinDir={i%2===0?1:-1}
                       onPointerDown={e=>handlePD(e,si)}/>}
                   </div>
@@ -4537,6 +4866,7 @@ export default function App() {
       <header className="hdr">
         <div className="logo">
           <div className="logo-g">🔮</div>
+          <span className="logo-name">Cluevoyance</span>
         </div>
           <div className="nav">
             {view==="game" && isArchivePlay && (
