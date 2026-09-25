@@ -372,7 +372,6 @@ body::before{
   font-size:8px;
   letter-spacing:.02em;
 }
-.admin-card-hit{position:absolute;inset:0;border:none;background:transparent;cursor:pointer;z-index:1}
 .admin-word-wrap{position:absolute;z-index:3}
 .admin-word-wrap.top{top:8px;left:50%;transform:translateX(-50%)}
 .admin-word-wrap.bottom{bottom:8px;left:50%;transform:translateX(-50%)}
@@ -411,6 +410,13 @@ body::before{
   box-shadow:0 6px 16px rgba(61,24,131,.35)
 }
 .admin-rotate-btn:hover{background:#8b5cf6}
+.admin-more-btn{
+  position:absolute;top:5px;right:5px;
+  width:20px;height:20px;border:none;border-radius:999px;
+  background:rgba(20,10,50,.4);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;line-height:1;cursor:pointer;z-index:5;letter-spacing:-1px
+}
+.admin-more-btn:hover{background:rgba(20,10,50,.65)}
 
 /* Diamond center mark */
 .cmark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);
@@ -716,6 +722,16 @@ body::before{
   overflow:hidden;
 }
 .admin-board-note{color:rgba(255,255,255,.68);font-size:12px;line-height:1.5;margin-top:12px;text-align:center}
+.admin-deal-sec{padding-bottom:6px}
+.admin-deal-btn{
+  padding:9px 20px;background:rgba(255,255,255,.15);
+  border:1.5px solid rgba(255,255,255,.4);border-radius:50px;
+  color:#FFF;font-family:var(--fu);font-size:12px;font-weight:700;
+  cursor:pointer;letter-spacing:.04em;transition:background .15s;
+}
+.admin-deal-btn:hover{background:rgba(255,255,255,.25)}
+.admin-deal-btn:disabled{cursor:not-allowed;opacity:.45}
+.admin-deal-note{color:rgba(255,255,255,.55);font-size:11px;text-align:center;line-height:1.5;max-width:300px}
 .admin-extra-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:4px 0 2px}
 .admin-checks{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .admin-check{padding:5px 10px;border-radius:999px;border:1px solid rgba(139,92,246,.4);
@@ -882,6 +898,11 @@ body::before{
   .ctab.lft{margin-right:10px}
   .ctab.rgt{margin-left:10px}
   .admin-extra-grid{gap:10px}
+  .admin-word-input{z-index:20}
+  .admin-word-input.left{transform:translateX(-15px)}
+  .admin-word-input.right{transform:translateX(15px)}
+  .admin-word-input.top{transform:translateY(-14px)}
+  .admin-word-input.bottom{transform:translateY(14px)}
 }
 
 @media (max-width:360px){
@@ -899,6 +920,11 @@ body::before{
   .admin-extra-grid{gap:8px}
   .admin-cal-weekdays,.admin-cal-grid{gap:4px}
   .admin-cal-day{font-size:14px;border-radius:10px}
+  .admin-word-input{z-index:20}
+  .admin-word-input.left{transform:translateX(-10px)}
+  .admin-word-input.right{transform:translateX(10px)}
+  .admin-word-input.top{transform:translateY(-10px)}
+  .admin-word-input.bottom{transform:translateY(10px)}
 }
 
 /* ══ LOBBY ══ */
@@ -1618,7 +1644,7 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
 }
 
 function AdminPreviewCard({
-  card, orientation=0, selected, dim, dragSrc=false, onPointerDown, onRotate, onSelect,
+  card, orientation=0, selected, dim, dragSrc=false, onPointerDown, onRotate, onMore,
   editingWord=null, editDraft="", onStartEdit, onEditDraftChange, onCommitEdit, onCancelEdit,
 }) {
   const [t,r,b,l] = vw(card, orientation);
@@ -1649,7 +1675,6 @@ function AdminPreviewCard({
       hideCenterMark
       onPointerDown={onPointerDown}
     >
-      <button className="admin-card-hit" onClick={onSelect} aria-label="Select card" />
       {[["top",0],["right",1],["bottom",2],["left",3]].map(([pos, idx])=>(
         <div key={pos} className={`admin-word-wrap ${pos}`} onPointerDown={stop} onMouseDown={stop}>
           {editingWord === idx ? (
@@ -1684,6 +1709,16 @@ function AdminPreviewCard({
         aria-label="Rotate card"
       >
         ↻
+      </button>
+      <button
+        className="admin-more-btn"
+        onPointerDown={stop}
+        onMouseDown={stop}
+        onClick={e=>{ stop(e); onMore(); }}
+        title="More options"
+        aria-label="More options"
+      >
+        ⋯
       </button>
     </CardTile>
   );
@@ -3414,29 +3449,16 @@ function EditableClueTab({ text, pos, onChange }) {
 //  CARD EDITOR PANEL (admin — visual cross layout)
 // ═══════════════════════════════════════════════════════════════
 
-function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
+function CardEditorPanel({ card, orientation, slotIdx, onWordChange,
                            onMoveToExtras, onMoveToSolution, onDelete, onClose, onPrev, onNext, wordBank, isInClover }) {
-  const words = card?.words || ["","","",""];
-  const EDGE_LABELS = ["Top","Right","Bottom","Left"];
   const [wbQuery, setWbQuery] = useState("");
   const [wbOpen, setWbOpen]   = useState(true);
   const [quickFill, setQuickFill] = useState("");
-  const inputRefs = useRef([]);
 
-  const focusField = (wi) => {
-    const el = inputRefs.current[wi];
-    if(!el) return;
-    requestAnimationFrame(() => {
-      el.focus();
-      el.select();
-    });
-  };
-
-  useEffect(()=>{
-    const firstEmpty = words.findIndex(w=>!w?.trim());
-    focusField(firstEmpty >= 0 ? firstEmpty : 0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[card?.id]);
+  // Word/bank tools below work in display space (top/right/bottom/left as
+  // currently shown, after rotation) since that's what the creator sees —
+  // toRaw() converts back to the card's canonical storage index.
+  const toRaw = (displayIdx) => (displayIdx - orientation + 4) % 4;
 
   const parseWordTokens = (text) =>
     (text || "")
@@ -3445,10 +3467,10 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
       .map(s=>s.trim())
       .filter(Boolean);
 
-  const applyTokensFrom = (startIdx, tokens=[]) => {
+  const applyTokensFrom = (startDisplayIdx, tokens=[]) => {
     if(!tokens.length) return;
     for(let i=0;i<Math.min(tokens.length,4);i++){
-      onWordChange((startIdx + i) % 4, tokens[i]);
+      onWordChange(toRaw((startDisplayIdx + i) % 4), tokens[i]);
     }
   };
 
@@ -3457,34 +3479,12 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
     if(tokens.length < 4) return;
     applyTokensFrom(0, tokens.slice(0,4));
     setQuickFill("");
-    focusField(0);
   };
 
   const fillFromBank = word => {
-    const fi = words.findIndex(w=>!w.trim());
-    if(fi>=0){
-      onWordChange(fi, word);
-      focusField((fi+1)%4);
-      return;
-    }
-    onWordChange(0, word);
-    focusField(1);
-  };
-
-  const handleWordKeyDown = (wi, e) => {
-    if(e.key === "Enter"){
-      e.preventDefault();
-      focusField((wi + 1) % 4);
-    }
-  };
-
-  const handleWordPaste = (wi, e) => {
-    const text = e.clipboardData?.getData("text") || "";
-    const tokens = parseWordTokens(text);
-    if(tokens.length < 2) return;
-    e.preventDefault();
-    applyTokensFrom(wi, tokens);
-    focusField((wi + Math.min(tokens.length, 4)) % 4);
+    const displayWords = vw(card, orientation);
+    const fi = displayWords.findIndex(w=>!w.trim());
+    onWordChange(toRaw(fi>=0 ? fi : 0), word);
   };
 
   const sortedBank = [...wordBank].sort((a,b)=>a.localeCompare(b));
@@ -3496,56 +3496,12 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
     <div className="ced">
       <div className="ced-hdr">
         <span className="ced-title">
-          {isInClover ? `Editing: ${SLOT_LABELS[slotIdx]} card` : "Editing: Extra card"}
+          More options: {isInClover ? `${SLOT_LABELS[slotIdx]} card` : "Extra card"}
         </span>
         <div style={{display:"flex",alignItems:"center",gap:6}}>
           <button className="abtn s sm" onClick={onPrev} title="Previous card">← Prev</button>
           <button className="abtn s sm" onClick={onNext} title="Next card">Next →</button>
-          <button className="ced-close" onClick={onClose}>×</button>
-        </div>
-      </div>
-
-      {/* Visual cross layout */}
-      <div className="ced-cross">
-        {/* Top input */}
-        <div data-a="top" style={{width:"100%"}}>
-          <input className="ced-fi" value={words[0]}
-            onChange={e=>onWordChange(0,e.target.value)}
-            onKeyDown={e=>handleWordKeyDown(0,e)}
-            onPaste={e=>handleWordPaste(0,e)}
-            ref={el=>{inputRefs.current[0]=el;}}
-            placeholder={EDGE_LABELS[0]}/>
-        </div>
-        {/* Left input */}
-        <div data-a="left" style={{width:"100%"}}>
-          <input className="ced-fi" value={words[3]}
-            onChange={e=>onWordChange(3,e.target.value)}
-            onKeyDown={e=>handleWordKeyDown(3,e)}
-            onPaste={e=>handleWordPaste(3,e)}
-            ref={el=>{inputRefs.current[3]=el;}}
-            placeholder={EDGE_LABELS[3]}/>
-        </div>
-        {/* Mini card preview */}
-        <div data-a="preview" className="ced-pv">
-          <CardTile card={card} orientation={orientation} adminMode noclick/>
-        </div>
-        {/* Right input */}
-        <div data-a="right" style={{width:"100%"}}>
-          <input className="ced-fi" value={words[1]}
-            onChange={e=>onWordChange(1,e.target.value)}
-            onKeyDown={e=>handleWordKeyDown(1,e)}
-            onPaste={e=>handleWordPaste(1,e)}
-            ref={el=>{inputRefs.current[1]=el;}}
-            placeholder={EDGE_LABELS[1]}/>
-        </div>
-        {/* Bottom input */}
-        <div data-a="bot" style={{width:"100%"}}>
-          <input className="ced-fi" value={words[2]}
-            onChange={e=>onWordChange(2,e.target.value)}
-            onKeyDown={e=>handleWordKeyDown(2,e)}
-            onPaste={e=>handleWordPaste(2,e)}
-            ref={el=>{inputRefs.current[2]=el;}}
-            placeholder={EDGE_LABELS[2]}/>
+          <button className="ced-close" onClick={onClose} aria-label="Close">×</button>
         </div>
       </div>
 
@@ -3563,18 +3519,16 @@ function CardEditorPanel({ card, orientation, slotIdx, onWordChange, onRotate,
         </button>
       </div>
       <div className="ced-tip">
-        Tip: paste 4 words separated by commas/new lines, or press Enter to jump to the next side.
+        Paste 4 words separated by commas or new lines to fill this card's currently
+        shown top/right/bottom/left in one go.
       </div>
 
-      {/* Rotate + actions */}
       <div className="ced-actions">
-        <button className="abtn s sm" onClick={()=>onRotate(-1)} title="Rotate CCW">↶ CCW</button>
-        <button className="abtn s sm" onClick={()=>onRotate(1)}  title="Rotate CW">↷ CW</button>
         {isInClover
           ? <button className="abtn s sm" onClick={onMoveToExtras}>→ Extra</button>
           : <button className="abtn s sm" onClick={onMoveToSolution}>← Board</button>
         }
-        <button className="abtn d sm" onClick={onDelete}>Delete</button>
+        <button className="abtn d sm" onClick={onDelete}>Delete card</button>
       </div>
 
       {/* Word bank */}
@@ -3813,8 +3767,9 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
       if(!dr) return;
       const dx=ev.clientX-dr.x0,dy=ev.clientY-dr.y0;
       if(Math.sqrt(dx*dx+dy*dy)<8&&!dr.moved){
-        // Tap → select
-        setSelId(admin.slots[si]?.cardId ?? null);
+        // A plain tap on the card body (not a word, not a control) does
+        // nothing — editing words/clues and reaching "More options" each
+        // have their own explicit, stopPropagation'd targets.
       } else {
         const tgt=getSlotAt(ev.clientX,ev.clientY,si);
         if(tgt>=0){
@@ -3838,7 +3793,6 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     }}));
 
   const startInlineEdit = useCallback((cardId, wordIndex, value="")=>{
-    setSelId(cardId);
     setInlineEdit({cardId, wordIndex});
     setInlineDraft(value || "");
   },[]);
@@ -3850,10 +3804,16 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
 
   const commitInlineEdit = useCallback(()=>{
     if(!inlineEdit) return;
-    updateWord(inlineEdit.cardId, inlineEdit.wordIndex, inlineDraft);
+    // wordIndex is a display-space edge (0=top…3=left, as shown after
+    // rotation) — translate it back to the card's raw/canonical index
+    // before writing, so a rotated card's word lands on the edge the
+    // creator actually typed into rather than wherever index 0-3 raw is.
+    const orientation = admin.slots.find(s=>s.cardId===inlineEdit.cardId)?.orientation || 0;
+    const rawIndex = (inlineEdit.wordIndex - orientation + 4) % 4;
+    updateWord(inlineEdit.cardId, rawIndex, inlineDraft);
     setInlineEdit(null);
     setInlineDraft("");
-  },[inlineDraft, inlineEdit]);
+  },[inlineDraft, inlineEdit, admin.slots]);
 
   const rotateCard = (cardId,delta) =>
     setAdmin(p=>({...p,slots:p.slots.map(s=>
@@ -3899,6 +3859,13 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
     // Need 7 cards × 4 words each = 28 words minimum; fall back to repeating bank if small
     const bank = [...wordBank];
     if(bank.length < 4) return; // not enough words to do anything useful
+
+    // A fresh blank puzzle never prompts — only warn when it would actually
+    // overwrite something the creator has already typed.
+    const hasExistingWords = Object.values(admin.cards).some(c=>c.words.some(w=>w?.trim()));
+    if(hasExistingWords && !window.confirm("Dealing new cards will replace the words you've already entered. Continue?")){
+      return;
+    }
 
     // Shuffle the bank
     for(let i=bank.length-1;i>0;i--){
@@ -4020,7 +3987,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
           dragSrc={dragSrc===si}
           onPointerDown={e=>handlePD(e,si)}
           onRotate={()=>rotateCard(s.cardId,1)}
-          onSelect={()=>setSelId(s.cardId)}
+          onMore={()=>setSelId(id=>id===s.cardId ? null : s.cardId)}
           editingWord={editingWord}
           editDraft={editingWord!=null ? inlineDraft : ""}
           onStartEdit={(wordIndex, value)=>startInlineEdit(s.cardId, wordIndex, value)}
@@ -4110,6 +4077,21 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
             </div>
           </div>
 
+          <div className="admin-sec admin-deal-sec">
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,width:"100%"}}>
+              <button
+                className="admin-deal-btn"
+                onClick={dealRandomCards}
+                disabled={wordBank.length<4}
+              >
+                🎲 Deal Random Cards
+              </button>
+              <div className="admin-deal-note">
+                Fills all 7 cards from the word bank at random — then edit any word or clue below.
+              </div>
+            </div>
+          </div>
+
           <div className="admin-sec">
             <div className="admin-sec-title">Board & Clues</div>
             <div className="admin-board-stage">
@@ -4125,7 +4107,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
               <EditableClueTab text={admin.clues[2]} pos="bot" onChange={val=>updateClue(2,val)}/>
             </div>
             <div className="admin-board-note">
-              Tap any clue or card word to edit it in place. Use the center rotate button when you want to change a card's orientation.
+              Tap any clue or card word to type it in place · drag a card to reposition · ⋯ for word bank and bulk tools
             </div>
           </div>
 
@@ -4147,7 +4129,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
                       dragSrc={dragSrc===si}
                       onPointerDown={e=>handlePD(e,si)}
                       onRotate={()=>rotateCard(s.cardId,1)}
-                      onSelect={()=>setSelId(s.cardId)}
+                      onMore={()=>setSelId(id=>id===s.cardId ? null : s.cardId)}
                       editingWord={editingWord}
                       editDraft={editingWord!=null ? inlineDraft : ""}
                       onStartEdit={(wordIndex, value)=>startInlineEdit(s.cardId, wordIndex, value)}
@@ -4161,30 +4143,6 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
             </div>
           </div>
 
-          <div className="admin-sec">
-            <div className="admin-sec-title">Quick Fill</div>
-            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,width:"100%"}}>
-              <button
-                onClick={dealRandomCards}
-                disabled={wordBank.length<4}
-                style={{
-                  padding:"9px 20px",background:"rgba(255,255,255,.15)",
-                  border:"1.5px solid rgba(255,255,255,.4)",borderRadius:"50px",
-                  color:"#FFF",fontFamily:"var(--fu)",fontSize:12,fontWeight:700,
-                  cursor:wordBank.length<4?"not-allowed":"pointer",
-                  opacity:wordBank.length<4?.45:1,
-                  letterSpacing:".04em",transition:"background .15s",
-                }}
-                onMouseOver={e=>e.currentTarget.style.background="rgba(255,255,255,.25)"}
-                onMouseOut={e=>e.currentTarget.style.background="rgba(255,255,255,.15)"}
-              >
-                🎲 Deal Random Cards
-              </button>
-              <div style={{color:"rgba(255,255,255,.4)",fontSize:10,textAlign:"center",lineHeight:1.5}}>
-                Tap a card to edit · Tap a clue tab to edit · Drag to reposition
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Card editor panel (appears when a card is selected) */}
@@ -4194,7 +4152,6 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
             slotIdx={selSlotIdx}
             isInClover={selInClover}
             onWordChange={(wi,val)=>updateWord(selectedId,wi,val)}
-            onRotate={delta=>rotateCard(selectedId,delta)}
             onMoveToExtras={()=>moveToExtras(selectedId)}
             onMoveToSolution={()=>moveToSolution(selectedId)}
             onDelete={()=>deleteCard(selectedId)}
