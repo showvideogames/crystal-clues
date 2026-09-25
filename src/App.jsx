@@ -441,10 +441,6 @@ body::before{
 .ctile.flip-up{animation:cardFlipUp .22s ease-out forwards;transform-origin:center}
 @keyframes flipIn{0%{transform:scaleX(0);opacity:.5}100%{transform:scaleX(1);opacity:1}}
 .ctile.flipping{animation:flipIn .28s cubic-bezier(.34,1.56,.64,1)}
-@keyframes shuffleSpin{0%{transform:rotate(calc(var(--sd,1)*0deg))}
-  45%{transform:rotate(calc(var(--sd,1)*180deg)) scale(.88)}
-  100%{transform:rotate(calc(var(--sd,1)*360deg))}}
-.ctile.spinning{animation:shuffleSpin .44s ease}
 @keyframes swapPop{0%{transform:scale(1)}45%{transform:scale(1.12)}100%{transform:scale(1)}}
 .ctile.swap-pop{animation:swapPop .18s ease-out}
 @keyframes rotateMoveRight{0%{transform:translate(0,0) scale(1)}100%{transform:translateX(var(--step)) scale(.98)}}
@@ -1583,7 +1579,7 @@ const SHOW_DRAG_GHOST = true;
 //  CARD TILE — 4 edge words, no CSS rotation of card
 // ═══════════════════════════════════════════════════════════════
 
-function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim, spinning, spinDir=1,
+function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extraCls='', dim,
                     rotateMoveClass='', rotateSpin=false, selected, noclick, adminMode=false, onPointerDown,
                     hideWords=false, hideCenterMark=false, children=null }) {
   const [t,r,b,l] = vw(card, orientation);
@@ -1592,7 +1588,6 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   else if(wrong||repeatBad)   cls+=" wrong-red";
   if(shaking)  cls+=" shaking";
   if(dim)      cls+=" dim";
-  if(spinning) cls+=" spinning";
   if(rotateMoveClass) cls+=` ${rotateMoveClass}`;
   if(selected) cls+=" selected";
   if(noclick)  cls+=" noclick";
@@ -1600,7 +1595,7 @@ function CardTile({ card, orientation=0, locked, wrong, repeatBad, shaking, extr
   if(extraCls) cls+=extraCls;
 
   return (
-    <div className={cls} style={{"--sd":spinDir}} onPointerDown={onPointerDown}>
+    <div className={cls} onPointerDown={onPointerDown}>
       <div className={`ctile-inner${rotateSpin ? " rotate-spin" : ""}`}>
         {!hideWords && (
           <>
@@ -2316,7 +2311,6 @@ function GameView({
   const [knownBad,setKnownBad] = useState(()=> canRestoreProgress
     ? new Map((savedProgress.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
     : new Map());
-  const [spinning,setSpinning] = useState(new Set());
   const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
   const [clueRotatePhase,setClueRotatePhase] = useState("");
@@ -2341,6 +2335,8 @@ function GameView({
   const tapRotateTimers = useRef(new Map());
   const tapRotateQueued = useRef(new Map());
   const tapRotateActive = useRef(new Set());
+  const shuffleTimers = useRef(new Map());
+  const shuffleActive = useRef(new Set());
   const rotateTimer = useRef(null);
   const clueRotateTimer = useRef(null);
   const introShuffleTimer = useRef(null);
@@ -2361,6 +2357,9 @@ function GameView({
     tapRotateTimers.current.clear();
     tapRotateQueued.current.clear();
     tapRotateActive.current.clear();
+    shuffleTimers.current.forEach(timer=>clearTimeout(timer));
+    shuffleTimers.current.clear();
+    shuffleActive.current.clear();
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
     if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
     if(introShuffleTimer.current) clearTimeout(introShuffleTimer.current);
@@ -2756,7 +2755,7 @@ function GameView({
   },[]);
 
   const handlePD = useCallback((e,si)=>{
-    if(locked.has(si) || lost || tutorialComplete) return;
+    if(locked.has(si) || lost || tutorialComplete || shuffleActive.current.has(si)) return;
     if(tutorialActive && tutorialStepIndex === 0){
       return;
     }
@@ -2839,6 +2838,7 @@ function GameView({
   const handleRotate = useCallback(()=>{
     if(tutorialActive) return;
     if(rotateAnimating) return;
+    if(shuffleActive.current.size > 0) return;
     setRotateAnimating(true);
     setClueRotatePhase("out");
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
@@ -2903,22 +2903,88 @@ function GameView({
   },[puzzle.difficulty, puzzle.solution.slotCards, locked, fadeFeedback]);
 
   const triggerShuffle = useCallback(()=>{
-    if(tutorialActive) return;
+    if(tutorialActive || rotateAnimating) return;
+    if(shuffleActive.current.size > 0) return;
     const free=Array.from({length:totalSlots},(_,i)=>i).filter(i=>!locked.has(i));
     if(free.length<2) return;
-    setSpinning(new Set(free));
-    setTimeout(()=>{
+
+    // Capture where each free card currently sits on screen before the data
+    // changes, so the tiles can fly from their old spot to their new one
+    // instead of swapping words after the fact.
+    const firstRects = new Map();
+    free.forEach(i=>{
+      const el = slotRefs.current[i]?.querySelector?.(".ctile");
+      if(el) firstRects.set(i, el.getBoundingClientRect());
+    });
+
+    // Shuffle the slot indices themselves (not the card values) so we know,
+    // for each destination slot, which source slot's position to fly in from.
+    const shuffledOrder = shuffleArr([...free]);
+
+    free.forEach(i=>shuffleActive.current.add(i));
+
+    flushSync(()=>{
       setSlots(p=>{
         const n=[...p];
-        // Shuffle positions
-        const vals=shuffleArr(free.map(i=>n[i]));
-        // Randomise orientations too
-        free.forEach((i,j)=>n[i]={...vals[j], orientation:Math.floor(Math.random()*4)});
+        free.forEach((targetSlot, j)=>{
+          const sourceSlot = shuffledOrder[j];
+          n[targetSlot] = {...p[sourceSlot], orientation:Math.floor(Math.random()*4)};
+        });
         return n;
       });
-      setWrong(new Set()); setSpinning(new Set());
-    },440);
-  },[totalSlots,locked,tutorialActive]);
+      setWrong(new Set());
+    });
+
+    const prefersReducedMotion = typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+    free.forEach((targetSlot, j)=>{
+      const sourceSlot = shuffledOrder[j];
+      const el = slotRefs.current[targetSlot]?.querySelector?.(".ctile");
+      const firstRect = firstRects.get(sourceSlot);
+      const lastRect = firstRects.get(targetSlot);
+
+      let animation = null;
+      const finishTile = () => {
+        const timer = shuffleTimers.current.get(targetSlot);
+        if(timer){
+          clearTimeout(timer);
+          shuffleTimers.current.delete(targetSlot);
+        }
+        if(animation && animation.playState !== "finished" && animation.playState !== "idle"){
+          // Force it off if it never got to finish on its own — the same
+          // kind of stuck-animation risk the single-card turn guards against.
+          animation.onfinish = null;
+          animation.oncancel = null;
+          animation.cancel();
+        }
+        shuffleActive.current.delete(targetSlot);
+      };
+
+      if(prefersReducedMotion || !el || !firstRect || !lastRect){
+        finishTile();
+        return;
+      }
+
+      const dx = firstRect.left - lastRect.left;
+      const dy = firstRect.top - lastRect.top;
+
+      animation = el.animate([
+        { transform:`translate(${dx}px, ${dy}px) scale(1)`, offset:0 },
+        { transform:`translate(${dx*0.45}px, ${dy*0.45}px) scale(1.06)`, offset:.55 },
+        { transform:`translate(0px, 0px) scale(1)`, offset:1 },
+      ], {
+        duration:420,
+        easing:"cubic-bezier(.22,.8,.28,1)",
+        fill:"none",
+      });
+
+      const fallbackTimer = setTimeout(finishTile, 500);
+      shuffleTimers.current.set(targetSlot, fallbackTimer);
+      animation.onfinish = finishTile;
+      animation.oncancel = finishTile;
+    });
+  },[totalSlots,locked,tutorialActive,rotateAnimating]);
 
   const handleShuffle = useCallback(()=>{
     triggerShuffle();
@@ -3184,16 +3250,15 @@ function GameView({
           repeatBad={!inReveal && isRepeatBad}
           shaking={isWrong}
           extraCls={extraCls}
-            dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
+            dim={isDragging && dragSrc===si}
             rotateMoveClass={rotateMoveClass}
             rotateSpin={rotateAnimating && si < 4}
-            spinDir={si%2===0?1:-1}
             onPointerDown={e=>handlePD(e,si)}/>}
       </div>
     );
   },[
     slots,puzzle,locked,wrong,repeatedBad,shakeKey,revealPhase,revealColors,flipReveal,
-      isDragging,dragSrc,spinning,rotateAnimating,dragOver,handlePD,
+      isDragging,dragSrc,rotateAnimating,dragOver,handlePD,
     tutorialActive,tutorialHighlightedSlots,tutorialComplete
   ]);
 
@@ -3313,8 +3378,7 @@ function GameView({
                     className={`eslot${dragOver===si?" over":""}${isDragging && dragSrc===si?" source":""}`}>
                     {card&&<CardTile card={card} orientation={s.orientation}
                       locked={locked.has(si)} wrong={wrong.has(si)}
-                      dim={isDragging && dragSrc===si} spinning={spinning.has(si)}
-                      spinDir={i%2===0?1:-1}
+                      dim={isDragging && dragSrc===si}
                       onPointerDown={e=>handlePD(e,si)}/>}
                   </div>
                 );
