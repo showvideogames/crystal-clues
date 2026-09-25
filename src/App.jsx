@@ -2341,6 +2341,9 @@ function GameView({
   const tapRotateTimers = useRef(new Map());
   const tapRotateQueued = useRef(new Map());
   const tapRotateActive = useRef(new Set());
+  const shuffleBusy = useRef(false);
+  const shuffleSwapTimer = useRef(null);
+  const shuffleEndTimer = useRef(null);
   const rotateTimer = useRef(null);
   const clueRotateTimer = useRef(null);
   const introShuffleTimer = useRef(null);
@@ -2361,6 +2364,9 @@ function GameView({
     tapRotateTimers.current.clear();
     tapRotateQueued.current.clear();
     tapRotateActive.current.clear();
+    if(shuffleSwapTimer.current) clearTimeout(shuffleSwapTimer.current);
+    if(shuffleEndTimer.current) clearTimeout(shuffleEndTimer.current);
+    shuffleBusy.current = false;
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
     if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
     if(introShuffleTimer.current) clearTimeout(introShuffleTimer.current);
@@ -2904,10 +2910,17 @@ function GameView({
 
   const triggerShuffle = useCallback(()=>{
     if(tutorialActive) return;
+    if(shuffleBusy.current) return;
     const free=Array.from({length:totalSlots},(_,i)=>i).filter(i=>!locked.has(i));
     if(free.length<2) return;
+    shuffleBusy.current = true;
     setSpinning(new Set(free));
-    setTimeout(()=>{
+    // Swap the word content while the cards are mid-spin — at 45% through
+    // the .44s animation each card is upside down and shrunk to scale(.88),
+    // which is the moment the change is least visible. By the time the
+    // spin settles back to 0deg/scale(1), the final words are already
+    // in place, so nothing visibly changes once the motion stops.
+    shuffleSwapTimer.current = setTimeout(()=>{
       setSlots(p=>{
         const n=[...p];
         // Shuffle positions
@@ -2916,7 +2929,13 @@ function GameView({
         free.forEach((i,j)=>n[i]={...vals[j], orientation:Math.floor(Math.random()*4)});
         return n;
       });
-      setWrong(new Set()); setSpinning(new Set());
+      setWrong(new Set());
+      shuffleSwapTimer.current = null;
+    },198);
+    shuffleEndTimer.current = setTimeout(()=>{
+      setSpinning(new Set());
+      shuffleBusy.current = false;
+      shuffleEndTimer.current = null;
     },440);
   },[totalSlots,locked,tutorialActive]);
 
