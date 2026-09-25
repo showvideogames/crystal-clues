@@ -457,13 +457,13 @@ body::before{
 @keyframes rotateMoveDown{0%{transform:translate(0,0) scale(1)}100%{transform:translateY(var(--step)) scale(.98)}}
 @keyframes rotateMoveLeft{0%{transform:translate(0,0) scale(1)}100%{transform:translateX(calc(-1 * var(--step))) scale(.98)}}
 @keyframes rotateMoveUp{0%{transform:translate(0,0) scale(1)}100%{transform:translateY(calc(-1 * var(--step))) scale(.98)}}
-.ctile.rotate-move-right{animation:rotateMoveRight .24s ease-in-out forwards}
-.ctile.rotate-move-down{animation:rotateMoveDown .24s ease-in-out forwards}
-.ctile.rotate-move-left{animation:rotateMoveLeft .24s ease-in-out forwards}
-.ctile.rotate-move-up{animation:rotateMoveUp .24s ease-in-out forwards}
+.ctile.rotate-move-right{animation:rotateMoveRight .36s ease-in-out forwards}
+.ctile.rotate-move-down{animation:rotateMoveDown .36s ease-in-out forwards}
+.ctile.rotate-move-left{animation:rotateMoveLeft .36s ease-in-out forwards}
+.ctile.rotate-move-up{animation:rotateMoveUp .36s ease-in-out forwards}
 .ctile-inner{position:absolute;inset:0;border-radius:inherit}
 @keyframes rotateSpinInner{0%{transform:rotate(0deg)}100%{transform:rotate(90deg)}}
-.ctile-inner.rotate-spin{animation:rotateSpinInner .24s ease-in-out forwards}
+.ctile-inner.rotate-spin{animation:rotateSpinInner .36s ease-in-out forwards}
 @keyframes tapRotateCard{
   0%{transform:translateZ(0) rotateZ(0deg)}
   45%{transform:translateZ(0) rotateZ(72deg)}
@@ -491,7 +491,7 @@ body::before{
   filter:brightness(1);
 }
 .cloud-label.clue-rotating-in{
-  animation:clueWordFadeIn .16s ease-out both;
+  animation:clueWordFadeIn .24s ease-out both;
 }
 
 /* EXTRA CARDS */
@@ -1483,10 +1483,10 @@ body::before{
 @keyframes rotateLandRight{0%{transform:translateY(-50%) translateX(0) rotate(0deg)}100%{transform:translateY(-50%) translateX(-2px) rotate(-180deg)}}
 @keyframes rotateLandBottom{0%{transform:translateX(-50%) translateY(0) rotate(0deg)}100%{transform:translateX(-50%) translateY(2px) rotate(-180deg)}}
 @keyframes rotateLandLeft{0%{transform:translateY(-50%) translateX(0) rotate(180deg)}100%{transform:translateY(-50%) translateX(2px) rotate(180deg)}}
-.ctile-inner.rotate-spin .ew.et{animation:rotateLandTop .24s ease-in-out forwards}
-.ctile-inner.rotate-spin .ew.er{animation:rotateLandRight .24s ease-in-out forwards}
-.ctile-inner.rotate-spin .ew.eb{animation:rotateLandBottom .24s ease-in-out forwards}
-.ctile-inner.rotate-spin .ew.el{animation:rotateLandLeft .24s ease-in-out forwards}
+.ctile-inner.rotate-spin .ew.et{animation:rotateLandTop .36s ease-in-out forwards}
+.ctile-inner.rotate-spin .ew.er{animation:rotateLandRight .36s ease-in-out forwards}
+.ctile-inner.rotate-spin .ew.eb{animation:rotateLandBottom .36s ease-in-out forwards}
+.ctile-inner.rotate-spin .ew.el{animation:rotateLandLeft .36s ease-in-out forwards}
 .cmark{width:11px;height:11px}
 .ctile.dim{opacity:.18}
 
@@ -1495,7 +1495,7 @@ body::before{
    banners became pills the clue words hard-swapped mid-rotation instead of
    fading. Same keyframes, now pointed at the pills. */
 .ctab.clue-rotating-out{opacity:0}
-.ctab.clue-rotating-in{animation:clueWordFadeIn .16s ease-out both}
+.ctab.clue-rotating-in{animation:clueWordFadeIn .24s ease-out both}
 
 /* Tutorial — keep its own layout, repaint its surfaces */
 .tut-ovr{background:rgba(43,15,82,.34)}
@@ -2910,8 +2910,8 @@ function GameView({
       clueRotateTimer.current = setTimeout(()=>{
         setClueRotatePhase("");
         clueRotateTimer.current = null;
-      }, 170);
-    }, 240);
+      }, 255);
+    }, 360);
   },[rotateAnimating, tutorialActive]);
 
   const prevDifficultyRef = useRef(puzzle.difficulty);
