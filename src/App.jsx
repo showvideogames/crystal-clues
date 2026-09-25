@@ -1474,6 +1474,19 @@ body::before{
 .ew.eb{bottom:9px;max-width:calc(var(--cs) - 24px)}
 .ew.er{right:7px;max-height:calc(var(--cs) - 22px)}
 .ew.el{left:7px;max-height:calc(var(--cs) - 22px)}
+/* Whole-board Rotate turns each card face 90deg, then swaps in the rotated
+   words. On its own that lands the right and bottom words upside down, and
+   every word 2px off its new edge (top/bottom sit 9px in, sides 7px), so they
+   jumped into place after the card stopped. Each word now makes that
+   correction during the same turn, so it lands exactly where it rests. */
+@keyframes rotateLandTop{0%{transform:translateX(-50%) translateY(0)}100%{transform:translateX(-50%) translateY(-2px)}}
+@keyframes rotateLandRight{0%{transform:translateY(-50%) translateX(0) rotate(0deg)}100%{transform:translateY(-50%) translateX(-2px) rotate(-180deg)}}
+@keyframes rotateLandBottom{0%{transform:translateX(-50%) translateY(0) rotate(0deg)}100%{transform:translateX(-50%) translateY(2px) rotate(-180deg)}}
+@keyframes rotateLandLeft{0%{transform:translateY(-50%) translateX(0) rotate(180deg)}100%{transform:translateY(-50%) translateX(2px) rotate(180deg)}}
+.ctile-inner.rotate-spin .ew.et{animation:rotateLandTop .24s ease-in-out forwards}
+.ctile-inner.rotate-spin .ew.er{animation:rotateLandRight .24s ease-in-out forwards}
+.ctile-inner.rotate-spin .ew.eb{animation:rotateLandBottom .24s ease-in-out forwards}
+.ctile-inner.rotate-spin .ew.el{animation:rotateLandLeft .24s ease-in-out forwards}
 .cmark{width:11px;height:11px}
 .ctile.dim{opacity:.18}
 
