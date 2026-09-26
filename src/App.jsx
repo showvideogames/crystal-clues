@@ -2185,7 +2185,7 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
     const resultLine = completedData.livesUsed == null
       ? `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty}`
       : `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty} · ${formatLivesUsedCompact(completedData.livesUsed)}`;
-    const text = `Crystal Clues ${label} ${icon}\n(${resultLine})`;
+    const text = `Cluevoyance ${label} ${icon}\n(${resultLine})`;
     const doCopy = () => {
       try {
         const ta=document.createElement('textarea');
@@ -2625,7 +2625,7 @@ function GameView({
     const label = `${d.getMonth()+1}·${String(d.getDate()).padStart(2,'0')}·${d.getFullYear()}`;
     const diffIcons = {easy:'✨',standard:'🌙',expert:'🌕',hardcore:'🌑'};
     const icon = diffIcons[puzzle.difficulty] || '🌙';
-    const header = `Crystal Clues ${label} ${icon}`;
+    const header = `Cluevoyance ${label} ${icon}`;
     // Each guess is a 2x2 block — lay all guesses side by side, top row then bottom row
     const topRow = history.map(rows => `${rows[0][0]}${rows[0][1]}`).join(' ');
     const botRow = history.map(rows => `${rows[1][0]}${rows[1][1]}`).join(' ');
