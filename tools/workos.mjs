@@ -15,13 +15,15 @@
  *     npm run workos -- hosted register --authkit-domain <name>-staging.authkit.app
  *     npm run workos -- hosted wire
  *     npm run workos -- hosted allow-callback --url https://cluevoyance.com/auth/callback
+ *     npm run workos -- hosted site-url --url https://cluevoyance.com
  *     npm run workos -- hosted status | remove
  *
  * Credentials, all from the shell, none written anywhere by this tool:
  *   WORKOS_STAGING_API_KEY              WorkOS Staging API key (register/remove); sk_…
  *   CLUEVOYANCE_PROJECT_REF             the hosted project ref (hosted commands only)
- *   CLUEVOYANCE_HOSTED_SERVICE_ROLE_KEY the hosted project's service-role key (hosted wire/status/remove)
- *   SUPABASE_ACCESS_TOKEN               Supabase personal access token (hosted allow-callback)
+ *   CLUEVOYANCE_HOSTED_SERVICE_ROLE_KEY the hosted project's service-role key (hosted wire/status/remove);
+ *                                       when absent it is fetched from the Management API with the access token
+ *   SUPABASE_ACCESS_TOKEN               Supabase personal access token (or .runtime/supabase-access-token.txt)
  *   CLUEVOYANCE_WORKOS_WRITE=yes        required by every command that creates/deletes anything in WorkOS
  *   CLUEVOYANCE_HOSTED_WRITE=yes        required by every command that changes the hosted project
  * State: .runtime/workos-<local|hosted>.json (git-ignored): application id, client id, client secret.
@@ -100,10 +102,32 @@ function localTarget() {
   if (!["127.0.0.1", "localhost", "::1"].includes(host)) throw new Error(`REFUSING: ${json.API_URL} is not a local stack.`);
   return { apiUrl: json.API_URL, serviceKey: json.SERVICE_ROLE_KEY };
 }
+function supabaseAccessToken() {
+  const tokenFile = path.join(RUNTIME_DIR, "supabase-access-token.txt");
+  const t = existsSync(tokenFile) ? readFileSync(tokenFile, "utf8").trim() : (process.env.SUPABASE_ACCESS_TOKEN ?? "").trim();
+  if (!/^sbp_/.test(t)) throw new Error("No Supabase personal access token (.runtime/supabase-access-token.txt or SUPABASE_ACCESS_TOKEN).");
+  return t;
+}
+
+/**
+ * The hosted project's service-role key: from the shell, or fetched from the
+ * Management API with the personal access token (never printed, never written).
+ */
+let hostedCache = null;
 function hostedTarget() {
+  if (hostedCache) return hostedCache;
   const ref = env("CLUEVOYANCE_PROJECT_REF", /^[a-z]{20}$/, "the 20-letter project ref");
-  const key = env("CLUEVOYANCE_HOSTED_SERVICE_ROLE_KEY", /^(sb_secret_|eyJ)/, "the project's service-role key");
-  return { ref, apiUrl: `https://${ref}.supabase.co`, serviceKey: key };
+  let key = (process.env.CLUEVOYANCE_HOSTED_SERVICE_ROLE_KEY ?? "").trim();
+  if (!key) {
+    const res = execSync(`curl -s -H "Authorization: Bearer ${supabaseAccessToken()}" "https://api.supabase.com/v1/projects/${ref}/api-keys?reveal=true"`, { encoding: "utf8" });
+    let keys = [];
+    try { keys = JSON.parse(res); } catch { keys = []; }
+    const svc = Array.isArray(keys) ? keys.find((k) => k.name === "service_role" || k.type === "secret") : null;
+    key = svc?.api_key ?? "";
+  }
+  if (!/^(sb_secret_|eyJ)/.test(key)) throw new Error("Could not obtain the hosted project's service-role key (CLUEVOYANCE_HOSTED_SERVICE_ROLE_KEY, or the Management API via the access token).");
+  hostedCache = { ref, apiUrl: `https://${ref}.supabase.co`, serviceKey: key };
+  return hostedCache;
 }
 const target = (name) => (name === "local" ? localTarget() : hostedTarget());
 const callbackOf = (t) => `${t.apiUrl}/auth/v1/callback`;
@@ -171,13 +195,21 @@ async function wire(name) {
   console.log(`Build-time value: VITE_PLATFORM_DISCOVERY_URL=https://${state.authkitDomain}/.well-known/openid-configuration`);
 }
 
+async function siteUrl(url) {
+  if (!url || !/^https:\/\/[a-z0-9.-]+$/.test(url)) throw new Error("site-url needs --url https://<site> (origin only)");
+  requireHostedWrite();
+  const { ref } = hostedTarget();
+  const headers = { Authorization: `Bearer ${supabaseAccessToken()}`, "Content-Type": "application/json" };
+  const res = await fetch(`${SUPABASE_MANAGEMENT}/v1/projects/${ref}/config/auth`, { method: "PATCH", headers, body: JSON.stringify({ site_url: url }) });
+  if (res.status >= 300) throw new Error(`PATCH refused: HTTP ${res.status} ${(await res.text()).slice(0, 300)}`);
+  console.log(`site_url is now ${url}`);
+}
+
 async function allowCallback(url) {
   if (!url || !/^https:\/\/[a-z0-9.-]+\/auth\/callback$/.test(url)) throw new Error("allow-callback needs --url https://<site>/auth/callback");
   requireHostedWrite();
   const { ref } = hostedTarget();
-  const tokenFile = path.join(RUNTIME_DIR, "supabase-access-token.txt");
-  const token = existsSync(tokenFile) ? readFileSync(tokenFile, "utf8").trim() : env("SUPABASE_ACCESS_TOKEN", /^sbp_/, "sbp_…");
-  if (!/^sbp_/.test(token)) throw new Error("the saved Supabase access token is malformed");
+  const token = supabaseAccessToken();
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
   const current = await fetch(`${SUPABASE_MANAGEMENT}/v1/projects/${ref}/config/auth`, { headers }).then((r) => r.json());
   const list = (current.uri_allow_list ?? "").split(",").map((s) => s.trim()).filter(Boolean);
@@ -218,6 +250,7 @@ async function main() {
     case "register": return register(name, arg("--authkit-domain"));
     case "wire": return wire(name);
     case "allow-callback": if (name !== "hosted") throw new Error("allow-callback is hosted only (local uses config.toml)"); return allowCallback(arg("--url"));
+    case "site-url": if (name !== "hosted") throw new Error("site-url is hosted only"); return siteUrl(arg("--url"));
     case "status": return status(name);
     case "remove": return remove(name);
     default: throw new Error(`unknown command ${command}`);
