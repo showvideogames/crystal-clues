@@ -175,7 +175,9 @@ async function allowCallback(url) {
   if (!url || !/^https:\/\/[a-z0-9.-]+\/auth\/callback$/.test(url)) throw new Error("allow-callback needs --url https://<site>/auth/callback");
   requireHostedWrite();
   const { ref } = hostedTarget();
-  const token = env("SUPABASE_ACCESS_TOKEN", /^sbp_/, "sbp_…");
+  const tokenFile = path.join(RUNTIME_DIR, "supabase-access-token.txt");
+  const token = existsSync(tokenFile) ? readFileSync(tokenFile, "utf8").trim() : env("SUPABASE_ACCESS_TOKEN", /^sbp_/, "sbp_…");
+  if (!/^sbp_/.test(token)) throw new Error("the saved Supabase access token is malformed");
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
   const current = await fetch(`${SUPABASE_MANAGEMENT}/v1/projects/${ref}/config/auth`, { headers }).then((r) => r.json());
   const list = (current.uri_allow_list ?? "").split(",").map((s) => s.trim()).filter(Boolean);

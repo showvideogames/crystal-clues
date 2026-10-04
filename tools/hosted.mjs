@@ -16,23 +16,35 @@
  *
  * Credentials, shell only:
  *   SUPABASE_ACCESS_TOKEN     a personal access token (sbp_…) of an account that is a member of the
- *                             Cluevoyance project's organisation
+ *                             Cluevoyance project's organisation; or the git-ignored file
+ *                             .runtime/supabase-access-token.txt (preferred, wins over the shell)
  *   CLUEVOYANCE_PROJECT_REF   the project ref; named here and nowhere in the repository
  *   CLUEVOYANCE_HOSTED_WRITE  must be "yes" for --apply
  *
  * Every command prints the project ref and name it is talking to before doing anything.
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const API = "https://api.supabase.com";
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const TOKEN_FILE = path.join(ROOT, ".runtime", "supabase-access-token.txt");
 
 function env(name, pattern, hint) {
   const v = (process.env[name] ?? "").trim();
   if (!pattern.test(v)) throw new Error(`${name} is missing or malformed (${hint}). Export it in this shell only.`);
   return v;
 }
-const token = () => env("SUPABASE_ACCESS_TOKEN", /^sbp_/, "sbp_…");
+/** The personal access token: from the shell, or from the git-ignored .runtime/supabase-access-token.txt. Never printed. */
+function token() {
+  const fromEnv = (process.env.SUPABASE_ACCESS_TOKEN ?? "").trim();
+  const fromFile = existsSync(TOKEN_FILE) ? readFileSync(TOKEN_FILE, "utf8").trim() : "";
+  // the file wins when present: it is the one the owner saved for this project
+  const t = fromFile || fromEnv;
+  if (!/^sbp_/.test(t)) throw new Error("No Supabase personal access token: save one to .runtime/supabase-access-token.txt (git-ignored) or export SUPABASE_ACCESS_TOKEN.");
+  return t;
+}
 const ref = () => env("CLUEVOYANCE_PROJECT_REF", /^[a-z]{20}$/, "the 20-letter project ref");
 const headers = () => ({ Authorization: `Bearer ${token()}`, "Content-Type": "application/json" });
 
