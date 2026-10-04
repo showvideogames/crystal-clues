@@ -58,12 +58,18 @@ Cluevoyance account") / unavailable (session kept; Try again). Then back to
 the page the player left.
 
 **First sign-in on a browser with guest history.** "Bring your progress with
-you?" — *Add my progress* uploads the wins (`import_plays`, never overwrites a
-solved row), *Start fresh* uploads nothing. Either way the guest keys
-(`clover_completions`, `clover_stats`) are cleared afterwards: that clearing
-is the record of the decision, so nothing is merged silently and nothing can
-be imported twice. Losses only ever existed as counters and stay behind.
-Mid-puzzle state, difficulty and the tutorial flag are untouched.
+you?" — *Add my progress* uploads exactly what the guest could see: the wins
+as `plays` rows (`import_plays`, never overwrites a solved row; archive and
+lobby state follow from them) and the loss count (`accounts.imported_losses`;
+the game only ever kept losses as the X bar / Played counter, so they carry
+over as a count, never as fabricated per-puzzle rows). *Start fresh* uploads
+nothing. Either way the guest keys (`clover_completions`, `clover_stats`)
+are cleared afterwards: that clearing is the record of the decision, so
+nothing is merged silently and nothing can be imported twice (the loss
+count is sent once). Mid-puzzle state, difficulty and the tutorial flag are
+untouched. The current streak is re-derived from the imported wins' puzzle
+dates; `maxStreak` is kept in the guest counters but never shown, so it is
+not imported.
 
 **Signed-in play.** Every finish calls `record_play` (cache first, so the UI
 never waits; a failed call is replayed on the next load). Stats and the

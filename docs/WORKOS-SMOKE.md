@@ -18,7 +18,8 @@ ordinary Chrome window; a private window per "person".
 
 ```bash
 npm run db:start && npm run db:reset
-export WORKOS_STAGING_API_KEY=sk_…            # Staging only; this shell only
+# the Staging API key: EITHER export WORKOS_STAGING_API_KEY=sk_… in this shell,
+# OR save it to .runtime/workos-staging-key.txt (git-ignored); delete it afterwards
 export CLUEVOYANCE_WORKOS_WRITE=yes
 npm run workos -- local register --authkit-domain <name>-staging.authkit.app
 npm run workos -- local wire

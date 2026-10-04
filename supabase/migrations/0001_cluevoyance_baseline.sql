@@ -61,6 +61,9 @@ create table public.accounts (
   global_user_id  text not null,
   created_at      timestamptz not null default now(),
   last_seen_at    timestamptz not null default now(),
+  -- Guest losses only ever existed as a counter in the browser (no puzzle id),
+  -- so "Add my progress" carries them over as a count. Shown in Played / Win % / X.
+  imported_losses integer not null default 0 check (imported_losses >= 0),
   constraint accounts_global_user_id_key    unique (global_user_id),
   constraint accounts_global_user_id_format check (global_user_id ~ '^user_[0-9A-Za-z]{10,64}$')
 );
@@ -99,7 +102,7 @@ $$;
 
 -- Create or refresh the account behind the current session.
 create function public.ensure_account()
-returns table(outcome text, user_id uuid, global_user_id text, email text, created_at timestamptz)
+returns table(outcome text, user_id uuid, global_user_id text, email text, created_at timestamptz, imported_losses integer)
 language plpgsql security definer set search_path = public as $$
 #variable_conflict use_column
 declare
@@ -107,7 +110,7 @@ declare
   _gid text;
 begin
   if _uid is null then
-    return query select 'not_signed_in'::text, null::uuid, null::text, null::text, null::timestamptz;
+    return query select 'not_signed_in'::text, null::uuid, null::text, null::text, null::timestamptz, null::integer;
     return;
   end if;
 
@@ -123,7 +126,7 @@ begin
   if _gid is null then
     -- An auth user that did not come through the shared sign-in (a dashboard
     -- or test user, a stray signup). Not, and never becomes, an account.
-    return query select 'not_platform_linked'::text, null::uuid, null::text, null::text, null::timestamptz;
+    return query select 'not_platform_linked'::text, null::uuid, null::text, null::text, null::timestamptz, null::integer;
     return;
   end if;
 
@@ -133,16 +136,16 @@ begin
     set last_seen_at = now();
 
   return query
-    select 'ok'::text, a.user_id, a.global_user_id, public.account_email(a.user_id), a.created_at
+    select 'ok'::text, a.user_id, a.global_user_id, public.account_email(a.user_id), a.created_at, a.imported_losses
       from public.accounts a
      where a.user_id = _uid;
 end;
 $$;
 
 create function public.my_account()
-returns table(user_id uuid, global_user_id text, email text, created_at timestamptz)
+returns table(user_id uuid, global_user_id text, email text, created_at timestamptz, imported_losses integer)
 language sql stable security definer set search_path = public as $$
-  select a.user_id, a.global_user_id, public.account_email(a.user_id), a.created_at
+  select a.user_id, a.global_user_id, public.account_email(a.user_id), a.created_at, a.imported_losses
     from public.accounts a
    where a.user_id = auth.uid()
 $$;
@@ -235,10 +238,13 @@ $$;
 
 -- Import this browser's guest history, once, when the player chooses
 -- "Add my progress". Elements: {puzzle_id, solved, lives_used, difficulty,
--- finished_at?}. Unknown puzzles and malformed elements are skipped and
--- counted; nothing is fabricated; an existing solved row is never overwritten,
--- so repeating the call changes nothing.
-create function public.import_plays(_plays jsonb)
+-- finished_at?} are the guest's wins. _losses is the guest's loss count (the
+-- browser only ever kept losses as a counter, so they carry over as a count,
+-- never as fabricated per-puzzle rows). Unknown puzzles and malformed elements
+-- are skipped and counted; an existing solved row is never overwritten, so
+-- repeating the wins changes nothing. The client sends the loss count once
+-- (it clears the guest counters afterwards).
+create function public.import_plays(_plays jsonb, _losses int default 0)
 returns table(outcome text, imported int, skipped int)
 language plpgsql security definer set search_path = public as $$
 declare
@@ -257,9 +263,13 @@ begin
     return query select 'invalid'::text, 0, 0;
     return;
   end if;
-  if jsonb_array_length(_plays) > 5000 then
+  if jsonb_array_length(_plays) > 5000 or coalesce(_losses, 0) > 100000 then
     return query select 'too_many'::text, 0, 0;
     return;
+  end if;
+
+  if coalesce(_losses, 0) > 0 then
+    update public.accounts set imported_losses = imported_losses + _losses where user_id = _uid;
   end if;
 
   for _el in select * from jsonb_array_elements(_plays) loop
@@ -356,7 +366,7 @@ revoke all on function public.ping()                                            
 revoke all on function public.is_cluevoyance_admin()                                         from public, anon, authenticated;
 revoke all on function public.upsert_play(uuid, bigint, boolean, int, text, timestamptz, text) from public, anon, authenticated;
 revoke all on function public.record_play(bigint, boolean, int, text)                        from public, anon, authenticated;
-revoke all on function public.import_plays(jsonb)                                            from public, anon, authenticated;
+revoke all on function public.import_plays(jsonb, int)                                       from public, anon, authenticated;
 revoke all on function public.delete_local_account(uuid)                                     from public, anon, authenticated;
 revoke all on function public.delete_my_account()                                            from public, anon, authenticated;
 
@@ -366,7 +376,7 @@ grant execute on function public.is_cluevoyance_admin()                  to anon
 grant execute on function public.ensure_account()                        to authenticated, service_role;
 grant execute on function public.my_account()                            to authenticated, service_role;
 grant execute on function public.record_play(bigint, boolean, int, text) to authenticated, service_role;
-grant execute on function public.import_plays(jsonb)                     to authenticated, service_role;
+grant execute on function public.import_plays(jsonb, int)                to authenticated, service_role;
 grant execute on function public.delete_my_account()                     to authenticated, service_role;
 grant execute on function public.account_email(uuid)                     to service_role;
 grant execute on function public.upsert_play(uuid, bigint, boolean, int, text, timestamptz, text) to service_role;

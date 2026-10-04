@@ -10,9 +10,11 @@ import { supabase } from "./supabaseClient";
 import {
   clearGuestHistory,
   guestCompletionsToPlays,
+  guestLossCount,
   readAccountCache,
   writeAccountCache,
 } from "./localHistory";
+import { refreshAccount } from "./platformSignIn";
 
 const pad2 = (n) => String(n).padStart(2, "0");
 export const localISODate = (d = new Date()) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
@@ -37,7 +39,7 @@ const EMPTY_STATS = () => ({
 /**
  * Stats in the exact shape of the guest counters (DEFAULT_STATS / normalizeStats
  * in App.jsx), derived from plays:
- *   totalPlayed   every finished puzzle (win or loss)
+ *   totalPlayed   every finished puzzle (win or loss), plus imported guest losses
  *   totalWon      solved rows
  *   livesUsedDist wins by lives used (capped at 2, as the overlay shows), X = losses
  *   difficultyWins solved rows by difficulty
@@ -46,8 +48,13 @@ const EMPTY_STATS = () => ({
  *                 the puzzle's date rather than the day it was solved, so a
  *                 phone and a laptop agree).
  */
-export function deriveStats(plays, today = localISODate()) {
+export function deriveStats(plays, today = localISODate(), extras = {}) {
   const stats = EMPTY_STATS();
+  // Guest losses that came over with "Add my progress": a count, shown where
+  // the guest saw it (Played, Win %, the X bar).
+  const importedLosses = Math.max(0, Number(extras.importedLosses) || 0);
+  stats.totalPlayed += importedLosses;
+  stats.livesUsedDist.X += importedLosses;
   const solvedDates = new Set();
   for (const p of plays || []) {
     stats.totalPlayed += 1;
@@ -189,24 +196,27 @@ export async function flushUnsynced(userId) {
 }
 
 /**
- * "Add my progress": upload this browser's guest wins to the account, then
- * clear the guest keys. Repeating a sign-in cannot import twice: the keys
- * are gone, and the server never overwrites a solved row anyway.
+ * "Add my progress": upload this browser's guest wins and its loss count to
+ * the account, then clear the guest keys. Repeating a sign-in cannot import
+ * twice: the keys are gone (so the loss count is sent once), and the server
+ * never overwrites a solved row anyway.
  */
 export async function importGuestHistory(userId) {
   if (!supabase) return { ok: false, message: "Not configured." };
   const elements = guestCompletionsToPlays();
-  if (elements.length === 0) {
+  const losses = guestLossCount();
+  if (elements.length === 0 && losses === 0) {
     clearGuestHistory();
-    return { ok: true, imported: 0, skipped: 0 };
+    return { ok: true, imported: 0, skipped: 0, losses: 0 };
   }
-  const res = await supabase.rpc("import_plays", { _plays: elements });
+  const res = await supabase.rpc("import_plays", { _plays: elements, _losses: losses });
   if (res.error) return { ok: false, message: res.error.message };
   const row = Array.isArray(res.data) ? res.data[0] : res.data;
   if (row?.outcome !== "ok") return { ok: false, message: `Import refused: ${row?.outcome ?? "unknown"}` };
   clearGuestHistory();
   await loadPlays(userId);
-  return { ok: true, imported: row.imported, skipped: row.skipped };
+  if (losses > 0) await refreshAccount().catch(() => null);
+  return { ok: true, imported: row.imported, skipped: row.skipped, losses };
 }
 
 /** "Start fresh": keep the account clean; this browser starts over. */

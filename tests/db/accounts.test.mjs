@@ -94,6 +94,7 @@ test("T3 ensure_account creates the account from the custom:platform identity; r
   assert.equal(first.user_id, user.id, "the local id is the project's auth user id");
   assert.equal(first.global_user_id, gid, "the global id is copied from the identity row");
   assert.equal(first.email, user.email);
+  assert.equal(first.imported_losses, 0);
   assert.match(first.global_user_id, /^user_[0-9A-Za-z]{10,64}$/);
 
   const seenBefore = sql(`select last_seen_at from public.accounts where user_id = '${user.id}'`);
@@ -203,10 +204,12 @@ test("T6 import_plays: imports wins, skips unknown/malformed, never overwrites a
     { puzzle_id: "nope", solved: true, lives_used: 0, difficulty: "standard" },                                // malformed → skipped
     { puzzle_id: b, solved: true, lives_used: 9, difficulty: "standard" },                                     // invalid lives → skipped
   ];
-  const res = await rpc(p.client, "import_plays", { _plays: payload });
+  const res = await rpc(p.client, "import_plays", { _plays: payload, _losses: 4 });
   assert.equal(res.outcome, "ok");
   assert.equal(res.imported, 3, "a (no change but accepted), b, c");
   assert.equal(res.skipped, 3);
+  assert.equal((await rpc(p.client, "my_account")).imported_losses, 4, "the guest's loss count is kept on the account");
+  assert.equal((await rpc(p.client, "ensure_account")).imported_losses, 4);
 
   const rows = (await p.client.from("plays").select("*").order("puzzle_id")).data;
   assert.equal(rows.length, 3);
@@ -218,11 +221,15 @@ test("T6 import_plays: imports wins, skips unknown/malformed, never overwrites a
   assert.equal(byId[b].finished_at.startsWith("2026-09-02"), true, "import keeps the original solve time");
   assert.equal(byId[c].source, "import");
 
-  // repeat: nothing changes
-  const again = await rpc(p.client, "import_plays", { _plays: payload });
+  // repeat (the client sends no loss count a second time: the guest counters are gone): nothing changes
+  const again = await rpc(p.client, "import_plays", { _plays: payload, _losses: 0 });
   assert.equal(again.outcome, "ok");
   const rowsAgain = (await p.client.from("plays").select("*").order("puzzle_id")).data;
   assert.deepEqual(rowsAgain, rows, "a second import is a no-op");
+  assert.equal((await rpc(p.client, "my_account")).imported_losses, 4);
+  assert.equal((await rpc(p.client, "import_plays", { _plays: [], _losses: -7 })).outcome, "ok");
+  assert.equal((await rpc(p.client, "my_account")).imported_losses, 4, "negative counts are ignored");
+  assert.equal((await rpc(p.client, "import_plays", { _plays: [], _losses: 100001 })).outcome, "too_many");
 
   assert.equal((await rpc(p.client, "import_plays", { _plays: { not: "an array" } })).outcome, "invalid");
 });

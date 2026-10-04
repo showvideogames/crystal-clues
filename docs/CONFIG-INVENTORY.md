@@ -55,7 +55,7 @@ console. It never falls back to a hosted project.
 
 | Variable | Used by |
 |---|---|
-| `WORKOS_STAGING_API_KEY` | `tools/workos.mjs <local|hosted> register / remove` |
+| `WORKOS_STAGING_API_KEY` (or the git-ignored file `.runtime/workos-staging-key.txt`) | `tools/workos.mjs <local|hosted> register / remove` |
 | `CLUEVOYANCE_PROJECT_REF`, `CLUEVOYANCE_HOSTED_SERVICE_ROLE_KEY` | `tools/workos.mjs hosted wire / status / remove` |
 | `SUPABASE_ACCESS_TOKEN` | `tools/workos.mjs hosted allow-callback` |
 | `CLUEVOYANCE_WORKOS_WRITE=yes`, `CLUEVOYANCE_HOSTED_WRITE=yes` | required by every command that creates/deletes in WorkOS or changes the hosted project |

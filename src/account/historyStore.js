@@ -17,9 +17,11 @@ function accountPlays() {
   return account ? { account, plays: readAccountCache(account.user_id).plays } : null;
 }
 
+const extrasOf = (account) => ({ importedLosses: account.imported_losses });
+
 export function loadStatsFor(guestLoad) {
   const a = accountPlays();
-  return a ? deriveStats(a.plays) : guestLoad();
+  return a ? deriveStats(a.plays, undefined, extrasOf(a.account)) : guestLoad();
 }
 
 export function loadCompletionsFor(guestLoad) {
@@ -45,7 +47,7 @@ export function recordFinishFor({ won, livesUsed, difficulty, puzzle }, guestUpd
       difficulty,
     }).catch(() => {});
   }
-  return deriveStats(readAccountCache(a.account.user_id).plays);
+  return deriveStats(readAccountCache(a.account.user_id).plays, undefined, extrasOf(a.account));
 }
 
 /** Guest: write clover_completions as always. Account: recordFinishFor already recorded the win. */

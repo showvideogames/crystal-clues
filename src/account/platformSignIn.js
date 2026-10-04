@@ -132,6 +132,25 @@ export function getCurrentAccount() {
   return currentAccount;
 }
 
+const toAccount = (row) => ({
+  user_id: row.user_id,
+  global_user_id: row.global_user_id,
+  email: row.email ?? null,
+  created_at: row.created_at,
+  imported_losses: Number(row.imported_losses) || 0,
+});
+
+/** Re-read the account row (my_account) and publish it; used after an import changed it. */
+export async function refreshAccount() {
+  if (!supabase) return null;
+  const { data, error } = await supabase.rpc("my_account");
+  const row = Array.isArray(data) ? data[0] : data;
+  if (error || !row?.user_id) return null;
+  const account = toAccount(row);
+  publishAccount(account);
+  return account;
+}
+
 export function subscribeToCurrentAccount(listener) {
   listeners.add(listener);
   return () => listeners.delete(listener);
@@ -151,12 +170,7 @@ export async function ensureAccount() {
   switch (row?.outcome) {
     case "ok": {
       if (!row.user_id) break;
-      const account = {
-        user_id: row.user_id,
-        global_user_id: row.global_user_id,
-        email: row.email ?? null,
-        created_at: row.created_at,
-      };
+      const account = toAccount(row);
       publishAccount(account);
       return { ok: true, account, reason: "ok", message: "" };
     }

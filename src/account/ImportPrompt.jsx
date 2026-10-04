@@ -23,7 +23,7 @@ export default function ImportPrompt({ onAdd, onStartFresh }) {
           {maxStreak > 1 ? `, best streak ${maxStreak}` : ""}.
         </p>
         <p className="cv-muted">
-          Add it to your account and it follows you to every device. Start fresh and your account begins empty. Losses only ever counted as totals and stay behind either way.
+          Add it to your account (your solved puzzles and your played and lost totals) and it follows you to every device. Start fresh and your account begins empty.
         </p>
         <div className="cv-row">
           <button

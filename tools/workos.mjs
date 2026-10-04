@@ -63,8 +63,28 @@ function checkDomain(domain) {
   return d;
 }
 
+/**
+ * The Staging API key: from the shell (WORKOS_STAGING_API_KEY), or from the
+ * git-ignored file .runtime/workos-staging-key.txt (the owner saves it there
+ * for one command and deletes it again). Never printed, never written by this tool.
+ */
+function stagingApiKey() {
+  const fromEnv = (process.env.WORKOS_STAGING_API_KEY ?? "").trim();
+  if (fromEnv) {
+    if (!/^sk_/.test(fromEnv)) throw new Error("WORKOS_STAGING_API_KEY is not a WorkOS API key (sk_…).");
+    return fromEnv;
+  }
+  const file = path.join(RUNTIME_DIR, "workos-staging-key.txt");
+  if (existsSync(file)) {
+    const fromFile = readFileSync(file, "utf8").trim();
+    if (!/^sk_/.test(fromFile)) throw new Error(`${path.relative(ROOT, file)} does not hold a WorkOS API key (sk_…).`);
+    return fromFile;
+  }
+  throw new Error("No Staging API key: export WORKOS_STAGING_API_KEY in this shell, or save it to .runtime/workos-staging-key.txt (git-ignored).");
+}
+
 async function workos(method, urlPath, body) {
-  const key = env("WORKOS_STAGING_API_KEY", /^sk_/, "sk_…");
+  const key = stagingApiKey();
   const res = await fetch(`${WORKOS_API}${urlPath}`, { method, headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: body ? JSON.stringify(body) : undefined });
   const text = await res.text();
   let json = null;

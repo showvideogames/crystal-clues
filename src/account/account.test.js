@@ -204,7 +204,7 @@ describe("U5 ensureAccount", () => {
     fake.rpc.mockResolvedValueOnce({ data: [{ outcome: "ok", user_id: "u1", global_user_id: "user_X", email: "new@x.test", created_at: "2026-10-04" }], error: null });
     const r = await ensureAccount();
     expect(r.ok).toBe(true);
-    expect(getCurrentAccount()).toEqual({ user_id: "u1", global_user_id: "user_X", email: "new@x.test", created_at: "2026-10-04" });
+    expect(getCurrentAccount()).toEqual({ user_id: "u1", global_user_id: "user_X", email: "new@x.test", created_at: "2026-10-04", imported_losses: 0 });
     expect(fake.rpc).toHaveBeenCalledWith("ensure_account");
   });
   it("not_platform_linked → local sign-out, no account, the message", async () => {
@@ -243,6 +243,15 @@ describe("U6 guest history and the import decision", () => {
     localStorage.setItem("clover_stats", JSON.stringify({ totalPlayed: 3, totalWon: 0 }));
     expect(h.guestHistoryExists()).toBe(true);
     expect(h.guestCompletionsToPlays()).toEqual([]);
+    expect(h.guestLossCount()).toBe(3, "played minus won when the X bar is absent");
+  });
+  it("guestLossCount is the X bar (the exact loss counter the player saw), never negative", async () => {
+    const h = await import("./localHistory");
+    expect(h.guestLossCount()).toBe(0);
+    seedGuest();
+    expect(h.guestLossCount()).toBe(5);
+    localStorage.setItem("clover_stats", JSON.stringify({ totalPlayed: 1, totalWon: 4, livesUsedDist: { X: -2 } }));
+    expect(h.guestLossCount()).toBe(0);
   });
   it("clearGuestHistory removes stats and completions, keeps progress/difficulty/tutorial", async () => {
     const h = await import("./localHistory");
@@ -282,6 +291,15 @@ describe("U7 stats derived from plays match the guest counters' shape and rules"
     expect(deriveStats(plays, "2026-10-06").currentStreak).toBe(0);
     expect(deriveStats(plays, "2026-10-04").maxStreak).toBe(3);
     expect(deriveStats([], "2026-10-04")).toMatchObject({ currentStreak: 0, maxStreak: 0, lastSolvedDate: null, totalPlayed: 0 });
+  });
+  it("imported guest losses add to Played and the X bar, nothing else", async () => {
+    const { deriveStats } = await import("./plays");
+    const s = deriveStats([play(1, "2026-10-01", true, 0, "easy")], "2026-10-01", { importedLosses: 4 });
+    expect(s.totalPlayed).toBe(5);
+    expect(s.totalWon).toBe(1);
+    expect(s.livesUsedDist).toEqual({ 0: 1, 1: 0, 2: 0, X: 4 });
+    expect(s.currentStreak).toBe(1);
+    expect(deriveStats([], "2026-10-01", { importedLosses: -3 }).totalPlayed).toBe(0);
   });
   it("completions in the guest shape, wins only", async () => {
     const { deriveCompletions } = await import("./plays");
@@ -336,15 +354,17 @@ describe("U9 plays: record, unsynced replay, import once, start fresh", () => {
     seedGuest();
     fake.rpc.mockResolvedValueOnce({ data: [{ outcome: "ok", imported: 2, skipped: 0 }], error: null });
     const r = await importGuestHistory("u1");
-    expect(r).toEqual({ ok: true, imported: 2, skipped: 0 });
+    expect(r).toEqual({ ok: true, imported: 2, skipped: 0, losses: 5 });
     const [fn, args] = fake.rpc.mock.calls[0];
     expect(fn).toBe("import_plays");
     expect(args._plays.map((p) => p.puzzle_id)).toEqual([1700000000000, 1700000000001]);
+    expect(args._losses).toBe(5, "the guest's loss count goes with the wins");
+    expect(fake.rpc.mock.calls.map((c) => c[0])).toContain("my_account"); // the account row is re-read for imported_losses
     expect(localStorage.getItem("clover_completions")).toBeNull();
     expect(localStorage.getItem("clover_stats")).toBeNull();
     fake.rpc.mockClear();
     const again = await importGuestHistory("u1");
-    expect(again).toEqual({ ok: true, imported: 0, skipped: 0 });
+    expect(again).toEqual({ ok: true, imported: 0, skipped: 0, losses: 0 });
     expect(fake.rpc).not.toHaveBeenCalled();
   });
   it("a failed import keeps the guest history for another try", async () => {

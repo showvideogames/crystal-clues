@@ -12,8 +12,8 @@
 // and offline; unsynced holds plays whose record_play call failed and are
 // replayed on the next load.
 //
-// The import decision: "Add my progress" uploads the guest completions and
-// then clears the guest keys; "Start fresh" just clears them. Either way the
+// The import decision: "Add my progress" uploads the guest completions (the
+// wins) plus the guest's loss count, and then clears the guest keys; "Start fresh" just clears them. Either way the
 // browser's history is the account's from then on, so a later sign-in on
 // this browser only ever asks about games played as a NEW guest after a
 // sign-out. No device record, no server-side flag: clearing IS the record.
@@ -95,6 +95,20 @@ export function guestCompletionsToPlays(completions = readGuestCompletions()) {
     out.push({ puzzle_id: puzzleId, solved: true, lives_used: lives, difficulty, finished_at: finished });
   }
   return out;
+}
+
+/**
+ * The guest's loss count. The game only ever kept losses as counters (the X
+ * bar and the Played total); livesUsedDist.X is that exact count, with the
+ * Played-minus-Won difference as the fallback for older stats objects.
+ */
+export function guestLossCount() {
+  const stats = readGuestStats();
+  if (!stats) return 0;
+  const x = Number(stats.livesUsedDist?.X);
+  if (Number.isFinite(x) && x >= 0) return Math.floor(x);
+  const diff = (Number(stats.totalPlayed) || 0) - (Number(stats.totalWon) || 0);
+  return Math.max(0, Math.floor(diff));
 }
 
 /** After the import decision, and on sign-out: this browser starts over as a guest. */
