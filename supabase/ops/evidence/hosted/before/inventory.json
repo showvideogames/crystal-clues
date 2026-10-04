@@ -1,0 +1,531 @@
+{
+  "tables": [
+    {
+      "table_schema": "auth",
+      "table_name": "audit_log_entries",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "custom_oauth_providers",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "flow_state",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "identities",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "instances",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_amr_claims",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_challenges",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_factors",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_recovery_code_sets",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_recovery_codes",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_authorizations",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_client_states",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_clients",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_consents",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "one_time_tokens",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "refresh_tokens",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "saml_providers",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "saml_relay_states",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "schema_migrations",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "scim_tokens",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "scim_users",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "sessions",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "sso_domains",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "sso_providers",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "users",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "webauthn_challenges",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "webauthn_credentials",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wordbank",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "buckets",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "buckets_analytics",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "buckets_vectors",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "migrations",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "objects",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "s3_multipart_uploads",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "s3_multipart_uploads_parts",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "vector_indexes",
+      "table_type": "BASE TABLE"
+    }
+  ],
+  "columns": [
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 2
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "date",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "title",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "author",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "difficulty",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "status",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "clues",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "cards",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "solution",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 10
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "theme",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 11
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wordbank",
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wordbank",
+      "column_name": "word",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    }
+  ],
+  "constraints": [
+    {
+      "table_name": "puzzles",
+      "conname": "puzzles_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "wordbank",
+      "conname": "wordbank_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "wordbank",
+      "conname": "wordbank_word_key",
+      "contype": "u",
+      "definition": "UNIQUE (word)"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "puzzles",
+      "indexname": "puzzles_pkey",
+      "indexdef": "CREATE UNIQUE INDEX puzzles_pkey ON public.puzzles USING btree (id)"
+    },
+    {
+      "tablename": "wordbank",
+      "indexname": "wordbank_pkey",
+      "indexdef": "CREATE UNIQUE INDEX wordbank_pkey ON public.wordbank USING btree (id)"
+    },
+    {
+      "tablename": "wordbank",
+      "indexname": "wordbank_word_key",
+      "indexdef": "CREATE UNIQUE INDEX wordbank_word_key ON public.wordbank USING btree (word)"
+    }
+  ],
+  "functions": [],
+  "triggers": [],
+  "event_triggers": [
+    {
+      "evtname": "issue_graphql_placeholder",
+      "evtevent": "sql_drop",
+      "function": "set_graphql_placeholder"
+    },
+    {
+      "evtname": "issue_pg_cron_access",
+      "evtevent": "ddl_command_end",
+      "function": "grant_pg_cron_access"
+    },
+    {
+      "evtname": "issue_pg_graphql_access",
+      "evtevent": "ddl_command_end",
+      "function": "grant_pg_graphql_access"
+    },
+    {
+      "evtname": "issue_pg_net_access",
+      "evtevent": "ddl_command_end",
+      "function": "grant_pg_net_access"
+    },
+    {
+      "evtname": "pgrst_ddl_watch",
+      "evtevent": "ddl_command_end",
+      "function": "pgrst_ddl_watch"
+    },
+    {
+      "evtname": "pgrst_drop_watch",
+      "evtevent": "sql_drop",
+      "function": "pgrst_drop_watch"
+    }
+  ],
+  "policies": [
+    {
+      "tablename": "puzzles",
+      "policyname": "Anyone can delete puzzles",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon}",
+      "cmd": "DELETE",
+      "qual": "true",
+      "with_check": null
+    },
+    {
+      "tablename": "puzzles",
+      "policyname": "Anyone can insert puzzles",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "true"
+    },
+    {
+      "tablename": "puzzles",
+      "policyname": "Anyone can read puzzles",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon}",
+      "cmd": "SELECT",
+      "qual": "true",
+      "with_check": null
+    },
+    {
+      "tablename": "puzzles",
+      "policyname": "Anyone can update puzzles",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon}",
+      "cmd": "UPDATE",
+      "qual": "true",
+      "with_check": null
+    },
+    {
+      "tablename": "wordbank",
+      "policyname": "Anyone can delete wordbank",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon}",
+      "cmd": "DELETE",
+      "qual": "true",
+      "with_check": null
+    },
+    {
+      "tablename": "wordbank",
+      "policyname": "Anyone can insert wordbank",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "true"
+    },
+    {
+      "tablename": "wordbank",
+      "policyname": "Anyone can read wordbank",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon}",
+      "cmd": "SELECT",
+      "qual": "true",
+      "with_check": null
+    }
+  ],
+  "rls": [
+    {
+      "table_name": "puzzles",
+      "rls_enabled": true,
+      "rls_forced": false
+    },
+    {
+      "table_name": "wordbank",
+      "rls_enabled": true,
+      "rls_forced": false
+    }
+  ],
+  "table_grants": [
+    {
+      "table_name": "puzzles",
+      "grantee": "anon",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "puzzles",
+      "grantee": "authenticated",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "puzzles",
+      "grantee": "postgres",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "puzzles",
+      "grantee": "service_role",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "anon",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "authenticated",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "postgres",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "service_role",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    }
+  ],
+  "function_grants": [],
+  "extensions": [
+    {
+      "extname": "pg_stat_statements",
+      "extversion": "1.11"
+    },
+    {
+      "extname": "pgcrypto",
+      "extversion": "1.3"
+    },
+    {
+      "extname": "plpgsql",
+      "extversion": "1.0"
+    },
+    {
+      "extname": "supabase_vault",
+      "extversion": "0.3.1"
+    },
+    {
+      "extname": "uuid-ossp",
+      "extversion": "1.1"
+    }
+  ],
+  "migration_ledger": {
+    "error": "POST /v1/projects/qszqparrqyhegfznyaby/database/query → HTTP 400 {\"message\":\"Failed to run sql query: ERROR:  42P01: relation \\\"supabase_migrations.schema_migrations\\\" does not exist\\nLINE 1: select version, name from supabase_migrations.schema_migrations order by version\\n                                  ^\\n\"}"
+  },
+  "auth_users": [],
+  "storage_buckets": [],
+  "storage_objects_count": [
+    {
+      "objects": 0
+    }
+  ]
+}
