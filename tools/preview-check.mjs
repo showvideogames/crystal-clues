@@ -56,8 +56,9 @@ const post = await fetch(`${SB}/rest/v1/wordbank`, { method: "POST", headers: { 
 check("anon cannot write content", post.status === 401 || post.status === 403, `HTTP ${post.status}`);
 const del = await fetch(`${SB}/rest/v1/puzzles?id=eq.1`, { method: "DELETE", headers: sbHeaders });
 check("anon cannot delete content", del.status === 401 || del.status === 403, `HTTP ${del.status}`);
-for (const fn of ["ensure_account", "my_account", "record_play", "delete_my_account"]) {
-  const r = await fetch(`${SB}/rest/v1/rpc/${fn}`, { method: "POST", headers: sbHeaders, body: "{}" });
+const rpcArgs = { ensure_account: {}, my_account: {}, record_play: { _puzzle_id: 1, _solved: true, _lives_used: 0, _difficulty: "standard" }, import_plays: { _plays: [], _losses: 0 }, delete_my_account: {} };
+for (const [fn, body] of Object.entries(rpcArgs)) {
+  const r = await fetch(`${SB}/rest/v1/rpc/${fn}`, { method: "POST", headers: sbHeaders, body: JSON.stringify(body) });
   check(`anon cannot call ${fn}`, r.status === 401 || r.status === 403, `HTTP ${r.status}`);
 }
 const ping = await fetch(`${SB}/rest/v1/rpc/ping`, { method: "POST", headers: sbHeaders, body: "{}" });
