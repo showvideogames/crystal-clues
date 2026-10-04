@@ -94,7 +94,8 @@ describe("U1 configuration is environment-driven, with explicit offline mode", (
   it("the source names no hosted project, key, or sign-in domain (portability)", async () => {
     const fs = await import("node:fs");
     const path = await import("node:path");
-    const dir = path.resolve(__dirname, "..");
+    const { fileURLToPath } = await import("node:url");
+    const dir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
     const files = [];
     const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p); else if (/\.(jsx?|css)$/.test(e.name) && !e.name.endsWith(".test.js")) files.push(p); } };
     walk(dir);
