@@ -1,0 +1,114 @@
+# Shared accounts in Cluevoyance
+
+Cluevoyance has one sign-in: the shared Sting Ray identity (WorkOS AuthKit),
+reached through this project's own Supabase Auth as the custom OIDC provider
+`custom:platform`. Modelled on Rainbow Categories' live implementation
+(puzzle-connect-daily, `src/lib/platformSignIn.ts` and the account layer of
+`supabase/migrations/0001_rainbow_baseline.sql`), reduced to what a game with
+browser-only guests needs.
+
+```
+WorkOS global identity  (user_… id; the same person in every game)
+        │  standard OIDC through THIS project's Supabase Auth
+        ▼
+accounts  (user_id = this project's auth user id; global_user_id = the WorkOS id, unique)
+        │
+        ├── plays   one row per finished official puzzle (win or loss); stats are derived
+        └── admins  which accounts may write official content
+
+Guest: exactly the game as it always was, in this browser's localStorage (clover_*).
+```
+
+The WorkOS id is the cross-game **link**, never a key for gameplay data.
+Rainbow holds `accounts(user_id = RAINBOW_LOCAL, global_user_id = user_X)` in
+its project; Cluevoyance holds `accounts(user_id = CLUE_LOCAL, global_user_id
+= user_X)` in this one. The local ids differ; the global id is the same; no
+database depends on the other.
+
+## Files
+
+| File | Role |
+|---|---|
+| `supabase/migrations/0001_cluevoyance_baseline.sql` | content tables (declared), `accounts`, `cluevoyance_uid()`, `account_email()`, `ensure_account()`, `my_account()`, `ping()`, `admins` + `is_cluevoyance_admin()`, `plays` + `record_play()` / `import_plays()`, `delete_my_account()` / `delete_local_account()`, content write policies, explicit grants |
+| `src/game/config.js` | environment-driven configuration; explicit offline mode; `ACCOUNTS_ENABLED` |
+| `src/account/supabaseClient.js` | the one Supabase client (PKCE, `cv-auth` storage key, no URL session detection) |
+| `src/account/platformSignIn.js` | sign-in (reachability probe first), callback handling, provider-token removal, `ensureAccount`, local sign-out, deletion, the current-account store |
+| `src/account/safePath.js` | same-origin return path for the round trip |
+| `src/account/localHistory.js` | the guest keys, the account cache, the import payload |
+| `src/account/plays.js` | `recordPlay` (cache first, server, unsynced replay), `importGuestHistory`, `startFresh`, `deriveStats`, `deriveCompletions` |
+| `src/account/historyStore.js` | the switch App.jsx's four history functions go through |
+| `src/account/useAccount.js` | the hook: status, account, isAdmin, importPending, actions |
+| `src/account/AccountMenu.jsx`, `ImportPrompt.jsx`, `AuthCallback.jsx`, `account.css` | the three surfaces |
+| `src/main.jsx` | renders `AuthCallback` on `/auth/callback`, the game everywhere else |
+| `src/App.jsx` | touch points marked `[accounts]`: config import, `sbFetch` bearer, the four history functions, the header control, the import prompt, the Admin button |
+| `vercel.json` | SPA rewrite so `/auth/callback` is served |
+| `tools/workos.mjs` | register a WorkOS Staging application / install the provider (local stack or hosted project), allow-list callbacks |
+| `tests/db/*.test.mjs` | node:test against the local stack (`npm run test:db`) |
+| `src/account/account.test.js` | Vitest unit tests (`npm run test:unit`) |
+
+## Behaviour
+
+**Sign in.** Header → Sign in → reachability probe of the discovery document
+(8 s; unreachable = "Sign-in is temporarily unavailable", nothing navigates)
+→ `signInWithOAuth({provider:'custom:platform', redirectTo: origin + '/auth/callback'})`
+→ hosted sign-in → GoTrue callback → `/auth/callback` → PKCE exchange, code
+stripped from the address bar, provider token deleted → `ensure_account()`:
+`ok` (account published) / `not_platform_linked` (local sign-out; "not a
+Cluevoyance account") / unavailable (session kept; Try again). Then back to
+the page the player left.
+
+**First sign-in on a browser with guest history.** "Bring your progress with
+you?" — *Add my progress* uploads the wins (`import_plays`, never overwrites a
+solved row), *Start fresh* uploads nothing. Either way the guest keys
+(`clover_completions`, `clover_stats`) are cleared afterwards: that clearing
+is the record of the decision, so nothing is merged silently and nothing can
+be imported twice. Losses only ever existed as counters and stay behind.
+Mid-puzzle state, difficulty and the tutorial flag are untouched.
+
+**Signed-in play.** Every finish calls `record_play` (cache first, so the UI
+never waits; a failed call is replayed on the next load). Stats and the
+archive calendar are derived from plays (`deriveStats`, `deriveCompletions`)
+in the exact shapes the guest code uses. The streak counts consecutive
+puzzle *dates* with a win, ending today or yesterday.
+
+**Email.** Display only, from `account_email()` (the provider identity,
+refreshed on every sign-in). Never `auth.users.email`, never a key.
+
+**Sign out.** Local only (`signOut({scope:'local'})`); the WorkOS session and
+other games are untouched. The browser becomes a brand-new guest: the account
+cache and the guest keys are cleared.
+
+**Delete account.** `delete_my_account()` removes plays, admin rights, the
+account and the auth user. The WorkOS identity survives; the next sign-in
+creates a fresh, empty account with the same `global_user_id`.
+
+**Admin.** The Admin button shows only for accounts in `admins`; the database
+refuses content writes from anyone else (RLS on `puzzles`/`wordbank`). Grant:
+`insert into public.admins (user_id) select user_id from public.accounts where global_user_id = 'user_…';`
+
+**Failure.** Provider down → sign-in says so, guests unaffected, sessions
+continue. Supabase down → the daily game behaves as before (sample puzzle);
+signed-in plays wait in the cache. Callback error → a sentence and a way
+back; guest history is never touched on the callback page. Provider ok but
+`ensure_account` failing → the session is kept and the page offers Try again.
+
+## Friends branch: what will need adapting
+
+`feature/friend-puzzles` / `feature/friends-local-demo` (local only, not
+merged) predate this layer and assume Supabase Auth with an email code. To
+land it on shared accounts (decision D1):
+
+| Friends piece | Change |
+|---|---|
+| `src/friends/client.js` (`storageKey: "cluevoyance-auth"`, `signInWithOtp`) and the `SignIn` screen in `FriendsView.jsx` | use `src/account/supabaseClient.js` and the header's shared sign-in; delete the OTP screen; `hasFriendsSession()` in App.jsx reads `cv-auth` |
+| `supabase/templates/sign_in_code.html`, the "Email OTP length 6" and SMTP production steps in `docs/friend-exchange.md` | drop: no auth email is sent by Cluevoyance |
+| `profiles.id references auth.users(id)` and every `references auth.users(id)` FK (`friend_invites.inviter_id/accepted_by`, `friendships.user_a/user_b`, `friend_puzzle_drafts.creator_id`, `friend_puzzles.creator_id/recipient_id`, `friend_guesses.solver_id`, `push_subscriptions.user_id`, `notification_outbox.user_id`) | reference `public.accounts(user_id)` instead, so only Cluevoyance accounts can take part (the ids are the same uuids) |
+| `friend_require_uid()` (raw `auth.uid()`) | `select public.cluevoyance_uid()`, raising `not_signed_in` when null |
+| RLS policies `… = auth.uid()` on `profiles`, `friend_invites`, `friendships`, `friend_puzzle_drafts`, `friend_puzzles`, `friend_puzzle_answers`, `friend_guesses`, `push_subscriptions` | `… = public.cluevoyance_uid()` |
+| `get_friend_invite()` (reads `auth.uid()` directly) | `cluevoyance_uid()` |
+| `display_name` in `profiles` | keep: game-local metadata, not identity |
+| `delete_local_account()` in this baseline | extend to delete the account's friend rows (or rely on the new FKs' cascades) |
+| `tests/friends/helpers.mjs` `makePlayer` (password sign-in) | add the `custom:platform` identity row before `ensure_account()`, as `tests/db/helpers.mjs` does |
+
+Nothing in this layer conflicts with the Friends data model; the account is
+the same `auth.users` id the Friends tables already key on.
