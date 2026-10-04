@@ -1,0 +1,1110 @@
+{
+  "tables": [
+    {
+      "table_schema": "auth",
+      "table_name": "audit_log_entries",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "custom_oauth_providers",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "flow_state",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "identities",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "instances",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_amr_claims",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_challenges",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_factors",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_recovery_code_sets",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "mfa_recovery_codes",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_authorizations",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_client_states",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_clients",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "oauth_consents",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "one_time_tokens",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "refresh_tokens",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "saml_providers",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "saml_relay_states",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "schema_migrations",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "scim_tokens",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "scim_users",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "sessions",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "sso_domains",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "sso_providers",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "users",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "webauthn_challenges",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "auth",
+      "table_name": "webauthn_credentials",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "accounts",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "admins",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wordbank",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "buckets",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "buckets_analytics",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "buckets_vectors",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "migrations",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "objects",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "s3_multipart_uploads",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "s3_multipart_uploads_parts",
+      "table_type": "BASE TABLE"
+    },
+    {
+      "table_schema": "storage",
+      "table_name": "vector_indexes",
+      "table_type": "BASE TABLE"
+    }
+  ],
+  "columns": [
+    {
+      "table_schema": "public",
+      "table_name": "accounts",
+      "column_name": "user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_schema": "public",
+      "table_name": "accounts",
+      "column_name": "global_user_id",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_schema": "public",
+      "table_name": "accounts",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 3
+    },
+    {
+      "table_schema": "public",
+      "table_name": "accounts",
+      "column_name": "last_seen_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 4
+    },
+    {
+      "table_schema": "public",
+      "table_name": "accounts",
+      "column_name": "imported_losses",
+      "data_type": "integer",
+      "is_nullable": "NO",
+      "column_default": "0",
+      "ordinal_position": 5
+    },
+    {
+      "table_schema": "public",
+      "table_name": "admins",
+      "column_name": "user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_schema": "public",
+      "table_name": "admins",
+      "column_name": "granted_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 2
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "user_id",
+      "data_type": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "puzzle_id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "puzzle_date",
+      "data_type": "date",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "solved",
+      "data_type": "boolean",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "lives_used",
+      "data_type": "smallint",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "difficulty",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "finished_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 7
+    },
+    {
+      "table_schema": "public",
+      "table_name": "plays",
+      "column_name": "source",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": "'play'::text",
+      "ordinal_position": 8
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "ordinal_position": 2
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "date",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "title",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "author",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "difficulty",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "status",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "clues",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "cards",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "solution",
+      "data_type": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 10
+    },
+    {
+      "table_schema": "public",
+      "table_name": "puzzles",
+      "column_name": "theme",
+      "data_type": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 11
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wordbank",
+      "column_name": "id",
+      "data_type": "bigint",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "table_schema": "public",
+      "table_name": "wordbank",
+      "column_name": "word",
+      "data_type": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    }
+  ],
+  "constraints": [
+    {
+      "table_name": "accounts",
+      "conname": "accounts_global_user_id_format",
+      "contype": "c",
+      "definition": "CHECK ((global_user_id ~ '^user_[0-9A-Za-z]{10,64}$'::text))"
+    },
+    {
+      "table_name": "accounts",
+      "conname": "accounts_global_user_id_key",
+      "contype": "u",
+      "definition": "UNIQUE (global_user_id)"
+    },
+    {
+      "table_name": "accounts",
+      "conname": "accounts_imported_losses_check",
+      "contype": "c",
+      "definition": "CHECK ((imported_losses >= 0))"
+    },
+    {
+      "table_name": "accounts",
+      "conname": "accounts_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (user_id)"
+    },
+    {
+      "table_name": "accounts",
+      "conname": "accounts_user_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "admins",
+      "conname": "admins_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (user_id)"
+    },
+    {
+      "table_name": "admins",
+      "conname": "admins_user_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES accounts(user_id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "plays",
+      "conname": "plays_difficulty_check",
+      "contype": "c",
+      "definition": "CHECK ((difficulty = ANY (ARRAY['easy'::text, 'standard'::text, 'expert'::text, 'hardcore'::text])))"
+    },
+    {
+      "table_name": "plays",
+      "conname": "plays_lives_used_check",
+      "contype": "c",
+      "definition": "CHECK (((lives_used >= 0) AND (lives_used <= 3)))"
+    },
+    {
+      "table_name": "plays",
+      "conname": "plays_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (user_id, puzzle_id)"
+    },
+    {
+      "table_name": "plays",
+      "conname": "plays_puzzle_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (puzzle_id) REFERENCES puzzles(id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "plays",
+      "conname": "plays_source_check",
+      "contype": "c",
+      "definition": "CHECK ((source = ANY (ARRAY['play'::text, 'import'::text])))"
+    },
+    {
+      "table_name": "plays",
+      "conname": "plays_user_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES accounts(user_id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "puzzles",
+      "conname": "puzzles_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "wordbank",
+      "conname": "wordbank_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "wordbank",
+      "conname": "wordbank_word_key",
+      "contype": "u",
+      "definition": "UNIQUE (word)"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "accounts",
+      "indexname": "accounts_global_user_id_key",
+      "indexdef": "CREATE UNIQUE INDEX accounts_global_user_id_key ON public.accounts USING btree (global_user_id)"
+    },
+    {
+      "tablename": "accounts",
+      "indexname": "accounts_pkey",
+      "indexdef": "CREATE UNIQUE INDEX accounts_pkey ON public.accounts USING btree (user_id)"
+    },
+    {
+      "tablename": "admins",
+      "indexname": "admins_pkey",
+      "indexdef": "CREATE UNIQUE INDEX admins_pkey ON public.admins USING btree (user_id)"
+    },
+    {
+      "tablename": "plays",
+      "indexname": "plays_pkey",
+      "indexdef": "CREATE UNIQUE INDEX plays_pkey ON public.plays USING btree (user_id, puzzle_id)"
+    },
+    {
+      "tablename": "plays",
+      "indexname": "plays_user_date_idx",
+      "indexdef": "CREATE INDEX plays_user_date_idx ON public.plays USING btree (user_id, puzzle_date)"
+    },
+    {
+      "tablename": "puzzles",
+      "indexname": "puzzles_pkey",
+      "indexdef": "CREATE UNIQUE INDEX puzzles_pkey ON public.puzzles USING btree (id)"
+    },
+    {
+      "tablename": "wordbank",
+      "indexname": "wordbank_pkey",
+      "indexdef": "CREATE UNIQUE INDEX wordbank_pkey ON public.wordbank USING btree (id)"
+    },
+    {
+      "tablename": "wordbank",
+      "indexname": "wordbank_word_key",
+      "indexdef": "CREATE UNIQUE INDEX wordbank_word_key ON public.wordbank USING btree (word)"
+    }
+  ],
+  "functions": [
+    {
+      "proname": "account_email",
+      "args": "_user_id uuid",
+      "result": "text",
+      "security_definer": true,
+      "lanname": "sql",
+      "definition": "CREATE OR REPLACE FUNCTION public.account_email(_user_id uuid)\n RETURNS text\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select coalesce(\n    (select nullif(btrim(i.identity_data ->> 'email'), '')\n       from public.accounts a\n       join auth.identities i on i.user_id = a.user_id\n      where a.user_id = _user_id\n        and i.provider = 'custom:platform'\n      order by i.created_at\n      limit 1),\n    (select u.email::text\n       from public.accounts a\n       join auth.users u on u.id = a.user_id\n      where a.user_id = _user_id)\n  )\n$function$\n"
+    },
+    {
+      "proname": "cluevoyance_uid",
+      "args": "",
+      "result": "uuid",
+      "security_definer": true,
+      "lanname": "sql",
+      "definition": "CREATE OR REPLACE FUNCTION public.cluevoyance_uid()\n RETURNS uuid\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select a.user_id\n    from public.accounts a\n   where a.user_id = auth.uid()\n$function$\n"
+    },
+    {
+      "proname": "delete_local_account",
+      "args": "_user_id uuid",
+      "result": "void",
+      "security_definer": true,
+      "lanname": "plpgsql",
+      "definition": "CREATE OR REPLACE FUNCTION public.delete_local_account(_user_id uuid)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nbegin\n  if _user_id is null then\n    return;\n  end if;\n  -- Cluevoyance keeps no site-wide aggregates, so personal rows are simply\n  -- deleted (plays and admins also cascade from accounts).\n  delete from public.plays    where user_id = _user_id;\n  delete from public.admins   where user_id = _user_id;\n  delete from public.accounts where user_id = _user_id;\n  -- GoTrue's own cascades remove identities, sessions and refresh tokens.\n  delete from auth.users where id = _user_id;\nend;\n$function$\n"
+    },
+    {
+      "proname": "delete_my_account",
+      "args": "",
+      "result": "boolean",
+      "security_definer": true,
+      "lanname": "plpgsql",
+      "definition": "CREATE OR REPLACE FUNCTION public.delete_my_account()\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  _uid uuid := public.cluevoyance_uid();\nbegin\n  if _uid is null then\n    return false;\n  end if;\n  perform public.delete_local_account(_uid);\n  return true;\nend;\n$function$\n"
+    },
+    {
+      "proname": "ensure_account",
+      "args": "",
+      "result": "TABLE(outcome text, user_id uuid, global_user_id text, email text, created_at timestamp with time zone, imported_losses integer)",
+      "security_definer": true,
+      "lanname": "plpgsql",
+      "definition": "CREATE OR REPLACE FUNCTION public.ensure_account()\n RETURNS TABLE(outcome text, user_id uuid, global_user_id text, email text, created_at timestamp with time zone, imported_losses integer)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n#variable_conflict use_column\ndeclare\n  _uid uuid := auth.uid();\n  _gid text;\nbegin\n  if _uid is null then\n    return query select 'not_signed_in'::text, null::uuid, null::text, null::text, null::timestamptz, null::integer;\n    return;\n  end if;\n\n  -- The link is read from GoTrue's identity table, never from the client.\n  select i.provider_id\n    into _gid\n    from auth.identities i\n   where i.user_id = _uid\n     and i.provider = 'custom:platform'\n   order by i.created_at\n   limit 1;\n\n  if _gid is null then\n    -- An auth user that did not come through the shared sign-in (a dashboard\n    -- or test user, a stray signup). Not, and never becomes, an account.\n    return query select 'not_platform_linked'::text, null::uuid, null::text, null::text, null::timestamptz, null::integer;\n    return;\n  end if;\n\n  insert into public.accounts (user_id, global_user_id)\n  values (_uid, _gid)\n  on conflict (user_id) do update\n    set last_seen_at = now();\n\n  return query\n    select 'ok'::text, a.user_id, a.global_user_id, public.account_email(a.user_id), a.created_at, a.imported_losses\n      from public.accounts a\n     where a.user_id = _uid;\nend;\n$function$\n"
+    },
+    {
+      "proname": "import_plays",
+      "args": "_plays jsonb, _losses integer",
+      "result": "TABLE(outcome text, imported integer, skipped integer)",
+      "security_definer": true,
+      "lanname": "plpgsql",
+      "definition": "CREATE OR REPLACE FUNCTION public.import_plays(_plays jsonb, _losses integer DEFAULT 0)\n RETURNS TABLE(outcome text, imported integer, skipped integer)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  _uid uuid := public.cluevoyance_uid();\n  _el jsonb;\n  _res text;\n  _imported int := 0;\n  _skipped int := 0;\n  _finished timestamptz;\nbegin\n  if _uid is null then\n    return query select 'not_signed_in'::text, 0, 0;\n    return;\n  end if;\n  if _plays is null or jsonb_typeof(_plays) <> 'array' then\n    return query select 'invalid'::text, 0, 0;\n    return;\n  end if;\n  if jsonb_array_length(_plays) > 5000 or coalesce(_losses, 0) > 100000 then\n    return query select 'too_many'::text, 0, 0;\n    return;\n  end if;\n\n  if coalesce(_losses, 0) > 0 then\n    update public.accounts set imported_losses = imported_losses + _losses where user_id = _uid;\n  end if;\n\n  for _el in select * from jsonb_array_elements(_plays) loop\n    begin\n      _finished := nullif(_el ->> 'finished_at', '')::timestamptz;\n    exception when others then\n      _finished := null;\n    end;\n    begin\n      _res := public.upsert_play(\n        _uid,\n        (_el ->> 'puzzle_id')::bigint,\n        (_el ->> 'solved')::boolean,\n        (_el ->> 'lives_used')::int,\n        _el ->> 'difficulty',\n        _finished,\n        'import');\n    exception when others then\n      _res := 'invalid';\n    end;\n    if _res = 'ok' then _imported := _imported + 1; else _skipped := _skipped + 1; end if;\n  end loop;\n\n  return query select 'ok'::text, _imported, _skipped;\nend;\n$function$\n"
+    },
+    {
+      "proname": "is_cluevoyance_admin",
+      "args": "",
+      "result": "boolean",
+      "security_definer": true,
+      "lanname": "sql",
+      "definition": "CREATE OR REPLACE FUNCTION public.is_cluevoyance_admin()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select exists (select 1 from public.admins ad where ad.user_id = public.cluevoyance_uid())\n$function$\n"
+    },
+    {
+      "proname": "my_account",
+      "args": "",
+      "result": "TABLE(user_id uuid, global_user_id text, email text, created_at timestamp with time zone, imported_losses integer)",
+      "security_definer": true,
+      "lanname": "sql",
+      "definition": "CREATE OR REPLACE FUNCTION public.my_account()\n RETURNS TABLE(user_id uuid, global_user_id text, email text, created_at timestamp with time zone, imported_losses integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select a.user_id, a.global_user_id, public.account_email(a.user_id), a.created_at, a.imported_losses\n    from public.accounts a\n   where a.user_id = auth.uid()\n$function$\n"
+    },
+    {
+      "proname": "ping",
+      "args": "",
+      "result": "boolean",
+      "security_definer": false,
+      "lanname": "sql",
+      "definition": "CREATE OR REPLACE FUNCTION public.ping()\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO 'public'\nAS $function$ select true $function$\n"
+    },
+    {
+      "proname": "record_play",
+      "args": "_puzzle_id bigint, _solved boolean, _lives_used integer, _difficulty text",
+      "result": "TABLE(outcome text)",
+      "security_definer": true,
+      "lanname": "plpgsql",
+      "definition": "CREATE OR REPLACE FUNCTION public.record_play(_puzzle_id bigint, _solved boolean, _lives_used integer, _difficulty text)\n RETURNS TABLE(outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  _uid uuid := public.cluevoyance_uid();\nbegin\n  if _uid is null then\n    return query select 'not_signed_in'::text;\n    return;\n  end if;\n  return query select public.upsert_play(_uid, _puzzle_id, _solved, _lives_used, _difficulty, now(), 'play');\nend;\n$function$\n"
+    },
+    {
+      "proname": "upsert_play",
+      "args": "_uid uuid, _puzzle_id bigint, _solved boolean, _lives_used integer, _difficulty text, _finished_at timestamp with time zone, _source text",
+      "result": "text",
+      "security_definer": true,
+      "lanname": "plpgsql",
+      "definition": "CREATE OR REPLACE FUNCTION public.upsert_play(_uid uuid, _puzzle_id bigint, _solved boolean, _lives_used integer, _difficulty text, _finished_at timestamp with time zone, _source text)\n RETURNS text\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  _date date;\nbegin\n  -- puzzles.date is text on the live project; a malformed value counts as unknown\n  begin\n    select nullif(btrim(p.date), '')::date into _date from public.puzzles p where p.id = _puzzle_id;\n  exception when others then\n    _date := null;\n  end;\n  if _date is null then\n    return 'unknown_puzzle';\n  end if;\n  if _solved is null or _lives_used is null or _lives_used < 0 or _lives_used > 3\n     or _difficulty is null or _difficulty not in ('easy', 'standard', 'expert', 'hardcore') then\n    return 'invalid';\n  end if;\n\n  insert into public.plays (user_id, puzzle_id, puzzle_date, solved, lives_used, difficulty, finished_at, source)\n  values (_uid, _puzzle_id, _date, _solved, _lives_used, _difficulty, coalesce(_finished_at, now()), _source)\n  on conflict (user_id, puzzle_id) do update\n    set solved      = public.plays.solved or excluded.solved,\n        -- a win keeps its own lives/difficulty; a loss may be upgraded by a later win\n        lives_used  = case when public.plays.solved then public.plays.lives_used  else excluded.lives_used  end,\n        difficulty  = case when public.plays.solved then public.plays.difficulty  else excluded.difficulty  end,\n        finished_at = case when public.plays.solved then public.plays.finished_at else excluded.finished_at end,\n        source      = case when public.plays.solved then public.plays.source      else excluded.source      end;\n  return 'ok';\nend;\n$function$\n"
+    }
+  ],
+  "triggers": [],
+  "event_triggers": [
+    {
+      "evtname": "issue_graphql_placeholder",
+      "evtevent": "sql_drop",
+      "function": "set_graphql_placeholder"
+    },
+    {
+      "evtname": "issue_pg_cron_access",
+      "evtevent": "ddl_command_end",
+      "function": "grant_pg_cron_access"
+    },
+    {
+      "evtname": "issue_pg_graphql_access",
+      "evtevent": "ddl_command_end",
+      "function": "grant_pg_graphql_access"
+    },
+    {
+      "evtname": "issue_pg_net_access",
+      "evtevent": "ddl_command_end",
+      "function": "grant_pg_net_access"
+    },
+    {
+      "evtname": "pgrst_ddl_watch",
+      "evtevent": "ddl_command_end",
+      "function": "pgrst_ddl_watch"
+    },
+    {
+      "evtname": "pgrst_drop_watch",
+      "evtevent": "sql_drop",
+      "function": "pgrst_drop_watch"
+    }
+  ],
+  "policies": [
+    {
+      "tablename": "plays",
+      "policyname": "plays_read_own",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(user_id = cluevoyance_uid())",
+      "with_check": null
+    },
+    {
+      "tablename": "puzzles",
+      "policyname": "puzzles_admin_delete",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "DELETE",
+      "qual": "is_cluevoyance_admin()",
+      "with_check": null
+    },
+    {
+      "tablename": "puzzles",
+      "policyname": "puzzles_admin_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "is_cluevoyance_admin()"
+    },
+    {
+      "tablename": "puzzles",
+      "policyname": "puzzles_admin_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "is_cluevoyance_admin()",
+      "with_check": "is_cluevoyance_admin()"
+    },
+    {
+      "tablename": "puzzles",
+      "policyname": "puzzles_read_all",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon,authenticated}",
+      "cmd": "SELECT",
+      "qual": "true",
+      "with_check": null
+    },
+    {
+      "tablename": "wordbank",
+      "policyname": "wordbank_admin_delete",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "DELETE",
+      "qual": "is_cluevoyance_admin()",
+      "with_check": null
+    },
+    {
+      "tablename": "wordbank",
+      "policyname": "wordbank_admin_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "is_cluevoyance_admin()"
+    },
+    {
+      "tablename": "wordbank",
+      "policyname": "wordbank_admin_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "is_cluevoyance_admin()",
+      "with_check": "is_cluevoyance_admin()"
+    },
+    {
+      "tablename": "wordbank",
+      "policyname": "wordbank_read_all",
+      "permissive": "PERMISSIVE",
+      "roles": "{anon,authenticated}",
+      "cmd": "SELECT",
+      "qual": "true",
+      "with_check": null
+    }
+  ],
+  "rls": [
+    {
+      "table_name": "accounts",
+      "rls_enabled": true,
+      "rls_forced": false
+    },
+    {
+      "table_name": "admins",
+      "rls_enabled": true,
+      "rls_forced": false
+    },
+    {
+      "table_name": "plays",
+      "rls_enabled": true,
+      "rls_forced": false
+    },
+    {
+      "table_name": "puzzles",
+      "rls_enabled": true,
+      "rls_forced": false
+    },
+    {
+      "table_name": "wordbank",
+      "rls_enabled": true,
+      "rls_forced": false
+    }
+  ],
+  "table_grants": [
+    {
+      "table_name": "accounts",
+      "grantee": "postgres",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "accounts",
+      "grantee": "service_role",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "admins",
+      "grantee": "postgres",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "admins",
+      "grantee": "service_role",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "plays",
+      "grantee": "authenticated",
+      "privileges": "SELECT"
+    },
+    {
+      "table_name": "plays",
+      "grantee": "postgres",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "plays",
+      "grantee": "service_role",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "puzzles",
+      "grantee": "anon",
+      "privileges": "SELECT"
+    },
+    {
+      "table_name": "puzzles",
+      "grantee": "authenticated",
+      "privileges": "DELETE,INSERT,SELECT,UPDATE"
+    },
+    {
+      "table_name": "puzzles",
+      "grantee": "postgres",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "puzzles",
+      "grantee": "service_role",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "anon",
+      "privileges": "SELECT"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "authenticated",
+      "privileges": "DELETE,INSERT,SELECT,UPDATE"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "postgres",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    },
+    {
+      "table_name": "wordbank",
+      "grantee": "service_role",
+      "privileges": "DELETE,INSERT,REFERENCES,SELECT,TRIGGER,TRUNCATE,UPDATE"
+    }
+  ],
+  "function_grants": [
+    {
+      "routine_name": "account_email",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "account_email",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "cluevoyance_uid",
+      "grantee": "anon",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "cluevoyance_uid",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "cluevoyance_uid",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "cluevoyance_uid",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "delete_local_account",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "delete_local_account",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "delete_my_account",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "delete_my_account",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "delete_my_account",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "ensure_account",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "ensure_account",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "ensure_account",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "import_plays",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "import_plays",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "import_plays",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "is_cluevoyance_admin",
+      "grantee": "anon",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "is_cluevoyance_admin",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "is_cluevoyance_admin",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "is_cluevoyance_admin",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "my_account",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "my_account",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "my_account",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "ping",
+      "grantee": "anon",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "ping",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "ping",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "ping",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "record_play",
+      "grantee": "authenticated",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "record_play",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "record_play",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "upsert_play",
+      "grantee": "postgres",
+      "privilege_type": "EXECUTE"
+    },
+    {
+      "routine_name": "upsert_play",
+      "grantee": "service_role",
+      "privilege_type": "EXECUTE"
+    }
+  ],
+  "extensions": [
+    {
+      "extname": "pg_stat_statements",
+      "extversion": "1.11"
+    },
+    {
+      "extname": "pgcrypto",
+      "extversion": "1.3"
+    },
+    {
+      "extname": "plpgsql",
+      "extversion": "1.0"
+    },
+    {
+      "extname": "supabase_vault",
+      "extversion": "0.3.1"
+    },
+    {
+      "extname": "uuid-ossp",
+      "extversion": "1.1"
+    }
+  ],
+  "migration_ledger": [
+    {
+      "version": "0001",
+      "name": "0001_cluevoyance_baseline"
+    }
+  ],
+  "auth_users": [],
+  "storage_buckets": [],
+  "storage_objects_count": [
+    {
+      "objects": 0
+    }
+  ]
+}
