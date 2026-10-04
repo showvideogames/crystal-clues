@@ -1,13 +1,23 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { flushSync } from "react-dom";
 import { seeded01, shuffleArr } from "./utils/random";
+// ── Shared accounts (see src/account/README.md). The only touch points in this
+//    file are marked "[accounts]". Guests never reach the account branch. ──
+import { SUPABASE_URL, SUPABASE_KEY, OFFLINE_MODE, NOT_CONFIGURED_MESSAGE, announceConfiguration } from "./game/config";
+import { getAccessToken } from "./account/supabaseClient";
+import { loadStatsFor, loadCompletionsFor, recordFinishFor, saveCompletionFor } from "./account/historyStore";
+import { useAccount } from "./account/useAccount";
+import AccountMenu from "./account/AccountMenu";
+import ImportPrompt from "./account/ImportPrompt";
 
 // ═══════════════════════════════════════════════════════════════
 //  SUPABASE
 // ═══════════════════════════════════════════════════════════════
 
-const SUPABASE_URL = "https://qszqparrqyhegfznyaby.supabase.co";
-const SUPABASE_KEY = "sb_publishable_6-Apb1INDlRXfchxEY1GyQ_vKC7bEOD";
+// [accounts] The project is configuration (src/game/config.js), never a
+// literal here. Requests carry the signed-in session's token when there is
+// one, so an admin's content writes are theirs; guests use the public key.
+announceConfiguration();
 
 const pad2 = (n) => String(n).padStart(2, "0");
 const getLocalISODate = (date = new Date()) =>
@@ -19,11 +29,13 @@ const addLocalDays = (date, days) => {
 };
 
 async function sbFetch(path, options={}) {
+  if(OFFLINE_MODE) throw new Error(NOT_CONFIGURED_MESSAGE);
+  const bearer = (await getAccessToken()) || SUPABASE_KEY;
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     ...options,
     headers: {
       "apikey": SUPABASE_KEY,
-      "Authorization": `Bearer ${SUPABASE_KEY}`,
+      "Authorization": `Bearer ${bearer}`,
       "Content-Type": "application/json",
       "Prefer": options.prefer || "",
       ...(options.headers||{}),
@@ -83,11 +95,13 @@ async function dbLoadWordBank() {
 
 async function dbAddWords(newWords) {
   if(!newWords.length) return;
+  if(OFFLINE_MODE) throw new Error(NOT_CONFIGURED_MESSAGE);
+  const bearer = (await getAccessToken()) || SUPABASE_KEY;
   const res = await fetch(`${SUPABASE_URL}/rest/v1/wordbank`, {
     method: "POST",
     headers: {
       "apikey": SUPABASE_KEY,
-      "Authorization": `Bearer ${SUPABASE_KEY}`,
+      "Authorization": `Bearer ${bearer}`,
       "Content-Type": "application/json",
       "Prefer": "return=minimal,resolution=ignore-duplicates",
     },
@@ -3076,7 +3090,7 @@ function GameView({
                 setGuessHistory(finalHistory);
                 setLocked(new Set([0,1,2,3])); setWrong(new Set());
                 setSolved(true);
-                setStats(updateStats(true, livesUsed, difficulty));
+                setStats(updateStats(true, livesUsed, difficulty, puzzle));
                 // Set an encouraging message based on lives remaining
                 if(livesLeft === MAX_LIVES)      setFeedback("Perfect solve — not a life lost! ✨");
                 else if(livesLeft === MAX_LIVES-1) setFeedback(`Solved with ${livesLeft} ${livesLeft===1?"life":"lives"} to spare! 🔮`);
@@ -3181,7 +3195,7 @@ function GameView({
                       // 5. After last card, show overlay
                       if(idx===unlockedSlots.length-1){
                         setTimeout(()=>{
-                          setStats(updateStats(false, MAX_LIVES, difficulty));
+                          setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
                           setLost(true);
                           setFeedback("");
                           setTimeout(()=>setShowOvr(true),700);
@@ -3190,7 +3204,7 @@ function GameView({
                     });
 
                     if(unlockedSlots.length===0){
-                      setStats(updateStats(false, MAX_LIVES, difficulty));
+                      setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
                       setLost(true);
                       setTimeout(()=>setShowOvr(true),500);
                     }
@@ -4480,16 +4494,23 @@ const DEMO_ARCHIVE = [
 ];
 
 // Completion state: { [puzzleId]: { solved: bool, livesUsed?: number, difficulty?: string, solvedAt: string } }
-const loadCompletions = () => loadLS("clover_completions", {});
-const saveCompletion  = (id, data) => {
-  const all = loadCompletions();
+// [accounts] The guest versions are unchanged; the exported names route
+// through the account layer, which only takes over while someone is signed in.
+const guestLoadCompletions = () => loadLS("clover_completions", {});
+const guestSaveCompletion  = (id, data) => {
+  const all = guestLoadCompletions();
   saveLS("clover_completions", { ...all, [id]: data });
 };
+const guestLoadStats = () => normalizeStats(loadLS("clover_stats", DEFAULT_STATS));
 
-const loadStats = () => normalizeStats(loadLS("clover_stats", DEFAULT_STATS));
+const loadCompletions = () => loadCompletionsFor(guestLoadCompletions);
+const saveCompletion  = (id, data) => saveCompletionFor(() => guestSaveCompletion(id, data));
+const loadStats       = () => loadStatsFor(guestLoadStats);
+const updateStats     = (won, livesUsed, difficulty, puzzle) =>
+  recordFinishFor({ won, livesUsed, difficulty, puzzle }, () => guestUpdateStats(won, livesUsed, difficulty));
 
-const updateStats = (won, livesUsed, difficulty) => {
-  const s = loadStats();
+const guestUpdateStats = (won, livesUsed, difficulty) => {
+  const s = guestLoadStats();
   const today = getLocalISODate();
   const yesterday = getLocalISODate(addLocalDays(new Date(), -1));
   const newStreak = won
@@ -4746,7 +4767,11 @@ function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose
 export default function App() {
   const [view,setView]           = useState("game");
   const [archivePuzzle,setAP]    = useState(null);
-  const [completions,setComps]   = useState(loadCompletions);
+  // [accounts] who is signed in, whether guest history awaits a decision,
+  // and a counter that bumps whenever the account's history changed.
+  const acct = useAccount();
+  const [compsTick,setCompsTick] = useState(0);
+  const completions = useMemo(()=>loadCompletions(), [compsTick, acct.historyVersion]);
   const [showSettings,setShowSettings] = useState(false);
   const [showTutorial,setShowTutorial] = useState(false);
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
@@ -4844,7 +4869,7 @@ export default function App() {
       solvedAt:new Date().toISOString(),
     };
     saveCompletion(puzzleId, data);
-    setComps(loadCompletions());
+    setCompsTick(t=>t+1);
   },[difficulty]);
 
     return (
@@ -4864,9 +4889,20 @@ export default function App() {
             <button className={`nbtn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}>
               Archive
             </button>
-            <button className={`nbtn${view==="admin"?" on":""}`} onClick={()=>setView("admin")}>
-              Admin
-            </button>
+            {acct.isAdmin && (
+              <button className={`nbtn${view==="admin"?" on":""}`} onClick={()=>setView("admin")}>
+                Admin
+              </button>
+            )}
+            <AccountMenu
+              status={acct.status}
+              account={acct.account}
+              message={acct.message}
+              onSignIn={acct.signIn}
+              onSignOut={async ()=>{ await acct.signOut(); setView("game"); }}
+              onDelete={acct.deleteAccount}
+              onDismissMessage={acct.dismissMessage}
+            />
             <button className="gear-btn help-btn" onClick={openTutorial} title="How To Play" aria-label="How To Play">
               ?
             </button>
@@ -4892,8 +4928,9 @@ export default function App() {
           : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
       })()}
       {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive}/>}
-      {view==="admin"  && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
+      {view==="admin" && acct.isAdmin && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
       {showTutorial && <TutorialPracticeOverlay onClose={closeTutorial} />}
+      {acct.importPending && <ImportPrompt onAdd={acct.addMyProgress} onStartFresh={acct.startFresh} />}
 
       {showSettings && (
         <SettingsSheet
