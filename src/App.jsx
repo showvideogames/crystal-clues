@@ -4,7 +4,7 @@ import { seeded01, shuffleArr } from "./utils/random";
 // ── Shared accounts (see src/account/README.md). The only touch points in this
 //    file are marked "[accounts]". Guests never reach the account branch. ──
 import { SUPABASE_URL, SUPABASE_KEY, OFFLINE_MODE, NOT_CONFIGURED_MESSAGE, announceConfiguration } from "./game/config";
-import { getAccessToken } from "./account/supabaseClient";
+import { authedFetch, getAccessToken } from "./account/supabaseClient";
 import { loadStatsFor, loadCompletionsFor, recordFinishFor, saveCompletionFor } from "./account/historyStore";
 import { useAccount } from "./account/useAccount";
 import AccountMenu from "./account/AccountMenu";
@@ -31,7 +31,7 @@ const addLocalDays = (date, days) => {
 async function sbFetch(path, options={}) {
   if(OFFLINE_MODE) throw new Error(NOT_CONFIGURED_MESSAGE);
   const bearer = (await getAccessToken()) || SUPABASE_KEY;
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+  const res = await authedFetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     ...options,
     headers: {
       "apikey": SUPABASE_KEY,
@@ -97,7 +97,7 @@ async function dbAddWords(newWords) {
   if(!newWords.length) return;
   if(OFFLINE_MODE) throw new Error(NOT_CONFIGURED_MESSAGE);
   const bearer = (await getAccessToken()) || SUPABASE_KEY;
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/wordbank`, {
+  const res = await authedFetch(`${SUPABASE_URL}/rest/v1/wordbank`, {
     method: "POST",
     headers: {
       "apikey": SUPABASE_KEY,
