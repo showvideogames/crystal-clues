@@ -139,26 +139,21 @@
 .fr-streak.zero .fr-streak-num{color:#b3a6c7}
 .fr-streak.zero .fr-streak-ico{filter:grayscale(.6);opacity:.6}
 
-.fr-status{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.35;color:var(--text)}
+.fr-status{display:flex;align-items:center;gap:8px;font-size:14px;line-height:1.35;color:var(--text);min-height:32px}
 .fr-status.center{justify-content:center;text-align:left}
 .fr-status-ico{width:24px;height:24px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
-  background:var(--fr-primary-soft);color:var(--fr-primary);font-size:12px;margin-top:-2px}
-.fr-status-text{display:flex;flex-direction:column;gap:2px}
-.fr-status-text b{font-weight:700}
-.fr-status-text small{font-size:13px;color:var(--muted);font-weight:500}
+  background:var(--fr-primary-soft);color:var(--fr-primary);font-size:12px}
+.fr-status-line{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:8px;row-gap:2px;min-width:0}
+.fr-status-line b{font-weight:700}
 .fr-status.safe .fr-status-ico{background:var(--fr-ok-bg);color:var(--fr-ok)}
 .fr-status.safe b{color:var(--fr-ok)}
 .fr-status.urgent .fr-status-ico{background:var(--fr-warn-bg);color:var(--fr-warn)}
-.fr-status.urgent b{color:var(--fr-warn)}
 .fr-status time,.fr-countdown{white-space:nowrap}
-.fr-status-text{flex:1;min-width:0}
-.fr-clock{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
-  background:#fff;border:1px solid #e7defa;border-radius:12px;padding:8px 12px;margin:6px 0 4px}
-.fr-clock-lbl{font-size:13px;font-weight:700;color:var(--muted);line-height:1.25}
-.fr-clock-val{font-size:24px;font-weight:800;line-height:1.1;color:var(--text);font-variant-numeric:tabular-nums}
+.fr-clock{color:var(--muted);font-weight:600;white-space:nowrap}
+.fr-clock-val{font-size:17px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums}
 .fr-status.safe .fr-clock-val{color:var(--fr-ok)}
-.fr-status.urgent .fr-clock{border-color:#f3d2b5}
 .fr-status.urgent .fr-clock-val{color:var(--fr-warn)}
+.fr-status .fr-tip{margin-left:0}
 
 .fr-history{padding:4px 10px 12px;background:#fcfaff}
 .fr-history-item{display:flex;align-items:center;gap:10px;min-height:48px;padding:6px 8px;font-size:14px;color:var(--text);

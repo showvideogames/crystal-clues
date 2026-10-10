@@ -1,6 +1,6 @@
 import { formatDeadline, formatCountdown } from "./format";
 import { FRIEND_STREAK_HELP, SOLVE_STREAK_HELP } from "./streakClock";
-import { Icon } from "./ui.jsx";
+import { Icon, InfoTip } from "./ui.jsx";
 
 // The two streaks a friendship shares, named the same way everywhere:
 //   Friend Streak — 24-hour periods in a row in which either friend finished
@@ -32,12 +32,12 @@ export function StreakPanel({ friendStreak = 0, solveStreak = 0, friendName }) {
   );
 }
 
-// What the Friend Streak needs now, straight from the server's status, with
-// one prominent countdown. Two different clocks, never confused:
-//   "Next streak day starts in …"   the period is already counted; playing
-//                                   now is fine but adds no day until then
-//   "Time left to keep your streak" nothing finished yet this period
-// "Kept" only when this period is already counted.
+// The Friend Streak in one short line with its countdown, straight from the
+// server's status; the details (exact times, what counts) sit behind ⓘ.
+// Two different clocks, never confused:
+//   "Next day in …"      this period already counts; playing now is fine
+//   "… left to keep it"  nothing finished yet this period
+// The timing rules themselves live in the migration; nothing here computes them.
 //   status: { daily_streak, deadline_at, done_this_period, next_period_at }
 //   justCounted: true/false right after a finish (did it add a day?), else undefined
 export function StreakStatus({ status, now, justCounted, center = false }) {
@@ -46,27 +46,27 @@ export function StreakStatus({ status, now, justCounted, center = false }) {
     return (
       <div className={cls} data-deadline="none">
         <span className="fr-status-ico idle" aria-hidden="true">✦</span>
-        <span className="fr-status-text"><b>Finish a puzzle to start a Friend Streak</b>
-          <small>Either of you, win or lose.</small></span>
+        <span className="fr-status-line"><b>Finish a puzzle to start a Friend Streak</b></span>
+        <InfoTip label="About the Friend Streak">Either of you can finish one, win or lose. {FRIEND_STREAK_HELP}</InfoTip>
       </div>
     );
   }
   const deadline = <time dateTime={status.deadline_at}>{formatDeadline(status.deadline_at, { now })}</time>;
   if(status.done_this_period){
-    // This 24-hour period is already counted; a finish from next_period_at
-    // (and before the deadline) adds the next one.
-    const headline = justCounted === true ? "Friend Streak +1" : justCounted === false ? "Streak already kept" : "Streak kept";
+    const headline = justCounted === true ? "Friend Streak +1" : justCounted === false ? "Already kept" : "Streak kept";
     const nextIn = new Date(status.next_period_at).getTime() - now;
     return (
       <div className={`${cls} safe`} data-deadline={status.deadline_at}>
         <span className="fr-status-ico" aria-hidden="true"><Icon name="check" size={14}/></span>
-        <span className="fr-status-text"><b>{headline}</b>
-          <span className="fr-clock" data-clock="next">
-            <span className="fr-clock-lbl">Next streak day starts in</span>
-            <span className="fr-clock-val fr-countdown">{formatCountdown(nextIn)}</span>
-          </span>
-          <small>You can still play now. Finishing a puzzle from <time dateTime={status.next_period_at}>{formatDeadline(status.next_period_at, { now })}</time> grows
-            it to {status.daily_streak + 1}. It's safe until {deadline}.</small></span>
+        <span className="fr-status-line">
+          <b>{headline}</b>
+          <span className="fr-clock" data-clock="next">Next day in <strong className="fr-clock-val fr-countdown">{formatCountdown(nextIn)}</strong></span>
+        </span>
+        <InfoTip label="About your Friend Streak">
+          You can still play now; it just won't add a day yet. A puzzle finished from{" "}
+          <time dateTime={status.next_period_at}>{formatDeadline(status.next_period_at, { now })}</time> grows it
+          to {status.daily_streak + 1}. It's safe until {deadline}.
+        </InfoTip>
       </div>
     );
   }
@@ -74,12 +74,10 @@ export function StreakStatus({ status, now, justCounted, center = false }) {
   return (
     <div className={`${cls}${left < 6*3600e3 ? " urgent" : " due"}`} data-deadline={status.deadline_at}>
       <span className="fr-status-ico" aria-hidden="true"><Icon name="clock" size={14}/></span>
-      <span className="fr-status-text"><b>Keep your Friend Streak going</b>
-        <span className="fr-clock" data-clock="keep">
-          <span className="fr-clock-lbl">Time left to keep your streak</span>
-          <span className="fr-clock-val fr-countdown">{formatCountdown(left)}</span>
-        </span>
-        <small>Finish a puzzle by {deadline}. Either of you, win or lose.</small></span>
+      <span className="fr-status-line">
+        <span className="fr-clock" data-clock="keep"><strong className="fr-clock-val fr-countdown">{formatCountdown(left)}</strong> left to keep your streak</span>
+      </span>
+      <InfoTip label="About your Friend Streak">Finish a puzzle by {deadline}. Either of you, win or lose.</InfoTip>
     </div>
   );
 }

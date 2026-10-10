@@ -324,8 +324,12 @@ try {
   // playing now is still fine.
   const clock = await sam.$eval(".fr-done .fr-clock", (el) => ({ kind: el.dataset.clock, text: el.innerText }));
   assert.equal(clock.kind, "next");
-  assert.match(clock.text, /Next streak day starts in\s+\d+h \d\dm/);
-  assert.ok((await bodyText(sam)).includes("You can still play now"), "kept: playing now is still allowed");
+  assert.match(clock.text, /Next day in\s+\d+h \d\dm/);
+  // The details sit behind ⓘ: one short line on screen.
+  const tip = await sam.$eval(".fr-done .fr-status .fr-tip-pop", (el) => el.textContent);
+  assert.ok(tip.includes("You can still play now"), "kept: playing now is still allowed (in ⓘ)");
+  const shown = await sam.$eval(".fr-done .fr-status", (el) => el.innerText.replace(/\s+/g, " ").trim());
+  assert.ok(shown.length <= 45, `short status, details in ⓘ: "${shown}"`);
   // Close the sheet, then the Results button brings it back.
   await click(sam, "See the board");
   await sam.waitForSelector(".fr-results-btn");
@@ -373,7 +377,7 @@ try {
   // The period is already counted: said plainly, same instant as Sam's, in Denver time.
   const inboxText = await bodyText(deb);
   assert.ok(inboxText.includes("Streak kept"), "already-counted period is stated");
-  assert.ok(inboxText.includes("Next streak day starts in"), "when the next period starts counting is stated");
+  assert.ok(inboxText.includes("Next day in"), "when the next period starts counting is stated");
   const debDeadline = (await deadlines(deb)).at(-1);
   assert.equal(debDeadline.at, samDeadline.at, "both friends are shown the same server deadline");
   assert.match(debDeadline.text, /M[DS]T/, "Deb sees it in Denver time");
@@ -446,7 +450,7 @@ try {
   await deb.setViewport(PHONE);
   const lossTiles = await deb.$$eval(".fr-done .fr-streak-num", (n) => n.map((x) => Number(x.textContent)));
   assert.deepEqual(lossTiles, [1, 0], "same period: Friend Streak stays 1; the loss resets Solve Streak to 0");
-  assert.ok((await bodyText(deb)).includes("Streak already kept"));
+  assert.ok((await bodyText(deb)).includes("Already kept"));
   assert.ok(await deb.$("button::-p-text(Make one for Sam)"), "after finishing, the next step is making one");
 
   // 10. Sam sees Deb's three guesses and the answer.
@@ -505,7 +509,7 @@ try {
   await sam.reload(); await openFriends(sam);
   await sam.waitForSelector('.fr-clock[data-clock="keep"]');
   const keep = await sam.$eval('.fr-clock[data-clock="keep"]', (el) => el.innerText);
-  assert.match(keep, /Time left to keep your streak\s+\d+h \d\dm/);
+  assert.match(keep, /\d+h \d\dm left to keep your streak/);
   await sam.$eval(".fr-streaks", (el) => el.scrollIntoView({ block: "start" }));
   await shot(sam, "18c-sam-streak-time-left-375");
   log("time-left clock:", keep.replace(/\s+/g, " "));
