@@ -2,20 +2,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { api, nudgePush } from "./client";
 import { DIFFICULTY_LABELS } from "../game/shared";
 import { livesLeftPhrase } from "./format";
-import { StreakPanel, StreakStatus } from "./Streaks.jsx";
 import { Icon } from "./ui.jsx";
+import { ResultSheet, ResultsButton } from "./ResultSheet.jsx";
 import { useServerNow } from "./streakClock";
 import { friendPuzzleForGame } from "./puzzle";
 import ChooseDifficulty from "./ChooseDifficulty.jsx";
-
-const CRYSTAL_BALL = "/assets/crystal-ball-star.webp";
-// A few small sparkles around the ball on a win (position, size, delay).
-const SPARKLES = [
-  { left:"14%", top:"22%", "--s":"14px", animationDelay:"0s" },
-  { left:"80%", top:"14%", "--s":"10px", animationDelay:".5s" },
-  { left:"86%", top:"62%", "--s":"16px", animationDelay:"1s" },
-  { left:"9%",  top:"70%", "--s":"9px",  animationDelay:"1.4s" },
-];
 
 // Solving a friend's puzzle on the familiar board. The browser never has the
 // answer: each Submit is judged and recorded by the server, which returns
@@ -74,6 +65,10 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
     : undefined;
   const finished = !!view.finished_at;
   const puzzle = friendPuzzleForGame(view);
+  // The results sheet: the finish just played here, or — opening a puzzle
+  // finished earlier — the same sheet from the server's record of it, with
+  // the friendship's streaks as they stand now.
+  const result = done || (finished ? { outcome:view.outcome, lives_used:view.lives_used, friendship:view.friendship } : null);
 
   return (
     <div className="fr-game-shell">
@@ -81,6 +76,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
         <button type="button" className="fr-back" onClick={onBack}><Icon name="back" size={18}/>Friends</button>
         <span className="grow"/>
         <span className="fr-chip">{creator}'s puzzle{view.difficulty && <span>· {DIFFICULTY_LABELS[view.difficulty]}</span>}</span>
+        {result && !showDone && <ResultsButton onClick={()=>setShowDone(true)}/>}
       </div>
 
       {finished ? (
@@ -100,32 +96,9 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
         <GameView key={`${view.id}-${loadCount}`} puzzle={puzzle} difficulty={view.difficulty} friend={friend}/>
       )}
 
-      {showDone && done && (
-        <div className="fr-done" role="dialog" aria-modal="true" aria-labelledby="fr-done-title">
-          <div className={`fr-done-card${done.outcome === "won" ? " won" : " lost"}`}>
-            <div className="fr-done-hero" aria-hidden="true">
-              <img className="fr-done-ball" src={CRYSTAL_BALL} alt="" width="118" height="133"/>
-              {done.outcome === "won" && SPARKLES.map((p, i)=><span key={i} className="fr-sparkle" style={p}/>)}
-            </div>
-            <div className="fr-done-text">
-              <h2 className="fr-done-title" id="fr-done-title">{done.outcome === "won" ? `You read ${creator}'s mind!` : "The veil stayed closed"}</h2>
-              <p className="fr-done-sub">
-                {done.outcome === "won"
-                  ? `Solved ${livesLeftPhrase(done.lives_used, view.max_lives)}. ${creator} will see your guesses.`
-                  : `All ${view.max_lives} lives used — the answer is on the board. ${creator} will see how close you got.`}
-              </p>
-            </div>
-            <StreakPanel friendStreak={done.friendship.daily_streak} solveStreak={done.friendship.team_win_streak} friendName={creator}/>
-            <StreakStatus status={done.friendship} now={serverNow} justCounted={counted}/>
-            <button className="fr-btn primary" onClick={makeBack}>
-              <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
-            </button>
-            <div className="fr-row fr-done-links">
-              <button className="fr-btn quiet" onClick={()=>setShowDone(false)}>See the board</button>
-              <button className="fr-btn quiet" onClick={onBack}>Back to Friends</button>
-            </div>
-          </div>
-        </div>
+      {showDone && result && (
+        <ResultSheet result={result} creator={creator} maxLives={view.max_lives} now={serverNow} justCounted={counted}
+          onMakeBack={makeBack} onClose={()=>setShowDone(false)} onBack={onBack}/>
       )}
     </div>
   );

@@ -32,8 +32,12 @@ export function StreakPanel({ friendStreak = 0, solveStreak = 0, friendName }) {
   );
 }
 
-// One short line about what the Friend Streak needs, straight from the
-// server's status. "Kept" only when this period is already counted.
+// What the Friend Streak needs now, straight from the server's status, with
+// one prominent countdown. Two different clocks, never confused:
+//   "Next streak day starts in …"   the period is already counted; playing
+//                                   now is fine but adds no day until then
+//   "Time left to keep your streak" nothing finished yet this period
+// "Kept" only when this period is already counted.
 //   status: { daily_streak, deadline_at, done_this_period, next_period_at }
 //   justCounted: true/false right after a finish (did it add a day?), else undefined
 export function StreakStatus({ status, now, justCounted, center = false }) {
@@ -52,11 +56,17 @@ export function StreakStatus({ status, now, justCounted, center = false }) {
     // This 24-hour period is already counted; a finish from next_period_at
     // (and before the deadline) adds the next one.
     const headline = justCounted === true ? "Friend Streak +1" : justCounted === false ? "Streak already kept" : "Streak kept";
+    const nextIn = new Date(status.next_period_at).getTime() - now;
     return (
       <div className={`${cls} safe`} data-deadline={status.deadline_at}>
         <span className="fr-status-ico" aria-hidden="true"><Icon name="check" size={14}/></span>
         <span className="fr-status-text"><b>{headline}</b>
-          <small>To grow it, play again from <time dateTime={status.next_period_at}>{formatDeadline(status.next_period_at, { now })}</time>.</small></span>
+          <span className="fr-clock" data-clock="next">
+            <span className="fr-clock-lbl">Next streak day starts in</span>
+            <span className="fr-clock-val fr-countdown">{formatCountdown(nextIn)}</span>
+          </span>
+          <small>You can still play now. Finishing a puzzle from <time dateTime={status.next_period_at}>{formatDeadline(status.next_period_at, { now })}</time> grows
+            it to {status.daily_streak + 1}. It's safe until {deadline}.</small></span>
       </div>
     );
   }
@@ -64,8 +74,12 @@ export function StreakStatus({ status, now, justCounted, center = false }) {
   return (
     <div className={`${cls}${left < 6*3600e3 ? " urgent" : " due"}`} data-deadline={status.deadline_at}>
       <span className="fr-status-ico" aria-hidden="true"><Icon name="clock" size={14}/></span>
-      <span className="fr-status-text"><b>Finish a puzzle by {deadline}</b>
-        <small><span className="fr-countdown">{formatCountdown(left)} left</span> to keep your Friend Streak.</small></span>
+      <span className="fr-status-text"><b>Keep your Friend Streak going</b>
+        <span className="fr-clock" data-clock="keep">
+          <span className="fr-clock-lbl">Time left to keep your streak</span>
+          <span className="fr-clock-val fr-countdown">{formatCountdown(left)}</span>
+        </span>
+        <small>Finish a puzzle by {deadline}. Either of you, win or lose.</small></span>
     </div>
   );
 }

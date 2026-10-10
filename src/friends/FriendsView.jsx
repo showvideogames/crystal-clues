@@ -19,7 +19,11 @@ function screenFromIntent(intent){
 
 // account: the shared Cluevoyance account from useAccount() (App.jsx). Friends
 // has no sign-in of its own; who is playing is always that account.
-export default function FriendsView({ kit, account, intent, onIntentHandled, onUnreadChange, onPlayDaily, onSignOut }) {
+// homeSignal: changes whenever the header's Friends icon is tapped → the hub.
+// Leaving a screen that way keeps its work: a puzzle in progress is kept on
+// this device as it's played, and unsaved creator edits are kept as a backup
+// that the creator restores next time.
+export default function FriendsView({ kit, account, intent, onIntentHandled, onUnreadChange, onPlayDaily, onSignOut, homeSignal = 0 }) {
   // { userId, profile }, so a different account never sees the last one's name.
   const [loaded,setLoaded]   = useState(null);
   const [screen,setScreen]   = useState(()=>screenFromIntent(intent));
@@ -29,6 +33,12 @@ export default function FriendsView({ kit, account, intent, onIntentHandled, onU
   });
 
   useEffect(()=>{ if(intent) onIntentHandled?.(); },[intent, onIntentHandled]);
+
+  const [seenHome,setSeenHome] = useState(homeSignal);
+  if(homeSignal !== seenHome){
+    setSeenHome(homeSignal);
+    setScreen({ name:"inbox" });
+  }
 
   const userId = account.status === "signed_in" ? account.account?.user_id : null;
   const email = account.account?.email || "";

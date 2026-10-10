@@ -17,7 +17,7 @@ import path from "node:path";
 import assert from "node:assert/strict";
 import puppeteer from "puppeteer-core";
 import { createClient } from "@supabase/supabase-js";
-import { API_URL, PUBLISHABLE_KEY } from "./helpers.mjs";
+import { API_URL, PUBLISHABLE_KEY, admin } from "./helpers.mjs";
 import { APP_URL, CHROME, makeAccount, signInBrowser, signOutBrowser } from "./browser.mjs";
 
 const OUT = path.resolve(process.argv[2] || "friends-e2e-shots");
@@ -330,6 +330,21 @@ try {
   assert.equal(await lives(sam), 2, "a wrong guess costs a life");
   const before = await readBoard(sam);
   const lockedBefore = before.board.filter((c) => c.locked).length;
+  // The header's Friends icon and the in-page ‹ Friends both leave the puzzle
+  // for the Friends hub, and coming back finds it exactly as it was.
+  await openFriends(sam);
+  await waitText(sam, "Continue Deb's puzzle");
+  assert.equal(await sam.$(".csurface"), null, "header icon: back on the hub, not the board");
+  await click(sam, "Continue Deb's puzzle");
+  await sam.waitForSelector(".csurface .ctile"); await sleep(600);
+  assert.equal(await lives(sam), 2, "header icon: lives kept");
+  assert.deepEqual((await readBoard(sam)).board.map((c) => c.words), before.board.map((c) => c.words), "header icon: board kept");
+  await sam.locator(".fr-playbar .fr-back").click();
+  await waitText(sam, "Continue Deb's puzzle");
+  await click(sam, "Continue Deb's puzzle");
+  await sam.waitForSelector(".csurface .ctile"); await sleep(600);
+  assert.equal(await lives(sam), 2, "‹ Friends: lives kept");
+  log("header icon and ‹ Friends return to the hub mid-puzzle; progress kept");
   await sam.reload(); await sleep(600);
   await openFriends(sam);
   await click(sam, "Continue Deb's puzzle");
@@ -363,11 +378,44 @@ try {
   const samDeadline = (await deadlines(sam)).at(-1);
   assert.match(samDeadline.text, /GMT\+9/, "Sam sees the deadline in Tokyo time");
   log("Sam's deadline:", samDeadline.text.replace(/\u202f/g, " "));
+  // Already kept: the clock says when the NEXT streak day starts, and that
+  // playing now is still fine.
+  const clock = await sam.$eval(".fr-done .fr-clock", (el) => ({ kind: el.dataset.clock, text: el.innerText }));
+  assert.equal(clock.kind, "next");
+  assert.match(clock.text, /Next streak day starts in\s+\d+h \d\dm/);
+  assert.ok((await bodyText(sam)).includes("You can still play now"), "kept: playing now is still allowed");
+  // Close the sheet, then the Results button brings it back.
+  await click(sam, "See the board");
+  await sam.waitForSelector(".fr-results-btn");
+  await shot(sam, "11b-sam-results-button-375");
+  await shot(sam, "11b-sam-results-button-360", { ...PHONE, width: 360, height: 780 });
+  await sam.setViewport(PHONE);
+  await sam.locator(".fr-results-btn").click();
+  await waitText(sam, "You read Deb's mind");
+  assert.equal(await sam.$(".fr-results-btn"), null, "no Results button while the sheet is open");
+  log("Results button reopens the sheet");
 
   // 7. Sam makes one back straight from the prompt.
   await click(sam, "Make one for Deb");
   await sam.waitForSelector(".fr-board-stage");
   await writePuzzle(sam, ["OCEAN", "NIGHT", "GARDEN", "TOYS"]);
+  // Headings read as interface, not as a clue.
+  const fonts = await sam.evaluate(() => {
+    const h1 = getComputedStyle(document.querySelector(".fr-h1"));
+    return { h1: [h1.fontFamily, h1.fontWeight], clue: getComputedStyle(document.querySelector(".fr-board-stage .ctab")).fontFamily };
+  });
+  assert.match(fonts.h1[0], /Raleway/, "heading uses the interface font");
+  assert.equal(fonts.h1[1], "800", "heading is heavy");
+  assert.match(fonts.clue, /Cinzel/, "clues keep their serif");
+  await shot(sam, "11c-creator-heading-375");
+  // Leave through the header icon with unsaved edits: they come back.
+  await openFriends(sam);
+  await waitText(sam, "Make one for Deb");
+  await click(sam, "Make one for Deb");
+  await waitText(sam, "We kept your unsaved changes");
+  const kept = await sam.$$eval(".fr-board-stage .ctab", (t) => t.map((x) => x.textContent.trim()));
+  assert.ok(["OCEAN", "NIGHT", "GARDEN", "TOYS"].every((c) => kept.includes(c)), `creator edits kept: ${kept}`);
+  log("header icon from the creator keeps the unsaved puzzle");
   assert.equal(await sam.$(".fr-chip"), null, "the creator doesn't choose a difficulty");
   await click(sam, "Send puzzle to Deb");
   await waitText(sam, "Waiting for Deb");
@@ -383,7 +431,7 @@ try {
   // The period is already counted: said plainly, same instant as Sam's, in Denver time.
   const inboxText = await bodyText(deb);
   assert.ok(inboxText.includes("Streak kept"), "already-counted period is stated");
-  assert.ok(inboxText.includes("To grow it"), "when the next period starts counting is stated");
+  assert.ok(inboxText.includes("Next streak day starts in"), "when the next period starts counting is stated");
   const debDeadline = (await deadlines(deb)).at(-1);
   assert.equal(debDeadline.at, samDeadline.at, "both friends are shown the same server deadline");
   assert.match(debDeadline.text, /M[DS]T/, "Deb sees it in Denver time");
@@ -478,6 +526,22 @@ try {
   await showTray(sam);
   await shot(sam, "17b-replay-tray-easy-375");
 
+  // 10b. Coming back to a finished puzzle later still offers its results.
+  await sam.reload(); await openFriends(sam);
+  await click(sam, "Past puzzles", "button");
+  await sam.locator(".fr-history-item::-p-text(Deb → you)").click();
+  await sam.waitForSelector(".fr-results-btn");
+  await sam.locator(".fr-results-btn").click();
+  await waitText(sam, "You read Deb's mind");
+  await shot(sam, "17c-sam-results-later-375");
+  await click(sam, "Close");
+  await sam.goto(`${SAM_URL}/?friends=1&puzzle=${puzzleId}`, { waitUntil: "networkidle0" });
+  await sam.waitForSelector(".fr-results-btn");
+  await sam.locator(".fr-results-btn").click();
+  await waitText(sam, "You read Deb's mind");
+  await click(sam, "See the board");
+  log("Results available when coming back later (Past puzzles and a direct link)");
+
   // 11. Both inboxes agree on the shared numbers.
   for (const [who, p] of [["deb", deb], ["sam", sam]]) {
     await p.reload(); await openFriends(p);
@@ -492,6 +556,17 @@ try {
   }
   await shot(sam, "18b-sam-inbox-final-desktop", { width: 1280, height: 860, deviceScaleFactor: 1 });
   await sam.setViewport(PHONE);
+
+  // 11b. Nothing finished yet this period: the clock is the time left to keep it.
+  const { data: fs1 } = await admin.from("friendships").select("id, daily_anchor").or(`user_a.eq.${debAcct.id},user_b.eq.${debAcct.id}`).single();
+  await admin.from("friendships").update({ daily_anchor: new Date(new Date(fs1.daily_anchor).getTime() - 30 * 3600e3).toISOString() }).eq("id", fs1.id);
+  await sam.reload(); await openFriends(sam);
+  await sam.waitForSelector('.fr-clock[data-clock="keep"]');
+  const keep = await sam.$eval('.fr-clock[data-clock="keep"]', (el) => el.innerText);
+  assert.match(keep, /Time left to keep your streak\s+\d+h \d\dm/);
+  await sam.$eval(".fr-streaks", (el) => el.scrollIntoView({ block: "start" }));
+  await shot(sam, "18c-sam-streak-time-left-375");
+  log("time-left clock:", keep.replace(/\s+/g, " "));
 
   // 12. Closing the app and coming back later: a new tab in the same
   // browser opens straight into Deb's own Friends, no sign-in.
