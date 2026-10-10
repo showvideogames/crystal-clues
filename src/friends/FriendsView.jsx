@@ -21,7 +21,8 @@ import "./friends.css";
 // device as it's played, and unsaved creator edits are kept as a backup that
 // the creator restores next time.
 // invite: a token from an invite link opened on this visit.
-export default function FriendsView({ kit, account, screen = { name:"inbox" }, invite, onInviteTaken, onUnreadChange, onPlayDaily, onSignOut }) {
+// onHowToPlay: opens the game's own tutorial (for someone new, before a friend's puzzle).
+export default function FriendsView({ kit, account, screen = { name:"inbox" }, invite, onInviteTaken, onUnreadChange, onPlayDaily, onSignOut, onHowToPlay }) {
   // { userId, profile }, so a different account never sees the last one's name.
   const [loaded,setLoaded]   = useState(null);
   const [pendingInvite,setPendingInvite] = useState(()=>{
@@ -57,10 +58,10 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
     return <div className="fr-wrap"><div className="fr-page"><p className="fr-sub" style={{textAlign:"center",padding:30}}>Opening Friends…</p></div></div>;
   }
   if(!userId){
-    return <SignIn pendingInvite={pendingInvite} account={account} onPlayDaily={onPlayDaily}/>;
+    return <SignIn pendingInvite={pendingInvite} account={account} onPlayDaily={onPlayDaily} screen={screen}/>;
   }
   if(!profile){
-    return <NameStep email={email} onSaved={setProfile} pendingInvite={pendingInvite}/>;
+    return <NameStep onSaved={setProfile} pendingInvite={pendingInvite} onJoined={dismissInvite}/>;
   }
 
   if(screen.name === "create"){
@@ -70,7 +71,7 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
   }
   if(screen.name === "play"){
     return <FriendPlay key={screen.id} kit={kit} puzzleId={screen.id} onBack={toInbox}
-      onMakeBack={toCreate} onOpenResult={toResult}/>;
+      onMakeBack={toCreate} onOpenResult={toResult} onHowToPlay={onHowToPlay}/>;
   }
   if(screen.name === "result"){
     return <FriendResult key={screen.id} kit={kit} puzzleId={screen.id} onBack={toInbox}
@@ -126,27 +127,30 @@ function CreatorRoute({ kit, friendshipId, onBack, onSent }) {
 //  Sign in). There is no separate Friends login.
 // ═══════════════════════════════════════════════════════════════
 
-function InviteBanner({ token, signedIn }) {
+// Who an invite link is from, for the screens before it's accepted.
+// Readable without signing in (the token is the secret); null until known.
+function useInviteInfo(token) {
   const [info,setInfo] = useState(null);
   useEffect(()=>{
+    if(!token) return undefined;
     let alive = true;
-    api.inviteInfo(token).then(i=>{ if(alive) setInfo(i); }).catch(()=>{});
+    api.inviteInfo(token).then(i=>{ if(alive) setInfo({ token, ...i }); }).catch(()=>{});
     return ()=>{ alive = false; };
   },[token]);
-  if(!info || info.status === "not_found") return null;
-  if(info.status !== "open" && info.status !== "accepted"){
-    return <div className="fr-msg note">That invite link can't be used any more — ask {info.inviter_name} for a new one.</div>;
-  }
-  return (
-    <div className="fr-msg ok">
-      <b>{info.inviter_name}</b> invited you to trade puzzles.
-      {signedIn ? "" : " Sign in to accept."}
-    </div>
-  );
+  return info && info.token === token ? info : null;
 }
 
-function SignIn({ pendingInvite, account, onPlayDaily }) {
+// An invite that can't be used any more: the one essential message about it.
+function StaleInvite({ info }) {
+  if(!info || info.status === "open" || info.status === "accepted" || info.status === "not_found" || info.status === "own") return null;
+  return <div className="fr-msg note">That invite link can't be used any more. Ask {info.inviter_name} for a new one.</div>;
+}
+
+// Signed out. Someone who arrived from a link learns who it's from and the
+// one thing to do; new players are told to choose Sign up on the next page.
+function SignIn({ pendingInvite, account, onPlayDaily, screen }) {
   const [busy,setBusy] = useState(false);
+  const info = useInviteInfo(pendingInvite);
   const signIn = async ()=>{
     setBusy(true);
     // The sign-in returns to this address (an invite waits in storage).
@@ -154,55 +158,73 @@ function SignIn({ pendingInvite, account, onPlayDaily }) {
     // Still here: sign-in is unavailable, and account.message says so.
     setBusy(false);
   };
+  const invitedBy = info?.status === "open" ? info.inviter_name : null;
+  const forPuzzle = screen?.name === "play" || screen?.name === "result";
+  const title = invitedBy ? `${invitedBy} invited you to play`
+    : forPuzzle ? "A friend sent you a puzzle"
+    : "Play with friends";
+  const sub = invitedBy ? `Solve the puzzles ${invitedBy} makes for you, and make some back.`
+    : forPuzzle ? "Sign in to open it."
+    : "Make a puzzle for a friend and solve the one they make you.";
 
   return (
     <div className="fr-wrap">
       <div className="fr-page">
         <div className="fr-hero">
           <div className="fr-hero-ball">🔮</div>
-          <h1 className="fr-title">Play with friends</h1>
-          <p className="fr-sub">Make a Cluevoyance puzzle for a friend, solve the one they make you, and keep your Friend Streak going together.</p>
+          <h1 className="fr-title">{title}</h1>
+          <p className="fr-sub">{sub}</p>
         </div>
-        {pendingInvite && <InviteBanner token={pendingInvite} signedIn={false}/>}
+        <StaleInvite info={info}/>
         <div className="fr-card">
-          <p className="fr-help" style={{marginTop:0}}>Sign in to trade puzzles. It's the same Cluevoyance sign-in as the rest of the game.</p>
-          {account.message && <div className="fr-msg err" style={{marginTop:10}}>{account.message}</div>}
-          <button className="fr-btn primary" style={{marginTop:12}} onClick={signIn} disabled={busy} aria-busy={busy}>
-            {busy ? <><Spinner/>Opening sign-in…</> : "Sign in"}</button>
+          {account.message && <div className="fr-msg err">{account.message}</div>}
+          <button className="fr-btn primary" onClick={signIn} disabled={busy} aria-busy={busy}>
+            {busy ? <><Spinner/>Opening sign-in…</> : "Sign in or sign up"}</button>
+          <p className="fr-help" style={{margin:0,textAlign:"center"}}>New here? Choose <b>Sign up</b> on the next page.</p>
         </div>
-        <p className="fr-foot">Today's puzzle and the archive stay free to play without an account.<br/>
-          <button className="fr-link" onClick={onPlayDaily}>Back to today's puzzle</button></p>
+        <p className="fr-foot"><button className="fr-link" onClick={onPlayDaily}>Not now — play today's puzzle</button></p>
       </div>
     </div>
   );
 }
 
-function NameStep({ email, onSaved, pendingInvite }) {
+// First visit after signing in: a name, and — arriving from an invite — the
+// same tap joins that friend (no separate Accept step).
+function NameStep({ onSaved, pendingInvite, onJoined }) {
   const [name,setName] = useState("");
   const [busy,setBusy] = useState(false);
   const [error,setError] = useState("");
+  const info = useInviteInfo(pendingInvite);
+  const invitedBy = info?.status === "open" ? info.inviter_name : null;
   const save = async (e) => {
     e.preventDefault();
     setBusy(true); setError("");
-    try { onSaved(await api.setName(name)); }
-    catch(err){ setError(err.message); }
-    finally { setBusy(false); }
+    try {
+      const profile = await api.setName(name);
+      if(invitedBy){
+        // If joining fails, the invite stays and the hub offers it with the reason.
+        try { await api.acceptInvite(pendingInvite); onJoined?.(); } catch { /* shown on the hub */ }
+      }
+      onSaved(profile);
+    }
+    catch(err){ setError(err.message); setBusy(false); }
   };
   return (
     <div className="fr-wrap">
       <div className="fr-page">
         <div className="fr-hero">
           <div className="fr-hero-ball">✨</div>
-          <h1 className="fr-title">What should friends call you?</h1>
-          <p className="fr-sub">This is the name your friends see on puzzles you send.{email ? ` Signed in as ${email}.` : ""}</p>
+          <h1 className="fr-title">What's your name?</h1>
+          <p className="fr-sub">{invitedBy ? `${invitedBy} will see it on puzzles you send.` : "Friends see it on puzzles you send."}</p>
         </div>
-        {pendingInvite && <InviteBanner token={pendingInvite} signedIn/>}
+        <StaleInvite info={info}/>
         <form className="fr-card" onSubmit={save}>
-          <label className="fr-label" htmlFor="fr-name">Display name</label>
-          <input id="fr-name" className="fr-input" maxLength={24} value={name} autoFocus
+          <label className="fr-label" htmlFor="fr-name">Your name</label>
+          <input id="fr-name" className="fr-input" maxLength={24} value={name} autoFocus autoComplete="given-name"
             onChange={e=>setName(e.target.value)} placeholder="e.g. Deb"/>
           {error && <div className="fr-msg err" style={{marginTop:10}}>{error}</div>}
-          <button className="fr-btn primary" style={{marginTop:12}} disabled={busy || !name.trim()}>Continue</button>
+          <button className="fr-btn primary" style={{marginTop:12}} disabled={busy || !name.trim()} aria-busy={busy}>
+            {busy ? <><Spinner/>Saving…</> : invitedBy ? `Join ${invitedBy}` : "Continue"}</button>
         </form>
       </div>
     </div>
@@ -268,7 +290,7 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
         {error && <div className="fr-msg err">{error} <button className="fr-link" onClick={refresh}>Try again</button></div>}
 
         {inbox === null && !error && <p className="fr-sub">Loading…</p>}
-        {inbox && !hasFriends && (
+        {inbox && !hasFriends && !pendingInvite && (
           <div className="fr-card fr-friend" style={{alignItems:"center",textAlign:"center"}}>
             <div className="fr-hero-ball" aria-hidden="true">🔮</div>
             <div>
@@ -324,7 +346,8 @@ function FriendCard({ f, now, onPlay, onResult, onCreate }) {
       <span className="fr-btn-ico"><Icon name={icon}/></span>{label}
     </button>
   );
-  let status = "Make them a puzzle to get started.";
+  // A new friendship: where their puzzles will show up, and the one thing to do.
+  let status = `Connected · ${name}'s puzzles will appear here.`;
   let action = null;
   const makeLabel = f.draft ? `Finish your puzzle for ${name}` : `Make one for ${name}`;
   const isNew = (f.incoming && !f.incoming.seen) || !!f.unseen_result;
@@ -379,8 +402,11 @@ function FriendCard({ f, now, onPlay, onResult, onCreate }) {
         {isNew && <span className="fr-dot-new" aria-label="New"/>}
       </div>
       {action}
-      <StreakPanel friendStreak={f.daily_streak} solveStreak={f.team_win_streak} friendName={name}/>
-      <StreakStatus status={f} now={now}/>
+      {/* Streaks appear once there's something to count: no zeros and rules for a new friend. */}
+      {(f.last_finished || f.daily_streak || f.team_win_streak) ? <>
+        <StreakPanel friendStreak={f.daily_streak} solveStreak={f.team_win_streak} friendName={name}/>
+        <StreakStatus status={f} now={now}/>
+      </> : null}
       <div className="fr-card-rows">
         {replayId && f.next_action !== "see_result" && (
           <RowButton icon="play" label={`Watch ${name}'s guesses`} dot={!!f.unseen_result} onClick={()=>onResult(replayId)}/>
@@ -442,11 +468,11 @@ function AcceptInvite({ token, onDone, onDismiss }) {
         <FriendAvatar name={info?.inviter_name || "?"}/>
         <div>
           <div className="fr-friend-name">{info?.inviter_name} invited you</div>
-          <div className="fr-friend-status">Trade puzzles and share a Friend Streak and Solve Streak.</div>
+          <div className="fr-friend-status">Solve each other's puzzles.</div>
         </div>
       </div>
       {error && <div className="fr-msg err">{error}</div>}
-      <button className="fr-btn primary" onClick={accept} disabled={busy} aria-busy={busy}>{busy ? <><Spinner/>Adding…</> : "Accept"}</button>
+      <button className="fr-btn primary" onClick={accept} disabled={busy} aria-busy={busy}>{busy ? <><Spinner/>Joining…</> : `Join ${info?.inviter_name}`}</button>
       <button className="fr-textbtn muted" style={{alignSelf:"center",marginTop:-8}} onClick={onDismiss}>Not now</button>
     </section>
   );

@@ -5132,6 +5132,7 @@ export default function App() {
             onUnreadChange={setFriendsUnread}
             onPlayDaily={()=>setView("game")}
             onSignOut={handleSignOut}
+            onHowToPlay={openTutorial}
           />
         </Suspense>
       )}

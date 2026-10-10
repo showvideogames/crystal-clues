@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DIFF_OPTIONS } from "../game/shared";
 import { api } from "./client";
-import { Icon, Spinner, PageHead } from "./ui.jsx";
+import { Icon, Spinner, PageHead, InfoTip } from "./ui.jsx";
 
 // The recipient's start screen for a friend puzzle: the daily lobby's four
 // difficulty levels, meaning the same thing (how many of the creator's three
@@ -16,7 +16,7 @@ const dailyPreference = () => {
   }
 };
 
-export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, onBack }) {
+export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, onBack, onHowToPlay }) {
   const [choice, setChoice] = useState(dailyPreference);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -38,9 +38,11 @@ export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, o
   return (
     <div className="fr-wrap">
       <div className="fr-page fr-choose">
-        <PageHead onBack={onBack} title={title || `${creator}'s puzzle`} sub={`Made for you by ${creator}`}/>
+        <PageHead onBack={onBack} title={title || `${creator}'s puzzle`} sub={title ? `Made for you by ${creator}` : null}/>
 
-        <div className="fr-eyebrow" id="fr-diff-label">Choose your difficulty</div>
+        <div className="fr-eyebrow"><span id="fr-diff-label">Choose your difficulty</span><InfoTip label="About difficulty">
+          {creator} made three bonus cards that don't belong on the board. Your difficulty sets how many of them you're dealt.
+        </InfoTip></div>
         <div className="lobby-diff-opts" role="radiogroup" aria-labelledby="fr-diff-label">
           {DIFF_OPTIONS.map((opt) => (
             <button
@@ -60,14 +62,14 @@ export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, o
             </button>
           ))}
         </div>
-        <p className="fr-choose-note">
-          {creator} made three bonus cards that don't belong. Your difficulty sets how many you're dealt —
-          <b> it can't be changed once you start.</b>
-        </p>
+        <p className="fr-choose-note"><b>You can't change it once you start.</b></p>
         {error && <div className="fr-msg err">{error}</div>}
         <button className="fr-btn primary" type="button" onClick={start} disabled={busy} aria-busy={busy}>
           {busy ? <><Spinner/>Dealing…</> : <><span className="fr-btn-ico"><Icon name="play"/></span>Start puzzle</>}
         </button>
+        {onHowToPlay && (
+          <p className="fr-foot" style={{marginTop:0}}>New to Cluevoyance? <button type="button" className="fr-link" onClick={onHowToPlay}>How to play</button></p>
+        )}
       </div>
     </div>
   );
