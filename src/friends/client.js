@@ -82,9 +82,3 @@ export const api = {
     return (data || []).map((r) => r.word);
   },
 };
-
-// Nudges the push dispatcher right after something happens. Best effort:
-// a missing or failing push setup must never get in the way of play.
-export function nudgePush() {
-  supabase.functions.invoke("push-dispatch", { body: {} }).catch(() => {});
-}
