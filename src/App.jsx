@@ -4903,6 +4903,9 @@ async function leaveFriends(){
 export default function App() {
   const [friendsIntent,setFriendsIntent] = useState(readFriendsIntent);
   const [friendsUnread,setFriendsUnread] = useState(0);
+  // Bumped by every tap on the header's Friends icon, so the icon always
+  // lands on the Friends hub, even from inside a friend's puzzle.
+  const [friendsHome,setFriendsHome] = useState(0);
   const [view,setView]           = useState(()=> friendsIntent ? "friends" : "game");
   const [archivePuzzle,setAP]    = useState(null);
   // [accounts] who is signed in, whether guest history awaits a decision,
@@ -5060,7 +5063,7 @@ export default function App() {
               </button>
             )}
             {FRIENDS_ENABLED && (
-              <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>setView("friends")}
+              <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>{ setView("friends"); setFriendsHome(n=>n+1); }}
                 title="Friends" aria-label={shownUnread ? `Friends — ${shownUnread} new` : "Friends"}>
                 <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.8-5.2 5.5-5.2s4.9 1.9 5.5 5.2"/><circle cx="16.6" cy="9" r="2.5"/><path d="M15.6 14.3c2.5-.3 4.4 1.3 4.9 4.3"/></svg>
                 {shownUnread>0 && <span className="friends-dot" aria-hidden="true"/>}
@@ -5105,6 +5108,7 @@ export default function App() {
           <FriendsView
             kit={GAME_KIT}
             account={acct}
+            homeSignal={friendsHome}
             intent={friendsIntent}
             onIntentHandled={()=>setFriendsIntent(null)}
             onUnreadChange={setFriendsUnread}

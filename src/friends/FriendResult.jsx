@@ -7,6 +7,7 @@ import { Icon, PageHead } from "./ui.jsx";
 import { useServerNow } from "./streakClock";
 import { friendPuzzleForGame } from "./puzzle";
 import GuessReplay from "./GuessReplay.jsx";
+import { ResultSheet, ResultsButton } from "./ResultSheet.jsx";
 
 // One sent puzzle, after the fact. The creator sees how the friend did and
 // replays their real guesses; the solver can look back at their own. Before
@@ -17,6 +18,7 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay }) 
   const { GameView } = kit;
   const [view,setView] = useState(null);
   const [error,setError] = useState("");
+  const [showSheet,setShowSheet] = useState(false);
   const serverNow = useServerNow(view?.friendship?.server_now);
 
   const load = useCallback(async ()=>{
@@ -76,7 +78,9 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay }) 
   return (
     <div className="fr-wrap">
       <div className="fr-page" style={{paddingBottom:0}}>
-        <PageHead onBack={onBack} title={mine ? `${friendName}'s guesses` : "Your guesses"} sub={sub}/>
+        <PageHead onBack={onBack} title={mine ? `${friendName}'s guesses` : "Your guesses"} sub={sub}>
+          {!mine && <ResultsButton onClick={()=>setShowSheet(true)}/>}
+        </PageHead>
         <GuessReplay kit={kit} view={view} solverName={mine ? friendName : "You"}/>
       </div>
       <div className="fr-page fr-result-foot">
@@ -89,6 +93,10 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay }) 
           </button>
         </div>
       </div>
+      {showSheet && (
+        <ResultSheet result={view} creator={friendName} maxLives={view.max_lives} now={serverNow}
+          onMakeBack={()=>onMake(friend)} onClose={()=>setShowSheet(false)} closeLabel="Close"/>
+      )}
     </div>
   );
 }
