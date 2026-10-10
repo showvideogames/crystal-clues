@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { api, nudgePush } from "./client";
+import { api } from "./client";
 import { DIFFICULTY_LABELS } from "../game/shared";
 import { livesLeftPhrase } from "./format";
 import { Icon } from "./ui.jsx";
@@ -45,7 +45,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
   const friend = useMemo(()=> view && view.role === "solver" && !view.finished_at ? {
     puzzle:view,
     submitGuess:(g)=> source ? source.guess(g) : api.guess(view.id, g),
-    onFinished:(result)=>{ setDone(result); setShowDone(true); nudgePush(); },
+    onFinished:(result)=>{ setDone(result); setShowDone(true); },
     // Another tab or device moved the puzzle on: reload the server's truth.
     onStale:()=>setLoadCount(c=>c+1),
   } : null,[view, source]);

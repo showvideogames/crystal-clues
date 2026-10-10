@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { api, nudgePush } from "./client";
+import { api } from "./client";
 import { dealCardsFromBank, checkBoard } from "../game/shared";
 import { Icon, Spinner, PageHead, InfoTip } from "./ui.jsx";
 
@@ -209,7 +209,6 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
         return;
       }
       await api.send(d.id, d.version);
-      nudgePush();
       onSent?.();
     } catch(err){
       showError(err);

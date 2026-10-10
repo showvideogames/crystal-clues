@@ -75,14 +75,17 @@ countdown on server time. Timing alternatives for the Friend Streak are
 compared in `docs/friend-streak-timing.md` (not implemented).
 
 **Notifications.** The in-app inbox (and the gold dot on the header icon)
-always works. Web push is optional: permission is requested only when the
-player taps "Turn on notifications". On iPhone/iPad it needs iOS 16.4+ and
-the app added to the Home Screen; the settings card explains that. Events go
-into a transactional outbox with dedupe keys, and each row is re-checked right
-before sending (a new-puzzle alert is dropped once the puzzle was opened, a
-result alert once it was viewed, a reminder once the period is safe). One
-optional streak reminder per deadline, about 3 hours before. Texts never
-contain clues or card words. Push failures never block sending or playing.
+always works. Web push is optional and opt-in per device: permission is asked
+only when the player taps "Turn on", and "Turn off on this device" (or the
+phone's own settings) stops it; the server then forgets that device. Each
+player can choose new puzzles, results, and the Friend Streak reminder (off by
+default). On iPhone/iPad it needs iOS 16.4+ and Cluevoyance added to the Home
+Screen (the manifest opens it as an app), where the player signs in once.
+Events go into a transactional outbox with dedupe keys; texts never contain
+clues or card words. The database wakes the push-dispatch Edge Function
+itself — after each queued notification and hourly for retries and reminders
+— with a shared secret (migration 20261012090000_friend_push_wakeup); no
+browser can trigger it. Push failures never block sending or playing.
 
 ## Puzzles by link (guests)
 

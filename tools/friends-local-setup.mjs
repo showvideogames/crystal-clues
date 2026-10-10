@@ -1,6 +1,6 @@
 // One-time local setup for trying Friends on this computer. Writes two
 // git-ignored files if they don't exist yet:
-//   supabase/.env        VAPID keys for the local push-dispatch function (optional push)
+//   supabase/.env        VAPID keys and the dispatch secret for the local push-dispatch function (optional push)
 //   .env.friends-local   Vite settings pointing the app at the LOCAL stack, Friends on
 // Then: npm run db:start && npm run db:reset && npm run friends:dev
 //
@@ -10,6 +10,7 @@
 // itself then reports that sign-in is unavailable.
 import fs from "node:fs";
 import webpush from "web-push";
+import { randomBytes } from "node:crypto";
 import { stack } from "../tests/db/helpers.mjs";
 
 let publicKey;
@@ -20,8 +21,9 @@ if (fs.existsSync("supabase/.env")) {
   const keys = webpush.generateVAPIDKeys();
   publicKey = keys.publicKey;
   fs.writeFileSync("supabase/.env",
-    `VAPID_PUBLIC_KEY=${keys.publicKey}\nVAPID_PRIVATE_KEY=${keys.privateKey}\nVAPID_SUBJECT=mailto:local-dev@cluevoyance.test\n`);
-  console.log("Wrote supabase/.env with fresh local VAPID keys.");
+    `VAPID_PUBLIC_KEY=${keys.publicKey}\nVAPID_PRIVATE_KEY=${keys.privateKey}\nVAPID_SUBJECT=mailto:local-dev@cluevoyance.test\n`
+    + `PUSH_DISPATCH_SECRET=${randomBytes(24).toString("base64url")}\n`);
+  console.log("Wrote supabase/.env with fresh local VAPID keys and a dispatch secret.");
 }
 
 if (fs.existsSync(".env.friends-local")) {

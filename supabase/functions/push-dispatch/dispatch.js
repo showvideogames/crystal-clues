@@ -41,11 +41,12 @@ export async function dispatchPush({ db, sendNotification, maxRounds = 4, batchS
           await db.rpc("push_endpoint_result", { p_endpoint: sub.endpoint, p_gone: false });
         } catch (err) {
           const status = err?.statusCode;
-          // 410 means the device unsubscribed. A 404 can also come back for a
-          // few moments after a brand-new subscription, so only trust it for
-          // subscriptions older than a few minutes; before that, retry.
+          // 404/410 mean the device unsubscribed — except that a push service
+          // can briefly answer either for a brand-new subscription while it
+          // finishes registering. So trust them only for subscriptions older
+          // than a few minutes; before that, keep the device and retry later.
           const ageMs = Date.now() - new Date(sub.created_at || 0).getTime();
-          if (status === 410 || (status === 404 && ageMs > NEW_SUBSCRIPTION_GRACE_MS)) {
+          if ((status === 410 || status === 404) && ageMs > NEW_SUBSCRIPTION_GRACE_MS) {
             summary.gone++;
             await db.rpc("push_endpoint_result", { p_endpoint: sub.endpoint, p_gone: true });
           } else {
