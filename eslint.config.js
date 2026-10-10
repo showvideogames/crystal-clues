@@ -7,7 +7,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 export default defineConfig([
   globalIgnores(['dist']),
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,mjs}'],
     extends: [
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
@@ -25,5 +25,10 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
+  },
+  {
+    // Node-side code: API tests, local tooling, the push dispatcher core.
+    files: ['tests/**/*.{js,mjs}', 'tools/**/*.{js,mjs}', 'supabase/functions/**/*.js'],
+    languageOptions: { globals: globals.node },
   },
 ])

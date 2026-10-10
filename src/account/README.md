@@ -98,23 +98,13 @@ signed-in plays wait in the cache. Callback error → a sentence and a way
 back; guest history is never touched on the callback page. Provider ok but
 `ensure_account` failing → the session is kept and the page offers Try again.
 
-## Friends branch: what will need adapting
+## Friends on shared accounts
 
-`feature/friend-puzzles` / `feature/friends-local-demo` (local only, not
-merged) predate this layer and assume Supabase Auth with an email code. To
-land it on shared accounts (decision D1):
-
-| Friends piece | Change |
-|---|---|
-| `src/friends/client.js` (`storageKey: "cluevoyance-auth"`, `signInWithOtp`) and the `SignIn` screen in `FriendsView.jsx` | use `src/account/supabaseClient.js` and the header's shared sign-in; delete the OTP screen; `hasFriendsSession()` in App.jsx reads `cv-auth` |
-| `supabase/templates/sign_in_code.html`, the "Email OTP length 6" and SMTP production steps in `docs/friend-exchange.md` | drop: no auth email is sent by Cluevoyance |
-| `profiles.id references auth.users(id)` and every `references auth.users(id)` FK (`friend_invites.inviter_id/accepted_by`, `friendships.user_a/user_b`, `friend_puzzle_drafts.creator_id`, `friend_puzzles.creator_id/recipient_id`, `friend_guesses.solver_id`, `push_subscriptions.user_id`, `notification_outbox.user_id`) | reference `public.accounts(user_id)` instead, so only Cluevoyance accounts can take part (the ids are the same uuids) |
-| `friend_require_uid()` (raw `auth.uid()`) | `select public.cluevoyance_uid()`, raising `not_signed_in` when null |
-| RLS policies `… = auth.uid()` on `profiles`, `friend_invites`, `friendships`, `friend_puzzle_drafts`, `friend_puzzles`, `friend_puzzle_answers`, `friend_guesses`, `push_subscriptions` | `… = public.cluevoyance_uid()` |
-| `get_friend_invite()` (reads `auth.uid()` directly) | `cluevoyance_uid()` |
-| `display_name` in `profiles` | keep: game-local metadata, not identity |
-| `delete_local_account()` in this baseline | extend to delete the account's friend rows (or rely on the new FKs' cascades) |
-| `tests/friends/helpers.mjs` `makePlayer` (password sign-in) | add the `custom:platform` identity row before `ensure_account()`, as `tests/db/helpers.mjs` does |
-
-Nothing in this layer conflicts with the Friends data model; the account is
-the same `auth.users` id the Friends tables already key on.
+Friends (`src/friends/`, `docs/friend-exchange.md`) has no sign-in of its
+own. It uses this layer's client and the header's Sign in; the Friends tables
+reference `public.accounts(user_id)` and every policy and server function
+uses `cluevoyance_uid()`, so only Cluevoyance accounts take part. Deleting an
+account removes its Friends rows by cascade. Sign-out (App.jsx
+`leaveFriends`) first forgets a pending invite and this device's push
+subscription. `tests/friends/helpers.mjs` mints players with
+`tests/db/helpers.mjs` `makeAccount`.
