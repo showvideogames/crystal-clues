@@ -42,9 +42,14 @@ function blankBoard(){
   return { clues:["","","",""], cards, slots };
 }
 
-export default function FriendCreator({ kit, friend, onBack, onSent }) {
+// friend.share: a puzzle for someone new, shared by link — no friendship yet
+// (friendship_id null); "Get link" instead of Send, and onShared gets the link.
+export default function FriendCreator({ kit, friend, onBack, onSent, onShared }) {
   const { AdminPreviewCard, EditableClueTab, DragGhost, GameView } = kit;
-  const name = friend.friend_name;
+  const share = !!friend.share;
+  const [label,setLabel] = useState("");          // who a link is for; only the sender sees it
+  const name = share ? (label.trim() || "they") : friend.friend_name;
+  const backupId = friend.friendship_id ?? "new";
   const [board,setBoard]           = useState(null);
   const [title,setTitle]           = useState("");
   const [draft,setDraft]           = useState(null);   // { id, version } once saved
@@ -73,18 +78,18 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
         setBoard(blankBoard()); setTitle(""); setDraft(null);
       }
       setDirty(false);
-      const backup = readBackup(friend.friendship_id);
+      const backup = readBackup(backupId);
       if(backup?.board && backup.baseVersion === (d?.version ?? null)){
         setBoard(backup.board); setTitle(backup.title || "");
         setDirty(true);
         setMessage({ kind:"note", text:"We kept your unsaved changes from last time." });
       } else if(backup){
-        writeBackup(friend.friendship_id, null);
+        writeBackup(backupId, null);
       }
     } catch(err){
       setMessage({ kind:"err", text:err.message });
     }
-  },[friend.friendship_id]);
+  },[friend.friendship_id, backupId]);
 
   useEffect(()=>{
     const t = setTimeout(load, 0);
@@ -92,8 +97,8 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
   },[load]);
 
   useEffect(()=>{
-    if(dirty && board) writeBackup(friend.friendship_id, { board, title, baseVersion:draft?.version ?? null });
-  },[dirty, board, title, draft, friend.friendship_id]);
+    if(dirty && board) writeBackup(backupId, { board, title, baseVersion:draft?.version ?? null });
+  },[dirty, board, title, draft, backupId]);
 
   const edit = (fn) => { setBoard(fn); setDirty(true); setMessage(null); };
   // All seven cards count: every bonus card must be finished, whatever
@@ -178,7 +183,7 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
     });
     const next = { id:saved.id, version:saved.version };
     setDraft(next); setDirty(false);
-    writeBackup(friend.friendship_id, null);
+    writeBackup(backupId, null);
     return next;
   };
 
@@ -199,9 +204,13 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
     setBusy("sending");
     try {
       const d = (dirty || !draft) ? await save() : draft;
+      if(share){
+        onShared?.(await api.createShareLink(d.id, d.version, label.trim()));
+        return;
+      }
       await api.send(d.id, d.version);
       nudgePush();
-      onSent();
+      onSent?.();
     } catch(err){
       showError(err);
       setBusy("");
@@ -294,7 +303,7 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
   return (
     <div className="fr-wrap">
       <div className="fr-page" style={{paddingBottom:0}}>
-        <PageHead onBack={handleBack} title={`Make one for ${name}`} sub="Tap any clue or word to edit it."/>
+        <PageHead onBack={handleBack} title={share ? "Make one for someone new" : `Make one for ${name}`} sub="Tap any clue or word to edit it."/>
         {!board ? (
           message ? <div className={`fr-msg ${message.kind}`}>{message.text} <button className="fr-link" onClick={load}>Try again</button></div>
                   : <p className="fr-sub">Loading…</p>
@@ -322,7 +331,7 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
 
             <section className="fr-surface fr-bonus-zone" aria-label="Bonus cards">
               <div className="fr-eyebrow">Bonus cards<InfoTip label="About bonus cards">
-                <span className="fr-bonus-note">These three cards don’t belong on the board. {name} chooses how many to play with.</span>
+                <span className="fr-bonus-note">These three cards don’t belong on the board. {share ? "They choose" : `${name} chooses`} how many to play with.</span>
               </InfoTip></div>
               <div className="fr-decoys">
                 {[4,5,6].map(si=>(
@@ -337,6 +346,10 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
             </section>
 
             <div className="fr-extras">
+              {share && (
+                <input className="fr-input" maxLength={24} value={label} placeholder="Who's it for? (only you see this)"
+                  onChange={e=>setLabel(e.target.value)} aria-label="Who it's for"/>
+              )}
               <input className="fr-input" maxLength={40} value={title} placeholder="Name it (optional)"
                 onChange={e=>{ setTitle(e.target.value); setDirty(true); }} aria-label="Puzzle name"/>
               <button className="fr-btn secondary" onClick={()=>setPreviewKey(Date.now())} disabled={!!busy || !checks.canPublish}>
@@ -364,7 +377,7 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
                 </button>
                 <button className="fr-btn primary" onClick={handleSend} disabled={!!busy || !checks.canPublish}
                   aria-describedby="fr-need" aria-busy={busy==="sending"}>
-                  {busy==="sending" ? <><Spinner/>Sending…</> : `Send puzzle to ${name}`}
+                  {busy==="sending" ? <><Spinner/>{share ? "Making link…" : "Sending…"}</> : share ? "Get link" : `Send puzzle to ${name}`}
                 </button>
               </div>
             </div>

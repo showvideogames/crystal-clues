@@ -85,13 +85,16 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay }) 
       </div>
       <div className="fr-page fr-result-foot">
         <p className="fr-outcome">{outcome} <span>· finished {timeAgo(view.finished_at)}</span></p>
-        <div className="fr-card fr-friend">
-          <StreakPanel friendStreak={view.friendship.daily_streak} solveStreak={view.friendship.team_win_streak} friendName={friendName}/>
-          <StreakStatus status={view.friendship} now={serverNow}/>
-          <button className="fr-btn primary" onClick={()=>onMake(friend)}>
-            <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {friendName}
-          </button>
-        </div>
+        {view.friendship && (
+          <div className="fr-card fr-friend">
+            <StreakPanel friendStreak={view.friendship.daily_streak} solveStreak={view.friendship.team_win_streak} friendName={friendName}/>
+            <StreakStatus status={view.friendship} now={serverNow}/>
+            <button className="fr-btn primary" onClick={()=>onMake(friend)}>
+              <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {friendName}
+            </button>
+          </div>
+        )}
+        {view.shared && <p className="fr-sub" style={{textAlign:"center"}}>Played by link. If {friendName} saves it to an account, you'll be friends.</p>}
       </div>
       {showSheet && (
         <ResultSheet result={view} creator={friendName} maxLives={view.max_lives} now={serverNow}

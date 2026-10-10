@@ -11,8 +11,14 @@ import ChooseDifficulty from "./ChooseDifficulty.jsx";
 // Solving a friend's puzzle on the familiar board. The browser never has the
 // answer: each Submit is judged and recorded by the server, which returns
 // the answer only once the puzzle is over (a win, or all lives used).
+//
+// The same screen plays a puzzle shared by link (SharedPuzzle.jsx): then
+// `source` opens and judges it through the link, and `guest` replaces the
+// friend-only actions with the one offer to save the result.
+//   source: { open(), guess(g) }        default: this account's friend puzzle
+//   guest:  { saveLabel, onSave, backLabel }
 
-export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult, onHowToPlay }) {
+export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult, onHowToPlay, source, guest }) {
   const { GameView } = kit;
   const [view,setView] = useState(null);
   const [error,setError] = useState("");
@@ -21,10 +27,11 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
   const [showDone,setShowDone] = useState(false);
   const serverNow = useServerNow(done?.friendship?.server_now || view?.friendship?.server_now);
 
+  const open = source?.open;
   const load = useCallback(async ()=>{
-    try { setView(await api.open(puzzleId)); setError(""); }
+    try { setView(await (open ? open() : api.open(puzzleId))); setError(""); }
     catch(err){ setError(err.message); }
-  },[puzzleId]);
+  },[puzzleId, open]);
 
   useEffect(()=>{
     const t = setTimeout(load, 0);
@@ -37,16 +44,16 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
 
   const friend = useMemo(()=> view && view.role === "solver" && !view.finished_at ? {
     puzzle:view,
-    submitGuess:(g)=>api.guess(view.id, g),
+    submitGuess:(g)=> source ? source.guess(g) : api.guess(view.id, g),
     onFinished:(result)=>{ setDone(result); setShowDone(true); nudgePush(); },
     // Another tab or device moved the puzzle on: reload the server's truth.
     onStale:()=>setLoadCount(c=>c+1),
-  } : null,[view]);
+  } : null,[view, source]);
 
   if(error){
     return <div className="fr-wrap"><div className="fr-page">
       <div className="fr-msg err">{error}</div>
-      <button className="fr-btn secondary" onClick={onBack}>Back to Friends</button>
+      <button className="fr-btn secondary" onClick={onBack}>{guest ? "Back" : "Back to Friends"}</button>
     </div></div>;
   }
   if(!view) return <div className="fr-wrap"><div className="fr-page"><p className="fr-sub">Opening puzzle…</p></div></div>;
@@ -73,7 +80,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
   return (
     <div className="fr-game-shell">
       <div className="fr-playbar">
-        <button type="button" className="fr-back" onClick={onBack}><Icon name="back" size={18}/>Friends</button>
+        <button type="button" className="fr-back" onClick={onBack}><Icon name="back" size={18}/>{guest?.backLabel || "Friends"}</button>
         <span className="grow"/>
         <span className="fr-chip">{creator}'s puzzle{view.difficulty && <span>· {DIFFICULTY_LABELS[view.difficulty]}</span>}</span>
         {result && !showDone && <ResultsButton onClick={()=>setShowDone(true)}/>}
@@ -85,10 +92,14 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
             <p className="fr-lede" style={{textAlign:"center"}}>
               {view.outcome === "won" ? `You solved it ${livesLeftPhrase(view.lives_used, view.max_lives)}.` : "The veil stayed closed — here's the answer."}
             </p>
-            <div className="fr-row">
-              <button className="fr-btn secondary" onClick={()=>onOpenResult(view.id)}>Your guesses</button>
-              <button className="fr-btn primary" onClick={makeBack}>Make one for {creator}</button>
-            </div>
+            {guest ? (
+              <button className="fr-btn primary" onClick={guest.onSave}>{guest.saveLabel}</button>
+            ) : (
+              <div className="fr-row">
+                <button className="fr-btn secondary" onClick={()=>onOpenResult(view.id)}>Your guesses</button>
+                <button className="fr-btn primary" onClick={makeBack}>Make one for {creator}</button>
+              </div>
+            )}
           </div>
           <GameView key={`admire-${view.id}`} puzzle={puzzle} difficulty={view.difficulty} admireMode sandbox/>
         </>
@@ -98,7 +109,8 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
 
       {showDone && result && (
         <ResultSheet result={result} creator={creator} maxLives={view.max_lives} now={serverNow} justCounted={counted}
-          onMakeBack={makeBack} onClose={()=>setShowDone(false)} onBack={onBack}/>
+          onMakeBack={makeBack} onClose={()=>setShowDone(false)} onBack={guest ? null : onBack}
+          primary={guest ? { label:guest.saveLabel, onClick:guest.onSave } : null}/>
       )}
     </div>
   );

@@ -17,7 +17,7 @@
     "test:db": "node --test --test-concurrency=1 tests/db/accounts.test.mjs",
     "test:friends": "npm run test:friends:db && npm run test:friends:api",
     "test:friends:db": "supabase test db",
-    "test:friends:api": "node --test --test-concurrency=1 tests/friends/api.test.mjs tests/friends/format.test.mjs",
+    "test:friends:api": "node --test --test-concurrency=1 tests/friends/api.test.mjs tests/friends/share.test.mjs tests/friends/format.test.mjs",
     "test:friends:e2e": "node tests/friends/e2e.mjs",
     "test:friends:daily": "node tests/friends/daily-smoke.mjs",
     "test:friends:push": "node tests/friends/push-e2e.mjs",

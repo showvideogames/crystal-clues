@@ -15,7 +15,9 @@ const SPARKLES = [
 // the finish, and again from the Results button whenever they come back to it.
 //   result: { outcome, lives_used, friendship } (the server's record)
 //   justCounted: whether that finish added a Friend Streak day; undefined when reopened later
-export function ResultSheet({ result, creator, maxLives, now, justCounted, onMakeBack, onClose, closeLabel = "See the board", onBack }) {
+//   primary: { label, onClick } instead of "Make one for …" (a guest's offer to save)
+// Streaks show only between friends (a guest's result has no friendship).
+export function ResultSheet({ result, creator, maxLives, now, justCounted, onMakeBack, onClose, closeLabel = "See the board", onBack, primary }) {
   const won = result.outcome === "won";
   return (
     <div className="fr-done" role="dialog" aria-modal="true" aria-labelledby="fr-done-title">
@@ -29,14 +31,20 @@ export function ResultSheet({ result, creator, maxLives, now, justCounted, onMak
           <p className="fr-done-sub">
             {won
               ? `Solved ${livesLeftPhrase(result.lives_used, maxLives)}. ${creator} will see your guesses.`
-              : `All ${maxLives} lives used — the answer is on the board. ${creator} will see how close you got.`}
+              : `All ${maxLives} lives used. The answer is on the board. ${creator} will see how close you got.`}
           </p>
         </div>
-        <StreakPanel friendStreak={result.friendship.daily_streak} solveStreak={result.friendship.team_win_streak} friendName={creator}/>
-        <StreakStatus status={result.friendship} now={now} justCounted={justCounted}/>
-        <button className="fr-btn primary" onClick={onMakeBack}>
-          <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
-        </button>
+        {result.friendship && <>
+          <StreakPanel friendStreak={result.friendship.daily_streak} solveStreak={result.friendship.team_win_streak} friendName={creator}/>
+          <StreakStatus status={result.friendship} now={now} justCounted={justCounted}/>
+        </>}
+        {primary ? (
+          <button className="fr-btn primary" onClick={primary.onClick}>{primary.label}</button>
+        ) : (
+          <button className="fr-btn primary" onClick={onMakeBack}>
+            <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
+          </button>
+        )}
         <div className="fr-row fr-done-links">
           <button className="fr-btn quiet" onClick={onClose}>{closeLabel}</button>
           {onBack && <button className="fr-btn quiet" onClick={onBack}>Back to Friends</button>}
