@@ -5,6 +5,8 @@ import { defineConfig } from "vitest/config";
 // fetch are stubbed per test. The database tests live under tests/db and
 // run with node:test against the local stack (npm run test:db).
 export default defineConfig({
+  // Component tests render .jsx without the React plugin: use the automatic JSX runtime.
+  esbuild: { jsx: "automatic" },
   test: {
     environment: "jsdom",
     include: ["src/**/*.test.js"],

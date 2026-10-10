@@ -36,6 +36,8 @@ export async function call(fn, args = {}) {
 export const api = {
   profile: () => call("get_my_profile"),
   setName: (name) => call("set_display_name", { p_name: name }),
+  setAvatar: (avatar) => call("set_avatar", { p_avatar: avatar }),
+  avatars: () => call("get_friend_avatars"),
   setPrefs: (p) => call("update_notification_prefs", {
     p_new_puzzle: p.newPuzzle ?? null, p_results: p.results ?? null, p_reminders: p.reminders ?? null,
   }),

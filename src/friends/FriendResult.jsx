@@ -14,7 +14,7 @@ import { ResultSheet, ResultsButton } from "./ResultSheet.jsx";
 // the puzzle is finished the creator sees only its status and their board —
 // the server doesn't hand out guesses until then.
 
-export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay }) {
+export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay, onViewed }) {
   const { GameView } = kit;
   const [view,setView] = useState(null);
   const [error,setError] = useState("");
@@ -22,9 +22,9 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay }) 
   const serverNow = useServerNow(view?.friendship?.server_now);
 
   const load = useCallback(async ()=>{
-    try { setView(await api.open(puzzleId)); setError(""); }
+    try { setView(await api.open(puzzleId)); setError(""); onViewed?.(); }
     catch(err){ setError(err.message); }
-  },[puzzleId]);
+  },[puzzleId, onViewed]);
   useEffect(()=>{
     const t = setTimeout(load, 0);
     return ()=>clearTimeout(t);

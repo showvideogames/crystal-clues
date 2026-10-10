@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import { Avatar } from "../friends/Avatar.jsx";
 import "./account.css";
 
 /**
  * The header's account control. Guest: a "Sign in" button. Signed in: a
  * small menu with the account's CURRENT email (as the server reports it),
- * Sign out, and "Delete account…" with a confirmation. Renders nothing when
+ * Sign out, and "Delete account…" with a confirmation. `profile` (the player's
+ * Friends name and avatar, when known) puts their avatar on the button in place
+ * of the email initial. Renders nothing when
  * accounts are off, so a guest-only build looks exactly like today.
  */
-export default function AccountMenu({ status, account, message, onSignIn, onSignOut, onDelete, onDismissMessage }) {
+export default function AccountMenu({ status, account, profile, message, onSignIn, onSignOut, onDelete, onDismissMessage }) {
   const [open, setOpen] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -60,7 +63,7 @@ export default function AccountMenu({ status, account, message, onSignIn, onSign
         data-testid="account-menu-button"
         onClick={() => { setOpen((v) => !v); setConfirming(false); }}
       >
-        {initial}
+        {profile ? <Avatar name={profile.display_name} avatar={profile.avatar} size={28}/> : initial}
       </button>
       {open && (
         <div className="cv-menu" data-testid="account-menu">

@@ -1,5 +1,5 @@
 // Small shared pieces for the Friends screens: the page heading, icons,
-// the friend avatar, a busy spinner and the ⓘ help tip. Styles live in friends.css.
+// the avatar, a busy spinner and the ⓘ help tip. Styles live in friends.css.
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
 const paths = {
@@ -29,24 +29,7 @@ export function Icon({ name, size = 20, className = "" }) {
 
 export const Spinner = () => <span className="fr-spinner" aria-hidden="true"/>;
 
-// A little crystal ball wearing the friend's initial.
-export function FriendAvatar({ name = "?", size = 52 }) {
-  const initial = (name.trim()[0] || "?").toUpperCase();
-  return (
-    <svg className="fr-avatar" width={size} height={size} viewBox="0 0 56 56" aria-hidden="true">
-      <defs>
-        <radialGradient id="frBall" cx="38%" cy="32%" r="70%">
-          <stop offset="0" stopColor="#c7b1ff"/><stop offset=".55" stopColor="#8b5cf6"/><stop offset="1" stopColor="#5b21b6"/>
-        </radialGradient>
-      </defs>
-      <circle cx="28" cy="28" r="28" fill="#efe7fd"/>
-      <path d="M17.5 41.5h21l-2.2 4.5H19.7z" fill="#f2b33d"/>
-      <circle cx="28" cy="25.5" r="15" fill="url(#frBall)"/>
-      <ellipse cx="22.5" cy="19" rx="4.2" ry="2.6" fill="#fff" opacity=".45" transform="rotate(-28 22.5 19)"/>
-      <text x="28" y="31" textAnchor="middle" fontFamily="Cinzel, serif" fontWeight="700" fontSize="16" fill="#fff">{initial}</text>
-    </svg>
-  );
-}
+export { Avatar } from "./Avatar.jsx";
 
 // Back row, decorative title, one plain line underneath.
 export function PageHead({ onBack, backLabel = "Friends", title, sub, children }) {
