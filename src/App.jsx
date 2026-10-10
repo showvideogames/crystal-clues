@@ -9,6 +9,7 @@ import { loadStatsFor, loadCompletionsFor, recordFinishFor, saveCompletionFor } 
 import { useAccount } from "./account/useAccount";
 import AccountMenu from "./account/AccountMenu";
 import ImportPrompt from "./account/ImportPrompt";
+import { usePath, parsePath, navigate, paths, adoptLegacyLink } from "./route";
 import {
   CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
 } from "./game/shared";
@@ -4876,20 +4877,16 @@ function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose
 // the lazily loaded Friends module never imports this file back.
 const GAME_KIT = { GameView, Board, CardTile, AdminPreviewCard, EditableClueTab, DragGhost };
 
-// Friends deep links: ?invite=TOKEN from a friend's link, and
-// ?friends=1 (&puzzle=… / &result=…) from a notification.
-function readFriendsIntent(){
-  if(!FRIENDS_ENABLED) return null;
-  try{
-    const q = new URLSearchParams(window.location.search);
-    if(!q.get("invite") && !q.get("friends")) return null;
-    const intent = { invite:q.get("invite"), puzzle:q.get("puzzle"), result:q.get("result") };
-    // Leave a clean address so a refresh doesn't replay the link.
-    window.history.replaceState(null, "", window.location.pathname);
-    return intent;
-  } catch{
-    return null;
-  }
+// Links from before the app had addresses (invite links already sent,
+// notification links) become their address once, at start-up (src/route.js).
+const STARTUP_INVITE = adoptLegacyLink({ friends: FRIENDS_ENABLED });
+
+// One archive puzzle, for an /archive/:id address opened directly. Only a
+// published puzzle that's already out, exactly as the archive lists them.
+async function dbLoadArchivePuzzle(id) {
+  const rows = await sbFetch(`puzzles?id=eq.${encodeURIComponent(id)}&status=eq.published&limit=1`);
+  const p = rows?.[0];
+  return p && p.date <= getLocalISODate() ? p : null;
 }
 
 // Before a sign-out: detach this device's notifications from the account
@@ -4901,12 +4898,13 @@ async function leaveFriends(){
 }
 
 export default function App() {
-  const [friendsIntent,setFriendsIntent] = useState(readFriendsIntent);
+  const [friendsInvite,setFriendsInvite] = useState(STARTUP_INVITE);
   const [friendsUnread,setFriendsUnread] = useState(0);
-  // Bumped by every tap on the header's Friends icon, so the icon always
-  // lands on the Friends hub, even from inside a friend's puzzle.
-  const [friendsHome,setFriendsHome] = useState(0);
-  const [view,setView]           = useState(()=> friendsIntent ? "friends" : "game");
+  // Where we are is the address bar (src/route.js); every screen change is a navigation.
+  const route = parsePath(usePath(), { friends: FRIENDS_ENABLED });
+  const view = route.view === "unknown" ? "game" : route.view;
+  const setView = useCallback((v)=>navigate({ game:paths.today(), archive:paths.archive(), admin:paths.admin(), friends:paths.friends() }[v]),[]);
+  useEffect(()=>{ if(route.view === "unknown") navigate(paths.today(), { replace:true }); },[route.view]);
   const [archivePuzzle,setAP]    = useState(null);
   // [accounts] who is signed in, whether guest history awaits a decision,
   // and a counter that bumps whenever the account's history changed.
@@ -4914,7 +4912,11 @@ export default function App() {
   const [compsTick,setCompsTick] = useState(0);
   const completions = useMemo(()=>loadCompletions(), [compsTick, acct.historyVersion]);
   const { signOut:accountSignOut } = acct;
-  const handleSignOut = useCallback(async ()=>{ await leaveFriends(); await accountSignOut(); setView("game"); },[accountSignOut]);
+  const handleSignOut = useCallback(async ()=>{ await leaveFriends(); await accountSignOut(); setView("game"); },[accountSignOut, setView]);
+  // Admin is for admin accounts: anyone else at /admin goes to today's puzzle.
+  useEffect(()=>{
+    if(view === "admin" && acct.status !== "checking" && !acct.isAdmin) navigate(paths.today(), { replace:true });
+  },[view, acct.status, acct.isAdmin]);
   const [showSettings,setShowSettings] = useState(false);
   const [showTutorial,setShowTutorial] = useState(false);
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
@@ -5005,19 +5007,32 @@ export default function App() {
   // Another account (or nobody) signed in here: the last account's dot goes.
   const shownUnread = friendsAccountId ? friendsUnread : 0;
 
+  // /archive/:id: the puzzle in hand (picked from the archive), or loaded by
+  // its id when the address was opened directly. Not found → the archive.
+  const archiveId = route.archiveId || null;
+  const archiveReady = !!archiveId && String(archivePuzzle?.id) === archiveId;
+  useEffect(()=>{
+    if(!archiveId || archiveReady) return;
+    let alive = true;
+    dbLoadArchivePuzzle(archiveId)
+      .then(p=>{ if(!alive) return; if(p) setAP(p); else navigate(paths.archive(), { replace:true }); })
+      .catch(()=>{ if(alive) navigate(paths.archive(), { replace:true }); });
+    return ()=>{ alive = false; };
+  },[archiveId, archiveReady]);
+
   const activePuzzle = useMemo(()=>{
-    const base = (view==="game" && archivePuzzle) ? archivePuzzle : todayPuzzle;
+    const base = (view==="game" && archiveReady) ? archivePuzzle : todayPuzzle;
     return { ...base, difficulty };
-  },[view, archivePuzzle, todayPuzzle, difficulty]);
+  },[view, archiveReady, archivePuzzle, todayPuzzle, difficulty]);
 
   // Key only on puzzle id — difficulty changes mid-game should NOT reset the board
   const activePuzzleKey = activePuzzle.id;
 
-  const isArchivePlay = view==="game" && archivePuzzle && archivePuzzle.id !== todayPuzzle.id;
+  const isArchivePlay = view==="game" && archiveReady && archivePuzzle.id !== todayPuzzle.id;
 
   const handlePlayFromArchive = (puzzle) => {
     setAP(puzzle);
-    setView("game");
+    navigate(paths.archivePuzzle(puzzle.id));
   };
 
   const handleReturnToToday = useCallback(() => {
@@ -5027,7 +5042,7 @@ export default function App() {
     setAdmireMode(false);
     setLobbyDone(false);
     setResetCount(0);
-  },[]);
+  },[setView]);
 
   const handleSolved = useCallback((puzzleId, result) => {
     const data = {
@@ -5044,7 +5059,7 @@ export default function App() {
       <div style={{height:"100vh",height:"100dvh",width:"100%",display:"flex",flexDirection:"column"}}>
       <header className="hdr">
         <button type="button" className="logo logo-link"
-          onClick={()=>{setView("game"); if(!archivePuzzle||archivePuzzle.id===todayPuzzle.id) setAP(null);}}
+          onClick={()=>setView("game")}
           aria-label="Cluevoyance — go to today's puzzle">
           <img src="/assets/cluevoyance-logo-b.png" alt="" className="logo-img" />
         </button>
@@ -5063,7 +5078,7 @@ export default function App() {
               </button>
             )}
             {FRIENDS_ENABLED && (
-              <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>{ setView("friends"); setFriendsHome(n=>n+1); }}
+              <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>setView("friends")}
                 title="Friends" aria-label={shownUnread ? `Friends — ${shownUnread} new` : "Friends"}>
                 <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.8-5.2 5.5-5.2s4.9 1.9 5.5 5.2"/><circle cx="16.6" cy="9" r="2.5"/><path d="M15.6 14.3c2.5-.3 4.4 1.3 4.9 4.3"/></svg>
                 {shownUnread>0 && <span className="friends-dot" aria-hidden="true"/>}
@@ -5087,7 +5102,10 @@ export default function App() {
         </div>
       </header>
 
-      {view==="game" && (() => {
+      {view==="game" && archiveId && !archiveReady && (
+        <div className="mhint" style={{padding:28,textAlign:"center"}}>Opening puzzle…</div>
+      )}
+      {view==="game" && !(archiveId && !archiveReady) && (() => {
         const completedData = loadCompletions()[activePuzzle.id];
         const showLobby = !isArchivePlay && !lobbyDone;
         return showLobby
@@ -5108,9 +5126,9 @@ export default function App() {
           <FriendsView
             kit={GAME_KIT}
             account={acct}
-            homeSignal={friendsHome}
-            intent={friendsIntent}
-            onIntentHandled={()=>setFriendsIntent(null)}
+            screen={route.screen}
+            invite={friendsInvite}
+            onInviteTaken={()=>setFriendsInvite(null)}
             onUnreadChange={setFriendsUnread}
             onPlayDaily={()=>setView("game")}
             onSignOut={handleSignOut}

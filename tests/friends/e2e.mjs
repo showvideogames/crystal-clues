@@ -296,7 +296,7 @@ try {
   await shot(deb, "05-creator-preview-375");
   await deb.locator(".fr-playbar .fr-back").click();
   await click(deb, "Send puzzle to Sam");
-  await waitText(deb, "Waiting for Sam");
+  await waitText(deb, "waiting for Sam to start");
   await shot(deb, "06-deb-inbox-waiting-375");
 
   // 4. Sam: it's there straight away.
@@ -418,7 +418,7 @@ try {
   log("header icon from the creator keeps the unsaved puzzle");
   assert.equal(await sam.$(".fr-chip"), null, "the creator doesn't choose a difficulty");
   await click(sam, "Send puzzle to Deb");
-  await waitText(sam, "Waiting for Deb");
+  await waitText(sam, "waiting for Deb to start");
 
   // 8. Deb replays Sam's real guesses.
   await deb.reload(); await openFriends(deb);
