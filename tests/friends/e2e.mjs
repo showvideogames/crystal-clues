@@ -55,12 +55,14 @@ async function assertSignedOutFriends(page) {
 }
 
 // Sign in as the account, come back to Friends as the callback would, and
-// pick a display name.
-async function signIn(page, acct, name) {
+// pick a name. Arriving from an invite, that same button joins the inviter.
+async function signIn(page, acct, name, { invitedBy, shotName } = {}) {
   await signInBrowser(page, acct, "/?friends=1");
   await page.waitForSelector("#fr-name");
   await page.locator("#fr-name").fill(name);
-  await click(page, "Continue");
+  if (invitedBy) await page.waitForSelector(`button.fr-btn.primary::-p-text(Join ${invitedBy})`);
+  if (shotName) await shot(page, shotName);
+  await click(page, invitedBy ? `Join ${invitedBy}` : "Continue");
   await waitText(page, "Signed in as");
 }
 
@@ -240,15 +242,18 @@ try {
   // 2. Sam opens it on their own phone while signed out: who it's from, then
   // the shared sign-in. The invite survives the sign-in round trip.
   await sam.goto(link.replace(DEB_URL, SAM_URL), { waitUntil: "networkidle0" });
-  await waitText(sam, "Deb invited you");
-  await waitText(sam, "Sign in to accept");
+  await waitText(sam, "Deb invited you to play");
+  await waitText(sam, "New here? Choose Sign up");
   await assertSignedOutFriends(sam);
+  assert.equal((await sam.$$(".fr-btn.primary")).length, 1, "one main button on the invite landing");
   await shot(sam, "02-invite-landing-375");
-  await signIn(sam, samAcct, "Sam");
-  await waitText(sam, "Deb invited you");
-  await shot(sam, "02b-invite-accept-375");
-  await click(sam, "Accept");
+  // Naming yourself joins Deb in the same tap: no separate Accept step.
+  await signIn(sam, samAcct, "Sam", { invitedBy: "Deb", shotName: "02b-name-join-375" });
   await waitText(sam, "Make one for Deb");
+  assert.ok(!(await bodyText(sam)).includes("invited you"), "the invite is done");
+  assert.equal(await sam.$(".fr-card .fr-streak-num"), null, "no zero streaks for a new friend");
+  assert.ok((await bodyText(sam)).includes("Deb's puzzles will appear here"), "where Deb's puzzles will show");
+  await shot(sam, "02c-new-friend-375");
   log("friends");
 
   // 3. Deb makes a puzzle for Sam: deal, write clues, save, preview, send.
@@ -317,6 +322,14 @@ try {
 
   // 5. Sam chooses Expert, plays one wrong guess, then refreshes halfway through.
   await click(sam, "Play Deb's puzzle");
+  // Someone new can see how to play before starting.
+  await sam.waitForSelector(".fr-choose");
+  await sam.locator("button.fr-link::-p-text(How to play)").click();
+  await sam.waitForSelector(".tut-card");
+  await sam.$eval(".tut-ovr", (el) => el.click());
+  await sam.waitForFunction(() => !document.querySelector(".tut-card"));
+  assert.equal((await sam.$$(".fr-choose .fr-btn.primary")).length, 1, "one main button: Start puzzle");
+  log("How to play opens the tutorial from the difficulty screen");
   await chooseDifficulty(sam, "Expert", "07e-sam-choose-difficulty");
   await sleep(900); // intro shuffle
   assert.equal(await trayCount(sam), 2, "Expert deals two of Deb's three bonus cards");

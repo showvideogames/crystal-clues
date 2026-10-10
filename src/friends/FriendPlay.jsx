@@ -12,7 +12,7 @@ import ChooseDifficulty from "./ChooseDifficulty.jsx";
 // answer: each Submit is judged and recorded by the server, which returns
 // the answer only once the puzzle is over (a win, or all lives used).
 
-export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult }) {
+export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult, onHowToPlay }) {
   const { GameView } = kit;
   const [view,setView] = useState(null);
   const [error,setError] = useState("");
@@ -53,7 +53,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
   if(isCreator) return null;
   if(!view.difficulty && !view.finished_at){
     return <ChooseDifficulty puzzleId={view.id} creator={view.creator_name} title={view.title}
-      onBack={onBack} onChosen={()=>setLoadCount(c=>c+1)}/>;
+      onBack={onBack} onChosen={()=>setLoadCount(c=>c+1)} onHowToPlay={onHowToPlay}/>;
   }
 
   const creator = view.creator_name;

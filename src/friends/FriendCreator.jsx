@@ -275,13 +275,16 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
   const CLUE_SIDES = ["top", "right", "bottom", "left"];
   const cluePill = (i) => ({ placeholder:"+ Add clue", label:`Clue on the ${CLUE_SIDES[i]}` });
   const cluesWritten = board ? board.clues.filter(c=>c?.trim()).length : 0;
+  // Nothing written yet: dealing cards is the first step, so it's the main button.
+  const emptyBoard = !!board && board.slots.slice(0, 7).every(s=>(board.cards[s.cardId]?.words || []).every(w=>!w?.trim()));
 
   // What still stands between this board and Send, in one short line.
   const plural = (n, one) => `${n} ${one}${n === 1 ? "" : "s"}`;
   let need = null;
   if(checks){
     const { missingClues:c, blankEdges:e, duplicateCount:d } = checks;
-    need = c && e ? `${plural(c, "clue")} and ${plural(e, "card edge")} left to fill`
+    need = emptyBoard ? "Deal cards, then write 4 clues"
+      : c && e ? `${plural(c, "clue")} and ${plural(e, "card edge")} left to fill`
       : c ? `Write ${plural(c, "more clue")} to send`
       : e ? `Fill ${plural(e, "blank card edge")} to send`
       : d ? `Ready to send · ${plural(d, "repeated word")}`
@@ -297,7 +300,7 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
                   : <p className="fr-sub">Loading…</p>
         ) : (
           <>
-            <button className="fr-btn secondary fr-deal" onClick={deal} disabled={!!busy}>
+            <button className={`fr-btn ${emptyBoard ? "primary" : "secondary"} fr-deal`} onClick={deal} disabled={!!busy}>
               <span className="fr-rowbtn-ico"><Icon name="dice" size={18}/></span>Deal random cards
             </button>
 
