@@ -2,43 +2,34 @@ import { useCallback, useEffect, useState } from "react";
 import { api } from "./client";
 import { pushSupport, enablePush, disablePush, currentSubscription, refreshSubscription } from "./push";
 import { readPendingInvite, writePendingInvite } from "./session";
+import { navigate, paths, historyState } from "../route";
 import { serverOffset, timeAgo, livesLeftPhrase } from "./format";
 import { MAX_LIVES } from "../game/shared";
 import { StreakPanel, StreakStatus, StreakRules } from "./Streaks.jsx";
-import { Icon, Spinner, FriendAvatar, PageHead, RowButton } from "./ui.jsx";
+import { Icon, Spinner, FriendAvatar, PageHead, RowButton, InfoTip } from "./ui.jsx";
 import FriendCreator from "./FriendCreator.jsx";
 import FriendPlay from "./FriendPlay.jsx";
 import FriendResult from "./FriendResult.jsx";
 import "./friends.css";
 
-function screenFromIntent(intent){
-  if(intent?.puzzle) return { name:"play", puzzleId:intent.puzzle };
-  if(intent?.result) return { name:"result", puzzleId:intent.result };
-  return { name:"inbox" };
-}
 
 // account: the shared Cluevoyance account from useAccount() (App.jsx). Friends
 // has no sign-in of its own; who is playing is always that account.
-// homeSignal: changes whenever the header's Friends icon is tapped → the hub.
-// Leaving a screen that way keeps its work: a puzzle in progress is kept on
-// this device as it's played, and unsaved creator edits are kept as a backup
-// that the creator restores next time.
-export default function FriendsView({ kit, account, intent, onIntentHandled, onUnreadChange, onPlayDaily, onSignOut, homeSignal = 0 }) {
+// screen: which Friends screen the address names (src/route.js); every move
+// between screens is a navigation, so refresh, Back/Forward and links work.
+// Leaving a screen keeps its work: a puzzle in progress is kept on this
+// device as it's played, and unsaved creator edits are kept as a backup that
+// the creator restores next time.
+// invite: a token from an invite link opened on this visit.
+export default function FriendsView({ kit, account, screen = { name:"inbox" }, invite, onInviteTaken, onUnreadChange, onPlayDaily, onSignOut }) {
   // { userId, profile }, so a different account never sees the last one's name.
   const [loaded,setLoaded]   = useState(null);
-  const [screen,setScreen]   = useState(()=>screenFromIntent(intent));
   const [pendingInvite,setPendingInvite] = useState(()=>{
-    if(intent?.invite){ writePendingInvite(intent.invite); return intent.invite; }
+    if(invite){ writePendingInvite(invite); return invite; }
     return readPendingInvite();
   });
 
-  useEffect(()=>{ if(intent) onIntentHandled?.(); },[intent, onIntentHandled]);
-
-  const [seenHome,setSeenHome] = useState(homeSignal);
-  if(homeSignal !== seenHome){
-    setSeenHome(homeSignal);
-    setScreen({ name:"inbox" });
-  }
+  useEffect(()=>{ if(invite) onInviteTaken?.(); },[invite, onInviteTaken]);
 
   const userId = account.status === "signed_in" ? account.account?.user_id : null;
   const email = account.account?.email || "";
@@ -55,7 +46,12 @@ export default function FriendsView({ kit, account, intent, onIntentHandled, onU
   const setProfile = useCallback((p)=>setLoaded({ userId, profile:p }),[userId]);
 
   const dismissInvite = useCallback(()=>{ writePendingInvite(null); setPendingInvite(null); },[]);
-  const toInbox = useCallback(()=>setScreen({ name:"inbox" }),[]);
+  const toInbox = useCallback(()=>navigate(paths.friends()),[]);
+  const toPlay = useCallback((id, opts)=>navigate(paths.play(id), opts),[]);
+  const toResult = useCallback((id, opts)=>navigate(paths.result(id), opts),[]);
+  // The friend's name travels with the address's history entry; a creator
+  // opened by address alone looks it up (CreatorRoute).
+  const toCreate = useCallback((friend)=>navigate(paths.make(friend.friendship_id), { state:{ friendName:friend.friend_name } }),[]);
 
   if(account.status === "checking" || (userId && profile === undefined)){
     return <div className="fr-wrap"><div className="fr-page"><p className="fr-sub" style={{textAlign:"center",padding:30}}>Opening Friends…</p></div></div>;
@@ -68,18 +64,17 @@ export default function FriendsView({ kit, account, intent, onIntentHandled, onU
   }
 
   if(screen.name === "create"){
-    return <FriendCreator kit={kit} friend={screen.friend} onBack={toInbox}
-      onSent={()=>setScreen({ name:"inbox", flash:`Sent to ${screen.friend.friend_name}. It's in their Friends inbox now.` })}/>;
+    // Sent: the hub replaces the creator in history, so Back doesn't reopen it.
+    return <CreatorRoute key={screen.id} kit={kit} friendshipId={screen.id} onBack={toInbox}
+      onSent={()=>navigate(paths.friends(), { replace:true })}/>;
   }
   if(screen.name === "play"){
-    return <FriendPlay kit={kit} puzzleId={screen.puzzleId} onBack={toInbox}
-      onMakeBack={(friend)=>setScreen({ name:"create", friend })}
-      onOpenResult={(puzzleId)=>setScreen({ name:"result", puzzleId })}/>;
+    return <FriendPlay key={screen.id} kit={kit} puzzleId={screen.id} onBack={toInbox}
+      onMakeBack={toCreate} onOpenResult={toResult}/>;
   }
   if(screen.name === "result"){
-    return <FriendResult kit={kit} puzzleId={screen.puzzleId} onBack={toInbox}
-      onMake={(friend)=>setScreen({ name:"create", friend })}
-      onPlay={(puzzleId)=>setScreen({ name:"play", puzzleId })}/>;
+    return <FriendResult key={screen.id} kit={kit} puzzleId={screen.id} onBack={toInbox}
+      onMake={toCreate} onPlay={toPlay}/>;
   }
 
   return (
@@ -87,16 +82,43 @@ export default function FriendsView({ kit, account, intent, onIntentHandled, onU
       profile={profile}
       email={email}
       onSignOut={onSignOut}
-      flash={screen.flash}
       pendingInvite={pendingInvite}
       onDismissInvite={dismissInvite}
       onUnreadChange={onUnreadChange}
       onProfile={setProfile}
-      onPlay={(puzzleId)=>setScreen({ name:"play", puzzleId })}
-      onResult={(puzzleId)=>setScreen({ name:"result", puzzleId })}
-      onCreate={(friend)=>setScreen({ name:"create", friend })}
+      onPlay={toPlay}
+      onResult={toResult}
+      onCreate={toCreate}
     />
   );
+}
+
+// The creator by address: the friend's name comes with the history entry,
+// or — opened directly, after a refresh in another tab, from a link — from
+// the inbox, which also proves the friendship is this account's.
+function CreatorRoute({ kit, friendshipId, onBack, onSent }) {
+  const known = historyState().friendName;
+  const [friend,setFriend] = useState(()=> known ? { friendship_id:friendshipId, friend_name:known } : null);
+  const [error,setError] = useState("");
+  useEffect(()=>{
+    if(friend) return;
+    let alive = true;
+    api.inbox().then(data=>{
+      if(!alive) return;
+      const f = data.friends.find(x=>x.friendship_id === friendshipId);
+      if(f) setFriend({ friendship_id:f.friendship_id, friend_name:f.friend_name });
+      else setError("That friend isn't in your Friends list.");
+    }).catch(err=>{ if(alive) setError(err.message); });
+    return ()=>{ alive = false; };
+  },[friend, friendshipId]);
+  if(error){
+    return <div className="fr-wrap"><div className="fr-page">
+      <div className="fr-msg err">{error}</div>
+      <button className="fr-btn secondary" onClick={onBack}>Back to Friends</button>
+    </div></div>;
+  }
+  if(!friend) return <div className="fr-wrap"><div className="fr-page"><p className="fr-sub">Opening…</p></div></div>;
+  return <FriendCreator kit={kit} friend={friend} onBack={onBack} onSent={onSent}/>;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -127,11 +149,9 @@ function SignIn({ pendingInvite, account, onPlayDaily }) {
   const [busy,setBusy] = useState(false);
   const signIn = async ()=>{
     setBusy(true);
-    // Land back on Friends after the round trip (an invite waits in storage).
-    window.history.replaceState(null, "", "/?friends=1");
+    // The sign-in returns to this address (an invite waits in storage).
     await account.signIn();
     // Still here: sign-in is unavailable, and account.message says so.
-    window.history.replaceState(null, "", "/");
     setBusy(false);
   };
 
@@ -193,18 +213,18 @@ function NameStep({ email, onSaved, pendingInvite }) {
 //  INBOX
 // ═══════════════════════════════════════════════════════════════
 
-// One line under the title: the most useful thing waiting right now.
+// One line under the title: the most useful thing to do right now. Waiting
+// on a friend isn't repeated here; each friend's card says it, once.
 function inboxLede(friends) {
   const by = (a) => friends.filter((f) => f.next_action === a).map((f) => f.friend_name);
   const list = (names) => names.length === 1 ? names[0] : `${names[0]} and ${names.length - 1} more`;
   if (by("play").length) return by("play").length === 1 ? `A puzzle from ${by("play")[0]} is waiting for you.` : `Puzzles from ${list(by("play"))} are waiting for you.`;
   if (by("see_result").length) return `${list(by("see_result"))} finished your puzzle.`;
   if (by("make_back").length) return `Your turn to make one for ${list(by("make_back"))}.`;
-  if (by("waiting").length === friends.length && friends.length) return `Waiting for ${list(by("waiting"))} to play.`;
   return "Trade puzzles and keep your streaks going together.";
 }
 
-function Inbox({ profile, email, onSignOut, flash, pendingInvite, onDismissInvite, onUnreadChange, onProfile, onPlay, onResult, onCreate }) {
+function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUnreadChange, onProfile, onPlay, onResult, onCreate }) {
   const [inbox,setInbox] = useState(null);
   const [offset,setOffset] = useState(0);
   const [error,setError] = useState("");
@@ -244,7 +264,6 @@ function Inbox({ profile, email, onSignOut, flash, pendingInvite, onDismissInvit
       <div className="fr-page">
         <PageHead title="Friends" sub={inbox ? inboxLede(inbox.friends) : " "}/>
 
-        {flash && <div className="fr-msg ok" role="status">{flash}</div>}
         {pendingInvite && <AcceptInvite token={pendingInvite} onDone={inviteDone} onDismiss={onDismissInvite}/>}
         {error && <div className="fr-msg err">{error} <button className="fr-link" onClick={refresh}>Try again</button></div>}
 
@@ -321,8 +340,16 @@ function FriendCard({ f, now, onPlay, onResult, onCreate }) {
       action = primary("play", `Watch ${name}'s guesses`, ()=>onResult(f.unseen_result.puzzle_id));
       break;
     case "waiting":
-      status = f.outgoing.started ? "Is playing your puzzle" : `Has your puzzle · sent ${timeAgo(f.outgoing.sent_at, now)}`;
-      action = <div className="fr-waiting" role="status"><Icon name="clock" size={18}/>Waiting for {name} to play yours</div>;
+      // One message, in the status bar. "Started" is the server's record:
+      // they chose a difficulty or made a guess; opening it isn't starting.
+      status = null;
+      action = (
+        <div className="fr-waiting" role="status"><Icon name="clock" size={18}/>
+          <span>{f.outgoing.started
+            ? `${name} has started your puzzle`
+            : `Sent ${timeAgo(f.outgoing.sent_at, now)} · waiting for ${name} to start`}</span>
+        </div>
+      );
       break;
     case "make_back": {
       const lf = f.last_finished;
@@ -347,7 +374,7 @@ function FriendCard({ f, now, onPlay, onResult, onCreate }) {
         <FriendAvatar name={name}/>
         <div style={{minWidth:0}}>
           <div className="fr-friend-name">{name}</div>
-          <div className="fr-friend-status">{status}</div>
+          {status && <div className="fr-friend-status">{status}</div>}
         </div>
         {isNew && <span className="fr-dot-new" aria-label="New"/>}
       </div>
@@ -456,7 +483,10 @@ function InvitePanel({ primary = false }) {
             <button className="fr-btn secondary sm" onClick={copy}>{copied ? "Copied ✓" : "Copy"}</button>
             {typeof navigator.share === "function" && <button className="fr-btn secondary sm" onClick={share}>Share</button>}
           </div>
-          <p className="fr-help" style={{margin:0}}>Each link works for one friend and expires in 14 days. <button className="fr-link" onClick={make}>New link</button></p>
+          <p className="fr-help" style={{margin:0,display:"flex",alignItems:"center"}}>
+            <button className="fr-link" onClick={make}>New link</button>
+            <InfoTip label="About invite links">Each link works for one friend and expires in 14 days.</InfoTip>
+          </p>
         </>
       )}
       {error && <div className="fr-msg err">{error}</div>}

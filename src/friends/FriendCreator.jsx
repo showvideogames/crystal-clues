@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api, nudgePush } from "./client";
 import { dealCardsFromBank, checkBoard } from "../game/shared";
-import { Icon, Spinner, PageHead } from "./ui.jsx";
+import { Icon, Spinner, PageHead, InfoTip } from "./ui.jsx";
 
 // A player's own puzzle for one friend, built on the simplified Create
 // Puzzle board: deal cards, tap any clue or card-edge word to type it, turn
@@ -318,8 +318,9 @@ export default function FriendCreator({ kit, friend, onBack, onSent }) {
             </div>
 
             <section className="fr-surface fr-bonus-zone" aria-label="Bonus cards">
-              <div className="fr-eyebrow">Bonus cards</div>
-              <p className="fr-bonus-note">These three cards don’t belong on the board. {name} chooses how many to play with.</p>
+              <div className="fr-eyebrow">Bonus cards<InfoTip label="About bonus cards">
+                <span className="fr-bonus-note">These three cards don’t belong on the board. {name} chooses how many to play with.</span>
+              </InfoTip></div>
               <div className="fr-decoys">
                 {[4,5,6].map(si=>(
                   <div key={si} className="fr-decoy-col">

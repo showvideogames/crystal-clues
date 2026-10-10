@@ -32,7 +32,7 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay }) 
 
   // A solver who opens an unfinished puzzle from here goes to the board.
   const shouldPlay = view && view.role === "solver" && !view.finished_at;
-  useEffect(()=>{ if(shouldPlay) onPlay(puzzleId); },[shouldPlay, puzzleId, onPlay]);
+  useEffect(()=>{ if(shouldPlay) onPlay(puzzleId, { replace:true }); },[shouldPlay, puzzleId, onPlay]);
 
   if(error){
     return <div className="fr-wrap"><div className="fr-page">

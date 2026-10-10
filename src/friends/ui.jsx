@@ -1,5 +1,6 @@
 // Small shared pieces for the Friends screens: the page heading, icons,
-// the friend avatar and a busy spinner. Styles live in friends.css.
+// the friend avatar, a busy spinner and the ⓘ help tip. Styles live in friends.css.
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
 const paths = {
   back:    <path d="M15 5l-7 7 7 7"/>,
@@ -74,5 +75,49 @@ export function RowButton({ icon, label, detail, onClick, open, dot, className =
       </span>
       <Icon name="next" size={18} className={`fr-rowbtn-chev${open ? " open" : ""}`}/>
     </button>
+  );
+}
+
+// ⓘ next to a label, for an optional explanation. Tap or click toggles it
+// (phones), a mouse shows it on hover, the keyboard on focus; Escape or a tap
+// elsewhere closes it. Essential instructions stay on the page, not in here.
+export function InfoTip({ label, children }) {
+  const [pinned,setPinned]   = useState(false);
+  const [hovered,setHovered] = useState(false);
+  const [focused,setFocused] = useState(false);
+  const wrap = useRef(null);
+  const pop = useRef(null);
+  const id = useId();
+  const open = pinned || hovered || focused;
+  // Keep the bubble on screen: shift it left by however much it would overflow.
+  useLayoutEffect(()=>{
+    const el = pop.current;
+    if(!open || !el) return;
+    el.style.transform = "";
+    const r = el.getBoundingClientRect();
+    const over = r.right - (document.documentElement.clientWidth - 12);
+    const room = r.left - 12;
+    if(over > 0) el.style.transform = `translateX(${-Math.min(over, Math.max(0, room))}px)`;
+  },[open]);
+  useEffect(()=>{
+    if(!open) return undefined;
+    const away = (e)=>{ if(!wrap.current?.contains(e.target)){ setPinned(false); setHovered(false); setFocused(false); } };
+    const esc = (e)=>{ if(e.key === "Escape"){ setPinned(false); setHovered(false); setFocused(false); } };
+    document.addEventListener("pointerdown", away);
+    document.addEventListener("keydown", esc);
+    return ()=>{ document.removeEventListener("pointerdown", away); document.removeEventListener("keydown", esc); };
+  },[open]);
+  return (
+    <span className="fr-tip" ref={wrap}
+      onPointerEnter={(e)=>{ if(e.pointerType === "mouse") setHovered(true); }}
+      onPointerLeave={(e)=>{ if(e.pointerType === "mouse") setHovered(false); }}>
+      <button type="button" className="fr-tip-btn" aria-label={label} aria-expanded={open} aria-controls={id}
+        onClick={()=>{ setPinned(p=>!(p || hovered || focused)); setHovered(false); setFocused(false); }}
+        onFocus={(e)=>{ if(e.currentTarget.matches(":focus-visible")) setFocused(true); }}
+        onBlur={()=>setFocused(false)}>
+        <span aria-hidden="true">i</span>
+      </button>
+      <span ref={pop} id={id} role="tooltip" className={`fr-tip-pop${open ? " open" : ""}`} hidden={!open}>{children}</span>
+    </span>
   );
 }

@@ -143,6 +143,12 @@ try {
   assert.ok(checks.includes("4 clues missing"), `admin checks: ${checks}`);
   assert.ok(await page.$(".admin-more-btn"), "admin cards keep their ⋯ More options button");
   log("admin deal ok:", checks.join(" · "));
+  // The admin screen has its own address: a refresh stays there.
+  assert.equal(new globalThis.URL(page.url()).pathname, "/admin");
+  await page.reload({ waitUntil: "networkidle0" });
+  await page.waitForSelector("button::-p-text(+ New Puzzle)", { timeout: 15000 });
+  assert.equal(new globalThis.URL(page.url()).pathname, "/admin", "refresh keeps an admin on /admin");
+  log("admin refresh stays on /admin");
 
   assert.deepEqual(errors, [], "no page errors");
   console.log("\nPASS — daily game, tutorial, archive and admin unchanged");

@@ -33,7 +33,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
 
   // Your own puzzle: its result page shows its status and, later, the guesses.
   const isCreator = view?.role === "creator";
-  useEffect(()=>{ if(isCreator) onOpenResult(puzzleId); },[isCreator, puzzleId, onOpenResult]);
+  useEffect(()=>{ if(isCreator) onOpenResult(puzzleId, { replace:true }); },[isCreator, puzzleId, onOpenResult]);
 
   const friend = useMemo(()=> view && view.role === "solver" && !view.finished_at ? {
     puzzle:view,
