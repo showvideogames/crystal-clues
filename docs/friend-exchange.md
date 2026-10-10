@@ -84,6 +84,28 @@ result alert once it was viewed, a reminder once the period is safe). One
 optional streak reminder per deadline, about 3 hours before. Texts never
 contain clues or card words. Push failures never block sending or playing.
 
+## Puzzles by link (guests)
+
+"Make one for someone new" makes a puzzle with no recipient yet and a secret
+link, `/p/<code>`, to text. The rules live in one place,
+`supabase/migrations/20261011090000_friend_share_links.sql`:
+
+- No account needed to play. Opening the link (or a text-message preview)
+  claims nothing; the first browser that taps **Play** keeps the game, by a
+  random key kept only in that browser (`src/friends/guestKey.js`). The link
+  alone can't continue, see the result or save it.
+- Judged on the server like friend puzzles; no answer before the end.
+- After the game: "Save your result and become friends with Sam" — sign in
+  or sign up, and the finished result moves to that account (once; no
+  duplicate) and the two become friends. A guest finish doesn't start a
+  Friend Streak.
+- Links last 30 days from when they're made. Then the link closes whatever
+  its state: an unfinished game just ends (not a loss) and a finished one can
+  no longer be saved; the sender keeps the puzzle and any replay.
+- The sender's card shows where it stands, "Watch … guesses" when finished,
+  "Send a fresh link" (new code, old link dead, unfinished game cleared;
+  never once finished) and "Stop sharing".
+
 ## Local preview
 
 Requires Docker. Uses the same local stack as the account work.

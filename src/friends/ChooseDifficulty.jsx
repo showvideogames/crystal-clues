@@ -16,7 +16,10 @@ const dailyPreference = () => {
   }
 };
 
-export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, onBack, onHowToPlay }) {
+// A puzzle shared by link uses the same screen with its own heading, a
+// "Play" button, and onStart in place of the friend-puzzle call.
+export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, onBack, onHowToPlay,
+  heading, sub, onStart, startLabel = "Start puzzle", note, backLabel }) {
   const [choice, setChoice] = useState(dailyPreference);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -25,12 +28,12 @@ export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, o
     if (busy) return;
     setBusy(true); setError("");
     try {
-      await api.chooseDifficulty(puzzleId, choice);
+      await (onStart ? onStart(choice) : api.chooseDifficulty(puzzleId, choice));
       onChosen();
     } catch (err) {
       setBusy(false);
       // Already started elsewhere (another tab or device): load that game.
-      if (err.code === "difficulty_locked" || err.code === "already_finished") onChosen();
+      if (err.code === "difficulty_locked" || err.code === "already_finished" || err.code === "taken") onChosen();
       else setError(err.message);
     }
   };
@@ -38,7 +41,8 @@ export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, o
   return (
     <div className="fr-wrap">
       <div className="fr-page fr-choose">
-        <PageHead onBack={onBack} title={title || `${creator}'s puzzle`} sub={title ? `Made for you by ${creator}` : null}/>
+        <PageHead onBack={onBack} backLabel={backLabel} title={heading || title || `${creator}'s puzzle`}
+          sub={sub !== undefined ? sub : title ? `Made for you by ${creator}` : null}/>
 
         <div className="fr-eyebrow"><span id="fr-diff-label">Choose your difficulty</span><InfoTip label="About difficulty">
           {creator} made three bonus cards that don't belong on the board. Your difficulty sets how many of them you're dealt.
@@ -65,8 +69,9 @@ export default function ChooseDifficulty({ puzzleId, creator, title, onChosen, o
         <p className="fr-choose-note"><b>You can't change it once you start.</b></p>
         {error && <div className="fr-msg err">{error}</div>}
         <button className="fr-btn primary" type="button" onClick={start} disabled={busy} aria-busy={busy}>
-          {busy ? <><Spinner/>Dealing…</> : <><span className="fr-btn-ico"><Icon name="play"/></span>Start puzzle</>}
+          {busy ? <><Spinner/>Dealing…</> : <><span className="fr-btn-ico"><Icon name="play"/></span>{startLabel}</>}
         </button>
+        {note && <p className="fr-help" style={{margin:0,textAlign:"center"}}>{note}</p>}
         {onHowToPlay && (
           <p className="fr-foot" style={{marginTop:0}}>New to Cluevoyance? <button type="button" className="fr-link" onClick={onHowToPlay}>How to play</button></p>
         )}

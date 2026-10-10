@@ -17,6 +17,8 @@ import {
 // The friend exchange (inbox, creator, replay) loads on demand so the daily
 // game's first paint never waits for it.
 const FriendsView = lazy(() => import("./friends/FriendsView.jsx"));
+// A puzzle texted as a link (/p/…): playable without an account.
+const SharedPuzzle = lazy(() => import("./friends/SharedPuzzle.jsx"));
 const loadFriendsBadge = () => import("./friends/badge.js");
 
 // ═══════════════════════════════════════════════════════════════
@@ -5134,6 +5136,12 @@ export default function App() {
             onSignOut={handleSignOut}
             onHowToPlay={openTutorial}
           />
+        </Suspense>
+      )}
+      {view==="shared" && (
+        <Suspense fallback={<div className="mhint" style={{padding:28,textAlign:"center"}}>Opening puzzle…</div>}>
+          <SharedPuzzle kit={GAME_KIT} token={route.token} account={acct}
+            onHowToPlay={openTutorial} onPlayDaily={()=>setView("game")}/>
         </Suspense>
       )}
       {view==="admin" && acct.isAdmin && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}

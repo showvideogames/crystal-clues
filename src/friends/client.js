@@ -59,6 +59,21 @@ export const api = {
     p_extras: extras.filter(Boolean).map((s) => ({ cardId: s.cardId, orientation: s.orientation })),
     p_clues: clues,
   }),
+  // Puzzles for someone new, shared by link (sender side).
+  createShareLink: (draftId, version, label) => call("create_share_link", { p_draft_id: draftId, p_version: version, p_label: label || "" }),
+  shareLinks: () => call("list_share_links"),
+  stopShareLink: (puzzleId) => call("stop_share_link", { p_puzzle_id: puzzleId }),
+  refreshShareLink: (puzzleId) => call("refresh_share_link", { p_puzzle_id: puzzleId }),
+  // The person with the link: the link code plus this browser's guest key.
+  openShared: (token, key) => call("open_shared_puzzle", { p_token: token, p_guest_key: key }),
+  startShared: (token, key, difficulty) => call("start_shared_puzzle", { p_token: token, p_guest_key: key, p_difficulty: difficulty }),
+  guessShared: (token, key, { guessNo, board, extras, clues }) => call("submit_shared_guess", {
+    p_token: token, p_guest_key: key, p_guess_no: guessNo,
+    p_board: board.map((s) => ({ cardId: s.cardId, orientation: s.orientation })),
+    p_extras: extras.filter(Boolean).map((s) => ({ cardId: s.cardId, orientation: s.orientation })),
+    p_clues: clues,
+  }),
+  claimShared: (token, key) => call("claim_shared_puzzle", { p_token: token, p_guest_key: key }),
   savePush: (sub) => call("save_push_subscription", { p_endpoint: sub.endpoint, p_p256dh: sub.p256dh, p_auth: sub.auth }),
   deletePush: (endpoint) => call("delete_push_subscription", { p_endpoint: endpoint }),
   wordBank: async () => {

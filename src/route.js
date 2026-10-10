@@ -11,7 +11,8 @@
 //   /friends                       Friends hub
 //   /friends/play/:puzzleId        a friend's puzzle (or, for its creator, its status)
 //   /friends/guesses/:puzzleId     the guesses replay and results
-//   /friends/make/:friendshipId    making a puzzle for that friend
+//   /friends/make/:friendshipId    making a puzzle for that friend ("new": for someone new, by link)
+//   /p/:code                       a puzzle shared by link: playable without an account
 //
 // Links from before these addresses keep working: /?invite=TOKEN (invite
 // links already sent) and /?friends=1[&puzzle=…|&result=…] (notifications).
@@ -59,6 +60,7 @@ export function parsePath(pathname, { friends = false } = {}) {
   if (a === "archive" && parts.length === 1) return { view: "archive" };
   if (a === "archive" && parts.length === 2 && /^\d{1,20}$/.test(b)) return { view: "game", archiveId: b };
   if (a === "admin" && parts.length === 1) return { view: "admin" };
+  if (friends && a === "p" && parts.length === 2 && /^[A-Za-z0-9_-]{16,64}$/.test(b)) return { view: "shared", token: b };
   if (friends && a === "friends") {
     if (parts.length === 1) return { view: "friends", screen: { name: "inbox" } };
     const name = { play: "play", guesses: "result", make: "create" }[b];
@@ -76,6 +78,8 @@ export const paths = {
   play: (id) => `/friends/play/${encodeURIComponent(id)}`,
   result: (id) => `/friends/guesses/${encodeURIComponent(id)}`,
   make: (friendshipId) => `/friends/make/${encodeURIComponent(friendshipId)}`,
+  makeForNew: () => "/friends/make/new",
+  shared: (token) => `/p/${encodeURIComponent(token)}`,
 };
 
 /**
