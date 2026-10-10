@@ -1,14 +1,22 @@
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo, lazy, Suspense } from "react";
 import { flushSync } from "react-dom";
 import { seeded01, shuffleArr } from "./utils/random";
 // ── Shared accounts (see src/account/README.md). The only touch points in this
 //    file are marked "[accounts]". Guests never reach the account branch. ──
-import { SUPABASE_URL, SUPABASE_KEY, OFFLINE_MODE, NOT_CONFIGURED_MESSAGE, announceConfiguration } from "./game/config";
+import { SUPABASE_URL, SUPABASE_KEY, OFFLINE_MODE, NOT_CONFIGURED_MESSAGE, announceConfiguration, FRIENDS_ENABLED } from "./game/config";
 import { authedFetch, getAccessToken } from "./account/supabaseClient";
 import { loadStatsFor, loadCompletionsFor, recordFinishFor, saveCompletionFor } from "./account/historyStore";
 import { useAccount } from "./account/useAccount";
 import AccountMenu from "./account/AccountMenu";
 import ImportPrompt from "./account/ImportPrompt";
+import {
+  CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
+} from "./game/shared";
+
+// The friend exchange (inbox, creator, replay) loads on demand so the daily
+// game's first paint never waits for it.
+const FriendsView = lazy(() => import("./friends/FriendsView.jsx"));
+const loadFriendsBadge = () => import("./friends/badge.js");
 
 // ═══════════════════════════════════════════════════════════════
 //  SUPABASE
@@ -125,12 +133,7 @@ async function dbDeleteWord(word) {
 //  CONSTANTS
 // ═══════════════════════════════════════════════════════════════
 
-const CW_FROM = [3, 0, 1, 2];
-// Puzzles always have 3 extras; difficulty controls how many the player sees
-const DIFFICULTY_EXTRA  = { easy:0, standard:1, expert:2, hardcore:3 };
-const DIFFICULTY_LABELS = { easy:"Easy", standard:"Standard", expert:"Expert", hardcore:"Hardcore" };
 const SLOT_LABELS = ["TL","TR","BR","BL"];
-const MAX_LIVES = 3;
 
 const DEFAULT_STATS = {
   currentStreak:0,
@@ -174,13 +177,6 @@ const normalizeStats = (raw={}) => ({
 
 let _uid = 0;
 const uid = () => `u${++_uid}`;
-
-// Visual word at edge i when card has orientation k:
-//   edge 0=top 1=right 2=bottom 3=left
-const vw = (card, orientation) =>
-  card?.words
-    ? [0,1,2,3].map(e => (card.words[(e - orientation + 4) % 4] ?? ""))
-    : ["","","",""];
 
 // ═══════════════════════════════════════════════════════════════
 //  DEFAULT PUZZLE  (demo — thematically coherent)
@@ -1536,6 +1532,13 @@ body::before{
 
 ::-webkit-scrollbar-thumb{background:rgba(124,58,237,.25)}
 
+/* Friends — one icon beside ? and the gear, so the header stays one row.
+   A small gold dot means a puzzle to play or a result to see. */
+.friends-btn{position:relative}
+.friends-btn.on{color:var(--purple-bright);background:#efe7fc}
+.friends-dot{position:absolute;top:4px;right:3px;width:8px;height:8px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 2px #fff}
+
 `;
 // ═══════════════════════════════════════════════════════════════
 //  HELPERS
@@ -1571,6 +1574,69 @@ function biasedShuffle(cardIds, solution) {
     if (score < bestScore) { best = candidate; bestScore = score; }
   }
   return best;
+}
+
+// Friend puzzles are judged on the server, which also records every guess.
+// This rebuilds the solver's board after a refresh or on another device:
+//  • local progress is used only if it was saved after the same number of
+//    recorded guesses (so it can't resurrect lives or hide a guess);
+//  • otherwise the board is exactly as it was at the last recorded guess;
+//  • with no guesses yet, it's a fresh deal.
+// Lives always come from the server.
+function isClueRotation(clues, original) {
+  if(!Array.isArray(clues) || clues.length !== 4) return false;
+  let rc=[...original];
+  for(let r=0;r<4;r++){
+    if(rc.every((c,i)=>c===clues[i])) return true;
+    rc=CW_FROM.map(i=>rc[i]);
+  }
+  return false;
+}
+
+function restoreFriendBoard(fp, saved) {
+  const ids = fp.card_order;
+  const guesses = fp.guesses || [];
+  const last = guesses[guesses.length-1] || null;
+  const lives = last ? last.lives_left : (fp.max_lives ?? MAX_LIVES);
+  const guessHistory = guesses.map(g=>{
+    const c = new Set(g.correct);
+    const e = si => c.has(si) ? '🔮' : '⚫';
+    return [[e(0),e(1)],[e(3),e(2)]];
+  });
+  const validBoard = (slots) => Array.isArray(slots) && slots.length === ids.length &&
+    new Set(slots.map(s=>s?.cardId)).size === ids.length &&
+    slots.every(s=>ids.includes(s?.cardId) && [0,1,2,3].includes(s.orientation));
+
+  let base = null;
+  if(last){
+    const onBoard = new Set(last.board.map(s=>s.cardId));
+    const tray = Array.isArray(last.extras) && last.extras.length === ids.length - 4 &&
+      last.extras.every(s=>ids.includes(s?.cardId) && !onBoard.has(s.cardId))
+      ? last.extras
+      : ids.filter(id=>!onBoard.has(id)).map(cardId=>({ cardId, orientation:0 }));
+    base = {
+      slots: [...last.board, ...tray].map(s=>({ cardId:s.cardId, orientation:s.orientation })),
+      clues: [...last.clues],
+    };
+    if(!validBoard(base.slots) || !isClueRotation(base.clues, fp.clues)) base = null;
+  }
+  const lockedFromLast = last ? [...last.correct] : [];
+  const knownBadFromLast = last
+    ? [0,1,2,3].filter(i=>!last.correct.includes(i))
+        .map(i=>[i, [`${last.board[i].cardId}:${last.board[i].orientation}`]])
+    : [];
+  const common = { lives, guessHistory, base, wrong:[] };
+
+  if(saved && saved.guessCount === guesses.length && validBoard(saved.slots) &&
+     isClueRotation(saved.clues, fp.clues)){
+    return { ...common, restored:true, slots:saved.slots, clues:saved.clues,
+      locked: saved.locked || lockedFromLast, knownBad: saved.knownBad || knownBadFromLast };
+  }
+  if(base){
+    return { ...common, restored:true, slots:base.slots, clues:base.clues,
+      locked: lockedFromLast, knownBad: knownBadFromLast };
+  }
+  return { ...common, restored:false };
 }
 
 function bestSubmit(slots4, solution, locked, currentClues, originalClues) {
@@ -1737,16 +1803,18 @@ function AdminPreviewCard({
       >
         ↻
       </button>
-      <button
-        className="admin-more-btn"
-        onPointerDown={stop}
-        onMouseDown={stop}
-        onClick={e=>{ stop(e); onMore(); }}
-        title="More options"
-        aria-label="More options"
-      >
-        ⋯
-      </button>
+      {onMore && (
+        <button
+          className="admin-more-btn"
+          onPointerDown={stop}
+          onMouseDown={stop}
+          onClick={e=>{ stop(e); onMore(); }}
+          title="More options"
+          aria-label="More options"
+        >
+          ⋯
+        </button>
+      )}
     </CardTile>
   );
 }
@@ -2326,16 +2394,25 @@ function GameView({
   difficulty="hardcore",
   tutorialConfig=null,
   onTutorialClose,
+  // Friend puzzle: { puzzle: server view without the answer, submitGuess, onFinished, onStale }.
+  // Guesses are judged by the server; nothing touches daily stats or progress.
+  friend=null,
+  // Creator's preview of their own puzzle: plays normally, records nothing.
+  sandbox=false,
 }) {
+  const friendPuzzle = friend?.puzzle || null;
   // Get the fixed ordered extra cards from the puzzle
   const extraCardIds = useMemo(() => (
-    puzzle.solution.extraCards || 
+    friendPuzzle ? friendPuzzle.card_order.slice(4) :
+    puzzle.solution.extraCards ||
     Object.keys(puzzle.cards).filter(id => !puzzle.solution.slotCards.includes(id)).slice(0,3)
-  ), [puzzle.cards, puzzle.solution.extraCards, puzzle.solution.slotCards]);
+  ), [friendPuzzle, puzzle.cards, puzzle.solution?.extraCards, puzzle.solution?.slotCards]);
 
   // Puzzles always have exactly 3 extra cards stored in solution.extraCards.
   // Difficulty controls how many the player sees, but admire mode should reveal all extras.
-  const numExtra = admireMode ? extraCardIds.length : DIFFICULTY_EXTRA[difficulty] ?? 3;
+  // A friend puzzle arrives with exactly the cards its creator chose to show.
+  const numExtra = friendPuzzle ? extraCardIds.length
+    : admireMode ? extraCardIds.length : DIFFICULTY_EXTRA[difficulty] ?? 3;
   const totalSlots = 4 + numExtra;
   const tutorialActive = !!tutorialConfig;
   const tutorialSteps = tutorialConfig?.steps || [];
@@ -2346,6 +2423,10 @@ function GameView({
   const initSlots = useCallback(()=>{
     if(tutorialActive){
       return (tutorialConfig?.initialSlots || []).map(slot=>({ ...slot }));
+    }
+    if(friendPuzzle){
+      // No answer in the browser to bias against; the intro shuffle follows anyway.
+      return biasedShuffle(friendPuzzle.card_order, null);
     }
     if(admireMode){
       const solvedBoard = puzzle.solution.slotCards.map((cardId,i)=>({
@@ -2358,26 +2439,35 @@ function GameView({
     // Use the fixed visible extras (ordered, not random)
     const chosen = [...solCards, ...visibleExtraIds];
     return biasedShuffle(chosen, puzzle.solution);
-  },[admireMode, extraCardIds, puzzle.solution, tutorialActive, tutorialConfig?.initialSlots, visibleExtraIds]);
+  },[admireMode, extraCardIds, friendPuzzle, puzzle.solution, tutorialActive, tutorialConfig?.initialSlots, visibleExtraIds]);
 
   const alreadySolved = tutorialActive ? false : admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
   const progressKey = `clover_progress_${puzzle.id}`;
-  const savedProgress = (!tutorialActive && !admireMode && !alreadySolved && !forceFresh)
+  const friendProgressKey = friendPuzzle ? `clover_friend_progress_${friendPuzzle.id}` : null;
+  const [friendInit] = useState(()=> friendPuzzle
+    ? restoreFriendBoard(friendPuzzle, loadLS(friendProgressKey, null))
+    : null);
+  const savedProgress = (!friendPuzzle && !sandbox && !tutorialActive && !admireMode && !alreadySolved && !forceFresh)
     ? loadLS(progressKey, null)
     : null;
-  const canRestoreProgress = !!savedProgress &&
+  const canRestoreProgress = friendInit ? friendInit.restored : !!savedProgress &&
     savedProgress.totalSlots === totalSlots &&
     Array.isArray(savedProgress.slots) &&
     Array.isArray(savedProgress.clues);
-  const [slots,setSlots]     = useState(()=> canRestoreProgress ? savedProgress.slots : initSlots());
-  const [clues,setClues]     = useState(()=> canRestoreProgress ? savedProgress.clues : [...puzzle.clues]);
+  const restoredBoard = friendInit ? (friendInit.restored ? friendInit : null)
+    : canRestoreProgress ? savedProgress : null;
+  const [slots,setSlots]     = useState(()=> restoredBoard ? restoredBoard.slots : initSlots());
+  const [clues,setClues]     = useState(()=> restoredBoard ? restoredBoard.clues : [...puzzle.clues]);
   const [locked,setLocked]   = useState(()=> alreadySolved
     ? new Set([0,1,2,3])
-    : canRestoreProgress ? new Set(savedProgress.locked || []) : new Set());
-  const [wrong,setWrong]     = useState(()=> canRestoreProgress ? new Set(savedProgress.wrong || []) : new Set());
-  const [knownBad,setKnownBad] = useState(()=> canRestoreProgress
-    ? new Map((savedProgress.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
+    : restoredBoard ? new Set(restoredBoard.locked || []) : new Set());
+  const [wrong,setWrong]     = useState(()=> restoredBoard ? new Set(restoredBoard.wrong || []) : new Set());
+  const [knownBad,setKnownBad] = useState(()=> restoredBoard
+    ? new Map((restoredBoard.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
     : new Map());
+  // How many guesses the server has recorded, and the board to return to on Reset.
+  const [friendGuessCount,setFriendGuessCount] = useState(()=> friendPuzzle?.guesses?.length || 0);
+  const friendBaseRef = useRef(friendInit?.base || null);
   const [spinning,setSpinning] = useState(new Set());
   const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
@@ -2391,14 +2481,20 @@ function GameView({
   const [feedbackFading,setFbFading] = useState(false);
   const [solved,setSolved]   = useState(()=> tutorialActive ? false : alreadySolved || !!savedProgress?.solved);
   const [lost,setLost]       = useState(()=> !!savedProgress?.lost);
-  const [lives,setLives]     = useState(()=> tutorialActive ? MAX_LIVES : savedProgress?.lives ?? MAX_LIVES);
-  const [guessHistory,setGuessHistory] = useState(()=> tutorialActive ? [] : savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
+  const [lives,setLives]     = useState(()=> tutorialActive ? MAX_LIVES
+    : friendInit ? friendInit.lives : savedProgress?.lives ?? MAX_LIVES);
+  const [guessHistory,setGuessHistory] = useState(()=> tutorialActive ? []
+    : friendInit ? friendInit.guessHistory : savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
   const [showOvr,setShowOvr] = useState(false);
   const [copied,setCopied]   = useState(false);
   const [stats,setStats]     = useState(loadStats);
   const [shakeKey,setShakeKey] = useState(0);
   const [revealPhase,setRevealPhase] = useState(null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
+  // A friend guess is judged over the network: hold the board still until
+  // the verdict is showing (the red/green "done" phase stays playable, as in
+  // the daily game).
+  const friendJudging = !!friendPuzzle && (revealPhase === 'grey' || revealPhase === 'revealing');
   const [showParticles,setShowParticles] = useState(false);
   const tapRotateTimers = useRef(new Map());
   const tapRotateQueued = useRef(new Map());
@@ -2524,7 +2620,7 @@ function GameView({
   const tutorialSlotMatchesSolution = useCallback((slotIndex)=>
     slots[slotIndex]?.cardId === puzzle.solution.slotCards[slotIndex] &&
     slots[slotIndex]?.orientation === puzzle.solution.orientations[slotIndex]
-  ,[slots, puzzle.solution.orientations, puzzle.solution.slotCards]);
+  ,[slots, puzzle.solution?.orientations, puzzle.solution?.slotCards]);
 
   useEffect(()=>{
     if(tutorialActive) setFeedback("");
@@ -2577,8 +2673,8 @@ function GameView({
     tutorialSlotMatchesSolution,
     tutorialStepIndex,
     slots,
-    puzzle.solution.orientations,
-    puzzle.solution.slotCards,
+    puzzle.solution?.orientations,
+    puzzle.solution?.slotCards,
   ]);
 
   // Web Audio victory fanfare — leprechaun-y ascending arpeggio
@@ -2701,6 +2797,20 @@ function GameView({
   const [showRepeatWarning, setShowRepeatWarning] = useState(false);
   const repeatWarnTimer = useRef(null);
   useEffect(()=>{
+    if(friendProgressKey){
+      // Only the arrangement is kept locally; lives and guesses live on the server.
+      if(solved || lost){ removeLS(friendProgressKey); return; }
+      if(isDragging || revealPhase || rotateAnimating) return;
+      saveLS(friendProgressKey, {
+        guessCount: friendGuessCount,
+        slots,
+        clues,
+        locked: [...locked],
+        knownBad: [...knownBad.entries()].map(([k,v])=>[k, [...v]]),
+      });
+      return;
+    }
+    if(sandbox) return;
     if(tutorialActive || admireMode || alreadySolved || solved){
       removeLS(progressKey);
       return;
@@ -2722,7 +2832,7 @@ function GameView({
   },[
     tutorialActive, admireMode, alreadySolved, solved, isDragging, revealPhase, rotateAnimating,
     progressKey, puzzle.id, totalSlots, slots, clues, locked, wrong, knownBad,
-    lives, guessHistory, lost
+    lives, guessHistory, lost, friendProgressKey, friendGuessCount, sandbox
   ]);
 
   // Fade the warning out when all red cards are moved
@@ -2825,6 +2935,8 @@ function GameView({
 
   const handlePD = useCallback((e,si)=>{
     if(locked.has(si) || lost || tutorialComplete) return;
+    // A friend guess is judged over the network; hold the board still meanwhile.
+    if(friendJudging || (friendPuzzle && solved)) return;
     if(tutorialActive && tutorialStepIndex === 0){
       return;
     }
@@ -2901,12 +3013,13 @@ function GameView({
   },[
     slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
     tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext,
-    startTapRotation, rotateAnimating
+    startTapRotation, rotateAnimating, friendPuzzle, friendJudging, solved
   ]);
 
   const handleRotate = useCallback(()=>{
     if(tutorialActive) return;
     if(rotateAnimating) return;
+    if(friendJudging || (friendPuzzle && (solved || lost))) return;
     setRotateAnimating(true);
     setClueRotatePhase("out");
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
@@ -2926,7 +3039,7 @@ function GameView({
         clueRotateTimer.current = null;
       }, 255);
     }, 360);
-  },[rotateAnimating, tutorialActive]);
+  },[rotateAnimating, tutorialActive, friendPuzzle, friendJudging, solved, lost]);
 
   const prevDifficultyRef = useRef(puzzle.difficulty);
 
@@ -2935,6 +3048,8 @@ function GameView({
     const prev = prevDifficultyRef.current;
     const cur  = puzzle.difficulty;
     prevDifficultyRef.current = cur;
+    // A friend puzzle's difficulty was set by its creator and never changes.
+    if(friendPuzzle || !puzzle.solution) return;
 
     const prevExtra = DIFFICULTY_EXTRA[prev]??0;
     const curExtra  = DIFFICULTY_EXTRA[cur]??0;
@@ -2968,11 +3083,12 @@ function GameView({
     setKnownBad(new Map());
     setFeedback("Difficulty lowered — board reshuffled.");
     setTimeout(()=>fadeFeedback(), 2500);
-  },[puzzle.difficulty, puzzle.solution.slotCards, locked, fadeFeedback]);
+  },[puzzle.difficulty, puzzle.solution, friendPuzzle, locked, fadeFeedback]);
 
   const triggerShuffle = useCallback(()=>{
     if(tutorialActive) return;
     if(shuffleBusy.current) return;
+    if(friendJudging || (friendPuzzle && (solved || lost))) return;
     const free=Array.from({length:totalSlots},(_,i)=>i).filter(i=>!locked.has(i));
     if(free.length<2) return;
     shuffleBusy.current = true;
@@ -2999,7 +3115,7 @@ function GameView({
       shuffleBusy.current = false;
       shuffleEndTimer.current = null;
     },440);
-  },[totalSlots,locked,tutorialActive]);
+  },[totalSlots,locked,tutorialActive,friendPuzzle,friendJudging,solved,lost]);
 
   const handleShuffle = useCallback(()=>{
     triggerShuffle();
@@ -3017,6 +3133,16 @@ function GameView({
 
   const handleReset = useCallback(()=>{
     if(tutorialActive) return;
+    if(friendPuzzle){
+      // Guesses already made stand: Reset only undoes rearranging since the
+      // last one (or re-deals, before the first). Lives are never restored.
+      if(friendJudging || solved || lost) return;
+      const base = friendBaseRef.current;
+      setSlots(base ? base.slots.map(s=>({ ...s })) : initSlots());
+      setClues(base ? [...base.clues] : [...puzzle.clues]);
+      setWrong(new Set());
+      return;
+    }
     setSlots(initSlots()); setClues([...puzzle.clues]);
     setLocked(new Set()); setWrong(new Set()); setKnownBad(new Map());
     setRevealPhase(null); setRevealColors({}); setShowParticles(false); setFlipReveal({});
@@ -3024,7 +3150,7 @@ function GameView({
     setLives(MAX_LIVES); setGuessHistory([]);
     setShowOvr(false); setCopied(false);
     onReset?.();
-  },[initSlots,puzzle,onReset,tutorialActive]);
+  },[initSlots,puzzle,onReset,tutorialActive,friendPuzzle,friendJudging,solved,lost]);
 
   const handleSubmit = useCallback(()=>{
     if(tutorialActive){
@@ -3058,21 +3184,30 @@ function GameView({
     if(solved || lost || revealPhase) return;
     if(repeatedBad.size > 0){ setShowRepeatWarning(true); return; }
     onGameStart?.();
-    const res=bestSubmit(slots.slice(0,4),puzzle.solution,locked,clues,puzzle.clues);
-    const isWin = res.correct.size===4;
-
-    // Build 2x2 emoji grid: slots 0=TL,1=TR,3=BL,2=BR (board grid order)
-    const e = (si) => (locked.has(si) || res.correct.has(si)) ? '🔮' : '⚫';
-    const guessRow = [
-      [e(0), e(1)],
-      [e(3), e(2)],
-    ];
+    // Daily and preview games are judged here; friend puzzles by the server.
+    const recordsStats = !friendPuzzle && !sandbox;
 
     // Phase 1: all unlocked cards go grey + shake together
     setRevealPhase('grey');
     setRevealColors({});
 
-    setTimeout(()=>{
+    // Phase 2 onward, once the guess is judged. `server` is the friend
+    // puzzle's recorded result, which carries the answer only when the
+    // puzzle is over.
+    const reveal = (res, server=null) => {
+      const isWin = res.correct.size===4;
+
+      // Build 2x2 emoji grid: slots 0=TL,1=TR,3=BL,2=BR (board grid order)
+      const e = (si) => (locked.has(si) || res.correct.has(si)) ? '🔮' : '⚫';
+      const guessRow = [
+        [e(0), e(1)],
+        [e(3), e(2)],
+      ];
+      const finish = (delay) => {
+        if(friendPuzzle) setTimeout(()=>friend.onFinished?.(server), delay);
+        else if(!sandbox) setTimeout(()=>setShowOvr(true), delay);
+      };
+
       setRevealPhase('revealing');
       const allSlots = [0,1,2,3].filter(i=>!locked.has(i));
       const colors = {};
@@ -3090,7 +3225,7 @@ function GameView({
                 setGuessHistory(finalHistory);
                 setLocked(new Set([0,1,2,3])); setWrong(new Set());
                 setSolved(true);
-                setStats(updateStats(true, livesUsed, difficulty, puzzle));
+                if(recordsStats) setStats(updateStats(true, livesUsed, difficulty, puzzle));
                 // Set an encouraging message based on lives remaining
                 if(livesLeft === MAX_LIVES)      setFeedback("Perfect solve — not a life lost! ✨");
                 else if(livesLeft === MAX_LIVES-1) setFeedback(`Solved with ${livesLeft} ${livesLeft===1?"life":"lives"} to spare! 🔮`);
@@ -3098,9 +3233,9 @@ function GameView({
                 else                             setFeedback("The mists part — well done! 💫");
                 playVictorySound();
                 setShowParticles(true);
-                setTimeout(()=>setShowOvr(true), 900);
+                finish(900);
                 setTimeout(()=>setShowParticles(false), 5000);
-                onSolved?.(puzzle.id, { livesUsed, difficulty });
+                if(recordsStats) onSolved?.(puzzle.id, { livesUsed, difficulty });
               } else {
                 // record bad placements
                 setKnownBad(prev=>{
@@ -3113,8 +3248,9 @@ function GameView({
                   });
                   return next;
                 });
-                const newLives = lives - 1;
+                const newLives = server ? server.lives_left : lives - 1;
                 const newHistory = [...guessHistory, guessRow];
+                if(friendPuzzle) friendBaseRef.current = { slots: slots.map(s=>({ ...s })), clues: [...clues] };
                 setGuessHistory(newHistory);
                 setShakeKey(k=>k+1);
                 const nl=new Set([...locked,...res.correct]);
@@ -3154,8 +3290,9 @@ function GameView({
                     setClues([...puzzle.clues]);
 
                     // Snap ALL solution cards into place upfront (hidden before flips start)
-                    const solutionSlotCards = puzzle.solution.slotCards;
-                    const solutionOrientations = puzzle.solution.orientations;
+                    const answer = server ? server.solution : puzzle.solution;
+                    const solutionSlotCards = answer.slotCards;
+                    const solutionOrientations = answer.orientations;
 
                     unlockedSlots.forEach((si,idx)=>{
                       const delay=idx*STAGGER;
@@ -3195,18 +3332,18 @@ function GameView({
                       // 5. After last card, show overlay
                       if(idx===unlockedSlots.length-1){
                         setTimeout(()=>{
-                          setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
+                          if(recordsStats) setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
                           setLost(true);
                           setFeedback("");
-                          setTimeout(()=>setShowOvr(true),700);
+                          finish(700);
                         }, delay+FLIP_DOWN+FLIP_UP+200);
                       }
                     });
 
                     if(unlockedSlots.length===0){
-                      setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
+                      if(recordsStats) setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
                       setLost(true);
-                      setTimeout(()=>setShowOvr(true),500);
+                      finish(500);
                     }
                   }, 1400);
                 } else {
@@ -3226,8 +3363,35 @@ function GameView({
           }
         }, idx * 160);
       });
-    }, 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart,tutorialActive]);
+    };
+
+    if(friendPuzzle){
+      const startedAt = Date.now();
+      friend.submitGuess({
+        guessNo: friendGuessCount + 1,
+        board: slots.slice(0,4),
+        extras: slots.slice(4),
+        clues,
+      }).then(server=>{
+        setFriendGuessCount(server.guess_no);
+        const correct = new Set(server.correct);
+        const res = { correct, wrong: new Set([0,1,2,3].filter(i=>!correct.has(i))) };
+        // Keep the familiar pause before the cards turn, however quick the server was.
+        setTimeout(()=>reveal(res, server), Math.max(0, 480 - (Date.now() - startedAt)));
+      }).catch(err=>{
+        // Nothing was recorded (or it was, and the retry will get the same
+        // answer back), so no life is lost here.
+        setRevealPhase(null);
+        setRevealColors({});
+        setFeedback(err?.message || "Couldn't reach Cluevoyance — your guess wasn't counted. Try again.");
+        if(err?.code === "stale_guess" || err?.code === "already_finished") friend.onStale?.();
+      });
+      return;
+    }
+
+    const res=bestSubmit(slots.slice(0,4),puzzle.solution,locked,clues,puzzle.clues);
+    setTimeout(()=>reveal(res), 480);
+  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox]);
 
   const renderSlot = useCallback(si=>{
     const s=slots[si];
@@ -3455,19 +3619,19 @@ function GameView({
 //  EDITABLE CLUE TAB (admin)
 // ═══════════════════════════════════════════════════════════════
 
-function EditableClueTab({ text, pos, onChange }) {
+function EditableClueTab({ text, pos, onChange, placeholder = "+ clue", label }) {
   const [editing,setEditing] = useState(false);
   const [val,setVal]         = useState(text || "");
   const commit = () => { setEditing(false); onChange(val.trim()||""); };
   return editing ? (
-    <input className={`ctab editing ${pos}`} value={val}
+    <input className={`ctab editing ${pos}`} value={val} aria-label={label}
       onChange={e=>setVal(e.target.value)}
       onBlur={commit}
       onKeyDown={e=>{if(e.key==="Enter")e.target.blur();if(e.key==="Escape"){setVal(text);setEditing(false);}}}
       autoFocus/>
   ) : (
     <div className={`ctab ${pos} editable`} onClick={()=>{setVal(text || "");setEditing(true);}}>
-      {text||<span className="ctab-ph">+ clue</span>}
+      {text||<span className="ctab-ph">{placeholder}</span>}
     </div>
   );
 }
@@ -3883,9 +4047,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
   };
 
   const dealRandomCards = () => {
-    // Need 7 cards × 4 words each = 28 words minimum; fall back to repeating bank if small
-    const bank = [...wordBank];
-    if(bank.length < 4) return; // not enough words to do anything useful
+    if(wordBank.length < 4) return; // not enough words to do anything useful
 
     // A fresh blank puzzle never prompts — only warn when it would actually
     // overwrite something the creator has already typed.
@@ -3894,34 +4056,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
       return;
     }
 
-    // Shuffle the bank
-    for(let i=bank.length-1;i>0;i--){
-      const j=Math.floor(Math.random()*(i+1));[bank[i],bank[j]]=[bank[j],bank[i]];
-    }
-
-    // Build a pool that repeats the bank if needed to fill 28 words
-    const pool = [];
-    while(pool.length < 28) pool.push(...bank);
-    // Shuffle the pool
-    for(let i=pool.length-1;i>0;i--){
-      const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];
-    }
-
-    // Create 7 cards: 4 solution + 3 extra
-    const TOTAL = 7;
-    const newCards = {};
-    const newSlots = [];
-    for(let c=0;c<TOTAL;c++){
-      const id = uid();
-      const words = [
-        pool[c*4]   || '',
-        pool[c*4+1] || '',
-        pool[c*4+2] || '',
-        pool[c*4+3] || '',
-      ].map(w=>w.toUpperCase());
-      newCards[id] = { id, words };
-      newSlots.push({ cardId:id, orientation: Math.floor(Math.random()*4) });
-    }
+    const { cards:newCards, slots:newSlots } = dealCardsFromBank(wordBank, uid);
 
     setAdmin(p=>({
       ...p,
@@ -3971,32 +4106,13 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
   const selectPrevCard = useCallback(()=>selectAdjacentCard(-1),[selectAdjacentCard]);
   const selectNextCard = useCallback(()=>selectAdjacentCard(1),[selectAdjacentCard]);
 
-  const validation = useMemo(()=>{
-    const clueCount = admin.clues.filter(c=>c?.trim()).length;
-    const missingClues = Math.max(0, 4 - clueCount);
-    const activeSlots = admin.slots.slice(0,7);
-    let blankEdges = 0;
-    const seen = new Set();
-    const duplicates = new Set();
-    activeSlots.forEach(s=>{
-      const words = admin.cards[s.cardId]?.words || [];
-      words.forEach((w)=>{
-        const v = (w || "").trim().toUpperCase();
-        if(!v){
-          blankEdges += 1;
-          return;
-        }
-        if(seen.has(v)) duplicates.add(v);
-        seen.add(v);
-      });
-    });
-    return {
-      missingClues,
-      blankEdges,
-      duplicateCount: duplicates.size,
-      canPublish: missingClues===0 && blankEdges===0,
-    };
-  },[admin.clues, admin.slots, admin.cards]);
+  const validation = useMemo(()=>checkBoard({
+    clues: admin.clues,
+    // Admin counts only the cards actually present (deleting one is allowed).
+    slots: admin.slots,
+    cards: admin.cards,
+    cardCount: Math.min(7, admin.slots.length),
+  }),[admin.clues, admin.slots, admin.cards]);
 
   const renderSlot = si => {
     const s=admin.slots[si];
@@ -4710,14 +4826,6 @@ function ArchiveView({ onPlay }) {
 //  SETTINGS SHEET
 // ═══════════════════════════════════════════════════════════════
 
-const DIFF_OPTIONS = [
-  { key:"easy",     icon:"✨", name:"Easy",         desc:"4 cards, no extras" },
-  { key:"standard", icon:"🌙", name:"Standard",    desc:"4 cards + 1 extra" },
-  { key:"expert",   icon:"🌕", name:"Expert",       desc:"4 cards + 2 extras" },
-  { key:"hardcore", icon:"🌑", name:"Hardcore",     desc:"4 cards + 3 extras" },
-];
-
-const DIFF_RANK = { easy:0, standard:1, expert:2, hardcore:3 };
 
 function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose }) {
   const currentRank = DIFF_RANK[difficulty] ?? 1;
@@ -4764,14 +4872,46 @@ function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose
 //  ROOT APP
 // ═══════════════════════════════════════════════════════════════
 
+// What the friend exchange needs from the game, handed over explicitly so
+// the lazily loaded Friends module never imports this file back.
+const GAME_KIT = { GameView, Board, CardTile, AdminPreviewCard, EditableClueTab, DragGhost };
+
+// Friends deep links: ?invite=TOKEN from a friend's link, and
+// ?friends=1 (&puzzle=… / &result=…) from a notification.
+function readFriendsIntent(){
+  if(!FRIENDS_ENABLED) return null;
+  try{
+    const q = new URLSearchParams(window.location.search);
+    if(!q.get("invite") && !q.get("friends")) return null;
+    const intent = { invite:q.get("invite"), puzzle:q.get("puzzle"), result:q.get("result") };
+    // Leave a clean address so a refresh doesn't replay the link.
+    window.history.replaceState(null, "", window.location.pathname);
+    return intent;
+  } catch{
+    return null;
+  }
+}
+
+// Before a sign-out: detach this device's notifications from the account
+// (needs the session, so it runs first) and forget an invite opened here,
+// so the next person on this browser starts clean.
+async function leaveFriends(){
+  if(!FRIENDS_ENABLED) return;
+  await import("./friends/session.js").then(m=>m.leaveFriendsOnThisDevice()).catch(()=>{});
+}
+
 export default function App() {
-  const [view,setView]           = useState("game");
+  const [friendsIntent,setFriendsIntent] = useState(readFriendsIntent);
+  const [friendsUnread,setFriendsUnread] = useState(0);
+  const [view,setView]           = useState(()=> friendsIntent ? "friends" : "game");
   const [archivePuzzle,setAP]    = useState(null);
   // [accounts] who is signed in, whether guest history awaits a decision,
   // and a counter that bumps whenever the account's history changed.
   const acct = useAccount();
   const [compsTick,setCompsTick] = useState(0);
   const completions = useMemo(()=>loadCompletions(), [compsTick, acct.historyVersion]);
+  const { signOut:accountSignOut } = acct;
+  const handleSignOut = useCallback(async ()=>{ await leaveFriends(); await accountSignOut(); setView("game"); },[accountSignOut]);
   const [showSettings,setShowSettings] = useState(false);
   const [showTutorial,setShowTutorial] = useState(false);
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
@@ -4837,6 +4977,31 @@ export default function App() {
     return ()=>document.head.removeChild(el);
   },[]);
 
+  // The Friends dot: new puzzles to play or results to see. Signed-out
+  // players never load the Friends code at all.
+  const friendsAccountId = acct.status === "signed_in" ? acct.account?.user_id : null;
+  useEffect(()=>{
+    if(!FRIENDS_ENABLED || !friendsAccountId) return;
+    let cancelled = false;
+    const tick = () => {
+      if(document.visibilityState !== "visible") return;
+      loadFriendsBadge()
+        .then(m=>m.fetchUnread())
+        .then(n=>{ if(!cancelled) setFriendsUnread(n); })
+        .catch(()=>{});
+    };
+    tick();
+    const timer = window.setInterval(tick, 60000);
+    document.addEventListener("visibilitychange", tick);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", tick);
+    };
+  },[friendsAccountId]);
+  // Another account (or nobody) signed in here: the last account's dot goes.
+  const shownUnread = friendsAccountId ? friendsUnread : 0;
+
   const activePuzzle = useMemo(()=>{
     const base = (view==="game" && archivePuzzle) ? archivePuzzle : todayPuzzle;
     return { ...base, difficulty };
@@ -4894,13 +5059,20 @@ export default function App() {
                 Admin
               </button>
             )}
+            {FRIENDS_ENABLED && (
+              <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>setView("friends")}
+                title="Friends" aria-label={shownUnread ? `Friends — ${shownUnread} new` : "Friends"}>
+                <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.8-5.2 5.5-5.2s4.9 1.9 5.5 5.2"/><circle cx="16.6" cy="9" r="2.5"/><path d="M15.6 14.3c2.5-.3 4.4 1.3 4.9 4.3"/></svg>
+                {shownUnread>0 && <span className="friends-dot" aria-hidden="true"/>}
+              </button>
+            )}
             <AccountMenu
               status={acct.status}
               account={acct.account}
               message={acct.message}
               onSignIn={acct.signIn}
-              onSignOut={async ()=>{ await acct.signOut(); setView("game"); }}
-              onDelete={acct.deleteAccount}
+              onSignOut={handleSignOut}
+              onDelete={async ()=>{ await leaveFriends(); return acct.deleteAccount(); }}
               onDismissMessage={acct.dismissMessage}
             />
             <button className="gear-btn help-btn" onClick={openTutorial} title="How To Play" aria-label="How To Play">
@@ -4928,6 +5100,19 @@ export default function App() {
           : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
       })()}
       {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive}/>}
+      {view==="friends" && (
+        <Suspense fallback={<div className="mhint" style={{padding:28,textAlign:"center"}}>Opening Friends…</div>}>
+          <FriendsView
+            kit={GAME_KIT}
+            account={acct}
+            intent={friendsIntent}
+            onIntentHandled={()=>setFriendsIntent(null)}
+            onUnreadChange={setFriendsUnread}
+            onPlayDaily={()=>setView("game")}
+            onSignOut={handleSignOut}
+          />
+        </Suspense>
+      )}
       {view==="admin" && acct.isAdmin && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
       {showTutorial && <TutorialPracticeOverlay onClose={closeTutorial} />}
       {acct.importPending && <ImportPrompt onAdd={acct.addMyProgress} onStartFresh={acct.startFresh} />}

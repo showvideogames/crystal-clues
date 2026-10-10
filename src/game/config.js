@@ -47,3 +47,13 @@ export function announceConfiguration() {
     console.info("[cluevoyance] accounts are off (no VITE_PLATFORM_DISCOVERY_URL, or VITE_ACCOUNTS_ENABLED=false); guest-only build.");
   }
 }
+
+/**
+ * Friends (asynchronous puzzle exchange). Off unless the build sets
+ * VITE_FRIENDS=1, and it needs shared accounts: every Friends action belongs
+ * to a signed-in Cluevoyance account, so a guest-only build never shows it.
+ */
+export const FRIENDS_ENABLED = ACCOUNTS_ENABLED && trim(import.meta.env.VITE_FRIENDS) === "1";
+
+/** Web-push public key; empty = notifications not set up (the in-app inbox still works). */
+export const VAPID_PUBLIC_KEY = trim(import.meta.env.VITE_VAPID_PUBLIC_KEY);
