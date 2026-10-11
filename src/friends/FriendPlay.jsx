@@ -105,6 +105,8 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
         <span className="grow"/>
         <span className="fr-chip">{creator}'s puzzle{view.difficulty && <span>· {DIFFICULTY_LABELS[view.difficulty]}</span>}</span>
         {result && !showDone && <ResultsButton onClick={()=>setShowDone(true)}/>}
+        {/* The moves are recorded for the replay (moveLog.js): say so while playing. */}
+        {!finished && <p className="fr-recnote">{creator} can watch a replay of your moves.</p>}
       </div>
 
       {finished ? (

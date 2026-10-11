@@ -151,6 +151,7 @@ try {
   await samPage.setViewport(PHONE); await debPage.setViewport(PHONE);
   await signInBrowser(samPage, sam, `/friends/play/${pid}`);
   await samPage.waitForSelector(".csurface .ctile");
+  assert.equal(await samPage.$eval(".fr-recnote", (e) => e.textContent), "Deb can watch a replay of your moves.");
   const stopSam = await record(samPage, "Sam plays Deb's puzzle\n(sped up 1.5×)", 1.5);
   await sleep(1400);   // the intro shuffle
 
@@ -215,10 +216,19 @@ try {
   // Deb watches.
   const before = (await admin.from("friend_puzzles").select("outcome,lives_used,finished_at,creator_seen_result_at").eq("id", pid).single()).data;
   const streakBefore = (await admin.from("friendships").select("*").eq("id", fid).single()).data;
-  await signInBrowser(debPage, deb, `/friends/guesses/${pid}`);
+  // Deb has news: the green dot on the header icon and on Sam's card.
+  const unseen = async () => (await rpc(deb.client, "get_friends_inbox")).friends.find((f) => f.friendship_id === fid).unseen_result;
+  assert.ok(await unseen(), "the finished result is unread before Deb opens it");
+  await signInBrowser(debPage, deb, "/friends");
+  await debPage.waitForSelector(".fr-friend .fr-dot-new");
+  await debPage.waitForSelector(".friends-dot");
+  await debPage.locator("button.fr-btn.primary::-p-text(Watch Sam's guesses)").click();
   await debPage.waitForSelector(".fr-anim .fr-playall");
   const seenAt = (await admin.from("friend_puzzles").select("creator_seen_result_at").eq("id", pid).single()).data.creator_seen_result_at;
-  assert.ok(seenAt, "opening the result marks it seen, as before");
+  assert.ok(seenAt, "opening the replay marks the result seen, as before");
+  assert.equal(await unseen(), null, "and it's no longer unread");
+  await debPage.waitForFunction(() => !document.querySelector(".friends-dot"), { timeout: 8000 });
+  log("opening the replay marked it seen; the header dot cleared");
   const stopDeb = await record(debPage, "Deb watches the replay\n(real speed)");
   await sleep(1200);
   await debPage.locator(".fr-anim .fr-playall").click();
@@ -269,6 +279,13 @@ try {
   // Guess by guess is still there.
   await debPage.locator(".fr-seg button::-p-text(Guess by guess)").click();
   await debPage.waitForSelector(".fr-steps");
+  // Back on Friends: Sam's card has no dot; the replay stays one tap away.
+  await debPage.locator(".fr-head .fr-back").click();
+  await debPage.waitForSelector(".fr-friend");
+  assert.equal(await debPage.$(".fr-dot-new"), null, "no green dot left on Friends");
+  assert.equal(await debPage.$(".friends-dot"), null, "no header dot");
+  await debPage.waitForSelector("::-p-text(Watch Sam's guesses)");
+  log("back on Friends: no dots; Watch Sam's guesses still there");
   log("Deb watched the replay; result, streak and log unchanged");
 
   // A guest link: moves recorded through the link and guest key.
