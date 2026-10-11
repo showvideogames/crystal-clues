@@ -69,6 +69,14 @@ async function signIn(page, acct, name, { invitedBy, shotName } = {}) {
 // Who Friends says is signed in: the name on the Profile card.
 const signedInAs = (page) => page.$eval(".fr-profile .fr-friend-name", (el) => el.textContent);
 
+// A finished puzzle opens on the every-move replay (its moves were recorded);
+// the guess-by-guess view is one tab away.
+async function openGuessByGuess(page) {
+  await page.waitForSelector(".fr-anim .fr-playall");
+  await page.locator(".fr-seg button::-p-text(Guess by guess)").click();
+  await page.waitForSelector(".fr-replay");
+}
+
 const openFriends = (page) => page.locator('button[aria-label^="Friends"]').click();
 
 // A signed-in API client for reading the puzzle's answer as its creator —
@@ -388,7 +396,7 @@ try {
   await shot(deb, "12-deb-inbox-play-and-result-390", { ...PHONE, width: 390, height: 844 });
   await deb.setViewport(PHONE);
   await click(deb, "Watch Sam's guesses");
-  await deb.waitForSelector(".fr-replay");
+  await openGuessByGuess(deb);
   await shot(deb, "12b-result-replay-entry-375");
   await shot(deb, "12b-result-replay-entry-360", { ...PHONE, width: 360, height: 780 });
   await deb.setViewport(PHONE);
@@ -454,7 +462,7 @@ try {
   // 10. Sam sees Deb's three guesses and the answer.
   await sam.reload(); await openFriends(sam);
   await click(sam, "Watch Deb's guesses");
-  await sam.waitForSelector(".fr-replay");
+  await openGuessByGuess(sam);
   assert.ok(await sam.$(".fr-playall"), "the replay can play through on its own");
   const dots = await sam.$$eval(".fr-step-dot", (d) => d.map((x) => x.getAttribute("aria-label")));
   assert.deepEqual(dots, ["Guess 1", "Guess 2", "Guess 3", "The answer"]);

@@ -81,6 +81,7 @@ export default function SharedPuzzle({ kit, token, account, onHowToPlay, onPlayD
       return s.puzzle;
     },
     guess: (g)=>api.guessShared(token, key, g),
+    saveMoves: (batch)=>api.saveSharedMoves(token, key, batch),
   }),[token, key]);
 
   if(error) return <Note title="Couldn't open this puzzle" text={error} onPlayDaily={onPlayDaily}/>;

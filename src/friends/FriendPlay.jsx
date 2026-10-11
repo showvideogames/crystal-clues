@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { api } from "./client";
 import { DIFFICULTY_LABELS } from "../game/shared";
 import { livesLeftPhrase } from "./format";
@@ -7,6 +7,7 @@ import { ResultSheet, ResultsButton } from "./ResultSheet.jsx";
 import { useServerNow } from "./streakClock";
 import { friendPuzzleForGame } from "./puzzle";
 import ChooseDifficulty from "./ChooseDifficulty.jsx";
+import { createMoveRecorder } from "./moveLog";
 
 // Solving a friend's puzzle on the familiar board. The browser never has the
 // answer: each Submit is judged and recorded by the server, which returns
@@ -15,7 +16,7 @@ import ChooseDifficulty from "./ChooseDifficulty.jsx";
 // The same screen plays a puzzle shared by link (SharedPuzzle.jsx): then
 // `source` opens and judges it through the link, and `guest` replaces the
 // friend-only actions with the one offer to save the result.
-//   source: { open(), guess(g) }        default: this account's friend puzzle
+//   source: { open(), guess(g), saveMoves(b) }   default: this account's friend puzzle
 //   guest:  { saveLabel, onSave, backLabel }
 
 export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult, onHowToPlay, onViewed, source, guest }) {
@@ -42,13 +43,29 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
     return ()=>clearTimeout(t);
   },[load, loadCount]);
 
+  // The board actions for the animated replay (moveLog.js): saved in batches
+  // while playing. Opening the puzzle again also sends anything an earlier
+  // visit left unsent (until shortly after the finish).
+  const recorder = useRef(null);
+  const saveMoves = source?.saveMoves;
+  const solverId = view?.role === "solver" && view.difficulty ? view.id : null;
+  // A layout effect, so it is ready before the board records where it starts.
+  useLayoutEffect(()=>{
+    if(!solverId) return undefined;
+    const r = createMoveRecorder(solverId, (batch)=> saveMoves ? saveMoves(batch) : api.saveMoves(solverId, batch));
+    recorder.current = r;
+    return ()=>{ recorder.current = null; r.dispose(); };
+  },[solverId, saveMoves]);
+
   // Your own puzzle: its result page shows its status and, later, the guesses.
   const isCreator = view?.role === "creator";
   useEffect(()=>{ if(isCreator) onOpenResult(puzzleId, { replace:true }); },[isCreator, puzzleId, onOpenResult]);
 
   const friend = useMemo(()=> view && view.role === "solver" && !view.finished_at ? {
     puzzle:view,
-    submitGuess:(g)=> source ? source.guess(g) : api.guess(view.id, g),
+    // Moves so far go out alongside the guess, so the replay has them.
+    submitGuess:(g)=>{ recorder.current?.flush(); return source ? source.guess(g) : api.guess(view.id, g); },
+    record:(action)=>recorder.current?.record(action),
     onFinished:(result)=>{ setDone(result); setShowDone(true); },
     // Another tab or device moved the puzzle on: reload the server's truth.
     onStale:()=>setLoadCount(c=>c+1),
@@ -88,6 +105,8 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
         <span className="grow"/>
         <span className="fr-chip">{creator}'s puzzle{view.difficulty && <span>· {DIFFICULTY_LABELS[view.difficulty]}</span>}</span>
         {result && !showDone && <ResultsButton onClick={()=>setShowDone(true)}/>}
+        {/* The moves are recorded for the replay (moveLog.js): say so while playing. */}
+        {!finished && <p className="fr-recnote">{creator} can watch a replay of your moves.</p>}
       </div>
 
       {finished ? (

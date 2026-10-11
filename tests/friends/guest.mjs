@@ -135,7 +135,7 @@ try {
   await waitText(s, "Dad solved it");
   await shot(s, "g07-sender-hub-finished");
   await click(s, "Watch Dad's guesses");
-  await s.waitForSelector(".fr-replay");
+  await s.waitForSelector(".fr-anim .fr-playall");   // every move: the guest's play was recorded
   assert.ok((await text(s)).includes("Played by link"));
   await shot(s, "g08-sender-replay");
 

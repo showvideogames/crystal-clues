@@ -76,6 +76,14 @@ export const api = {
     p_clues: clues,
   }),
   claimShared: (token, key) => call("claim_shared_puzzle", { p_token: token, p_guest_key: key }),
+  // The board actions behind the animated replay (moveLog.js).
+  saveMoves: (puzzleId, { session, from, actions }) => call("save_friend_moves", {
+    p_puzzle_id: puzzleId, p_session: session, p_from: from, p_actions: actions,
+  }),
+  saveSharedMoves: (token, key, { session, from, actions }) => call("save_shared_moves", {
+    p_token: token, p_guest_key: key, p_session: session, p_from: from, p_actions: actions,
+  }),
+  moves: (puzzleId) => call("get_friend_moves", { p_puzzle_id: puzzleId }),
   savePush: (sub) => call("save_push_subscription", { p_endpoint: sub.endpoint, p_p256dh: sub.p256dh, p_auth: sub.auth }),
   deletePush: (endpoint) => call("delete_push_subscription", { p_endpoint: endpoint }),
   wordBank: async () => {
