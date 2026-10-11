@@ -30,11 +30,13 @@ const linkState = async (sam, puzzleId) => (await rpc(sam.client, "list_share_li
 async function writeClues(page, clues) {
   const order = [clues[0], clues[3], clues[1], clues[2]]; // DOM: top, left, right, bottom
   for (let i = 0; i < 4; i++) {
-    await (await page.$$(".fr-board-stage .ctab.editable"))[i].click();
-    await page.waitForSelector(".fr-board-stage input.ctab.editing");
+    const pill = (await page.$$(".fr-board-stage .ctab.editable"))[i];
+    await pill.evaluate((el) => el.scrollIntoView({ block: "center" }));   // clear of the sticky action bar
+    await pill.click();
+    await page.waitForSelector(".fr-sheet input");
     await page.keyboard.type(order[i]);
     await page.keyboard.press("Enter");
-    await sleep(150);
+    await page.waitForSelector(".fr-sheet", { hidden: true });
   }
 }
 
@@ -56,7 +58,7 @@ try {
   await click(s, "Make one for someone new");
   await s.waitForSelector(".fr-board-stage");
   await waitText(s, "Make one for someone new");
-  await click(s, "Deal random cards");
+  await click(s, "Deal Random Cards");
   await sleep(300);
   await writeClues(s, ["OCEAN", "NIGHT", "GARDEN", "TOYS"]);
   await s.locator('input[aria-label="Who it\'s for"]').fill("Dad");

@@ -3,7 +3,7 @@
    screen. Cinzel for headings and clue pills; Raleway for everything read.
    Uses the app's own tokens (--bg, --text, --muted, --line…). */
 
-.fr-wrap,.fr-game-shell,.fr-done{
+.fr-wrap,.fr-game-shell,.fr-done,.fr-sheet{
   --fr-primary:#6526d9;--fr-primary-press:#5019b8;--fr-primary-soft:#f2ebfe;--fr-primary-soft-2:#e8dcfd;
   --fr-ring:0 0 0 3px #fff,0 0 0 5px rgba(101,38,217,.55);
   --fr-ok:#1d7a52;--fr-ok-bg:#e6f5ee;--fr-warn:#8a5a00;--fr-warn-bg:#fdf3dc;--fr-bad:#a3223f;--fr-bad-bg:#fdecef;
@@ -176,13 +176,46 @@
 .fr-rules li{margin-bottom:6px}
 
 /* ── Creator ───────────────────────────────────────────────────────── */
-.fr-deal{justify-content:flex-start;gap:12px;border-radius:18px;min-height:58px;padding:10px 16px;box-shadow:var(--fr-shadow)}
-.fr-deal .fr-rowbtn-ico{width:36px;height:36px}
+.fr-deal{justify-content:center;gap:8px;border-radius:18px;min-height:56px;padding:10px 16px;box-shadow:var(--fr-shadow)}
+/* The creator's way back: a real button, not just a text link. */
+.fr-creator .fr-head .fr-back{margin:0 0 6px;padding:0 16px 0 10px;min-height:44px;border-radius:14px;
+  background:#fff;border:1.5px solid var(--fr-border-strong);color:var(--fr-primary);font-weight:700;
+  box-shadow:0 1px 2px rgba(63,26,114,.06)}
+.fr-creator .fr-head .fr-back:hover{background:var(--fr-primary-soft);color:var(--fr-primary)}
+.fr-creator .fr-head .fr-back:active{background:var(--fr-primary-soft-2)}
 .fr-board{display:flex;flex-direction:column;align-items:center;gap:10px;margin:4px -8px 0}
 .fr-board-stage{--cs:min(108px, calc((100vw - 132px) / 2));--cg:10px;
   display:flex;flex-direction:column;align-items:center;overflow:visible}
 .fr-board-stage .csurface{background:transparent}
-.fr-board-hint{font-size:13px;line-height:1.45;color:var(--muted);text-align:center;margin:0 12px;max-width:340px}
+/* Clue pills are buttons here (the editor sheet does the typing). */
+.fr-board .fr-clue-btn{appearance:none;-webkit-appearance:none;padding:0;line-height:1.2;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent}
+.fr-board .fr-clue-btn:focus-visible{outline:none;box-shadow:var(--fr-ring)}
+/* The clue being edited keeps its ring, even under a sticky phone :hover. */
+.fr-board .ctab.fr-clue-btn.active,.fr-board .ctab.fr-clue-btn.active:hover{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--fr-primary)}
+/* "How to make a puzzle": the longer instructions, one tap away. */
+.fr-howto{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;padding:0 12px;margin-top:-6px}
+.fr-howto-btn{appearance:none;background:none;border:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 10px;
+  border-radius:12px;cursor:pointer;font-family:var(--fu);font-size:14.5px;font-weight:700;color:var(--fr-primary)}
+.fr-howto-btn:hover{background:var(--fr-primary-soft)}
+.fr-howto-btn:focus-visible{outline:none;box-shadow:var(--fr-ring)}
+.fr-howto-body{margin:0;padding:12px 14px 12px 30px;max-width:380px;border-radius:16px;background:#fff;border:1px solid var(--fr-border);
+  font-size:14px;line-height:1.5;color:var(--muted);display:flex;flex-direction:column;gap:6px;text-align:left}
+/* The editor: docked to the bottom of what's visible, above the keyboard. */
+.fr-sheet{position:fixed;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--fr-border);
+  border-radius:20px 20px 0 0;box-shadow:0 -10px 30px rgba(63,26,114,.14);font-family:var(--fu);color:var(--text)}
+.fr-sheet-inner{max-width:480px;margin:0 auto;padding:12px 16px max(12px, env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px}
+.fr-sheet-head{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;min-height:26px}
+.fr-sheet-title{font-size:15px;font-weight:800}
+.fr-sheet-links{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.fr-sheet-chip{display:inline-flex;align-items:center;min-height:24px;padding:2px 9px;border-radius:999px;background:var(--fr-primary-soft);
+  color:#2d1060;font-size:13px;font-weight:800;letter-spacing:.04em}
+.fr-sheet-chip.blank{background:#fff;border:1.5px dashed #c9b8ec;color:#8a7aa8;font-weight:700;letter-spacing:0}
+.fr-sheet-plus{font-weight:800;color:var(--muted)}
+.fr-sheet-row{display:flex;gap:10px;align-items:stretch;margin:0}
+.fr-sheet-input{flex:1;min-width:0;min-height:50px;text-transform:uppercase;letter-spacing:.04em}
+.fr-sheet-input::placeholder{text-transform:none;letter-spacing:0}
+.fr-sheet-done{flex:none;width:auto;min-height:50px;padding:0 20px}
 .fr-bonus-zone{display:flex;flex-direction:column;gap:6px;margin-top:-2px}
 .fr-bonus-zone .fr-eyebrow{margin:0 4px}
 .fr-bonus-note{font-size:13.5px;line-height:1.45;color:var(--muted);margin:0 4px}
