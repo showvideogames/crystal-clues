@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback, useMemo, lazy, Suspense } from "react";
+import { useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo, lazy, Suspense } from "react";
 import { flushSync } from "react-dom";
 import { seeded01, shuffleArr } from "./utils/random";
 // ── Shared accounts (see src/account/README.md). The only touch points in this
@@ -1600,6 +1600,9 @@ function isClueRotation(clues, original) {
   return false;
 }
 
+// A board as the move log writes it (friends/moveLog.js): "cardId:orientation".
+const packSlots = (slots) => slots.map(s=>`${s.cardId}:${s.orientation}`);
+
 function restoreFriendBoard(fp, saved) {
   const ids = fp.card_order;
   const guesses = fp.guesses || [];
@@ -1624,6 +1627,7 @@ function restoreFriendBoard(fp, saved) {
     base = {
       slots: [...last.board, ...tray].map(s=>({ cardId:s.cardId, orientation:s.orientation })),
       clues: [...last.clues],
+      locked: [...last.correct],
     };
     if(!validBoard(base.slots) || !isClueRotation(base.clues, fp.clues)) base = null;
   }
@@ -2406,8 +2410,18 @@ function GameView({
   friend=null,
   // Creator's preview of their own puzzle: plays normally, records nothing.
   sandbox=false,
+  // The animated replay of a finished friend puzzle (friends/AnimatedReplay.jsx):
+  // { init:{slots,clues}, apiRef, still }. The board starts at init, ignores
+  // the player's input, and is driven through apiRef; `friend` then answers
+  // each Submit with the recorded result. Nothing is saved or sent.
+  replay=null,
 }) {
   const friendPuzzle = friend?.puzzle || null;
+  const replayMode = !!replay;
+  // Friend play records its board actions for the replay (friends/moveLog.js).
+  const recordRef = useRef(null);
+  useLayoutEffect(()=>{ recordRef.current = replayMode ? null : friend?.record || null; });
+  const record = useCallback((action)=>recordRef.current?.(action),[]);
   // Get the fixed ordered extra cards from the puzzle
   const extraCardIds = useMemo(() => (
     friendPuzzle ? friendPuzzle.card_order.slice(4) :
@@ -2450,8 +2464,8 @@ function GameView({
 
   const alreadySolved = tutorialActive ? false : admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
   const progressKey = `clover_progress_${puzzle.id}`;
-  const friendProgressKey = friendPuzzle ? `clover_friend_progress_${friendPuzzle.id}` : null;
-  const [friendInit] = useState(()=> friendPuzzle
+  const friendProgressKey = friendPuzzle && !replayMode ? `clover_friend_progress_${friendPuzzle.id}` : null;
+  const [friendInit] = useState(()=> friendPuzzle && !replayMode
     ? restoreFriendBoard(friendPuzzle, loadLS(friendProgressKey, null))
     : null);
   const savedProgress = (!friendPuzzle && !sandbox && !tutorialActive && !admireMode && !alreadySolved && !forceFresh)
@@ -2463,8 +2477,20 @@ function GameView({
     Array.isArray(savedProgress.clues);
   const restoredBoard = friendInit ? (friendInit.restored ? friendInit : null)
     : canRestoreProgress ? savedProgress : null;
-  const [slots,setSlots]     = useState(()=> restoredBoard ? restoredBoard.slots : initSlots());
-  const [clues,setClues]     = useState(()=> restoredBoard ? restoredBoard.clues : [...puzzle.clues]);
+  const [slots,setSlots]     = useState(()=> replay ? replay.init.slots.map(s=>({ ...s }))
+    : restoredBoard ? restoredBoard.slots : initSlots());
+  const [clues,setClues]     = useState(()=> replay ? [...replay.init.clues]
+    : restoredBoard ? restoredBoard.clues : [...puzzle.clues]);
+  const slotsRef = useRef(slots);
+  useLayoutEffect(()=>{ slotsRef.current = slots; },[slots]);
+  // The board as play begins or resumes: the replay's starting point.
+  const snapshotDone = useRef(false);
+  useEffect(()=>{
+    if(snapshotDone.current || !friendPuzzle || replayMode) return;
+    snapshotDone.current = true;
+    record({ k:"s", b:packSlots(slots), c:clues });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
   const [locked,setLocked]   = useState(()=> alreadySolved
     ? new Set([0,1,2,3])
     : restoredBoard ? new Set(restoredBoard.locked || []) : new Set());
@@ -2817,7 +2843,7 @@ function GameView({
       });
       return;
     }
-    if(sandbox) return;
+    if(sandbox || replayMode) return;
     if(tutorialActive || admireMode || alreadySolved || solved){
       removeLS(progressKey);
       return;
@@ -2839,7 +2865,7 @@ function GameView({
   },[
     tutorialActive, admireMode, alreadySolved, solved, isDragging, revealPhase, rotateAnimating,
     progressKey, puzzle.id, totalSlots, slots, clues, locked, wrong, knownBad,
-    lives, guessHistory, lost, friendProgressKey, friendGuessCount, sandbox
+    lives, guessHistory, lost, friendProgressKey, friendGuessCount, sandbox, replayMode
   ]);
 
   // Fade the warning out when all red cards are moved
@@ -2878,6 +2904,7 @@ function GameView({
         return n;
       });
     });
+    record({ k:"t", s:si });
 
     let animation = null;
 
@@ -2938,10 +2965,10 @@ function GameView({
       animation.onfinish = finishRotation;
       animation.oncancel = finishRotation;
     }
-  },[]);
+  },[record]);
 
   const handlePD = useCallback((e,si)=>{
-    if(locked.has(si) || lost || tutorialComplete) return;
+    if(replayMode || locked.has(si) || lost || tutorialComplete) return;
     // A friend guess is judged over the network; hold the board still meanwhile.
     if(friendJudging || (friendPuzzle && solved)) return;
     if(tutorialActive && tutorialStepIndex === 0){
@@ -3012,6 +3039,7 @@ function GameView({
         if(tgt>=0 && (!tutorialActive || tutorialPairAllowed(si, tgt))){
           setSlots(p=>{const n=[...p];[n[si],n[tgt]]=[n[tgt],n[si]];return n;});
           setWrong(p=>{const s=new Set(p);s.delete(si);s.delete(tgt);return s;});
+          record({ k:"m", a:si, b:tgt });
         }
       }
     };
@@ -3020,8 +3048,19 @@ function GameView({
   },[
     slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
     tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext,
-    startTapRotation, rotateAnimating, friendPuzzle, friendJudging, solved
+    startTapRotation, rotateAnimating, friendPuzzle, friendJudging, solved, replayMode, record
   ]);
+
+  // The board turn itself (Rotate's animation runs around it).
+  const applyRotate = useCallback(()=>{
+    setSlots(p=>{
+      const nc=CW_FROM.map(f=>{const s=p[f];return s?{...s,orientation:(s.orientation+1)%4}:null;});
+      return [...nc,...p.slice(4)];
+    });
+    setClues(p=>CW_FROM.map(i=>p[i]));
+    setLocked(p=>{const n=new Set();p.forEach(i=>{n.add(i<4?CW_FROM.indexOf(i):i);});return n;});
+    setWrong(new Set());
+  },[]);
 
   const handleRotate = useCallback(()=>{
     if(tutorialActive) return;
@@ -3032,13 +3071,8 @@ function GameView({
     if(rotateTimer.current) clearTimeout(rotateTimer.current);
     if(clueRotateTimer.current) clearTimeout(clueRotateTimer.current);
     rotateTimer.current = setTimeout(()=>{
-      setSlots(p=>{
-        const nc=CW_FROM.map(f=>{const s=p[f];return s?{...s,orientation:(s.orientation+1)%4}:null;});
-        return [...nc,...p.slice(4)];
-      });
-      setClues(p=>CW_FROM.map(i=>p[i]));
-      setLocked(p=>{const n=new Set();p.forEach(i=>{n.add(i<4?CW_FROM.indexOf(i):i);});return n;});
-      setWrong(new Set());
+      applyRotate();
+      record({ k:"r" });
       setRotateAnimating(false);
       setClueRotatePhase("in");
       clueRotateTimer.current = setTimeout(()=>{
@@ -3046,7 +3080,7 @@ function GameView({
         clueRotateTimer.current = null;
       }, 255);
     }, 360);
-  },[rotateAnimating, tutorialActive, friendPuzzle, friendJudging, solved, lost]);
+  },[rotateAnimating, tutorialActive, friendPuzzle, friendJudging, solved, lost, applyRotate, record]);
 
   const prevDifficultyRef = useRef(puzzle.difficulty);
 
@@ -3092,7 +3126,8 @@ function GameView({
     setTimeout(()=>fadeFeedback(), 2500);
   },[puzzle.difficulty, puzzle.solution, friendPuzzle, locked, fadeFeedback]);
 
-  const triggerShuffle = useCallback(()=>{
+  // target: the replay's recorded result; otherwise a random one.
+  const triggerShuffle = useCallback((target=null)=>{
     if(tutorialActive) return;
     if(shuffleBusy.current) return;
     if(friendJudging || (friendPuzzle && (solved || lost))) return;
@@ -3106,15 +3141,22 @@ function GameView({
     // spin settles back to 0deg/scale(1), the final words are already
     // in place, so nothing visibly changes once the motion stops.
     shuffleSwapTimer.current = setTimeout(()=>{
-      setSlots(p=>{
-        const n=[...p];
-        // Shuffle positions
-        const vals=shuffleArr(free.map(i=>n[i]));
-        // Randomise orientations too
-        free.forEach((i,j)=>n[i]={...vals[j], orientation:Math.floor(Math.random()*4)});
-        return n;
+      // Chosen up front so the update is the same however often it runs.
+      const order = shuffleArr(free);
+      const turns = free.map(()=>Math.floor(Math.random()*4));
+      let next = null;
+      flushSync(()=>{
+        setSlots(p=>{
+          if(target){ next = target.map(s=>({ ...s })); return next; }
+          const n=[...p];
+          // Shuffle positions, and randomise orientations too
+          free.forEach((i,j)=>n[i]={...p[order[j]], orientation:turns[j]});
+          next = n;
+          return n;
+        });
+        setWrong(new Set());
       });
-      setWrong(new Set());
+      if(next) record({ k:"x", b:packSlots(next) });
       shuffleSwapTimer.current = null;
     },198);
     shuffleEndTimer.current = setTimeout(()=>{
@@ -3122,7 +3164,7 @@ function GameView({
       shuffleBusy.current = false;
       shuffleEndTimer.current = null;
     },440);
-  },[totalSlots,locked,tutorialActive,friendPuzzle,friendJudging,solved,lost]);
+  },[totalSlots,locked,tutorialActive,friendPuzzle,friendJudging,solved,lost,record]);
 
   const handleShuffle = useCallback(()=>{
     triggerShuffle();
@@ -3130,13 +3172,13 @@ function GameView({
 
   useEffect(()=>{
     if(introShuffleDone.current) return;
-    if(tutorialActive || admireMode || alreadySolved || canRestoreProgress) return;
+    if(tutorialActive || admireMode || alreadySolved || canRestoreProgress || replayMode) return;
     introShuffleDone.current = true;
     introShuffleTimer.current = setTimeout(()=>{
       triggerShuffle();
       introShuffleTimer.current = null;
     }, 220);
-  },[tutorialActive, admireMode, alreadySolved, canRestoreProgress, triggerShuffle]);
+  },[tutorialActive, admireMode, alreadySolved, canRestoreProgress, triggerShuffle, replayMode]);
 
   const handleReset = useCallback(()=>{
     if(tutorialActive) return;
@@ -3145,9 +3187,14 @@ function GameView({
       // last one (or re-deals, before the first). Lives are never restored.
       if(friendJudging || solved || lost) return;
       const base = friendBaseRef.current;
-      setSlots(base ? base.slots.map(s=>({ ...s })) : initSlots());
-      setClues(base ? [...base.clues] : [...puzzle.clues]);
+      const nextSlots = base ? base.slots.map(s=>({ ...s })) : initSlots();
+      const nextClues = base ? [...base.clues] : [...puzzle.clues];
+      setSlots(nextSlots);
+      setClues(nextClues);
+      // Rotate turns the confirmed cards with the board; Reset turns them back.
+      setLocked(new Set(base?.locked || []));
       setWrong(new Set());
+      record({ k:"z", b:packSlots(nextSlots), c:nextClues });
       return;
     }
     setSlots(initSlots()); setClues([...puzzle.clues]);
@@ -3157,7 +3204,7 @@ function GameView({
     setLives(MAX_LIVES); setGuessHistory([]);
     setShowOvr(false); setCopied(false);
     onReset?.();
-  },[initSlots,puzzle,onReset,tutorialActive,friendPuzzle,friendJudging,solved,lost]);
+  },[initSlots,puzzle,onReset,tutorialActive,friendPuzzle,friendJudging,solved,lost,record]);
 
   const handleSubmit = useCallback(()=>{
     if(tutorialActive){
@@ -3189,7 +3236,7 @@ function GameView({
       return;
     }
     if(solved || lost || revealPhase) return;
-    if(repeatedBad.size > 0){ setShowRepeatWarning(true); return; }
+    if(repeatedBad.size > 0 && !replayMode){ setShowRepeatWarning(true); return; }
     onGameStart?.();
     // Daily and preview games are judged here; friend puzzles by the server.
     const recordsStats = !friendPuzzle && !sandbox;
@@ -3257,10 +3304,10 @@ function GameView({
                 });
                 const newLives = server ? server.lives_left : lives - 1;
                 const newHistory = [...guessHistory, guessRow];
-                if(friendPuzzle) friendBaseRef.current = { slots: slots.map(s=>({ ...s })), clues: [...clues] };
+                const nl=new Set([...locked,...res.correct]);
+                if(friendPuzzle) friendBaseRef.current = { slots: slots.map(s=>({ ...s })), clues: [...clues], locked: [...nl] };
                 setGuessHistory(newHistory);
                 setShakeKey(k=>k+1);
-                const nl=new Set([...locked,...res.correct]);
                 setLocked(nl); setWrong(res.wrong);
                 setLives(newLives);
                 playWrongSound();
@@ -3381,6 +3428,7 @@ function GameView({
         clues,
       }).then(server=>{
         setFriendGuessCount(server.guess_no);
+        record({ k:"g", n:server.guess_no });
         const correct = new Set(server.correct);
         const res = { correct, wrong: new Set([0,1,2,3].filter(i=>!correct.has(i))) };
         // Keep the familiar pause before the cards turn, however quick the server was.
@@ -3398,7 +3446,122 @@ function GameView({
 
     const res=bestSubmit(slots.slice(0,4),puzzle.solution,locked,clues,puzzle.clues);
     setTimeout(()=>reveal(res), 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox]);
+  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox,replayMode,record]);
+
+  // ── The replay's controls (friends/AnimatedReplay.jsx) ──────────────
+  // Each returns a promise that settles when the move has finished on screen.
+  const [replayPress,setReplayPress] = useState(null);   // the control "pressed" just now
+  const replayGuess = useRef(null);                      // { resolve, hold, final }
+  const replayStill = !!replay?.still;
+
+  // Moves cards to `next` (and clues to nextClues), gliding each card from
+  // where it was to where it lands, turning it on the way if needed.
+  const glideTo = useCallback((next, nextClues, ms)=>{
+    const before = new Map();
+    slotsRef.current.forEach((s,i)=>{
+      const tile = s && slotRefs.current[i]?.querySelector(".ctile");
+      if(tile) before.set(s.cardId, { rect:tile.getBoundingClientRect(), orientation:s.orientation });
+    });
+    flushSync(()=>{
+      setSlots(next.map(s=>({ ...s })));
+      if(nextClues) setClues([...nextClues]);
+      setWrong(new Set());
+    });
+    if(!ms) return Promise.resolve();
+    const moves = next.map((s,i)=>{
+      const el = slotRefs.current[i];
+      const tile = el?.querySelector(".ctile");
+      const from = s && before.get(s.cardId);
+      if(!tile || !from) return null;
+      const to = tile.getBoundingClientRect();
+      // On-screen distances, in the board's own units (the replay may scale it to fit).
+      const k = tile.offsetWidth ? to.width / tile.offsetWidth : 1;
+      const dx = (from.rect.left - to.left) / k, dy = (from.rect.top - to.top) / k;
+      const turns = (s.orientation - from.orientation + 4) % 4;
+      if(Math.abs(dx) < 1 && Math.abs(dy) < 1 && !turns) return null;
+      const deg = turns === 3 ? 90 : -90 * turns;
+      const scale = to.width ? from.rect.width / to.width : 1;
+      // Lift the moving card (and the tray it lands in) above the others.
+      const tray = el.closest(".extra");
+      el.style.zIndex = "30";
+      if(tray){ tray.style.position = "relative"; tray.style.zIndex = "30"; }
+      const anim = tile.animate([
+        { transform:`translate(${dx}px,${dy}px) scale(${scale}) rotateZ(${deg}deg)`, filter:"drop-shadow(0 6px 10px rgba(40,20,80,.25))" },
+        { transform:`translate(${dx/2}px,${dy/2}px) scale(${(scale+1)/2*1.06}) rotateZ(${deg/2}deg)`, filter:"drop-shadow(0 10px 16px rgba(40,20,80,.3))", offset:.5 },
+        { transform:"translate(0,0) scale(1) rotateZ(0deg)", filter:"drop-shadow(0 0 0 rgba(40,20,80,0))" },
+      ], { duration:ms, easing:"cubic-bezier(.35,.1,.25,1)" });
+      return anim.finished.catch(()=>{}).then(()=>{
+        el.style.zIndex = "";
+        if(tray){ tray.style.position = ""; tray.style.zIndex = ""; }
+      });
+    }).filter(Boolean);
+    return Promise.all(moves);
+  },[]);
+
+  // A wrong guess's red/green stays up for a while in the game; the replay's
+  // next Submit clears it first, as the game's own timer would have.
+  const settleReveal = useCallback(()=>{
+    if(wTimer.current) clearTimeout(wTimer.current);
+    flushSync(()=>{ setWrong(new Set()); setRevealPhase(null); setRevealColors({}); });
+  },[]);
+
+  useLayoutEffect(()=>{
+    if(!replay?.apiRef) return;
+    const wait = (ms)=>new Promise(r=>setTimeout(r, ms));
+    const press = (name)=>{
+      setReplayPress(name);
+      setTimeout(()=>setReplayPress(p=>p===name ? null : p), 420);
+    };
+    replay.apiRef.current = {
+      tap:(si)=>{ startTapRotation(si); return wait(replayStill ? 0 : 300); },
+      swap:(a,b,ms)=>{
+        const n=[...slotsRef.current]; [n[a],n[b]]=[n[b],n[a]];
+        return glideTo(n, null, replayStill ? 0 : ms);
+      },
+      setBoard:(next, nextClues, ms)=>glideTo(next, nextClues, replayStill ? 0 : ms),
+      // Reset, as the game does it: back to the last guess, confirmed cards included.
+      reset:(next, nextClues, ms)=>{
+        press("reset");
+        flushSync(()=>setLocked(new Set(friendBaseRef.current?.locked || [])));
+        return glideTo(next, nextClues, replayStill ? 0 : ms);
+      },
+      rotate:()=>{
+        press("rotate");
+        if(replayStill){ flushSync(applyRotate); return Promise.resolve(); }
+        handleRotate();
+        return wait(660);
+      },
+      shuffle:(target)=>{
+        press("shuffle");
+        if(replayStill) return glideTo(target, null, 0);
+        triggerShuffle(target);
+        return wait(470);
+      },
+      press,
+      submit:async (hold, final)=>{
+        press("submit");
+        if(revealPhase){ settleReveal(); await wait(30); }
+        return new Promise(resolve=>{
+          replayGuess.current = { resolve, hold, final };
+          replay.apiRef.current.submitNow();
+        });
+      },
+      submitNow:()=>handleSubmit(),
+    };
+  });
+
+  // Settles the replay's Submit once the game's own reveal has played out.
+  useEffect(()=>{
+    const g = replayGuess.current;
+    if(!g) return;
+    if(solved || lost){
+      replayGuess.current = null;
+      setTimeout(g.resolve, g.hold);
+    } else if(revealPhase === "done" && !g.final){
+      replayGuess.current = null;
+      setTimeout(g.resolve, g.hold);
+    }
+  },[revealPhase, solved, lost]);
 
   const renderSlot = useCallback(si=>{
     const s=slots[si];
@@ -3577,16 +3740,16 @@ function GameView({
           <div className="extra-spacer" />
         )}
       </div>
-      <div className="ctrls">
-        <button className="cbtn" onClick={handleRotate}>
+      <div className="ctrls" inert={replayMode || undefined}>
+        <button className={`cbtn${replayPress==="rotate"?" replay-press":""}`} onClick={handleRotate}>
           <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-9-9c2.52 0 4.8 1 6.46 2.54L21 8"/><path d="M21 3v5h-5"/></svg>
           Rotate
         </button>
-        <button className="cbtn" onClick={handleShuffle}>
+        <button className={`cbtn${replayPress==="shuffle"?" replay-press":""}`} onClick={handleShuffle}>
           <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
           Shuffle
         </button>
-        <button className="cbtn" onClick={handleReset}>
+        <button className={`cbtn${replayPress==="reset"?" replay-press":""}`} onClick={handleReset}>
           <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
           Reset
         </button>
@@ -3594,9 +3757,9 @@ function GameView({
       <div className={`fbk${feedbackFading?" fading":""}${showRepeatWarning?" err":wrong.size>0?" err":locked.size>0&&!lost?" ok":""}`}>
         {showRepeatWarning ? "You already know that's wrong — move the incorrect card(s) first." : feedback}
       </div>
-      <div className="sbtn-wrap">
+      <div className="sbtn-wrap" inert={replayMode || undefined}>
         <button
-          className={`sbtn${solved?" solved":""}${lost?" blocked":""}${repeatedBad.size>0?" blocked":""}`}
+          className={`sbtn${solved?" solved":""}${lost?" blocked":""}${repeatedBad.size>0?" blocked":""}${replayPress==="submit"?" replay-press":""}`}
           onClick={handleSubmit}
           disabled={gameOver || isRevealing}
         >

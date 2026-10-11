@@ -404,3 +404,46 @@
   background:var(--fr-primary-soft);color:var(--fr-primary)}
 .fr-share-actions{align-items:center;justify-content:flex-start;gap:12px;flex-wrap:wrap}
 .fr-share-actions .fr-btn{width:auto}
+
+/* Animated replay (AnimatedReplay.jsx): the real board, driven by the move log. */
+.fr-seg{display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--fr-quiet);align-self:stretch}
+.fr-seg button{flex:1;appearance:none;border:none;background:none;min-height:40px;border-radius:11px;cursor:pointer;
+  font-family:var(--fu);font-size:14px;font-weight:700;color:var(--muted)}
+.fr-seg button.on{background:#fff;color:var(--fr-primary);box-shadow:0 1px 3px rgba(63,26,114,.12)}
+.fr-seg button:focus-visible{outline:none;box-shadow:var(--fr-ring)}
+.fr-anim{display:flex;flex-direction:column;gap:10px}
+.fr-anim-bar{position:sticky;top:0;z-index:20;display:flex;flex-direction:column;gap:8px;padding:10px 12px 10px 16px}
+.fr-anim-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:-6px}
+/* One line, always: the board below never jumps as captions change. */
+.fr-anim-caption{font-size:17px;font-weight:800;color:var(--text);line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fr-anim-top .fr-playall{flex:none}
+.fr-anim-row{display:flex;align-items:center;gap:10px}
+.fr-anim-progress{flex:1;height:6px;border-radius:999px;background:#ece4fa;overflow:hidden}
+.fr-anim-progress span{display:block;height:100%;background:var(--fr-primary);border-radius:inherit;transition:width .25s ease}
+.fr-anim-small{appearance:none;border:none;background:var(--fr-quiet);color:var(--fr-primary);width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;flex:none}
+.fr-anim-small::after{content:"";position:absolute;inset:-5px}
+.fr-anim-speed{display:flex;gap:2px;padding:3px;border-radius:999px;background:var(--fr-quiet);flex:none}
+.fr-anim-speed button{appearance:none;border:none;background:none;min-width:40px;min-height:32px;border-radius:999px;cursor:pointer;
+  font-family:var(--fu);font-size:13.5px;font-weight:800;color:var(--muted);position:relative}
+.fr-anim-speed button::after{content:"";position:absolute;inset:-6px -1px}
+.fr-anim-speed button.on{background:#fff;color:var(--fr-primary);box-shadow:0 1px 3px rgba(63,26,114,.12)}
+.fr-anim-small:focus-visible,.fr-anim-speed button:focus-visible{outline:none;box-shadow:var(--fr-ring)}
+.fr-anim-note{margin:0;font-size:13px;line-height:1.45;color:var(--fr-warn);background:var(--fr-warn-bg);border-radius:12px;padding:8px 10px}
+/* The game as played, minus input: no dragging, controls light up as "pressed". */
+.fr-replay-game{margin:0 -14px;display:flex;justify-content:center;align-items:flex-start}
+.fr-replay-fit{width:100%;flex:none;transform-origin:top center;display:flex;flex-direction:column}
+.fr-replay-game .game{flex:none;pointer-events:none}
+.fr-replay-game .ctile{cursor:default}
+.fr-replay-game .cbtn.replay-press{background:rgba(124,58,237,.14);color:var(--purple-bright, #6d28d9);transform:scale(.96)}
+/* Submit itself is left out (the caption says "Submitted guess 2"), so the
+   board, tray and controls fit a small phone; its feedback line stays. */
+.fr-replay-game .sbtn-wrap{display:none}
+/* Reduced motion: every change lands at once, with no spins, shakes or flips. */
+.fr-replay-game.still .ctile,.fr-replay-game.still .ctile-inner,.fr-replay-game.still .ew,
+.fr-replay-game.still .lives *,.fr-replay-game.still .cbtn,.fr-replay-game.still .sbtn{animation:none !important;transition:none !important}
+.fr-replay-game.still .particles{display:none}
+@media (prefers-reduced-motion: reduce){
+  .fr-anim-progress span{transition:none}
+}

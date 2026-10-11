@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "./client";
 import { livesLeftPhrase, timeAgo } from "./format";
 import { DIFFICULTY_LABELS } from "../game/shared";
@@ -7,24 +7,35 @@ import { Icon, PageHead } from "./ui.jsx";
 import { useServerNow } from "./streakClock";
 import { friendPuzzleForGame } from "./puzzle";
 import GuessReplay from "./GuessReplay.jsx";
+import AnimatedReplay from "./AnimatedReplay.jsx";
+import { buildReplay } from "./moveLog";
 import { ResultSheet, ResultsButton } from "./ResultSheet.jsx";
 
 // One sent puzzle, after the fact. The creator sees how the friend did and
 // replays their real guesses; the solver can look back at their own. Before
 // the puzzle is finished the creator sees only its status and their board —
-// the server doesn't hand out guesses until then.
+// the server doesn't hand out guesses until then. Puzzles played since move
+// logs exist replay every move (AnimatedReplay); older ones, guess by guess.
 
 export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay, onViewed }) {
   const { GameView } = kit;
   const [view,setView] = useState(null);
   const [error,setError] = useState("");
   const [showSheet,setShowSheet] = useState(false);
+  const [moves,setMoves] = useState(undefined);   // undefined: loading; null: none recorded
   const serverNow = useServerNow(view?.friendship?.server_now);
 
   const load = useCallback(async ()=>{
-    try { setView(await api.open(puzzleId)); setError(""); onViewed?.(); }
+    try {
+      const v = await api.open(puzzleId);
+      setView(v); setError(""); onViewed?.();
+      // The move log is read only; a failure falls back to the guess-by-guess replay.
+      setMoves(v.finished_at ? await api.moves(puzzleId).catch(()=>null) : null);
+    }
     catch(err){ setError(err.message); }
   },[puzzleId, onViewed]);
+  const plan = useMemo(()=> view && moves ? buildReplay(view, moves) : null,[view, moves]);
+  const [mode,setMode] = useState("watch");
   useEffect(()=>{
     const t = setTimeout(load, 0);
     return ()=>clearTimeout(t);
@@ -81,7 +92,19 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay, on
         <PageHead onBack={onBack} title={mine ? `${friendName}'s guesses` : "Your guesses"} sub={sub}>
           {!mine && <ResultsButton onClick={()=>setShowSheet(true)}/>}
         </PageHead>
-        <GuessReplay kit={kit} view={view} solverName={mine ? friendName : "You"}/>
+        {moves === undefined ? <p className="fr-sub">Loading the replay…</p>
+          : plan ? <>
+            <div className="fr-seg" role="tablist" aria-label="Replay view">
+              <button type="button" role="tab" aria-selected={mode === "watch"} className={mode === "watch" ? "on" : ""}
+                onClick={()=>setMode("watch")}>Every move</button>
+              <button type="button" role="tab" aria-selected={mode === "guesses"} className={mode === "guesses" ? "on" : ""}
+                onClick={()=>setMode("guesses")}>Guess by guess</button>
+            </div>
+            {mode === "watch"
+              ? <AnimatedReplay kit={kit} view={view} plan={plan} solverName={mine ? friendName : "You"}/>
+              : <GuessReplay kit={kit} view={view} solverName={mine ? friendName : "You"}/>}
+          </>
+          : <GuessReplay kit={kit} view={view} solverName={mine ? friendName : "You"}/>}
       </div>
       <div className="fr-page fr-result-foot">
         <p className="fr-outcome">{outcome} <span>· finished {timeAgo(view.finished_at)}</span></p>
