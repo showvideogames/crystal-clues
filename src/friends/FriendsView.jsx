@@ -526,7 +526,7 @@ function InvitePanel({ primary = false }) {
     setBusy(true); setError("");
     try {
       const inv = await api.createInvite();
-      setLink(`${window.location.origin}/?invite=${inv.token}`);
+      setLink(`${window.location.origin}${paths.join(inv.token)}`);
     } catch(err){ setError(err.message); }
     finally { setBusy(false); }
   };

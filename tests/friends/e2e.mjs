@@ -178,7 +178,8 @@ try {
   await signIn(deb, debAcct, "Deb");
   await click(deb, "Invite a friend");
   const link = await (await deb.waitForSelector('input[aria-label="Invite link"]')).evaluate((i) => i.value);
-  log("invite", link.replace(/invite=.*/, "invite=…"));
+  assert.match(link, /\/join\/[A-Za-z0-9_-]+$/, "invitations are /join/<code> links (they get their own preview)");
+  log("invite", link.replace(/join\/.*/, "join/…"));
 
   // 2. Sam opens it on their own phone while signed out: who it's from, then
   // the shared sign-in. The invite survives the sign-in round trip.

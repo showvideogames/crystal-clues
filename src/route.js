@@ -13,7 +13,9 @@
 //   /friends/guesses/:puzzleId     the guesses replay and results
 //   /friends/make/:friendshipId    making a puzzle for that friend ("new": for someone new, by link)
 //   /p/:code                       a puzzle shared by link: playable without an account
+//   /join/:code                    a friend invitation (taken in at start-up, then /friends)
 //
+// /p/ and /join/ links get their own link preview (api/link.js, vercel.json).
 // Links from before these addresses keep working: /?invite=TOKEN (invite
 // links already sent) and /?friends=1[&puzzle=…|&result=…] (notifications).
 import { useSyncExternalStore } from "react";
@@ -80,16 +82,23 @@ export const paths = {
   make: (friendshipId) => `/friends/make/${encodeURIComponent(friendshipId)}`,
   makeForNew: () => "/friends/make/new",
   shared: (token) => `/p/${encodeURIComponent(token)}`,
+  join: (token) => `/join/${encodeURIComponent(token)}`,
 };
 
 /**
- * Runs once at start-up: rewrites a link from before these addresses into
- * its address (without a history entry) and returns an invite token to keep,
- * if there was one. Tokens never stay in the address bar.
+ * Runs once at start-up: rewrites an invitation (/join/:code, or the older
+ * /?invite=) or a link from before these addresses into its address (without
+ * a history entry) and returns an invite token to keep, if there was one.
+ * Tokens never stay in the address bar.
  */
 export function adoptLegacyLink({ friends = false } = {}) {
   if (!friends) return null;
   try {
+    const join = window.location.pathname.match(/^\/join\/([A-Za-z0-9_-]{8,80})\/?$/);
+    if (join) {
+      window.history.replaceState(null, "", paths.friends());
+      return join[1];
+    }
     const q = new URLSearchParams(window.location.search);
     const invite = q.get("invite");
     if (invite) {
