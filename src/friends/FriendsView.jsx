@@ -6,7 +6,8 @@ import { navigate, paths, historyState } from "../route";
 import { serverOffset, timeAgo, livesLeftPhrase } from "./format";
 import { MAX_LIVES } from "../game/shared";
 import { StreakPanel, StreakStatus, StreakRules } from "./Streaks.jsx";
-import { Icon, Spinner, FriendAvatar, PageHead, RowButton, InfoTip } from "./ui.jsx";
+import { Icon, Spinner, Avatar, PageHead, RowButton, InfoTip } from "./ui.jsx";
+import { ProfileCard } from "./Profile.jsx";
 import FriendCreator from "./FriendCreator.jsx";
 import FriendPlay from "./FriendPlay.jsx";
 import FriendResult from "./FriendResult.jsx";
@@ -23,7 +24,7 @@ import "./friends.css";
 // the creator restores next time.
 // invite: a token from an invite link opened on this visit.
 // onHowToPlay: opens the game's own tutorial (for someone new, before a friend's puzzle).
-export default function FriendsView({ kit, account, screen = { name:"inbox" }, invite, onInviteTaken, onUnreadChange, onPlayDaily, onSignOut, onHowToPlay }) {
+export default function FriendsView({ kit, account, screen = { name:"inbox" }, invite, onInviteTaken, onUnreadChange, onProfileChange, onPlayDaily, onSignOut, onHowToPlay }) {
   // { userId, profile }, so a different account never sees the last one's name.
   const [loaded,setLoaded]   = useState(null);
   const [pendingInvite,setPendingInvite] = useState(()=>{
@@ -45,7 +46,12 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
     return ()=>{ alive = false; };
   },[userId]);
   const profile = loaded && loaded.userId === userId ? loaded.profile : undefined;
-  const setProfile = useCallback((p)=>setLoaded({ userId, profile:p }),[userId]);
+  const setProfile = useCallback((p)=>{ setLoaded({ userId, profile:p }); onProfileChange?.(p); },[userId, onProfileChange]);
+  // Opening a puzzle or a result is what marks it seen (on the server, so on
+  // every device). Re-read the count so the header's dot follows at once.
+  const onViewed = useCallback(()=>{
+    api.inbox().then(d=>{ onUnreadChange?.(d.unread || 0); onProfileChange?.(d.me || null); }).catch(()=>{});
+  },[onUnreadChange, onProfileChange]);
 
   const dismissInvite = useCallback(()=>{ writePendingInvite(null); setPendingInvite(null); },[]);
   const toInbox = useCallback(()=>navigate(paths.friends()),[]);
@@ -73,11 +79,11 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
   }
   if(screen.name === "play"){
     return <FriendPlay key={screen.id} kit={kit} puzzleId={screen.id} onBack={toInbox}
-      onMakeBack={toCreate} onOpenResult={toResult} onHowToPlay={onHowToPlay}/>;
+      onMakeBack={toCreate} onOpenResult={toResult} onHowToPlay={onHowToPlay} onViewed={onViewed}/>;
   }
   if(screen.name === "result"){
     return <FriendResult key={screen.id} kit={kit} puzzleId={screen.id} onBack={toInbox}
-      onMake={toCreate} onPlay={toPlay}/>;
+      onMake={toCreate} onPlay={toPlay} onViewed={onViewed}/>;
   }
 
   return (
@@ -257,6 +263,7 @@ function inboxLede(friends) {
 function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUnreadChange, onProfile, onPlay, onResult, onCreate, onCreateForNew }) {
   const [inbox,setInbox] = useState(null);
   const [links,setLinks] = useState([]);   // puzzles shared by link, not yet saved to an account
+  const [avatars,setAvatars] = useState({}); // friends' chosen avatars by account id; no entry = the default ball
   const [offset,setOffset] = useState(0);
   const [error,setError] = useState("");
   const [now,setNow] = useState(()=>Date.now());
@@ -264,9 +271,10 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
 
   const refresh = useCallback(async ()=>{
     try {
-      const [data, shared] = await Promise.all([api.inbox(), api.shareLinks().catch(()=>null)]);
+      const [data, shared, picked] = await Promise.all([api.inbox(), api.shareLinks().catch(()=>null), api.avatars().catch(()=>null)]);
       setInbox(data);
       if(shared) setLinks(shared);
+      if(picked) setAvatars(picked);
       setOffset(serverOffset(data.server_now));
       setNow(Date.now());
       setError("");
@@ -312,7 +320,7 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
           </div>
         )}
         {inbox?.friends.map(f=>(
-          <FriendCard key={f.friendship_id} f={f} now={serverNow}
+          <FriendCard key={f.friendship_id} f={f} now={serverNow} avatar={avatars[f.friend_id]}
             onPlay={onPlay} onResult={onResult} onCreate={onCreate}/>
         ))}
 
@@ -339,17 +347,14 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
         </div>
         <NotificationSettings profile={profile} onProfile={onProfile}/>
 
-        <p className="fr-foot">
-          Signed in as <b>{profile.display_name}</b>{email ? <> ({email})</> : null}<br/>
-          <EditName profile={profile} onProfile={onProfile}/>
-          {onSignOut && <> · <button className="fr-link" onClick={onSignOut}>Sign out</button></>}
-        </p>
+        <div className="fr-eyebrow">Profile</div>
+        <ProfileCard profile={profile} email={email} onProfile={onProfile} onSignOut={onSignOut}/>
       </div>
     </div>
   );
 }
 
-function FriendCard({ f, now, onPlay, onResult, onCreate }) {
+function FriendCard({ f, avatar, now, onPlay, onResult, onCreate }) {
   const [history,setHistory] = useState(null);
   const [showHistory,setShowHistory] = useState(false);
   const name = f.friend_name;
@@ -415,7 +420,7 @@ function FriendCard({ f, now, onPlay, onResult, onCreate }) {
   return (
     <section className={`fr-card fr-friend${isNew ? " new" : ""}`} aria-label={name}>
       <div className="fr-friend-head">
-        <FriendAvatar name={name}/>
+        <Avatar name={name} avatar={avatar}/>
         <div style={{minWidth:0}}>
           <div className="fr-friend-name">{name}</div>
           {status && <div className="fr-friend-status">{status}</div>}
@@ -486,7 +491,7 @@ function AcceptInvite({ token, onDone, onDismiss }) {
   return (
     <section className="fr-card fr-friend new">
       <div className="fr-friend-head">
-        <FriendAvatar name={info?.inviter_name || "?"}/>
+        <Avatar name={info?.inviter_name} avatar={info?.inviter_avatar}/>
         <div>
           <div className="fr-friend-name">{info?.inviter_name} invited you</div>
           <div className="fr-friend-status">Solve each other's puzzles.</div>
@@ -611,23 +616,5 @@ function NotificationSettings({ profile, onProfile }) {
       {expanded && details && <div style={{padding:"0 4px 4px"}}>{details}</div>}
       {error && <div className="fr-msg err">{error}</div>}
     </div>
-  );
-}
-
-function EditName({ profile, onProfile }) {
-  const [editing,setEditing] = useState(false);
-  const [name,setName] = useState(profile.display_name);
-  const [error,setError] = useState("");
-  if(!editing) return <button className="fr-link" onClick={()=>{ setName(profile.display_name); setEditing(true); }}>Change name</button>;
-  return (
-    <span style={{display:"inline-flex",gap:6,alignItems:"center",marginTop:6}}>
-      <input className="fr-input" style={{minHeight:40,padding:"6px 10px",fontSize:15,width:150}} maxLength={24}
-        value={name} onChange={e=>setName(e.target.value)} aria-label="Display name"/>
-      <button className="fr-link" onClick={async ()=>{
-        try { onProfile(await api.setName(name)); setEditing(false); setError(""); }
-        catch(err){ setError(err.message); }
-      }}>Save</button>
-      {error && <span style={{color:"var(--fr-bad)"}}>{error}</span>}
-    </span>
   );
 }

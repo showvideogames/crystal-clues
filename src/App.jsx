@@ -1536,11 +1536,15 @@ body::before{
 ::-webkit-scrollbar-thumb{background:rgba(124,58,237,.25)}
 
 /* Friends — one icon beside ? and the gear, so the header stays one row.
-   A small gold dot means a puzzle to play or a result to see. */
+   A small, still green dot at the icon's top-right means there is a puzzle to
+   play or a result to watch that hasn't been opened yet (a screen reader gets
+   the same news from #friends-new-desc). It never animates. */
 .friends-btn{position:relative}
 .friends-btn.on{color:var(--purple-bright);background:#efe7fc}
-.friends-dot{position:absolute;top:4px;right:3px;width:8px;height:8px;border-radius:50%;
-  background:var(--gold);box-shadow:0 0 0 2px #fff}
+.friends-dot{position:absolute;top:3px;right:2px;width:8px;height:8px;border-radius:50%;
+  background:#1f9d62;box-shadow:0 0 0 2px #fff;pointer-events:none}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 `;
 // ═══════════════════════════════════════════════════════════════
@@ -4902,6 +4906,7 @@ async function leaveFriends(){
 export default function App() {
   const [friendsInvite,setFriendsInvite] = useState(STARTUP_INVITE);
   const [friendsUnread,setFriendsUnread] = useState(0);
+  const [friendsMe,setFriendsMe] = useState(null);   // the signed-in player's Friends profile (name, avatar), once known
   // Where we are is the address bar (src/route.js); every screen change is a navigation.
   const route = parsePath(usePath(), { friends: FRIENDS_ENABLED });
   const view = route.view === "unknown" ? "game" : route.view;
@@ -4993,8 +4998,8 @@ export default function App() {
     const tick = () => {
       if(document.visibilityState !== "visible") return;
       loadFriendsBadge()
-        .then(m=>m.fetchUnread())
-        .then(n=>{ if(!cancelled) setFriendsUnread(n); })
+        .then(m=>m.fetchActivity())
+        .then(a=>{ if(!cancelled && a){ setFriendsUnread(a.unread); setFriendsMe(a.me); } })
         .catch(()=>{});
     };
     tick();
@@ -5008,6 +5013,7 @@ export default function App() {
   },[friendsAccountId]);
   // Another account (or nobody) signed in here: the last account's dot goes.
   const shownUnread = friendsAccountId ? friendsUnread : 0;
+  const shownMe = friendsAccountId && friendsMe?.id === friendsAccountId ? friendsMe : null;
 
   // /archive/:id: the puzzle in hand (picked from the archive), or loaded by
   // its id when the address was opened directly. Not found → the archive.
@@ -5081,14 +5087,18 @@ export default function App() {
             )}
             {FRIENDS_ENABLED && (
               <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>setView("friends")}
-                title="Friends" aria-label={shownUnread ? `Friends — ${shownUnread} new` : "Friends"}>
+                title="Friends" aria-label="Friends" aria-describedby={shownUnread>0 ? "friends-new-desc" : undefined}>
                 <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.3 2.8-5.2 5.5-5.2s4.9 1.9 5.5 5.2"/><circle cx="16.6" cy="9" r="2.5"/><path d="M15.6 14.3c2.5-.3 4.4 1.3 4.9 4.3"/></svg>
                 {shownUnread>0 && <span className="friends-dot" aria-hidden="true"/>}
               </button>
             )}
+            {FRIENDS_ENABLED && shownUnread>0 && (
+              <span id="friends-new-desc" className="sr-only">New activity in Friends: a puzzle to play or a result to watch.</span>
+            )}
             <AccountMenu
               status={acct.status}
               account={acct.account}
+              profile={shownMe}
               message={acct.message}
               onSignIn={acct.signIn}
               onSignOut={handleSignOut}
@@ -5132,6 +5142,7 @@ export default function App() {
             invite={friendsInvite}
             onInviteTaken={()=>setFriendsInvite(null)}
             onUnreadChange={setFriendsUnread}
+            onProfileChange={setFriendsMe}
             onPlayDaily={()=>setView("game")}
             onSignOut={handleSignOut}
             onHowToPlay={openTutorial}

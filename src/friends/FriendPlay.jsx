@@ -18,7 +18,7 @@ import ChooseDifficulty from "./ChooseDifficulty.jsx";
 //   source: { open(), guess(g) }        default: this account's friend puzzle
 //   guest:  { saveLabel, onSave, backLabel }
 
-export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult, onHowToPlay, source, guest }) {
+export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult, onHowToPlay, onViewed, source, guest }) {
   const { GameView } = kit;
   const [view,setView] = useState(null);
   const [error,setError] = useState("");
@@ -29,9 +29,13 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
 
   const open = source?.open;
   const load = useCallback(async ()=>{
-    try { setView(await (open ? open() : api.open(puzzleId))); setError(""); }
+    try {
+      setView(await (open ? open() : api.open(puzzleId))); setError("");
+      // A friend's puzzle counts as seen once opened; a guest's link isn't in Friends.
+      if(!open) onViewed?.();
+    }
     catch(err){ setError(err.message); }
-  },[puzzleId, open]);
+  },[puzzleId, open, onViewed]);
 
   useEffect(()=>{
     const t = setTimeout(load, 0);

@@ -22,7 +22,7 @@ test("invites: preview by link, accept once, never twice or by yourself", async 
   assert.match(invite.token, /^[0-9a-f]{36}$/);
 
   const preview = await rpc(anon(), "get_friend_invite", { p_token: invite.token });
-  assert.deepEqual(preview, { status: "open", inviter_name: "Deb", friendship_id: null });
+  assert.deepEqual(preview, { status: "open", inviter_name: "Deb", inviter_avatar: null, friendship_id: null });
   assert.equal((await rpc(deb.client, "get_friend_invite", { p_token: invite.token })).status, "own");
   assert.equal(await rpcError(deb.client, "accept_friend_invite", { p_token: invite.token }), "own_invite");
 

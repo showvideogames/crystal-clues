@@ -61,6 +61,10 @@ export function LinkReady({ link, sender, onDone }) {
 
 // One link in Friends: one status message (the purple bar) and its action.
 export function ShareLinkCard({ link, sender, now, onResult, onChanged }) {
+  // A finished game is a result to watch, whatever became of its link: stopping
+  // or expiring only turns the link off for the guest. "closed" = the link no longer works.
+  const state = link.finished_at ? "finished" : link.state;
+  const closed = link.state === "revoked" || link.state === "expired";
   const [busy,setBusy] = useState("");
   const [error,setError] = useState("");
   const [fresh,setFresh] = useState(null);
@@ -71,13 +75,13 @@ export function ShareLinkCard({ link, sender, now, onResult, onChanged }) {
   };
   const refresh = ()=>run("fresh", async ()=>{ setFresh(await api.refreshShareLink(link.puzzle_id)); onChanged?.(); });
   const stop = ()=>run("stop", async ()=>{
-    const finished = link.state === "finished";
-    if(!window.confirm(finished ? "Remove this from Friends? Its link stops working." : "Stop sharing? The link stops working right away.")) return;
+    const finished = state === "finished";
+    if(!window.confirm(finished ? "Stop sharing? The link stops working right away. You keep their result and can still watch their guesses." : "Stop sharing? The link stops working right away.")) return;
     await api.stopShareLink(link.puzzle_id); onChanged?.();
   });
 
   let status, action = null;
-  switch(link.state){
+  switch(state){
     case "waiting":
       status = `Link sent ${timeAgo(link.sent_at, now)} · not started yet`;
       break;
@@ -97,34 +101,34 @@ export function ShareLinkCard({ link, sender, now, onResult, onChanged }) {
     default: // expired
       status = `The link expired before ${who} finished`;
   }
-  const canRefresh = link.state !== "finished";
-  const shownToken = fresh?.token || (link.state === "waiting" ? link.token : null);
+  const canRefresh = state !== "finished";
+  const shownToken = fresh?.token || (state === "waiting" ? link.token : null);
 
   return (
-    <section className={`fr-card fr-friend${link.state === "finished" && !link.seen_result ? " new" : ""}`} aria-label={`Puzzle link for ${who}`}>
+    <section className={`fr-card fr-friend${state === "finished" && !link.seen_result ? " new" : ""}`} aria-label={`Puzzle link for ${who}`}>
       <div className="fr-friend-head">
         <span className="fr-share-ico" aria-hidden="true"><Icon name="pencil" size={20}/></span>
         <div style={{minWidth:0}}>
           <div className="fr-friend-name">{link.label ? `For ${link.label}` : "Puzzle link"}</div>
           {link.title && <div className="fr-friend-status">“{link.title}”</div>}
         </div>
-        {link.state === "finished" && !link.seen_result && <span className="fr-dot-new" aria-label="New"/>}
+        {state === "finished" && !link.seen_result && <span className="fr-dot-new" aria-label="New"/>}
       </div>
-      <div className="fr-waiting" role="status"><Icon name={link.state === "finished" ? "check" : "clock"} size={18}/><span>{status}</span></div>
+      <div className="fr-waiting" role="status"><Icon name={state === "finished" ? "check" : "clock"} size={18}/><span>{status}</span></div>
       {action}
       {shownToken && <LinkBox token={shownToken} sender={sender} label={link.label}/>}
       {fresh && <div className="fr-msg ok">New link ready. Text it to {who}; the old one no longer works.</div>}
       {error && <div className="fr-msg err">{error}</div>}
       <div className="fr-row fr-share-actions">
-        {canRefresh && !fresh && link.state !== "waiting" && (
+        {canRefresh && !fresh && state !== "waiting" && (
           <button className="fr-btn secondary sm" onClick={refresh} disabled={!!busy} aria-busy={busy === "fresh"}>
             {busy === "fresh" ? <><Spinner/>Making…</> : "Send a fresh link"}
           </button>
         )}
-        <button className="fr-textbtn muted" onClick={stop} disabled={!!busy}>
-          {link.state === "finished" ? "Remove" : "Stop sharing"}
-        </button>
-        {link.state === "playing" && !fresh && (
+        {state === "finished" && closed
+          ? <span className="fr-help" style={{margin:"0 4px"}}>{link.state === "revoked" ? "Sharing stopped" : "Link expired"} · you keep this result</span>
+          : <button className="fr-textbtn muted" onClick={stop} disabled={!!busy}>Stop sharing</button>}
+        {state === "playing" && !fresh && (
           <InfoTip label="If they're stuck">
             A game stays in the browser where it was started. If {who} can't get back to it, send a fresh link:
             the old one stops working and they start again.
