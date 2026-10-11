@@ -376,13 +376,31 @@ function FriendCard({ f, avatar, now, onPlay, onResult, onCreate }) {
   let status = `Connected · ${name}'s puzzles will appear here.`;
   let action = null;
   const makeLabel = f.draft ? `Finish your puzzle for ${name}` : `Make one for ${name}`;
+  // Your puzzle that's still with them (one unfinished each way). Beside
+  // their puzzle to you, it says whose puzzle it is.
+  const waitingLine = f.outgoing && (
+    <div className="fr-waiting" role="status"><Icon name="clock" size={18}/>
+      <span>{f.outgoing.started
+        ? `${name} has started your puzzle`
+        : f.incoming ? `Your puzzle for ${name} is waiting`
+        : `Sent ${timeAgo(f.outgoing.sent_at, now)} · waiting for ${name} to start`}</span>
+    </div>
+  );
   const isNew = (f.incoming && !f.incoming.seen) || !!f.unseen_result;
   switch(f.next_action){
     case "play":
       status = f.incoming.started
         ? `You're partway through${f.incoming.guesses ? ` · ${f.incoming.guesses} guess${f.incoming.guesses===1?"":"es"} in` : ""}`
         : `Sent you a puzzle · ${timeAgo(f.incoming.sent_at, now)}`;
-      action = primary("play", f.incoming.started ? `Continue ${name}'s puzzle` : `Play ${name}'s puzzle`, ()=>onPlay(f.incoming.puzzle_id));
+      // Playing theirs never blocks sending yours: one unfinished puzzle each way.
+      action = <>
+        {primary("play", f.incoming.started ? `Continue ${name}'s puzzle` : `Play ${name}'s puzzle`, ()=>onPlay(f.incoming.puzzle_id))}
+        {waitingLine || (
+          <button className="fr-btn secondary" onClick={()=>onCreate(f)}>
+            <span className="fr-btn-ico"><Icon name="pencil"/></span>{makeLabel}
+          </button>
+        )}
+      </>;
       break;
     case "see_result":
       status = f.unseen_result.outcome === "won" ? "Solved your puzzle" : "Finished your puzzle";
@@ -392,13 +410,7 @@ function FriendCard({ f, avatar, now, onPlay, onResult, onCreate }) {
       // One message, in the status bar. "Started" is the server's record:
       // they chose a difficulty or made a guess; opening it isn't starting.
       status = null;
-      action = (
-        <div className="fr-waiting" role="status"><Icon name="clock" size={18}/>
-          <span>{f.outgoing.started
-            ? `${name} has started your puzzle`
-            : `Sent ${timeAgo(f.outgoing.sent_at, now)} · waiting for ${name} to start`}</span>
-        </div>
-      );
+      action = waitingLine;
       break;
     case "make_back": {
       const lf = f.last_finished;
