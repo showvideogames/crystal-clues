@@ -1,7 +1,7 @@
 # Friend puzzle exchange
 
-Two players become friends by invite link, make personal Cluevoyance puzzles for
-each other, play them on the familiar board, replay each other's real guesses,
+A player makes a puzzle for someone and texts them the link; that puzzle is
+the invitation. The two then make personal Cluevoyance puzzles for each other, play them on the familiar board, replay each other's real guesses,
 and keep two streaks that belong to the friendship.
 
 The daily game, archive, tutorial and admin work exactly as before. The whole
@@ -28,7 +28,9 @@ every server function identifies the player with `cluevoyance_uid()`, so an
 auth user that is not a Cluevoyance account is refused (`not_signed_in`).
 Every player column references `public.accounts(user_id)`, never an email;
 deleting an account removes its Friends rows by cascade. Each player picks a
-display name (game-local, not identity). An invite opened while signed out is
+display name (game-local, not identity). Friends has no separate "invite"
+action any more; invitation links sent before that (`/join/<code>`,
+`/?invite=`) still work. An invite opened while signed out is
 kept on the device through the sign-in round trip; signing out (or deleting
 the account) forgets it and detaches this device's notifications.
 
@@ -89,8 +91,10 @@ browser can trigger it. Push failures never block sending or playing.
 
 ## Puzzles by link (guests)
 
-"Make one for someone new" makes a puzzle with no recipient yet and a secret
-link, `/p/<code>`, to text. The rules live in one place,
+"Make a puzzle for a friend", the one main action at the top of Friends,
+makes a puzzle with no recipient yet and a secret link, `/p/<code>`, to text.
+The person may or may not have an account; either way there is no friend
+request first. The rules live in one place,
 `supabase/migrations/20261011090000_friend_share_links.sql`:
 
 - No account needed to play. Opening the link (or a text-message preview)
@@ -98,10 +102,15 @@ link, `/p/<code>`, to text. The rules live in one place,
   random key kept only in that browser (`src/friends/guestKey.js`). The link
   alone can't continue, see the result or save it.
 - Judged on the server like friend puzzles; no answer before the end.
-- After the game: "Save your result and become friends with Sam" — sign in
-  or sign up, and the finished result moves to that account (once; no
-  duplicate) and the two become friends. A guest finish doesn't start a
-  Friend Streak.
+- After the game, the one offer is "Make one for Sam". Signed out, a short
+  screen says why an account (it saves the result and connects them with
+  Sam), then the shared sign-in. Coming back signed in (after a name, for a
+  new account) the finished result moves to that account (once; no
+  duplicate), the two are connected (an existing friendship is reused), and
+  they land straight in the creator for Sam. The plan survives backing out
+  of the sign-in and a refresh (`cv-share-save` in this tab's
+  sessionStorage). A guest finish doesn't start a Friend Streak, and nothing
+  on the way promises one.
 - Links last 30 days from when they're made. Then the link closes whatever
   its state: an unfinished game just ends (not a loss) and a finished one can
   no longer be saved; the sender keeps the puzzle and any replay.

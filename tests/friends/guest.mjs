@@ -1,7 +1,10 @@
-// Puzzles shared by link, in real browsers at phone width: Sam makes one for
-// someone new and gets a link; Dad opens it with no account, plays (a
-// refresh halfway), wins, sees his result, then signs up and saves it, which
-// makes them friends. Also: opening (or a text-message preview) never claims
+// Puzzles sent by link, in real browsers at phone width. Sam's one main
+// action, "Make a puzzle for a friend", gives a link; Dad opens it with no
+// account, plays (a refresh halfway), wins, taps "Make one for Sam", learns
+// why an account, backs out of the sign-in, comes back, signs up (a refresh
+// on the name step) and lands in the creator for Sam, already connected,
+// and sends one back. Eve, who already has an account, goes straight from
+// her result to the creator, twice, with one friendship. Also: opening (or a text-message preview) never claims
 // it; a forwarded link in another browser can't take over; the sender's
 // fresh-link recovery; an expired link; the sender's own link.
 // Needs the local stack and `npm run friends:dev` (see e2e.mjs).
@@ -55,9 +58,15 @@ try {
   // ── 1. Sam makes a puzzle for someone new and gets a link ─────────────
   const s = await newPage("sam");
   await signInBrowser(s, sam, "/friends");
-  await click(s, "Make one for someone new");
+  await waitText(s, "Make a puzzle for a friend");
+  const hub = await text(s);
+  assert.ok(!/invite/i.test(hub), "no separate invite action");
+  assert.ok(!hub.includes("keep your streaks going"), "no streak talk without a streak");
+  assert.ok(await s.$(".fr-page > .fr-head + .fr-make-cta"), "the main action sits right under the heading");
+  await shot(s, "g00-sender-hub");
+  await click(s, "Make a puzzle for a friend");
   await s.waitForSelector(".fr-board-stage");
-  await waitText(s, "Make one for someone new");
+  await waitText(s, "Tap a clue or a word");
   await click(s, "Deal Random Cards");
   await sleep(300);
   await writeClues(s, ["OCEAN", "NIGHT", "GARDEN", "TOYS"]);
@@ -119,14 +128,15 @@ try {
   await dad.waitForSelector(".fr-done", { timeout: 15000 });
   await waitText(dad, "You read Sam's mind");
   assert.equal(await dad.$(".fr-done .fr-streak-num"), null, "no streaks for a guest");
-  await waitText(dad, "Save your result and become friends with Sam");
+  await waitText(dad, "Make one for Sam");
+  assert.ok(!/streak|save your result/i.test(await dad.$eval(".fr-done", (el) => el.innerText)), "one offer, and no streak promised");
   await shot(dad, "g06-guest-result");
   await click(dad, "See the board");
   await dad.waitForSelector(".fr-results-btn");
   await dad.reload({ waitUntil: "networkidle0" });
   await waitText(dad, "You solved it");
   await dad.locator(".fr-results-btn").click();
-  await waitText(dad, "Save your result and become friends with Sam");
+  await waitText(dad, "Make one for Sam");
   log("result shows again after a refresh, with Results");
 
   // ── 6. Sam watches Dad's guesses ──────────────────────────────────────
@@ -139,30 +149,97 @@ try {
   assert.ok((await text(s)).includes("Played by link"));
   await shot(s, "g08-sender-replay");
 
-  // ── 7. Dad signs up and saves it: friends, no duplicate ───────────────
-  await dad.locator(".fr-done button::-p-text(Save your result and become friends with Sam)").click();
-  await dad.waitForFunction(() => sessionStorage.getItem("cv-share-save")); // locally the shared sign-in isn't wired; the tap remembered the save
-  const dadAcct = await makeAccount("dad");         // as the sign-up page would create him
-  await signInBrowser(dad, dadAcct, `/p/${token}`); // and the sign-in returns to the link
+  // ── 7. Dad: "Make one for Sam" → why an account → sign up → his puzzle back ─
+  await dad.locator(".fr-done button::-p-text(Make one for Sam)").click();
+  await waitText(dad, "Sign up so your puzzle can reach Sam");
+  const why = await text(dad);
+  assert.ok(why.includes("saves your result and connects you with Sam"), "one short reason for the account");
+  assert.ok(!/streak/i.test(why), "an account alone earns no streak, so none is promised");
+  await shot(dad, "g09-guest-why-account");
+  await click(dad, "Back to the board");                   // changed his mind: nothing lost
+  await waitText(dad, "You solved it");
+  await click(dad, "Make one for Sam");
+  await click(dad, "Sign up or sign in");
+  await dad.waitForFunction(() => sessionStorage.getItem("cv-share-save")); // locally the shared sign-in isn't wired; the tap remembered the plan
+  // Interrupted: he backs out of the sign-in page. The game and the offer are still here.
+  await dad.reload({ waitUntil: "networkidle0" });
+  await waitText(dad, "You solved it");
+  await dad.waitForSelector(".fr-banner button::-p-text(Make one for Sam)");
+  assert.equal(await linkState(sam, puzzleId), "finished", "nothing saved without an account");
+  // Then he finishes signing up; the sign-in returns to the link.
+  const dadAcct = await makeAccount("dad");
+  await signInBrowser(dad, dadAcct, `/p/${token}`);
   await dad.waitForSelector("#fr-name");
-  await waitText(dad, "Save and become friends with Sam");
-  await shot(dad, "g09-guest-name-to-save");
+  await waitText(dad, "Sam will see it on the puzzle you make");
+  await dad.reload({ waitUntil: "networkidle0" });          // a refresh on the name step keeps the plan
+  await dad.waitForSelector("#fr-name");
   await dad.locator("#fr-name").fill("Dad");
-  await click(dad, "Save and become friends with Sam");
-  await dad.waitForFunction((id) => location.pathname === `/friends/guesses/${id}`, { timeout: 15000 }, puzzleId);
+  await shot(dad, "g10-guest-name");
+  await click(dad, "Continue");
+  await dad.waitForFunction(() => location.pathname.startsWith("/friends/make/") && !location.pathname.endsWith("/new"), { timeout: 15000 });
+  await dad.waitForSelector(".fr-board-stage");
   await waitText(dad, "Make one for Sam");
-  await shot(dad, "g10-saved-your-guesses");
-  await dad.goto(`${APP_URL}/friends`, { waitUntil: "networkidle0" });
-  await waitText(dad, "Sam");
-  const hist = await rpc(dadAcct.client, "list_friend_history", {
-    p_friendship_id: (await rpc(dadAcct.client, "get_friends_inbox")).friends[0].friendship_id });
-  assert.equal(hist.length, 1, "one puzzle, no duplicate");
-  await dad.goto(link, { waitUntil: "networkidle0" });
+  await waitText(dad, "Your result is saved, and you're connected with Sam");
+  assert.equal(await dad.evaluate(() => sessionStorage.getItem("cv-share-save")), null, "the plan is done");
+  await shot(dad, "g11-return-creator");
+  const dadFid = (await rpc(dadAcct.client, "get_friends_inbox")).friends[0].friendship_id;
+  assert.equal(dad.url(), `${APP_URL}/friends/make/${dadFid}`);
+  await dad.reload({ waitUntil: "networkidle0" });          // a refresh keeps him in the creator for Sam
+  await dad.waitForSelector(".fr-board-stage");
+  await waitText(dad, "Make one for Sam");
+  // The return puzzle, sent to Sam.
+  await click(dad, "Deal Random Cards");
+  await sleep(300);
+  await writeClues(dad, ["RIVER", "STARS", "BREAD", "KITE"]);
+  await click(dad, "Send puzzle to Sam");
+  await dad.waitForFunction(() => location.pathname === "/friends", { timeout: 15000 });
+  await shot(dad, "g12-dad-hub-after-send");
+  const dadInbox = await rpc(dadAcct.client, "get_friends_inbox");
+  assert.equal(dadInbox.friends.length, 1, "one friendship");
+  assert.equal(dadInbox.friends[0].daily_streak, 0, "streak rules unchanged: a guest finish starts none");
+  assert.ok(!(await text(dad)).includes("keep your streaks going"), "no streak talk without a streak");
+  const hist = await rpc(dadAcct.client, "list_friend_history", { p_friendship_id: dadFid });
+  assert.deepEqual(hist.map((h) => h.direction).sort(), ["received", "sent"], "his saved result (once) and his puzzle back");
+  await dad.goto(link, { waitUntil: "networkidle0" });      // the old link now opens his saved result
   await dad.waitForFunction((id) => location.pathname === `/friends/guesses/${id}`, { timeout: 15000 }, puzzleId);
-  log("Dad saved it: friends with Sam; the link now opens his saved result");
+  log("Dad: played, signed up, saved, connected once, sent one back");
   await s.goto(`${APP_URL}/friends`, { waitUntil: "networkidle0" });
-  await waitText(s, "Dad");
+  await waitText(s, "Play Dad's puzzle");
   assert.ok(!(await text(s)).includes("For Dad"), "no longer a pending link for Sam");
+  await shot(s, "g13-sender-gets-puzzle-back");
+
+  // ── 7b. Eve already has an account: no friend request first ────────────
+  const eve = await makePlayer("Eve");
+  const sb = (await import("./helpers.mjs")).sampleBoard;
+  const forEve = async () => {
+    const d = await rpc(sam.client, "save_friend_draft", { p_friendship_id: null, p_draft_id: null, p_version: null, p_title: "", p_board: sb("EVE") });
+    return rpc(sam.client, "create_share_link", { p_draft_id: d.id, p_version: d.version, p_label: "Eve" });
+  };
+  const ev = await newPage("eve");
+  await signInBrowser(ev, eve, "/");
+  let eveFid = null;
+  for (const round of [1, 2]) {   // the second time they're already connected: still one friendship
+    const shared = await forEve();
+    await ev.goto(`${APP_URL}/p/${shared.token}`, { waitUntil: "networkidle0" });
+    await waitText(ev, "Sam made you a puzzle");
+    await click(ev, "Play");
+    await ev.waitForSelector(".csurface .ctile"); await sleep(700);
+    await solve(ev, await rpc(sam.client, "open_friend_puzzle", { p_puzzle_id: shared.puzzle_id }));
+    await ev.locator("button.sbtn").click();
+    await ev.waitForSelector(".fr-done", { timeout: 15000 });
+    if (round === 1) await shot(ev, "g14-account-result");
+    await ev.locator(".fr-done button::-p-text(Make one for Sam)").click();
+    await ev.waitForFunction(() => /^\/friends\/make\/[0-9a-f-]{36}$/.test(location.pathname), { timeout: 15000 });
+    await waitText(ev, "Your result is saved, and you're connected with Sam");
+    assert.equal(await ev.$("#fr-name"), null, "no name step for an existing account");
+    const fid = ev.url().split("/friends/make/")[1];
+    if (round === 1) { eveFid = fid; await shot(ev, "g15-account-return-creator"); }
+    assert.equal(fid, eveFid, "the same friendship both times");
+  }
+  const eveInbox = await rpc(eve.client, "get_friends_inbox");
+  assert.equal(eveInbox.friends.length, 1, "connected once");
+  assert.equal((await rpc(eve.client, "list_friend_history", { p_friendship_id: eveFid })).length, 2, "both results saved");
+  log("Eve (existing account): played from the link, then straight into making one back");
 
   // ── 8. Recovery: stuck in another browser → a fresh link ──────────────
   const d2 = await rpc(sam.client, "save_friend_draft", { p_friendship_id: null, p_draft_id: null, p_version: null, p_title: "",
@@ -174,12 +251,12 @@ try {
   await momA.waitForSelector(".csurface .ctile");
   await s.reload({ waitUntil: "networkidle0" });
   await waitText(s, "Mom started playing");
-  await shot(s, "g11-sender-playing-recovery");
+  await shot(s, "g16-sender-playing-recovery");
   await click(s, "Send a fresh link");
   await waitText(s, "New link ready");
   const freshLink = await s.$eval('section[aria-label="Puzzle link for Mom"] input[aria-label="Puzzle link"]', (el) => el.value);
   assert.notEqual(freshLink, `${APP_URL}/p/${mom.token}`);
-  await shot(s, "g12-sender-fresh-link");
+  await shot(s, "g17-sender-fresh-link");
   await momA.reload({ waitUntil: "networkidle0" });
   await waitText(momA, "This link doesn't work");
   const momB = await newPage("momB");
@@ -192,7 +269,7 @@ try {
     .eq("share_token", freshLink.split("/p/")[1]);
   await momB.reload({ waitUntil: "networkidle0" });
   await waitText(momB, "This link has expired");
-  await shot(momB, "g13-expired");
+  await shot(momB, "g18-expired");
   await s.reload({ waitUntil: "networkidle0" });
   await waitText(s, "The link expired before Mom finished");
   await s.goto(freshLink, { waitUntil: "networkidle0" });

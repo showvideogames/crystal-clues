@@ -11,9 +11,9 @@
 //   /friends                       Friends hub
 //   /friends/play/:puzzleId        a friend's puzzle (or, for its creator, its status)
 //   /friends/guesses/:puzzleId     the guesses replay and results
-//   /friends/make/:friendshipId    making a puzzle for that friend ("new": for someone new, by link)
+//   /friends/make/:friendshipId    making a puzzle for that friend ("new": for anyone, sent as a link)
 //   /p/:code                       a puzzle shared by link: playable without an account
-//   /join/:code                    a friend invitation (taken in at start-up, then /friends)
+//   /join/:code                    an older friend invitation (taken in at start-up, then /friends)
 //
 // /p/ and /join/ links get their own link preview (api/link.js, vercel.json).
 // Links from before these addresses keep working: /?invite=TOKEN (invite

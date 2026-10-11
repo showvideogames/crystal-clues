@@ -61,10 +61,10 @@ test("a puzzle link: '[Name] made you a puzzle!', no account needed, no spoilers
   assert.match(html, /<div id="root"><\/div>/, "the app page itself");
 });
 
-test("an invitation: '[Name] invited you to play', sign in or sign up, never 'no account needed'", async () => {
+test("an older invitation: '[Name] wants to trade puzzles with you', sign in or sign up, never 'no account needed'", async () => {
   const html = await page("invite", invite.token);
-  assert.equal(meta(html, "og:title"), "Deb invited you to play");
-  assert.match(meta(html, "og:description"), /Join Deb on Cluevoyance.*Sign in or sign up to join\./);
+  assert.equal(meta(html, "og:title"), "Deb wants to trade puzzles with you");
+  assert.match(meta(html, "og:description"), /Make word puzzles for each other on Cluevoyance\. Sign in or sign up to join Deb\./);
   assert.ok(!/No account needed/i.test(html), "invitations need an account");
   assert.equal(meta(html, "og:url"), `${origin}/join/${invite.token}`);
 });

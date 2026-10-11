@@ -10,8 +10,11 @@ import "./friends.css";
 // A puzzle someone made for you and texted as a link: /p/<code>. No account
 // needed. Opening it only reads; tapping Play starts it in this browser
 // (guestKey.js), and only this browser can carry on, see the result, or save
-// it. Afterwards, signing in or up saves the result and makes you friends
-// with the sender. All the rules are in the share-links migration.
+// it. Afterwards the one offer is "Make one for <sender>": it saves the
+// result to your account (signing in or up first if needed), connects you
+// with the sender (once; the server reuses an existing friendship) and opens
+// the creator for your puzzle back. All the rules are in the share-links
+// migration; nothing here starts a Friend Streak.
 //   account: useAccount() (App.jsx)
 
 const until = (iso) => new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
@@ -21,7 +24,7 @@ export default function SharedPuzzle({ kit, token, account, onHowToPlay, onPlayD
   const [state,setState] = useState(null);
   const [error,setError] = useState("");
   const [tick,setTick] = useState(0);
-  const [askName,setAskName] = useState(false);
+  const [step,setStep] = useState(null);   // before making one back: "account" (why to sign in) or "name"
   const [saving,setSaving] = useState(false);
   const [saveError,setSaveError] = useState("");
   const signedIn = account.status === "signed_in";
@@ -38,41 +41,48 @@ export default function SharedPuzzle({ kit, token, account, onHowToPlay, onPlayD
 
   const creator = state?.creator_name || state?.puzzle?.creator_name || "Your friend";
 
-  const claim = useCallback(async ()=>{
+  // Save the result to this account, then straight on to making one back.
+  // The intent to make one survives the sign-in round trip and a refresh
+  // until this succeeds.
+  const saveAndMake = useCallback(async ()=>{
     setSaving(true); setSaveError("");
     try {
       const r = await api.claimShared(token, key);
-      navigate(paths.result(r.puzzle_id), { replace:true });
+      clearSaveIntent();
+      navigate(paths.make(r.friendship_id), { replace:true, state:{ friendName:creator, savedShared:true } });
     } catch(err){
-      if(err.code === "no_profile"){ setAskName(true); setSaving(false); return; }
-      setSaveError(err.message); setSaving(false);
+      setSaving(false);
+      if(err.code === "no_profile"){ setStep("name"); return; }
+      clearSaveIntent();
+      setSaveError(err.message);
     }
-  },[token, key]);
+  },[token, key, creator]);
 
-  // The one offer after the game: sign in (or up) if needed, then save.
-  const startSave = useCallback(async ()=>{
-    if(!signedIn){
-      rememberSaveIntent(token);   // finished when this tab comes back signed in
-      await account.signIn();      // still here: unavailable, account.message says why
-      return;
-    }
-    claim();
-  },[signedIn, token, account, claim]);
+  // The one offer after the game. Signed out: first, why an account.
+  const makeOne = useCallback(()=>{
+    if(saving) return;
+    if(!signedIn){ setStep("account"); return; }
+    saveAndMake();
+  },[saving, signedIn, saveAndMake]);
+  const signInToMake = useCallback(async ()=>{
+    rememberSaveIntent(token);   // finished when this tab comes back signed in
+    await account.signIn();      // still here: unavailable, account.message says why
+  },[token, account]);
 
-  // Back from signing in after tapping "Save…": finish the save, exactly once.
+  // Back from signing in after tapping "Make one…": carry on, exactly once.
+  // Otherwise a result already saved to this account lives in Friends now.
   const finished = state?.status === "yours" && !!state.puzzle?.finished_at;
-  const saveOnReturn = useRef(hasSaveIntent(token));
+  const saved = state?.status === "saved_yours";
+  const resume = useRef(hasSaveIntent(token));
   useEffect(()=>{
-    if(!(signedIn && finished && saveOnReturn.current)) return;
-    saveOnReturn.current = false;
-    clearSaveIntent();
-    Promise.resolve().then(claim);
-  },[signedIn, finished, claim]);
-
-  // Already saved to this account: it lives in Friends now.
-  useEffect(()=>{
-    if(state?.status === "saved_yours") navigate(paths.result(state.puzzle_id), { replace:true });
-  },[state]);
+    if(!signedIn) return;
+    if((finished || saved) && resume.current){
+      resume.current = false;
+      Promise.resolve().then(saveAndMake);
+    } else if(saved && !saving){
+      navigate(paths.result(state.puzzle_id), { replace:true });
+    }
+  },[signedIn, finished, saved, saving, saveAndMake, state]);
 
   const source = useMemo(()=>({
     open: async ()=>{
@@ -87,8 +97,12 @@ export default function SharedPuzzle({ kit, token, account, onHowToPlay, onPlayD
   if(error) return <Note title="Couldn't open this puzzle" text={error} onPlayDaily={onPlayDaily}/>;
   if(!state || !settled) return <div className="fr-wrap"><div className="fr-page"><p className="fr-sub" style={{textAlign:"center",padding:30}}>Opening puzzle…</p></div></div>;
 
-  if(askName){
-    return <SaveName creator={creator} onSaved={()=>{ setAskName(false); claim(); }}/>;
+  if(saving) return <div className="fr-wrap"><div className="fr-page"><p className="fr-sub" style={{textAlign:"center",padding:30}}>Saving your result…</p></div></div>;
+  if(step === "name"){
+    return <SaveName creator={creator} onSaved={()=>{ setStep(null); saveAndMake(); }}/>;
+  }
+  if(step === "account" && !signedIn){
+    return <AccountStep creator={creator} account={account} onSignIn={signInToMake} onBack={()=>setStep(null)}/>;
   }
 
   switch(state.status){
@@ -109,11 +123,7 @@ export default function SharedPuzzle({ kit, token, account, onHowToPlay, onPlayD
           {account.message && <div className="fr-page" style={{paddingBottom:0}}><div className="fr-msg err">{account.message}</div></div>}
           <FriendPlay key={state.puzzle.id} kit={kit} puzzleId={state.puzzle.id} source={source}
             onBack={onPlayDaily} onHowToPlay={onHowToPlay}
-            guest={{
-              backLabel:"Today's puzzle",
-              saveLabel: saving ? "Saving…" : `Save your result and become friends with ${creator}`,
-              onSave: saving ? ()=>{} : startSave,
-            }}/>
+            guest={{ backLabel:"Today's puzzle", onMake:makeOne }}/>
         </>
       );
     case "taken":
@@ -158,7 +168,38 @@ function Note({ title, text, action, onPlayDaily }) {
   );
 }
 
-// Signed in for the first time to save: a name for Friends, then the save.
+// "Make one for …" while signed out: one short reason, then the shared
+// sign-in, which returns here and carries on (rememberSaveIntent).
+function AccountStep({ creator, account, onSignIn, onBack }) {
+  const [busy,setBusy] = useState(false);
+  // Back from the sign-in page via the browser's Back button: tappable again.
+  useEffect(()=>{
+    const reset = (e)=>{ if(e.persisted) setBusy(false); };
+    window.addEventListener("pageshow", reset);
+    return ()=>window.removeEventListener("pageshow", reset);
+  },[]);
+  const go = async ()=>{ setBusy(true); await onSignIn(); setBusy(false); };
+  return (
+    <div className="fr-wrap">
+      <div className="fr-page">
+        <div className="fr-hero">
+          <div className="fr-hero-ball">✨</div>
+          <h1 className="fr-title">Make one for {creator}</h1>
+          <p className="fr-sub">Sign up so your puzzle can reach {creator}. It also saves your result and connects you with {creator}.</p>
+        </div>
+        <div className="fr-card">
+          {account.message && <div className="fr-msg err">{account.message}</div>}
+          <button className="fr-btn primary" onClick={go} disabled={busy} aria-busy={busy}>
+            {busy ? <><Spinner/>Opening sign-in…</> : "Sign up or sign in"}</button>
+          <p className="fr-help" style={{margin:0,textAlign:"center"}}>New here? Choose <b>Sign up</b> on the next page.</p>
+        </div>
+        <p className="fr-foot"><button className="fr-link" onClick={onBack}>Back to the board</button></p>
+      </div>
+    </div>
+  );
+}
+
+// Signed in for the first time: a name for Friends, then on to making one back.
 function SaveName({ creator, onSaved }) {
   const [name,setName] = useState("");
   const [busy,setBusy] = useState(false);
@@ -175,7 +216,7 @@ function SaveName({ creator, onSaved }) {
         <div className="fr-hero">
           <div className="fr-hero-ball">✨</div>
           <h1 className="fr-title">What's your name?</h1>
-          <p className="fr-sub">{creator} will see it on puzzles you send.</p>
+          <p className="fr-sub">{creator} will see it on the puzzle you make.</p>
         </div>
         <form className="fr-card" onSubmit={save}>
           <label className="fr-label" htmlFor="fr-name">Your name</label>
@@ -183,7 +224,7 @@ function SaveName({ creator, onSaved }) {
             onChange={e=>setName(e.target.value)} placeholder="e.g. Deb"/>
           {error && <div className="fr-msg err" style={{marginTop:10}}>{error}</div>}
           <button className="fr-btn primary" style={{marginTop:12}} disabled={busy || !name.trim()} aria-busy={busy}>
-            {busy ? <><Spinner/>Saving…</> : `Save and become friends with ${creator}`}</button>
+            {busy ? <><Spinner/>Saving…</> : "Continue"}</button>
         </form>
       </div>
     </div>

@@ -15,9 +15,10 @@ import { createMoveRecorder } from "./moveLog";
 //
 // The same screen plays a puzzle shared by link (SharedPuzzle.jsx): then
 // `source` opens and judges it through the link, and `guest` replaces the
-// friend-only actions with the one offer to save the result.
+// friend-only actions: "Make one for …" goes to guest.onMake, which saves
+// the result to an account first.
 //   source: { open(), guess(g), saveMoves(b) }   default: this account's friend puzzle
-//   guest:  { saveLabel, onSave, backLabel }
+//   guest:  { onMake, backLabel }
 
 export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenResult, onHowToPlay, onViewed, source, guest }) {
   const { GameView } = kit;
@@ -85,7 +86,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
   }
 
   const creator = view.creator_name;
-  const makeBack = ()=>onMakeBack({ friendship_id:view.friendship_id, friend_name:creator });
+  const makeBack = guest ? guest.onMake : ()=>onMakeBack({ friendship_id:view.friendship_id, friend_name:creator });
   // Did this finish add a Friend Streak day? Compare with the streak as it
   // stood when the puzzle was opened (0 there if it had already lapsed).
   const counted = done?.friendship
@@ -116,7 +117,9 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
               {view.outcome === "won" ? `You solved it ${livesLeftPhrase(view.lives_used, view.max_lives)}.` : "The veil stayed closed — here's the answer."}
             </p>
             {guest ? (
-              <button className="fr-btn primary" onClick={guest.onSave}>{guest.saveLabel}</button>
+              <button className="fr-btn primary" onClick={makeBack}>
+                <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
+              </button>
             ) : (
               <div className="fr-row">
                 <button className="fr-btn secondary" onClick={()=>onOpenResult(view.id)}>Your guesses</button>
@@ -132,8 +135,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
 
       {showDone && result && (
         <ResultSheet result={result} creator={creator} maxLives={view.max_lives} now={serverNow} justCounted={counted}
-          onMakeBack={makeBack} onClose={()=>setShowDone(false)} onBack={guest ? null : onBack}
-          primary={guest ? { label:guest.saveLabel, onClick:guest.onSave } : null}/>
+          onMakeBack={makeBack} onClose={()=>setShowDone(false)} onBack={guest ? null : onBack}/>
       )}
     </div>
   );
