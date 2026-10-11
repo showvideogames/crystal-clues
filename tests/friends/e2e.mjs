@@ -64,8 +64,10 @@ async function signIn(page, acct, name, { invitedBy, shotName } = {}) {
   if (invitedBy) await page.waitForSelector(`button.fr-btn.primary::-p-text(Join ${invitedBy})`);
   if (shotName) await shot(page, shotName);
   await click(page, invitedBy ? `Join ${invitedBy}` : "Continue");
-  await waitText(page, "Signed in as");
+  await page.waitForFunction((n) => document.querySelector(".fr-profile .fr-friend-name")?.textContent === n, { timeout: 15000 }, name);
 }
+// Who Friends says is signed in: the name on the Profile card.
+const signedInAs = (page) => page.$eval(".fr-profile .fr-friend-name", (el) => el.textContent);
 
 const openFriends = (page) => page.locator('button[aria-label^="Friends"]').click();
 
@@ -521,7 +523,7 @@ try {
   await deb2.goto(DEB_URL, { waitUntil: "networkidle0" });
   await openFriends(deb2);
   await waitText(deb2, "Make one for Sam");
-  assert.ok((await bodyText(deb2)).includes("Signed in as Deb"), "Deb is still Deb after reopening");
+  assert.equal(await signedInAs(deb2), "Deb", "Deb is still Deb after reopening");
   log("reopened: Deb resumes signed in");
 
   // 13. Sign-out and switching accounts on Sam's phone.
@@ -539,7 +541,7 @@ try {
   await signOutBrowser(sam);
   await signInBrowser(sam, samAcct, "/?friends=1");
   await waitText(sam, "Make one for Deb");
-  assert.ok((await bodyText(sam)).includes("Signed in as Sam"), "Sam's own Friends come back");
+  assert.equal(await signedInAs(sam), "Sam", "Sam's own Friends come back");
   log("sign-out and account switching ok");
 
   assert.deepEqual(errors, [], "no page errors");
