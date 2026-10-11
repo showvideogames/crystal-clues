@@ -80,18 +80,20 @@ async function apiAs(page) {
 }
 
 async function writePuzzle(page, clues) {
-  await click(page, "Deal random cards");
+  await click(page, "Deal Random Cards");
   await sleep(300);
   const pills = await page.$$(".fr-board-stage .ctab.editable");
   // DOM order: top, left, right, bottom
   const order = [clues[0], clues[3], clues[1], clues[2]];
   for (let i = 0; i < 4; i++) {
     const pill = (await page.$$(".fr-board-stage .ctab.editable"))[i] || pills[i];
+    await pill.evaluate((el) => el.scrollIntoView({ block: "center" }));   // clear of the sticky action bar
     await pill.click();
-    await page.waitForSelector(".fr-board-stage input.ctab.editing");
+    // Tapping a clue opens the horizontal editor (the board updates as you type); Enter is Done.
+    await page.waitForSelector(".fr-sheet input");
     await page.keyboard.type(order[i]);
     await page.keyboard.press("Enter");
-    await sleep(150);
+    await page.waitForSelector(".fr-sheet", { hidden: true });
   }
 }
 
@@ -185,7 +187,7 @@ try {
   await shot(sam, "02c-new-friend-375");
   log("friends");
 
-  // 3. Deb makes a puzzle for Sam: deal, write clues, save, preview, send.
+  // 3. Deb makes a puzzle for Sam: deal, write clues, save, send.
   await deb.reload(); await openFriends(deb);
   await click(deb, "Make one for Sam");
   await deb.waitForSelector(".fr-board-stage");
@@ -216,19 +218,13 @@ try {
       return { toHeading: Math.round(heading.top - board.bottom), toCards: Math.round(tops[0] - board.bottom), sameRow: new Set(tops).size === 1 };
     });
     assert.ok(gap.sameRow, `${name}: the three bonus cards stay on one row`);
-    // The section starts right after the board (its hint line in between), and
+    // The section starts right after the board ("How to make a puzzle" in between), and
     // the cards right under the section heading and its one-sentence note.
     assert.ok(gap.toHeading <= 80 && gap.toCards - gap.toHeading <= 110, `${name}: bonus heading ${gap.toHeading}px / cards ${gap.toCards}px below the board`);
     log(name, `board → bonus heading ${gap.toHeading}px, → cards ${gap.toCards}px`);
     await shot(deb, name);
   }
   await deb.setViewport(PHONE);
-  await click(deb, "Preview");
-  await deb.waitForSelector(".csurface .ctile");
-  await sleep(700);
-  assert.equal(await trayCount(deb), 3, "the preview shows all three bonus cards");
-  await shot(deb, "05-creator-preview-375");
-  await deb.locator(".fr-playbar .fr-back").click();
   await click(deb, "Send puzzle to Sam");
   await waitText(deb, "waiting for Sam to start");
   await shot(deb, "06-deb-inbox-waiting-375");

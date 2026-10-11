@@ -1,19 +1,30 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { api } from "./client";
-import { dealCardsFromBank, checkBoard } from "../game/shared";
+import { dealCardsFromBank, checkBoard, vw } from "../game/shared";
 import { Icon, Spinner, PageHead, InfoTip } from "./ui.jsx";
 
 // A player's own puzzle for one friend, built on the simplified Create
-// Puzzle board: deal cards, tap any clue or card-edge word to type it, turn
-// or drag cards, preview, save a draft, send. It's always one complete
-// puzzle — four answer cards and three bonus cards; the friend picks the
-// difficulty (how many bonus cards they're dealt) when they start. It
-// writes only this player's private draft; the server checks it again and
-// freezes it when it's sent.
+// Puzzle board: deal cards, tap any clue or card word to edit it in a
+// horizontal editor above the keyboard (the board updates as you type),
+// turn or drag cards, save a draft, send. The board itself is the live
+// preview. It's always one complete puzzle — four answer cards and three
+// bonus cards; the friend picks the difficulty (how many bonus cards
+// they're dealt) when they start. It writes only this player's private
+// draft; the server checks it again and freezes it when it's sent.
 
 const CLUE_MAX = 20;
 const WORD_MAX = 18;
 const newId = () => `c${Math.random().toString(36).slice(2, 9)}`;
+
+// Board geometry. Slots 0–3 are the answer: top-left, top-right,
+// bottom-right, bottom-left. Clue i sits on side i (top, right, bottom,
+// left) and links the outer word of each card on that side, read left to
+// right or top to bottom: [slot, edge as shown].
+const SIDES = ["top", "right", "bottom", "left"];
+const CLUE_LINKS = [[[0, 0], [1, 0]], [[1, 1], [2, 1]], [[3, 2], [2, 2]], [[0, 3], [3, 3]]];
+const SLOT_NAMES = ["top-left card", "top-right card", "bottom-right card", "bottom-left card"];
+const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
 // Unsaved edits are mirrored locally so a refresh or a closed tab doesn't
 // lose them. They are restored only on top of the same server version they
@@ -42,10 +53,86 @@ function blankBoard(){
   return { clues:["","","",""], cards, slots };
 }
 
+// Typing keeps spaces as they're typed (so "ICE CREAM" can be written);
+// what's checked and saved is trimmed.
+const tidy = (b) => ({
+  ...b,
+  clues:b.clues.map(c=>(c || "").trim()),
+  cards:Object.fromEntries(Object.entries(b.cards).map(([id, c])=>[id, { ...c, words:c.words.map(w=>(w || "").trim()) }])),
+});
+
+// How much of the bottom of the layout viewport the on-screen keyboard
+// covers. iPhone keeps the layout viewport and shrinks the visual one;
+// Android usually resizes both, and then this stays 0 (bottom:0 is
+// already above the keyboard).
+function keyboardInset(){
+  const vv = window.visualViewport;
+  return vv ? Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop)) : 0;
+}
+function useKeyboardInset(){
+  const [inset,setInset] = useState(keyboardInset);
+  useEffect(()=>{
+    const vv = window.visualViewport;
+    if(!vv) return undefined;
+    const update = ()=>setInset(keyboardInset());
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    return ()=>{ vv.removeEventListener("resize", update); vv.removeEventListener("scroll", update); };
+  },[]);
+  return inset;
+}
+
+// The editor: one horizontal text field, what it connects to, and Done.
+// Docked to the bottom of the visible screen, just above the keyboard.
+// Nothing is lost if the keyboard closes: every keystroke is already on the board.
+function EditSheet({ editKey, title, context, value, maxLength, placeholder, inputLabel, onChange, onDone, onSize }) {
+  const inputRef = useRef(null);
+  const sheetRef = useRef(null);
+  const inset = useKeyboardInset();
+  // Focus as part of the tap that opened it, so phones raise the keyboard,
+  // without letting the browser scroll the page to the field.
+  useLayoutEffect(()=>{
+    const el = inputRef.current;
+    if(!el) return;
+    el.focus({ preventScroll:true });
+    const end = el.value.length;
+    try { el.setSelectionRange(end, end); } catch { /* not a text field */ }
+  },[editKey]);
+  // Tell the page how much room to keep clear below its content.
+  useLayoutEffect(()=>{
+    const el = sheetRef.current;
+    if(!el) return undefined;
+    const report = ()=>onSize(el.offsetHeight + inset);
+    report();
+    const ro = new ResizeObserver(report);
+    ro.observe(el);
+    return ()=>ro.disconnect();
+  },[inset, onSize]);
+  return createPortal(
+    <div ref={sheetRef} className="fr-sheet" style={{ bottom:inset }} role="dialog" aria-label={title}>
+      <div className="fr-sheet-inner">
+        <div className="fr-sheet-head">
+          <span className="fr-sheet-title">{title}</span>
+          {context}
+        </div>
+        <form className="fr-sheet-row" onSubmit={e=>{ e.preventDefault(); onDone(); }}>
+          <input ref={inputRef} className="fr-input fr-sheet-input" value={value} maxLength={maxLength}
+            placeholder={placeholder} aria-label={inputLabel}
+            autoCapitalize="characters" autoCorrect="off" autoComplete="off" spellCheck={false} enterKeyHint="done"
+            onChange={e=>onChange(e.target.value)}
+            onKeyDown={e=>{ if(e.key === "Escape"){ e.preventDefault(); onDone(); } }}/>
+          <button type="submit" className="fr-btn primary fr-sheet-done">Done</button>
+        </form>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 // friend.share: a puzzle for someone new, shared by link — no friendship yet
 // (friendship_id null); "Get link" instead of Send, and onShared gets the link.
 export default function FriendCreator({ kit, friend, onBack, onSent, onShared }) {
-  const { AdminPreviewCard, EditableClueTab, DragGhost, GameView } = kit;
+  const { AdminPreviewCard, DragGhost } = kit;
   const share = !!friend.share;
   const [label,setLabel] = useState("");          // who a link is for; only the sender sees it
   const name = share ? (label.trim() || "they") : friend.friend_name;
@@ -57,14 +144,17 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
   const [wordBank,setWordBank]     = useState([]);
   const [busy,setBusy]             = useState("");
   const [message,setMessage]       = useState(null);   // { kind, text, reload? }
-  const [previewKey,setPreviewKey] = useState(0);      // 0 = not previewing
-  const [inlineEdit,setInlineEdit] = useState(null);
-  const [inlineDraft,setInlineDraft] = useState("");
+  // What's being edited: { kind:"clue", index } or { kind:"word", cardId, raw } (raw = the card's own edge).
+  const [editor,setEditor]         = useState(null);
+  const [editText,setEditText]     = useState("");     // the field, exactly as typed
+  const [sheetSpace,setSheetSpace] = useState(0);      // sheet + keyboard height, kept clear under the page
+  const [howTo,setHowTo]           = useState(false);
   const [ghost,setGhost]     = useState(null);
   const [dragSrc,setDragSrc] = useState(null);
   const [dragOver,setDragOver] = useState(null);
   const slotRefs = useRef({});
   const dragRef  = useRef(null);
+  const wrapRef  = useRef(null);
 
   const load = useCallback(async ()=>{
     setMessage(null);
@@ -103,33 +193,72 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
   const edit = (fn) => { setBoard(fn); setDirty(true); setMessage(null); };
   // All seven cards count: every bonus card must be finished, whatever
   // difficulty the friend picks later.
-  const checks = useMemo(()=> board ? checkBoard({ ...board, cardCount:7 }) : null,[board]);
+  const checks = useMemo(()=> board ? checkBoard({ ...tidy(board), cardCount:7 }) : null,[board]);
 
   // ── Editing ─────────────────────────────────────────────────────────
-  const updateClue = (i,val) => edit(b=>{
-    const clues=[...b.clues]; clues[i]=val.toUpperCase().slice(0,CLUE_MAX); return { ...b, clues };
-  });
   const rotateCard = (cardId) => edit(b=>({ ...b,
     slots:b.slots.map(s=>s.cardId===cardId ? { ...s, orientation:(s.orientation+1)%4 } : s) }));
-  const startInlineEdit = (cardId, wordIndex, value) => { setInlineEdit({ cardId, wordIndex }); setInlineDraft(value || ""); };
-  const cancelInlineEdit = () => { setInlineEdit(null); setInlineDraft(""); };
-  const commitInlineEdit = () => {
-    if(!inlineEdit) return;
-    const { cardId, wordIndex } = inlineEdit;
-    // wordIndex is the edge as shown; store it on the card's own (unturned) edge.
-    const orientation = board.slots.find(s=>s.cardId===cardId)?.orientation || 0;
-    const raw = (wordIndex - orientation + 4) % 4;
-    const value = inlineDraft.toUpperCase().trim().slice(0,WORD_MAX);
-    edit(b=>({ ...b, cards:{ ...b.cards,
-      [cardId]:{ ...b.cards[cardId], words:b.cards[cardId].words.map((w,i)=>i===raw ? value : w) } } }));
-    cancelInlineEdit();
+  const setWord = (cardId, raw, value) => edit(b=>({ ...b, cards:{ ...b.cards,
+    [cardId]:{ ...b.cards[cardId], words:b.cards[cardId].words.map((w,i)=>i===raw ? value : w) } } }));
+  const setClue = (i, value) => edit(b=>{ const clues=[...b.clues]; clues[i]=value; return { ...b, clues }; });
+
+  // Leaving a field trims what was typed in it.
+  const finish = (ed) => {
+    if(ed?.kind === "clue") setBoard(b=>({ ...b, clues:b.clues.map((c,i)=>i===ed.index ? (c || "").trim() : c) }));
+    if(ed?.kind === "word") setBoard(b=>{
+      const c = b.cards[ed.cardId]; if(!c) return b;
+      return { ...b, cards:{ ...b.cards, [ed.cardId]:{ ...c, words:c.words.map((w,i)=>i===ed.raw ? (w || "").trim() : w) } } };
+    });
   };
+  const openClue = (index) => {
+    finish(editor);
+    setEditor({ kind:"clue", index });
+    setEditText(board.clues[index] || "");
+  };
+  const openWord = (cardId, shownEdge) => {
+    finish(editor);
+    const orientation = board.slots.find(s=>s.cardId===cardId)?.orientation || 0;
+    const raw = (shownEdge - orientation + 4) % 4;   // store on the card's own (unturned) edge
+    setEditor({ kind:"word", cardId, raw });
+    setEditText(board.cards[cardId]?.words[raw] || "");
+  };
+  const closeEditor = () => { finish(editor); setEditor(null); setSheetSpace(0); };
+  const typeInEditor = (v) => {
+    setEditText(v);
+    const value = v.toUpperCase();
+    if(editor?.kind === "clue") setClue(editor.index, value.slice(0, CLUE_MAX));
+    if(editor?.kind === "word") setWord(editor.cardId, editor.raw, value.slice(0, WORD_MAX));
+  };
+
+  // Keep what's being edited (a clue with the two cards it links, or a card)
+  // in view above the sheet and keyboard: scroll only when it's actually
+  // covered, and only as far as needed.
+  useEffect(()=>{
+    if(!editor || !sheetSpace) return undefined;
+    const keep = ()=>{
+      const wrap = wrapRef.current;
+      const parts = wrap ? [...wrap.querySelectorAll('[data-editing="true"]')] : [];
+      if(!wrap || !parts.length) return;
+      const vv = window.visualViewport;
+      const bottom = window.innerHeight - sheetSpace - 12;
+      const top = Math.max(wrap.getBoundingClientRect().top, vv ? vv.offsetTop : 0) + 8;
+      const rects = parts.map(p=>p.getBoundingClientRect());
+      const r = { top:Math.min(...rects.map(x=>x.top)), bottom:Math.max(...rects.map(x=>x.bottom)) };
+      if(r.bottom > bottom) wrap.scrollBy({ top:Math.min(r.bottom - bottom, r.top - top), behavior:"smooth" });
+      else if(r.top < top) wrap.scrollBy({ top:r.top - top, behavior:"smooth" });
+    };
+    keep();
+    // The keyboard can change the viewport without changing the sheet (Android).
+    window.addEventListener("resize", keep);
+    return ()=>window.removeEventListener("resize", keep);
+  },[editor, sheetSpace]);
 
   const deal = () => {
     if(wordBank.length < 4){ setMessage({ kind:"err", text:"The word bank isn't available right now — type your own words on the cards." }); return; }
     const hasWords = Object.values(board.cards).some(c=>c.words.some(w=>w?.trim()));
     if(hasWords && !window.confirm("Dealing new cards will replace the words you've already entered. Continue?")) return;
     const dealt = dealCardsFromBank(wordBank, newId);
+    setEditor(null); setSheetSpace(0);
     edit(()=>({ ...dealt, clues:["","","",""] }));
   };
 
@@ -177,9 +306,10 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
   const showError = (err) => setMessage({ kind:"err", text:err.message, reload:err.code === "draft_conflict" });
 
   const save = async () => {
+    const clean = tidy(board);
     const saved = await api.saveDraft({
       friendshipId:friend.friendship_id, draftId:draft?.id, version:draft?.version,
-      title, board,
+      title, board:clean,
     });
     const next = { id:saved.id, version:saved.version };
     setDraft(next); setDirty(false);
@@ -224,64 +354,43 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
     onBack();
   };
 
-  // ── Preview: the friend's view, playable, recording nothing ─────────
-  // Shown with all three bonus cards (Hardcore), the fullest version of it.
-  const previewPuzzle = useMemo(()=>{
-    if(!board || !previewKey) return null;
-    const used = board.slots.slice(0, 7);
-    return {
-      id:`preview-${previewKey}`, title:title || "Preview", status:"draft",
-      date:new Date().toISOString().slice(0,10),
-      clues:board.clues, difficulty:"hardcore",
-      cards:Object.fromEntries(used.map(s=>[s.cardId, board.cards[s.cardId]])),
-      solution:{
-        slotCards:used.slice(0,4).map(s=>s.cardId),
-        orientations:used.slice(0,4).map(s=>s.orientation),
-        extraCards:used.slice(4).map(s=>s.cardId),
-      },
-    };
-  },[board, previewKey, title]);
-
-  if(previewPuzzle){
-    return (
-      <div className="fr-wrap" style={{display:"flex",flexDirection:"column"}}>
-        <div className="fr-playbar">
-          <button type="button" className="fr-back" onClick={()=>setPreviewKey(0)}><Icon name="back" size={18}/>Edit</button>
-          <span className="grow"/>
-          <span className="fr-chip">Preview <span>· all 3 bonus cards</span></span>
-        </div>
-        <div className="fr-game-shell">
-          <GameView key={previewPuzzle.id} puzzle={previewPuzzle} difficulty="hardcore" forceFresh sandbox/>
-        </div>
-      </div>
-    );
-  }
-
   const renderCard = (si) => {
     const s=board.slots[si]; const card=s && board.cards[s.cardId];
     if(!card) return null;
-    const editingWord = inlineEdit?.cardId===s.cardId ? inlineEdit.wordIndex : null;
     return (
       <AdminPreviewCard
         card={card} orientation={s.orientation}
         dim={dragSrc===si} dragSrc={dragSrc===si}
+        selected={editor?.kind==="word" && editor.cardId===s.cardId}
         onPointerDown={e=>handlePD(e,si)}
         onRotate={()=>rotateCard(s.cardId)}
-        editingWord={editingWord}
-        editDraft={editingWord!=null ? inlineDraft : ""}
-        onStartEdit={(wordIndex, value)=>startInlineEdit(s.cardId, wordIndex, value)}
-        onEditDraftChange={v=>setInlineDraft(v.slice(0,WORD_MAX))}
-        onCommitEdit={commitInlineEdit}
-        onCancelEdit={cancelInlineEdit}
+        editingWord={null}
+        onStartEdit={(shownEdge)=>openWord(s.cardId, shownEdge)}
+        onEditDraftChange={()=>{}} onCommitEdit={()=>{}} onCancelEdit={()=>{}}
       />
     );
   };
+  const editingSlot = (si) => editor?.kind==="word" ? board.slots[si]?.cardId===editor.cardId
+    : editor?.kind==="clue" && CLUE_LINKS[editor.index].some(([s])=>s===si);
   const boardSlot = (si) => (
-    <div key={si} ref={el=>slotRefs.current[si]=el} className={`cslot${dragOver===si?" over":""}`}>{renderCard(si)}</div>
+    <div key={si} ref={el=>slotRefs.current[si]=el} className={`cslot${dragOver===si?" over":""}`}
+      data-editing={editingSlot(si) ? "true" : undefined}>{renderCard(si)}</div>
   );
 
-  const CLUE_SIDES = ["top", "right", "bottom", "left"];
-  const cluePill = (i) => ({ placeholder:"+ Add clue", label:`Clue on the ${CLUE_SIDES[i]}` });
+  // Clue pills: a tap opens the editor; nobody types into the turned pills themselves.
+  const POS = ["top", "rgt", "bot", "lft"];
+  const clueTab = (i) => {
+    const text = board.clues[i];
+    const active = editor?.kind==="clue" && editor.index===i;
+    return (
+      <button type="button" className={`ctab ${POS[i]} editable fr-clue-btn${active ? " active" : ""}`}
+        data-editing={active ? "true" : undefined}
+        aria-label={`Clue on the ${SIDES[i]}${text ? `: ${text}` : ", empty"}`} aria-pressed={active}
+        onClick={()=>openClue(i)}>
+        {text || <span className="ctab-ph">+ Add clue</span>}
+      </button>
+    );
+  };
   const cluesWritten = board ? board.clues.filter(c=>c?.trim()).length : 0;
   // Nothing written yet: dealing cards is the first step, so it's the main button.
   const emptyBoard = !!board && board.slots.slice(0, 7).every(s=>(board.cards[s.cardId]?.words || []).every(w=>!w?.trim()));
@@ -299,33 +408,86 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
       : "Ready to send";
   }
 
+  // The editor's heading and what its field connects to.
+  let sheet = null;
+  if(board && editor){
+    const wordAt = (slot, edge) => { const s = board.slots[slot]; return s ? vw(board.cards[s.cardId], s.orientation)[edge].trim() : ""; };
+    const chip = (w) => <span className={`fr-sheet-chip${w ? "" : " blank"}`}>{w || "blank"}</span>;
+    if(editor.kind === "clue"){
+      const [[s1, e1], [s2, e2]] = CLUE_LINKS[editor.index];
+      const a = wordAt(s1, e1), b = wordAt(s2, e2);
+      sheet = {
+        title:`${cap(SIDES[editor.index])} clue`,
+        context:<span className="fr-sheet-links">Links {chip(a)}<span className="fr-sheet-plus" aria-hidden="true">+</span>{chip(b)}</span>,
+        maxLength:CLUE_MAX, placeholder:"One clue for both words",
+        inputLabel:`${cap(SIDES[editor.index])} clue, linking ${a || "a blank word"} and ${b || "a blank word"}`,
+      };
+    } else {
+      const si = board.slots.findIndex(s=>s.cardId===editor.cardId);
+      const shownEdge = (editor.raw + (board.slots[si]?.orientation || 0)) % 4;
+      const where = si < 4 ? SLOT_NAMES[si] : `bonus card ${si - 3}`;
+      const facesClue = si < 4 && CLUE_LINKS[shownEdge].some(([s, e])=>s===si && e===shownEdge);
+      const clue = board.clues[shownEdge]?.trim();
+      sheet = {
+        title:`${cap(SIDES[shownEdge])} word · ${where}`,
+        context: si >= 4 ? <span className="fr-sheet-links">Not on the board</span>
+          : facesClue ? <span className="fr-sheet-links">Faces the {SIDES[shownEdge]} clue {chip(clue)}</span>
+          : <span className="fr-sheet-links">Inside edge · faces no clue</span>,
+        maxLength:WORD_MAX, placeholder:"Type a word",
+        inputLabel:`${cap(SIDES[shownEdge])} word, ${where}`,
+      };
+    }
+  }
+
   return (
-    <div className="fr-wrap">
-      <div className="fr-page" style={{paddingBottom:0}}>
-        <PageHead onBack={handleBack} title={share ? "Make one for someone new" : `Make one for ${name}`} sub="Tap any clue or word to edit it."/>
+    <div className="fr-wrap fr-creator" ref={wrapRef}>
+      <div className="fr-page" style={{paddingBottom:sheetSpace ? sheetSpace + 16 : 0}}>
+        <PageHead onBack={handleBack} title={share ? "Make one for someone new" : `Make one for ${name}`} sub="Tap a clue or a word to edit it."/>
         {!board ? (
           message ? <div className={`fr-msg ${message.kind}`}>{message.text} <button className="fr-link" onClick={load}>Try again</button></div>
                   : <p className="fr-sub">Loading…</p>
         ) : (
           <>
+            <div className="fr-extras">
+              {share && (
+                <input className="fr-input" maxLength={24} value={label} placeholder="Who's it for? (only you see this)"
+                  onChange={e=>setLabel(e.target.value)} aria-label="Who it's for"/>
+              )}
+              <input className="fr-input" maxLength={40} value={title} placeholder="Name it (optional)"
+                onChange={e=>{ setTitle(e.target.value); setDirty(true); }} aria-label="Puzzle name"/>
+            </div>
+
             <button className={`fr-btn ${emptyBoard ? "primary" : "secondary"} fr-deal`} onClick={deal} disabled={!!busy}>
-              <span className="fr-rowbtn-ico"><Icon name="dice" size={18}/></span>Deal random cards
+              <span aria-hidden="true">🎲</span> Deal Random Cards
             </button>
 
             <div className="fr-board">
               <div className="fr-board-stage">
-                <EditableClueTab text={board.clues[0]} pos="top" onChange={v=>updateClue(0,v)} {...cluePill(0)}/>
+                {clueTab(0)}
                 <div style={{display:"flex",alignItems:"center"}}>
-                  <EditableClueTab text={board.clues[3]} pos="lft" onChange={v=>updateClue(3,v)} {...cluePill(3)}/>
+                  {clueTab(3)}
                   <div className="csurface">
                     {boardSlot(0)}{boardSlot(1)}
                     {boardSlot(3)}{boardSlot(2)}
                   </div>
-                  <EditableClueTab text={board.clues[1]} pos="rgt" onChange={v=>updateClue(1,v)} {...cluePill(1)}/>
+                  {clueTab(1)}
                 </div>
-                <EditableClueTab text={board.clues[2]} pos="bot" onChange={v=>updateClue(2,v)} {...cluePill(2)}/>
+                {clueTab(2)}
               </div>
-              <p className="fr-board-hint">Each clue links the two words facing it. This board is the answer — drag to swap cards, ↻ to turn one.</p>
+              <div className="fr-howto">
+                <button type="button" className="fr-howto-btn" aria-expanded={howTo} aria-controls="fr-howto-body"
+                  onClick={()=>setHowTo(o=>!o)}>
+                  <Icon name="help" size={18}/>How to make a puzzle
+                </button>
+                {howTo && (
+                  <ul id="fr-howto-body" className="fr-howto-body">
+                    <li>Write a clue on each side. Each clue links the two words facing it.</li>
+                    <li>This board is the answer. Drag a card onto another to swap them; tap ↻ to turn one.</li>
+                    <li>Tap any word to change it, or deal again for new cards.</li>
+                    <li>Your draft is saved when you leave, and stays private until you send it.</li>
+                  </ul>
+                )}
+              </div>
             </div>
 
             <section className="fr-surface fr-bonus-zone" aria-label="Bonus cards">
@@ -336,25 +498,13 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
                 {[4,5,6].map(si=>(
                   <div key={si} className="fr-decoy-col">
                     <div ref={el=>slotRefs.current[si]=el} className={`fr-decoy${dragOver===si?" over":""}`}
-                      aria-label={`Bonus card ${si - 3}`}>
+                      data-editing={editingSlot(si) ? "true" : undefined} aria-label={`Bonus card ${si - 3}`}>
                       {renderCard(si)}
                     </div>
                   </div>
                 ))}
               </div>
             </section>
-
-            <div className="fr-extras">
-              {share && (
-                <input className="fr-input" maxLength={24} value={label} placeholder="Who's it for? (only you see this)"
-                  onChange={e=>setLabel(e.target.value)} aria-label="Who it's for"/>
-              )}
-              <input className="fr-input" maxLength={40} value={title} placeholder="Name it (optional)"
-                onChange={e=>{ setTitle(e.target.value); setDirty(true); }} aria-label="Puzzle name"/>
-              <button className="fr-btn secondary" onClick={()=>setPreviewKey(Date.now())} disabled={!!busy || !checks.canPublish}>
-                <Icon name="eye" size={18}/>Preview
-              </button>
-            </div>
 
             <div className="fr-actionbar">
               {message && (
@@ -383,6 +533,12 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
           </>
         )}
       </div>
+      {sheet && (
+        <EditSheet editKey={editor.kind === "clue" ? `c${editor.index}` : `w${editor.cardId}${editor.raw}`}
+          title={sheet.title} context={sheet.context} value={editText} maxLength={sheet.maxLength}
+          placeholder={sheet.placeholder} inputLabel={sheet.inputLabel}
+          onChange={typeInEditor} onDone={closeEditor} onSize={setSheetSpace}/>
+      )}
       <DragGhost ghost={ghost}/>
     </div>
   );
