@@ -3,7 +3,7 @@
 -- only with the owner's approval. Adds one nullable column to profiles, two
 -- functions callable by signed-in players only (set_avatar, get_friend_avatars),
 -- and replaces three functions in place (get_my_profile, get_friend_invite,
--- stop_share_link; their existing grants are kept). No table permission, policy
+-- list_share_links; their existing grants are kept). No table permission, policy
 -- or anon grant changes; existing players have no stored avatar, so they keep
 -- the default crystal ball.
 
@@ -20,9 +20,11 @@
 --  • get_friend_avatars(): the chosen avatars of the caller and their
 --    friends, keyed by account id. Nobody else's.
 --  • get_my_profile() and get_friend_invite() now also say the avatar.
---  • stop_share_link(): a finished guest result on a link the sender
---    stops can no longer be opened anywhere, so it counts as seen. Without
---    this the Friends dot would stay lit for a result that can't be viewed.
+--  • list_share_links(): stopping a link only turns the link off for the
+--    guest. A finished result stays on the sender's list (and replayable)
+--    after the link is stopped, and stays "new" until the sender opens it.
+--    A finished result that has not been opened is always listed, however
+--    many links are older, so the Friends dot always has something to open.
 --  No table permission or policy changes. Two new functions, callable by
 --  signed-in players only.
 -- ═══════════════════════════════════════════════════════════════════════
@@ -98,17 +100,31 @@ begin
     'friendship_id', case when v_status = 'accepted' then i.friendship_id end);
 end $$;
 
-create or replace function public.stop_share_link(p_puzzle_id uuid) returns void
-language plpgsql security definer set search_path = public, pg_temp as $$
+-- Same fields as before. Changes: a stopped link stays listed once its game is
+-- finished (the link is off; the replay stays), and an unopened finished
+-- result is listed even beyond the 20 newest links.
+create or replace function public.list_share_links() returns jsonb
+language plpgsql stable security definer set search_path = public, pg_temp as $$
 declare
   v_uid uuid := public.friend_require_uid();
 begin
-  update public.friend_puzzles set
-    share_revoked_at = coalesce(share_revoked_at, now()),
-    creator_seen_result_at = case when finished_at is not null
-      then coalesce(creator_seen_result_at, now()) else creator_seen_result_at end
-  where id = p_puzzle_id and creator_id = v_uid and share_token is not null and recipient_id is null;
-  if not found then raise exception 'not_found: That link isn''t yours to stop.'; end if;
+  return coalesce((
+    select jsonb_agg(jsonb_build_object(
+      'puzzle_id', p.id, 'token', p.share_token, 'label', p.share_label, 'title', p.title,
+      'state', public.friend_share_state(p), 'sent_at', p.sent_at, 'expires_at', p.share_expires_at,
+      'started_at', p.started_at, 'finished_at', p.finished_at,
+      'outcome', p.outcome, 'lives_used', p.lives_used,
+      'seen_result', p.creator_seen_result_at is not null) order by p.sent_at desc)
+    from public.friend_puzzles p
+    where p.creator_id = v_uid and p.share_token is not null and p.recipient_id is null
+      and (p.share_revoked_at is null or p.finished_at is not null)
+      and ((p.finished_at is not null and p.creator_seen_result_at is null)
+        or p.id in (
+          select r.id from public.friend_puzzles r
+          where r.creator_id = v_uid and r.share_token is not null and r.recipient_id is null
+            and (r.share_revoked_at is null or r.finished_at is not null)
+          order by r.sent_at desc limit 20))
+  ), '[]'::jsonb);
 end $$;
 
 -- ── Privileges: the two new functions, for signed-in players only ──────
@@ -132,9 +148,11 @@ values ('20261013090000', array[$cvmig$-- ════════════�
 --  • get_friend_avatars(): the chosen avatars of the caller and their
 --    friends, keyed by account id. Nobody else's.
 --  • get_my_profile() and get_friend_invite() now also say the avatar.
---  • stop_share_link(): a finished guest result on a link the sender
---    stops can no longer be opened anywhere, so it counts as seen. Without
---    this the Friends dot would stay lit for a result that can't be viewed.
+--  • list_share_links(): stopping a link only turns the link off for the
+--    guest. A finished result stays on the sender's list (and replayable)
+--    after the link is stopped, and stays "new" until the sender opens it.
+--    A finished result that has not been opened is always listed, however
+--    many links are older, so the Friends dot always has something to open.
 --  No table permission or policy changes. Two new functions, callable by
 --  signed-in players only.
 -- ═══════════════════════════════════════════════════════════════════════
@@ -210,17 +228,31 @@ begin
     'friendship_id', case when v_status = 'accepted' then i.friendship_id end);
 end $$;
 
-create or replace function public.stop_share_link(p_puzzle_id uuid) returns void
-language plpgsql security definer set search_path = public, pg_temp as $$
+-- Same fields as before. Changes: a stopped link stays listed once its game is
+-- finished (the link is off; the replay stays), and an unopened finished
+-- result is listed even beyond the 20 newest links.
+create or replace function public.list_share_links() returns jsonb
+language plpgsql stable security definer set search_path = public, pg_temp as $$
 declare
   v_uid uuid := public.friend_require_uid();
 begin
-  update public.friend_puzzles set
-    share_revoked_at = coalesce(share_revoked_at, now()),
-    creator_seen_result_at = case when finished_at is not null
-      then coalesce(creator_seen_result_at, now()) else creator_seen_result_at end
-  where id = p_puzzle_id and creator_id = v_uid and share_token is not null and recipient_id is null;
-  if not found then raise exception 'not_found: That link isn''t yours to stop.'; end if;
+  return coalesce((
+    select jsonb_agg(jsonb_build_object(
+      'puzzle_id', p.id, 'token', p.share_token, 'label', p.share_label, 'title', p.title,
+      'state', public.friend_share_state(p), 'sent_at', p.sent_at, 'expires_at', p.share_expires_at,
+      'started_at', p.started_at, 'finished_at', p.finished_at,
+      'outcome', p.outcome, 'lives_used', p.lives_used,
+      'seen_result', p.creator_seen_result_at is not null) order by p.sent_at desc)
+    from public.friend_puzzles p
+    where p.creator_id = v_uid and p.share_token is not null and p.recipient_id is null
+      and (p.share_revoked_at is null or p.finished_at is not null)
+      and ((p.finished_at is not null and p.creator_seen_result_at is null)
+        or p.id in (
+          select r.id from public.friend_puzzles r
+          where r.creator_id = v_uid and r.share_token is not null and r.recipient_id is null
+            and (r.share_revoked_at is null or r.finished_at is not null)
+          order by r.sent_at desc limit 20))
+  ), '[]'::jsonb);
 end $$;
 
 -- ── Privileges: the two new functions, for signed-in players only ──────

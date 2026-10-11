@@ -4,7 +4,9 @@
 import { test, before } from "node:test";
 import assert from "node:assert/strict";
 import { randomBytes } from "node:crypto";
-import { anon, rpc, rpcError, makePlayer, sampleBoard, befriend, sendPuzzle, solvedBoard } from "./helpers.mjs";
+import { admin, anon, rpc, rpcError, makePlayer, sampleBoard, befriend, sendPuzzle, solvedBoard } from "./helpers.mjs";
+
+const open = (link, key = randomBytes(24).toString("base64url")) => rpc(anon(), "open_shared_puzzle", { p_token: link.token, p_guest_key: key });
 
 const unread = async (p) => (await rpc(p.client, "get_friends_inbox")).unread;
 
@@ -113,7 +115,7 @@ test("the Friends dot: each unseen puzzle or result counts until that one is ope
   assert.equal(await unread(b), 0);
 });
 
-test("the Friends dot: a guest's finished puzzle counts, clears when the sender opens it, and can't get stuck", async () => {
+test("the Friends dot: a guest's finished puzzle counts and clears only when the sender opens it", async () => {
   const sender = await makePlayer("Gwen");
   const finishGuestGame = async (label) => {
     const d = await rpc(sender.client, "save_friend_draft", {
@@ -130,8 +132,9 @@ test("the Friends dot: a guest's finished puzzle counts, clears when the sender 
       p_extras: mine.puzzle.card_order.filter((id) => !board.some((s) => s.cardId === id)).map((cardId) => ({ cardId, orientation: 0 })),
       p_clues: mine.puzzle.clues,
     });
-    return link;
+    return { ...link, key };
   };
+  const listed = async (id) => (await rpc(sender.client, "list_share_links")).find((l) => l.puzzle_id === id);
 
   assert.equal(await unread(sender), 0);
   const one = await finishGuestGame("One");
@@ -143,12 +146,61 @@ test("the Friends dot: a guest's finished puzzle counts, clears when the sender 
 
   await rpc(sender.client, "open_friend_puzzle", { p_puzzle_id: one.puzzle_id });
   assert.equal(await unread(sender), 1);
-  const links = await rpc(sender.client, "list_share_links");
-  assert.equal(links.find((l) => l.puzzle_id === one.puzzle_id).seen_result, true);
-  assert.equal(links.find((l) => l.puzzle_id === two.puzzle_id).seen_result, false);
+  assert.equal((await listed(one.puzzle_id)).seen_result, true);
+  assert.equal((await listed(two.puzzle_id)).seen_result, false);
 
-  // Stopping a link whose result was never opened: the result can't be reached
-  // any more, so it must not keep the dot lit for good.
+  // Stopping sharing turns the link off for the guest, nothing more.
   await rpc(sender.client, "stop_share_link", { p_puzzle_id: two.puzzle_id });
+  assert.equal((await open(two)).status, "revoked", "the guest's link is off");
+  assert.equal(await rpcError(anon(), "start_shared_puzzle", { p_token: two.token, p_guest_key: randomBytes(24).toString("base64url"), p_difficulty: "easy" }), "not_found");
+  assert.equal(await unread(sender), 1, "an unwatched result stays new after sharing stops");
+  await rpc(sender.client, "get_friends_inbox");
+  await rpc(sender.client, "list_share_links");
+  assert.equal(await unread(sender), 1, "the hub alone still clears nothing");
+  const kept = await listed(two.puzzle_id);
+  assert.ok(kept, "the finished result stays on the sender's list");
+  assert.equal(kept.state, "revoked");
+  assert.ok(kept.finished_at);
+  assert.equal(kept.seen_result, false, "and is still marked new");
+
+  // The sender's replay still works, and opening it is what clears the dot.
+  const replay = await rpc(sender.client, "open_friend_puzzle", { p_puzzle_id: two.puzzle_id });
+  assert.equal(replay.guesses.length, 1, "the guesses can still be replayed");
+  assert.equal(replay.outcome, "won");
   assert.equal(await unread(sender), 0);
+  assert.equal((await listed(two.puzzle_id)).seen_result, true);
+  // An unfinished link that is stopped is simply gone from the list.
+  const d = await rpc(sender.client, "save_friend_draft", { p_friendship_id: null, p_draft_id: null, p_version: null, p_title: "", p_board: sampleBoard("U") });
+  const unfinished = await rpc(sender.client, "create_share_link", { p_draft_id: d.id, p_version: d.version, p_label: "U" });
+  await rpc(sender.client, "stop_share_link", { p_puzzle_id: unfinished.puzzle_id });
+  assert.equal(await listed(unfinished.puzzle_id), undefined);
+});
+
+test("the Friends dot: an unopened result is always listed, even beyond the 20 newest links", async () => {
+  const sender = await makePlayer("Hal");
+  const d = await rpc(sender.client, "save_friend_draft", { p_friendship_id: null, p_draft_id: null, p_version: null, p_title: "", p_board: sampleBoard("H") });
+  const first = await rpc(sender.client, "create_share_link", { p_draft_id: d.id, p_version: d.version, p_label: "First" });
+  const key = randomBytes(24).toString("base64url");
+  await rpc(anon(), "start_shared_puzzle", { p_token: first.token, p_guest_key: key, p_difficulty: "easy" });
+  const answer = await rpc(sender.client, "open_friend_puzzle", { p_puzzle_id: first.puzzle_id });
+  const mine = await rpc(anon(), "open_shared_puzzle", { p_token: first.token, p_guest_key: key });
+  const board = solvedBoard(answer);
+  await rpc(anon(), "submit_shared_guess", {
+    p_token: first.token, p_guest_key: key, p_guess_no: 1, p_board: board,
+    p_extras: mine.puzzle.card_order.filter((id) => !board.some((s) => s.cardId === id)).map((cardId) => ({ cardId, orientation: 0 })),
+    p_clues: mine.puzzle.clues,
+  });
+  await rpc(sender.client, "stop_share_link", { p_puzzle_id: first.puzzle_id });
+  for (let i = 0; i < 21; i++) {
+    const dd = await rpc(sender.client, "save_friend_draft", { p_friendship_id: null, p_draft_id: null, p_version: null, p_title: "", p_board: sampleBoard("N" + i) });
+    const l = await rpc(sender.client, "create_share_link", { p_draft_id: dd.id, p_version: dd.version, p_label: "N" + i });
+    // Expired links stay on the list but don't count toward the cap of 20 active ones.
+    await admin.from("friend_puzzles").update({ share_expires_at: new Date(Date.now() - 60000).toISOString() }).eq("id", l.puzzle_id);
+  }
+  const links = await rpc(sender.client, "list_share_links");
+  assert.equal(links.filter((l) => l.state === "expired").length, 20, "the list itself is capped at the 20 newest links");
+  const old = links.find((l) => l.puzzle_id === first.puzzle_id);
+  assert.ok(old, "the old unopened result is still on the list, as a 21st row");
+  assert.equal(old.state, "revoked");
+  assert.equal(await unread(sender), 1);
 });
