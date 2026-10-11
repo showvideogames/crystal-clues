@@ -13,7 +13,7 @@ import assert from "node:assert/strict";
 import puppeteer from "puppeteer-core";
 import { admin, rpc, makePlayer, befriend, sendPuzzle, choose } from "./helpers.mjs";
 import { APP_URL, CHROME, signInBrowser } from "./browser.mjs";
-import { DOM_TO_SLOT, readBoard, slotEls, drag, tap, answerWords, key } from "./board.mjs";
+import { DOM_TO_SLOT, readBoard, slotEls, drag, tap, answerWords, key, solve } from "./board.mjs";
 
 const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
 const VIDEO = arg("--video");
@@ -302,6 +302,47 @@ try {
   const { data: guestLog } = await admin.from("friend_move_logs").select("actions").eq("puzzle_id", link.puzzle_id).single();
   assert.deepEqual(guestLog.actions.map((a) => a.k).filter((k) => k !== "x"), ["s", "t", "g"], "guest moves recorded");
   log("guest link: moves recorded through the link");
+
+  // Pat finishes. Deb's link card then has a green dot (and the header);
+  // opening the replay clears both, and the result and replay stay listed.
+  if (!(await guestPage.$(".fr-done"))) {
+    await sleep(3000);   // the wrong guess's red/green settles
+    await solve(guestPage, await rpc(deb.client, "open_friend_puzzle", { p_puzzle_id: link.puzzle_id }));
+    await guestPage.locator(".sbtn:not([disabled])").click();
+  }
+  await guestPage.waitForSelector(".fr-done", { timeout: 15000 });
+  await sleep(1500);
+  const linkRow = async () => (await rpc(deb.client, "list_share_links")).find((l) => l.puzzle_id === link.puzzle_id);
+  assert.equal((await linkRow()).state, "finished");
+  assert.equal((await linkRow()).seen_result, false, "Pat's result is unread");
+  await debPage.goto(`${APP_URL}/friends`, { waitUntil: "networkidle0" });
+  const patCard = 'section[aria-label="Puzzle link for Pat"]';
+  await debPage.waitForSelector(`${patCard} .fr-dot-new`);
+  await debPage.waitForSelector(".friends-dot");
+  await debPage.locator(`${patCard} button::-p-text(Watch Pat's guesses)`).click();
+  await debPage.waitForSelector(".fr-anim .fr-playall");   // the every-move replay, from the guest's log
+  assert.equal((await linkRow()).seen_result, true, "opening the replay marks Pat's result seen");
+  await debPage.waitForFunction(() => !document.querySelector(".friends-dot"), { timeout: 8000 });
+  await debPage.locator(".fr-head .fr-back").click();
+  await debPage.waitForSelector(patCard);
+  assert.equal(await debPage.$(`${patCard} .fr-dot-new`), null, "no dot left on Pat's link");
+  assert.equal(await debPage.$(".friends-dot"), null, "no header dot");
+  await debPage.locator(`${patCard} button::-p-text(Watch Pat's guesses)`).click();
+  await debPage.waitForSelector(".fr-anim .fr-playall");
+  log("guest link: opening the replay cleared its dots; the result and replay stay listed");
+
+  // 2× halves the pauses (and glides): the same replay, timed at each speed.
+  const timeReplay = async (speed) => {
+    await debPage.locator(`.fr-anim-speed button::-p-text(${speed}×)`).click();
+    const t0 = Date.now();
+    await debPage.locator(".fr-anim .fr-playall").click();
+    await debPage.waitForSelector(".fr-anim .fr-playall[aria-label='Pause the replay']");
+    await debPage.waitForSelector(".fr-anim .fr-playall[aria-label='Replay from the start']", { timeout: 60000 });
+    return Date.now() - t0;
+  };
+  const one = await timeReplay(1), two = await timeReplay(2);
+  log(`Pat's replay: ${(one / 1000).toFixed(1)} s at 1×, ${(two / 1000).toFixed(1)} s at 2×`);
+  assert.ok(two < one - 500, "2× is quicker");
 
   if (VIDEO) await encode(browser, VIDEO);
   log("ALL OK");

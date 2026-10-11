@@ -3550,16 +3550,23 @@ function GameView({
     };
   });
 
-  // Settles the replay's Submit once the game's own reveal has played out.
+  // Settles the replay's Submit once the game's own reveal has played out,
+  // then holds the result for `hold`. A win's cards turn green as it's
+  // solved; a loss is over once the answer has flipped in; a wrong guess's
+  // verdict lands at "done" and its wrong cards then shake (.ctile.shaking).
   useEffect(()=>{
     const g = replayGuess.current;
     if(!g) return;
-    if(solved || lost){
+    const REVEAL_TAIL = 450;   // the green flip-in / the wrong cards' shake
+    if(solved){
+      replayGuess.current = null;
+      setTimeout(g.resolve, REVEAL_TAIL + g.hold);
+    } else if(lost){
       replayGuess.current = null;
       setTimeout(g.resolve, g.hold);
     } else if(revealPhase === "done" && !g.final){
       replayGuess.current = null;
-      setTimeout(g.resolve, g.hold);
+      setTimeout(g.resolve, REVEAL_TAIL + g.hold);
     }
   },[revealPhase, solved, lost]);
 

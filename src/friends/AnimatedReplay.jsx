@@ -11,17 +11,20 @@ import { describeStep, recordedGuessResult } from "./moveLog";
 // score, result, streak or notification.
 //   plan: buildReplay(view, log)
 
-// Waits between moves follow the player's own, but a thinking pause never
-// runs past CAP and back-to-back moves get at least MIN_GAP to be seen.
-const CAP = 2000;
-const MIN_GAP = 220;
-const MIN_GAP_STILL = 700;   // reduced motion: changes land at once, so pause longer
-const GLIDE = 480;           // a card gliding to its new place
-const BIG_GLIDE = 620;       // several cards at once (Reset, a resumed board)
-const HOLD_GUESS = 1500;     // the verdict stays up before play carries on
-const HOLD_END = 1800;
-// Roughly how long each kind of move animates, so its wait isn't counted twice.
-const ANIM = { tap:300, swap:GLIDE, rotate:660, shuffle:470, reset:BIG_GLIDE, resume:0, jump:BIG_GLIDE, guess:2200 };
+// Pacing, in milliseconds at 1× (2× halves every number here). The time the
+// player spent thinking is not replayed at all: each move animates, then a
+// short pause, then the next. A Submit plays the game's own reveal (its own
+// timing, not scaled), and its result then stays up for guessHold.
+// Tune these after playtesting.
+const PACING = {
+  pause: 350,        // after each move, before the next
+  pauseStill: 700,   // the same with reduced motion (moves land at once, so a longer look)
+  guessHold: 1000,   // a guess's result stays up this long once its reveal has finished
+  glide: 480,        // one card gliding to its new place (a swap)
+  bigGlide: 620,     // several cards at once (Reset, a board that jumps)
+  noteBeat: 600,     // a caption-only step ("Came back to the puzzle")
+  start: 350,        // the freshly mounted board settles before the first move
+};
 const SPEEDS = [1, 2];
 const sleep = (ms)=>new Promise(r=>setTimeout(r, ms));
 // Resolves at once while playing; otherwise when Play is pressed again.
@@ -97,15 +100,16 @@ export default function AnimatedReplay({ kit, view, plan, solverName }) {
     const final = step.kind === "guess" && step.n === view.guesses.length;
     switch(step.kind){
       case "tap": return api.tap(step.s);
-      case "swap": return api.swap(step.a, step.b, GLIDE / k);
+      case "swap": return api.swap(step.a, step.b, PACING.glide / k);
       case "rotate": return api.rotate();
       case "shuffle": return api.shuffle(step.slots);
-      case "reset": return api.reset(step.slots, step.clues, BIG_GLIDE / k);
-      case "jump": return api.setBoard(step.slots, step.clues, BIG_GLIDE / k);
+      case "reset": return api.reset(step.slots, step.clues, PACING.bigGlide / k);
+      case "jump": return api.setBoard(step.slots, step.clues, PACING.bigGlide / k);
       case "resume":
-        if(step.moved) return api.setBoard(step.slots, step.clues, BIG_GLIDE / k);
-        return sleep(600 / k);
-      case "guess": return api.submit((final ? HOLD_END : HOLD_GUESS) / k, final);
+        if(step.moved) return api.setBoard(step.slots, step.clues, PACING.bigGlide / k);
+        return sleep(PACING.noteBeat / k);
+      // Resolves after the reveal has finished and its result has been held.
+      case "guess": return api.submit(PACING.guessHold / k, final);
       default: return undefined;
     }
   },[view.guesses.length]);
@@ -114,14 +118,14 @@ export default function AnimatedReplay({ kit, view, plan, solverName }) {
     const c = ctl.current;
     const alive = ()=>c.run === myRun;
     // Let the freshly mounted board settle before the first move.
-    await sleep(350);
+    await sleep(PACING.start / c.speed);
     for(let i = 0; i < plan.steps.length; i++){
       await untilPlaying(c);
       if(!alive()) return;
       const step = plan.steps[i];
-      const prev = i ? ANIM[plan.steps[i-1].kind] || 0 : 0;
-      const gap = Math.min(CAP, Math.max(still ? MIN_GAP_STILL : MIN_GAP, step.d - prev));
-      await sleep(gap / c.speed);
+      // A short pause after the previous move (a guess's hold already was one).
+      // The recorded wait (step.d) is deliberately ignored.
+      if(i && plan.steps[i-1].kind !== "guess") await sleep((still ? PACING.pauseStill : PACING.pause) / c.speed);
       await untilPlaying(c);
       if(!alive() || !apiRef.current) return;
       setIndex(i);
