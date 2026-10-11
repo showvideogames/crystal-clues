@@ -128,7 +128,7 @@ try {
   const fidBack = fid;
   await b.goto(`${APP_URL}/friends/make/${fidBack}`, { waitUntil: "networkidle0" });
   await waitText(b, "Make one for Ann");
-  await b.locator("button::-p-text(Deal random cards)").click();
+  await b.locator("button::-p-text(Deal Random Cards)").click();
   await sleep(400);
   await b.reload({ waitUntil: "networkidle0" });
   await waitText(b, "We kept your unsaved changes");
