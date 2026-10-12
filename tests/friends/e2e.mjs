@@ -15,7 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
-import puppeteer from "puppeteer-core";
+import puppeteer, { Locator } from "puppeteer-core";
 import { createClient } from "@supabase/supabase-js";
 import { API_URL, PUBLISHABLE_KEY, admin } from "./helpers.mjs";
 import { APP_URL, CHROME, makeAccount, signInBrowser, signOutBrowser } from "./browser.mjs";
@@ -44,9 +44,23 @@ async function shot(page, name, viewport) {
   log("screenshot", name);
 }
 
-const click = (page, text, tag = "button") => page.locator(`${tag}::-p-text(${text})`).click();
+// A button by its words, or by its full accessible name: the Friends list's
+// small buttons say "Play" on screen and "Play Deb's puzzle" to a screen reader.
+const click = (page, text, tag = "button") => Locator.race([
+  page.locator(`${tag}::-p-text(${text})`), page.locator(`${tag}[aria-label="${text}"]`),
+]).click();
 const waitText = (page, text, timeout = 15000) =>
-  page.waitForFunction((t) => document.body.innerText.includes(t), { timeout }, text);
+  page.waitForFunction((t) => document.body.innerText.includes(t)
+    || [...document.querySelectorAll("[aria-label]")].some((e) => e.getAttribute("aria-label") === t), { timeout }, text);
+// A friend's details sheet (streaks in full, the clock, the replay row).
+const openDetails = async (page, name) => {
+  await page.locator(`.fr-frow-main::-p-text(${name})`).click();
+  await page.waitForSelector(".fr-details [role=dialog]");
+};
+const closeDetails = async (page) => {
+  await page.locator(".fr-details .fr-closebtn").click();
+  await page.waitForFunction(() => !document.querySelector(".fr-details"));
+};
 
 // Signed out, Friends offers only the shared sign-in (no email or code box).
 async function assertSignedOutFriends(page) {
@@ -64,10 +78,17 @@ async function signIn(page, acct, name, { invitedBy, shotName } = {}) {
   if (invitedBy) await page.waitForSelector(`button.fr-btn.primary::-p-text(Join ${invitedBy})`);
   if (shotName) await shot(page, shotName);
   await click(page, invitedBy ? `Join ${invitedBy}` : "Continue");
-  await page.waitForFunction((n) => document.querySelector(".fr-profile .fr-friend-name")?.textContent === n, { timeout: 15000 }, name);
+  await page.waitForSelector(".fr-hub-head", { timeout: 15000 });
+  assert.equal(await signedInAs(page), name);
 }
-// Who Friends says is signed in: the name on the Profile card.
-const signedInAs = (page) => page.$eval(".fr-profile .fr-friend-name", (el) => el.textContent);
+// Who is signed in: the name at the top of the header's account menu.
+async function signedInAs(page) {
+  const menu = page.locator('[data-testid="account-menu-button"]');
+  await menu.click();
+  const name = await page.waitForFunction(() => document.querySelector(".cv-menu-who b")?.textContent, { timeout: 15000 }).then((h) => h.jsonValue());
+  await menu.click();
+  return name;
+}
 
 // A finished puzzle opens on the every-move replay (its moves were recorded);
 // the guess-by-guess view is one tab away.
@@ -195,16 +216,16 @@ try {
   await shot(sam, "02-invite-landing-375");
   // Naming yourself joins Deb in the same tap: no separate Accept step.
   await signIn(sam, samAcct, "Sam", { invitedBy: "Deb", shotName: "02b-name-join-375" });
-  await waitText(sam, "Make one for Deb");
+  await waitText(sam, "Make Puzzle for Deb");
   assert.ok(!(await bodyText(sam)).includes("invited you"), "the invite is done");
-  assert.equal(await sam.$(".fr-card .fr-streak-num"), null, "no zero streaks for a new friend");
-  assert.ok((await bodyText(sam)).includes("Deb's puzzles will appear here"), "where Deb's puzzles will show");
+  assert.equal(await sam.$(".fr-chipline"), null, "no zero streaks for a new friend");
+  assert.ok((await bodyText(sam)).includes("No puzzles yet"), "a new friend's row says so");
   await shot(sam, "02c-new-friend-375");
   log("friends");
 
   // 3. Deb makes a puzzle for Sam: deal, write clues, save, send.
   await deb.reload(); await openFriends(deb);
-  await click(deb, "Make one for Sam");
+  await click(deb, "Make Puzzle for Sam");
   await deb.waitForSelector(".fr-board-stage");
   await shot(deb, "03-creator-empty-375");
   await writePuzzle(deb, ["CHIME", "COWBOY", "ICE", "RED"]);
@@ -241,14 +262,14 @@ try {
   }
   await deb.setViewport(PHONE);
   await click(deb, "Send puzzle to Sam");
-  await waitText(deb, "waiting for Sam to start");
+  await waitText(deb, "Waiting to play");
   await shot(deb, "06-deb-inbox-waiting-375");
 
   // 4. Sam: it's there straight away.
   await sam.reload();
   await sam.waitForSelector(".friends-dot", { timeout: 8000 }); // the header's new-puzzle dot
   await openFriends(sam);
-  await waitText(sam, "A puzzle from Deb is waiting for you");
+  await waitText(sam, "Play Deb's puzzle");
   await shot(sam, "07-sam-inbox-375");
   await shot(sam, "07b-sam-inbox-360", { ...PHONE, width: 360, height: 780 });
   await shot(sam, "07c-sam-inbox-390", { ...PHONE, width: 390, height: 844 });
@@ -286,21 +307,21 @@ try {
   // The header's Friends icon and the in-page ‹ Friends both leave the puzzle
   // for the Friends hub, and coming back finds it exactly as it was.
   await openFriends(sam);
-  await waitText(sam, "Continue Deb's puzzle");
+  await waitText(sam, "Resume Deb's puzzle");
   assert.equal(await sam.$(".csurface"), null, "header icon: back on the hub, not the board");
-  await click(sam, "Continue Deb's puzzle");
+  await click(sam, "Resume Deb's puzzle");
   await sam.waitForSelector(".csurface .ctile"); await sleep(600);
   assert.equal(await lives(sam), 2, "header icon: lives kept");
   assert.deepEqual((await readBoard(sam)).board.map((c) => c.words), before.board.map((c) => c.words), "header icon: board kept");
   await sam.locator(".fr-playbar .fr-back").click();
-  await waitText(sam, "Continue Deb's puzzle");
-  await click(sam, "Continue Deb's puzzle");
+  await waitText(sam, "Resume Deb's puzzle");
+  await click(sam, "Resume Deb's puzzle");
   await sam.waitForSelector(".csurface .ctile"); await sleep(600);
   assert.equal(await lives(sam), 2, "‹ Friends: lives kept");
   log("header icon and ‹ Friends return to the hub mid-puzzle; progress kept");
   await sam.reload(); await sleep(600);
   await openFriends(sam);
-  await click(sam, "Continue Deb's puzzle");
+  await click(sam, "Resume Deb's puzzle");
   await sam.waitForSelector(".csurface .ctile");
   await sleep(600);
   assert.equal(await lives(sam), 2, "lives survive a refresh");
@@ -367,24 +388,26 @@ try {
   await shot(sam, "11c-creator-heading-375");
   // Leave through the header icon with unsaved edits: they come back.
   await openFriends(sam);
-  await waitText(sam, "Make one for Deb");
-  await click(sam, "Make one for Deb");
+  await waitText(sam, "Make Puzzle for Deb");
+  await click(sam, "Make Puzzle for Deb");
   await waitText(sam, "We kept your unsaved changes");
   const kept = await sam.$$eval(".fr-board-stage .ctab", (t) => t.map((x) => x.textContent.trim()));
   assert.ok(["OCEAN", "NIGHT", "GARDEN", "TOYS"].every((c) => kept.includes(c)), `creator edits kept: ${kept}`);
   log("header icon from the creator keeps the unsaved puzzle");
   assert.equal(await sam.$(".fr-chip"), null, "the creator doesn't choose a difficulty");
   await click(sam, "Send puzzle to Deb");
-  await waitText(sam, "waiting for Deb to start");
+  await waitText(sam, "Waiting to play");
 
   // 8. Deb replays Sam's real guesses.
   await deb.reload(); await openFriends(deb);
   await waitText(deb, "Sent you a puzzle");
-  // Next action: the puzzle to play first, Sam's guesses one tap below.
-  const debButtons = await deb.$$eval(".fr-card .fr-btn", (b) => b.map((x) => x.textContent.trim()));
+  // Next action: the puzzle to play first; Sam's guesses are in the details, marked new.
+  const debButtons = await deb.$$eval(".fr-frow-actions button", (b) => b.map((x) => x.getAttribute("aria-label")));
   assert.equal(debButtons[0], "Play Sam's puzzle", "playing is the primary action");
-  const debRows = await deb.$$eval(".fr-card .fr-rowbtn", (b) => b.map((x) => x.textContent.trim()));
-  assert.ok(debRows.some((t) => t.startsWith("Watch Sam's guesses")), "Sam's guesses are a quiet row below");
+  assert.ok(await deb.$(".fr-frow .fr-new"), "the row says there's something new");
+  await openDetails(deb, "Sam");
+  const debRows = await deb.$$eval(".fr-details .fr-rowbtn", (b) => b.map((x) => x.textContent.trim()));
+  assert.ok(debRows.some((t) => t.startsWith("Watch Sam's guesses")), "Sam's guesses are a row in the details");
   // The period is already counted: said plainly, same instant as Sam's, in Denver time.
   const inboxText = await bodyText(deb);
   assert.ok(inboxText.includes("Streak kept"), "already-counted period is stated");
@@ -393,7 +416,7 @@ try {
   assert.equal(debDeadline.at, samDeadline.at, "both friends are shown the same server deadline");
   assert.match(debDeadline.text, /M[DS]T/, "Deb sees it in Denver time");
   log("Deb's deadline:", debDeadline.text.replace(/\u202f/g, " "));
-  await deb.reload(); await openFriends(deb);
+  await deb.reload();
   await waitText(deb, "Streak kept");
   assert.deepEqual((await deadlines(deb)).at(-1), debDeadline, "the deadline reads the same after a refresh");
   await shot(deb, "12-deb-inbox-play-and-result-375");
@@ -485,6 +508,7 @@ try {
 
   // 10b. Coming back to a finished puzzle later still offers its results.
   await sam.reload(); await openFriends(sam);
+  await openDetails(sam, "Deb");
   await click(sam, "Past puzzles", "button");
   await sam.locator(".fr-history-item::-p-text(Deb → you)").click();
   await sam.waitForSelector(".fr-results-btn");
@@ -502,14 +526,16 @@ try {
   // 11. Both inboxes agree on the shared numbers.
   for (const [who, p] of [["deb", deb], ["sam", sam]]) {
     await p.reload(); await openFriends(p);
-    await p.waitForSelector(".fr-streak-num");
-    const nums = await p.$$eval(".fr-card .fr-streak-num", (n) => n.slice(0, 2).map((x) => Number(x.textContent)));
-    assert.deepEqual(nums, [1, 0], `${who} sees Friend Streak 1, Solve Streak 0`);
-    const buttons = await p.$$eval(".fr-card .fr-btn", (b) => b.map((x) => x.textContent.trim()));
-    assert.equal(buttons[0], who === "deb" ? "Make one for Sam" : "Make one for Deb", `${who}'s next step`);
-    const rows = await p.$$eval(".fr-card .fr-rowbtn", (b) => b.map((x) => x.textContent.trim()));
-    if (who === "sam") assert.ok(rows.some((t) => t.startsWith("Watch Deb's guesses")), "the replay stays one tap away");
+    await p.waitForSelector(".fr-frow");
+    const buttons = await p.$$eval(".fr-frow-actions button", (b) => b.map((x) => x.getAttribute("aria-label")));
+    assert.equal(buttons[0], who === "deb" ? "Make Puzzle for Sam" : "Make Puzzle for Deb", `${who}'s next step`);
     await shot(p, `18-${who}-inbox-final-375`);
+    await openDetails(p, who === "deb" ? "Sam" : "Deb");
+    const nums = await p.$$eval(".fr-details .fr-streak-num", (n) => n.slice(0, 2).map((x) => Number(x.textContent)));
+    assert.deepEqual(nums, [1, 0], `${who} sees Friend Streak 1, Solve Streak 0`);
+    const rows = await p.$$eval(".fr-details .fr-rowbtn", (b) => b.map((x) => x.textContent.trim()));
+    if (who === "sam") assert.ok(rows.some((t) => t.startsWith("Watch Deb's guesses")), "the replay stays one tap away");
+    await closeDetails(p);
   }
   await shot(sam, "18b-sam-inbox-final-desktop", { width: 1280, height: 860, deviceScaleFactor: 1 });
   await sam.setViewport(PHONE);
@@ -518,12 +544,14 @@ try {
   const { data: fs1 } = await admin.from("friendships").select("id, daily_anchor").or(`user_a.eq.${debAcct.id},user_b.eq.${debAcct.id}`).single();
   await admin.from("friendships").update({ daily_anchor: new Date(new Date(fs1.daily_anchor).getTime() - 30 * 3600e3).toISOString() }).eq("id", fs1.id);
   await sam.reload(); await openFriends(sam);
+  await openDetails(sam, "Deb");
   await sam.waitForSelector('.fr-clock[data-clock="keep"]');
   const keep = await sam.$eval('.fr-clock[data-clock="keep"]', (el) => el.innerText);
   assert.match(keep, /\d+h \d\dm left to keep your streak/);
   await sam.$eval(".fr-streaks", (el) => el.scrollIntoView({ block: "start" }));
   await shot(sam, "18c-sam-streak-time-left-375");
   log("time-left clock:", keep.replace(/\s+/g, " "));
+  await closeDetails(sam);
 
   // 12. Closing the app and coming back later: a new tab in the same
   // browser opens straight into Deb's own Friends, no sign-in.
@@ -535,7 +563,7 @@ try {
   pages.push(["deb2", deb2]);
   await deb2.goto(DEB_URL, { waitUntil: "networkidle0" });
   await openFriends(deb2);
-  await waitText(deb2, "Make one for Sam");
+  await waitText(deb2, "Make Puzzle for Sam");
   assert.equal(await signedInAs(deb2), "Deb", "Deb is still Deb after reopening");
   log("reopened: Deb resumes signed in");
 
@@ -553,7 +581,7 @@ try {
   await shot(sam, "19-account-switch-eve-375");
   await signOutBrowser(sam);
   await signInBrowser(sam, samAcct, "/?friends=1");
-  await waitText(sam, "Make one for Deb");
+  await waitText(sam, "Make Puzzle for Deb");
   assert.equal(await signedInAs(sam), "Sam", "Sam's own Friends come back");
   log("sign-out and account switching ok");
 

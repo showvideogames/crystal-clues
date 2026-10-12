@@ -113,7 +113,7 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay, on
             <StreakPanel friendStreak={view.friendship.daily_streak} solveStreak={view.friendship.team_win_streak} friendName={friendName}/>
             <StreakStatus status={view.friendship} now={serverNow}/>
             <button className="fr-btn primary" onClick={()=>onMake(friend)}>
-              <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {friendName}
+              <span className="fr-btn-ico"><Icon name="cards"/></span>Make one for {friendName}
             </button>
           </div>
         )}

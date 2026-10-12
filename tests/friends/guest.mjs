@@ -12,7 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
-import puppeteer from "puppeteer-core";
+import puppeteer, { Locator } from "puppeteer-core";
 import { admin, makePlayer, rpc } from "./helpers.mjs";
 import { makeAccount } from "../db/helpers.mjs";
 import { APP_URL, CHROME, signInBrowser } from "./browser.mjs";
@@ -24,8 +24,13 @@ const PHONE = { width: 375, height: 812, deviceScaleFactor: 2 };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = (...a) => console.log("•", ...a);
 const text = (page) => page.evaluate(() => document.body.innerText);
-const waitText = (page, t, timeout = 15000) => page.waitForFunction((x) => document.body.innerText.includes(x), { timeout }, t);
-const click = (page, t, tag = "button") => page.locator(`${tag}::-p-text(${t})`).click();
+// By the words on screen, or by a button's full accessible name (the Friends
+// list's small buttons say "Watch" on screen and "Watch Dad's guesses" in full).
+const waitText = (page, t, timeout = 15000) => page.waitForFunction((x) => document.body.innerText.includes(x)
+  || [...document.querySelectorAll("[aria-label]")].some((e) => e.getAttribute("aria-label") === x), { timeout }, t);
+const click = (page, t, tag = "button") => Locator.race([
+  page.locator(`${tag}::-p-text(${t})`), page.locator(`${tag}[aria-label="${t}"]`),
+]).click();
 const shot = async (page, name) => { await sleep(400); await page.screenshot({ path: path.join(OUT, `${name}.png`) }); log("screenshot", name); };
 const lives = (page) => page.$$eval(".game-lives .life:not(.lost)", (l) => l.length);
 const linkState = async (sam, puzzleId) => (await rpc(sam.client, "list_share_links")).find((l) => l.puzzle_id === puzzleId)?.state;
@@ -62,7 +67,7 @@ try {
   const hub = await text(s);
   assert.ok(!/invite/i.test(hub), "no separate invite action");
   assert.ok(!hub.includes("keep your streaks going"), "no streak talk without a streak");
-  assert.ok(await s.$(".fr-page > .fr-head + .fr-make-cta"), "the main action sits right under the heading");
+  assert.ok(await s.$(".fr-page > .fr-hub-head > .fr-h1 + .fr-make-btn"), "the main action sits right under the heading");
   await shot(s, "g00-sender-hub");
   await click(s, "Make a puzzle for a friend");
   await s.waitForSelector(".fr-board-stage");
@@ -142,7 +147,7 @@ try {
   // ── 6. Sam watches Dad's guesses ──────────────────────────────────────
   await s.goto(`${APP_URL}/friends`, { waitUntil: "networkidle0" });
   await waitText(s, "For Dad");
-  await waitText(s, "Dad solved it");
+  await waitText(s, "Solved it");
   await shot(s, "g07-sender-hub-finished");
   await click(s, "Watch Dad's guesses");
   await s.waitForSelector(".fr-anim .fr-playall");   // every move: the guest's play was recorded
@@ -250,11 +255,13 @@ try {
   await click(momA, "Play");
   await momA.waitForSelector(".csurface .ctile");
   await s.reload({ waitUntil: "networkidle0" });
-  await waitText(s, "Mom started playing");
+  await s.locator(".fr-links-head[aria-expanded=false]").click();   // nothing new there: closed until tapped
+  await waitText(s, "Started playing");
   await shot(s, "g16-sender-playing-recovery");
   await click(s, "Send a fresh link");
   await waitText(s, "New link ready");
-  const freshLink = await s.$eval('section[aria-label="Puzzle link for Mom"] input[aria-label="Puzzle link"]', (el) => el.value);
+  assert.ok(await s.$('li[aria-label="Puzzle link for Mom"] button::-p-text(Copy link)'), "the fresh link is ready to copy");
+  const freshLink = `${APP_URL}/p/${(await rpc(sam.client, "list_share_links")).find((l) => l.label === "Mom").token}`;
   assert.notEqual(freshLink, `${APP_URL}/p/${mom.token}`);
   await shot(s, "g17-sender-fresh-link");
   await momA.reload({ waitUntil: "networkidle0" });
@@ -271,7 +278,8 @@ try {
   await waitText(momB, "This link has expired");
   await shot(momB, "g18-expired");
   await s.reload({ waitUntil: "networkidle0" });
-  await waitText(s, "The link expired before Mom finished");
+  await s.locator(".fr-links-head[aria-expanded=false]").click();
+  await waitText(s, "The link expired before they finished");
   await s.goto(freshLink, { waitUntil: "networkidle0" });
   await waitText(s, "This is your link");
 

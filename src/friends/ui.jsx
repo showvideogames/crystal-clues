@@ -13,7 +13,10 @@ const paths = {
   clock:   <><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></>,
   help:    <><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 014.8.9c0 1.7-2.4 2.1-2.4 3.7"/><circle cx="12" cy="16.9" r=".9" fill="currentColor" stroke="none"/></>,
   bell:    <><path d="M6.5 16.5V11a5.5 5.5 0 0111 0v5.5l1.5 1.5H5z"/><path d="M10 19.5a2 2 0 004 0"/></>,
-  pencil:  <><path d="M5 19l1-4L15.5 5.5a2.1 2.1 0 013 3L9 18z"/><path d="M13.5 7.5l3 3"/></>,
+  // Making a puzzle: a card in front of another, with a plus.
+  cards:   <><path d="M9 5.5V5a2 2 0 012-2h7a2 2 0 012 2v10a2 2 0 01-2 2h-.5"/><rect x="4" y="7" width="12" height="14" rx="2"/><path d="M10 11v6M7 14h6"/></>,
+  link:    <><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></>,
+  close:   <path d="M6 6l12 12M18 6L6 18"/>,
   history: <><path d="M4.5 12a7.5 7.5 0 102.2-5.3"/><path d="M4.5 4.5v3.5H8"/><path d="M12 8v4l2.5 1.5"/></>,
   restart: <><path d="M5 12a7 7 0 107-7H8.5"/><path d="M11 2L8 5l3 3"/></>,
   eye:     <><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></>,

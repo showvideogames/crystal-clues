@@ -5,12 +5,13 @@ import "./account.css";
 /**
  * The header's account control. Guest: a "Sign in" button. Signed in: a
  * small menu with the account's CURRENT email (as the server reports it),
- * Sign out, and "Delete account…" with a confirmation. `profile` (the player's
+ * "Change name or avatar" (when the player has a Friends profile), Sign out,
+ * and "Delete account…" with a confirmation. `profile` (the player's
  * Friends name and avatar, when known) puts their avatar on the button in place
  * of the email initial. Renders nothing when
  * accounts are off, so a guest-only build looks exactly like today.
  */
-export default function AccountMenu({ status, account, profile, message, onSignIn, onSignOut, onDelete, onDismissMessage }) {
+export default function AccountMenu({ status, account, profile, message, onSignIn, onSignOut, onEditProfile, onDelete, onDismissMessage }) {
   const [open, setOpen] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -67,9 +68,24 @@ export default function AccountMenu({ status, account, profile, message, onSignI
       </button>
       {open && (
         <div className="cv-menu" data-testid="account-menu">
-          <div className="cv-menu-email" data-testid="account-email">{account.email || "Signed in"}</div>
+          {profile ? (
+            <div className="cv-menu-who">
+              <Avatar name={profile.display_name} avatar={profile.avatar} size={36}/>
+              <span className="cv-menu-who-text">
+                <b>{profile.display_name}</b>
+                <span data-testid="account-email">{account.email || "Signed in"}</span>
+              </span>
+            </div>
+          ) : (
+            <div className="cv-menu-email" data-testid="account-email">{account.email || "Signed in"}</div>
+          )}
           {!confirming ? (
             <>
+              {onEditProfile && (
+                <button type="button" className="cv-menu-item" data-testid="edit-profile" onClick={() => { setOpen(false); onEditProfile(); }}>
+                  Change name or avatar
+                </button>
+              )}
               <button type="button" className="cv-menu-item" data-testid="sign-out" onClick={async () => { setOpen(false); await onSignOut(); }}>
                 Sign out
               </button>

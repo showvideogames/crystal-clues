@@ -220,9 +220,9 @@ try {
   const unseen = async () => (await rpc(deb.client, "get_friends_inbox")).friends.find((f) => f.friendship_id === fid).unseen_result;
   assert.ok(await unseen(), "the finished result is unread before Deb opens it");
   await signInBrowser(debPage, deb, "/friends");
-  await debPage.waitForSelector(".fr-friend .fr-dot-new");
+  await debPage.waitForSelector(".fr-frow .fr-dot-new");
   await debPage.waitForSelector(".friends-dot");
-  await debPage.locator("button.fr-btn.primary::-p-text(Watch Sam's guesses)").click();
+  await debPage.locator('button[aria-label="Watch Sam\'s guesses"]').click();
   await debPage.waitForSelector(".fr-anim .fr-playall");
   const seenAt = (await admin.from("friend_puzzles").select("creator_seen_result_at").eq("id", pid).single()).data.creator_seen_result_at;
   assert.ok(seenAt, "opening the replay marks the result seen, as before");
@@ -279,12 +279,14 @@ try {
   // Guess by guess is still there.
   await debPage.locator(".fr-seg button::-p-text(Guess by guess)").click();
   await debPage.waitForSelector(".fr-steps");
-  // Back on Friends: Sam's card has no dot; the replay stays one tap away.
+  // Back on Friends: Sam's row has no dot; the replay stays in Sam's details.
   await debPage.locator(".fr-head .fr-back").click();
-  await debPage.waitForSelector(".fr-friend");
+  await debPage.waitForSelector(".fr-frow");
   assert.equal(await debPage.$(".fr-dot-new"), null, "no green dot left on Friends");
   assert.equal(await debPage.$(".friends-dot"), null, "no header dot");
-  await debPage.waitForSelector("::-p-text(Watch Sam's guesses)");
+  await debPage.locator(".fr-frow-main").click();
+  await debPage.waitForSelector(".fr-details ::-p-text(Watch Sam's guesses)");
+  await debPage.locator(".fr-details .fr-closebtn").click();
   log("back on Friends: no dots; Watch Sam's guesses still there");
   log("Deb watched the replay; result, streak and log unchanged");
 
@@ -316,18 +318,21 @@ try {
   assert.equal((await linkRow()).state, "finished");
   assert.equal((await linkRow()).seen_result, false, "Pat's result is unread");
   await debPage.goto(`${APP_URL}/friends`, { waitUntil: "networkidle0" });
-  const patCard = 'section[aria-label="Puzzle link for Pat"]';
+  const patCard = 'li[aria-label="Puzzle link for Pat"]';
   await debPage.waitForSelector(`${patCard} .fr-dot-new`);
   await debPage.waitForSelector(".friends-dot");
-  await debPage.locator(`${patCard} button::-p-text(Watch Pat's guesses)`).click();
+  await debPage.locator(`${patCard} button[aria-label="Watch Pat's guesses"]`).click();
   await debPage.waitForSelector(".fr-anim .fr-playall");   // the every-move replay, from the guest's log
   assert.equal((await linkRow()).seen_result, true, "opening the replay marks Pat's result seen");
   await debPage.waitForFunction(() => !document.querySelector(".friends-dot"), { timeout: 8000 });
   await debPage.locator(".fr-head .fr-back").click();
+  // Nothing new there now, so the links section is closed; it opens on a tap.
+  await debPage.waitForSelector('.fr-links-head[aria-expanded="false"]');
+  await debPage.locator(".fr-links-head").click();
   await debPage.waitForSelector(patCard);
   assert.equal(await debPage.$(`${patCard} .fr-dot-new`), null, "no dot left on Pat's link");
   assert.equal(await debPage.$(".friends-dot"), null, "no header dot");
-  await debPage.locator(`${patCard} button::-p-text(Watch Pat's guesses)`).click();
+  await debPage.locator(`${patCard} button[aria-label="Watch Pat's guesses"]`).click();
   await debPage.waitForSelector(".fr-anim .fr-playall");
   log("guest link: opening the replay cleared its dots; the result and replay stay listed");
 

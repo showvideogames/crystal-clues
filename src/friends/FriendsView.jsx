@@ -1,17 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "./client";
-import { pushSupport, enablePush, disablePush, currentSubscription, refreshSubscription } from "./push";
+import { refreshSubscription } from "./push";
 import { readPendingInvite, writePendingInvite } from "./session";
 import { navigate, paths, historyState } from "../route";
 import { serverOffset, timeAgo, livesLeftPhrase } from "./format";
 import { MAX_LIVES } from "../game/shared";
 import { StreakPanel, StreakStatus, StreakRules } from "./Streaks.jsx";
 import { Icon, Spinner, Avatar, PageHead, RowButton } from "./ui.jsx";
-import { ProfileCard } from "./Profile.jsx";
 import FriendCreator from "./FriendCreator.jsx";
 import FriendPlay from "./FriendPlay.jsx";
 import FriendResult from "./FriendResult.jsx";
-import { LinkReady, ShareLinkCard } from "./ShareLinks.jsx";
+import { LinkReady, SentLinks } from "./ShareLinks.jsx";
 import "./friends.css";
 
 
@@ -24,7 +23,10 @@ import "./friends.css";
 // the creator restores next time.
 // invite: a token from an invite link opened on this visit.
 // onHowToPlay: opens the game's own tutorial (for someone new, before a friend's puzzle).
-export default function FriendsView({ kit, account, screen = { name:"inbox" }, invite, onInviteTaken, onUnreadChange, onProfileChange, onPlayDaily, onSignOut, onHowToPlay }) {
+// me: the player's profile as the header knows it (it changes when they edit
+// their name or avatar from the account menu). onOpenSettings: the Settings
+// sheet, where the Friends notifications live.
+export default function FriendsView({ kit, account, screen = { name:"inbox" }, invite, me, onInviteTaken, onUnreadChange, onProfileChange, onPlayDaily, onHowToPlay, onOpenSettings }) {
   // { userId, profile }, so a different account never sees the last one's name.
   const [loaded,setLoaded]   = useState(null);
   const [pendingInvite,setPendingInvite] = useState(()=>{
@@ -35,7 +37,6 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
   useEffect(()=>{ if(invite) onInviteTaken?.(); },[invite, onInviteTaken]);
 
   const userId = account.status === "signed_in" ? account.account?.user_id : null;
-  const email = account.account?.email || "";
   useEffect(()=>{
     if(!userId) return;
     let alive = true;
@@ -45,7 +46,9 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
     refreshSubscription().catch(()=>{});
     return ()=>{ alive = false; };
   },[userId]);
-  const profile = loaded && loaded.userId === userId ? loaded.profile : undefined;
+  const own = loaded && loaded.userId === userId ? loaded.profile : undefined;
+  // A newer copy from the header (an edit made in the account menu) wins.
+  const profile = own && me && me.id === own.id ? { ...own, ...me } : own;
   const setProfile = useCallback((p)=>{ setLoaded({ userId, profile:p }); onProfileChange?.(p); },[userId, onProfileChange]);
   // Opening a puzzle or a result is what marks it seen (on the server, so on
   // every device). Re-read the count so the header's dot follows at once.
@@ -89,16 +92,15 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
   return (
     <Inbox
       profile={profile}
-      email={email}
-      onSignOut={onSignOut}
+      detailId={screen.name === "details" ? screen.id : null}
       pendingInvite={pendingInvite}
       onDismissInvite={dismissInvite}
       onUnreadChange={onUnreadChange}
-      onProfile={setProfile}
       onPlay={toPlay}
       onResult={toResult}
       onCreate={toCreate}
       onCreateForNew={()=>navigate(paths.makeForNew())}
+      onOpenSettings={onOpenSettings}
     />
   );
 }
@@ -252,26 +254,173 @@ function NameStep({ onSaved, pendingInvite, onJoined }) {
 //  INBOX
 // ═══════════════════════════════════════════════════════════════
 
-// One line under the title: the most useful thing to do right now. Waiting
-// on a friend isn't repeated here; each friend's card says it, once.
-function inboxLede(friends) {
-  const by = (a) => friends.filter((f) => f.next_action === a).map((f) => f.friend_name);
-  const list = (names) => names.length === 1 ? names[0] : `${names[0]} and ${names.length - 1} more`;
-  if (by("play").length) return by("play").length === 1 ? `A puzzle from ${by("play")[0]} is waiting for you.` : `Puzzles from ${list(by("play"))} are waiting for you.`;
-  if (by("see_result").length) return `${list(by("see_result"))} finished your puzzle.`;
-  if (by("make_back").length) return `Your turn to make one for ${list(by("make_back"))}.`;
-  if (friends.some((f) => f.daily_streak > 0)) return "Trade puzzles and keep your streaks going.";
-  return "Make a puzzle, text the link, and watch how they solve it.";
+// One short line for a friend's row: the most useful thing to know right now.
+// (Everything else about them is in their details.)
+function rowStatus(f, now) {
+  const inc = f.incoming, lf = f.last_finished;
+  if(inc) return inc.started
+    ? `You're partway through${inc.guesses ? ` · ${inc.guesses} guess${inc.guesses === 1 ? "" : "es"} in` : ""}`
+    : `Sent you a puzzle · ${timeAgo(inc.sent_at, now)}`;
+  if(f.unseen_result) return f.unseen_result.outcome === "won" ? "Solved your puzzle" : "Finished your puzzle";
+  if(f.outgoing) return f.outgoing.started ? "Started your puzzle" : `Waiting to play · ${timeAgo(f.outgoing.sent_at, now)}`;
+  if(lf?.by_me) return lf.outcome === "won" ? "You solved their puzzle · your turn" : "Their puzzle got you · your turn";
+  if(lf) return lf.outcome === "won" ? `Solved your last puzzle ${livesLeftPhrase(lf.lives_used, MAX_LIVES)}` : "Didn't solve your last puzzle";
+  return "No puzzles yet";
 }
 
-function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUnreadChange, onProfile, onPlay, onResult, onCreate, onCreateForNew }) {
+// Something here needs them: a puzzle they haven't opened, or a result they haven't watched.
+const hasNews = (f) => (!!f.incoming && !f.incoming.seen) || !!f.unseen_result;
+
+// Their puzzle can be played (or resumed); yours can be made unless one of
+// yours is still with them. Playing theirs never blocks making yours.
+function FriendButtons({ f, onPlay, onResult, onCreate, watch = true }) {
+  const name = f.friend_name;
+  const inc = f.incoming;
+  return <>
+    {inc ? (
+      <button className="fr-mini primary" onClick={()=>onPlay(inc.puzzle_id)}
+        aria-label={`${inc.started ? "Resume" : "Play"} ${name}'s puzzle`}>
+        <Icon name="play" size={16}/>{inc.started ? "Resume" : "Play"}
+      </button>
+    ) : watch && f.unseen_result ? (
+      <button className="fr-mini primary" onClick={()=>onResult(f.unseen_result.puzzle_id)} aria-label={`Watch ${name}'s guesses`}>
+        <Icon name="play" size={16}/>Watch
+      </button>
+    ) : null}
+    {!f.outgoing && (
+      <button className="fr-mini secondary" onClick={()=>onCreate(f)} aria-label={`Make Puzzle for ${name}`}>
+        <Icon name="cards" size={18}/>Make Puzzle
+      </button>
+    )}
+  </>;
+}
+
+function StreakChips({ f }) {
+  return <>
+    {f.daily_streak > 0 && <span className="fr-chipline" title="Friend Streak">
+      <span aria-hidden="true">🔥</span>{f.daily_streak}<span className="sr-only"> day Friend Streak</span></span>}
+    {f.team_win_streak > 0 && <span className="fr-chipline" title="Solve Streak">
+      <span aria-hidden="true">⭐</span>{f.team_win_streak}<span className="sr-only"> puzzle Solve Streak</span></span>}
+  </>;
+}
+
+const NewTag = ({ children = "New" }) => <span className="fr-new"><span className="fr-dot-new" aria-hidden="true"/>{children}</span>;
+
+// One friend in the list. The avatar, name and status open their details;
+// the buttons act directly.
+function FriendRow({ f, avatar, now, onOpen, onPlay, onResult, onCreate }) {
+  const name = f.friend_name;
+  const news = hasNews(f);
+  const buttons = !!f.incoming || !!f.unseen_result || !f.outgoing;
+  return (
+    <li className={`fr-frow${news ? " new" : ""}`} data-fid={f.friendship_id}
+      onClick={(e)=>{ if(!e.target.closest("button")) onOpen(f); }}>
+      <button type="button" className="fr-frow-main" onClick={()=>onOpen(f)} aria-haspopup="dialog">
+        <Avatar name={name} avatar={avatar} size={44} className="fr-frow-lead"/>
+        <span className="fr-frow-line">
+          <span className="fr-frow-name">{name}</span>
+          <StreakChips f={f}/>
+          {news && <NewTag/>}
+        </span>
+        <span className="fr-frow-status">{rowStatus(f, now)}<span className="sr-only">. Open {name}'s details</span></span>
+      </button>
+      {buttons && <div className="fr-frow-actions"><FriendButtons f={f} onPlay={onPlay} onResult={onResult} onCreate={onCreate}/></div>}
+    </li>
+  );
+}
+
+// A friend's details: a sheet over the list (so closing it leaves the list
+// exactly where it was). Streaks in full, the replay, past puzzles, the rules.
+// Opening it marks nothing as seen: only opening a puzzle or a result does.
+function FriendDetails({ f, avatar, now, onClose, onPlay, onResult, onCreate }) {
+  const name = f.friend_name;
+  const [history,setHistory] = useState(null);
+  const [showHistory,setShowHistory] = useState(false);
+  const [showRules,setShowRules] = useState(false);
+  const closeRef = useRef(null);
+  useEffect(()=>{
+    closeRef.current?.focus({ preventScroll:true });
+    const esc = (e)=>{ if(e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", esc);
+    return ()=>document.removeEventListener("keydown", esc);
+  },[onClose]);
+  const toggleHistory = async ()=>{
+    const next = !showHistory;
+    setShowHistory(next);
+    if(next && !history){
+      try { setHistory(await api.history(f.friendship_id)); } catch { setHistory([]); }
+    }
+  };
+  // The latest result of theirs on your puzzle stays one tap away, watched or not.
+  const replayId = f.unseen_result?.puzzle_id
+    || (f.last_finished && !f.last_finished.by_me ? f.last_finished.puzzle_id : null);
+  const out = f.outgoing;
+  const counted = f.last_finished || f.daily_streak || f.team_win_streak;
+
+  return (
+    <div className="fr-modal fr-details" onClick={onClose}>
+      <div className="fr-modal-card" role="dialog" aria-modal="true" aria-labelledby="fr-details-title" onClick={e=>e.stopPropagation()}>
+        <div className="fr-modal-head">
+          <Avatar name={name} avatar={avatar} size={52}/>
+          <div style={{minWidth:0,flex:1}}>
+            <h2 className="fr-modal-title" id="fr-details-title">{name}</h2>
+            <div className="fr-sub">{rowStatus(f, now)}</div>
+          </div>
+          <button ref={closeRef} type="button" className="fr-closebtn" onClick={onClose} aria-label="Close"><Icon name="close" size={20}/></button>
+        </div>
+
+        {(f.incoming || !out) && <div className="fr-row fr-details-actions"><FriendButtons f={f} watch={false} onPlay={onPlay} onResult={onResult} onCreate={onCreate}/></div>}
+        {out && (
+          <div className="fr-waiting" role="status"><Icon name="clock" size={18}/>
+            <span>{out.started ? `${name} has started your puzzle` : `Your puzzle for ${name} · sent ${timeAgo(out.sent_at, now)}, not started yet`}</span>
+          </div>
+        )}
+
+        {counted ? <>
+          <StreakPanel friendStreak={f.daily_streak} solveStreak={f.team_win_streak} friendName={name}/>
+          <StreakStatus status={f} now={now}/>
+        </> : <p className="fr-sub">Finish a puzzle with {name} to start your streaks.</p>}
+
+        <div className="fr-list">
+          {replayId && (
+            <RowButton icon="play" label={`Watch ${name}'s guesses`} dot={!!f.unseen_result}
+              detail={f.unseen_result ? "New result · not watched yet" : "Their last finished puzzle"}
+              onClick={()=>onResult(replayId)}/>
+          )}
+          <RowButton icon="history" label="Past puzzles" open={showHistory} onClick={toggleHistory}/>
+          {showHistory && (
+            <div className="fr-history">
+              {history === null && <p className="fr-sub" style={{padding:"8px"}}>Loading…</p>}
+              {history?.length === 0 && <p className="fr-sub" style={{padding:"8px"}}>No puzzles yet.</p>}
+              {history?.map(h=>{
+                const label = h.direction === "sent" ? `You → ${name}` : `${name} → you`;
+                const result = !h.finished_at ? "Not finished yet" : h.outcome === "won" ? `Solved · ${h.lives_used} ${h.lives_used===1?"life":"lives"} used` : "Not solved";
+                return (
+                  <button key={h.puzzle_id} className="fr-history-item"
+                    onClick={()=> h.finished_at || h.direction === "sent" ? onResult(h.puzzle_id) : onPlay(h.puzzle_id)}>
+                    <span className={`fr-dot${!h.finished_at ? " open" : h.outcome === "lost" ? " lost" : ""}`}/>
+                    <span><b>{label}</b><small>{result}</small></span>
+                    <span className="when">{timeAgo(h.sent_at, now)}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+          <RowButton icon="help" label="How streaks work" open={showRules} onClick={()=>setShowRules(o=>!o)}/>
+          {showRules && <div className="fr-list-body"><StreakRules/></div>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Inbox({ profile, detailId, pendingInvite, onDismissInvite, onUnreadChange, onPlay, onResult, onCreate, onCreateForNew, onOpenSettings }) {
   const [inbox,setInbox] = useState(null);
   const [links,setLinks] = useState([]);   // puzzles shared by link, not yet saved to an account
   const [avatars,setAvatars] = useState({}); // friends' chosen avatars by account id; no entry = the default ball
   const [offset,setOffset] = useState(0);
   const [error,setError] = useState("");
   const [now,setNow] = useState(()=>Date.now());
-  const [open,setOpen] = useState(null);   // which "More" row is expanded
 
   const refresh = useCallback(async ()=>{
     try {
@@ -298,24 +447,40 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
     return ()=>{ clearTimeout(first); clearInterval(poll); clearInterval(clock); document.removeEventListener("visibilitychange", tick); };
   },[refresh]);
 
+  // Details are an address of their own (/friends/details/:id), so Back closes
+  // them and a refresh keeps them open. Opened from the list, closing goes
+  // back to that same entry; opened directly, it replaces itself with the list.
+  const detail = detailId && inbox ? inbox.friends.find(f=>f.friendship_id === detailId) || null : null;
+  useEffect(()=>{ if(detailId && inbox && !detail) navigate(paths.friends(), { replace:true }); },[detailId, inbox, detail]);
+  const openDetails = useCallback((f)=>navigate(paths.friendDetails(f.friendship_id), { state:{ fromList:true } }),[]);
+  const closeDetails = useCallback(()=>{
+    if(historyState().fromList) window.history.back();
+    else navigate(paths.friends(), { replace:true });
+  },[]);
+  // Closing hands the focus back to the row it came from.
+  const lastDetail = useRef(null);
+  useEffect(()=>{
+    if(detailId){ lastDetail.current = detailId; return; }
+    const fid = lastDetail.current;
+    lastDetail.current = null;
+    if(fid) document.querySelector(`[data-fid="${CSS.escape(fid)}"] .fr-frow-main`)?.focus({ preventScroll:true });
+  },[detailId]);
+
   const serverNow = now + offset;
   const inviteDone = useCallback(()=>{ onDismissInvite(); refresh(); },[onDismissInvite, refresh]);
-  const toggle = (key)=>setOpen(o=>o === key ? null : key);
   const hasFriends = !!inbox?.friends.length;
 
   return (
     <div className="fr-wrap">
-      <div className="fr-page">
-        <PageHead title="Friends" sub={inbox ? inboxLede(inbox.friends) : " "}/>
-
-        {/* Sending a puzzle is the invitation: they play from the link with no
-            account, and making one back connects you (SharedPuzzle.jsx). */}
-        <div className="fr-make-cta">
-          <button className="fr-btn primary" onClick={onCreateForNew}>
-            <span className="fr-btn-ico"><Icon name="pencil"/></span>Make a puzzle for a friend
+      <div className="fr-page fr-hub">
+        <header className="fr-hub-head">
+          <h1 className="fr-h1">Friends</h1>
+          {/* Sending a puzzle is the invitation: they play from the link with no
+              account, and making one back connects you (SharedPuzzle.jsx). */}
+          <button className="fr-btn primary fr-make-btn" onClick={onCreateForNew}>
+            <Icon name="cards" size={20}/>Make a puzzle for a friend
           </button>
-          <p className="fr-help">You'll get a link to text them. They can play right away, no account needed.</p>
-        </div>
+        </header>
 
         {/* Invitation links sent before puzzles did the inviting still work. */}
         {pendingInvite && <AcceptInvite token={pendingInvite} onDone={inviteDone} onDismiss={onDismissInvite}/>}
@@ -323,152 +488,32 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
 
         {inbox === null && !error && <p className="fr-sub">Loading…</p>}
         {inbox && !hasFriends && !links.length && !pendingInvite && (
-          <p className="fr-sub" style={{textAlign:"center"}}>Friends and the puzzles you send will show up here.</p>
+          <p className="fr-sub" style={{textAlign:"center"}}>Make a puzzle and text them the link. Friends you trade puzzles with show up here.</p>
         )}
-        {inbox?.friends.map(f=>(
-          <FriendCard key={f.friendship_id} f={f} now={serverNow} avatar={avatars[f.friend_id]}
-            onPlay={onPlay} onResult={onResult} onCreate={onCreate}/>
-        ))}
+        {hasFriends && (
+          <ul className="fr-flist" aria-label="Your friends">
+            {inbox.friends.map(f=>(
+              <FriendRow key={f.friendship_id} f={f} now={serverNow} avatar={avatars[f.friend_id]}
+                onOpen={openDetails} onPlay={onPlay} onResult={onResult} onCreate={onCreate}/>
+            ))}
+          </ul>
+        )}
 
-        {links.length > 0 && <>
-          <div className="fr-eyebrow">Puzzles you've sent by link</div>
-          {links.map(l=>(
-            <ShareLinkCard key={l.puzzle_id} link={l} sender={profile.display_name} now={serverNow}
-              onResult={onResult} onChanged={refresh}/>
-          ))}
-        </>}
+        {links.length > 0 && (
+          <SentLinks links={links} sender={profile.display_name} now={serverNow} onResult={onResult} onChanged={refresh}/>
+        )}
 
-        <div className="fr-eyebrow">More with friends</div>
-        <div className="fr-list">
-          <RowButton icon="help" label="How streaks work" detail="Friend Streak and Solve Streak"
-            open={open === "rules"} onClick={()=>toggle("rules")}/>
-          {open === "rules" && <div className="fr-list-body"><StreakRules/></div>}
-        </div>
-        <NotificationSettings profile={profile} onProfile={onProfile}/>
-
-        <div className="fr-eyebrow">Profile</div>
-        <ProfileCard profile={profile} email={email} onProfile={onProfile} onSignOut={onSignOut}/>
+        {onOpenSettings && (
+          <p className="fr-hub-foot">
+            <button className="fr-textbtn muted" onClick={onOpenSettings}><Icon name="bell" size={16}/>Notification settings</button>
+          </p>
+        )}
       </div>
+      {detail && (
+        <FriendDetails f={detail} avatar={avatars[detail.friend_id]} now={serverNow} onClose={closeDetails}
+          onPlay={onPlay} onResult={onResult} onCreate={onCreate}/>
+      )}
     </div>
-  );
-}
-
-function FriendCard({ f, avatar, now, onPlay, onResult, onCreate }) {
-  const [history,setHistory] = useState(null);
-  const [showHistory,setShowHistory] = useState(false);
-  const name = f.friend_name;
-
-  const toggleHistory = async ()=>{
-    const next = !showHistory;
-    setShowHistory(next);
-    if(next && !history){
-      try { setHistory(await api.history(f.friendship_id)); } catch { setHistory([]); }
-    }
-  };
-
-  const primary = (icon, label, onClick)=>(
-    <button className="fr-btn primary" onClick={onClick}>
-      <span className="fr-btn-ico"><Icon name={icon}/></span>{label}
-    </button>
-  );
-  // A new friendship: where their puzzles will show up, and the one thing to do.
-  let status = `Connected · ${name}'s puzzles will appear here.`;
-  let action = null;
-  const makeLabel = f.draft ? `Finish your puzzle for ${name}` : `Make one for ${name}`;
-  // Your puzzle that's still with them (one unfinished each way). Beside
-  // their puzzle to you, it says whose puzzle it is.
-  const waitingLine = f.outgoing && (
-    <div className="fr-waiting" role="status"><Icon name="clock" size={18}/>
-      <span>{f.outgoing.started
-        ? `${name} has started your puzzle`
-        : f.incoming ? `Your puzzle for ${name} is waiting`
-        : `Sent ${timeAgo(f.outgoing.sent_at, now)} · waiting for ${name} to start`}</span>
-    </div>
-  );
-  const isNew = (f.incoming && !f.incoming.seen) || !!f.unseen_result;
-  switch(f.next_action){
-    case "play":
-      status = f.incoming.started
-        ? `You're partway through${f.incoming.guesses ? ` · ${f.incoming.guesses} guess${f.incoming.guesses===1?"":"es"} in` : ""}`
-        : `Sent you a puzzle · ${timeAgo(f.incoming.sent_at, now)}`;
-      // Playing theirs never blocks sending yours: one unfinished puzzle each way.
-      action = <>
-        {primary("play", f.incoming.started ? `Continue ${name}'s puzzle` : `Play ${name}'s puzzle`, ()=>onPlay(f.incoming.puzzle_id))}
-        {waitingLine || (
-          <button className="fr-btn secondary" onClick={()=>onCreate(f)}>
-            <span className="fr-btn-ico"><Icon name="pencil"/></span>{makeLabel}
-          </button>
-        )}
-      </>;
-      break;
-    case "see_result":
-      status = f.unseen_result.outcome === "won" ? "Solved your puzzle" : "Finished your puzzle";
-      action = primary("play", `Watch ${name}'s guesses`, ()=>onResult(f.unseen_result.puzzle_id));
-      break;
-    case "waiting":
-      // One message, in the status bar. "Started" is the server's record:
-      // they chose a difficulty or made a guess; opening it isn't starting.
-      status = null;
-      action = waitingLine;
-      break;
-    case "make_back": {
-      const lf = f.last_finished;
-      status = lf.outcome === "won" ? `You solved their puzzle ${livesLeftPhrase(lf.lives_used, MAX_LIVES)} · your turn` : "Their puzzle got you · your turn";
-      action = primary("pencil", makeLabel, ()=>onCreate(f));
-      break;
-    }
-    default: {
-      const lf = f.last_finished;
-      if(lf && !lf.by_me) status = lf.outcome === "won" ? `Solved your last puzzle ${livesLeftPhrase(lf.lives_used, MAX_LIVES)}` : "Didn't solve your last puzzle";
-      action = primary("pencil", makeLabel, ()=>onCreate(f));
-    }
-  }
-
-  // The creator's replay of the friend's real guesses stays one tap away.
-  const replayId = f.unseen_result?.puzzle_id
-    || (f.last_finished && !f.last_finished.by_me ? f.last_finished.puzzle_id : null);
-
-  return (
-    <section className={`fr-card fr-friend${isNew ? " new" : ""}`} aria-label={name}>
-      <div className="fr-friend-head">
-        <Avatar name={name} avatar={avatar}/>
-        <div style={{minWidth:0}}>
-          <div className="fr-friend-name">{name}</div>
-          {status && <div className="fr-friend-status">{status}</div>}
-        </div>
-        {isNew && <span className="fr-dot-new" aria-label="New"/>}
-      </div>
-      {action}
-      {/* Streaks appear once there's something to count: no zeros and rules for a new friend. */}
-      {(f.last_finished || f.daily_streak || f.team_win_streak) ? <>
-        <StreakPanel friendStreak={f.daily_streak} solveStreak={f.team_win_streak} friendName={name}/>
-        <StreakStatus status={f} now={now}/>
-      </> : null}
-      <div className="fr-card-rows">
-        {replayId && f.next_action !== "see_result" && (
-          <RowButton icon="play" label={`Watch ${name}'s guesses`} dot={!!f.unseen_result} onClick={()=>onResult(replayId)}/>
-        )}
-        <RowButton icon="history" label="Past puzzles" open={showHistory} onClick={toggleHistory}/>
-        {showHistory && (
-          <div className="fr-history">
-            {history === null && <p className="fr-sub" style={{padding:"8px"}}>Loading…</p>}
-            {history?.length === 0 && <p className="fr-sub" style={{padding:"8px"}}>No puzzles yet.</p>}
-            {history?.map(h=>{
-              const label = h.direction === "sent" ? `You → ${name}` : `${name} → you`;
-              const result = !h.finished_at ? "Not finished yet" : h.outcome === "won" ? `Solved · ${h.lives_used} ${h.lives_used===1?"life":"lives"} used` : "Not solved";
-              return (
-                <button key={h.puzzle_id} className="fr-history-item"
-                  onClick={()=> h.finished_at || h.direction === "sent" ? onResult(h.puzzle_id) : onPlay(h.puzzle_id)}>
-                  <span className={`fr-dot${!h.finished_at ? " open" : h.outcome === "lost" ? " lost" : ""}`}/>
-                  <span><b>{label}</b><small>{result}</small></span>
-                  <span className="when">{timeAgo(h.sent_at, now)}</span>
-                </button>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </section>
   );
 }
 
@@ -512,78 +557,5 @@ function AcceptInvite({ token, onDone, onDismiss }) {
       <button className="fr-btn primary" onClick={accept} disabled={busy} aria-busy={busy}>{busy ? <><Spinner/>Joining…</> : `Join ${info?.inviter_name}`}</button>
       <button className="fr-textbtn muted" style={{alignSelf:"center",marginTop:-8}} onClick={onDismiss}>Not now</button>
     </section>
-  );
-}
-
-function NotificationSettings({ profile, onProfile }) {
-  const [support,setSupport] = useState(()=>pushSupport());
-  const [on,setOn] = useState(false);
-  const [busy,setBusy] = useState(false);
-  const [error,setError] = useState("");
-  const [expanded,setExpanded] = useState(false);
-
-  useEffect(()=>{
-    let alive = true;
-    currentSubscription().then(sub=>{ if(alive) setOn(!!sub && Notification.permission === "granted"); });
-    return ()=>{ alive = false; };
-  },[]);
-
-  const turnOn = async ()=>{
-    setBusy(true); setError("");
-    try {
-      const result = await enablePush();
-      if(result === "on") setOn(true);
-      else if(result === "denied") setSupport("denied");
-      else setError("Notifications weren't turned on. You can try again any time.");
-    } catch {
-      setError("This browser couldn't turn on notifications. Your inbox here still shows everything.");
-    } finally { setBusy(false); }
-  };
-  const turnOff = async ()=>{
-    setBusy(true);
-    await disablePush().catch(()=>{});
-    setOn(false); setBusy(false); setExpanded(false);
-  };
-  const setPref = async (key, value)=>{
-    try { onProfile(await api.setPrefs({ [key]:value })); }
-    catch(err){ setError(err.message); }
-  };
-
-  let line, action = null, details = null;
-  if(support === "ios-home-screen"){
-    line = "Notifications need the Home Screen app";
-    action = <button className="fr-textbtn" onClick={()=>setExpanded(e=>!e)} aria-expanded={expanded}>How</button>;
-    details = <p className="fr-sub">Tap <b>Share</b>, then <b>Add to Home Screen</b>, open Cluevoyance from that icon, and turn notifications on here (iOS 16.4 or later).</p>;
-  } else if(support === "unsupported"){
-    line = "This browser can't show notifications";
-  } else if(support === "denied"){
-    line = "Notifications are blocked in this browser's settings";
-  } else if(support === "unconfigured"){
-    line = "Notifications aren't set up here yet";
-  } else if(!on){
-    line = "Notifications are off";
-    action = <button className="fr-textbtn" onClick={turnOn} disabled={busy} aria-busy={busy}>{busy ? <><Spinner/>Turning on…</> : "Turn on"}</button>;
-  } else {
-    line = "Notifications are on";
-    action = <button className="fr-textbtn" onClick={()=>setExpanded(e=>!e)} aria-expanded={expanded}>{expanded ? "Done" : "Choose"}</button>;
-    details = <>
-      <label className="fr-toggle"><input type="checkbox" checked={profile.notify_new_puzzle}
-        onChange={e=>setPref("newPuzzle", e.target.checked)}/>
-        <span>New puzzles<small>When a friend sends you one.</small></span></label>
-      <label className="fr-toggle"><input type="checkbox" checked={profile.notify_results}
-        onChange={e=>setPref("results", e.target.checked)}/>
-        <span>Results<small>When a friend finishes your puzzle.</small></span></label>
-      <label className="fr-toggle"><input type="checkbox" checked={profile.notify_reminders}
-        onChange={e=>setPref("reminders", e.target.checked)}/>
-        <span>Friend Streak reminder<small>About 3 hours before it would end, only if nobody has finished a puzzle that period.</small></span></label>
-      <p className="fr-help" style={{margin:"2px 0 0"}}>Notifications never include clues or answers. <button className="fr-link" onClick={turnOff} disabled={busy}>Turn off on this device</button></p>
-    </>;
-  }
-  return (
-    <div>
-      <div className="fr-notify"><Icon name="bell" size={18}/><span className="grow">{line}</span>{action}</div>
-      {expanded && details && <div style={{padding:"0 4px 4px"}}>{details}</div>}
-      {error && <div className="fr-msg err">{error}</div>}
-    </div>
   );
 }

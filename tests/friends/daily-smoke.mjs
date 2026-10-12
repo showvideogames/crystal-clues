@@ -117,7 +117,7 @@ try {
   await page.waitForFunction(() => /3 published puzzles/i.test(document.body.innerText));
   log("archive ok");
 
-  // Admin is for admin accounts only: not a guest, not an ordinary account.
+  // Admin isn't in the header for anyone; during the beta it opens by address.
   const adminButton = () => page.$("button.nbtn::-p-text(Admin)");
   assert.equal(await adminButton(), null, "no Admin button for a guest");
   const [player, editor] = await Promise.all([makeAccount("player"), makeAccount("editor")]);
@@ -128,11 +128,12 @@ try {
   await signOutBrowser(page);
   await signInBrowser(page, editor);
   await page.locator("button::-p-text(Start fresh)").click().catch(() => {});
-  await page.waitForSelector("button.nbtn::-p-text(Admin)", { timeout: 15000 });
-  log("admin button: hidden for guest and player, shown for an admin");
+  await page.waitForSelector('[data-testid="account-menu-button"]', { timeout: 15000 });
+  assert.equal(await adminButton(), null, "no Admin button for an admin either");
+  log("admin button: in nobody's header");
 
-  // Admin: new puzzle, Deal Random Cards fills all 7 cards; checks go green.
-  await page.locator("button.nbtn::-p-text(Admin)").click();
+  // Admin (by address): new puzzle, Deal Random Cards fills all 7 cards; checks go green.
+  await page.goto(`${URL}/admin`, { waitUntil: "networkidle0" });
   await page.locator("button::-p-text(+ New Puzzle)").click();
   await page.locator("button.admin-deal-btn").click();
   await sleep(300);

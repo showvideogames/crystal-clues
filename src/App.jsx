@@ -19,6 +19,10 @@ import {
 const FriendsView = lazy(() => import("./friends/FriendsView.jsx"));
 // A puzzle texted as a link (/p/…): playable without an account.
 const SharedPuzzle = lazy(() => import("./friends/SharedPuzzle.jsx"));
+// Friends settings outside the Friends page: notifications (in Settings) and
+// the profile editor (from the account menu).
+const FriendsNotifications = lazy(() => import("./friends/Notifications.jsx"));
+const ProfileDialog = lazy(() => import("./friends/Profile.jsx"));
 const loadFriendsBadge = () => import("./friends/badge.js");
 
 // ═══════════════════════════════════════════════════════════════
@@ -74,13 +78,11 @@ async function dbLoadAllPuzzles() {
 async function dbSavePuzzle(puzzle) {
   const numId = Number(puzzle.id);
   const id = isNaN(numId) ? puzzle.id : numId;
-  await sbFetch(`puzzles?id=eq.${id}`, {
-    method: "DELETE",
-    prefer: "return=minimal",
-  }).catch(()=>{});
-  await sbFetch(`puzzles`, {
+  // One upsert, never delete-then-insert: deleting a puzzle also deletes
+  // players' records of it (plays cascade), so editing one mustn't.
+  await sbFetch(`puzzles?on_conflict=id`, {
     method: "POST",
-    prefer: "return=minimal",
+    prefer: "return=minimal,resolution=merge-duplicates",
     body: JSON.stringify({
       id,
       date: puzzle.date,
@@ -95,9 +97,22 @@ async function dbSavePuzzle(puzzle) {
   });
 }
 
+// A puzzle somebody has played is never deleted (that would also delete their
+// records of it): it moves to Unused instead, off the daily game and the
+// archive, with the puzzle and its play history kept. The database enforces
+// the same for the open (signed-out) admin. Returns "deleted" or "unused".
 async function dbDeletePuzzle(id) {
-  await sbFetch(`puzzles?id=eq.${id}`, { method: "DELETE", prefer: "return=minimal" });
+  const toUnused = () => sbFetch(`puzzles?id=eq.${id}`, {
+    method: "PATCH", prefer: "return=minimal", body: JSON.stringify({ status: "unused" }),
+  });
+  const played = await sbFetch(`rpc/puzzle_has_plays`, { method: "POST", body: JSON.stringify({ p_puzzle_id: Number(id) }) });
+  if(played) { await toUnused(); return "unused"; }
+  const gone = await sbFetch(`puzzles?id=eq.${id}`, { method: "DELETE", prefer: "return=representation" });
+  if(gone?.length) return "deleted";
+  await toUnused();   // played in the meantime: the database kept it
+  return "unused";
 }
+const KEPT_AS_UNUSED = "People have played this puzzle, so it was moved to Unused instead of being deleted. Their play history is kept.";
 
 async function dbLoadWordBank() {
   const rows = await sbFetch(`wordbank?order=word.asc`);
@@ -987,7 +1002,7 @@ body::before{
   animation:fadeInBg .2s ease}
 @keyframes fadeInBg{from{opacity:0}to{opacity:1}}
 .settings-sheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%);
-  z-index:201;width:100%;max-width:500px;
+  z-index:201;width:100%;max-width:500px;max-height:92dvh;overflow-y:auto;overscroll-behavior:contain;
   background:rgba(12,7,30,.98);
   border:1px solid rgba(100,55,200,.3);
   border-radius:20px 20px 0 0;padding:20px 20px 36px;
@@ -4557,8 +4572,12 @@ function AdminView({ onPublish }) {
 
   const handleDelete = async id => {
     if(window.confirm("Delete this puzzle?")) {
-      await dbDeletePuzzle(id);
-      setPuzzles(p=>p.filter(x=>x.id!==id));
+      try {
+        if(await dbDeletePuzzle(id) === "unused"){
+          alert(KEPT_AS_UNUSED);
+          setPuzzles(await dbLoadAllPuzzles());
+        } else setPuzzles(p=>p.filter(x=>x.id!==id));
+      } catch(e) { alert("Error deleting puzzle: " + e.message); }
     }
   };
 
@@ -4612,7 +4631,7 @@ function AdminView({ onPublish }) {
         {tab==="unused"&&(<>
           <div className="sh">Unused Puzzles</div>
           <p style={{fontSize:12,color:"var(--muted)",marginBottom:14}}>
-            Puzzles displaced when another was published on the same date.
+            Puzzles displaced when another was published on the same date, and played puzzles that were deleted (kept here with their play history).
           </p>
           {unused.length===0
             ? <div className="mhint">No unused puzzles.</div>
@@ -4637,8 +4656,10 @@ function AdminView({ onPublish }) {
                       </button>
                       <button className="abtn d sm" onClick={async()=>{
                         if(window.confirm("Permanently delete?")) {
-                          await dbDeletePuzzle(p.id);
-                          const rows=await dbLoadAllPuzzles(); setPuzzles(rows);
+                          try {
+                            if(await dbDeletePuzzle(p.id) === "unused") alert("People have played this puzzle, so it stays in Unused instead of being deleted. Their play history is kept.");
+                            const rows=await dbLoadAllPuzzles(); setPuzzles(rows);
+                          } catch(e) { alert("Error deleting puzzle: " + e.message); }
                         }
                       }}>
                         Delete
@@ -5004,7 +5025,8 @@ function ArchiveView({ onPlay }) {
 // ═══════════════════════════════════════════════════════════════
 
 
-function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose }) {
+// children: more settings below the difficulty (the Friends notifications).
+function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose, children }) {
   const currentRank = DIFF_RANK[difficulty] ?? 1;
   return (
     <>
@@ -5040,6 +5062,7 @@ function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose
             );
           })}
         </div>
+        {children}
       </div>
     </>
   );
@@ -5090,11 +5113,11 @@ export default function App() {
   const completions = useMemo(()=>loadCompletions(), [compsTick, acct.historyVersion]);
   const { signOut:accountSignOut } = acct;
   const handleSignOut = useCallback(async ()=>{ await leaveFriends(); await accountSignOut(); setView("game"); },[accountSignOut, setView]);
-  // Admin is for admin accounts: anyone else at /admin goes to today's puzzle.
-  useEffect(()=>{
-    if(view === "admin" && acct.status !== "checking" && !acct.isAdmin) navigate(paths.today(), { replace:true });
-  },[view, acct.status, acct.isAdmin]);
+  // Admin (/admin) is open to everyone during the beta, by the owner's choice:
+  // it isn't in the header, and its writes reach only the official puzzles and
+  // the word bank (supabase/migrations/20261015090000_beta_open_puzzle_admin.sql).
   const [showSettings,setShowSettings] = useState(false);
+  const [editingProfile,setEditingProfile] = useState(false);
   const [showTutorial,setShowTutorial] = useState(false);
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
   const [lobbyDone,setLobbyDone]     = useState(false);
@@ -5250,11 +5273,6 @@ export default function App() {
             <button className={`nbtn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}>
               Archive
             </button>
-            {acct.isAdmin && (
-              <button className={`nbtn${view==="admin"?" on":""}`} onClick={()=>setView("admin")}>
-                Admin
-              </button>
-            )}
             {FRIENDS_ENABLED && (
               <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>setView("friends")}
                 title="Friends" aria-label="Friends" aria-describedby={shownUnread>0 ? "friends-new-desc" : undefined}>
@@ -5272,6 +5290,7 @@ export default function App() {
               message={acct.message}
               onSignIn={acct.signIn}
               onSignOut={handleSignOut}
+              onEditProfile={FRIENDS_ENABLED && shownMe ? ()=>setEditingProfile(true) : null}
               onDelete={async ()=>{ await leaveFriends(); return acct.deleteAccount(); }}
               onDismissMessage={acct.dismissMessage}
             />
@@ -5310,12 +5329,13 @@ export default function App() {
             account={acct}
             screen={route.screen}
             invite={friendsInvite}
+            me={shownMe}
             onInviteTaken={()=>setFriendsInvite(null)}
             onUnreadChange={setFriendsUnread}
             onProfileChange={setFriendsMe}
             onPlayDaily={()=>setView("game")}
-            onSignOut={handleSignOut}
             onHowToPlay={openTutorial}
+            onOpenSettings={()=>setShowSettings(true)}
           />
         </Suspense>
       )}
@@ -5325,7 +5345,7 @@ export default function App() {
             onHowToPlay={openTutorial} onPlayDaily={()=>setView("game")}/>
         </Suspense>
       )}
-      {view==="admin" && acct.isAdmin && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
+      {view==="admin" && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
       {showTutorial && <TutorialPracticeOverlay onClose={closeTutorial} />}
       {acct.importPending && <ImportPrompt onAdd={acct.addMyProgress} onStartFresh={acct.startFresh} />}
 
@@ -5335,7 +5355,19 @@ export default function App() {
           onChangeDifficulty={handleChangeDifficulty}
           gameInProgress={view==="game" && lobbyDone}
           onClose={()=>setShowSettings(false)}
-        />
+        >
+          {FRIENDS_ENABLED && shownMe && (
+            <Suspense fallback={null}>
+              <FriendsNotifications profile={shownMe} onProfile={setFriendsMe}/>
+            </Suspense>
+          )}
+        </SettingsSheet>
+      )}
+      {editingProfile && shownMe && (
+        <Suspense fallback={null}>
+          <ProfileDialog profile={shownMe} email={acct.account?.email || ""} onProfile={setFriendsMe}
+            onClose={()=>setEditingProfile(false)}/>
+        </Suspense>
       )}
     </div>
   );
