@@ -1,3 +1,16 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/p/:code",
+      "destination": "/api/link?kind=puzzle&t=:code"
+    },
+    {
+      "source": "/join/:code",
+      "destination": "/api/link?kind=invite&t=:code"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
