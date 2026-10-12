@@ -15,6 +15,7 @@ process.env.VITE_SUPABASE_URL = API_URL;
 process.env.VITE_SUPABASE_PUBLISHABLE_KEY = PUBLISHABLE_KEY;
 const { GET: linkPage } = await import("../../api/link.js");
 const { GET: ogImage } = await import("../../api/og.js");
+const heads = [(await import("../../api/link.js")).HEAD, (await import("../../api/og.js")).HEAD];
 const { copyFor, previewTags, escapeHtml } = await import("../../api/_lib/linkPreview.js");
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
@@ -96,6 +97,10 @@ test("unknown, stopped or used links get the plain Cluevoyance preview", async (
   const l2 = await rpc(sam.client, "create_share_link", { p_draft_id: d.id, p_version: d.version, p_label: "" });
   await rpc(sam.client, "stop_share_link", { p_puzzle_id: l2.puzzle_id });
   assert.equal(meta(await page("puzzle", l2.token), "og:title"), "Cluevoyance");
+});
+
+test("HEAD is answered like GET (some preview fetchers ask that first)", () => {
+  assert.deepEqual(heads, [linkPage, ogImage]);
 });
 
 test("names are escaped in the page", () => {

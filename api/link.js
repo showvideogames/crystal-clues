@@ -43,3 +43,6 @@ export async function GET(request) {
     },
   });
 }
+
+// Some link-preview fetchers ask with HEAD first; answer it like GET (the platform drops the body).
+export const HEAD = GET;
