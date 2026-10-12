@@ -62,9 +62,13 @@ try {
   await g.goto(`${APP_URL}/archive/999999999999`, { waitUntil: "networkidle0" });
   await waitPath(g, "/archive");
   log("an unknown archive puzzle address falls back to the archive");
+  // The beta's puzzle admin is open by address (not in the header).
   await g.goto(`${APP_URL}/admin`, { waitUntil: "networkidle0" });
-  await waitPath(g, "/");
-  log("/admin as a guest goes to today's puzzle");
+  await g.waitForSelector(".atab");
+  await g.reload({ waitUntil: "networkidle0" });
+  await g.waitForSelector(".atab");
+  assert.equal(at(g), "/admin", "a guest stays on /admin, after a refresh too");
+  log("/admin opens by address for a guest");
   await g.goto(`${APP_URL}/no-such-page`, { waitUntil: "networkidle0" });
   await waitPath(g, "/");
   // Header navigation pushes history: Today → Archive → Friends, then Back twice.
@@ -82,17 +86,17 @@ try {
   // ── Ann (creator) ─────────────────────────────────────────────────────
   const a = await newPage();
   await signInBrowser(a, ann, "/friends");
-  await waitText(a, "waiting for Bo to start");
-  const card = await a.$eval('section[aria-label="Bo"]', (el) => el.innerText);
-  assert.equal((card.match(/waiting/gi) || []).length, 1, `one waiting message on Bo's card: ${card}`);
+  await waitText(a, "Waiting to play");
+  const card = await a.$eval("li.fr-frow", (el) => el.innerText);
+  assert.equal((card.match(/waiting/gi) || []).length, 1, `one waiting message on Bo's row: ${card}`);
   assert.ok(!/is playing|Has your puzzle|Sent to Bo/i.test(await text(a)), "no repeated sent/playing messages");
-  assert.ok(!(await a.$eval(".fr-head", (el) => el.innerText)).includes("Waiting"), "the page lede doesn't repeat it");
+  assert.ok(!(await a.$eval(".fr-hub-head", (el) => el.innerText)).includes("Waiting"), "the page heading doesn't repeat it");
   await shot(a, "nav-01-ann-waiting-not-started");
 
   // ── Bo (solver): addresses through the whole play ─────────────────────
   const b = await newPage();
   await signInBrowser(b, bo, "/friends");
-  await b.locator("button::-p-text(Play Ann's puzzle)").click();
+  await b.locator('button[aria-label="Play Ann\'s puzzle"]').click();
   await waitPath(b, `/friends/play/${pid}`);
   await b.waitForSelector(".fr-choose");
   await b.reload({ waitUntil: "networkidle0" });
@@ -106,15 +110,15 @@ try {
   assert.equal(at(b), `/friends/play/${pid}`, "refresh mid-puzzle keeps the puzzle");
   log("refresh keeps Bo on Ann's puzzle");
   await b.goBack(); await waitPath(b, "/friends");
-  await waitText(b, "Continue Ann's puzzle");
+  await b.waitForSelector('button[aria-label="Resume Ann\'s puzzle"]');
   await b.goForward(); await waitPath(b, `/friends/play/${pid}`);
   await b.waitForSelector(".csurface .ctile");
   log("Back/Forward between the hub and the puzzle");
 
   // Ann now sees the started message, once.
   await a.reload({ waitUntil: "networkidle0" });
-  await waitText(a, "Bo has started your puzzle");
-  assert.ok(!/waiting for Bo to start/.test(await text(a)));
+  await waitText(a, "Started your puzzle");
+  assert.ok(!/Waiting to play/.test(await text(a)));
   await shot(a, "nav-02-ann-started");
 
   // Private: another account at the same address sees nothing of it.

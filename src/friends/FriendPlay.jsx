@@ -118,7 +118,7 @@ export default function FriendPlay({ kit, puzzleId, onBack, onMakeBack, onOpenRe
             </p>
             {guest ? (
               <button className="fr-btn primary" onClick={makeBack}>
-                <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
+                <span className="fr-btn-ico"><Icon name="cards"/></span>Make one for {creator}
               </button>
             ) : (
               <div className="fr-row">

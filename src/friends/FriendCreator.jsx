@@ -443,7 +443,9 @@ export default function FriendCreator({ kit, friend, notice, onBack, onSent, onS
   return (
     <div className="fr-wrap fr-creator" ref={wrapRef}>
       <div className="fr-page" style={{paddingBottom:sheetSpace ? sheetSpace + 16 : 0}}>
-        <PageHead onBack={handleBack} title={share ? "Make a puzzle for a friend" : `Make one for ${name}`} sub="Tap a clue or a word to edit it."/>
+        <PageHead onBack={handleBack} title={share ? "Make a puzzle for a friend" : `Make one for ${name}`}
+          sub={share ? "Tap a clue or a word to edit it. You'll get a link to text them; they can play right away, no account needed."
+            : "Tap a clue or a word to edit it."}/>
         {notice && <div className="fr-msg ok" role="status">{notice}</div>}
         {!board ? (
           message ? <div className={`fr-msg ${message.kind}`}>{message.text} <button className="fr-link" onClick={load}>Try again</button></div>

@@ -7,8 +7,9 @@
 //   /                              today's puzzle
 //   /archive                       the archive
 //   /archive/:puzzleId             an archive puzzle
-//   /admin                         admin (admin accounts only)
+//   /admin                         puzzle admin (open to everyone during the beta)
 //   /friends                       Friends hub
+//   /friends/details/:friendshipId the hub with one friend's details open
 //   /friends/play/:puzzleId        a friend's puzzle (or, for its creator, its status)
 //   /friends/guesses/:puzzleId     the guesses replay and results
 //   /friends/make/:friendshipId    making a puzzle for that friend ("new": for anyone, sent as a link)
@@ -53,7 +54,7 @@ export const historyState = () => window.history.state || {};
  * The screen a path names. Unknown or malformed paths are `unknown` (the
  * caller sends them to `/`). Friends paths are only screens when Friends is on.
  *   { view: "game", archiveId? } | { view: "archive" } | { view: "admin" }
- *   | { view: "friends", screen: { name: "inbox" | "play" | "result" | "create", id? } } | { view: "unknown" }
+ *   | { view: "friends", screen: { name: "inbox" | "details" | "play" | "result" | "create", id? } } | { view: "unknown" }
  */
 export function parsePath(pathname, { friends = false } = {}) {
   const parts = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
@@ -65,7 +66,7 @@ export function parsePath(pathname, { friends = false } = {}) {
   if (friends && a === "p" && parts.length === 2 && /^[A-Za-z0-9_-]{16,64}$/.test(b)) return { view: "shared", token: b };
   if (friends && a === "friends") {
     if (parts.length === 1) return { view: "friends", screen: { name: "inbox" } };
-    const name = { play: "play", guesses: "result", make: "create" }[b];
+    const name = { play: "play", guesses: "result", make: "create", details: "details" }[b];
     if (name && parts.length === 3 && ID.test(c)) return { view: "friends", screen: { name, id: c } };
   }
   return { view: "unknown" };
@@ -77,6 +78,7 @@ export const paths = {
   archivePuzzle: (id) => `/archive/${encodeURIComponent(id)}`,
   admin: () => "/admin",
   friends: () => "/friends",
+  friendDetails: (friendshipId) => `/friends/details/${encodeURIComponent(friendshipId)}`,
   play: (id) => `/friends/play/${encodeURIComponent(id)}`,
   result: (id) => `/friends/guesses/${encodeURIComponent(id)}`,
   make: (friendshipId) => `/friends/make/${encodeURIComponent(friendshipId)}`,

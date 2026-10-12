@@ -38,7 +38,7 @@ export function ResultSheet({ result, creator, maxLives, now, justCounted, onMak
           <StreakStatus status={result.friendship} now={now} justCounted={justCounted}/>
         </>}
         <button className="fr-btn primary" onClick={onMakeBack}>
-          <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
+          <span className="fr-btn-ico"><Icon name="cards"/></span>Make one for {creator}
         </button>
         <div className="fr-row fr-done-links">
           <button className="fr-btn quiet" onClick={onClose}>{closeLabel}</button>

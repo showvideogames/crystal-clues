@@ -58,6 +58,12 @@ try {
   await ctx.overridePermissions(URL, ["notifications"]);
   const page = await ctx.newPage();
   await signInBrowser(page, ben, "/friends");
+  // The Friends notifications live in Settings (the hub links there).
+  const openSettings = async () => {
+    await page.locator(".fr-hub-foot .fr-textbtn").click();
+    await page.waitForSelector(".settings-sheet .fr-settings-notify");
+  };
+  await openSettings();
   await page.waitForFunction(() => document.body.innerText.includes("Notifications are off"));
   await page.locator("button.fr-textbtn::-p-text(Turn on)").click();
   await page.waitForFunction(() => document.body.innerText.includes("Notifications are on"), { timeout: 20000 });
@@ -90,6 +96,7 @@ try {
 
   // 3. Off on this device: the server forgets it; nothing more is queued for it.
   await page.reload({ waitUntil: "networkidle0" });
+  await openSettings();
   await page.locator("button.fr-textbtn::-p-text(Choose)").click();
   await page.locator("button.fr-link::-p-text(Turn off on this device)").click();
   await page.waitForFunction(() => document.body.innerText.includes("Notifications are off"), { timeout: 15000 });
