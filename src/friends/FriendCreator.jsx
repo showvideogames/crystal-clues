@@ -129,9 +129,10 @@ function EditSheet({ editKey, title, context, value, maxLength, placeholder, inp
   );
 }
 
-// friend.share: a puzzle for someone new, shared by link — no friendship yet
-// (friendship_id null); "Get link" instead of Send, and onShared gets the link.
-export default function FriendCreator({ kit, friend, onBack, onSent, onShared }) {
+// friend.share: a puzzle sent as a link to anyone, with or without an account
+// — no friendship yet (friendship_id null); "Get link" instead of Send, and
+// onShared gets the link. notice: one line shown under the heading.
+export default function FriendCreator({ kit, friend, notice, onBack, onSent, onShared }) {
   const { AdminPreviewCard, DragGhost } = kit;
   const share = !!friend.share;
   const [label,setLabel] = useState("");          // who a link is for; only the sender sees it
@@ -442,7 +443,8 @@ export default function FriendCreator({ kit, friend, onBack, onSent, onShared })
   return (
     <div className="fr-wrap fr-creator" ref={wrapRef}>
       <div className="fr-page" style={{paddingBottom:sheetSpace ? sheetSpace + 16 : 0}}>
-        <PageHead onBack={handleBack} title={share ? "Make one for someone new" : `Make one for ${name}`} sub="Tap a clue or a word to edit it."/>
+        <PageHead onBack={handleBack} title={share ? "Make a puzzle for a friend" : `Make one for ${name}`} sub="Tap a clue or a word to edit it."/>
+        {notice && <div className="fr-msg ok" role="status">{notice}</div>}
         {!board ? (
           message ? <div className={`fr-msg ${message.kind}`}>{message.text} <button className="fr-link" onClick={load}>Try again</button></div>
                   : <p className="fr-sub">Loading…</p>

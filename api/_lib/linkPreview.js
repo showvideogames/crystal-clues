@@ -1,6 +1,7 @@
 // Link previews (the picture and words a messaging app shows for a link):
 //   /p/<code>     a puzzle shared by link   "Deb made you a puzzle!"
-//   /join/<code>  a friend invitation       "Deb invited you to play"
+//   /join/<code>  an invitation sent before puzzles did the inviting
+//                 (still honoured)           "Deb wants to trade puzzles with you"
 // Shared by api/link.js (the page, with preview tags) and api/og.js (the
 // picture). Folders starting with "_" under /api are not deployed as functions.
 //
@@ -42,9 +43,9 @@ export function copyFor(kind, name) {
   if (kind === "invite" && name) {
     return {
       kind, name,
-      title: `${name} invited you to play`,
-      description: `Join ${name} on Cluevoyance and make word puzzles for each other. Sign in or sign up to join.`,
-      headline: `${name} invited you to play`,
+      title: `${name} wants to trade puzzles with you`,
+      description: `Make word puzzles for each other on Cluevoyance. Sign in or sign up to join ${name}.`,
+      headline: `${name} wants to trade puzzles with you`,
       sub: "Tap to join · Sign in or sign up",
     };
   }

@@ -15,9 +15,8 @@ const SPARKLES = [
 // the finish, and again from the Results button whenever they come back to it.
 //   result: { outcome, lives_used, friendship } (the server's record)
 //   justCounted: whether that finish added a Friend Streak day; undefined when reopened later
-//   primary: { label, onClick } instead of "Make one for …" (a guest's offer to save)
 // Streaks show only between friends (a guest's result has no friendship).
-export function ResultSheet({ result, creator, maxLives, now, justCounted, onMakeBack, onClose, closeLabel = "See the board", onBack, primary }) {
+export function ResultSheet({ result, creator, maxLives, now, justCounted, onMakeBack, onClose, closeLabel = "See the board", onBack }) {
   const won = result.outcome === "won";
   return (
     <div className="fr-done" role="dialog" aria-modal="true" aria-labelledby="fr-done-title">
@@ -38,13 +37,9 @@ export function ResultSheet({ result, creator, maxLives, now, justCounted, onMak
           <StreakPanel friendStreak={result.friendship.daily_streak} solveStreak={result.friendship.team_win_streak} friendName={creator}/>
           <StreakStatus status={result.friendship} now={now} justCounted={justCounted}/>
         </>}
-        {primary ? (
-          <button className="fr-btn primary" onClick={primary.onClick}>{primary.label}</button>
-        ) : (
-          <button className="fr-btn primary" onClick={onMakeBack}>
-            <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
-          </button>
-        )}
+        <button className="fr-btn primary" onClick={onMakeBack}>
+          <span className="fr-btn-ico"><Icon name="pencil"/></span>Make one for {creator}
+        </button>
         <div className="fr-row fr-done-links">
           <button className="fr-btn quiet" onClick={onClose}>{closeLabel}</button>
           {onBack && <button className="fr-btn quiet" onClick={onBack}>Back to Friends</button>}

@@ -117,7 +117,7 @@ export default function FriendResult({ kit, puzzleId, onBack, onMake, onPlay, on
             </button>
           </div>
         )}
-        {view.shared && <p className="fr-sub" style={{textAlign:"center"}}>Played by link. If {friendName} saves it to an account, you'll be friends.</p>}
+        {view.shared && <p className="fr-sub" style={{textAlign:"center"}}>Played by link. If {friendName} makes one back for you, you'll be connected here.</p>}
       </div>
       {showSheet && (
         <ResultSheet result={view} creator={friendName} maxLives={view.max_lives} now={serverNow}

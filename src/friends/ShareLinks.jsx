@@ -44,13 +44,14 @@ export function LinkReady({ link, sender, onDone }) {
   return (
     <div className="fr-wrap">
       <div className="fr-page">
-        <PageHead title="Your link is ready" sub={`Text it to ${who}. They can play without an account.`}/>
+        <PageHead title="Your link is ready" sub={`Text it to ${who}. They can play right away, no account needed. When they finish, they can make one back for you.`}/>
         <LinkBox token={link.token} sender={sender} label={link.label}/>
         <p className="fr-help" style={{margin:0,display:"flex",alignItems:"center"}}>
           Works until {until(link.expires_at)}.
           <InfoTip label="About puzzle links">
             The first browser that taps Play keeps the game; others who open the link can't take over.
-            You'll see their guesses here when they finish. If they get stuck, send a fresh link from Friends.
+            You'll see their guesses here when they finish. If they make one back, you're connected in Friends.
+            If they get stuck, send a fresh link from Friends.
           </InfoTip>
         </p>
         <button className="fr-btn primary" onClick={onDone}>Done</button>

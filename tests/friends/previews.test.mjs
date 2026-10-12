@@ -15,6 +15,7 @@ process.env.VITE_SUPABASE_URL = API_URL;
 process.env.VITE_SUPABASE_PUBLISHABLE_KEY = PUBLISHABLE_KEY;
 const { GET: linkPage } = await import("../../api/link.js");
 const { GET: ogImage } = await import("../../api/og.js");
+const heads = [(await import("../../api/link.js")).HEAD, (await import("../../api/og.js")).HEAD];
 const { copyFor, previewTags, escapeHtml } = await import("../../api/_lib/linkPreview.js");
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
@@ -61,10 +62,10 @@ test("a puzzle link: '[Name] made you a puzzle!', no account needed, no spoilers
   assert.match(html, /<div id="root"><\/div>/, "the app page itself");
 });
 
-test("an invitation: '[Name] invited you to play', sign in or sign up, never 'no account needed'", async () => {
+test("an older invitation: '[Name] wants to trade puzzles with you', sign in or sign up, never 'no account needed'", async () => {
   const html = await page("invite", invite.token);
-  assert.equal(meta(html, "og:title"), "Deb invited you to play");
-  assert.match(meta(html, "og:description"), /Join Deb on Cluevoyance.*Sign in or sign up to join\./);
+  assert.equal(meta(html, "og:title"), "Deb wants to trade puzzles with you");
+  assert.match(meta(html, "og:description"), /Make word puzzles for each other on Cluevoyance\. Sign in or sign up to join Deb\./);
   assert.ok(!/No account needed/i.test(html), "invitations need an account");
   assert.equal(meta(html, "og:url"), `${origin}/join/${invite.token}`);
 });
@@ -96,6 +97,10 @@ test("unknown, stopped or used links get the plain Cluevoyance preview", async (
   const l2 = await rpc(sam.client, "create_share_link", { p_draft_id: d.id, p_version: d.version, p_label: "" });
   await rpc(sam.client, "stop_share_link", { p_puzzle_id: l2.puzzle_id });
   assert.equal(meta(await page("puzzle", l2.token), "og:title"), "Cluevoyance");
+});
+
+test("HEAD is answered like GET (some preview fetchers ask that first)", () => {
+  assert.deepEqual(heads, [linkPage, ogImage]);
 });
 
 test("names are escaped in the page", () => {

@@ -6,7 +6,7 @@ import { navigate, paths, historyState } from "../route";
 import { serverOffset, timeAgo, livesLeftPhrase } from "./format";
 import { MAX_LIVES } from "../game/shared";
 import { StreakPanel, StreakStatus, StreakRules } from "./Streaks.jsx";
-import { Icon, Spinner, Avatar, PageHead, RowButton, InfoTip } from "./ui.jsx";
+import { Icon, Spinner, Avatar, PageHead, RowButton } from "./ui.jsx";
 import { ProfileCard } from "./Profile.jsx";
 import FriendCreator from "./FriendCreator.jsx";
 import FriendPlay from "./FriendPlay.jsx";
@@ -107,9 +107,9 @@ export default function FriendsView({ kit, account, screen = { name:"inbox" }, i
 // or — opened directly, after a refresh in another tab, from a link — from
 // the inbox, which also proves the friendship is this account's.
 function CreatorRoute({ kit, friendshipId, onBack, onSent, sender }) {
-  // /friends/make/new: a puzzle for someone new, shared by link.
+  // /friends/make/new: a puzzle for a friend, sent as a link (they needn't have an account yet).
   const forNew = friendshipId === "new";
-  const known = historyState().friendName;
+  const { friendName:known, savedShared } = historyState();
   const [friend,setFriend] = useState(()=> forNew ? { friendship_id:null, friend_name:null, share:true }
     : known ? { friendship_id:friendshipId, friend_name:known } : null);
   const [link,setLink] = useState(null);
@@ -133,7 +133,10 @@ function CreatorRoute({ kit, friendshipId, onBack, onSent, sender }) {
   }
   if(!friend) return <div className="fr-wrap"><div className="fr-page"><p className="fr-sub">Opening…</p></div></div>;
   if(link) return <LinkReady link={link} sender={sender} onDone={()=>navigate(paths.friends(), { replace:true })}/>;
-  return <FriendCreator kit={kit} friend={friend} onBack={onBack} onSent={onSent} onShared={setLink}/>;
+  // Arriving from a puzzle they played by link (SharedPuzzle.jsx): say once what just happened.
+  const notice = savedShared && friend.friend_name
+    ? `Your result is saved, and you're connected with ${friend.friend_name}. Now make one back.` : null;
+  return <FriendCreator kit={kit} friend={friend} notice={notice} onBack={onBack} onSent={onSent} onShared={setLink}/>;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -174,7 +177,7 @@ function SignIn({ pendingInvite, account, onPlayDaily, screen }) {
   };
   const invitedBy = info?.status === "open" ? info.inviter_name : null;
   const forPuzzle = screen?.name === "play" || screen?.name === "result";
-  const title = invitedBy ? `${invitedBy} invited you to play`
+  const title = invitedBy ? `${invitedBy} wants to trade puzzles with you`
     : forPuzzle ? "A friend sent you a puzzle"
     : "Play with friends";
   const sub = invitedBy ? `Solve the puzzles ${invitedBy} makes for you, and make some back.`
@@ -257,7 +260,8 @@ function inboxLede(friends) {
   if (by("play").length) return by("play").length === 1 ? `A puzzle from ${by("play")[0]} is waiting for you.` : `Puzzles from ${list(by("play"))} are waiting for you.`;
   if (by("see_result").length) return `${list(by("see_result"))} finished your puzzle.`;
   if (by("make_back").length) return `Your turn to make one for ${list(by("make_back"))}.`;
-  return "Trade puzzles and keep your streaks going together.";
+  if (friends.some((f) => f.daily_streak > 0)) return "Trade puzzles and keep your streaks going.";
+  return "Make a puzzle, text the link, and watch how they solve it.";
 }
 
 function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUnreadChange, onProfile, onPlay, onResult, onCreate, onCreateForNew }) {
@@ -304,20 +308,22 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
       <div className="fr-page">
         <PageHead title="Friends" sub={inbox ? inboxLede(inbox.friends) : " "}/>
 
+        {/* Sending a puzzle is the invitation: they play from the link with no
+            account, and making one back connects you (SharedPuzzle.jsx). */}
+        <div className="fr-make-cta">
+          <button className="fr-btn primary" onClick={onCreateForNew}>
+            <span className="fr-btn-ico"><Icon name="pencil"/></span>Make a puzzle for a friend
+          </button>
+          <p className="fr-help">You'll get a link to text them. They can play right away, no account needed.</p>
+        </div>
+
+        {/* Invitation links sent before puzzles did the inviting still work. */}
         {pendingInvite && <AcceptInvite token={pendingInvite} onDone={inviteDone} onDismiss={onDismissInvite}/>}
         {error && <div className="fr-msg err">{error} <button className="fr-link" onClick={refresh}>Try again</button></div>}
 
         {inbox === null && !error && <p className="fr-sub">Loading…</p>}
-        {inbox && !hasFriends && !pendingInvite && (
-          <div className="fr-card fr-friend" style={{alignItems:"center",textAlign:"center"}}>
-            <div className="fr-hero-ball" aria-hidden="true">🔮</div>
-            <div>
-              <div className="fr-friend-name">Trade puzzles with a friend</div>
-              <p className="fr-sub" style={{marginTop:6}}>Send an invite link. Once they accept, you can make each other puzzles.</p>
-            </div>
-            <div style={{width:"100%"}}><InvitePanel primary/></div>
-            <button className="fr-link" onClick={onCreateForNew}>Or make a puzzle and text the link</button>
-          </div>
+        {inbox && !hasFriends && !links.length && !pendingInvite && (
+          <p className="fr-sub" style={{textAlign:"center"}}>Friends and the puzzles you send will show up here.</p>
         )}
         {inbox?.friends.map(f=>(
           <FriendCard key={f.friendship_id} f={f} now={serverNow} avatar={avatars[f.friend_id]}
@@ -325,7 +331,7 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
         ))}
 
         {links.length > 0 && <>
-          <div className="fr-eyebrow">Puzzle links you've sent</div>
+          <div className="fr-eyebrow">Puzzles you've sent by link</div>
           {links.map(l=>(
             <ShareLinkCard key={l.puzzle_id} link={l} sender={profile.display_name} now={serverNow}
               onResult={onResult} onChanged={refresh}/>
@@ -334,13 +340,6 @@ function Inbox({ profile, email, onSignOut, pendingInvite, onDismissInvite, onUn
 
         <div className="fr-eyebrow">More with friends</div>
         <div className="fr-list">
-          <RowButton icon="pencil" label="Make one for someone new" detail="Text them a link. No account needed to play."
-            onClick={onCreateForNew}/>
-          {hasFriends && <>
-            <RowButton icon="plus" label="Invite another friend" detail="Share a link to start a puzzle exchange"
-              open={open === "invite"} onClick={()=>toggle("invite")}/>
-            {open === "invite" && <div className="fr-list-body"><InvitePanel/></div>}
-          </>}
           <RowButton icon="help" label="How streaks work" detail="Friend Streak and Solve Streak"
             open={open === "rules"} onClick={()=>toggle("rules")}/>
           {open === "rules" && <div className="fr-list-body"><StreakRules/></div>}
@@ -513,48 +512,6 @@ function AcceptInvite({ token, onDone, onDismiss }) {
       <button className="fr-btn primary" onClick={accept} disabled={busy} aria-busy={busy}>{busy ? <><Spinner/>Joining…</> : `Join ${info?.inviter_name}`}</button>
       <button className="fr-textbtn muted" style={{alignSelf:"center",marginTop:-8}} onClick={onDismiss}>Not now</button>
     </section>
-  );
-}
-
-// Makes a one-friend invite link, then offers copy and share.
-function InvitePanel({ primary = false }) {
-  const [link,setLink] = useState("");
-  const [busy,setBusy] = useState(false);
-  const [error,setError] = useState("");
-  const [copied,setCopied] = useState(false);
-  const make = async ()=>{
-    setBusy(true); setError("");
-    try {
-      const inv = await api.createInvite();
-      setLink(`${window.location.origin}${paths.join(inv.token)}`);
-    } catch(err){ setError(err.message); }
-    finally { setBusy(false); }
-  };
-  const copy = async ()=>{
-    try { await navigator.clipboard.writeText(link); setCopied(true); setTimeout(()=>setCopied(false), 2000); }
-    catch { setError("Couldn't copy — press and hold the link to copy it."); }
-  };
-  const share = ()=>navigator.share?.({ title:"Cluevoyance", text:"Let's trade Cluevoyance puzzles:", url:link }).catch(()=>{});
-  return (
-    <div style={{display:"flex",flexDirection:"column",gap:10}}>
-      {!link ? (
-        <button className={`fr-btn ${primary ? "primary" : "secondary"}`} onClick={make} disabled={busy} aria-busy={busy}>
-          {busy ? <><Spinner/>Making a link…</> : "Invite a friend"}</button>
-      ) : (
-        <>
-          <div className="fr-linkbox">
-            <input className="fr-input" readOnly value={link} onFocus={e=>e.target.select()} aria-label="Invite link"/>
-            <button className="fr-btn secondary sm" onClick={copy}>{copied ? "Copied ✓" : "Copy"}</button>
-            {typeof navigator.share === "function" && <button className="fr-btn secondary sm" onClick={share}>Share</button>}
-          </div>
-          <p className="fr-help" style={{margin:0,display:"flex",alignItems:"center"}}>
-            <button className="fr-link" onClick={make}>New link</button>
-            <InfoTip label="About invite links">Each link works for one friend and expires in 14 days.</InfoTip>
-          </p>
-        </>
-      )}
-      {error && <div className="fr-msg err">{error}</div>}
-    </div>
   );
 }
 

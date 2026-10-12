@@ -169,22 +169,26 @@ try {
 
   const [debAcct, samAcct, eveAcct] = await Promise.all([makeAccount("deb"), makeAccount("sam"), makeAccount("eve")]);
 
-  // 1. Deb opens Friends signed out (shared sign-in only), signs in, makes an invite link.
+  // 1. Deb opens Friends signed out (shared sign-in only) and signs in. The hub
+  // has one way to bring someone in, a puzzle (tests/friends/guest.mjs); the
+  // invitation below stands for one sent before that, which must keep working.
   await deb.goto(DEB_URL, { waitUntil: "networkidle0" });
   await shot(deb, "01-daily-header-375");
   await openFriends(deb);
   await assertSignedOutFriends(deb);
   await shot(deb, "01b-friends-signed-out-375");
   await signIn(deb, debAcct, "Deb");
-  await click(deb, "Invite a friend");
-  const link = await (await deb.waitForSelector('input[aria-label="Invite link"]')).evaluate((i) => i.value);
-  assert.match(link, /\/join\/[A-Za-z0-9_-]+$/, "invitations are /join/<code> links (they get their own preview)");
+  await waitText(deb, "Make a puzzle for a friend");
+  assert.ok(!/invite/i.test(await bodyText(deb)), "no separate invite action");
+  const { data: inv, error: invErr } = await debAcct.client.rpc("create_friend_invite");
+  assert.ifError(invErr);
+  const link = `${DEB_URL}/join/${inv.token}`;
   log("invite", link.replace(/join\/.*/, "join/…"));
 
   // 2. Sam opens it on their own phone while signed out: who it's from, then
   // the shared sign-in. The invite survives the sign-in round trip.
   await sam.goto(link.replace(DEB_URL, SAM_URL), { waitUntil: "networkidle0" });
-  await waitText(sam, "Deb invited you to play");
+  await waitText(sam, "Deb wants to trade puzzles with you");
   await waitText(sam, "New here? Choose Sign up");
   await assertSignedOutFriends(sam);
   assert.equal((await sam.$$(".fr-btn.primary")).length, 1, "one main button on the invite landing");

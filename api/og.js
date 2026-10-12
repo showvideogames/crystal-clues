@@ -58,3 +58,6 @@ export async function GET(request) {
     headers: { "Cache-Control": "public, max-age=3600, s-maxage=3600" },
   });
 }
+
+// Some link-preview fetchers ask with HEAD first; answer it like GET (the platform drops the body).
+export const HEAD = GET;

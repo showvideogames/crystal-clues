@@ -1,6 +1,6 @@
 // The app page for a shared link, with that link's preview tags in place of
 // the generic ones, so a messaging app shows "Deb made you a puzzle!" or
-// "Deb invited you to play" with its own picture. vercel.json sends
+// "Deb wants to trade puzzles with you" with its own picture. vercel.json sends
 // /p/<code> and /join/<code> here; the page itself is the normal app.
 import { lookup, previewTags, injectPreview } from "./_lib/linkPreview.js";
 
@@ -43,3 +43,6 @@ export async function GET(request) {
     },
   });
 }
+
+// Some link-preview fetchers ask with HEAD first; answer it like GET (the platform drops the body).
+export const HEAD = GET;

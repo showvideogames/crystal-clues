@@ -43,7 +43,6 @@ export const api = {
   }),
   inbox: () => call("get_friends_inbox"),
   history: (friendshipId) => call("list_friend_history", { p_friendship_id: friendshipId }),
-  createInvite: () => call("create_friend_invite"),
   inviteInfo: (token) => call("get_friend_invite", { p_token: token }),
   acceptInvite: (token) => call("accept_friend_invite", { p_token: token }),
   getDraft: (friendshipId) => call("get_friend_draft", { p_friendship_id: friendshipId }),
@@ -61,7 +60,7 @@ export const api = {
     p_extras: extras.filter(Boolean).map((s) => ({ cardId: s.cardId, orientation: s.orientation })),
     p_clues: clues,
   }),
-  // Puzzles for someone new, shared by link (sender side).
+  // Puzzles sent by link: the person needn't have an account (sender side).
   createShareLink: (draftId, version, label) => call("create_share_link", { p_draft_id: draftId, p_version: version, p_label: label || "" }),
   shareLinks: () => call("list_share_links"),
   stopShareLink: (puzzleId) => call("stop_share_link", { p_puzzle_id: puzzleId }),
