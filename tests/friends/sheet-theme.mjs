@@ -254,8 +254,8 @@ const SHEET_TEXT = [".fr-details .fr-modal-title", ".fr-details .fr-modal-head .
   ".fr-details .fr-rowbtn-label", ".fr-details .fr-history-item b", ".fr-details .fr-history-item small", ".fr-details .fr-history-item .when"];
 const GAME_TEXT = [".sdate", ".dchip", ".ctab", ".ew", ".cbtn", ".sbtn", ".fbk", ".nbtn"];
 const HOME_TEXT = [".hm-tagline", ".hm-action.primary .hm-action-title", ".hm-action.primary .hm-action-sub", ".hm-action.outline .hm-action-title", ".hm-action.outline .hm-action-sub", ".hm-link"];
-const RESULTS_TEXT = [".rs-title", ".rs-h", ".rs-puzzle-title", ".rs-puzzle-meta", ".rs-chip", ".rs-outcome-word", ".rs-lives", ".rs-btn.primary", ".rs-btn.secondary",
-  ".rs-link", ".rs-sub", ".rs-state", ".rs-note", ".rs-fig-val", ".rs-fig-lbl", ".rs-chart-title", ".rs-chart-key", ".rs-chart-count"];
+const RESULTS_TEXT = [".rs-brand", ".rs-kicker", ".rs-headline", ".rs-lives", ".rs-share", ".rs-link", ".rs-tab.on", ".rs-tab:not(.on)",
+  ".rs-h", ".rs-sub", ".rs-state", ".rs-note", ".rs-fig dd", ".rs-fig dt", ".rs-row-key", ".rs-row-bar", ".rs-row.mine .rs-row-bar", ".rs-row-zero", ".rs-foot p", ".rs-count"];
 const FINISHED_TEXT = [".end-btn.primary", ".end-btn:not(.primary)", ".game-diff", ".fbk"];
 const LOBBY_TEXT = [".lobby-title", ".lobby-date", ".lobby-diff-name", ".lobby-diff-desc", ".lobby-start"];
 const SETTINGS_TEXT = [".settings-title", ".settings-sub", ".diff-opt-name", ".diff-opt-desc", ".theme-opt[aria-checked=true]", ".theme-opt[aria-checked=false]"];
@@ -433,7 +433,11 @@ for (const theme of ["light", "dark"]) {
   await sleep(900);
   await shot(g, `${theme}-result`);
   await checkContrast(g, RESULTS_TEXT, `${theme} result`);
-  await g.locator(".rs-btn.secondary").click();
+  await g.locator(".rs-tab:last-child").click();
+  await sleep(600);
+  await shot(g, `${theme}-result-this-puzzle`);
+  await checkContrast(g, RESULTS_TEXT, `${theme} result, This puzzle`);
+  await g.locator(".rs-link::-p-text(View board)").click();
   await g.waitForSelector("[data-testid=view-results]");
   await shot(g, `${theme}-board-finished`);
   await checkContrast(g, FINISHED_TEXT, `${theme} finished board`);

@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import {
   initialMode, livesRows, progressDifficulty, progressLivesUsed, readFinal, readProgress,
-  resultRowKey, reviewBoard, shareText, writeFinalOnce,
+  resultRowKey, resultWords, reviewBoard, shareText, writeFinalOnce,
 } from "./dailyResults.js";
 import { dailyCopy, friendsCopy } from "../home/copy.js";
 
@@ -77,13 +77,32 @@ describe("the finished board", () => {
 });
 
 describe("share text", () => {
-  it("names the result and difficulty, with the guess grid when kept", () => {
-    const grid = [[["⚫", "🔮"], ["⚫", "⚫"]], [["🔮", "🔮"], ["🔮", "🔮"]]];
-    expect(shareText(PUZZLE, { solved: true, livesUsed: 1, difficulty: "standard" }, grid))
-      .toBe("Cluevoyance 10·13·2026 🌙\nSolved on Standard · 1 life used\n⚫🔮 🔮🔮\n⚫⚫ 🔮🔮");
-    expect(shareText(PUZZLE, { solved: false, livesUsed: 3, difficulty: "hardcore" }))
-      .toBe("Cluevoyance 10·13·2026 🌑\nNot solved on Hardcore");
-    expect(shareText(PUZZLE, { solved: true, livesUsed: 0, difficulty: "easy" })).toContain("no lives lost");
+  const grid = [[["🔮", "⚫"], ["⚫", "⚫"]], [["🔮", "⚫"], ["⚫", "🔮"]], [["🔮", "🔮"], ["🔮", "🔮"]]];
+  it("Daily #N, one sparkle per extra card, a block per guess, the site", () => {
+    expect(shareText({ solved: true, livesUsed: 2, difficulty: "hardcore" }, grid, 1))
+      .toBe("Daily #1 ✨✨✨\n🔮⚫ 🔮⚫ 🔮🔮\n⚫⚫ ⚫🔮 🔮🔮\nCluevoyance.com");
+    expect(shareText({ solved: true, livesUsed: 0, difficulty: "easy" }, grid.slice(2), 7)).toBe("Daily #7\n🔮🔮\n🔮🔮\nCluevoyance.com");
+    expect(shareText({ solved: true, livesUsed: 0, difficulty: "standard" }, grid.slice(2), 7).split("\n")[0]).toBe("Daily #7 ✨");
+    expect(shareText({ solved: true, livesUsed: 0, difficulty: "expert" }, grid.slice(2), 7).split("\n")[0]).toBe("Daily #7 ✨✨");
+  });
+  it("a loss shares its guesses too", () => {
+    const lost = [[["⚫", "⚫"], ["⚫", "⚫"]], [["🔮", "⚫"], ["⚫", "⚫"]], [["🔮", "⚫"], ["⚫", "⚫"]]];
+    expect(shareText({ solved: false, livesUsed: 3, difficulty: "standard" }, lost, 3))
+      .toBe("Daily #3 ✨\n⚫⚫ 🔮⚫ 🔮⚫\n⚫⚫ ⚫⚫ ⚫⚫\nCluevoyance.com");
+  });
+  it("never invents a number, and says the result when the guesses weren't kept", () => {
+    expect(shareText({ solved: true, livesUsed: 1, difficulty: "expert" }, [], null, "2026-10-13"))
+      .toBe("Daily Oct 13, 2026 ✨✨\nSolved with 1 life lost\nCluevoyance.com");
+    expect(shareText({ solved: false, livesUsed: 3, difficulty: "easy" })).toBe("Daily puzzle\nNot solved\nCluevoyance.com");
+  });
+});
+
+describe("result headline", () => {
+  it("names a perfect solve, other wins and a loss", () => {
+    expect(resultWords({ solved: true, livesUsed: 0 })).toEqual({ headline: "Brilliant!", line: "Solved with no lives lost" });
+    expect(resultWords({ solved: true, livesUsed: 1 }).line).toBe("Solved with 1 life lost");
+    expect(resultWords({ solved: true, livesUsed: 2 }).line).toBe("Solved with 2 lives lost");
+    expect(resultWords({ solved: false, livesUsed: 3 }).headline).toBe("Not this time");
   });
 });
 

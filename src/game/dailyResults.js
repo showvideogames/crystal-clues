@@ -10,7 +10,7 @@
 // record (clover_completions, or the account's plays), so it's the same on
 // every device; the final board is a nicety for this browser, and the screens
 // fall back to the answer laid out at the right difficulty without it.
-import { DIFFICULTY_EXTRA, DIFFICULTY_LABELS, MAX_LIVES } from "./shared.js";
+import { DIFFICULTY_EXTRA, MAX_LIVES } from "./shared.js";
 
 const read = (k, fallback = null) => {
   try {
@@ -102,22 +102,48 @@ export function reviewBoard(puzzle, record, final) {
   };
 }
 
-const DIFF_ICONS = { easy: "✨", standard: "🌙", expert: "🌕", hardcore: "🌑" };
-
-/** The text Share Results copies. The guess grid is included when this browser kept it. */
-export function shareText(puzzle, record, guessHistory = []) {
-  const d = new Date(`${puzzle.date}T12:00:00`);
-  const label = `${d.getMonth() + 1}·${String(d.getDate()).padStart(2, "0")}·${d.getFullYear()}`;
-  const difficulty = isDifficulty(record.difficulty) ? record.difficulty : "standard";
-  const head = `Cluevoyance ${label} ${DIFF_ICONS[difficulty]}`;
+/** The headline and the line under it, from the result alone. */
+export function resultWords(record){
   const used = Number(record.livesUsed) || 0;
-  const line = record.solved
-    ? `Solved on ${DIFFICULTY_LABELS[difficulty]} · ${used === 0 ? "no lives lost" : `${used} ${used === 1 ? "life" : "lives"} used`}`
-    : `Not solved on ${DIFFICULTY_LABELS[difficulty]}`;
-  if (!guessHistory.length) return `${head}\n${line}`;
-  const top = guessHistory.map((rows) => `${rows[0][0]}${rows[0][1]}`).join(" ");
-  const bottom = guessHistory.map((rows) => `${rows[1][0]}${rows[1][1]}`).join(" ");
-  return `${head}\n${line}\n${top}\n${bottom}`;
+  if(!record.solved) return { headline:"Not this time", line:`All ${MAX_LIVES} lives used` };
+  if(used === 0) return { headline:"Brilliant!", line:"Solved with no lives lost" };
+  if(used === 1) return { headline:"Well read!", line:"Solved with 1 life lost" };
+  return { headline:"Just in time!", line:`Solved with ${`${used} ${used === 1 ? "life" : "lives"}`} lost` };
+}
+
+// Difficulty in a shared result: Easy none, then one sparkle per extra card.
+const SPARKLES = { easy: "", standard: "✨", expert: "✨✨", hardcore: "✨✨✨" };
+
+/**
+ * The text "Share results" copies:
+ *   Daily #12 ✨✨✨
+ *   🔮⚫ 🔮⚫ 🔮🔮      one 2×2 block per guess (🔮 = a card that was right)
+ *   ⚫⚫ ⚫🔮 🔮🔮
+ *   Cluevoyance.com
+ * number is the puzzle's daily number; without one the date stands in (no
+ * number is ever made up). Without the guesses (finished on another device,
+ * or before this was kept) a short result line takes their place.
+ */
+export function shareText(record, guessHistory = [], number = null, date = null) {
+  const difficulty = isDifficulty(record.difficulty) ? record.difficulty : "standard";
+  const name = number ? `Daily #${number}`
+    : date ? `Daily ${new Date(`${date}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`
+    : "Daily puzzle";
+  const head = SPARKLES[difficulty] ? `${name} ${SPARKLES[difficulty]}` : name;
+  let body;
+  if (guessHistory.length) {
+    const top = guessHistory.map((rows) => `${rows[0][0]}${rows[0][1]}`).join(" ");
+    const bottom = guessHistory.map((rows) => `${rows[1][0]}${rows[1][1]}`).join(" ");
+    body = `${top}
+${bottom}`;
+  } else {
+    const used = Number(record.livesUsed) || 0;
+    body = !record.solved ? "Not solved"
+      : used === 0 ? "Solved with no lives lost" : `Solved with ${used} ${used === 1 ? "life" : "lives"} lost`;
+  }
+  return `${head}
+${body}
+Cluevoyance.com`;
 }
 
 /** Rows of a "Lives used" chart, from the personal counters ({0,1,2,X}) or the puzzle summary. */

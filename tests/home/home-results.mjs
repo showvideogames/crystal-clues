@@ -46,6 +46,9 @@ assert.ok(PAST.length >= 2, "two past local puzzles");
 
 // A stubbed answer from the (cross-origin) database must still pass CORS.
 const CORS = { "Access-Control-Allow-Origin": "*" };
+// A puzzle's daily number: its place among published puzzles, oldest first.
+const dailyNumber = (id) => Number(sql(`select count(*) from public.puzzles p, public.puzzles me where me.id = ${id}
+  and p.status = 'published' and (p.date < me.date or (p.date = me.date and p.id <= me.id))`));
 const lives = (page) => page.$$eval(".game-lives .life:not(.lost)", (l) => l.length);
 const extras = (page) => page.$$eval(".eslots .eslot", (l) => l.length);
 const history = (page) => page.evaluate(() => ({
@@ -143,32 +146,49 @@ try {
   await solve(page, VIEW);
   await page.locator("button.sbtn").click();
   await resultsDialog(page);
-  // Other (signed-in) players on today's puzzle at Standard, as the database has them.
-  const others = Number(sql(`select count(*) from public.plays where puzzle_id = ${TODAY} and difficulty = 'standard'`));
-  await page.waitForSelector(others ? ".rs-figs.two" : ".rs-sec .rs-state:not([role=status])");
+  // The summary: the real daily number, the difficulty, the headline and lives.
+  await page.waitForFunction((n) => document.querySelector(".rs-kicker")?.textContent === `Daily #${n} · Standard`, { timeout: 8000 }, dailyNumber(TODAY));
   const r1 = await page.$eval(".rs-card", (e) => e.innerText);
-  if (others) assert.equal(await page.$eval(".rs-figs.two .rs-fig-val", (e) => e.textContent), String(others), "the real player count");
-  else assert.ok(r1.includes("No signed-in player has finished this puzzle on Standard yet."), "honest empty global state");
-  assert.ok(/Solved/.test(r1) && r1.includes("2 of 3 lives used") && r1.includes("STANDARD"), "the result: solved, 2 lives, Standard");
-  assert.ok(r1.includes("Guest results aren't counted"), "a guest is told their result isn't in the counts");
-  assert.ok(r1.includes("Not solved") && r1.includes("Lives used"), "labelled chart");
+  assert.ok(r1.includes("Just in time!") && r1.includes("Solved with 2 lives lost"), "the result: solved, 2 lives lost");
+  assert.equal(await page.$eval(".rs-stars", (e) => e.getAttribute("aria-label")), "1 of 3 lives left");
+  // My stats is the default tab.
+  assert.equal(await page.$eval(".rs-tab[aria-selected=true]", (e) => e.textContent), "My stats");
+  const figs1 = await page.$$eval(".rs-fig", (f) => f.map((x) => [x.querySelector("dt").textContent, x.querySelector("dd").textContent]));
+  assert.deepEqual(figs1, [["Played", "1"], ["Win %", "100%"], ["Current streak", "1"], ["Best streak", "1"]]);
+  assert.ok(r1.includes("Not solved") && /LIVES USED/i.test(r1), "labelled chart");
   assert.ok(!/\bX\b/.test(r1), "no unexplained X");
+  // Zero rows draw no bar; your row is the purple one.
+  const rows1 = await page.$$eval(".rs-row", (rows) => rows.map((r) => [r.querySelector(".rs-row-key").textContent, !!r.querySelector(".rs-row-bar"), r.classList.contains("mine")]));
+  assert.deepEqual(rows1, [["0", false, false], ["1", false, false], ["2", true, true], ["Not solved", false, false]]);
   const after = await history(page);
   const stats = JSON.parse(after.stats);
   assert.deepEqual([stats.totalPlayed, stats.totalWon, stats.livesUsedDist["2"]], [1, 1, 1], "one win counted, in the 2-lives row");
-  // Zero rows draw no bar.
-  const bars = await page.$$eval(".rs-chart-row", (rows) => rows.map((r) => [r.classList.contains("zero"), !!r.querySelector(".rs-chart-bar")]));
-  assert.ok(bars.every(([zero, bar]) => zero !== bar), "a bar only where there's a count");
   await shot(page, "03-results-win");
-  // Share copies the result with its guesses.
-  await page.locator(".rs-btn.primary").click();
+  // This puzzle: the same puzzle at Standard, as the database has it (signed-in players).
+  await page.locator(".rs-tab::-p-text(This puzzle)").click();
+  const others = Number(sql(`select count(*) from public.plays where puzzle_id = ${TODAY} and difficulty = 'standard'`));
+  await page.waitForSelector(others ? ".rs-figs.n3" : ".rs-panel .rs-state:not([role=status])");
+  const p1 = await page.$eval(".rs-panel", (e) => e.innerText);
+  assert.ok(p1.includes("Standard difficulty"), "the tab names its difficulty");
+  if (others) assert.equal(await page.$eval(".rs-figs.n3 dd", (e) => e.textContent), String(others), "the real player count");
+  else assert.ok(p1.includes("No signed-in player has finished this puzzle on Standard yet."), "honest empty state");
+  assert.ok(p1.includes("Guest results aren't stored"), "a guest is told their result isn't counted");
+  assert.deepEqual(await history(page), after, "switching tabs changes nothing");
+  await shot(page, "03b-results-this-puzzle");
+  await page.locator(".rs-tab::-p-text(My stats)").click();
+  // Share: Daily #N, one sparkle for Standard, a block per guess (3 guesses), the site.
+  await page.locator(".rs-share").click();
   await waitText(page, "Copied");
-  const copied = await page.evaluate(() => window.__copied);
-  assert.ok(copied.includes("Solved on Standard · 2 lives used") && copied.split("\n").length === 4, `share text: ${copied}`);
-  log("won with 2 lives used; results correct; share ok");
+  const copied = (await page.evaluate(() => window.__copied)).split("\n");
+  assert.equal(copied[0], `Daily #${dailyNumber(TODAY)} ✨`, `share head: ${copied[0]}`);
+  assert.equal(copied.length, 4);
+  assert.equal(copied[1].split(" ").length, 3, "three guesses, three blocks");
+  assert.ok(/^[🔮⚫ ]+$/u.test(copied[1] + copied[2]));
+  assert.equal(copied[3], "Cluevoyance.com");
+  log("won with 2 lives used; both tabs; share ok");
 
   // 6. View Board: the board as it ended, and the way back to the results.
-  await page.locator(".rs-btn.secondary").click();
+  await page.locator(".rs-link::-p-text(View board)").click();
   await page.waitForFunction(() => !document.querySelector(".rs-card"));
   assert.equal(await lives(page), 1);
   assert.equal(await extras(page), 1);
@@ -198,6 +218,18 @@ try {
   await page.locator("[data-testid=home-daily]").click();
   await resultsDialog(page);
   assert.equal(at(page), "/today");
+  // A short phone: the result and Share show at once; the stats scroll under a Close that stays put.
+  await page.setViewport({ width: 320, height: 568, deviceScaleFactor: 2 });
+  await sleep(300);
+  const inView = (sel) => page.$eval(sel, (e) => { const r = e.getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight; });
+  assert.ok(await inView(".rs-share"), "Share without scrolling on a short phone");
+  await page.$eval(".rs-body", (b) => { b.scrollTop = b.scrollHeight; });
+  await sleep(200);
+  assert.ok(await inView(".rs-close"), "Close stays in reach while the stats scroll");
+  assert.ok(await inView(".rs-foot"), "the footer is reachable");
+  assert.ok(await page.$eval(".rs-close", (e) => e.getBoundingClientRect().height >= 44), "a full-size touch target");
+  await shot(page, "05b-results-320-scrolled");
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2 });
   await closeResults(page);
   assert.ok(await page.$("[data-testid=view-results]"));
 
@@ -207,7 +239,8 @@ try {
   await page.locator("[data-testid=stats-button]").click();
   await resultsDialog(page);
   const st = await page.$eval(".rs-card", (e) => e.innerText);
-  assert.ok(st.includes("Your stats") && st.includes("PLAYED") && !st.includes("Everyone on this puzzle"));
+  assert.ok(st.includes("Your stats") && st.includes("Played") && st.includes("Next daily in") && !st.includes("This puzzle"));
+  assert.equal(await page.$(".rs-row.mine"), null, "no row is 'yours' outside a result");
   await shot(page, "06-stats");
   await closeResults(page);
   assert.deepEqual(await history(page), after);
@@ -271,11 +304,24 @@ try {
   await nudgeWrong(page, VIEW);
   await submit(page);
   await resultsDialog(page);
+  await page.waitForFunction((n) => document.querySelector(".rs-kicker")?.textContent === `Daily #${n} · Expert`, { timeout: 8000 }, dailyNumber(lostId));
   const r2 = await page.$eval(".rs-card", (e) => e.innerText);
-  assert.ok(r2.includes("Not solved") && r2.includes("3 of 3 lives used") && r2.includes("EXPERT"));
-  assert.equal(await page.$eval(".rs-chart-row.mine .rs-chart-key", (e) => e.textContent).catch(() => null), "Not solved", "your row: Not solved");
+  assert.ok(r2.includes("Not this time") && r2.includes("All 3 lives used"));
+  assert.equal(await page.$eval(".rs-stars", (e) => e.getAttribute("aria-label")), "0 of 3 lives left");
+  assert.equal(await page.$eval(".rs-row.mine .rs-row-key", (e) => e.textContent), "Not solved", "your row: Not solved");
   const lost = JSON.parse((await history(page)).stats);
-  assert.deepEqual([lost.totalPlayed, lost.totalWon, lost.livesUsedDist.X], [2, 1, 1]);
+  assert.deepEqual([lost.totalPlayed, lost.totalWon, lost.livesUsedDist["2"], lost.livesUsedDist.X], [2, 1, 1, 1]);
+  // 2 lives and Not solved both hold 1: equal bars, though one carries the You marker.
+  const widths = await page.$$eval(".rs-row-bar", (b) => b.map((x) => Math.round(x.getBoundingClientRect().width)));
+  assert.equal(widths.length, 2);
+  assert.equal(widths[0], widths[1], `equal counts, equal bars: ${widths}`);
+  assert.ok(await page.$eval(".rs-row.mine .rs-row-you", (e) => e.textContent === "You"));
+  // Expert shares two sparkles, and a loss shares its three guesses.
+  await page.locator(".rs-share").click();
+  await waitText(page, "Copied");
+  const lostShare = (await page.evaluate(() => window.__copied)).split("\n");
+  assert.equal(lostShare[0], `Daily #${dailyNumber(lostId)} ✨✨`);
+  assert.equal(lostShare[1].split(" ").length, 3);
   await shot(page, "08-results-loss");
   await closeResults(page);
   await page.reload({ waitUntil: "networkidle0" });
@@ -294,12 +340,13 @@ try {
   };
   page.on("request", failing);
   await page.locator("[data-testid=view-results]").click();
+  await page.locator(".rs-tab::-p-text(This puzzle)").click();
   await waitText(page, "Couldn't load other players' results.");
   failSummary = false;
-  await page.locator(".rs-state.err button").click();
+  await page.locator(".rs-retry").click();
   // Retried: the counts (or the honest empty state) replace the error.
   await page.waitForFunction(() => !document.querySelector(".rs-state.err")
-    && (document.querySelector(".rs-figs.two") || document.body.innerText.includes("finished this puzzle on Expert yet")));
+    && (document.querySelector(".rs-figs.n3") || document.body.innerText.includes("finished this puzzle on Expert yet")));
   page.off("request", failing);
   await page.setRequestInterception(false);
   await closeResults(page);
@@ -357,13 +404,18 @@ try {
   await solve(p2, VIEW);
   await p2.locator("button.sbtn").click();
   await resultsDialog(p2);
-  await p2.waitForSelector(".rs-figs.two");
-  const r3 = await p2.$eval(".rs-card", (e) => e.innerText);
-  assert.ok(r3.includes("Hardcore only"), "the comparison names its difficulty");
-  const figs = await p2.$$eval(".rs-sec .rs-fig-val", (f) => f.map((x) => x.textContent));
-  assert.deepEqual(figs.slice(0, 2), ["2", "50%"], "Sam and Ava on Hardcore; Bo's Easy win not mixed in");
-  assert.ok(!r3.includes("Guest results aren't counted"));
-  assert.equal(await p2.$eval(".rs-sec .rs-chart-row.mine .rs-chart-key", (e) => e.textContent), "0");
+  assert.ok((await p2.$eval(".rs-card", (e) => e.innerText)).includes("Brilliant!"), "a perfect solve");
+  await p2.locator(".rs-tab::-p-text(This puzzle)").click();
+  await p2.waitForSelector(".rs-figs.n3");
+  const r3 = await p2.$eval(".rs-panel", (e) => e.innerText);
+  assert.ok(r3.includes("Hardcore difficulty"), "the comparison names its difficulty");
+  const figs = await p2.$$eval(".rs-figs.n3 .rs-fig", (f) => f.map((x) => [x.querySelector("dt").textContent, x.querySelector("dd").textContent]));
+  assert.deepEqual(figs, [["Played", "2"], ["Solved", "50%"], ["Perfect", "50%"]], "Sam and Ava on Hardcore; Bo's Easy win not mixed in");
+  assert.ok(r3.includes("Your result is highlighted.") && !r3.includes("Guest results"));
+  assert.equal(await p2.$eval(".rs-row.mine .rs-row-key", (e) => e.textContent), "0");
+  // 0 lives (Sam) and Not solved (Ava) both hold 1: the same length, You or not.
+  const w2 = await p2.$$eval(".rs-row-bar", (b) => b.map((x) => Math.round(x.getBoundingClientRect().width)));
+  assert.deepEqual([w2.length, w2[0]], [2, w2[1]], `equal counts, equal bars: ${w2}`);
   assert.equal(sql(`select count(*) from public.plays where puzzle_id = ${SHARED} and user_id = '${sam.id}'`), "1");
   await shot(p2, "10-results-signed-in");
   await closeResults(p2);
