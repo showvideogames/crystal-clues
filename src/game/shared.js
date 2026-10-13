@@ -1,6 +1,8 @@
 // Board geometry, difficulty tables and puzzle-building helpers shared by
 // the daily game (App.jsx) and the friend exchange (src/friends).
 
+import { shuffleArr } from "../utils/random.js";
+
 export const CW_FROM = [3, 0, 1, 2];
 // Puzzles always have 3 extras; difficulty controls how many the player sees
 export const DIFFICULTY_EXTRA  = { easy:0, standard:1, expert:2, hardcore:3 };
@@ -27,24 +29,29 @@ export const vw = (card, orientation) =>
 
 // Deal Random Cards: 7 cards (4 for the board + 3 extras) of 4 words each,
 // drawn from the word bank at random and dropped in at random turns.
+// Every word in the bank has the same chance, and a word is dealt at most once
+// per deal (28 distinct words) whenever the bank holds 28 distinct words.
 // Returns null when the bank is too small to be useful.
-export function dealCardsFromBank(wordBank, makeId) {
-  // Need 7 cards × 4 words each = 28 words minimum; fall back to repeating bank if small
-  const bank = [...wordBank];
-  if(bank.length < 4) return null; // not enough words to do anything useful
-
-  // Shuffle the bank
-  for(let i=bank.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));[bank[i],bank[j]]=[bank[j],bank[i]];
+// `rng` returns [0,1); it is injectable only so tests can seed it.
+export function dealCardsFromBank(wordBank, makeId, rng = Math.random) {
+  // One entry per distinct word: a bank holding "Moon" and "MOON" must not
+  // deal MOON twice, and a blank entry is not a word.
+  const seen = new Set();
+  const distinct = [];
+  for(const w of wordBank){
+    const key = String(w ?? "").trim().toUpperCase();
+    if(!key || seen.has(key)) continue;
+    seen.add(key);
+    distinct.push(w);
   }
+  if(distinct.length < 4) return null; // not enough words to do anything useful
 
-  // Build a pool that repeats the bank if needed to fill 28 words
+  // Need 7 cards × 4 words each = 28 words; a bank smaller than that is
+  // repeated to fill them (the only case in which a word can repeat).
+  const bank = shuffleArr(distinct, rng);
   const pool = [];
   while(pool.length < 28) pool.push(...bank);
-  // Shuffle the pool
-  for(let i=pool.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];
-  }
+  const drawn = shuffleArr(pool, rng);
 
   // Create 7 cards: 4 solution + 3 extra
   const TOTAL = 7;
@@ -53,13 +60,13 @@ export function dealCardsFromBank(wordBank, makeId) {
   for(let c=0;c<TOTAL;c++){
     const id = makeId();
     const words = [
-      pool[c*4]   || '',
-      pool[c*4+1] || '',
-      pool[c*4+2] || '',
-      pool[c*4+3] || '',
+      drawn[c*4]   || '',
+      drawn[c*4+1] || '',
+      drawn[c*4+2] || '',
+      drawn[c*4+3] || '',
     ].map(w=>w.toUpperCase());
     cards[id] = { id, words };
-    slots.push({ cardId:id, orientation: Math.floor(Math.random()*4) });
+    slots.push({ cardId:id, orientation: Math.floor(rng()*4) });
   }
   return { cards, slots };
 }

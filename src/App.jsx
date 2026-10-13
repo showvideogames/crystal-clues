@@ -14,6 +14,7 @@ import { THEME_CHOICES, useThemeChoice } from "./theme";
 import {
   CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
 } from "./game/shared";
+import { loadWordBank, wordBankPagePath } from "./game/wordBank";
 
 // The friend exchange (inbox, creator, replay) loads on demand so the daily
 // game's first paint never waits for it.
@@ -115,9 +116,10 @@ async function dbDeletePuzzle(id) {
 }
 const KEPT_AS_UNUSED = "People have played this puzzle, so it was moved to Unused instead of being deleted. Their play history is kept.";
 
-async function dbLoadWordBank() {
-  const rows = await sbFetch(`wordbank?order=word.asc`);
-  return (rows || []).map(r => r.word);
+// Every word, page by page (src/game/wordBank.js): one request returns at most
+// 1000 rows, silently. Rejects, with nothing partial, if any page fails.
+function dbLoadWordBank() {
+  return loadWordBank(({ afterId, limit }) => sbFetch(wordBankPagePath({ afterId, limit })));
 }
 
 async function dbAddWords(newWords) {
@@ -4122,7 +4124,7 @@ function initAdminState(existing = null) {
   };
 }
 
-function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBack }) {
+function AdminBoardEditor({ initialPuzzle, wordBank, wordBankReady=true, allPuzzles=[], onSave, onBack }) {
   const [admin,setAdmin]         = useState(()=>initAdminState(initialPuzzle));
   const [selectedId,setSelId]    = useState(null);
   const [inlineEdit,setInlineEdit] = useState(null);
@@ -4281,7 +4283,7 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
   };
 
   const dealRandomCards = () => {
-    if(wordBank.length < 4) return; // not enough words to do anything useful
+    if(!wordBankReady || wordBank.length < 4) return; // not loaded in full, or too few words to do anything useful
 
     // A fresh blank puzzle never prompts — only warn when it would actually
     // overwrite something the creator has already typed.
@@ -4459,12 +4461,14 @@ function AdminBoardEditor({ initialPuzzle, wordBank, allPuzzles=[], onSave, onBa
               <button
                 className="admin-deal-btn"
                 onClick={dealRandomCards}
-                disabled={wordBank.length<4}
+                disabled={!wordBankReady||wordBank.length<4}
               >
                 🎲 Deal Random Cards
               </button>
               <div className="admin-deal-note">
-                Fills all 7 cards from the word bank at random — then edit any word or clue below.
+                {wordBankReady
+                  ? "Fills all 7 cards from the word bank at random — then edit any word or clue below."
+                  : "The word bank isn't fully loaded, so dealing is off. Go back and open the Word Bank tab to retry."}
               </div>
             </div>
           </div>
@@ -4570,14 +4574,25 @@ function AdminView({ onPublish }) {
   const [newWord,setNewWord] = useState("");
   const [wbSearch,setWbSearch] = useState("");
 
-  // Load word bank from Supabase
+  // Load the whole word bank from Supabase. It is either all there ("ready") or
+  // reported as not loaded ("error", with Retry); a partial bank is never kept,
+  // so the count, the search and Deal Random Cards can't run on part of it.
+  const [wbStatus,setWbStatus] = useState({state:"loading",message:""});
+  const [wbAttempt,setWbAttempt] = useState(0);
   useEffect(()=>{
+    let cancelled = false;
     dbLoadWordBank().then(words=>{
+      if(cancelled) return;
       setWordBank(words);
-    }).catch(()=>{
-      // keep empty word bank on error
+      setWbStatus({state:"ready",message:""});
+    }).catch(e=>{
+      if(cancelled) return;
+      setWordBank([]);
+      setWbStatus({state:"error",message:e?.message||"The word bank could not be loaded."});
     });
-  },[]);
+    return ()=>{ cancelled = true; };
+  },[wbAttempt]);
+  const wordBankReady = wbStatus.state==="ready";
 
   const shouldLoadList = tab==="list";
   // Load puzzles from Supabase when viewing puzzle lists
@@ -4630,6 +4645,7 @@ function AdminView({ onPublish }) {
     <AdminBoardEditor
       initialPuzzle={editPuzzle}
       wordBank={wordBank}
+      wordBankReady={wordBankReady}
       allPuzzles={puzzles}
       onSave={handleSave}
       onBack={()=>{setLoading(true);setTab("list");}}/>
@@ -4717,7 +4733,16 @@ function AdminView({ onPublish }) {
           <p style={{fontSize:12,color:"var(--muted)",marginBottom:12}}>
             Store words to quickly add during puzzle creation. 1–2 words = one entry. 3+ words = separate entries.
           </p>
-          {(()=>{
+          {wbStatus.state==="loading"&&(
+            <div className="wb-status" role="status" style={{fontSize:12,color:"var(--muted)",padding:"8px 0"}}>Loading the word bank…</div>
+          )}
+          {wbStatus.state==="error"&&(
+            <div className="wb-status" role="alert" style={{fontSize:13,color:"var(--muted)",padding:"8px 0"}}>
+              <p style={{marginBottom:10}}>The word bank didn't load completely, so none of it is shown, and Deal Random Cards is off until it does. {wbStatus.message}</p>
+              <button className="abtn p" onClick={()=>{ setWbStatus({state:"loading",message:""}); setWbAttempt(n=>n+1); }}>Retry</button>
+            </div>
+          )}
+          {wordBankReady&&(()=>{
             const addWords = async () => {
               const raw = newWord.trim().toUpperCase();
               if(!raw) return;
@@ -4738,6 +4763,11 @@ function AdminView({ onPublish }) {
             const query = wbSearch.trim().toUpperCase();
             const filtered = query ? sorted.filter(w=>w.includes(query)) : sorted;
             return (<>
+          <div className="wb-count" role="status" style={{fontSize:12,color:"var(--muted)",marginBottom:8}}>
+            {query
+              ? `${filtered.length.toLocaleString()} of ${wordBank.length.toLocaleString()} words match`
+              : `${wordBank.length.toLocaleString()} words`}
+          </div>
           {wordBank.length > 6 && (
             <div style={{marginBottom:10}}>
               <input className="fi" value={wbSearch}
