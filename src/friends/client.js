@@ -3,6 +3,7 @@
 // and the server identifies the player with cluevoyance_uid(), so only a
 // signed-in Cluevoyance account can take part.
 import { supabase } from "../account/supabaseClient";
+import { loadWordBank } from "../game/wordBank";
 
 export { supabase };
 
@@ -85,9 +86,13 @@ export const api = {
   moves: (puzzleId) => call("get_friend_moves", { p_puzzle_id: puzzleId }),
   savePush: (sub) => call("save_push_subscription", { p_endpoint: sub.endpoint, p_p256dh: sub.p256dh, p_auth: sub.auth }),
   deletePush: (endpoint) => call("delete_push_subscription", { p_endpoint: endpoint }),
-  wordBank: async () => {
-    const { data, error } = await supabase.from("wordbank").select("word").order("word");
+  // Every word, page by page (see src/game/wordBank.js): one request returns
+  // at most 1000 rows, silently. Rejects, with nothing partial, if any page fails.
+  wordBank: () => loadWordBank(async ({ afterId, limit }) => {
+    let q = supabase.from("wordbank").select("id,word").order("id", { ascending: true }).limit(limit);
+    if (afterId != null) q = q.gt("id", afterId);
+    const { data, error } = await q;
     if (error) throw new FriendsError(error.message);
-    return (data || []).map((r) => r.word);
-  },
+    return data || [];
+  }),
 };
