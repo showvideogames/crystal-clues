@@ -6,7 +6,7 @@ import { navigate, paths, historyState } from "../route";
 import { serverOffset, timeAgo, livesLeftPhrase } from "./format";
 import { MAX_LIVES } from "../game/shared";
 import { StreakPanel, StreakStatus, StreakRules } from "./Streaks.jsx";
-import { Icon, Spinner, Avatar, PageHead, RowButton } from "./ui.jsx";
+import { Icon, Spinner, Avatar, PageHead, RowButton, Sheet } from "./ui.jsx";
 import FriendCreator from "./FriendCreator.jsx";
 import FriendPlay from "./FriendPlay.jsx";
 import FriendResult from "./FriendResult.jsx";
@@ -337,13 +337,6 @@ function FriendDetails({ f, avatar, now, onClose, onPlay, onResult, onCreate }) 
   const [history,setHistory] = useState(null);
   const [showHistory,setShowHistory] = useState(false);
   const [showRules,setShowRules] = useState(false);
-  const closeRef = useRef(null);
-  useEffect(()=>{
-    closeRef.current?.focus({ preventScroll:true });
-    const esc = (e)=>{ if(e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", esc);
-    return ()=>document.removeEventListener("keydown", esc);
-  },[onClose]);
   const toggleHistory = async ()=>{
     const next = !showHistory;
     setShowHistory(next);
@@ -358,17 +351,13 @@ function FriendDetails({ f, avatar, now, onClose, onPlay, onResult, onCreate }) 
   const counted = f.last_finished || f.daily_streak || f.team_win_streak;
 
   return (
-    <div className="fr-modal fr-details" onClick={onClose}>
-      <div className="fr-modal-card" role="dialog" aria-modal="true" aria-labelledby="fr-details-title" onClick={e=>e.stopPropagation()}>
-        <div className="fr-modal-head">
-          <Avatar name={name} avatar={avatar} size={52}/>
-          <div style={{minWidth:0,flex:1}}>
-            <h2 className="fr-modal-title" id="fr-details-title">{name}</h2>
-            <div className="fr-sub">{rowStatus(f, now)}</div>
-          </div>
-          <button ref={closeRef} type="button" className="fr-closebtn" onClick={onClose} aria-label="Close"><Icon name="close" size={20}/></button>
-        </div>
-
+    <Sheet className="fr-details" labelledBy="fr-details-title" onClose={onClose} head={<>
+      <Avatar name={name} avatar={avatar} size={52}/>
+      <div style={{minWidth:0,flex:1}}>
+        <h2 className="fr-modal-title" id="fr-details-title">{name}</h2>
+        <div className="fr-sub">{rowStatus(f, now)}</div>
+      </div>
+    </>}>
         {(f.incoming || !out) && <div className="fr-row fr-details-actions"><FriendButtons f={f} watch={false} onPlay={onPlay} onResult={onResult} onCreate={onCreate}/></div>}
         {out && (
           <div className="fr-waiting" role="status"><Icon name="clock" size={18}/>
@@ -409,8 +398,7 @@ function FriendDetails({ f, avatar, now, onClose, onPlay, onResult, onCreate }) 
           <RowButton icon="help" label="How streaks work" open={showRules} onClick={()=>setShowRules(o=>!o)}/>
           {showRules && <div className="fr-list-body"><StreakRules/></div>}
         </div>
-      </div>
-    </div>
+    </Sheet>
   );
 }
 

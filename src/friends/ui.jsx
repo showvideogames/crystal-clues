@@ -1,6 +1,7 @@
 // Small shared pieces for the Friends screens: the page heading, icons,
 // the avatar, a busy spinner and the ⓘ help tip. Styles live in friends.css.
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 const paths = {
   back:    <path d="M15 5l-7 7 7 7"/>,
@@ -62,6 +63,44 @@ export function RowButton({ icon, label, detail, onClick, open, dot, className =
       </span>
       <Icon name="next" size={18} className={`fr-rowbtn-chev${open ? " open" : ""}`}/>
     </button>
+  );
+}
+
+// A sheet over the page (a friend's details, the profile editor). The header
+// — `head`, then Close — stays pinned while only the body scrolls, and the
+// sheet never grows past the visible screen. It's rendered at the top of the
+// page (a portal), outside any scrolling list, and while it's open the page
+// underneath can't scroll; closing leaves the page exactly where it was.
+let openSheets = 0;
+export function Sheet({ labelledBy, head, onClose, className = "", children }) {
+  const closeRef = useRef(null);
+  const closing = useRef(onClose);
+  useLayoutEffect(()=>{ closing.current = onClose; });
+  const [scrolled,setScrolled] = useState(false);
+  useEffect(()=>{
+    closeRef.current?.focus({ preventScroll:true });
+    const esc = (e)=>{ if(e.key === "Escape") closing.current(); };
+    document.addEventListener("keydown", esc);
+    const root = document.documentElement;
+    openSheets++;
+    root.classList.add("cv-sheet-open");
+    return ()=>{
+      document.removeEventListener("keydown", esc);
+      if(--openSheets === 0) root.classList.remove("cv-sheet-open");
+    };
+  },[]);
+  return createPortal(
+    <div className={`fr-scope fr-modal ${className}`} onClick={onClose}>
+      <div className={`fr-modal-card${scrolled ? " scrolled" : ""}`} role="dialog" aria-modal="true" aria-labelledby={labelledBy}
+        onClick={e=>e.stopPropagation()}>
+        <div className="fr-modal-head">
+          {head}
+          <button ref={closeRef} type="button" className="fr-closebtn" onClick={onClose} aria-label="Close"><Icon name="close" size={20}/></button>
+        </div>
+        <div className="fr-modal-body" onScroll={e=>setScrolled(e.currentTarget.scrollTop > 2)}>{children}</div>
+      </div>
+    </div>,
+    document.body,
   );
 }
 
