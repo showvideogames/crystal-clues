@@ -93,13 +93,16 @@ export function deriveStats(plays, today = localISODate(), extras = {}) {
   return stats;
 }
 
-/** Completions in the guest shape ({ [puzzleId]: { solved, livesUsed, difficulty, solvedAt } }), wins only. */
+/**
+ * Completions in the guest shape ({ [puzzleId]: { solved, livesUsed, difficulty, solvedAt } }),
+ * wins and losses: a finished puzzle opens as finished on every device, never
+ * as a fresh board that would count again. (The archive's star still means a win.)
+ */
 export function deriveCompletions(plays) {
   const out = {};
   for (const p of plays || []) {
-    if (!p.solved) continue;
     out[String(p.puzzle_id)] = {
-      solved: true,
+      solved: !!p.solved,
       livesUsed: Number(p.lives_used) || 0,
       difficulty: p.difficulty,
       solvedAt: p.finished_at,

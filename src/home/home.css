@@ -1,0 +1,83 @@
+/* The front page (Home.jsx). Light and dark come from src/theme.css; the two
+   main actions share one filled purple style so neither outranks the other,
+   and Your Friends sits beneath them, outlined and a step smaller. */
+
+.hm{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;touch-action:pan-y;-webkit-overflow-scrolling:touch;
+  display:flex;flex-direction:column;align-items:center;
+  padding:clamp(6px, 2.4vh, 22px) 16px max(16px, env(safe-area-inset-bottom))}
+/* Anchored to the top: the two main choices sit high on a tall phone and still fit a small one. */
+.hm-inner{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center}
+
+/* Crystal ball, a soft glow and a few still sparkles */
+.hm-hero{position:relative;width:clamp(76px, 13vh, 116px);aspect-ratio:353/399;margin:0 0 clamp(8px, 1.6vh, 14px)}
+.hm-ball{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(0 10px 18px rgba(var(--shadow-tint),.18))}
+.hm-glow{position:absolute;inset:-26% -40%;border-radius:50%;z-index:0;
+  background:radial-gradient(closest-side, var(--purple-glow), transparent 75%)}
+.hm-spark{position:absolute;z-index:2;color:var(--spark);line-height:1;pointer-events:none;
+  animation:hmTwinkle 4.2s ease-in-out infinite}
+.hm-spark.s1{left:-34%;top:44%;font-size:15px}
+.hm-spark.s2{right:-30%;top:14%;font-size:13px;animation-delay:1.1s}
+.hm-spark.s3{right:-42%;top:58%;font-size:12px;animation-delay:2s}
+.hm-spark.s4{left:-14%;top:4%;font-size:10px;animation-delay:2.8s}
+@keyframes hmTwinkle{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+
+.hm-tagline{font-family:var(--fc);font-weight:700;color:var(--text);text-align:center;
+  font-size:clamp(19px, 5.6vw, 25px);line-height:1.28;letter-spacing:.01em;margin:0 0 clamp(14px, 2.6vh, 24px)}
+
+/* The actions */
+.hm-actions{width:100%;display:flex;flex-direction:column;gap:12px}
+/* The two main actions are always the same height, whichever wraps. */
+.hm-main{display:grid;grid-auto-rows:1fr;gap:12px}
+.hm-action{appearance:none;width:100%;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;
+  border-radius:20px;padding:16px 14px 16px 16px;min-height:clamp(78px, 11vh, 92px);
+  font-family:var(--fu);border:1.5px solid transparent;transition:background-color .15s, box-shadow .15s, transform .1s}
+.hm-action:active{transform:scale(.99)}
+.hm-action.primary{background:var(--fill);color:var(--on-fill);box-shadow:0 8px 22px rgba(109,40,217,.26)}
+.hm-action.primary:hover{background:var(--fill-hover);box-shadow:0 10px 26px rgba(109,40,217,.32)}
+.hm-action.outline{background:var(--surface);color:var(--text);border-color:var(--border-firm);
+  min-height:clamp(64px, 8.6vh, 74px);padding-block:12px;margin-top:2px;box-shadow:0 1px 3px rgba(var(--shadow-tint),.05)}
+.hm-action.outline:hover{background:var(--surface-hover);border-color:rgba(124,58,237,.5)}
+.hm-action:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.hm-action[aria-busy="true"]{cursor:progress}
+
+.hm-action-ico{flex-shrink:0;width:46px;height:46px;display:flex;align-items:center;justify-content:center}
+.hm-action.outline .hm-action-ico{width:40px;height:40px}
+.hm-action-ico svg{width:100%;height:100%}
+.hm-action-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.hm-action-title{font-family:var(--fu);font-weight:800;font-size:clamp(17px, 4.9vw, 20px);line-height:1.2;letter-spacing:.005em}
+.hm-action.outline .hm-action-title{font-size:clamp(16px, 4.4vw, 18px)}
+.hm-action-sub{font-size:14px;font-weight:600;line-height:1.3;opacity:.86}
+.hm-action.outline .hm-action-sub{color:var(--purple-bright);opacity:1}
+.hm-chev{flex-shrink:0;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.hm-action.outline .hm-chev{color:var(--faint)}
+
+/* Icon art: on the filled buttons a pale card on the purple; on the outline row, plain purple. */
+.hm-action.primary .hm-ico-fill{fill:rgba(255,255,255,.92);stroke:none}
+.hm-action.primary .hm-ico-fill.soft{fill:rgba(255,255,255,.55)}
+.hm-action.primary .hm-ico-line{stroke:var(--fill);stroke-width:2;stroke-linecap:round;fill:none}
+.hm-action.primary .hm-ico-dot{fill:var(--fill)}
+.hm-action.primary .hm-ico-dot.soft{fill:var(--fill);opacity:.45}
+.hm-action.primary .hm-ico-star{fill:#f6c64a;stroke:#8a5a00;stroke-width:.6}
+.hm-action.outline .hm-ico-solid{fill:var(--purple)}
+.hm-action.outline .hm-ico-solid.soft{fill:var(--purple);opacity:.55}
+
+/* Archive | How to Play */
+.hm-links{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:clamp(14px, 2.6vh, 24px)}
+.hm-link{appearance:none;border:none;background:none;cursor:pointer;min-height:44px;padding:8px 18px;border-radius:12px;
+  font-family:var(--fu);font-size:15px;font-weight:700;color:var(--muted-strong)}
+.hm-link:hover{color:var(--purple-bright);background:var(--hover-tint)}
+.hm-link:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.hm-link-sep{width:1px;height:20px;background:var(--line-strong)}
+
+@media (max-width:359px){
+  .hm{padding-inline:12px}
+  .hm-action{gap:10px;padding:12px 10px 12px 12px;border-radius:18px}
+  .hm-action-ico{width:38px;height:38px}
+  .hm-action.outline .hm-action-ico{width:34px;height:34px}
+  .hm-action-sub{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hm-spark{animation:none}
+  .hm-action{transition:none}
+}

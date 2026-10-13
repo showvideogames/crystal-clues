@@ -1,0 +1,125 @@
+/* Results and stats (src/game/Results.jsx): flat and quiet. Type and numbers
+   carry it; thin dividers separate the parts; purple marks only the one
+   action and the player's own row. Colours are the light/dark tokens in
+   src/theme.css. Phones get the whole screen; wider screens a centred card. */
+
+.rs-backdrop{position:fixed;inset:0;z-index:120;background:var(--sheet-backdrop);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  animation:rsFade .16s ease-out;font-family:var(--fu,'Raleway',sans-serif);
+  user-select:text;-webkit-user-select:text;touch-action:auto;text-align:left}
+@keyframes rsFade{from{opacity:0}to{opacity:1}}
+.rs-card{width:100%;max-width:440px;max-height:min(840px, calc(100dvh - 48px));
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--surface-raised);color:var(--text);border:1px solid var(--line-strong);border-radius:16px}
+.rs-scope :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* Brand and Close, pinned while the rest scrolls */
+.rs-head{position:relative;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  min-height:52px;padding:0 56px;border-bottom:1px solid var(--line)}
+.rs-brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--fc,'Cinzel',serif);
+  font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text)}
+.rs-mark{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rs-close{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+  border:none;background:transparent;color:var(--text);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.rs-close:hover{background:var(--hover-tint)}
+.rs-close svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+
+.rs-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  padding:0 20px max(12px, env(safe-area-inset-bottom))}
+
+/* The result */
+.rs-summary{display:flex;flex-direction:column;align-items:center;text-align:center;padding:16px 0 2px}
+.rs-kicker{margin:0;font-size:14px;font-weight:600;color:var(--muted-strong);letter-spacing:.01em}
+.rs-headline{margin:2px 0 6px;font-family:var(--fc,'Cinzel',serif);font-weight:900;font-size:34px;line-height:1.1;
+  color:var(--text);letter-spacing:-.005em}
+.rs-headline.small{font-size:24px;text-align:center;margin:16px 0 4px}
+.rs-lives{margin:0 0 14px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:15px;font-weight:600;color:var(--body)}
+.rs-stars{display:inline-flex;gap:6px;font-size:26px;line-height:1;color:var(--gold)}
+.rs-star.used{color:var(--line-strong)}
+.rs-share{appearance:none;width:100%;max-width:300px;min-height:50px;padding:10px 18px;border:none;border-radius:10px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--fill);color:var(--on-fill);font-family:var(--fu);font-size:17px;font-weight:700;letter-spacing:.01em}
+.rs-share:hover{background:var(--fill-hover)}
+.rs-share:active{background:var(--fill-press)}
+.rs-share svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rs-copied{margin:6px 0 0;font-size:13px;font-weight:600;color:var(--ok)}
+.rs-copied:empty{margin:0}
+.rs-link{appearance:none;border:none;background:none;cursor:pointer;min-height:44px;padding:8px 10px;
+  font-family:var(--fu);font-size:15px;font-weight:600;color:var(--purple-bright);
+  text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.rs-link:hover{text-decoration-thickness:2px}
+
+/* Tabs: plain text, the chosen one underlined in purple */
+.rs-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);margin:4px -4px 0}
+.rs-tab{appearance:none;border:none;background:none;cursor:pointer;min-height:48px;padding:10px 6px 9px;
+  font-family:var(--fu);font-size:16px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px}
+.rs-tab:hover{color:var(--text)}
+.rs-tab.on{color:var(--text);font-weight:800;border-bottom-color:var(--purple)}
+.rs-panel{padding:16px 0 4px}
+
+.rs-h{margin:0;font-family:var(--fu);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.rs-sub{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.rs-state{margin:10px 0 4px;font-size:15px;line-height:1.45;color:var(--muted-strong);display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.rs-state.err{color:var(--err-ink)}
+.rs-note{margin:10px 0 0;font-size:13px;line-height:1.4;color:var(--muted)}
+.rs-retry{appearance:none;border:1px solid var(--line-strong);background:none;border-radius:8px;cursor:pointer;min-height:36px;padding:4px 12px;
+  font-family:var(--fu);font-size:14px;font-weight:700;color:var(--purple-bright)}
+.rs-spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--line-strong);border-top-color:var(--purple);
+  animation:rsSpin .8s linear infinite;flex-shrink:0}
+@keyframes rsSpin{to{transform:rotate(360deg)}}
+
+/* Big numbers between thin dividers */
+.rs-figs{display:grid;margin:10px 0 18px}
+.rs-figs.n4{grid-template-columns:repeat(4,1fr)}
+.rs-figs.n3{grid-template-columns:repeat(3,1fr)}
+.rs-fig{display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-end;text-align:center;
+  padding:2px 4px;border-left:1px solid var(--line)}
+.rs-fig:first-child{border-left:none}
+.rs-fig dd{margin:0;font-size:32px;font-weight:800;line-height:1.1;color:var(--text);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.rs-fig dt{margin-top:2px;font-size:13px;line-height:1.25;color:var(--muted-strong)}
+
+/* "Lives used": one scale for every row; the You column is on every row */
+.rs-chart{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.rs-row{display:grid;grid-template-columns:78px 1fr;align-items:center;gap:10px;min-height:28px}
+.rs-chart.marked .rs-row{grid-template-columns:78px 1fr 44px}
+.rs-row-key{font-size:14px;color:var(--text);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rs-row-track{display:flex;align-items:center;min-width:0}
+.rs-row-bar{display:flex;align-items:center;justify-content:flex-end;height:26px;padding:0 8px;box-sizing:border-box;
+  background:var(--bar-neutral);color:#fff;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rs-row.mine .rs-row-bar{background:var(--fill);color:var(--on-fill)}
+.rs-row-zero{font-size:13px;font-weight:600;color:var(--muted);padding-left:2px}
+.rs-row-you{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-bright);white-space:nowrap}
+.rs-row-you:not(:empty)::before{content:"◂ "}
+
+/* Footer */
+.rs-foot{margin-top:14px;padding:12px 0 4px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;text-align:center}
+.rs-foot p{margin:0;font-size:15px;color:var(--muted-strong)}
+.rs-count{color:var(--text);font-weight:800;font-variant-numeric:tabular-nums}
+
+/* Phones: the whole screen, Close always in reach */
+@media (max-width:560px){
+  .rs-backdrop{padding:0;align-items:stretch}
+  .rs-card{max-width:none;max-height:none;height:100dvh;border:none;border-radius:0}
+  .rs-body{padding:0 16px max(12px, env(safe-area-inset-bottom))}
+}
+/* Short phones: a tighter result so the tabs come into view sooner */
+@media (max-height:700px){
+  .rs-summary{padding-top:10px}
+  .rs-headline{font-size:30px;margin-bottom:4px}
+  .rs-stars{font-size:22px}
+  .rs-lives{margin-bottom:10px}
+}
+@media (max-width:359px){
+  .rs-fig dd{font-size:26px}
+  .rs-fig dt{font-size:12px}
+  /* Fixed columns on every row: one scale for all bars. */
+  .rs-row{grid-template-columns:72px 1fr;gap:8px}
+  .rs-chart.marked .rs-row{grid-template-columns:72px 1fr 30px}
+  .rs-row-key{font-size:13px}
+  .rs-row-you{font-size:11px;letter-spacing:.03em}
+  .rs-row-you:not(:empty)::before{content:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .rs-backdrop{animation:none}
+  .rs-spin{animation-duration:2.4s}
+}

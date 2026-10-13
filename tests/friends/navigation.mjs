@@ -71,8 +71,8 @@ try {
   log("/admin opens by address for a guest");
   await g.goto(`${APP_URL}/no-such-page`, { waitUntil: "networkidle0" });
   await waitPath(g, "/");
-  // Header navigation pushes history: Today → Archive → Friends, then Back twice.
-  await g.locator("button.nbtn::-p-text(Archive)").click(); await waitPath(g, "/archive");
+  // Header navigation pushes history: Home → Archive → Friends, then Back twice.
+  await g.locator("button[aria-label=Archive]").click(); await waitPath(g, "/archive");
   await g.locator('button[aria-label^="Friends"]').click(); await waitPath(g, "/friends");
   await g.goBack(); await waitPath(g, "/archive");
   await g.goBack(); await waitPath(g, "/");

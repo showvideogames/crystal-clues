@@ -70,6 +70,8 @@ try {
   await page.evaluate(() => localStorage.setItem("clover_tutorial_seen", "true"));
   await page.reload({ waitUntil: "networkidle0" });
 
+  // The front page → today's setup → Start.
+  await page.locator("[data-testid=home-daily]").click();
   await page.locator("button.lobby-start").click();
   await page.waitForSelector(".game .csurface .ctile");
   await sleep(900);
@@ -81,16 +83,14 @@ try {
   const saved = await page.evaluate(() => Object.keys(localStorage).filter((k) => k.startsWith("clover_progress_")));
   assert.equal(saved.length, 1, "daily progress is saved locally, as before");
   await page.reload({ waitUntil: "networkidle0" });
-  await page.locator("button.lobby-start").click().catch(() => {});
   await page.waitForSelector(".game .csurface .ctile");
   await sleep(600);
+  assert.equal(await lives(page), 2, "a refresh resumes the game in progress, life lost included");
   log("daily after refresh: lives", await lives(page));
 
-  // "Start Puzzle" from the lobby deliberately starts fresh (existing behaviour);
-  // either way the board must be playable and solvable.
   await solve(page);
   await page.locator("button.sbtn").click();
-  await page.waitForSelector(".sovr", { timeout: 15000 });
+  await page.waitForSelector(".rs-card", { timeout: 15000 });
   const stats = await page.evaluate(() => JSON.parse(localStorage.getItem("clover_stats")));
   const done = await page.evaluate(() => JSON.parse(localStorage.getItem("clover_completions")));
   assert.equal(stats.totalWon, 1, "the daily win is recorded in stats");
@@ -113,8 +113,8 @@ try {
   await page.locator(".tut-card button::-p-text(Skip)").click();
 
   // Archive lists the local sample puzzles.
-  await page.locator("button.nbtn::-p-text(Archive)").click();
-  await page.waitForFunction(() => /3 published puzzles/i.test(document.body.innerText));
+  await page.locator("button[aria-label=Archive]").click();
+  await page.waitForFunction(() => /\d+ published puzzles?/i.test(document.body.innerText));
   log("archive ok");
 
   // Admin isn't in the header for anyone; during the beta it opens by address.

@@ -4,7 +4,8 @@
 // and screens derive what to show from it. Vercel serves index.html for every
 // path (vercel.json), so each of these loads directly.
 //
-//   /                              today's puzzle
+//   /                              the front page: today's puzzle, a puzzle for a friend, Friends
+//   /today                         today's puzzle: difficulty, then the board (once done: the board as it ended)
 //   /archive                       the archive
 //   /archive/:puzzleId             an archive puzzle
 //   /admin                         puzzle admin (open to everyone during the beta)
@@ -53,13 +54,14 @@ export const historyState = () => window.history.state || {};
 /**
  * The screen a path names. Unknown or malformed paths are `unknown` (the
  * caller sends them to `/`). Friends paths are only screens when Friends is on.
- *   { view: "game", archiveId? } | { view: "archive" } | { view: "admin" }
+ *   { view: "home" } | { view: "game", archiveId? } | { view: "archive" } | { view: "admin" }
  *   | { view: "friends", screen: { name: "inbox" | "details" | "play" | "result" | "create", id? } } | { view: "unknown" }
  */
 export function parsePath(pathname, { friends = false } = {}) {
   const parts = pathname.replace(/\/+$/, "").split("/").filter(Boolean);
   const [a, b, c] = parts;
-  if (parts.length === 0) return { view: "game" };
+  if (parts.length === 0) return { view: "home" };
+  if (a === "today" && parts.length === 1) return { view: "game" };
   if (a === "archive" && parts.length === 1) return { view: "archive" };
   if (a === "archive" && parts.length === 2 && /^\d{1,20}$/.test(b)) return { view: "game", archiveId: b };
   if (a === "admin" && parts.length === 1) return { view: "admin" };
@@ -73,7 +75,8 @@ export function parsePath(pathname, { friends = false } = {}) {
 }
 
 export const paths = {
-  today: () => "/",
+  home: () => "/",
+  today: () => "/today",
   archive: () => "/archive",
   archivePuzzle: (id) => `/archive/${encodeURIComponent(id)}`,
   admin: () => "/admin",

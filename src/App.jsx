@@ -15,6 +15,9 @@ import {
   CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
 } from "./game/shared";
 import { loadWordBank, wordBankPagePath } from "./game/wordBank";
+import { initialMode, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinalOnce } from "./game/dailyResults";
+import Results from "./game/Results.jsx";
+import Home from "./home/Home.jsx";
 
 // The friend exchange (inbox, creator, replay) loads on demand so the daily
 // game's first paint never waits for it.
@@ -164,16 +167,6 @@ const DEFAULT_STATS = {
   totalWon:0,
   livesUsedDist:{ '0':0, '1':0, '2':0, X:0 },
   difficultyWins:{ easy:0, standard:0, expert:0, hardcore:0 },
-};
-
-const formatLivesUsed = (livesUsed) => {
-  if(livesUsed <= 0) return "Perfect — no lives used";
-  return `${livesUsed} ${livesUsed===1 ? "life" : "lives"} used`;
-};
-
-const formatLivesUsedCompact = (livesUsed) => {
-  if(livesUsed <= 0) return "Perfect";
-  return `${livesUsed} ${livesUsed===1 ? "life" : "lives"} used`;
 };
 
 const normalizeStats = (raw={}) => ({
@@ -1316,6 +1309,7 @@ body::before{
 .dist-bar.win{background:var(--bar-win)}
 .dist-bar.loss{background:var(--bar-loss)}
 .lobby-title{color:var(--text);text-shadow:none}
+.lobby-author{color:var(--muted-strong)}
 .lobby-date,.lobby-diff-label,.lobby-diff-desc{color:var(--muted)}
 .lobby-diff-opt{background:var(--surface);border:1px solid var(--line-strong)}
 .lobby-diff-opt:hover{border-color:rgba(124,58,237,.45);background:var(--surface-hover)}
@@ -1446,7 +1440,7 @@ body::before{
 }
 @media (max-width:374px){
   .hdr{padding:0 3px 0 7px}
-  .logo-img{height:30px}
+  .logo-img{height:26px}
   .nbtn{padding:5px 2px;font-size:8px}
   .gear-btn{width:25px;height:30px}
   .gear-btn svg{width:15px;height:15px}
@@ -1594,6 +1588,47 @@ body::before{
 .ctile.locked .admin-word-btn{color:var(--lock-ink)}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
   clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── Finished official puzzles ───────────────────────────────────────────
+   The difficulty the round is played at sits opposite the lives. Once the
+   game is over, Rotate/Shuffle and the spent Submit give way to two buttons:
+   the result, and a practice replay that records nothing. */
+.game-lives.with-diff{justify-content:space-between;padding-left:18px}
+.game-stars{display:inline-flex;gap:6px;align-items:center}
+.game-diff{font-family:var(--fu);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--purple-bright);background:var(--accent-soft);border-radius:999px;padding:4px 10px;line-height:1.2}
+.end-ctrls{width:100%;max-width:440px;flex-shrink:0;display:grid;grid-template-columns:1.25fr 1fr;gap:10px;
+  padding:10px 14px max(10px, env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--bg)}
+.end-btn{appearance:none;width:100%;min-height:52px;border-radius:16px;cursor:pointer;padding:6px 10px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;line-height:1.15;
+  font-family:var(--fu);font-size:15px;font-weight:800;letter-spacing:.01em;
+  background:var(--surface);color:var(--purple-bright);border:1.5px solid rgba(139,92,246,.5)}
+.end-btn:hover{background:var(--surface-hover)}
+.end-btn.primary{font-size:16px;background:var(--fill);color:var(--on-fill);border-color:transparent;
+  box-shadow:0 6px 18px rgba(109,40,217,.26)}
+.end-btn.primary:hover{background:var(--fill-hover)}
+.end-btn svg{flex-shrink:0;width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.end-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.practice-banner{width:calc(100% - 20px);margin:8px 10px 0;padding:8px 8px 8px 14px;border-radius:14px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0;
+  background:var(--warn-bg);color:var(--warn);font-size:13px;font-weight:600;line-height:1.3;text-align:left}
+.practice-banner b{font-weight:800}
+@media (max-width:359px){ .end-btn{font-size:14px} .end-btn.primary{font-size:15px} .end-btn svg{display:none} }
+.practice-banner button{appearance:none;flex-shrink:0;min-height:36px;padding:6px 12px;border-radius:10px;cursor:pointer;
+  font-family:var(--fu);font-size:13px;font-weight:800;background:var(--surface);color:var(--purple-bright);
+  border:1px solid var(--line-strong)}
+.practice-banner button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.stats-btn.on,.archive-btn.on{color:var(--purple-bright);background:var(--accent-soft)}
+.gear-btn.stats-btn svg{stroke-width:2.6}
+
+/* Archive: loading, a failed load, nothing yet */
+.arch-empty{display:flex;flex-direction:column;align-items:center;gap:12px}
+.arch-spin{width:22px;height:22px;border-radius:50%;border:2.5px solid rgba(227,213,255,.3);border-top-color:#e3d5ff;
+  animation:rsArchSpin .8s linear infinite}
+@keyframes rsArchSpin{to{transform:rotate(360deg)}}
+.arch-retry{appearance:none;min-height:40px;padding:8px 16px;border-radius:12px;cursor:pointer;
+  font-family:var(--fu);font-size:14px;font-weight:800;background:rgba(255,255,255,.12);color:#f5e9ff;border:1px solid rgba(227,213,255,.4)}
+@media (prefers-reduced-motion:reduce){ .arch-spin{animation-duration:2.4s} }
 
 `;
 // ═══════════════════════════════════════════════════════════════
@@ -2097,80 +2132,12 @@ function DragGhost({ ghost }) {
   );
 }
 
-// ═══════════════════════════════════════════════════════════════
-//  STATS OVERLAY — shared by GameView (post-solve) and PuzzleLobby
-// ═══════════════════════════════════════════════════════════════
-
-function StatsOverlay({ lost, livesUsed, stats, onClose, onShare, copied, difficulty }) {
-  return (
-    <div className="sovr" onClick={onClose}>
-      <div className="sovr-emoji">{lost ? "🌙" : "🔮"}</div>
-      <div className="sovr-title">{lost ? "The veil remains closed" : "The crystal speaks!"}</div>
-      <div className="sovr-sub">
-        {lost
-          ? `You used all ${MAX_LIVES} lives`
-          : formatLivesUsed(livesUsed)
-        }
-      </div>
-      <div className="sovr-divider"/>
-      <div className="stats-grid" onClick={e=>e.stopPropagation()}>
-        <div className="stat-box">
-          <div className="stat-val">{stats.totalPlayed||0}</div>
-          <div className="stat-lbl">Played</div>
-        </div>
-        <div className="stat-box">
-          <div className="stat-val">
-            {stats.totalPlayed ? Math.round((stats.totalWon/stats.totalPlayed)*100) : 0}%
-          </div>
-          <div className="stat-lbl">Win %</div>
-        </div>
-        <div className="stat-box">
-          <div className="stat-val">{stats.currentStreak||0}</div>
-          <div className="stat-lbl">Streak 🔥</div>
-        </div>
-      </div>
-      {(()=>{
-        const dist=stats.livesUsedDist||DEFAULT_STATS.livesUsedDist;
-        const maxVal=Math.max(1,...Object.values(dist).map(Number));
-        const currentKey=lost?'X':String(Math.min(2, Math.max(0, livesUsed ?? 0)));
-        const rows=[{key:'0',label:'0'},{key:'1',label:'1'},{key:'2',label:'2'},{key:'X',label:'X'}];
-        return (
-          <div className="dist" onClick={e=>e.stopPropagation()}>
-            {rows.map(({key,label})=>{
-              const count=dist[key]||0;
-              const pct=Math.max(8,Math.round((count/maxVal)*100));
-              const isCurrent=key===currentKey;
-              return (
-                <div key={key} className="dist-row">
-                  <div className="dist-key">{label}</div>
-                  <div className="dist-bar-wrap">
-                    <div className={`dist-bar${isCurrent?' current':key==='X'?' loss':' win'}`}
-                      style={{width:`${pct}%`}}>{count}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })()}
-      {!!difficulty && !lost && (
-        <>
-          <div className="sovr-divider"/>
-          <div style={{fontSize:12,color:"var(--muted)",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase"}}>
-            Solved On {DIFFICULTY_LABELS[difficulty] || difficulty}
-          </div>
-        </>
-      )}
-      <div className="sovr-divider"/>
-      <button className="sovr-btn" onClick={e=>{e.stopPropagation();onShare();}}>
-        {copied?"✓ Copied!":"Share Results"}
-      </button>
-      <button className="sovr-btn" style={{fontSize:12,padding:"8px 20px",opacity:.65}}
-        onClick={e=>{e.stopPropagation();onClose();}}>
-        See Board
-      </button>
-    </div>
-  );
+// The line under a finished official board (GameView's review).
+function reviewMessage(record){
+  const diff = DIFFICULTY_LABELS[record?.difficulty] || "Standard";
+  if(!record?.solved) return `Not solved on ${diff} — the answer is on the board.`;
+  const used = Number(record.livesUsed) || 0;
+  return `Solved on ${diff} · ${used === 0 ? "no lives lost" : `${used} ${used === 1 ? "life" : "lives"} used`} 🔮`;
 }
 
 const TUTORIAL_PUZZLE = {
@@ -2289,12 +2256,9 @@ function TutorialPracticeOverlay({ onClose }) {
 //  PUZZLE LOBBY — shown before game starts
 // ═══════════════════════════════════════════════════════════════
 
-function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, completedData, onAdmire, onOpenTutorial }) {
+function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, onOpenTutorial }) {
   const d = new Date(puzzle.date + "T12:00:00");
   const dateStr = d.toLocaleDateString("en-US", { weekday:"long", month:"long", day:"numeric" });
-  const [showReplay, setShowReplay] = useState(false);
-  const [showStats, setShowStats]   = useState(false);
-  const [copied, setCopied]         = useState(false);
   const touchStartRef = useRef(false);
 
   const handleDifficultyPress = (key) => {
@@ -2317,79 +2281,6 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
     action();
   };
 
-  const handleShare = () => {
-    if(!completedData) return;
-    const d2 = new Date(puzzle.date+'T12:00:00');
-    const label = `${d2.getMonth()+1}·${String(d2.getDate()).padStart(2,'0')}·${d2.getFullYear()}`;
-    const solvedDifficulty = completedData.difficulty || puzzle.difficulty;
-    const diffIcons = {easy:'✨',standard:'🌙',expert:'🌕',hardcore:'🌑'};
-    const icon = diffIcons[solvedDifficulty]||'🌙';
-    const resultLine = completedData.livesUsed == null
-      ? `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty}`
-      : `Solved on ${DIFFICULTY_LABELS[solvedDifficulty] || solvedDifficulty} · ${formatLivesUsedCompact(completedData.livesUsed)}`;
-    const text = `Cluevoyance ${label} ${icon}\n(${resultLine})`;
-    const doCopy = () => {
-      try {
-        const ta=document.createElement('textarea');
-        ta.value=text; ta.style.cssText='position:fixed;top:0;left:0;opacity:0';
-        document.body.appendChild(ta); ta.focus(); ta.select();
-        document.execCommand('copy'); document.body.removeChild(ta);
-        setCopied(true); setTimeout(()=>setCopied(false),2000);
-      } catch{
-        // fallback handled below
-      }
-    };
-    if(navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2000);}).catch(doCopy);
-    else doCopy();
-  };
-
-  // Completed state — show admire/replay choice first
-  if(completedData && !showReplay) {
-    return (
-      <>
-        <div className="lobby">
-          <div className="lobby-icon">🔮</div>
-          <div className="lobby-title">{puzzle.title || "Today's Puzzle"}</div>
-          <div className="lobby-date">{dateStr}</div>
-          {puzzle.author && (
-            <div className="lobby-author">
-              by {puzzle.author}
-            </div>
-          )}
-          <div style={{fontSize:13,color:"var(--correct)",fontWeight:700,marginBottom:20}}>
-            ✓ Solved{completedData.difficulty ? ` on ${DIFFICULTY_LABELS[completedData.difficulty]}` : ""}{completedData.livesUsed == null ? "" : ` · ${formatLivesUsedCompact(completedData.livesUsed)}`}
-          </div>
-
-          <div style={{display:"flex",flexDirection:"column",gap:10,width:"100%",maxWidth:280}}>
-            <button className="lobby-start" onClick={onAdmire}>
-              Admire Puzzle
-            </button>
-            <button className="lobby-start secondary"
-              onClick={()=>setShowReplay(true)}>
-              Replay Puzzle
-            </button>
-            <button className="lobby-start quiet"
-              onClick={()=>setShowStats(true)}>
-              Share Results
-            </button>
-          </div>
-        </div>
-        {showStats && (
-          <StatsOverlay
-            lost={false}
-            livesUsed={completedData.livesUsed ?? 0}
-            stats={loadStats()}
-            difficulty={completedData.difficulty || puzzle.difficulty}
-            onClose={()=>setShowStats(false)}
-            onShare={handleShare}
-            copied={copied}
-          />
-        )}
-      </>
-    );
-  }
-
-  // Normal lobby (fresh or replay)
   return (
     <div className="lobby">
       <div className="lobby-icon">🔮</div>
@@ -2401,13 +2292,15 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
         </div>
       )}
 
-      <div className="lobby-diff-label">Select Difficulty</div>
-      <div className="lobby-diff-opts">
+      <div className="lobby-diff-label" id="lobby-diff-label">Select Difficulty</div>
+      <div className="lobby-diff-opts" role="radiogroup" aria-labelledby="lobby-diff-label">
         {DIFF_OPTIONS.map(opt => (
           <button
             key={opt.key}
             className={`lobby-diff-opt${difficulty===opt.key?" active":""}${opt.key==="standard"?" recommended":""}`}
             type="button"
+            role="radio"
+            aria-checked={difficulty===opt.key}
             onPointerDown={handleTouchButton(()=>handleDifficultyPress(opt.key))}
             onClick={handleClickAfterTouch(()=>handleDifficultyPress(opt.key))}
           >
@@ -2424,13 +2317,6 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
         onPointerDown={handleTouchButton(onStart)}
         onClick={handleClickAfterTouch(onStart)}>Start Puzzle</button>
       <button className="tut-open" type="button" onClick={onOpenTutorial}>How To Play</button>
-      {completedData && (
-        <button style={{marginTop:8,background:"none",border:"none",color:"var(--muted)",
-          fontSize:12,fontWeight:500,cursor:"pointer",textDecoration:"underline"}}
-          onClick={()=>setShowReplay(false)}>
-          ← Back
-        </button>
-      )}
     </div>
   );
 }
@@ -2441,12 +2327,21 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
 
 function GameView({
   puzzle,
-  onSolved,
-  completions={},
   onGameStart,
-  onReset,
   forceFresh=false,
+  // A friend puzzle's answer, laid out to look at (friends/FriendPlay, FriendResult).
   admireMode=false,
+  // Official puzzles (today's and the archive's), src/game/dailyResults.js:
+  //   review    a finished puzzle shown as its round ended: { slots, clues, lives, guessHistory, record }
+  //   practice  a replay picked on purpose after finishing: plays normally, records nothing
+  //   onFinished(result)  the first attempt just ended (win, or the last life lost)
+  //   onShowResults / onPractice / onExitPractice  the buttons shown once the game is over
+  review=null,
+  practice=false,
+  onFinished,
+  onShowResults,
+  onPractice,
+  onExitPractice,
   difficulty="hardcore",
   tutorialConfig=null,
   onTutorialClose,
@@ -2510,7 +2405,9 @@ function GameView({
     return biasedShuffle(chosen, puzzle.solution);
   },[admireMode, extraCardIds, friendPuzzle, puzzle.solution, tutorialActive, tutorialConfig?.initialSlots, visibleExtraIds]);
 
-  const alreadySolved = tutorialActive ? false : admireMode || (!forceFresh && !!completions[puzzle.id]?.solved);
+  const alreadySolved = tutorialActive ? false : admireMode || !!review;
+  // Today's or an archive puzzle, played for the record: the end-of-game buttons are its.
+  const official = !friendPuzzle && !sandbox && !tutorialActive && !replay && !admireMode;
   const progressKey = `clover_progress_${puzzle.id}`;
   const friendProgressKey = friendPuzzle && !replayMode ? `clover_friend_progress_${friendPuzzle.id}` : null;
   const [friendInit] = useState(()=> friendPuzzle && !replayMode
@@ -2521,7 +2418,7 @@ function GameView({
     const at = restoreFriendBoard(friendPuzzle, null);
     return at.restored ? at : null;
   });
-  const savedProgress = (!friendPuzzle && !sandbox && !tutorialActive && !admireMode && !alreadySolved && !forceFresh)
+  const savedProgress = (!friendPuzzle && !sandbox && !tutorialActive && !admireMode && !alreadySolved && !forceFresh && !practice)
     ? loadLS(progressKey, null)
     : null;
   const canRestoreProgress = friendInit ? friendInit.restored : !!savedProgress &&
@@ -2531,8 +2428,10 @@ function GameView({
   const restoredBoard = friendInit ? (friendInit.restored ? friendInit : null)
     : canRestoreProgress ? savedProgress : null;
   const [slots,setSlots]     = useState(()=> replay ? (replayAt ? replayAt.slots : replay.init.slots).map(s=>({ ...s }))
+    : review ? review.slots.map(s=>({ ...s }))
     : restoredBoard ? restoredBoard.slots : initSlots());
   const [clues,setClues]     = useState(()=> replay ? [...(replayAt ? replayAt.clues : replay.init.clues)]
+    : review ? [...review.clues]
     : restoredBoard ? restoredBoard.clues : [...puzzle.clues]);
   const slotsRef = useRef(slots);
   useLayoutEffect(()=>{ slotsRef.current = slots; },[slots]);
@@ -2565,18 +2464,19 @@ function GameView({
   const [dragSrc,setDragSrc] = useState(null);
   const [isDragging,setIsDragging] = useState(false);
   const [dragOver,setDragOver] = useState(null);
-  const [feedback,setFeedback]       = useState(admireMode ? "The vision is clear 🔮" : alreadySolved?"Already revealed — well done!"
+  const [feedback,setFeedback]       = useState(admireMode ? "The vision is clear 🔮"
+    : review ? reviewMessage(review.record)
     : replayAt ? replay.feedback || "" : "");
   const [feedbackFading,setFbFading] = useState(false);
-  const [solved,setSolved]   = useState(()=> tutorialActive ? false : alreadySolved || !!savedProgress?.solved);
-  const [lost,setLost]       = useState(()=> !!savedProgress?.lost);
+  const [solved,setSolved]   = useState(()=> tutorialActive ? false
+    : review ? !!review.record.solved : alreadySolved || !!savedProgress?.solved);
+  const [lost,setLost]       = useState(()=> review ? !review.record.solved : !!savedProgress?.lost);
   const [lives,setLives]     = useState(()=> tutorialActive ? MAX_LIVES
+    : review ? review.lives
     : friendInit ? friendInit.lives : replayAt ? replayAt.lives : savedProgress?.lives ?? MAX_LIVES);
   const [guessHistory,setGuessHistory] = useState(()=> tutorialActive ? []
+    : review ? review.guessHistory
     : friendInit ? friendInit.guessHistory : replayAt ? replayAt.guessHistory : savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
-  const [showOvr,setShowOvr] = useState(false);
-  const [copied,setCopied]   = useState(false);
-  const [stats,setStats]     = useState(loadStats);
   const [shakeKey,setShakeKey] = useState(0);
   const [revealPhase,setRevealPhase] = useState(()=> replayAt ? 'done' : null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
@@ -2686,7 +2586,7 @@ function GameView({
       window.visualViewport?.removeEventListener("resize", updateScale);
       window.visualViewport?.removeEventListener("scroll", updateScale);
     };
-  }, [difficulty, numExtra, solved, lost, showOvr, rotateAnimating, compactLevel, tutorialActive, isDragging, tapRotating]);
+  }, [difficulty, numExtra, solved, lost, rotateAnimating, compactLevel, tutorialActive, isDragging, tapRotating]);
 
   // The play screen renders at its true size and scrolls if the window is
   // short. Only the tutorial, whose board sits in a fixed-height card, is
@@ -2818,47 +2718,6 @@ function GameView({
     }
   },[]);
 
-  // Share helpers
-  const buildShareText = useCallback((history)=>{
-    const d = new Date(puzzle.date+'T12:00:00');
-    const label = `${d.getMonth()+1}·${String(d.getDate()).padStart(2,'0')}·${d.getFullYear()}`;
-    const diffIcons = {easy:'✨',standard:'🌙',expert:'🌕',hardcore:'🌑'};
-    const icon = diffIcons[puzzle.difficulty] || '🌙';
-    const header = `Cluevoyance ${label} ${icon}`;
-    // Each guess is a 2x2 block — lay all guesses side by side, top row then bottom row
-    const topRow = history.map(rows => `${rows[0][0]}${rows[0][1]}`).join(' ');
-    const botRow = history.map(rows => `${rows[1][0]}${rows[1][1]}`).join(' ');
-    return `${header}\n${topRow}\n${botRow}`;
-  },[puzzle.date, puzzle.difficulty]);
-
-  const handleShare = useCallback(()=>{
-    const text = buildShareText(guessHistory);
-    // Try modern clipboard API first, then fall back to execCommand
-    const doCopy = () => {
-      try {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
-        document.body.appendChild(ta);
-        ta.focus(); ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        setCopied(true);
-        setTimeout(()=>setCopied(false), 2000);
-      } catch{
-        // clipboard fallback failed
-      }
-    };
-    if(navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(text).then(()=>{
-        setCopied(true);
-        setTimeout(()=>setCopied(false), 2000);
-      }).catch(doCopy);
-    } else {
-      doCopy();
-    }
-  },[guessHistory,buildShareText]);
-
   // Derive which slots are currently repeating a known-bad placement
   const badKey = (s) => s ? `${s.cardId}:${s.orientation}` : null;
   const repeatedBad = useMemo(()=>{
@@ -2899,14 +2758,18 @@ function GameView({
       });
       return;
     }
-    if(sandbox || replayMode) return;
-    if(tutorialActive || admireMode || alreadySolved || solved){
+    // A practice replay never touches the real game's saved progress.
+    if(sandbox || replayMode || practice) return;
+    if(tutorialActive || admireMode || alreadySolved || solved || lost){
       removeLS(progressKey);
       return;
     }
-    if(isDragging || revealPhase || rotateAnimating) return;
+    // A judged guess ("done": its life already taken) is saved at once, so
+    // leaving or refreshing while the red cards still show can't give it back.
+    if(isDragging || revealPhase === "grey" || revealPhase === "revealing" || rotateAnimating) return;
     saveLS(progressKey, {
       puzzleId: puzzle.id,
+      difficulty,
       totalSlots,
       slots,
       clues,
@@ -2921,7 +2784,7 @@ function GameView({
   },[
     tutorialActive, admireMode, alreadySolved, solved, isDragging, revealPhase, rotateAnimating,
     progressKey, puzzle.id, totalSlots, slots, clues, locked, wrong, knownBad,
-    lives, guessHistory, lost, friendProgressKey, friendGuessCount, sandbox, replayMode
+    lives, guessHistory, lost, friendProgressKey, friendGuessCount, sandbox, replayMode, practice, difficulty
   ]);
 
   // Fade the warning out when all red cards are moved
@@ -3145,8 +3008,9 @@ function GameView({
     const prev = prevDifficultyRef.current;
     const cur  = puzzle.difficulty;
     prevDifficultyRef.current = cur;
-    // A friend puzzle's difficulty was set by its creator and never changes.
-    if(friendPuzzle || !puzzle.solution) return;
+    // A friend puzzle's difficulty was set by its creator and never changes;
+    // a finished round is shown at the difficulty it was played at.
+    if(friendPuzzle || !puzzle.solution || review || solved || lost) return;
 
     const prevExtra = DIFFICULTY_EXTRA[prev]??0;
     const curExtra  = DIFFICULTY_EXTRA[cur]??0;
@@ -3180,6 +3044,7 @@ function GameView({
     setKnownBad(new Map());
     setFeedback("Difficulty lowered — board reshuffled.");
     setTimeout(()=>fadeFeedback(), 2500);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[puzzle.difficulty, puzzle.solution, friendPuzzle, locked, fadeFeedback]);
 
   // target: the replay's recorded result; otherwise a random one.
@@ -3236,31 +3101,23 @@ function GameView({
     }, 220);
   },[tutorialActive, admireMode, alreadySolved, canRestoreProgress, triggerShuffle, replayMode]);
 
+  // Friend puzzles only (the daily game's beta-test Reset, which restarted the
+  // round with full lives, is gone). Guesses already made stand: Reset only
+  // undoes rearranging since the last one (or re-deals, before the first).
+  // Lives are never restored.
   const handleReset = useCallback(()=>{
-    if(tutorialActive) return;
-    if(friendPuzzle){
-      // Guesses already made stand: Reset only undoes rearranging since the
-      // last one (or re-deals, before the first). Lives are never restored.
-      if(friendJudging || solved || lost) return;
-      const base = friendBaseRef.current;
-      const nextSlots = base ? base.slots.map(s=>({ ...s })) : initSlots();
-      const nextClues = base ? [...base.clues] : [...puzzle.clues];
-      setSlots(nextSlots);
-      setClues(nextClues);
-      // Rotate turns the confirmed cards with the board; Reset turns them back.
-      setLocked(new Set(base?.locked || []));
-      setWrong(new Set());
-      record({ k:"z", b:packSlots(nextSlots), c:nextClues });
-      return;
-    }
-    setSlots(initSlots()); setClues([...puzzle.clues]);
-    setLocked(new Set()); setWrong(new Set()); setKnownBad(new Map());
-    setRevealPhase(null); setRevealColors({}); setShowParticles(false); setFlipReveal({});
-    setFeedback(""); setSolved(false); setLost(false);
-    setLives(MAX_LIVES); setGuessHistory([]);
-    setShowOvr(false); setCopied(false);
-    onReset?.();
-  },[initSlots,puzzle,onReset,tutorialActive,friendPuzzle,friendJudging,solved,lost,record]);
+    if(tutorialActive || !friendPuzzle) return;
+    if(friendJudging || solved || lost) return;
+    const base = friendBaseRef.current;
+    const nextSlots = base ? base.slots.map(s=>({ ...s })) : initSlots();
+    const nextClues = base ? [...base.clues] : [...puzzle.clues];
+    setSlots(nextSlots);
+    setClues(nextClues);
+    // Rotate turns the confirmed cards with the board; Reset turns them back.
+    setLocked(new Set(base?.locked || []));
+    setWrong(new Set());
+    record({ k:"z", b:packSlots(nextSlots), c:nextClues });
+  },[initSlots,puzzle,tutorialActive,friendPuzzle,friendJudging,solved,lost,record]);
 
   const handleSubmit = useCallback(()=>{
     if(tutorialActive){
@@ -3291,11 +3148,13 @@ function GameView({
       }
       return;
     }
-    if(solved || lost || revealPhase) return;
+    // lives <= 0: the last guess was wrong and the answer is being revealed.
+    if(solved || lost || revealPhase || lives <= 0) return;
     if(repeatedBad.size > 0 && !replayMode){ setShowRepeatWarning(true); return; }
     onGameStart?.();
     // Daily and preview games are judged here; friend puzzles by the server.
-    const recordsStats = !friendPuzzle && !sandbox;
+    // Only the first attempt at an official puzzle counts; a practice replay never does.
+    const recordsStats = official && !practice;
 
     // Phase 1: all unlocked cards go grey + shake together
     setRevealPhase('grey');
@@ -3315,7 +3174,7 @@ function GameView({
       ];
       const finish = (delay) => {
         if(friendPuzzle) setTimeout(()=>friend.onFinished?.(server), delay);
-        else if(!sandbox) setTimeout(()=>setShowOvr(true), delay);
+        else if(recordsStats) setTimeout(()=>onShowResults?.(), delay);
       };
 
       setRevealPhase('revealing');
@@ -3335,7 +3194,6 @@ function GameView({
                 setGuessHistory(finalHistory);
                 setLocked(new Set([0,1,2,3])); setWrong(new Set());
                 setSolved(true);
-                if(recordsStats) setStats(updateStats(true, livesUsed, difficulty, puzzle));
                 // Set an encouraging message based on lives remaining
                 if(livesLeft === MAX_LIVES)      setFeedback("Perfect solve — not a life lost! ✨");
                 else if(livesLeft === MAX_LIVES-1) setFeedback(`Solved with ${livesLeft} ${livesLeft===1?"life":"lives"} to spare! 🔮`);
@@ -3348,7 +3206,8 @@ function GameView({
                   setTimeout(()=>setShowParticles(false), 5000);
                 }
                 finish(900);
-                if(recordsStats) onSolved?.(puzzle.id, { livesUsed, difficulty });
+                if(recordsStats) onFinished?.({ won:true, livesUsed, difficulty, guessHistory:finalHistory,
+                  slots: slots.map(s=>({ cardId:s.cardId, orientation:s.orientation })), clues:[...clues] });
               } else {
                 // record bad placements
                 setKnownBad(prev=>{
@@ -3372,6 +3231,14 @@ function GameView({
                 playWrongSound();
 
                 if(newLives<=0){
+                  // Recorded now, not after the reveal, so leaving mid-animation can't lose it.
+                  if(recordsStats){
+                    const answerIds = puzzle.solution.slotCards;
+                    const rest = slots.filter(s=>s && !answerIds.includes(s.cardId)).map(s=>({ cardId:s.cardId, orientation:s.orientation }));
+                    onFinished?.({ won:false, livesUsed:MAX_LIVES, difficulty, guessHistory:newHistory,
+                      slots:[...answerIds.map((cardId,i)=>({ cardId, orientation:puzzle.solution.orientations[i] })), ...rest],
+                      clues:[...puzzle.clues] });
+                  }
                   if(wTimer.current) clearTimeout(wTimer.current);
                   wTimer.current=setTimeout(()=>{
                     setWrong(new Set());
@@ -3445,7 +3312,6 @@ function GameView({
                       // 5. After last card, show overlay
                       if(idx===unlockedSlots.length-1){
                         setTimeout(()=>{
-                          if(recordsStats) setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
                           setLost(true);
                           setFeedback("");
                           finish(700);
@@ -3454,7 +3320,6 @@ function GameView({
                     });
 
                     if(unlockedSlots.length===0){
-                      if(recordsStats) setStats(updateStats(false, MAX_LIVES, difficulty, puzzle));
                       setLost(true);
                       finish(500);
                     }
@@ -3505,7 +3370,7 @@ function GameView({
 
     const res=bestSubmit(slots.slice(0,4),puzzle.solution,locked,clues,puzzle.clues);
     setTimeout(()=>reveal(res), 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onSolved,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox,replayMode,record]);
+  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onFinished,onShowResults,official,practice,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox,replayMode,record]);
 
   // ── The replay's controls (friends/AnimatedReplay.jsx) ──────────────
   // Each returns a promise that settles when the move has finished on screen.
@@ -3700,7 +3565,6 @@ function GameView({
     size: 84 + Math.floor(seeded01(i + 301) * 72),
   })) : [], [showParticles]);
 
-  const puzzleDate = new Date(puzzle.date + "T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});
   const diffLabel = DIFFICULTY_LABELS[difficulty] || difficulty;
   const isRevealing = !!revealPhase;
   const gameOver = tutorialActive ? tutorialComplete : solved || lost;
@@ -3729,13 +3593,22 @@ function GameView({
               {renderTutorialCopy(tutorialMessage)}
             </div>
           </div>
-      ) : (
-        <div className="lives game-lives" title={`${lives} of ${MAX_LIVES} lives left`}>
-          {Array.from({length:MAX_LIVES},(_,i)=>(
-            <span key={i} className={`life${i>=lives?" lost":""}`}>⭐</span>
-          ))}
+      ) : (<>
+        {practice && (
+          <div className="practice-banner" role="note">
+            <span><b>Practice</b> · doesn't count</span>
+            <button type="button" onClick={onExitPractice}>Back to my result</button>
+          </div>
+        )}
+        <div className={`lives game-lives${official ? " with-diff" : ""}`} title={`${lives} of ${MAX_LIVES} lives left`}>
+          {official && <span className="game-diff">{diffLabel}</span>}
+          <span className="game-stars" role="img" aria-label={`${lives} of ${MAX_LIVES} lives left`}>
+            {Array.from({length:MAX_LIVES},(_,i)=>(
+              <span key={i} className={`life${i>=lives?" lost":""}`} aria-hidden="true">⭐</span>
+            ))}
+          </span>
         </div>
-      )}
+      </>)}
       <div ref={playFitOuterRef} className="play-fit-outer">
         <div ref={playFitInnerRef} className={`play-fit-inner${tutorialActive ? " tutorial-layout" : ""}`} style={playAreaStyle}>
           <Board
@@ -3806,6 +3679,9 @@ function GameView({
           <div className="extra-spacer" />
         )}
       </div>
+      {official && gameOver ? (<>
+      <div className={`fbk${lost ? "" : " ok"}`} role="status">{feedback}</div>
+      </>) : (<>
       <div className="ctrls" inert={replayMode || undefined}>
         <button className={`cbtn${replayPress==="rotate"?" replay-press":""}`} onClick={handleRotate}>
           <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-9-9c2.52 0 4.8 1 6.46 2.54L21 8"/><path d="M21 3v5h-5"/></svg>
@@ -3815,10 +3691,12 @@ function GameView({
           <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
           Shuffle
         </button>
-        <button className={`cbtn${replayPress==="reset"?" replay-press":""}`} onClick={handleReset}>
-          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-          Reset
-        </button>
+        {friendPuzzle && (
+          <button className={`cbtn${replayPress==="reset"?" replay-press":""}`} onClick={handleReset}>
+            <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset
+          </button>
+        )}
       </div>
       <div className={`fbk${feedbackFading?" fading":""}${showRepeatWarning?" err":wrong.size>0?" err":locked.size>0&&!lost?" ok":""}`}>
         {showRepeatWarning ? "You already know that's wrong — move the incorrect card(s) first." : feedback}
@@ -3827,27 +3705,33 @@ function GameView({
         <button
           className={`sbtn${solved?" solved":""}${lost?" blocked":""}${repeatedBad.size>0?" blocked":""}${replayPress==="submit"?" replay-press":""}`}
           onClick={handleSubmit}
-          disabled={gameOver || isRevealing}
+          disabled={gameOver || isRevealing || lives <= 0}
         >
-          {solved ? "✓ Solved!" : lost ? "No lives left" : admireMode ? "Gazing 🔮" : "Submit"}
+          {solved ? "✓ Solved!" : lost || lives <= 0 ? "No lives left" : admireMode ? "Gazing 🔮" : "Submit"}
         </button>
       </div>
+      </>)}
               </>
             )}
           </div>
         </div>
       </div>
+      {/* Once the game is over, the play controls give way to the result,
+          pinned under the board so a short phone never has to scroll for it. */}
+      {official && gameOver && (
+        <div className="end-ctrls">
+          <button type="button" className="end-btn primary" onClick={onShowResults} data-testid="view-results">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>
+            View Results
+          </button>
+          <button type="button" className="end-btn" onClick={onPractice} data-testid="practice">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 108-8 8.7 8.7 0 00-6 2.4L4 8.5"/><path d="M4 3.5v5h5"/></svg>
+            {practice ? "Practice again" : "Replay for practice"}
+          </button>
+        </div>
+      )}
     </div>
     <DragGhost ghost={ghost}/>
-    {showOvr&&(
-      <StatsOverlay
-        lost={lost} livesUsed={lost ? MAX_LIVES : (MAX_LIVES - lives)} stats={stats}
-        difficulty={difficulty}
-        onClose={()=>setShowOvr(false)}
-        onShare={handleShare}
-        copied={copied}
-      />
-    )}
   </>);
 }
 
@@ -4878,7 +4762,9 @@ const DEMO_ARCHIVE = [
   },
 ];
 
-// Completion state: { [puzzleId]: { solved: bool, livesUsed?: number, difficulty?: string, solvedAt: string } }
+// Completion state: { [puzzleId]: { solved: bool, livesUsed?: number, difficulty?: string, solvedAt: string, finishedAt?: string } }
+// Wins, and (from this update on) losses too, so a lost puzzle opens as finished
+// instead of offering a second first attempt.
 // [accounts] The guest versions are unchanged; the exported names route
 // through the account layer, which only takes over while someone is signed in.
 const guestLoadCompletions = () => loadLS("clover_completions", {});
@@ -4898,8 +4784,10 @@ const guestUpdateStats = (won, livesUsed, difficulty) => {
   const s = guestLoadStats();
   const today = getLocalISODate();
   const yesterday = getLocalISODate(addLocalDays(new Date(), -1));
+  // A streak counts days with a win: a second win on the same day (an archive
+  // puzzle) keeps it where it is rather than adding another day.
   const newStreak = won
-    ? (s.lastSolvedDate===yesterday || s.lastSolvedDate===today ? s.currentStreak+1 : 1)
+    ? (s.lastSolvedDate===today ? Math.max(1, s.currentStreak) : s.lastSolvedDate===yesterday ? s.currentStreak+1 : 1)
     : 0;
   const dist = { ...(s.livesUsedDist || DEFAULT_STATS.livesUsedDist) };
   const key = won ? String(Math.min(2, Math.max(0, livesUsed))) : 'X';
@@ -4923,6 +4811,20 @@ const guestUpdateStats = (won, livesUsed, difficulty) => {
   return updated;
 };
 
+// The first finish of an official puzzle, recorded exactly once: the counters,
+// the completion and this browser's copy of the board it ended on. A puzzle
+// already finished here (or on the account) changes nothing, so neither a
+// practice replay nor a second device can count as another first attempt.
+function recordFirstFinish(puzzle, r){
+  if(loadCompletions()[puzzle.id]) return false;
+  const now = new Date().toISOString();
+  updateStats(r.won, r.livesUsed, r.difficulty, puzzle);
+  saveCompletion(puzzle.id, { solved:r.won, livesUsed:r.livesUsed, difficulty:r.difficulty, solvedAt:now, finishedAt:now });
+  writeFinalOnce(puzzle.id, { difficulty:r.difficulty, solved:r.won, livesUsed:r.livesUsed,
+    slots:r.slots, clues:r.clues, guessHistory:r.guessHistory, finishedAt:now });
+  return true;
+}
+
 // ═══════════════════════════════════════════════════════════════
 //  ARCHIVE VIEW
 // ═══════════════════════════════════════════════════════════════
@@ -4932,20 +4834,28 @@ const DOW_MIN = ["S","M","T","W","T","F","S"];
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MONTHS_FULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-function ArchiveView({ onPlay }) {
+// Today's puzzle opens the daily screen (onToday), so its saved game and
+// result are the same ones the front page knows; past days open on their own.
+function ArchiveView({ onPlay, onToday }) {
   const completions = loadCompletions();
   const today = getLocalISODate();
   const [allPuzzles, setAllPuzzles] = useState([]);
+  const [loadState, setLoadState] = useState("loading");   // loading | ready | error
+  const [attempt, setAttempt] = useState(0);
   const [desiredMonthKey, setDesiredMonthKey] = useState("");
 
   useEffect(()=>{
+    let alive = true;
     dbLoadAllPuzzles().then(rows=>{
+      if(!alive) return;
       const published = rows.filter(p=>p.status==="published" && p.date<=today);
       setAllPuzzles(published.sort((a,b)=>b.date.localeCompare(a.date)));
+      setLoadState("ready");
     }).catch(()=>{
-      setAllPuzzles([]);
+      if(alive) setLoadState("error");
     });
-  },[today]);
+    return ()=>{ alive = false; };
+  },[today, attempt]);
 
   const monthMap = useMemo(()=>{
     const map = new Map();
@@ -4992,8 +4902,7 @@ function ArchiveView({ onPlay }) {
     const isFuture = dateStr > today;
     let status = "none";
     if(puzzle){
-      if(comp?.solved || dateStr < today) status = "played";
-      else status = "unplayed";
+      status = comp ? "played" : "unplayed";
     } else if(isFuture){
       status = "future";
     }
@@ -5010,11 +4919,21 @@ function ArchiveView({ onPlay }) {
           <div className="arch-sub">Tap any published day to open that puzzle.</div>
         </div>
 
-        {allPuzzles.length === 0 ? (
+        {loadState === "loading" ? (
+          <div className="arch-empty" role="status">
+            <span className="arch-spin" aria-hidden="true"/>
+            Loading past puzzles…
+          </div>
+        ) : loadState === "error" ? (
+          <div className="arch-empty" role="alert">
+            Couldn't load the archive. Check your connection and try again.
+            <button type="button" className="arch-retry" onClick={()=>{ setLoadState("loading"); setAttempt(a=>a+1); }}>Try again</button>
+          </div>
+        ) : allPuzzles.length === 0 ? (
           <div className="arch-empty">
-            <div className="arch-empty-icon">??</div>
-            No past puzzles yet.<br/>
-            Publish puzzles with past dates in Admin to see them here.
+            <div className="arch-empty-icon" aria-hidden="true">🔮</div>
+            No puzzles here yet.<br/>
+            Past puzzles appear here the day after they're released.
           </div>
         ) : (
           <div className="arch-panel">
@@ -5061,9 +4980,10 @@ function ArchiveView({ onPlay }) {
                     key={cell.key}
                     type="button"
                     className={`arch-day${clickable?" clickable":""}${status==="played"?" played":""}${status==="unplayed"?" unplayed":""}${status==="none"?" no-puzzle":""}${status==="future"?" future":""}${isToday?" today":""}`}
-                    onClick={()=>{ if(puzzle) onPlay(puzzle); }}
+                    onClick={()=>{ if(!puzzle) return; if(dateStr === today) onToday(); else onPlay(puzzle); }}
                     disabled={!clickable}
                     title={puzzle ? `${puzzle.title} • ${dateStr}` : dateStr}
+                    aria-label={puzzle ? `${MONTHS_FULL[activeMonthIndex]} ${day}${isToday ? ", today" : ""}: ${puzzle.title}${isSolved ? ", solved" : status === "played" ? ", not solved" : ""}` : undefined}
                   >
                     {isSolved && (
                       <img
@@ -5203,13 +5123,14 @@ async function leaveFriends(){
 
 export default function App() {
   const [friendsInvite,setFriendsInvite] = useState(STARTUP_INVITE);
-  const [friendsUnread,setFriendsUnread] = useState(0);
+  // The signed-in account's Friends news: { owner, unread, waiting, results } (friends/badge.js), once fetched.
+  const [friendsActivity,setFriendsActivity] = useState(null);
   const [friendsMe,setFriendsMe] = useState(null);   // the signed-in player's Friends profile (name, avatar), once known
   // Where we are is the address bar (src/route.js); every screen change is a navigation.
   const route = parsePath(usePath(), { friends: FRIENDS_ENABLED });
-  const view = route.view === "unknown" ? "game" : route.view;
-  const setView = useCallback((v)=>navigate({ game:paths.today(), archive:paths.archive(), admin:paths.admin(), friends:paths.friends() }[v]),[]);
-  useEffect(()=>{ if(route.view === "unknown") navigate(paths.today(), { replace:true }); },[route.view]);
+  const view = route.view === "unknown" ? "home" : route.view;
+  const setView = useCallback((v)=>navigate({ home:paths.home(), game:paths.today(), archive:paths.archive(), admin:paths.admin(), friends:paths.friends() }[v]),[]);
+  useEffect(()=>{ if(route.view === "unknown") navigate(paths.home(), { replace:true }); },[route.view]);
   const [archivePuzzle,setAP]    = useState(null);
   // [accounts] who is signed in, whether guest history awaits a decision,
   // and a counter that bumps whenever the account's history changed.
@@ -5217,7 +5138,7 @@ export default function App() {
   const [compsTick,setCompsTick] = useState(0);
   const completions = useMemo(()=>loadCompletions(), [compsTick, acct.historyVersion]);
   const { signOut:accountSignOut } = acct;
-  const handleSignOut = useCallback(async ()=>{ await leaveFriends(); await accountSignOut(); setView("game"); },[accountSignOut, setView]);
+  const handleSignOut = useCallback(async ()=>{ await leaveFriends(); await accountSignOut(); setView("home"); },[accountSignOut, setView]);
   // Admin (/admin) is open to everyone during the beta, by the owner's choice:
   // it isn't in the header, and its writes reach only the official puzzles and
   // the word bank (supabase/migrations/20261015090000_beta_open_puzzle_admin.sql).
@@ -5225,26 +5146,17 @@ export default function App() {
   const [theme,setTheme] = useThemeChoice();
   const [editingProfile,setEditingProfile] = useState(false);
   const [showTutorial,setShowTutorial] = useState(false);
+  // The difficulty new games start at (chosen on the daily screen, or in Settings).
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
-  const [lobbyDone,setLobbyDone]     = useState(false);
-  const [resetCount,setResetCount]   = useState(0);
-  const [forceFresh,setForceFresh]   = useState(false);
-  const [admireMode,setAdmireMode]   = useState(false);
-
-  const handleChangeDifficulty = useCallback((d)=>{
-    setDifficulty(d);
-    saveLS("clover_difficulty",d);
-  },[]);
-
-  const handleGameReset = useCallback(()=>{
-    setLobbyDone(false);
-    setResetCount(c=>c+1);
-    setAdmireMode(false);
-    // forceFresh stays as-is — if user chose Replay it stays true for subsequent resets
-  },[]);
+  // The official puzzle on screen and how it's shown (src/game/dailyResults.js):
+  // { puzzleId, mode: "setup" | "play" | "review" | "practice", difficulty, run, finished }
+  const [game,setGame] = useState(null);
+  // An open Results ("result") or Stats ("stats") dialog. Opening one is only ever a look.
+  const [results,setResults] = useState(null);
 
   const [publishTick, setPublishTick] = useState(0);
   const [todayPuzzle, setTodayPuzzle] = useState(DEFAULT_PUZZLE);
+  const [todayLoaded, setTodayLoaded] = useState(OFFLINE_MODE);
 
   const openTutorial = useCallback(()=>setShowTutorial(true),[]);
   const closeTutorial = useCallback(()=>{
@@ -5253,9 +5165,11 @@ export default function App() {
   },[]);
 
   useEffect(()=>{
+    let alive = true;
     dbLoadTodayPuzzle().then(p => {
-      if(p) setTodayPuzzle(p);
-    }).catch(()=>{});
+      if(alive && p) setTodayPuzzle(p);
+    }).catch(()=>{}).finally(()=>{ if(alive) setTodayLoaded(true); });
+    return ()=>{ alive = false; };
   },[publishTick]);
 
   useEffect(()=>{
@@ -5288,31 +5202,36 @@ export default function App() {
     return ()=>document.head.removeChild(el);
   },[]);
 
-  // The Friends dot: new puzzles to play or results to see. Signed-out
-  // players never load the Friends code at all.
+  // The Friends dot, and the front page's "puzzles waiting": the server's own
+  // count of puzzles to play and results to watch. Signed-out players never
+  // load the Friends code at all.
   const friendsAccountId = acct.status === "signed_in" ? acct.account?.user_id : null;
+  const refreshFriends = useCallback(()=>{
+    if(!FRIENDS_ENABLED || !friendsAccountId || document.visibilityState !== "visible") return;
+    loadFriendsBadge()
+      .then(m=>m.fetchActivity())
+      .then(a=>{ if(a){ setFriendsActivity({ owner:friendsAccountId, unread:a.unread, waiting:a.waiting, results:a.results }); setFriendsMe(a.me); } })
+      .catch(()=>{});
+  },[friendsAccountId]);
   useEffect(()=>{
     if(!FRIENDS_ENABLED || !friendsAccountId) return;
-    let cancelled = false;
-    const tick = () => {
-      if(document.visibilityState !== "visible") return;
-      loadFriendsBadge()
-        .then(m=>m.fetchActivity())
-        .then(a=>{ if(!cancelled && a){ setFriendsUnread(a.unread); setFriendsMe(a.me); } })
-        .catch(()=>{});
-    };
-    tick();
-    const timer = window.setInterval(tick, 60000);
-    document.addEventListener("visibilitychange", tick);
+    refreshFriends();
+    const timer = window.setInterval(refreshFriends, 60000);
+    document.addEventListener("visibilitychange", refreshFriends);
     return () => {
-      cancelled = true;
       window.clearInterval(timer);
-      document.removeEventListener("visibilitychange", tick);
+      document.removeEventListener("visibilitychange", refreshFriends);
     };
-  },[friendsAccountId]);
-  // Another account (or nobody) signed in here: the last account's dot goes.
-  const shownUnread = friendsAccountId ? friendsUnread : 0;
+  },[friendsAccountId, refreshFriends]);
+  // Back on the front page: fresh counts (a friend's puzzle may have just been played).
+  useEffect(()=>{ if(view === "home") refreshFriends(); },[view, refreshFriends]);
+  // Another account (or nobody) signed in here: the last account's news goes.
+  const shownActivity = friendsAccountId && friendsActivity?.owner === friendsAccountId ? friendsActivity : null;
+  const shownUnread = shownActivity?.unread || 0;
   const shownMe = friendsAccountId && friendsMe?.id === friendsAccountId ? friendsMe : null;
+  const handleUnreadChange = useCallback((n)=>{
+    setFriendsActivity(a=>a ? { ...a, unread:n } : a);
+  },[]);
 
   // /archive/:id: the puzzle in hand (picked from the archive), or loaded by
   // its id when the address was opened directly. Not found → the archive.
@@ -5326,59 +5245,116 @@ export default function App() {
       .catch(()=>{ if(alive) navigate(paths.archive(), { replace:true }); });
     return ()=>{ alive = false; };
   },[archiveId, archiveReady]);
+  // Today's puzzle reached through the archive (or an old /archive/ link) is
+  // today's puzzle: the same screen, saved game and result as the front page's.
+  const archiveIsToday = archiveReady && (String(archivePuzzle.id) === String(todayPuzzle.id) || archivePuzzle.date === getLocalISODate());
+  useEffect(()=>{ if(archiveIsToday) navigate(paths.today(), { replace:true }); },[archiveIsToday]);
 
-  const activePuzzle = useMemo(()=>{
-    const base = (view==="game" && archiveReady) ? archivePuzzle : todayPuzzle;
-    return { ...base, difficulty };
-  },[view, archiveReady, archivePuzzle, todayPuzzle, difficulty]);
+  // Accounts settle first (a signed-in player's history is the account's), then the puzzle.
+  const historyReady = acct.status !== "checking";
+  const isDaily = view === "game" && !archiveId;
+  const isArchivePlay = view === "game" && archiveReady && !archiveIsToday;
+  const officialPuzzle = (isDaily && todayLoaded && historyReady) ? todayPuzzle
+    : (isArchivePlay && historyReady) ? archivePuzzle : null;
+  const record = officialPuzzle ? completions[officialPuzzle.id] || null : null;
 
-  // Key only on puzzle id — difficulty changes mid-game should NOT reset the board
-  const activePuzzleKey = activePuzzle.id;
+  // How the puzzle opens (finished → its board as it ended; a game in progress
+  // → resumed at its own difficulty; today's, not started → choose a difficulty).
+  // Settled once per visit; after that the screen changes only by what the player does.
+  const resolvedGame = useMemo(()=>{
+    if(!officialPuzzle) return null;
+    const id = officialPuzzle.id;
+    const stale = game?.puzzleId !== id
+      || (game.mode === "review" && !record)                                                // signed out, or another account
+      || (!!record && (game.mode === "setup" || (game.mode === "play" && !game.finished)));  // finished elsewhere
+    if(!stale) return game;
+    return { puzzleId:id, run:(game?.run || 0) + 1, finished:false,
+      ...initialMode({ record, progress:readProgress(id), daily:isDaily, preference:difficulty }) };
+  },[officialPuzzle, game, record, isDaily, difficulty]);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(()=>{ if(resolvedGame !== game) setGame(resolvedGame); },[resolvedGame, game]);
+  // Leaving the puzzle: next time it opens as it stands then.
+  useEffect(()=>{
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if(view !== "game"){ setGame(null); setResults(r=>r === "result" ? null : r); }
+  },[view]);
 
-  const isArchivePlay = view==="game" && archiveReady && archivePuzzle.id !== todayPuzzle.id;
+  const handleChangeDifficulty = useCallback((d)=>{
+    setDifficulty(d);
+    saveLS("clover_difficulty",d);
+    // Settings, mid-game: the game in progress may only get easier (SettingsSheet enforces it).
+    setGame(g=>g && g.mode === "play" && !g.finished && (DIFF_RANK[d] ?? 1) < (DIFF_RANK[g.difficulty] ?? 1) ? { ...g, difficulty:d } : g);
+  },[]);
+
+  const handleFinished = useCallback((puzzle, result)=>{
+    setGame(g=>g && g.puzzleId === puzzle.id ? { ...g, finished:true } : g);
+    if(recordFirstFinish(puzzle, result)) setCompsTick(t=>t+1);
+  },[]);
+  const startPractice = useCallback(()=>{
+    setResults(null);
+    setGame(g=>g ? { ...g, mode:"practice", run:g.run + 1 } : g);
+  },[]);
+  const exitPractice = useCallback(()=>{
+    setGame(g=>g ? { ...g, mode:"review", run:g.run + 1 } : g);
+  },[]);
 
   const handlePlayFromArchive = (puzzle) => {
     setAP(puzzle);
     navigate(paths.archivePuzzle(puzzle.id));
   };
 
-  const handleReturnToToday = useCallback(() => {
-    setAP(null);
-    setView("game");
-    setForceFresh(false);
-    setAdmireMode(false);
-    setLobbyDone(false);
-    setResetCount(0);
-  },[setView]);
+  // Everyone on this puzzle, at the difficulty this player played. Aggregates
+  // only (puzzle_result_summary); null when the puzzle has no server record.
+  const summaryKey = officialPuzzle && record && /^\d+$/.test(String(officialPuzzle.id)) && !OFFLINE_MODE
+    ? `${officialPuzzle.id}|${record.difficulty || "standard"}` : null;
+  const loadSummary = useMemo(()=>{
+    if(!summaryKey) return null;
+    const [id, diff] = summaryKey.split("|");
+    return ()=>sbFetch("rpc/puzzle_result_summary", {
+      method:"POST", body:JSON.stringify({ p_puzzle_id:Number(id), p_difficulty:diff }),
+    }).then(rows=>{
+      const row = Array.isArray(rows) ? rows[0] : rows;
+      if(!row || typeof row.players !== "number") throw new Error("No summary");
+      return row;
+    });
+  },[summaryKey]);
 
-  const handleSolved = useCallback((puzzleId, result) => {
-    const data = {
-      solved:true,
-      livesUsed: result?.livesUsed ?? 0,
-      difficulty: result?.difficulty || difficulty,
-      solvedAt:new Date().toISOString(),
-    };
-    saveCompletion(puzzleId, data);
-    setCompsTick(t=>t+1);
-  },[difficulty]);
+  // The front page's daily button follows today's saved state.
+  const todayRecord = completions[todayPuzzle.id] || null;
+  const todayProgress = view === "home" && todayLoaded && historyReady && !todayRecord ? readProgress(todayPuzzle.id) : null;
+  const dailyState = !(todayLoaded && historyReady) ? { status:"loading" }
+    : todayRecord ? { status:"done", record:todayRecord }
+    : todayProgress ? { status:"progress", difficulty:progressDifficulty(todayProgress), livesUsed:progressLivesUsed(todayProgress) }
+    : { status:"new" };
+
+  const gameDifficulty = game?.difficulty || difficulty;
+  const gameInProgress = view === "game" && game?.mode === "play" && !game.finished && !record;
+  const gamePuzzle = officialPuzzle && game?.puzzleId === officialPuzzle.id ? { ...officialPuzzle, difficulty:gameDifficulty } : null;
+  const review = gamePuzzle && game.mode === "review" && record
+    ? { ...reviewBoard(gamePuzzle, record, readFinal(gamePuzzle.id)), record } : null;
 
     return (
       <div style={{height:"100vh",height:"100dvh",width:"100%",display:"flex",flexDirection:"column"}}>
       <header className="hdr">
         <button type="button" className="logo logo-link"
-          onClick={()=>setView("game")}
-          aria-label="Cluevoyance — go to today's puzzle">
+          onClick={()=>setView("home")}
+          aria-label="Cluevoyance — home">
           <img src="/assets/cluevoyance-logo-b.png" alt="" className="logo-img on-light" />
           <img src="/assets/cluevoyance-logo-dark.png" alt="" className="logo-img on-dark" />
         </button>
           <div className="nav">
-            {view==="game" && isArchivePlay && (
-              <button className="nbtn today-nav-btn" onClick={handleReturnToToday}>
+            {isArchivePlay && (
+              <button className="nbtn today-nav-btn" onClick={()=>setView("game")}>
                 Today's Puzzle
               </button>
             )}
-            <button className={`nbtn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}>
-              Archive
+            <button className={`gear-btn archive-btn${view==="archive"?" on":""}`} onClick={()=>setView("archive")}
+              title="Archive" aria-label="Archive" aria-current={view==="archive" ? "page" : undefined}>
+              <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+            </button>
+            <button className={`gear-btn stats-btn${results==="stats"?" on":""}`} onClick={()=>setResults("stats")}
+              title="Your stats" aria-label="Your stats" data-testid="stats-button">
+              <svg viewBox="0 0 24 24"><path d="M5 20V12M12 20V5M19 20v-5"/></svg>
             </button>
             {FRIENDS_ENABLED && (
               <button className={`gear-btn friends-btn${view==="friends"?" on":""}`} onClick={()=>setView("friends")}
@@ -5404,31 +5380,50 @@ export default function App() {
             <button className="gear-btn help-btn" onClick={openTutorial} title="How To Play" aria-label="How To Play">
               ?
             </button>
-            <button className="gear-btn" onClick={()=>setShowSettings(true)} title="Settings">
+            <button className="gear-btn" onClick={()=>setShowSettings(true)} title="Settings" aria-label="Settings">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
             </button>
         </div>
       </header>
 
-      {view==="game" && archiveId && !archiveReady && (
-        <div className="mhint" style={{padding:28,textAlign:"center"}}>Opening puzzle…</div>
+      {view==="home" && (
+        <Home
+          daily={dailyState}
+          friendsEnabled={FRIENDS_ENABLED}
+          friends={shownActivity}
+          onDaily={()=>{ setView("game"); if(dailyState.status === "done") setResults("result"); }}
+          onMakePuzzle={()=>navigate(paths.makeForNew())}
+          onFriends={()=>setView("friends")}
+          onArchive={()=>setView("archive")}
+          onHowToPlay={openTutorial}
+        />
       )}
-      {view==="game" && !(archiveId && !archiveReady) && (() => {
-        const completedData = loadCompletions()[activePuzzle.id];
-        const showLobby = !isArchivePlay && !lobbyDone;
-        return showLobby
-          ? <PuzzleLobby
-              puzzle={activePuzzle}
-              difficulty={difficulty}
-              onChangeDifficulty={handleChangeDifficulty}
-              onStart={()=>{ setForceFresh(true); setAdmireMode(false); setResetCount(c=>c+1); setLobbyDone(true); }}
-              completedData={completedData||null}
-              onAdmire={()=>{ setAdmireMode(true); setLobbyDone(true); }}
-              onOpenTutorial={openTutorial}
-            />
-          : <GameView key={`${activePuzzleKey}-${resetCount}`} puzzle={activePuzzle} onSolved={handleSolved} completions={completions} onReset={handleGameReset} forceFresh={forceFresh} admireMode={admireMode} difficulty={difficulty}/>;
-      })()}
-      {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive}/>}
+      {view==="game" && !gamePuzzle && (
+        <div className="mhint" role="status" style={{padding:28,textAlign:"center"}}>
+          {archiveId ? "Opening puzzle…" : "Opening today's puzzle…"}
+        </div>
+      )}
+      {view==="game" && gamePuzzle && (game.mode === "setup"
+        ? <PuzzleLobby
+            puzzle={gamePuzzle}
+            difficulty={difficulty}
+            onChangeDifficulty={handleChangeDifficulty}
+            onStart={()=>setGame(g=>({ ...g, mode:"play", difficulty, run:g.run + 1 }))}
+            onOpenTutorial={openTutorial}
+          />
+        : <GameView key={`${gamePuzzle.id}-${game.mode}-${game.run}`}
+            puzzle={gamePuzzle}
+            difficulty={review ? review.difficulty : gameDifficulty}
+            review={review}
+            practice={game.mode === "practice"}
+            forceFresh={game.mode === "practice"}
+            onFinished={(r)=>handleFinished(gamePuzzle, r)}
+            onShowResults={()=>setResults("result")}
+            onPractice={startPractice}
+            onExitPractice={exitPractice}
+          />
+      )}
+      {view==="archive"&& <ArchiveView onPlay={handlePlayFromArchive} onToday={()=>setView("game")}/>}
       {view==="friends" && (
         <Suspense fallback={<div className="mhint" style={{padding:28,textAlign:"center"}}>Opening Friends…</div>}>
           <FriendsView
@@ -5438,7 +5433,7 @@ export default function App() {
             invite={friendsInvite}
             me={shownMe}
             onInviteTaken={()=>setFriendsInvite(null)}
-            onUnreadChange={setFriendsUnread}
+            onUnreadChange={handleUnreadChange}
             onProfileChange={setFriendsMe}
             onPlayDaily={()=>setView("game")}
             onHowToPlay={openTutorial}
@@ -5456,11 +5451,28 @@ export default function App() {
       {showTutorial && <TutorialPracticeOverlay onClose={closeTutorial} />}
       {acct.importPending && <ImportPrompt onAdd={acct.addMyProgress} onStartFresh={acct.startFresh} />}
 
+      {results === "result" && officialPuzzle && record && (
+        <Results
+          puzzle={officialPuzzle}
+          record={record}
+          guessHistory={readFinal(officialPuzzle.id)?.guessHistory || []}
+          stats={loadStats()}
+          loadSummary={loadSummary}
+          counted={acct.status === "signed_in"}
+          onClose={()=>setResults(null)}
+          onViewBoard={()=>setResults(null)}
+          onPractice={startPractice}
+        />
+      )}
+      {results === "stats" && (
+        <Results mode="stats" stats={loadStats()} onClose={()=>setResults(null)}/>
+      )}
+
       {showSettings && (
         <SettingsSheet
-          difficulty={difficulty}
+          difficulty={gameInProgress ? gameDifficulty : difficulty}
           onChangeDifficulty={handleChangeDifficulty}
-          gameInProgress={view==="game" && lobbyDone}
+          gameInProgress={gameInProgress}
           onClose={()=>setShowSettings(false)}
           theme={theme}
           onChangeTheme={setTheme}
@@ -5481,5 +5493,4 @@ export default function App() {
     </div>
   );
 }
-
 
