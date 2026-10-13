@@ -20,6 +20,7 @@ const paths = {
   close:   <path d="M6 6l12 12M18 6L6 18"/>,
   history: <><path d="M4.5 12a7.5 7.5 0 102.2-5.3"/><path d="M4.5 4.5v3.5H8"/><path d="M12 8v4l2.5 1.5"/></>,
   restart: <><path d="M5 12a7 7 0 107-7H8.5"/><path d="M11 2L8 5l3 3"/></>,
+  prev:    <><path d="M6.5 5.5v13"/><path d="M18 6v12l-8.5-6z" fill="currentColor" stroke="none"/></>,
   eye:     <><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></>,
 };
 

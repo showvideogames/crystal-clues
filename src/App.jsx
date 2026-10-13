@@ -2454,9 +2454,12 @@ function GameView({
   // Creator's preview of their own puzzle: plays normally, records nothing.
   sandbox=false,
   // The animated replay of a finished friend puzzle (friends/AnimatedReplay.jsx):
-  // { init:{slots,clues}, apiRef, still }. The board starts at init, ignores
-  // the player's input, and is driven through apiRef; `friend` then answers
-  // each Submit with the recorded result. Nothing is saved or sent.
+  // { init:{slots,clues}, apiRef, still, feedback }. The board starts at init,
+  // ignores the player's input, and is driven through apiRef; `friend` then
+  // answers each Submit with the recorded result. Nothing is saved or sent,
+  // and a win isn't celebrated again. When friend.puzzle already holds
+  // guesses (Previous guess), the board starts as it stood once the last of
+  // them had been judged: its cards, confirmed cards, lives and verdict.
   replay=null,
 }) {
   const friendPuzzle = friend?.puzzle || null;
@@ -2511,6 +2514,11 @@ function GameView({
   const [friendInit] = useState(()=> friendPuzzle && !replayMode
     ? restoreFriendBoard(friendPuzzle, loadLS(friendProgressKey, null))
     : null);
+  const [replayAt] = useState(()=>{
+    if(!replayMode || !friendPuzzle?.guesses?.length) return null;
+    const at = restoreFriendBoard(friendPuzzle, null);
+    return at.restored ? at : null;
+  });
   const savedProgress = (!friendPuzzle && !sandbox && !tutorialActive && !admireMode && !alreadySolved && !forceFresh)
     ? loadLS(progressKey, null)
     : null;
@@ -2520,9 +2528,9 @@ function GameView({
     Array.isArray(savedProgress.clues);
   const restoredBoard = friendInit ? (friendInit.restored ? friendInit : null)
     : canRestoreProgress ? savedProgress : null;
-  const [slots,setSlots]     = useState(()=> replay ? replay.init.slots.map(s=>({ ...s }))
+  const [slots,setSlots]     = useState(()=> replay ? (replayAt ? replayAt.slots : replay.init.slots).map(s=>({ ...s }))
     : restoredBoard ? restoredBoard.slots : initSlots());
-  const [clues,setClues]     = useState(()=> replay ? [...replay.init.clues]
+  const [clues,setClues]     = useState(()=> replay ? [...(replayAt ? replayAt.clues : replay.init.clues)]
     : restoredBoard ? restoredBoard.clues : [...puzzle.clues]);
   const slotsRef = useRef(slots);
   useLayoutEffect(()=>{ slotsRef.current = slots; },[slots]);
@@ -2536,14 +2544,16 @@ function GameView({
   },[]);
   const [locked,setLocked]   = useState(()=> alreadySolved
     ? new Set([0,1,2,3])
-    : restoredBoard ? new Set(restoredBoard.locked || []) : new Set());
-  const [wrong,setWrong]     = useState(()=> restoredBoard ? new Set(restoredBoard.wrong || []) : new Set());
-  const [knownBad,setKnownBad] = useState(()=> restoredBoard
-    ? new Map((restoredBoard.knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
+    : restoredBoard ? new Set(restoredBoard.locked || [])
+    : replayAt ? new Set(replayAt.locked) : new Set());
+  const [wrong,setWrong]     = useState(()=> restoredBoard ? new Set(restoredBoard.wrong || [])
+    : replayAt ? new Set([0,1,2,3].filter(i=>!replayAt.locked.includes(i))) : new Set());
+  const [knownBad,setKnownBad] = useState(()=> (restoredBoard || replayAt)
+    ? new Map(((restoredBoard || replayAt).knownBad || []).map(([k,v])=>[Number(k), new Set(v)]))
     : new Map());
   // How many guesses the server has recorded, and the board to return to on Reset.
   const [friendGuessCount,setFriendGuessCount] = useState(()=> friendPuzzle?.guesses?.length || 0);
-  const friendBaseRef = useRef(friendInit?.base || null);
+  const friendBaseRef = useRef(friendInit?.base || replayAt?.base || null);
   const [spinning,setSpinning] = useState(new Set());
   const [tapRotating,setTapRotating] = useState(new Set());
   const [rotateAnimating,setRotateAnimating] = useState(false);
@@ -2553,19 +2563,20 @@ function GameView({
   const [dragSrc,setDragSrc] = useState(null);
   const [isDragging,setIsDragging] = useState(false);
   const [dragOver,setDragOver] = useState(null);
-  const [feedback,setFeedback]       = useState(admireMode ? "The vision is clear 🔮" : alreadySolved?"Already revealed — well done!":"");
+  const [feedback,setFeedback]       = useState(admireMode ? "The vision is clear 🔮" : alreadySolved?"Already revealed — well done!"
+    : replayAt ? replay.feedback || "" : "");
   const [feedbackFading,setFbFading] = useState(false);
   const [solved,setSolved]   = useState(()=> tutorialActive ? false : alreadySolved || !!savedProgress?.solved);
   const [lost,setLost]       = useState(()=> !!savedProgress?.lost);
   const [lives,setLives]     = useState(()=> tutorialActive ? MAX_LIVES
-    : friendInit ? friendInit.lives : savedProgress?.lives ?? MAX_LIVES);
+    : friendInit ? friendInit.lives : replayAt ? replayAt.lives : savedProgress?.lives ?? MAX_LIVES);
   const [guessHistory,setGuessHistory] = useState(()=> tutorialActive ? []
-    : friendInit ? friendInit.guessHistory : savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
+    : friendInit ? friendInit.guessHistory : replayAt ? replayAt.guessHistory : savedProgress?.guessHistory || []); // array of {row: [emoji,emoji,emoji,emoji]}
   const [showOvr,setShowOvr] = useState(false);
   const [copied,setCopied]   = useState(false);
   const [stats,setStats]     = useState(loadStats);
   const [shakeKey,setShakeKey] = useState(0);
-  const [revealPhase,setRevealPhase] = useState(null); // null | 'grey' | 'revealing' | 'done'
+  const [revealPhase,setRevealPhase] = useState(()=> replayAt ? 'done' : null); // null | 'grey' | 'revealing' | 'done'
   const [revealColors,setRevealColors] = useState({}); // {slotIdx: 'green'|'red'}
   // A friend guess is judged over the network: hold the board still until
   // the verdict is showing (the red/green "done" phase stays playable, as in
@@ -3328,10 +3339,13 @@ function GameView({
                 else if(livesLeft === MAX_LIVES-1) setFeedback(`Solved with ${livesLeft} ${livesLeft===1?"life":"lives"} to spare! 🔮`);
                 else if(livesLeft === 1)          setFeedback("Barely — but the crystal revealed all! 💫");
                 else                             setFeedback("The mists part — well done! 💫");
-                playVictorySound();
-                setShowParticles(true);
+                // A replay shows the win, but doesn't celebrate it again.
+                if(!replayMode){
+                  playVictorySound();
+                  setShowParticles(true);
+                  setTimeout(()=>setShowParticles(false), 5000);
+                }
                 finish(900);
-                setTimeout(()=>setShowParticles(false), 5000);
                 if(recordsStats) onSolved?.(puzzle.id, { livesUsed, difficulty });
               } else {
                 // record bad placements
