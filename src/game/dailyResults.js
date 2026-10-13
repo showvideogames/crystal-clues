@@ -11,6 +11,7 @@
 // every device; the final board is a nicety for this browser, and the screens
 // fall back to the answer laid out at the right difficulty without it.
 import { DIFFICULTY_EXTRA, MAX_LIVES } from "./shared.js";
+import { dailyName } from "./dailyNumber.js";
 
 const read = (k, fallback = null) => {
   try {
@@ -120,15 +121,14 @@ const SPARKLES = { easy: "", standard: "✨", expert: "✨✨", hardcore: "✨�
  *   🔮⚫ 🔮⚫ 🔮🔮      one 2×2 block per guess (🔮 = a card that was right)
  *   ⚫⚫ ⚫🔮 🔮🔮
  *   Cluevoyance.com
- * number is the puzzle's daily number; without one the date stands in (no
- * number is ever made up). Without the guesses (finished on another device,
- * or before this was kept) a short result line takes their place.
+ * The name is the puzzle's daily number from its date (dailyNumber.js, the
+ * same helper the results use); before the start date, the date itself.
+ * Without the guesses (finished on another device, or before this was kept)
+ * a short result line takes their place.
  */
-export function shareText(record, guessHistory = [], number = null, date = null) {
+export function shareText(record, guessHistory = [], date = null) {
   const difficulty = isDifficulty(record.difficulty) ? record.difficulty : "standard";
-  const name = number ? `Daily #${number}`
-    : date ? `Daily ${new Date(`${date}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`
-    : "Daily puzzle";
+  const name = dailyName(date);
   const head = SPARKLES[difficulty] ? `${name} ${SPARKLES[difficulty]}` : name;
   let body;
   if (guessHistory.length) {

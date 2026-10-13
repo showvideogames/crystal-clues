@@ -5271,9 +5271,11 @@ export default function App() {
     return { puzzleId:id, run:(game?.run || 0) + 1, finished:false,
       ...initialMode({ record, progress:readProgress(id), daily:isDaily, preference:difficulty }) };
   },[officialPuzzle, game, record, isDaily, difficulty]);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(()=>{ if(resolvedGame !== game) setGame(resolvedGame); },[resolvedGame, game]);
   // Leaving the puzzle: next time it opens as it stands then.
   useEffect(()=>{
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if(view !== "game"){ setGame(null); setResults(r=>r === "result" ? null : r); }
   },[view]);
 
@@ -5316,22 +5318,6 @@ export default function App() {
       return row;
     });
   },[summaryKey]);
-
-  // The puzzle's daily number: its place among the published daily puzzles,
-  // oldest first (#1 is the first one ever published). Asked once per puzzle;
-  // null (no number shown or shared) when it can't be known.
-  const numberKey = officialPuzzle && /^\d+$/.test(String(officialPuzzle.id)) && !OFFLINE_MODE && /^\d{4}-\d{2}-\d{2}$/.test(officialPuzzle.date || "")
-    ? `${officialPuzzle.id}|${officialPuzzle.date}` : null;
-  const loadNumber = useMemo(()=>{
-    if(!numberKey) return null;
-    const [id, date] = numberKey.split("|");
-    let once = null;
-    return ()=>(once ||= sbFetch(`puzzles?select=id,date&status=eq.published&date=lte.${date}&order=date.asc,id.asc`)
-      .then(rows=>{
-        const i = (rows || []).findIndex(r=>String(r.id) === id);
-        return i >= 0 ? i + 1 : null;
-      }));
-  },[numberKey]);
 
   // The front page's daily button follows today's saved state.
   const todayRecord = completions[todayPuzzle.id] || null;
@@ -5470,7 +5456,6 @@ export default function App() {
           puzzle={officialPuzzle}
           record={record}
           guessHistory={readFinal(officialPuzzle.id)?.guessHistory || []}
-          loadNumber={loadNumber}
           stats={loadStats()}
           loadSummary={loadSummary}
           counted={acct.status === "signed_in"}

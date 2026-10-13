@@ -16,6 +16,7 @@ import { APP_URL, CHROME, signInBrowser } from "../friends/browser.mjs";
 import { solve, nudgeWrong, readBoard } from "../friends/board.mjs";
 import { befriend, makePlayer, rpc, sendPuzzle } from "../friends/helpers.mjs";
 import { sql } from "../db/helpers.mjs";
+import { dailyNumber as dailyNumberOf } from "../../src/game/dailyNumber.js";
 
 const OUT = process.argv[2] ? path.resolve(process.argv[2]) : null;
 if (OUT) fs.mkdirSync(OUT, { recursive: true });
@@ -46,9 +47,8 @@ assert.ok(PAST.length >= 2, "two past local puzzles");
 
 // A stubbed answer from the (cross-origin) database must still pass CORS.
 const CORS = { "Access-Control-Allow-Origin": "*" };
-// A puzzle's daily number: its place among published puzzles, oldest first.
-const dailyNumber = (id) => Number(sql(`select count(*) from public.puzzles p, public.puzzles me where me.id = ${id}
-  and p.status = 'published' and (p.date < me.date or (p.date = me.date and p.id <= me.id))`));
+// A puzzle's daily number, from its date, by the app's own helper.
+const dailyNumber = (id) => dailyNumberOf(sql(`select date from public.puzzles where id = ${id}`));
 const lives = (page) => page.$$eval(".game-lives .life:not(.lost)", (l) => l.length);
 const extras = (page) => page.$$eval(".eslots .eslot", (l) => l.length);
 const history = (page) => page.evaluate(() => ({
@@ -210,6 +210,13 @@ try {
   assert.deepEqual(await history(page), after);
   log("View Board / refresh show the real round");
 
+  // A puzzle backdated into the archive (and one retired) renumbers nothing.
+  const todayNo = dailyNumber(TODAY);
+  sql(`insert into public.puzzles (id, date, title, author, difficulty, status, clues, cards, solution)
+       select 1700000000990, (current_date - 40)::text, 'Backdated', 'Local sample', 'standard', 'published', clues, cards, solution
+       from public.puzzles where id = ${TODAY} on conflict (id) do nothing`);
+  sql(`update public.puzzles set status = 'unused' where id = ${PAST[PAST.length - 1]}`);
+
   // 8. Home: View Today's Results opens them over the board.
   await page.locator(".logo-link").click();
   await waitText(page, "View Today's Results");
@@ -218,6 +225,12 @@ try {
   await page.locator("[data-testid=home-daily]").click();
   await resultsDialog(page);
   assert.equal(at(page), "/today");
+  assert.equal(await page.$eval(".rs-kicker", (e) => e.textContent), `Daily #${todayNo} · Standard`, "same number after a backdate and a retirement");
+  await page.locator(".rs-share").click();
+  await waitText(page, "Copied");
+  assert.equal((await page.evaluate(() => window.__copied)).split("\n")[0], `Daily #${todayNo} ✨`, "share and results agree");
+  sql("delete from public.puzzles where id = 1700000000990");
+  sql(`update public.puzzles set status = 'published' where id = ${PAST[PAST.length - 1]}`);
   // A short phone: the result and Share show at once; the stats scroll under a Close that stays put.
   await page.setViewport({ width: 320, height: 568, deviceScaleFactor: 2 });
   await sleep(300);
@@ -334,7 +347,9 @@ try {
   // 13. Results' error state (the summary call fails), then Try again.
   await page.setRequestInterception(true);
   let failSummary = true;
+  const summaryAsks = [];
   const failing = (req) => {
+    if (req.method() === "POST" && req.url().includes("rpc/puzzle_result_summary")) summaryAsks.push(JSON.parse(req.postData()));
     if (failSummary && req.method() !== "OPTIONS" && req.url().includes("rpc/puzzle_result_summary")) req.respond({ status: 500, body: "{}", contentType: "application/json", headers: CORS });
     else req.continue();
   };
@@ -342,11 +357,16 @@ try {
   await page.locator("[data-testid=view-results]").click();
   await page.locator(".rs-tab::-p-text(This puzzle)").click();
   await waitText(page, "Couldn't load other players' results.");
+  // An archive puzzle's tab says "Puzzle results", for that puzzle at the difficulty played.
+  const archHead = await page.$eval(".rs-panel", (e) => e.innerText);
+  assert.ok(/^PUZZLE RESULTS/i.test(archHead) && !/today/i.test(archHead) && archHead.includes("Expert difficulty"), archHead);
   failSummary = false;
   await page.locator(".rs-retry").click();
   // Retried: the counts (or the honest empty state) replace the error.
   await page.waitForFunction(() => !document.querySelector(".rs-state.err")
     && (document.querySelector(".rs-figs.n3") || document.body.innerText.includes("finished this puzzle on Expert yet")));
+  // The counts asked for are this archive puzzle's, at Expert.
+  assert.ok(summaryAsks.length >= 2 && summaryAsks.every((b) => b.p_puzzle_id === Number(lostId) && b.p_difficulty === "expert"), JSON.stringify(summaryAsks));
   page.off("request", failing);
   await page.setRequestInterception(false);
   await closeResults(page);

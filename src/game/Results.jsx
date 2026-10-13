@@ -12,6 +12,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { DIFFICULTY_LABELS, MAX_LIVES } from "./shared.js";
 import { livesRows, percent, resultRowKey, resultWords, shareText } from "./dailyResults.js";
+import { dailyName } from "./dailyNumber.js";
 import "./results.css";
 
 const livesPhrase = (n) => `${n} ${n === 1 ? "life" : "lives"}`;
@@ -129,7 +130,7 @@ function ThisPuzzle({ load, difficulty, mine, counted, today }){
   const d = state.data;
   return (
     <>
-      <h3 className="rs-h">{today ? "Today's results" : "Results for this puzzle"}</h3>
+      <h3 className="rs-h">{today ? "Today's results" : "Puzzle results"}</h3>
       <p className="rs-sub">{diffName} difficulty · signed-in players only</p>
       {state.status === "unavailable" && <p className="rs-state">Other players' results aren't available for this puzzle.</p>}
       {state.status === "loading" && <p className="rs-state" role="status"><span className="rs-spin" aria-hidden="true"/>Loading…</p>}
@@ -174,19 +175,17 @@ const CrystalMark = () => (
  *   puzzle       the official puzzle (date)
  *   record       { solved, livesUsed, difficulty } — required in "result" mode
  *   guessHistory the finished round's guesses, for the share grid (may be empty)
- *   loadNumber   () => Promise<daily number | null>, or null
  *   stats        personal counters (loadStats)
  *   loadSummary  () => Promise<counts>, or null when there's no server record
  *   counted      whether this player's result is among those counts (signed in)
  *   onViewBoard / onPractice / onClose
  */
-export default function Results({ mode = "result", puzzle, record, guessHistory = [], loadNumber, stats, loadSummary, counted,
+export default function Results({ mode = "result", puzzle, record, guessHistory = [], stats, loadSummary, counted,
   onClose, onViewBoard, onPractice }){
   const titleId = useId();
   const tabsId = useId();
   const closeRef = useRef(null);
   const [tab,setTab] = useState("mine");
-  const [number,setNumber] = useState(null);
   const [copied,setCopied] = useState(null);   // null | "ok" | "fail"
   const nextDaily = useNextDaily();
   const closing = useRef(onClose);
@@ -201,19 +200,12 @@ export default function Results({ mode = "result", puzzle, record, guessHistory 
       if(opener && document.contains(opener)) opener.focus?.({ preventScroll:true });
     };
   },[]);
-  useEffect(()=>{
-    if(!loadNumber) return undefined;
-    let alive = true;
-    loadNumber().then(n=>{ if(alive) setNumber(n); }, ()=>{});
-    return ()=>{ alive = false; };
-  },[loadNumber]);
 
   const share = useCallback(async ()=>{
-    const n = loadNumber ? await loadNumber().catch(()=>null) : null;
-    const ok = await copyText(shareText(record, guessHistory, n, puzzle?.date));
+    const ok = await copyText(shareText(record, guessHistory, puzzle?.date));
     setCopied(ok ? "ok" : "fail");
     setTimeout(()=>setCopied(null), 2500);
-  },[record, guessHistory, loadNumber, puzzle?.date]);
+  },[record, guessHistory, puzzle?.date]);
 
   const isResult = mode === "result" && !!record;
   const used = record ? (record.solved ? Math.min(MAX_LIVES - 1, Math.max(0, Number(record.livesUsed) || 0)) : MAX_LIVES) : 0;
@@ -243,7 +235,7 @@ export default function Results({ mode = "result", puzzle, record, guessHistory 
         <div className="rs-body">
           {isResult ? (
             <section className={`rs-summary ${record.solved ? "won" : "lost"}`} aria-labelledby={titleId}>
-              <p className="rs-kicker">{number ? `Daily #${number}` : "Daily puzzle"} · {diffName}</p>
+              <p className="rs-kicker">{dailyName(puzzle?.date)} · {diffName}</p>
               <h2 className="rs-headline" id={titleId}>{words.headline}</h2>
               <p className="rs-lives">
                 <span className="rs-stars" role="img" aria-label={`${MAX_LIVES - used} of ${MAX_LIVES} lives left`}>

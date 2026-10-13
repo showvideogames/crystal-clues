@@ -78,21 +78,22 @@ describe("the finished board", () => {
 
 describe("share text", () => {
   const grid = [[["🔮", "⚫"], ["⚫", "⚫"]], [["🔮", "⚫"], ["⚫", "🔮"]], [["🔮", "🔮"], ["🔮", "🔮"]]];
+  // The beta baseline: 2026-04-08 is Daily #1 (src/game/dailyNumber.js).
   it("Daily #N, one sparkle per extra card, a block per guess, the site", () => {
-    expect(shareText({ solved: true, livesUsed: 2, difficulty: "hardcore" }, grid, 1))
+    expect(shareText({ solved: true, livesUsed: 2, difficulty: "hardcore" }, grid, "2026-04-08"))
       .toBe("Daily #1 ✨✨✨\n🔮⚫ 🔮⚫ 🔮🔮\n⚫⚫ ⚫🔮 🔮🔮\nCluevoyance.com");
-    expect(shareText({ solved: true, livesUsed: 0, difficulty: "easy" }, grid.slice(2), 7)).toBe("Daily #7\n🔮🔮\n🔮🔮\nCluevoyance.com");
-    expect(shareText({ solved: true, livesUsed: 0, difficulty: "standard" }, grid.slice(2), 7).split("\n")[0]).toBe("Daily #7 ✨");
-    expect(shareText({ solved: true, livesUsed: 0, difficulty: "expert" }, grid.slice(2), 7).split("\n")[0]).toBe("Daily #7 ✨✨");
+    expect(shareText({ solved: true, livesUsed: 0, difficulty: "easy" }, grid.slice(2), "2026-04-14")).toBe("Daily #7\n🔮🔮\n🔮🔮\nCluevoyance.com");
+    expect(shareText({ solved: true, livesUsed: 0, difficulty: "standard" }, grid.slice(2), "2026-04-14").split("\n")[0]).toBe("Daily #7 ✨");
+    expect(shareText({ solved: true, livesUsed: 0, difficulty: "expert" }, grid.slice(2), "2026-04-14").split("\n")[0]).toBe("Daily #7 ✨✨");
   });
   it("a loss shares its guesses too", () => {
     const lost = [[["⚫", "⚫"], ["⚫", "⚫"]], [["🔮", "⚫"], ["⚫", "⚫"]], [["🔮", "⚫"], ["⚫", "⚫"]]];
-    expect(shareText({ solved: false, livesUsed: 3, difficulty: "standard" }, lost, 3))
-      .toBe("Daily #3 ✨\n⚫⚫ 🔮⚫ 🔮⚫\n⚫⚫ ⚫⚫ ⚫⚫\nCluevoyance.com");
+    expect(shareText({ solved: false, livesUsed: 3, difficulty: "standard" }, lost, "2026-10-13"))
+      .toBe("Daily #189 ✨\n⚫⚫ 🔮⚫ 🔮⚫\n⚫⚫ ⚫⚫ ⚫⚫\nCluevoyance.com");
   });
-  it("never invents a number, and says the result when the guesses weren't kept", () => {
-    expect(shareText({ solved: true, livesUsed: 1, difficulty: "expert" }, [], null, "2026-10-13"))
-      .toBe("Daily Oct 13, 2026 ✨✨\nSolved with 1 life lost\nCluevoyance.com");
+  it("never invents a number: before the start the date; the result when the guesses weren't kept", () => {
+    expect(shareText({ solved: true, livesUsed: 1, difficulty: "expert" }, [], "2026-04-07"))
+      .toBe("Daily Apr 7, 2026 ✨✨\nSolved with 1 life lost\nCluevoyance.com");
     expect(shareText({ solved: false, livesUsed: 3, difficulty: "easy" })).toBe("Daily puzzle\nNot solved\nCluevoyance.com");
   });
 });
