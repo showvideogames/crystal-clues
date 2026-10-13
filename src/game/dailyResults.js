@@ -4,8 +4,15 @@
 //
 // Storage (this browser):
 //   clover_progress_<id>   a puzzle in progress (App.jsx GameView writes it)
-//   clover_final_<id>      the board a FIRST attempt finished on, written once:
-//                          { difficulty, solved, livesUsed, slots, clues, guessHistory, finishedAt }
+//   clover_final_<who>_<id>  the round a player's FIRST attempt finished with:
+//                          { owner, difficulty, solved, livesUsed, slots, clues, guessHistory, finishedAt }
+//                          <who> is the signed-in account's id, or "guest". One per
+//                          player, so on a shared browser one player's guesses are
+//                          never shown or shared as another's.
+//   clover_final_<id>      the same, from before <who> was added (2026-10-13):
+//                          used only when it agrees with the result being shown.
+// The guesses exist only in the browser the puzzle was finished in: the
+// account's server record (plays) holds the result, not the guesses.
 // The result itself (won or not, lives used, difficulty) is the completion
 // record (clover_completions, or the account's plays), so it's the same on
 // every device; the final board is a nicety for this browser, and the screens
@@ -30,7 +37,7 @@ const write = (k, v) => {
 };
 
 export const progressKey = (id) => `clover_progress_${id}`;
-export const finalKey = (id) => `clover_final_${id}`;
+export const finalKey = (id, who) => (who ? `clover_final_${who}_${id}` : `clover_final_${id}`);
 
 const DIFFICULTIES = Object.keys(DIFFICULTY_EXTRA);
 const BY_SLOTS = Object.fromEntries(DIFFICULTIES.map((d) => [4 + DIFFICULTY_EXTRA[d], d]));
@@ -57,16 +64,34 @@ export function progressLivesUsed(p) {
   return p && Number.isFinite(lives) ? Math.min(MAX_LIVES, Math.max(0, MAX_LIVES - lives)) : 0;
 }
 
-export function readFinal(id) {
-  const f = read(finalKey(id));
-  return f && typeof f === "object" && Array.isArray(f.slots) ? f : null;
+/**
+ * Does a saved round belong to this result? Same outcome, difficulty and lives,
+ * and the guesses add up: every wrong guess costs a life, so a win took
+ * livesUsed + 1 guesses (the last all right) and a loss took MAX_LIVES.
+ */
+export function finalMatches(f, record) {
+  if (!f || !record || !Array.isArray(f.guessHistory)) return false;
+  const used = Number(record.livesUsed) || 0;
+  if (!!f.solved !== !!record.solved || Number(f.livesUsed) !== used) return false;
+  if (isDifficulty(record.difficulty) && f.difficulty !== record.difficulty) return false;
+  const g = f.guessHistory;
+  if (g.length !== (record.solved ? used + 1 : MAX_LIVES)) return false;
+  const right = (row) => Array.isArray(row) && row.flat().length === 4 && row.flat().every((c) => c === "🔮");
+  return record.solved ? right(g[g.length - 1]) : !right(g[g.length - 1]);
 }
 
-/** Keeps the first finished board; a later write never replaces it. */
-export function writeFinalOnce(id, data) {
-  if (readFinal(id)) return false;
-  write(finalKey(id), data);
-  return true;
+/** The round this player finished this puzzle with, if this browser kept it and it fits the result. */
+export function readFinal(id, who, record) {
+  const ok = (f) => f && typeof f === "object" && Array.isArray(f.slots) && (!record || finalMatches(f, record));
+  const own = read(finalKey(id, who || "guest"));
+  if (ok(own)) return own;
+  const legacy = read(finalKey(id));
+  return !legacy?.owner && ok(legacy) && record ? legacy : null;
+}
+
+/** Saves the round a player's first attempt finished with (recordFirstFinish only calls this once per player). */
+export function writeFinal(id, who, data) {
+  write(finalKey(id, who || "guest"), { ...data, owner: who || "guest" });
 }
 
 /**
