@@ -15,8 +15,9 @@ import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
 import puppeteer from "puppeteer-core";
-import { anon, rpc, makePlayer, sampleBoard, befriend, sendPuzzle, solvedBoard, sendAndStart, guess, wrongBoard } from "./helpers.mjs";
+import { rpc, makePlayer, sampleBoard, befriend, sendPuzzle, solvedBoard, sendAndStart, guess, wrongBoard } from "./helpers.mjs";
 import { APP_URL, CHROME, signInBrowser } from "./browser.mjs";
+import { nudgeWrong } from "./board.mjs";
 
 const OUT = path.resolve(process.argv[2] || "sheet-theme-shots");
 fs.mkdirSync(OUT, { recursive: true });
@@ -252,6 +253,10 @@ const FRIENDS_TEXT = [".fr-h1", ".fr-frow-name", ".fr-frow-status", ".fr-hub-foo
 const SHEET_TEXT = [".fr-details .fr-modal-title", ".fr-details .fr-modal-head .fr-sub", ".fr-details .fr-waiting", ".fr-details .fr-streak-num", ".fr-details .fr-streak-lbl",
   ".fr-details .fr-rowbtn-label", ".fr-details .fr-history-item b", ".fr-details .fr-history-item small", ".fr-details .fr-history-item .when"];
 const GAME_TEXT = [".sdate", ".dchip", ".ctab", ".ew", ".cbtn", ".sbtn", ".fbk", ".nbtn"];
+const HOME_TEXT = [".hm-tagline", ".hm-action.primary .hm-action-title", ".hm-action.primary .hm-action-sub", ".hm-action.outline .hm-action-title", ".hm-action.outline .hm-action-sub", ".hm-link"];
+const RESULTS_TEXT = [".rs-title", ".rs-h", ".rs-puzzle-title", ".rs-puzzle-meta", ".rs-chip", ".rs-outcome-word", ".rs-lives", ".rs-btn.primary", ".rs-btn.secondary",
+  ".rs-link", ".rs-sub", ".rs-state", ".rs-note", ".rs-fig-val", ".rs-fig-lbl", ".rs-chart-title", ".rs-chart-key", ".rs-chart-count"];
+const FINISHED_TEXT = [".end-btn.primary", ".end-btn:not(.primary)", ".game-diff", ".fbk"];
 const LOBBY_TEXT = [".lobby-title", ".lobby-date", ".lobby-diff-name", ".lobby-diff-desc", ".lobby-start"];
 const SETTINGS_TEXT = [".settings-title", ".settings-sub", ".diff-opt-name", ".diff-opt-desc", ".theme-opt[aria-checked=true]", ".theme-opt[aria-checked=false]"];
 
@@ -270,7 +275,7 @@ const board = (page) => page.evaluate(() => ({
 }));
 {
   const g = await newPage(PHONE, "light");
-  await g.goto(APP_URL, { waitUntil: "networkidle0" });
+  await g.goto(`${APP_URL}/today`, { waitUntil: "networkidle0" });
   assert.equal(await themeOf(g), "light", "no saved choice + a light device → light");
   assert.equal(await g.evaluate(() => localStorage.getItem("cv-theme")), null, "nothing saved by default");
   await g.waitForSelector(".lobby-start");
@@ -323,9 +328,15 @@ const board = (page) => page.evaluate(() => ({
   await openSettings(g);
   assert.equal(await checked(g), "dark");
   await closeSettings(g);
-  await g.waitForSelector(".lobby-start");
-  await shot(g, "guest-dark-lobby");
-  await checkContrast(g, LOBBY_TEXT, "guest dark lobby");
+  // The game in progress resumes after the refresh (no setup screen in between).
+  await g.waitForSelector(".game .sbtn");
+  await sleep(400);
+  assert.equal((await board(g)).livesLost, before.livesLost, "a refresh resumes the game, lost life included");
+  await shot(g, "guest-dark-game-refreshed");
+  await g.locator(".logo-link").click();
+  await g.waitForSelector(".hm");
+  await shot(g, "guest-dark-home");
+  await checkContrast(g, HOME_TEXT, "guest dark home");
   await g.setRequestInterception(true);
   g.on("request", (r) => (/\/src\/main\.jsx|\.js(\?|$)/.test(new URL(r.url()).pathname) && r.resourceType() === "script" ? r.abort() : r.continue()));
   await g.reload({ waitUntil: "domcontentloaded" });
@@ -388,7 +399,7 @@ for (const theme of ["light", "dark"]) {
   await shot(p, `signed-in-${theme}-account-menu`);
   await checkContrast(p, ['[data-testid="account-email"]', '[data-testid="sign-out"]'], `signed-in ${theme} account menu`);
   await p.keyboard.press("Escape");
-  await p.goto(`${APP_URL}/`, { waitUntil: "networkidle0" });
+  await p.goto(`${APP_URL}/today`, { waitUntil: "networkidle0" });
   await p.waitForSelector(".lobby-start");
   await p.locator(".lobby-start").click();
   await p.waitForSelector(".game .sbtn");
@@ -398,33 +409,38 @@ for (const theme of ["light", "dark"]) {
   await p.close();
 }
 
-// ── 5. The rest of the app in both themes: results, the solved lobby, the
+const SEED_VIEW = { cards: {
+  c1: { words: ["BLAZE", "RIVER", "CAVE", "WOLF"] }, c2: { words: ["EMBER", "PEAK", "STORM", "RIVER"] },
+  c3: { words: ["CLIFF", "TOWER", "OCEAN", "BOULDER"] }, c4: { words: ["THUNDER", "BUSH", "SKY", "STORM"] },
+}, solution: { slotCards: ["c1", "c2", "c3", "c4"], orientations: [0, 0, 0, 0] } };
+// ── 5. The rest of the app in both themes: results, the finished board, home, the
 //      admin editor, the puzzle creator and a friend's puzzle ──────────────
-const today = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; })();
-const { data: todays } = await anon().from("puzzles").select("id").eq("date", today).eq("status", "published").limit(1);
-const todayId = todays?.[0]?.id ?? "demo-001";
 for (const theme of ["light", "dark"]) {
   const g = await newPage(PHONE, theme === "dark" ? "dark" : "light");
   await g.goto(APP_URL, { waitUntil: "domcontentloaded" });
   await g.evaluate((t) => localStorage.setItem("cv-theme", t), theme);
-  await g.reload({ waitUntil: "networkidle0" });
+  await g.goto(`${APP_URL}/today`, { waitUntil: "networkidle0" });
   await g.locator(".lobby-start").click();
   await g.waitForSelector(".game .sbtn");
-  for (let i = 0; i < 4 && !(await g.$(".sovr")); i++) {
-    await g.locator(".game .cbtn").click();
-    await sleep(600);
+  await sleep(900);
+  // Three new wrong guesses (the local puzzle's answer is known): a loss.
+  for (let i = 0; i < 3; i++) {
+    await nudgeWrong(g, SEED_VIEW);
     await g.locator(".game .sbtn").click();
-    await sleep(2200);
+    await sleep(i < 2 ? 4600 : 1000);
   }
-  await g.waitForSelector(".sovr");
-  await sleep(600);
+  await g.waitForSelector(".rs-card", { timeout: 20000 });
+  await sleep(900);
   await shot(g, `${theme}-result`);
-  await checkContrast(g, [".sovr-title", ".sovr-sub", ".stat-lbl", ".sovr-btn"], `${theme} result`);
-  await g.evaluate((id) => localStorage.setItem("clover_completions", JSON.stringify({ [id]: { solved: true, livesUsed: 1, difficulty: "standard", solvedAt: new Date().toISOString() } })), todayId);
-  await g.goto(APP_URL, { waitUntil: "networkidle0" });
-  await g.waitForSelector(".lobby-start.secondary");
-  await shot(g, `${theme}-lobby-solved`);
-  await checkContrast(g, [".lobby-start.secondary", ".lobby-start.quiet"], `${theme} solved lobby`);
+  await checkContrast(g, RESULTS_TEXT, `${theme} result`);
+  await g.locator(".rs-btn.secondary").click();
+  await g.waitForSelector("[data-testid=view-results]");
+  await shot(g, `${theme}-board-finished`);
+  await checkContrast(g, FINISHED_TEXT, `${theme} finished board`);
+  await g.locator(".logo-link").click();
+  await g.waitForSelector(".hm");
+  await shot(g, `${theme}-home-done`);
+  await checkContrast(g, HOME_TEXT, `${theme} home, today done`);
   await g.goto(`${APP_URL}/admin`, { waitUntil: "networkidle0" });
   await g.waitForSelector(".pcard");
   await g.locator(".pcard").click();

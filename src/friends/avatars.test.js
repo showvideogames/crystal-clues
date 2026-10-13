@@ -92,10 +92,11 @@ describe("the Friends dot's source (badge.js)", () => {
     return { call, badge: await import("./badge.js") };
   };
 
-  it("reads the server's unread count and the player's profile", async () => {
+  it("reads the server's unread count, the puzzles waiting and the player's profile", async () => {
     const me = { id: "u1", display_name: "Deb", avatar: "cat" };
-    const { call, badge } = await withClient({ session: { user: {} }, inbox: { unread: 3, me, friends: [] } });
-    expect(await badge.fetchActivity()).toEqual({ unread: 3, me });
+    const friends = [{ incoming: { puzzle_id: "p1" } }, { incoming: { puzzle_id: "p2" }, unseen_result: { puzzle_id: "p3" } }, { incoming: null }];
+    const { call, badge } = await withClient({ session: { user: {} }, inbox: { unread: 3, me, friends } });
+    expect(await badge.fetchActivity()).toEqual({ unread: 3, waiting: 2, results: 1, me });
     expect(await badge.fetchUnread()).toBe(3);
     expect(call).toHaveBeenCalledWith("get_friends_inbox");
   });

@@ -301,10 +301,11 @@ describe("U7 stats derived from plays match the guest counters' shape and rules"
     expect(s.currentStreak).toBe(1);
     expect(deriveStats([], "2026-10-01", { importedLosses: -3 }).totalPlayed).toBe(0);
   });
-  it("completions in the guest shape, wins only", async () => {
+  it("completions in the guest shape, losses included so a lost puzzle opens as finished", async () => {
     const { deriveCompletions } = await import("./plays");
-    expect(deriveCompletions([play(7, "2026-10-01", true, 1, "expert"), play(8, "2026-10-02", false)])).toEqual({
+    expect(deriveCompletions([play(7, "2026-10-01", true, 1, "expert"), play(8, "2026-10-02", false, 3)])).toEqual({
       7: { solved: true, livesUsed: 1, difficulty: "expert", solvedAt: "2026-10-01T12:00:00Z" },
+      8: { solved: false, livesUsed: 3, difficulty: "standard", solvedAt: "2026-10-02T12:00:00Z" },
     });
   });
 });
