@@ -1,0 +1,133 @@
+/* Cluevoyance colours, light and dark. Every surface in the app (the game's
+   CSS in App.jsx, friends.css, account.css) paints with these tokens, so the
+   two themes stay one design. data-theme on <html> is set before the first
+   paint by index.html and kept by src/theme.js (System / Light / Dark).
+
+   Dark is its own palette, not an inversion: deep plum backgrounds, panels a
+   step lighter, warm off-white type, lavender secondary text. Feedback keeps
+   its meaning (green = right, rose = wrong, amber = careful) in both. */
+
+:root{
+  /* Page and surfaces */
+  --bg:#faf7fa;
+  --bg-glow:rgba(139,92,246,.055);
+  --bg-top:#fbf8fb;--bg-mid:#f8f5fa;--bg-bottom:#f7f3f8;
+  --surface:#ffffff;            /* cards, lists, inputs on the page */
+  --surface-raised:#ffffff;     /* sheets, menus, dialogs */
+  --surface-hover:#fbf8ff;
+  --panel:#f5f0fd;              /* quiet tinted panel (streaks, chips) */
+  --panel-2:#f6f3fa;            /* neutral tinted panel (waiting, status) */
+  --hdr-bg:rgba(255,255,255,.9);
+  --hdr-solid:#ffffff;
+  --backdrop:rgba(43,15,82,.28);
+  --overlay-bg:rgba(250,247,250,.97);  /* full-screen results */
+  --sheet-backdrop:rgba(32,10,64,.45);
+  --sheet-bg:#faf7fa;           /* a sheet over the page: page-coloured, white cards inside */
+  --board:#ffffff;
+
+  /* Type */
+  --text:#2b0f52;
+  --muted:#72628e;              /* clears 4.5:1 on the page, white and tinted panels */
+  --muted-strong:#665784;       /* secondary text on tinted panels */
+  --body:#3c2a5e;               /* longer reading text (rules, tutorial) */
+  --faint:#9d90b8;              /* chevrons, decorative marks */
+
+  /* Lines */
+  --line:#ece5f5;--line-strong:#ddd2ee;
+  --border-soft:#e7def6;--border-firm:#d5c6f0;
+
+  /* Accent: --purple-bright is for text and icons, --fill for filled buttons. */
+  --purple:#7c3aed;--purple-bright:#5b21b6;--purple-glow:rgba(124,58,237,0.18);
+  --fill:#6d28d9;--fill-hover:#5b21b6;--fill-press:#4c1d95;--on-fill:#ffffff;
+  --fill-disabled:#ebe5f4;--on-fill-disabled:#8b7ea5;
+  --accent-soft:#f0e9fc;--accent-soft-2:#e7dbfb;
+  --selected-bg:#f3ecfe;
+  --seg-on:#ffffff;             /* the chosen segment of a segmented control */
+  --hover-tint:rgba(124,58,237,.06);
+  --focus:rgba(101,38,217,.55);
+
+  /* The puzzle */
+  --card:#ffffff;--card-b:#e7dff4;--card-ink:#2d1060;--card-hover:#fdfcff;
+  --card-shadow:0 2px 10px rgba(63,26,114,.07),0 1px 2px rgba(63,26,114,.05);
+  --clue-bg:#ece3fb;--clue-tx:#3a1a6e;--clue-border:rgba(160,122,235,.28);
+  --lock-bg:#f6f1ff;--lock-b:rgba(124,58,237,.45);--lock-ink:#4c1d95;
+  --wrong-bg:#fdeef0;--wrong-b:rgba(217,44,69,.35);--wrong-ink:#9f1239;--wrong-mark:#e0344c;
+  --reveal-bg:#efecf4;--reveal-b:rgba(120,105,150,.3);--reveal-ink:rgba(105,92,133,.85);--reveal-mark:rgba(140,126,166,.7);
+  --slot-empty:rgba(255,255,255,.5);--slot-dash:rgba(160,122,235,.35);
+  --ball-glass:radial-gradient(circle at 50% 36%, rgba(255,255,255,.95) 0%, rgba(247,242,255,.8) 44%, rgba(238,229,252,.5) 74%, rgba(238,229,252,.12) 100%);
+  --ball-rim:rgba(154,113,231,.30);--ball-halo:rgba(238,230,252,.4);--ball-shadow:rgba(91,33,182,.07);--ball-inner:rgba(172,138,238,.2);
+  --spark:#c0a1ef;
+  --track:#f0ebf7;--bar-win:#b8a4ee;--bar-loss:#e2909c;--bar-current:#7c3aed;
+
+  /* Feedback */
+  --ok:#1d7a52;--ok-bg:#e6f5ee;--ok-dot:#1f9d62;
+  --warn:#8a5a00;--warn-bg:#fdf3dc;
+  --bad:#a3223f;--bad-bg:#fdecef;--err-ink:#c4243c;
+  --gold:#d9a521;--gold-dim:#b8860b;--amber:#d9a521;
+  --correct:#6d28d9;--wrong:#d92c45;
+
+  --shadow-tint:63,26,114;      /* rgb for soft shadows */
+
+  /* Account surfaces (account.css: the menu, the import prompt, the sign-in page) */
+  --cv-ink:#222;--cv-ink-2:#555;--cv-ink-3:#666;--cv-hair:#eee;--cv-edge:transparent;--cv-hover:#f3f3f7;
+  --cv-quiet-bg:#ecebf5;--cv-quiet-ink:#2b2140;--cv-danger:#b4232c;--cv-page:#f6f4fb;
+}
+
+:root[data-theme="dark"]{
+  --bg:#1b1224;
+  --bg-glow:rgba(139,92,246,.13);
+  --bg-top:#1e1428;--bg-mid:#1b1224;--bg-bottom:#180f20;
+  --surface:#251a31;
+  --surface-raised:#2b1f3a;
+  --surface-hover:#2f2340;
+  --panel:#2e2242;
+  --panel-2:#2a2036;
+  --hdr-bg:rgba(30,20,40,.94);
+  --hdr-solid:#1e1428;
+  --backdrop:rgba(8,3,16,.62);
+  --overlay-bg:rgba(27,18,36,.97);
+  --sheet-backdrop:rgba(8,3,16,.66);
+  --sheet-bg:#21172c;
+  --board:transparent;
+
+  --text:#f4eee6;
+  --muted:#bcaedb;
+  --muted-strong:#cbbfe6;
+  --body:#ddd3ea;
+  --faint:#8f80ad;
+
+  --line:#35293f;--line-strong:#46385c;
+  --border-soft:#3a2d4d;--border-firm:#4f3f69;
+
+  --purple:#8b5cf6;--purple-bright:#c7b4ff;--purple-glow:rgba(167,139,250,.24);
+  --fill:#6e3fe0;--fill-hover:#7b50ea;--fill-press:#5f31cc;--on-fill:#ffffff;
+  --fill-disabled:#342a44;--on-fill-disabled:#9a8cb5;
+  --accent-soft:rgba(167,139,250,.16);--accent-soft-2:rgba(167,139,250,.26);
+  --selected-bg:#382a5f;
+  --seg-on:#45346a;
+  --hover-tint:rgba(167,139,250,.12);
+  --focus:rgba(190,165,255,.75);
+
+  --card:#2c2140;--card-b:#46375f;--card-ink:#f2eaff;--card-hover:#33274b;
+  --card-shadow:0 2px 10px rgba(0,0,0,.35),0 1px 2px rgba(0,0,0,.3);
+  --clue-bg:#3b2a6a;--clue-tx:#f1e8ff;--clue-border:rgba(176,148,255,.32);
+  --lock-bg:#33255c;--lock-b:rgba(167,139,250,.7);--lock-ink:#ddd0ff;
+  --wrong-bg:#3d1d2c;--wrong-b:rgba(255,120,145,.55);--wrong-ink:#ffbac6;--wrong-mark:#ff6f86;
+  --reveal-bg:#221a2b;--reveal-b:rgba(150,135,175,.24);--reveal-ink:rgba(196,184,216,.6);--reveal-mark:rgba(150,135,175,.5);
+  --slot-empty:rgba(255,255,255,.03);--slot-dash:rgba(167,139,250,.34);
+  --ball-glass:radial-gradient(circle at 50% 36%, rgba(196,170,255,.17) 0%, rgba(124,82,214,.12) 46%, rgba(90,52,160,.08) 74%, rgba(90,52,160,0) 100%);
+  --ball-rim:rgba(176,148,255,.3);--ball-halo:rgba(124,58,237,.08);--ball-shadow:rgba(0,0,0,.3);--ball-inner:rgba(176,148,255,.16);
+  --spark:#cdb6ff;
+  --track:#2e2440;--bar-win:#6a52b0;--bar-loss:#a3485a;--bar-current:#8b5cf6;
+
+  --ok:#6fd8a4;--ok-bg:rgba(60,190,125,.15);--ok-dot:#3ccf87;
+  --warn:#f2c46a;--warn-bg:rgba(240,180,60,.14);
+  --bad:#ff9aac;--bad-bg:rgba(255,100,130,.14);--err-ink:#ff8fa1;
+  --gold:#e9bd4c;--gold-dim:#c99a2a;--amber:#e9bd4c;
+  --correct:#8b5cf6;--wrong:#ff6f86;
+
+  --shadow-tint:0,0,0;
+
+  --cv-ink:var(--text);--cv-ink-2:var(--muted);--cv-ink-3:var(--muted);--cv-hair:var(--line);--cv-edge:var(--line-strong);--cv-hover:var(--surface-hover);
+  --cv-quiet-bg:var(--panel);--cv-quiet-ink:var(--text);--cv-danger:#ff9aac;--cv-page:var(--bg);
+}

@@ -10,6 +10,7 @@ import { useAccount } from "./account/useAccount";
 import AccountMenu from "./account/AccountMenu";
 import ImportPrompt from "./account/ImportPrompt";
 import { usePath, parsePath, navigate, paths, adoptLegacyLink } from "./route";
+import { THEME_CHOICES, useThemeChoice } from "./theme";
 import {
   CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
 } from "./game/shared";
@@ -235,16 +236,8 @@ const CSS = `
   font-display:swap;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* Colours are the shared light/dark tokens in src/theme.css. */
 :root{
-  --bg:#faf7fa;--surface:#ffffff;--board:#ffffff;
-  --card:#ffffff;--card-b:#e7dff4;
-  --clue-bg:#ece3fb;--clue-tx:#3a1a6e;
-  --text:#2b0f52;--muted:#7d6d99;
-  --correct:#6d28d9;--wrong:#d92c45;
-  --lock-bg:#f3eeff;--wrong-bg:#fdeaec;--amber:#d9a521;
-  --purple:#7c3aed;--purple-bright:#5b21b6;--purple-glow:rgba(124,58,237,0.18);
-  --gold:#d9a521;--gold-dim:#b8860b;
-  --line:#ece5f5;--line-strong:#ddd2ee;
   --fc:'Cinzel',serif;--fu:'Raleway',sans-serif;
   --cs:110px;--cg:8px;--step:calc(var(--cs) + var(--cg));
 }
@@ -254,8 +247,8 @@ body{font-family:var(--fu);background:var(--bg);color:var(--text);
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(1100px 620px at 50% -8%, rgba(139,92,246,.055) 0%, rgba(139,92,246,0) 62%),
-    linear-gradient(180deg,#fbf8fb 0%,#f8f5fa 55%,#f7f3f8 100%);
+    radial-gradient(1100px 620px at 50% -8%, var(--bg-glow) 0%, rgba(139,92,246,0) 62%),
+    linear-gradient(180deg,var(--bg-top) 0%,var(--bg-mid) 55%,var(--bg-bottom) 100%);
 }
 #root{height:100vh;height:100dvh;width:100%;max-width:440px;margin:0 auto;position:relative;z-index:1;overflow:hidden}
 
@@ -1208,26 +1201,28 @@ body::before{
    ══════════════════════════════════════════════════════════════ */
 
 /* Header */
-.hdr{background:rgba(255,255,255,.9);border-bottom:1px solid var(--line);
+.hdr{background:var(--hdr-bg);border-bottom:1px solid var(--line);
   box-shadow:0 1px 0 rgba(43,15,82,.02)}
 .logo{color:var(--text);text-shadow:none}
 .nbtn{color:var(--muted)}
-.nbtn:hover{background:rgba(124,58,237,.07);color:var(--purple-bright)}
-.nbtn.on{background:#efe7fc;color:var(--purple-bright);border-color:rgba(124,58,237,.16)}
+.nbtn:hover{background:var(--hover-tint);color:var(--purple-bright)}
+.nbtn.on{background:var(--accent-soft);color:var(--purple-bright);border-color:rgba(124,58,237,.16)}
 .gear-btn{color:var(--muted)}
-.gear-btn:hover{color:var(--purple-bright);background:rgba(124,58,237,.08)}
+.gear-btn:hover{color:var(--purple-bright);background:var(--hover-tint)}
+.nbtn:focus-visible,.gear-btn:focus-visible,.cbtn:focus-visible,.sbtn:focus-visible,.diff-opt:focus-visible,
+.lobby-diff-opt:focus-visible,.lobby-start:focus-visible,.theme-opt:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 
 /* Crystal-ball motif — quiet ring standing in for the photo */
 .ballmotif{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   pointer-events:none;z-index:0;border-radius:50%;
-  background:radial-gradient(circle at 50% 36%, rgba(255,255,255,.95) 0%, rgba(247,242,255,.8) 44%, rgba(238,229,252,.5) 74%, rgba(238,229,252,.12) 100%);
-  border:1.5px solid rgba(154,113,231,.30);
-  box-shadow:0 0 0 8px rgba(238,230,252,.4),0 12px 36px rgba(91,33,182,.07)}
+  background:var(--ball-glass);
+  border:1.5px solid var(--ball-rim);
+  box-shadow:0 0 0 8px var(--ball-halo),0 12px 36px var(--ball-shadow)}
 .ballmotif::after{content:"";position:absolute;inset:9%;border-radius:50%;
-  border:1px solid rgba(172,138,238,.2)}
+  border:1px solid var(--ball-inner)}
 .sparkfield{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   pointer-events:none;z-index:1}
-.spark{position:absolute;pointer-events:none;color:#c0a1ef;line-height:0;
+.spark{position:absolute;pointer-events:none;color:var(--spark);line-height:0;
   animation:twinkle 4.4s ease-in-out infinite}
 .spark svg{display:block;width:100%;height:100%;fill:currentColor}
 @keyframes twinkle{0%,100%{opacity:.45;transform:scale(.88)}50%{opacity:1;transform:scale(1)}}
@@ -1237,7 +1232,7 @@ body::before{
 .ctab-float{display:flex;align-items:center;justify-content:center}
 .ctab{font-family:var(--fc);font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--clue-tx);background:var(--clue-bg);
-  border:1px solid rgba(160,122,235,.28);border-radius:50px;
+  border:1px solid var(--clue-border);border-radius:50px;
   text-shadow:none;box-shadow:0 1px 3px rgba(91,33,182,.05);
   display:flex;align-items:center;justify-content:center;font-size:15px}
 .ctab.top,.ctab.bot{width:calc(var(--cs) + 24px);height:34px;margin:0}
@@ -1245,31 +1240,31 @@ body::before{
   writing-mode:vertical-rl;letter-spacing:.1em}
 .ctab.lft{transform:rotate(180deg)}
 .ctab.rgt{transform:none}
-.ctab.editing{background:#fff;border:2px solid rgba(124,58,237,.55);color:var(--clue-tx)}
+.ctab.editing{background:var(--surface);border:2px solid rgba(124,58,237,.55);color:var(--clue-tx)}
 
 /* Cards */
-.ctile{background:#ffffff;border:1px solid var(--card-b);border-radius:16px;
-  box-shadow:0 2px 10px rgba(63,26,114,.07),0 1px 2px rgba(63,26,114,.05)}
+.ctile{background:var(--card);border:1px solid var(--card-b);border-radius:16px;
+  box-shadow:var(--card-shadow)}
 .ctile:not(.locked):not(.noclick):hover{
   box-shadow:0 6px 18px rgba(91,33,182,.14);border-color:rgba(124,58,237,.4)}
-.ctile.locked{background:#f6f1ff;border-color:rgba(124,58,237,.45);
+.ctile.locked{background:var(--lock-bg);border-color:var(--lock-b);
   box-shadow:0 2px 10px rgba(124,58,237,.12)}
-.ctile.wrong-red{background:#fdeef0;border-color:rgba(217,44,69,.35)}
+.ctile.wrong-red{background:var(--wrong-bg);border-color:var(--wrong-b)}
 .ctile.selected{border:2px solid var(--gold);
   box-shadow:0 0 0 3px rgba(217,165,33,.16),0 2px 10px rgba(63,26,114,.08)}
-.ctile.reveal-grey{background:#efecf4;border-color:rgba(120,105,150,.3)}
-.ctile.reveal-grey .ew{color:rgba(105,92,133,.85)}
-.ctile.reveal-grey .cmark{background:rgba(140,126,166,.7)}
-.ew{color:#2d1060;font-weight:800}
-.locked .ew{color:#4c1d95}
-.wrong-red .ew{color:#9f1239}
+.ctile.reveal-grey{background:var(--reveal-bg);border-color:var(--reveal-b)}
+.ctile.reveal-grey .ew{color:var(--reveal-ink)}
+.ctile.reveal-grey .cmark{background:var(--reveal-mark)}
+.ew{color:var(--card-ink);font-weight:800}
+.locked .ew{color:var(--lock-ink)}
+.wrong-red .ew{color:var(--wrong-ink)}
 .cmark{background:#a78bfa;box-shadow:none}
 .locked .cmark{background:var(--purple);box-shadow:none}
-.wrong-red .cmark{background:#e0344c;box-shadow:none}
-.cslot.empty{border:1.5px dashed rgba(160,122,235,.35);background:rgba(255,255,255,.5)}
+.wrong-red .cmark{background:var(--wrong-mark);box-shadow:none}
+.cslot.empty{border:1.5px dashed var(--slot-dash);background:var(--slot-empty)}
 .cslot.over::after{border-color:rgba(124,58,237,.6)}
-.ghost{background:#ffffff;border:1.5px solid rgba(124,58,237,.5);border-radius:16px;
-  box-shadow:0 16px 34px rgba(63,26,114,.22)}
+.ghost{background:var(--card);border:1.5px solid rgba(124,58,237,.5);border-radius:16px;
+  box-shadow:0 16px 34px rgba(var(--shadow-tint),.22)}
 
 /* Available cards */
 .elabel{display:flex;align-items:center;gap:12px;width:100%;
@@ -1285,102 +1280,128 @@ body::before{
   justify-content:center;box-shadow:none}
 .cbtn+.cbtn::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
   width:1px;height:22px;background:var(--line-strong)}
-.cbtn:hover{background:rgba(124,58,237,.06);color:var(--purple-bright);
+.cbtn:hover{background:var(--hover-tint);color:var(--purple-bright);
   transform:none;box-shadow:none}
 .cbtn svg{width:19px;height:19px}
 
 /* Submit */
-.sbtn{background:#6d28d9;color:#fff;border-radius:16px;
+.sbtn{background:var(--fill);color:var(--on-fill);border-radius:16px;
   font-family:var(--fu);font-weight:700;letter-spacing:.14em;
   box-shadow:0 6px 18px rgba(109,40,217,.26)}
-.sbtn:hover{background:#5b21b6;box-shadow:0 8px 22px rgba(109,40,217,.32)}
-.sbtn.blocked{background:#b91c1c;box-shadow:0 6px 18px rgba(185,28,28,.24)}
-.sbtn.solved{background:#4c1d95}
+.sbtn:hover{background:var(--fill-hover);box-shadow:0 8px 22px rgba(109,40,217,.32)}
+.sbtn.blocked{background:#b91c1c;color:#fff;box-shadow:0 6px 18px rgba(185,28,28,.24)}
+.sbtn.solved{background:var(--fill-press);color:var(--on-fill)}
 
 /* Feedback and status */
-.fbk{font-family:var(--fu);color:var(--muted)}
+.fbk{font-family:var(--fu);color:var(--muted-strong)}
 .fbk.ok{color:var(--purple-bright)}
-.fbk.err{color:#c4243c}
+.fbk.err{color:var(--err-ink)}
 .sdate{color:var(--purple-bright)}
-.dchip{background:#f0e9fc;color:var(--purple-bright);border:1px solid rgba(124,58,237,.18)}
+.dchip{background:var(--accent-soft);color:var(--purple-bright);border:1px solid rgba(124,58,237,.18)}
 .life.lost{opacity:.2;filter:grayscale(1)}
 
 /* Overlays, lobby, sheets */
-.sovr{background:rgba(250,247,250,.97);padding:0 20px}
+.sovr{background:var(--overlay-bg);padding:0 20px}
 .sovr-title{color:var(--text);text-shadow:none;text-align:center;line-height:1.25}
 .sovr-sub{color:var(--muted)}
-.sovr-btn{background:#f1eafd;border:1.5px solid rgba(124,58,237,.3);color:var(--purple-bright)}
-.sovr-btn:hover{background:#e7dbfb;box-shadow:0 3px 12px rgba(124,58,237,.14)}
+.sovr-btn{background:var(--accent-soft);border:1.5px solid rgba(124,58,237,.3);color:var(--purple-bright)}
+.sovr-btn:hover{background:var(--accent-soft-2);box-shadow:0 3px 12px rgba(124,58,237,.14)}
 .sovr-divider{background:var(--line-strong)}
 .stat-val{color:var(--purple-bright);text-shadow:none}
 .stat-lbl{color:var(--muted)}
-.dist-bar-wrap{background:#f0ebf7}
-.dist-bar.current{background:#7c3aed}
-.dist-bar.win{background:#b8a4ee}
-.dist-bar.loss{background:#e2909c}
+.dist-bar-wrap{background:var(--track)}
+.dist-bar.current{background:var(--bar-current)}
+.dist-bar.win{background:var(--bar-win)}
+.dist-bar.loss{background:var(--bar-loss)}
 .lobby-title{color:var(--text);text-shadow:none}
 .lobby-date,.lobby-diff-label,.lobby-diff-desc{color:var(--muted)}
-.lobby-diff-opt{background:#fff;border:1px solid var(--line-strong)}
-.lobby-diff-opt:hover{border-color:rgba(124,58,237,.45);background:#faf6ff}
-.lobby-diff-opt.active{border-color:rgba(124,58,237,.6);background:#f3ecfe}
+.lobby-diff-opt{background:var(--surface);border:1px solid var(--line-strong)}
+.lobby-diff-opt:hover{border-color:rgba(124,58,237,.45);background:var(--surface-hover)}
+.lobby-diff-opt.active{border-color:rgba(124,58,237,.6);background:var(--selected-bg)}
 .lobby-diff-name{color:var(--text)}
 .lobby-diff-check{border:1.5px solid var(--line-strong)}
 .lobby-diff-opt.active .lobby-diff-check{background:var(--purple);border-color:var(--purple);box-shadow:none}
-.lobby-start,.tut-open{background:#6d28d9;color:#fff;border:none;border-radius:16px;
+.lobby-start,.tut-open{background:var(--fill);color:var(--on-fill);border:none;border-radius:16px;
   box-shadow:0 6px 18px rgba(109,40,217,.26)}
-.lobby-start:hover,.tut-open:hover{background:#5b21b6;box-shadow:0 8px 22px rgba(109,40,217,.32)}
-.settings-backdrop{background:rgba(43,15,82,.28)}
-.settings-sheet{background:#fff;border:1px solid var(--line-strong);
-  box-shadow:0 -10px 40px rgba(63,26,114,.14)}
+.lobby-start:hover,.tut-open:hover{background:var(--fill-hover);box-shadow:0 8px 22px rgba(109,40,217,.32)}
+/* The solved lobby's other two ways on: outlined, then quiet. */
+.lobby-start.secondary{background:var(--surface);color:var(--purple-bright);border:1.5px solid rgba(139,92,246,.6);box-shadow:none}
+.lobby-start.quiet{background:var(--panel);color:var(--muted);border:1.5px solid var(--line-strong);box-shadow:none}
+.lobby-start.secondary:hover,.lobby-start.quiet:hover{background:var(--surface-hover);box-shadow:none}
+.settings-backdrop{background:var(--backdrop)}
+.settings-sheet{background:var(--surface-raised);border:1px solid var(--line-strong);
+  box-shadow:0 -10px 40px rgba(var(--shadow-tint),.14)}
 .settings-handle{background:var(--line-strong)}
 .settings-title{color:var(--text)}
 .settings-sub,.diff-opt-desc{color:var(--muted)}
-.diff-opt{background:#fff;border:1px solid var(--line-strong)}
-.diff-opt:hover{border-color:rgba(124,58,237,.45);background:#faf6ff}
-.diff-opt.active{border-color:rgba(124,58,237,.6);background:#f3ecfe}
+.diff-opt{background:var(--surface);border:1px solid var(--line-strong)}
+.diff-opt:hover{border-color:rgba(124,58,237,.45);background:var(--surface-hover)}
+.diff-opt.active{border-color:rgba(124,58,237,.6);background:var(--selected-bg)}
 .diff-opt-name{color:var(--text)}
 .diff-opt-check{border:1.5px solid var(--line-strong)}
 .diff-opt.active .diff-opt-check{background:var(--purple);border-color:var(--purple);box-shadow:none}
 
-/* Archive */
+.settings-sheet{padding-bottom:max(36px, calc(16px + env(safe-area-inset-bottom)))}
+/* Appearance (Settings): three choices in one row. */
+.settings-group{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.settings-group .settings-sub{margin-bottom:10px}
+.theme-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:4px;border-radius:14px;background:var(--panel)}
+.theme-opt{appearance:none;border:none;min-height:44px;border-radius:11px;cursor:pointer;background:none;
+  font-family:var(--fu);font-size:14px;font-weight:700;color:var(--muted-strong);display:flex;align-items:center;justify-content:center;gap:6px}
+.theme-opt:hover{color:var(--text)}
+.theme-opt[aria-checked="true"]{background:var(--seg-on);color:var(--purple-bright);box-shadow:0 1px 3px rgba(var(--shadow-tint),.14)}
+.theme-opt svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Archive — the calendar sits on its own deep-purple panel in both themes,
+   so its heading keeps the panel's light type. */
 .arch-hdr{border-bottom:1px solid var(--line)}
-.arch-title{color:var(--text);text-shadow:none}
-.arch-sub,.arch-month-label,.apc-dow,.apc-meta,.arch-empty{color:var(--muted)}
-.apc{background:#fff;border:1px solid var(--line-strong)}
-.apc:hover{box-shadow:0 4px 16px rgba(63,26,114,.08);border-color:rgba(124,58,237,.35)}
-.apc.solved-card{border-color:rgba(124,58,237,.45);background:#f8f4ff}
-.apc.today-card{border-color:rgba(217,165,33,.5);background:#fffdf5}
+.arch-title{color:#f5e9ff;text-shadow:none}
+.arch-sub,.arch-empty{color:rgba(227,213,255,.8)}
+.arch-month-label,.apc-dow,.apc-meta{color:var(--muted)}
+.apc{background:var(--surface);border:1px solid var(--line-strong)}
+.apc:hover{box-shadow:0 4px 16px rgba(var(--shadow-tint),.08);border-color:rgba(124,58,237,.35)}
+.apc.solved-card{border-color:rgba(124,58,237,.45);background:var(--selected-bg)}
+.apc.today-card{border-color:rgba(217,165,33,.5);background:var(--warn-bg)}
 .apc-day,.apc-name{color:var(--text)}
 .badge-solved{background:var(--purple);box-shadow:0 2px 8px rgba(124,58,237,.3)}
-.badge-today{background:#fdf3d8;border:1.5px solid rgba(217,165,33,.5)}
+.badge-today{background:var(--warn-bg);border:1.5px solid rgba(217,165,33,.5)}
 .badge-open{border:1px solid var(--line-strong);color:var(--muted)}
-.playing-banner{background:#f1eafd;color:var(--purple-bright);border-bottom:1px solid var(--line-strong)}
-.playing-banner button{background:#fff;border:1px solid rgba(124,58,237,.3);color:var(--purple-bright)}
-.playing-banner button:hover{background:#e7dbfb}
+.playing-banner{background:var(--accent-soft);color:var(--purple-bright);border-bottom:1px solid var(--line-strong)}
+.playing-banner button{background:var(--surface);border:1px solid rgba(124,58,237,.3);color:var(--purple-bright)}
+.playing-banner button:hover{background:var(--accent-soft-2)}
 
 /* Admin */
-.atabs{background:#fff;border-bottom:1px solid var(--line)}
+.atabs{background:var(--surface);border-bottom:1px solid var(--line)}
 .atab{color:var(--muted)}
 .atab.on{color:var(--purple-bright);border-bottom-color:var(--purple)}
-.aboard-wrap,.ced,.pcard,.wchip,.wb-chip{background:#fff;border:1px solid var(--line-strong)}
-.ced{box-shadow:0 4px 18px rgba(63,26,114,.07)}
-.pcard:hover{box-shadow:0 4px 16px rgba(63,26,114,.08);border-color:rgba(124,58,237,.35)}
-.fi,.fi-sm,.asel,.ced-fi{background:#fff;border:1px solid var(--line-strong);color:var(--text)}
+.aboard-wrap,.ced,.pcard,.wchip,.wb-chip{background:var(--surface);border:1px solid var(--line-strong)}
+.ced{box-shadow:0 4px 18px rgba(var(--shadow-tint),.07)}
+.pcard:hover{box-shadow:0 4px 16px rgba(var(--shadow-tint),.08);border-color:rgba(124,58,237,.35)}
+.fi,.fi-sm,.asel,.ced-fi{background:var(--surface);border:1px solid var(--line-strong);color:var(--text)}
 .fi:focus,.fi-sm:focus,.ced-fi:focus{border-color:rgba(124,58,237,.6)}
-.asel option{background:#fff;color:var(--text)}
+.asel option{background:var(--surface);color:var(--text)}
 .fl,.ced-wb-label,.pmeta,.mhint,.wdel{color:var(--muted)}
 .sh,.ptitle{color:var(--text);text-shadow:none}
-.abtn.p{background:#6d28d9;color:#fff;border:none;box-shadow:0 3px 10px rgba(109,40,217,.24)}
-.abtn.p:hover{background:#5b21b6}
-.abtn.s{background:#fff;color:var(--muted);border:1px solid var(--line-strong)}
+.abtn.p{background:var(--fill);color:var(--on-fill);border:none;box-shadow:0 3px 10px rgba(109,40,217,.24)}
+.abtn.p:hover{background:var(--fill-hover)}
+.abtn.s{background:var(--surface);color:var(--muted);border:1px solid var(--line-strong)}
 .abtn.s:hover{border-color:rgba(124,58,237,.5);color:var(--purple-bright)}
-.abtn.d{background:#fdecee;color:#b91c1c;border:1px solid rgba(217,44,69,.3)}
+.abtn.d{background:var(--bad-bg);color:var(--bad);border:1px solid rgba(217,44,69,.3)}
 .add-card-btn{border:1.5px dashed rgba(124,58,237,.3);background:rgba(124,58,237,.04);
-  color:rgba(91,33,182,.6)}
-.spill.unused,.spill.published{background:#ede5fb;color:var(--purple-bright)}
-.spill.draft{background:#f1eef5;color:var(--muted)}
-.spill.scheduled{background:#fbf0d6;color:#8a6508}
-.date-conflict{background:#fdf6e3;border:1px solid rgba(217,165,33,.4);color:#7a5a06}
+  color:var(--purple-bright)}
+.spill.unused,.spill.published{background:var(--accent-soft);color:var(--purple-bright)}
+.spill.draft{background:var(--panel-2);color:var(--muted)}
+.spill.scheduled{background:var(--warn-bg);color:var(--warn)}
+.date-conflict{background:var(--warn-bg);border:1px solid rgba(217,165,33,.4);color:var(--warn)}
+/* The editor sections (left over from the old dark admin): theme panels, and
+   the check chips keep green / amber / rose in both themes. */
+.admin-sec{background:var(--panel-2);border:1px solid var(--line-strong)}
+.admin-board-note,.admin-deal-note,.ced-tip{color:var(--muted)}
+.admin-deal-btn{background:var(--surface);border:1.5px solid var(--line-strong);color:var(--purple-bright)}
+.admin-deal-btn:hover{background:var(--surface-hover)}
+.admin-check.ok{background:var(--ok-bg);border-color:rgba(34,197,94,.45);color:var(--ok)}
+.admin-check.warn{background:var(--warn-bg);border-color:rgba(245,158,11,.45);color:var(--warn)}
+.admin-check.err{background:var(--bad-bg);border-color:rgba(239,68,68,.45);color:var(--bad)}
 
 /* The play screen renders at full size and scrolls if the window is short,
    rather than being scaled down to fit. */
@@ -1487,7 +1508,7 @@ body::before{
    animation outranks these declarations. */
 .ctile:not(.locked):not(.noclick):hover{
   transform:none;
-  background:#fdfcff;
+  background:var(--card-hover);
   border-color:rgba(124,58,237,.55);
   box-shadow:0 0 0 2px rgba(124,58,237,.18),0 6px 18px rgba(91,33,182,.16)}
 .ctile{transition:box-shadow .15s,transform .1s,border-color .15s,background-color .15s}
@@ -1526,16 +1547,16 @@ body::before{
 .ctab.clue-rotating-in{animation:clueWordFadeIn .24s ease-out both}
 
 /* Tutorial — keep its own layout, repaint its surfaces */
-.tut-ovr{background:rgba(43,15,82,.34)}
-.tut-card{background:#fff;border-color:var(--line-strong);
-  box-shadow:0 18px 48px rgba(63,26,114,.18)}
+.tut-ovr{background:var(--backdrop)}
+.tut-card{background:var(--surface-raised);border-color:var(--line-strong);
+  box-shadow:0 18px 48px rgba(var(--shadow-tint),.18)}
 .tut-step{color:var(--muted)}
 .tut-title{color:var(--text)}
-.tut-body,.tut-msg{color:#3c2a5e}
+.tut-body,.tut-msg{color:var(--body)}
 .tut-msg strong{color:var(--text)}
 .tut-note{color:var(--muted)}
 .tut-clue{color:var(--clue-tx);background:var(--clue-bg);
-  border:1px solid rgba(160,122,235,.28)}
+  border:1px solid var(--clue-border)}
 .tut-slot.expected::after{border-color:rgba(217,165,33,.85)}
 .tut-clue-shell.on{filter:drop-shadow(0 0 12px rgba(124,58,237,.3))}
 .tut-card-selected{box-shadow:0 0 0 2px rgba(217,165,33,.85),0 0 14px rgba(217,165,33,.28)}
@@ -1545,7 +1566,7 @@ body::before{
    room it needs instead of overlapping the board beneath it. */
 .tutorial-copy-wrap{height:auto;min-height:132px}
 .tut-board-wrap{margin-top:16px}
-.tut-card{background:#fff;border-color:var(--line-strong)}
+.tut-card{background:var(--surface-raised);border-color:var(--line-strong)}
 .cloud-label{color:var(--clue-tx);text-shadow:none}
 
 ::-webkit-scrollbar-thumb{background:rgba(124,58,237,.25)}
@@ -1555,9 +1576,20 @@ body::before{
    play or a result to watch that hasn't been opened yet (a screen reader gets
    the same news from #friends-new-desc). It never animates. */
 .friends-btn{position:relative}
-.friends-btn.on{color:var(--purple-bright);background:#efe7fc}
+.friends-btn.on{color:var(--purple-bright);background:var(--accent-soft)}
 .friends-dot{position:absolute;top:3px;right:2px;width:8px;height:8px;border-radius:50%;
-  background:#1f9d62;box-shadow:0 0 0 2px #fff;pointer-events:none}
+  background:var(--ok-dot);box-shadow:0 0 0 2px var(--hdr-solid);pointer-events:none}
+
+/* The wordmark: plum lettering on light, warm off-white lettering on dark
+   (public/assets/cluevoyance-logo-dark.png, from tools/build-logo-dark.mjs).
+   The crystal ball is the same art in both. */
+.logo-img.on-dark{display:none}
+:root[data-theme="dark"] .logo-img.on-light{display:none}
+:root[data-theme="dark"] .logo-img.on-dark{display:block}
+/* Words typed onto a card in the editors sit on the card face. */
+.admin-word-btn,.admin-word-input{color:var(--card-ink)}
+.admin-word-input{background:var(--surface)}
+.ctile.locked .admin-word-btn{color:var(--lock-ink)}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
   clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -2122,7 +2154,7 @@ function StatsOverlay({ lost, livesUsed, stats, onClose, onShare, copied, diffic
       {!!difficulty && !lost && (
         <>
           <div className="sovr-divider"/>
-          <div style={{fontSize:12,color:"rgba(240,231,255,.82)",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase"}}>
+          <div style={{fontSize:12,color:"var(--muted)",fontWeight:700,letterSpacing:".08em",textTransform:"uppercase"}}>
             Solved On {DIFFICULTY_LABELS[difficulty] || difficulty}
           </div>
         </>
@@ -2330,15 +2362,11 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, complete
             <button className="lobby-start" onClick={onAdmire}>
               Admire Puzzle
             </button>
-            <button className="lobby-start"
-              style={{background:"rgba(30,15,70,0.9)",color:"var(--purple-bright)",
-                border:"1.5px solid rgba(139,92,246,0.6)",boxShadow:"none"}}
+            <button className="lobby-start secondary"
               onClick={()=>setShowReplay(true)}>
               Replay Puzzle
             </button>
-            <button className="lobby-start"
-              style={{background:"rgba(15,8,35,0.9)",color:"var(--muted)",
-                border:"1.5px solid rgba(100,55,200,0.35)",boxShadow:"none"}}
+            <button className="lobby-start quiet"
               onClick={()=>setShowStats(true)}>
               Share Results
             </button>
@@ -4700,8 +4728,7 @@ function AdminView({ onPublish }) {
             <div style={{marginBottom:10}}>
               <input className="fi" value={wbSearch}
                 onChange={e=>setWbSearch(e.target.value)}
-                placeholder="Search words…"
-                style={{background:"rgba(18,10,45,.9)"}}/>
+                placeholder="Search words…"/>
             </div>
           )}
           <div className="wchips">
@@ -5026,7 +5053,40 @@ function ArchiveView({ onPlay }) {
 
 
 // children: more settings below the difficulty (the Friends notifications).
-function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose, children }) {
+// Appearance: System / Light / Dark. Changing it repaints at once; the board,
+// the puzzle in progress and the sheet itself stay as they are.
+const THEME_ICONS = {
+  system: <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></svg>,
+  light: <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg>,
+  dark: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>,
+};
+function AppearancePicker({ value, onChange }) {
+  const pick = (e, i) => {
+    const step = { ArrowRight:1, ArrowDown:1, ArrowLeft:-1, ArrowUp:-1 }[e.key];
+    if(!step) return;
+    e.preventDefault();
+    const next = THEME_CHOICES[(i + step + THEME_CHOICES.length) % THEME_CHOICES.length];
+    onChange(next.key);
+    e.currentTarget.parentElement.querySelector(`[data-theme-choice="${next.key}"]`)?.focus();
+  };
+  return (
+    <div className="settings-group">
+      <div className="settings-title" id="appearance-title">Appearance</div>
+      <div className="settings-sub">{value === "system" ? "Matches your device's light or dark setting." : "Saved on this device."}</div>
+      <div className="theme-opts" role="radiogroup" aria-labelledby="appearance-title">
+        {THEME_CHOICES.map((c, i)=>(
+          <button key={c.key} type="button" role="radio" className="theme-opt" data-theme-choice={c.key}
+            aria-checked={value === c.key} tabIndex={value === c.key ? 0 : -1}
+            onClick={()=>onChange(c.key)} onKeyDown={e=>pick(e, i)}>
+            {THEME_ICONS[c.key]}{c.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose, theme, onChangeTheme, children }) {
   const currentRank = DIFF_RANK[difficulty] ?? 1;
   return (
     <>
@@ -5062,6 +5122,7 @@ function SettingsSheet({ difficulty, onChangeDifficulty, gameInProgress, onClose
             );
           })}
         </div>
+        <AppearancePicker value={theme} onChange={onChangeTheme}/>
         {children}
       </div>
     </>
@@ -5117,6 +5178,7 @@ export default function App() {
   // it isn't in the header, and its writes reach only the official puzzles and
   // the word bank (supabase/migrations/20261015090000_beta_open_puzzle_admin.sql).
   const [showSettings,setShowSettings] = useState(false);
+  const [theme,setTheme] = useThemeChoice();
   const [editingProfile,setEditingProfile] = useState(false);
   const [showTutorial,setShowTutorial] = useState(false);
   const [difficulty,setDifficulty] = useState(()=>loadLS("clover_difficulty","standard"));
@@ -5262,7 +5324,8 @@ export default function App() {
         <button type="button" className="logo logo-link"
           onClick={()=>setView("game")}
           aria-label="Cluevoyance — go to today's puzzle">
-          <img src="/assets/cluevoyance-logo-b.png" alt="" className="logo-img" />
+          <img src="/assets/cluevoyance-logo-b.png" alt="" className="logo-img on-light" />
+          <img src="/assets/cluevoyance-logo-dark.png" alt="" className="logo-img on-dark" />
         </button>
           <div className="nav">
             {view==="game" && isArchivePlay && (
@@ -5355,6 +5418,8 @@ export default function App() {
           onChangeDifficulty={handleChangeDifficulty}
           gameInProgress={view==="game" && lobbyDone}
           onClose={()=>setShowSettings(false)}
+          theme={theme}
+          onChangeTheme={setTheme}
         >
           {FRIENDS_ENABLED && shownMe && (
             <Suspense fallback={null}>

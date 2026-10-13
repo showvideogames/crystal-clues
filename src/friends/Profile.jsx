@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { api } from "./client";
 import { AVATARS, avatarKey } from "./avatars";
-import { Avatar, Icon, Spinner } from "./ui.jsx";
+import { Avatar, Sheet, Spinner } from "./ui.jsx";
 import "./friends.css";
 
 // Your Friends profile — avatar and name — edited from the header's account
@@ -58,13 +58,6 @@ function EditName({ profile, onProfile }) {
 export default function ProfileDialog({ profile, email, onProfile, onClose }) {
   const [busy,setBusy] = useState(false);
   const [error,setError] = useState("");
-  const closeRef = useRef(null);
-  useEffect(()=>{
-    closeRef.current?.focus();
-    const esc = (e)=>{ if(e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", esc);
-    return ()=>document.removeEventListener("keydown", esc);
-  },[onClose]);
   const pick = async (key)=>{
     if(key === avatarKey(profile.avatar)) return;
     setBusy(true); setError("");
@@ -73,25 +66,21 @@ export default function ProfileDialog({ profile, email, onProfile, onClose }) {
     finally { setBusy(false); }
   };
   return (
-    <div className="fr-scope fr-modal" onClick={onClose}>
-      <div className="fr-modal-card" role="dialog" aria-modal="true" aria-labelledby="fr-profile-title" onClick={e=>e.stopPropagation()}>
-        <div className="fr-modal-head">
-          <Avatar name={profile.display_name} avatar={profile.avatar} size={48}/>
-          <div style={{minWidth:0,flex:1}}>
-            <h2 className="fr-modal-title" id="fr-profile-title">{profile.display_name}</h2>
-            {email && <div className="fr-sub fr-ellipsis">{email}</div>}
-          </div>
-          <button ref={closeRef} type="button" className="fr-closebtn" onClick={onClose} aria-label="Close"><Icon name="close" size={20}/></button>
-        </div>
-        <EditName profile={profile} onProfile={onProfile}/>
-        <div style={{display:"flex",flexDirection:"column",gap:8}}>
-          <span className="fr-label" style={{margin:"0 0 0 2px"}}>Your avatar</span>
-          <AvatarPicker name={profile.display_name} value={profile.avatar} onPick={pick} disabled={busy}/>
-          {busy && <span className="fr-help" style={{margin:0}} role="status"><Spinner/> Saving…</span>}
-        </div>
-        {error && <div className="fr-msg err">{error}</div>}
-        <button className="fr-btn primary" onClick={onClose}>Done</button>
+    <Sheet labelledBy="fr-profile-title" onClose={onClose} head={<>
+      <Avatar name={profile.display_name} avatar={profile.avatar} size={48}/>
+      <div style={{minWidth:0,flex:1}}>
+        <h2 className="fr-modal-title" id="fr-profile-title">{profile.display_name}</h2>
+        {email && <div className="fr-sub fr-ellipsis">{email}</div>}
       </div>
-    </div>
+    </>}>
+      <EditName profile={profile} onProfile={onProfile}/>
+      <div style={{display:"flex",flexDirection:"column",gap:8}}>
+        <span className="fr-label" style={{margin:"0 0 0 2px"}}>Your avatar</span>
+        <AvatarPicker name={profile.display_name} value={profile.avatar} onPick={pick} disabled={busy}/>
+        {busy && <span className="fr-help" style={{margin:0}} role="status"><Spinner/> Saving…</span>}
+      </div>
+      {error && <div className="fr-msg err">{error}</div>}
+      <button className="fr-btn primary" onClick={onClose}>Done</button>
+    </Sheet>
   );
 }

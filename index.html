@@ -7,6 +7,22 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="apple-mobile-web-app-title" content="Cluevoyance" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <script>
+      // Appearance before the first paint (the same choice as src/theme.js), so
+      // a saved Dark never flashes light while the app loads.
+      (function () {
+        var c = "system";
+        try { c = localStorage.getItem("cv-theme") || "system"; } catch (e) {}
+        var dark = c === "dark" || (c !== "light" && !!window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        var r = document.documentElement;
+        r.setAttribute("data-theme", dark ? "dark" : "light");
+        r.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
+    <style>
+      html, body { background: #faf7fa; }
+      html[data-theme="dark"], html[data-theme="dark"] body { background: #1b1224; }
+    </style>
     <!-- preview -->
     <title>Cluevoyance</title>
     <meta name="description" content="A daily word puzzle you solve by reading the clues. Make puzzles for your friends, too." />
