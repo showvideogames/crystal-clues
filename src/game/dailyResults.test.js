@@ -53,33 +53,46 @@ describe("the finished board", () => {
   const win2 = { solved: true, livesUsed: 2, difficulty: "hardcore" };
   const round = (guessHistory, extra = {}) => ({ ...win2, slots: [{ cardId: "c1", orientation: 0 }], clues: [], guessHistory, ...extra });
   const g2 = [[[B, R], [B, B]], [[R, R], [B, R]], [[R, R], [R, R]]];
-  it("is kept per player: one player's guesses are never another's", () => {
-    writeFinal(42, "acct-a", round(g2));
-    expect(readFinal(42, "acct-a", win2).guessHistory).toEqual(g2);
+  // Two players, same browser: identical difficulty, outcome, lives and
+  // guess count; only the grids differ.
+  const gA = [[[B, R], [B, B]], [[R, R], [B, R]], [[R, R], [R, R]]];
+  const gB = [[[R, B], [R, B]], [[R, R], [R, B]], [[R, R], [R, R]]];
+  const T1 = "2026-10-13T20:00:00.123Z", T2 = "2026-10-13T21:30:00.456Z";
+  it("an account reads only its own round, never another account's identical-looking one", () => {
+    writeFinal(42, "acct-a", round(gA, { finishedAt: T1 }));
+    writeFinal(42, "acct-b", round(gB, { finishedAt: T2 }));
+    expect(readFinal(42, "acct-a", win2).guessHistory).toEqual(gA);
+    expect(readFinal(42, "acct-b", win2).guessHistory).toEqual(gB);
+    expect(readFinal(42, "acct-c", win2)).toBe(null);
+  });
+  it("a guest reads only the round saved with their own completion", () => {
+    writeFinal(42, null, round(gA, { finishedAt: T1 }));
+    expect(readFinal(42, null, { ...win2, finishedAt: T1 }).guessHistory).toEqual(gA);
+    // The next guest on this browser, same-looking result, finished later: not theirs.
+    expect(readFinal(42, null, { ...win2, finishedAt: T2 })).toBe(null);
+    expect(readFinal(42, null, win2)).toBe(null);                         // no timestamp: unprovable
+    expect(readFinal(42, "acct-a", { ...win2, finishedAt: T1 })).toBe(null); // an account never reads the guest's
+  });
+  it("old-key rounds: only a guest's, tied by its exact finish time; never an account's", () => {
+    localStorage.setItem("clover_final_42", JSON.stringify(round(gA, { finishedAt: T1 })));
+    expect(readFinal(42, "acct-a", { ...win2, finishedAt: T1 })).toBe(null);
     expect(readFinal(42, "acct-b", win2)).toBe(null);
-    expect(readFinal(42, null, win2)).toBe(null);           // a guest on the same browser
-    const g0 = [[[R, R], [R, R]]];
-    writeFinal(42, null, round(g0, { livesUsed: 0 }));
-    expect(readFinal(42, null, { ...win2, livesUsed: 0 }).guessHistory).toEqual(g0);
-    expect(readFinal(42, "acct-a", win2).guessHistory).toEqual(g2);
+    expect(readFinal(42, null, { ...win2, finishedAt: T2 })).toBe(null);
+    expect(readFinal(42, null, { ...win2, finishedAt: T1 }).guessHistory).toEqual(gA);
   });
   it("is used only when it fits the result being shown", () => {
-    writeFinal(42, "acct-a", round(g2));
+    writeFinal(42, "acct-a", round(gA));
     expect(readFinal(42, "acct-a", { ...win2, livesUsed: 1 })).toBe(null);
     expect(readFinal(42, "acct-a", { ...win2, difficulty: "easy" })).toBe(null);
     expect(readFinal(42, "acct-a", { solved: false, livesUsed: 3, difficulty: "hardcore" })).toBe(null);
+    expect(readFinal(42, "acct-a", null)).toBe(null);
   });
   it("checks the guesses add up: a win is livesUsed + 1 guesses ending all right; a loss is 3", () => {
-    expect(finalMatches(round(g2), win2)).toBe(true);
-    expect(finalMatches(round(g2.slice(1)), win2)).toBe(false);
+    expect(finalMatches(round(gA), win2)).toBe(true);
+    expect(finalMatches(round(gA.slice(1)), win2)).toBe(false);
     expect(finalMatches(round([[[B, R], [B, B]], [[R, R], [B, R]], [[R, B], [R, R]]]), win2)).toBe(false);
     const lost = [[[B, B], [B, B]], [[R, B], [B, B]], [[R, B], [B, R]]];
     expect(finalMatches(round(lost, { solved: false, livesUsed: 3 }), { solved: false, livesUsed: 3, difficulty: "hardcore" })).toBe(true);
-  });
-  it("reads a round saved before players were told apart only when it fits", () => {
-    localStorage.setItem("clover_final_42", JSON.stringify(round(g2)));
-    expect(readFinal(42, "acct-a", win2).guessHistory).toEqual(g2);
-    expect(readFinal(42, "acct-a", { ...win2, livesUsed: 0 })).toBe(null);
   });
   it("without a saved board: the answer, the round's own extra cards and lives left", () => {
     const b = reviewBoard(PUZZLE, { solved: true, livesUsed: 2, difficulty: "standard" }, null);

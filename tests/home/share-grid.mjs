@@ -9,12 +9,14 @@
 import assert from "node:assert/strict";
 import puppeteer from "puppeteer-core";
 import { APP_URL, CHROME, signInBrowser, signOutBrowser } from "../friends/browser.mjs";
-import { solve, nudgeWrong } from "../friends/board.mjs";
-import { makePlayer } from "../friends/helpers.mjs";
+import { solve, nudgeWrong, slotEls, tap } from "../friends/board.mjs";
+import { makePlayer, rpc } from "../friends/helpers.mjs";
 import { sql } from "../db/helpers.mjs";
 import { dailyNumber } from "../../src/game/dailyNumber.js";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// "Today" as the app sees it: the player's local date (the database's current_date is UTC).
+const LOCAL_TODAY = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; })();
 const log = (...a) => console.log("•", ...a);
 const VIEW = { cards: {
   c1: { words: ["BLAZE", "RIVER", "CAVE", "WOLF"] }, c2: { words: ["EMBER", "PEAK", "STORM", "RIVER"] },
@@ -22,11 +24,11 @@ const VIEW = { cards: {
 }, solution: { slotCards: ["c1", "c2", "c3", "c4"], orientations: [0, 0, 0, 0] } };
 
 // A fresh puzzle for today, of this run's own.
-const prior = sql("select id from public.puzzles where date = current_date::text and status = 'published'").split("\n").filter(Boolean);
+const prior = sql(`select id from public.puzzles where date = '${LOCAL_TODAY}' and status = 'published'`).split("\n").filter(Boolean);
 sql(`update public.puzzles set status = 'draft' where id in (${prior.join(",") || "0"})`);
 const TODAY = String(1700000000700 + Math.floor(Math.random() * 90));
 sql(`insert into public.puzzles (id, date, title, author, difficulty, status, clues, cards, solution)
-     select ${TODAY}, current_date::text, 'Share test', 'Local sample', 'standard', 'published', clues, cards, solution
+     select ${TODAY}, '${LOCAL_TODAY}', 'Share test', 'Local sample', 'standard', 'published', clues, cards, solution
      from public.puzzles where id = 1700000000000`);
 const N = dailyNumber(sql(`select date from public.puzzles where id = ${TODAY}`));
 
@@ -57,6 +59,27 @@ async function play(page, wrong) {
   rows.push(await judged(page));
   return rows;
 }
+// One wrong guess with exactly `wrongSlots` turned (the rest right), then the
+// answer: two players then have the same result and guess count but different grids.
+async function playScripted(page, wrongSlots) {
+  await page.goto(`${APP_URL}/today`, { waitUntil: "networkidle0" });
+  await page.locator(".lobby-start").click();
+  await page.waitForSelector(".csurface .ctile");
+  await sleep(900);
+  await solve(page, VIEW);
+  for (const sl of wrongSlots) await tap(page, (await slotEls(page))[sl]);
+  await page.locator("button.sbtn").click();
+  await page.waitForFunction(() => document.querySelectorAll(".game-lives .life:not(.lost)").length === 2, { timeout: 10000 });
+  const rows = [await judged(page)];
+  await sleep(4300);
+  for (const sl of wrongSlots) for (let i = 0; i < 3; i++) await tap(page, (await slotEls(page))[sl]);
+  await page.locator("button.sbtn").click();
+  await page.waitForFunction(() => document.querySelectorAll(".csurface .ctile.locked").length === 4, { timeout: 10000 });
+  rows.push(await judged(page));
+  return rows;
+}
+const clueOrder = (p) => p.$$eval(".game .ctab", (t) => t.map((x) => x.textContent).join("|"));
+const SUMMARY_1 = () => `Daily #${N} ✨\nSolved with 1 life lost\nCluevoyance.com`;
 const expectedShare = (rows) => [`Daily #${N} ✨`, rows.map((r) => r[0].join("")).join(" "), rows.map((r) => r[1].join("")).join(" "), "Cluevoyance.com"].join("\n");
 async function shareNow(page) {
   await page.waitForSelector(".rs-card");
@@ -131,6 +154,43 @@ try {
   await other.locator("[data-testid=view-results]").click();
   assert.equal(await shareNow(other), `Daily #${N} ✨\nSolved with 1 life lost\nCluevoyance.com`);
   log("another browser: the summary line (the guesses were never there)");
+  // 4. Two accounts on one browser with the same result in every respect but the grid.
+  const [bo, cy, dee] = await Promise.all([makePlayer("Bo"), makePlayer("Cy"), makePlayer("Dee")]);
+  const t = await fresh();
+  await signInBrowser(t, bo, "/");
+  const boRows = await playScripted(t, [0, 1]);
+  await allPaths(t, boRows, "Bo");
+  const boFinal = JSON.parse(await t.evaluate((k) => localStorage.getItem(k), `clover_final_${bo.id}_${TODAY}`));
+  assert.ok(boFinal, "Bo's round is kept under his own key");
+  await signOutBrowser(t);
+  await signInBrowser(t, cy, "/");
+  const cyRows = await playScripted(t, [2, 3]);
+  assert.equal(cyRows.length, boRows.length, "same guess count");
+  assert.notDeepEqual(cyRows, boRows, "different grids");
+  await allPaths(t, cyRows, "Cy after Bo");
+  log("same result, different grids: each account shares only their own");
+
+  // 5. An old-key round, as the released build saved it (no owner), holding
+  //    Bo's guesses and a board turned so it's recognisable on screen. Neither
+  //    Cy nor Dee (whose result also looks the same) may see or share it.
+  const planted = { ...boFinal, clues: [...boFinal.clues.slice(1), boFinal.clues[0]] };
+  delete planted.owner;
+  const plantedClues = planted.clues.join("|");
+  await t.evaluate(({ key, val }) => {
+    for (const k of Object.keys(localStorage)) if (k.startsWith("clover_final_")) localStorage.removeItem(k);
+    localStorage.setItem(key, val);
+  }, { key: `clover_final_${TODAY}`, val: JSON.stringify(planted) });
+  await rpc(dee.client, "record_play", { _puzzle_id: Number(TODAY), _solved: true, _lives_used: 1, _difficulty: "standard" });
+  for (const [who, acct] of [["Cy", null], ["Dee", dee]]) {
+    if (acct) { await signOutBrowser(t); await signInBrowser(t, acct, "/today"); }
+    else await t.goto(`${APP_URL}/today`, { waitUntil: "networkidle0" });
+    await t.waitForSelector("[data-testid=view-results]");
+    assert.notEqual(await clueOrder(t), plantedClues, `${who}: View board isn't Bo's old-key board`);
+    await t.locator("[data-testid=view-results]").click();
+    assert.equal(await shareNow(t), SUMMARY_1(), `${who}: the summary line, not Bo's old-key guesses`);
+  }
+  log("old-key round: never shown or shared for another account");
+
   console.log("\nAll share-grid checks passed.");
 } finally {
   await browser.close();

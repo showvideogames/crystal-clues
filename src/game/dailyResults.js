@@ -9,8 +9,14 @@
 //                          <who> is the signed-in account's id, or "guest". One per
 //                          player, so on a shared browser one player's guesses are
 //                          never shown or shared as another's.
-//   clover_final_<id>      the same, from before <who> was added (2026-10-13):
-//                          used only when it agrees with the result being shown.
+//   clover_final_<id>      the same, from before <who> was added (2026-10-13).
+// Whose a saved round is must be KNOWN, not guessed from a matching result:
+//   an account   its own key; only that account's first finish writes it
+//   a guest      a round saved in the same call as the guest's completion,
+//                so both carry the identical finishedAt (the guest
+//                completion is cleared on every sign-in and sign-out)
+// Anything else (an old-key round for an account, a guest round from another
+// finish) is not shown or shared: the summary line stands in.
 // The guesses exist only in the browser the puzzle was finished in: the
 // account's server record (plays) holds the result, not the guesses.
 // The result itself (won or not, lives used, difficulty) is the completion
@@ -80,13 +86,26 @@ export function finalMatches(f, record) {
   return record.solved ? right(g[g.length - 1]) : !right(g[g.length - 1]);
 }
 
-/** The round this player finished this puzzle with, if this browser kept it and it fits the result. */
+/**
+ * The round this player finished this puzzle with, when this browser kept it
+ * AND it is provably theirs (see the storage notes above); otherwise null.
+ *   who     the signed-in account's id, or null for a guest
+ *   record  the result being shown (a guest's carries its finishedAt)
+ */
 export function readFinal(id, who, record) {
-  const ok = (f) => f && typeof f === "object" && Array.isArray(f.slots) && (!record || finalMatches(f, record));
-  const own = read(finalKey(id, who || "guest"));
-  if (ok(own)) return own;
-  const legacy = read(finalKey(id));
-  return !legacy?.owner && ok(legacy) && record ? legacy : null;
+  if (!record) return null;
+  const ok = (f) => f && typeof f === "object" && Array.isArray(f.slots) && finalMatches(f, record);
+  if (who) {
+    const own = read(finalKey(id, who));
+    return ok(own) && own.owner === who ? own : null;
+  }
+  // A guest: the round saved together with this very completion, under either key.
+  const at = record.finishedAt;
+  if (!at) return null;
+  for (const f of [read(finalKey(id, "guest")), read(finalKey(id))]) {
+    if (ok(f) && (f.owner ?? "guest") === "guest" && f.finishedAt === at) return f;
+  }
+  return null;
 }
 
 /** Saves the round a player's first attempt finished with (recordFirstFinish only calls this once per player). */
