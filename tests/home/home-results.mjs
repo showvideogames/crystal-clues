@@ -21,6 +21,8 @@ import { dailyNumber as dailyNumberOf } from "../../src/game/dailyNumber.js";
 const OUT = process.argv[2] ? path.resolve(process.argv[2]) : null;
 if (OUT) fs.mkdirSync(OUT, { recursive: true });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// "Today" as the app sees it: the player's local date (the database's current_date is UTC).
+const LOCAL_TODAY = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; })();
 const log = (...a) => console.log("•", ...a);
 const at = (page) => new URL(page.url()).pathname;
 const waitPath = (page, p) => page.waitForFunction((x) => location.pathname === x, { timeout: 15000 }, p);
@@ -34,15 +36,15 @@ const CARDS = {
   c3: { words: ["CLIFF", "TOWER", "OCEAN", "BOULDER"] }, c4: { words: ["THUNDER", "BUSH", "SKY", "STORM"] },
 };
 const VIEW = { cards: CARDS, solution: { slotCards: ["c1", "c2", "c3", "c4"], orientations: [0, 0, 0, 0] } };
-let TODAY = sql("select id from public.puzzles where date = current_date::text and status = 'published' limit 1");
+let TODAY = sql(`select id from public.puzzles where date = '${LOCAL_TODAY}' and status = 'published' limit 1`);
 const ADDED_TODAY = !TODAY;
 if (ADDED_TODAY) {
   TODAY = "1700000000100";
   sql(`insert into public.puzzles (id, date, title, author, difficulty, status, clues, cards, solution)
-       select ${TODAY}, current_date::text, 'Local Today', 'Local sample', 'standard', 'published', clues, cards, solution
+       select ${TODAY}, '${LOCAL_TODAY}', 'Local Today', 'Local sample', 'standard', 'published', clues, cards, solution
        from public.puzzles where id = 1700000000000 on conflict (id) do nothing`);
 }
-const PAST = sql("select id from public.puzzles where date < current_date::text and status = 'published' order by date desc").split("\n");
+const PAST = sql(`select id from public.puzzles where date < '${LOCAL_TODAY}' and status = 'published' order by date desc`).split("\n");
 assert.ok(PAST.length >= 2, "two past local puzzles");
 
 // A stubbed answer from the (cross-origin) database must still pass CORS.
@@ -213,7 +215,7 @@ try {
   // A puzzle backdated into the archive (and one retired) renumbers nothing.
   const todayNo = dailyNumber(TODAY);
   sql(`insert into public.puzzles (id, date, title, author, difficulty, status, clues, cards, solution)
-       select 1700000000990, (current_date - 40)::text, 'Backdated', 'Local sample', 'standard', 'published', clues, cards, solution
+       select 1700000000990, ('${LOCAL_TODAY}'::date - 40)::text, 'Backdated', 'Local sample', 'standard', 'published', clues, cards, solution
        from public.puzzles where id = ${TODAY} on conflict (id) do nothing`);
   sql(`update public.puzzles set status = 'unused' where id = ${PAST[PAST.length - 1]}`);
 
@@ -400,7 +402,7 @@ try {
   // A past puzzle of this run's own, so earlier runs' plays don't count.
   const SHARED = String(1700000000950 + Math.floor(Math.random() * 40));
   sql(`insert into public.puzzles (id, date, title, author, difficulty, status, clues, cards, solution)
-       select ${SHARED}, (current_date - 3)::text, 'Shared test', 'Local sample', 'standard', 'published', clues, cards, solution
+       select ${SHARED}, ('${LOCAL_TODAY}'::date - 3)::text, 'Shared test', 'Local sample', 'standard', 'published', clues, cards, solution
        from public.puzzles where id = ${PAST[0]} on conflict (id) do nothing`);
   // Other players on the same puzzle: one Hardcore loss, one Easy win (a different game).
   await rpc(ava.client, "record_play", { _puzzle_id: Number(SHARED), _solved: false, _lives_used: 3, _difficulty: "hardcore" });

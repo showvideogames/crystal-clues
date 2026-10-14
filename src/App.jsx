@@ -6,6 +6,7 @@ import { seeded01, shuffleArr } from "./utils/random";
 import { SUPABASE_URL, SUPABASE_KEY, OFFLINE_MODE, NOT_CONFIGURED_MESSAGE, announceConfiguration, FRIENDS_ENABLED } from "./game/config";
 import { authedFetch, getAccessToken } from "./account/supabaseClient";
 import { loadStatsFor, loadCompletionsFor, recordFinishFor, saveCompletionFor } from "./account/historyStore";
+import { getCurrentAccount } from "./account/platformSignIn";
 import { useAccount } from "./account/useAccount";
 import AccountMenu from "./account/AccountMenu";
 import ImportPrompt from "./account/ImportPrompt";
@@ -15,7 +16,7 @@ import {
   CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
 } from "./game/shared";
 import { loadWordBank, wordBankPagePath } from "./game/wordBank";
-import { initialMode, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinalOnce } from "./game/dailyResults";
+import { initialMode, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinal } from "./game/dailyResults";
 import Results from "./game/Results.jsx";
 import Home from "./home/Home.jsx";
 
@@ -4820,7 +4821,8 @@ function recordFirstFinish(puzzle, r){
   const now = new Date().toISOString();
   updateStats(r.won, r.livesUsed, r.difficulty, puzzle);
   saveCompletion(puzzle.id, { solved:r.won, livesUsed:r.livesUsed, difficulty:r.difficulty, solvedAt:now, finishedAt:now });
-  writeFinalOnce(puzzle.id, { difficulty:r.difficulty, solved:r.won, livesUsed:r.livesUsed,
+  // The actual guesses, kept for this player (Share results, View board).
+  writeFinal(puzzle.id, getCurrentAccount()?.user_id, { difficulty:r.difficulty, solved:r.won, livesUsed:r.livesUsed,
     slots:r.slots, clues:r.clues, guessHistory:r.guessHistory, finishedAt:now });
   return true;
 }
@@ -5331,7 +5333,7 @@ export default function App() {
   const gameInProgress = view === "game" && game?.mode === "play" && !game.finished && !record;
   const gamePuzzle = officialPuzzle && game?.puzzleId === officialPuzzle.id ? { ...officialPuzzle, difficulty:gameDifficulty } : null;
   const review = gamePuzzle && game.mode === "review" && record
-    ? { ...reviewBoard(gamePuzzle, record, readFinal(gamePuzzle.id)), record } : null;
+    ? { ...reviewBoard(gamePuzzle, record, readFinal(gamePuzzle.id, getCurrentAccount()?.user_id, record)), record } : null;
 
     return (
       <div style={{height:"100vh",height:"100dvh",width:"100%",display:"flex",flexDirection:"column"}}>
@@ -5455,7 +5457,7 @@ export default function App() {
         <Results
           puzzle={officialPuzzle}
           record={record}
-          guessHistory={readFinal(officialPuzzle.id)?.guessHistory || []}
+          guessHistory={readFinal(officialPuzzle.id, getCurrentAccount()?.user_id, record)?.guessHistory || []}
           stats={loadStats()}
           loadSummary={loadSummary}
           counted={acct.status === "signed_in"}
