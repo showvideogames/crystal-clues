@@ -201,10 +201,17 @@ export default function Results({ mode = "result", puzzle, record, guessHistory 
     };
   },[]);
 
+  // The Share button answers in its own label ("Copied ✓", or "Copy failed"),
+  // then goes back to "Share results"; nothing is added around it. Each click
+  // restarts the timer, so repeated clicks never leave a stale label behind.
+  const copiedTimer = useRef(null);
+  useEffect(()=>()=>clearTimeout(copiedTimer.current),[]);
   const share = useCallback(async ()=>{
+    clearTimeout(copiedTimer.current);
+    setCopied(null);
     const ok = await copyText(shareText(record, guessHistory, puzzle?.date));
     setCopied(ok ? "ok" : "fail");
-    setTimeout(()=>setCopied(null), 2500);
+    copiedTimer.current = setTimeout(()=>setCopied(null), ok ? 2000 : 3500);
   },[record, guessHistory, puzzle?.date]);
 
   const isResult = mode === "result" && !!record;
@@ -243,13 +250,13 @@ export default function Results({ mode = "result", puzzle, record, guessHistory 
                 </span>
                 <span>{words.line}</span>
               </p>
-              <button type="button" className="rs-share" onClick={share}>
+              <button type="button" className={`rs-share${copied ? ` ${copied}` : ""}`} onClick={share}>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5"/><path d="M5 13v5.5A1.5 1.5 0 006.5 20h11a1.5 1.5 0 001.5-1.5V13"/></svg>
-                Share results
+                <span className="rs-share-label">{copied === "ok" ? "Copied ✓" : copied === "fail" ? "Copy failed" : "Share results"}</span>
               </button>
-              <p className="rs-copied" role="status" aria-live="polite">
-                {copied === "ok" ? "Copied — paste it anywhere to share." : copied === "fail" ? "Couldn't copy here. Try another browser." : ""}
-              </p>
+              {/* Said aloud, never shown: the layout stays exactly as it is. */}
+              <span className="rs-sr" role="status" aria-live="polite">{copied === "ok" ? "Results copied. Paste them anywhere to share." : ""}</span>
+              <span className="rs-sr" role="alert">{copied === "fail" ? "Couldn't copy here. Try another browser." : ""}</span>
               {onViewBoard && <button type="button" className="rs-link" onClick={onViewBoard}>View board</button>}
             </section>
           ) : (
