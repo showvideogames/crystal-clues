@@ -52,7 +52,6 @@ describe("the finished board", () => {
   const R = "🔮", B = "⚫";
   const win2 = { solved: true, livesUsed: 2, difficulty: "hardcore" };
   const round = (guessHistory, extra = {}) => ({ ...win2, slots: [{ cardId: "c1", orientation: 0 }], clues: [], guessHistory, ...extra });
-  const g2 = [[[B, R], [B, B]], [[R, R], [B, R]], [[R, R], [R, R]]];
   // Two players, same browser: identical difficulty, outcome, lives and
   // guess count; only the grids differ.
   const gA = [[[B, R], [B, B]], [[R, R], [B, R]], [[R, R], [R, R]]];
