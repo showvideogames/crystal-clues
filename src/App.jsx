@@ -1489,7 +1489,10 @@ body::before{
 .extra{width:100%;padding:0;gap:10px;margin-top:0}
 .eslots{gap:10px}
 .ctrls{margin-top:0}
-.fbk{min-height:16px;margin-top:0}
+.fbk{margin-top:0;width:100%;padding:0 4px;letter-spacing:.01em;line-height:1.3;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  /* Room for two lines, always: the longest messages wrap to two on a 320px phone. */
+  min-height:calc(2 * 1.3em)}
 .sbtn-wrap{margin-top:0}
 
 /* A taller, more substantial Submit. The tutorial's own pill button sets its
@@ -2744,6 +2747,11 @@ function GameView({
   },[]);
 
   const [showRepeatWarning, setShowRepeatWarning] = useState(false);
+  // Bumped on every blocked Submit, so a screen reader hears the warning again.
+  const [warnCount, setWarnCount] = useState(0);
+  // The warning fades on its own clock: the previous message's fade-out (a
+  // wrong guess's "Not quite…") must not blink it out and back in.
+  const [warnFading, setWarnFading] = useState(false);
   const repeatWarnTimer = useRef(null);
   useEffect(()=>{
     if(friendProgressKey){
@@ -2793,8 +2801,8 @@ function GameView({
     if(repeatedBad.size === 0 && showRepeatWarning){
       clearTimeout(repeatWarnTimer.current);
       repeatWarnTimer.current = setTimeout(()=>setShowRepeatWarning(false), 500);
-      setTimeout(()=>setFbFading(true), 0);
-      setTimeout(()=>setFbFading(false), 500);
+      setTimeout(()=>setWarnFading(true), 0);
+      setTimeout(()=>setWarnFading(false), 500);
     }
   },[repeatedBad.size, showRepeatWarning]);
 
@@ -3151,7 +3159,7 @@ function GameView({
     }
     // lives <= 0: the last guess was wrong and the answer is being revealed.
     if(solved || lost || revealPhase || lives <= 0) return;
-    if(repeatedBad.size > 0 && !replayMode){ setShowRepeatWarning(true); return; }
+    if(repeatedBad.size > 0 && !replayMode){ setShowRepeatWarning(true); setWarnFading(false); setWarnCount(c=>c+1); return; }
     onGameStart?.();
     // Daily and preview games are judged here; friend puzzles by the server.
     // Only the first attempt at an official puzzle counts; a practice replay never does.
@@ -3699,8 +3707,13 @@ function GameView({
           </button>
         )}
       </div>
-      <div className={`fbk${feedbackFading?" fading":""}${showRepeatWarning?" err":wrong.size>0?" err":locked.size>0&&!lost?" ok":""}`}>
-        {showRepeatWarning ? "You already know that's wrong — move the incorrect card(s) first." : feedback}
+      {/* A fixed two-line area above Submit: a message appearing, changing or
+          clearing never moves the controls. Read out politely; focus stays put. */}
+      <div className={`fbk${(showRepeatWarning ? warnFading : feedbackFading)?" fading":""}${showRepeatWarning?" err":wrong.size>0?" err":locked.size>0&&!lost?" ok":""}`}
+        role="status" aria-live="polite">
+        <span key={showRepeatWarning ? `warn-${warnCount}` : "msg"}>
+          {showRepeatWarning ? "You already know that's wrong — move the incorrect card(s) first." : feedback}
+        </span>
       </div>
       <div className="sbtn-wrap" inert={replayMode || undefined}>
         <button
