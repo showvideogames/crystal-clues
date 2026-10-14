@@ -21,6 +21,27 @@ const still = async (p, name) => { if (SHOTS) await p.screenshot({ path: `${SHOT
 const MEASURE_ONLY = process.argv.includes("--measure-only");   // report, don't assert (the "before" run)
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = (...a) => console.log("•", ...a);
+// Every message the game can put in the feedback area above Submit
+// (App.jsx GameView; friends/AnimatedReplay verdict(); the friend-guess RPC
+// errors, submit_friend_guess / submit_shared_guess, shown as written; and
+// friends/client.js network fallbacks). Counts take their longest forms.
+const MESSAGES = [
+  "You already know that's wrong — move the incorrect card(s) first.",
+  "Not quite — 2 lives remaining.", "Not quite — 1 life remaining.",
+  "3 confirmed! 2 lives left.", "2 confirmed! 1 life left.",
+  "Difficulty lowered — board reshuffled.", "Revealing the vision...",
+  "Perfect solve — not a life lost! ✨", "Solved with 2 lives to spare! 🔮",
+  "Barely — but the crystal revealed all! 💫", "The mists part — well done! 💫",
+  "The vision is clear 🔮",
+  "Couldn't reach Cluevoyance — your guess wasn't counted. Try again.",
+  "Couldn't reach Cluevoyance. Check your connection and try again.",
+  "Something went wrong.",
+  "This puzzle moved on in another window. Reloading your board.",
+  "You've already finished this puzzle.", "That board could not be read.",
+  "Choose a difficulty to start this puzzle.", "That puzzle isn't available.",
+  "This puzzle was started in another browser.", "This link has expired.",
+  "Sign in to use Friends.", "Choose a display name first.",
+];
 const LOCAL_TODAY = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; })();
 const VIEW = { cards: {
   c1: { words: ["BLAZE", "RIVER", "CAVE", "WOLF"] }, c2: { words: ["EMBER", "PEAK", "STORM", "RIVER"] },
@@ -121,7 +142,7 @@ const finished = (page) => page.evaluate((id) => {
 }, TODAY);
 
 try {
-  for (const [w, h, name] of [[320, 568, "320px phone"], [360, 740, "narrow phone"], [1280, 800, "desktop"]]) {
+  for (const [w, h, name] of [[320, 568, "320px phone"], [360, 740, "narrow phone"], [390, 844, "390px phone"], [1280, 800, "desktop"]]) {
     // 1. Share results, clicked twice; then a failed copy.
     const p = await fresh(w, h);
     await finished(p);
@@ -198,6 +219,29 @@ try {
       }
       await sleep(600);
     }
+    // Every message, in the real feedback area at this width: two lines at
+    // most, and Submit, the controls and the board stay exactly where they are.
+    if (w < 500) {
+      const fits = await g.evaluate((msgs) => {
+        const fbk = document.querySelector(".fbk"), span = fbk.querySelector("span");
+        const keep = span.textContent, keepCls = fbk.className;
+        const pos = (s) => { const r = document.querySelector(s).getBoundingClientRect(); return `${Math.round(r.y)}/${Math.round(r.height)}`; };
+        const at = () => [pos(".sbtn"), pos(".ctrls"), pos(".csurface"), pos(".fbk")].join(" ");
+        span.textContent = ""; const empty = at();
+        const lh = parseFloat(getComputedStyle(fbk).lineHeight);
+        const out = msgs.map((m) => {
+          span.textContent = m;
+          return { m, lines: Math.round(span.getBoundingClientRect().height / lh), same: at() === empty };
+        });
+        span.textContent = keep; fbk.className = keepCls;
+        return out;
+      }, MESSAGES);
+      const bad = fits.filter((f) => f.lines > 2 || !f.same);
+      const twoLine = fits.filter((f) => f.lines === 2).map((f) => f.m);
+      log(`${name}: ${fits.length} messages fit; two-line: ${twoLine.length ? twoLine.join(" | ") : "none"}`);
+      check(bad.length === 0, `${name}: messages that don't fit: ${JSON.stringify(bad)}`);
+    }
+
     // Moving a wrong card clears the warning; still nothing moves.
     const els = await slotEls(g);
     const wrongSlot = await g.$$eval(".csurface .cslot", (s) => s.findIndex((x) => !x.querySelector(".ctile.locked")));
