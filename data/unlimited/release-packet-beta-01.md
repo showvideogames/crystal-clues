@@ -119,6 +119,34 @@ Screenshots (phone `u01`–`u11`, desktop `d01`–`d04`) and the source diff
 (untracked). Source change: 25 files, +3,494 / −80 lines, of which `src/App.jsx` +27/−80,
 `src/game/shared.js` +84, `src/route.js` +3, the rest new files.
 
+## 3b. Parent-review fixes (same day, after the first packet)
+
+- **Notes are saved on every keystroke** (`UnlimitedView.jsx`): the 250 ms debounce that could
+  drop the last edit on close / Next, or export stale text on Copy / Download, is gone. The
+  browser suite now types a note and taps Copy at once (the copied text holds the note) and
+  types a note and taps Next at once (the note is kept), with no waits.
+- **Diamond text corrected at the source**: `pilot-pair-clues-20.json` DIAMOND+SALT → CRYSTAL
+  wordAConnection now reads "A diamond is a crystal." (lab-grown diamonds exist). The library,
+  the batch and the bundled pool were regenerated from it with the same seed; the eight boards
+  are unchanged and no copy keeps the old sentence. The hint stays approved; no new review.
+- **One-word hint rule in `check-boards.mjs`** (owner rule): every clue must have no inner
+  whitespace; 8/8 boards comply.
+- **Seeded Daily storage**: the suite now seeds Daily stats, a completion, its saved final
+  board, a game in progress and the chosen difficulty before any Unlimited play and asserts
+  every one of them byte-identical, and no Daily key added or removed, at four points.
+- **Replay and exhausted pool**: the suite plays all eight boards, checks the "played all"
+  lobby (no Play button, a Replay per puzzle), replays the lost puzzle 2 and confirms the loss
+  is kept, `replays` is 1, `lastReplay` is the win, and the lobby shows "replayed 1×".
+- **"Why these clues" sheet, keyboard and focus (probe, no changes made)**: `role=dialog`,
+  `aria-modal=true`, labelled by its title; initial focus lands on Close; Escape closes; a
+  click inside keeps it open; the Close button closes. At desktop width a backdrop click
+  closes it; at phone width the card fills the viewport, so there is no backdrop to click.
+  **Not provided**: Tab containment (Shift+Tab from Close reaches "Next puzzle" behind the
+  sheet, Tab past the last control leaves the page; the page behind is neither `inert` nor
+  `aria-hidden`) and focus restoration (after any close, focus is on `body`, not back on the
+  "Why these clues" button). The sheet is the shared Friends `Sheet` component, so the same
+  holds for the Friends sheets; left for a separate accessibility pass.
+
 ## 4. Limitations and open items
 
 - 8 boards, not 10 (reason above). Two more need ~6 reviewed pairs on new words; a reviewer

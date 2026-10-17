@@ -6,7 +6,7 @@
 // per clue and a note per puzzle. Everything the player does is saved in this
 // browser only (history.js); the screens say so, and the feedback can be
 // copied or downloaded. No account, no server, no payment, no homepage link.
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { DIFF_OPTIONS, DIFFICULTY_LABELS, MAX_LIVES } from "../game/shared";
 import { Icon, PageHead, Sheet } from "../friends/ui.jsx";
 import POOL from "./pool.json";
@@ -198,13 +198,9 @@ function WhySheet({ board, result, store, update, onClose, onNext }){
   const mine = feedbackFor(store, board);
   const ratingAt = (pos) => mine.find((f)=>f.position === pos)?.rating || null;
   const [note,setNote] = useState(()=>mine.find((f)=>f.position === null)?.note || "");
-  const noteTimer = useRef(null);
-  const saveNote = useCallback((text)=>{
-    if(noteTimer.current) clearTimeout(noteTimer.current);
-    noteTimer.current = setTimeout(()=>update((s)=>notePuzzle(s, { ...ctx, note:text })), 250);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[update, board.id]);
-  useEffect(()=>()=>{ if(noteTimer.current){ clearTimeout(noteTimer.current); } },[]);
+  // Every keystroke is saved at once (the store is small and local), so closing,
+  // Next, Copy or Download right after typing never loses or exports a stale note.
+  const changeNote = (text)=>{ setNote(text); update((s)=>notePuzzle(s, { ...ctx, note:text })); };
   const [copied,setCopied] = useState("");
   const copy = async ()=>{ setCopied((await copyText(feedbackText(store))) ? "Copied ✓" : "Copy failed"); setTimeout(()=>setCopied(""), 2500); };
   const livesLeft = MAX_LIVES - (result.livesUsed || 0);
@@ -234,7 +230,7 @@ function WhySheet({ board, result, store, update, onClose, onNext }){
       </ol>
       <label className="fr-label" htmlFor="ul-note">Anything else about this puzzle?</label>
       <textarea id="ul-note" className="fr-input ul-note" rows={3} maxLength={500} value={note} placeholder="Optional. For example: which card you nearly placed instead."
-        onChange={(e)=>{ setNote(e.target.value); saveNote(e.target.value); }}/>
+        onChange={(e)=>changeNote(e.target.value)}/>
       <p className="fr-help ul-saved-note">Saved on this device only — nothing is sent. Copy it to share with the Cluevoyance team.</p>
       <div className="fr-row ul-why-actions">
         <button type="button" className="fr-btn secondary sm" onClick={copy} data-testid="ul-why-copy">{copied || "Copy all feedback"}</button>

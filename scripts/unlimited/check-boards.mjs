@@ -4,7 +4,7 @@
 //   node scripts/unlimited/check-boards.mjs data/unlimited/boards/beta-01/boards.json
 //
 // 1. Structure, the rules the Friends server enforces (friend_validate_board)
-//    plus Unlimited's own: 4 non-empty clues ≤ 20 chars, distinct after
+//    plus Unlimited's own: 4 non-empty one-word clues ≤ 20 chars, distinct after
 //    normalisation; 7 complete cards, words ≤ 18 chars, 28 distinct words;
 //    4 distinct answer ids + 3 distinct extras, all present; orientations 0–3;
 //    each clue differs from both words it points at; the reveal snapshot
@@ -36,7 +36,10 @@ for (const b of boards) {
   const must = (cond, msg) => { if (!cond) errs.push(msg); };
   // 1. structure
   must(Array.isArray(b.clues) && b.clues.length === 4, "4 clues");
-  b.clues.forEach((c, i) => { must(typeof c === "string" && c.trim() && c.length <= 20, `clue ${i} non-empty ≤20`); });
+  b.clues.forEach((c, i) => {
+    must(typeof c === "string" && c.trim() && c.length <= 20, `clue ${i} non-empty ≤20`);
+    must(typeof c === "string" && !/\s/.test(c.trim()), `clue ${i} is one word (owner rule)`);
+  });
   must(new Set(b.clues.map(normHint)).size === 4, "clue texts distinct after normalisation");
   const cardIds = Object.keys(b.cards);
   must(cardIds.length === 7, "7 cards");
