@@ -133,6 +133,16 @@
         "rejected": 18,
         "needsText": 4,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u06-blind-review.json",
+        "key": "data/unlimited/library/reviews/u06-blind-key.json",
+        "batch": "data/unlimited/library/batches/u06-batch.json",
+        "ai_reviewed": 36,
+        "held": 10,
+        "rejected": 8,
+        "needsText": 2,
+        "pairs": 40
       }
     ]
   },
@@ -9620,6 +9630,2161 @@
                 "one_sided"
               ],
               "reason": "Bank vault is direct; no shark link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__snake",
+      "a": "BANK",
+      "b": "SNAKE",
+      "source": "u06",
+      "pairNote": "RIVER carries the pair; WIND and BASK are snake-only hints.",
+      "reviewerBestAvailable": {
+        "text": "RIVER",
+        "why": "The only hint that reaches both words without borrowing the other.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RIVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A river runs between its two banks.",
+          "wordBConnection": "And it snakes across the country to get there.",
+          "revealExplanation": "A river snakes across the country between its two banks.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Riverbank is a compound, and a river 'snakes' through the land / snakes live along rivers, so both sides are reachable."
+            }
+          }
+        },
+        {
+          "text": "BASK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A warm bank is where it happens.",
+          "wordBConnection": "A snake basks in the sun.",
+          "revealExplanation": "A snake basks in the sun on a warm bank.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Snakes bask in the sun; BANK is reached only through the scene of a snake basking on a sunny riverbank, which the hint itself does not carry."
+            }
+          }
+        },
+        {
+          "text": "WIND",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A river winds between its banks.",
+          "wordBConnection": "To snake along means exactly that.",
+          "revealExplanation": "To snake means to wind along, which is exactly what a river does between its banks.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "A snake winds (verb), but WIND reaches BANK only through a strained picture of a winding riverbank or a plane banking in wind."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__spider",
+      "a": "BANK",
+      "b": "SPIDER",
+      "source": "u06",
+      "pairNote": "Single serviceable hint; the bank side depends on the player thinking of online banking.",
+      "reviewerBestAvailable": {
+        "text": "WEB",
+        "why": "Only hint, and the web-banking route is familiar enough to be fair.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WEB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Banking on the web.",
+          "wordBConnection": "A spider's web.",
+          "revealExplanation": "The web: a spider's, and the bank's website.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Spider web is immediate; BANK comes through web/online banking, a familiar phrase though a step removed."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__spring",
+      "a": "BANK",
+      "b": "SPRING",
+      "source": "u06",
+      "pairNote": "BREAK is excellent; WATER and RIVER are usable backups via riverbank.",
+      "reviewerBestAvailable": {
+        "text": "BREAK",
+        "why": "Two idioms a player knows cold, one for each side.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BREAK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "Breaking the bank is the idiom for overspending.",
+          "wordBConnection": "Spring break is the holiday.",
+          "revealExplanation": "Spring break is the holiday and breaking the bank is the idiom for overspending.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Break the bank' and 'spring break' are both everyday phrases."
+            }
+          }
+        },
+        {
+          "text": "WATER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bank is what water runs between.",
+          "wordBConnection": "A spring is where water comes out of the ground.",
+          "revealExplanation": "A spring is where water comes out of the ground and a bank is what water runs between.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Spring water is a compound; a bank is the edge of a body of water (riverbank), a looser but recognizable route."
+            }
+          }
+        },
+        {
+          "text": "RIVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The river runs between its banks.",
+          "wordBConnection": "A spring is what feeds it.",
+          "revealExplanation": "A spring feeds the river and the river runs between its banks.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Riverbank is a compound; a spring is the source where a river springs up, a real but less immediate link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__star",
+      "a": "BANK",
+      "b": "STAR",
+      "source": "u06",
+      "pairNote": "Only hint; passes on the strength of the star-rating compound plus credit ratings.",
+      "reviewerBestAvailable": {
+        "text": "RATING",
+        "why": "Star side is instant and the credit-rating route to bank is fair.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RATING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bank's rating.",
+          "wordBConnection": "A star rating.",
+          "revealExplanation": "Ratings: a bank's, or five stars.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Star rating is a compound; banks carry credit ratings, which is a familiar finance association."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__train",
+      "a": "BANK",
+      "b": "TRAIN",
+      "source": "u06",
+      "pairNote": "Textbook two-sided hint.",
+      "reviewerBestAvailable": {
+        "text": "ROBBERY",
+        "why": "Equally strong on both sides and a shared Western scene.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ROBBERY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bank robbery.",
+          "wordBConnection": "A train robbery.",
+          "revealExplanation": "Bank robbery, train robbery.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bank robbery and train robbery are both classic compounds (Westerns, heist films)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__water",
+      "a": "BANK",
+      "b": "WATER",
+      "source": "u06",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "RIVER",
+        "why": "The natural shared scene for this pair.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RIVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The river bank.",
+          "wordBConnection": "The river's water.",
+          "revealExplanation": "A river: its bank and its water.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Riverbank and river water; a single scene that contains both words."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__witch",
+      "a": "BANK",
+      "b": "WITCH",
+      "source": "u06",
+      "pairNote": "GRINGOTTS depends on Harry Potter familiarity but that is broad; BROOM is one-sided filler.",
+      "reviewerBestAvailable": {
+        "text": "GRINGOTTS",
+        "why": "A brand-like proper noun that is literally a bank for witches and wizards.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GRINGOTTS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Gringotts is a bank.",
+          "wordBConnection": "The bank of witches and wizards.",
+          "revealExplanation": "Gringotts, the witches' bank in Harry Potter.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Harry Potter",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gringotts is the Harry Potter wizarding bank; WITCH is reached through the witches and wizards who bank there."
+            }
+          }
+        },
+        {
+          "text": "BROOM",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "rejected",
+            "authorReason": "WITCH only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A witch's broom is immediate; there is no recognizable route from BROOM to BANK."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__wolf",
+      "a": "BANK",
+      "b": "WOLF",
+      "source": "u06",
+      "pairNote": "WALL is a judgement call: a single title bridges the pair, which the rubric allows as a familiar story, but neither side is direct.",
+      "reviewerBestAvailable": {
+        "text": "WALL",
+        "why": "The Wolf of Wall Street is a famous enough title to carry both words.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WALL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Wall Street, home of the banks.",
+          "wordBConnection": "The Wolf of Wall Street.",
+          "revealExplanation": "Wall Street: the banks, and the Wolf.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Wolf of Wall Street",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Wall Street is the home of banking, and 'The Wolf of Wall Street' supplies the wolf; both sides hang on the same well-known title."
+            }
+          }
+        },
+        {
+          "text": "HOWL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "rejected",
+            "authorReason": "WOLF only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Wolves howl; nothing takes HOWL to BANK."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__bear",
+      "a": "BAT",
+      "b": "BEAR",
+      "source": "u06",
+      "pairNote": "Two strong hints.",
+      "reviewerBestAvailable": {
+        "text": "HIBERNATE",
+        "why": "A shared behaviour that fits almost nothing else.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HIBERNATE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Bats hibernate.",
+          "wordBConnection": "Bears hibernate.",
+          "revealExplanation": "Both hibernate through winter.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both animals famously hibernate; a true shared fact."
+            }
+          }
+        },
+        {
+          "text": "CAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bat cave.",
+          "wordBConnection": "A bear's cave.",
+          "revealExplanation": "A cave: bats in the roof, a bear on the floor.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bat cave and a bear's cave den are both stock images."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__bell",
+      "a": "BAT",
+      "b": "BELL",
+      "source": "u06",
+      "pairNote": "Excellent single hint; slightly old-fashioned vocabulary.",
+      "reviewerBestAvailable": {
+        "text": "BELFRY",
+        "why": "Idiom plus literal definition, each pointing at one word.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BELFRY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Bats in the belfry.",
+          "wordBConnection": "A belfry is the bell tower.",
+          "revealExplanation": "The belfry: bells, and bats.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A belfry is the bell tower, and 'bats in the belfry' is a stock idiom."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__bridge",
+      "a": "BAT",
+      "b": "BRIDGE",
+      "source": "u06",
+      "pairNote": "No PASS. The Austin bat bridge is genuine but too niche to count on.",
+      "reviewerBestAvailable": {
+        "text": "AUSTIN",
+        "why": "Only hint; valid fact, but the scene is regional knowledge.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "AUSTIN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Austin's famous bats.",
+          "wordBConnection": "They roost under Austin's bridge.",
+          "revealExplanation": "Austin's bridge bats.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Austin, Texas",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "The Congress Avenue Bridge bat colony in Austin is a real shared scene, but a player who does not know it has no route to either word."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__card",
+      "a": "BAT",
+      "b": "CARD",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "BASEBALL",
+        "why": "Two everyday compounds.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BASEBALL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A baseball bat.",
+          "wordBConnection": "A baseball card.",
+          "revealExplanation": "Baseball: the bat and the card.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Baseball bat and baseball card are both compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__castle",
+      "a": "BAT",
+      "b": "CASTLE",
+      "source": "u06",
+      "pairNote": "Both pass; they are the same route in two words.",
+      "reviewerBestAvailable": {
+        "text": "DRACULA",
+        "why": "Names the exact story where both words sit.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DRACULA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "fictional_character",
+          "wordAConnection": "Dracula becomes a bat.",
+          "wordBConnection": "Dracula's castle.",
+          "revealExplanation": "Dracula: his castle, and his bat form.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Dracula",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:VAMPIRE"
+              ],
+              "reason": "Dracula turns into a bat and lives in Castle Dracula; the same story as VAMPIRE, named more specifically."
+            }
+          }
+        },
+        {
+          "text": "VAMPIRE",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "variant",
+            "authorReason": "variant of DRACULA",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Vampire bat is a compound and the vampire's castle is a stock Dracula scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__cat",
+      "a": "BAT",
+      "b": "CAT",
+      "source": "u06",
+      "pairNote": "Both lean on DC Comics, which is broad enough.",
+      "reviewerBestAvailable": {
+        "text": "WOMAN",
+        "why": "Catwoman and Batwoman are parallel names that need no backstory.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WOMAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Batwoman.",
+          "wordBConnection": "Catwoman.",
+          "revealExplanation": "Batwoman and Catwoman.",
+          "reference": {
+            "referenceType": "franchise_pair",
+            "source": "DC Comics",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Catwoman is a household name and Batwoman is a known DC character; both are a word used as a name."
+            }
+          }
+        },
+        {
+          "text": "GOTHAM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Batman's Gotham.",
+          "wordBConnection": "Catwoman's Gotham.",
+          "revealExplanation": "Gotham: home of Batman and Catwoman.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "DC Comics",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gotham is Batman's city, giving BAT; CAT comes through Catwoman, Gotham's other famous resident."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__crown",
+      "a": "BAT",
+      "b": "CROWN",
+      "source": "u06",
+      "pairNote": "No PASS. The pair needs a new hint.",
+      "reviewerBestAvailable": {
+        "text": "TOOTH",
+        "why": "Only hint; one-sided.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOOTH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bat's teeth.",
+          "wordBConnection": "A crown on a tooth.",
+          "revealExplanation": "A tooth: a bat's fang, or one under a crown.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "A dental crown gives TOOTH to CROWN, but bats' teeth are not a recognizable association for BAT."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__diamond",
+      "a": "BAT",
+      "b": "DIAMOND",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "BASEBALL",
+        "why": "Both words live on the same field.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BASEBALL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A baseball bat.",
+          "wordBConnection": "The baseball diamond.",
+          "revealExplanation": "Baseball: the bat and the diamond.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Baseball bat and the baseball diamond are both standard terms."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__dog",
+      "a": "BAT",
+      "b": "DOG",
+      "source": "u06",
+      "pairNote": "RABIES carries the pair; HOT is dog-only.",
+      "reviewerBestAvailable": {
+        "text": "RABIES",
+        "why": "A real shared fact that is widely known.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RABIES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Rabies in bats.",
+          "wordBConnection": "A rabid dog.",
+          "revealExplanation": "Rabies: bats and dogs.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bats and dogs are the two animals most associated with rabies."
+            }
+          }
+        },
+        {
+          "text": "HOT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A hot bat, in baseball.",
+          "wordBConnection": "A hot dog.",
+          "revealExplanation": "A hot dog, and a hot bat.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Hot dog is immediate; 'hot bat' is baseball slang for a hitting streak that ordinary players will not reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__dragon",
+      "a": "BAT",
+      "b": "DRAGON",
+      "source": "u06",
+      "pairNote": "Generic but a genuine shared feature.",
+      "reviewerBestAvailable": {
+        "text": "WINGS",
+        "why": "The dragon's wings are literally modelled on the bat's.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WINGS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bat wings.",
+          "wordBConnection": "Dragon wings.",
+          "revealExplanation": "Wings: a bat's, and the dragon's bat-like ones.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bat wings are iconic and dragons are classically drawn with bat-like wings."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__egg",
+      "a": "BAT",
+      "b": "EGG",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "CRACK",
+        "why": "Familiar phrase on each side.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "The crack of the bat.",
+          "wordBConnection": "Crack an egg.",
+          "revealExplanation": "A crack: of the bat, or of an egg.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Crack of the bat' and cracking an egg."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__fire",
+      "a": "BAT",
+      "b": "FIRE",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "WOOD",
+        "why": "Compound on the fire side, material on the bat side.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WOOD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A wooden bat.",
+          "wordBConnection": "Firewood.",
+          "revealExplanation": "Wood: a bat, or fuel for the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wooden bat and firewood."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__fish",
+      "a": "BAT",
+      "b": "FISH",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "FLYING",
+        "why": "Compound plus defining trait.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FLYING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Bats fly.",
+          "wordBConnection": "A flying fish.",
+          "revealExplanation": "Flying fish, and the flying bat.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Flying fish is a compound and the bat is the only flying mammal."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__ghost",
+      "a": "BAT",
+      "b": "GHOST",
+      "source": "u06",
+      "pairNote": "Two passes from the same spooky scene.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "Both words are on every Halloween decoration.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Halloween bats.",
+          "wordBConnection": "Halloween ghosts.",
+          "revealExplanation": "Halloween's bats and ghosts.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bats and ghosts are both core Halloween icons."
+            }
+          }
+        },
+        {
+          "text": "HAUNTED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bats in the haunted house.",
+          "wordBConnection": "Ghosts in the haunted house.",
+          "revealExplanation": "A haunted house has both.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghosts haunt; the haunted house is the stock scene in which bats fly out."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__glass",
+      "a": "BAT",
+      "b": "GLASS",
+      "source": "u06",
+      "pairNote": "Passes, somewhat glass-heavy.",
+      "reviewerBestAvailable": {
+        "text": "BROKEN",
+        "why": "Glass side instant, bat side fair via baseball.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BROKEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bat swung at a window.",
+          "wordBConnection": "Broken glass.",
+          "revealExplanation": "Broken glass, courtesy of a bat.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Broken glass is immediate; a broken bat is a familiar baseball moment, and a bat is also what breaks glass."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__gold",
+      "a": "BAT",
+      "b": "GOLD",
+      "source": "u06",
+      "pairNote": "Baseball-dependent but recognizable.",
+      "reviewerBestAvailable": {
+        "text": "GLOVE",
+        "why": "Gold Glove is the hook and bat follows as its partner.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GLOVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Bat and glove.",
+          "wordBConnection": "The Gold Glove award.",
+          "revealExplanation": "Baseball: the bat, and the Gold Glove.",
+          "reference": {
+            "referenceType": "sport",
+            "source": "MLB Gold Glove",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Gold Glove is a well-known baseball award; bat and glove are the two pieces of baseball gear."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__heart",
+      "a": "BAT",
+      "b": "HEART",
+      "source": "u06",
+      "pairNote": "ECHO is a clever second route for players who know medical shorthand.",
+      "reviewerBestAvailable": {
+        "text": "BLOOD",
+        "why": "Immediate on both sides.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BLOOD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A vampire bat drinks blood.",
+          "wordBConnection": "The heart pumps blood.",
+          "revealExplanation": "Blood: what the heart pumps and the bat drinks.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Vampire bats drink blood; the heart pumps blood."
+            }
+          }
+        },
+        {
+          "text": "ECHO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Bats find their way by echo.",
+          "wordBConnection": "A heart echo scan.",
+          "revealExplanation": "Echo: the bat's sonar, and the heart scan.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Bats echolocate; an 'echo' is the common name for an echocardiogram, a heart scan."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__honey",
+      "a": "BAT",
+      "b": "HONEY",
+      "source": "u06",
+      "pairNote": "No PASS. Nectar bats are real but not widely known.",
+      "reviewerBestAvailable": {
+        "text": "NECTAR",
+        "why": "Only hint; honest fact but the bat side is specialist knowledge.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "NECTAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Nectar-feeding bats.",
+          "wordBConnection": "Honey is made from nectar.",
+          "revealExplanation": "Nectar: some bats drink it, bees turn it into honey.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Honey is made from nectar; some bats are nectar-feeding pollinators, a true fact that many players will not hold."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__horse",
+      "a": "BAT",
+      "b": "HORSE",
+      "source": "u06",
+      "pairNote": "No PASS. The pair needs a new hint.",
+      "reviewerBestAvailable": {
+        "text": "VAMPIRE",
+        "why": "Only hint; effectively bat-only.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "VAMPIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A vampire bat.",
+          "wordBConnection": "Vampire bats bite horses.",
+          "revealExplanation": "The vampire bat and the horse it bites.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Vampire bat is immediate; the only route to HORSE is that vampire bats feed on livestock, which no player will reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__ice",
+      "a": "BAT",
+      "b": "ICE",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "CAVE",
+        "why": "Two compounds.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bat cave.",
+          "wordBConnection": "An ice cave.",
+          "revealExplanation": "Bat cave, ice cave.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bat cave and ice cave are both compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__iron",
+      "a": "BAT",
+      "b": "IRON",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "MAN",
+        "why": "Parallel compound names.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Batman.",
+          "wordBConnection": "Iron Man.",
+          "revealExplanation": "Batman and Iron Man.",
+          "reference": {
+            "referenceType": "franchise_pair",
+            "source": "DC and Marvel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Batman and Iron Man, two of the most famous superheroes."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__key",
+      "a": "BAT",
+      "b": "KEY",
+      "source": "u06",
+      "pairNote": "No PASS. The pair needs a new hint.",
+      "reviewerBestAvailable": {
+        "text": "SECRET",
+        "why": "Only hint; key-only.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SECRET",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The Batcave's secret door.",
+          "wordBConnection": "A secret key.",
+          "revealExplanation": "A secret: the Batcave's door, and the key to it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Secret key is a phrase; BAT is reached only by a rescue explanation about Batman's secret identity or secret Batcave."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__king",
+      "a": "BAT",
+      "b": "KING",
+      "source": "u06",
+      "pairNote": "No PASS. Vampire-king is a trope, not a phrase players hold.",
+      "reviewerBestAvailable": {
+        "text": "VAMPIRE",
+        "why": "Only hint; the king side is thin.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "VAMPIRE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A vampire's bat form.",
+          "wordBConnection": "Dracula, the vampire king.",
+          "revealExplanation": "The vampire king and his bat.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Dracula",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Vampire bat is immediate; KING is reached only through Dracula as 'king of the vampires', a loose characterisation rather than a set phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__knight",
+      "a": "BAT",
+      "b": "KNIGHT",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "DARK",
+        "why": "A single household title containing the pair.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DARK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Batman, the Dark Knight.",
+          "wordBConnection": "The Dark Knight.",
+          "revealExplanation": "The Dark Knight: Batman.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Dark Knight",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'The Dark Knight' is Batman, so one famous title reaches both words."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__light",
+      "a": "BAT",
+      "b": "LIGHT",
+      "source": "u06",
+      "pairNote": "Strong.",
+      "reviewerBestAvailable": {
+        "text": "SIGNAL",
+        "why": "The Bat-Signal is itself a light.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SIGNAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Bat-Signal.",
+          "wordBConnection": "It is a beam of light.",
+          "revealExplanation": "The Bat-Signal: a light in the sky.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Batman",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Bat-Signal is a famous searchlight; signal lights and light signals are everyday."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__lion",
+      "a": "BAT",
+      "b": "LION",
+      "source": "u06",
+      "pairNote": "No PASS. Lion's den is the phrase, not lion's cave.",
+      "reviewerBestAvailable": {
+        "text": "CAVE",
+        "why": "Only hint; the lion side is a stretch.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CAVE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bat cave.",
+          "wordBConnection": "A lion's cave.",
+          "revealExplanation": "A cave: bats above, a lion within.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Bat cave is immediate; lions are pictured in dens and on rocks rather than caves, and the 'cave lion' is an extinct species few know."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__moon",
+      "a": "BAT",
+      "b": "MOON",
+      "source": "u06",
+      "pairNote": "Both pass; the bat-silhouette-against-the-moon picture carries HALLOWEEN.",
+      "reviewerBestAvailable": {
+        "text": "NIGHT",
+        "why": "Both words are fixtures of the night.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "NIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Bats fly at night.",
+          "wordBConnection": "The moon at night.",
+          "revealExplanation": "Night: the bat's time, the moon's sky.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bats fly at night and the moon is the night sky's icon."
+            }
+          }
+        },
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Halloween bats.",
+          "wordBConnection": "The Halloween full moon.",
+          "revealExplanation": "A bat across the Halloween moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bats are Halloween icons; the full moon is the standard Halloween backdrop they are drawn against."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__mouse",
+      "a": "BAT",
+      "b": "MOUSE",
+      "source": "u06",
+      "pairNote": "No PASS. Judgement call: 'flying mouse' as a description of the pair may be acceptable to some.",
+      "reviewerBestAvailable": {
+        "text": "FLYING",
+        "why": "Only hint; the pair-as-one-creature idea is cute but mouse alone is not reached.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "FLYING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bat flies.",
+          "wordBConnection": "A bat looks like a flying mouse.",
+          "revealExplanation": "The flying mouse: a bat.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bats fly; MOUSE is reached only through the idea that a bat is a 'flying mouse', which uses the other target to get there."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__night",
+      "a": "BAT",
+      "b": "NIGHT",
+      "source": "u06",
+      "pairNote": "Two passes.",
+      "reviewerBestAvailable": {
+        "text": "NOCTURNAL",
+        "why": "Precisely describes the bat and means night.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "NOCTURNAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bats are nocturnal.",
+          "wordBConnection": "Nocturnal means of the night.",
+          "revealExplanation": "Nocturnal: the bat and the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bats are the archetypal nocturnal animal and nocturnal means of the night."
+            }
+          }
+        },
+        {
+          "text": "DARK",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "rejected",
+            "authorReason": "NIGHT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Night is dark; bats are creatures of the dark and Batman is the Dark Knight."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__ocean",
+      "a": "BAT",
+      "b": "OCEAN",
+      "source": "u06",
+      "pairNote": "No PASS. The pair needs a new hint.",
+      "reviewerBestAvailable": {
+        "text": "RAY",
+        "why": "Only hint; ocean-only in practice.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "RAY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bat ray.",
+          "wordBConnection": "Rays live in the ocean.",
+          "revealExplanation": "The bat ray of the ocean.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Rays swim in the ocean; the 'bat ray' is a real species but far too specialist for a player to reach BAT."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__pirate",
+      "a": "BAT",
+      "b": "PIRATE",
+      "source": "u06",
+      "pairNote": "No PASS. Colour hint with no shared scene.",
+      "reviewerBestAvailable": {
+        "text": "BLACK",
+        "why": "Only hint; both sides reachable but by colour only.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BLACK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A black bat.",
+          "wordBConnection": "Blackbeard's black flag.",
+          "revealExplanation": "Black: the bat, and the pirate flag.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Bats are drawn black and pirates fly the black flag (Blackbeard), but colour alone points at many words."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__queen",
+      "a": "BAT",
+      "b": "QUEEN",
+      "source": "u06",
+      "pairNote": "No PASS. Vampire queen is a genre trope, not a shared phrase.",
+      "reviewerBestAvailable": {
+        "text": "VAMPIRE",
+        "why": "Only hint; the queen side needs genre knowledge.",
+        "reviewer": "blind-subagent-6"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "VAMPIRE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A vampire's bat form.",
+          "wordBConnection": "A vampire queen.",
+          "revealExplanation": "The vampire queen and her bat.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Vampire bat is immediate; QUEEN is reached only through 'Queen of the Damned' / vampire-queen fiction, which is niche."
             }
           }
         }
