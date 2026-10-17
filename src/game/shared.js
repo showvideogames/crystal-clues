@@ -99,3 +99,87 @@ export function checkBoard({ clues, slots, cards, cardCount = 7 }) {
     canPublish: missingClues===0 && blankEdges===0,
   };
 }
+
+// ── Judging and dealing, shared by the daily game, the friend exchange and
+//    the Unlimited tooling (scripts/unlimited). Pure: no React, no storage. ──
+
+// Biased shuffle: keeps re-shuffling until fewer than 2 solution slots are
+// accidentally correct. Caps at 10 attempts so it never hangs. `rng` returns
+// [0,1); it is injectable only so tests and scripts can seed it.
+export function biasedShuffle(cardIds, solution, rng = Math.random) {
+  const attempt = () => {
+    const cut = Math.floor(rng() * cardIds.length);
+    const seeded = [...cardIds.slice(cut), ...cardIds.slice(0, cut)];
+    return shuffleArr(seeded, rng).map(id => ({
+      cardId: id,
+      orientation: Math.floor(rng() * 4),
+    }));
+  };
+
+  const countCorrect = slots => {
+    if (!solution) return 0;
+    return solution.slotCards.reduce((n, cardId, si) =>
+      n + (slots[si]?.cardId === cardId && slots[si]?.orientation === solution.orientations[si] ? 1 : 0)
+    , 0);
+  };
+
+  let best = attempt();
+  let bestScore = countCorrect(best);
+
+  // Try up to 10 times, keep the arrangement with the fewest accidental correct slots
+  for (let i = 0; i < 10; i++) {
+    if (bestScore < 2) break;
+    const candidate = attempt();
+    const score = countCorrect(candidate);
+    if (score < bestScore) { best = candidate; bestScore = score; }
+  }
+  return best;
+}
+
+// True when `clues` is `original` turned some number of quarter turns (the
+// whole board rotates together, clues included).
+export function isClueRotation(clues, original) {
+  if(!Array.isArray(clues) || clues.length !== 4) return false;
+  let rc=[...original];
+  for(let r=0;r<4;r++){
+    if(rc.every((c,i)=>c===clues[i])) return true;
+    rc=CW_FROM.map(i=>rc[i]);
+  }
+  return false;
+}
+
+// Judges the four board slots against the stored answer, at whatever rotation
+// the board is currently showing (found by matching the clues). Returns
+// { correct, wrong } as Sets of slot indices. A guess that would unlock a
+// slot already locked is never produced: if any locked slot is not correct in
+// this rotation the whole guess is judged wrong.
+export function bestSubmit(slots4, solution, locked, currentClues, originalClues) {
+  // Determine which rotation of the board we're currently on by matching clues
+  // Only check that specific rotation — prevents false positives from shuffled cards
+  // accidentally matching a different rotation of the solution
+  let boardRotation = 0;
+  if(currentClues && originalClues) {
+    for(let r=0;r<4;r++){
+      let rc=[...originalClues];
+      for(let k=0;k<r;k++) rc=CW_FROM.map(i=>rc[i]);
+      if(rc.every((c,i)=>c===currentClues[i])){ boardRotation=r; break; }
+    }
+  }
+
+  // Apply that rotation to the solution
+  let sc=[...solution.slotCards], or=[...solution.orientations];
+  for(let k=0;k<boardRotation;k++){
+    const ns=CW_FROM.map(i=>sc[i]), no=CW_FROM.map(i=>(or[i]+1)%4);
+    sc=ns; or=no;
+  }
+
+  const correct=new Set(), wrong=new Set();
+  for(let i=0;i<4;i++){
+    if(slots4[i]?.cardId===sc[i]&&slots4[i]?.orientation===or[i]) correct.add(i);
+    else wrong.add(i);
+  }
+  // Still respect already-locked slots
+  if([...locked].every(i=>correct.has(i)))
+    return {correct,wrong};
+  return {correct:new Set(),wrong:new Set([0,1,2,3])};
+}
