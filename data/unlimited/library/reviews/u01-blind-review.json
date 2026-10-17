@@ -1,0 +1,212 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent",
+    "date": "2026-10-17",
+    "input": "u01-blind-input.json",
+    "independence": "I read only u01-blind-input.json; no other file under data/unlimited, no repository search, no web or API lookup was used, and all judgements rest on my own general knowledge."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_king__lion",
+      "a": "KING",
+      "b": "LION",
+      "hints": [
+        { "text": "JUNGLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The stock phrase 'king of the jungle' names the lion; KING is reached only through that same idiom, but the idiom is universal." },
+        { "text": "THRONE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A throne is a king's seat; lions reach it only via heraldry or Pride Rock in The Lion King, which needs explaining." },
+        { "text": "MANE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A mane is the lion's defining feature; nothing about it points to a king." },
+        { "text": "ROAR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lions roar; kings do not, and no idiom bridges the gap." },
+        { "text": "CROWN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Crown is the king's emblem; the crowned heraldic lion (as on the English royal arms) is a stretch for most players." },
+        { "text": "NARNIA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Aslan the lion is Narnia's best-known figure via 'The Lion, the Witch and the Wardrobe'; KING requires knowing Aslan rules Narnia or that the children become kings and queens." },
+        { "text": "MUFASA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:SIMBA"], "verdict": "PASS", "reason": "Mufasa is the reigning king in The Lion King and is a lion; both sides are immediate for anyone who knows the film." },
+        { "text": "SIMBA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:MUFASA"], "verdict": "PASS", "reason": "Simba is the lion cub who becomes king in The Lion King; the film title itself carries both words." }
+      ],
+      "strong_hints": ["MUFASA", "SIMBA", "JUNGLE"],
+      "pair_note": "Three defensible hints, but two of them are the same Lion King idea; JUNGLE is the only independent one and leans on one idiom.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_cat__mouse",
+      "a": "CAT",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "TOM", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:JERRY"], "verdict": "PASS", "reason": "A tom is a male cat in plain English and Tom is the cartoon cat; MOUSE arrives through his nemesis Jerry, which is a widely known pairing." },
+        { "text": "JERRY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TOM"], "verdict": "PASS", "reason": "Jerry is the Tom and Jerry mouse; CAT follows from his cartoon rival, a pairing most US adults know." },
+        { "text": "CHEESE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Cheese is the classic mouse bait; it says nothing about a cat." },
+        { "text": "PAW", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Paws are a cat staple; mice technically have paws but no one reaches MOUSE from PAW without the board." },
+        { "text": "CLICK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Click is the computer-mouse sense; there is no cat sense of click." },
+        { "text": "WHISKERS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Whiskers are the cat's signature; mice have them too but it is a weak second reach." },
+        { "text": "TRAP", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Mousetrap is immediate; calling a cat a 'trap' for mice is an explanation, not a connection." },
+        { "text": "CHASE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Both are reached only through the 'cat and mouse' chase idiom; neither word is clear from CHASE on its own." }
+      ],
+      "strong_hints": ["TOM", "JERRY"],
+      "pair_note": "Meets the minimum only through two names from one cartoon; the plain-sense hints are all one-sided cat or mouse words.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_knight__night",
+      "a": "KNIGHT",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "BLACK", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Black Knight (Arthurian / Monty Python) and 'black night' are both phrases, but a bare colour points nowhere specific." },
+        { "text": "SHINING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "'Knight in shining armor' is immediate; stars shining at night is a soft reach for NIGHT." },
+        { "text": "MARE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Night + mare makes nightmare; a mare is a horse, the knight's mount and the shape of the chess knight, so KNIGHT is a solid second reach." },
+        { "text": "DARK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Dark is the plain property of night, and 'The Dark Knight' (Batman) is a household title." },
+        { "text": "ARMOR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Armor is knight equipment with no night sense." },
+        { "text": "OWL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Owls are the nocturnal emblem of night; nothing links them to knights." }
+      ],
+      "strong_hints": ["DARK", "MARE"],
+      "pair_note": "DARK is excellent; MARE passes on the nightmare compound plus the horse link, but the pair otherwise splits into knight-only and night-only words.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_bat__spider",
+      "a": "BAT",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "HALLOWEEN", "connection_to_a": 1, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Bats and spiders are both Halloween decorations, but so are pumpkins, ghosts and witches; neither word is singled out." },
+        { "text": "HANG", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bats hang upside down and spiders hang from their threads; both are plain-sense and direct." },
+        { "text": "WEB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Web is the spider's signature; bats do not reach it." },
+        { "text": "MAN", "connection_to_a": 1, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Batman and Spider-Man both exist, but MAN alone also gives Superman, Iron Man and more; strong only in combination with the board." },
+        { "text": "CREEPY", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic", "colour_mood_material"], "verdict": "BORDERLINE", "reason": "A mood word that fits spiders and bats about as well as snakes, clowns or rats." },
+        { "text": "CAVE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Bats live in caves and 'Batcave' is famous; cave spiders exist but are a stretch." },
+        { "text": "WINGS", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bats have wings; spiders do not." }
+      ],
+      "strong_hints": ["HANG"],
+      "pair_note": "Only HANG reaches both words on its own; MAN is a good board hint but too generic to defend solo, and the rest are mood words or one-sided.",
+      "meets_two_strong_minimum": false
+    },
+    {
+      "pair_id": "p_cat__witch",
+      "a": "CAT",
+      "b": "WITCH",
+      "hints": [
+        { "text": "HALLOWEEN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Witch is a top Halloween icon and the black cat is a canonical Halloween image; still a broad hint shared with many other words." },
+        { "text": "BINX", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Thackery Binx is the black cat cursed by the Sanderson witches in Hocus Pocus (1993); real, but the name is known mainly to fans of that film." },
+        { "text": "BROOM", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Broom is the witch's vehicle; cats have no claim on it." },
+        { "text": "SALEM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:SABRINA"], "verdict": "PASS", "reason": "Salem is the town of the witch trials and the talking black cat in Sabrina the Teenage Witch; two genuinely separate routes." },
+        { "text": "SABRINA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:SALEM", "one_sided"], "verdict": "BORDERLINE", "reason": "Sabrina the Teenage Witch is well known; CAT comes only from remembering her cat Salem." },
+        { "text": "FAMILIAR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A familiar is a witch's animal spirit in the occult sense, and the archetypal familiar is a cat; the everyday 'well-known' sense may distract some players." },
+        { "text": "BLACK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Black cat is immediate; witch via black hat or black magic is a loose colour association." }
+      ],
+      "strong_hints": ["SALEM", "FAMILIAR", "HALLOWEEN"],
+      "pair_note": "SALEM is the standout with two independent routes; FAMILIAR is a smart plain-sense hint; HALLOWEEN passes but is generic.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_fish__gold",
+      "a": "FISH",
+      "b": "GOLD",
+      "hints": [
+        { "text": "TREASURE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Treasure is gold; fish do not come up." },
+        { "text": "BOWL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Fishbowl is immediate; GOLD arrives only by routing through 'goldfish bowl'." },
+        { "text": "NUGGET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Gold nugget is the first sense; fish nuggets exist as a frozen food but few players would go there." },
+        { "text": "SCALES", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Fish scales are direct; weighing gold on scales is a real image (assayers, gold rush) but needs a nudge." },
+        { "text": "GOLDFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "The hint literally contains both target words." },
+        { "text": "RUSH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Gold rush is clear; there is no fish sense of rush." },
+        { "text": "FINGER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Goldfinger (Bond) is broadly known; 'fish finger' is the British term and US players mostly say fish sticks, so FISH is a reach." }
+      ],
+      "strong_hints": [],
+      "pair_note": "No hint reaches both words cleanly; the best candidates (FINGER, SCALES, BOWL) each need a second step on one side, and GOLDFISH is disqualified.",
+      "meets_two_strong_minimum": false
+    },
+    {
+      "pair_id": "p_egg__spring",
+      "a": "EGG",
+      "b": "SPRING",
+      "hints": [
+        { "text": "ROLL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Egg roll and spring roll are both everyday menu items." },
+        { "text": "CHICK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A chick hatches from an egg; chicks are a spring/Easter symbol and 'spring chicken' is an idiom, a solid second reach." },
+        { "text": "COIL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A coil is a spring; eggs do not coil." },
+        { "text": "YOLK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Yolk is pure egg; nothing on the spring side." },
+        { "text": "SCRAMBLE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Scrambled eggs are immediate; no spring sense." },
+        { "text": "EASTER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Easter eggs are iconic and Easter is the spring holiday." },
+        { "text": "NEST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Eggs sit in nests (and 'nest egg'); nesting happens in spring but that is seasonal background rather than a direct link." }
+      ],
+      "strong_hints": ["ROLL", "EASTER", "CHICK"],
+      "pair_note": "Strong pair: ROLL and EASTER are both clean two-way hints and CHICK is a good third.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_gold__pirate",
+      "a": "GOLD",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "DOUBLOON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A doubloon is a Spanish gold coin and the word lives almost entirely in pirate stories; slightly bookish but well known." },
+        { "text": "COIN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Gold coin is immediate; pirate comes via treasure-chest imagery, plausible but not specific." },
+        { "text": "PARROT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Parrot on the shoulder is pure pirate; no gold link." },
+        { "text": "PLANK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Walking the plank is pirate-only." },
+        { "text": "BOOTY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Pirate booty is immediate; booty means plunder, which implies gold only loosely." },
+        { "text": "TOOTH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Gold tooth is a stock phrase and the gold-toothed pirate is a stereotype; the pirate side depends on that one image." },
+        { "text": "MEDAL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Gold medal is direct; pirates do not win medals." },
+        { "text": "TREASURE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Treasure means gold in the popular imagination and pirate treasure is the archetype." }
+      ],
+      "strong_hints": ["TREASURE", "DOUBLOON", "TOOTH"],
+      "pair_note": "TREASURE and DOUBLOON are both clean; TOOTH passes on one vivid stereotype; several hints are pirate-only filler.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_dog__fish",
+      "a": "DOG",
+      "b": "FISH",
+      "hints": [
+        { "text": "DOGFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "The hint literally contains both target words." },
+        { "text": "TANK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Fish tank is direct; no dog sense." },
+        { "text": "BOWL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dog bowl and fishbowl are both everyday phrases." },
+        { "text": "FETCH", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Fetch is a dog game; fish do not play it." },
+        { "text": "PET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Both are common pets, but so are cats, hamsters and birds; the hint fits too many words to defend alone." },
+        { "text": "BONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dog bone is immediate and fish bones / fishbone are everyday." }
+      ],
+      "strong_hints": ["BOWL", "BONE"],
+      "pair_note": "Two clean plain-sense hints; DOGFISH is disqualified and PET is too generic.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_moon__wolf",
+      "a": "MOON",
+      "b": "WOLF",
+      "hints": [
+        { "text": "PACK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Wolf pack is direct; there is no moon sense." },
+        { "text": "CRY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "'Cry wolf' is a common idiom; MOON only arrives if the player pictures a wolf crying at the moon." },
+        { "text": "FULL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Full moon is immediate; WOLF follows only through the werewolf idea, which rides on the moon side." },
+        { "text": "NIGHT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "The moon belongs to night; wolves are nocturnal but so is half the animal kingdom." },
+        { "text": "HOWL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wolves howl, and 'howl at the moon' is a stock phrase." }
+      ],
+      "strong_hints": ["HOWL"],
+      "pair_note": "HOWL is the one true two-way hint; CRY and FULL each lean entirely on one side and the set is short.",
+      "meets_two_strong_minimum": false
+    },
+    {
+      "pair_id": "p_ice__queen",
+      "a": "ICE",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "CHESS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "The queen is a chess piece; chess has no ice sense." },
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material", "one_sided"], "verdict": "BORDERLINE", "reason": "Cold is the property of ice; a 'cold' or 'ice queen' is an idiom for an aloof woman but QUEEN itself is a stretch from COLD." },
+        { "text": "ARENDELLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:ELSA", "variant_of:FROZEN", "obscure"], "verdict": "BORDERLINE", "reason": "Arendelle is the kingdom in Frozen ruled by the ice-powered Queen Elsa; accurate, but the name is known mainly to Frozen fans and parents." },
+        { "text": "ELSA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:FROZEN", "variant_of:ARENDELLE"], "verdict": "PASS", "reason": "Elsa from Frozen has ice magic and is crowned Queen of Arendelle; a household name." },
+        { "text": "CUBE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ice cube is direct; nothing regal about a cube." },
+        { "text": "SNOW", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Snow sits next to ice; 'Snow Queen' (Andersen, Narnia, Frozen's source) is a known title, a solid second reach." },
+        { "text": "FROZEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:ELSA", "variant_of:ARENDELLE"], "verdict": "PASS", "reason": "Frozen is the plain state of ice and the Disney film whose heroine becomes queen; the film is broadly known." }
+      ],
+      "strong_hints": ["ELSA", "FROZEN", "SNOW"],
+      "pair_note": "Meets the minimum, but ELSA, FROZEN and ARENDELLE are one idea; SNOW is the only independent pass.",
+      "meets_two_strong_minimum": true
+    },
+    {
+      "pair_id": "p_moon__ocean",
+      "a": "MOON",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "BLUE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "'Blue moon' is a common idiom and the ocean is the archetypal blue thing; a colour hint, but both sides are direct." },
+        { "text": "FLOOR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ocean floor is a set phrase; 'moon floor' is not." },
+        { "text": "PULL", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The moon's gravitational pull drives the ocean's tides, but both words need that explanation; PULL alone is abstract." },
+        { "text": "TIDE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Tides belong to the ocean and are commonly known to be caused by the moon." },
+        { "text": "DEEP", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "'The deep' is the ocean; the moon is not described as deep." },
+        { "text": "CRATER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Craters are the moon's surface feature; no ocean sense." }
+      ],
+      "strong_hints": ["TIDE", "BLUE"],
+      "pair_note": "TIDE is excellent and BLUE is a defensible colour hint; the remaining four are one-sided.",
+      "meets_two_strong_minimum": true
+    }
+  ]
+}

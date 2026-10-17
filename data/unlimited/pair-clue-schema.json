@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "cluevoyance/unlimited/pair-clues.schema.json",
+  "title": "Cluevoyance Unlimited pair-clue dataset",
+  "description": "Website-ready format for word-pair clues used by Unlimited mode. One record per unordered pair of distinct words. Player-facing clue text is one uppercase word or a familiar two-word phrase, at most 18 characters.",
+  "type": "object",
+  "required": ["_metadata", "pairs"],
+  "properties": {
+    "_metadata": {
+      "type": "object",
+      "required": ["word_count", "pair_count", "clue_text_rule"],
+      "properties": {
+        "word_count": { "type": "integer" },
+        "pair_count": { "type": "integer" },
+        "clue_text_rule": { "type": "string" }
+      }
+    },
+    "pairs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/pair" }
+    }
+  },
+  "definitions": {
+    "pair": {
+      "type": "object",
+      "required": ["pair_id", "a", "b", "clues"],
+      "additionalProperties": false,
+      "properties": {
+        "pair_id": {
+          "type": "string",
+          "pattern": "^p_[a-z0-9]+__[a-z0-9]+$",
+          "description": "Deterministic. The two word ids with the w_ prefix stripped, sorted alphabetically, joined by a double underscore. p_fire__moon is always the id for FIRE + MOON regardless of the order they were authored in."
+        },
+        "a": { "$ref": "#/definitions/wordRef", "description": "The alphabetically first word of the pair." },
+        "b": { "$ref": "#/definitions/wordRef", "description": "The alphabetically second word of the pair." },
+        "clues": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": { "$ref": "#/definitions/clue" },
+          "description": "Ordered strongest first. Ranks are sequential from 1 with no gaps or repeats."
+        }
+      }
+    },
+    "wordRef": {
+      "type": "object",
+      "required": ["id", "display"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^w_[a-z0-9]+$" },
+        "display": { "type": "string", "pattern": "^[A-Z][A-Z ]*$" }
+      }
+    },
+    "clue": {
+      "type": "object",
+      "required": ["rank", "text", "type", "explanation", "wordAConnection", "wordBConnection", "revealExplanation"],
+      "additionalProperties": false,
+      "properties": {
+        "rank": { "type": "integer", "minimum": 1, "maximum": 5, "description": "1 is the strongest clue for this pair." },
+        "text": {
+          "type": "string",
+          "pattern": "^[A-Z]+(?: [A-Z]+)?$",
+          "minLength": 2,
+          "maxLength": 18,
+          "description": "Player-facing clue. One uppercase word, or a familiar two-word phrase separated by a single space. At most 18 characters including the space. COLLISION RULES: (1) the clue must NOT equal word A or word B of its own pair; (2) it MAY equal any other word in the word pool, and MAY equal a different visible card word in a puzzle - that is intentional and can give the player useful deduction or misdirection, e.g. HONEY + SHADOW -> MOON via honeymoon and moon shadow; (3) the same clue text MAY appear in many pair records in the master data; (4) within one generated puzzle the selected clue text must be unique across every clue position, which board generation resolves by choosing a conflict-free combination; (5) there is no global clue-frequency ceiling and a strong clue is never deleted merely for appearing in another pair record."
+        },
+        "type": { "$ref": "#/definitions/connectionType" },
+        "explanation": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Internal, reviewer-facing. States how the clue reaches BOTH words. Never shown to the player. Audit criticism lives in the audit files, never here."
+        },
+        "wordAConnection": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Player-facing. How this clue connects to word A - the pair's alphabetically first word, in the canonical a/b order of this record. One friendly sentence. Must not be circular: it cannot simply restate the clue text."
+        },
+        "wordBConnection": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Player-facing. How this clue connects to word B, in the canonical a/b order of this record. Same rules as wordAConnection."
+        },
+        "revealExplanation": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Player-facing. The short, friendly line shown in the postgame 'Why these clues worked' section. Explains both sides in one breath, names the work or character for a reference, and does not overexplain an obvious clue."
+        },
+        "reference": { "$ref": "#/definitions/reference" },
+        "needsHumanReview": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Present only when one of the two sides could not be explained cleanly, or the author is otherwise unsure. The value is the reason. Its presence puts the clue in the human-review queue; it never hides the clue from the data."
+        }
+      }
+    },
+    "reference": {
+      "type": "object",
+      "required": ["referenceType", "recognizability"],
+      "additionalProperties": false,
+      "description": "Optional metadata for a clue that works through a cultural reference. References are a core generation method, not a last resort.",
+      "properties": {
+        "referenceType": {
+          "type": "string",
+          "enum": [
+            "fictional_character",
+            "franchise_pair",
+            "film_or_tv",
+            "book",
+            "game",
+            "song_or_musician",
+            "famous_person",
+            "mythology_or_folklore",
+            "sport",
+            "brand_or_mascot",
+            "famous_object_place_or_event",
+            "catchphrase",
+            "name_or_homophone"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 2,
+          "description": "The work, franchise, person or event the reference comes from, e.g. \"Beauty and the Beast\" or \"Sonic the Hedgehog\"."
+        },
+        "recognizability": {
+          "type": "string",
+          "enum": ["broad", "moderate", "niche"],
+          "description": "How widely the reference is known. A niche reference may be a lower-ranked alternative but must not be one of a pair's two foundational clues."
+        }
+      }
+    },
+    "connectionType": {
+      "type": "string",
+      "description": "How the clue reaches its two words. Reference-based types are first-class, not exceptions. Existing records keep their original type; a reference is only retyped when the new type genuinely describes it better.",
+      "enum": [
+        "direct_association",
+        "shared_category",
+        "word_before_after",
+        "compound_or_phrase",
+        "cause_and_effect",
+        "synonym_or_related",
+        "contrast",
+        "cultural_reference",
+        "fictional_character",
+        "title_or_name",
+        "homophone_wordplay",
+        "wordplay",
+        "lateral_connection"
+      ]
+    }
+  }
+}

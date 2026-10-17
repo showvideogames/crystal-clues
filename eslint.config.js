@@ -28,7 +28,7 @@ export default defineConfig([
   },
   {
     // Node-side code: API tests, local tooling, the push dispatcher core, Vercel functions.
-    files: ['tests/**/*.{js,mjs}', 'tools/**/*.{js,mjs}', 'supabase/functions/**/*.js', 'api/**/*.js'],
+    files: ['tests/**/*.{js,mjs}', 'tools/**/*.{js,mjs}', 'scripts/**/*.{js,mjs}', 'supabase/functions/**/*.js', 'api/**/*.js'],
     languageOptions: { globals: globals.node },
   },
 ])

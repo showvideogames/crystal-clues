@@ -1,0 +1,42 @@
+{
+  "_metadata": {
+    "title": "Cluevoyance Unlimited - 20-word clue-generation pilot set",
+    "purpose": "A deliberately varied 20-word sample used to test whether high-quality pair clues can be generated before scaling to 100 words.",
+    "source": "Selected from data/unlimited/source-wordbank-visible-1000.json (the visible 1000-row subset of the production word bank).",
+    "selection_rules_applied": [
+      "Common and broadly recognizable to a general audience.",
+      "Versatile enough to support several different kinds of connection.",
+      "Varied in meaning; many double as verbs or adjectives as well as nouns.",
+      "Chosen to exercise direct association, shared category, before/after, compounds, cause and effect, contrast, cultural reference, wordplay and lateral stretches.",
+      "No typos (STDUIO and similar excluded).",
+      "No spelling variants or near-duplicates of each other (THEATER/THEATRE, STOCK/STOCKS excluded).",
+      "Single words only, short enough for the existing card and clue-tab design.",
+      "Includes intentionally difficult members (SHADOW, ENGINE, MIRROR) so the pilot is not biased toward easy pairings."
+    ],
+    "id_scheme": "w_ + normalized lowercase spelling. Deterministic: the same word always yields the same id.",
+    "word_count": 20,
+    "expected_pair_count": 190
+  },
+  "words": [
+    { "id": "w_fire",    "display": "FIRE",    "normalized": "fire",    "reason": "Elemental and extremely generative: compounds (firefly, fireplace), idioms (on fire), and strong cause-and-effect links to heat, smoke and danger." },
+    { "id": "w_moon",    "display": "MOON",    "normalized": "moon",    "reason": "Celestial anchor with heavy cultural and mythic loading (werewolves, landings, honeymoon), useful for reference and compound clues." },
+    { "id": "w_bank",    "display": "BANK",    "normalized": "bank",    "reason": "True homonym (money / river edge / to bank a turn). Essential for testing whether wordplay clues can exploit double meanings." },
+    { "id": "w_spring",  "display": "SPRING",  "normalized": "spring",  "reason": "Triple meaning (season / metal coil / water source) plus a verb sense. Tests whether the generator picks the most useful sense per pair." },
+    { "id": "w_light",   "display": "LIGHT",   "normalized": "light",   "reason": "Homonym across illumination and weight, and works as noun, verb and adjective. Natural contrast partner for SHADOW and MIRROR." },
+    { "id": "w_heart",   "display": "HEART",   "normalized": "heart",   "reason": "Spans anatomy, emotion and the card suit; idiom-dense, so it tests figurative as well as literal connections." },
+    { "id": "w_iron",    "display": "IRON",    "normalized": "iron",    "reason": "Metal, household appliance, golf club and verb. Good for shared-category and function-based clues." },
+    { "id": "w_crown",   "display": "CROWN",   "normalized": "crown",   "reason": "Royalty, dental work and the top of the head or a hill. Tests whether less obvious senses get used when the obvious one fails." },
+    { "id": "w_horse",   "display": "HORSE",   "normalized": "horse",   "reason": "Animal plus gymnastics apparatus plus idiom surface (dark horse, horsepower, Trojan horse)." },
+    { "id": "w_shadow",  "display": "SHADOW",  "normalized": "shadow",  "reason": "Deliberately harder: abstract, few compounds, limited category overlap. Included to stress-test difficult pairings rather than flatter the results." },
+    { "id": "w_key",     "display": "KEY",     "normalized": "key",     "reason": "Object, musical key, map legend, answer sheet and island (Key West). One of the most flexible words in the bank." },
+    { "id": "w_salt",    "display": "SALT",    "normalized": "salt",    "reason": "Mineral and preservative with strong idiomatic reach (old salt, salt of the earth, worth your salt) and a clear contrast with sweetness." },
+    { "id": "w_rose",    "display": "ROSE",    "normalized": "rose",    "reason": "Flower, colour, proper name and the past tense of rise. Excellent wordplay candidate." },
+    { "id": "w_diamond", "display": "DIAMOND", "normalized": "diamond", "reason": "Gem, card suit, baseball infield and geometric shape. Pairs naturally with HEART for card-suit clues and with IRON for hardness." },
+    { "id": "w_ghost",   "display": "GHOST",   "normalized": "ghost",   "reason": "Supernatural noun, modern verb (to ghost someone) and compound (ghostwriter). Tests cultural-reference and lateral clues." },
+    { "id": "w_honey",   "display": "HONEY",   "normalized": "honey",   "reason": "Food, colour and term of endearment; the honeymoon compound links it to MOON, giving a known-good compound test case." },
+    { "id": "w_snake",   "display": "SNAKE",   "normalized": "snake",   "reason": "Animal, plumbing tool, verb of movement and metaphor for a betrayer. Strong for contrast and lateral connections." },
+    { "id": "w_bridge",  "display": "BRIDGE",  "normalized": "bridge",  "reason": "Structure, card game, dental fitting, part of a song and part of the nose. High-polysemy counterweight to the concrete nouns." },
+    { "id": "w_mirror",  "display": "MIRROR",  "normalized": "mirror",  "reason": "Reflection noun and verb. Intentionally narrow in category terms, which forces lateral work on pairs like MIRROR/ENGINE." },
+    { "id": "w_engine",  "display": "ENGINE",  "normalized": "engine",  "reason": "Deliberately dry and technical with the least figurative reach of the set. Included as the hardest member so the pilot reveals worst-case clue quality." }
+  ]
+}
