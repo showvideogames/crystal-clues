@@ -33,6 +33,9 @@ const MAX_TARGET = Number(arg("max-target", 3));
 const OUT = arg("out", "data/unlimited/boards/beta-01");
 const BATCH = arg("batch", OUT.split(/[\\/]/).pop());
 const LIB = arg("library", "data/unlimited/library/pairs.json");
+// --exclude-boards <boards.json>: pairs already served by that batch are not
+// used again, so a new batch is new content, never a reshuffle of old boards.
+const EXCLUDE = arg("exclude-boards", null);
 
 export function mulberry32(seed) {
   let a = seed >>> 0;
@@ -43,9 +46,9 @@ export const normHint = (t) => String(t ?? "").trim().toUpperCase().replace(/\s+
 const PLAYABLE = new Set(["ai_reviewed", "human_approved"]);
 const CLUE_LINKS = [[[0, 0], [1, 0]], [[1, 1], [2, 1]], [[3, 2], [2, 2]], [[0, 3], [3, 3]]];
 
-export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTarget = MAX_TARGET, batch = BATCH }) {
+export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTarget = MAX_TARGET, batch = BATCH, excludePairs = new Set() }) {
   const rng = mulberry32(seed);
-  const playable = pairs.map((p) => ({ ...p, hints: p.clues.filter((c) => PLAYABLE.has(c.status) && normHint(c.text) !== normHint(p.a) && normHint(c.text) !== normHint(p.b)) })).filter((p) => p.hints.length > 0);
+  const playable = pairs.filter((p) => !excludePairs.has(p.pair_id)).map((p) => ({ ...p, hints: p.clues.filter((c) => PLAYABLE.has(c.status) && normHint(c.text) !== normHint(p.a) && normHint(c.text) !== normHint(p.b)) })).filter((p) => p.hints.length > 0);
   const targetUse = new Map(), pairUsed = new Set(), hintUsed = new Set();
   const boards = [], rejections = [];
   let attempts = 0;
@@ -122,15 +125,17 @@ export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTar
 if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, "/")}` || process.argv[1].endsWith("assemble-boards.mjs")) {
   const lib = JSON.parse(readFileSync(LIB, "utf8"));
   const words = JSON.parse(readFileSync("data/unlimited/library/shortlist-50.json", "utf8")).words.map((w) => w.word);
-  const res = assembleBatch({ pairs: lib.pairs, words });
+  const excludePairs = new Set(EXCLUDE ? JSON.parse(readFileSync(EXCLUDE, "utf8")).boards.flatMap((b) => b.reveal.map((r) => r.pairId)) : []);
+  const res = assembleBatch({ pairs: lib.pairs, words, excludePairs });
   mkdirSync(OUT, { recursive: true });
-  const out = { _metadata: { batch: BATCH, seed: SEED, assembled: new Date().toISOString(), library: LIB, playablePairs: res.playablePairs, maxTargetPerWord: MAX_TARGET, rules: "distinct normalised hint texts; hint ≠ own targets; 28 distinct words; no board-level semantic review (owner decision 2026-10-17)", statuses: "status 'beta' = assembled from ai_reviewed hints; humanApproved is false until a person sets it" }, boards: res.boards };
+  const out = { _metadata: { batch: BATCH, seed: SEED, assembled: new Date().toISOString(), library: LIB, playablePairs: res.playablePairs, maxTargetPerWord: MAX_TARGET, excludedPairsFrom: EXCLUDE, excludedPairs: excludePairs.size, rules: "distinct normalised hint texts; hint ≠ own targets; 28 distinct words; no board-level semantic review (owner decision 2026-10-17)", statuses: "status 'beta' = assembled from ai_reviewed hints; humanApproved is false until a person sets it" }, boards: res.boards };
   writeFileSync(join(OUT, "boards.json"), JSON.stringify(out, null, 2) + "\n");
   const hintCount = {}; res.boards.forEach((b) => b.clues.forEach((c) => { hintCount[c] = (hintCount[c] || 0) + 1; }));
   const log = [
     `# Batch ${BATCH} — assembly log`, "",
     `- assembled: ${out._metadata.assembled}`, `- seed: ${SEED}`, `- library: ${LIB} (${lib.pairs.length} pairs, ${res.playablePairs} with a playable hint)`,
     `- requested ${COUNT}, assembled ${res.boards.length} in ${res.attempts} attempts`,
+    ...(EXCLUDE ? [`- excluded ${excludePairs.size} pairs already served by ${EXCLUDE}`] : []),
     `- caps: pair once, hint text once, word as target ≤ ${MAX_TARGET}`, "",
     "## Boards", "", ...res.boards.map((b) => `- **${b.id}** clues ${b.clues.join(" / ")} — pairs ${b.reveal.map((r) => `${r.wordA}+${r.wordB}`).join(", ")}`), "",
     "## Target use per word", "", Object.entries(res.targetUse).map(([w, n]) => `${w}:${n}`).join(" "), "",
