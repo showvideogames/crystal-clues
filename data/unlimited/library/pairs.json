@@ -83,10 +83,3336 @@
         "rejected": 53,
         "needsText": 1,
         "pairs": 28
+      },
+      {
+        "review": "data/unlimited/library/reviews/u04-blind-review.json",
+        "key": "data/unlimited/library/reviews/u04-blind-key.json",
+        "batch": "data/unlimited/library/batches/u04-apple.json",
+        "ai_reviewed": 24,
+        "held": 34,
+        "rejected": 90,
+        "needsText": 1,
+        "pairs": 40
       }
     ]
   },
   "pairs": [
+    {
+      "pair_id": "p_apple__bank",
+      "a": "APPLE",
+      "b": "BANK",
+      "source": "u04",
+      "pairNote": "No hint reaches both words cleanly; BRANCH is the lone playable stretch.",
+      "reviewerBestAvailable": {
+        "text": "BRANCH",
+        "why": "the only hint with any natural path to apple (tree branch) while nailing bank",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BRANCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "homophone_wordplay",
+          "wordAConnection": "An apple hangs from a branch.",
+          "wordBConnection": "A bank branch.",
+          "revealExplanation": "A branch of the apple tree, and a branch of the bank.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bank branch is direct; apple only via the branch of an apple tree."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Apple core is direct; 'core banking' is industry jargon a stranger would not reach."
+            }
+          }
+        },
+        {
+          "text": "VAULT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BANK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bank vault is direct; nothing reaches apple."
+            }
+          }
+        },
+        {
+          "text": "TELLER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BANK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bank teller is direct; apple has no teller sense."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__bat",
+      "a": "APPLE",
+      "b": "BAT",
+      "source": "u04",
+      "pairNote": "FRUIT carries the pair; the other three are single-sided.",
+      "reviewerBestAvailable": {
+        "text": "FRUIT",
+        "why": "category word for apple and a familiar compound for bat",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FRUIT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "An apple is a fruit.",
+          "wordBConnection": "A fruit bat.",
+          "revealExplanation": "A fruit, and a fruit bat.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An apple is a fruit; a fruit bat is a familiar animal."
+            }
+          }
+        },
+        {
+          "text": "WING",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BAT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bat wing is direct; apple has no wing."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; bat has no pie sense."
+            }
+          }
+        },
+        {
+          "text": "CAVE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BAT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bats live in caves; apple does not."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__bear",
+      "a": "APPLE",
+      "b": "BEAR",
+      "source": "u04",
+      "pairNote": "Three playable stretches but nothing that reaches both words cleanly.",
+      "reviewerBestAvailable": {
+        "text": "TREE",
+        "why": "apple tree is instant and a bear in a tree is familiar imagery, the least strained second side",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TREE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "An apple tree.",
+          "wordBConnection": "A bear up a tree.",
+          "revealExplanation": "An apple tree, and a bear climbing one.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple tree is direct; bears climb trees but tree does not point at bear on its own."
+            }
+          }
+        },
+        {
+          "text": "HONEY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BEAR only; also a board word",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bears love honey; apple reached only via Honeycrisp or apples dipped in honey."
+            }
+          }
+        },
+        {
+          "text": "PICNIC",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "An apple in the picnic basket.",
+          "wordBConnection": "Yogi Bear and his picnic baskets.",
+          "revealExplanation": "A picnic basket: apples inside, and Yogi Bear after it.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Yogi Bear",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Apples are picnic food and Yogi Bear raids picnic baskets, but both links need a step."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; bear has no core sense."
+            }
+          }
+        },
+        {
+          "text": "TEDDY",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BEAR only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Teddy bear is direct; nothing for apple."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__bell",
+      "a": "APPLE",
+      "b": "BELL",
+      "source": "u04",
+      "pairNote": "SCHOOL passes on iconography; TEACHER is the weaker mirror of the same idea.",
+      "reviewerBestAvailable": {
+        "text": "SCHOOL",
+        "why": "school bell is instant and the schoolroom apple is iconic enough to be found",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCHOOL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An apple for the teacher at school.",
+          "wordBConnection": "The school bell.",
+          "revealExplanation": "School: an apple for the teacher and the bell.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "School bell is direct; the apple on the teacher's desk is standard back-to-school imagery."
+            }
+          }
+        },
+        {
+          "text": "TEACHER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An apple for the teacher.",
+          "wordBConnection": "The teacher rings the bell.",
+          "revealExplanation": "The teacher gets the apple and rings the bell.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple for the teacher is classic; bell only via the school bell a teacher waits on."
+            }
+          }
+        },
+        {
+          "text": "CHIME",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BELL only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Bells chime; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; bell has no core."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__bridge",
+      "a": "APPLE",
+      "b": "BRIDGE",
+      "source": "u04",
+      "pairNote": "An awkward pair; BROOKLYN is a stretch and the rest are one-sided.",
+      "reviewerBestAvailable": {
+        "text": "BROOKLYN",
+        "why": "the bridge is unmistakable and the Big Apple link is at least a real path",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BROOKLYN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Brooklyn is part of the Big Apple.",
+          "wordBConnection": "The Brooklyn Bridge.",
+          "revealExplanation": "The Brooklyn Bridge, in the Big Apple.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "New York City",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Brooklyn Bridge is direct; apple only because Brooklyn is part of the Big Apple."
+            }
+          }
+        },
+        {
+          "text": "BITE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Biting into an apple.",
+          "wordBConnection": "A dental bridge gives you your bite back.",
+          "revealExplanation": "Biting an apple, with a dental bridge.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Biting an apple is direct; a dental bridge is too far to count."
+            }
+          }
+        },
+        {
+          "text": "CIDER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple cider is direct; bridge has nothing."
+            }
+          }
+        },
+        {
+          "text": "LONDON",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "BRIDGE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "London Bridge is direct; the Big Apple is New York, not London."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__card",
+      "a": "APPLE",
+      "b": "CARD",
+      "source": "u04",
+      "pairNote": "Both playable hints lean on the company rather than the fruit; no clean double reach.",
+      "reviewerBestAvailable": {
+        "text": "GIFT",
+        "why": "Apple gift cards hang in every checkout aisle, so the apple side is more findable than Apple Card",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "GIFT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "An Apple gift card.",
+          "wordBConnection": "A gift card.",
+          "revealExplanation": "A gift card, as in an Apple gift card.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gift card is direct; apple only as an Apple gift card or an apple given as a gift."
+            }
+          }
+        },
+        {
+          "text": "CREDIT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Apple Card, Apple's credit card.",
+          "wordBConnection": "A credit card.",
+          "revealExplanation": "Apple Card: a credit card.",
+          "reference": {
+            "referenceType": "brand_or_mascot",
+            "source": "Apple Card",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Credit card is direct; apple only via the Apple Card product."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; card has no pie sense."
+            }
+          }
+        },
+        {
+          "text": "DECK",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "CARD only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Deck of cards is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__castle",
+      "a": "APPLE",
+      "b": "CASTLE",
+      "source": "u04",
+      "pairNote": "Only the fairy tale bridges this pair, and it needs two steps on the apple side.",
+      "reviewerBestAvailable": {
+        "text": "WHITE",
+        "why": "White Castle gives one certain side and Snow White gives a real if indirect route to apple",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "WHITE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Snow White's poisoned apple.",
+          "wordBConnection": "The Queen's castle in Snow White.",
+          "revealExplanation": "Snow White: the apple, and the castle.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:SNOW"
+              ],
+              "reason": "White Castle is a familiar chain; apple only through Snow White's apple."
+            }
+          }
+        },
+        {
+          "text": "SNOW",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "variant",
+            "authorReason": "variant of WHITE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation",
+                "variant_of:WHITE"
+              ],
+              "reason": "Snow White's poisoned apple and her castle both require the whole fairy tale."
+            }
+          }
+        },
+        {
+          "text": "MOAT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "CASTLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Castle moat is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "ORCHARD",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple orchard is direct; castle has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__cat",
+      "a": "APPLE",
+      "b": "CAT",
+      "source": "u04",
+      "pairNote": "TREE is a defensible pass; everything else is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "TREE",
+        "why": "apple tree is instant and cat-in-a-tree is a universal trope",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TREE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "An apple tree.",
+          "wordBConnection": "A cat up a tree.",
+          "revealExplanation": "An apple tree, with a cat stuck in it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple tree is direct; the cat stuck up a tree and the pet-store cat tree make cat findable."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; cat has nothing."
+            }
+          }
+        },
+        {
+          "text": "WHISKERS",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "CAT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Cat whiskers are direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "PAW",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "CAT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Cat paw is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__crown",
+      "a": "APPLE",
+      "b": "CROWN",
+      "source": "u04",
+      "pairNote": "No clean hint; GALA is the only one with a genuine two-sided path.",
+      "reviewerBestAvailable": {
+        "text": "GALA",
+        "why": "the apple variety is a real foothold and formal galas at least evoke crowns",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "GALA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "Gala apples.",
+          "wordBConnection": "A royal gala.",
+          "revealExplanation": "Gala apples; a royal gala.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gala is a top-selling apple variety; crown only via royalty attending a gala."
+            }
+          }
+        },
+        {
+          "text": "ROYAL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A Royal Gala apple.",
+          "wordBConnection": "A royal crown.",
+          "revealExplanation": "Royal Gala apples and a royal crown.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Royalty wear crowns; apple only via the Royal Gala variety name, which most US shoppers do not use."
+            }
+          }
+        },
+        {
+          "text": "JEWEL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "CROWN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Crown jewel is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; crown has no core sense."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__diamond",
+      "a": "APPLE",
+      "b": "DIAMOND",
+      "source": "u04",
+      "pairNote": "Four playable stretches, none clean; the pair has no natural shared sense.",
+      "reviewerBestAvailable": {
+        "text": "CUT",
+        "why": "cut is the diamond term of art and slicing an apple is at least an everyday action",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SHINY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A shiny polished apple.",
+          "wordBConnection": "A shiny diamond.",
+          "revealExplanation": "Both shine.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material",
+                "generic"
+              ],
+              "reason": "Diamonds sparkle; a polished apple is shiny but the word does not point at apple."
+            }
+          }
+        },
+        {
+          "text": "CUT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "DIAMOND only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "A diamond's cut is a defining term; cutting an apple is ordinary and generic."
+            }
+          }
+        },
+        {
+          "text": "BASEBALL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "DIAMOND only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Baseball diamond is direct; apple only via 'baseball and apple pie' Americana."
+            }
+          }
+        },
+        {
+          "text": "BIG",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "The Big Apple.",
+          "wordBConnection": "A big diamond.",
+          "revealExplanation": "The Big Apple; a big diamond.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Big Apple is a familiar compound; a big diamond is generic praise, not a pointer."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; diamond has no core sense."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__dog",
+      "a": "APPLE",
+      "b": "DOG",
+      "source": "u04",
+      "pairNote": "HOT is the only two-sided hint and it leans on a phrase rather than the fruit.",
+      "reviewerBestAvailable": {
+        "text": "HOT",
+        "why": "hot dog is certain and hot apple pie is a common enough phrase to be a real second path",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HOT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "Hot apple cider.",
+          "wordBConnection": "A hot dog.",
+          "revealExplanation": "A hot dog, and hot apple cider.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hot dog is direct; apple only via hot apple pie or hot cider."
+            }
+          }
+        },
+        {
+          "text": "FETCH",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "DOG only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dogs fetch; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CRAB",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Crab apple is a familiar compound; crab has no dog sense."
+            }
+          }
+        },
+        {
+          "text": "BONE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "DOG only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dog bone is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__dragon",
+      "a": "APPLE",
+      "b": "DRAGON",
+      "source": "u04",
+      "pairNote": "FRUIT does the job alone.",
+      "reviewerBestAvailable": {
+        "text": "FRUIT",
+        "why": "category word plus familiar compound",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FRUIT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "An apple is a fruit.",
+          "wordBConnection": "Dragon fruit.",
+          "revealExplanation": "A fruit, and dragon fruit.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An apple is a fruit; dragon fruit is a familiar supermarket item."
+            }
+          }
+        },
+        {
+          "text": "SCALES",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "DRAGON only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragon scales are direct; weighing apples on grocery scales is too thin to reach apple."
+            }
+          }
+        },
+        {
+          "text": "FIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "DRAGON only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons breathe fire; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__egg",
+      "a": "APPLE",
+      "b": "EGG",
+      "source": "u04",
+      "pairNote": "BASKET is generic but genuinely natural to both words.",
+      "reviewerBestAvailable": {
+        "text": "BASKET",
+        "why": "natural container for both",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BASKET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A basket of apples.",
+          "wordBConnection": "Eggs in a basket.",
+          "revealExplanation": "A basket of apples; a basket of eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "A basket of apples and an egg basket (or Easter basket) are both stock images."
+            }
+          }
+        },
+        {
+          "text": "YOLK",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "EGG only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Egg yolk is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; egg has no core."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__fire",
+      "a": "APPLE",
+      "b": "FIRE",
+      "source": "u04",
+      "pairNote": "WOOD is the only hint that reaches both; the rest are one-sided.",
+      "reviewerBestAvailable": {
+        "text": "WOOD",
+        "why": "two familiar compounds",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WOOD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Applewood, used for smoking food.",
+          "wordBConnection": "Firewood.",
+          "revealExplanation": "Applewood on the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Firewood is direct; applewood (applewood-smoked bacon, apple-tree wood) is a familiar compound."
+            }
+          }
+        },
+        {
+          "text": "BAKED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A baked apple.",
+          "wordBConnection": "Baked over the fire.",
+          "revealExplanation": "A baked apple from the fire.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Baked apple is direct; baking implies oven heat, which does not point at fire."
+            }
+          }
+        },
+        {
+          "text": "FLAME",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "FIRE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Flame nearly renames fire; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CIDER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple cider is direct; fire has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__fish",
+      "a": "APPLE",
+      "b": "FISH",
+      "source": "u04",
+      "pairNote": "SAUCE is clean; PIE is a US-unfriendly stretch.",
+      "reviewerBestAvailable": {
+        "text": "SAUCE",
+        "why": "two familiar compounds",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SAUCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Applesauce.",
+          "wordBConnection": "Fish sauce.",
+          "revealExplanation": "Applesauce and fish sauce.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Applesauce and fish sauce are both familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "british_only"
+              ],
+              "reason": "Apple pie is direct; fish pie is a British dish most US solvers will not reach."
+            }
+          }
+        },
+        {
+          "text": "FIN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "FISH only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Fish fin is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__ghost",
+      "a": "APPLE",
+      "b": "GHOST",
+      "source": "u04",
+      "pairNote": "HALLOWEEN is a solid pass.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "both words are holiday staples",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bobbing for apples on Halloween.",
+          "wordBConnection": "Halloween ghosts.",
+          "revealExplanation": "Halloween: bobbing for apples among the ghosts.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghosts are Halloween icons; bobbing for apples and caramel apples are Halloween staples."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; ghost has nothing."
+            }
+          }
+        },
+        {
+          "text": "SHEET",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "GHOST only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Sheet ghost costume is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__glass",
+      "a": "APPLE",
+      "b": "GLASS",
+      "source": "u04",
+      "pairNote": "Container links only; nothing reaches glass with real force.",
+      "reviewerBestAvailable": {
+        "text": "JUICE",
+        "why": "apple juice is instant and a juice glass is a slightly more idiomatic object than a glass of cider",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CIDER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Apple cider.",
+          "wordBConnection": "A glass of cider.",
+          "revealExplanation": "A glass of apple cider.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "variant_of:JUICE"
+              ],
+              "reason": "Apple cider is direct; a glass of cider is a generic container link."
+            }
+          }
+        },
+        {
+          "text": "JUICE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Apple juice.",
+          "wordBConnection": "A glass of juice.",
+          "revealExplanation": "A glass of apple juice.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "variant_of:CIDER"
+              ],
+              "reason": "Apple juice is direct; 'glass of juice' and juice glass are natural but generic."
+            }
+          }
+        },
+        {
+          "text": "WINDOW",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "GLASS only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Windows are glass; apple only as the rival of Microsoft Windows, which points away from Apple."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; glass has no core."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__gold",
+      "a": "APPLE",
+      "b": "GOLD",
+      "source": "u04",
+      "pairNote": "Golden Delicious is the one real bridge and it is a variant of the word, not the word.",
+      "reviewerBestAvailable": {
+        "text": "DELICIOUS",
+        "why": "the variety name is the only link that actually contains both ideas",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DELICIOUS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "A Delicious apple.",
+          "wordBConnection": "The Golden Delicious variety.",
+          "revealExplanation": "Golden Delicious apples.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Red and Golden Delicious are famous apple varieties; gold only via the 'Golden' in Golden Delicious."
+            }
+          }
+        },
+        {
+          "text": "PARIS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "mythology_or_folklore",
+          "wordAConnection": "The apple Paris awarded.",
+          "wordBConnection": "It was a golden apple.",
+          "revealExplanation": "The golden apple of Paris, in Greek myth.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "the Judgement of Paris",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "The Judgement of Paris and the golden apple of discord is real myth but far too obscure for either side."
+            }
+          }
+        },
+        {
+          "text": "RUSH",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "GOLD only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Gold rush is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "MEDAL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "GOLD only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Gold medal is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__heart",
+      "a": "APPLE",
+      "b": "HEART",
+      "source": "u04",
+      "pairNote": "A rich pair; RED passes only because both words are iconically red.",
+      "reviewerBestAvailable": {
+        "text": "DOCTOR",
+        "why": "a proverb on one side and a plain phrase on the other",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "CORE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "An apple core.",
+          "wordBConnection": "The heart of the matter: its core.",
+          "revealExplanation": "An apple core; the heart is the core.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple core is literal; core is the figurative heart of a matter."
+            }
+          }
+        },
+        {
+          "text": "HEALTHY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A healthy apple.",
+          "wordBConnection": "A healthy heart.",
+          "revealExplanation": "An apple for a healthy heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "An apple a day is the health cliche; heart-healthy is a familiar compound."
+            }
+          }
+        },
+        {
+          "text": "DOCTOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "An apple a day keeps the doctor away.",
+          "wordBConnection": "A heart doctor.",
+          "revealExplanation": "An apple a day keeps the doctor away, even the heart doctor.",
+          "reference": {
+            "referenceType": "catchphrase",
+            "source": "the proverb",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An apple a day keeps the doctor away; heart doctor is an everyday phrase."
+            }
+          }
+        },
+        {
+          "text": "RED",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "colour only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Red apple and red Valentine heart are both default images, though colour hints are weaker by nature."
+            }
+          }
+        },
+        {
+          "text": "BEAT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "HEART only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Heartbeat is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__honey",
+      "a": "APPLE",
+      "b": "HONEY",
+      "source": "u04",
+      "pairNote": "CRISP passes on the Honeycrisp compound; SWEET and BEE are generic or one-step stretches.",
+      "reviewerBestAvailable": {
+        "text": "CRISP",
+        "why": "the Honeycrisp compound covers both",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRISP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Apple crisp, and the Honeycrisp apple.",
+          "wordBConnection": "Honeycrisp.",
+          "revealExplanation": "Honeycrisp: the apple.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Crisp apple and apple crisp are direct; Honeycrisp is a household apple name that reaches honey as a compound."
+            }
+          }
+        },
+        {
+          "text": "SWEET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A sweet apple.",
+          "wordBConnection": "Sweet as honey.",
+          "revealExplanation": "Both are sweet.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Honey is the sweet thing; apples are sweet but so is every fruit, so it does not point."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "HONEY only; apple blossoms are a hop",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey bee is direct; bees pollinate apple blossoms but that needs an explanation."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; honey has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__horse",
+      "a": "APPLE",
+      "b": "HORSE",
+      "source": "u04",
+      "pairNote": "The real link (horses eat apples) is not captured by any single hint here.",
+      "reviewerBestAvailable": {
+        "text": "TREAT",
+        "why": "the only hint whose idea genuinely involves both words, even if each side is weak",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TREAT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An apple as a treat.",
+          "wordBConnection": "A horse's treat.",
+          "revealExplanation": "An apple, the horse's treat.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "An apple is the classic horse treat, but 'treat' alone points at neither word."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; horse has nothing."
+            }
+          }
+        },
+        {
+          "text": "SADDLE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "HORSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Horse saddle is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__ice",
+      "a": "APPLE",
+      "b": "ICE",
+      "source": "u04",
+      "pairNote": "Nothing here reaches both words; every hint is single-sided.",
+      "reviewerBestAvailable": {
+        "text": "COLD",
+        "why": "ice is certain and a crisp cold apple is the least implausible second side on offer",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CUBE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "ICE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ice cube is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CIDER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple cider is direct; ice cider is a niche product most will not know."
+            }
+          }
+        },
+        {
+          "text": "COLD",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "ICE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Ice cold nearly renames ice; apple has no cold sense."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Apple pie.",
+          "wordBConnection": "With ice cream on top.",
+          "revealExplanation": "Apple pie with ice cream.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; ice has no pie sense in US usage."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__iron",
+      "a": "APPLE",
+      "b": "IRON",
+      "source": "u04",
+      "pairNote": "CORE is a modest but defensible pass; the rest fail.",
+      "reviewerBestAvailable": {
+        "text": "CORE",
+        "why": "Earth's iron core gives iron a real, findable path",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CORE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "An apple core.",
+          "wordBConnection": "The Earth's iron core.",
+          "revealExplanation": "An apple core, and the planet's iron core.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple core is direct; Earth's iron core is schoolbook knowledge and 'iron core' a familiar phrase."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Apple pie is direct; a pie iron is a niche camping gadget."
+            }
+          }
+        },
+        {
+          "text": "RUST",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "IRON only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Iron rusts; cedar-apple rust is a plant disease nobody will reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__key",
+      "a": "APPLE",
+      "b": "KEY",
+      "source": "u04",
+      "pairNote": "No hint reaches key from the apple side; the pair is unserved.",
+      "reviewerBestAvailable": {
+        "text": "CORE",
+        "why": "apple is certain and a key does go into a lock's core, the only thread to key at all",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "LOCK",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "KEY only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lock and key is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; a lock's core is locksmith jargon."
+            }
+          }
+        },
+        {
+          "text": "MAC",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Apple Mac.",
+          "wordBConnection": "The keys of a Mac keyboard.",
+          "revealExplanation": "An Apple Mac and its keys.",
+          "reference": {
+            "referenceType": "brand_or_mascot",
+            "source": "Apple Macintosh",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple Mac is direct; nothing connects Mac to key."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__king",
+      "a": "APPLE",
+      "b": "KING",
+      "source": "u04",
+      "pairNote": "Nothing bridges this pair.",
+      "reviewerBestAvailable": {
+        "text": "CANDY",
+        "why": "candy apple is certain and king-size candy is at least a phrase containing king",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CANDY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A candy apple.",
+          "wordBConnection": "King Candy, in Wreck-It Ralph.",
+          "revealExplanation": "A candy apple, and King Candy.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Wreck-It Ralph",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Candy apple is direct; king only via king-size candy bars, which does not point at king."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; king has no pie sense."
+            }
+          }
+        },
+        {
+          "text": "CROWN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "KING only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A king wears a crown; apple has no crown sense."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__knight",
+      "a": "APPLE",
+      "b": "KNIGHT",
+      "source": "u04",
+      "pairNote": "SHINING is a stretch; TELL reaches apple nicely but misses knight entirely.",
+      "reviewerBestAvailable": {
+        "text": "SHINING",
+        "why": "the only hint with any path to apple while nailing knight",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SHINING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "A shining, polished apple.",
+          "wordBConnection": "A knight in shining armor.",
+          "revealExplanation": "A shining apple; a knight in shining armor.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Knight in shining armor is direct; a shining polished apple is a weak descriptor link."
+            }
+          }
+        },
+        {
+          "text": "ARMOR",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "KNIGHT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Knight's armor is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "TELL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "William Tell is an archer, not a knight",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "William Tell shot the apple; Tell was a crossbowman, not a knight."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__light",
+      "a": "APPLE",
+      "b": "LIGHT",
+      "source": "u04",
+      "pairNote": "GREEN passes on two fixed phrases; NEWTON is a thoughtful but uneven stretch.",
+      "reviewerBestAvailable": {
+        "text": "GREEN",
+        "why": "two set phrases",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GREEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A green apple.",
+          "wordBConnection": "A green light.",
+          "revealExplanation": "A green apple; a green light.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Green apple and green light (traffic) are both standard phrases."
+            }
+          }
+        },
+        {
+          "text": "NEWTON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "famous_person",
+          "wordAConnection": "Newton's falling apple.",
+          "wordBConnection": "Newton split light with a prism.",
+          "revealExplanation": "Newton: the apple, and the study of light.",
+          "reference": {
+            "referenceType": "famous_person",
+            "source": "Isaac Newton",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Newton's apple is famous; his prism work on light is real but second-tier knowledge."
+            }
+          }
+        },
+        {
+          "text": "BULB",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "LIGHT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Light bulb is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; light has no core."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__lion",
+      "a": "APPLE",
+      "b": "LION",
+      "source": "u04",
+      "pairNote": "No usable hint; the pair has no natural bridge.",
+      "reviewerBestAvailable": {
+        "text": "NARNIA",
+        "why": "the only hint with any genuine apple reference, however obscure",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "NARNIA",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "book",
+          "wordAConnection": "The apple Digory fetches for Aslan.",
+          "wordBConnection": "Aslan, the lion of Narnia.",
+          "revealExplanation": "Narnia: Aslan the lion and the apple from the garden.",
+          "reference": {
+            "referenceType": "book",
+            "source": "The Magician's Nephew (Narnia)",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Aslan the lion is well known; the apple of youth in The Magician's Nephew is deep-cut trivia."
+            }
+          }
+        },
+        {
+          "text": "ROAR",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "LION only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lions roar; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "KING",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "LION only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lion King is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "ZOO",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "neither word in particular",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lions live in zoos; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__moon",
+      "a": "APPLE",
+      "b": "MOON",
+      "source": "u04",
+      "pairNote": "HARVEST is a strong pass.",
+      "reviewerBestAvailable": {
+        "text": "HARVEST",
+        "why": "autumn ties both words tightly",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HARVEST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The apple harvest.",
+          "wordBConnection": "The harvest moon.",
+          "revealExplanation": "Apple harvest under the harvest moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Harvest moon is a set phrase; the fall apple harvest is direct."
+            }
+          }
+        },
+        {
+          "text": "NEWTON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "famous_person",
+          "wordAConnection": "Newton's falling apple.",
+          "wordBConnection": "Newton's gravity keeps the moon in orbit.",
+          "revealExplanation": "Newton: the apple that fell, and the moon that doesn't.",
+          "reference": {
+            "referenceType": "famous_person",
+            "source": "Isaac Newton",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Newton's apple is famous; that his gravity explained the moon's orbit needs a step."
+            }
+          }
+        },
+        {
+          "text": "FULL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "MOON only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Full moon is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; the moon's core is not a thing people think of."
+            }
+          }
+        }
+      ]
+    },
     {
       "pair_id": "p_apple__mouse",
       "a": "APPLE",
@@ -242,6 +3568,1159 @@
                 "one_sided"
               ],
               "reason": "An apple for the teacher is classic, but there is no teacher-mouse link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__night",
+      "a": "APPLE",
+      "b": "NIGHT",
+      "source": "u04",
+      "pairNote": "HALLOWEEN carries the pair; the others are one-sided.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "a night-time holiday with strong apple traditions",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bobbing for apples at Halloween.",
+          "wordBConnection": "Halloween night.",
+          "revealExplanation": "Halloween night, bobbing for apples.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Halloween night is the one holiday that happens after dark; bobbing for apples and caramel apples are Halloween staples."
+            }
+          }
+        },
+        {
+          "text": "DARK",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "NIGHT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Dark nearly renames night; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CIDER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple cider is direct; night has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__ocean",
+      "a": "APPLE",
+      "b": "OCEAN",
+      "source": "u04",
+      "pairNote": "Unserved pair; all three hints are single-sided.",
+      "reviewerBestAvailable": {
+        "text": "ATLANTIC",
+        "why": "ocean is certain and New York's Atlantic coast is the only thread, however thin, toward the Big Apple",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "WAVE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "OCEAN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ocean waves are direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; ocean has no core."
+            }
+          }
+        },
+        {
+          "text": "ATLANTIC",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Big Apple, on the Atlantic coast.",
+          "wordBConnection": "The Atlantic Ocean.",
+          "revealExplanation": "The Atlantic: the ocean at the Big Apple's door.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Atlantic Ocean is direct; the Big Apple sitting on the Atlantic coast is too thin to count."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__pirate",
+      "a": "APPLE",
+      "b": "PIRATE",
+      "source": "u04",
+      "pairNote": "SOFTWARE is a clean pass; SCURVY rests on a false fruit link.",
+      "reviewerBestAvailable": {
+        "text": "SOFTWARE",
+        "why": "company sense plus a familiar compound",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SOFTWARE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Apple's software.",
+          "wordBConnection": "A software pirate copies it.",
+          "revealExplanation": "Apple software, and the pirates who copy it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple software is direct; software pirate / piracy is a familiar compound."
+            }
+          }
+        },
+        {
+          "text": "PARROT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "PIRATE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Pirate's parrot is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CIDER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple cider is direct; pirates drink rum, not cider."
+            }
+          }
+        },
+        {
+          "text": "SCURVY",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "citrus, not apples: a wrong fact",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "wrong_fact"
+              ],
+              "reason": "Scurvy is pirate lore; the scurvy remedy was citrus, not apples."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__queen",
+      "a": "APPLE",
+      "b": "QUEEN",
+      "source": "u04",
+      "pairNote": "Every bridge runs through Snow White and each hint lands one side cleanly at most.",
+      "reviewerBestAvailable": {
+        "text": "POISON",
+        "why": "poison apple is the strongest single phrase and the queen is the poisoner in the best-known fairy tale",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BEE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "QUEEN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Queen bee is direct; bees pollinate apple blossoms but that needs explaining."
+            }
+          }
+        },
+        {
+          "text": "POISON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The poisoned apple.",
+          "wordBConnection": "The Queen who poisoned it.",
+          "revealExplanation": "Snow White's Queen and her poisoned apple.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:EVIL",
+                "variant_of:SNOW"
+              ],
+              "reason": "Poison apple is an iconic phrase; queen only as the one who poisoned it."
+            }
+          }
+        },
+        {
+          "text": "EVIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Evil Queen's apple.",
+          "wordBConnection": "The Evil Queen.",
+          "revealExplanation": "The Evil Queen, apple in hand.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:POISON",
+                "variant_of:SNOW"
+              ],
+              "reason": "Evil Queen is Disney's villain by name; apple only through her poisoned apple."
+            }
+          }
+        },
+        {
+          "text": "SNOW",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "variant",
+            "authorReason": "variant of POISON",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation",
+                "variant_of:POISON",
+                "variant_of:EVIL"
+              ],
+              "reason": "Snow White's poisoned apple and her queen (or The Snow Queen) both need the tale as a stepping stone."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; queen has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__ring",
+      "a": "APPLE",
+      "b": "RING",
+      "source": "u04",
+      "pairNote": "Unserved pair; no hint reaches apple from the ring side.",
+      "reviewerBestAvailable": {
+        "text": "TONE",
+        "why": "ringtone is certain and the iPhone's default ringtone is the faintest thread to Apple",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; ring has no core."
+            }
+          }
+        },
+        {
+          "text": "TONE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The iPhone ringtone is Apple's.",
+          "wordBConnection": "A ringtone.",
+          "revealExplanation": "A ringtone, like the iPhone's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ringtone is direct; tone does not reach apple."
+            }
+          }
+        },
+        {
+          "text": "DIAMOND",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "RING only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Diamond ring is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__robot",
+      "a": "APPLE",
+      "b": "ROBOT",
+      "source": "u04",
+      "pairNote": "Both passes rely on the company sense of apple; SIRI is the sharper but more brand-bound hint.",
+      "reviewerBestAvailable": {
+        "text": "COMPUTER",
+        "why": "both sides reachable without a brand",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "COMPUTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Apple computers.",
+          "wordBConnection": "A robot's computer brain.",
+          "revealExplanation": "Apple computers; the computer inside a robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Apple computer is direct; a robot is a computer with a body in common imagination."
+            }
+          }
+        },
+        {
+          "text": "SIRI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Siri is Apple's assistant.",
+          "wordBConnection": "Siri talks like a robot.",
+          "revealExplanation": "Siri: Apple's robotic assistant.",
+          "reference": {
+            "referenceType": "brand_or_mascot",
+            "source": "Apple Siri",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Siri is Apple's assistant; people routinely call voice assistants robots."
+            }
+          }
+        },
+        {
+          "text": "ARM",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "ROBOT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Robot arm is direct; Apple's ARM chips are tech trivia."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; robot has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__rock",
+      "a": "APPLE",
+      "b": "ROCK",
+      "source": "u04",
+      "pairNote": "CANDY is clean; the other two are playable stretches.",
+      "reviewerBestAvailable": {
+        "text": "CANDY",
+        "why": "two familiar compounds",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CANDY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A candy apple.",
+          "wordBConnection": "Rock candy.",
+          "revealExplanation": "Candy apple, rock candy.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Candy apple and rock candy are both familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "HARD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "ROCK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Rock hard and hard rock are set phrases; apple only via hard cider or a hard, crunchy fruit."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple core is direct; a rock core sample or Earth's rocky core needs a step."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__rose",
+      "a": "APPLE",
+      "b": "ROSE",
+      "source": "u04",
+      "pairNote": "Two passes; BLOSSOM is the more specific.",
+      "reviewerBestAvailable": {
+        "text": "BLOSSOM",
+        "why": "a compound for apple and a plain-sense flower word for rose",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A red apple.",
+          "wordBConnection": "A red rose.",
+          "revealExplanation": "A red apple, a red rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Red apple and red rose are both the default image, though colour is a soft hint by nature."
+            }
+          }
+        },
+        {
+          "text": "BLOSSOM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Apple blossom.",
+          "wordBConnection": "A rose in blossom.",
+          "revealExplanation": "Apple blossom and rose blossom.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple blossom is a familiar compound; a rose is a blossom and roses blossom."
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "ROSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Rose thorn is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; rose has no core."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__salt",
+      "a": "APPLE",
+      "b": "SALT",
+      "source": "u04",
+      "pairNote": "CARAMEL is a clean pass.",
+      "reviewerBestAvailable": {
+        "text": "CARAMEL",
+        "why": "two familiar compounds",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CARAMEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A caramel apple.",
+          "wordBConnection": "Salted caramel.",
+          "revealExplanation": "A salted-caramel apple.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Caramel apple and salted caramel are both familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; salt has no pie sense."
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "SALT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Sea salt is direct; apple has nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__shadow",
+      "a": "APPLE",
+      "b": "SHADOW",
+      "source": "u04",
+      "pairNote": "No clean hint; TREE is the lone playable stretch.",
+      "reviewerBestAvailable": {
+        "text": "TREE",
+        "why": "the only hint with any path to shadow while nailing apple",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TREE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "An apple tree.",
+          "wordBConnection": "The shadow a tree casts.",
+          "revealExplanation": "An apple tree and its shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Apple tree is direct; trees cast shadows but tree does not point at shadow."
+            }
+          }
+        },
+        {
+          "text": "SHADE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "a synonym of SHADOW",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Shade nearly renames shadow; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; shadow has no core."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__shark",
+      "a": "APPLE",
+      "b": "SHARK",
+      "source": "u04",
+      "pairNote": "BITE is a strong pass.",
+      "reviewerBestAvailable": {
+        "text": "BITE",
+        "why": "plain-sense action on both sides",
+        "reviewer": "blind-subagent-4"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Biting into an apple.",
+          "wordBConnection": "A shark bite.",
+          "revealExplanation": "A bite of apple; a shark's bite.",
+          "reference": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shark bite is direct; taking a bite of an apple (and the bitten Apple logo) is direct."
+            }
+          }
+        },
+        {
+          "text": "FIN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "SHARK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shark fin is direct; apple has nothing."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u04",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-4",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; shark has no core."
             }
           }
         }

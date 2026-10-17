@@ -40,7 +40,7 @@ for (const rp of review.pairs) {
   // review for a hint the reviewer passed (batch.laterText; the verdict came first).
   const textFor = (t) => {
     const c = (src.clues || []).find((x) => x.text === t) || (src.laterText || []).find((x) => x.text === t);
-    return c ? { type: c.type, wordAConnection: c.wordAConnection, wordBConnection: c.wordBConnection, revealExplanation: c.revealExplanation, reference: c.reference || null } : null;
+    return c ? { type: c.type, wordAConnection: c.wordAConnection, wordBConnection: c.wordBConnection, revealExplanation: c.revealExplanation, reference: c.reference || null, ...(c.stretch ? { stretch: true } : {}) } : null;
   };
   const clues = rp.hints.map((h) => {
     const kh = k.get(h.text) || {};
@@ -65,7 +65,10 @@ for (const rp of review.pairs) {
   // Playable hints first, strongest first (both sides, then fairness).
   const score = (c) => (c.status === "ai_reviewed" ? 100 : 0) + (c.provenance.blindReview.a + c.provenance.blindReview.b) * 10 + (c.provenance.blindReview.fairness || 0);
   clues.sort((x, y) => score(y) - score(x));
-  const entry = { pair_id: rp.pair_id, a, b, source: batch && batchIdx.has(rp.pair_id) ? batch._metadata.batch : "pilot-2026-10", pairNote: rp.pair_note || null, playableHints: clues.filter((c) => c.status === "ai_reviewed").length, clues };
+  // The reviewer's own "best available" (the hint it would serve if forced to use the pair,
+  // PASS or not) is kept apart from playable eligibility and never promotes a hint.
+  const reviewerBestAvailable = rp.best_available?.text ? { text: rp.best_available.text, why: rp.best_available.why || null, reviewer: review._metadata?.reviewer || "blind-subagent" } : null;
+  const entry = { pair_id: rp.pair_id, a, b, source: batch && batchIdx.has(rp.pair_id) ? batch._metadata.batch : "pilot-2026-10", pairNote: rp.pair_note || null, reviewerBestAvailable, playableHints: clues.filter((c) => c.status === "ai_reviewed").length, clues };
   if (libIdx.has(rp.pair_id)) Object.assign(libIdx.get(rp.pair_id), entry); else { lib.pairs.push(entry); libIdx.set(rp.pair_id, entry); }
   counts.pairs++;
 }

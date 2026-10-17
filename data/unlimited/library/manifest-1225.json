@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-17T22:08:08.238Z",
+  "generated": "2026-10-17T22:16:39.827Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 76,
-  "reviewed": 76,
-  "playable": 65,
-  "held_only": 11,
-  "rejected_only": 0,
+  "authored": 116,
+  "reviewed": 116,
+  "playable": 85,
+  "held_only": 25,
+  "rejected_only": 6,
   "candidate": 0,
-  "hole": 1149,
+  "hole": 1109,
   "closed": 0,
-  "withBestAvailableCandidate": 11,
+  "withBestAvailableCandidate": 31,
   "underGenerationHold": 1,
   "servedLive": 32,
   "pendingLocal": 32,
@@ -32,54 +32,54 @@
    ]
   },
   "hints": {
-   "total": 319,
-   "playable": 126,
-   "held": 101,
-   "rejected": 92
+   "total": 467,
+   "playable": 150,
+   "held": 135,
+   "rejected": 182
   },
   "perWordHoles": {
-   "APPLE": 47,
-   "BANK": 42,
-   "BAT": 48,
-   "BEAR": 47,
-   "BELL": 46,
-   "BRIDGE": 44,
-   "CARD": 47,
-   "CASTLE": 46,
-   "CAT": 47,
-   "CROWN": 44,
-   "DIAMOND": 44,
-   "DOG": 47,
-   "DRAGON": 46,
-   "EGG": 48,
-   "FIRE": 44,
-   "FISH": 47,
-   "GHOST": 44,
-   "GLASS": 47,
-   "GOLD": 46,
-   "HEART": 43,
-   "HONEY": 43,
-   "HORSE": 43,
-   "ICE": 46,
-   "IRON": 44,
-   "KEY": 44,
-   "KING": 46,
-   "KNIGHT": 47,
-   "LIGHT": 44,
-   "LION": 47,
-   "MOON": 46,
+   "APPLE": 7,
+   "BANK": 41,
+   "BAT": 47,
+   "BEAR": 46,
+   "BELL": 45,
+   "BRIDGE": 43,
+   "CARD": 46,
+   "CASTLE": 45,
+   "CAT": 46,
+   "CROWN": 43,
+   "DIAMOND": 43,
+   "DOG": 46,
+   "DRAGON": 45,
+   "EGG": 47,
+   "FIRE": 43,
+   "FISH": 46,
+   "GHOST": 43,
+   "GLASS": 46,
+   "GOLD": 45,
+   "HEART": 42,
+   "HONEY": 42,
+   "HORSE": 42,
+   "ICE": 45,
+   "IRON": 43,
+   "KEY": 43,
+   "KING": 45,
+   "KNIGHT": 46,
+   "LIGHT": 43,
+   "LION": 46,
+   "MOON": 45,
    "MOUSE": 47,
-   "NIGHT": 48,
-   "OCEAN": 46,
-   "PIRATE": 47,
-   "QUEEN": 47,
-   "RING": 47,
-   "ROBOT": 47,
-   "ROCK": 47,
-   "ROSE": 44,
-   "SALT": 47,
-   "SHADOW": 48,
-   "SHARK": 47,
+   "NIGHT": 47,
+   "OCEAN": 45,
+   "PIRATE": 46,
+   "QUEEN": 46,
+   "RING": 46,
+   "ROBOT": 46,
+   "ROCK": 46,
+   "ROSE": 43,
+   "SALT": 46,
+   "SHADOW": 47,
+   "SHARK": 46,
    "SNAKE": 46,
    "SPIDER": 48,
    "SPRING": 45,
@@ -92,11 +92,11 @@
   "batches": {
    "u04": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
-    "rejected_only": 0
+    "playable": 20,
+    "held_only": 14,
+    "rejected_only": 6
    },
    "u05": {
     "pairs": 40,
@@ -329,8 +329,28 @@
    "pair_id": "p_apple__bank",
    "a": "APPLE",
    "b": "BANK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "BRANCH",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Bank branch is direct; apple only via the branch of an apple tree.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "the only hint with any natural path to apple (tree branch) while nailing bank",
+    "stretch": false
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -338,8 +358,20 @@
    "pair_id": "p_apple__bat",
    "a": "APPLE",
    "b": "BAT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FRUIT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -347,8 +379,28 @@
    "pair_id": "p_apple__bear",
    "a": "APPLE",
    "b": "BEAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 5,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 3,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TREE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Apple tree is direct; bears climb trees but tree does not point at bear on its own.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "apple tree is instant and a bear in a tree is familiar imagery, the least strained second side",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -356,8 +408,20 @@
    "pair_id": "p_apple__bell",
    "a": "APPLE",
    "b": "BELL",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SCHOOL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -365,8 +429,28 @@
    "pair_id": "p_apple__bridge",
    "a": "APPLE",
    "b": "BRIDGE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "BROOKLYN",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Brooklyn Bridge is direct; apple only because Brooklyn is part of the Big Apple.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "the bridge is unmistakable and the Big Apple link is at least a real path",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -374,8 +458,28 @@
    "pair_id": "p_apple__card",
    "a": "APPLE",
    "b": "CARD",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "GIFT",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Gift card is direct; apple only as an Apple gift card or an apple given as a gift.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Apple gift cards hang in every checkout aisle, so the apple side is more findable than Apple Card",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -383,8 +487,28 @@
    "pair_id": "p_apple__castle",
    "a": "APPLE",
    "b": "CASTLE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "WHITE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "White Castle is a familiar chain; apple only through Snow White's apple.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "White Castle gives one certain side and Snow White gives a real if indirect route to apple",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -392,8 +516,20 @@
    "pair_id": "p_apple__cat",
    "a": "APPLE",
    "b": "CAT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TREE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -401,8 +537,28 @@
    "pair_id": "p_apple__crown",
    "a": "APPLE",
    "b": "CROWN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "GALA",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Gala is a top-selling apple variety; crown only via royalty attending a gala.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "the apple variety is a real foothold and formal galas at least evoke crowns",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -410,8 +566,28 @@
    "pair_id": "p_apple__diamond",
    "a": "APPLE",
    "b": "DIAMOND",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 5,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 4,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CUT",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "A diamond's cut is a defining term; cutting an apple is ordinary and generic.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "cut is the diamond term of art and slicing an apple is at least an everyday action",
+    "stretch": false
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -419,8 +595,28 @@
    "pair_id": "p_apple__dog",
    "a": "APPLE",
    "b": "DOG",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "HOT",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Hot dog is direct; apple only via hot apple pie or hot cider.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "hot dog is certain and hot apple pie is a common enough phrase to be a real second path",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -428,8 +624,20 @@
    "pair_id": "p_apple__dragon",
    "a": "APPLE",
    "b": "DRAGON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FRUIT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -437,8 +645,20 @@
    "pair_id": "p_apple__egg",
    "a": "APPLE",
    "b": "EGG",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BASKET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -446,8 +666,20 @@
    "pair_id": "p_apple__fire",
    "a": "APPLE",
    "b": "FIRE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WOOD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -455,8 +687,20 @@
    "pair_id": "p_apple__fish",
    "a": "APPLE",
    "b": "FISH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SAUCE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -464,8 +708,20 @@
    "pair_id": "p_apple__ghost",
    "a": "APPLE",
    "b": "GHOST",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HALLOWEEN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -473,8 +729,28 @@
    "pair_id": "p_apple__glass",
    "a": "APPLE",
    "b": "GLASS",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "JUICE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Apple juice is direct; 'glass of juice' and juice glass are natural but generic.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "apple juice is instant and a juice glass is a slightly more idiomatic object than a glass of cider",
+    "stretch": false
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -482,8 +758,28 @@
    "pair_id": "p_apple__gold",
    "a": "APPLE",
    "b": "GOLD",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "DELICIOUS",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Red and Golden Delicious are famous apple varieties; gold only via the 'Golden' in Golden Delicious.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "the variety name is the only link that actually contains both ideas",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -491,8 +787,22 @@
    "pair_id": "p_apple__heart",
    "a": "APPLE",
    "b": "HEART",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 5,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CORE",
+    "HEALTHY",
+    "DOCTOR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -500,8 +810,20 @@
    "pair_id": "p_apple__honey",
    "a": "APPLE",
    "b": "HONEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CRISP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -509,8 +831,28 @@
    "pair_id": "p_apple__horse",
    "a": "APPLE",
    "b": "HORSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TREAT",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "An apple is the classic horse treat, but 'treat' alone points at neither word.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "the only hint whose idea genuinely involves both words, even if each side is weak",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -518,8 +860,28 @@
    "pair_id": "p_apple__ice",
    "a": "APPLE",
    "b": "ICE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 4,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "COLD",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Ice cold nearly renames ice; apple has no cold sense.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "ice is certain and a crisp cold apple is the least implausible second side on offer",
+    "stretch": false
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -527,8 +889,20 @@
    "pair_id": "p_apple__iron",
    "a": "APPLE",
    "b": "IRON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CORE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -536,8 +910,28 @@
    "pair_id": "p_apple__key",
    "a": "APPLE",
    "b": "KEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CORE",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Apple core is direct; a lock's core is locksmith jargon.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "apple is certain and a key does go into a lock's core, the only thread to key at all",
+    "stretch": false
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -545,8 +939,28 @@
    "pair_id": "p_apple__king",
    "a": "APPLE",
    "b": "KING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CANDY",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Candy apple is direct; king only via king-size candy bars, which does not point at king.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "candy apple is certain and king-size candy is at least a phrase containing king",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -554,8 +968,28 @@
    "pair_id": "p_apple__knight",
    "a": "APPLE",
    "b": "KNIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SHINING",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Knight in shining armor is direct; a shining polished apple is a weak descriptor link.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "the only hint with any path to apple while nailing knight",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -563,8 +997,20 @@
    "pair_id": "p_apple__light",
    "a": "APPLE",
    "b": "LIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GREEN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -572,8 +1018,28 @@
    "pair_id": "p_apple__lion",
    "a": "APPLE",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 4,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "NARNIA",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Aslan the lion is well known; the apple of youth in The Magician's Nephew is deep-cut trivia.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "the only hint with any genuine apple reference, however obscure",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -581,8 +1047,20 @@
    "pair_id": "p_apple__moon",
    "a": "APPLE",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HARVEST"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -612,8 +1090,20 @@
    "pair_id": "p_apple__night",
    "a": "APPLE",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HALLOWEEN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -621,8 +1111,28 @@
    "pair_id": "p_apple__ocean",
    "a": "APPLE",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "ATLANTIC",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Atlantic Ocean is direct; the Big Apple sitting on the Atlantic coast is too thin to count.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "ocean is certain and New York's Atlantic coast is the only thread, however thin, toward the Big Apple",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -630,8 +1140,20 @@
    "pair_id": "p_apple__pirate",
    "a": "APPLE",
    "b": "PIRATE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SOFTWARE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -639,8 +1161,28 @@
    "pair_id": "p_apple__queen",
    "a": "APPLE",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 5,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 4,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "POISON",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Poison apple is an iconic phrase; queen only as the one who poisoned it.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "poison apple is the strongest single phrase and the queen is the poisoner in the best-known fairy tale",
+    "stretch": false
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -648,8 +1190,28 @@
    "pair_id": "p_apple__ring",
    "a": "APPLE",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TONE",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Ringtone is direct; tone does not reach apple.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "ringtone is certain and the iPhone's default ringtone is the faintest thread to Apple",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -657,8 +1219,21 @@
    "pair_id": "p_apple__robot",
    "a": "APPLE",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "COMPUTER",
+    "SIRI"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -666,8 +1241,20 @@
    "pair_id": "p_apple__rock",
    "a": "APPLE",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CANDY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -675,8 +1262,21 @@
    "pair_id": "p_apple__rose",
    "a": "APPLE",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RED",
+    "BLOSSOM"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -684,8 +1284,20 @@
    "pair_id": "p_apple__salt",
    "a": "APPLE",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CARAMEL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -693,8 +1305,28 @@
    "pair_id": "p_apple__shadow",
    "a": "APPLE",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TREE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Apple tree is direct; trees cast shadows but tree does not point at shadow.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "the only hint with any path to shadow while nailing apple",
+    "stretch": true
+   },
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -702,8 +1334,20 @@
    "pair_id": "p_apple__shark",
    "a": "APPLE",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u04",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BITE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u04",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -1023,9 +1667,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "STABLE",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Horse stable is direct; a 'stable bank' is an adjective use a player may not connect.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -1055,9 +1703,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "BAR",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Iron bar is direct; gold bars in a bank is an inferred image and there is no 'bank bar' phrase.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -1078,9 +1730,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "VAULT",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Bank vault is direct; a key for the vault is an inferred detail.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -2834,9 +3490,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "TOOTH",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Dental bridge is direct; honey is reached only via 'sweet tooth', which is not a compound with honey.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -4456,9 +5116,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "QUEEN",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Queen to crown is immediate; honey needs queen bee and then the hive, two steps.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -4533,9 +5197,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "LIBERTY",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "The Statue of Liberty's spiked crown is iconic; light comes only through her torch and that is a second step.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -4799,9 +5467,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "CURSE",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Cursed diamonds (Hope Diamond) and curses bringing ghosts are each a stretch.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -6611,9 +7283,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "FINGER",
+    "status": "held",
     "verdict": "PASS",
     "reason": "Judged as compounds: Goldfinger (the Bond film) is broadly known; 'fish finger' is the British term for a fish stick, which most US adults recognise even if they do not use it, so FISH is a solid if slightly foreign reach.",
-    "heldReason": "override: held out of the first US beta pending final content review: fish finger is the British term (US: fish sticks); the blind review passed it, so it stays in the library"
+    "heldReason": "override: held out of the first US beta pending final content review: fish finger is the British term (US: fish sticks); the blind review passed it, so it stays in the library",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -7029,9 +7705,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "FLICKER",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Lights flicker directly; flickering lights as a haunting sign is a trope the player must supply.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -8405,9 +9085,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "POLLEN",
+    "status": "held",
     "verdict": "PASS",
     "reason": "Pollen season is spring; bees gathering pollen to make honey is how most people picture honey-making.",
-    "heldReason": "pilot author flagged needsHumanReview"
+    "heldReason": "pilot author flagged needsHumanReview",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {
@@ -11543,9 +12227,13 @@
    "lifecycle": "reviewed",
    "bestAvailableCandidate": {
     "text": "METAL",
+    "status": "held",
     "verdict": "BORDERLINE",
     "reason": "Robots are metal; rock only via heavy metal as a rock genre or metal ore in rock.",
-    "heldReason": "blind review: borderline"
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": false,
+    "why": null,
+    "stretch": false
    }
   },
   {

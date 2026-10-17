@@ -114,7 +114,7 @@ try {
   await shot(page, "live-07-friends");
 
   assert.deepEqual(errors, [], "no page or console errors");
-  console.log(`\nPASS — live ${URL}: merged code served, eight-board lobby, representative flow, refresh/resume, reveal + feedback + next; Daily and Friends routes load`);
+  console.log(`\nPASS — live ${URL}: merged code served, ${pool.length}-board lobby ("0 of ${pool.length}" observed), representative flow, refresh/resume, reveal + feedback + next; Daily and Friends routes load`);
 } finally {
   await browser.close();
 }

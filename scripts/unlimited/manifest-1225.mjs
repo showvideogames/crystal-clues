@@ -60,8 +60,11 @@ export function buildManifest({ words, lib, pool, previous = null, now = new Dat
       else row.state = "candidate";
       row.lifecycle = row.state === "candidate" ? "authored" : (prev?.lifecycle === "closed" ? "closed" : "reviewed");
       if (!row.playable.length) {
+        // The reviewer's named best-available hint if it has one, else the strongest held hint.
+        const named = p.reviewerBestAvailable?.text && p.clues.find((c) => c.text === p.reviewerBestAvailable.text);
         const held = p.clues.filter((c) => c.status === "held").sort((x, y) => strength(y) - strength(x));
-        if (held[0]) row.bestAvailableCandidate = { text: held[0].text, verdict: held[0].provenance?.blindReview?.verdict || null, reason: held[0].provenance?.blindReview?.reason || held[0].heldReason || null, heldReason: held[0].heldReason || null };
+        const pick = named || held[0];
+        if (pick) row.bestAvailableCandidate = { text: pick.text, status: pick.status, verdict: pick.provenance?.blindReview?.verdict || null, reason: pick.provenance?.blindReview?.reason || pick.heldReason || null, heldReason: pick.heldReason || null, namedByReviewer: !!named, why: named ? p.reviewerBestAvailable.why : null, stretch: !!pick.stretch };
       }
       if (p.generationHold) row.generationHold = p.generationHold.reason;
     }
