@@ -53,10 +53,508 @@
         "rejected": 11,
         "needsText": 0,
         "pairs": 36
+      },
+      {
+        "review": "data/unlimited/library/reviews/u03-blind-review.json",
+        "key": "data/unlimited/library/reviews/u03-blind-key.json",
+        "batch": "data/unlimited/library/batches/u03-second-batch.json",
+        "ai_reviewed": 37,
+        "held": 33,
+        "rejected": 53,
+        "needsText": 5,
+        "pairs": 28
+      },
+      {
+        "review": "data/unlimited/library/reviews/u02-pilot-blind-review-v2.json",
+        "key": "data/unlimited/library/reviews/u02-pilot-blind-key.json",
+        "batch": null,
+        "ai_reviewed": 50,
+        "held": 53,
+        "rejected": 11,
+        "needsText": 0,
+        "pairs": 36
+      },
+      {
+        "review": "data/unlimited/library/reviews/u03-blind-review.json",
+        "key": "data/unlimited/library/reviews/u03-blind-key.json",
+        "batch": "data/unlimited/library/batches/u03-second-batch.json",
+        "ai_reviewed": 41,
+        "held": 29,
+        "rejected": 53,
+        "needsText": 1,
+        "pairs": 28
       }
     ]
   },
   "pairs": [
+    {
+      "pair_id": "p_apple__mouse",
+      "a": "APPLE",
+      "b": "MOUSE",
+      "source": "u03-second-batch",
+      "pairNote": "Only COMPUTER reaches both; the rest are one-sided or lean on the same tech frame.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "COMPUTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Apple makes computers.",
+          "wordBConnection": "A computer mouse.",
+          "revealExplanation": "Apple computers, and the computer mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Apple is a computer company and a mouse is a computer peripheral."
+            }
+          }
+        },
+        {
+          "text": "MAC",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:COMPUTER"
+              ],
+              "reason": "Mac is Apple's computer; a mouse only reaches Mac as an accessory to it."
+            }
+          }
+        },
+        {
+          "text": "DESKTOP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "variant",
+            "authorReason": "variant of COMPUTER",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation",
+                "variant_of:COMPUTER"
+              ],
+              "reason": "Apple makes desktop computers and a mouse sits on a desktop, but both sides need the computer frame first."
+            }
+          }
+        },
+        {
+          "text": "CLICK",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "MOUSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A mouse clicks, but nothing about an apple clicks."
+            }
+          }
+        },
+        {
+          "text": "CHEESE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "MOUSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mice eat cheese; apple-and-cheddar is too faint to count."
+            }
+          }
+        },
+        {
+          "text": "TEACHER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "An apple for the teacher is classic, but there is no teacher-mouse link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_apple__snake",
+      "a": "APPLE",
+      "b": "SNAKE",
+      "source": "u03-second-batch",
+      "pairNote": "Genesis carries this pair; EVE and EDEN are the same idea twice, everything else is one-sided.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "EVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Eve is pictured with the forbidden apple.",
+          "wordBConnection": "And with the serpent.",
+          "revealExplanation": "Eve is traditionally pictured with the forbidden apple and the serpent.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "Genesis",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Eve ate the forbidden apple after the serpent tempted her."
+            }
+          }
+        },
+        {
+          "text": "EDEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The apple of Eden.",
+          "wordBConnection": "The serpent of Eden.",
+          "revealExplanation": "The Garden of Eden: the snake and the apple.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "Genesis",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:EVE"
+              ],
+              "reason": "The Garden of Eden has the forbidden apple and the serpent."
+            }
+          }
+        },
+        {
+          "text": "SERPENT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "a synonym of SNAKE: half-defines a target",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Serpent simply renames snake, with the apple only reached through Eden."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple core is direct; nothing links core to a snake."
+            }
+          }
+        },
+        {
+          "text": "PIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "APPLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Apple pie is direct; there is no snake pie."
+            }
+          }
+        },
+        {
+          "text": "VENOM",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "SNAKE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Snakes have venom; the poison apple is Snow White's poison, not venom."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bank__card",
+      "a": "BANK",
+      "b": "CARD",
+      "source": "u03-second-batch",
+      "pairNote": "Three clean banking compounds; CREDIT and DEBIT are twins.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DEBIT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A debit from your bank account.",
+          "wordBConnection": "A debit card.",
+          "revealExplanation": "A debit card; a debit from the bank.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "variant",
+            "authorReason": "variant of CREDIT",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:CREDIT"
+              ],
+              "reason": "A bank debits an account and issues a debit card."
+            }
+          }
+        },
+        {
+          "text": "CREDIT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Credit from the bank.",
+          "wordBConnection": "A credit card.",
+          "revealExplanation": "A credit card from the bank.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:DEBIT"
+              ],
+              "reason": "Banks extend credit and issue credit cards."
+            }
+          }
+        },
+        {
+          "text": "ATM",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "an acronym, and BANK-leaning",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An ATM is a bank machine you use with an ATM card."
+            }
+          }
+        },
+        {
+          "text": "PLAYING",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "CARD only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Playing card is direct; no bank sense."
+            }
+          }
+        },
+        {
+          "text": "VAULT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BANK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bank vault is direct; no card link."
+            }
+          }
+        }
+      ]
+    },
     {
       "pair_id": "p_bank__diamond",
       "a": "BANK",
@@ -617,6 +1115,91 @@
       ]
     },
     {
+      "pair_id": "p_bank__shark",
+      "a": "BANK",
+      "b": "SHARK",
+      "source": "u03-second-batch",
+      "pairNote": "LOAN is a perfect two-way compound; the other two are one-sided.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LOAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bank loan.",
+          "wordBConnection": "A loan shark.",
+          "revealExplanation": "A bank loan, or a loan shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bank loan and loan shark."
+            }
+          }
+        },
+        {
+          "text": "TEETH",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "SHARK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shark teeth are direct; banks have none."
+            }
+          }
+        },
+        {
+          "text": "VAULT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BANK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bank vault is direct; no shark link."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bat__spider",
       "a": "BAT",
       "b": "SPIDER",
@@ -810,6 +1393,658 @@
                 "one_sided"
               ],
               "reason": "Bats have wings; spiders do not."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__honey",
+      "a": "BEAR",
+      "b": "HONEY",
+      "source": "u03-second-batch",
+      "pairNote": "POOH is ideal; HIVE works; PADDINGTON is a factual miss (marmalade).",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "POOH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "fictional_character",
+          "wordAConnection": "Pooh is a bear.",
+          "wordBConnection": "Pooh lives for honey.",
+          "revealExplanation": "Winnie the Pooh, the honey-loving bear.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Winnie the Pooh",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Winnie-the-Pooh is a bear obsessed with honey."
+            }
+          }
+        },
+        {
+          "text": "HIVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bear raiding a hive.",
+          "wordBConnection": "Honey comes from the hive.",
+          "revealExplanation": "A bear raids the hive for its honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey comes from a hive, and bears raiding hives is a familiar image."
+            }
+          }
+        },
+        {
+          "text": "GRIZZLY",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BEAR only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Grizzly is a kind of bear with no honey link."
+            }
+          }
+        },
+        {
+          "text": "SWEET",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "HONEY only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "generic"
+              ],
+              "reason": "Honey is sweet; bears are not."
+            }
+          }
+        },
+        {
+          "text": "PADDINGTON",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "marmalade, not honey: BEAR only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Paddington is a bear but his thing is marmalade, not honey, so the honey side is wrong."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__ice",
+      "a": "BEAR",
+      "b": "ICE",
+      "source": "u03-second-batch",
+      "pairNote": "POLAR is the clean hit; ARCTIC is the same idea one step removed.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "POLAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A polar bear.",
+          "wordBConnection": "The polar ice.",
+          "revealExplanation": "Polar bears on the polar ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:ARCTIC"
+              ],
+              "reason": "Polar bear and polar ice caps are both familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "ARCTIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The bears of the Arctic.",
+          "wordBConnection": "Arctic ice.",
+          "revealExplanation": "The Arctic: its ice and its bears.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:POLAR"
+              ],
+              "reason": "Arctic ice is direct and the polar bear is the iconic Arctic animal."
+            }
+          }
+        },
+        {
+          "text": "COLD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "ICE only; a bear is not cold",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "one_sided"
+              ],
+              "reason": "Ice is cold; bear only reaches cold via polar bears or winter hibernation."
+            }
+          }
+        },
+        {
+          "text": "CUBE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "ICE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ice cube is direct; nothing cube-like about a bear."
+            }
+          }
+        },
+        {
+          "text": "CUB",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BEAR only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bear cub is direct; cub has no ice sense."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__castle",
+      "a": "BELL",
+      "b": "CASTLE",
+      "source": "u03-second-batch",
+      "pairNote": "TOWER is the one real bridge; the other three are each one-sided.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TOWER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bell tower.",
+          "wordBConnection": "A castle tower.",
+          "revealExplanation": "Bell tower, castle tower.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bell tower and castle tower are both everyday compounds."
+            }
+          }
+        },
+        {
+          "text": "CHURCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BELL only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Church bell is direct; castle only follows as a fellow old stone building."
+            }
+          }
+        },
+        {
+          "text": "RING",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BELL only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bells ring; a castle does not."
+            }
+          }
+        },
+        {
+          "text": "MOAT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "CASTLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Castles have moats; bells do not."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__dog",
+      "a": "BELL",
+      "b": "DOG",
+      "source": "u03-second-batch",
+      "pairNote": "PAVLOV is a textbook two-way hint; COLLAR is playable but leans dog.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PAVLOV",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "famous_person",
+          "wordAConnection": "Pavlov’s bell.",
+          "wordBConnection": "Pavlov’s dogs and their learned response.",
+          "revealExplanation": "The familiar image of Pavlov’s dogs associates a bell with their learned response.",
+          "reference": {
+            "referenceType": "famous_person",
+            "source": "Ivan Pavlov's experiments",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pavlov rang a bell to make his dogs salivate."
+            }
+          }
+        },
+        {
+          "text": "COLLAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The bell on a collar.",
+          "wordBConnection": "A dog collar.",
+          "revealExplanation": "A dog collar with a bell on it.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dog collar is direct; a bell on a collar is more a cat image than a dog one."
+            }
+          }
+        },
+        {
+          "text": "BARK",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "DOG only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dogs bark; bells do not."
+            }
+          }
+        },
+        {
+          "text": "LIBERTY",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BELL only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Liberty Bell is direct; no dog link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__ring",
+      "a": "BELL",
+      "b": "RING",
+      "source": "u03-second-batch",
+      "pairNote": "Strong pair; WEDDING and BOXING are clean compounds on both sides.",
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Wedding bells.",
+          "wordBConnection": "A wedding ring.",
+          "revealExplanation": "Wedding bells and a wedding ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wedding bells and wedding ring are both stock phrases."
+            }
+          }
+        },
+        {
+          "text": "BOXING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The boxing bell starts the round.",
+          "wordBConnection": "A boxing ring.",
+          "revealExplanation": "The boxing ring, and the bell that starts the round.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "RING only; the bell is one hop more",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A boxing ring, and the bell that ends each round."
+            }
+          }
+        },
+        {
+          "text": "TONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The tone of a bell.",
+          "wordBConnection": "A ringtone.",
+          "revealExplanation": "A bell’s tone; a ringtone.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "BELL only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ringtone is a compound and the tone of a bell is natural."
+            }
+          }
+        },
+        {
+          "text": "CHURCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Church bells.",
+          "wordBConnection": "Rings exchanged in a church.",
+          "revealExplanation": "Church bells, and the rings exchanged inside.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Church bell is direct; ring reaches church only via bells ringing or a wedding ring."
+            }
+          }
+        },
+        {
+          "text": "DIAMOND",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "RING only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Diamond ring is direct; no bell link."
             }
           }
         }
@@ -1445,6 +2680,379 @@
                 "needs_explanation"
               ],
               "reason": "Key as island (Florida Keys) and a bridge to an island are each one stretch; neither side is direct."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__queen",
+      "a": "CARD",
+      "b": "QUEEN",
+      "source": "u03-second-batch",
+      "pairNote": "HEARTS is the natural hit; ALICE is a good literary second.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HEARTS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Hearts is a suit of cards.",
+          "wordBConnection": "The Queen of Hearts.",
+          "revealExplanation": "The Queen of Hearts, a card.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hearts is a card suit and Queen of Hearts is a famous card and character."
+            }
+          }
+        },
+        {
+          "text": "ALICE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Alice's card soldiers.",
+          "wordBConnection": "Alice's Queen of Hearts.",
+          "revealExplanation": "Alice in Wonderland: the Queen of Hearts and her playing-card soldiers.",
+          "reference": {
+            "referenceType": "book",
+            "source": "Alice in Wonderland",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Alice in Wonderland has the Queen of Hearts and her playing-card soldiers."
+            }
+          }
+        },
+        {
+          "text": "DECK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "CARD only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Deck of cards is direct; the queen is only reached as one card inside that deck."
+            }
+          }
+        },
+        {
+          "text": "CHESS",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "QUEEN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "The chess queen is direct; chess has no cards."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "QUEEN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Queen bee is direct; Bee as a playing-card brand is too niche to count."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__dragon",
+      "a": "CASTLE",
+      "b": "DRAGON",
+      "source": "u03-second-batch",
+      "pairNote": "PRINCESS rides the fairy-tale frame well; SHREK is playable but castle-light.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PRINCESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The princess in the castle.",
+          "wordBConnection": "The dragon guarding her.",
+          "revealExplanation": "The princess in the castle, and the dragon at the gate.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A princess lives in a castle and is classically guarded by a dragon."
+            }
+          }
+        },
+        {
+          "text": "SHREK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Fiona's castle.",
+          "wordBConnection": "The dragon guarding it.",
+          "revealExplanation": "Shrek: the dragon that guards the castle.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Shrek",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Shrek's Dragon is a major character; the castle she guards is a less remembered detail."
+            }
+          }
+        },
+        {
+          "text": "FIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "DRAGON only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons breathe fire; no castle link."
+            }
+          }
+        },
+        {
+          "text": "MOAT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "CASTLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Castle moat is direct; dragons have nothing to do with moats."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__king",
+      "a": "CASTLE",
+      "b": "KING",
+      "source": "u03-second-batch",
+      "pairNote": "CHESS is the only real bridge; the others name one side's furniture.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle, or rook, in chess.",
+          "wordBConnection": "The king in chess.",
+          "revealExplanation": "Chess pieces: the king and the castle.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Chess has a king piece and castling with the rook, often called the castle."
+            }
+          }
+        },
+        {
+          "text": "THRONE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The castle's throne room.",
+          "wordBConnection": "The king's throne.",
+          "revealExplanation": "The king on his throne in the castle.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A king sits on a throne; the throne room inside a castle is the only castle link."
+            }
+          }
+        },
+        {
+          "text": "MOAT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "CASTLE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Castles have moats; kings do not."
+            }
+          }
+        },
+        {
+          "text": "CROWN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "KING only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Kings wear crowns; a castle does not."
             }
           }
         }
@@ -2467,9 +4075,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "wordplay",
-          "wordAConnection": "The rose cut is a genuine antique style of cutting a diamond.",
-          "wordBConnection": "It is named after the flower it resembles.",
-          "revealExplanation": "The rose cut is a genuine antique style of cutting a diamond.",
+          "wordAConnection": "A cut diamond.",
+          "wordBConnection": "A cut rose.",
+          "revealExplanation": "A cut diamond and a cut rose.",
           "reference": null,
           "provenance": {
             "source": "pilot-2026-10",
@@ -2783,7 +4391,12 @@
             }
           }
         }
-      ]
+      ],
+      "generationHold": {
+        "by": "parent (after the owner's playtest of beta-01-002)",
+        "date": "2026-10-17",
+        "reason": "owner found BACK indirect (reached it via the Arizona Diamondbacks); PATTERN and SCALE are held borderline, so the pair has no clean TREASURE-level hint. Future generation hold only: the live beta-01-002 snapshot and completed history stay exactly as they are."
+      }
     },
     {
       "pair_id": "p_dog__fish",
@@ -2945,6 +4558,261 @@
                 "one_sided"
               ],
               "reason": "Fetch is a dog game; fish do not play it."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__knight",
+      "a": "DRAGON",
+      "b": "KNIGHT",
+      "source": "u03-second-batch",
+      "pairNote": "SLAY is the only hint that names the relationship between the two.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SLAY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon to slay.",
+          "wordBConnection": "The knight who slays it.",
+          "revealExplanation": "The knight slays the dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragon slayer is a compound and the knight is the one who slays it."
+            }
+          }
+        },
+        {
+          "text": "LANCE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "KNIGHT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Knights carry lances; dragon only via St George spearing one."
+            }
+          }
+        },
+        {
+          "text": "ARMOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "KNIGHT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Knight's armor is direct; a dragon's scales as armor is a stretch."
+            }
+          }
+        },
+        {
+          "text": "FIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "DRAGON only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons breathe fire; knights do not."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__snake",
+      "a": "DRAGON",
+      "b": "SNAKE",
+      "source": "u03-second-batch",
+      "pairNote": "SCALES is the natural shared trait; ZODIAC is a solid cultural second.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SCALES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dragon's scales.",
+          "wordBConnection": "A snake's scales.",
+          "revealExplanation": "Both wear scales.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both dragons and snakes are scaly."
+            }
+          }
+        },
+        {
+          "text": "ZODIAC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Year of the Dragon.",
+          "wordBConnection": "The Year of the Snake.",
+          "revealExplanation": "Both are signs of the Chinese zodiac.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Chinese zodiac",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:CHINESE"
+              ],
+              "reason": "Dragon and Snake are consecutive Chinese zodiac animals."
+            }
+          }
+        },
+        {
+          "text": "CHINESE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "variant",
+            "authorReason": "variant of ZODIAC",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:ZODIAC"
+              ],
+              "reason": "Chinese dragon is iconic; snake reaches Chinese only through the zodiac."
+            }
+          }
+        },
+        {
+          "text": "VENOM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "SNAKE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Snake venom is direct; dragon only via Komodo dragons or poison-breath lore."
+            }
+          }
+        },
+        {
+          "text": "WINGS",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "DRAGON only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons have wings; snakes do not."
             }
           }
         }
@@ -3377,9 +5245,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "cause_and_effect",
-          "wordAConnection": "A forge is a contained fire.",
-          "wordBConnection": "Iron is what gets shaped in it.",
-          "revealExplanation": "Iron is shaped in a forge, which is a contained fire.",
+          "wordAConnection": "A forge’s fire.",
+          "wordBConnection": "Iron is heated in the forge for shaping.",
+          "revealExplanation": "A forge’s fire heats iron for shaping.",
           "reference": null,
           "provenance": {
             "source": "pilot-2026-10",
@@ -4193,6 +6061,234 @@
       ]
     },
     {
+      "pair_id": "p_glass__ice",
+      "a": "GLASS",
+      "b": "ICE",
+      "source": "u03-second-batch",
+      "pairNote": "FROST is the best bridge; CLEAR is a fair shared-property hint.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CLEAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Clear glass.",
+          "wordBConnection": "Clear ice.",
+          "revealExplanation": "Clear glass, clear ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "used for GLASS+WATER; ice is less clearly clear",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both glass and ice are clear."
+            }
+          }
+        },
+        {
+          "text": "FROST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Frost on a window's glass.",
+          "wordBConnection": "Frost is ice.",
+          "revealExplanation": "Frost: ice on the glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Frosted glass and frost on a window, and frost is a form of ice."
+            }
+          }
+        },
+        {
+          "text": "SLIPPER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "GLASS only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Glass slipper is direct; no ice link."
+            }
+          }
+        },
+        {
+          "text": "CUBE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "ICE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ice cube is direct; glass cube is not a thing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__water",
+      "a": "GLASS",
+      "b": "WATER",
+      "source": "u03-second-batch",
+      "pairNote": "CLEAR and DRINK both land; HALF is a nice idea that leans glass.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CLEAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Clear glass.",
+          "wordBConnection": "Clear water.",
+          "revealExplanation": "Both can be clear.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Glass and water are both clear."
+            }
+          }
+        },
+        {
+          "text": "DRINK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A drinking glass.",
+          "wordBConnection": "A drink of water.",
+          "revealExplanation": "A drink of water in a glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "You drink water from a drinking glass."
+            }
+          }
+        },
+        {
+          "text": "HALF",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "glass half full reaches GLASS only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Glass half full reaches glass directly, water only as what fills it."
+            }
+          }
+        },
+        {
+          "text": "WINDOW",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "GLASS only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Windows are glass; no water link."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_gold__pirate",
       "a": "GOLD",
       "b": "PIRATE",
@@ -4409,6 +6505,122 @@
       ]
     },
     {
+      "pair_id": "p_gold__ring",
+      "a": "GOLD",
+      "b": "RING",
+      "source": "u03-second-batch",
+      "pairNote": "OLYMPIC is the standout; BAND works through the gold band phrase.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "OLYMPIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Olympic gold.",
+          "wordBConnection": "The Olympic rings.",
+          "revealExplanation": "Olympic gold and the Olympic rings.",
+          "reference": {
+            "referenceType": "sport",
+            "source": "the Olympic Games",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Olympic gold medal and the Olympic rings."
+            }
+          }
+        },
+        {
+          "text": "BAND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold band.",
+          "wordBConnection": "A band is a ring.",
+          "revealExplanation": "A gold band: a ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A wedding band is a ring, and a gold band is the stock phrase."
+            }
+          }
+        },
+        {
+          "text": "WEDDING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "RING only, unless gold is assumed",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Wedding ring is direct; gold only as the typical metal of that ring."
+            }
+          }
+        },
+        {
+          "text": "KARAT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "GOLD only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Karat measures gold purity; ring only via the gold it is made of."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_heart__iron",
       "a": "HEART",
       "b": "IRON",
@@ -4541,6 +6753,148 @@
                 "needs_explanation"
               ],
               "reason": "Heart as the core of something and Earth's iron core are each a step away."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__robot",
+      "a": "HEART",
+      "b": "ROBOT",
+      "source": "u03-second-batch",
+      "pairNote": "ARTIFICIAL is the single real hit; TIN is clever but needs the Oz step.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ARTIFICIAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "An artificial heart.",
+          "wordBConnection": "A robot is an artificial machine.",
+          "revealExplanation": "An artificial heart; a robot is an artificial machine.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Artificial heart is a compound and a robot is an artificial being with artificial intelligence."
+            }
+          }
+        },
+        {
+          "text": "TIN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "fictional_character",
+          "wordAConnection": "The Tin Man wanted a heart.",
+          "wordBConnection": "A tin man is a mechanical man.",
+          "revealExplanation": "The Tin Man: a machine man who wanted a heart.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Wizard of Oz",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Tin toy robots are familiar; heart only via the Tin Man who wanted one."
+            }
+          }
+        },
+        {
+          "text": "BEAT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "HEART only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Heartbeat is direct; robots have no beat."
+            }
+          }
+        },
+        {
+          "text": "PACEMAKER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "HEART only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A pacemaker is a heart device; calling it a robot is a reach."
+            }
+          }
+        },
+        {
+          "text": "WIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "ROBOT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Robots are full of wire; hearts are not."
             }
           }
         }
@@ -5009,9 +7363,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "cultural_reference",
-          "wordAConnection": "A warhorse is what they were fought on.",
-          "wordBConnection": "The Wars of the Roses were fought over the badge.",
-          "revealExplanation": "The Wars of the Roses were fought over the badge, and a warhorse is what they were fought on.",
+          "wordAConnection": "A warhorse.",
+          "wordBConnection": "The Wars of the Roses.",
+          "revealExplanation": "A warhorse; the Wars of the Roses.",
           "reference": {
             "referenceType": "famous_object_place_or_event",
             "source": "the Wars of the Roses",
@@ -5111,6 +7465,115 @@
                 "obscure"
               ],
               "reason": "Horse blanket is fine, but the Derby's 'blanket of roses' is trivia a stranger will not reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_horse__train",
+      "a": "HORSE",
+      "b": "TRAIN",
+      "source": "u03-second-batch",
+      "pairNote": "TRACK is the real bridge; IRON is a clever period phrase that needs explaining.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TRACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The horses at the track.",
+          "wordBConnection": "A train track.",
+          "revealExplanation": "Race track, train track.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Train tracks and the horse race track."
+            }
+          }
+        },
+        {
+          "text": "IRON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "variant",
+            "authorReason": "variant of TRACK",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Iron horse is an old nickname for a train, but neither side is reached without knowing that phrase."
+            }
+          }
+        },
+        {
+          "text": "STATION",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "TRAIN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Train station is direct; no horse link."
+            }
+          }
+        },
+        {
+          "text": "SADDLE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "HORSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Horse saddle is direct; no train link."
             }
           }
         }
@@ -5892,6 +8355,126 @@
       ]
     },
     {
+      "pair_id": "p_king__star",
+      "a": "KING",
+      "b": "STAR",
+      "source": "u03-second-batch",
+      "pairNote": "ELVIS is the clean two-way hit; BETHLEHEM works via the nativity story.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ELVIS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "famous_person",
+          "wordAConnection": "Elvis is the King.",
+          "wordBConnection": "Elvis was a star.",
+          "revealExplanation": "Elvis: the King, and a star.",
+          "reference": {
+            "referenceType": "famous_person",
+            "source": "Elvis Presley",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Elvis is The King and a rock star."
+            }
+          }
+        },
+        {
+          "text": "BETHLEHEM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The three kings came to Bethlehem.",
+          "wordBConnection": "The Star of Bethlehem.",
+          "revealExplanation": "The Star of Bethlehem and the three kings who followed it.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "the Nativity story",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Star of Bethlehem led the three kings to the newborn King."
+            }
+          }
+        },
+        {
+          "text": "ROYAL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "KING only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Kings are royal; stars are not."
+            }
+          }
+        },
+        {
+          "text": "FAME",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "STAR only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Stars have fame; kings are not defined by it."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_knight__night",
       "a": "KNIGHT",
       "b": "NIGHT",
@@ -6207,6 +8790,129 @@
       ]
     },
     {
+      "pair_id": "p_lion__witch",
+      "a": "LION",
+      "b": "WITCH",
+      "source": "u03-second-batch",
+      "pairNote": "WARDROBE is the perfect title hint; NARNIA is the same reference a step wider.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WARDROBE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Lion of the title.",
+          "wordBConnection": "The Witch of the title.",
+          "revealExplanation": "The Lion, the Witch and the Wardrobe.",
+          "reference": {
+            "referenceType": "book",
+            "source": "The Lion, the Witch and the Wardrobe",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Lion, the Witch and the Wardrobe names both words in its title."
+            }
+          }
+        },
+        {
+          "text": "NARNIA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Aslan the lion of Narnia.",
+          "wordBConnection": "The White Witch of Narnia.",
+          "revealExplanation": "Narnia: the Lion, the Witch and the Wardrobe.",
+          "reference": {
+            "referenceType": "book",
+            "source": "The Chronicles of Narnia",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:WARDROBE"
+              ],
+              "reason": "Narnia's story centres on the lion Aslan and the White Witch."
+            }
+          }
+        },
+        {
+          "text": "ASLAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "LION only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:NARNIA",
+                "one_sided"
+              ],
+              "reason": "Aslan is the lion; the White Witch is his enemy but one step removed."
+            }
+          }
+        },
+        {
+          "text": "ROAR",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "LION only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lions roar; witches cackle."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_moon__ocean",
       "a": "MOON",
       "b": "OCEAN",
@@ -6369,6 +9075,123 @@
       ]
     },
     {
+      "pair_id": "p_moon__star",
+      "a": "MOON",
+      "b": "STAR",
+      "source": "u03-second-batch",
+      "pairNote": "SKY is plain but natural to both; nothing else reaches the moon.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The moon in the sky.",
+          "wordBConnection": "The stars in the sky.",
+          "revealExplanation": "Both hang in the night sky.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Moon and stars are both in the night sky."
+            }
+          }
+        },
+        {
+          "text": "CRESCENT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A crescent moon.",
+          "wordBConnection": "The star and crescent.",
+          "revealExplanation": "The crescent moon, as in the star and crescent.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Crescent moon is direct; star only via the crescent-and-star emblem."
+            }
+          }
+        },
+        {
+          "text": "TWINKLE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "STAR only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Twinkle twinkle little star; the moon does not twinkle."
+            }
+          }
+        },
+        {
+          "text": "WISH",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "STAR only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Wish upon a star is direct; no wishing on the moon."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_moon__wolf",
       "a": "MOON",
       "b": "WOLF",
@@ -6516,6 +9339,521 @@
       ]
     },
     {
+      "pair_id": "p_ocean__pirate",
+      "a": "OCEAN",
+      "b": "PIRATE",
+      "source": "u03-second-batch",
+      "pairNote": "CARIBBEAN and SHIP both land cleanly.",
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CARIBBEAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Caribbean Sea.",
+          "wordBConnection": "Pirates of the Caribbean.",
+          "revealExplanation": "Pirates of the Caribbean, on the Caribbean Sea.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Pirates of the Caribbean",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Caribbean Sea and Pirates of the Caribbean."
+            }
+          }
+        },
+        {
+          "text": "SHIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ship on the ocean.",
+          "wordBConnection": "A pirate ship.",
+          "revealExplanation": "A pirate ship on the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Ships sail the ocean and pirate ship is a compound."
+            }
+          }
+        },
+        {
+          "text": "TREASURE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "PIRATE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Pirate treasure is direct; ocean only via sunken treasure."
+            }
+          }
+        },
+        {
+          "text": "WAVE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "OCEAN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ocean waves are direct; no pirate link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__shark",
+      "a": "OCEAN",
+      "b": "SHARK",
+      "source": "u03-second-batch",
+      "pairNote": "REEF is the clean compound; the rest point at one side with a nod to the other.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "REEF",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An ocean reef.",
+          "wordBConnection": "Reef sharks.",
+          "revealExplanation": "Reef sharks on the ocean reef.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Reefs are ocean features and reef shark is a familiar compound."
+            }
+          }
+        },
+        {
+          "text": "DEEP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "OCEAN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "generic"
+              ],
+              "reason": "The deep is the ocean; shark only as a deep-sea creature."
+            }
+          }
+        },
+        {
+          "text": "BLUE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "colour; blue shark is a stretch",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material",
+                "one_sided"
+              ],
+              "reason": "Blue ocean is direct; the blue shark species is a secondary link."
+            }
+          }
+        },
+        {
+          "text": "JAWS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "film_or_tv",
+          "wordAConnection": "Jaws is set on the ocean.",
+          "wordBConnection": "Jaws is the shark.",
+          "revealExplanation": "Jaws, the shark in the ocean.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Jaws",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Jaws is the shark movie; the ocean is only its setting."
+            }
+          }
+        },
+        {
+          "text": "FIN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "SHARK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shark fin is direct; ocean has no fin."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__rock",
+      "a": "ROBOT",
+      "b": "ROCK",
+      "source": "u03-second-batch",
+      "pairNote": "No hint reaches both cleanly; METAL and DANCE are playable but lean robot.",
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "METAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A robot is made of metal.",
+          "wordBConnection": "Heavy metal is rock music.",
+          "revealExplanation": "A metal robot; heavy metal rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Robots are metal; rock only via heavy metal as a rock genre or metal ore in rock."
+            }
+          }
+        },
+        {
+          "text": "DANCE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Doing the robot on the dance floor.",
+          "wordBConnection": "Rock is dance music.",
+          "revealExplanation": "The robot dance; rock music to dance to.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "The Robot is a dance; rock reaches dance only as music you dance to."
+            }
+          }
+        },
+        {
+          "text": "ARM",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "ROBOT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Robot arm is direct; rock has no arm sense."
+            }
+          }
+        },
+        {
+          "text": "STEEL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "ROBOT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Robots are steel; steel is not rock."
+            }
+          }
+        },
+        {
+          "text": "ROLL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "rock and roll reaches ROCK only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Rock and roll is direct; nothing rolls about a robot."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__water",
+      "a": "ROCK",
+      "b": "WATER",
+      "source": "u03-second-batch",
+      "pairNote": "SKIP is the one hint that names the shared activity.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SKIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Skipping a rock.",
+          "wordBConnection": "Across the water.",
+          "revealExplanation": "Skipping rocks on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Skipping rocks across water."
+            }
+          }
+        },
+        {
+          "text": "POOL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "WATER only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "british_only",
+                "one_sided"
+              ],
+              "reason": "Water pool is direct; rock pool is the British term where Americans say tide pool."
+            }
+          }
+        },
+        {
+          "text": "WET",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "WATER only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "generic"
+              ],
+              "reason": "Water is wet; rock is not."
+            }
+          }
+        },
+        {
+          "text": "STONE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "a synonym of ROCK",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target",
+                "one_sided"
+              ],
+              "reason": "Stone merely renames rock and has no water link."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_rose__spring",
       "a": "ROSE",
       "b": "SPRING",
@@ -6623,6 +9961,207 @@
                 "generic"
               ],
               "reason": "Rose garden is direct; spring gardening is a seasonal association rather than a phrase, so the spring side is the weak one, not the generic-ness."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_train__water",
+      "a": "TRAIN",
+      "b": "WATER",
+      "source": "u03-second-batch",
+      "pairNote": "STEAM is a strong single bridge; the other two are one-sided.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "STEAM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A steam train.",
+          "wordBConnection": "Steam is boiled water.",
+          "revealExplanation": "A steam train: water boiled into steam.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Steam train, and steam is heated water."
+            }
+          }
+        },
+        {
+          "text": "TRACK",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "TRAIN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Train track is direct; water has no track."
+            }
+          }
+        },
+        {
+          "text": "WAVE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "WATER only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Water waves are direct; wave train is a physics term too niche to count."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_water__witch",
+      "a": "WATER",
+      "b": "WITCH",
+      "source": "u03-second-batch",
+      "pairNote": "Everything rides the Wicked Witch's melting; MELT states it best, BUCKET and OZ are the same idea.",
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MELT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A bucket of water does it.",
+          "wordBConnection": "The witch melts.",
+          "revealExplanation": "The Wicked Witch melts when water is thrown on her.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Wizard of Oz",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Wicked Witch melts when hit with water, and melting ice gives water."
+            }
+          }
+        },
+        {
+          "text": "BUCKET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "variant",
+            "authorReason": "variant of MELT",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:MELT",
+                "needs_explanation"
+              ],
+              "reason": "A bucket of water is direct; witch only via Dorothy's bucket melting her."
+            }
+          }
+        },
+        {
+          "text": "OZ",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "WITCH only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:MELT",
+                "one_sided"
+              ],
+              "reason": "Oz has its famous witches; water only as the thing that melted one."
+            }
+          }
+        },
+        {
+          "text": "BROOM",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "WITCH only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Witches ride brooms; no water link."
             }
           }
         }

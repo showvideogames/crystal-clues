@@ -1,0 +1,386 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-3",
+    "date": "2026-10-17",
+    "input": "u03-blind-input.json",
+    "rubric": "owner's corrected rubric 2026-10-17: no minimum hint count, no board competition, generic allowed when natural to both words, compounds judged as compounds",
+    "independence": "I read only u03-blind-input.json and no other file, key, batch or pilot material; all judgements are from my own knowledge."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_apple__mouse",
+      "a": "APPLE",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "DESKTOP", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation", "variant_of:COMPUTER"], "verdict": "BORDERLINE", "reason": "Apple makes desktop computers and a mouse sits on a desktop, but both sides need the computer frame first." },
+        { "text": "CLICK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A mouse clicks, but nothing about an apple clicks." },
+        { "text": "CHEESE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mice eat cheese; apple-and-cheddar is too faint to count." },
+        { "text": "COMPUTER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Apple is a computer company and a mouse is a computer peripheral." },
+        { "text": "MAC", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:COMPUTER"], "verdict": "BORDERLINE", "reason": "Mac is Apple's computer; a mouse only reaches Mac as an accessory to it." },
+        { "text": "TEACHER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "An apple for the teacher is classic, but there is no teacher-mouse link." }
+      ],
+      "strong_hints": ["COMPUTER"],
+      "pair_note": "Only COMPUTER reaches both; the rest are one-sided or lean on the same tech frame."
+    },
+    {
+      "pair_id": "p_apple__snake",
+      "a": "APPLE",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "EVE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Eve ate the forbidden apple after the serpent tempted her." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; nothing links core to a snake." },
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; there is no snake pie." },
+        { "text": "EDEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:EVE"], "verdict": "PASS", "reason": "The Garden of Eden has the forbidden apple and the serpent." },
+        { "text": "VENOM", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Snakes have venom; the poison apple is Snow White's poison, not venom." },
+        { "text": "SERPENT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "FAIL", "reason": "Serpent simply renames snake, with the apple only reached through Eden." }
+      ],
+      "strong_hints": ["EVE", "EDEN"],
+      "pair_note": "Genesis carries this pair; EVE and EDEN are the same idea twice, everything else is one-sided."
+    },
+    {
+      "pair_id": "p_bear__honey",
+      "a": "BEAR",
+      "b": "HONEY",
+      "hints": [
+        { "text": "HIVE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey comes from a hive, and bears raiding hives is a familiar image." },
+        { "text": "PADDINGTON", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Paddington is a bear but his thing is marmalade, not honey, so the honey side is wrong." },
+        { "text": "GRIZZLY", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Grizzly is a kind of bear with no honey link." },
+        { "text": "SWEET", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "generic"], "verdict": "FAIL", "reason": "Honey is sweet; bears are not." },
+        { "text": "POOH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Winnie-the-Pooh is a bear obsessed with honey." }
+      ],
+      "strong_hints": ["POOH", "HIVE"],
+      "pair_note": "POOH is ideal; HIVE works; PADDINGTON is a factual miss (marmalade)."
+    },
+    {
+      "pair_id": "p_bear__ice",
+      "a": "BEAR",
+      "b": "ICE",
+      "hints": [
+        { "text": "COLD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic", "one_sided"], "verdict": "BORDERLINE", "reason": "Ice is cold; bear only reaches cold via polar bears or winter hibernation." },
+        { "text": "CUBE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ice cube is direct; nothing cube-like about a bear." },
+        { "text": "ARCTIC", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:POLAR"], "verdict": "PASS", "reason": "Arctic ice is direct and the polar bear is the iconic Arctic animal." },
+        { "text": "POLAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:ARCTIC"], "verdict": "PASS", "reason": "Polar bear and polar ice caps are both familiar compounds." },
+        { "text": "CUB", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bear cub is direct; cub has no ice sense." }
+      ],
+      "strong_hints": ["POLAR", "ARCTIC"],
+      "pair_note": "POLAR is the clean hit; ARCTIC is the same idea one step removed."
+    },
+    {
+      "pair_id": "p_bell__castle",
+      "a": "BELL",
+      "b": "CASTLE",
+      "hints": [
+        { "text": "RING", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bells ring; a castle does not." },
+        { "text": "MOAT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Castles have moats; bells do not." },
+        { "text": "CHURCH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Church bell is direct; castle only follows as a fellow old stone building." },
+        { "text": "TOWER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bell tower and castle tower are both everyday compounds." }
+      ],
+      "strong_hints": ["TOWER"],
+      "pair_note": "TOWER is the one real bridge; the other three are each one-sided."
+    },
+    {
+      "pair_id": "p_bell__dog",
+      "a": "BELL",
+      "b": "DOG",
+      "hints": [
+        { "text": "COLLAR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Dog collar is direct; a bell on a collar is more a cat image than a dog one." },
+        { "text": "BARK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dogs bark; bells do not." },
+        { "text": "LIBERTY", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Liberty Bell is direct; no dog link." },
+        { "text": "PAVLOV", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pavlov rang a bell to make his dogs salivate." }
+      ],
+      "strong_hints": ["PAVLOV"],
+      "pair_note": "PAVLOV is a textbook two-way hint; COLLAR is playable but leans dog."
+    },
+    {
+      "pair_id": "p_bell__ring",
+      "a": "BELL",
+      "b": "RING",
+      "hints": [
+        { "text": "CHURCH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Church bell is direct; ring reaches church only via bells ringing or a wedding ring." },
+        { "text": "TONE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ringtone is a compound and the tone of a bell is natural." },
+        { "text": "DIAMOND", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Diamond ring is direct; no bell link." },
+        { "text": "WEDDING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wedding bells and wedding ring are both stock phrases." },
+        { "text": "BOXING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A boxing ring, and the bell that ends each round." }
+      ],
+      "strong_hints": ["WEDDING", "BOXING", "TONE"],
+      "pair_note": "Strong pair; WEDDING and BOXING are clean compounds on both sides."
+    },
+    {
+      "pair_id": "p_card__queen",
+      "a": "CARD",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "DECK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Deck of cards is direct; the queen is only reached as one card inside that deck." },
+        { "text": "CHESS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "The chess queen is direct; chess has no cards." },
+        { "text": "ALICE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Alice in Wonderland has the Queen of Hearts and her playing-card soldiers." },
+        { "text": "HEARTS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Hearts is a card suit and Queen of Hearts is a famous card and character." },
+        { "text": "BEE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Queen bee is direct; Bee as a playing-card brand is too niche to count." }
+      ],
+      "strong_hints": ["HEARTS", "ALICE"],
+      "pair_note": "HEARTS is the natural hit; ALICE is a good literary second."
+    },
+    {
+      "pair_id": "p_bank__card",
+      "a": "BANK",
+      "b": "CARD",
+      "hints": [
+        { "text": "DEBIT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:CREDIT"], "verdict": "PASS", "reason": "A bank debits an account and issues a debit card." },
+        { "text": "PLAYING", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Playing card is direct; no bank sense." },
+        { "text": "ATM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An ATM is a bank machine you use with an ATM card." },
+        { "text": "CREDIT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:DEBIT"], "verdict": "PASS", "reason": "Banks extend credit and issue credit cards." },
+        { "text": "VAULT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bank vault is direct; no card link." }
+      ],
+      "strong_hints": ["CREDIT", "DEBIT", "ATM"],
+      "pair_note": "Three clean banking compounds; CREDIT and DEBIT are twins."
+    },
+    {
+      "pair_id": "p_castle__king",
+      "a": "CASTLE",
+      "b": "KING",
+      "hints": [
+        { "text": "MOAT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Castles have moats; kings do not." },
+        { "text": "CROWN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Kings wear crowns; a castle does not." },
+        { "text": "THRONE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A king sits on a throne; the throne room inside a castle is the only castle link." },
+        { "text": "CHESS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Chess has a king piece and castling with the rook, often called the castle." }
+      ],
+      "strong_hints": ["CHESS"],
+      "pair_note": "CHESS is the only real bridge; the others name one side's furniture."
+    },
+    {
+      "pair_id": "p_castle__dragon",
+      "a": "CASTLE",
+      "b": "DRAGON",
+      "hints": [
+        { "text": "PRINCESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A princess lives in a castle and is classically guarded by a dragon." },
+        { "text": "FIRE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragons breathe fire; no castle link." },
+        { "text": "MOAT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Castle moat is direct; dragons have nothing to do with moats." },
+        { "text": "SHREK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Shrek's Dragon is a major character; the castle she guards is a less remembered detail." }
+      ],
+      "strong_hints": ["PRINCESS"],
+      "pair_note": "PRINCESS rides the fairy-tale frame well; SHREK is playable but castle-light."
+    },
+    {
+      "pair_id": "p_dragon__knight",
+      "a": "DRAGON",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "LANCE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Knights carry lances; dragon only via St George spearing one." },
+        { "text": "ARMOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Knight's armor is direct; a dragon's scales as armor is a stretch." },
+        { "text": "FIRE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragons breathe fire; knights do not." },
+        { "text": "SLAY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dragon slayer is a compound and the knight is the one who slays it." }
+      ],
+      "strong_hints": ["SLAY"],
+      "pair_note": "SLAY is the only hint that names the relationship between the two."
+    },
+    {
+      "pair_id": "p_dragon__snake",
+      "a": "DRAGON",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "SCALES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Both dragons and snakes are scaly." },
+        { "text": "CHINESE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:ZODIAC"], "verdict": "BORDERLINE", "reason": "Chinese dragon is iconic; snake reaches Chinese only through the zodiac." },
+        { "text": "WINGS", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragons have wings; snakes do not." },
+        { "text": "ZODIAC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:CHINESE"], "verdict": "PASS", "reason": "Dragon and Snake are consecutive Chinese zodiac animals." },
+        { "text": "VENOM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Snake venom is direct; dragon only via Komodo dragons or poison-breath lore." }
+      ],
+      "strong_hints": ["SCALES", "ZODIAC"],
+      "pair_note": "SCALES is the natural shared trait; ZODIAC is a solid cultural second."
+    },
+    {
+      "pair_id": "p_glass__water",
+      "a": "GLASS",
+      "b": "WATER",
+      "hints": [
+        { "text": "CLEAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Glass and water are both clear." },
+        { "text": "WINDOW", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Windows are glass; no water link." },
+        { "text": "HALF", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Glass half full reaches glass directly, water only as what fills it." },
+        { "text": "DRINK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "You drink water from a drinking glass." }
+      ],
+      "strong_hints": ["CLEAR", "DRINK"],
+      "pair_note": "CLEAR and DRINK both land; HALF is a nice idea that leans glass."
+    },
+    {
+      "pair_id": "p_glass__ice",
+      "a": "GLASS",
+      "b": "ICE",
+      "hints": [
+        { "text": "SLIPPER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Glass slipper is direct; no ice link." },
+        { "text": "CUBE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ice cube is direct; glass cube is not a thing." },
+        { "text": "CLEAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Both glass and ice are clear." },
+        { "text": "FROST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Frosted glass and frost on a window, and frost is a form of ice." }
+      ],
+      "strong_hints": ["FROST", "CLEAR"],
+      "pair_note": "FROST is the best bridge; CLEAR is a fair shared-property hint."
+    },
+    {
+      "pair_id": "p_gold__ring",
+      "a": "GOLD",
+      "b": "RING",
+      "hints": [
+        { "text": "BAND", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A wedding band is a ring, and a gold band is the stock phrase." },
+        { "text": "KARAT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Karat measures gold purity; ring only via the gold it is made of." },
+        { "text": "WEDDING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Wedding ring is direct; gold only as the typical metal of that ring." },
+        { "text": "OLYMPIC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Olympic gold medal and the Olympic rings." }
+      ],
+      "strong_hints": ["OLYMPIC", "BAND"],
+      "pair_note": "OLYMPIC is the standout; BAND works through the gold band phrase."
+    },
+    {
+      "pair_id": "p_heart__robot",
+      "a": "HEART",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "BEAT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Heartbeat is direct; robots have no beat." },
+        { "text": "PACEMAKER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A pacemaker is a heart device; calling it a robot is a reach." },
+        { "text": "ARTIFICIAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Artificial heart is a compound and a robot is an artificial being with artificial intelligence." },
+        { "text": "TIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Tin toy robots are familiar; heart only via the Tin Man who wanted one." },
+        { "text": "WIRE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Robots are full of wire; hearts are not." }
+      ],
+      "strong_hints": ["ARTIFICIAL"],
+      "pair_note": "ARTIFICIAL is the single real hit; TIN is clever but needs the Oz step."
+    },
+    {
+      "pair_id": "p_robot__rock",
+      "a": "ROBOT",
+      "b": "ROCK",
+      "hints": [
+        { "text": "ARM", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Robot arm is direct; rock has no arm sense." },
+        { "text": "STEEL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "colour_mood_material"], "verdict": "FAIL", "reason": "Robots are steel; steel is not rock." },
+        { "text": "ROLL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Rock and roll is direct; nothing rolls about a robot." },
+        { "text": "METAL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Robots are metal; rock only via heavy metal as a rock genre or metal ore in rock." },
+        { "text": "DANCE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The Robot is a dance; rock reaches dance only as music you dance to." }
+      ],
+      "strong_hints": [],
+      "pair_note": "No hint reaches both cleanly; METAL and DANCE are playable but lean robot."
+    },
+    {
+      "pair_id": "p_rock__water",
+      "a": "ROCK",
+      "b": "WATER",
+      "hints": [
+        { "text": "POOL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["british_only", "one_sided"], "verdict": "BORDERLINE", "reason": "Water pool is direct; rock pool is the British term where Americans say tide pool." },
+        { "text": "STONE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["synonym_of_target", "one_sided"], "verdict": "FAIL", "reason": "Stone merely renames rock and has no water link." },
+        { "text": "WET", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "generic"], "verdict": "FAIL", "reason": "Water is wet; rock is not." },
+        { "text": "SKIP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Skipping rocks across water." }
+      ],
+      "strong_hints": ["SKIP"],
+      "pair_note": "SKIP is the one hint that names the shared activity."
+    },
+    {
+      "pair_id": "p_ocean__shark",
+      "a": "OCEAN",
+      "b": "SHARK",
+      "hints": [
+        { "text": "REEF", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Reefs are ocean features and reef shark is a familiar compound." },
+        { "text": "DEEP", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "generic"], "verdict": "BORDERLINE", "reason": "The deep is the ocean; shark only as a deep-sea creature." },
+        { "text": "FIN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Shark fin is direct; ocean has no fin." },
+        { "text": "BLUE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["colour_mood_material", "one_sided"], "verdict": "BORDERLINE", "reason": "Blue ocean is direct; the blue shark species is a secondary link." },
+        { "text": "JAWS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Jaws is the shark movie; the ocean is only its setting." }
+      ],
+      "strong_hints": ["REEF"],
+      "pair_note": "REEF is the clean compound; the rest point at one side with a nod to the other."
+    },
+    {
+      "pair_id": "p_bank__shark",
+      "a": "BANK",
+      "b": "SHARK",
+      "hints": [
+        { "text": "TEETH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Shark teeth are direct; banks have none." },
+        { "text": "VAULT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bank vault is direct; no shark link." },
+        { "text": "LOAN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bank loan and loan shark." }
+      ],
+      "strong_hints": ["LOAN"],
+      "pair_note": "LOAN is a perfect two-way compound; the other two are one-sided."
+    },
+    {
+      "pair_id": "p_moon__star",
+      "a": "MOON",
+      "b": "STAR",
+      "hints": [
+        { "text": "TWINKLE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Twinkle twinkle little star; the moon does not twinkle." },
+        { "text": "WISH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Wish upon a star is direct; no wishing on the moon." },
+        { "text": "CRESCENT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Crescent moon is direct; star only via the crescent-and-star emblem." },
+        { "text": "SKY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Moon and stars are both in the night sky." }
+      ],
+      "strong_hints": ["SKY"],
+      "pair_note": "SKY is plain but natural to both; nothing else reaches the moon."
+    },
+    {
+      "pair_id": "p_king__star",
+      "a": "KING",
+      "b": "STAR",
+      "hints": [
+        { "text": "ROYAL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Kings are royal; stars are not." },
+        { "text": "FAME", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Stars have fame; kings are not defined by it." },
+        { "text": "ELVIS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Elvis is The King and a rock star." },
+        { "text": "BETHLEHEM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Star of Bethlehem led the three kings to the newborn King." }
+      ],
+      "strong_hints": ["ELVIS", "BETHLEHEM"],
+      "pair_note": "ELVIS is the clean two-way hit; BETHLEHEM works via the nativity story."
+    },
+    {
+      "pair_id": "p_horse__train",
+      "a": "HORSE",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "IRON", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Iron horse is an old nickname for a train, but neither side is reached without knowing that phrase." },
+        { "text": "STATION", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Train station is direct; no horse link." },
+        { "text": "SADDLE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Horse saddle is direct; no train link." },
+        { "text": "TRACK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Train tracks and the horse race track." }
+      ],
+      "strong_hints": ["TRACK"],
+      "pair_note": "TRACK is the real bridge; IRON is a clever period phrase that needs explaining."
+    },
+    {
+      "pair_id": "p_train__water",
+      "a": "TRAIN",
+      "b": "WATER",
+      "hints": [
+        { "text": "TRACK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Train track is direct; water has no track." },
+        { "text": "WAVE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Water waves are direct; wave train is a physics term too niche to count." },
+        { "text": "STEAM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Steam train, and steam is heated water." }
+      ],
+      "strong_hints": ["STEAM"],
+      "pair_note": "STEAM is a strong single bridge; the other two are one-sided."
+    },
+    {
+      "pair_id": "p_water__witch",
+      "a": "WATER",
+      "b": "WITCH",
+      "hints": [
+        { "text": "BUCKET", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:MELT", "needs_explanation"], "verdict": "BORDERLINE", "reason": "A bucket of water is direct; witch only via Dorothy's bucket melting her." },
+        { "text": "BROOM", "connection_to_a": 0, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Witches ride brooms; no water link." },
+        { "text": "OZ", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:MELT", "one_sided"], "verdict": "BORDERLINE", "reason": "Oz has its famous witches; water only as the thing that melted one." },
+        { "text": "MELT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Wicked Witch melts when hit with water, and melting ice gives water." }
+      ],
+      "strong_hints": ["MELT"],
+      "pair_note": "Everything rides the Wicked Witch's melting; MELT states it best, BUCKET and OZ are the same idea."
+    },
+    {
+      "pair_id": "p_ocean__pirate",
+      "a": "OCEAN",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "TREASURE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Pirate treasure is direct; ocean only via sunken treasure." },
+        { "text": "WAVE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ocean waves are direct; no pirate link." },
+        { "text": "CARIBBEAN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Caribbean Sea and Pirates of the Caribbean." },
+        { "text": "SHIP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Ships sail the ocean and pirate ship is a compound." }
+      ],
+      "strong_hints": ["CARIBBEAN", "SHIP"],
+      "pair_note": "CARIBBEAN and SHIP both land cleanly."
+    },
+    {
+      "pair_id": "p_lion__witch",
+      "a": "LION",
+      "b": "WITCH",
+      "hints": [
+        { "text": "WARDROBE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Lion, the Witch and the Wardrobe names both words in its title." },
+        { "text": "ROAR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lions roar; witches cackle." },
+        { "text": "ASLAN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:NARNIA", "one_sided"], "verdict": "BORDERLINE", "reason": "Aslan is the lion; the White Witch is his enemy but one step removed." },
+        { "text": "NARNIA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:WARDROBE"], "verdict": "PASS", "reason": "Narnia's story centres on the lion Aslan and the White Witch." }
+      ],
+      "strong_hints": ["WARDROBE", "NARNIA"],
+      "pair_note": "WARDROBE is the perfect title hint; NARNIA is the same reference a step wider."
+    }
+  ]
+}
