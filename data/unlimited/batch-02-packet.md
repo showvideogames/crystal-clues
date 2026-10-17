@@ -82,6 +82,22 @@ locked slot is never undone; the deal never starts solved at any difficulty over
 lives 3→2→1→0 and known-bad transitions. Zero pairs shared with beta-01. Ten were requested;
 eight is what the pair supply allows under the caps without padding.
 
+## 4b. Genuine owner playtest feedback (human; kept apart from every AI review)
+
+Recorded in `playtest/owner-feedback.json`, exactly as relayed:
+
+| At (UTC) | Puzzle | Difficulty | Outcome | Lives used | Note |
+|---|---|---|---|---|---|
+| 2026-10-17T21:23:53.635Z | beta-01-001 v1 | Hardcore | won | 0 | "Fun! It was basic, a little easy. But maybe that's to be expected." |
+
+Nothing on the live board or in the rules changed from this one play. It did prompt
+`library/editorial-tags.json`: an explicitly subjective easy / medium / challenging tag on each
+retained hint beta-02 would use (no mechanic, no threshold, not used by any script), so that a
+later mix can lean on clever, less immediate but still clean connections. By those tags beta-02
+runs 13 easy, 16 medium, 3 challenging across its 32 hints (counted by script); each board
+carries at least one medium or challenging hint. Hardcore keeps its meaning: three extra cards, never harder
+clue content. Mix decisions wait for more plays.
+
 ## 5. For the parent to decide
 
 - Whether beta-02 (or a subset) becomes the next release. Releasing it would mean appending
