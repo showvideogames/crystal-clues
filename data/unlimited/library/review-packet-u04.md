@@ -65,11 +65,11 @@ Legend: **retained** = passed the blind review and has player-facing text (playa
 
 ### APPLE + BANK
 
-Playable hints: 0. Reviewer: No hint reaches both words cleanly; BRANCH is the lone playable stretch.
+Playable hints: 1. Reviewer: No hint reaches both words cleanly; BRANCH is the lone playable stretch.
 
-**Held**
+**Retained**
 
-- **BRANCH** 1/2 fair 1 broad: Bank branch is direct; apple only via the branch of an apple tree. — held: blind review: borderline *(author: retained)*
+- **BRANCH** 2/2 fair 2 broad (corrected): An apple-tree branch on one side and a bank branch on the other, both everyday senses. *(author: retained)*
 
 **Rejected**
 
@@ -97,9 +97,9 @@ Playable hints: 0. Reviewer: Three playable stretches but nothing that reaches b
 
 **Held**
 
-- **TREE** 2/1 fair 1 broad: Apple tree is direct; bears climb trees but tree does not point at bear on its own. — held: blind review: borderline *(author: retained)*
-- **HONEY** 1/2 fair 1 broad: Bears love honey; apple reached only via Honeycrisp or apples dipped in honey. — held: blind review: borderline *(author: rejected — BEAR only; also a board word)*
-- **PICNIC** 1/1 fair 1 moderate [generic]: Apples are picnic food and Yogi Bear raids picnic baskets, but both links need a step. — held: blind review: borderline *(author: retained)*
+- **TREE** 2/1 fair 1 moderate (corrected): Apple tree is immediate; bears climbing or scratching trees is a familiar image but TREE alone points at many animals before BEAR. — held: correction review: borderline *(author: retained)*
+- **HONEY** 1/2 fair 1 moderate [one_sided] (corrected): Honey is the bear's food (Pooh); apples dipped in honey (Rosh Hashanah) or honey-baked apples is a real but secondary pairing for APPLE. — held: correction review: borderline *(author: rejected — BEAR only; also a board word)*
+- **PICNIC** 1/1 fair 1 moderate (corrected): A shared scene (bear raiding a picnic basket, Yogi Bear style) with apples as classic basket food, but neither side is the first thing PICNIC evokes. — held: correction review: borderline *(author: retained)*
 
 **Rejected**
 
@@ -108,15 +108,12 @@ Playable hints: 0. Reviewer: Three playable stretches but nothing that reaches b
 
 ### APPLE + BELL
 
-Playable hints: 1. Reviewer: SCHOOL passes on iconography; TEACHER is the weaker mirror of the same idea.
+Playable hints: 2. Reviewer: SCHOOL passes on iconography; TEACHER is the weaker mirror of the same idea.
 
 **Retained**
 
 - **SCHOOL** 1/2 fair 2 broad: School bell is direct; the apple on the teacher's desk is standard back-to-school imagery. *(author: retained)*
-
-**Held**
-
-- **TEACHER** 2/1 fair 1 broad: Apple for the teacher is classic; bell only via the school bell a teacher waits on. — held: blind review: borderline *(author: retained)*
+- **TEACHER** 2/1 fair 1 moderate (corrected): An apple for the teacher is a stock image; the school bell (or the teacher's hand bell) completes the same classroom scene. *(author: retained)*
 
 **Rejected**
 
@@ -125,11 +122,11 @@ Playable hints: 1. Reviewer: SCHOOL passes on iconography; TEACHER is the weaker
 
 ### APPLE + BRIDGE
 
-Playable hints: 0. Reviewer: An awkward pair; BROOKLYN is a stretch and the rest are one-sided.
+Playable hints: 1. Reviewer: An awkward pair; BROOKLYN is a stretch and the rest are one-sided.
 
-**Held**
+**Retained**
 
-- **BROOKLYN** 1/2 fair 1 broad: Brooklyn Bridge is direct; apple only because Brooklyn is part of the Big Apple. — held: blind review: borderline *(author: retained)*
+- **BROOKLYN** 1/2 fair 1 moderate (corrected): Brooklyn Bridge is direct; APPLE is reached through Big Apple (New York), a two-step geography route the owner has accepted as fair. *(author: retained)*
 
 **Rejected**
 
@@ -139,12 +136,12 @@ Playable hints: 0. Reviewer: An awkward pair; BROOKLYN is a stretch and the rest
 
 ### APPLE + CARD
 
-Playable hints: 0. Reviewer: Both playable hints lean on the company rather than the fruit; no clean double reach.
+Playable hints: 2. Reviewer: Both playable hints lean on the company rather than the fruit; no clean double reach.
 
-**Held**
+**Retained**
 
-- **GIFT** 1/2 fair 1 broad: Gift card is direct; apple only as an Apple gift card or an apple given as a gift. — held: blind review: borderline *(author: retained)*
-- **CREDIT** 1/2 fair 1 moderate: Credit card is direct; apple only via the Apple Card product. — held: blind review: borderline *(author: retained)*
+- **GIFT** 2/2 fair 2 broad (corrected): Apple gift cards are a ubiquitous product (Apple the company), and gift card is a compound for CARD. *(author: retained)*
+- **CREDIT** 1/2 fair 1 moderate (corrected): Credit card is direct; Apple Card is a credit card, which many but not all players will know. *(author: retained)*
 
 **Rejected**
 
@@ -157,8 +154,8 @@ Playable hints: 0. Reviewer: Only the fairy tale bridges this pair, and it needs
 
 **Held**
 
-- **WHITE** 1/2 fair 1 broad [variant_of:SNOW]: White Castle is a familiar chain; apple only through Snow White's apple. — held: blind review: borderline *(author: retained)*
-- **SNOW** 1/1 fair 1 broad [needs_explanation, variant_of:WHITE]: Snow White's poisoned apple and her castle both require the whole fairy tale. — held: blind review: borderline *(author: variant — variant of WHITE)*
+- **WHITE** 1/1 fair 1 moderate [colour_mood_material, variant_of:SNOW] (corrected): Snow White again for APPLE (plus white apple flesh), and White Castle the burger brand or pale stone walls for CASTLE; each link is a step away. — held: correction review: borderline *(author: retained)*
+- **SNOW** 1/1 fair 1 moderate [needs_explanation, variant_of:WHITE] (corrected): Both sides go through Snow White (the poisoned apple, the queen's castle); the castle is the story's setting but not its iconic element, and SNOW alone reads as weather. — held: correction review: borderline *(author: variant — variant of WHITE)*
 
 **Rejected**
 
@@ -183,26 +180,26 @@ Playable hints: 1. Reviewer: TREE is a defensible pass; everything else is one-s
 
 Playable hints: 0. Reviewer: No clean hint; GALA is the only one with a genuine two-sided path.
 
-**Held**
-
-- **GALA** 2/1 fair 1 moderate: Gala is a top-selling apple variety; crown only via royalty attending a gala. — held: blind review: borderline *(author: retained)*
-
 **Rejected**
 
 - **ROYAL** 1/2 fair 0 broad [one_sided, obscure]: Royalty wear crowns; apple only via the Royal Gala variety name, which most US shoppers do not use. *(author: retained)*
+- **GALA** 2/0 fair 0 moderate [one_sided, needs_explanation] (corrected): Gala is a well-known apple variety, but a gala is just a formal event; the leap to CROWN (royalty attend galas) is invented to rescue the word. *(author: retained)*
 - **JEWEL** 0/2 fair 0 broad [one_sided]: Crown jewel is direct; apple has nothing. *(author: rejected — CROWN only)*
 - **CORE** 2/0 fair 0 broad [one_sided]: Apple core is direct; crown has no core sense. *(author: rejected — APPLE only)*
 
 ### APPLE + DIAMOND
 
-Playable hints: 0. Reviewer: Four playable stretches, none clean; the pair has no natural shared sense.
+Playable hints: 1. Reviewer: Four playable stretches, none clean; the pair has no natural shared sense.
+
+**Retained**
+
+- **CUT** 2/2 fair 2 broad (corrected): Cutting an apple into slices is everyday; diamond cut is a standard jewellery term. *(author: rejected — DIAMOND only)*
 
 **Held**
 
-- **SHINY** 1/2 fair 1 broad [colour_mood_material, generic]: Diamonds sparkle; a polished apple is shiny but the word does not point at apple. — held: blind review: borderline *(author: retained)*
-- **CUT** 1/2 fair 1 broad [generic]: A diamond's cut is a defining term; cutting an apple is ordinary and generic. — held: blind review: borderline *(author: rejected — DIAMOND only)*
-- **BASEBALL** 1/2 fair 1 broad: Baseball diamond is direct; apple only via 'baseball and apple pie' Americana. — held: blind review: borderline *(author: rejected — DIAMOND only)*
-- **BIG** 2/1 fair 1 broad [generic]: Big Apple is a familiar compound; a big diamond is generic praise, not a pointer. — held: blind review: borderline *(author: retained)*
+- **SHINY** 1/2 fair 1 moderate [colour_mood_material, generic] (corrected): Diamonds are the archetype of shiny; a polished shiny apple is a familiar image but apple is far from the first shiny thing a player names. — held: correction review: borderline *(author: retained)*
+- **BASEBALL** 1/2 fair 1 moderate [needs_explanation] (corrected): Baseball diamond is direct; APPLE arrives only via the phrase 'apple pie and baseball' or old slang for the ball, which not every player will make. — held: correction review: borderline *(author: rejected — DIAMOND only)*
+- **BIG** 2/1 fair 1 moderate [generic] (corrected): Big Apple is a strong compound; 'big diamond' is just an adjective on a ring, nothing specific to DIAMOND. — held: correction review: borderline *(author: retained)*
 
 **Rejected**
 
@@ -210,11 +207,11 @@ Playable hints: 0. Reviewer: Four playable stretches, none clean; the pair has n
 
 ### APPLE + DOG
 
-Playable hints: 0. Reviewer: HOT is the only two-sided hint and it leans on a phrase rather than the fruit.
+Playable hints: 1. Reviewer: HOT is the only two-sided hint and it leans on a phrase rather than the fruit.
 
-**Held**
+**Retained**
 
-- **HOT** 1/2 fair 1 broad: Hot dog is direct; apple only via hot apple pie or hot cider. — held: blind review: borderline *(author: retained)*
+- **HOT** 1/2 fair 1 moderate (corrected): Hot dog is a compound; hot apple pie and hot apple cider are familiar phrases that make APPLE reachable, if second. *(author: retained)*
 
 **Rejected**
 
@@ -264,15 +261,12 @@ Playable hints: 1. Reviewer: WOOD is the only hint that reaches both; the rest a
 
 ### APPLE + FISH
 
-Playable hints: 1. Reviewer: SAUCE is clean; PIE is a US-unfriendly stretch.
+Playable hints: 2. Reviewer: SAUCE is clean; PIE is a US-unfriendly stretch.
 
 **Retained**
 
 - **SAUCE** 2/2 fair 2 broad: Applesauce and fish sauce are both familiar compounds. *(author: retained)*
-
-**Held**
-
-- **PIE** 2/1 fair 1 broad [british_only]: Apple pie is direct; fish pie is a British dish most US solvers will not reach. — held: blind review: borderline *(author: rejected — APPLE only)*
+- **PIE** 2/1 fair 1 moderate (corrected): Apple pie is the archetypal pie; fish pie is a real, well-known dish in Britain though less so elsewhere. *(author: rejected — APPLE only)*
 
 **Rejected**
 
@@ -293,12 +287,12 @@ Playable hints: 1. Reviewer: HALLOWEEN is a solid pass.
 
 ### APPLE + GLASS
 
-Playable hints: 0. Reviewer: Container links only; nothing reaches glass with real force.
+Playable hints: 2. Reviewer: Container links only; nothing reaches glass with real force.
 
-**Held**
+**Retained**
 
-- **CIDER** 2/1 fair 1 broad [generic, variant_of:JUICE]: Apple cider is direct; a glass of cider is a generic container link. — held: blind review: borderline *(author: retained)*
-- **JUICE** 2/1 fair 1 broad [generic, variant_of:CIDER]: Apple juice is direct; 'glass of juice' and juice glass are natural but generic. — held: blind review: borderline *(author: retained)*
+- **JUICE** 2/2 fair 2 broad (corrected): Apple juice is a compound and a glass of juice (juice glass) is an everyday scene. *(author: retained)*
+- **CIDER** 2/1 fair 1 broad (corrected): Cider is made from apples; it is served in a glass, which is a scene rather than a compound but a recognizable one. *(author: retained)*
 
 **Rejected**
 
@@ -307,11 +301,11 @@ Playable hints: 0. Reviewer: Container links only; nothing reaches glass with re
 
 ### APPLE + GOLD
 
-Playable hints: 0. Reviewer: Golden Delicious is the one real bridge and it is a variant of the word, not the word.
+Playable hints: 1. Reviewer: Golden Delicious is the one real bridge and it is a variant of the word, not the word.
 
-**Held**
+**Retained**
 
-- **DELICIOUS** 2/1 fair 1 broad: Red and Golden Delicious are famous apple varieties; gold only via the 'Golden' in Golden Delicious. — held: blind review: borderline *(author: retained)*
+- **DELICIOUS** 2/1 fair 1 moderate (corrected): Red/Golden Delicious are the best-known apple variety names; GOLD is reached through Golden Delicious by ordinary inflection. *(author: retained)*
 
 **Rejected**
 
@@ -321,17 +315,14 @@ Playable hints: 0. Reviewer: Golden Delicious is the one real bridge and it is a
 
 ### APPLE + HEART
 
-Playable hints: 3. Reviewer: A rich pair; RED passes only because both words are iconically red.
+Playable hints: 4. Reviewer: A rich pair; RED passes only because both words are iconically red.
 
 **Retained**
 
 - **CORE** 2/2 fair 2 broad: Apple core is literal; core is the figurative heart of a matter. *(author: retained)*
 - **HEALTHY** 2/2 fair 2 broad [generic]: An apple a day is the health cliche; heart-healthy is a familiar compound. *(author: retained)*
 - **DOCTOR** 2/2 fair 2 broad: An apple a day keeps the doctor away; heart doctor is an everyday phrase. *(author: retained)*
-
-**Held**
-
-- **RED** 2/2 fair 2 broad [colour_mood_material]: Red apple and red Valentine heart are both default images, though colour hints are weaker by nature. — held: passed blind review; needs player-facing text *(author: rejected — colour only)*
+- **RED** 2/2 fair 1 broad [colour_mood_material] (corrected): A red apple and a red heart are both iconic colour images, not incidental descriptions, so the colour route is fair here despite being a colour. *(author: rejected — colour only)*
 
 **Rejected**
 
@@ -347,8 +338,8 @@ Playable hints: 1. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and 
 
 **Held**
 
-- **SWEET** 1/2 fair 1 broad [generic]: Honey is the sweet thing; apples are sweet but so is every fruit, so it does not point. — held: blind review: borderline *(author: retained)*
-- **BEE** 1/2 fair 1 broad: Honey bee is direct; bees pollinate apple blossoms but that needs an explanation. — held: blind review: borderline *(author: rejected — HONEY only; apple blossoms are a hop)*
+- **SWEET** 1/2 fair 1 broad [generic, colour_mood_material] (corrected): Honey is the definition of sweet; apples are sweet but also tart, so SWEET names honey first and apple only loosely. — held: correction review: borderline *(author: retained)*
+- **BEE** 1/2 fair 1 moderate [one_sided] (corrected): Honey bee is direct; bees pollinating apple blossom is true and known but not what a player reaches for from BEE. — held: correction review: borderline *(author: rejected — HONEY only; apple blossoms are a hop)*
 
 **Rejected**
 
@@ -356,11 +347,11 @@ Playable hints: 1. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and 
 
 ### APPLE + HORSE
 
-Playable hints: 0. Reviewer: The real link (horses eat apples) is not captured by any single hint here.
+Playable hints: 1. Reviewer: The real link (horses eat apples) is not captured by any single hint here.
 
-**Held**
+**Retained**
 
-- **TREAT** 1/1 fair 1 broad [generic]: An apple is the classic horse treat, but 'treat' alone points at neither word. — held: blind review: borderline *(author: retained)*
+- **TREAT** 1/1 fair 1 moderate (corrected): Feeding a horse an apple as a treat is a single recognizable scene that supplies both words at once. *(author: retained)*
 
 **Rejected**
 
@@ -373,6 +364,7 @@ Playable hints: 0. Reviewer: Nothing here reaches both words; every hint is sing
 
 **Rejected**
 
+- **FROST** 1/2 fair 0 niche [one_sided, synonym_of_target, needs_explanation] (corrected): Frost is a near-synonym of ice; the apple link (frost damaging orchards or blossom) is a grower's fact an ordinary player will not make. *(author: correction-candidate)*
 - **CUBE** 0/2 fair 0 broad [one_sided]: Ice cube is direct; apple has nothing. *(author: rejected — ICE only)*
 - **CIDER** 2/0 fair 0 broad [one_sided]: Apple cider is direct; ice cider is a niche product most will not know. *(author: rejected — APPLE only)*
 - **COLD** 0/2 fair 0 broad [one_sided, synonym_of_target]: Ice cold nearly renames ice; apple has no cold sense. *(author: rejected — ICE only)*
@@ -393,7 +385,11 @@ Playable hints: 1. Reviewer: CORE is a modest but defensible pass; the rest fail
 
 ### APPLE + KEY
 
-Playable hints: 0. Reviewer: No hint reaches key from the apple side; the pair is unserved.
+Playable hints: 1. Reviewer: No hint reaches key from the apple side; the pair is unserved.
+
+**Retained**
+
+- **COMMAND** 1/2 fair 1 moderate (corrected): The Command (⌘) key is widely known as the Mac-specific modifier (Cmd+C), so it reaches APPLE through Apple the company and KEY directly. *(author: correction-candidate)*
 
 **Rejected**
 
@@ -404,6 +400,10 @@ Playable hints: 0. Reviewer: No hint reaches key from the apple side; the pair i
 ### APPLE + KING
 
 Playable hints: 0. Reviewer: Nothing bridges this pair.
+
+**Held**
+
+- **ROYAL** 1/2 fair 1 niche [one_sided] (corrected): A king is royal by definition; APPLE is reached only via the Royal Gala variety, well known in some markets and barely in others. — held: correction review: borderline *(author: correction-candidate)*
 
 **Rejected**
 
@@ -417,7 +417,7 @@ Playable hints: 0. Reviewer: SHINING is a stretch; TELL reaches apple nicely but
 
 **Held**
 
-- **SHINING** 1/2 fair 1 broad [colour_mood_material]: Knight in shining armor is direct; a shining polished apple is a weak descriptor link. — held: blind review: borderline *(author: retained)*
+- **SHINING** 1/2 fair 1 moderate [one_sided, colour_mood_material] (corrected): Knight in shining armour is a set phrase; a polished shining apple is a real image but far from the first thing SHINING evokes. — held: correction review: borderline *(author: retained)*
 
 **Rejected**
 
@@ -434,7 +434,7 @@ Playable hints: 1. Reviewer: GREEN passes on two fixed phrases; NEWTON is a thou
 
 **Held**
 
-- **NEWTON** 2/1 fair 1 moderate: Newton's apple is famous; his prism work on light is real but second-tier knowledge. — held: blind review: borderline *(author: retained)*
+- **NEWTON** 2/1 fair 1 moderate [needs_explanation] (corrected): Newton's apple is famous; Newton's prism work on light is schoolbook fact but it is a second, separate fact about the man rather than one shared story. — held: correction review: borderline *(author: retained)*
 
 **Rejected**
 
@@ -454,15 +454,12 @@ Playable hints: 0. Reviewer: No usable hint; the pair has no natural bridge.
 
 ### APPLE + MOON
 
-Playable hints: 1. Reviewer: HARVEST is a strong pass.
+Playable hints: 2. Reviewer: HARVEST is a strong pass.
 
 **Retained**
 
 - **HARVEST** 2/2 fair 2 broad: Harvest moon is a set phrase; the fall apple harvest is direct. *(author: retained)*
-
-**Held**
-
-- **NEWTON** 2/1 fair 1 moderate: Newton's apple is famous; that his gravity explained the moon's orbit needs a step. — held: blind review: borderline *(author: retained)*
+- **NEWTON** 2/1 fair 1 moderate (corrected): The falling apple and the orbiting moon are the two halves of Newton's own gravity story, so one familiar tale supplies both targets. *(author: retained)*
 
 **Rejected**
 
@@ -508,14 +505,17 @@ Playable hints: 1. Reviewer: SOFTWARE is a clean pass; SCURVY rests on a false f
 
 ### APPLE + QUEEN
 
-Playable hints: 0. Reviewer: Every bridge runs through Snow White and each hint lands one side cleanly at most.
+Playable hints: 2. Reviewer: Every bridge runs through Snow White and each hint lands one side cleanly at most.
+
+**Retained**
+
+- **POISON** 2/2 fair 2 broad (corrected): Poison apple is a set phrase and the queen is the poisoner in the same Snow White story, matching the owner's EVE anchor. *(author: retained)*
+- **SNOW** 2/2 fair 1 moderate [variant_of:POISON] (corrected): Snow White is one story whose two most famous elements are the evil queen and the poisoned apple; SNOW alone first reads as weather, costing a little fairness. *(author: variant — variant of POISON)*
 
 **Held**
 
-- **BEE** 1/2 fair 1 broad: Queen bee is direct; bees pollinate apple blossoms but that needs explaining. — held: blind review: borderline *(author: rejected — QUEEN only)*
-- **POISON** 2/1 fair 1 broad [variant_of:EVIL, variant_of:SNOW]: Poison apple is an iconic phrase; queen only as the one who poisoned it. — held: blind review: borderline *(author: retained)*
-- **EVIL** 1/2 fair 1 broad [variant_of:POISON, variant_of:SNOW]: Evil Queen is Disney's villain by name; apple only through her poisoned apple. — held: blind review: borderline *(author: retained)*
-- **SNOW** 1/1 fair 1 broad [needs_explanation, variant_of:POISON, variant_of:EVIL]: Snow White's poisoned apple and her queen (or The Snow Queen) both need the tale as a stepping stone. — held: blind review: borderline *(author: variant — variant of POISON)*
+- **BEE** 1/2 fair 1 moderate [one_sided] (corrected): Queen bee is a compound; apple needs the pollination fact, which is true but not a player's first thought. — held: correction review: borderline *(author: rejected — QUEEN only)*
+- **EVIL** 1/2 fair 1 moderate [variant_of:POISON] (corrected): Evil Queen is a compound; the apple is reached only after thinking of that queen, so the apple side is one step removed. — held: correction review: borderline *(author: retained)*
 
 **Rejected**
 
@@ -555,8 +555,11 @@ Playable hints: 1. Reviewer: CANDY is clean; the other two are playable stretche
 
 **Held**
 
-- **HARD** 1/2 fair 1 broad [generic]: Rock hard and hard rock are set phrases; apple only via hard cider or a hard, crunchy fruit. — held: blind review: borderline *(author: rejected — ROCK only)*
-- **CORE** 2/1 fair 1 broad: Apple core is direct; a rock core sample or Earth's rocky core needs a step. — held: blind review: borderline *(author: rejected — APPLE only)*
+- **CORE** 2/1 fair 1 moderate [needs_explanation] (corrected): Apple core is a compound; ROCK via rock core samples or the Earth's rocky interior is real but a geology step most players will not take. — held: correction review: borderline *(author: rejected — APPLE only)*
+
+**Rejected**
+
+- **HARD** 0/2 fair 0 moderate [one_sided, needs_explanation] (corrected): Hard rock is a compound; APPLE is reachable only through 'hard cider' (a second step) or a crisp apple, neither of which a player will make from HARD. *(author: rejected — ROCK only)*
 
 ### APPLE + ROSE
 
@@ -591,7 +594,7 @@ Playable hints: 0. Reviewer: No clean hint; TREE is the lone playable stretch.
 
 **Held**
 
-- **TREE** 2/1 fair 1 broad: Apple tree is direct; trees cast shadows but tree does not point at shadow. — held: blind review: borderline *(author: retained)*
+- **TREE** 2/1 fair 1 moderate (corrected): Apple tree is immediate; a tree casting its shade or shadow is a familiar scene, but SHADOW is not what a player first attaches to TREE. — held: correction review: borderline *(author: retained)*
 
 **Rejected**
 
@@ -613,4 +616,4 @@ Playable hints: 1. Reviewer: BITE is a strong pass.
 
 ## Totals
 
-retained 24 · held 34 · rejected 90 across 40 pairs; 20 pairs have at least one playable hint.
+retained 41 · held 17 · rejected 93 across 40 pairs; 30 pairs have at least one playable hint.

@@ -25,8 +25,10 @@ for (const p of pairs) {
   Object.keys(groups).forEach((k) => { totals[k] += groups[k].length; });
   lines.push(`### ${p.a} + ${p.b}`, "", `Playable hints: ${p.playableHints}.${p.pairNote ? ` Reviewer: ${p.pairNote}` : ""}`, "");
   const row = (c) => {
-    const b = c.provenance.blindReview;
-    const flags = b.flags?.length ? ` [${b.flags.join(", ")}]` : "";
+    // The latest independent verdict: a correction review when one ran, else the blind review.
+    const b = c.provenance.correctionReview || c.provenance.blindReview || {};
+    const corrected = c.provenance.correctionReview ? " (corrected)" : "";
+    const flags = (b.flags?.length ? ` [${b.flags.join(", ")}]` : "") + corrected;
     const author = c.provenance.authorLabel ? ` *(author: ${c.provenance.authorLabel}${c.provenance.authorReason ? ` — ${c.provenance.authorReason}` : ""})*` : "";
     const held = c.heldReason && c.status === "held" ? ` — held: ${c.heldReason}` : "";
     return `- **${c.text}** ${b.a}/${b.b} fair ${b.fairness} ${b.recognizability || ""}${flags}: ${b.reason}${held}${author}`;
