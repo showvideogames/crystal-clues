@@ -22,7 +22,7 @@
 // Geometry (FriendCreator.jsx): clue i links [slot,edge] pairs
 //   0:[0,0],[1,0]  1:[1,1],[2,1]  2:[3,2],[2,2]  3:[0,3],[3,3]
 // and the visual word at edge e of a card with orientation o is words[(e-o+4)%4].
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const argv = process.argv.slice(2);
@@ -46,9 +46,34 @@ export const normHint = (t) => String(t ?? "").trim().toUpperCase().replace(/\s+
 const PLAYABLE = new Set(["ai_reviewed", "human_approved"]);
 const CLUE_LINKS = [[[0, 0], [1, 0]], [[1, 1], [2, 1]], [[3, 2], [2, 2]], [[0, 3], [3, 3]]];
 
-export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTarget = MAX_TARGET, batch = BATCH, excludePairs = new Set() }) {
+// Blind-review strength of a hint, the same ordering merge-review.mjs uses.
+const strength = (c) => { const b = c.provenance?.blindReview || {}; return ((b.a ?? 0) + (b.b ?? 0)) * 10 + (b.fairness ?? 0); };
+
+/**
+ * Which hints a pair may serve, and under which rule (data/unlimited/library/preferences.json):
+ *   canonical  an approved clearly-best hint: the only choice (never downgraded);
+ *   equal      an approved set of equally strong hints: vary among them;
+ *   top-score  no approved preference: vary among the hints tied at the best blind score.
+ * Only entries with status "approved" are read; "proposed" entries are for the parent.
+ */
+export function hintChoices(p, hints, preferences = {}) {
+  const pref = preferences[p.pair_id];
+  if (pref && pref.status === "approved" && pref.canonical) {
+    const c = hints.find((h) => h.text === pref.canonical);
+    return { rule: "canonical", hints: c ? [c] : [], note: c ? null : `canonical ${pref.canonical} is not playable` };
+  }
+  if (pref && pref.status === "approved" && Array.isArray(pref.equal)) {
+    const set = hints.filter((h) => pref.equal.includes(h.text));
+    if (set.length) return { rule: "equal-tier", hints: set, note: null };
+  }
+  const top = Math.max(...hints.map(strength));
+  return { rule: "top-score", hints: hints.filter((h) => strength(h) === top), note: null };
+}
+
+export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTarget = MAX_TARGET, batch = BATCH, excludePairs = new Set(), preferences = {} }) {
   const rng = mulberry32(seed);
-  const playable = pairs.filter((p) => !excludePairs.has(p.pair_id)).map((p) => ({ ...p, hints: p.clues.filter((c) => PLAYABLE.has(c.status) && normHint(c.text) !== normHint(p.a) && normHint(c.text) !== normHint(p.b)) })).filter((p) => p.hints.length > 0);
+  // Pairs under a generation hold (apply-overrides.mjs) are not used for new boards.
+  const playable = pairs.filter((p) => !excludePairs.has(p.pair_id) && !p.generationHold).map((p) => ({ ...p, hints: p.clues.filter((c) => PLAYABLE.has(c.status) && normHint(c.text) !== normHint(p.a) && normHint(c.text) !== normHint(p.b)) })).filter((p) => p.hints.length > 0);
   const targetUse = new Map(), pairUsed = new Set(), hintUsed = new Set();
   const boards = [], rejections = [];
   let attempts = 0;
@@ -67,14 +92,19 @@ export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTar
     // A bad draw (the random order ran into shared words) is retried, not fatal:
     // another order may still find four pairs with distinct words under the caps.
     if (chosen.length < 4) { rejections.push("a draw found fewer than four eligible pairs with distinct words under the caps (retried)"); continue; }
-    // One hint per pair, distinct across the board and unused in the batch.
-    const hints = [];
+    // One hint per pair, distinct across the board and unused in the batch. A
+    // canonical hint that collides is never swapped for a weaker one: the draw
+    // is abandoned and another pair/board combination is tried.
+    const hints = [], choices = [];
     const boardHints = new Set();
     let ok = true;
     for (const p of chosen) {
-      const h = p.hints.find((c) => !boardHints.has(normHint(c.text)) && !hintUsed.has(normHint(c.text)));
-      if (!h) { ok = false; rejections.push(`no distinct unused hint for ${p.pair_id}`); break; }
+      const ch = hintChoices(p, p.hints, preferences);
+      const free = ch.hints.filter((c) => !boardHints.has(normHint(c.text)) && !hintUsed.has(normHint(c.text)));
+      if (!free.length) { ok = false; rejections.push(ch.rule === "canonical" ? `canonical hint for ${p.pair_id} collides on this draw (never downgraded; draw retried)` : `no distinct unused ${ch.rule} hint for ${p.pair_id}`); break; }
+      const h = free[Math.floor(rng() * free.length)];
       boardHints.add(normHint(h.text)); hints.push(h);
+      choices.push({ rule: ch.rule, alternatives: p.hints.filter((c) => c !== h).map((c) => c.text) });
     }
     if (!ok) continue;
     // Targets on the ring. Each slot card gets one word from each of its two clues.
@@ -88,7 +118,8 @@ export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTar
       visual[s2][e2] = flip ? p.a : p.b;
       const h = hints[i];
       reveal.push({ position: i, clue: h.text, wordA: p.a, wordB: p.b, pairId: p.pair_id, hintStatus: h.status,
-        wordAConnection: h.wordAConnection || "", wordBConnection: h.wordBConnection || "", revealExplanation: h.revealExplanation || "", reference: h.reference || null });
+        wordAConnection: h.wordAConnection || "", wordBConnection: h.wordBConnection || "", revealExplanation: h.revealExplanation || "", reference: h.reference || null,
+        hintChoice: choices[i] });
     });
     // Decoys: the shortlist minus the targets; 8 inner edges + 12 extra-card words.
     const decoys = shuffle(words.filter((w) => !targets.has(w)), rng).slice(0, 20);
@@ -126,7 +157,9 @@ if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, "/")}` || proc
   const lib = JSON.parse(readFileSync(LIB, "utf8"));
   const words = JSON.parse(readFileSync("data/unlimited/library/shortlist-50.json", "utf8")).words.map((w) => w.word);
   const excludePairs = new Set(EXCLUDE ? JSON.parse(readFileSync(EXCLUDE, "utf8")).boards.flatMap((b) => b.reveal.map((r) => r.pairId)) : []);
-  const res = assembleBatch({ pairs: lib.pairs, words, excludePairs });
+  const PREFS = "data/unlimited/library/preferences.json";
+  const preferences = existsSync(PREFS) ? JSON.parse(readFileSync(PREFS, "utf8")).pairs : {};
+  const res = assembleBatch({ pairs: lib.pairs, words, excludePairs, preferences });
   mkdirSync(OUT, { recursive: true });
   const out = { _metadata: { batch: BATCH, seed: SEED, assembled: new Date().toISOString(), library: LIB, playablePairs: res.playablePairs, maxTargetPerWord: MAX_TARGET, excludedPairsFrom: EXCLUDE, excludedPairs: excludePairs.size, rules: "distinct normalised hint texts; hint ≠ own targets; 28 distinct words; no board-level semantic review (owner decision 2026-10-17)", statuses: "status 'beta' = assembled from ai_reviewed hints; humanApproved is false until a person sets it" }, boards: res.boards };
   writeFileSync(join(OUT, "boards.json"), JSON.stringify(out, null, 2) + "\n");

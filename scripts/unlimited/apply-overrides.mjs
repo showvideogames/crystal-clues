@@ -11,8 +11,16 @@ const OVR = "data/unlimited/library/overrides.json";
 const lib = JSON.parse(readFileSync(LIB, "utf8"));
 const overrides = existsSync(OVR) ? JSON.parse(readFileSync(OVR, "utf8")).overrides : [];
 let applied = 0;
+for (const p of lib.pairs) delete p.generationHold;   // recomputed from the overrides file every run
 for (const o of overrides) {
   const p = lib.pairs.find((x) => x.pair_id === o.pair_id);
+  if (o.status === "hold_pair") {
+    if (!p) { console.warn(`pair hold target not in library: ${o.pair_id}`); continue; }
+    // Future generation only: the assembler skips the pair; nothing already assembled changes.
+    p.generationHold = { by: o.by, date: o.date, reason: o.reason };
+    applied++;
+    continue;
+  }
   const c = p?.clues.find((x) => x.text === o.text);
   if (!c) { console.warn(`override target not in library: ${o.pair_id} ${o.text}`); continue; }
   if (o.status === "held") {

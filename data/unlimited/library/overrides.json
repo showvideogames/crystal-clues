@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "purpose": "Explicit human overrides applied on top of blind-review verdicts (scripts/unlimited/apply-overrides.mjs). An override can hold a passed hint out of the beta, or release such a hold; it never makes a hint playable by itself."
+    "purpose": "Explicit human overrides applied on top of blind-review verdicts (scripts/unlimited/apply-overrides.mjs). A hint override can hold a passed hint out of the beta, or release such a hold; it never makes a hint playable by itself. A pair override (status hold_pair) keeps a pair out of FUTURE generation only: boards already assembled or served, their snapshots and players' history are never touched."
   },
   "overrides": [
     {
@@ -10,6 +10,13 @@
       "by": "owner (relayed through the supervising reviewer)",
       "date": "2026-10-17",
       "reason": "held out of the first US beta pending final content review: fish finger is the British term (US: fish sticks); the blind review passed it, so it stays in the library"
+    },
+    {
+      "pair_id": "p_diamond__snake",
+      "status": "hold_pair",
+      "by": "parent (after the owner's playtest of beta-01-002)",
+      "date": "2026-10-17",
+      "reason": "owner found BACK indirect (reached it via the Arizona Diamondbacks); PATTERN and SCALE are held borderline, so the pair has no clean TREASURE-level hint. Future generation hold only: the live beta-01-002 snapshot and completed history stay exactly as they are."
     }
   ]
 }

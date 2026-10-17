@@ -63,6 +63,26 @@
         "rejected": 53,
         "needsText": 5,
         "pairs": 28
+      },
+      {
+        "review": "data/unlimited/library/reviews/u02-pilot-blind-review-v2.json",
+        "key": "data/unlimited/library/reviews/u02-pilot-blind-key.json",
+        "batch": null,
+        "ai_reviewed": 50,
+        "held": 53,
+        "rejected": 11,
+        "needsText": 0,
+        "pairs": 36
+      },
+      {
+        "review": "data/unlimited/library/reviews/u03-blind-review.json",
+        "key": "data/unlimited/library/reviews/u03-blind-key.json",
+        "batch": "data/unlimited/library/batches/u03-second-batch.json",
+        "ai_reviewed": 41,
+        "held": 29,
+        "rejected": 53,
+        "needsText": 1,
+        "pairs": 28
       }
     ]
   },
@@ -240,9 +260,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "cultural_reference",
-          "wordAConnection": "Eve ate the apple.",
-          "wordBConnection": "The serpent talked her into it.",
-          "revealExplanation": "Eve, the serpent, the apple.",
+          "wordAConnection": "Eve is pictured with the forbidden apple.",
+          "wordBConnection": "And with the serpent.",
+          "revealExplanation": "Eve is traditionally pictured with the forbidden apple and the serpent.",
           "reference": {
             "referenceType": "mythology_or_folklore",
             "source": "Genesis",
@@ -403,8 +423,37 @@
       "b": "CARD",
       "source": "u03-second-batch",
       "pairNote": "Three clean banking compounds; CREDIT and DEBIT are twins.",
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
+        {
+          "text": "DEBIT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A debit from your bank account.",
+          "wordBConnection": "A debit card.",
+          "revealExplanation": "A debit card; a debit from the bank.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "variant",
+            "authorReason": "variant of CREDIT",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:CREDIT"
+              ],
+              "reason": "A bank debits an account and issues a debit card."
+            }
+          }
+        },
         {
           "text": "CREDIT",
           "status": "ai_reviewed",
@@ -431,30 +480,6 @@
                 "variant_of:DEBIT"
               ],
               "reason": "Banks extend credit and issue credit cards."
-            }
-          }
-        },
-        {
-          "text": "DEBIT",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u03-second-batch",
-            "authorLabel": "variant",
-            "authorReason": "variant of CREDIT",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-3",
-              "date": "2026-10-17",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "broad",
-              "flags": [
-                "variant_of:CREDIT"
-              ],
-              "reason": "A bank debits an account and issues a debit card."
             }
           }
         },
@@ -1778,9 +1803,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "famous_person",
-          "wordAConnection": "Pavlov rang a bell.",
-          "wordBConnection": "Pavlov's dogs.",
-          "revealExplanation": "Pavlov's dogs and his bell.",
+          "wordAConnection": "Pavlov’s bell.",
+          "wordBConnection": "Pavlov’s dogs and their learned response.",
+          "revealExplanation": "The familiar image of Pavlov’s dogs associates a bell with their learned response.",
           "reference": {
             "referenceType": "famous_person",
             "source": "Ivan Pavlov's experiments",
@@ -1887,7 +1912,7 @@
       "b": "RING",
       "source": "u03-second-batch",
       "pairNote": "Strong pair; WEDDING and BOXING are clean compounds on both sides.",
-      "playableHints": 1,
+      "playableHints": 3,
       "clues": [
         {
           "text": "WEDDING",
@@ -1918,8 +1943,13 @@
         },
         {
           "text": "BOXING",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The boxing bell starts the round.",
+          "wordBConnection": "A boxing ring.",
+          "revealExplanation": "The boxing ring, and the bell that starts the round.",
+          "reference": null,
           "provenance": {
             "source": "u03-second-batch",
             "authorLabel": "rejected",
@@ -1940,8 +1970,13 @@
         },
         {
           "text": "TONE",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The tone of a bell.",
+          "wordBConnection": "A ringtone.",
+          "revealExplanation": "A bell’s tone; a ringtone.",
+          "reference": null,
           "provenance": {
             "source": "u03-second-batch",
             "authorLabel": "rejected",
@@ -4040,9 +4075,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "wordplay",
-          "wordAConnection": "The rose cut is a genuine antique style of cutting a diamond.",
-          "wordBConnection": "It is named after the flower it resembles.",
-          "revealExplanation": "The rose cut is a genuine antique style of cutting a diamond.",
+          "wordAConnection": "A cut diamond.",
+          "wordBConnection": "A cut rose.",
+          "revealExplanation": "A cut diamond and a cut rose.",
           "reference": null,
           "provenance": {
             "source": "pilot-2026-10",
@@ -4356,7 +4391,12 @@
             }
           }
         }
-      ]
+      ],
+      "generationHold": {
+        "by": "parent (after the owner's playtest of beta-01-002)",
+        "date": "2026-10-17",
+        "reason": "owner found BACK indirect (reached it via the Arizona Diamondbacks); PATTERN and SCALE are held borderline, so the pair has no clean TREASURE-level hint. Future generation hold only: the live beta-01-002 snapshot and completed history stay exactly as they are."
+      }
     },
     {
       "pair_id": "p_dog__fish",
@@ -5205,9 +5245,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "cause_and_effect",
-          "wordAConnection": "A forge is a contained fire.",
-          "wordBConnection": "Iron is what gets shaped in it.",
-          "revealExplanation": "Iron is shaped in a forge, which is a contained fire.",
+          "wordAConnection": "A forge’s fire.",
+          "wordBConnection": "Iron is heated in the forge for shaping.",
+          "revealExplanation": "A forge’s fire heats iron for shaping.",
           "reference": null,
           "provenance": {
             "source": "pilot-2026-10",
@@ -6026,8 +6066,37 @@
       "b": "ICE",
       "source": "u03-second-batch",
       "pairNote": "FROST is the best bridge; CLEAR is a fair shared-property hint.",
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
+        {
+          "text": "CLEAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Clear glass.",
+          "wordBConnection": "Clear ice.",
+          "revealExplanation": "Clear glass, clear ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "used for GLASS+WATER; ice is less clearly clear",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both glass and ice are clear."
+            }
+          }
+        },
         {
           "text": "FROST",
           "status": "ai_reviewed",
@@ -6052,30 +6121,6 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Frosted glass and frost on a window, and frost is a form of ice."
-            }
-          }
-        },
-        {
-          "text": "CLEAR",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u03-second-batch",
-            "authorLabel": "rejected",
-            "authorReason": "used for GLASS+WATER; ice is less clearly clear",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-3",
-              "date": "2026-10-17",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "broad",
-              "flags": [
-                "generic"
-              ],
-              "reason": "Both glass and ice are clear."
             }
           }
         },
@@ -6727,8 +6772,8 @@
           "heldReason": null,
           "type": "compound_or_phrase",
           "wordAConnection": "An artificial heart.",
-          "wordBConnection": "Artificial intelligence.",
-          "revealExplanation": "An artificial heart; a robot's artificial intelligence.",
+          "wordBConnection": "A robot is an artificial machine.",
+          "revealExplanation": "An artificial heart; a robot is an artificial machine.",
           "reference": null,
           "provenance": {
             "source": "u03-second-batch",
@@ -7318,9 +7363,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "cultural_reference",
-          "wordAConnection": "A warhorse is what they were fought on.",
-          "wordBConnection": "The Wars of the Roses were fought over the badge.",
-          "revealExplanation": "The Wars of the Roses were fought over the badge, and a warhorse is what they were fought on.",
+          "wordAConnection": "A warhorse.",
+          "wordBConnection": "The Wars of the Roses.",
+          "revealExplanation": "A warhorse; the Wars of the Roses.",
           "reference": {
             "referenceType": "famous_object_place_or_event",
             "source": "the Wars of the Roses",

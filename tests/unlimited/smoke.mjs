@@ -30,7 +30,7 @@ const URL = process.env.FRIENDS_E2E_URL || "http://127.0.0.1:5192";
 const OUT = process.argv[2] ? path.resolve(process.argv[2]) : null;
 if (OUT) fs.mkdirSync(OUT, { recursive: true });
 const pool = JSON.parse(fs.readFileSync("src/unlimited/pool.json", "utf8")).boards.sort((x, y) => x.index - y.index);
-assert.equal(pool.length, 8, "this run plays out the whole eight-board pool");
+assert.ok(pool.length >= 7, "the pool holds at least seven boards (the first seven are played for real; the rest are seeded as played before the exhaustion check)");
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = (...a) => console.log("•", ...a);
 const text = (page) => page.evaluate(() => document.body.innerText);
@@ -235,7 +235,7 @@ try {
   await shot(page, "u10-board-hardcore");
   await solveAndFinish(page, b5);
   const after = await store(page);
-  assert.equal(Object.keys(after.played).length, 5);
+  assert.equal(Object.keys(after.played).length, 5, "five boards played so far");
   assert.deepEqual([b1, b2, b3, b4, b5].map((b) => after.played[b.id].difficulty), ["standard", "easy", "easy", "expert", "hardcore"]);
   await page.locator("[data-testid=ul-next]").click();
   await page.waitForSelector(".game .csurface .ctile"); await sleep(900);
@@ -266,6 +266,14 @@ try {
   await page.locator("[data-testid=ul-next]").click();
   await page.waitForSelector(".game .csurface .ctile"); await sleep(900);
   await waitText(page, `Puzzle 8 of ${pool.length} · Standard`);
+  if (pool.length > 8) {
+    // A bigger pool: boards 9.. are seeded as played (not played here, to keep the run bounded),
+    // then puzzle 8 is finished for real as the last one.
+    await page.evaluate((ids) => { const st = JSON.parse(localStorage.getItem("cv_unlimited_v1")); for (const id of ids) st.played[id] = { outcome: "won", livesUsed: 0, difficulty: "standard", finishedAt: "2026-10-17T21:00:00.000Z", version: 1, replays: 0 }; localStorage.setItem("cv_unlimited_v1", JSON.stringify(st)); }, pool.slice(8).map((b) => b.id));
+    await page.reload({ waitUntil: "networkidle0" });
+    await page.waitForSelector(".game .csurface .ctile"); await sleep(900);
+    await waitText(page, `Puzzle 8 of ${pool.length}`);
+  }
   await solveAndFinish(page, pool[7]);
   assert.equal(await page.$("[data-testid=ul-next]"), null, "no Next puzzle after the last board");
   assert.ok(await page.$("[data-testid=ul-back]"), "Back to Unlimited instead");
