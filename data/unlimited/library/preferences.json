@@ -2,7 +2,7 @@
   "_metadata": {
     "title": "Preferred (canonical) hint per pair, for board assembly",
     "written": "2026-10-17",
-    "rule": "When one hint for a pair is clearly best, it is THE served hint: the assembler uses it or does not use the pair on that board (it never falls back to a weaker alternative to satisfy the four-distinct-hints rule or the hint-once-per-batch cap). Where several hints are genuinely equally strong, the assembler varies among them. All other good library alternatives stay in the library untouched.",
+    "rule": "When one hint for a pair is clearly best, it is THE served hint: the assembler uses it or does not use the pair on that board (it never falls back to a weaker alternative to satisfy the four-distinct-hints rule or the hint-once-per-batch cap). Only an APPROVED equal set is varied among; if none of its members is playable there is no choice (never an unapproved fallback). With no approved entry the assembler takes exactly one stable provisional candidate (best blind score, then library order, then text) and records the selection as provisional: a numerical score tie is not editorial equivalence, and nothing is picked at random (parent correction 2026-10-17). All other good library alternatives stay in the library untouched.",
     "statuses": "approved = applied by the assembler (owner or parent decision); proposed = the session's editorial suggestion, listed for the parent, NOT applied until approved. Live snapshots and completed history are never changed by this file.",
     "fields": "canonical: the one hint that must win; equal: hints the assembler may vary among (only read when there is no canonical); by / date / reason: provenance."
   },

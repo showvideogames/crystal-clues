@@ -51,23 +51,27 @@ const strength = (c) => { const b = c.provenance?.blindReview || {}; return ((b.
 
 /**
  * Which hints a pair may serve, and under which rule (data/unlimited/library/preferences.json):
- *   canonical  an approved clearly-best hint: the only choice (never downgraded);
- *   equal      an approved set of equally strong hints: vary among them;
- *   top-score  no approved preference: vary among the hints tied at the best blind score.
+ *   canonical    an approved clearly-best hint: the only choice (never downgraded);
+ *   equal-tier   an approved set of editorially equal hints: vary among those that are playable;
+ *                if none of them is playable there is NO choice (never an unapproved fallback);
+ *   provisional  no approved preference: exactly ONE candidate, chosen deterministically
+ *                (best blind score, then library order, then text), marked provisional.
+ *                A numerical score tie is not editorial equivalence, so nothing is random here.
  * Only entries with status "approved" are read; "proposed" entries are for the parent.
  */
 export function hintChoices(p, hints, preferences = {}) {
   const pref = preferences[p.pair_id];
   if (pref && pref.status === "approved" && pref.canonical) {
     const c = hints.find((h) => h.text === pref.canonical);
-    return { rule: "canonical", hints: c ? [c] : [], note: c ? null : `canonical ${pref.canonical} is not playable` };
+    return { rule: "canonical", hints: c ? [c] : [], provisional: false, note: c ? null : `canonical ${pref.canonical} is not playable` };
   }
   if (pref && pref.status === "approved" && Array.isArray(pref.equal)) {
     const set = hints.filter((h) => pref.equal.includes(h.text));
-    if (set.length) return { rule: "equal-tier", hints: set, note: null };
+    return { rule: "equal-tier", hints: set, provisional: false, note: set.length ? null : `no approved equal hint (${pref.equal.join("/")}) is playable` };
   }
-  const top = Math.max(...hints.map(strength));
-  return { rule: "top-score", hints: hints.filter((h) => strength(h) === top), note: null };
+  if (!hints.length) return { rule: "provisional", hints: [], provisional: true, note: "no playable hint" };
+  const ranked = hints.map((h, i) => ({ h, i })).sort((x, y) => strength(y.h) - strength(x.h) || x.i - y.i || x.h.text.localeCompare(y.h.text));
+  return { rule: "provisional", hints: [ranked[0].h], provisional: true, note: "no approved preference: stable top candidate, pending pair review" };
 }
 
 export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTarget = MAX_TARGET, batch = BATCH, excludePairs = new Set(), preferences = {} }) {
@@ -101,10 +105,11 @@ export function assembleBatch({ pairs, words, seed = SEED, count = COUNT, maxTar
     for (const p of chosen) {
       const ch = hintChoices(p, p.hints, preferences);
       const free = ch.hints.filter((c) => !boardHints.has(normHint(c.text)) && !hintUsed.has(normHint(c.text)));
-      if (!free.length) { ok = false; rejections.push(ch.rule === "canonical" ? `canonical hint for ${p.pair_id} collides on this draw (never downgraded; draw retried)` : `no distinct unused ${ch.rule} hint for ${p.pair_id}`); break; }
-      const h = free[Math.floor(rng() * free.length)];
+      if (!free.length) { ok = false; rejections.push(ch.note ? `${p.pair_id}: ${ch.note}` : ch.rule === "canonical" ? `canonical hint for ${p.pair_id} collides on this draw (never downgraded; draw retried)` : `the ${ch.rule} hint for ${p.pair_id} collides on this draw (draw retried)`); break; }
+      // Only an approved equal set is varied; canonical and provisional are single candidates.
+      const h = ch.rule === "equal-tier" ? free[Math.floor(rng() * free.length)] : free[0];
       boardHints.add(normHint(h.text)); hints.push(h);
-      choices.push({ rule: ch.rule, alternatives: p.hints.filter((c) => c !== h).map((c) => c.text) });
+      choices.push({ rule: ch.rule, provisional: ch.provisional, alternatives: p.hints.filter((c) => c !== h).map((c) => c.text) });
     }
     if (!ok) continue;
     // Targets on the ring. Each slot card gets one word from each of its two clues.

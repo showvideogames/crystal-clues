@@ -25,7 +25,7 @@ const section = (title, boards, note) => {
     const approvedOnly = Object.fromEntries(Object.entries(prefs).filter(([, v]) => v.status === "approved"));
     const allAsApproved = Object.fromEntries(Object.entries(prefs).map(([k, v]) => [k, { ...v, status: "approved" }]));
     const a = hintChoices(p, hints, approvedOnly), q = hintChoices(p, hints, allAsApproved);
-    const fmt = (ch) => ch.rule === "canonical" ? (ch.hints[0]?.text || "(none playable)") : `vary: ${ch.hints.map((h) => h.text).join("/")}`;
+    const fmt = (ch) => ch.rule === "equal-tier" ? (ch.hints.length ? `vary (approved equal): ${ch.hints.map((h) => h.text).join("/")}` : "(no approved equal hint playable: no choice)") : ch.rule === "provisional" ? `${ch.hints[0]?.text || "(none)"} (provisional)` : (ch.hints[0]?.text || "(none playable)");
     const chA = ch => (ch.rule === "canonical" ? ch.hints[0]?.text !== r.clue : !ch.hints.some((h) => h.text === r.clue));
     const cA = chA(a), cP = chA(q);
     if (cA) changesApproved++; if (cP) changesProposed++;

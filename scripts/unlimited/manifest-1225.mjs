@@ -17,9 +17,16 @@ const OUT = arg("out", "data/unlimited/library/manifest-1225.json");
 const words = JSON.parse(readFileSync("data/unlimited/library/shortlist-50.json", "utf8")).words.map((w) => w.word).sort();
 const lib = JSON.parse(readFileSync("data/unlimited/library/pairs.json", "utf8"));
 const byId = new Map(lib.pairs.map((p) => [p.pair_id, p]));
-const live = JSON.parse(readFileSync("src/unlimited/pool.json", "utf8")).boards;
-const servedIn = {};
-for (const b of live) for (const r of b.reveal) (servedIn[r.pairId] = servedIn[r.pairId] || []).push(`${b.id}:${r.clue}`);
+// The bundled pool may hold boards that are released AND boards appended
+// locally but not yet released (pool._metadata.batches entries with an
+// "appended" stamp). Served-live counts only the released ones.
+const pool = JSON.parse(readFileSync("src/unlimited/pool.json", "utf8"));
+const pendingBatches = new Set((pool._metadata.batches || []).filter((b) => b.appended).map((b) => b.batch));
+const releasedBoards = pool.boards.filter((b) => !pendingBatches.has(b.id.replace(/-\d+$/, "")));
+const pendingBoards = pool.boards.filter((b) => pendingBatches.has(b.id.replace(/-\d+$/, "")));
+const servedIn = {}, pendingIn = {};
+for (const b of releasedBoards) for (const r of b.reveal) (servedIn[r.pairId] = servedIn[r.pairId] || []).push(`${b.id}:${r.clue}`);
+for (const b of pendingBoards) for (const r of b.reveal) (pendingIn[r.pairId] = pendingIn[r.pairId] || []).push(`${b.id}:${r.clue}`);
 const strength = (c) => { const b = c.provenance?.blindReview || {}; return ((b.a ?? 0) + (b.b ?? 0)) * 10 + (b.fairness ?? 0); };
 
 const pairs = [];
@@ -43,7 +50,8 @@ for (let i = 0; i < words.length; i++) for (let j = i + 1; j < words.length; j++
     if (held[0]) row.bestAvailableCandidate = { text: held[0].text, verdict: held[0].provenance?.blindReview?.verdict || null, reason: held[0].provenance?.blindReview?.reason || held[0].heldReason || null, heldReason: held[0].heldReason || null };
   }
   if (p.generationHold) row.generationHold = p.generationHold.reason;
-  if (servedIn[id]) row.servedIn = servedIn[id];
+  if (servedIn[id]) row.servedLiveIn = servedIn[id];
+  if (pendingIn[id]) row.pendingLocalIn = pendingIn[id];
   pairs.push(row);
 }
 // Planned authoring batches for the holes: fixed, resumable chunks of 40 in
@@ -60,7 +68,10 @@ const summary = {
   playable: tally("playable"), held_only: tally("held_only"), rejected_only: tally("rejected_only"), candidate: tally("candidate"), hole: tally("hole"),
   withBestAvailableCandidate: pairs.filter((p) => p.bestAvailableCandidate).length,
   underGenerationHold: pairs.filter((p) => p.generationHold).length,
-  servedLive: pairs.filter((p) => p.servedIn).length,
+  servedLive: pairs.filter((p) => p.servedLiveIn).length,                       // released boards only (production)
+  pendingLocal: pairs.filter((p) => p.pendingLocalIn).length,                   // appended locally, not released
+  coveredByAnyBoard: pairs.filter((p) => p.servedLiveIn || p.pendingLocalIn).length,
+  boards: { released: releasedBoards.length, pendingLocal: pendingBoards.length, pendingBatches: [...pendingBatches] },
   hints: { total: lib.pairs.reduce((n, p) => n + p.clues.length, 0), playable: lib.pairs.reduce((n, p) => n + p.clues.filter((c) => c.status === "ai_reviewed" || c.status === "human_approved").length, 0), held: lib.pairs.reduce((n, p) => n + p.clues.filter((c) => c.status === "held").length, 0), rejected: lib.pairs.reduce((n, p) => n + p.clues.filter((c) => c.status === "rejected").length, 0) },
   perWordHoles: Object.fromEntries(words.map((w) => [w, pairs.filter((p) => p.state === "hole" && (p.a === w || p.b === w)).length])),
   plannedBatches: Object.entries(pairs.filter((p) => p.plannedBatch).reduce((acc, p) => { acc[p.plannedBatch] = (acc[p.plannedBatch] || 0) + 1; return acc; }, {})).map(([k, v]) => `${k}:${v}`),

@@ -21,19 +21,50 @@ test("an approved canonical hint is the only choice; a proposed one is not read"
   assert.deepEqual(hintChoices(p, p.clues, approved).hints.map((h) => h.text), ["TREASURE"]);
   const proposed = { [p.pair_id]: { status: "proposed", canonical: "TREASURE" } };
   const ch = hintChoices(p, p.clues, proposed);
-  assert.equal(ch.rule, "top-score");
-  assert.deepEqual(ch.hints.map((h) => h.text).sort(), ["DOUBLOON", "TREASURE"]);
+  assert.equal(ch.rule, "provisional");
+  assert.equal(ch.provisional, true);
+  assert.equal(ch.hints.length, 1, "exactly one provisional candidate, never a set to vary among");
 });
 
-test("without a preference the assembler varies among the top-scoring hints only", () => {
-  const p = pairs()[2];
-  assert.deepEqual(hintChoices(p, p.clues, {}).hints.map((h) => h.text).sort(), ["EASTER", "ROLL"]);
+test("without a preference: ONE stable provisional candidate; a score tie is broken by library order, never at random", () => {
+  const p = pairs()[2];                                   // ROLL and EASTER tie at the best score
+  const ch = hintChoices(p, p.clues, {});
+  assert.equal(ch.rule, "provisional");
+  assert.deepEqual(ch.hints.map((h) => h.text), ["ROLL"], "the first in library order among the tie");
+  for (let i = 0; i < 20; i++) assert.deepEqual(hintChoices(p, p.clues, {}).hints.map((h) => h.text), ["ROLL"]);
+  // The same tie in the other library order picks the other hint: the order is the tie-break, not chance.
+  const q = pair("EGG", "SPRING", [hint("EASTER"), hint("ROLL"), hint("CHICK", 2, 1)]);
+  assert.deepEqual(hintChoices(q, q.clues, {}).hints.map((h) => h.text), ["EASTER"]);
+  // Every assembled board records the choice as provisional.
+  for (let seed = 1; seed <= 10; seed++) {
+    const res = assembleBatch({ pairs: pairs(), words: WORDS, seed, count: 1, maxTarget: 3, batch: "t" });
+    const r = res.boards[0].reveal.find((x) => x.pairId === "p_egg__spring");
+    assert.equal(r.clue, "ROLL"); assert.equal(r.hintChoice.rule, "provisional"); assert.equal(r.hintChoice.provisional, true);
+  }
 });
 
 test("an approved equal set restricts variation to that set", () => {
   const p = pairs()[2];
   const prefs = { [p.pair_id]: { status: "approved", equal: ["ROLL"] } };
-  assert.deepEqual(hintChoices(p, p.clues, prefs).hints.map((h) => h.text), ["ROLL"]);
+  const ch = hintChoices(p, p.clues, prefs);
+  assert.equal(ch.rule, "equal-tier");
+  assert.deepEqual(ch.hints.map((h) => h.text), ["ROLL"]);
+});
+
+test("an approved equal set with no playable member gives NO choice, never an unapproved fallback", () => {
+  const p = pair("EGG", "SPRING", [hint("ROLL", 2, 2, 2, "held"), hint("EASTER"), hint("CHICK", 2, 1)]);
+  const playable = p.clues.filter((c) => c.status === "ai_reviewed");          // only EASTER and CHICK
+  const prefs = { [p.pair_id]: { status: "approved", equal: ["ROLL"] } };
+  const ch = hintChoices(p, playable, prefs);
+  assert.equal(ch.rule, "equal-tier");
+  assert.deepEqual(ch.hints, []);
+  assert.match(ch.note, /no approved equal hint/);
+  // And the assembler then leaves the pair out of the board rather than serving EASTER.
+  const ps = [p, ...pairs().filter((x) => x.pair_id !== p.pair_id), pair("W0", "W1", [hint("X")]), pair("W2", "W3", [hint("Y")])];
+  for (let seed = 1; seed <= 10; seed++) {
+    const res = assembleBatch({ pairs: ps, words: [...WORDS, "W1", "W3"], seed, count: 2, maxTarget: 3, batch: "t", preferences: prefs });
+    for (const b of res.boards) assert.ok(!b.reveal.some((r) => r.pairId === "p_egg__spring"), "EGG+SPRING is never served from an unapproved fallback");
+  }
 });
 
 test("the canonical hint wins on every assembled board, for every seed", () => {
