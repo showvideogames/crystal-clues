@@ -14,6 +14,7 @@ import { usePath, parsePath, navigate, paths, adoptLegacyLink } from "./route";
 import { THEME_CHOICES, useThemeChoice } from "./theme";
 import {
   CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
+  biasedShuffle, isClueRotation, bestSubmit,
 } from "./game/shared";
 import { loadWordBank, wordBankPagePath } from "./game/wordBank";
 import { initialMode, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinal } from "./game/dailyResults";
@@ -25,6 +26,8 @@ import Home from "./home/Home.jsx";
 const FriendsView = lazy(() => import("./friends/FriendsView.jsx"));
 // A puzzle texted as a link (/p/…): playable without an account.
 const SharedPuzzle = lazy(() => import("./friends/SharedPuzzle.jsx"));
+// Unlimited guest beta (/unlimited): a local pool of checked boards, no account.
+const UnlimitedView = lazy(() => import("./unlimited/UnlimitedView.jsx"));
 // Friends settings outside the Friends page: notifications (in Settings) and
 // the profile editor (from the account menu).
 const FriendsNotifications = lazy(() => import("./friends/Notifications.jsx"));
@@ -1639,37 +1642,8 @@ body::before{
 //  HELPERS
 // ═══════════════════════════════════════════════════════════════
 
-// Biased shuffle: keeps re-shuffling until fewer than 2 solution slots are accidentally correct.
-// Caps at 10 attempts so it never hangs. Also seeds with a time+random mix for better entropy.
-function biasedShuffle(cardIds, solution) {
-  const attempt = () => {
-    const cut = Math.floor(Math.random() * cardIds.length);
-    const seeded = [...cardIds.slice(cut), ...cardIds.slice(0, cut)];
-    return shuffleArr(seeded).map(id => ({
-      cardId: id,
-      orientation: Math.floor(Math.random() * 4),
-    }));
-  };
-
-  const countCorrect = slots => {
-    if (!solution) return 0;
-    return solution.slotCards.reduce((n, cardId, si) =>
-      n + (slots[si]?.cardId === cardId && slots[si]?.orientation === solution.orientations[si] ? 1 : 0)
-    , 0);
-  };
-
-  let best = attempt();
-  let bestScore = countCorrect(best);
-
-  // Try up to 10 times, keep the arrangement with the fewest accidental correct slots
-  for (let i = 0; i < 10; i++) {
-    if (bestScore < 2) break;
-    const candidate = attempt();
-    const score = countCorrect(candidate);
-    if (score < bestScore) { best = candidate; bestScore = score; }
-  }
-  return best;
-}
+// biasedShuffle, isClueRotation and bestSubmit (the deal and the judging)
+// live in src/game/shared.js so scripts and tests can run the real logic.
 
 // Friend puzzles are judged on the server, which also records every guess.
 // This rebuilds the solver's board after a refresh or on another device:
@@ -1678,16 +1652,6 @@ function biasedShuffle(cardIds, solution) {
 //  • otherwise the board is exactly as it was at the last recorded guess;
 //  • with no guesses yet, it's a fresh deal.
 // Lives always come from the server.
-function isClueRotation(clues, original) {
-  if(!Array.isArray(clues) || clues.length !== 4) return false;
-  let rc=[...original];
-  for(let r=0;r<4;r++){
-    if(rc.every((c,i)=>c===clues[i])) return true;
-    rc=CW_FROM.map(i=>rc[i]);
-  }
-  return false;
-}
-
 // A board as the move log writes it (friends/moveLog.js): "cardId:orientation".
 const packSlots = (slots) => slots.map(s=>`${s.cardId}:${s.orientation}`);
 
@@ -1736,37 +1700,6 @@ function restoreFriendBoard(fp, saved) {
       locked: lockedFromLast, knownBad: knownBadFromLast };
   }
   return { ...common, restored:false };
-}
-
-function bestSubmit(slots4, solution, locked, currentClues, originalClues) {
-  // Determine which rotation of the board we're currently on by matching clues
-  // Only check that specific rotation — prevents false positives from shuffled cards
-  // accidentally matching a different rotation of the solution
-  let boardRotation = 0;
-  if(currentClues && originalClues) {
-    for(let r=0;r<4;r++){
-      let rc=[...originalClues];
-      for(let k=0;k<r;k++) rc=CW_FROM.map(i=>rc[i]);
-      if(rc.every((c,i)=>c===currentClues[i])){ boardRotation=r; break; }
-    }
-  }
-
-  // Apply that rotation to the solution
-  let sc=[...solution.slotCards], or=[...solution.orientations];
-  for(let k=0;k<boardRotation;k++){
-    const ns=CW_FROM.map(i=>sc[i]), no=CW_FROM.map(i=>(or[i]+1)%4);
-    sc=ns; or=no;
-  }
-
-  const correct=new Set(), wrong=new Set();
-  for(let i=0;i<4;i++){
-    if(slots4[i]?.cardId===sc[i]&&slots4[i]?.orientation===or[i]) correct.add(i);
-    else wrong.add(i);
-  }
-  // Still respect already-locked slots
-  if([...locked].every(i=>correct.has(i)))
-    return {correct,wrong};
-  return {correct:new Set(),wrong:new Set([0,1,2,3])};
 }
 
 const loadLS = (k,fb) => {
@@ -2354,6 +2287,12 @@ function GameView({
   friend=null,
   // Creator's preview of their own puzzle: plays normally, records nothing.
   sandbox=false,
+  // Unlimited (src/unlimited): judged here like the daily game, progress saved
+  // under the puzzle's own key, nothing written to the daily stats or
+  // completions; onFinished(result) reports the end, and `endControls` is
+  // what the parent shows under the board once the game is over.
+  unlimited=false,
+  endControls=null,
   // The animated replay of a finished friend puzzle (friends/AnimatedReplay.jsx):
   // { init:{slots,clues}, apiRef, still, feedback }. The board starts at init,
   // ignores the player's input, and is driven through apiRef; `friend` then
@@ -2411,7 +2350,9 @@ function GameView({
 
   const alreadySolved = tutorialActive ? false : admireMode || !!review;
   // Today's or an archive puzzle, played for the record: the end-of-game buttons are its.
-  const official = !friendPuzzle && !sandbox && !tutorialActive && !replay && !admireMode;
+  const official = !friendPuzzle && !sandbox && !tutorialActive && !replay && !admireMode && !unlimited;
+  // Official and Unlimited games end the same way on screen: the result under the board.
+  const scored = official || unlimited;
   const progressKey = `clover_progress_${puzzle.id}`;
   const friendProgressKey = friendPuzzle && !replayMode ? `clover_friend_progress_${friendPuzzle.id}` : null;
   const [friendInit] = useState(()=> friendPuzzle && !replayMode
@@ -3164,6 +3105,8 @@ function GameView({
     // Daily and preview games are judged here; friend puzzles by the server.
     // Only the first attempt at an official puzzle counts; a practice replay never does.
     const recordsStats = official && !practice;
+    // Who hears about the end: official first attempts (stats) and Unlimited (its own history).
+    const reportsFinish = recordsStats || unlimited;
 
     // Phase 1: all unlocked cards go grey + shake together
     setRevealPhase('grey');
@@ -3215,7 +3158,7 @@ function GameView({
                   setTimeout(()=>setShowParticles(false), 5000);
                 }
                 finish(900);
-                if(recordsStats) onFinished?.({ won:true, livesUsed, difficulty, guessHistory:finalHistory,
+                if(reportsFinish) onFinished?.({ won:true, livesUsed, difficulty, guessHistory:finalHistory,
                   slots: slots.map(s=>({ cardId:s.cardId, orientation:s.orientation })), clues:[...clues] });
               } else {
                 // record bad placements
@@ -3241,7 +3184,7 @@ function GameView({
 
                 if(newLives<=0){
                   // Recorded now, not after the reveal, so leaving mid-animation can't lose it.
-                  if(recordsStats){
+                  if(reportsFinish){
                     const answerIds = puzzle.solution.slotCards;
                     const rest = slots.filter(s=>s && !answerIds.includes(s.cardId)).map(s=>({ cardId:s.cardId, orientation:s.orientation }));
                     onFinished?.({ won:false, livesUsed:MAX_LIVES, difficulty, guessHistory:newHistory,
@@ -3379,7 +3322,7 @@ function GameView({
 
     const res=bestSubmit(slots.slice(0,4),puzzle.solution,locked,clues,puzzle.clues);
     setTimeout(()=>reveal(res), 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onFinished,onShowResults,official,practice,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox,replayMode,record]);
+  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onFinished,onShowResults,official,unlimited,practice,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox,replayMode,record]);
 
   // ── The replay's controls (friends/AnimatedReplay.jsx) ──────────────
   // Each returns a promise that settles when the move has finished on screen.
@@ -3609,8 +3552,8 @@ function GameView({
             <button type="button" onClick={onExitPractice}>Back to my result</button>
           </div>
         )}
-        <div className={`lives game-lives${official ? " with-diff" : ""}`} title={`${lives} of ${MAX_LIVES} lives left`}>
-          {official && <span className="game-diff">{diffLabel}</span>}
+        <div className={`lives game-lives${scored ? " with-diff" : ""}`} title={`${lives} of ${MAX_LIVES} lives left`}>
+          {scored && <span className="game-diff">{diffLabel}</span>}
           <span className="game-stars" role="img" aria-label={`${lives} of ${MAX_LIVES} lives left`}>
             {Array.from({length:MAX_LIVES},(_,i)=>(
               <span key={i} className={`life${i>=lives?" lost":""}`} aria-hidden="true">⭐</span>
@@ -3688,7 +3631,7 @@ function GameView({
           <div className="extra-spacer" />
         )}
       </div>
-      {official && gameOver ? (<>
+      {scored && gameOver ? (<>
       <div className={`fbk${lost ? "" : " ok"}`} role="status">{feedback}</div>
       </>) : (<>
       <div className="ctrls" inert={replayMode || undefined}>
@@ -3732,6 +3675,7 @@ function GameView({
       </div>
       {/* Once the game is over, the play controls give way to the result,
           pinned under the board so a short phone never has to scroll for it. */}
+      {unlimited && gameOver && endControls}
       {official && gameOver && (
         <div className="end-ctrls">
           <button type="button" className="end-btn primary" onClick={onShowResults} data-testid="view-results">
@@ -5463,6 +5407,11 @@ export default function App() {
         </Suspense>
       )}
       {view==="admin" && <AdminView onPublish={()=>setPublishTick(t=>t+1)}/>}
+      {view==="unlimited" && (
+        <Suspense fallback={<div className="mhint" style={{padding:28,textAlign:"center"}}>Opening Unlimited…</div>}>
+          <UnlimitedView kit={GAME_KIT} onHome={()=>setView("home")} onHowToPlay={openTutorial}/>
+        </Suspense>
+      )}
       {showTutorial && <TutorialPracticeOverlay onClose={closeTutorial} />}
       {acct.importPending && <ImportPrompt onAdd={acct.addMyProgress} onStartFresh={acct.startFresh} />}
 

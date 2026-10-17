@@ -1,0 +1,755 @@
+{
+  "_metadata": {
+    "batch": "u01-first-sample",
+    "authored": "2026-10-17",
+    "author": "claude-session (included allowance, no API)",
+    "purpose": "First authored sample for reviewer inspection: twelve pairs from the 50-word shortlist, with the hints the author kept and the hints the author rejected, and why. Nothing here is human-approved. Status 'candidate' until the blind review (reviews/) has run.",
+    "rules": "One-word hints only. A hint never equals either target. About three strong hints per pair is a soft goal, never a quota or cap: a pair with one strong hint is kept, never padded. Superficial variants are recorded under variants. There is no board-word or other-word competition rule (owner decision 2026-10-17); a hint that also fits other bank words is judged on the pair alone.",
+    "author_labels": "The author labels (clues / variants / rejected) are the author opinion only. Every hint, including the rejected ones, went to the blind reviewer unlabeled; the merged library takes its status from the blind verdict, not from these labels.",
+    "laterText": "Player-facing text written AFTER the blind review for hints the author had not kept but the reviewer passed (no new review was needed for the text). The verdict came first; the text only lets the hint be shown. 2026-10-17 later in the day: CREEPY, JERRY and MUFASA added on the owner's direction."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_king__lion",
+      "a": "KING",
+      "b": "LION",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "SIMBA",
+          "type": "fictional_character",
+          "explanation": "Simba is the lion cub who becomes king in The Lion King.",
+          "wordAConnection": "Simba grows up to be king.",
+          "wordBConnection": "Simba is a lion.",
+          "revealExplanation": "Simba, the lion who becomes king in The Lion King.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          }
+        },
+        {
+          "text": "JUNGLE",
+          "type": "compound_or_phrase",
+          "explanation": "The lion is called the king of the jungle.",
+          "wordAConnection": "The king of the jungle.",
+          "wordBConnection": "That king is the lion.",
+          "revealExplanation": "The lion is the king of the jungle."
+        },
+        {
+          "text": "NARNIA",
+          "type": "cultural_reference",
+          "explanation": "Aslan, the lion, is the true king of Narnia.",
+          "wordAConnection": "Narnia's true king is Aslan.",
+          "wordBConnection": "Aslan is a lion.",
+          "revealExplanation": "Aslan the lion is the king of Narnia.",
+          "reference": {
+            "referenceType": "book",
+            "source": "The Chronicles of Narnia",
+            "recognizability": "moderate"
+          }
+        }
+      ],
+      "variants": [
+        {
+          "text": "MUFASA",
+          "of": "SIMBA",
+          "reason": "same film, same idea; one Lion King hint is enough"
+        }
+      ],
+      "rejected": [
+        {
+          "text": "ROAR",
+          "reason": "reaches LION only"
+        },
+        {
+          "text": "MANE",
+          "reason": "reaches LION only"
+        },
+        {
+          "text": "THRONE",
+          "reason": "reaches KING only; Pride Rock is a stretch"
+        },
+        {
+          "text": "CROWN",
+          "reason": "KING only (a king wears the crown); the lion side is a stretch"
+        }
+      ],
+      "laterText": [
+        {
+          "text": "MUFASA",
+          "type": "fictional_character",
+          "wordAConnection": "Mufasa is the king of the Pride Lands.",
+          "wordBConnection": "Mufasa is a lion.",
+          "revealExplanation": "Mufasa, the lion king in The Lion King.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__mouse",
+      "a": "CAT",
+      "b": "MOUSE",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "CHASE",
+          "type": "direct_association",
+          "explanation": "A cat chases a mouse; the cat-and-mouse chase is the proverbial one.",
+          "wordAConnection": "The cat does the chasing.",
+          "wordBConnection": "The mouse gets chased.",
+          "revealExplanation": "The classic chase: cat after mouse."
+        },
+        {
+          "text": "TOM",
+          "type": "fictional_character",
+          "explanation": "Tom is the cat in Tom and Jerry; Jerry is the mouse he chases. A tom is also a male cat.",
+          "wordAConnection": "Tom is a cat (and a tomcat is a male cat).",
+          "wordBConnection": "Tom's whole life is chasing Jerry the mouse.",
+          "revealExplanation": "Tom the cat and Jerry the mouse.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Tom and Jerry",
+            "recognizability": "broad"
+          }
+        },
+        {
+          "text": "WHISKERS",
+          "type": "shared_category",
+          "explanation": "Cats and mice both have whiskers, and both are the animals people picture first when they hear the word.",
+          "wordAConnection": "A cat's whiskers.",
+          "wordBConnection": "A mouse's whiskers.",
+          "revealExplanation": "Both animals twitch their whiskers."
+        }
+      ],
+      "variants": [
+        {
+          "text": "JERRY",
+          "of": "TOM",
+          "reason": "the other half of the same duo"
+        }
+      ],
+      "rejected": [
+        {
+          "text": "CHEESE",
+          "reason": "reaches MOUSE only"
+        },
+        {
+          "text": "CLICK",
+          "reason": "computer mouse only"
+        },
+        {
+          "text": "PAW",
+          "reason": "generic to any mammal; reaches neither word in particular"
+        },
+        {
+          "text": "TRAP",
+          "reason": "mousetrap is direct; the cat side needs an explanation"
+        }
+      ],
+      "laterText": [
+        {
+          "text": "JERRY",
+          "type": "fictional_character",
+          "wordAConnection": "Jerry is forever chased by Tom the cat.",
+          "wordBConnection": "Jerry is the mouse.",
+          "revealExplanation": "Jerry the mouse, and Tom the cat who chases him.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Tom and Jerry",
+            "recognizability": "broad"
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_knight__night",
+      "a": "KNIGHT",
+      "b": "NIGHT",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "DARK",
+          "type": "cultural_reference",
+          "explanation": "The Dark Knight is Batman; a dark night is simply a night.",
+          "wordAConnection": "The Dark Knight.",
+          "wordBConnection": "A dark night.",
+          "revealExplanation": "The Dark Knight, and a dark night.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Dark Knight",
+            "recognizability": "broad"
+          }
+        },
+        {
+          "text": "BLACK",
+          "type": "compound_or_phrase",
+          "explanation": "The Black Knight of Arthurian legend (and Monty Python); a black night.",
+          "wordAConnection": "The Black Knight.",
+          "wordBConnection": "A black night.",
+          "revealExplanation": "The Black Knight; a black night."
+        }
+      ],
+      "variants": [],
+      "rejected": [
+        {
+          "text": "MARE",
+          "reason": "nightmare reaches NIGHT only"
+        },
+        {
+          "text": "SHINING",
+          "reason": "knight in shining armour reaches KNIGHT only"
+        },
+        {
+          "text": "OWL",
+          "reason": "night owl reaches NIGHT only"
+        },
+        {
+          "text": "ARMOR",
+          "reason": "KNIGHT only"
+        }
+      ],
+      "note": "Two strong hints; the homophone is the fun of this pair.",
+      "laterText": [
+        {
+          "text": "MARE",
+          "type": "compound_or_phrase",
+          "wordAConnection": "A knight rides a mare.",
+          "wordBConnection": "A nightmare.",
+          "revealExplanation": "A knight's mare, and a nightmare."
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bat__spider",
+      "a": "BAT",
+      "b": "SPIDER",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "MAN",
+          "type": "cultural_reference",
+          "explanation": "Batman and Spider-Man: the same suffix on both targets, two of the most famous superheroes.",
+          "wordAConnection": "Batman.",
+          "wordBConnection": "Spider-Man.",
+          "revealExplanation": "Batman and Spider-Man.",
+          "reference": {
+            "referenceType": "franchise_pair",
+            "source": "DC and Marvel superheroes",
+            "recognizability": "broad"
+          }
+        },
+        {
+          "text": "HALLOWEEN",
+          "type": "direct_association",
+          "explanation": "Bats and spiders are the two classic Halloween decorations.",
+          "wordAConnection": "Paper bats on Halloween.",
+          "wordBConnection": "Fake spiders and cobwebs on Halloween.",
+          "revealExplanation": "Both are Halloween decorations."
+        },
+        {
+          "text": "HANG",
+          "type": "direct_association",
+          "explanation": "Bats hang upside down; spiders hang from their threads.",
+          "wordAConnection": "Bats hang upside down to roost.",
+          "wordBConnection": "A spider hangs from its thread.",
+          "revealExplanation": "Bats hang upside down; spiders hang by a thread."
+        }
+      ],
+      "variants": [],
+      "rejected": [
+        {
+          "text": "CREEPY",
+          "reason": "a mood word rather than a link"
+        },
+        {
+          "text": "CAVE",
+          "reason": "bat cave reaches BAT only"
+        },
+        {
+          "text": "WEB",
+          "reason": "SPIDER only"
+        },
+        {
+          "text": "WINGS",
+          "reason": "BAT only"
+        }
+      ],
+      "laterText": [
+        {
+          "text": "CREEPY",
+          "type": "direct_association",
+          "wordAConnection": "A bat is the creepy creature of the night.",
+          "wordBConnection": "A spider is the original creepy-crawly.",
+          "revealExplanation": "Both are famously creepy."
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__witch",
+      "a": "CAT",
+      "b": "WITCH",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "SALEM",
+          "type": "cultural_reference",
+          "explanation": "The Salem witch trials; Salem is also the talking cat in Sabrina the Teenage Witch.",
+          "wordAConnection": "Salem is the cat in Sabrina.",
+          "wordBConnection": "The Salem witch trials.",
+          "revealExplanation": "Salem: the witch trials, and Sabrina's cat.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Salem witch trials / Sabrina the Teenage Witch",
+            "recognizability": "moderate"
+          }
+        },
+        {
+          "text": "BLACK",
+          "type": "direct_association",
+          "explanation": "The witch's black cat; witches wear black. A colour clue, but the black cat is specifically the witch's animal.",
+          "wordAConnection": "A black cat.",
+          "wordBConnection": "The witch in black with her black cat.",
+          "revealExplanation": "A witch and her black cat."
+        },
+        {
+          "text": "HALLOWEEN",
+          "type": "direct_association",
+          "explanation": "Witches and black cats are Halloween staples.",
+          "wordAConnection": "The Halloween black cat.",
+          "wordBConnection": "The Halloween witch.",
+          "revealExplanation": "Both are Halloween figures."
+        }
+      ],
+      "variants": [],
+      "rejected": [
+        {
+          "text": "SABRINA",
+          "reason": "WITCH only; the cat is one more hop"
+        },
+        {
+          "text": "FAMILIAR",
+          "reason": "a term of art on the witch side, plain word on the cat side"
+        },
+        {
+          "text": "BINX",
+          "reason": "Hocus Pocus cat: niche"
+        },
+        {
+          "text": "BROOM",
+          "reason": "WITCH only"
+        }
+      ],
+      "laterText": [
+        {
+          "text": "FAMILIAR",
+          "type": "direct_association",
+          "wordAConnection": "A witch's familiar is usually a cat.",
+          "wordBConnection": "The witch's familiar: her animal companion.",
+          "revealExplanation": "A witch's familiar, the cat at her side."
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__gold",
+      "a": "FISH",
+      "b": "GOLD",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "SCALES",
+          "type": "homophone_wordplay",
+          "explanation": "A fish has scales; gold is weighed on scales.",
+          "wordAConnection": "Fish scales.",
+          "wordBConnection": "Gold is weighed on scales.",
+          "revealExplanation": "Fish scales, and the scales that weigh gold."
+        },
+        {
+          "text": "FINGER",
+          "type": "compound_or_phrase",
+          "explanation": "Fish fingers; Goldfinger.",
+          "wordAConnection": "Fish fingers.",
+          "wordBConnection": "Goldfinger.",
+          "revealExplanation": "Fish fingers and Goldfinger.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Goldfinger (James Bond)",
+            "recognizability": "broad"
+          }
+        }
+      ],
+      "variants": [],
+      "rejected": [
+        {
+          "text": "GOLDFISH",
+          "reason": "contains a target word"
+        },
+        {
+          "text": "BOWL",
+          "reason": "FISH only"
+        },
+        {
+          "text": "RUSH",
+          "reason": "GOLD only"
+        },
+        {
+          "text": "NUGGET",
+          "reason": "GOLD only; chicken nugget, not fish"
+        },
+        {
+          "text": "TREASURE",
+          "reason": "GOLD only"
+        }
+      ],
+      "note": "FINGER is one compound each side (fish fingers; Goldfinger). US familiarity of fish fingers (fish sticks in the US) is for the blind reviewer to judge."
+    },
+    {
+      "pair_id": "p_egg__spring",
+      "a": "EGG",
+      "b": "SPRING",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "EASTER",
+          "type": "direct_association",
+          "explanation": "Easter eggs; Easter is a spring festival.",
+          "wordAConnection": "Easter eggs.",
+          "wordBConnection": "Easter falls in spring.",
+          "revealExplanation": "Easter eggs, in spring."
+        },
+        {
+          "text": "ROLL",
+          "type": "compound_or_phrase",
+          "explanation": "An egg roll and a spring roll are both on the takeout menu.",
+          "wordAConnection": "An egg roll.",
+          "wordBConnection": "A spring roll.",
+          "revealExplanation": "Egg roll, spring roll."
+        },
+        {
+          "text": "CHICK",
+          "type": "direct_association",
+          "explanation": "Chicks hatch from eggs, and spring is when they do.",
+          "wordAConnection": "A chick hatches from an egg.",
+          "wordBConnection": "Spring chicks.",
+          "revealExplanation": "Spring is when chicks hatch from their eggs."
+        }
+      ],
+      "variants": [],
+      "rejected": [
+        {
+          "text": "NEST",
+          "reason": "EGG only"
+        },
+        {
+          "text": "YOLK",
+          "reason": "EGG only"
+        },
+        {
+          "text": "SCRAMBLE",
+          "reason": "EGG only"
+        },
+        {
+          "text": "COIL",
+          "reason": "SPRING only"
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__pirate",
+      "a": "GOLD",
+      "b": "PIRATE",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "TREASURE",
+          "type": "direct_association",
+          "explanation": "Pirate treasure is gold.",
+          "wordAConnection": "A treasure of gold.",
+          "wordBConnection": "Pirates bury treasure.",
+          "revealExplanation": "Pirate treasure: gold."
+        },
+        {
+          "text": "DOUBLOON",
+          "type": "direct_association",
+          "explanation": "A doubloon is the Spanish gold coin that pirates in every story are after.",
+          "wordAConnection": "A doubloon is a gold coin.",
+          "wordBConnection": "The pirate's coin of choice.",
+          "revealExplanation": "Doubloons: the pirate's gold coins."
+        },
+        {
+          "text": "TOOTH",
+          "type": "direct_association",
+          "explanation": "A gold tooth is the stock pirate's grin.",
+          "wordAConnection": "A gold tooth.",
+          "wordBConnection": "The pirate's gold tooth.",
+          "revealExplanation": "The pirate's gold tooth."
+        }
+      ],
+      "variants": [
+        {
+          "text": "COIN",
+          "of": "DOUBLOON",
+          "reason": "same idea, less flavour"
+        },
+        {
+          "text": "BOOTY",
+          "of": "TREASURE",
+          "reason": "same idea"
+        }
+      ],
+      "rejected": [
+        {
+          "text": "PARROT",
+          "reason": "PIRATE only"
+        },
+        {
+          "text": "PLANK",
+          "reason": "PIRATE only"
+        },
+        {
+          "text": "MEDAL",
+          "reason": "GOLD only"
+        }
+      ],
+      "laterText": [
+        {
+          "text": "COIN",
+          "type": "direct_association",
+          "wordAConnection": "A gold coin.",
+          "wordBConnection": "The pirate's chest of coins.",
+          "revealExplanation": "Gold coins, the pirate's haul."
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__fish",
+      "a": "DOG",
+      "b": "FISH",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "BONE",
+          "type": "direct_association",
+          "explanation": "A dog's bone; a fish bone.",
+          "wordAConnection": "A dog with a bone.",
+          "wordBConnection": "Fish bones.",
+          "revealExplanation": "A dog's bone and a fish bone."
+        },
+        {
+          "text": "BOWL",
+          "type": "direct_association",
+          "explanation": "A dog bowl; a fish bowl.",
+          "wordAConnection": "A dog's food bowl.",
+          "wordBConnection": "A fish bowl.",
+          "revealExplanation": "Dog bowl, fish bowl."
+        }
+      ],
+      "variants": [],
+      "rejected": [
+        {
+          "text": "DOGFISH",
+          "reason": "contains a target word"
+        },
+        {
+          "text": "TANK",
+          "reason": "FISH only"
+        },
+        {
+          "text": "FETCH",
+          "reason": "DOG only"
+        },
+        {
+          "text": "PET",
+          "reason": "reconsider: both are common pets; generic but natural. Left to the blind reviewer."
+        }
+      ],
+      "laterText": [
+        {
+          "text": "PET",
+          "type": "shared_category",
+          "wordAConnection": "The classic pet.",
+          "wordBConnection": "A pet fish in its bowl.",
+          "revealExplanation": "Both are everyday pets."
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__wolf",
+      "a": "MOON",
+      "b": "WOLF",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "HOWL",
+          "type": "direct_association",
+          "explanation": "Wolves howl at the moon.",
+          "wordAConnection": "Howling at the moon.",
+          "wordBConnection": "The wolf's howl.",
+          "revealExplanation": "A wolf howls at the moon."
+        },
+        {
+          "text": "FULL",
+          "type": "cultural_reference",
+          "explanation": "The full moon turns the werewolf; a wolf is only ever full moon lore away.",
+          "wordAConnection": "A full moon.",
+          "wordBConnection": "The werewolf of the full moon.",
+          "revealExplanation": "The full moon that makes the werewolf.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "werewolf lore",
+            "recognizability": "broad"
+          }
+        }
+      ],
+      "variants": [],
+      "rejected": [
+        {
+          "text": "PACK",
+          "reason": "WOLF only"
+        },
+        {
+          "text": "CRY",
+          "reason": "weaker form of HOWL and one-sided"
+        },
+        {
+          "text": "NIGHT",
+          "reason": "generic: wolves and the moon both belong to the night, but so does much else"
+        }
+      ],
+      "note": "FULL leans on the werewolf; kept at rank 2 for the blind review to judge.",
+      "laterText": [
+        {
+          "text": "NIGHT",
+          "type": "direct_association",
+          "wordAConnection": "The moon rules the night.",
+          "wordBConnection": "The wolf is a creature of the night.",
+          "revealExplanation": "Both belong to the night."
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__queen",
+      "a": "ICE",
+      "b": "QUEEN",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "ELSA",
+          "type": "fictional_character",
+          "explanation": "Elsa, the queen with ice powers in Frozen.",
+          "wordAConnection": "Elsa's ice magic.",
+          "wordBConnection": "Elsa is the queen of Arendelle.",
+          "revealExplanation": "Elsa, Frozen's ice queen.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Frozen",
+            "recognizability": "broad"
+          }
+        },
+        {
+          "text": "FROZEN",
+          "type": "cultural_reference",
+          "explanation": "Frozen means iced; Frozen the film is about a queen.",
+          "wordAConnection": "Frozen solid: ice.",
+          "wordBConnection": "Frozen, the film about Queen Elsa.",
+          "revealExplanation": "Frozen: ice, and the film about a queen.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Frozen",
+            "recognizability": "broad"
+          }
+        },
+        {
+          "text": "SNOW",
+          "type": "cultural_reference",
+          "explanation": "The Snow Queen is the fairy tale behind Frozen; snow and ice go together.",
+          "wordAConnection": "Snow and ice.",
+          "wordBConnection": "The Snow Queen.",
+          "revealExplanation": "The Snow Queen.",
+          "reference": {
+            "referenceType": "book",
+            "source": "The Snow Queen (Andersen)",
+            "recognizability": "moderate"
+          }
+        }
+      ],
+      "variants": [
+        {
+          "text": "ARENDELLE",
+          "of": "ELSA",
+          "reason": "same film, more obscure"
+        }
+      ],
+      "rejected": [
+        {
+          "text": "COLD",
+          "reason": "ICE only; the queen side is a mood"
+        },
+        {
+          "text": "CUBE",
+          "reason": "ICE only"
+        },
+        {
+          "text": "CHESS",
+          "reason": "QUEEN only"
+        }
+      ],
+      "note": "ELSA and FROZEN share a film but reach the words by different routes (character vs title and literal sense). Kept both; the blind review may call one a variant."
+    },
+    {
+      "pair_id": "p_moon__ocean",
+      "a": "MOON",
+      "b": "OCEAN",
+      "status": "candidate",
+      "clues": [
+        {
+          "text": "TIDE",
+          "type": "direct_association",
+          "explanation": "The moon pulls the ocean's tides.",
+          "wordAConnection": "The moon's pull makes the tide.",
+          "wordBConnection": "The ocean's tide.",
+          "revealExplanation": "The moon pulls the ocean's tides."
+        }
+      ],
+      "variants": [
+        {
+          "text": "PULL",
+          "of": "TIDE",
+          "reason": "same idea"
+        }
+      ],
+      "rejected": [
+        {
+          "text": "BLUE",
+          "reason": "reconsider: blue moon (phrase) and the blue ocean (colour). Left to the blind reviewer."
+        },
+        {
+          "text": "FLOOR",
+          "reason": "OCEAN only"
+        },
+        {
+          "text": "CRATER",
+          "reason": "MOON only"
+        },
+        {
+          "text": "DEEP",
+          "reason": "OCEAN only"
+        }
+      ],
+      "note": "One strong hint found (TIDE). That is enough: there is no two-hint minimum. BLUE goes to the blind reviewer on pair quality alone.",
+      "laterText": [
+        {
+          "text": "BLUE",
+          "type": "compound_or_phrase",
+          "wordAConnection": "Once in a blue moon.",
+          "wordBConnection": "The blue ocean.",
+          "revealExplanation": "A blue moon over the blue ocean."
+        }
+      ]
+    }
+  ]
+}

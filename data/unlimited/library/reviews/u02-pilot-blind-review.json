@@ -1,0 +1,448 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-2",
+    "date": "2026-10-17",
+    "input": "u02-pilot-blind-input.json",
+    "independence": "I read only u02-pilot-blind-input.json and no other file, search result, or prior scoring; all judgements are from my own general knowledge."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_fire__iron",
+      "a": "FIRE",
+      "b": "IRON",
+      "hints": [
+        { "text": "FORGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A forge is a fire used to heat and work iron; both sides are immediate." },
+        { "text": "HOT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Fire is hot, and 'hot iron' / 'strike while the iron is hot' is a standard phrase; generic but reaches both." },
+        { "text": "SMITH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:FORGE"], "verdict": "PASS", "reason": "A blacksmith works iron (direct) at a fire (one step via the forge); same idea as FORGE." },
+        { "text": "BRAND", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Branding iron is direct, but brand as a burning stick or 'firebrand' is an older sense most US adults will not reach unaided." }
+      ],
+      "strong_hints": ["FORGE", "HOT", "SMITH"],
+      "pair_note": "Strong pair; FORGE is the natural answer and HOT is a safe common-sense backup, while SMITH duplicates FORGE."
+    },
+    {
+      "pair_id": "p_fire__light",
+      "a": "FIRE",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "MATCH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A match starts a fire and you 'light a match'; both senses immediate." },
+        { "text": "CANDLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TORCH"], "verdict": "PASS", "reason": "Candlelight is direct; candle to fire goes through the flame, one small step." },
+        { "text": "TORCH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:CANDLE"], "verdict": "PASS", "reason": "A torch is burning fire carried for light; torchlight is a common word." },
+        { "text": "SPARK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A spark ignites fire and is itself a tiny flash of light." }
+      ],
+      "strong_hints": ["MATCH", "SPARK", "TORCH", "CANDLE"],
+      "pair_note": "Very easy pair; every hint works, with CANDLE and TORCH resting on the same burning-light-source idea."
+    },
+    {
+      "pair_id": "p_light__shadow",
+      "a": "LIGHT",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "CAST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "You cast a shadow and cast light on something; both collocations are everyday." },
+        { "text": "DARK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Dark is the direct opposite of light and the substance of a shadow; generic but reaches both clearly." },
+        { "text": "PUPPET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Shadow puppet is direct; the lamp behind the puppet is a second step most players will not make unprompted." },
+        { "text": "SUN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Sun gives light directly; sun to shadow requires thinking about what the sun produces behind an object." }
+      ],
+      "strong_hints": ["CAST", "DARK"],
+      "pair_note": "CAST is the elegant answer and DARK the blunt one; PUPPET and SUN lean on the shadow or light side respectively."
+    },
+    {
+      "pair_id": "p_bank__diamond",
+      "a": "BANK",
+      "b": "DIAMOND",
+      "hints": [
+        { "text": "VAULT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "variant_of:SAFE"], "verdict": "BORDERLINE", "reason": "Bank vault is direct; diamonds being kept in a vault is plausible but not a phrase anyone reaches for." },
+        { "text": "HEIST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bank heist and diamond heist are both stock movie phrases." },
+        { "text": "SAFE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "variant_of:VAULT"], "verdict": "BORDERLINE", "reason": "A safe belongs to a bank; a diamond in a safe is only an inferred location." }
+      ],
+      "strong_hints": ["HEIST"],
+      "pair_note": "HEIST carries the pair alone; VAULT and SAFE are the same bank-side idea with diamond as an afterthought."
+    },
+    {
+      "pair_id": "p_bridge__fire",
+      "a": "BRIDGE",
+      "b": "FIRE",
+      "hints": [
+        { "text": "BURN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "'Burn your bridges' is a universal idiom and fire burns." },
+        { "text": "CROSS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Cross a bridge is direct; fire is reached only by assembling the compound 'crossfire'." },
+        { "text": "LONDON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "London Bridge is famous; the Great Fire of London is history many US adults will not recall in time." }
+      ],
+      "strong_hints": ["BURN"],
+      "pair_note": "BURN is the obvious and sufficient hint; the other two are bridge-first with fire attached by a compound or a history lesson."
+    },
+    {
+      "pair_id": "p_bridge__key",
+      "a": "BRIDGE",
+      "b": "KEY",
+      "hints": [
+        { "text": "SONG", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A song has a bridge section and is written in a key; both are common musical terms." },
+        { "text": "ISLAND", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Key as island (Florida Keys) and a bridge to an island are each one stretch; neither side is direct." },
+        { "text": "STONE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Stone bridge is loose and key is reached only via the compound 'keystone'." }
+      ],
+      "strong_hints": ["SONG"],
+      "pair_note": "SONG is a clean double meaning; ISLAND and STONE both need the player to assemble the link."
+    },
+    {
+      "pair_id": "p_crown__light",
+      "a": "CROWN",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "LIBERTY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "The Statue of Liberty's spiked crown is iconic; light comes only through her torch and that is a second step." },
+        { "text": "HALO", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A halo is a ring of light; calling it a crown is a shape analogy, not a phrase a stranger reaches for." },
+        { "text": "CORONA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The sun's corona is a crown of light, but corona meaning crown is Latin most US players know only via beer or the virus." }
+      ],
+      "strong_hints": [],
+      "pair_note": "No clean hint: all three reach one side strongly and the other only by a figurative or etymological step."
+    },
+    {
+      "pair_id": "p_diamond__salt",
+      "a": "DIAMOND",
+      "b": "SALT",
+      "hints": [
+        { "text": "CRYSTAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Diamond is a crystal and salt forms crystals; both direct." },
+        { "text": "ROCK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Rock salt is a product name and a diamond is a 'rock' in everyday slang." },
+        { "text": "MINE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Diamond mine and salt mine are both familiar phrases." }
+      ],
+      "strong_hints": ["CRYSTAL", "MINE", "ROCK"],
+      "pair_note": "Excellent pair; all three hints are direct on both sides."
+    },
+    {
+      "pair_id": "p_fire__heart",
+      "a": "FIRE",
+      "b": "HEART",
+      "hints": [
+        { "text": "BURN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire burns directly; heart is reached through the very common word heartburn or a 'burning heart'." },
+        { "text": "PASSION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Passion is fiery and heartfelt; a mood hint, but both metaphors are standard." },
+        { "text": "WARM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "A warm fire and a warm heart are both everyday phrases." }
+      ],
+      "strong_hints": ["PASSION", "WARM", "BURN"],
+      "pair_note": "Solid pair; PASSION and WARM are the safest, BURN leans slightly on heartburn."
+    },
+    {
+      "pair_id": "p_fire__horse",
+      "a": "FIRE",
+      "b": "HORSE",
+      "hints": [
+        { "text": "WILD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Wildfire and wild horse are both immediate." },
+        { "text": "BRAND", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Branding is more associated with cattle than horses, and brand as burning wood is an older sense; both sides need a step." },
+        { "text": "TROJAN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Trojan Horse is famous; fire only via the burning of Troy, which must be explained." }
+      ],
+      "strong_hints": ["WILD"],
+      "pair_note": "WILD is the only hint that reaches both sides without a story; TROJAN is horse-only in practice."
+    },
+    {
+      "pair_id": "p_ghost__horse",
+      "a": "GHOST",
+      "b": "HORSE",
+      "hints": [
+        { "text": "HEADLESS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Headless Horseman is a ghost on a horse; one reference reaches both sides at once." },
+        { "text": "PALE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "colour_mood_material", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Ghosts are pale; the pale horse of Revelation is a reference many players will not make." },
+        { "text": "RIDER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A rider rides a horse, and Ghost Rider (comics, film, Johnny Cash song) is a widely known phrase." }
+      ],
+      "strong_hints": ["HEADLESS", "RIDER"],
+      "pair_note": "Two good hints; HEADLESS is the single-reference ideal, RIDER is a strong plain-sense plus pop-culture pair."
+    },
+    {
+      "pair_id": "p_ghost__light",
+      "a": "GHOST",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "FLICKER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Lights flicker directly; flickering lights as a haunting sign is a trope the player must supply." },
+        { "text": "ORB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "obscure"], "verdict": "BORDERLINE", "reason": "An orb of light is direct; 'ghost orbs' are a ghost-hunting term unknown to most." },
+        { "text": "SHINING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Shining light is direct; The Shining is a famous ghost story but the title alone does not say ghost." }
+      ],
+      "strong_hints": [],
+      "pair_note": "Every hint is light-first with ghost reached only through a haunting trope or a film title."
+    },
+    {
+      "pair_id": "p_heart__iron",
+      "a": "HEART",
+      "b": "IRON",
+      "hints": [
+        { "text": "BLOOD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The heart pumps blood and blood contains iron; both facts are common knowledge." },
+        { "text": "PUMP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The heart is a pump and 'pump iron' means lifting weights." },
+        { "text": "CORE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Heart as the core of something and Earth's iron core are each a step away." },
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "colour_mood_material"], "verdict": "BORDERLINE", "reason": "Cold heart is direct; 'cold iron' is a literary phrase few would reach for." }
+      ],
+      "strong_hints": ["PUMP", "BLOOD"],
+      "pair_note": "PUMP and BLOOD are both excellent; CORE and COLD are weaker and lean on one side."
+    },
+    {
+      "pair_id": "p_honey__spring",
+      "a": "HONEY",
+      "b": "SPRING",
+      "hints": [
+        { "text": "BEE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Bees make honey; bees being active in spring is seasonal background, not a link." },
+        { "text": "BLOSSOM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Spring blossom is direct; honey from blossoms (orange blossom honey) is a secondary association." },
+        { "text": "POLLEN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pollen season is spring; bees gathering pollen to make honey is how most people picture honey-making." }
+      ],
+      "strong_hints": ["POLLEN"],
+      "pair_note": "A soft pair; POLLEN is the one hint that sits between both words, while BEE and BLOSSOM each face one of them."
+    },
+    {
+      "pair_id": "p_horse__iron",
+      "a": "HORSE",
+      "b": "IRON",
+      "hints": [
+        { "text": "SHOE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Horseshoe is immediate; iron is only reached by remembering what a horseshoe is made of." },
+        { "text": "SMITH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A blacksmith works iron and the classic image is of him shoeing a horse." },
+        { "text": "TRAIN", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Both sides depend on knowing the nickname 'iron horse' for a locomotive." }
+      ],
+      "strong_hints": ["SMITH"],
+      "pair_note": "SMITH is the one defensible hint; SHOE is horse-only and TRAIN needs the 'iron horse' nickname."
+    },
+    {
+      "pair_id": "p_horse__rose",
+      "a": "HORSE",
+      "b": "ROSE",
+      "hints": [
+        { "text": "DERBY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Derby is a horse race; the Kentucky Derby's 'Run for the Roses' is a detail only fans know." },
+        { "text": "WAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "War horse is a stock phrase and the War(s) of the Roses is well known from history and the film title." },
+        { "text": "BLANKET", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Horse blanket is fine, but the Derby's 'blanket of roses' is trivia a stranger will not reach." }
+      ],
+      "strong_hints": ["WAR"],
+      "pair_note": "WAR works; DERBY and BLANKET both lean on the same obscure Kentucky Derby rose tradition."
+    },
+    {
+      "pair_id": "p_iron__light",
+      "a": "IRON",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "HEAVY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Iron is heavy and heavy is the opposite of light." },
+        { "text": "GLOW", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Light glows; hot iron glowing is true but needs the player to picture a forge." },
+        { "text": "CAST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Cast iron and cast light are both standard collocations." }
+      ],
+      "strong_hints": ["CAST", "HEAVY"],
+      "pair_note": "CAST is the elegant double meaning and HEAVY the sturdy antonym; GLOW is light-only."
+    },
+    {
+      "pair_id": "p_rose__spring",
+      "a": "ROSE",
+      "b": "SPRING",
+      "hints": [
+        { "text": "BLOOM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:BUD"], "verdict": "PASS", "reason": "Roses bloom and spring is the season of bloom." },
+        { "text": "BUD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:BLOOM"], "verdict": "PASS", "reason": "Rosebud is a word and buds appear in spring." },
+        { "text": "GARDEN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "generic"], "verdict": "BORDERLINE", "reason": "Rose garden is direct; spring gardening is a seasonal association rather than a phrase." }
+      ],
+      "strong_hints": ["BLOOM", "BUD"],
+      "pair_note": "BLOOM and BUD are both strong but are the same flowering idea; GARDEN leans toward rose."
+    },
+    {
+      "pair_id": "p_bank__key",
+      "a": "BANK",
+      "b": "KEY",
+      "hints": [
+        { "text": "VAULT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "variant_of:LOCK"], "verdict": "BORDERLINE", "reason": "Bank vault is direct; a key for the vault is an inferred detail." },
+        { "text": "DEPOSIT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Bank deposit is direct; a key deposit or safe-deposit-box key is a thin reach." },
+        { "text": "LOCK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "variant_of:VAULT"], "verdict": "BORDERLINE", "reason": "Lock and key is direct; lock to bank goes through vault or lockbox." }
+      ],
+      "strong_hints": [],
+      "pair_note": "All three hints sit on the security idea but each reaches only one word cleanly; the pair lacks a real double meaning."
+    },
+    {
+      "pair_id": "p_bank__heart",
+      "a": "BANK",
+      "b": "HEART",
+      "hints": [
+        { "text": "BLOOD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Blood bank is a common phrase and the heart pumps blood." },
+        { "text": "STEAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Robbers steal from banks and someone 'steals your heart'." },
+        { "text": "TRUST", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Trust companies and 'trust your heart' are each one step removed." }
+      ],
+      "strong_hints": ["BLOOD", "STEAL"],
+      "pair_note": "Two strong hints from different angles; TRUST is abstract on both sides."
+    },
+    {
+      "pair_id": "p_bank__horse",
+      "a": "BANK",
+      "b": "HORSE",
+      "hints": [
+        { "text": "STABLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Horse stable is direct; a 'stable bank' is an adjective use a player may not connect." },
+        { "text": "CHARGE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A bank charge is direct; a cavalry charge reaches horse only by a step." },
+        { "text": "BET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Betting on horses is direct; bank as the house or bankroll in gambling is a stretch." }
+      ],
+      "strong_hints": [],
+      "pair_note": "Nothing clean here; each hint is a real pun on one side and a strained one on the other."
+    },
+    {
+      "pair_id": "p_bank__iron",
+      "a": "BANK",
+      "b": "IRON",
+      "hints": [
+        { "text": "BAR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Iron bar is direct; gold bars in a bank is an inferred image." },
+        { "text": "PIG", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Piggy bank is reachable but 'pig iron' is a term most non-specialists do not know." },
+        { "text": "SAFE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Bank safe is direct; iron as the material of a safe is a secondary thought." }
+      ],
+      "strong_hints": [],
+      "pair_note": "PIG is clever but half-obscure; BAR and SAFE each reach only one word with confidence."
+    },
+    {
+      "pair_id": "p_bridge__crown",
+      "a": "BRIDGE",
+      "b": "CROWN",
+      "hints": [
+        { "text": "DENTIST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TOOTH"], "verdict": "PASS", "reason": "A dentist fits both bridges and crowns; the dental sense is familiar to most US adults." },
+        { "text": "TOOTH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:DENTIST"], "verdict": "PASS", "reason": "A tooth gets a crown or is replaced by a bridge; same dental idea as DENTIST." },
+        { "text": "LONDON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "London Bridge is direct; the Crown Jewels or the British Crown is a looser association." },
+        { "text": "ARCH", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Arch bridge is direct, but the 'crown' of an arch is an architecture term nobody outside the trade uses." }
+      ],
+      "strong_hints": ["DENTIST", "TOOTH"],
+      "pair_note": "The dental double meaning carries the pair, though both PASS hints are the same idea; ARCH does not reach crown."
+    },
+    {
+      "pair_id": "p_bridge__heart",
+      "a": "BRIDGE",
+      "b": "HEART",
+      "hints": [
+        { "text": "CARD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bridge is a card game and hearts is a card suit and game." },
+        { "text": "CROSS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Cross a bridge and 'cross my heart' are both everyday phrases." },
+        { "text": "GAP", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bridge the gap is direct; there is no natural route from gap to heart." }
+      ],
+      "strong_hints": ["CARD", "CROSS"],
+      "pair_note": "Two good hints of different flavors; GAP is bridge-only."
+    },
+    {
+      "pair_id": "p_bridge__honey",
+      "a": "BRIDGE",
+      "b": "HONEY",
+      "hints": [
+        { "text": "POOH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Pooh and honey are inseparable, but the Poohsticks bridge is a detail almost no US adult will summon." },
+        { "text": "NIAGARA", "connection_to_a": 1, "connection_to_b": 1, "fairness": 0, "recognizability": "moderate", "flags": ["needs_explanation", "obscure"], "verdict": "FAIL", "reason": "Rainbow Bridge at Niagara and Niagara as honeymoon capital are both trivia; neither side is reachable cold." },
+        { "text": "TOOTH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Dental bridge is direct; honey is reached only via 'sweet tooth'." },
+        { "text": "GOLDEN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Honey is golden; bridge is reached only by completing 'Golden Gate'." }
+      ],
+      "strong_hints": [],
+      "pair_note": "A hard pair with no fair hint; GOLDEN is the best of a weak set and still a colour clue plus a landmark name."
+    },
+    {
+      "pair_id": "p_crown__ghost",
+      "a": "CROWN",
+      "b": "GHOST",
+      "hints": [
+        { "text": "HAMLET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Hamlet is a prince fighting over a stolen crown and is driven by his father's ghost; both are the play's core." },
+        { "text": "KING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "King to crown is immediate; king to ghost needs Hamlet's ghost king or a Stephen King detour." },
+        { "text": "CASTLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Haunted castle is a stock image and a castle is where crowned royalty live." }
+      ],
+      "strong_hints": ["HAMLET", "CASTLE"],
+      "pair_note": "HAMLET is the ideal single-reference hint for those who know the play; CASTLE is the plain-sense fallback."
+    },
+    {
+      "pair_id": "p_crown__heart",
+      "a": "CROWN",
+      "b": "HEART",
+      "hints": [
+        { "text": "QUEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:KING"], "verdict": "PASS", "reason": "A queen wears a crown and the Queen of Hearts is a famous card and character." },
+        { "text": "KING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:QUEEN"], "verdict": "PASS", "reason": "A king wears a crown and the King of Hearts is a playing card." },
+        { "text": "CARD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Hearts is a suit; crown only via the pictures on face cards." }
+      ],
+      "strong_hints": ["QUEEN", "KING"],
+      "pair_note": "QUEEN is the stronger of two near-identical royal-card hints; CARD is heart-first."
+    },
+    {
+      "pair_id": "p_crown__honey",
+      "a": "CROWN",
+      "b": "HONEY",
+      "hints": [
+        { "text": "QUEEN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Queen to crown is immediate; honey needs queen bee and then the hive, two steps." },
+        { "text": "ROYAL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Royal to crown is direct; royal jelly is a bee product, not honey, and is obscure anyway." },
+        { "text": "MEAD", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Mead is honey wine for those who know it, but nothing about mead points to a crown." }
+      ],
+      "strong_hints": [],
+      "pair_note": "No fair hint; QUEEN is the only one that even gestures at both words."
+    },
+    {
+      "pair_id": "p_diamond__ghost",
+      "a": "DIAMOND",
+      "b": "GHOST",
+      "hints": [
+        { "text": "CURSE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Cursed diamonds (Hope Diamond) and curses bringing ghosts are each a stretch." },
+        { "text": "TOWER", "connection_to_a": 0, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["obscure", "one_sided"], "verdict": "FAIL", "reason": "A haunted tower is a loose image and tower to diamond requires knowing the Crown Jewels sit in the Tower of London." },
+        { "text": "VANISH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ghosts vanish; a diamond vanishing is only a heist plot, not a property of diamonds." }
+      ],
+      "strong_hints": [],
+      "pair_note": "An unnatural pairing; CURSE is the only hint with a foothold on both words and it is weak."
+    },
+    {
+      "pair_id": "p_diamond__rose",
+      "a": "DIAMOND",
+      "b": "ROSE",
+      "hints": [
+        { "text": "CUT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A diamond's cut is its key quality and cut roses are what florists sell." },
+        { "text": "LOVE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Diamond rings and roses are the two standard tokens of love." },
+        { "text": "PINK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["colour_mood_material", "one_sided"], "verdict": "BORDERLINE", "reason": "Pink roses are everywhere; pink diamonds exist but are a specialist thought." }
+      ],
+      "strong_hints": ["CUT", "LOVE"],
+      "pair_note": "CUT is a satisfying double meaning and LOVE a safe generic; PINK is a colour hint that favors rose."
+    },
+    {
+      "pair_id": "p_diamond__snake",
+      "a": "DIAMOND",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "BACK", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Both sides depend on the player assembling 'diamondback' rattlesnake from the bare word back." },
+        { "text": "PATTERN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "generic"], "verdict": "BORDERLINE", "reason": "Diamond pattern is a stock phrase; snakeskin pattern is a secondary association." },
+        { "text": "SCALE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Snake scales are direct; diamond to scale requires the Mohs hardness or carat scale." }
+      ],
+      "strong_hints": [],
+      "pair_note": "The pair really wants 'diamondback', and none of the three hints gets there fairly on its own."
+    },
+    {
+      "pair_id": "p_ghost__key",
+      "a": "GHOST",
+      "b": "KEY",
+      "hints": [
+        { "text": "LOCKED", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Locked points straight to key but nothing about it points to ghost." },
+        { "text": "SKELETON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Skeleton key is a common term and skeletons sit beside ghosts in every spooky lineup." },
+        { "text": "HOUSE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "generic"], "verdict": "BORDERLINE", "reason": "House key is direct; ghost arrives only by adding 'haunted'." }
+      ],
+      "strong_hints": ["SKELETON"],
+      "pair_note": "SKELETON is an excellent hint; the other two are key-first."
+    },
+    {
+      "pair_id": "p_honey__rose",
+      "a": "HONEY",
+      "b": "ROSE",
+      "hints": [
+        { "text": "BEE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided", "variant_of:NECTAR"], "verdict": "BORDERLINE", "reason": "Bees make honey; a bee visiting a rose is incidental." },
+        { "text": "NECTAR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:BEE"], "verdict": "PASS", "reason": "Honey is made from nectar and nectar is what a flower like a rose holds; the flower link is the natural next thought." },
+        { "text": "SWEET", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic", "one_sided"], "verdict": "BORDERLINE", "reason": "Honey is sweet; a rose smelling sweet is poetic rather than immediate." }
+      ],
+      "strong_hints": ["NECTAR"],
+      "pair_note": "A gentle pair where NECTAR bridges both words; BEE and SWEET are honey-first."
+    },
+    {
+      "pair_id": "p_honey__salt",
+      "a": "HONEY",
+      "b": "SALT",
+      "hints": [
+        { "text": "SWEET", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Honey is sweet and 'sweet and salty' is such a fixed pairing that salt is reachable as the contrast." },
+        { "text": "LICK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Salt lick is a set phrase; licking honey is just something one might do." },
+        { "text": "CURE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Salt cures meat; honey-cured or honey as a folk remedy is a secondary thought." }
+      ],
+      "strong_hints": ["SWEET"],
+      "pair_note": "SWEET works through contrast; LICK and CURE are salt-first with honey tacked on."
+    },
+    {
+      "pair_id": "p_key__rose",
+      "a": "KEY",
+      "b": "ROSE",
+      "hints": [
+        { "text": "PRESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "You press a key, and pressing a rose in a book is a familiar keepsake practice." },
+        { "text": "MAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A map has a key (legend) and a compass rose; both are standard map vocabulary." },
+        { "text": "GARDEN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Rose garden is direct, but nothing leads from garden to key short of The Secret Garden's locked door." }
+      ],
+      "strong_hints": ["MAP", "PRESS"],
+      "pair_note": "MAP is a neat double meaning and PRESS a good plain-sense hint; GARDEN is rose-only."
+    },
+    {
+      "pair_id": "p_key__spring",
+      "a": "KEY",
+      "b": "SPRING",
+      "hints": [
+        { "text": "WIND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "You wind a clock or toy with a key, which tightens its spring; spring breezes give a second route." },
+        { "text": "LOCK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Lock and key is immediate; a spring-loaded lock is mechanical detail." },
+        { "text": "CLOCK", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:WIND", "needs_explanation"], "verdict": "BORDERLINE", "reason": "A wind-up clock has a key and a mainspring, but neither is the first thing a player thinks of for clock." }
+      ],
+      "strong_hints": ["WIND"],
+      "pair_note": "WIND is the one hint that reaches both words from a single wind-up image; CLOCK is the same idea one step further away."
+    }
+  ]
+}
