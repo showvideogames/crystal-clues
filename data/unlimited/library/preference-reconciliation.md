@@ -2,22 +2,22 @@
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 90
-- pairs where the reviewer's pick already was the provisional top candidate: 710
+- pairs with an existing approved preference (untouched): 98
+- pairs where the reviewer's pick already was the provisional top candidate: 736
 - preferences added: 8 (8 ties, 0 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 0
 - proposed entries still open: 12
 
 ## Added
 
-- tie p_king__witch (KING+WITCH): MACBETH 2/2/2 replaces NARNIA 2/2/2 — One play in which witches and kingship are the whole plot.
-- tie p_knight__queen (KNIGHT+QUEEN): CHESS 2/2/2 replaces LANCELOT 2/2/2 — Both targets are literally pieces on the board; nothing to explain.
-- tie p_light__moon (LIGHT+MOON): REFLECT 2/2/2 replaces PALE 2/2/2 — States the actual relationship between the two targets.
-- tie p_light__night (LIGHT+NIGHT): STARS 2/2/2 replaces DAY 2/2/2 — Lights that only appear at night.
-- tie p_light__ocean (LIGHT+OCEAN): BEACON 2/2/2 replaces SUNSET 2/2/2 — Delivers the lighthouse idea without containing the target word.
-- tie p_light__ring (LIGHT+RING): HALO 2/2/2 replaces SELFIE 2/2/2 — Literally a ring of light.
-- tie p_light__rock (LIGHT+ROCK): LAVA 1/2/2 replaces CONCERT 1/2/2 — Glowing molten rock plus the lava lamp reach both words from one familiar word.
-- tie p_light__salt (LIGHT+SALT): LAMP 2/2/2 replaces CRYSTAL 2/2/2 — The salt lamp is a single everyday object that is both targets.
+- tie p_light__star (LIGHT+STAR): TWINKLE 2/2/2 replaces SHINE 2/2/2 — The nursery rhyme makes STAR unmistakable and twinkle lights reach LIGHT.
+- tie p_light__train (LIGHT+TRAIN): RAIL 2/2/2 replaces SIGNAL 2/2/2 — Light rail is a compound that is literally a kind of train.
+- tie p_light__water (LIGHT+WATER): REFLECTION 2/2/2 replaces SPARKLE 2/2/2 — Directly physical for light and the classic image for water.
+- tie p_lion__mouse (LION+MOUSE): AESOP 2/2/2 replaces FABLE 2/2/2 — Points precisely at the one story containing both.
+- tie p_lion__shark (LION+SHARK): PREDATOR 2/2/2 replaces TEETH 2/2/2 — Captures both animals' defining shared role.
+- tie p_moon__night (MOON+NIGHT): LIGHT 2/2/2 replaces SKY 2/2/2 — Two clean compounds: moonlight and night light.
+- tie p_moon__ring (MOON+RING): SATURN 2/2/2 replaces PLANET 2/2/2 — The single object most associated with both rings and moons.
+- tie p_moon__shadow (MOON+SHADOW): ECLIPSE 2/2/2 replaces DARK 2/2/2 — Literally a moon-and-shadow event.
 
 ## Contradictions (unresolved, for the parent)
 

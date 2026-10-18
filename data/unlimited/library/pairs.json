@@ -393,6 +393,16 @@
         "rejected": 30,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u27-blind-review.json",
+        "key": "data/unlimited/library/reviews/u27-blind-key.json",
+        "batch": "data/unlimited/library/batches/u27-batch.json",
+        "ai_reviewed": 63,
+        "held": 23,
+        "rejected": 15,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -86756,6 +86766,2639 @@
       }
     },
     {
+      "pair_id": "p_light__shark",
+      "a": "LIGHT",
+      "b": "SHARK",
+      "source": "u27",
+      "pairNote": "No PASS; both routes depend on deep-sea shark trivia.",
+      "reviewerBestAvailable": {
+        "text": "LANTERN",
+        "why": "It names a real shark (lanternshark) and is plainly a light, so it is the only hint with a concrete compound route to SHARK.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "GLOW",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glow is light.",
+          "wordBConnection": "Glow-in-the-dark deep-sea sharks.",
+          "revealExplanation": "Glow: light, from a deep-sea shark.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "LIGHT: lights glow; SHARK: only via the true but little-known fact that some deep-sea sharks are bioluminescent, which most players will not reach.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LANTERN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A lantern gives light.",
+          "wordBConnection": "The lantern shark.",
+          "revealExplanation": "Lantern: a light, and the lantern shark that glows.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "LIGHT: a lantern is a light; SHARK: the real lanternshark compound, accurate but niche.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__snake",
+      "a": "LIGHT",
+      "b": "SNAKE",
+      "source": "u27",
+      "pairNote": "BASK and SUN rely on the same sunning scene; SCALE does not reach LIGHT.",
+      "reviewerBestAvailable": {
+        "text": "BASK",
+        "why": "Basking is strongly tied to snakes and naturally collocates with light/sunlight.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BASK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Basking only works in full light.",
+          "wordBConnection": "A snake is the animal that does it.",
+          "revealExplanation": "A snake basks in full light to warm itself.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "LIGHT: basking in the light / sunlight; SNAKE: the familiar scene of a snake basking on a warm rock.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SUN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The sun is the light everything else runs on.",
+          "wordBConnection": "A snake needs it to get moving at all.",
+          "revealExplanation": "A snake needs the sun, which is the light everything else runs on too.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: sunlight; SNAKE: the familiar sunning-snake scene, moderate strength like TREAT for APPLE+HORSE.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SCALE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Scales tell you whether something is light or heavy.",
+          "wordBConnection": "A snake is covered in the other kind of scale.",
+          "revealExplanation": "A snake is covered in scales and scales are what tell you whether something is light or heavy.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "SNAKE: snakes have scales; LIGHT: only an invented route (weighing something light on a scale), so it is effectively one-sided.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__spider",
+      "a": "LIGHT",
+      "b": "SPIDER",
+      "source": "u27",
+      "pairNote": "Single moderate PASS.",
+      "reviewerBestAvailable": {
+        "text": "PORCH",
+        "why": "Porch light is a solid compound and spiders around the porch light is a recognizable scene.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PORCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The porch light.",
+          "wordBConnection": "Spiders web around the porch light.",
+          "revealExplanation": "Porch: the light, and the spider waiting by it.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "LIGHT: porch light compound; SPIDER: the familiar scene of spiders webbing around the porch light where bugs gather.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WEB",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A web caught in the light.",
+          "wordBConnection": "A spider's web.",
+          "revealExplanation": "Web: the spider's, shining in the light.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SPIDER: spider web; LIGHT: no familiar compound or scene links web to light.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__spring",
+      "a": "LIGHT",
+      "b": "SPRING",
+      "source": "u27",
+      "pairNote": "BULB is excellent; DAY is a fair second.",
+      "reviewerBestAvailable": {
+        "text": "BULB",
+        "why": "Two clean, familiar routes: light bulb and spring-flowering bulbs.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BULB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "A light bulb.",
+          "wordBConnection": "A spring bulb like a daffodil. The same word twice.",
+          "revealExplanation": "A light bulb and a spring bulb like a daffodil take exactly the same word.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: light bulb compound; SPRING: spring bulbs (tulips, daffodils) are a familiar gardening scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DAY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Daylight is the thing that lengthens.",
+          "wordBConnection": "Spring is when the days do it.",
+          "revealExplanation": "Spring is when the days lengthen and daylight is what lengthens.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "LIGHT: daylight compound; SPRING: the familiar phrase spring day, with daylight saving starting in spring as a bonus.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CLOCK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "An extra hour of light in the evening is the whole point.",
+          "wordBConnection": "Which is why the clocks spring forward.",
+          "revealExplanation": "The clocks spring forward, which is the whole point of it: an extra hour of light in the evening.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPRING: clock springs and 'spring forward'; LIGHT: only indirectly via daylight saving, which the word clock does not itself signal.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__star",
+      "a": "LIGHT",
+      "b": "STAR",
+      "source": "u27",
+      "pairNote": "Easy pair; YEAR leans on LIGHT.",
+      "reviewerBestAvailable": {
+        "text": "TWINKLE",
+        "why": "The nursery rhyme makes STAR unmistakable and twinkle lights reach LIGHT.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SHINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Shine is light.",
+          "wordBConnection": "Stars shine.",
+          "revealExplanation": "Shine: starlight.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "LIGHT: lights shine; STAR: stars shine, a shared property.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TWINKLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Twinkling light.",
+          "wordBConnection": "Twinkle, twinkle, little star.",
+          "revealExplanation": "Twinkle: the star's light.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "STAR: 'Twinkle, twinkle, little star'; LIGHT: twinkling fairy/holiday lights.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "YEAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A light-year.",
+          "wordBConnection": "Stars are light-years away.",
+          "revealExplanation": "Year: light-years to the stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "LIGHT: light-year compound; STAR: only because light-years measure distances to stars, with no direct star-year phrase.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__train",
+      "a": "LIGHT",
+      "b": "TRAIN",
+      "source": "u27",
+      "pairNote": "Three solid PASSes.",
+      "reviewerBestAvailable": {
+        "text": "RAIL",
+        "why": "Light rail is a compound that is literally a kind of train.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SIGNAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A signal light.",
+          "wordBConnection": "A train signal.",
+          "revealExplanation": "Signal: the light that stops the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: signal lights; TRAIN: railway signals, one shared scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TUNNEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The light at the end of the tunnel.",
+          "wordBConnection": "A train through the tunnel.",
+          "revealExplanation": "Tunnel: the train, and the light at its end.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: 'light at the end of the tunnel'; TRAIN: trains running through tunnels (and the oncoming-train joke).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "RAIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Light rail.",
+          "wordBConnection": "A rail train.",
+          "revealExplanation": "Rail: light rail, a train.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: light rail compound, itself a train system; TRAIN: trains run on rails.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__water",
+      "a": "LIGHT",
+      "b": "WATER",
+      "source": "u27",
+      "pairNote": "Strong pair, no issues.",
+      "reviewerBestAvailable": {
+        "text": "REFLECTION",
+        "why": "Directly physical for light and the classic image for water.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SPARKLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sparkle of light.",
+          "wordBConnection": "Sparkling water.",
+          "revealExplanation": "Sparkle: light on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WATER: sparkling water; LIGHT: light sparkles, and sunlight sparkling on water is one scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "RAINBOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Light split into colours.",
+          "wordBConnection": "Water droplets make the rainbow.",
+          "revealExplanation": "Rainbow: light through water.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Rainbows are sunlight refracted through water droplets, a true shared phenomenon reaching both.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "REFLECTION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Reflected light.",
+          "wordBConnection": "A reflection on the water.",
+          "revealExplanation": "Reflection: light on water.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: light reflection; WATER: reflections in water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__witch",
+      "a": "LIGHT",
+      "b": "WITCH",
+      "source": "u27",
+      "pairNote": "Moderate pair; GLINDA and WAND lean on WITCH.",
+      "reviewerBestAvailable": {
+        "text": "CANDLE",
+        "why": "Candlelight is solid and candles are a stock prop of witch scenes.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CANDLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Candlelight.",
+          "wordBConnection": "A witch's candles.",
+          "revealExplanation": "Candle: light, at the witch's table.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: candlelight; WITCH: the familiar witch scene of candles at spells and rituals (e.g. Hocus Pocus), moderate.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GLINDA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Glinda's glowing bubble.",
+          "wordBConnection": "Glinda the Good Witch.",
+          "revealExplanation": "Glinda: the witch who arrives in light.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Wizard of Oz",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WITCH: Glinda the Good Witch; LIGHT: only via her glowing bubble or 'good = light' framing, which is thin.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WAND",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glowing wand tip.",
+          "wordBConnection": "A witch's wand.",
+          "revealExplanation": "Wand: the witch's, lit at the tip.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WITCH: witches' wands; LIGHT: only via wand-lighting spells (e.g. Lumos) or glow wands, not a firm route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_light__wolf",
+      "a": "LIGHT",
+      "b": "WOLF",
+      "source": "u27",
+      "pairNote": "Wolf-howling-at-the-moon is a cultural image, not a behavioural fact; fine as a scene.",
+      "reviewerBestAvailable": {
+        "text": "MOON",
+        "why": "Moonlight plus the iconic howling-wolf image.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MOON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Moonlight.",
+          "wordBConnection": "The wolf howling at the moon, a classic image.",
+          "revealExplanation": "Moon: moonlight, and the classic image of a wolf howling at it.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LIGHT: moonlight; WOLF: the familiar (folkloric) image of a wolf howling at the moon.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            },
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), acting on the u27 blind reviewer wording caution",
+              "date": "2026-10-18",
+              "before": {
+                "wordBConnection": "A wolf howls at the moon.",
+                "revealExplanation": "Moon: its light, and the wolf's howl."
+              },
+              "after": {
+                "wordBConnection": "The wolf howling at the moon, a classic image.",
+                "revealExplanation": "Moon: moonlight, and the classic image of a wolf howling at it."
+              },
+              "note": "player-facing text only; verdict and status unchanged; removes a literal overstatement"
+            }
+          }
+        },
+        {
+          "text": "EYES",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Eyes catching the light.",
+          "wordBConnection": "A wolf's eyes.",
+          "revealExplanation": "Eyes: the wolf's, shining in the light.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WOLF: glowing wolf eyes in the dark; LIGHT: eyes reflecting/seeing light, a loose link on both sides.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__moon",
+      "a": "LION",
+      "b": "MOON",
+      "source": "u27",
+      "pairNote": "No PASS; needs a better hint.",
+      "reviewerBestAvailable": {
+        "text": "NIGHT",
+        "why": "At least touches LION via nocturnal hunting; ROAR misses MOON entirely.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "NIGHT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Lions hunt at night.",
+          "wordBConnection": "The night moon.",
+          "revealExplanation": "Night: the moon, and the lion's hunt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "MOON: the moon at night; LION: only loosely via lions hunting at night or 'The Lion Sleeps Tonight', weak.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROAR",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion's roar.",
+          "wordBConnection": "A roar under the moon.",
+          "revealExplanation": "Roar: the lion, under the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "LION: lions roar; MOON: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__mouse",
+      "a": "LION",
+      "b": "MOUSE",
+      "source": "u27",
+      "pairNote": "THORN conflates two stories.",
+      "reviewerBestAvailable": {
+        "text": "AESOP",
+        "why": "Points precisely at the one story containing both.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FABLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The lion of the fable.",
+          "wordBConnection": "The mouse of the fable.",
+          "revealExplanation": "Fable: the lion and the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both via the fable 'The Lion and the Mouse'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "AESOP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The lion in Aesop's fable.",
+          "wordBConnection": "The mouse who frees him.",
+          "revealExplanation": "Aesop: the lion and the mouse.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Aesop, The Lion and the Mouse",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:FABLE"
+              ],
+              "reason": "Both via Aesop's 'The Lion and the Mouse'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "rejected",
+            "authorReason": "the thorn belongs to Androcles, not the mouse fable; mixed stories",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "wrong_fact",
+                "one_sided"
+              ],
+              "reason": "The thorn belongs to Androcles and the Lion; in 'The Lion and the Mouse' the mouse gnaws through a net, so the MOUSE route is a wrong fact.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__night",
+      "a": "LION",
+      "b": "NIGHT",
+      "source": "u27",
+      "pairNote": "TONIGHT is a hard rule fail.",
+      "reviewerBestAvailable": {
+        "text": "SLEEPS",
+        "why": "The song title makes both sides clear without containing a target.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SLEEPS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The lion sleeps.",
+          "wordBConnection": "Tonight, at night.",
+          "revealExplanation": "Sleeps: the lion sleeps tonight.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "The Lion Sleeps Tonight",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: 'The Lion Sleeps Tonight'; NIGHT: sleeping at night, inflected verb.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TONIGHT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target NIGHT",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains NIGHT as a substring (rule failure), even though 'The Lion Sleeps Tonight' would reach both.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LOVE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Lion King's love song.",
+          "wordBConnection": "Tonight.",
+          "revealExplanation": "Love: tonight, in The Lion King.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Via Lion King's 'Can You Feel the Love Tonight', but love alone reaches neither lion nor night clearly.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__ocean",
+      "a": "LION",
+      "b": "OCEAN",
+      "source": "u27",
+      "pairNote": "SEA works but is near-synonymous with OCEAN.",
+      "reviewerBestAvailable": {
+        "text": "FISH",
+        "why": "Lionfish is a clean compound and an ocean animal, without leaning on a synonym.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FISH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The lionfish.",
+          "wordBConnection": "Ocean fish.",
+          "revealExplanation": "Fish: the lionfish, in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: lionfish compound; OCEAN: fish live in the ocean (lionfish included).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea lion.",
+          "wordBConnection": "The sea is the ocean.",
+          "revealExplanation": "Sea: the sea lion of the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "LION: sea lion compound; OCEAN: sea is a near-synonym, so it is very easy but valid.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MANE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A lion's mane.",
+          "wordBConnection": "The lion's mane jellyfish.",
+          "revealExplanation": "Mane: the lion's, and the ocean jellyfish.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "needs_explanation",
+                "obscure"
+              ],
+              "reason": "LION: the lion's mane; OCEAN: only via the lion's mane jellyfish, a real but niche ocean animal.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__pirate",
+      "a": "LION",
+      "b": "PIRATE",
+      "source": "u27",
+      "pairNote": "No PASS; needs a better hint.",
+      "reviewerBestAvailable": {
+        "text": "FLAG",
+        "why": "It reaches PIRATE strongly and LION at least through heraldry.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "FLAG",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A lion flag.",
+          "wordBConnection": "The pirate flag.",
+          "revealExplanation": "Flag: the lion's, and the pirate's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "PIRATE: the Jolly Roger pirate flag; LION: only via lions on national/heraldic flags, a separate weak route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROAR",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion's roar.",
+          "wordBConnection": "A pirate's roar.",
+          "revealExplanation": "Roar: lion, and pirate.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "LION: lions roar; PIRATE: pirates say 'arr', they are not known for roaring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__queen",
+      "a": "LION",
+      "b": "QUEEN",
+      "source": "u27",
+      "pairNote": "LIONESS is a rule failure; the rest are moderate.",
+      "reviewerBestAvailable": {
+        "text": "NALA",
+        "why": "Names a lion who is a queen in the best-known lion story.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "NALA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Nala is a lion.",
+          "wordBConnection": "Nala becomes queen.",
+          "revealExplanation": "Nala: the lion queen.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "LION: Nala is a lioness in The Lion King; QUEEN: she becomes Simba's queen.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CREST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The royal lion.",
+          "wordBConnection": "The Queen's crest.",
+          "revealExplanation": "Crest: the Queen's lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Both via royal heraldry: lions on the royal arms/crest associated with the Queen, moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PRIDE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A pride of lions.",
+          "wordBConnection": "A queen's pride.",
+          "revealExplanation": "Pride: lions, and a queen.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "LION: a lion pride; QUEEN: only via a stretched 'queen of the pride' or drag-queen/Pride link, not clear.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LIONESS",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target LION",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains LION as a substring (rule failure).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__ring",
+      "a": "LION",
+      "b": "RING",
+      "source": "u27",
+      "pairNote": "All three share the circus scene.",
+      "reviewerBestAvailable": {
+        "text": "CIRCUS",
+        "why": "One scene containing both the lion and the ring.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "CIRCUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Circus lions.",
+          "wordBConnection": "The circus ring.",
+          "revealExplanation": "Circus: lions in the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: circus lions; RING: the circus ring / three-ring circus.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TAMER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion tamer.",
+          "wordBConnection": "The tamer in the ring.",
+          "revealExplanation": "Tamer: the lion, in the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: lion tamer; RING: the tamer works in the circus ring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HOOP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion jumps through a hoop.",
+          "wordBConnection": "A hoop is a ring.",
+          "revealExplanation": "Hoop: the lion's ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "LION: the circus lion jumping through a hoop; RING: a hoop is a ring shape (near-synonym).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__robot",
+      "a": "LION",
+      "b": "ROBOT",
+      "source": "u27",
+      "pairNote": "VOLTRON depends on cartoon familiarity; generation-dependent.",
+      "reviewerBestAvailable": {
+        "text": "VOLTRON",
+        "why": "The only hint that touches LION, and it nails both.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VOLTRON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Voltron's robot lions.",
+          "wordBConnection": "Voltron is a giant robot.",
+          "revealExplanation": "Voltron: the robot made of lions.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Voltron",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Voltron is a giant robot formed from five robot lions, reaching both directly.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MECHANICAL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A mechanical lion.",
+          "wordBConnection": "A mechanical robot.",
+          "revealExplanation": "Mechanical: a robot lion.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROBOT: robots are mechanical; LION: no familiar route (mechanical lions are obscure).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__rock",
+      "a": "LION",
+      "b": "ROCK",
+      "source": "u27",
+      "pairNote": "Lion King carries the pair.",
+      "reviewerBestAvailable": {
+        "text": "PRIDE",
+        "why": "Lion pride and Pride Rock both land directly.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PRIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A pride of lions.",
+          "wordBConnection": "Pride Rock.",
+          "revealExplanation": "Pride: Pride Rock, home of the lions.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: a pride of lions; ROCK: Pride Rock compound.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SIMBA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Simba is a lion.",
+          "wordBConnection": "Simba on Pride Rock.",
+          "revealExplanation": "Simba: the lion on the rock.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: Simba the lion; ROCK: Simba presented on Pride Rock.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__rose",
+      "a": "LION",
+      "b": "ROSE",
+      "source": "u27",
+      "pairNote": "ENGLAND is moderately known outside the UK but widely recognisable via football.",
+      "reviewerBestAvailable": {
+        "text": "ENGLAND",
+        "why": "Both are national emblems of England, a single shared route.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ENGLAND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "England's three lions.",
+          "wordBConnection": "England's rose.",
+          "revealExplanation": "England: the lion and the rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "LION: the Three Lions emblem; ROSE: the Tudor/English rose, both national symbols of England.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BEAST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Beast's lion-like mane.",
+          "wordBConnection": "The enchanted rose.",
+          "revealExplanation": "Beast: the lion-like prince and his rose.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Beauty and the Beast",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROSE: the enchanted rose in Beauty and the Beast; LION: the lion as king of beasts.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__salt",
+      "a": "LION",
+      "b": "SALT",
+      "source": "u27",
+      "pairNote": "Single strong PASS.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Two clean compounds: sea lion and sea salt.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea lion.",
+          "wordBConnection": "Sea salt.",
+          "revealExplanation": "Sea: the sea lion, sea salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: sea lion compound; SALT: sea salt compound.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LICK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion's lick.",
+          "wordBConnection": "A salt lick.",
+          "revealExplanation": "Lick: the lion's, and the salt lick.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: salt lick; LION: no familiar lion-lick route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__shadow",
+      "a": "LION",
+      "b": "SHADOW",
+      "source": "u27",
+      "pairNote": "No PASS; both lean on LION.",
+      "reviewerBestAvailable": {
+        "text": "SCAR",
+        "why": "The dark villain living in Mufasa's shadow is the more evocative of two weak Lion King routes.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Lion King.",
+          "wordBConnection": "The shadowy place.",
+          "revealExplanation": "King: the Lion King, and the shadowy place.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "LION: The Lion King; SHADOW: only via the film's shadowy lands or the niche 'Shadow King', weak.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SCAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Scar is a lion.",
+          "wordBConnection": "Scar lurks in the shadows.",
+          "revealExplanation": "Scar: the lion in the shadows.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "LION: Scar the Lion King villain; SHADOW: only via him living in his brother's shadow or the shadowlands, a stretch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__shark",
+      "a": "LION",
+      "b": "SHARK",
+      "source": "u27",
+      "pairNote": "Solid pair.",
+      "reviewerBestAvailable": {
+        "text": "PREDATOR",
+        "why": "Captures both animals' defining shared role.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TEETH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A lion's teeth.",
+          "wordBConnection": "A shark's teeth.",
+          "revealExplanation": "Teeth: lion and shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared property: both are famous for big sharp teeth.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PREDATOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The lion is a predator.",
+          "wordBConnection": "The shark is a predator.",
+          "revealExplanation": "Predator: lion and shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared property: both are classic apex predators.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "KING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "King of the jungle.",
+          "wordBConnection": "King of the sea.",
+          "revealExplanation": "King: of the jungle, and of the sea.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "LION: king of the jungle / Lion King; SHARK: only a loose 'king of the sea' idea, not a set phrase.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__snake",
+      "a": "LION",
+      "b": "SNAKE",
+      "source": "u27",
+      "pairNote": "JUNGLE works as a phrase even though real lions live on savanna.",
+      "reviewerBestAvailable": {
+        "text": "JUNGLE",
+        "why": "A familiar phrase for LION and a natural habitat for SNAKE.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "JUNGLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "King of the jungle.",
+          "wordBConnection": "A jungle snake.",
+          "revealExplanation": "Jungle: the lion's kingdom, the snake's home.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: 'king of the jungle' phrase; SNAKE: snakes in the jungle.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "KAA",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "rejected",
+            "authorReason": "lion side invented; The Jungle Book has a tiger, not a lion",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SNAKE: Kaa the python from The Jungle Book; LION: The Jungle Book has a tiger (Shere Khan), not a lion, so no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__spider",
+      "a": "LION",
+      "b": "SPIDER",
+      "source": "u27",
+      "pairNote": "HUNTER is broad but defensible like SWEET for APPLE+HONEY.",
+      "reviewerBestAvailable": {
+        "text": "HUNTER",
+        "why": "The only rule-compliant hint; a fair shared-property route.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HUNTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The lion is a hunter.",
+          "wordBConnection": "The spider is a hunter.",
+          "revealExplanation": "Hunter: lion and spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: lions hunt prey and many spiders are active hunters (e.g. huntsman spider), moderate.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ANTLION",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target LION",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains LION as a substring (rule failure).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__spring",
+      "a": "LION",
+      "b": "SPRING",
+      "source": "u27",
+      "pairNote": "LEAP and POUNCE are the same verb route.",
+      "reviewerBestAvailable": {
+        "text": "MARCH",
+        "why": "The proverb ties March to lions and March is the start of spring.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MARCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "In like a lion.",
+          "wordBConnection": "Spring begins in March.",
+          "revealExplanation": "March: in like a lion, into spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: 'in like a lion, out like a lamb'; SPRING: March begins spring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LEAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion's leap.",
+          "wordBConnection": "To leap is to spring.",
+          "revealExplanation": "Leap: the lion's spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "LION: lions leap on prey; SPRING: to spring is to leap (verb route).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "POUNCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion pounces.",
+          "wordBConnection": "To pounce is to spring.",
+          "revealExplanation": "Pounce: the lion springs.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:LEAP"
+              ],
+              "reason": "LION: a lion pounces; SPRING: to spring on prey (verb route).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__star",
+      "a": "LION",
+      "b": "STAR",
+      "source": "u27",
+      "pairNote": "Strong pair.",
+      "reviewerBestAvailable": {
+        "text": "LEO",
+        "why": "Leo is both the lion and a star sign/constellation.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "LEO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Leo is the lion.",
+          "wordBConnection": "Leo's stars.",
+          "revealExplanation": "Leo: the lion in the stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: Leo the lion; STAR: Leo star sign / constellation.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CONSTELLATION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The lion constellation.",
+          "wordBConnection": "A constellation of stars.",
+          "revealExplanation": "Constellation: Leo, the lion of stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "STAR: constellations are star patterns; LION: Leo is the lion constellation, moderate.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MUFASA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Mufasa is a lion.",
+          "wordBConnection": "The kings in the stars.",
+          "revealExplanation": "Mufasa: the lion in the stars.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: Mufasa the Lion King; STAR: his speech that the great kings look down from the stars.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__train",
+      "a": "LION",
+      "b": "TRAIN",
+      "source": "u27",
+      "pairNote": "Good pair.",
+      "reviewerBestAvailable": {
+        "text": "CIRCUS",
+        "why": "Circus train and circus lions share one scene.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CIRCUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Circus lions.",
+          "wordBConnection": "The circus train.",
+          "revealExplanation": "Circus: lions on the circus train.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: circus lions; TRAIN: the circus train (e.g. Dumbo).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TAMER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion tamer.",
+          "wordBConnection": "A tamer trains animals.",
+          "revealExplanation": "Tamer: trains the lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: lion tamer; TRAIN: a tamer trains animals (verb route).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lion__water",
+      "a": "LION",
+      "b": "WATER",
+      "source": "u27",
+      "pairNote": "Three PASSes.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea lion and sea water are both direct.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea lion.",
+          "wordBConnection": "Sea water.",
+          "revealExplanation": "Sea: the sea lion, in the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "LION: sea lion; WATER: sea water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HOLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Lions at the watering hole.",
+          "wordBConnection": "A watering hole.",
+          "revealExplanation": "Hole: the watering hole, where lions wait.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WATER: water hole; LION: the savanna scene of lions at the water hole.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FOUNTAIN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A lion-head fountain.",
+          "wordBConnection": "A fountain of water.",
+          "revealExplanation": "Fountain: water from the lion's mouth.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "WATER: fountains spout water; LION: lion-head fountains are a familiar sight.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_lion__witch",
       "a": "LION",
       "b": "WITCH",
@@ -86890,6 +89533,289 @@
           "NARNIA"
         ]
       }
+    },
+    {
+      "pair_id": "p_lion__wolf",
+      "a": "LION",
+      "b": "WOLF",
+      "source": "u27",
+      "pairNote": "ROAR and PACK are one-sided.",
+      "reviewerBestAvailable": {
+        "text": "PREDATOR",
+        "why": "The only hint reaching both animals.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PREDATOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The lion is a predator.",
+          "wordBConnection": "The wolf is a predator.",
+          "revealExplanation": "Predator: lion and wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared property: both are top predators.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROAR",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "rejected",
+            "authorReason": "wolves howl, they do not roar; one-sided",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "LION: lions roar; WOLF: wolves howl, they do not roar.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PACK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Lions hunt as a group.",
+          "wordBConnection": "A wolf pack.",
+          "revealExplanation": "Pack: the wolf's, and the lions' hunting group.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WOLF: wolf pack; LION: lions live in prides, not packs, so no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__mouse",
+      "a": "MOON",
+      "b": "MOUSE",
+      "source": "u27",
+      "pairNote": "GOODNIGHT's MOUSE side needs knowledge of the book.",
+      "reviewerBestAvailable": {
+        "text": "CHEESE",
+        "why": "Two famous cultural associations meeting in one word.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CHEESE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The moon is made of cheese.",
+          "wordBConnection": "The mouse's cheese.",
+          "revealExplanation": "Cheese: the moon of the saying, and the mouse's treat.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: the folk joke that the moon is made of cheese; MOUSE: mice love cheese.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GOODNIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Goodnight Moon.",
+          "wordBConnection": "The mouse in Goodnight Moon.",
+          "revealExplanation": "Goodnight: Goodnight Moon and its mouse.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Goodnight Moon",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "MOON: the book Goodnight Moon; MOUSE: the little mouse hidden on its pages, familiar to readers of the book.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__night",
+      "a": "MOON",
+      "b": "NIGHT",
+      "source": "u27",
+      "pairNote": "Easy pair.",
+      "reviewerBestAvailable": {
+        "text": "LIGHT",
+        "why": "Two clean compounds: moonlight and night light.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The moon in the sky.",
+          "wordBConnection": "The night sky.",
+          "revealExplanation": "Sky: the night's, with the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "NIGHT: night sky; MOON: the moon in the sky.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Moonlight.",
+          "wordBConnection": "Light at night.",
+          "revealExplanation": "Light: the moon's, at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: moonlight; NIGHT: night light, both compounds.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FULL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A full moon.",
+          "wordBConnection": "A full-moon night.",
+          "revealExplanation": "Full: the moon, on that night.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: full moon; NIGHT: only weakly via 'full night' or full-moon nights.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_moon__ocean",
@@ -87066,6 +89992,797 @@
           "TIDE"
         ]
       }
+    },
+    {
+      "pair_id": "p_moon__pirate",
+      "a": "MOON",
+      "b": "PIRATE",
+      "source": "u27",
+      "pairNote": "No PASS; needs a better hint.",
+      "reviewerBestAvailable": {
+        "text": "SAIL",
+        "why": "Strong on PIRATE and at least gestures at moonlit sailing.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SAIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Sailing by the moon.",
+          "wordBConnection": "Pirates sail.",
+          "revealExplanation": "Sail: the pirate, by the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "PIRATE: pirates sail; MOON: only a vague sailing-by-moonlight or sailing-to-the-moon image.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CRESCENT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A crescent moon.",
+          "wordBConnection": "A crescent-shaped cutlass.",
+          "revealExplanation": "Crescent: the moon, and the cutlass curve.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "MOON: crescent moon; PIRATE: no familiar route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__queen",
+      "a": "MOON",
+      "b": "QUEEN",
+      "source": "u27",
+      "pairNote": "NIGHT is a moderate PASS; this is a judgement call.",
+      "reviewerBestAvailable": {
+        "text": "NIGHT",
+        "why": "Queen of the Night is a recognised phrase and night pairs naturally with the moon.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "NIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The night moon.",
+          "wordBConnection": "The Queen of the Night.",
+          "revealExplanation": "Night: the moon, and its queen.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "MOON: the moon at night; QUEEN: the familiar phrase 'Queen of the Night' (Magic Flute aria, night-blooming flower).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SAILOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Sailor Moon.",
+          "wordBConnection": "She becomes Neo-Queen Serenity.",
+          "revealExplanation": "Sailor: Sailor Moon, the future queen.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Sailor Moon",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "MOON: Sailor Moon; QUEEN: only via the series' Queen Serenity lore, niche.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__ring",
+      "a": "MOON",
+      "b": "RING",
+      "source": "u27",
+      "pairNote": "Strong pair.",
+      "reviewerBestAvailable": {
+        "text": "SATURN",
+        "why": "The single object most associated with both rings and moons.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "PLANET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A planet's moons.",
+          "wordBConnection": "A planet's rings.",
+          "revealExplanation": "Planet: moons and rings.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared property: planets have moons and some have rings.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SATURN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Saturn's moons.",
+          "wordBConnection": "Saturn's rings.",
+          "revealExplanation": "Saturn: moons and rings.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Saturn is famous for its rings and has many moons (e.g. Titan).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HALO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A halo around the moon.",
+          "wordBConnection": "A halo is a ring.",
+          "revealExplanation": "Halo: the ring around the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "MOON: the real halo/ring around the moon; RING: a halo is a ring of light.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__robot",
+      "a": "MOON",
+      "b": "ROBOT",
+      "source": "u27",
+      "pairNote": "Avoid implying the crewed Apollo rover was a robot; robotic lunar rovers do exist.",
+      "reviewerBestAvailable": {
+        "text": "ROVER",
+        "why": "A rover is a robot and the moon is a famous rover destination.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ROVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rovers have explored the moon.",
+          "wordBConnection": "Robotic rovers such as Lunokhod and Yutu.",
+          "revealExplanation": "Rover: robotic rovers have explored the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: lunar rovers (including robotic ones like Lunokhod/Yutu); ROBOT: rovers are robotic explorers.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            },
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), acting on the u27 blind reviewer wording caution",
+              "date": "2026-10-18",
+              "before": {
+                "wordAConnection": "The lunar rover drove on the moon.",
+                "wordBConnection": "A rover is a robotic vehicle.",
+                "revealExplanation": "Rover: a robot vehicle on the moon."
+              },
+              "after": {
+                "wordAConnection": "Rovers have explored the moon.",
+                "wordBConnection": "Robotic rovers such as Lunokhod and Yutu.",
+                "revealExplanation": "Rover: robotic rovers have explored the moon."
+              },
+              "note": "player-facing text only; verdict and status unchanged; removes a literal overstatement"
+            }
+          }
+        },
+        {
+          "text": "SPACE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The moon in space.",
+          "wordBConnection": "Space robots.",
+          "revealExplanation": "Space: the moon, and the robots that explore it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "MOON: the moon in space; ROBOT: robots and probes exploring space, moderate.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LANDING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A moon landing.",
+          "wordBConnection": "Robotic probes landed first.",
+          "revealExplanation": "Landing: robot probes on the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "MOON: moon landing; ROBOT: only indirectly via robotic landers, no clear robot-landing phrase.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__rock",
+      "a": "MOON",
+      "b": "ROCK",
+      "source": "u27",
+      "pairNote": "Good pair.",
+      "reviewerBestAvailable": {
+        "text": "APOLLO",
+        "why": "Moon rocks from the Apollo missions tie both directly.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "APOLLO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Apollo landed on the moon.",
+          "wordBConnection": "Apollo moon rocks.",
+          "revealExplanation": "Apollo: rocks from the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: the Apollo landings; ROCK: Apollo brought back moon rocks.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CRATER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A moon crater.",
+          "wordBConnection": "A crater in rock.",
+          "revealExplanation": "Crater: rock on the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: lunar craters; ROCK: craters are rocky impact holes made by space rocks.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "METEOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Meteors hit the moon.",
+          "wordBConnection": "A meteor is a space rock.",
+          "revealExplanation": "Meteor: the rock that cratered the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROCK: meteors are space rocks; MOON: only via meteor impacts on the moon, which the word does not point at.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__rose",
+      "a": "MOON",
+      "b": "ROSE",
+      "source": "u27",
+      "pairNote": "RISE is a nice wordplay hint.",
+      "reviewerBestAvailable": {
+        "text": "RISE",
+        "why": "A clever but fair inflection route plus moonrise.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RISE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "The moon rises every night.",
+          "wordBConnection": "Rose is the past tense of rise.",
+          "revealExplanation": "The moon rises every night, and rose is the past tense of rise.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: moonrise / the moon rises; ROSE: 'rose' is the past tense of rise (ordinary inflection).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FADE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The moon fades away to nothing every month.",
+          "wordBConnection": "A rose fades on the stem.",
+          "revealExplanation": "A rose fades on the stem and the moon fades away to nothing every month.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "ROSE: roses fade; MOON: the moon fades at dawn; both are loose, poetic routes.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__salt",
+      "a": "MOON",
+      "b": "SALT",
+      "source": "u27",
+      "pairNote": "Moderate pair.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea salt is direct and the sea links to the moon by tides and lunar seas.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The moon rules the sea through the tides.",
+          "wordBConnection": "And sea salt is where salt comes from.",
+          "revealExplanation": "Sea salt is where salt comes from, and the moon rules the sea through the tides.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SALT: sea salt; MOON: the moon pulls the sea's tides and its plains are called seas (Sea of Tranquility).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TIDE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cause_and_effect",
+          "wordAConnection": "The moon pulls the tides.",
+          "wordBConnection": "And the water they carry leaves salt flats behind.",
+          "revealExplanation": "The moon pulls the tides, and the salt water they carry leaves salt flats behind.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "MOON: the moon drives tides; SALT: only indirectly via tidal salt water or salt marshes.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__shadow",
+      "a": "MOON",
+      "b": "SHADOW",
+      "source": "u27",
+      "pairNote": "'Dark side of the moon' is a phrase, not a claim the far side is always dark.",
+      "reviewerBestAvailable": {
+        "text": "ECLIPSE",
+        "why": "Literally a moon-and-shadow event.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DARK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "The dark side of the moon is the famous phrase.",
+          "wordBConnection": "A shadow is a patch of dark.",
+          "revealExplanation": "The dark side of the moon is the famous phrase, and a shadow is a patch of dark.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON: the phrase 'dark side of the moon'; SHADOW: shadows are dark.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ECLIPSE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "The moon is one of the two bodies involved.",
+          "wordBConnection": "An eclipse is nothing but a shadow falling.",
+          "revealExplanation": "An eclipse is nothing but a shadow: the moon's on the earth, or the earth's on the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An eclipse involves the moon and a cast shadow (Earth's shadow on the moon or the moon's shadow on Earth).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__shark",
+      "a": "MOON",
+      "b": "SHARK",
+      "source": "u27",
+      "pairNote": "No PASS; needs a better hint.",
+      "reviewerBestAvailable": {
+        "text": "NIGHT",
+        "why": "At least reaches SHARK through nocturnal hunting.",
+        "reviewer": "blind-subagent-27"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "NIGHT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The night moon.",
+          "wordBConnection": "Sharks feed at night.",
+          "revealExplanation": "Night: the moon, and feeding sharks.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "MOON: the moon at night; SHARK: only via sharks hunting at night (or the niche night shark species).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TIDE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The moon pulls the tide.",
+          "wordBConnection": "Sharks come in with the tide.",
+          "revealExplanation": "Tide: the moon's, the shark's hunting time.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u27",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-27",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "MOON: the moon drives tides; SHARK: no familiar shark-tide route beyond both involving the ocean.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_moon__star",

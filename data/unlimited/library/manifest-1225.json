@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-18T06:23:34.284Z",
+  "generated": "2026-10-18T06:31:42.484Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 996,
-  "reviewed": 996,
-  "playable": 808,
-  "held_only": 139,
+  "authored": 1036,
+  "reviewed": 1036,
+  "playable": 842,
+  "held_only": 145,
   "rejected_only": 49,
   "candidate": 0,
-  "hole": 229,
+  "hole": 189,
   "closed": 0,
-  "withBestAvailableCandidate": 188,
+  "withBestAvailableCandidate": 194,
   "underGenerationHold": 1,
   "servedLive": 64,
   "pendingLocal": 0,
@@ -30,10 +30,10 @@
    "pendingBatches": []
   },
   "hints": {
-   "total": 2391,
-   "playable": 1321,
-   "held": 535,
-   "rejected": 535
+   "total": 2492,
+   "playable": 1384,
+   "held": 558,
+   "rejected": 550
   },
   "perWordHoles": {
    "APPLE": 0,
@@ -63,29 +63,29 @@
    "KEY": 0,
    "KING": 0,
    "KNIGHT": 0,
-   "LIGHT": 9,
-   "LION": 20,
-   "MOON": 18,
-   "MOUSE": 21,
-   "NIGHT": 21,
-   "OCEAN": 18,
-   "PIRATE": 20,
-   "QUEEN": 21,
-   "RING": 21,
-   "ROBOT": 20,
-   "ROCK": 19,
-   "ROSE": 20,
-   "SALT": 21,
-   "SHADOW": 21,
-   "SHARK": 21,
-   "SNAKE": 22,
-   "SPIDER": 22,
-   "SPRING": 21,
-   "STAR": 21,
-   "TRAIN": 21,
-   "WATER": 19,
-   "WITCH": 20,
-   "WOLF": 21
+   "LIGHT": 0,
+   "LION": 0,
+   "MOON": 6,
+   "MOUSE": 19,
+   "NIGHT": 19,
+   "OCEAN": 17,
+   "PIRATE": 18,
+   "QUEEN": 19,
+   "RING": 19,
+   "ROBOT": 18,
+   "ROCK": 17,
+   "ROSE": 18,
+   "SALT": 19,
+   "SHADOW": 19,
+   "SHARK": 18,
+   "SNAKE": 20,
+   "SPIDER": 20,
+   "SPRING": 19,
+   "STAR": 19,
+   "TRAIN": 19,
+   "WATER": 17,
+   "WITCH": 19,
+   "WOLF": 19
   },
   "batches": {
    "u04": {
@@ -274,10 +274,10 @@
    },
    "u27": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
+    "playable": 34,
+    "held_only": 6,
     "rejected_only": 0
    },
    "u28": {
@@ -23052,8 +23052,28 @@
    "pair_id": "p_light__shark",
    "a": "LIGHT",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "LANTERN",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "LIGHT: a lantern is a light; SHARK: the real lanternshark compound, accurate but niche.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "It names a real shark (lanternshark) and is plainly a light, so it is the only hint with a concrete compound route to SHARK.",
+    "stretch": true
+   },
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23061,8 +23081,21 @@
    "pair_id": "p_light__snake",
    "a": "LIGHT",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BASK",
+    "SUN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23070,8 +23103,20 @@
    "pair_id": "p_light__spider",
    "a": "LIGHT",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PORCH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23079,8 +23124,21 @@
    "pair_id": "p_light__spring",
    "a": "LIGHT",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BULB",
+    "DAY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23088,8 +23146,21 @@
    "pair_id": "p_light__star",
    "a": "LIGHT",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SHINE",
+    "TWINKLE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23097,8 +23168,22 @@
    "pair_id": "p_light__train",
    "a": "LIGHT",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SIGNAL",
+    "TUNNEL",
+    "RAIL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23106,8 +23191,22 @@
    "pair_id": "p_light__water",
    "a": "LIGHT",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SPARKLE",
+    "RAINBOW",
+    "REFLECTION"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23115,8 +23214,20 @@
    "pair_id": "p_light__witch",
    "a": "LIGHT",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CANDLE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23124,8 +23235,20 @@
    "pair_id": "p_light__wolf",
    "a": "LIGHT",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MOON"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23133,8 +23256,28 @@
    "pair_id": "p_lion__moon",
    "a": "LION",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "NIGHT",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "MOON: the moon at night; LION: only loosely via lions hunting at night or 'The Lion Sleeps Tonight', weak.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "At least touches LION via nocturnal hunting; ROAR misses MOON entirely.",
+    "stretch": true
+   },
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23142,8 +23285,21 @@
    "pair_id": "p_lion__mouse",
    "a": "LION",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FABLE",
+    "AESOP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23151,8 +23307,20 @@
    "pair_id": "p_lion__night",
    "a": "LION",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SLEEPS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23160,8 +23328,21 @@
    "pair_id": "p_lion__ocean",
    "a": "LION",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FISH",
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23169,8 +23350,28 @@
    "pair_id": "p_lion__pirate",
    "a": "LION",
    "b": "PIRATE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "FLAG",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "PIRATE: the Jolly Roger pirate flag; LION: only via lions on national/heraldic flags, a separate weak route.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "It reaches PIRATE strongly and LION at least through heraldry.",
+    "stretch": true
+   },
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23178,8 +23379,21 @@
    "pair_id": "p_lion__queen",
    "a": "LION",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "NALA",
+    "CREST"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23187,8 +23401,22 @@
    "pair_id": "p_lion__ring",
    "a": "LION",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CIRCUS",
+    "TAMER",
+    "HOOP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23196,8 +23424,20 @@
    "pair_id": "p_lion__robot",
    "a": "LION",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "VOLTRON"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23205,8 +23445,21 @@
    "pair_id": "p_lion__rock",
    "a": "LION",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PRIDE",
+    "SIMBA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23214,8 +23467,21 @@
    "pair_id": "p_lion__rose",
    "a": "LION",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ENGLAND",
+    "BEAST"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23223,8 +23489,20 @@
    "pair_id": "p_lion__salt",
    "a": "LION",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23232,8 +23510,28 @@
    "pair_id": "p_lion__shadow",
    "a": "LION",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SCAR",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "LION: Scar the Lion King villain; SHADOW: only via him living in his brother's shadow or the shadowlands, a stretch.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The dark villain living in Mufasa's shadow is the more evocative of two weak Lion King routes.",
+    "stretch": false
+   },
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23241,8 +23539,21 @@
    "pair_id": "p_lion__shark",
    "a": "LION",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TEETH",
+    "PREDATOR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23250,8 +23561,20 @@
    "pair_id": "p_lion__snake",
    "a": "LION",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "JUNGLE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23259,8 +23582,20 @@
    "pair_id": "p_lion__spider",
    "a": "LION",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HUNTER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23268,8 +23603,22 @@
    "pair_id": "p_lion__spring",
    "a": "LION",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MARCH",
+    "LEAP",
+    "POUNCE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23277,8 +23626,22 @@
    "pair_id": "p_lion__star",
    "a": "LION",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LEO",
+    "CONSTELLATION",
+    "MUFASA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23286,8 +23649,21 @@
    "pair_id": "p_lion__train",
    "a": "LION",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CIRCUS",
+    "TAMER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23295,8 +23671,22 @@
    "pair_id": "p_lion__water",
    "a": "LION",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA",
+    "HOLE",
+    "FOUNTAIN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23327,8 +23717,20 @@
    "pair_id": "p_lion__wolf",
    "a": "LION",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PREDATOR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23336,8 +23738,21 @@
    "pair_id": "p_moon__mouse",
    "a": "MOON",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CHEESE",
+    "GOODNIGHT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23345,8 +23760,21 @@
    "pair_id": "p_moon__night",
    "a": "MOON",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SKY",
+    "LIGHT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23377,8 +23805,28 @@
    "pair_id": "p_moon__pirate",
    "a": "MOON",
    "b": "PIRATE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SAIL",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "PIRATE: pirates sail; MOON: only a vague sailing-by-moonlight or sailing-to-the-moon image.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Strong on PIRATE and at least gestures at moonlit sailing.",
+    "stretch": true
+   },
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23386,8 +23834,20 @@
    "pair_id": "p_moon__queen",
    "a": "MOON",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "NIGHT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23395,8 +23855,22 @@
    "pair_id": "p_moon__ring",
    "a": "MOON",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PLANET",
+    "SATURN",
+    "HALO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23404,8 +23878,21 @@
    "pair_id": "p_moon__robot",
    "a": "MOON",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ROVER",
+    "SPACE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23413,8 +23900,21 @@
    "pair_id": "p_moon__rock",
    "a": "MOON",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "APOLLO",
+    "CRATER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23422,8 +23922,20 @@
    "pair_id": "p_moon__rose",
    "a": "MOON",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RISE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23431,8 +23943,20 @@
    "pair_id": "p_moon__salt",
    "a": "MOON",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23440,8 +23964,21 @@
    "pair_id": "p_moon__shadow",
    "a": "MOON",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DARK",
+    "ECLIPSE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -23449,8 +23986,28 @@
    "pair_id": "p_moon__shark",
    "a": "MOON",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u27",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "NIGHT",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "MOON: the moon at night; SHARK: only via sharks hunting at night (or the niche night shark species).",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "At least reaches SHARK through nocturnal hunting.",
+    "stretch": true
+   },
    "plannedBatch": "u27",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
