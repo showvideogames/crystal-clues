@@ -1,0 +1,541 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-25",
+    "date": "2026-10-18",
+    "input": "u25-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors + no-literal-false-facts reminder, 2026-10-18",
+    "independence": "I read only u25-blind-input.json; no other file, search, web or API was consulted."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_iron__wolf",
+      "a": "IRON",
+      "b": "WOLF",
+      "hints": [
+        {"text": "JAW", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "IRON via the phrase 'iron jaw' (a tough chin), WOLF via the animal's famous jaws; the iron side is idiomatic and may not surface."},
+        {"text": "TRAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "IRON via the heavy iron-jawed trap, WOLF via the wolf trap it is set for; one shared scene."},
+        {"text": "FENCE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "IRON via wrought-iron fence is solid, but WOLF only reaches a fence as something it might be kept out by, which is filler."}
+      ],
+      "strong_hints": ["TRAP"],
+      "best_available": {"text": "TRAP", "why": "The iron wolf trap is a single recognizable object that names both words."},
+      "pair_note": "TRAP carries the pair; JAW is a usable second route if the 'iron jaw' idiom is acceptable."
+    },
+    {
+      "pair_id": "p_key__king",
+      "a": "KEY",
+      "b": "KING",
+      "hints": [
+        {"text": "LOCK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via lock and key is immediate, but nothing connects LOCK to KING."},
+        {"text": "KINGDOM", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target", "one_sided"], "verdict": "FAIL", "reason": "Contains the target KING as a substring, and KEY has no route to it anyway."},
+        {"text": "CROWN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via the crown is obvious; KEY has no natural link to a crown."},
+        {"text": "CASTLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KING via the castle he rules from, KEY via 'keys to the castle'; the key side is a phrase rather than an object a player sees first."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "CASTLE", "why": "Only hint that reaches both words, through the king's seat and the 'keys to the castle' phrase."},
+      "pair_note": "No PASS; the pair is hard because KEY and KING share little beyond castles and chess. CASTLE is the only serviceable hint."
+    },
+    {
+      "pair_id": "p_key__knight",
+      "a": "KEY",
+      "b": "KNIGHT",
+      "hints": [
+        {"text": "ARMOR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KNIGHT via suit of armor is immediate; KEY has no route to armor."},
+        {"text": "CASTLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KNIGHT via the castle he defends, KEY via 'keys to the castle' or the castle gate key; the key side is thinner."},
+        {"text": "CHEST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via a locked treasure chest is good, but KNIGHT reaches CHEST only via the breastplate, which players will not see as a knight link."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "CASTLE", "why": "The castle is where knights live and the one object players also associate with keys."},
+      "pair_note": "No PASS; CASTLE is the only hint touching both sides."
+    },
+    {
+      "pair_id": "p_key__light",
+      "a": "KEY",
+      "b": "LIGHT",
+      "hints": [
+        {"text": "HOUSE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via house key, LIGHT via lighthouse; both compounds are everyday words."},
+        {"text": "TURN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Verb route: you turn a key and turn on a light."},
+        {"text": "PHOTO", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "BORDERLINE", "reason": "LIGHT via photography/photons, KEY via the 'key light' term of studio lighting; both routes need an explanation."}
+      ],
+      "strong_hints": ["HOUSE", "TURN"],
+      "best_available": {"text": "HOUSE", "why": "House key and lighthouse are two broad compounds pointing cleanly at each word."},
+      "pair_note": "Strong pair; HOUSE and TURN both pass comfortably, PHOTO is a photographer's in-joke."
+    },
+    {
+      "pair_id": "p_key__lion",
+      "a": "KEY",
+      "b": "LION",
+      "hints": [
+        {"text": "ZOO", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "LION via the zoo is immediate; KEY has no route to a zoo."},
+        {"text": "CAGE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "LION via the lion's cage, KEY via the key that locks the cage; the key side is plausible but secondary."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "CAGE", "why": "A locked lion cage is a scene that includes a key, even if the key is not the first thing seen."},
+      "pair_note": "No PASS; CAGE is a fair stretch, ZOO is purely one-sided."
+    },
+    {
+      "pair_id": "p_key__moon",
+      "a": "KEY",
+      "b": "MOON",
+      "hints": [
+        {"text": "CHANGE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "KEY via a musical key change, MOON via its changing phases; both links are real but neither is a strong first association."},
+        {"text": "STONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via keystone, MOON via moonstone; two established compounds."},
+        {"text": "PIANO", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KEY via piano keys is immediate, MOON via the Moonlight Sonata or Clair de Lune is a recognizable but indirect cultural route."}
+      ],
+      "strong_hints": ["STONE"],
+      "best_available": {"text": "STONE", "why": "Keystone and moonstone are both common compounds."},
+      "pair_note": "STONE is clean; PIANO is a defensible second if the Moonlight Sonata route is accepted."
+    },
+    {
+      "pair_id": "p_key__mouse",
+      "a": "KEY",
+      "b": "MOUSE",
+      "hints": [
+        {"text": "CLICK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOUSE via mouse click, KEY via the click of a key being pressed or turned; shared computer desk scene."},
+        {"text": "DESK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "MOUSE sits on the desk; KEY reaches a desk via the keys on the keyboard or a desk-drawer key, both secondary."},
+        {"text": "KEYBOARD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target KEY as a substring, so it is a rule failure despite the obvious mouse-and-keyboard link."},
+        {"text": "COMPUTER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Computer mouse and computer keys both belong to the same device."}
+      ],
+      "strong_hints": ["COMPUTER", "CLICK"],
+      "best_available": {"text": "COMPUTER", "why": "Everyone pictures a computer with keys and a mouse."},
+      "pair_note": "Easy pair; KEYBOARD must be dropped on the substring rule."
+    },
+    {
+      "pair_id": "p_key__night",
+      "a": "KEY",
+      "b": "NIGHT",
+      "hints": [
+        {"text": "CURFEW", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "NIGHT via a night curfew is clear; KEY reaches it only through being locked out, which is invented filler."},
+        {"text": "LOCK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "KEY via lock and key is immediate; NIGHT via locking up at night is a weak habitual link."},
+        {"text": "HOTEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "KEY via the hotel room key or key card, NIGHT via hotels being booked by the night."}
+      ],
+      "strong_hints": ["HOTEL"],
+      "best_available": {"text": "HOTEL", "why": "A hotel stay naturally includes both a room key and a count of nights."},
+      "pair_note": "HOTEL is the only passing hint; LOCK leans heavily on KEY."
+    },
+    {
+      "pair_id": "p_key__ocean",
+      "a": "KEY",
+      "b": "OCEAN",
+      "hints": [
+        {"text": "ISLAND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "KEY as a small low island (the Florida Keys), OCEAN as what surrounds an island."},
+        {"text": "FLORIDA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via the Florida Keys, OCEAN via the Atlantic coast of Florida; geography route."},
+        {"text": "WEST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "KEY via Key West is strong, but OCEAN reaches WEST only through Key West itself being on the water."}
+      ],
+      "strong_hints": ["FLORIDA", "ISLAND"],
+      "best_available": {"text": "FLORIDA", "why": "Florida Keys plus Florida's ocean coast is the most broadly known combination."},
+      "pair_note": "Geography pair that works; WEST depends on the same Key West fact for both sides."
+    },
+    {
+      "pair_id": "p_key__pirate",
+      "a": "KEY",
+      "b": "PIRATE",
+      "hints": [
+        {"text": "TREASURE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "PIRATE via pirate treasure is immediate, KEY via the key to the locked treasure chest; the key side is part of the same scene."},
+        {"text": "CHEST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via the locked chest, PIRATE via the pirate's treasure chest."},
+        {"text": "DEAD", "connection_to_a": 0, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "PIRATE via 'dead men tell no tales' or Dead Man's Chest is a thin cultural link, and KEY reaches DEAD only via the typist's 'dead key' or a film plot detail."}
+      ],
+      "strong_hints": ["CHEST", "TREASURE"],
+      "best_available": {"text": "CHEST", "why": "A pirate's locked treasure chest is one picture containing both targets."},
+      "pair_note": "CHEST and TREASURE both work through the same scene; DEAD does not reach KEY."
+    },
+    {
+      "pair_id": "p_key__queen",
+      "a": "KEY",
+      "b": "QUEEN",
+      "hints": [
+        {"text": "CITY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "KEY via the ceremonial key to the city, QUEEN via the 'Queen City' nickname (Cincinnati, Charlotte); the queen side is regional."},
+        {"text": "FREDDIE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "QUEEN via Freddie Mercury is strong; KEY has no route to Freddie."},
+        {"text": "CASTLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "QUEEN via the royal castle, KEY via 'keys to the castle'; the key side is a phrase rather than a first association."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "CASTLE", "why": "The castle reaches the queen directly and the key through a familiar phrase."},
+      "pair_note": "No PASS; CITY is a clever alternative if the Queen City nickname is known to the audience."
+    },
+    {
+      "pair_id": "p_key__ring",
+      "a": "KEY",
+      "b": "RING",
+      "hints": [
+        {"text": "JANITOR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KEY via the janitor's jangling bunch of keys, RING only via the ring those keys hang on; the ring side depends on the key side."},
+        {"text": "KEYRING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains both targets as substrings; rule failure."},
+        {"text": "FOB", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "KEY via key fob is immediate; RING is reached only because the fob hangs on a key ring."},
+        {"text": "CHAIN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via keychain, RING via a chain being made of linked rings and the chain/ring pairing in jewelry; both sides reachable without the other."}
+      ],
+      "strong_hints": ["CHAIN"],
+      "best_available": {"text": "CHAIN", "why": "Keychain is a broad compound and a chain is literally a run of rings."},
+      "pair_note": "CHAIN is the one hint where the ring side stands on its own; JANITOR and FOB both route through 'key ring' and so lean on KEY."
+    },
+    {
+      "pair_id": "p_key__robot",
+      "a": "KEY",
+      "b": "ROBOT",
+      "hints": [
+        {"text": "TIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "ROBOT via the classic tin toy robot, KEY via the wind-up key in that toy's back; the key side only arrives through the toy."},
+        {"text": "WIND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wind-up toy scene: you wind the key to make the toy robot walk."},
+        {"text": "CODE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "KEY via key code or keypad code, ROBOT via the code that programs it."}
+      ],
+      "strong_hints": ["WIND", "CODE"],
+      "best_available": {"text": "WIND", "why": "The wind-up robot with a key in its back is a single familiar image."},
+      "pair_note": "WIND is strongest; TIN relies on the same toy but makes the player supply the key."
+    },
+    {
+      "pair_id": "p_key__rock",
+      "a": "KEY",
+      "b": "ROCK",
+      "hints": [
+        {"text": "KEYSTONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target KEY as a substring; rule failure."},
+        {"text": "FAKE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The fake hollow rock sold for hiding a spare key is one object that names both words."},
+        {"text": "HIDE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Hiding the spare key under a rock is a familiar shared scene."}
+      ],
+      "strong_hints": ["HIDE", "FAKE"],
+      "best_available": {"text": "HIDE", "why": "The hidden-key-under-a-rock scene is near-universal."},
+      "pair_note": "Two solid scene hints; KEYSTONE falls to the substring rule."
+    },
+    {
+      "pair_id": "p_key__salt",
+      "a": "KEY",
+      "b": "SALT",
+      "hints": [
+        {"text": "ISLAND", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY as a Florida island is fine, but SALT reaches ISLAND only via salt water, which is filler."},
+        {"text": "LIME", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via Key lime, SALT via the salt-and-lime of a tequila shot or margarita rim."},
+        {"text": "FLORIDA", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via the Florida Keys is strong; SALT has no recognizable Florida link beyond generic sea water."}
+      ],
+      "strong_hints": ["LIME"],
+      "best_available": {"text": "LIME", "why": "Key lime and salt-and-lime are both everyday pairings."},
+      "pair_note": "LIME alone carries this pair; the two geography hints never reach SALT."
+    },
+    {
+      "pair_id": "p_key__shadow",
+      "a": "KEY",
+      "b": "SHADOW",
+      "hints": [
+        {"text": "PLAY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "SHADOW via shadow play or shadow puppets, KEY via playing a key on a piano; the key side is a verb stretch."},
+        {"text": "SKELETON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "KEY via skeleton key is strong; SHADOW reaches a skeleton only through generic spooky imagery."},
+        {"text": "BOX", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SHADOW via shadow box (the display frame), KEY via a key box or lockbox; both are real compounds."},
+        {"text": "FIGURE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SHADOW via a shadowy figure, KEY via 'key figure' (an important person); both are common phrases."},
+        {"text": "DOOR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via door key is immediate; SHADOW has no distinctive route to a door."}
+      ],
+      "strong_hints": ["BOX", "FIGURE"],
+      "best_available": {"text": "BOX", "why": "Shadow box and key box are both established compound nouns."},
+      "pair_note": "Two moderate passes; FIGURE relies on the phrase 'key figure' which some players may not surface."
+    },
+    {
+      "pair_id": "p_key__shark",
+      "a": "KEY",
+      "b": "SHARK",
+      "hints": [
+        {"text": "FLORIDA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via the Florida Keys, SHARK via Florida's well-known shark waters and attacks."},
+        {"text": "WEST", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via Key West is strong; SHARK has no route to WEST."},
+        {"text": "LARGO", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "KEY via Key Largo, but SHARK does not reach LARGO and the place name is niche."}
+      ],
+      "strong_hints": ["FLORIDA"],
+      "best_available": {"text": "FLORIDA", "why": "Florida is home to the Keys and is widely associated with sharks."},
+      "pair_note": "FLORIDA passes; the two Key place-names are one-sided."
+    },
+    {
+      "pair_id": "p_key__snake",
+      "a": "KEY",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "CHARM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SNAKE via the snake charmer, KEY via a keychain charm; the key side is lighter but recognizable."},
+        {"text": "FLUTE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SNAKE via the charmer's flute, KEY via the keys on a flute; both are real."},
+        {"text": "SCALE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SNAKE via its scales, KEY via a musical scale in a key; two common senses of the hint."}
+      ],
+      "strong_hints": ["SCALE", "FLUTE", "CHARM"],
+      "best_available": {"text": "SCALE", "why": "Snake scales and a musical scale/key are both broad associations."},
+      "pair_note": "All three pass; SCALE is the cleanest."
+    },
+    {
+      "pair_id": "p_key__spider",
+      "a": "KEY",
+      "b": "SPIDER",
+      "hints": [
+        {"text": "LOCK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via lock and key; SPIDER has no route to LOCK."},
+        {"text": "ATTIC", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "SPIDER via cobwebbed attics, KEY via the locked attic door key; the key side is plausible but weak."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "ATTIC", "why": "A dusty locked attic is the one scene that includes both spiders and a key."},
+      "pair_note": "No PASS; the pair has little natural overlap."
+    },
+    {
+      "pair_id": "p_key__star",
+      "a": "KEY",
+      "b": "STAR",
+      "hints": [
+        {"text": "KEYNOTE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "moderate", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target KEY as a substring; rule failure."},
+        {"text": "SHIFT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "KEY via the Shift key is clear; STAR only via Shift+8 producing the asterisk, which needs explanation."},
+        {"text": "ASTERISK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "STAR via the asterisk being a little star symbol, KEY via the star/asterisk key on a phone keypad or keyboard."}
+      ],
+      "strong_hints": ["ASTERISK"],
+      "best_available": {"text": "ASTERISK", "why": "The asterisk is a star shape and sits on a labelled key."},
+      "pair_note": "ASTERISK passes moderately; SHIFT is the same idea one step removed."
+    },
+    {
+      "pair_id": "p_key__train",
+      "a": "KEY",
+      "b": "TRAIN",
+      "hints": [
+        {"text": "STATION", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "TRAIN via train station; KEY has no direct route to a station."},
+        {"text": "LOCKER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KEY via locker key, TRAIN via the luggage lockers at a station; the train side is secondary."},
+        {"text": "WIND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wind-up toy train scene: a key you wind to run the train."}
+      ],
+      "strong_hints": ["WIND"],
+      "best_available": {"text": "WIND", "why": "The wind-up toy train with a key is a familiar object."},
+      "pair_note": "WIND is the only pass; LOCKER is a fair second."
+    },
+    {
+      "pair_id": "p_key__water",
+      "a": "KEY",
+      "b": "WATER",
+      "hints": [
+        {"text": "ISLAND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "KEY as a small island (Florida Keys), WATER as what surrounds an island."},
+        {"text": "FLORIDA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "KEY via the Florida Keys is strong; WATER via Florida's coasts and beaches is a generic link."},
+        {"text": "LOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via 'low-key', WATER via low water or low tide; two common phrases."}
+      ],
+      "strong_hints": ["LOW", "ISLAND"],
+      "best_available": {"text": "LOW", "why": "Low-key and low water are both everyday phrases."},
+      "pair_note": "LOW is the standout; ISLAND is fine, FLORIDA leans on KEY."
+    },
+    {
+      "pair_id": "p_key__witch",
+      "a": "KEY",
+      "b": "WITCH",
+      "hints": [
+        {"text": "HAUNTED", "connection_to_a": 0, "connection_to_b": 1, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WITCH via a haunted house is spooky-adjacent; KEY has no route to HAUNTED."},
+        {"text": "LOCKED", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via locked doors; WITCH has no connection to LOCKED."},
+        {"text": "SKELETON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KEY via skeleton key, WITCH via skeletons and witches sharing Halloween imagery; the witch side is a scene association only."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "SKELETON", "why": "Skeleton key is a strong compound and skeletons sit beside witches in Halloween decor."},
+      "pair_note": "No PASS; SKELETON is the only hint touching both sides."
+    },
+    {
+      "pair_id": "p_key__wolf",
+      "a": "KEY",
+      "b": "WOLF",
+      "hints": [
+        {"text": "LOCK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KEY via lock and key; WOLF has no route to LOCK."},
+        {"text": "GRANDMA", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WOLF via Red Riding Hood's grandma is strong; KEY has no place in that story."},
+        {"text": "DOOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KEY via door key, WOLF via 'the wolf at the door' and the wolf knocking at the pigs' door."}
+      ],
+      "strong_hints": ["DOOR"],
+      "best_available": {"text": "DOOR", "why": "Door key plus the wolf-at-the-door story image."},
+      "pair_note": "DOOR passes cleanly; the other two are each wholly one-sided."
+    },
+    {
+      "pair_id": "p_king__knight",
+      "a": "KING",
+      "b": "KNIGHT",
+      "hints": [
+        {"text": "SIR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KNIGHT via the title Sir, KING via the monarch who dubs a knight 'Arise, Sir...'; one ceremony covers both."},
+        {"text": "ROUND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "King Arthur's Round Table and its knights."},
+        {"text": "ARTHUR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "King Arthur and the Knights of the Round Table; one story names both."},
+        {"text": "CHESS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both are chess pieces."}
+      ],
+      "strong_hints": ["CHESS", "ARTHUR", "ROUND", "SIR"],
+      "best_available": {"text": "CHESS", "why": "Both words are literal chess pieces every player knows."},
+      "pair_note": "Very strong pair; all four hints pass."
+    },
+    {
+      "pair_id": "p_king__light",
+      "a": "KING",
+      "b": "LIGHT",
+      "hints": [
+        {"text": "LION", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via The Lion King; LIGHT has no route to LION beyond a thrown-in film line."},
+        {"text": "CROWN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via the crown; LIGHT does not reach CROWN."},
+        {"text": "SUN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "LIGHT via sunlight, KING via the Sun King (Louis XIV) and the sun as king of the sky."}
+      ],
+      "strong_hints": ["SUN"],
+      "best_available": {"text": "SUN", "why": "Sunlight is immediate and the Sun King is a widely known epithet."},
+      "pair_note": "Only SUN reaches both; LION and CROWN are KING-only."
+    },
+    {
+      "pair_id": "p_king__moon",
+      "a": "KING",
+      "b": "MOON",
+      "hints": [
+        {"text": "LION", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via The Lion King; MOON has no route to LION."},
+        {"text": "NIGHT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "MOON via the night sky is immediate; KING reaches NIGHT only via the homophone knight, which is not a connection to KING itself."},
+        {"text": "CRESCENT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "MOON via crescent moon; KING has no link to CRESCENT."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "NIGHT", "why": "Strongest moon side and the night/knight echo gives a faint royal flavour; still one-sided."},
+      "pair_note": "No PASS; none of the hints has a real KING route. A new hint is needed."
+    },
+    {
+      "pair_id": "p_king__mouse",
+      "a": "KING",
+      "b": "MOUSE",
+      "hints": [
+        {"text": "LION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KING via The Lion King, MOUSE via Aesop's The Lion and the Mouse; two familiar stories."},
+        {"text": "NUTCRACKER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "The Nutcracker's villain is the Mouse King, which names both; the king side needs the player to know the ballet's plot."},
+        {"text": "CASTLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KING via his castle, MOUSE via the Disney castle logo or a castle mouse; the mouse side is indirect."}
+      ],
+      "strong_hints": ["LION", "NUTCRACKER"],
+      "best_available": {"text": "LION", "why": "Lion King plus the Lion and the Mouse fable are both widely known."},
+      "pair_note": "LION is the safe serve; NUTCRACKER is more precise but depends on knowing the Mouse King."
+    },
+    {
+      "pair_id": "p_king__night",
+      "a": "KING",
+      "b": "NIGHT",
+      "hints": [
+        {"text": "KNIGHT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "KING via knights serving a king, NIGHT only via the homophone; a sound-alike is a thin route that the rubric does not list as valid."},
+        {"text": "THRONES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Game of Thrones gives KING (kings and the Iron Throne) and NIGHT (the Night King, the Night's Watch); one show covers both."},
+        {"text": "ELVIS", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via 'the King' Elvis; NIGHT has no clear route to Elvis."}
+      ],
+      "strong_hints": ["THRONES"],
+      "best_available": {"text": "THRONES", "why": "Game of Thrones is widely known and contains both kings and the Night King."},
+      "pair_note": "THRONES passes; KNIGHT is a homophone play worth an owner decision."
+    },
+    {
+      "pair_id": "p_king__ocean",
+      "a": "KING",
+      "b": "OCEAN",
+      "hints": [
+        {"text": "POSEIDON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Poseidon is the king/god of the ocean."},
+        {"text": "CRAB", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "KING via king crab, OCEAN via where crabs live."},
+        {"text": "TRITON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "King Triton of The Little Mermaid rules the sea; also the Greek sea god."},
+        {"text": "NEPTUNE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:POSEIDON"], "verdict": "PASS", "reason": "Neptune is the Roman king/god of the sea; same route as POSEIDON."}
+      ],
+      "strong_hints": ["POSEIDON", "NEPTUNE", "CRAB", "TRITON"],
+      "best_available": {"text": "POSEIDON", "why": "King of the sea is the direct meaning."},
+      "pair_note": "All four pass; POSEIDON and NEPTUNE are the same idea twice."
+    },
+    {
+      "pair_id": "p_king__pirate",
+      "a": "KING",
+      "b": "PIRATE",
+      "hints": [
+        {"text": "TREASURE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "PIRATE via pirate treasure, KING via the royal treasury and a king's hoard of treasure."},
+        {"text": "LETTER", "connection_to_a": 0, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["obscure", "needs_explanation", "one_sided"], "verdict": "FAIL", "reason": "PIRATE via a letter of marque is niche and KING via the king who issued it is an explanation invented to rescue the word."},
+        {"text": "CROWN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via the crown; PIRATE has no route to CROWN beyond a 'pirate king' trope."}
+      ],
+      "strong_hints": ["TREASURE"],
+      "best_available": {"text": "TREASURE", "why": "Treasure belongs to both pirates and kings in ordinary story imagery."},
+      "pair_note": "TREASURE is the only pass."
+    },
+    {
+      "pair_id": "p_king__queen",
+      "a": "KING",
+      "b": "QUEEN",
+      "hints": [
+        {"text": "BED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "King-size and queen-size beds."},
+        {"text": "CARDS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "King and queen are both face cards."},
+        {"text": "THRONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both sit on a throne."},
+        {"text": "ROYAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Shared property: both are royals; broad but accurate for both."},
+        {"text": "CHESS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both are chess pieces."}
+      ],
+      "strong_hints": ["BED", "CARDS", "CHESS", "THRONE", "ROYAL"],
+      "best_available": {"text": "BED", "why": "King and queen bed sizes are the most everyday pairing that does not also point at other royals."},
+      "pair_note": "Every hint passes; the pair is almost too easy."
+    },
+    {
+      "pair_id": "p_king__ring",
+      "a": "KING",
+      "b": "RING",
+      "hints": [
+        {"text": "KISS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Kissing the king's ring is one scene of fealty that names both."},
+        {"text": "ARAGORN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Aragorn is the returning King in The Lord of the Rings."},
+        {"text": "SOLOMON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "KING Solomon is broadly known, but the Ring/Seal of Solomon is a niche legend."},
+        {"text": "SIGNET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A signet ring is the king's seal ring; both words live in the compound."}
+      ],
+      "strong_hints": ["SIGNET", "KISS", "ARAGORN"],
+      "best_available": {"text": "SIGNET", "why": "Signet ring is the object itself and it is a royal emblem."},
+      "pair_note": "Three passes of moderate recognizability; SOLOMON is too niche on the ring side."
+    },
+    {
+      "pair_id": "p_king__robot",
+      "a": "KING",
+      "b": "ROBOT",
+      "hints": [
+        {"text": "ROBOCOP", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "ROBOT via RoboCop; KING has no route."},
+        {"text": "THRONE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via the throne; ROBOT has no route."},
+        {"text": "CHESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "KING via the chess piece, ROBOT via chess computers like Deep Blue beating humans; the robot side is a stretch."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "CHESS", "why": "The only hint with any robot side, through chess-playing machines."},
+      "pair_note": "No PASS; the pair needs a new hint."
+    },
+    {
+      "pair_id": "p_king__rock",
+      "a": "KING",
+      "b": "ROCK",
+      "hints": [
+        {"text": "ROLL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "ROCK via rock and roll, KING via the King of Rock and Roll; the king side arrives through the same phrase."},
+        {"text": "LION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Lion King's Pride Rock covers both; also lions are kings of beasts."},
+        {"text": "PRIDE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation", "variant_of:LION"], "verdict": "BORDERLINE", "reason": "Both sides route through The Lion King (Pride Rock, the pride's king), so the player must find the film first."},
+        {"text": "ELVIS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Elvis is 'the King' of rock and roll."}
+      ],
+      "strong_hints": ["ELVIS", "LION", "ROLL"],
+      "best_available": {"text": "ELVIS", "why": "The King of rock is a single widely known epithet."},
+      "pair_note": "Good pair; PRIDE is a weaker echo of LION."
+    },
+    {
+      "pair_id": "p_king__rose",
+      "a": "KING",
+      "b": "ROSE",
+      "hints": [
+        {"text": "TUDOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Tudor kings (Henry VIII) and the Tudor rose emblem."},
+        {"text": "GARDEN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "ROSE via rose garden; KING has no route to GARDEN."},
+        {"text": "WAR", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "The Wars of the Roses were fought between rival claimants to the English crown; both sides depend on knowing that history."}
+      ],
+      "strong_hints": ["TUDOR", "WAR"],
+      "best_available": {"text": "TUDOR", "why": "The Tudor rose and Tudor kings are a tight historical pairing."},
+      "pair_note": "Two history-based passes; GARDEN is one-sided."
+    },
+    {
+      "pair_id": "p_king__salt",
+      "a": "KING",
+      "b": "SALT",
+      "hints": [
+        {"text": "TAX", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SALT via the salt tax (Gandhi's Salt March), KING via the king's taxes; shared historical theme."},
+        {"text": "MIDAS", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING Midas is strong; SALT has no route (Midas turned things to gold, not salt)."},
+        {"text": "LEAR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "KING Lear is known; the 'love like salt' folk-tale cousin of the Lear story is far too obscure to reach SALT."}
+      ],
+      "strong_hints": ["TAX"],
+      "best_available": {"text": "TAX", "why": "Salt taxes and royal taxes are both recognizable history."},
+      "pair_note": "TAX is the only pass; the two named kings never reach SALT."
+    },
+    {
+      "pair_id": "p_king__shadow",
+      "a": "KING",
+      "b": "SHADOW",
+      "hints": [
+        {"text": "LION", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "KING via The Lion King, SHADOW only via the film's 'shadowy place' / shadowlands line, which a player must recall."},
+        {"text": "THRONE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "KING via the throne; SHADOW has no route."},
+        {"text": "SCAR", "connection_to_a": 1, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "KING only via Scar being the usurper in The Lion King, and SHADOW has no route at all."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "LION", "why": "Only hint with any shadow side, through the Lion King's shadowlands."},
+      "pair_note": "No PASS; all three lean on The Lion King and none reaches SHADOW well."
+    },
+    {
+      "pair_id": "p_king__shark",
+      "a": "KING",
+      "b": "SHARK",
+      "hints": [
+        {"text": "APEX", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "SHARK via apex predator, KING via the king as the apex of a hierarchy; the king side is a shared-property stretch."},
+        {"text": "MACKEREL", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "KING via king mackerel, SHARK via mackerel sharks or sharks eating mackerel; both are fishing-trivia routes."},
+        {"text": "OCEAN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "SHARK via the ocean, KING via the shark as king of the ocean; the king side only exists as a description of the shark."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "APEX", "why": "Apex predator is a strong shark link and 'apex' as top-of-hierarchy reaches king more honestly than OCEAN does."},
+      "pair_note": "No PASS; every hint is a shared-property stretch on the KING side."
+    },
+    {
+      "pair_id": "p_king__snake",
+      "a": "KING",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "PHARAOH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "KING via pharaoh as Egypt's king, SNAKE via the cobra on the pharaoh's crown and the asp of Cleopatra."},
+        {"text": "KINGSNAKE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains both targets as substrings; rule failure."},
+        {"text": "KAA", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SNAKE via The Jungle Book's Kaa; KING has no route (King Louie is a different character)."},
+        {"text": "COBRA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "King cobra is a common compound and a cobra is a snake."}
+      ],
+      "strong_hints": ["COBRA", "PHARAOH"],
+      "best_available": {"text": "COBRA", "why": "King cobra is the most widely known compound for this pair."},
+      "pair_note": "COBRA is clean; KINGSNAKE falls to the substring rule."
+    }
+  ]
+}
