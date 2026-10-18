@@ -20,6 +20,7 @@ import assert from "node:assert/strict";
 import puppeteer from "puppeteer-core";
 import { CHROME } from "../friends/browser.mjs";
 import { solve, nudgeWrong } from "../friends/board.mjs";
+import { SAVE_HEADLINE, SAVE_DETAIL } from "../../src/unlimited/history.js";
 
 const URL = process.env.FRIENDS_E2E_URL || "http://127.0.0.1:5192";
 const OUT = process.argv[2] ? path.resolve(process.argv[2]) : null;
@@ -31,7 +32,16 @@ const log = (...a) => console.log("•", ...a);
 const waitText = (page, t, timeout = 15000) => page.waitForFunction((x) => document.body.innerText.includes(x), { timeout }, t);
 const lives = (page) => page.$$eval(".game-lives .life:not(.lost)", (l) => l.length);
 const raw = (page) => page.evaluate((k) => { try { return localStorage.getItem(k); } catch { return "<blocked>"; } }, KEY);
-const notice = (page) => page.$eval("[data-testid=ul-save-notice]", (e) => e.textContent).catch(() => null);
+// The warning: one short headline; "Why?" holds the cause-specific explanation.
+const notice = (page) => page.$eval("[data-testid=ul-save-notice]", (e) => ({ state: e.dataset.state, head: e.querySelector(".ul-save-head").firstChild.textContent.trim(), detail: e.querySelector("[data-testid=ul-save-detail]").textContent, height: e.getBoundingClientRect().height, open: e.querySelector("[data-testid=ul-save-why]").getAttribute("aria-expanded") === "true" })).catch(() => null);
+const expectNotice = async (page, state, where) => {
+  const n = await notice(page);
+  assert.ok(n, `${where}: the warning is shown`);
+  assert.equal(n.state, state, `${where}: cause ${state}`);
+  assert.equal(n.head, SAVE_HEADLINE, `${where}: the short headline`);
+  assert.equal(n.detail, SAVE_DETAIL[state], `${where}: the ${state} explanation behind Why?`);
+  return n;
+};
 const chipId = (page) => page.$eval("[data-testid=ul-chip]", (e) => e.dataset.boardId);
 const shot = async (page, name, tag) => { if (!OUT) return;
   await page.evaluate((t) => { const d = document.createElement("div"); d.id = "__test_label"; d.textContent = `TEST DATA / FORCED STORAGE FAILURE · ${t}`;
@@ -78,10 +88,29 @@ try {
     await page.locator(".lobby-diff-opt::-p-text(Standard)").click();
     await page.locator("[data-testid=ul-start]").click();
     await page.waitForSelector(".game .csurface .ctile"); await sleep(900);
-    const n1 = await notice(page);
-    assert.ok(n1 && n1.includes("isn't saving") && n1.includes("won't be kept if you refresh"), `the game screen says the puzzle isn't being kept: ${n1}`);
+    const n1 = await expectNotice(page, "failed", "game screen");
+    assert.equal(n1.open, false, "the explanation starts folded");
+    assert.ok(n1.height <= 110, `collapsed it stays compact on a phone (${Math.round(n1.height)}px)`);
+    log(`compact warning height on a 390px phone: ${Math.round(n1.height)}px`);
+    // With the warning folded on a 390×844 phone: it sits in the page flow (covers nothing), every card is on
+    // screen without scrolling, and Submit is reachable by scrolling (it ends just below the fold; see log).
+    const fit = await page.evaluate(() => { const r = (el) => el.getBoundingClientRect(); const n = r(document.querySelector("[data-testid=ul-save-notice]")); const tiles = [...document.querySelectorAll(".game .ctile")].map(r); const btn = r(document.querySelector("button.sbtn")); const style = getComputedStyle(document.querySelector("[data-testid=ul-save-notice]"));
+      return { position: style.position, noticeBottom: n.bottom, firstCardTop: Math.min(...tiles.map((t) => t.top)), lowestCard: Math.max(...tiles.map((t) => t.bottom)), submitBottom: btn.bottom, vh: innerHeight }; });
+    log(`folded warning on 390×844: lowest card ${Math.round(fit.lowestCard)}px, Submit bottom ${Math.round(fit.submitBottom)}px (813px with no warning), viewport ${fit.vh}px`);
+    assert.equal(fit.position, "static", "the warning is in the page flow, not overlaid on the game");
+    assert.ok(fit.noticeBottom <= fit.firstCardTop, "it sits above the board and covers no card");
+    assert.ok(fit.lowestCard <= fit.vh, "every card is on screen without scrolling");
+    // The game's own scroll area (.play-fit-outer) brings Submit fully on screen.
+    const reached = await page.evaluate(() => { const btn = document.querySelector("button.sbtn"); btn.scrollIntoView({ block: "end" }); const r = btn.getBoundingClientRect(); return { bottom: r.bottom, top: r.top }; });
+    assert.ok(reached.top >= 0 && reached.bottom <= fit.vh, `Submit is reachable by scrolling the game area (ends at ${Math.round(reached.bottom)}px)`);
+    await page.evaluate(() => { const el = document.querySelector(".play-fit-outer"); if (el) el.scrollTop = 0; });
+    await shot(page, "a0-game-compact-warning", "storage full: compact warning");
+    await page.locator("[data-testid=ul-save-why]").click(); await sleep(300);
+    assert.equal((await notice(page)).open, true, "Why? opens the full explanation");
+    await shot(page, "a1-game-why-open", "storage full: Why? open (scroll or fold to play)");
+    await page.locator("[data-testid=ul-save-why]").click(); await sleep(300);
+    assert.equal((await notice(page)).open, false, "tapping Why? again folds it");
     assert.equal(await raw(page), SEED_RAW, "the saved history is untouched");
-    await shot(page, "a1-game-not-saving", "storage full: game screen");
     const b1 = await boardOf(page); assert.ok(b1, "the board is held in memory");
     await nudgeWrong(page, asView(b1)); await page.locator("button.sbtn").click(); await sleep(4600);
     assert.equal(await lives(page), 2, "play continues: a wrong guess costs a life");
@@ -96,7 +125,7 @@ try {
     await page.locator("[data-testid=ul-next]").click(); await page.waitForSelector(".game .csurface .ctile"); await sleep(900);
     const b2id = await chipId(page); assert.notEqual(b2id, b1.id, "Next still gives a new board");
     await page.locator(".fr-back").click(); await page.waitForSelector("[data-testid=ul-continue]");
-    assert.ok((await notice(page))?.includes("won't be kept"), "the lobby repeats the warning next to Continue");
+    await expectNotice(page, "failed", "lobby");
     await shot(page, "a3-lobby-not-saving", "storage full: lobby");
     assert.equal(await raw(page), SEED_RAW, "still untouched after a finished game, a note and Next");
     // Refresh: the unsaved puzzle is gone (as warned), the old history is all there.
@@ -127,12 +156,12 @@ try {
     await page.evaluate((k, v) => { localStorage.setItem("clover_tutorial_seen", "true"); localStorage.setItem(k, v); }, KEY, FUTURE);
     await page.goto(`${URL}/unlimited`, { waitUntil: "networkidle0" });
     await page.waitForSelector("[data-testid=ul-save-notice]");
-    assert.ok((await notice(page)).includes("couldn't be read"), "the lobby says the saved games couldn't be read");
+    await expectNotice(page, "unreadable", "lobby (unreadable)");
     await shot(page, "b1-unreadable", "unreadable saved data: lobby");
     await page.locator("[data-testid=ul-start]").click(); await page.waitForSelector(".game .csurface .ctile"); await sleep(900);
     await page.locator("button.sbtn").click(); await sleep(4600);   // the deal is never solved: a wrong guess
     assert.equal(await lives(page), 2, "play works with unreadable saved data");
-    assert.ok((await notice(page)).includes("couldn't be read"), "the game screen repeats the warning");
+    await expectNotice(page, "unreadable", "game screen (unreadable)");
     await page.reload({ waitUntil: "networkidle0" });
     await page.waitForSelector("[data-testid=ul-save-notice]");
     assert.equal(await raw(page), FUTURE, "the unreadable saved data is never written over");
@@ -151,10 +180,10 @@ try {
     await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2 });
     await page.goto(`${URL}/unlimited`, { waitUntil: "networkidle0" });
     await page.waitForSelector("[data-testid=ul-save-notice]", { timeout: 15000 });
-    assert.ok((await notice(page)).includes("isn't saving"), "the lobby says it isn't saving");
+    await expectNotice(page, "unavailable", "lobby (blocked)");
     await shot(page, "c1-blocked", "storage blocked: lobby");
     await page.locator("[data-testid=ul-start]").click(); await page.waitForSelector(".game .csurface .ctile"); await sleep(900);
-    assert.ok((await notice(page)).includes("won't be kept"), "and the game screen too");
+    await expectNotice(page, "unavailable", "game screen (blocked)");
     // The deal never starts solved, so submitting it as dealt is a wrong guess.
     await page.locator("button.sbtn").click(); await sleep(4600);
     assert.equal(await lives(page), 2, "play works with storage blocked: a wrong guess costs a life");

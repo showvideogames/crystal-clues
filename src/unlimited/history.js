@@ -45,6 +45,14 @@ export function storageStatus() {
   }
 }
 
+/** What the player is told when Unlimited isn't being saved (shown by UnlimitedView's SaveNotice). */
+export const SAVE_HEADLINE = "Progress isn't saving in this browser. Keep this page open to avoid losing this game or your notes.";
+export const SAVE_DETAIL = {
+  failed: "This browser's storage is full or turned off, so Unlimited can't save right now. Anything already saved here is unchanged and nothing is deleted. If you refresh or leave, this game and any notes on it are lost; use Copy to keep your feedback. Saving starts again on its own if storage frees up.",
+  unavailable: "This browser isn't letting Unlimited use storage (it may be turned off or blocked), so nothing can be saved. If you refresh or leave, this game and any notes on it are lost; use Copy to keep your feedback.",
+  unreadable: "Unlimited games already saved in this browser couldn't be read (they may be damaged or from a newer version of the game), so nothing is saved over them and they stay as they are. New games and notes aren't kept; use Copy to keep your feedback.",
+};
+
 /**
  * Saves the store. Returns true only if it was actually written. It never
  * writes over saved data it cannot read (that would erase someone's history),

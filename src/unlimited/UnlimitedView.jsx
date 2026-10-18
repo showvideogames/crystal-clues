@@ -17,7 +17,7 @@ import { Icon, PageHead, Sheet } from "../friends/ui.jsx";
 import POOL from "./pool.json";
 import LIBRARY from "./random-library.json";
 import { generateBoard, freshSeed, validateBoard } from "./generate.js";
-import { RATINGS, readStore, writeStore, storageStatus, nextBoard, playedTotal, resolveBoard, recentPairIds, startBoard, finishBoard, rateClue, notePuzzle, feedbackFor, feedbackText, feedbackJson } from "./history.js";
+import { RATINGS, SAVE_HEADLINE, SAVE_DETAIL, readStore, writeStore, storageStatus, nextBoard, playedTotal, resolveBoard, recentPairIds, startBoard, finishBoard, rateClue, notePuzzle, feedbackFor, feedbackText, feedbackJson } from "./history.js";
 import "../friends/friends.css";
 import "./unlimited.css";
 
@@ -150,13 +150,23 @@ export default function UnlimitedView({ kit, onHome, onHowToPlay }) {
   );
 }
 
-/** Said plainly when this browser is not keeping Unlimited, so nothing promises a resume that won't happen. */
+/**
+ * Said plainly when this browser is not keeping Unlimited, so nothing promises a
+ * resume that won't happen. One short line (it must not crowd the board on a
+ * phone); "Why?" opens the explanation, which differs by cause.
+ */
 function SaveNotice({ state }){
+  const [open, setOpen] = useState(false);
   if(state === "ok") return null;
-  const text = state === "unreadable"
-    ? "Your saved Unlimited games in this browser couldn't be read, so nothing will be saved over them. You can keep playing, but new games and notes won't be kept."
-    : "This browser isn't saving Unlimited right now (storage is full or turned off). You can keep playing, but this puzzle and your notes won't be kept if you refresh or leave the page. Your earlier games are unchanged.";
-  return <p className="ul-save-notice" role="alert" data-testid="ul-save-notice">{text}</p>;
+  return (
+    <div className="ul-save-notice" role="alert" data-testid="ul-save-notice" data-state={state}>
+      <p className="ul-save-head">{SAVE_HEADLINE}{" "}
+        <button type="button" className="ul-save-why" aria-expanded={open} aria-controls="ul-save-detail"
+          onClick={()=>setOpen((o)=>!o)} data-testid="ul-save-why">{open ? "Hide" : "Why?"}</button>
+      </p>
+      <p id="ul-save-detail" className="ul-save-detail" data-testid="ul-save-detail" hidden={!open}>{SAVE_DETAIL[state] || SAVE_DETAIL.failed}</p>
+    </div>
+  );
 }
 
 function Lobby({ store, saved, played, current, choice, setChoice, failed, onPlay, onReplay, onContinue, onHome, onHowToPlay }){
