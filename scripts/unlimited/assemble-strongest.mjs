@@ -32,7 +32,7 @@ const strength = (c) => { const b = c.provenance?.blindReview || {}; return ((b.
 
 const excludedPairs = new Set();
 const priorHints = new Set();
-for (const f of EXCL) for (const b of JSON.parse(readFileSync(f, "utf8")).boards) for (const r of b.reveal) { excludedPairs.add(r.pairId); priorHints.add(normHint(r.hint)); }
+for (const f of EXCL) for (const b of JSON.parse(readFileSync(f, "utf8")).boards) for (const r of b.reveal) { excludedPairs.add(r.pairId); priorHints.add(normHint(r.clue)); }
 
 // Keep a pair only if the hint it would serve is strong; offer the assembler
 // only that hint (or the approved equal set), so the batch serves the best clue.
@@ -59,7 +59,7 @@ for (let s = S0; s <= S1; s++) {
   if (!res || r.boards.length > res.boards.length) { res = r; seedUsed = s; }
 }
 mkdirSync(OUT, { recursive: true });
-const out = { _metadata: { batch: BATCH, seed: seedUsed, assembled: new Date().toISOString(), selection: `strongest eligible: served hint blind strength >= ${MIN} ((a+b)*10+fairness), canonical/preferred choice only, pairs from ${EXCL.join(" + ") || "none"} excluded`, tally, maxTargetPerWord: MAX_TARGET, rules: "distinct normalised hint texts; hint ≠ own targets; 28 distinct words; no board-level semantic review (owner decision 2026-10-17)", statuses: "local candidate for parent review; not exported, not published", reusedHintTextsFromPriorBatches: res.boards.flatMap((b) => b.reveal.map((r) => r.hint)).filter((h) => priorHints.has(normHint(h))) }, boards: res.boards };
+const out = { _metadata: { batch: BATCH, seed: seedUsed, assembled: new Date().toISOString(), selection: `strongest eligible: served hint blind strength >= ${MIN} ((a+b)*10+fairness), canonical/preferred choice only, pairs from ${EXCL.join(" + ") || "none"} excluded`, tally, maxTargetPerWord: MAX_TARGET, rules: "distinct normalised hint texts; hint ≠ own targets; 28 distinct words; no board-level semantic review (owner decision 2026-10-17)", statuses: "local candidate for parent review; not exported, not published", reusedHintTextsFromPriorBatches: res.boards.flatMap((b) => b.reveal.map((r) => r.clue)).filter((h) => priorHints.has(normHint(h))) }, boards: res.boards };
 writeFileSync(`${OUT}/boards.json`, JSON.stringify(out, null, 2) + "\n");
 console.log(`seed ${seedUsed}: ${res.boards.length}/${COUNT} boards | pool ${pool.length} strong pairs | tally ${JSON.stringify(tally)} | prior hint texts reused: ${out._metadata.reusedHintTextsFromPriorBatches.length}`);
 if (res.boards.length < COUNT) process.exitCode = 2;

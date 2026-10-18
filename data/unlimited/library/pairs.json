@@ -90552,7 +90552,7 @@
           "type": "wordplay",
           "wordAConnection": "The moon rises every night.",
           "wordBConnection": "Rose is the past tense of rise.",
-          "revealExplanation": "The moon rises every night, and rose is the past tense of rise.",
+          "revealExplanation": "The Moon rises; rose is the past tense of rise.",
           "reference": null,
           "provenance": {
             "source": "u27",
@@ -90571,6 +90571,18 @@
               "reason": "MOON: moonrise / the moon rises; ROSE: 'rose' is the past tense of rise (ordinary inflection).",
               "model": "claude-opus-5-5",
               "modelEvidence": "reviews/u27-blind-review.json _metadata.model, echoed by the reviewer from its system prompt; dispatcher model=opus"
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-18",
+              "source": "parent bounded sample of the u27-u30 bundle",
+              "before": {
+                "revealExplanation": "The moon rises every night, and rose is the past tense of rise."
+              },
+              "after": {
+                "revealExplanation": "The Moon rises; rose is the past tense of rise."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -99908,7 +99920,7 @@
           "type": "direct_association",
           "wordAConnection": "A ring of teeth.",
           "wordBConnection": "Shark teeth.",
-          "revealExplanation": "Teeth: the shark's ring of them.",
+          "revealExplanation": "A shark’s teeth; a teething ring.",
           "reference": null,
           "stretch": true,
           "provenance": {
@@ -99928,6 +99940,18 @@
               "reason": "SHARK via its rows of teeth; RING via the teething ring (ordinary inflection).",
               "model": "claude-opus-5-5",
               "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-18",
+              "source": "parent bounded sample of the u27-u30 bundle",
+              "before": {
+                "revealExplanation": "Teeth: the shark's ring of them."
+              },
+              "after": {
+                "revealExplanation": "A shark’s teeth; a teething ring."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -101015,7 +101039,7 @@
           "type": "direct_association",
           "wordAConnection": "A robot mimics.",
           "wordBConnection": "A shadow mimics you.",
-          "revealExplanation": "Mimic: robot and shadow copy you.",
+          "revealExplanation": "A robot can mimic your movements; your shadow follows them.",
           "reference": null,
           "stretch": true,
           "provenance": {
@@ -101035,6 +101059,18 @@
               "reason": "SHADOW copies your every move; ROBOT via robots and androids that mimic human movement, a shared copying property.",
               "model": "claude-opus-5-5",
               "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-18",
+              "source": "parent bounded sample of the u27-u30 bundle",
+              "before": {
+                "revealExplanation": "Mimic: robot and shadow copy you."
+              },
+              "after": {
+                "revealExplanation": "A robot can mimic your movements; your shadow follows them."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -104036,7 +104072,7 @@
         {
           "text": "BEAST",
           "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
+          "heldReason": "override: blind PASS preserved, but the Beast of Beauty and the Beast is not a wolf; serving it would rest on an invented route (the author had rejected it before review)",
           "provenance": {
             "source": "u31",
             "authorLabel": "rejected",
@@ -104055,6 +104091,12 @@
               "model": "claude-opus-5-5",
               "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
             }
+          },
+          "override": {
+            "by": "main session (claude-opus-5-5), author fact check",
+            "date": "2026-10-18",
+            "status": "held",
+            "reason": "blind PASS preserved, but the Beast of Beauty and the Beast is not a wolf; serving it would rest on an invented route (the author had rejected it before review)"
           }
         }
       ]

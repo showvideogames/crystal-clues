@@ -8,7 +8,7 @@
     "reconciled": {
       "date": "2026-10-17",
       "rule": "reviewer_final_best_available -> canonical when it differs from the provisional top candidate; contradictions left provisional",
-      "added": 2
+      "added": 0
     }
   },
   "pairs": {
@@ -1883,19 +1883,35 @@
     "p_light__train": {
       "status": "approved",
       "canonical": "RAIL",
-      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
-      "date": "2026-10-17",
-      "basis": "reviewer_final_best_available",
-      "reviewer": "blind-subagent-27",
-      "reason": "Light rail is a compound that is literally a kind of train.",
+      "by": "parent (bounded sample of the u27-u30 bundle)",
+      "date": "2026-10-18",
+      "basis": "parent_editorial",
+      "reason": "parent keeps RAIL preferred; good alternatives retained in the library",
+      "previous": {
+        "status": "approved",
+        "canonical": "RAIL",
+        "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+        "date": "2026-10-17",
+        "basis": "reviewer_final_best_available",
+        "reviewer": "blind-subagent-27",
+        "reason": "Light rail is a compound that is literally a kind of train.",
+        "evidence": {
+          "displaced": "SIGNAL",
+          "scores": {
+            "RAIL": "2/2/2",
+            "SIGNAL": "2/2/2"
+          },
+          "numericalTie": true,
+          "note": "equal blind scores; library order would have served the displaced hint"
+        }
+      },
       "evidence": {
-        "displaced": "SIGNAL",
-        "scores": {
-          "RAIL": "2/2/2",
-          "SIGNAL": "2/2/2"
-        },
-        "numericalTie": true,
-        "note": "equal blind scores; library order would have served the displaced hint"
+        "status": "ai_reviewed",
+        "scores": "2/2/2",
+        "alternatives": [
+          "SIGNAL",
+          "TUNNEL"
+        ]
       }
     },
     "p_light__water": {
@@ -2364,6 +2380,23 @@
         },
         "numericalTie": true,
         "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_night__shadow": {
+      "status": "approved",
+      "canonical": "MOONLIGHT",
+      "by": "parent (bounded sample of the u27-u30 bundle)",
+      "date": "2026-10-18",
+      "basis": "parent_editorial",
+      "reason": "parent keeps MOONLIGHT preferred; good alternatives retained in the library",
+      "previous": null,
+      "evidence": {
+        "status": "ai_reviewed",
+        "scores": "2/2/2",
+        "alternatives": [
+          "DARK",
+          "SPOOKY"
+        ]
       }
     }
   }
