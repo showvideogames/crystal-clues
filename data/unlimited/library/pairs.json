@@ -363,6 +363,16 @@
         "rejected": 28,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u24-blind-review.json",
+        "key": "data/unlimited/library/reviews/u24-blind-key.json",
+        "batch": "data/unlimited/library/batches/u24-batch.json",
+        "ai_reviewed": 61,
+        "held": 34,
+        "rejected": 16,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -70873,6 +70883,79 @@
       ]
     },
     {
+      "pair_id": "p_ice__pirate",
+      "a": "ICE",
+      "b": "PIRATE",
+      "source": "u24",
+      "pairNote": "No PASS. The pair is hard: ice and pirate share no obvious scene; RUM is the only hint that touches both.",
+      "reviewerBestAvailable": {
+        "text": "RUM",
+        "why": "Pirate side is instant and 'rum on ice' is a real drinking phrase, so a player can land both; ARCTIC never reaches pirate.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "RUM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Rum on ice.",
+          "wordBConnection": "The pirate's rum.",
+          "revealExplanation": "Rum: the pirate's, on ice.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Rum is the pirate's drink; the ice side rests on 'rum on ice' / a rum cocktail, which is reachable but secondary."
+            }
+          }
+        },
+        {
+          "text": "ARCTIC",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Arctic ice.",
+          "wordBConnection": "Pirates in Arctic waters.",
+          "revealExplanation": "Arctic: ice, and pirates in cold seas.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Arctic ice is immediate, but nothing recognizable links the Arctic to pirates."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_ice__queen",
       "a": "ICE",
       "b": "QUEEN",
@@ -71092,6 +71175,1675 @@
       }
     },
     {
+      "pair_id": "p_ice__ring",
+      "a": "ICE",
+      "b": "RING",
+      "source": "u24",
+      "pairNote": "Two good jewellery-route hints; RINK is a false friend.",
+      "reviewerBestAvailable": {
+        "text": "DIAMOND",
+        "why": "Both sides are broad and sit in the same jewellery scene.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DIAMOND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice means diamonds.",
+          "wordBConnection": "A diamond ring.",
+          "revealExplanation": "Diamond: the ice on the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A diamond ring is the archetypal ring, and 'ice' is the well-known slang for diamonds."
+            }
+          }
+        },
+        {
+          "text": "BLING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice is bling.",
+          "wordBConnection": "A bling ring.",
+          "revealExplanation": "Bling: ice on the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Bling is flashy jewellery (rings), and 'ice' is the slang word for diamonds within the same bling vocabulary."
+            }
+          }
+        },
+        {
+          "text": "RINK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An ice rink.",
+          "wordBConnection": "A rink is a ring.",
+          "revealExplanation": "Rink: a ring of ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ice rink is direct, but a rink is not a ring to a player; the etymological link is invisible."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__robot",
+      "a": "ICE",
+      "b": "ROBOT",
+      "source": "u24",
+      "pairNote": "Only the shared-property route exists; COLD carries it, FROZEN is a weaker variant.",
+      "reviewerBestAvailable": {
+        "text": "COLD",
+        "why": "Cold-and-unfeeling is a standard way to describe robots, so the shared property is recognizable.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "COLD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Ice-cold.",
+          "wordBConnection": "A cold robot.",
+          "revealExplanation": "Cold: ice, and the robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice is cold physically; a robot is 'cold' emotionally, a familiar shared-property stretch like RICH for BANK+KING."
+            }
+          }
+        },
+        {
+          "text": "FROZEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Frozen ice.",
+          "wordBConnection": "A robot frozen in place.",
+          "revealExplanation": "Frozen: ice, and the stalled robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:COLD"
+              ],
+              "reason": "Frozen is ice; a robot 'freezes' when it seizes up (or the robot dance freeze), a thinner route than COLD."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__rock",
+      "a": "ICE",
+      "b": "ROCK",
+      "source": "u24",
+      "pairNote": "WHISKEY is excellent; ROCKS would be ideal but is disqualified by containing the target.",
+      "reviewerBestAvailable": {
+        "text": "WHISKEY",
+        "why": "One ordinary drink order points at both words.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WHISKEY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Whiskey on ice.",
+          "wordBConnection": "Whiskey on the rocks.",
+          "revealExplanation": "Whiskey: on the rocks, on ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Whiskey on ice and whiskey on the rocks are the same familiar bar order."
+            }
+          }
+        },
+        {
+          "text": "HARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Hard ice.",
+          "wordBConnection": "Hard rock.",
+          "revealExplanation": "Hard: ice and rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Rock-hard is idiomatic and ice is a hard solid; a defensible shared property."
+            }
+          }
+        },
+        {
+          "text": "ROCKS",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target ROCK",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "'On the rocks' means on ice, but the hint contains the target ROCK, which is a rule failure."
+            }
+          }
+        },
+        {
+          "text": "GLACIER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glacier is ice.",
+          "wordBConnection": "Glaciers carve rock.",
+          "revealExplanation": "Glacier: ice over rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A glacier is ice; glaciers grind and carry rock (moraine), which a player may or may not reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__rose",
+      "a": "ICE",
+      "b": "ROSE",
+      "source": "u24",
+      "pairNote": "No PASS; every hint is anchored on the ice side with a weak reach to rose.",
+      "reviewerBestAvailable": {
+        "text": "FROST",
+        "why": "A frosted rose is a recognizable image, giving the only two-way route offered.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "FROST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Frost is ice.",
+          "wordBConnection": "A frosted rose.",
+          "revealExplanation": "Frost: ice on the rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Frost is ice; frost on rose petals (and frost killing roses) is a real garden image but not a strong pull toward rose specifically."
+            }
+          }
+        },
+        {
+          "text": "SCULPTURE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An ice sculpture.",
+          "wordBConnection": "A rose sculpture.",
+          "revealExplanation": "Sculpture: an ice rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Ice sculpture is familiar; roses are a common sculpture subject but a player would more likely name a swan."
+            }
+          }
+        },
+        {
+          "text": "FROZEN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Frozen ice.",
+          "wordBConnection": "A frozen rose.",
+          "revealExplanation": "Frozen: ice, and the rose.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Frozen is ice; there is no familiar frozen-rose scene or phrase to reach rose."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__salt",
+      "a": "ICE",
+      "b": "SALT",
+      "source": "u24",
+      "pairNote": "Strong pair; all three hints share the winter-road scene.",
+      "reviewerBestAvailable": {
+        "text": "MELT",
+        "why": "Salt melting ice is the direct, universally known interaction.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MELT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice melts.",
+          "wordBConnection": "Salt melts ice.",
+          "revealExplanation": "Melt: salt on ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Salt melts ice; the two words meet in one everyday action."
+            }
+          }
+        },
+        {
+          "text": "ROAD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An icy road.",
+          "wordBConnection": "Road salt.",
+          "revealExplanation": "Road: salt against the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Road salt is spread to clear icy roads; the same scene as MELT viewed from the road."
+            }
+          }
+        },
+        {
+          "text": "WINTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Winter ice.",
+          "wordBConnection": "Winter road salt.",
+          "revealExplanation": "Winter: ice and salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Winter brings ice, and salting the roads is a winter chore; a shared seasonal scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__shadow",
+      "a": "ICE",
+      "b": "SHADOW",
+      "source": "u24",
+      "pairNote": "No PASS; COLD is serviceable, SHADE is pure filler toward one side.",
+      "reviewerBestAvailable": {
+        "text": "COLD",
+        "why": "Shadows being cold is a lived experience, so a player can reach both, though shadow is not a strong pull.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "COLD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "Ice-cold.",
+          "wordBConnection": "Cold in the shadows.",
+          "revealExplanation": "Cold: ice, and shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice is cold; it is colder in the shadows, a real but secondary association for shadow."
+            }
+          }
+        },
+        {
+          "text": "SHADE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice keeps in the shade.",
+          "wordBConnection": "Shade is shadow.",
+          "revealExplanation": "Shade: shadow, where the ice stays.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Shade is a near-synonym of shadow and has no recognizable route to ice."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__shark",
+      "a": "ICE",
+      "b": "SHARK",
+      "source": "u24",
+      "pairNote": "GREENLAND is the only two-way hint and leans on a moderately niche animal fact.",
+      "reviewerBestAvailable": {
+        "text": "GREENLAND",
+        "why": "Both facts are true and the shark side is reachable by a reasonably informed player.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GREENLAND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Greenland ice.",
+          "wordBConnection": "The Greenland shark.",
+          "revealExplanation": "Greenland: ice, and its shark.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Greenland shark",
+            "recognizability": "niche"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Greenland is the ice sheet; the Greenland shark is a real, moderately known species (famous for its age)."
+            }
+          }
+        },
+        {
+          "text": "FIN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A blade like a fin on the ice.",
+          "wordBConnection": "A shark fin.",
+          "revealExplanation": "Fin: the shark's, and the blade on ice.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shark fin is immediate; there is no fin route to ice."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__snake",
+      "a": "ICE",
+      "b": "SNAKE",
+      "source": "u24",
+      "pairNote": "COLD does the job; BLOODED is a fragment that only works if you already know the answer.",
+      "reviewerBestAvailable": {
+        "text": "COLD",
+        "why": "Cold-blooded is the standard snake descriptor and ice is cold.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "COLD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice-cold.",
+          "wordBConnection": "A cold-blooded snake.",
+          "revealExplanation": "Cold: ice, and the cold-blooded snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice is cold; snakes are the archetypal cold-blooded animal, a familiar shared property."
+            }
+          }
+        },
+        {
+          "text": "BLOODED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice-blooded.",
+          "wordBConnection": "Cold-blooded snake.",
+          "revealExplanation": "Blooded: cold, like ice, like the snake.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Only works via 'cold-blooded' to snake; 'blooded' alone does not reach ice."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__spider",
+      "a": "ICE",
+      "b": "SPIDER",
+      "source": "u24",
+      "pairNote": "No PASS and no genuine two-way hint; the pair likely needs a new idea (e.g. a creature or brand that spans both).",
+      "reviewerBestAvailable": {
+        "text": "FROST",
+        "why": "Weak either way; frost on a spider's web is at least a real image, whereas WEB has zero ice side.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "WEB",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice webs across glass.",
+          "wordBConnection": "A spider web.",
+          "revealExplanation": "Web: the spider's, and frost's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Spider web is immediate; nothing links web to ice."
+            }
+          }
+        },
+        {
+          "text": "FROST",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Frost is ice.",
+          "wordBConnection": "A frosted spider web.",
+          "revealExplanation": "Frost: ice on the web.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Frost is ice; a frosted web is a photo cliche but it points at web, not spider."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__spring",
+      "a": "ICE",
+      "b": "SPRING",
+      "source": "u24",
+      "pairNote": "Strong pair; BREAKUP is a regional term (flagged british_only in the sense of regional usage, not UK).",
+      "reviewerBestAvailable": {
+        "text": "THAW",
+        "why": "'Spring thaw' is a set phrase and thaw implies ice.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MELT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice melts.",
+          "wordBConnection": "The spring melt.",
+          "revealExplanation": "Melt: ice, in spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice melts and the spring melt is a familiar seasonal phrase."
+            }
+          }
+        },
+        {
+          "text": "THAW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice thaws.",
+          "wordBConnection": "The spring thaw.",
+          "revealExplanation": "Thaw: ice, in spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:MELT"
+              ],
+              "reason": "Ice thaws; 'spring thaw' is a set phrase."
+            }
+          }
+        },
+        {
+          "text": "BREAKUP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Ice breakup.",
+          "wordBConnection": "Spring breakup.",
+          "revealExplanation": "Breakup: the ice, every spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "british_only"
+              ],
+              "reason": "River-ice breakup as a spring season is real but regional (northern Canada/Alaska); most players will think of relationships."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__star",
+      "a": "ICE",
+      "b": "STAR",
+      "source": "u24",
+      "pairNote": "No PASS; every hint is anchored on one side with a soft reach to the other.",
+      "reviewerBestAvailable": {
+        "text": "SKATER",
+        "why": "Ice is instant and the skating-star / 'Stars on Ice' association gives the most recognizable second step.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TWINKLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "Twinkling ice.",
+          "wordBConnection": "A twinkling star.",
+          "revealExplanation": "Twinkle: star and ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Stars twinkle (nursery rhyme); ice sparkles or glitters rather than twinkles, so the ice side is a stretch."
+            }
+          }
+        },
+        {
+          "text": "SKATER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An ice skater.",
+          "wordBConnection": "A star skater.",
+          "revealExplanation": "Skater: a star on ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Ice skater is immediate; star via a figure-skating star or 'Stars on Ice' is reachable but secondary."
+            }
+          }
+        },
+        {
+          "text": "CRYSTAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Ice crystals.",
+          "wordBConnection": "A crystal star.",
+          "revealExplanation": "Crystal: ice, and the star.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Ice crystal is a set phrase; crystal reaches star only via star-shaped snow crystals or crystal star ornaments."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__train",
+      "a": "ICE",
+      "b": "TRAIN",
+      "source": "u24",
+      "pairNote": "Two usable story/brand routes; EXPRESS is the weaker half of the same compound.",
+      "reviewerBestAvailable": {
+        "text": "POLAR",
+        "why": "Broader than Snowpiercer and the Polar Express is widely known.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SNOWPIERCER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A frozen world of ice.",
+          "wordBConnection": "Snowpiercer is a train.",
+          "revealExplanation": "Snowpiercer: the train through the ice.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Snowpiercer",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Snowpiercer is a train that circles a frozen Earth; one story reaches both words for anyone who knows it."
+            }
+          }
+        },
+        {
+          "text": "POLAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Polar ice.",
+          "wordBConnection": "The Polar Express train.",
+          "revealExplanation": "Polar: the Express over the ice.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Polar Express",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Polar ice is direct; train comes via The Polar Express, a familiar compound."
+            }
+          }
+        },
+        {
+          "text": "EXPRESS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Polar Express's icy North Pole.",
+          "wordBConnection": "The Express is a train.",
+          "revealExplanation": "Express: the Polar one, to the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Express train is direct; ice only via Polar Express (or Germany's ICE InterCity Express), both second-order."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__water",
+      "a": "ICE",
+      "b": "WATER",
+      "source": "u24",
+      "pairNote": "Easy pair with two ideal hints.",
+      "reviewerBestAvailable": {
+        "text": "FROZEN",
+        "why": "'Frozen water' is literally the definition of ice.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice is frozen.",
+          "wordBConnection": "Frozen water.",
+          "revealExplanation": "Frozen: water into ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice is frozen water; the hint names the exact relationship."
+            }
+          }
+        },
+        {
+          "text": "MELT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ice melts.",
+          "wordBConnection": "Melts into water.",
+          "revealExplanation": "Melt: ice to water.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice melts into water; the reverse of FROZEN and equally direct."
+            }
+          }
+        },
+        {
+          "text": "CUBE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An ice cube.",
+          "wordBConnection": "A cube in the water.",
+          "revealExplanation": "Cube: ice, in water.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice cube is immediate; water only as the thing the cube is made of or dropped into, a weak pull toward water itself."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__witch",
+      "a": "ICE",
+      "b": "WITCH",
+      "source": "u24",
+      "pairNote": "NARNIA is the clean story route; ELSA is nearly as good if the owner accepts 'ice witch' as a fair label for her.",
+      "reviewerBestAvailable": {
+        "text": "NARNIA",
+        "why": "The frozen land and its witch are the two things everyone remembers about the story.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "NARNIA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Narnia frozen in ice.",
+          "wordBConnection": "The witch of Narnia.",
+          "revealExplanation": "Narnia: the witch's ice.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Chronicles of Narnia",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Narnia under the White Witch is frozen in eternal winter; one familiar story carries both words."
+            }
+          }
+        },
+        {
+          "text": "ELSA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Elsa's ice.",
+          "wordBConnection": "Elsa, accused of witchcraft.",
+          "revealExplanation": "Elsa: ice powers, called a witch.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Frozen",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Elsa's ice powers are universally known; she is a queen/sorceress rather than a witch, so the witch side needs a hop."
+            }
+          }
+        },
+        {
+          "text": "WHITE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The White Witch's winter of ice.",
+          "wordBConnection": "The White Witch.",
+          "revealExplanation": "White: the witch of the ice.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Chronicles of Narnia",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material",
+                "needs_explanation"
+              ],
+              "reason": "The White Witch of Narnia rules an icy world, but 'white' alone reaches ice only as a colour and witch only via that one character."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ice__wolf",
+      "a": "ICE",
+      "b": "WOLF",
+      "source": "u24",
+      "pairNote": "Solid geography/habitat pair.",
+      "reviewerBestAvailable": {
+        "text": "ARCTIC",
+        "why": "Arctic wolf is a named animal and Arctic ice is immediate.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "ARCTIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Arctic ice.",
+          "wordBConnection": "The Arctic wolf.",
+          "revealExplanation": "Arctic: ice, and the wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Arctic ice is direct and the Arctic wolf is a well-known animal."
+            }
+          }
+        },
+        {
+          "text": "TUNDRA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The frozen tundra.",
+          "wordBConnection": "The tundra wolf.",
+          "revealExplanation": "Tundra: ice, and wolves.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:ARCTIC"
+              ],
+              "reason": "Tundra is frozen ground and wolves are its signature predator; a shared habitat."
+            }
+          }
+        },
+        {
+          "text": "WINTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Winter ice.",
+          "wordBConnection": "Wolves in winter.",
+          "revealExplanation": "Winter: ice and wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Winter brings ice; wolves howling in a winter forest is a stock scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__key",
+      "a": "IRON",
+      "b": "KEY",
+      "source": "u24",
+      "pairNote": "SMITH is an elegant compound route; LOCK is one-sided in practice.",
+      "reviewerBestAvailable": {
+        "text": "SMITH",
+        "why": "Both compounds are everyday words.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SMITH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "A blacksmith works iron.",
+          "wordBConnection": "A locksmith cuts keys.",
+          "revealExplanation": "A locksmith cuts keys and a blacksmith works iron.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Blacksmith works iron and a locksmith cuts keys; one word, two familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "LOCK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A heavy iron lock is what it was cut for.",
+          "wordBConnection": "An old key is the thing that opens it.",
+          "revealExplanation": "A heavy iron lock is what an old key was cut for.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Lock and key is instant; iron only via old iron locks, which is a weak pull toward iron."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__king",
+      "a": "IRON",
+      "b": "KING",
+      "source": "u24",
+      "pairNote": "THRONE is excellent; MASK is a fair story route.",
+      "reviewerBestAvailable": {
+        "text": "THRONE",
+        "why": "Iron Throne is one of the best-known modern compounds and throne means king.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Iron Throne.",
+          "wordBConnection": "The king's throne.",
+          "revealExplanation": "Throne: the Iron Throne of the king.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Iron Throne (Game of Thrones) and a king's throne."
+            }
+          }
+        },
+        {
+          "text": "MASK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The iron mask.",
+          "wordBConnection": "The king's twin in the mask.",
+          "revealExplanation": "Mask: the iron mask, and the king.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "The Man in the Iron Mask",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "The Man in the Iron Mask is the king's secret twin; the story links both, though the king side needs the plot."
+            }
+          }
+        },
+        {
+          "text": "FIST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An iron fist.",
+          "wordBConnection": "The king rules with an iron fist.",
+          "revealExplanation": "Fist: the king's iron fist.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Iron fist' is a set phrase; a king ruling with a fist is reachable only after the iron step."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__knight",
+      "a": "IRON",
+      "b": "KNIGHT",
+      "source": "u24",
+      "pairNote": "Strong medieval scene; MAN is the weak one.",
+      "reviewerBestAvailable": {
+        "text": "ARMOR",
+        "why": "Suit of iron armor is the knight image.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ARMOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron armor.",
+          "wordBConnection": "A knight's armor.",
+          "revealExplanation": "Armor: iron, on the knight.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A knight in iron armor; both words sit in one image."
+            }
+          }
+        },
+        {
+          "text": "SWORD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron sword.",
+          "wordBConnection": "A knight's sword.",
+          "revealExplanation": "Sword: iron, in the knight's hand.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Knights carry swords and swords are forged from iron/steel; a shared scene."
+            }
+          }
+        },
+        {
+          "text": "MAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Iron Man.",
+          "wordBConnection": "Iron Man is a modern knight in armor.",
+          "revealExplanation": "Man: Iron Man, the armored knight.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Marvel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron Man is direct; knight via 'a man in armor' or Iron Man as a modern knight is a stretch."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_iron__light",
       "a": "IRON",
       "b": "LIGHT",
@@ -71208,6 +72960,2044 @@
           "CAST"
         ]
       }
+    },
+    {
+      "pair_id": "p_iron__lion",
+      "a": "IRON",
+      "b": "LION",
+      "source": "u24",
+      "pairNote": "Two usable hints; GATE is iron-weighted.",
+      "reviewerBestAvailable": {
+        "text": "CAGE",
+        "why": "Iron cage and caged lion share a single picture.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CAGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron cage.",
+          "wordBConnection": "The lion's cage.",
+          "revealExplanation": "Cage: iron, holding the lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A circus or zoo lion behind iron bars in a cage is one familiar scene."
+            }
+          }
+        },
+        {
+          "text": "STRENGTH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Iron strength.",
+          "wordBConnection": "A lion's strength.",
+          "revealExplanation": "Strength: iron and lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron and the lion are both standard emblems of strength; a shared property like RICH for BANK+KING."
+            }
+          }
+        },
+        {
+          "text": "GATE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An iron gate.",
+          "wordBConnection": "Lion heads on the gate.",
+          "revealExplanation": "Gate: iron, with lions.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Iron gate is direct; lion via stone lions flanking gates or the Lion Gate is a secondary image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__moon",
+      "a": "IRON",
+      "b": "MOON",
+      "source": "u24",
+      "pairNote": "MAN carries the pair; the astronomy hints are plausible but soft.",
+      "reviewerBestAvailable": {
+        "text": "MAN",
+        "why": "Two everyday phrases, no explanation needed.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "Iron Man is the one in the suit.",
+          "wordBConnection": "The man in the moon is the other familiar figure.",
+          "revealExplanation": "The man in the moon and Iron Man are both familiar figures.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Iron Man",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron Man and the Man in the Moon are both familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Iron is the metal at a world's core.",
+          "wordBConnection": "The moon has a small one of its own.",
+          "revealExplanation": "The moon has a small iron core, and iron is the metal we associate with a planet's core.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Earth's iron core is broad; the moon's small core is a specialist fact and 'core' does not pull toward moon."
+            }
+          }
+        },
+        {
+          "text": "METEOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cause_and_effect",
+          "wordAConnection": "Iron meteorites are the ones that survive the fall.",
+          "wordBConnection": "The moon's face is nothing but the craters they left.",
+          "revealExplanation": "Iron meteorites are the ones that survive the fall, and the moon's face is nothing but the craters they left.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Iron meteorites and the moon's meteor craters are both true, but neither side is the first thing a player reaches from meteor."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__mouse",
+      "a": "IRON",
+      "b": "MOUSE",
+      "source": "u24",
+      "pairNote": "CAGE is fine; TRAP is mouse-weighted.",
+      "reviewerBestAvailable": {
+        "text": "CAGE",
+        "why": "Both are cage animals/materials in one picture.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron cage.",
+          "wordBConnection": "A mouse cage.",
+          "revealExplanation": "Cage: iron, for the mouse.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron cage and a pet mouse's cage; a shared object."
+            }
+          }
+        },
+        {
+          "text": "TRAP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An iron trap.",
+          "wordBConnection": "A mousetrap.",
+          "revealExplanation": "Trap: iron, for the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Mousetrap is immediate; iron via heavy iron traps (bear traps) is reachable but not a strong pull."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__night",
+      "a": "IRON",
+      "b": "NIGHT",
+      "source": "u24",
+      "pairNote": "No PASS; the pair needs a new idea (e.g. something that spans knight/night wordplay would not count, so a shared scene is required).",
+      "reviewerBestAvailable": {
+        "text": "CURTAIN",
+        "why": "Only hint with any reach to night (nightfall as a curtain), and the iron side is strong.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CURTAIN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The Iron Curtain.",
+          "wordBConnection": "Curtains drawn for the night.",
+          "revealExplanation": "Curtain: iron, and drawn at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Iron Curtain is a set phrase; 'the curtain of night' is poetic and only a soft pull toward night."
+            }
+          }
+        },
+        {
+          "text": "GATE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron gate.",
+          "wordBConnection": "Gates locked at night.",
+          "revealExplanation": "Gate: iron, locked for the night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Iron gate is direct; there is no recognizable gate route to night."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__ocean",
+      "a": "IRON",
+      "b": "OCEAN",
+      "source": "u24",
+      "pairNote": "Good pair; SHIPWRECK duplicates TITANIC with a weaker iron side.",
+      "reviewerBestAvailable": {
+        "text": "ANCHOR",
+        "why": "Anchors are the iconic iron object of the sea.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "ANCHOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron anchor.",
+          "wordBConnection": "An anchor in the ocean.",
+          "revealExplanation": "Anchor: iron, in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An iron anchor dropped in the ocean; one object, both words."
+            }
+          }
+        },
+        {
+          "text": "RUST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron rusts.",
+          "wordBConnection": "Rust from the salt ocean.",
+          "revealExplanation": "Rust: iron in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron rusts; salty ocean air and water are the classic cause of rust."
+            }
+          }
+        },
+        {
+          "text": "TITANIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Titanic's iron hull.",
+          "wordBConnection": "Titanic in the ocean.",
+          "revealExplanation": "Titanic: iron, in the ocean.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Titanic",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Titanic sank in the ocean and was a great iron (steel) ship; the story reaches both."
+            }
+          }
+        },
+        {
+          "text": "SHIPWRECK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An iron hull wrecked.",
+          "wordBConnection": "A shipwreck in the ocean.",
+          "revealExplanation": "Shipwreck: iron on the ocean floor.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:TITANIC"
+              ],
+              "reason": "Ocean is direct; iron only via the rusting iron hull of a wreck, a secondary image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__pirate",
+      "a": "IRON",
+      "b": "PIRATE",
+      "source": "u24",
+      "pairNote": "Strong pair with two clean object routes.",
+      "reviewerBestAvailable": {
+        "text": "HOOK",
+        "why": "The pirate hook is a named iron object.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HOOK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron hook.",
+          "wordBConnection": "The pirate's hook hand.",
+          "revealExplanation": "Hook: the pirate's iron hand.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Captain Hook's iron hook; the pirate's prosthetic is literally iron."
+            }
+          }
+        },
+        {
+          "text": "CANNON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron cannon.",
+          "wordBConnection": "The pirate's cannon.",
+          "revealExplanation": "Cannon: iron, on the pirate ship.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirate ships fire iron cannon; shared object."
+            }
+          }
+        },
+        {
+          "text": "CHAINS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Iron chains.",
+          "wordBConnection": "A pirate in chains.",
+          "revealExplanation": "Chains: iron, on the pirate.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Iron chains are direct; pirates in chains (captured, hanged) is a reachable but secondary image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__queen",
+      "a": "IRON",
+      "b": "QUEEN",
+      "source": "u24",
+      "pairNote": "Three passes; CERSEI is the most fandom-dependent.",
+      "reviewerBestAvailable": {
+        "text": "THRONE",
+        "why": "Broadest and most direct on both sides.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Iron Throne.",
+          "wordBConnection": "The queen's throne.",
+          "revealExplanation": "Throne: iron, for the queen.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron Throne and a queen's throne."
+            }
+          }
+        },
+        {
+          "text": "CERSEI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Cersei sits the Iron Throne.",
+          "wordBConnection": "Queen Cersei.",
+          "revealExplanation": "Cersei: queen of the Iron Throne.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Queen Cersei sits the Iron Throne; the story reaches both for Game of Thrones viewers."
+            }
+          }
+        },
+        {
+          "text": "LADY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Iron Lady.",
+          "wordBConnection": "A queen is the first lady.",
+          "revealExplanation": "Lady: the Iron Lady, and the queen.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Margaret Thatcher",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Iron Lady is a famous epithet; a queen is the first lady of a realm, a fair rank route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__ring",
+      "a": "IRON",
+      "b": "RING",
+      "source": "u24",
+      "pairNote": "FORGE and ANVIL work; RUST is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "FORGE",
+        "why": "Forging iron and forging a ring are both common phrases.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FORGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron is forged.",
+          "wordBConnection": "A forged ring.",
+          "revealExplanation": "Forge: iron, into a ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron is forged, and the One Ring was forged (Lord of the Rings); forging a ring is familiar."
+            }
+          }
+        },
+        {
+          "text": "ANVIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron anvil.",
+          "wordBConnection": "The anvil rings.",
+          "revealExplanation": "Anvil: iron that rings.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "An anvil is iron and an anvil rings when struck; verb sense of ring is allowed."
+            }
+          }
+        },
+        {
+          "text": "RUST",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron rust.",
+          "wordBConnection": "A rusty ring.",
+          "revealExplanation": "Rust: iron, on the ring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Iron rusts; 'ring rust' (boxing) is too niche to count as a ring route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__robot",
+      "a": "IRON",
+      "b": "ROBOT",
+      "source": "u24",
+      "pairNote": "Good pair; MAN is iron-weighted.",
+      "reviewerBestAvailable": {
+        "text": "METAL",
+        "why": "Immediate on both sides.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "METAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Iron is a metal.",
+          "wordBConnection": "A metal robot.",
+          "revealExplanation": "Metal: iron, and the robot.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron is a metal; robots are metal; a shared material that is central to both."
+            }
+          }
+        },
+        {
+          "text": "GIANT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Iron Giant.",
+          "wordBConnection": "The Giant is a robot.",
+          "revealExplanation": "Giant: the Iron Giant robot.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Iron Giant",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Iron Giant is a robot; one film title carries both words."
+            }
+          }
+        },
+        {
+          "text": "MAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Iron Man.",
+          "wordBConnection": "A robotic suit.",
+          "revealExplanation": "Man: Iron Man, half robot.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Marvel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron Man is direct; robot via 'mechanical man' or the suit being robotic is a hop."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__rock",
+      "a": "IRON",
+      "b": "ROCK",
+      "source": "u24",
+      "pairNote": "ORE is ideal; MAGNET is the weak one.",
+      "reviewerBestAvailable": {
+        "text": "ORE",
+        "why": "Iron ore is the everyday compound and ore is rock.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ORE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron ore.",
+          "wordBConnection": "Ore is rock.",
+          "revealExplanation": "Ore: iron in rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron ore is rock containing iron; the compound names both."
+            }
+          }
+        },
+        {
+          "text": "METEORITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron meteorites.",
+          "wordBConnection": "A meteorite is a space rock.",
+          "revealExplanation": "Meteorite: an iron rock from space.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A meteorite is a rock from space and iron meteorites are the famous kind."
+            }
+          }
+        },
+        {
+          "text": "MAGNET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Magnets attract iron.",
+          "wordBConnection": "Lodestone, the magnet rock.",
+          "revealExplanation": "Magnet: iron, and the magnetic rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Magnets attract iron; rock only via magnetite/lodestone, a specialist step."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__rose",
+      "a": "IRON",
+      "b": "ROSE",
+      "source": "u24",
+      "pairNote": "No PASS; the pair's only shared scene is a wrought-iron rose garden, which neither hint nails.",
+      "reviewerBestAvailable": {
+        "text": "GARDEN",
+        "why": "The wrought-iron gate in a rose garden is the one scene that holds both, and rose garden is instant.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "GARDEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The garden is full of wrought iron benches and arches.",
+          "wordBConnection": "And roses are what it is planted with.",
+          "revealExplanation": "The rose garden is full of wrought iron benches and arches.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Rose garden is direct; iron only via wrought-iron garden gates and furniture, a soft pull."
+            }
+          }
+        },
+        {
+          "text": "GATE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A wrought iron gate stands at the end of the path.",
+          "wordBConnection": "With roses climbing over it.",
+          "revealExplanation": "A wrought iron gate with roses climbing over it is the standard garden picture.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:GARDEN"
+              ],
+              "reason": "Iron gate is direct; roses climbing a gate is a picture but not a strong rose pull."
+            }
+          }
+        },
+        {
+          "text": "MAIDEN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "The Iron Maiden is the one with the spikes.",
+          "wordBConnection": "An English rose is what a maiden used to be called.",
+          "revealExplanation": "The Iron Maiden is the one with the spikes and an English rose is what a maiden used to be called.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "the iron maiden",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Iron Maiden is a set name; no recognizable maiden route reaches rose."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__salt",
+      "a": "IRON",
+      "b": "SALT",
+      "source": "u24",
+      "pairNote": "Two passes; SEA is filler toward salt only.",
+      "reviewerBestAvailable": {
+        "text": "MINERAL",
+        "why": "Both words are textbook minerals.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MINERAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Iron is one a body needs.",
+          "wordBConnection": "So is salt.",
+          "revealExplanation": "Iron and salt are both minerals a body needs.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron and salt are both minerals, including on a nutrition label; a shared category."
+            }
+          }
+        },
+        {
+          "text": "RUST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "Rust is what iron does if you let it.",
+          "wordBConnection": "Salt is what makes it happen faster.",
+          "revealExplanation": "Salt is what makes iron rust.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron rusts and salt is the famous accelerator of rust (salted roads, sea air)."
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "Sea air eats iron, which is why a ship is a losing battle.",
+          "wordBConnection": "And the sea is where the salt comes from.",
+          "revealExplanation": "Sea salt eats iron, which is why ships are a losing battle.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Sea salt is direct; sea has no recognizable iron route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__shadow",
+      "a": "IRON",
+      "b": "SHADOW",
+      "source": "u24",
+      "pairNote": "No PASS and no genuine two-way hint; the pair needs a fresh idea.",
+      "reviewerBestAvailable": {
+        "text": "CURTAIN",
+        "why": "Weak either way; a curtain at least darkens a room, whereas BAR has nothing on the shadow side.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BAR",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron bars are what a cell window has.",
+          "wordBConnection": "They throw striped shadows across the floor.",
+          "revealExplanation": "Iron bars throw striped shadows across a cell floor.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Iron bar is direct; nothing recognizable links bar to shadow."
+            }
+          }
+        },
+        {
+          "text": "CURTAIN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Iron Curtain is the phrase.",
+          "wordBConnection": "It is always described as casting a shadow over half of Europe.",
+          "revealExplanation": "The Iron Curtain is always described as having cast a shadow over half of Europe.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "the Iron Curtain",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Iron Curtain is a set phrase; a curtain casting shadow or the Cold War's 'shadow' is an invented rescue."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__shark",
+      "a": "IRON",
+      "b": "SHARK",
+      "source": "u24",
+      "pairNote": "CAGE carries the pair; JAWS is shark-weighted.",
+      "reviewerBestAvailable": {
+        "text": "CAGE",
+        "why": "Shark cage is a known compound and cages are iron.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron cage.",
+          "wordBConnection": "A shark cage.",
+          "revealExplanation": "Cage: iron, against the shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shark-cage diving puts a diver in a metal (iron) cage; one scene, both words."
+            }
+          }
+        },
+        {
+          "text": "JAWS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Jaws, the henchman with steel teeth.",
+          "wordBConnection": "Jaws the shark.",
+          "revealExplanation": "Jaws: the shark, and the man with metal teeth.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Jaws / James Bond",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Jaws is the shark film; 'jaws of iron' or iron-jawed as a grip metaphor is a soft iron route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__snake",
+      "a": "IRON",
+      "b": "SNAKE",
+      "source": "u24",
+      "pairNote": "PIPE is a neat route; the others are one-sided in practice.",
+      "reviewerBestAvailable": {
+        "text": "PIPE",
+        "why": "Iron pipe plus the plumbing snake gives a genuine two-way route.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PIPE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "An iron pipe runs under the sink.",
+          "wordBConnection": "The tool the plumber pushes down it is called a snake.",
+          "revealExplanation": "An iron pipe runs under the sink and the tool the plumber pushes down it is called a snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Iron pipe is direct; a plumber snakes a pipe with a drain snake, a familiar verb/tool use."
+            }
+          }
+        },
+        {
+          "text": "ROD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "An iron rod is a bar of metal.",
+          "wordBConnection": "Moses' rod turned into a snake in front of Pharaoh.",
+          "revealExplanation": "An iron rod is a bar of metal and Moses' rod turned into a snake in front of Pharaoh.",
+          "reference": {
+            "referenceType": "book",
+            "source": "the Book of Exodus",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Iron rod is direct; snake via the rod of Asclepius or Moses' staff is a learned step."
+            }
+          }
+        },
+        {
+          "text": "COIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Iron is coiled into wire and springs.",
+          "wordBConnection": "A snake coils.",
+          "revealExplanation": "A snake coils and iron is coiled into wire and springs.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A snake coils; iron coil only via coiled iron/electromagnet cores, a soft pull."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__spider",
+      "a": "IRON",
+      "b": "SPIDER",
+      "source": "u24",
+      "pairNote": "Excellent pair via the superhero route.",
+      "reviewerBestAvailable": {
+        "text": "MAN",
+        "why": "Both compounds are instant.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Iron Man.",
+          "wordBConnection": "Spider-Man.",
+          "revealExplanation": "Man: Iron Man, Spider-Man.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Marvel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron Man and Spider-Man; two of the best-known compounds in popular culture."
+            }
+          }
+        },
+        {
+          "text": "MARVEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Marvel's Iron Man.",
+          "wordBConnection": "Marvel's Spider-Man.",
+          "revealExplanation": "Marvel: Iron Man and Spider-Man.",
+          "reference": {
+            "referenceType": "brand_or_product",
+            "source": "Marvel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both heroes are Marvel characters."
+            }
+          }
+        },
+        {
+          "text": "AVENGERS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Iron Man the Avenger.",
+          "wordBConnection": "Spider-Man joins the Avengers.",
+          "revealExplanation": "Avengers: Iron Man and Spider-Man.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Marvel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:MARVEL"
+              ],
+              "reason": "Iron Man is a founding Avenger and Spider-Man joins the team in the films."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__spring",
+      "a": "IRON",
+      "b": "SPRING",
+      "source": "u24",
+      "pairNote": "STEEL carries the pair; the rest are spring-weighted.",
+      "reviewerBestAvailable": {
+        "text": "STEEL",
+        "why": "Steel sits between the two words naturally.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "STEEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Steel is iron with the carbon adjusted.",
+          "wordBConnection": "And springs are made of it.",
+          "revealExplanation": "Springs are made of steel, which is iron with the carbon adjusted.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Steel is made from iron, and springs are steel; a shared material."
+            }
+          }
+        },
+        {
+          "text": "COIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A coil of iron wire is what it is made of.",
+          "wordBConnection": "And that coil is the spring.",
+          "revealExplanation": "A spring is a coil of iron wire.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Coil spring is direct; iron coil is a soft pull toward iron."
+            }
+          }
+        },
+        {
+          "text": "MATTRESS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A mattress is filled with iron.",
+          "wordBConnection": "In the shape of several hundred springs.",
+          "revealExplanation": "A mattress is filled with iron springs.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Spring mattress is direct; iron bed frames are not an iron route a player would take from mattress."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__star",
+      "a": "IRON",
+      "b": "STAR",
+      "source": "u24",
+      "pairNote": "METEOR is the clean route; CORE passes on the strength of 'core' being a word used of both planets and stars.",
+      "reviewerBestAvailable": {
+        "text": "METEOR",
+        "why": "Shooting star is instant and iron meteorite is well known.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "METEOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron meteors.",
+          "wordBConnection": "A shooting star is a meteor.",
+          "revealExplanation": "Meteor: iron, falling as a star.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A meteor is a shooting star, and iron meteorites are the famous kind."
+            }
+          }
+        },
+        {
+          "text": "CORE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron core.",
+          "wordBConnection": "A star's core.",
+          "revealExplanation": "Core: iron, at the heart of a star.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Iron core (Earth) is broad; a star's core is a familiar notion and stars fuse up to iron in their cores."
+            }
+          }
+        },
+        {
+          "text": "MAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Iron Man.",
+          "wordBConnection": "Iron Man, the star of the franchise.",
+          "revealExplanation": "Man: Iron Man, the star.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Marvel",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron Man is direct; star via Starman or 'star of the film' is a stretch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__train",
+      "a": "IRON",
+      "b": "TRAIN",
+      "source": "u24",
+      "pairNote": "Strong pair; TRACKS and RAILS are near-duplicates.",
+      "reviewerBestAvailable": {
+        "text": "HORSE",
+        "why": "A single idiom that means both.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TRACKS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron tracks.",
+          "wordBConnection": "Train tracks.",
+          "revealExplanation": "Tracks: iron, for the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Train tracks are iron rails."
+            }
+          }
+        },
+        {
+          "text": "HORSE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The iron horse.",
+          "wordBConnection": "A train is the iron horse.",
+          "revealExplanation": "Horse: the iron horse, a train.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Iron horse' is the classic nickname for a train; one phrase names both."
+            }
+          }
+        },
+        {
+          "text": "RAILS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron rails.",
+          "wordBConnection": "A train on rails.",
+          "revealExplanation": "Rails: iron, under the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:TRACKS"
+              ],
+              "reason": "Iron rails carry trains."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__water",
+      "a": "IRON",
+      "b": "WATER",
+      "source": "u24",
+      "pairNote": "Very strong pair.",
+      "reviewerBestAvailable": {
+        "text": "STEAM",
+        "why": "Steam iron is a named compound and steam is water.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "STEAM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A steam iron.",
+          "wordBConnection": "Steam is water.",
+          "revealExplanation": "Steam: the iron's water.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A steam iron is an everyday appliance and steam is boiled water."
+            }
+          }
+        },
+        {
+          "text": "PIPE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron pipe.",
+          "wordBConnection": "A water pipe.",
+          "revealExplanation": "Pipe: iron, carrying water.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron pipes carry water."
+            }
+          }
+        },
+        {
+          "text": "RUST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Iron rusts.",
+          "wordBConnection": "Water causes rust.",
+          "revealExplanation": "Rust: iron and water.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron plus water makes rust; the two words are the recipe."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_iron__witch",
+      "a": "IRON",
+      "b": "WITCH",
+      "source": "u24",
+      "pairNote": "CAULDRON is ideal; HORSESHOE is a fair folklore route, WARD is too thin.",
+      "reviewerBestAvailable": {
+        "text": "CAULDRON",
+        "why": "Cast-iron cauldron is the witch's signature prop.",
+        "reviewer": "blind-subagent-24"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CAULDRON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cast-iron cauldron.",
+          "wordBConnection": "The witch's cauldron.",
+          "revealExplanation": "Cauldron: the witch's, cast in iron.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The witch's cauldron is a cast-iron pot; one object, both words."
+            }
+          }
+        },
+        {
+          "text": "HORSESHOE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron horseshoe.",
+          "wordBConnection": "Horseshoes ward off witches.",
+          "revealExplanation": "Horseshoe: iron against the witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Horseshoes are iron; nailing one over the door to keep witches out is classic folklore, though not everyone knows the witch part."
+            }
+          }
+        },
+        {
+          "text": "WARD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Iron is a ward.",
+          "wordBConnection": "Warding off witches.",
+          "revealExplanation": "Ward: iron, against witches.",
+          "reference": null,
+          "provenance": {
+            "source": "u24",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-24",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Iron as a ward against witches is folklore lore; 'ward' alone pulls weakly toward either word."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_key__rose",

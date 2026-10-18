@@ -2,19 +2,17 @@
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 77
-- pairs where the reviewer's pick already was the provisional top candidate: 631
-- preferences added: 5 (5 ties, 0 overrides of a higher-scored hint)
+- pairs with an existing approved preference (untouched): 82
+- pairs where the reviewer's pick already was the provisional top candidate: 660
+- preferences added: 3 (2 ties, 1 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 0
 - proposed entries still open: 12
 
 ## Added
 
-- tie p_honey__water (HONEY+WATER): TEA 2/2/2 replaces LEMON 2/2/2 — The most everyday scene: honey, lemon and hot water all meet in a cup of tea.
-- tie p_horse__salt (HORSE+SALT): LICK 2/2/2 replaces SWEAT 2/2/2 — The salt lick is a single object that belongs to horses.
-- tie p_horse__wolf (HORSE+WOLF): PACK 2/2/2 replaces WILD 2/2/2 — Two compounds, one word.
-- tie p_ice__king (ICE+KING): FROST 2/1/1 replaces NIGHT 1/2/1 — Direct on ice with a traditional personified-king route.
-- tie p_ice__ocean (ICE+OCEAN): TITANIC 2/2/2 replaces ARCTIC 2/2/2 — One story everyone knows, with ice and ocean as its two protagonists.
+- tie p_ice__spring (ICE+SPRING): THAW 2/2/2 replaces MELT 2/2/2 — 'Spring thaw' is a set phrase and thaw implies ice.
+- OVERRIDE p_ice__train (ICE+TRAIN): POLAR 2/1/1 replaces SNOWPIERCER 2/2/1 — Broader than Snowpiercer and the Polar Express is widely known.
+- tie p_iron__train (IRON+TRAIN): HORSE 2/2/2 replaces TRACKS 2/2/2 — A single idiom that means both.
 
 ## Contradictions (unresolved, for the parent)
 
