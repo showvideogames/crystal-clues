@@ -223,6 +223,16 @@
         "rejected": 4,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u11-blind-review.json",
+        "key": "data/unlimited/library/reviews/u11-blind-key.json",
+        "batch": "data/unlimited/library/batches/u11-batch.json",
+        "ai_reviewed": 34,
+        "held": 16,
+        "rejected": 1,
+        "needsText": 3,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -23850,6 +23860,299 @@
       ]
     },
     {
+      "pair_id": "p_card__lion",
+      "a": "CARD",
+      "b": "LION",
+      "source": "u11",
+      "pairNote": "Single strong hint; nothing to fix.",
+      "reviewerBestAvailable": {
+        "text": "KING",
+        "why": "Both routes are immediate and universally known.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The king card.",
+          "wordBConnection": "The Lion King.",
+          "revealExplanation": "A king: on the card, and the Lion King.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The king is a face card, and the lion is the king of the jungle / The Lion King."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__moon",
+      "a": "CARD",
+      "b": "MOON",
+      "source": "u11",
+      "pairNote": "Moon side relies on knowing The Moon tarot card, but the mystical association carries non-experts too.",
+      "reviewerBestAvailable": {
+        "text": "TAROT",
+        "why": "Card side is certain; the Moon card is familiar enough to most players through general tarot imagery.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TAROT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A tarot card.",
+          "wordBConnection": "The Moon card of the tarot.",
+          "revealExplanation": "The Moon, a tarot card.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Tarot is a card deck, and The Moon is one of its best-known major-arcana cards (tarot also carries a general lunar/mystical mood)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__mouse",
+      "a": "CARD",
+      "b": "MOUSE",
+      "source": "u11",
+      "pairNote": "No PASS. The card route to Disney is not a familiar phrase; a player would need CARD to be the only leftover word.",
+      "reviewerBestAvailable": {
+        "text": "DISNEY",
+        "why": "Only hint offered; mouse side is excellent but card is a weak afterthought.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DISNEY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A Disney card.",
+          "wordBConnection": "Mickey Mouse, Disney's mouse.",
+          "revealExplanation": "Disney: Mickey Mouse on the card.",
+          "reference": {
+            "referenceType": "brand_or_mascot",
+            "source": "Disney",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mickey Mouse makes the mouse side immediate, but the card side only reaches via Disney gift cards or the niche Lorcana trading-card game."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__night",
+      "a": "CARD",
+      "b": "NIGHT",
+      "source": "u11",
+      "pairNote": "Two good hints; GAME is a little broader but still fair.",
+      "reviewerBestAvailable": {
+        "text": "POKER",
+        "why": "More specific than GAME; poker night evokes the cards-on-the-table scene directly.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "GAME",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A card game.",
+          "wordBConnection": "Game night.",
+          "revealExplanation": "Game night, with cards.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Card game is a compound and game night is a familiar phrase."
+            }
+          }
+        },
+        {
+          "text": "POKER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Poker is a card game.",
+          "wordBConnection": "Poker night.",
+          "revealExplanation": "Poker night: cards on the table.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Poker is a card game and poker night is a stock phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__ocean",
+      "a": "CARD",
+      "b": "OCEAN",
+      "source": "u11",
+      "pairNote": "No PASS. Clever title route, but the card side needs an explanation most players will not produce.",
+      "reviewerBestAvailable": {
+        "text": "ELEVEN",
+        "why": "Only hint offered; the casino-heist setting gives card a thin but real foothold.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ELEVEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Ocean's Eleven is a casino film, cards and all.",
+          "wordBConnection": "Ocean's Eleven.",
+          "revealExplanation": "Ocean's Eleven, the casino heist.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Ocean's Eleven",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Ocean's Eleven is a well-known casino film, but the card side only reaches through the casino setting or an ace counting eleven in blackjack."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__pirate",
+      "a": "CARD",
+      "b": "PIRATE",
+      "source": "u11",
+      "pairNote": "Excellent single hint.",
+      "reviewerBestAvailable": {
+        "text": "DECK",
+        "why": "Clean double meaning that reaches both words directly.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DECK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A deck of cards.",
+          "wordBConnection": "The pirate ship's deck.",
+          "revealExplanation": "Deck: of cards, or of the pirate ship.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A deck of cards, and pirates on the deck of their ship."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_card__queen",
       "a": "CARD",
       "b": "QUEEN",
@@ -24000,6 +24303,909 @@
       }
     },
     {
+      "pair_id": "p_card__ring",
+      "a": "CARD",
+      "b": "RING",
+      "source": "u11",
+      "pairNote": "Both hints solid.",
+      "reviewerBestAvailable": {
+        "text": "DIAMOND",
+        "why": "Suit plus diamond ring is the tighter double meaning.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DIAMOND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The diamonds suit.",
+          "wordBConnection": "A diamond ring.",
+          "revealExplanation": "Diamond: a card suit, and a ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diamonds are a card suit and a diamond ring is the classic ring."
+            }
+          }
+        },
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A wedding card.",
+          "wordBConnection": "A wedding ring.",
+          "revealExplanation": "Wedding card, wedding ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wedding ring is a compound and wedding cards are a standard greeting-card category."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__robot",
+      "a": "CARD",
+      "b": "ROBOT",
+      "source": "u11",
+      "pairNote": "Good single hint.",
+      "reviewerBestAvailable": {
+        "text": "CHIP",
+        "why": "Both sides are everyday compounds.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A chip card.",
+          "wordBConnection": "The chip inside a robot.",
+          "revealExplanation": "A chip: in the card, in the robot.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Chip card / chip-and-PIN and SIM cards carry chips; robots run on computer chips."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__rock",
+      "a": "CARD",
+      "b": "ROCK",
+      "source": "u11",
+      "pairNote": "Good hint; material route is a legitimate shared property here.",
+      "reviewerBestAvailable": {
+        "text": "PAPER",
+        "why": "Famous game phrase plus a material near-synonym.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PAPER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A card is paper.",
+          "wordBConnection": "Rock, paper, scissors.",
+          "revealExplanation": "Paper: what a card is, and rock's rival.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Rock-paper-scissors reaches rock, and card is stiff paper (greeting cards, cardstock)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__rose",
+      "a": "CARD",
+      "b": "ROSE",
+      "source": "u11",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "VALENTINE",
+        "why": "One shared scene reaches both words instantly.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VALENTINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A Valentine card.",
+          "wordBConnection": "A Valentine rose.",
+          "revealExplanation": "Valentine's: a card and a rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Valentine card is a compound and roses are the Valentine's Day flower."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__salt",
+      "a": "CARD",
+      "b": "SALT",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "TABLE",
+        "why": "Two familiar compounds.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TABLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A card table.",
+          "wordBConnection": "Table salt.",
+          "revealExplanation": "Table: for cards, and the salt on it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Card table and table salt are both stock compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__shadow",
+      "a": "CARD",
+      "b": "SHADOW",
+      "source": "u11",
+      "pairNote": "No PASS. Shadow side lacks a phrase or scene a player would name.",
+      "reviewerBestAvailable": {
+        "text": "TRICK",
+        "why": "Only hint offered; shadow puppets as a trick is thin but imaginable.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TRICK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A card trick.",
+          "wordBConnection": "A shadow trick on the wall.",
+          "revealExplanation": "A trick: with cards, or with shadows.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Card trick is immediate, but shadow only reaches via hand-shadow puppetry or 'a trick of the light'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__shark",
+      "a": "CARD",
+      "b": "SHARK",
+      "source": "u11",
+      "pairNote": "Good; the pair itself is the idiom.",
+      "reviewerBestAvailable": {
+        "text": "POKER",
+        "why": "The card-shark idiom makes both targets natural.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "POKER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Poker is a card game.",
+          "wordBConnection": "A poker shark.",
+          "revealExplanation": "A poker shark at the card table.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Poker is a card game, and a card shark / poker shark is the familiar term for a hustling player."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__snake",
+      "a": "CARD",
+      "b": "SNAKE",
+      "source": "u11",
+      "pairNote": "No PASS. Needs a new hint; the one offered is wholly one-sided.",
+      "reviewerBestAvailable": {
+        "text": "DEALER",
+        "why": "Only hint offered; it does not reach snake.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DEALER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A card dealer.",
+          "wordBConnection": "A snake-oil dealer.",
+          "revealExplanation": "A dealer: of cards, or of snake oil.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Card dealer is immediate, but nothing recognizable links dealer to snake (snake-oil goes with 'salesman', not 'dealer')."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__spider",
+      "a": "CARD",
+      "b": "SPIDER",
+      "source": "u11",
+      "pairNote": "Good; spider side is slightly weaker for non-computer players.",
+      "reviewerBestAvailable": {
+        "text": "SOLITAIRE",
+        "why": "Spider Solitaire is a household name for PC users.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SOLITAIRE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Solitaire is a card game.",
+          "wordBConnection": "Spider Solitaire.",
+          "revealExplanation": "Spider Solitaire.",
+          "reference": {
+            "referenceType": "game",
+            "source": "Spider Solitaire (Windows)",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Solitaire is the one-player card game, and Spider Solitaire is the widely known Windows variant."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__spring",
+      "a": "CARD",
+      "b": "SPRING",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "EASTER",
+        "why": "Shared holiday scene reaches both.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "EASTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An Easter card.",
+          "wordBConnection": "Easter is in spring.",
+          "revealExplanation": "An Easter card, in spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Easter cards are a standard greeting-card category and Easter is the spring holiday."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__star",
+      "a": "CARD",
+      "b": "STAR",
+      "source": "u11",
+      "pairNote": "No PASS. ACE is the closest; a second opinion could reasonably promote it.",
+      "reviewerBestAvailable": {
+        "text": "ACE",
+        "why": "Reaches card perfectly and star through the shared 'top performer' sense, which is more natural than TRADING's picture-on-the-card route.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TRADING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Trading cards.",
+          "wordBConnection": "Cards of the stars.",
+          "revealExplanation": "Trading cards of your favorite stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Trading card is a compound, but star only reaches through the sports stars pictured on trading cards (or Star Wars card sets)."
+            }
+          }
+        },
+        {
+          "text": "ACE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "homophone_wordplay",
+          "wordAConnection": "The ace card.",
+          "wordBConnection": "An ace is a star.",
+          "revealExplanation": "An ace: the card, or the star.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Ace is the top card, and ace and star are both words for a top performer, a shared-meaning route that is defensible but not a phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__train",
+      "a": "CARD",
+      "b": "TRAIN",
+      "source": "u11",
+      "pairNote": "No PASS. Card side is a material resemblance rather than a connection a player would name.",
+      "reviewerBestAvailable": {
+        "text": "TICKET",
+        "why": "Only hint offered; the card-as-ticket route is plausible but not a familiar phrase.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TICKET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A ticket card.",
+          "wordBConnection": "A train ticket.",
+          "revealExplanation": "The train ticket card.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Train ticket is immediate; card only follows because a ticket is a small printed card or a travel card replaces one."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__water",
+      "a": "CARD",
+      "b": "WATER",
+      "source": "u11",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "FLUSH",
+        "why": "Clean double meaning, both widely known.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FLUSH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A flush, five cards of a suit.",
+          "wordBConnection": "Flush with water.",
+          "revealExplanation": "A flush: in poker, or with water.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A flush is a poker hand, and to flush is to send water through."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__witch",
+      "a": "CARD",
+      "b": "WITCH",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "TAROT",
+        "why": "Shared fortune-telling scene.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TAROT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Tarot cards.",
+          "wordBConnection": "The witch reads them.",
+          "revealExplanation": "The witch and her tarot cards.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Tarot is a card deck, and the witch reading tarot is a familiar scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_card__wolf",
+      "a": "CARD",
+      "b": "WOLF",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "WILD",
+        "why": "Compound plus a strong shared property.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WILD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A wild card.",
+          "wordBConnection": "A wild wolf.",
+          "revealExplanation": "Wild card, wild wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wild card is a compound and the wolf is the archetypal wild animal."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__cat",
+      "a": "CASTLE",
+      "b": "CAT",
+      "source": "u11",
+      "pairNote": "No PASS. The story route to castle is secondary to the plot rather than its centre.",
+      "reviewerBestAvailable": {
+        "text": "PUSS",
+        "why": "Only hint offered; cat is certain and the fairy-tale setting gives castle a faint foothold.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "PUSS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "fictional_character",
+          "wordAConnection": "Puss wins a castle for his master.",
+          "wordBConnection": "Puss is a cat.",
+          "revealExplanation": "Puss in Boots and the castle he won.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Puss in Boots",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Puss is a cat (Puss in Boots), but castle only reaches via the ogre's castle Puss wins in the tale, a detail most players do not retain."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__crown",
+      "a": "CASTLE",
+      "b": "CROWN",
+      "source": "u11",
+      "pairNote": "Both strong; the pair is nearly self-clueing.",
+      "reviewerBestAvailable": {
+        "text": "KING",
+        "why": "A concrete figure that owns both objects.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ROYAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A royal castle.",
+          "wordBConnection": "A royal crown.",
+          "revealExplanation": "Royal: castle and crown.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Royal castle and royal crown share the royalty property directly."
+            }
+          }
+        },
+        {
+          "text": "KING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The king's castle.",
+          "wordBConnection": "The king's crown.",
+          "revealExplanation": "A king: his castle and his crown.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The king lives in the castle and wears the crown."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__diamond",
+      "a": "CASTLE",
+      "b": "DIAMOND",
+      "source": "u11",
+      "pairNote": "Castle side is a scene rather than a phrase, but a familiar one.",
+      "reviewerBestAvailable": {
+        "text": "JEWELS",
+        "why": "Diamond is immediate and jewels-in-the-castle is a recognizable scene.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "JEWELS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The jewels kept in the castle.",
+          "wordBConnection": "A diamond is a jewel.",
+          "revealExplanation": "Jewels: the castle's, diamonds among them.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A diamond is a jewel, and the crown jewels / castle treasure is a familiar fairy-tale and Tower-of-London image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__dog",
+      "a": "CASTLE",
+      "b": "DOG",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "GUARD",
+        "why": "Two familiar compounds.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GUARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The castle guard.",
+          "wordBConnection": "A guard dog.",
+          "revealExplanation": "Guard: the castle's, or the dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Castle guard and guard dog are both everyday compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_castle__dragon",
       "a": "CASTLE",
       "b": "DRAGON",
@@ -24125,6 +25331,661 @@
       }
     },
     {
+      "pair_id": "p_castle__egg",
+      "a": "CASTLE",
+      "b": "EGG",
+      "source": "u11",
+      "pairNote": "No PASS. The rhyme says wall, not castle.",
+      "reviewerBestAvailable": {
+        "text": "HUMPTY",
+        "why": "Only hint offered; egg is certain, castle is an inference from the rhyme's royal setting.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HUMPTY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "fictional_character",
+          "wordAConnection": "Humpty sat on a wall, usually drawn as a castle's.",
+          "wordBConnection": "Humpty Dumpty is an egg.",
+          "revealExplanation": "Humpty Dumpty on the castle wall.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "Humpty Dumpty",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Humpty Dumpty is the egg; castle only arrives through the wall and the king's horses and men, which illustrations sometimes set at a castle."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__fire",
+      "a": "CASTLE",
+      "b": "FIRE",
+      "source": "u11",
+      "pairNote": "DRAGON carries the pair; HEARTH is a soft second.",
+      "reviewerBestAvailable": {
+        "text": "DRAGON",
+        "why": "One shared story scene reaches both words at full strength.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DRAGON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon at the castle gate.",
+          "wordBConnection": "The dragon's fire.",
+          "revealExplanation": "A dragon: at the castle, breathing fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The dragon breathes fire and besieges or guards the castle in the standard fairy-tale scene."
+            }
+          }
+        },
+        {
+          "text": "HEARTH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The castle's great hearth.",
+          "wordBConnection": "A hearth fire.",
+          "revealExplanation": "The castle hearth and its fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A hearth is where the fire burns, but castle only follows from the great-hall hearth image, and hearths belong to any home."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__fish",
+      "a": "CASTLE",
+      "b": "FISH",
+      "source": "u11",
+      "pairNote": "Fish side is a one-step inference (moat is water); judged a recognizable scene rather than a stretch, but close to the line.",
+      "reviewerBestAvailable": {
+        "text": "MOAT",
+        "why": "Castle is certain and the water-to-fish step is short.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MOAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle moat.",
+          "wordBConnection": "Fish swimming in the moat.",
+          "revealExplanation": "The castle moat and its fish.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A moat surrounds a castle, and fish in the moat is a recognizable image since the moat is a body of water."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__ghost",
+      "a": "CASTLE",
+      "b": "GHOST",
+      "source": "u11",
+      "pairNote": "HAUNTED is clearly the better of two valid mood-based hints.",
+      "reviewerBestAvailable": {
+        "text": "HAUNTED",
+        "why": "Compound phrase on one side and the defining ghost action on the other.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HAUNTED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A haunted castle.",
+          "wordBConnection": "A ghost haunts.",
+          "revealExplanation": "A haunted castle, ghost included.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Haunted castle is a stock phrase and a haunting is done by a ghost."
+            }
+          }
+        },
+        {
+          "text": "SPOOKY",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "rejected",
+            "authorReason": "a mood word",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material",
+                "variant_of:HAUNTED"
+              ],
+              "reason": "Spooky is the ghost's mood, and the spooky castle is a standard Halloween / Dracula image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__glass",
+      "a": "CASTLE",
+      "b": "GLASS",
+      "source": "u11",
+      "pairNote": "CINDERELLA carries the pair; SLIPPER is a weaker variant.",
+      "reviewerBestAvailable": {
+        "text": "CINDERELLA",
+        "why": "Names the story so both objects fall out at once.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CINDERELLA",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "variant",
+            "authorReason": "variant of SLIPPER",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The glass slipper and the prince's castle (also Disney's Cinderella Castle) are both central to the story."
+            }
+          }
+        },
+        {
+          "text": "SLIPPER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The ball at the castle.",
+          "wordBConnection": "The glass slipper.",
+          "revealExplanation": "Cinderella: the glass slipper at the castle.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "Cinderella",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:CINDERELLA"
+              ],
+              "reason": "Glass slipper is immediate, but castle needs the extra hop through Cinderella's story."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__gold",
+      "a": "CASTLE",
+      "b": "GOLD",
+      "source": "u11",
+      "pairNote": "Castle side depends on the medieval sense of treasury rather than the government department.",
+      "reviewerBestAvailable": {
+        "text": "TREASURY",
+        "why": "Gold is immediate and the treasury-as-castle-room scene is familiar.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TREASURY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle treasury.",
+          "wordBConnection": "A treasury of gold.",
+          "revealExplanation": "The castle's treasury of gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gold is kept in a treasury, and the castle treasury / strongroom is a recognizable medieval room."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__heart",
+      "a": "CASTLE",
+      "b": "HEART",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "QUEEN",
+        "why": "Both routes are stock.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "QUEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Queen's castle.",
+          "wordBConnection": "The Queen of Hearts.",
+          "revealExplanation": "The Queen of Hearts, at home in her castle.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Alice in Wonderland",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Queen of Hearts (cards, Alice) reaches heart, and the queen lives in the castle."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__honey",
+      "a": "CASTLE",
+      "b": "HONEY",
+      "source": "u11",
+      "pairNote": "No PASS. Factually sound, recognizability is the problem.",
+      "reviewerBestAvailable": {
+        "text": "MEAD",
+        "why": "Only hint offered; correct on both sides but niche.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MEAD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Mead in the castle hall.",
+          "wordBConnection": "Mead is made from honey.",
+          "revealExplanation": "Mead: honey wine for the castle hall.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Mead is honey wine drunk in medieval castle halls, but many players will not know what mead is made from and the castle link is only a mood."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__horse",
+      "a": "CASTLE",
+      "b": "HORSE",
+      "source": "u11",
+      "pairNote": "KNIGHT is the stronger; STABLE is fair.",
+      "reviewerBestAvailable": {
+        "text": "KNIGHT",
+        "why": "A figure that belongs equally to both words.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "KNIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle's knight.",
+          "wordBConnection": "A knight's horse.",
+          "revealExplanation": "A knight: of the castle, on his horse.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The knight rides a horse and serves in the castle."
+            }
+          }
+        },
+        {
+          "text": "STABLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle stables.",
+          "wordBConnection": "A horse's stable.",
+          "revealExplanation": "The castle stable and its horses.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Horses live in stables, and the castle stables for the knights' horses are a familiar scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__ice",
+      "a": "CASTLE",
+      "b": "ICE",
+      "source": "u11",
+      "pairNote": "Both valid; FROZEN depends on the film for the castle side.",
+      "reviewerBestAvailable": {
+        "text": "ELSA",
+        "why": "Names the character whose signature act is the ice castle.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Elsa's castle.",
+          "wordBConnection": "Made of ice.",
+          "revealExplanation": "Frozen: the ice castle.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Frozen",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:ELSA"
+              ],
+              "reason": "Frozen is literally ice, and the film Frozen supplies the ice castle and Arendelle castle."
+            }
+          }
+        },
+        {
+          "text": "ELSA",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "variant",
+            "authorReason": "variant of FROZEN",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Elsa has ice powers and builds the ice castle/palace in Frozen."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__iron",
+      "a": "CASTLE",
+      "b": "IRON",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "GATE",
+        "why": "Two compounds.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GATE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle gate.",
+          "wordBConnection": "An iron gate.",
+          "revealExplanation": "The castle's iron gate.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Castle gate and iron gate are both stock compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__key",
+      "a": "CASTLE",
+      "b": "KEY",
+      "source": "u11",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "DUNGEON",
+        "why": "Castle is immediate and the key-to-the-dungeon scene is well worn.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DUNGEON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle dungeon.",
+          "wordBConnection": "The dungeon key.",
+          "revealExplanation": "The key to the castle dungeon.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The dungeon is the castle's prison, and the dungeon key / jailer's keys is a familiar story and video-game item."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_castle__king",
       "a": "CASTLE",
       "b": "KING",
@@ -24244,6 +26105,195 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_castle__knight",
+      "a": "CASTLE",
+      "b": "KNIGHT",
+      "source": "u11",
+      "pairNote": "Two good hints of different flavours.",
+      "reviewerBestAvailable": {
+        "text": "MEDIEVAL",
+        "why": "Most direct; CHESS is equally valid and more playful.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MEDIEVAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A medieval castle.",
+          "wordBConnection": "A medieval knight.",
+          "revealExplanation": "Medieval: castles and knights.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Medieval castle and medieval knight share the period directly."
+            }
+          }
+        },
+        {
+          "text": "CHESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle piece in chess.",
+          "wordBConnection": "The knight piece.",
+          "revealExplanation": "Chess pieces: castle and knight.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The knight is a chess piece and the rook is commonly called the castle (castling)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__light",
+      "a": "CASTLE",
+      "b": "LIGHT",
+      "source": "u11",
+      "pairNote": "No PASS. Castle side is a scene without a phrase behind it.",
+      "reviewerBestAvailable": {
+        "text": "BEACON",
+        "why": "Only hint offered; light is certain, castle is a tower-signal inference.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BEACON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The castle's beacon.",
+          "wordBConnection": "A beacon light.",
+          "revealExplanation": "A beacon: the castle's warning light.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A beacon is a signal light, but castle only reaches through beacon fires lit on castle towers, an image many players will not produce."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_castle__lion",
+      "a": "CASTLE",
+      "b": "LION",
+      "source": "u11",
+      "pairNote": "KING carries the pair; NARNIA is a fun but unreliable alternative.",
+      "reviewerBestAvailable": {
+        "text": "KING",
+        "why": "Both routes are universal.",
+        "reviewer": "blind-subagent-11"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The king's castle.",
+          "wordBConnection": "The Lion King.",
+          "revealExplanation": "A king: in the castle, or the lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The king lives in the castle and the lion is king of the jungle / The Lion King."
+            }
+          }
+        },
+        {
+          "text": "NARNIA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Narnia's castle, Cair Paravel.",
+          "wordBConnection": "Aslan the lion.",
+          "revealExplanation": "Narnia: the lion and the castle.",
+          "reference": {
+            "referenceType": "book",
+            "source": "The Chronicles of Narnia",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u11",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-11",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Aslan the lion makes Narnia reach lion, but castle needs Cair Paravel or the White Witch's castle, details beyond the title."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_cat__mouse",
