@@ -1,6 +1,6 @@
 # Cluevoyance Unlimited — review packet (u03-second-batch)
 
-Generated 2026-10-17 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
+Generated 2026-10-18 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
 
 ## The 50-word shortlist
 
@@ -100,16 +100,13 @@ Playable hints: 2. Reviewer: Genesis carries this pair; EVE and EDEN are the sam
 
 ### BANK + CARD
 
-Playable hints: 1. Reviewer: Three clean banking compounds; CREDIT and DEBIT are twins.
+Playable hints: 3. Reviewer: Three clean banking compounds; CREDIT and DEBIT are twins.
 
 **Retained**
 
+- **DEBIT** 2/2 fair 2 broad [variant_of:CREDIT]: A bank debits an account and issues a debit card. *(author: variant — variant of CREDIT)*
+- **ATM** 2/2 fair 2 broad: An ATM is a bank machine you use with an ATM card. *(author: rejected — an acronym, and BANK-leaning)*
 - **CREDIT** 2/2 fair 2 broad [variant_of:DEBIT]: Banks extend credit and issue credit cards. *(author: retained)*
-
-**Held**
-
-- **DEBIT** 2/2 fair 2 broad [variant_of:CREDIT]: A bank debits an account and issues a debit card. — held: passed blind review; needs player-facing text *(author: variant — variant of CREDIT)*
-- **ATM** 2/2 fair 2 broad: An ATM is a bank machine you use with an ATM card. — held: passed blind review; needs player-facing text *(author: rejected — an acronym, and BANK-leaning)*
 
 **Rejected**
 
@@ -198,16 +195,16 @@ Playable hints: 1. Reviewer: PAVLOV is a textbook two-way hint; COLLAR is playab
 
 ### BELL + RING
 
-Playable hints: 1. Reviewer: Strong pair; WEDDING and BOXING are clean compounds on both sides.
+Playable hints: 3. Reviewer: Strong pair; WEDDING and BOXING are clean compounds on both sides.
 
 **Retained**
 
 - **WEDDING** 2/2 fair 2 broad: Wedding bells and wedding ring are both stock phrases. *(author: retained)*
+- **BOXING** 2/2 fair 2 broad: A boxing ring, and the bell that ends each round. *(author: rejected — RING only; the bell is one hop more)*
+- **TONE** 1/2 fair 2 broad: Ringtone is a compound and the tone of a bell is natural. *(author: rejected — BELL only)*
 
 **Held**
 
-- **BOXING** 2/2 fair 2 broad: A boxing ring, and the bell that ends each round. — held: passed blind review; needs player-facing text *(author: rejected — RING only; the bell is one hop more)*
-- **TONE** 1/2 fair 2 broad: Ringtone is a compound and the tone of a bell is natural. — held: passed blind review; needs player-facing text *(author: rejected — BELL only)*
 - **CHURCH** 2/1 fair 1 broad [one_sided]: Church bell is direct; ring reaches church only via bells ringing or a wedding ring. — held: blind review: borderline *(author: retained)*
 
 **Rejected**
@@ -303,15 +300,12 @@ Playable hints: 2. Reviewer: SCALES is the natural shared trait; ZODIAC is a sol
 
 ### GLASS + ICE
 
-Playable hints: 1. Reviewer: FROST is the best bridge; CLEAR is a fair shared-property hint.
+Playable hints: 2. Reviewer: FROST is the best bridge; CLEAR is a fair shared-property hint.
 
 **Retained**
 
+- **CLEAR** 2/2 fair 2 broad [generic]: Both glass and ice are clear. *(author: rejected — used for GLASS+WATER; ice is less clearly clear)*
 - **FROST** 2/2 fair 2 broad: Frosted glass and frost on a window, and frost is a form of ice. *(author: retained)*
-
-**Held**
-
-- **CLEAR** 2/2 fair 2 broad [generic]: Both glass and ice are clear. — held: passed blind review; needs player-facing text *(author: rejected — used for GLASS+WATER; ice is less clearly clear)*
 
 **Rejected**
 
@@ -534,4 +528,4 @@ Playable hints: 1. Reviewer: Everything rides the Wicked Witch's melting; MELT s
 
 ## Totals
 
-retained 37 · held 33 · rejected 53 across 28 pairs; 27 pairs have at least one playable hint.
+retained 42 · held 28 · rejected 53 across 28 pairs; 27 pairs have at least one playable hint.

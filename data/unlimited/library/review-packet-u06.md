@@ -1,6 +1,6 @@
 # Cluevoyance Unlimited — review packet (u06)
 
-Generated 2026-10-17 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
+Generated 2026-10-18 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
 
 ## The 50-word shortlist
 
@@ -180,15 +180,12 @@ Playable hints: 1. Reviewer: Strong.
 
 ### BAT + CASTLE
 
-Playable hints: 1. Reviewer: Both pass; they are the same route in two words.
+Playable hints: 2. Reviewer: Both pass; they are the same route in two words.
 
 **Retained**
 
+- **VAMPIRE** 2/2 fair 2 broad: Vampire bat is a compound and the vampire's castle is a stock Dracula scene. *(author: variant — variant of DRACULA)*
 - **DRACULA** 2/2 fair 2 broad [variant_of:VAMPIRE]: Dracula turns into a bat and lives in Castle Dracula; the same story as VAMPIRE, named more specifically. *(author: retained)*
-
-**Held**
-
-- **VAMPIRE** 2/2 fair 2 broad: Vampire bat is a compound and the vampire's castle is a stock Dracula scene. — held: passed blind review; needs player-facing text *(author: variant — variant of DRACULA)*
 
 ### BAT + CAT
 
@@ -384,15 +381,12 @@ Playable hints: 0. Reviewer: No PASS. Judgement call: 'flying mouse' as a descri
 
 ### BAT + NIGHT
 
-Playable hints: 1. Reviewer: Two passes.
+Playable hints: 2. Reviewer: Two passes.
 
 **Retained**
 
+- **DARK** 2/2 fair 2 broad [generic]: Night is dark; bats are creatures of the dark and Batman is the Dark Knight. *(author: rejected — NIGHT only)*
 - **NOCTURNAL** 2/2 fair 2 broad: Bats are the archetypal nocturnal animal and nocturnal means of the night. *(author: retained)*
-
-**Held**
-
-- **DARK** 2/2 fair 2 broad [generic]: Night is dark; bats are creatures of the dark and Batman is the Dark Knight. — held: passed blind review; needs player-facing text *(author: rejected — NIGHT only)*
 
 ### BAT + OCEAN
 
@@ -420,4 +414,4 @@ Playable hints: 0. Reviewer: No PASS. Vampire queen is a genre trope, not a shar
 
 ## Totals
 
-retained 36 · held 10 · rejected 8 across 40 pairs; 29 pairs have at least one playable hint.
+retained 38 · held 8 · rejected 8 across 40 pairs; 29 pairs have at least one playable hint.

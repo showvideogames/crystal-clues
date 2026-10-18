@@ -2,7 +2,7 @@
   "_metadata": {
     "title": "Cluevoyance Unlimited pair library",
     "statuses": "candidate | ai_reviewed | held | rejected | human_approved (never set by scripts)",
-    "updated": "2026-10-17",
+    "updated": "2026-10-18",
     "merges": [
       {
         "review": "data/unlimited/library/reviews/u01-blind-review-v2.json",
@@ -151,6 +151,46 @@
         "ai_reviewed": 37,
         "held": 15,
         "rejected": 4,
+        "needsText": 0,
+        "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u08-blind-review.json",
+        "key": "data/unlimited/library/reviews/u08-blind-key.json",
+        "batch": "data/unlimited/library/batches/u08-batch.json",
+        "ai_reviewed": 35,
+        "held": 8,
+        "rejected": 6,
+        "needsText": 0,
+        "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u03-blind-review.json",
+        "key": "data/unlimited/library/reviews/u03-blind-key.json",
+        "batch": "data/unlimited/library/batches/u03-second-batch.json",
+        "ai_reviewed": 42,
+        "held": 28,
+        "rejected": 53,
+        "needsText": 0,
+        "pairs": 28
+      },
+      {
+        "review": "data/unlimited/library/reviews/u05-blind-review.json",
+        "key": "data/unlimited/library/reviews/u05-blind-key.json",
+        "batch": "data/unlimited/library/batches/u05-batch.json",
+        "ai_reviewed": 54,
+        "held": 30,
+        "rejected": 18,
+        "needsText": 0,
+        "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u06-blind-review.json",
+        "key": "data/unlimited/library/reviews/u06-blind-key.json",
+        "batch": "data/unlimited/library/batches/u06-batch.json",
+        "ai_reviewed": 38,
+        "held": 8,
+        "rejected": 8,
         "needsText": 0,
         "pairs": 40
       }
@@ -4118,7 +4158,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_apple__night",
@@ -5548,7 +5589,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_apple__spider",
@@ -5931,8 +5973,39 @@
         "why": "The poisoned apple is the single most famous witch-and-apple image.",
         "reviewer": "blind-subagent-5"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
+        {
+          "text": "SNOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Snow White’s poisoned apple.",
+          "wordBConnection": "Handed over by the witch in Snow White.",
+          "revealExplanation": "Snow White: the witch and the apple.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u05",
+            "authorLabel": "variant",
+            "authorReason": "variant of POISON",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-5",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Snow White's poisoned apple and the witch (the queen in hag disguise) who hands it over come from the same story."
+            }
+          }
+        },
         {
           "text": "POISON",
           "status": "ai_reviewed",
@@ -5961,28 +6034,6 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "The poisoned apple from the witch in Snow White reaches both words in one image, matching the POISON/APPLE+QUEEN anchor."
-            }
-          }
-        },
-        {
-          "text": "SNOW",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u05",
-            "authorLabel": "variant",
-            "authorReason": "variant of POISON",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-5",
-              "date": "2026-10-17",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "moderate",
-              "flags": [],
-              "reason": "Snow White's poisoned apple and the witch (the queen in hag disguise) who hands it over come from the same story."
             }
           }
         },
@@ -6444,7 +6495,7 @@
       "b": "CARD",
       "source": "u03-second-batch",
       "pairNote": "Three clean banking compounds; CREDIT and DEBIT are twins.",
-      "playableHints": 2,
+      "playableHints": 3,
       "clues": [
         {
           "text": "DEBIT",
@@ -6476,6 +6527,33 @@
           }
         },
         {
+          "text": "ATM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The bank’s ATM.",
+          "wordBConnection": "You use it with an ATM card.",
+          "revealExplanation": "The bank ATM and its card.",
+          "reference": null,
+          "provenance": {
+            "source": "u03-second-batch",
+            "authorLabel": "rejected",
+            "authorReason": "an acronym, and BANK-leaning",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-3",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An ATM is a bank machine you use with an ATM card."
+            }
+          }
+        },
+        {
           "text": "CREDIT",
           "status": "ai_reviewed",
           "heldReason": null,
@@ -6501,28 +6579,6 @@
                 "variant_of:DEBIT"
               ],
               "reason": "Banks extend credit and issue credit cards."
-            }
-          }
-        },
-        {
-          "text": "ATM",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u03-second-batch",
-            "authorLabel": "rejected",
-            "authorReason": "an acronym, and BANK-leaning",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-3",
-              "date": "2026-10-17",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "broad",
-              "flags": [],
-              "reason": "An ATM is a bank machine you use with an ATM card."
             }
           }
         },
@@ -6574,7 +6630,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_bank__castle",
@@ -7998,7 +8055,7 @@
         "why": "A finance phrase that is also the defining property of ice.",
         "reviewer": "blind-subagent-5"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
         {
           "text": "FROZEN",
@@ -8029,8 +8086,13 @@
         },
         {
           "text": "RIVER",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A river bank.",
+          "wordBConnection": "A river frozen to ice.",
+          "revealExplanation": "A frozen river and its bank.",
+          "reference": null,
           "provenance": {
             "source": "u05",
             "authorLabel": "rejected",
@@ -8385,7 +8447,7 @@
         "why": "Clean double meaning, each side ordinary.",
         "reviewer": "blind-subagent-5"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
         {
           "text": "CHARGE",
@@ -8416,8 +8478,13 @@
         },
         {
           "text": "ARMOR",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The armored truck that carries the bank’s cash.",
+          "wordBConnection": "A knight’s armor.",
+          "revealExplanation": "Armor: a knight’s, and the bank’s armored truck.",
+          "reference": null,
           "provenance": {
             "source": "u05",
             "authorLabel": "rejected",
@@ -9241,12 +9308,17 @@
         "why": "Instant shared scene.",
         "reviewer": "blind-subagent-5"
       },
-      "playableHints": 0,
+      "playableHints": 1,
       "clues": [
         {
           "text": "RIVER",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A river bank.",
+          "wordBConnection": "River rocks.",
+          "revealExplanation": "River rocks along the river bank.",
+          "reference": null,
           "provenance": {
             "source": "u05",
             "authorLabel": "rejected",
@@ -9643,7 +9715,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_bank__snake",
@@ -10370,8 +10443,39 @@
         "why": "Names the exact story where both words sit.",
         "reviewer": "blind-subagent-6"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
+        {
+          "text": "VAMPIRE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A vampire bat.",
+          "wordBConnection": "The vampire’s castle.",
+          "revealExplanation": "The vampire: his bat, his castle.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Dracula",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "variant",
+            "authorReason": "variant of DRACULA",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Vampire bat is a compound and the vampire's castle is a stock Dracula scene."
+            }
+          }
+        },
         {
           "text": "DRACULA",
           "status": "ai_reviewed",
@@ -10402,28 +10506,6 @@
                 "variant_of:VAMPIRE"
               ],
               "reason": "Dracula turns into a bat and lives in Castle Dracula; the same story as VAMPIRE, named more specifically."
-            }
-          }
-        },
-        {
-          "text": "VAMPIRE",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u06",
-            "authorLabel": "variant",
-            "authorReason": "variant of DRACULA",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-6",
-              "date": "2026-10-17",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "broad",
-              "flags": [],
-              "reason": "Vampire bat is a compound and the vampire's castle is a stock Dracula scene."
             }
           }
         }
@@ -11608,8 +11690,37 @@
         "why": "Precisely describes the bat and means night.",
         "reviewer": "blind-subagent-6"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
+        {
+          "text": "DARK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bats, creatures of the dark.",
+          "wordBConnection": "Night is dark.",
+          "revealExplanation": "The dark: bats and night.",
+          "reference": null,
+          "provenance": {
+            "source": "u06",
+            "authorLabel": "rejected",
+            "authorReason": "NIGHT only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-6",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Night is dark; bats are creatures of the dark and Batman is the Dark Knight."
+            }
+          }
+        },
         {
           "text": "NOCTURNAL",
           "status": "ai_reviewed",
@@ -11634,30 +11745,6 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Bats are the archetypal nocturnal animal and nocturnal means of the night."
-            }
-          }
-        },
-        {
-          "text": "DARK",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u06",
-            "authorLabel": "rejected",
-            "authorReason": "NIGHT only",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-6",
-              "date": "2026-10-17",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "broad",
-              "flags": [
-                "generic"
-              ],
-              "reason": "Night is dark; bats are creatures of the dark and Batman is the Dark Knight."
             }
           }
         }
@@ -13871,7 +13958,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_bear__horse",
@@ -14054,7 +14142,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_bear__iron",
@@ -14489,6 +14578,1046 @@
       ]
     },
     {
+      "pair_id": "p_bear__ocean",
+      "a": "BEAR",
+      "b": "OCEAN",
+      "source": "u08",
+      "pairNote": "One hint, clean pass.",
+      "reviewerBestAvailable": {
+        "text": "POLAR",
+        "why": "Compound on one side, familiar geography on the other, and the two meet in one picture.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "POLAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A polar bear.",
+          "wordBConnection": "The polar ocean, the Arctic.",
+          "revealExplanation": "A polar bear on the polar ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Polar bear is a household compound and the polar oceans (Arctic/Antarctic) are the sea ice those bears hunt on, so one word covers both sides of a single scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__pirate",
+      "a": "BEAR",
+      "b": "PIRATE",
+      "source": "u08",
+      "pairNote": "Generic but genuinely two-sided; generic alone is not a rejection.",
+      "reviewerBestAvailable": {
+        "text": "MASCOT",
+        "why": "Both words are classic team identities; neither side is a stretch even if neither is unique.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MASCOT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Chicago Bears' mascot.",
+          "wordBConnection": "The Pittsburgh Pirates' mascot.",
+          "revealExplanation": "Team mascots: a Bear in Chicago, a Pirate in Pittsburgh.",
+          "reference": {
+            "referenceType": "sport",
+            "source": "NFL and MLB team names",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bears (Chicago Bears, costumed bear mascots) and pirates (Pittsburgh Pirates, countless school teams) are both stock team mascots, so the hint reaches each via the same sports-team route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__queen",
+      "a": "BEAR",
+      "b": "QUEEN",
+      "source": "u08",
+      "pairNote": "Story route is strong but all-or-nothing; recognizability moderate rather than broad.",
+      "reviewerBestAvailable": {
+        "text": "BRAVE",
+        "why": "A single familiar story (the Snow White model from the calibration) carries both words.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BRAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "film_or_tv",
+          "wordAConnection": "The queen becomes a bear in Brave.",
+          "wordBConnection": "Queen Elinor of Brave.",
+          "revealExplanation": "Brave: the queen who became a bear.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Brave (Pixar)",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Pixar's Brave turns Queen Elinor into a bear, so the film title points at both words through one well-known story; players who have not seen it will get neither side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__ring",
+      "a": "BEAR",
+      "b": "RING",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "CIRCUS",
+        "why": "Both compounds, one scene.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CIRCUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The circus bear.",
+          "wordBConnection": "The circus ring.",
+          "revealExplanation": "The circus: a bear in the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Circus bear and circus ring are both everyday phrases and belong to the same scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__robot",
+      "a": "BEAR",
+      "b": "ROBOT",
+      "source": "u08",
+      "pairNote": "TOY carries the pair; TEDDY is wholly one-sided.",
+      "reviewerBestAvailable": {
+        "text": "TOY",
+        "why": "Equally strong on both sides and a shared setting.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TOY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A teddy bear is a toy.",
+          "wordBConnection": "A toy robot.",
+          "revealExplanation": "Toys: a teddy bear and a robot.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Toy bear and toy robot are the two archetypal children's toys, sharing the same toy-box scene."
+            }
+          }
+        },
+        {
+          "text": "TEDDY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A teddy bear.",
+          "wordBConnection": "Teddy Ruxpin was a robot bear.",
+          "revealExplanation": "Teddy: the bear, and Teddy Ruxpin the robot bear.",
+          "reference": {
+            "referenceType": "brand_or_mascot",
+            "source": "Teddy Ruxpin",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Teddy bear is instant, but there is no recognizable teddy-robot phrase, character or scene, so the robot side is unreached."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__rock",
+      "a": "BEAR",
+      "b": "ROCK",
+      "source": "u08",
+      "pairNote": "Rock side is material-level but clearly recognizable.",
+      "reviewerBestAvailable": {
+        "text": "CAVE",
+        "why": "Strong on bear, adequate on rock, and the two meet physically.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bear's cave.",
+          "wordBConnection": "A cave in the rock.",
+          "revealExplanation": "A rock cave with a bear in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bears den in caves (bear cave is a stock image) and a cave is a hollow in rock, so the hint lands on both via a single setting."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__rose",
+      "a": "BEAR",
+      "b": "ROSE",
+      "source": "u08",
+      "pairNote": "VALENTINE is excellent; THORN is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "VALENTINE",
+        "why": "Both words are the iconic gifts of the same occasion.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VALENTINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A Valentine's teddy bear.",
+          "wordBConnection": "Valentine's roses.",
+          "revealExplanation": "Valentine's: a teddy bear and a rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A teddy bear and a bunch of roses are the two cliche Valentine's gifts, one shared shop-window scene."
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "rejected",
+            "authorReason": "ROSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Rose thorn is immediate, but the thorn-in-the-paw fable belongs to the lion, not the bear, leaving no recognizable bear route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__salt",
+      "a": "BEAR",
+      "b": "SALT",
+      "source": "u08",
+      "pairNote": "Weak pass; the bear side depends on the honey-licking image rather than a phrase.",
+      "reviewerBestAvailable": {
+        "text": "LICK",
+        "why": "Compound on salt plus a familiar bear behaviour; a deer is the more typical salt-lick animal, so bear is a step weaker.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bears visit a salt lick.",
+          "wordBConnection": "A salt lick.",
+          "revealExplanation": "A salt lick, and the bear that comes to it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Salt lick is a compound, and bears licking honey off their paws (Pooh) or visiting salt licks is a recognizable animal image, so both sides are reached though bear is the softer one."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__shadow",
+      "a": "BEAR",
+      "b": "SHADOW",
+      "source": "u08",
+      "pairNote": "No PASS. Pair has no obvious shared scene; CAVE is the salvageable option.",
+      "reviewerBestAvailable": {
+        "text": "CAVE",
+        "why": "The only hint that reaches the bear; the shadow side is a dim mood link rather than a phrase or scene.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CAVE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bear's cave.",
+          "wordBConnection": "A cave is full of shadow.",
+          "revealExplanation": "The shadowy cave of a bear.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Bear cave is solid, but shadow reaches cave only through darkness-as-mood or Plato's shadows on the cave wall, which few players will summon from the word alone."
+            }
+          }
+        },
+        {
+          "text": "SHADE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "rejected",
+            "authorReason": "a synonym of SHADOW",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Shade is a near-synonym of shadow and has no recognizable bear route at all."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__shark",
+      "a": "BEAR",
+      "b": "SHARK",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "ATTACK",
+        "why": "Parallel compounds, both everyday.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ATTACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bear attack.",
+          "wordBConnection": "A shark attack.",
+          "revealExplanation": "Bear attack, shark attack.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bear attack and shark attack are the two stock wild-animal-attack headlines."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__snake",
+      "a": "BEAR",
+      "b": "SNAKE",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "DEN",
+        "why": "Same word, same sense, both animals.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bear's den.",
+          "wordBConnection": "A snake den.",
+          "revealExplanation": "A den: a bear's, or a snake's.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bear den and snake den (den of vipers) are both common phrases for the animals' lairs."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__spider",
+      "a": "BEAR",
+      "b": "SPIDER",
+      "source": "u08",
+      "pairNote": "Pass despite being descriptive rather than scene-based.",
+      "reviewerBestAvailable": {
+        "text": "HAIRY",
+        "why": "Attribute hint, but equally and strongly true of both.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HAIRY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A hairy bear.",
+          "wordBConnection": "A hairy spider.",
+          "revealExplanation": "Both are hairy.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "A hairy spider (tarantula) and a hairy bear are both immediate images; the hint is an attribute, but a defining one for each."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__spring",
+      "a": "BEAR",
+      "b": "SPRING",
+      "source": "u08",
+      "pairNote": "Good pass; spring side slightly softer in isolation.",
+      "reviewerBestAvailable": {
+        "text": "WAKE",
+        "why": "Names the exact scene the two words share.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WAKE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bear waking from hibernation.",
+          "wordBConnection": "Waking up in spring.",
+          "revealExplanation": "Spring: when the bear wakes.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Bears wake from hibernation in spring, so the hint names the moment that joins the two words; spring alone is reached via the general spring-awakening idea."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__star",
+      "a": "BEAR",
+      "b": "STAR",
+      "source": "u08",
+      "pairNote": "Pass; bear side depends on knowing the Dipper is part of the Bear constellation.",
+      "reviewerBestAvailable": {
+        "text": "DIPPER",
+        "why": "Star side is immediate; bear side needs the Great Bear fact, which is widely taught.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DIPPER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The Big Dipper sits in the Great Bear.",
+          "wordBConnection": "The Big Dipper's stars.",
+          "revealExplanation": "The Big Dipper: stars of the Great Bear.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Big Dipper is a star pattern and sits inside Ursa Major, the Great Bear, so a player with basic sky knowledge reaches both."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__train",
+      "a": "BEAR",
+      "b": "TRAIN",
+      "source": "u08",
+      "pairNote": "Two good hints; PADDINGTON is the more elegant, CIRCUS the more universal.",
+      "reviewerBestAvailable": {
+        "text": "PADDINGTON",
+        "why": "A single character whose name is a station and who is a bear; CIRCUS is broader but less specific.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PADDINGTON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "fictional_character",
+          "wordAConnection": "Paddington Bear.",
+          "wordBConnection": "Paddington is a London train station.",
+          "revealExplanation": "Paddington: the bear named after the train station.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Paddington",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Paddington Bear is named for Paddington railway station where the Browns find him, so the story itself links bear and train."
+            }
+          }
+        },
+        {
+          "text": "CIRCUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The circus bear.",
+          "wordBConnection": "The circus train.",
+          "revealExplanation": "The circus train, bear aboard.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Circus bear and circus train (Dumbo, the travelling circus) are both familiar phrases from one scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__water",
+      "a": "BEAR",
+      "b": "WATER",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "RIVER",
+        "why": "Iconic bear scene set in water.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RIVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bear in the river.",
+          "wordBConnection": "River water.",
+          "revealExplanation": "A bear standing in the river.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A bear fishing salmon in a river is an iconic wildlife image, and a river is a body of water."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__witch",
+      "a": "BEAR",
+      "b": "WITCH",
+      "source": "u08",
+      "pairNote": "Pass via story; the witch is a slightly smaller part of the plot than the queen.",
+      "reviewerBestAvailable": {
+        "text": "BRAVE",
+        "why": "Same story route as the BEAR+QUEEN pair; the witch is the story's spell-caster.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BRAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "film_or_tv",
+          "wordAConnection": "The bear in Brave.",
+          "wordBConnection": "The witch whose spell did it.",
+          "revealExplanation": "Brave: the witch's spell and the bear.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Brave (Pixar)",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "In Pixar's Brave the witch's spell turns the queen into a bear, so the title reaches both words through one story; players unfamiliar with the film get nothing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__wolf",
+      "a": "BEAR",
+      "b": "WOLF",
+      "source": "u08",
+      "pairNote": "Both pass; FOREST is the sharper picture.",
+      "reviewerBestAvailable": {
+        "text": "FOREST",
+        "why": "Gives a concrete shared habitat rather than a category.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FOREST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A forest bear.",
+          "wordBConnection": "A forest wolf.",
+          "revealExplanation": "The forest's bear and wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bears and wolves are the two archetypal forest predators of fairy tales and wildlife alike."
+            }
+          }
+        },
+        {
+          "text": "WILD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A wild bear.",
+          "wordBConnection": "A wild wolf.",
+          "revealExplanation": "Both are wild.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both are wild animals; the link is real on each side but very broad."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__bridge",
+      "a": "BELL",
+      "b": "BRIDGE",
+      "source": "u08",
+      "pairNote": "TOWER is the stronger of two passes.",
+      "reviewerBestAvailable": {
+        "text": "TOWER",
+        "why": "Compound on bell, landmark on bridge.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TOWER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bell tower.",
+          "wordBConnection": "Tower Bridge.",
+          "revealExplanation": "Bell tower, Tower Bridge.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bell tower is a plain compound and Tower Bridge is a famous landmark."
+            }
+          }
+        },
+        {
+          "text": "LONDON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Big Ben's bell in London.",
+          "wordBConnection": "London Bridge.",
+          "revealExplanation": "London: its great bell and its bridge.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "London",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "London Bridge is a nursery-rhyme staple; bell reaches London through Big Ben and the Oranges-and-Lemons bells, which is familiar but less instant."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__card",
+      "a": "BELL",
+      "b": "CARD",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "CHRISTMAS",
+        "why": "Two compounds from one occasion.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHRISTMAS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Christmas bells.",
+          "wordBConnection": "A Christmas card.",
+          "revealExplanation": "Christmas: bells, and cards.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Christmas bells and Christmas cards are both everyday seasonal compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bell__castle",
       "a": "BELL",
       "b": "CASTLE",
@@ -14593,6 +15722,134 @@
                 "one_sided"
               ],
               "reason": "Castles have moats; bells do not."
+            }
+          }
+        }
+      ],
+      "reviewerBestAvailable": null
+    },
+    {
+      "pair_id": "p_bell__cat",
+      "a": "BELL",
+      "b": "CAT",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "COLLAR",
+        "why": "The object that physically joins bell and cat.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "COLLAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell on the collar.",
+          "wordBConnection": "A cat's collar.",
+          "revealExplanation": "A cat's collar with its little bell.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A cat collar with a bell on it is a single familiar object that contains both words."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__crown",
+      "a": "BELL",
+      "b": "CROWN",
+      "source": "u08",
+      "pairNote": "Pass; bell side is scene-based rather than a phrase.",
+      "reviewerBestAvailable": {
+        "text": "CORONATION",
+        "why": "One ceremony that features both words.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CORONATION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Coronation bells.",
+          "wordBConnection": "The crown at a coronation.",
+          "revealExplanation": "A coronation: the bells and the crown.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A coronation is the placing of the crown and is traditionally announced by pealing bells, so both belong to one ceremony."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__diamond",
+      "a": "BELL",
+      "b": "DIAMOND",
+      "source": "u08",
+      "pairNote": "Excellent pass.",
+      "reviewerBestAvailable": {
+        "text": "RING",
+        "why": "Pun-grade double meaning, both sides instant.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Ring the bell.",
+          "wordBConnection": "A diamond ring.",
+          "revealExplanation": "Ring: what a bell does, what a diamond sits in.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bells ring and a diamond ring is a stock phrase, a tidy double meaning."
             }
           }
         }
@@ -14709,6 +15966,831 @@
                 "one_sided"
               ],
               "reason": "Liberty Bell is direct; no dog link."
+            }
+          }
+        }
+      ],
+      "reviewerBestAvailable": null
+    },
+    {
+      "pair_id": "p_bell__dragon",
+      "a": "BELL",
+      "b": "DRAGON",
+      "source": "u08",
+      "pairNote": "Pass; dragon side is imagery rather than a phrase.",
+      "reviewerBestAvailable": {
+        "text": "TEMPLE",
+        "why": "Shared Asian-temple scene.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TEMPLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A temple bell.",
+          "wordBConnection": "Dragons carved on the temple.",
+          "revealExplanation": "A temple: its bell and its dragons.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Temple bells are a fixed phrase and dragons decorate East Asian temples, so both sit in one recognizable setting."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__egg",
+      "a": "BELL",
+      "b": "EGG",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "TIMER",
+        "why": "Compound plus the object's own bell.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TIMER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The timer's bell.",
+          "wordBConnection": "An egg timer.",
+          "revealExplanation": "The egg timer's bell.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Egg timer is a compound and kitchen timers ring a bell when done."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__fire",
+      "a": "BELL",
+      "b": "FIRE",
+      "source": "u08",
+      "pairNote": "ALARM is a clean pass; STATION leans on fire to reach bell.",
+      "reviewerBestAvailable": {
+        "text": "ALARM",
+        "why": "Parallel compounds, both universal.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ALARM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "An alarm bell.",
+          "wordBConnection": "A fire alarm.",
+          "revealExplanation": "The fire alarm bell.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Alarm bell and fire alarm are both everyday compounds."
+            }
+          }
+        },
+        {
+          "text": "STATION",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The station bell.",
+          "wordBConnection": "The fire station.",
+          "revealExplanation": "The bell at the fire station.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fire station is instant, but bell reaches station mainly through the fire-station bell, i.e. via the other target; a railway station bell is a thinner independent route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__fish",
+      "a": "BELL",
+      "b": "FISH",
+      "source": "u08",
+      "pairNote": "Pass; diving bell is known but not universal.",
+      "reviewerBestAvailable": {
+        "text": "DIVING",
+        "why": "Compound on bell, natural scene on fish.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DIVING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A diving bell.",
+          "wordBConnection": "Diving with the fish.",
+          "revealExplanation": "A diving bell among the fish.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Diving bell is a real compound and diving among fish is the ordinary picture of what divers see."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__ghost",
+      "a": "BELL",
+      "b": "GHOST",
+      "source": "u08",
+      "pairNote": "No PASS. Pair needs a shared haunted scene (e.g. a midnight church) that this hint does not supply.",
+      "reviewerBestAvailable": {
+        "text": "TOLL",
+        "why": "Only hint offered; it reaches bell strongly and ghost only as atmosphere.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOLL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell tolls.",
+          "wordBConnection": "It tolls for the dead, the ghosts.",
+          "revealExplanation": "The bell tolls for the departed.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Bells toll, but ghost is reached only through a death-knell mood with no phrase, story or scene that a player would name."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__glass",
+      "a": "BELL",
+      "b": "GLASS",
+      "source": "u08",
+      "pairNote": "JAR is the right call; DOME is a paler version of it.",
+      "reviewerBestAvailable": {
+        "text": "JAR",
+        "why": "The bell jar is itself made of glass.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "JAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bell jar.",
+          "wordBConnection": "A glass jar.",
+          "revealExplanation": "A bell jar: glass, bell-shaped.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A bell jar is a glass object by definition and glass jar is a plain compound."
+            }
+          }
+        },
+        {
+          "text": "DOME",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bell's dome shape.",
+          "wordBConnection": "A glass dome.",
+          "revealExplanation": "A dome: a bell's shape, or glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:JAR"
+              ],
+              "reason": "Glass dome is a common phrase, but bell reaches dome only through its shape or as a weaker name for the bell jar."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__gold",
+      "a": "BELL",
+      "b": "GOLD",
+      "source": "u08",
+      "pairNote": "GOLDEN is a judgement call: valid inflection route, but lopsided.",
+      "reviewerBestAvailable": {
+        "text": "CHRISTMAS",
+        "why": "Reaches both words without naming either.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHRISTMAS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Christmas bells.",
+          "wordBConnection": "Gold ornaments at Christmas.",
+          "revealExplanation": "Christmas: golden bells.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Christmas bells are a fixed phrase and gold is a Christmas staple (the Magi's gift, five gold rings, gold decorations)."
+            }
+          }
+        },
+        {
+          "text": "GOLDEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target GOLD",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "contains_target",
+                "synonym_of_target"
+              ],
+              "reason": "Golden is a straight inflection of gold, which the rubric allows, but the bell side rests on the hymn phrase golden bells and the hint gives one target away while barely hinting the other."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__heart",
+      "a": "BELL",
+      "b": "HEART",
+      "source": "u08",
+      "pairNote": "Pass; heart side is symbolic rather than phrasal.",
+      "reviewerBestAvailable": {
+        "text": "WEDDING",
+        "why": "One occasion, strong on bell, serviceable on heart.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Wedding bells.",
+          "wordBConnection": "Hearts on the wedding.",
+          "revealExplanation": "Wedding bells and hearts.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Wedding bells is a fixed phrase and hearts are the standard wedding decoration and symbol."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__honey",
+      "a": "BELL",
+      "b": "HONEY",
+      "source": "u08",
+      "pairNote": "No PASS. The pair lacks an obvious shared scene and SWEET does not create one.",
+      "reviewerBestAvailable": {
+        "text": "SWEET",
+        "why": "Only hint offered; it reaches honey trivially and bell only by a side door.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SWEET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "A sweet bell pepper.",
+          "wordBConnection": "Sweet honey.",
+          "revealExplanation": "Sweet: the bell pepper and the honey.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "synonym_of_target",
+                "needs_explanation"
+              ],
+              "reason": "Sweet is almost a definition of honey, while bell is reached only through sweet bell pepper or the sweet sound of bells, neither of which a player will land on from the word alone."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__horse",
+      "a": "BELL",
+      "b": "HORSE",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "SLEIGH",
+        "why": "One winter scene containing both.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SLEIGH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sleigh bells.",
+          "wordBConnection": "A horse pulls the sleigh.",
+          "revealExplanation": "Sleigh bells on the horse's harness.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sleigh bells is a fixed phrase and a horse-drawn sleigh is the vehicle they jingle on."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__ice",
+      "a": "BELL",
+      "b": "ICE",
+      "source": "u08",
+      "pairNote": "No PASS. A hint naming the van or chime directly would serve better.",
+      "reviewerBestAvailable": {
+        "text": "CREAM",
+        "why": "Only hint offered; the ice-cream-van bell is a real scene but needs ICE already solved to see it.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CREAM",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ice cream truck's bell.",
+          "wordBConnection": "Ice cream.",
+          "revealExplanation": "The ice cream truck's bell.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ice cream is instant, but cream reaches bell only via the ice-cream van's chime, which routes through the other target rather than the hint word."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__iron",
+      "a": "BELL",
+      "b": "IRON",
+      "source": "u08",
+      "pairNote": "Strong pass.",
+      "reviewerBestAvailable": {
+        "text": "CAST",
+        "why": "Same verb sense joining both words.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell is cast.",
+          "wordBConnection": "Cast iron.",
+          "revealExplanation": "Cast: a bell, or iron.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Cast iron is a fixed phrase and bells are cast in a foundry, the same metalworking sense on both sides."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__key",
+      "a": "BELL",
+      "b": "KEY",
+      "source": "u08",
+      "pairNote": "Clean pass.",
+      "reviewerBestAvailable": {
+        "text": "HOTEL",
+        "why": "Both objects live on the same reception desk.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HOTEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The hotel desk bell.",
+          "wordBConnection": "The hotel room key.",
+          "revealExplanation": "The hotel desk: ring the bell, get the key.",
+          "reference": null,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A hotel front desk has its bell (bellhop, desk bell) and hands out room keys, one shared lobby scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__king",
+      "a": "BELL",
+      "b": "KING",
+      "source": "u08",
+      "pairNote": "No PASS. Needs a route that names the king more directly (e.g. a royal scene).",
+      "reviewerBestAvailable": {
+        "text": "TOWER",
+        "why": "Only hint offered; strong on bell, loose on king.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOWER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bell tower.",
+          "wordBConnection": "The king's tower.",
+          "revealExplanation": "A tower: for bells, or for a king.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Bell tower is a compound, but king reaches tower only through castle imagery or the chess rook, neither a phrase a player would volunteer."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__knight",
+      "a": "BELL",
+      "b": "KNIGHT",
+      "source": "u08",
+      "pairNote": "No PASS, but close; a player might accept the medieval scene.",
+      "reviewerBestAvailable": {
+        "text": "CASTLE",
+        "why": "Only hint offered; the knight side is strong and a castle bell is at least plausible.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CASTLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The castle bell.",
+          "wordBConnection": "The castle's knights.",
+          "revealExplanation": "The castle: its bell and its knights.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Knights and castles go together instantly, but a castle bell is not a stock phrase; church towers, not castles, are where players place bells."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__light",
+      "a": "BELL",
+      "b": "LIGHT",
+      "source": "u08",
+      "pairNote": "No PASS by a hair; the story route exists but light is a secondary trait of the character.",
+      "reviewerBestAvailable": {
+        "text": "TINKER",
+        "why": "Only hint offered; the character does carry both ideas if the player knows she is shown as a glowing light.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TINKER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "fictional_character",
+          "wordAConnection": "Tinker Bell.",
+          "wordBConnection": "She shows up as a little light.",
+          "revealExplanation": "Tinker Bell, the fairy who is a light.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Peter Pan",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Tinker Bell is immediate, and she appears as a darting light in Peter Pan, but light is reached only through the character, i.e. via the other target."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__lion",
+      "a": "BELL",
+      "b": "LION",
+      "source": "u08",
+      "pairNote": "No PASS. The pair needs a different route entirely.",
+      "reviewerBestAvailable": {
+        "text": "CIRCUS",
+        "why": "Only hint offered; it does not reach the bell.",
+        "reviewer": "blind-subagent-8"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CIRCUS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The circus bell.",
+          "wordBConnection": "The circus lion.",
+          "revealExplanation": "The circus: a bell and a lion.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u08",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-8",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Circus lion is instant, but there is no recognizable circus bell; the ringmaster uses a whistle and a boxing bell is a different venue."
             }
           }
         }
@@ -14856,7 +16938,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_bridge__crown",
@@ -15632,7 +17715,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_castle__dragon",
@@ -15750,7 +17834,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_castle__king",
@@ -15864,7 +17949,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_cat__mouse",
@@ -17479,7 +19565,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_dragon__snake",
@@ -17624,7 +19711,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_egg__spring",
@@ -18980,7 +21068,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_glass__water",
@@ -19094,7 +21183,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_gold__pirate",
@@ -19426,7 +21516,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_heart__iron",
@@ -19706,7 +21797,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_honey__rose",
@@ -20385,7 +22477,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_ice__queen",
@@ -21280,7 +23373,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_knight__night",
@@ -21718,7 +23812,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_moon__ocean",
@@ -21997,7 +24092,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_moon__wolf",
@@ -22262,7 +24358,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_ocean__shark",
@@ -22406,7 +24503,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_robot__rock",
@@ -22547,7 +24645,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_rock__water",
@@ -22659,7 +24758,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_rose__spring",
@@ -22858,7 +24958,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     },
     {
       "pair_id": "p_water__witch",
@@ -22973,7 +25074,8 @@
             }
           }
         }
-      ]
+      ],
+      "reviewerBestAvailable": null
     }
   ]
 }

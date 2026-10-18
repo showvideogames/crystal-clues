@@ -1,6 +1,6 @@
 # Cluevoyance Unlimited — review packet (u05)
 
-Generated 2026-10-17 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
+Generated 2026-10-18 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
 
 ## The 50-word shortlist
 
@@ -126,15 +126,12 @@ Playable hints: 1. Reviewer: BOBBING is a model two-word hint; JUICE is mostly a
 
 ### APPLE + WITCH
 
-Playable hints: 1. Reviewer: Two good Snow White routes; SNOW is slightly less direct because it names the victim rather than the act.
+Playable hints: 2. Reviewer: Two good Snow White routes; SNOW is slightly less direct because it names the victim rather than the act.
 
 **Retained**
 
+- **SNOW** 2/2 fair 2 moderate: Snow White's poisoned apple and the witch (the queen in hag disguise) who hands it over come from the same story. *(author: variant — variant of POISON)*
 - **POISON** 2/2 fair 2 broad: The poisoned apple from the witch in Snow White reaches both words in one image, matching the POISON/APPLE+QUEEN anchor. *(author: retained)*
-
-**Held**
-
-- **SNOW** 2/2 fair 2 moderate: Snow White's poisoned apple and the witch (the queen in hag disguise) who hands it over come from the same story. — held: passed blind review; needs player-facing text *(author: variant — variant of POISON)*
 
 **Rejected**
 
@@ -362,15 +359,12 @@ Playable hints: 1. Reviewer: STORE is generic but fair; ROB and POT each lean on
 
 ### BANK + ICE
 
-Playable hints: 1. Reviewer: FROZEN is excellent; RIVER is a fair second.
+Playable hints: 2. Reviewer: FROZEN is excellent; RIVER is a fair second.
 
 **Retained**
 
 - **FROZEN** 2/2 fair 2 broad: A frozen bank account and frozen ice are both immediate. *(author: retained)*
-
-**Held**
-
-- **RIVER** 2/1 fair 2 moderate: River bank is a compound and a frozen river is a familiar image. — held: passed blind review; needs player-facing text *(author: rejected — needs a frozen river bank: two steps)*
+- **RIVER** 2/1 fair 2 moderate: River bank is a compound and a frozen river is a familiar image. *(author: rejected — needs a frozen river bank: two steps)*
 
 ### BANK + KING
 
@@ -387,15 +381,12 @@ Playable hints: 2. Reviewer: ROYAL is strong; RICH is a modest PASS; CROWN is mo
 
 ### BANK + KNIGHT
 
-Playable hints: 1. Reviewer: Both pass; CHARGE is the tighter one.
+Playable hints: 2. Reviewer: Both pass; CHARGE is the tighter one.
 
 **Retained**
 
 - **CHARGE** 2/2 fair 2 broad: A bank charge (fee) and a knight's charge are both ordinary uses. *(author: retained)*
-
-**Held**
-
-- **ARMOR** 1/2 fair 2 moderate: A knight's armor is immediate and the armored truck that carries bank cash is a recognizable scene. — held: passed blind review; needs player-facing text *(author: rejected — KNIGHT only)*
+- **ARMOR** 1/2 fair 2 moderate: A knight's armor is immediate and the armored truck that carries bank cash is a recognizable scene. *(author: rejected — KNIGHT only)*
 
 ### BANK + LIGHT
 
@@ -523,11 +514,14 @@ Playable hints: 0. Reviewer: No PASS. ATM as a robot teller is a defensible stre
 
 ### BANK + ROCK
 
-Playable hints: 0. Reviewer: RIVER is strong; SOLID leans on ROCK.
+Playable hints: 1. Reviewer: RIVER is strong; SOLID leans on ROCK.
+
+**Retained**
+
+- **RIVER** 2/2 fair 2 broad: River bank and river rocks are the same scene. *(author: rejected — rocks on a river bank: two steps)*
 
 **Held**
 
-- **RIVER** 2/2 fair 2 broad: River bank and river rocks are the same scene. — held: passed blind review; needs player-facing text *(author: rejected — rocks on a river bank: two steps)*
 - **SOLID** 1/2 fair 1 moderate: Rock solid is a set phrase, but a 'solid bank' is marketing language rather than a recognized route. — held: blind review: borderline *(author: retained)*
 
 ### BANK + ROSE
@@ -567,4 +561,4 @@ Playable hints: 1. Reviewer: CLOUD is a good hint; SHADE is a synonym of one tar
 
 ## Totals
 
-retained 50 · held 34 · rejected 18 across 40 pairs; 37 pairs have at least one playable hint.
+retained 54 · held 30 · rejected 18 across 40 pairs; 38 pairs have at least one playable hint.
