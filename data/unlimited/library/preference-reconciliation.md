@@ -2,22 +2,21 @@
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 48
-- pairs where the reviewer's pick already was the provisional top candidate: 524
-- preferences added: 8 (8 ties, 0 overrides of a higher-scored hint)
+- pairs with an existing approved preference (untouched): 56
+- pairs where the reviewer's pick already was the provisional top candidate: 549
+- preferences added: 7 (7 ties, 0 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 0
 - proposed entries still open: 12
 
 ## Added
 
-- tie p_ghost__shadow (GHOST+SHADOW): FIGURE 2/2/2 replaces FOLLOW 2/2/2 — Both compounds are everyday phrases pointing to the same spooky half-seen shape.
-- tie p_glass__gold (GLASS+GOLD): GOBLET 2/2/2 replaces RIM 2/2/2 — Both materials are classic goblet materials.
-- tie p_glass__honey (GLASS+HONEY): JAR 2/2/2 replaces AMBER 2/2/2 — The glass honey jar is literally both words in one object.
-- tie p_glass__light (GLASS+LIGHT): BULB 2/2/2 replaces PRISM 2/2/2 — Most everyday object that is both.
-- tie p_glass__pirate (GLASS+PIRATE): EYE 2/2/2 replaces RUM 2/2/2 — Glass eye and pirate eye are each a two-word phrase a player sees at once.
-- tie p_glass__rose (GLASS+ROSE): VASE 2/2/2 replaces BEAST 2/2/2 — Everyday object that holds both words.
-- tie p_glass__shark (GLASS+SHARK): TANK 2/2/2 replaces TUNNEL 2/2/2 — Shark tank plus glass tank, both stock phrases.
-- tie p_glass__star (GLASS+STAR): TELESCOPE 2/2/2 replaces ORNAMENT 2/2/2 — Both words live in the same instrument and its use.
+- tie p_fish__mouse (FISH+MOUSE): CAT 2/2/2 replaces PET 2/2/2 — The cartoon cat with a fish bone and a mouse hole is a single image that points at both targets.
+- tie p_fish__ocean (FISH+OCEAN): NEMO 2/2/2 replaces SEA 2/2/2 — A universally known fish character whose story is set in the ocean, without giving away a synonym.
+- tie p_fish__salt (FISH+SALT): SEA 2/2/2 replaces CURED 2/2/2 — Broadest and most immediate on both sides.
+- tie p_fish__water (FISH+WATER): TANK 2/2/2 replaces FRESH 2/2/2 — Two concrete compounds, no stretch on either side.
+- tie p_ghost__honey (GHOST+HONEY): BOO 2/2/2 replaces TRAP 2/2/2 — The ghost's own word doubling as a pet name is a neat two-way hit.
+- tie p_ghost__ocean (GHOST+OCEAN): SHIP 2/2/2 replaces DUTCHMAN 2/2/2 — Broadest two-way compound.
+- tie p_ghost__rock (GHOST+ROCK): TOMBSTONE 2/2/2 replaces GRAVESTONE 2/2/2 — The graveyard stone reaches both words; TOMBSTONE is marginally the more iconic spelling.
 
 ## Contradictions (unresolved, for the parent)
 

@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-18T01:38:32.857Z",
+  "generated": "2026-10-18T01:45:28.113Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 716,
-  "reviewed": 716,
-  "playable": 580,
-  "held_only": 102,
+  "authored": 756,
+  "reviewed": 756,
+  "playable": 612,
+  "held_only": 110,
   "rejected_only": 34,
   "candidate": 0,
-  "hole": 509,
+  "hole": 469,
   "closed": 0,
-  "withBestAvailableCandidate": 136,
+  "withBestAvailableCandidate": 144,
   "underGenerationHold": 1,
   "servedLive": 64,
   "pendingLocal": 0,
@@ -30,10 +30,10 @@
    "pendingBatches": []
   },
   "hints": {
-   "total": 1577,
-   "playable": 890,
-   "held": 346,
-   "rejected": 341
+   "total": 1691,
+   "playable": 944,
+   "held": 374,
+   "rejected": 373
   },
   "perWordHoles": {
    "APPLE": 0,
@@ -51,41 +51,41 @@
    "DRAGON": 0,
    "EGG": 0,
    "FIRE": 0,
-   "FISH": 22,
-   "GHOST": 18,
-   "GLASS": 3,
-   "GOLD": 30,
-   "HEART": 30,
-   "HONEY": 29,
+   "FISH": 0,
+   "GHOST": 0,
+   "GLASS": 2,
+   "GOLD": 29,
+   "HEART": 29,
+   "HONEY": 28,
    "HORSE": 28,
-   "ICE": 31,
-   "IRON": 29,
+   "ICE": 30,
+   "IRON": 28,
    "KEY": 29,
-   "KING": 30,
-   "KNIGHT": 31,
+   "KING": 29,
+   "KNIGHT": 30,
    "LIGHT": 29,
-   "LION": 31,
-   "MOON": 30,
-   "MOUSE": 33,
-   "NIGHT": 32,
-   "OCEAN": 30,
-   "PIRATE": 31,
-   "QUEEN": 32,
-   "RING": 32,
-   "ROBOT": 31,
-   "ROCK": 31,
-   "ROSE": 28,
-   "SALT": 31,
-   "SHADOW": 31,
-   "SHARK": 31,
-   "SNAKE": 32,
-   "SPIDER": 32,
-   "SPRING": 29,
-   "STAR": 30,
-   "TRAIN": 30,
-   "WATER": 29,
-   "WITCH": 31,
-   "WOLF": 32
+   "LION": 29,
+   "MOON": 28,
+   "MOUSE": 31,
+   "NIGHT": 30,
+   "OCEAN": 28,
+   "PIRATE": 29,
+   "QUEEN": 30,
+   "RING": 30,
+   "ROBOT": 29,
+   "ROCK": 29,
+   "ROSE": 27,
+   "SALT": 30,
+   "SHADOW": 30,
+   "SHARK": 30,
+   "SNAKE": 31,
+   "SPIDER": 31,
+   "SPRING": 28,
+   "STAR": 29,
+   "TRAIN": 29,
+   "WATER": 28,
+   "WITCH": 30,
+   "WOLF": 31
   },
   "batches": {
    "u04": {
@@ -210,10 +210,10 @@
    },
    "u19": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
+    "playable": 32,
+    "held_only": 8,
     "rejected_only": 0
    },
    "u20": {
@@ -15139,8 +15139,20 @@
    "pair_id": "p_fish__lion",
    "a": "FISH",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15148,8 +15160,28 @@
    "pair_id": "p_fish__moon",
    "a": "FISH",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TIDE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "The moon drives the tides clearly; fish reach tide only through tide pools and fishing the tide, which is recognizable but not firm.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Moon to tide is strong and tide sits in the fish's ocean world, so it is the only hint that gestures at both sides.",
+    "stretch": false
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15157,8 +15189,21 @@
    "pair_id": "p_fish__mouse",
    "a": "FISH",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PET",
+    "CAT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15166,8 +15211,20 @@
    "pair_id": "p_fish__night",
    "a": "FISH",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FRIDAY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15175,8 +15232,21 @@
    "pair_id": "p_fish__ocean",
    "a": "FISH",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA",
+    "NEMO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15184,8 +15254,21 @@
    "pair_id": "p_fish__pirate",
    "a": "FISH",
    "b": "PIRATE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HOOK",
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15193,8 +15276,28 @@
    "pair_id": "p_fish__queen",
    "a": "FISH",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "ANGEL",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Angelfish is a well-known fish; the queen side rests on the queen angelfish, a real reef species that only some players will know.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The only hint with a real, if niche, route to QUEEN (queen angelfish) while reaching FISH clearly.",
+    "stretch": true
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15202,8 +15305,28 @@
    "pair_id": "p_fish__ring",
    "a": "FISH",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CALAMARI",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Calamari rings are the standard serving; calamari is squid, which sits in the seafood world next to fish but is not a fish.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Calamari rings reach RING squarely and the seafood-menu context gets a player near FISH.",
+    "stretch": false
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15211,8 +15334,28 @@
    "pair_id": "p_fish__robot",
    "a": "FISH",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TOY",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Toy robots are classic; a toy fish (bath toy, wind-up fish) exists but is not a strong association.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Reaches ROBOT clearly and at least gestures at FISH through toy fish.",
+    "stretch": true
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15220,8 +15363,21 @@
    "pair_id": "p_fish__rock",
    "a": "FISH",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "REEF",
+    "POOL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15229,8 +15385,28 @@
    "pair_id": "p_fish__rose",
    "a": "FISH",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "PINK",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Roses are pink; fish reach pink only through salmon flesh or the pink salmon, a colour route rather than a connection.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Rose to pink is firm and pink salmon gets a player to fish; the colour route is the only one this pair has.",
+    "stretch": true
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15238,8 +15414,22 @@
    "pair_id": "p_fish__salt",
    "a": "FISH",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CURED",
+    "SEA",
+    "COD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15247,8 +15437,20 @@
    "pair_id": "p_fish__shadow",
    "a": "FISH",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DEEP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15256,8 +15458,20 @@
    "pair_id": "p_fish__shark",
    "a": "FISH",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FIN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15265,8 +15479,22 @@
    "pair_id": "p_fish__snake",
    "a": "FISH",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SCALES",
+    "EEL",
+    "SLIPPERY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15274,8 +15502,20 @@
    "pair_id": "p_fish__spider",
    "a": "FISH",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CRAB"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15283,8 +15523,20 @@
    "pair_id": "p_fish__spring",
    "a": "FISH",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "STREAM"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15292,8 +15544,20 @@
    "pair_id": "p_fish__star",
    "a": "FISH",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PISCES"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15301,8 +15565,20 @@
    "pair_id": "p_fish__train",
    "a": "FISH",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SARDINES"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15310,8 +15586,22 @@
    "pair_id": "p_fish__water",
    "a": "FISH",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FRESH",
+    "SWIM",
+    "TANK"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15319,8 +15609,20 @@
    "pair_id": "p_fish__witch",
    "a": "FISH",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "URSULA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15328,8 +15630,28 @@
    "pair_id": "p_fish__wolf",
    "a": "FISH",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SALMON",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Salmon is a fish; wolves do catch salmon in nature footage, but bears own that scene and the wolf link is secondary.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The only hint that reaches wolf at all, through the river-hunting scene.",
+    "stretch": true
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15337,8 +15659,22 @@
    "pair_id": "p_ghost__glass",
    "a": "GHOST",
    "b": "GLASS",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TRANSPARENT",
+    "MIRROR",
+    "WINDOW"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15346,8 +15682,20 @@
    "pair_id": "p_ghost__gold",
    "a": "GHOST",
    "b": "GOLD",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PIRATE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15355,8 +15703,28 @@
    "pair_id": "p_ghost__heart",
    "a": "GHOST",
    "b": "HEART",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SPIRIT",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Spirit is a synonym of ghost; heart is reached only through the 'heart and spirit' sense of inner feeling.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The only hint that touches heart at all while being certain on ghost.",
+    "stretch": false
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15364,8 +15732,21 @@
    "pair_id": "p_ghost__honey",
    "a": "GHOST",
    "b": "HONEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TRAP",
+    "BOO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15395,8 +15776,21 @@
    "pair_id": "p_ghost__ice",
    "a": "GHOST",
    "b": "ICE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "COLD",
+    "CHILL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15404,8 +15798,21 @@
    "pair_id": "p_ghost__iron",
    "a": "GHOST",
    "b": "IRON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CHAIN",
+    "COLD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15435,8 +15842,21 @@
    "pair_id": "p_ghost__king",
    "a": "GHOST",
    "b": "KING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MUFASA",
+    "HAMLET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15444,8 +15864,21 @@
    "pair_id": "p_ghost__knight",
    "a": "GHOST",
    "b": "KNIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CASTLE",
+    "ARMOR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15480,8 +15913,20 @@
    "pair_id": "p_ghost__lion",
    "a": "GHOST",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MUFASA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15489,8 +15934,21 @@
    "pair_id": "p_ghost__moon",
    "a": "GHOST",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WALK",
+    "HOWL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15498,8 +15956,20 @@
    "pair_id": "p_ghost__mouse",
    "a": "GHOST",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "QUIET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15507,8 +15977,20 @@
    "pair_id": "p_ghost__night",
    "a": "GHOST",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BUMP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15516,8 +15998,21 @@
    "pair_id": "p_ghost__ocean",
    "a": "GHOST",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DUTCHMAN",
+    "SHIP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15525,8 +16020,21 @@
    "pair_id": "p_ghost__pirate",
    "a": "GHOST",
    "b": "PIRATE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SHIP",
+    "CURSED"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15534,8 +16042,28 @@
    "pair_id": "p_ghost__queen",
    "a": "GHOST",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "HEADLESS",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "The headless ghost (Headless Horseman) is firm; queen is reached only by recalling a beheaded queen such as Anne Boleyn.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Firm on ghost and the beheaded-queen route is at least a famous story.",
+    "stretch": true
+   },
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15543,8 +16071,20 @@
    "pair_id": "p_ghost__ring",
    "a": "GHOST",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SAMARA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15552,8 +16092,21 @@
    "pair_id": "p_ghost__robot",
    "a": "GHOST",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MACHINE",
+    "SHELL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -15561,8 +16114,21 @@
    "pair_id": "p_ghost__rock",
    "a": "GHOST",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u19",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GRAVESTONE",
+    "TOMBSTONE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u19",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
