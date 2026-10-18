@@ -413,6 +413,16 @@
         "rejected": 21,
         "needsText": 2,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u28-blind-review.json",
+        "key": "data/unlimited/library/reviews/u28-blind-key.json",
+        "batch": "data/unlimited/library/batches/u28-batch.json",
+        "ai_reviewed": 48,
+        "held": 27,
+        "rejected": 21,
+        "needsText": 1,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -94115,8 +94125,37 @@
         "why": "Two familiar compounds, weeknight and Shark Week.",
         "reviewer": "blind-subagent-28"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
+        {
+          "text": "WEEK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A weeknight.",
+          "wordBConnection": "Shark Week.",
+          "revealExplanation": "Week: a weeknight, and Shark Week.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "night side invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Weeknight is a compound and Shark Week is a famous TV event.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
         {
           "text": "HUNT",
           "status": "ai_reviewed",
@@ -94142,30 +94181,6 @@
               "recognizability": "moderate",
               "flags": [],
               "reason": "SHARKs are archetypal hunters and many hunt at night; 'night hunt' is a natural phrase; moderate strength.",
-              "model": "claude-opus-5-5",
-              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
-            }
-          }
-        },
-        {
-          "text": "WEEK",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u28",
-            "authorLabel": "rejected",
-            "authorReason": "night side invented",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-28",
-              "date": "2026-10-18",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "broad",
-              "flags": [],
-              "reason": "Weeknight is a compound and Shark Week is a famous TV event.",
               "model": "claude-opus-5-5",
               "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
             }
@@ -94477,7 +94492,7 @@
         {
           "text": "VANGOGH",
           "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
+          "heldReason": "override: blind PASS preserved, but VAN GOGH is a two-word name run together; held under the one-word form rule pending parent decision (reviewer named it best_available for NIGHT+STAR)",
           "provenance": {
             "source": "u28",
             "authorLabel": "rejected",
@@ -94496,6 +94511,12 @@
               "model": "claude-opus-5-5",
               "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
             }
+          },
+          "override": {
+            "by": "main session (claude-opus-5-5), author form check",
+            "date": "2026-10-18",
+            "status": "held",
+            "reason": "blind PASS preserved, but VAN GOGH is a two-word name run together; held under the one-word form rule pending parent decision (reviewer named it best_available for NIGHT+STAR)"
           }
         },
         {

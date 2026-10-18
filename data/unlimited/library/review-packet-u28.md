@@ -447,15 +447,12 @@ Playable hints: 3. Reviewer: Easy pair; DARK and SPOOKY are broad but valid.
 
 ### NIGHT + SHARK
 
-Playable hints: 1. Reviewer: Good pair.
+Playable hints: 2. Reviewer: Good pair.
 
 **Retained**
 
+- **WEEK** 2/2 fair 2 broad: Weeknight is a compound and Shark Week is a famous TV event. *(author: rejected — night side invented)*
 - **HUNT** 1/2 fair 2 moderate: SHARKs are archetypal hunters and many hunt at night; 'night hunt' is a natural phrase; moderate strength. *(author: retained)*
-
-**Held**
-
-- **WEEK** 2/2 fair 2 broad: Weeknight is a compound and Shark Week is a famous TV event. — held: passed blind review; needs player-facing text *(author: rejected — night side invented)*
 
 ### NIGHT + SNAKE
 
@@ -504,7 +501,7 @@ Playable hints: 2. Reviewer: Strong pair; STARRY must be removed for containing 
 
 **Held**
 
-- **VANGOGH** 2/2 fair 2 broad: Van Gogh's The Starry Night names both the night and its swirling stars. — held: passed blind review; needs player-facing text *(author: rejected — not a one-word form)*
+- **VANGOGH** 2/2 fair 2 broad: Van Gogh's The Starry Night names both the night and its swirling stars. — held: override: blind PASS preserved, but VAN GOGH is a two-word name run together; held under the one-word form rule pending parent decision (reviewer named it best_available for NIGHT+STAR) *(author: rejected — not a one-word form)*
 
 **Rejected**
 
@@ -525,4 +522,4 @@ Playable hints: 2. Reviewer: Good pair once MIDNIGHT (contains NIGHT) is removed
 
 ## Totals
 
-retained 47 · held 28 · rejected 21 across 40 pairs; 28 pairs have at least one playable hint.
+retained 48 · held 27 · rejected 21 across 40 pairs; 28 pairs have at least one playable hint.
