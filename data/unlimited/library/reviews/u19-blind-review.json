@@ -1,0 +1,525 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-19",
+    "date": "2026-10-17",
+    "input": "u19-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u19-blind-input.json and no other file, repository content, web page or API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_fish__lion",
+      "a": "FISH",
+      "b": "LION",
+      "hints": [
+        { "text": "MANE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A lion's mane is immediate, but nothing about a fish is a mane (the lion's mane jellyfish is not a fish and is a stretch anyway)." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish live in the sea; sea lion is a familiar compound." },
+        { "text": "LIONFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains both target words as substrings, which is a rule failure." }
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": { "text": "SEA", "why": "Fish in the sea plus sea lion reaches both sides plainly." },
+      "pair_note": "SEA is the only servable hint; MANE is one-sided and LIONFISH breaks the substring rule."
+    },
+    {
+      "pair_id": "p_fish__moon",
+      "a": "FISH",
+      "b": "MOON",
+      "hints": [
+        { "text": "NIGHT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Moon and night are inseparable, but fish only arrive via night fishing, which is a weak route." },
+        { "text": "MOONFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["contains_target", "obscure"], "verdict": "FAIL", "reason": "Contains both target words as substrings; rule failure regardless of the real species." },
+        { "text": "TIDE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "The moon drives the tides clearly; fish reach tide only through tide pools and fishing the tide, which is recognizable but not firm." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TIDE", "why": "Moon to tide is strong and tide sits in the fish's ocean world, so it is the only hint that gestures at both sides." },
+      "pair_note": "No PASS. TIDE is serviceable if the pair must be served; NIGHT is essentially a MOON-only hint."
+    },
+    {
+      "pair_id": "p_fish__mouse",
+      "a": "FISH",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "PET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both are common household pets, a shared category any player sees." },
+        { "text": "CAT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Cats famously eat fish and chase mice; one shared scene reaches both." }
+      ],
+      "strong_hints": ["CAT", "PET"],
+      "best_available": { "text": "CAT", "why": "The cartoon cat with a fish bone and a mouse hole is a single image that points at both targets." },
+      "pair_note": "Both hints pass; CAT is the more vivid connection, PET the broader one."
+    },
+    {
+      "pair_id": "p_fish__night",
+      "a": "FISH",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "FRIDAY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish on Friday (fish fry Friday) is a familiar tradition and Friday night is a stock phrase." },
+        { "text": "LANTERN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Lanterns light the night clearly; the fish side rests on the lanternfish, a real but little-known species, or on lantern-lit night fishing." }
+      ],
+      "strong_hints": ["FRIDAY"],
+      "best_available": { "text": "FRIDAY", "why": "Two everyday phrases, fish Friday and Friday night, meet in one word." },
+      "pair_note": "FRIDAY is a clean PASS; LANTERN leans on the night side."
+    },
+    {
+      "pair_id": "p_fish__ocean",
+      "a": "FISH",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "SCHOOL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A school of fish is immediate, but nothing connects school to ocean on its own." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Fish live in the sea; sea is a near-synonym of ocean, which makes it very easy but still fair." },
+        { "text": "NEMO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Finding Nemo stars a clownfish and its whole story is an ocean crossing; Captain Nemo adds a second ocean route." }
+      ],
+      "strong_hints": ["NEMO", "SEA"],
+      "best_available": { "text": "NEMO", "why": "A universally known fish character whose story is set in the ocean, without giving away a synonym." },
+      "pair_note": "SEA passes but is nearly a synonym for OCEAN; NEMO is the richer hint. SCHOOL is FISH-only."
+    },
+    {
+      "pair_id": "p_fish__pirate",
+      "a": "FISH",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "NET", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Fishing nets are immediate, but pirates have no recognizable net association beyond ship rigging." },
+        { "text": "HOOK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish hook on one side, Captain Hook and the pirate hook hand on the other." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish swim the sea; pirates sail it." }
+      ],
+      "strong_hints": ["HOOK", "SEA"],
+      "best_available": { "text": "HOOK", "why": "Fish hook and the pirate's hook are both iconic and specific." },
+      "pair_note": "Two good hints; NET only reaches FISH."
+    },
+    {
+      "pair_id": "p_fish__queen",
+      "a": "FISH",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "TRIGGER", "connection_to_a": 1, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure", "needs_explanation"], "verdict": "FAIL", "reason": "Triggerfish is a moderately known fish, but QUEEN is reachable only by knowing the queen triggerfish species, which a player will not supply." },
+        { "text": "ANGEL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Angelfish is a well-known fish; the queen side rests on the queen angelfish, a real reef species that only some players will know." },
+        { "text": "CHIPS", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Fish and chips is immediate, but chips has no recognizable connection to queen." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ANGEL", "why": "The only hint with a real, if niche, route to QUEEN (queen angelfish) while reaching FISH clearly." },
+      "pair_note": "No PASS. Both species-name hints need the specific 'queen X-fish' species to work; CHIPS is pure filler on the queen side."
+    },
+    {
+      "pair_id": "p_fish__ring",
+      "a": "FISH",
+      "b": "RING",
+      "hints": [
+        { "text": "ONION", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Onion rings are immediate; fish only arrives via the fried-fish basket where onion rings are served alongside." },
+        { "text": "CALAMARI", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Calamari rings are the standard serving; calamari is squid, which sits in the seafood world next to fish but is not a fish." },
+        { "text": "TUNA", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Tuna is plainly a fish, but there is no tuna-to-ring route." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CALAMARI", "why": "Calamari rings reach RING squarely and the seafood-menu context gets a player near FISH." },
+      "pair_note": "No PASS. The ring side is well served by ring-shaped foods, but none is a fish; a true fish-ring link is missing."
+    },
+    {
+      "pair_id": "p_fish__robot",
+      "a": "FISH",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "TOY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Toy robots are classic; a toy fish (bath toy, wind-up fish) exists but is not a strong association." },
+        { "text": "DRONE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A drone is a kind of robot, but there is no recognizable drone-to-fish route for a player." },
+        { "text": "ROBOFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["contains_target", "obscure"], "verdict": "FAIL", "reason": "Contains FISH as a substring (and Robo is a bare prefix of robot); rule failure." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TOY", "why": "Reaches ROBOT clearly and at least gestures at FISH through toy fish." },
+      "pair_note": "No PASS. This pair has little natural overlap; the toy-store route is the best available."
+    },
+    {
+      "pair_id": "p_fish__rock",
+      "a": "FISH",
+      "b": "ROCK",
+      "hints": [
+        { "text": "ROCKFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains both target words as substrings; rule failure." },
+        { "text": "POOL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["british_only"], "verdict": "PASS", "reason": "Rock pool is a familiar compound (tide pool in US usage) and the small fish in it, plus fish ponds and fishing pools, reach the fish side." },
+        { "text": "REEF", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Reef fish are the classic image; a reef is a ridge of rock." }
+      ],
+      "strong_hints": ["REEF", "POOL"],
+      "best_available": { "text": "REEF", "why": "A reef is rock teeming with fish; one scene, both words." },
+      "pair_note": "REEF is a clean PASS; POOL is a fair PASS whose rock side is stronger for UK players."
+    },
+    {
+      "pair_id": "p_fish__rose",
+      "a": "FISH",
+      "b": "ROSE",
+      "hints": [
+        { "text": "PINK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Roses are pink; fish reach pink only through salmon flesh or the pink salmon, a colour route rather than a connection." },
+        { "text": "SALMON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Salmon is plainly a fish; rose is reached only because salmon and rose are both pinkish shades." },
+        { "text": "ROSEFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["contains_target", "obscure"], "verdict": "FAIL", "reason": "Contains both target words as substrings; rule failure." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PINK", "why": "Rose to pink is firm and pink salmon gets a player to fish; the colour route is the only one this pair has." },
+      "pair_note": "No PASS. The two colour hints mirror each other; neither reaches both words without leaning on pinkness."
+    },
+    {
+      "pair_id": "p_fish__salt",
+      "a": "FISH",
+      "b": "SALT",
+      "hints": [
+        { "text": "CURED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Cured fish is a familiar food, and salt is the curing agent; one process reaches both." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish live in the sea; sea salt is an everyday compound." },
+        { "text": "COD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Cod is a fish and salt cod is a well-known dish." }
+      ],
+      "strong_hints": ["SEA", "COD", "CURED"],
+      "best_available": { "text": "SEA", "why": "Broadest and most immediate on both sides." },
+      "pair_note": "All three pass; a well-served pair."
+    },
+    {
+      "pair_id": "p_fish__shadow",
+      "a": "FISH",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "DEEP", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Deep-sea fish and 'the deep' reach fish; deep shadow is a familiar modifier phrase, a shared-property route like SWEET for APPLE+HONEY." },
+        { "text": "SPOOK", "connection_to_a": 1, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "FAIL", "reason": "Spooking a fish is angler jargon and spook-to-shadow needs a ghostly-figure explanation; neither side is reached clearly." }
+      ],
+      "strong_hints": ["DEEP"],
+      "best_available": { "text": "DEEP", "why": "Reaches fish firmly and shadow through an ordinary phrase." },
+      "pair_note": "DEEP is a modest PASS; SPOOK fails on both sides."
+    },
+    {
+      "pair_id": "p_fish__shark",
+      "a": "FISH",
+      "b": "SHARK",
+      "hints": [
+        { "text": "PREDATOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Sharks are the archetypal predator; fish only arrive because a shark is a predatory fish, which is a weak independent route." },
+        { "text": "JAWS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Jaws is the shark film; fish is reached only because the title creature is a fish." },
+        { "text": "FIN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish fins and the shark fin cutting the surface are both immediate." }
+      ],
+      "strong_hints": ["FIN"],
+      "best_available": { "text": "FIN", "why": "The one hint with a direct, independent route to each word." },
+      "pair_note": "FIN passes; the other two are shark hints that reach fish only through the shark."
+    },
+    {
+      "pair_id": "p_fish__snake",
+      "a": "FISH",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "SCALES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both animals are covered in scales; a direct shared property." },
+        { "text": "SLIPPERY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Slippery fish is a stock image; snakes are slippery/slithering in common speech, a defensible shared property." },
+        { "text": "EEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An eel is a fish that looks like a snake; the bridge creature between the two." }
+      ],
+      "strong_hints": ["SCALES", "EEL", "SLIPPERY"],
+      "best_available": { "text": "SCALES", "why": "The most direct shared property, instantly true of both." },
+      "pair_note": "All three pass; SLIPPERY is the softest."
+    },
+    {
+      "pair_id": "p_fish__spider",
+      "a": "FISH",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "CRAB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Spider crab is a familiar compound; crab sits beside fish in the seafood/sea-creature world." },
+        { "text": "WEB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Spider web is immediate, but fishing nets are not called webs and fish has no web route." },
+        { "text": "NET", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Fishing net is immediate; a spider's web is net-like, but 'spider net' is not a phrase a player reaches for." }
+      ],
+      "strong_hints": ["CRAB"],
+      "best_available": { "text": "CRAB", "why": "Spider crab gives a real compound and crab lives in the fish world." },
+      "pair_note": "CRAB is a modest PASS; NET and WEB are mirror-image half-hints."
+    },
+    {
+      "pair_id": "p_fish__spring",
+      "a": "FISH",
+      "b": "SPRING",
+      "hints": [
+        { "text": "RUN", "connection_to_a": 1, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "FAIL", "reason": "A salmon run is angler knowledge and the 'spring run' sense is jargon; spring is not reached from run on its own." },
+        { "text": "STREAM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish swim in streams; a spring is the water source that feeds a stream." },
+        { "text": "TROUT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Trout is plainly a fish; the spring side rests on spring creeks and trout season opening in spring, which is recognizable mostly to anglers." }
+      ],
+      "strong_hints": ["STREAM"],
+      "best_available": { "text": "STREAM", "why": "Uses the water sense of spring and the natural home of fish." },
+      "pair_note": "STREAM is a clean PASS; RUN and TROUT lean on fishing knowledge."
+    },
+    {
+      "pair_id": "p_fish__star",
+      "a": "FISH",
+      "b": "STAR",
+      "hints": [
+        { "text": "PISCES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pisces is the fish sign and a star sign/constellation." },
+        { "text": "STARFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains both target words as substrings; rule failure." },
+        { "text": "PATRICK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Patrick Star of SpongeBob gives star directly; fish is reached only through the undersea setting since Patrick is a starfish." }
+      ],
+      "strong_hints": ["PISCES"],
+      "best_available": { "text": "PISCES", "why": "A familiar word whose meaning is literally the fish among the stars." },
+      "pair_note": "PISCES passes cleanly; PATRICK is a fun but star-weighted hint."
+    },
+    {
+      "pair_id": "p_fish__train",
+      "a": "FISH",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "FREIGHT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Freight train is immediate; there is no recognizable freight-to-fish route." },
+        { "text": "SARDINES", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Sardines are fish; 'packed like sardines' is the stock description of a crowded train carriage." }
+      ],
+      "strong_hints": ["SARDINES"],
+      "best_available": { "text": "SARDINES", "why": "The only hint that reaches both, via the crowded-train idiom." },
+      "pair_note": "SARDINES is a defensible PASS through a familiar idiom; FREIGHT is train-only."
+    },
+    {
+      "pair_id": "p_fish__water",
+      "a": "FISH",
+      "b": "WATER",
+      "hints": [
+        { "text": "FRESH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fresh fish and freshwater are both everyday compounds." },
+        { "text": "SWIM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish swim; swimming happens in water." },
+        { "text": "TANK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish tank and water tank are both familiar compounds." }
+      ],
+      "strong_hints": ["TANK", "FRESH", "SWIM"],
+      "best_available": { "text": "TANK", "why": "Two concrete compounds, no stretch on either side." },
+      "pair_note": "All three pass; an easy pair."
+    },
+    {
+      "pair_id": "p_fish__witch",
+      "a": "FISH",
+      "b": "WITCH",
+      "hints": [
+        { "text": "NEWT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Eye of newt in the witches' brew is immediate, but a newt is an amphibian with no recognizable fish route." },
+        { "text": "URSULA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Ursula is the sea witch of The Little Mermaid, a story set among fish and half-fish characters; a shared-story route like POISON for APPLE+QUEEN." }
+      ],
+      "strong_hints": ["URSULA"],
+      "best_available": { "text": "URSULA", "why": "The sea witch gives witch directly and the undersea story carries fish." },
+      "pair_note": "URSULA is a story-route PASS; NEWT is witch-only."
+    },
+    {
+      "pair_id": "p_fish__wolf",
+      "a": "FISH",
+      "b": "WOLF",
+      "hints": [
+        { "text": "PACK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Wolf pack is immediate; fish travel in schools, not packs, so there is no fish route." },
+        { "text": "SALMON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Salmon is a fish; wolves do catch salmon in nature footage, but bears own that scene and the wolf link is secondary." },
+        { "text": "WOLFFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["contains_target", "obscure"], "verdict": "FAIL", "reason": "Contains both target words as substrings; rule failure." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SALMON", "why": "The only hint that reaches wolf at all, through the river-hunting scene." },
+      "pair_note": "No PASS. The pair lacks a natural shared scene beyond wolves fishing salmon."
+    },
+    {
+      "pair_id": "p_ghost__glass",
+      "a": "GHOST",
+      "b": "GLASS",
+      "hints": [
+        { "text": "TRANSPARENT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghosts are see-through and glass is transparent; a direct shared property." },
+        { "text": "MIRROR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A mirror is glass, and the ghost in the mirror is a staple horror image." },
+        { "text": "WINDOW", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Windows are glass; the ghostly face at the window is a recognizable haunted-house scene." }
+      ],
+      "strong_hints": ["TRANSPARENT", "MIRROR", "WINDOW"],
+      "best_available": { "text": "TRANSPARENT", "why": "The defining shared property of both targets." },
+      "pair_note": "All three pass; WINDOW is the softest on the ghost side."
+    },
+    {
+      "pair_id": "p_ghost__gold",
+      "a": "GHOST",
+      "b": "GOLD",
+      "hints": [
+        { "text": "RUSH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Gold rush is immediate; ghost is reachable only via the explanation that ghost towns followed gold rushes." },
+        { "text": "TOWN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Ghost town is immediate; gold arrives through the abandoned mining town, a real but secondary association." },
+        { "text": "PIRATE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pirate gold is a stock phrase and ghost pirates (cursed crews, ghost ships) are a familiar trope." }
+      ],
+      "strong_hints": ["PIRATE"],
+      "best_available": { "text": "PIRATE", "why": "Pirate gold and the ghost pirate reach both targets directly." },
+      "pair_note": "PIRATE is the clean PASS; TOWN is a fair second choice; RUSH is gold-only."
+    },
+    {
+      "pair_id": "p_ghost__heart",
+      "a": "GHOST",
+      "b": "HEART",
+      "hints": [
+        { "text": "HAUNT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ghosts haunt; there is no recognizable haunt-to-heart route." },
+        { "text": "STOP", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A heart stops; the ghost side needs the explanation that a fright stops your heart, which is not a ghost connection on its own." },
+        { "text": "SPIRIT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "BORDERLINE", "reason": "Spirit is a synonym of ghost; heart is reached only through the 'heart and spirit' sense of inner feeling." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SPIRIT", "why": "The only hint that touches heart at all while being certain on ghost." },
+      "pair_note": "No PASS. The two words share little; the hints here are each essentially one-sided."
+    },
+    {
+      "pair_id": "p_ghost__honey",
+      "a": "GHOST",
+      "b": "HONEY",
+      "hints": [
+        { "text": "VEIL", "connection_to_a": 1, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "BORDERLINE", "reason": "A veiled ghostly lady is a recognizable image and beekeepers wear veils, but neither side is reached clearly without explanation." },
+        { "text": "TRAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Honey trap is a familiar phrase and the ghost trap is the Ghostbusters device." },
+        { "text": "BOO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghosts say boo; boo is also a term of endearment like honey." }
+      ],
+      "strong_hints": ["BOO", "TRAP"],
+      "best_available": { "text": "BOO", "why": "The ghost's own word doubling as a pet name is a neat two-way hit." },
+      "pair_note": "BOO and TRAP both pass; VEIL needs two explanations."
+    },
+    {
+      "pair_id": "p_ghost__ice",
+      "a": "GHOST",
+      "b": "ICE",
+      "hints": [
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice is cold and a ghost brings a cold spot or chill; a shared property." },
+        { "text": "CHILL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:COLD"], "verdict": "PASS", "reason": "A ghostly chill and ice chilling a drink both reach their targets; same route as COLD." },
+        { "text": "SHINING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The Shining is a ghost story; ice arrives only via the frozen ending or shining ice, a secondary route." }
+      ],
+      "strong_hints": ["COLD", "CHILL"],
+      "best_available": { "text": "COLD", "why": "Broadest shared property." },
+      "pair_note": "COLD and CHILL are interchangeable passes; SHINING is a story route that half-works."
+    },
+    {
+      "pair_id": "p_ghost__iron",
+      "a": "GHOST",
+      "b": "IRON",
+      "hints": [
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Ghostly cold is firm; 'cold iron' is a known phrase and iron is cold to the touch." },
+        { "text": "CHAIN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghosts rattle chains; chains are iron." },
+        { "text": "CASTLE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Haunted castle is immediate, but castle has no recognizable iron route." }
+      ],
+      "strong_hints": ["CHAIN", "COLD"],
+      "best_available": { "text": "CHAIN", "why": "The rattling iron chain is the ghost's own prop." },
+      "pair_note": "CHAIN is excellent; COLD is a fair PASS; CASTLE is ghost-only."
+    },
+    {
+      "pair_id": "p_ghost__king",
+      "a": "GHOST",
+      "b": "KING",
+      "hints": [
+        { "text": "ELVIS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Elvis is the King; the ghost side rests on Graceland ghost legends and 'Elvis lives' sightings, which is a secondary association." },
+        { "text": "MUFASA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Mufasa is the lion king who returns as a ghost in the clouds." },
+        { "text": "HAMLET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The ghost of King Hamlet is the play's most famous scene." }
+      ],
+      "strong_hints": ["MUFASA", "HAMLET"],
+      "best_available": { "text": "MUFASA", "why": "A king whose ghost scene is universally known." },
+      "pair_note": "Two strong story-route passes; ELVIS is king-weighted."
+    },
+    {
+      "pair_id": "p_ghost__knight",
+      "a": "GHOST",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "CASTLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Haunted castle is a stock ghost setting and a castle is the knight's home." },
+        { "text": "ARMOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A knight wears armor; the empty suit of armor that moves on its own is a classic haunted-house ghost image." },
+        { "text": "HEADLESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The headless ghost (Headless Horseman, Nearly Headless Nick) is firm; knight is reached only by recalling that such headless figures are armoured riders or named 'Sir', a secondary route." }
+      ],
+      "strong_hints": ["CASTLE", "ARMOR"],
+      "best_available": { "text": "CASTLE", "why": "One scene, the haunted castle with knights in its hall, reaches both words directly." },
+      "pair_note": "CASTLE is a clean PASS and ARMOR a fair one; HEADLESS is ghost-weighted."
+    },
+    {
+      "pair_id": "p_ghost__lion",
+      "a": "GHOST",
+      "b": "LION",
+      "hints": [
+        { "text": "SIMBA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:MUFASA"], "verdict": "BORDERLINE", "reason": "Simba is a lion; the ghost belongs to Mufasa, so Simba only reaches ghost as the one who sees it." },
+        { "text": "MUFASA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Mufasa is a lion who appears as a ghost." }
+      ],
+      "strong_hints": ["MUFASA"],
+      "best_available": { "text": "MUFASA", "why": "The lion who is the ghost." },
+      "pair_note": "MUFASA is the right character; SIMBA is the witness, not the ghost."
+    },
+    {
+      "pair_id": "p_ghost__moon",
+      "a": "GHOST",
+      "b": "MOON",
+      "hints": [
+        { "text": "HOWL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Howling at the moon is a stock image; ghosts howl and wail in haunted-house lore." },
+        { "text": "HAUNT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ghosts haunt; moon has no haunt route." },
+        { "text": "WALK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Moonwalk is a familiar compound and a ghost walk is a familiar tour/phrase for where ghosts walk at night." }
+      ],
+      "strong_hints": ["WALK", "HOWL"],
+      "best_available": { "text": "WALK", "why": "Two real compounds, moonwalk and ghost walk." },
+      "pair_note": "WALK and HOWL pass; HAUNT is ghost-only."
+    },
+    {
+      "pair_id": "p_ghost__mouse",
+      "a": "GHOST",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "SQUEAK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mice squeak; ghost is reached only via squeaky floorboards, which is not a ghost connection." },
+        { "text": "QUIET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Quiet as a mouse is idiomatic; ghosts move in silence, a defensible shared property." },
+        { "text": "HAUNTED", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Haunted is pure ghost; nothing about a mouse is haunted." }
+      ],
+      "strong_hints": ["QUIET"],
+      "best_available": { "text": "QUIET", "why": "The only hint that reaches both, through the shared silence." },
+      "pair_note": "QUIET is a soft PASS; the other two are each entirely one-sided."
+    },
+    {
+      "pair_id": "p_ghost__night",
+      "a": "GHOST",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "BUMP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "'Things that go bump in the night' names ghosts and night in one familiar phrase." },
+        { "text": "HAUNT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Ghosts haunt; night is reached only as the time hauntings happen." },
+        { "text": "MIDNIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains NIGHT as a substring; rule failure." }
+      ],
+      "strong_hints": ["BUMP"],
+      "best_available": { "text": "BUMP", "why": "A single idiom that carries both words." },
+      "pair_note": "BUMP is a clean PASS; MIDNIGHT breaks the substring rule."
+    },
+    {
+      "pair_id": "p_ghost__ocean",
+      "a": "GHOST",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "DUTCHMAN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Flying Dutchman is the archetypal ghost ship doomed to sail the oceans." },
+        { "text": "TITANIC", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "The Titanic is the ocean liner; ghost arrives only via wreck ghost stories, a secondary route." },
+        { "text": "SHIP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghost ship is a stock phrase and ships sail the ocean." }
+      ],
+      "strong_hints": ["SHIP", "DUTCHMAN"],
+      "best_available": { "text": "SHIP", "why": "Broadest two-way compound." },
+      "pair_note": "SHIP and DUTCHMAN pass; TITANIC is ocean-weighted."
+    },
+    {
+      "pair_id": "p_ghost__pirate",
+      "a": "GHOST",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "CURSED", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Cursed pirates (the Black Pearl crew) are familiar; a cursed spirit is a common ghost framing." },
+        { "text": "CARIBBEAN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Pirates of the Caribbean is immediate; ghost arrives only via the film's undead crew, which needs explaining." },
+        { "text": "SHIP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghost ship and pirate ship are both stock compounds." }
+      ],
+      "strong_hints": ["SHIP", "CURSED"],
+      "best_available": { "text": "SHIP", "why": "Both targets form a stock compound with ship." },
+      "pair_note": "SHIP is excellent; CURSED a fair PASS; CARIBBEAN is pirate-weighted."
+    },
+    {
+      "pair_id": "p_ghost__queen",
+      "a": "GHOST",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "BOHEMIAN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bohemian Rhapsody by Queen is immediate; there is no ghost route." },
+        { "text": "HEADLESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The headless ghost (Headless Horseman) is firm; queen is reached only by recalling a beheaded queen such as Anne Boleyn." },
+        { "text": "ANNE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Queen Anne and Anne Boleyn make queen reachable; the ghost side is the Anne Boleyn haunting legend, which fewer players know." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HEADLESS", "why": "Firm on ghost and the beheaded-queen route is at least a famous story." },
+      "pair_note": "No PASS. HEADLESS and ANNE both rely on the same Anne Boleyn legend from opposite ends; BOHEMIAN is queen-only."
+    },
+    {
+      "pair_id": "p_ghost__ring",
+      "a": "GHOST",
+      "b": "RING",
+      "hints": [
+        { "text": "WELL", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Both sides depend on the film The Ring, where the ghost girl comes from a well; without the film, well reaches neither word." },
+        { "text": "BELL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ring a bell is immediate; a tolling bell is not a recognizable ghost route." },
+        { "text": "SAMARA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "PASS", "reason": "Samara is the ghost of The Ring; the connection is exact on both sides for anyone who knows the film, though the name is less known than the film." }
+      ],
+      "strong_hints": ["SAMARA"],
+      "best_available": { "text": "SAMARA", "why": "Exact two-way hit for players who know the film, which is the only route this pair has." },
+      "pair_note": "SAMARA passes on exactness despite niche recognizability; WELL is the same film route from a vaguer word."
+    },
+    {
+      "pair_id": "p_ghost__robot",
+      "a": "GHOST",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "MACHINE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A robot is a machine; 'ghost in the machine' is a familiar phrase." },
+        { "text": "PACMAN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Pac-Man's ghosts are immediate, but Pac-Man is not a robot and has no robot route." },
+        { "text": "SHELL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Ghost in the Shell is a well-known cyborg/robot title; a robot's shell is also its casing." }
+      ],
+      "strong_hints": ["MACHINE", "SHELL"],
+      "best_available": { "text": "MACHINE", "why": "Robot is a machine and the ghost phrase is widely known." },
+      "pair_note": "MACHINE and SHELL both pass via famous phrases; PACMAN is ghost-only."
+    },
+    {
+      "pair_id": "p_ghost__rock",
+      "a": "GHOST",
+      "b": "ROCK",
+      "hints": [
+        { "text": "HAUNTED", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Haunted is pure ghost; rock has no haunted route." },
+        { "text": "GRAVESTONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TOMBSTONE"], "verdict": "PASS", "reason": "Ghosts rise from the graveyard; a gravestone is a slab of rock." },
+        { "text": "TOMBSTONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:GRAVESTONE"], "verdict": "PASS", "reason": "Same route as GRAVESTONE: the ghost's graveyard marker is a stone." }
+      ],
+      "strong_hints": ["TOMBSTONE", "GRAVESTONE"],
+      "best_available": { "text": "TOMBSTONE", "why": "The graveyard stone reaches both words; TOMBSTONE is marginally the more iconic spelling." },
+      "pair_note": "Two interchangeable passes; HAUNTED is ghost-only."
+    }
+  ]
+}

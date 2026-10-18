@@ -1,0 +1,430 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-29",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "u29-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors + no-literal-false-facts reminder, 2026-10-18",
+    "independence": "I read only u29-blind-input.json and no other file, repository content, web source or API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_night__water", "a": "NIGHT", "b": "WATER",
+      "hints": [
+        { "text": "SWIM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WATER: you swim in water; NIGHT: only via the loose phrase 'night swim', which is a scene but not a strong one." },
+        { "text": "GLASS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WATER: glass of water; NIGHT: no recognizable route (a bedside glass of water is invented rescue)." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SWIM", "why": "Only hint touching both sides, via 'night swim'." },
+      "pair_note": "Weak pair for these hints; no PASS. Something like MOONLIT/REFLECTION or TIDE might serve better."
+    },
+    {
+      "pair_id": "p_night__witch", "a": "NIGHT", "b": "WITCH",
+      "hints": [
+        { "text": "HOUR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "WITCH: 'the witching hour' (ordinary inflection); NIGHT: the witching hour is the dead of night, plus 'night hours'." },
+        { "text": "MIDNIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target NIGHT as a substring, a rule failure, despite the good witching-hour route." },
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "NIGHT: Halloween night; WITCH: the iconic Halloween witch costume/figure." }
+      ],
+      "strong_hints": ["HALLOWEEN", "HOUR"],
+      "best_available": { "text": "HALLOWEEN", "why": "Broad shared scene that reaches both words instantly." },
+      "pair_note": "MIDNIGHT must be dropped for containing NIGHT."
+    },
+    {
+      "pair_id": "p_night__wolf", "a": "NIGHT", "b": "WOLF",
+      "hints": [
+        { "text": "WEREWOLF", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target WOLF as a substring, a rule failure." },
+        { "text": "HOWL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WOLF: wolves howl; NIGHT: the familiar scene of a howl in the night." },
+        { "text": "MOON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "NIGHT: the moon in the night sky; WOLF: the wolf howling at the moon image." }
+      ],
+      "strong_hints": ["MOON", "HOWL"],
+      "best_available": { "text": "MOON", "why": "Classic image that ties both sides equally." },
+      "pair_note": "WEREWOLF fails on substring."
+    },
+    {
+      "pair_id": "p_ocean__queen", "a": "OCEAN", "b": "QUEEN",
+      "hints": [
+        { "text": "LINER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "OCEAN: 'ocean liner' compound; QUEEN: the famous Queen Mary / Queen Elizabeth liners." },
+        { "text": "MERMAID", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "OCEAN: mermaids live in the ocean; QUEEN: no familiar mermaid-queen story reaches it." },
+        { "text": "MARY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "QUEEN: Queen Mary; OCEAN: only through knowing the Queen Mary ocean liner, an indirect second step." }
+      ],
+      "strong_hints": ["LINER"],
+      "best_available": { "text": "LINER", "why": "Direct ocean compound plus the well-known Queen-named liners." },
+      "pair_note": "MARY is a variant route of LINER and leans on the same knowledge."
+    },
+    {
+      "pair_id": "p_ocean__ring", "a": "OCEAN", "b": "RING",
+      "hints": [
+        { "text": "ATOLL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "OCEAN: atolls are ocean coral islands; RING: an atoll is a ring-shaped reef (true shared property)." },
+        { "text": "FIRE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "RING: 'Ring of Fire'; OCEAN: the Pacific Ocean's Ring of Fire." },
+        { "text": "BUOY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "OCEAN: buoys float at sea; RING: the ring buoy / life ring." }
+      ],
+      "strong_hints": ["FIRE", "ATOLL", "BUOY"],
+      "best_available": { "text": "FIRE", "why": "The Pacific Ring of Fire hits both words as one familiar phrase." },
+      "pair_note": "Good pair."
+    },
+    {
+      "pair_id": "p_ocean__robot", "a": "OCEAN", "b": "ROBOT",
+      "hints": [
+        { "text": "DRONE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROBOT: drones are robotic craft; OCEAN: underwater/ocean drones used for exploration." },
+        { "text": "SUBMERSIBLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "OCEAN: deep-sea submersibles; ROBOT: robotic/remotely operated submersibles (ROVs)." }
+      ],
+      "strong_hints": ["SUBMERSIBLE", "DRONE"],
+      "best_available": { "text": "SUBMERSIBLE", "why": "Ocean side is unmistakable and robotic subs are a familiar idea." },
+      "pair_note": "Both moderate; neither is a giveaway."
+    },
+    {
+      "pair_id": "p_ocean__rock", "a": "OCEAN", "b": "ROCK",
+      "hints": [
+        { "text": "POOL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["british_only"], "verdict": "BORDERLINE", "reason": "ROCK: 'rock pool' compound (more British; US says tide pool); OCEAN: only indirectly, rock pools sit at the seashore." },
+        { "text": "CLIFF", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "OCEAN: cliffs overlooking the ocean; ROCK: cliffs are rock faces." },
+        { "text": "WAVES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "OCEAN: ocean waves; ROCK: the familiar scene of waves crashing on rocks." }
+      ],
+      "strong_hints": ["WAVES", "CLIFF"],
+      "best_available": { "text": "WAVES", "why": "Waves crashing on rocks is a vivid shared scene." },
+      "pair_note": "POOL is acceptable for UK players but weaker on the OCEAN side."
+    },
+    {
+      "pair_id": "p_ocean__rose", "a": "OCEAN", "b": "ROSE",
+      "hints": [
+        { "text": "HEART", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "OCEAN and ROSE: the 'Heart of the Ocean' necklace worn by Rose in Titanic." },
+        { "text": "TITANIC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "OCEAN: the Titanic sank in the Atlantic Ocean; ROSE: Rose is the film's heroine." }
+      ],
+      "strong_hints": ["TITANIC", "HEART"],
+      "best_available": { "text": "TITANIC", "why": "One broadly known story reaching both words." },
+      "pair_note": "HEART depends on the same film; slightly harder."
+    },
+    {
+      "pair_id": "p_ocean__salt", "a": "OCEAN", "b": "SALT",
+      "hints": [
+        { "text": "BRINE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SALT: brine is salt water; OCEAN: 'the briny' / seawater is brine." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "SALT: 'sea salt'; OCEAN: sea is a near-synonym, which makes it easy but not wrong." },
+        { "text": "WATER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SALT: 'salt water'; OCEAN: ocean water." }
+      ],
+      "strong_hints": ["WATER", "SEA", "BRINE"],
+      "best_available": { "text": "WATER", "why": "Salt water / ocean water is clean and not a synonym giveaway." },
+      "pair_note": "SEA is nearly a synonym of OCEAN; serve WATER first."
+    },
+    {
+      "pair_id": "p_ocean__shadow", "a": "OCEAN", "b": "SHADOW",
+      "hints": [
+        { "text": "SHARK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "OCEAN: sharks live in the ocean; SHADOW: only via the visual of a shark's shadow beneath the surface, a stretch." },
+        { "text": "DEEP", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "OCEAN: the deep ocean / 'the deep'; SHADOW: the common collocation 'deep shadow(s)'." }
+      ],
+      "strong_hints": ["DEEP"],
+      "best_available": { "text": "DEEP", "why": "Real collocations on both sides." },
+      "pair_note": "Hard pair; DEEP is the only clean route."
+    },
+    {
+      "pair_id": "p_ocean__snake", "a": "OCEAN", "b": "SNAKE",
+      "hints": [
+        { "text": "SERPENT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "SNAKE: serpent is a synonym; OCEAN: the legendary sea serpent." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "SNAKE: 'sea snake' (real animal); OCEAN: sea is a near-synonym." },
+        { "text": "EEL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "OCEAN: eels live in the sea; SNAKE: shared snake-like body shape (true shared property, eels are fish not snakes)." }
+      ],
+      "strong_hints": ["SERPENT", "SEA", "EEL"],
+      "best_available": { "text": "SERPENT", "why": "Sea serpent links both, though serpent is a synonym of SNAKE." },
+      "pair_note": "Both top hints are synonym-adjacent; EEL is the fairest non-giveaway."
+    },
+    {
+      "pair_id": "p_ocean__spider", "a": "OCEAN", "b": "SPIDER",
+      "hints": [
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["synonym_of_target", "obscure"], "verdict": "BORDERLINE", "reason": "SPIDER: 'sea spider' is a real but little-known animal; OCEAN: sea is a near-synonym." },
+        { "text": "CRAB", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SPIDER: the spider crab (e.g. Japanese spider crab); OCEAN: crabs are sea creatures." }
+      ],
+      "strong_hints": ["CRAB"],
+      "best_available": { "text": "CRAB", "why": "Spider crab is fairly well known and crabs are clearly ocean animals." },
+      "pair_note": "SEA leans on an obscure animal."
+    },
+    {
+      "pair_id": "p_ocean__spring", "a": "OCEAN", "b": "SPRING",
+      "hints": [
+        { "text": "WATER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "SPRING: 'spring water'; OCEAN: ocean water." },
+        { "text": "BREAK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPRING: 'spring break'; OCEAN: only via waves breaking or beach trips, a looser second side." },
+        { "text": "TIDE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SPRING: 'spring tide' (real term); OCEAN: ocean tides." }
+      ],
+      "strong_hints": ["TIDE", "WATER"],
+      "best_available": { "text": "TIDE", "why": "Spring tide is a genuine compound and tides are pure ocean." },
+      "pair_note": "BREAK reaches OCEAN only loosely."
+    },
+    {
+      "pair_id": "p_ocean__star", "a": "OCEAN", "b": "STAR",
+      "hints": [
+        { "text": "PATRICK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "STAR: Patrick Star (SpongeBob); OCEAN: he is a starfish living under the sea in Bikini Bottom." },
+        { "text": "NAVIGATION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "STAR: celestial navigation by the stars; OCEAN: sailors navigating across oceans." },
+        { "text": "STARFISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target STAR as a substring, a rule failure." }
+      ],
+      "strong_hints": ["PATRICK", "NAVIGATION"],
+      "best_available": { "text": "PATRICK", "why": "Well-known character whose surname and home hit both words." },
+      "pair_note": "STARFISH must go; PATRICK carries the same idea legally."
+    },
+    {
+      "pair_id": "p_ocean__train", "a": "OCEAN", "b": "TRAIN",
+      "hints": [
+        { "text": "TUNNEL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "TRAIN: train tunnels; OCEAN: only via undersea tunnels like the Channel Tunnel, which runs under a sea channel rather than an ocean." },
+        { "text": "COAST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "OCEAN: the ocean coast; TRAIN: coastal rail lines or a train 'coasting', both loose." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "COAST", "why": "Strong on OCEAN, with a passable coastal-railway scene for TRAIN." },
+      "pair_note": "No PASS; a hard pair for these hints."
+    },
+    {
+      "pair_id": "p_ocean__water", "a": "OCEAN", "b": "WATER",
+      "hints": [
+        { "text": "WAVE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "OCEAN: ocean waves; WATER: waves are moving water." },
+        { "text": "SALT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WATER: 'salt water'; OCEAN: the ocean is salty." },
+        { "text": "DEEP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "OCEAN: the deep ocean; WATER: 'deep water'." }
+      ],
+      "strong_hints": ["WAVE", "SALT", "DEEP"],
+      "best_available": { "text": "WAVE", "why": "Immediate on both sides." },
+      "pair_note": "Easy pair; all three work."
+    },
+    {
+      "pair_id": "p_ocean__witch", "a": "OCEAN", "b": "WITCH",
+      "hints": [
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "WITCH: 'sea witch' (Ursula's title); OCEAN: sea is a near-synonym." },
+        { "text": "URSULA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WITCH: Ursula the sea witch in The Little Mermaid; OCEAN: she lives under the sea." }
+      ],
+      "strong_hints": ["URSULA", "SEA"],
+      "best_available": { "text": "URSULA", "why": "A single famous character embodying both words." },
+      "pair_note": "Good pair."
+    },
+    {
+      "pair_id": "p_ocean__wolf", "a": "OCEAN", "b": "WOLF",
+      "hints": [
+        { "text": "FISH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "OCEAN: ocean fish; WOLF: only via the wolffish, a niche animal." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["synonym_of_target", "obscure"], "verdict": "BORDERLINE", "reason": "WOLF: 'sea wolf' (Jack London's The Sea-Wolf, coastal sea wolves); OCEAN: near-synonym; the compound is not widely known." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SEA", "why": "Sea wolf is at least a real phrase with some cultural footprint." },
+      "pair_note": "No PASS; both routes are obscure compounds."
+    },
+    {
+      "pair_id": "p_pirate__queen", "a": "PIRATE", "b": "QUEEN",
+      "hints": [
+        { "text": "ELIZABETH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "QUEEN: Queen Elizabeth; PIRATE: Elizabeth Swann in Pirates of the Caribbean and Elizabeth I's privateers." },
+        { "text": "ANNE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "QUEEN: Queen Anne; PIRATE: Blackbeard's ship Queen Anne's Revenge and pirate Anne Bonny." },
+        { "text": "REVENGE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "Both sides via the phrase Queen Anne's Revenge, Blackbeard's pirate ship (counts as the familiar name)." }
+      ],
+      "strong_hints": ["ANNE", "ELIZABETH", "REVENGE"],
+      "best_available": { "text": "ANNE", "why": "Two independent pirate routes plus a real queen." },
+      "pair_note": "REVENGE is the weakest, relying on knowing the ship's full name."
+    },
+    {
+      "pair_id": "p_pirate__ring", "a": "PIRATE", "b": "RING",
+      "hints": [
+        { "text": "TREASURE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "PIRATE: pirate treasure; RING: a ring can be treasure, but that side is thin." },
+        { "text": "EARRING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target RING as a substring, a rule failure, though the pirate-earring image is apt." },
+        { "text": "GOLD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "PIRATE: pirate gold; RING: gold ring." }
+      ],
+      "strong_hints": ["GOLD"],
+      "best_available": { "text": "GOLD", "why": "Familiar collocation on both sides." },
+      "pair_note": "EARRING fails on substring."
+    },
+    {
+      "pair_id": "p_pirate__robot", "a": "PIRATE", "b": "ROBOT",
+      "hints": [
+        { "text": "SPACE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "PIRATE: 'space pirate' sci-fi trope; ROBOT: space robots/rovers." },
+        { "text": "ANIMATRONIC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "PIRATE: animatronic pirates of the Disney Pirates of the Caribbean ride; ROBOT: animatronics are robotic figures." }
+      ],
+      "strong_hints": ["ANIMATRONIC", "SPACE"],
+      "best_available": { "text": "ANIMATRONIC", "why": "Concrete shared scene (the Disney ride)." },
+      "pair_note": "Both acceptable."
+    },
+    {
+      "pair_id": "p_pirate__rock", "a": "PIRATE", "b": "ROCK",
+      "hints": [
+        { "text": "SHIPWRECK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "PIRATE: pirate shipwrecks; ROCK: ships wrecked on the rocks." },
+        { "text": "SKULL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "PIRATE: skull and crossbones; ROCK: Skull Rock, the pirate cove in Peter Pan." }
+      ],
+      "strong_hints": ["SKULL", "SHIPWRECK"],
+      "best_available": { "text": "SKULL", "why": "Iconic pirate symbol plus Skull Rock." },
+      "pair_note": "Both moderate."
+    },
+    {
+      "pair_id": "p_pirate__rose", "a": "PIRATE", "b": "ROSE",
+      "hints": [
+        { "text": "MAP", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "PIRATE: treasure map; ROSE: the compass rose drawn on maps." },
+        { "text": "COMPASS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROSE: 'compass rose'; PIRATE: navigating by compass (Jack Sparrow's compass)." }
+      ],
+      "strong_hints": ["COMPASS", "MAP"],
+      "best_available": { "text": "COMPASS", "why": "Direct compound 'compass rose' plus pirate navigation." },
+      "pair_note": "MAP depends on the same compass-rose idea one step removed."
+    },
+    {
+      "pair_id": "p_pirate__salt", "a": "PIRATE", "b": "SALT",
+      "hints": [
+        { "text": "SAILOR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "PIRATE: pirates are sailors; SALT: 'old salt' means a seasoned sailor." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SALT: 'sea salt'; PIRATE: pirates at sea." },
+        { "text": "OLD", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SALT: 'old salt'; PIRATE: only via the old-sea-dog image, so each side needs the same idiom." }
+      ],
+      "strong_hints": ["SEA", "SAILOR"],
+      "best_available": { "text": "SEA", "why": "Sea salt plus pirates at sea is immediate." },
+      "pair_note": "OLD is a variant of the SAILOR (old salt) route and weaker."
+    },
+    {
+      "pair_id": "p_pirate__shadow", "a": "PIRATE", "b": "SHADOW",
+      "hints": [
+        { "text": "PETERPAN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHADOW: Peter Pan's runaway shadow; PIRATE: Captain Hook's pirates." },
+        { "text": "PETER", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:PETERPAN"], "verdict": "PASS", "reason": "Same Peter Pan route (shadow and Hook's pirates), weaker without 'Pan'." }
+      ],
+      "strong_hints": ["PETERPAN", "PETER"],
+      "best_available": { "text": "PETERPAN", "why": "Full name makes the shared story unmistakable." },
+      "pair_note": "PETER is a variant; serve only one."
+    },
+    {
+      "pair_id": "p_pirate__shark", "a": "PIRATE", "b": "SHARK",
+      "hints": [
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "PIRATE: pirates sail the sea; SHARK: sharks live in the sea." },
+        { "text": "PLANK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "PIRATE: walking the plank; SHARK: the familiar cartoon scene of sharks circling below the plank." }
+      ],
+      "strong_hints": ["PLANK", "SEA"],
+      "best_available": { "text": "PLANK", "why": "A specific shared scene rather than a shared habitat." },
+      "pair_note": "Fine pair."
+    },
+    {
+      "pair_id": "p_pirate__snake", "a": "PIRATE", "b": "SNAKE",
+      "hints": [
+        { "text": "VILLAIN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "PIRATE: pirate villains like Captain Hook; SNAKE: snakes as villain figures (Kaa, the Eden serpent, 'a snake' for a traitor), a broad stretch." },
+        { "text": "TREASURE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "PIRATE: pirate treasure; SNAKE: only the adventure-film trope of snakes guarding treasure, loose." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "VILLAIN", "why": "Both are stock villains; the clearest of two loose routes." },
+      "pair_note": "No PASS; a hard pair."
+    },
+    {
+      "pair_id": "p_pirate__spider", "a": "PIRATE", "b": "SPIDER",
+      "hints": [
+        { "text": "SHIP", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "PIRATE: pirate ship; SPIDER: no recognizable route." },
+        { "text": "RIGGING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "PIRATE: ship's rigging pirates climb; SPIDER: only the visual of rigging looking like a web, a metaphor not a fact." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "RIGGING", "why": "Web-like rigging is the only route that reaches SPIDER at all." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_pirate__spring", "a": "PIRATE", "b": "SPRING",
+      "hints": [
+        { "text": "YOUTH", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "PIRATE: the Fountain of Youth quest in Pirates of the Caribbean: On Stranger Tides; SPRING: springtime of youth / fountain-as-spring, each side one step removed." },
+        { "text": "FOUNTAIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "SPRING: a spring is a natural fountain of water; PIRATE: the Fountain of Youth hunted in On Stranger Tides." }
+      ],
+      "strong_hints": ["FOUNTAIN"],
+      "best_available": { "text": "FOUNTAIN", "why": "Strong water-source link to SPRING and a film route to PIRATE." },
+      "pair_note": "YOUTH and FOUNTAIN share the same Fountain-of-Youth route; FOUNTAIN is closer to SPRING."
+    },
+    {
+      "pair_id": "p_pirate__star", "a": "PIRATE", "b": "STAR",
+      "hints": [
+        { "text": "TREASURE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "PIRATE: pirate treasure; STAR: no recognizable route (Treasure Planet is too indirect)." },
+        { "text": "NAVIGATE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "STAR: navigating by the stars; PIRATE: pirates navigating the seas." }
+      ],
+      "strong_hints": ["NAVIGATE"],
+      "best_available": { "text": "NAVIGATE", "why": "Clear shared scene of sailing by the stars." },
+      "pair_note": "TREASURE is filler here."
+    },
+    {
+      "pair_id": "p_pirate__train", "a": "PIRATE", "b": "TRAIN",
+      "hints": [
+        { "text": "HEIST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "TRAIN: train heist; PIRATE: pirates plunder, but 'heist' is not their usual word." },
+        { "text": "ROBBER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "TRAIN: train robber (Great Train Robbery); PIRATE: pirates are robbers at sea." }
+      ],
+      "strong_hints": ["ROBBER"],
+      "best_available": { "text": "ROBBER", "why": "Shared role as robbers, with 'train robber' a familiar phrase." },
+      "pair_note": "HEIST is the same idea, weaker on PIRATE."
+    },
+    {
+      "pair_id": "p_pirate__water", "a": "PIRATE", "b": "WATER",
+      "hints": [
+        { "text": "SHIP", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "PIRATE: pirate ship; WATER: ships sail on water." },
+        { "text": "PLANK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "PIRATE: walk the plank; WATER: the plank drops you into the water." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "PIRATE: pirates of the sea; WATER: the sea is water." }
+      ],
+      "strong_hints": ["PLANK", "SEA", "SHIP"],
+      "best_available": { "text": "PLANK", "why": "Specific scene that reaches both words." },
+      "pair_note": "Easy pair."
+    },
+    {
+      "pair_id": "p_pirate__witch", "a": "PIRATE", "b": "WITCH",
+      "hints": [
+        { "text": "COSTUME", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Both sides: classic Halloween costumes (pirate costume, witch costume)." },
+        { "text": "CURSE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WITCH: witches cast curses; PIRATE: cursed pirates and The Curse of the Black Pearl." },
+        { "text": "TIA", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Both sides via Tia Dalma, the mystic of Pirates of the Caribbean; too niche, and she is styled a voodoo priestess rather than plainly a witch." }
+      ],
+      "strong_hints": ["CURSE", "COSTUME"],
+      "best_available": { "text": "CURSE", "why": "Natural verb route to WITCH plus the famous film title." },
+      "pair_note": "TIA is a deep cut."
+    },
+    {
+      "pair_id": "p_pirate__wolf", "a": "PIRATE", "b": "WOLF",
+      "hints": [
+        { "text": "PACK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WOLF: wolf pack; PIRATE: no recognizable route." },
+        { "text": "SEA", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "WOLF and PIRATE: 'sea wolf' as an old name for a pirate/raider, a niche compound; PIRATE also loosely at sea." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SEA", "why": "Sea wolf is the only route that touches both." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_queen__ring", "a": "QUEEN", "b": "RING",
+      "hints": [
+        { "text": "BOXING", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "RING: boxing ring; QUEEN: no recognizable route." },
+        { "text": "CROWN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "QUEEN: the queen's crown; RING: only as a fellow piece of jewellery or ring-shaped band, a loose link." },
+        { "text": "JEWEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "QUEEN: the crown jewels; RING: a jewelled ring." }
+      ],
+      "strong_hints": ["JEWEL"],
+      "best_available": { "text": "JEWEL", "why": "Ordinary jewellery link to both." },
+      "pair_note": "BOXING is filler for QUEEN."
+    },
+    {
+      "pair_id": "p_queen__robot", "a": "QUEEN", "b": "ROBOT",
+      "hints": [
+        { "text": "CHESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "QUEEN: the chess queen; ROBOT: chess-playing machines (Deep Blue, chess robots), which are computers more than robots." },
+        { "text": "BORG", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "QUEEN: the Borg Queen of Star Trek; ROBOT: the Borg are cyborgs, close but not robots; fan-niche." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CHESS", "why": "Broad on QUEEN, and chess machines are a familiar robot trope." },
+      "pair_note": "No PASS; CHESS is a close call."
+    },
+    {
+      "pair_id": "p_queen__rock", "a": "QUEEN", "b": "ROCK",
+      "hints": [
+        { "text": "WILL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both sides via Queen's song 'We Will Rock You'." },
+        { "text": "BAND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "QUEEN: the band Queen; ROCK: rock band." },
+        { "text": "FREDDIE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "QUEEN: Freddie Mercury fronted Queen; ROCK: a rock legend." }
+      ],
+      "strong_hints": ["BAND", "FREDDIE", "WILL"],
+      "best_available": { "text": "BAND", "why": "Queen is a rock band, plain and broad." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_queen__rose", "a": "QUEEN", "b": "ROSE",
+      "hints": [
+        { "text": "TUDOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROSE: the Tudor rose emblem; QUEEN: Tudor queens (Elizabeth I, Mary I)." },
+        { "text": "GARDEN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "ROSE: rose garden; QUEEN: only via the Queen of Hearts' garden or royal gardens, a loose link." },
+        { "text": "ALICE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Both sides via Alice in Wonderland: the Queen of Hearts and the white roses painted red." }
+      ],
+      "strong_hints": ["ALICE", "TUDOR"],
+      "best_available": { "text": "ALICE", "why": "One familiar story that features both a queen and roses." },
+      "pair_note": "GARDEN leans on the same Wonderland scene but is weaker on QUEEN."
+    },
+    {
+      "pair_id": "p_queen__salt", "a": "QUEEN", "b": "SALT",
+      "hints": [
+        { "text": "LOT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SALT: Lot's wife turned to a pillar of salt; QUEEN: no recognizable route." },
+        { "text": "TAX", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SALT: historic salt taxes (Gandhi's Salt March against British rule); QUEEN: only via crown/royal taxation, a vague link." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TAX", "why": "The only hint that touches both sides at all." },
+      "pair_note": "No PASS; a very hard pair."
+    },
+    {
+      "pair_id": "p_queen__shadow", "a": "QUEEN", "b": "SHADOW",
+      "hints": [
+        { "text": "MIRROR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "QUEEN: the Evil Queen's magic mirror; SHADOW: only as a fellow likeness/double of a person, a loose link." },
+        { "text": "EVIL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "QUEEN: the Evil Queen; SHADOW: shadows as a sinister/evil image (dark forces), broad." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MIRROR", "why": "Concrete Snow White object; both are images of the self." },
+      "pair_note": "No PASS."
+    }
+  ]
+}

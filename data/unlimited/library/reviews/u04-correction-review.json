@@ -1,0 +1,621 @@
+{
+  "_metadata": {
+    "reviewer": "correction-subagent-u04",
+    "date": "2026-10-17",
+    "input": "u04-correction-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u04-correction-input.json; no other file, repository search, web lookup or API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_apple__bank",
+      "a": "APPLE",
+      "b": "BANK",
+      "hints": [
+        {
+          "text": "BRANCH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "An apple-tree branch on one side and a bank branch on the other, both everyday senses."
+        }
+      ],
+      "strong_hints": ["BRANCH"],
+      "best_available": { "text": "BRANCH", "why": "Clean double meaning that lands on both targets without explanation." },
+      "pair_note": "Single hint, and it is a good one; nothing further needed."
+    },
+    {
+      "pair_id": "p_apple__bear",
+      "a": "APPLE",
+      "b": "BEAR",
+      "hints": [
+        {
+          "text": "TREE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Apple tree is immediate; bears climbing or scratching trees is a familiar image but TREE alone points at many animals before BEAR."
+        },
+        {
+          "text": "PICNIC",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "A shared scene (bear raiding a picnic basket, Yogi Bear style) with apples as classic basket food, but neither side is the first thing PICNIC evokes."
+        },
+        {
+          "text": "HONEY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Honey is the bear's food (Pooh); apples dipped in honey (Rosh Hashanah) or honey-baked apples is a real but secondary pairing for APPLE."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TREE", "why": "The APPLE side is certain and a bear in a tree is a widely known image; it is the least lopsided of three borderline hints." },
+      "pair_note": "No hint reaches PASS; all three are plausible shared scenes with one weak side. TREE or PICNIC would be serviceable."
+    },
+    {
+      "pair_id": "p_apple__bell",
+      "a": "APPLE",
+      "b": "BELL",
+      "hints": [
+        {
+          "text": "TEACHER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "An apple for the teacher is a stock image; the school bell (or the teacher's hand bell) completes the same classroom scene."
+        }
+      ],
+      "strong_hints": ["TEACHER"],
+      "best_available": { "text": "TEACHER", "why": "One classroom scene covers both targets; the bell side is slightly less direct than the apple side." },
+      "pair_note": "Passes on the shared-scene route; BELL via school is a step but a familiar one."
+    },
+    {
+      "pair_id": "p_apple__bridge",
+      "a": "APPLE",
+      "b": "BRIDGE",
+      "hints": [
+        {
+          "text": "BROOKLYN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Brooklyn Bridge is direct; APPLE is reached through Big Apple (New York), a two-step geography route the owner has accepted as fair."
+        }
+      ],
+      "strong_hints": ["BROOKLYN"],
+      "best_available": { "text": "BROOKLYN", "why": "Only hint, and a fair geography route per the anchor." },
+      "pair_note": "Fair rather than strong; the apple side depends on the Big Apple nickname."
+    },
+    {
+      "pair_id": "p_apple__card",
+      "a": "APPLE",
+      "b": "CARD",
+      "hints": [
+        {
+          "text": "GIFT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Apple gift cards are a ubiquitous product (Apple the company), and gift card is a compound for CARD."
+        },
+        {
+          "text": "CREDIT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Credit card is direct; Apple Card is a credit card, which many but not all players will know."
+        }
+      ],
+      "strong_hints": ["GIFT", "CREDIT"],
+      "best_available": { "text": "GIFT", "why": "Apple gift cards are more universally known than Apple Card." },
+      "pair_note": "Both use Apple the company, consistent with the owner's SOFTWARE/SIRI precedent."
+    },
+    {
+      "pair_id": "p_apple__castle",
+      "a": "APPLE",
+      "b": "CASTLE",
+      "hints": [
+        {
+          "text": "SNOW",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation", "variant_of:WHITE"],
+          "verdict": "BORDERLINE",
+          "reason": "Both sides go through Snow White (the poisoned apple, the queen's castle); the castle is the story's setting but not its iconic element, and SNOW alone reads as weather."
+        },
+        {
+          "text": "WHITE",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["colour_mood_material", "variant_of:SNOW"],
+          "verdict": "BORDERLINE",
+          "reason": "Snow White again for APPLE (plus white apple flesh), and White Castle the burger brand or pale stone walls for CASTLE; each link is a step away."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SNOW", "why": "SNOW evokes Snow White more readily than WHITE does, and that story is the only real bridge between apple and castle." },
+      "pair_note": "Both hints are the same Snow White route split in half; neither lands cleanly. A hint that names the story more directly would serve better."
+    },
+    {
+      "pair_id": "p_apple__crown",
+      "a": "APPLE",
+      "b": "CROWN",
+      "hints": [
+        {
+          "text": "GALA",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Gala is a well-known apple variety, but a gala is just a formal event; the leap to CROWN (royalty attend galas) is invented to rescue the word."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GALA", "why": "The only hint; serviceable for APPLE but it does not point at CROWN." },
+      "pair_note": "Reject. Needs a new hint (e.g. something from a shared royal or fairy-tale scene) rather than GALA."
+    },
+    {
+      "pair_id": "p_apple__diamond",
+      "a": "APPLE",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "SHINY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["colour_mood_material", "generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Diamonds are the archetype of shiny; a polished shiny apple is a familiar image but apple is far from the first shiny thing a player names."
+        },
+        {
+          "text": "CUT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cutting an apple into slices is everyday; diamond cut is a standard jewellery term."
+        },
+        {
+          "text": "BASEBALL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Baseball diamond is direct; APPLE arrives only via the phrase 'apple pie and baseball' or old slang for the ball, which not every player will make."
+        },
+        {
+          "text": "BIG",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Big Apple is a strong compound; 'big diamond' is just an adjective on a ring, nothing specific to DIAMOND."
+        }
+      ],
+      "strong_hints": ["CUT"],
+      "best_available": { "text": "CUT", "why": "Both senses are direct and common; no explanation needed." },
+      "pair_note": "CUT carries the pair; the other three are each half-strong."
+    },
+    {
+      "pair_id": "p_apple__dog",
+      "a": "APPLE",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "HOT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hot dog is a compound; hot apple pie and hot apple cider are familiar phrases that make APPLE reachable, if second."
+        }
+      ],
+      "strong_hints": ["HOT"],
+      "best_available": { "text": "HOT", "why": "Hot dog is instant and hot apple cider/pie gives a fair route to APPLE." },
+      "pair_note": "Passes on the familiar-phrase rule; the apple side is a genuine but weaker phrase."
+    },
+    {
+      "pair_id": "p_apple__fish",
+      "a": "APPLE",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "PIE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Apple pie is the archetypal pie; fish pie is a real, well-known dish in Britain though less so elsewhere."
+        }
+      ],
+      "strong_hints": ["PIE"],
+      "best_available": { "text": "PIE", "why": "Compound on both sides; fish pie is the only recognizability risk." },
+      "pair_note": "Passes; strength depends on the player's familiarity with fish pie."
+    },
+    {
+      "pair_id": "p_apple__glass",
+      "a": "APPLE",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "CIDER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cider is made from apples; it is served in a glass, which is a scene rather than a compound but a recognizable one."
+        },
+        {
+          "text": "JUICE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Apple juice is a compound and a glass of juice (juice glass) is an everyday scene."
+        }
+      ],
+      "strong_hints": ["JUICE", "CIDER"],
+      "best_available": { "text": "JUICE", "why": "Apple juice is more universal than cider and the glass is implicit in the drink." },
+      "pair_note": "Both pass per the anchors; JUICE is the stronger serve."
+    },
+    {
+      "pair_id": "p_apple__gold",
+      "a": "APPLE",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "DELICIOUS",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Red/Golden Delicious are the best-known apple variety names; GOLD is reached through Golden Delicious by ordinary inflection."
+        }
+      ],
+      "strong_hints": ["DELICIOUS"],
+      "best_available": { "text": "DELICIOUS", "why": "Valid per the anchor; the gold side relies on the Golden Delicious variety." },
+      "pair_note": "Valid, moderate recognizability."
+    },
+    {
+      "pair_id": "p_apple__heart",
+      "a": "APPLE",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "RED",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "A red apple and a red heart are both iconic colour images, not incidental descriptions, so the colour route is fair here despite being a colour."
+        }
+      ],
+      "strong_hints": ["RED"],
+      "best_available": { "text": "RED", "why": "Both targets are red in their emblematic form." },
+      "pair_note": "A colour hint that works because both words are colour-defined icons; still broad enough that players may hit other red things first."
+    },
+    {
+      "pair_id": "p_apple__honey",
+      "a": "APPLE",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "SWEET",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic", "colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Honey is the definition of sweet; apples are sweet but also tart, so SWEET names honey first and apple only loosely."
+        },
+        {
+          "text": "BEE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Honey bee is direct; bees pollinating apple blossom is true and known but not what a player reaches for from BEE."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SWEET", "why": "Both sides are reachable without specialist knowledge, which BEE's apple side needs." },
+      "pair_note": "Neither hint is strong; apple-and-honey as a dipped pairing is the real shared scene but no hint names it."
+    },
+    {
+      "pair_id": "p_apple__horse",
+      "a": "APPLE",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "TREAT",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Feeding a horse an apple as a treat is a single recognizable scene that supplies both words at once."
+        }
+      ],
+      "strong_hints": ["TREAT"],
+      "best_available": { "text": "TREAT", "why": "Shared feeding scene per the anchor." },
+      "pair_note": "Passes on the scene route; each word alone is only loosely 'treat'."
+    },
+    {
+      "pair_id": "p_apple__ice",
+      "a": "APPLE",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "FROST",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "synonym_of_target", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Frost is a near-synonym of ice; the apple link (frost damaging orchards or blossom) is a grower's fact an ordinary player will not make."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "FROST", "why": "Only hint; it will reach ICE but not APPLE." },
+      "pair_note": "Reject; a hint around a shared scene (e.g. a cold drink or dessert) would serve better."
+    },
+    {
+      "pair_id": "p_apple__key",
+      "a": "APPLE",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "COMMAND",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Command (⌘) key is widely known as the Mac-specific modifier (Cmd+C), so it reaches APPLE through Apple the company and KEY directly."
+        }
+      ],
+      "strong_hints": ["COMMAND"],
+      "best_available": { "text": "COMMAND", "why": "The Command key is familiar enough as an Apple key to be fair, though non-Mac users may need a beat." },
+      "pair_note": "Passes under the Apple-the-company precedent; recognizability is moderate, not broad."
+    },
+    {
+      "pair_id": "p_apple__king",
+      "a": "APPLE",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "ROYAL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "A king is royal by definition; APPLE is reached only via the Royal Gala variety, well known in some markets and barely in others."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ROYAL", "why": "Only hint; fine for KING, thin for APPLE." },
+      "pair_note": "Borderline because the apple side depends on a regional variety name."
+    },
+    {
+      "pair_id": "p_apple__knight",
+      "a": "APPLE",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "SHINING",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Knight in shining armour is a set phrase; a polished shining apple is a real image but far from the first thing SHINING evokes."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SHINING", "why": "Only hint; strong for KNIGHT, weak for APPLE." },
+      "pair_note": "Lopsided; the apple side is a generic surface descriptor."
+    },
+    {
+      "pair_id": "p_apple__light",
+      "a": "APPLE",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "NEWTON",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Newton's apple is famous; Newton's prism work on light is schoolbook fact but it is a second, separate fact about the man rather than one shared story."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "NEWTON", "why": "Only hint; a knowledgeable player gets both, a casual one gets only APPLE." },
+      "pair_note": "Borderline: a named person linking two unrelated facts is weaker than the single gravity story that makes NEWTON work for APPLE+MOON."
+    },
+    {
+      "pair_id": "p_apple__moon",
+      "a": "APPLE",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "NEWTON",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The falling apple and the orbiting moon are the two halves of Newton's own gravity story, so one familiar tale supplies both targets."
+        }
+      ],
+      "strong_hints": ["NEWTON"],
+      "best_available": { "text": "NEWTON", "why": "A single shared story (gravity: apple falls, moon orbits) rather than two facts." },
+      "pair_note": "Passes on the shared-story route; the moon half is slightly less automatic than the apple half."
+    },
+    {
+      "pair_id": "p_apple__queen",
+      "a": "APPLE",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "BEE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Queen bee is a compound; apple needs the pollination fact, which is true but not a player's first thought."
+        },
+        {
+          "text": "SNOW",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["variant_of:POISON"],
+          "verdict": "PASS",
+          "reason": "Snow White is one story whose two most famous elements are the evil queen and the poisoned apple; SNOW alone first reads as weather, costing a little fairness."
+        },
+        {
+          "text": "POISON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Poison apple is a set phrase and the queen is the poisoner in the same Snow White story, matching the owner's EVE anchor."
+        },
+        {
+          "text": "EVIL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["variant_of:POISON"],
+          "verdict": "BORDERLINE",
+          "reason": "Evil Queen is a compound; the apple is reached only after thinking of that queen, so the apple side is one step removed."
+        }
+      ],
+      "strong_hints": ["POISON", "SNOW"],
+      "best_available": { "text": "POISON", "why": "Set phrase for APPLE and the queen's deed in the same story; broadest recognizability." },
+      "pair_note": "POISON and SNOW both work through Snow White; EVIL is a weaker cut of the same route and BEE is lopsided."
+    },
+    {
+      "pair_id": "p_apple__rock",
+      "a": "APPLE",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "HARD",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Hard rock is a compound; APPLE is reachable only through 'hard cider' (a second step) or a crisp apple, neither of which a player will make from HARD."
+        },
+        {
+          "text": "CORE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Apple core is a compound; ROCK via rock core samples or the Earth's rocky interior is real but a geology step most players will not take."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CORE", "why": "Certain for APPLE and defensible for ROCK; HARD does not reach APPLE at all." },
+      "pair_note": "No PASS; CORE is usable if the pair must ship, HARD should be dropped."
+    },
+    {
+      "pair_id": "p_apple__shadow",
+      "a": "APPLE",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "TREE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Apple tree is immediate; a tree casting its shade or shadow is a familiar scene, but SHADOW is not what a player first attaches to TREE."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TREE", "why": "Only hint; the apple side is solid and the shadow side is a recognizable scene even if secondary." },
+      "pair_note": "Borderline on the scene route; shade rather than shadow is the natural word, which weakens the b side."
+    }
+  ]
+}

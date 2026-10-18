@@ -1,0 +1,513 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-5",
+    "date": "2026-10-17",
+    "input": "u05-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u05-blind-input.json; no other file, search, web lookup or API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_apple__spider",
+      "a": "APPLE",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "WEB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Spider web is immediate, but APPLE reaches WEB only through Apple-the-tech-company and Safari, which is a thin route." },
+        { "text": "BITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Taking a bite of an apple (Snow White, the Apple logo) and a spider bite (Spider-Man) are both everyday images." }
+      ],
+      "strong_hints": ["BITE"],
+      "best_available": { "text": "BITE", "why": "Reaches both words through familiar images without any explanation." },
+      "pair_note": "BITE is a clean, strong hint; WEB is essentially a spider hint with a weak Apple-company back door."
+    },
+    {
+      "pair_id": "p_apple__spring",
+      "a": "APPLE",
+      "b": "SPRING",
+      "hints": [
+        { "text": "ORCHARD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Apple orchard is a compound, but orchards reach SPRING only through the seasonal blooming association." },
+        { "text": "BLOSSOM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Apple blossom is a compound and blossom is the signature of spring." }
+      ],
+      "strong_hints": ["BLOSSOM"],
+      "best_available": { "text": "BLOSSOM", "why": "A direct compound on one side and the defining image of the season on the other." },
+      "pair_note": "BLOSSOM is excellent; ORCHARD is a weaker shadow of the same idea."
+    },
+    {
+      "pair_id": "p_apple__star",
+      "a": "APPLE",
+      "b": "STAR",
+      "hints": [
+        { "text": "SEEDS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Apple seeds is plain, but the star-shaped seed pattern inside a sliced apple is trivia a player must already know, and SEEDS alone does not point at STAR." },
+        { "text": "FRUIT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Apple is a fruit and star fruit is a familiar compound; generic but it reaches both words." }
+      ],
+      "strong_hints": ["FRUIT"],
+      "best_available": { "text": "FRUIT", "why": "Star fruit makes the STAR side concrete and the APPLE side is trivially true." },
+      "pair_note": "FRUIT is the only hint that cleanly reaches STAR; SEEDS relies on a hidden-star fact that the hint itself does not signal."
+    },
+    {
+      "pair_id": "p_apple__train",
+      "a": "APPLE",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "CRATE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Apple crate is a familiar object, but crates reach TRAIN only via generic freight hauling." },
+        { "text": "GRAND", "connection_to_a": 0, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "FAIL", "reason": "GRAND reaches TRAIN only through Grand Central and reaches APPLE only via the Apple Store inside that terminal, a two-step route no player would take." },
+        { "text": "STATION", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Train station is immediate but there is no ordinary APPLE-station connection." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CRATE", "why": "The only hint with a real foothold on both words, even though the TRAIN side is generic freight." },
+      "pair_note": "No PASS. GRAND and STATION both appear to lean on the Grand Central Apple Store, which is far too obscure for a one-word hint."
+    },
+    {
+      "pair_id": "p_apple__water",
+      "a": "APPLE",
+      "b": "WATER",
+      "hints": [
+        { "text": "JUICE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Apple juice is a compound, but WATER is reached only as a fellow drink or as something you dilute juice with." },
+        { "text": "BOBBING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bobbing for apples is a game of apples floating in a tub of water, reaching both words through one shared scene." }
+      ],
+      "strong_hints": ["BOBBING"],
+      "best_available": { "text": "BOBBING", "why": "One familiar Halloween scene that requires both apples and water." },
+      "pair_note": "BOBBING is a model two-word hint; JUICE is mostly an apple hint."
+    },
+    {
+      "pair_id": "p_apple__witch",
+      "a": "APPLE",
+      "b": "WITCH",
+      "hints": [
+        { "text": "SNOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Snow White's poisoned apple and the witch (the queen in hag disguise) who hands it over come from the same story." },
+        { "text": "BROOM", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Witch's broom is immediate, but BROOM has no ordinary route to APPLE." },
+        { "text": "POISON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The poisoned apple from the witch in Snow White reaches both words in one image, matching the POISON/APPLE+QUEEN anchor." }
+      ],
+      "strong_hints": ["POISON", "SNOW"],
+      "best_available": { "text": "POISON", "why": "The poisoned apple is the single most famous witch-and-apple image." },
+      "pair_note": "Two good Snow White routes; SNOW is slightly less direct because it names the victim rather than the act."
+    },
+    {
+      "pair_id": "p_apple__wolf",
+      "a": "APPLE",
+      "b": "WOLF",
+      "hints": [
+        { "text": "HOWL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Wolves howl; nothing connects HOWL to APPLE." },
+        { "text": "GRANNY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Granny Smith apples on one side and the wolf disguised as Granny in Little Red Riding Hood on the other." }
+      ],
+      "strong_hints": ["GRANNY"],
+      "best_available": { "text": "GRANNY", "why": "A brand-level apple variety and a famous story scene in one word." },
+      "pair_note": "GRANNY is delightful; HOWL is pure filler."
+    },
+    {
+      "pair_id": "p_bank__bat",
+      "a": "BANK",
+      "b": "BAT",
+      "hints": [
+        { "text": "CAVE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bat cave is immediate but CAVE has no ordinary route to BANK." },
+        { "text": "BLOOD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Blood bank is a compound and vampire bats drink blood." },
+        { "text": "NIGHT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Bats are nocturnal, but BANK is reached only through the night-deposit slot, which most players will not jump to." }
+      ],
+      "strong_hints": ["BLOOD"],
+      "best_available": { "text": "BLOOD", "why": "Compound on one side, defining animal fact on the other." },
+      "pair_note": "BLOOD is strong; NIGHT is a reasonable second but leans on bank jargon."
+    },
+    {
+      "pair_id": "p_bank__bear",
+      "a": "BANK",
+      "b": "BEAR",
+      "hints": [
+        { "text": "WALL", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Both routes go through Wall Street (banks, bear markets), a two-step connection on each side." },
+        { "text": "HONEY", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bears love honey; HONEY has no ordinary route to BANK." },
+        { "text": "MARKET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Bear market is a set phrase and banks are the obvious players in financial markets." }
+      ],
+      "strong_hints": ["MARKET"],
+      "best_available": { "text": "MARKET", "why": "Bear market is the one phrase that puts a bear in bank territory." },
+      "pair_note": "MARKET is the only hint that reaches both; WALL is the same idea one hop further away."
+    },
+    {
+      "pair_id": "p_bank__bell",
+      "a": "BANK",
+      "b": "BELL",
+      "hints": [
+        { "text": "LIBERTY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Liberty Bell is famous, but the BANK side relies on regional Liberty Bank brands or the word on US coins." },
+        { "text": "ALARM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A bank alarm during a robbery and an alarm bell are both everyday images." }
+      ],
+      "strong_hints": ["ALARM"],
+      "best_available": { "text": "ALARM", "why": "Equally direct on both sides." },
+      "pair_note": "ALARM carries the pair; LIBERTY is one-sided unless the player knows a Liberty Bank."
+    },
+    {
+      "pair_id": "p_bank__bridge",
+      "a": "BANK",
+      "b": "BRIDGE",
+      "hints": [
+        { "text": "CROSS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "You cross a bridge, but reaching the far BANK is implied rather than said." },
+        { "text": "CANAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:RIVER"], "verdict": "PASS", "reason": "Canal bank and canal bridge are both natural scenes." },
+        { "text": "RIVER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "River bank is a compound and bridges cross rivers." }
+      ],
+      "strong_hints": ["RIVER", "CANAL"],
+      "best_available": { "text": "RIVER", "why": "The broadest shared scene for the two words." },
+      "pair_note": "RIVER is the obvious winner; CANAL is a valid variant of the same scene."
+    },
+    {
+      "pair_id": "p_bank__castle",
+      "a": "BANK",
+      "b": "CASTLE",
+      "hints": [
+        { "text": "MOAT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Castle moat is immediate, but a moat having banks (or the finance sense of 'moat') is a stretch." },
+        { "text": "KEEP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "The castle keep is a set term, and a bank keeps your money, but the BANK side is a verb pun rather than a recognizable phrase." },
+        { "text": "TREASURY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Treasury is core bank vocabulary and castles have a treasury room where the royal hoard is kept." }
+      ],
+      "strong_hints": ["TREASURY"],
+      "best_available": { "text": "TREASURY", "why": "Finance word that also names a familiar castle room." },
+      "pair_note": "TREASURY is a fair PASS; KEEP is a pleasant pun that may deserve a second look."
+    },
+    {
+      "pair_id": "p_bank__cat",
+      "a": "BANK",
+      "b": "CAT",
+      "hints": [
+        { "text": "WHISKERS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Cat whiskers only; nothing for BANK." },
+        { "text": "BURGLAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Cat burglar is a set phrase and burglars rob banks." }
+      ],
+      "strong_hints": ["BURGLAR"],
+      "best_available": { "text": "BURGLAR", "why": "Compound on the CAT side, obvious crime scene on the BANK side." },
+      "pair_note": "BURGLAR is strong; WHISKERS is filler."
+    },
+    {
+      "pair_id": "p_bank__crown",
+      "a": "BANK",
+      "b": "CROWN",
+      "hints": [
+        { "text": "GOLD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Gold is kept in bank vaults and crowns are made of gold." },
+        { "text": "SOVEREIGN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["british_only"], "verdict": "PASS", "reason": "A sovereign wears the crown, and sovereign is a gold coin / sovereign debt in bank vocabulary." },
+        { "text": "MINT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "A mint makes the money banks hold, but CROWN is reached only via the Royal Mint or crown-stamped coins." },
+        { "text": "ROYAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Royal Bank (of Scotland, of Canada) is a familiar brand and crowns are royal." }
+      ],
+      "strong_hints": ["GOLD", "ROYAL", "SOVEREIGN"],
+      "best_available": { "text": "GOLD", "why": "The most immediate shared material." },
+      "pair_note": "A rich pair; GOLD and ROYAL are both strong, SOVEREIGN is clever but skews British."
+    },
+    {
+      "pair_id": "p_bank__dog",
+      "a": "BANK",
+      "b": "DOG",
+      "hints": [
+        { "text": "ROBBER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Bank robber is a compound, but DOG is reached only through dogs chasing or catching robbers." },
+        { "text": "GUARD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Guard dog is a compound and bank guard is a familiar job." }
+      ],
+      "strong_hints": ["GUARD"],
+      "best_available": { "text": "GUARD", "why": "Equally direct on both sides." },
+      "pair_note": "GUARD is a model hint; ROBBER is a bank hint with a dog-shaped afterthought."
+    },
+    {
+      "pair_id": "p_bank__dragon",
+      "a": "BANK",
+      "b": "DRAGON",
+      "hints": [
+        { "text": "GOLD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Banks hold gold and dragons sleep on gold." },
+        { "text": "HOARD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:GOLD"], "verdict": "PASS", "reason": "A dragon's hoard is the set phrase and hoarding money in a bank is a recognizable idea." },
+        { "text": "FIRE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragon fire only; no ordinary route to BANK." }
+      ],
+      "strong_hints": ["GOLD", "HOARD"],
+      "best_available": { "text": "GOLD", "why": "The shared treasure image is immediate." },
+      "pair_note": "GOLD and HOARD both work; FIRE is filler."
+    },
+    {
+      "pair_id": "p_bank__egg",
+      "a": "BANK",
+      "b": "EGG",
+      "hints": [
+        { "text": "YOLK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Egg yolk only; nothing for BANK." },
+        { "text": "NEST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Nest egg is the set phrase for savings kept in the bank; the EGG side is literal." }
+      ],
+      "strong_hints": ["NEST"],
+      "best_available": { "text": "NEST", "why": "Nest egg is the one phrase that ties eggs to savings." },
+      "pair_note": "NEST is a fair PASS on the strength of 'nest egg'; YOLK is filler."
+    },
+    {
+      "pair_id": "p_bank__fire",
+      "a": "BANK",
+      "b": "FIRE",
+      "hints": [
+        { "text": "BREAK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Break the bank and firebreak are both set phrases." },
+        { "text": "ALARM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire alarm is a compound and bank alarms go off in robberies." },
+        { "text": "SAFE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bank safe and fire safe (fireproof safe) are both familiar objects." }
+      ],
+      "strong_hints": ["SAFE", "ALARM", "BREAK"],
+      "best_available": { "text": "SAFE", "why": "A single object that is literally a bank safe and a fire safe." },
+      "pair_note": "All three pass; SAFE is the tightest."
+    },
+    {
+      "pair_id": "p_bank__fish",
+      "a": "BANK",
+      "b": "FISH",
+      "hints": [
+        { "text": "FIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Fish fin is immediate, but BANK is reached only via 'fin' as slang for a five-dollar bill or as a finance abbreviation." },
+        { "text": "RIVER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "River bank is a compound and river fish is an everyday scene." }
+      ],
+      "strong_hints": ["RIVER"],
+      "best_available": { "text": "RIVER", "why": "The shared scene is instant." },
+      "pair_note": "RIVER is strong; FIN is a slang stretch."
+    },
+    {
+      "pair_id": "p_bank__ghost",
+      "a": "BANK",
+      "b": "GHOST",
+      "hints": [
+        { "text": "VANISH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Ghosts vanish, but money vanishing from a bank is a mood rather than a phrase." },
+        { "text": "ACCOUNT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Bank account is a compound and a ghost account (abandoned or fake account) is a reasonably familiar phrase." },
+        { "text": "TOWN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Ghost town is a compound, but BANK is reached only as a building every town has." },
+        { "text": "SHEET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "The bedsheet ghost is immediate, but BANK is reached only through a balance sheet." },
+        { "text": "VAULT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Bank vault is a compound, but GHOST is reached only through a burial vault or crypt." }
+      ],
+      "strong_hints": ["ACCOUNT"],
+      "best_available": { "text": "ACCOUNT", "why": "The only hint where both sides are set phrases, even if 'ghost account' is less universal." },
+      "pair_note": "A hard pair; ACCOUNT is a modest PASS and worth a second opinion, the rest are each one-sided in a different direction."
+    },
+    {
+      "pair_id": "p_bank__glass",
+      "a": "BANK",
+      "b": "GLASS",
+      "hints": [
+        { "text": "VAULT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bank vault only; GLASS has no ordinary vault connection." },
+        { "text": "WINDOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The teller window at a bank and the glass in a window are both immediate." }
+      ],
+      "strong_hints": ["WINDOW"],
+      "best_available": { "text": "WINDOW", "why": "Direct on both sides." },
+      "pair_note": "WINDOW carries the pair; VAULT is filler here."
+    },
+    {
+      "pair_id": "p_bank__gold",
+      "a": "BANK",
+      "b": "GOLD",
+      "hints": [
+        { "text": "BAR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Gold bar is a compound, but BANK is reached only through the bars gold comes in or bars on a vault." },
+        { "text": "VAULT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bank vault is a compound and gold is what sits in it." },
+        { "text": "RESERVE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Federal Reserve bank and gold reserve are both set phrases." }
+      ],
+      "strong_hints": ["VAULT", "RESERVE"],
+      "best_available": { "text": "VAULT", "why": "The shared object is immediate." },
+      "pair_note": "VAULT and RESERVE both pass comfortably; BAR is nearly there but one-sided."
+    },
+    {
+      "pair_id": "p_bank__honey",
+      "a": "BANK",
+      "b": "HONEY",
+      "hints": [
+        { "text": "ROB", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Robbing a bank is immediate, but HONEY is reached only via bears robbing hives or the beekeeping sense of robbing." },
+        { "text": "POT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Honey pot is a compound, but BANK is reached only as a pot of money." },
+        { "text": "STORE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["generic"], "verdict": "PASS", "reason": "Banks store money and bees store honey; the shared verb reaches both sides clearly." }
+      ],
+      "strong_hints": ["STORE"],
+      "best_available": { "text": "STORE", "why": "The one hint whose route is equally clear on both sides." },
+      "pair_note": "STORE is generic but fair; ROB and POT each lean on one word."
+    },
+    {
+      "pair_id": "p_bank__ice",
+      "a": "BANK",
+      "b": "ICE",
+      "hints": [
+        { "text": "RIVER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "River bank is a compound and a frozen river is a familiar image." },
+        { "text": "FROZEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A frozen bank account and frozen ice are both immediate." }
+      ],
+      "strong_hints": ["FROZEN", "RIVER"],
+      "best_available": { "text": "FROZEN", "why": "A finance phrase that is also the defining property of ice." },
+      "pair_note": "FROZEN is excellent; RIVER is a fair second."
+    },
+    {
+      "pair_id": "p_bank__king",
+      "a": "BANK",
+      "b": "KING",
+      "hints": [
+        { "text": "CROWN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["british_only"], "verdict": "BORDERLINE", "reason": "A king's crown is immediate, but BANK is reached only through the crown as a coin or the Crown as the state." },
+        { "text": "ROYAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Royal Bank brands on one side and a royal king on the other." },
+        { "text": "RICH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Kings are rich and a full bank account is what makes you rich; broad but it reaches both." }
+      ],
+      "strong_hints": ["ROYAL", "RICH"],
+      "best_available": { "text": "ROYAL", "why": "A brand route on the BANK side keeps it concrete." },
+      "pair_note": "ROYAL is strong; RICH is a modest PASS; CROWN is mostly a king hint."
+    },
+    {
+      "pair_id": "p_bank__knight",
+      "a": "BANK",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "ARMOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A knight's armor is immediate and the armored truck that carries bank cash is a recognizable scene." },
+        { "text": "CHARGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A bank charge (fee) and a knight's charge are both ordinary uses." }
+      ],
+      "strong_hints": ["CHARGE", "ARMOR"],
+      "best_available": { "text": "CHARGE", "why": "Clean double meaning, each side ordinary." },
+      "pair_note": "Both pass; CHARGE is the tighter one."
+    },
+    {
+      "pair_id": "p_bank__light",
+      "a": "BANK",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "STREET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Street light is a compound and Wall Street / the high-street bank put banks on the street." },
+        { "text": "GREEN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Green light is a compound, but BANK is reached only through green as the colour of money." },
+        { "text": "SWITCH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Light switch is a compound, but switching banks is a thin verb route." },
+        { "text": "FLOOD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Floodlight is a compound and a river in flood overflows its banks." }
+      ],
+      "strong_hints": ["FLOOD", "STREET"],
+      "best_available": { "text": "FLOOD", "why": "Compound on one side and a familiar river-bank scene on the other." },
+      "pair_note": "FLOOD is the best; STREET is a fair PASS; GREEN and SWITCH each lean on LIGHT."
+    },
+    {
+      "pair_id": "p_bank__lion",
+      "a": "BANK",
+      "b": "LION",
+      "hints": [
+        { "text": "ROAR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lions roar; nothing for BANK." },
+        { "text": "STATUE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Stone lions guarding the steps of a grand bank is a recognizable shared scene, and lion statues are common in their own right." }
+      ],
+      "strong_hints": ["STATUE"],
+      "best_available": { "text": "STATUE", "why": "The lion-statue-outside-the-bank scene reaches both words." },
+      "pair_note": "STATUE is a fair PASS on the strength of the classic bank facade; ROAR is filler."
+    },
+    {
+      "pair_id": "p_bank__moon",
+      "a": "BANK",
+      "b": "MOON",
+      "hints": [
+        { "text": "SILVER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "A silver moon is immediate and silver is the precious metal banks hold alongside gold." },
+        { "text": "RIVER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "River bank is a compound and Moon River / moonlight on a river is a familiar image." },
+        { "text": "NIGHT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "The moon belongs to night, but BANK is reached only via the night-deposit slot." }
+      ],
+      "strong_hints": ["SILVER", "RIVER"],
+      "best_available": { "text": "SILVER", "why": "The metal route to BANK is a notch below GOLD but still recognizable." },
+      "pair_note": "Two fair passes; neither is as tight as the best hints elsewhere."
+    },
+    {
+      "pair_id": "p_bank__mouse",
+      "a": "BANK",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "CHEESE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mouse and cheese only; nothing for BANK." },
+        { "text": "ONLINE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Online banking on one side and the computer mouse you do it with on the other." }
+      ],
+      "strong_hints": ["ONLINE"],
+      "best_available": { "text": "ONLINE", "why": "A clean modern scene that needs both words." },
+      "pair_note": "ONLINE is strong; CHEESE is filler."
+    },
+    {
+      "pair_id": "p_bank__night",
+      "a": "BANK",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "DARK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Dark is near-synonymous with night and has no ordinary route to BANK." },
+        { "text": "DEPOSIT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Bank deposit is a compound and the night deposit slot is the one place NIGHT meets banking." }
+      ],
+      "strong_hints": ["DEPOSIT"],
+      "best_available": { "text": "DEPOSIT", "why": "Night deposit is the single phrase joining the two words." },
+      "pair_note": "DEPOSIT passes because both sides are set phrases; DARK is filler."
+    },
+    {
+      "pair_id": "p_bank__ocean",
+      "a": "BANK",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "WAVE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ocean wave only; WAVE has no ordinary route to BANK." },
+        { "text": "SAND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Sandbank is a compound and sand is the ocean shore." }
+      ],
+      "strong_hints": ["SAND"],
+      "best_available": { "text": "SAND", "why": "Compound on one side, defining scene on the other." },
+      "pair_note": "SAND is strong; WAVE is filler."
+    },
+    {
+      "pair_id": "p_bank__pirate",
+      "a": "BANK",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "PARROT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Pirate's parrot only; nothing for BANK." },
+        { "text": "LOOT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pirate loot is a set phrase and bank robbers make off with loot." },
+        { "text": "ROB", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:LOOT"], "verdict": "PASS", "reason": "Robbing a bank and pirates robbing ships are both immediate." }
+      ],
+      "strong_hints": ["LOOT", "ROB"],
+      "best_available": { "text": "LOOT", "why": "The noun reads as a shared object rather than a shared verb." },
+      "pair_note": "LOOT and ROB are both good and near-duplicates; PARROT is filler."
+    },
+    {
+      "pair_id": "p_bank__queen",
+      "a": "BANK",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "BEE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Queen bee only; nothing for BANK." },
+        { "text": "ENGLAND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bank of England and Queen of England are both set phrases." }
+      ],
+      "strong_hints": ["ENGLAND"],
+      "best_available": { "text": "ENGLAND", "why": "Parallel 'X of England' phrases on both sides." },
+      "pair_note": "ENGLAND is excellent; BEE is filler."
+    },
+    {
+      "pair_id": "p_bank__ring",
+      "a": "BANK",
+      "b": "RING",
+      "hints": [
+        { "text": "DIAMOND", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Diamond ring is a compound, but BANK is reached only as a place diamonds might be stored." },
+        { "text": "SAFE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A bank safe or safe-deposit box is immediate, and keeping a ring in the safe is a recognizable scene." }
+      ],
+      "strong_hints": ["SAFE"],
+      "best_available": { "text": "SAFE", "why": "The ring-in-the-safe scene joins both words." },
+      "pair_note": "SAFE is a fair PASS; DIAMOND is mostly a ring hint."
+    },
+    {
+      "pair_id": "p_bank__robot",
+      "a": "BANK",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "ARM", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Robot arm is immediate, but BANK is reached only via ARM as an adjustable-rate mortgage, which no player will see." },
+        { "text": "ATM", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "A bank ATM is immediate and the automated teller is machine-like, but ROBOT is implied rather than recognized." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ATM", "why": "The automated-machine idea is the only real bridge offered to ROBOT." },
+      "pair_note": "No PASS. ATM as a robot teller is a defensible stretch and worth a second opinion; ARM fails."
+    },
+    {
+      "pair_id": "p_bank__rock",
+      "a": "BANK",
+      "b": "ROCK",
+      "hints": [
+        { "text": "RIVER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "River bank and river rocks are the same scene." },
+        { "text": "SOLID", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Rock solid is a set phrase, but a 'solid bank' is marketing language rather than a recognized route." }
+      ],
+      "strong_hints": ["RIVER"],
+      "best_available": { "text": "RIVER", "why": "Instant shared scene." },
+      "pair_note": "RIVER is strong; SOLID leans on ROCK."
+    },
+    {
+      "pair_id": "p_bank__rose",
+      "a": "BANK",
+      "b": "ROSE",
+      "hints": [
+        { "text": "BURST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [] , "verdict": "BORDERLINE", "reason": "A river bursting its banks is a set phrase, but a rose bursting into bloom is a loose verb association." },
+        { "text": "BED", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Rose bed is a compound, but BANK is reached only as the river bed's neighbour." },
+        { "text": "HEDGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Hedge fund is finance vocabulary and a rose hedge is an ordinary garden feature." }
+      ],
+      "strong_hints": ["HEDGE"],
+      "best_available": { "text": "HEDGE", "why": "A finance word that is also a literal rose planting." },
+      "pair_note": "HEDGE carries the pair; BURST and BED each lean on one side."
+    },
+    {
+      "pair_id": "p_bank__salt",
+      "a": "BANK",
+      "b": "SALT",
+      "hints": [
+        { "text": "WORTH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Net worth is bank vocabulary and 'worth one's salt' is a familiar idiom." },
+        { "text": "DEPOSIT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bank deposit and salt deposit are both compounds." },
+        { "text": "SALARY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "Salary is paid into the bank, and the salt-to-salary etymology is well-known trivia even if not universal." }
+      ],
+      "strong_hints": ["DEPOSIT", "WORTH", "SALARY"],
+      "best_available": { "text": "DEPOSIT", "why": "Both sides are literal compounds." },
+      "pair_note": "A rich pair; SALARY is the only hint that depends on a fact rather than a phrase."
+    },
+    {
+      "pair_id": "p_bank__shadow",
+      "a": "BANK",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "CLOUD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Cloud bank is a compound and clouds cast shadows." },
+        { "text": "SHADE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Shade is a near-synonym of shadow and has no route to BANK." }
+      ],
+      "strong_hints": ["CLOUD"],
+      "best_available": { "text": "CLOUD", "why": "Compound on the BANK side, physical fact on the SHADOW side." },
+      "pair_note": "CLOUD is a good hint; SHADE is a synonym of one target."
+    }
+  ]
+}

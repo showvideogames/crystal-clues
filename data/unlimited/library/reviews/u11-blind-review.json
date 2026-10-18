@@ -1,0 +1,921 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-11",
+    "date": "2026-10-17",
+    "input": "u11-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u11-blind-input.json; no other file, repository search, web lookup or API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_card__lion",
+      "a": "CARD",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The king is a face card, and the lion is the king of the jungle / The Lion King."
+        }
+      ],
+      "strong_hints": ["KING"],
+      "best_available": { "text": "KING", "why": "Both routes are immediate and universally known." },
+      "pair_note": "Single strong hint; nothing to fix."
+    },
+    {
+      "pair_id": "p_card__moon",
+      "a": "CARD",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "TAROT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Tarot is a card deck, and The Moon is one of its best-known major-arcana cards (tarot also carries a general lunar/mystical mood)."
+        }
+      ],
+      "strong_hints": ["TAROT"],
+      "best_available": { "text": "TAROT", "why": "Card side is certain; the Moon card is familiar enough to most players through general tarot imagery." },
+      "pair_note": "Moon side relies on knowing The Moon tarot card, but the mystical association carries non-experts too."
+    },
+    {
+      "pair_id": "p_card__mouse",
+      "a": "CARD",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "DISNEY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Mickey Mouse makes the mouse side immediate, but the card side only reaches via Disney gift cards or the niche Lorcana trading-card game."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "DISNEY", "why": "Only hint offered; mouse side is excellent but card is a weak afterthought." },
+      "pair_note": "No PASS. The card route to Disney is not a familiar phrase; a player would need CARD to be the only leftover word."
+    },
+    {
+      "pair_id": "p_card__night",
+      "a": "CARD",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "GAME",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Card game is a compound and game night is a familiar phrase."
+        },
+        {
+          "text": "POKER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Poker is a card game and poker night is a stock phrase."
+        }
+      ],
+      "strong_hints": ["POKER", "GAME"],
+      "best_available": { "text": "POKER", "why": "More specific than GAME; poker night evokes the cards-on-the-table scene directly." },
+      "pair_note": "Two good hints; GAME is a little broader but still fair."
+    },
+    {
+      "pair_id": "p_card__ocean",
+      "a": "CARD",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "ELEVEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Ocean's Eleven is a well-known casino film, but the card side only reaches through the casino setting or an ace counting eleven in blackjack."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ELEVEN", "why": "Only hint offered; the casino-heist setting gives card a thin but real foothold." },
+      "pair_note": "No PASS. Clever title route, but the card side needs an explanation most players will not produce."
+    },
+    {
+      "pair_id": "p_card__pirate",
+      "a": "CARD",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "DECK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A deck of cards, and pirates on the deck of their ship."
+        }
+      ],
+      "strong_hints": ["DECK"],
+      "best_available": { "text": "DECK", "why": "Clean double meaning that reaches both words directly." },
+      "pair_note": "Excellent single hint."
+    },
+    {
+      "pair_id": "p_card__ring",
+      "a": "CARD",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "DIAMOND",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamonds are a card suit and a diamond ring is the classic ring."
+        },
+        {
+          "text": "WEDDING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wedding ring is a compound and wedding cards are a standard greeting-card category."
+        }
+      ],
+      "strong_hints": ["DIAMOND", "WEDDING"],
+      "best_available": { "text": "DIAMOND", "why": "Suit plus diamond ring is the tighter double meaning." },
+      "pair_note": "Both hints solid."
+    },
+    {
+      "pair_id": "p_card__robot",
+      "a": "CARD",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "CHIP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Chip card / chip-and-PIN and SIM cards carry chips; robots run on computer chips."
+        }
+      ],
+      "strong_hints": ["CHIP"],
+      "best_available": { "text": "CHIP", "why": "Both sides are everyday compounds." },
+      "pair_note": "Good single hint."
+    },
+    {
+      "pair_id": "p_card__rock",
+      "a": "CARD",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "PAPER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Rock-paper-scissors reaches rock, and card is stiff paper (greeting cards, cardstock)."
+        }
+      ],
+      "strong_hints": ["PAPER"],
+      "best_available": { "text": "PAPER", "why": "Famous game phrase plus a material near-synonym." },
+      "pair_note": "Good hint; material route is a legitimate shared property here."
+    },
+    {
+      "pair_id": "p_card__rose",
+      "a": "CARD",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "VALENTINE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Valentine card is a compound and roses are the Valentine's Day flower."
+        }
+      ],
+      "strong_hints": ["VALENTINE"],
+      "best_available": { "text": "VALENTINE", "why": "One shared scene reaches both words instantly." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_card__salt",
+      "a": "CARD",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "TABLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Card table and table salt are both stock compounds."
+        }
+      ],
+      "strong_hints": ["TABLE"],
+      "best_available": { "text": "TABLE", "why": "Two familiar compounds." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__shadow",
+      "a": "CARD",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "TRICK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Card trick is immediate, but shadow only reaches via hand-shadow puppetry or 'a trick of the light'."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TRICK", "why": "Only hint offered; shadow puppets as a trick is thin but imaginable." },
+      "pair_note": "No PASS. Shadow side lacks a phrase or scene a player would name."
+    },
+    {
+      "pair_id": "p_card__shark",
+      "a": "CARD",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "POKER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Poker is a card game, and a card shark / poker shark is the familiar term for a hustling player."
+        }
+      ],
+      "strong_hints": ["POKER"],
+      "best_available": { "text": "POKER", "why": "The card-shark idiom makes both targets natural." },
+      "pair_note": "Good; the pair itself is the idiom."
+    },
+    {
+      "pair_id": "p_card__snake",
+      "a": "CARD",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "DEALER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Card dealer is immediate, but nothing recognizable links dealer to snake (snake-oil goes with 'salesman', not 'dealer')."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "DEALER", "why": "Only hint offered; it does not reach snake." },
+      "pair_note": "No PASS. Needs a new hint; the one offered is wholly one-sided."
+    },
+    {
+      "pair_id": "p_card__spider",
+      "a": "CARD",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "SOLITAIRE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Solitaire is the one-player card game, and Spider Solitaire is the widely known Windows variant."
+        }
+      ],
+      "strong_hints": ["SOLITAIRE"],
+      "best_available": { "text": "SOLITAIRE", "why": "Spider Solitaire is a household name for PC users." },
+      "pair_note": "Good; spider side is slightly weaker for non-computer players."
+    },
+    {
+      "pair_id": "p_card__spring",
+      "a": "CARD",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "EASTER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Easter cards are a standard greeting-card category and Easter is the spring holiday."
+        }
+      ],
+      "strong_hints": ["EASTER"],
+      "best_available": { "text": "EASTER", "why": "Shared holiday scene reaches both." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__star",
+      "a": "CARD",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "TRADING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Trading card is a compound, but star only reaches through the sports stars pictured on trading cards (or Star Wars card sets)."
+        },
+        {
+          "text": "ACE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Ace is the top card, and ace and star are both words for a top performer, a shared-meaning route that is defensible but not a phrase."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ACE", "why": "Reaches card perfectly and star through the shared 'top performer' sense, which is more natural than TRADING's picture-on-the-card route." },
+      "pair_note": "No PASS. ACE is the closest; a second opinion could reasonably promote it."
+    },
+    {
+      "pair_id": "p_card__train",
+      "a": "CARD",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "TICKET",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Train ticket is immediate; card only follows because a ticket is a small printed card or a travel card replaces one."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TICKET", "why": "Only hint offered; the card-as-ticket route is plausible but not a familiar phrase." },
+      "pair_note": "No PASS. Card side is a material resemblance rather than a connection a player would name."
+    },
+    {
+      "pair_id": "p_card__water",
+      "a": "CARD",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "FLUSH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A flush is a poker hand, and to flush is to send water through."
+        }
+      ],
+      "strong_hints": ["FLUSH"],
+      "best_available": { "text": "FLUSH", "why": "Clean double meaning, both widely known." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_card__witch",
+      "a": "CARD",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "TAROT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Tarot is a card deck, and the witch reading tarot is a familiar scene."
+        }
+      ],
+      "strong_hints": ["TAROT"],
+      "best_available": { "text": "TAROT", "why": "Shared fortune-telling scene." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__wolf",
+      "a": "CARD",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "WILD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wild card is a compound and the wolf is the archetypal wild animal."
+        }
+      ],
+      "strong_hints": ["WILD"],
+      "best_available": { "text": "WILD", "why": "Compound plus a strong shared property." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_castle__cat",
+      "a": "CASTLE",
+      "b": "CAT",
+      "hints": [
+        {
+          "text": "PUSS",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Puss is a cat (Puss in Boots), but castle only reaches via the ogre's castle Puss wins in the tale, a detail most players do not retain."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PUSS", "why": "Only hint offered; cat is certain and the fairy-tale setting gives castle a faint foothold." },
+      "pair_note": "No PASS. The story route to castle is secondary to the plot rather than its centre."
+    },
+    {
+      "pair_id": "p_castle__crown",
+      "a": "CASTLE",
+      "b": "CROWN",
+      "hints": [
+        {
+          "text": "ROYAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Royal castle and royal crown share the royalty property directly."
+        },
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The king lives in the castle and wears the crown."
+        }
+      ],
+      "strong_hints": ["KING", "ROYAL"],
+      "best_available": { "text": "KING", "why": "A concrete figure that owns both objects." },
+      "pair_note": "Both strong; the pair is nearly self-clueing."
+    },
+    {
+      "pair_id": "p_castle__diamond",
+      "a": "CASTLE",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "JEWELS",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A diamond is a jewel, and the crown jewels / castle treasure is a familiar fairy-tale and Tower-of-London image."
+        }
+      ],
+      "strong_hints": ["JEWELS"],
+      "best_available": { "text": "JEWELS", "why": "Diamond is immediate and jewels-in-the-castle is a recognizable scene." },
+      "pair_note": "Castle side is a scene rather than a phrase, but a familiar one."
+    },
+    {
+      "pair_id": "p_castle__dog",
+      "a": "CASTLE",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "GUARD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Castle guard and guard dog are both everyday compounds."
+        }
+      ],
+      "strong_hints": ["GUARD"],
+      "best_available": { "text": "GUARD", "why": "Two familiar compounds." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_castle__egg",
+      "a": "CASTLE",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "HUMPTY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Humpty Dumpty is the egg; castle only arrives through the wall and the king's horses and men, which illustrations sometimes set at a castle."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HUMPTY", "why": "Only hint offered; egg is certain, castle is an inference from the rhyme's royal setting." },
+      "pair_note": "No PASS. The rhyme says wall, not castle."
+    },
+    {
+      "pair_id": "p_castle__fire",
+      "a": "CASTLE",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "HEARTH",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "A hearth is where the fire burns, but castle only follows from the great-hall hearth image, and hearths belong to any home."
+        },
+        {
+          "text": "DRAGON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The dragon breathes fire and besieges or guards the castle in the standard fairy-tale scene."
+        }
+      ],
+      "strong_hints": ["DRAGON"],
+      "best_available": { "text": "DRAGON", "why": "One shared story scene reaches both words at full strength." },
+      "pair_note": "DRAGON carries the pair; HEARTH is a soft second."
+    },
+    {
+      "pair_id": "p_castle__fish",
+      "a": "CASTLE",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "MOAT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A moat surrounds a castle, and fish in the moat is a recognizable image since the moat is a body of water."
+        }
+      ],
+      "strong_hints": ["MOAT"],
+      "best_available": { "text": "MOAT", "why": "Castle is certain and the water-to-fish step is short." },
+      "pair_note": "Fish side is a one-step inference (moat is water); judged a recognizable scene rather than a stretch, but close to the line."
+    },
+    {
+      "pair_id": "p_castle__ghost",
+      "a": "CASTLE",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "SPOOKY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material", "variant_of:HAUNTED"],
+          "verdict": "PASS",
+          "reason": "Spooky is the ghost's mood, and the spooky castle is a standard Halloween / Dracula image."
+        },
+        {
+          "text": "HAUNTED",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Haunted castle is a stock phrase and a haunting is done by a ghost."
+        }
+      ],
+      "strong_hints": ["HAUNTED", "SPOOKY"],
+      "best_available": { "text": "HAUNTED", "why": "Compound phrase on one side and the defining ghost action on the other." },
+      "pair_note": "HAUNTED is clearly the better of two valid mood-based hints."
+    },
+    {
+      "pair_id": "p_castle__glass",
+      "a": "CASTLE",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "CINDERELLA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The glass slipper and the prince's castle (also Disney's Cinderella Castle) are both central to the story."
+        },
+        {
+          "text": "SLIPPER",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["variant_of:CINDERELLA"],
+          "verdict": "BORDERLINE",
+          "reason": "Glass slipper is immediate, but castle needs the extra hop through Cinderella's story."
+        }
+      ],
+      "strong_hints": ["CINDERELLA"],
+      "best_available": { "text": "CINDERELLA", "why": "Names the story so both objects fall out at once." },
+      "pair_note": "CINDERELLA carries the pair; SLIPPER is a weaker variant."
+    },
+    {
+      "pair_id": "p_castle__gold",
+      "a": "CASTLE",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "TREASURY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Gold is kept in a treasury, and the castle treasury / strongroom is a recognizable medieval room."
+        }
+      ],
+      "strong_hints": ["TREASURY"],
+      "best_available": { "text": "TREASURY", "why": "Gold is immediate and the treasury-as-castle-room scene is familiar." },
+      "pair_note": "Castle side depends on the medieval sense of treasury rather than the government department."
+    },
+    {
+      "pair_id": "p_castle__heart",
+      "a": "CASTLE",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "QUEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Queen of Hearts (cards, Alice) reaches heart, and the queen lives in the castle."
+        }
+      ],
+      "strong_hints": ["QUEEN"],
+      "best_available": { "text": "QUEEN", "why": "Both routes are stock." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_castle__honey",
+      "a": "CASTLE",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "MEAD",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "Mead is honey wine drunk in medieval castle halls, but many players will not know what mead is made from and the castle link is only a mood."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MEAD", "why": "Only hint offered; correct on both sides but niche." },
+      "pair_note": "No PASS. Factually sound, recognizability is the problem."
+    },
+    {
+      "pair_id": "p_castle__horse",
+      "a": "CASTLE",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "STABLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horses live in stables, and the castle stables for the knights' horses are a familiar scene."
+        },
+        {
+          "text": "KNIGHT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The knight rides a horse and serves in the castle."
+        }
+      ],
+      "strong_hints": ["KNIGHT", "STABLE"],
+      "best_available": { "text": "KNIGHT", "why": "A figure that belongs equally to both words." },
+      "pair_note": "KNIGHT is the stronger; STABLE is fair."
+    },
+    {
+      "pair_id": "p_castle__ice",
+      "a": "CASTLE",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "ELSA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Elsa has ice powers and builds the ice castle/palace in Frozen."
+        },
+        {
+          "text": "FROZEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["variant_of:ELSA"],
+          "verdict": "PASS",
+          "reason": "Frozen is literally ice, and the film Frozen supplies the ice castle and Arendelle castle."
+        }
+      ],
+      "strong_hints": ["ELSA", "FROZEN"],
+      "best_available": { "text": "ELSA", "why": "Names the character whose signature act is the ice castle." },
+      "pair_note": "Both valid; FROZEN depends on the film for the castle side."
+    },
+    {
+      "pair_id": "p_castle__iron",
+      "a": "CASTLE",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "GATE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Castle gate and iron gate are both stock compounds."
+        }
+      ],
+      "strong_hints": ["GATE"],
+      "best_available": { "text": "GATE", "why": "Two compounds." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_castle__key",
+      "a": "CASTLE",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "DUNGEON",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The dungeon is the castle's prison, and the dungeon key / jailer's keys is a familiar story and video-game item."
+        }
+      ],
+      "strong_hints": ["DUNGEON"],
+      "best_available": { "text": "DUNGEON", "why": "Castle is immediate and the key-to-the-dungeon scene is well worn." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_castle__knight",
+      "a": "CASTLE",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "MEDIEVAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Medieval castle and medieval knight share the period directly."
+        },
+        {
+          "text": "CHESS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The knight is a chess piece and the rook is commonly called the castle (castling)."
+        }
+      ],
+      "strong_hints": ["MEDIEVAL", "CHESS"],
+      "best_available": { "text": "MEDIEVAL", "why": "Most direct; CHESS is equally valid and more playful." },
+      "pair_note": "Two good hints of different flavours."
+    },
+    {
+      "pair_id": "p_castle__light",
+      "a": "CASTLE",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "BEACON",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "A beacon is a signal light, but castle only reaches through beacon fires lit on castle towers, an image many players will not produce."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BEACON", "why": "Only hint offered; light is certain, castle is a tower-signal inference." },
+      "pair_note": "No PASS. Castle side is a scene without a phrase behind it."
+    },
+    {
+      "pair_id": "p_castle__lion",
+      "a": "CASTLE",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "NARNIA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Aslan the lion makes Narnia reach lion, but castle needs Cair Paravel or the White Witch's castle, details beyond the title."
+        },
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The king lives in the castle and the lion is king of the jungle / The Lion King."
+        }
+      ],
+      "strong_hints": ["KING"],
+      "best_available": { "text": "KING", "why": "Both routes are universal." },
+      "pair_note": "KING carries the pair; NARNIA is a fun but unreliable alternative."
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+// SUPERSEDED on feature/unlimited-random: Play and Next now build a random board (src/unlimited/generate.js),
+// so this fixed-order flow no longer applies. Kept as the record of the fixed-pool beta; see random-check.mjs.
 // Unlimited guest beta in a real browser at phone width, against the dev
 // server (node vite.js … --mode friends-local --port 5192, or FRIENDS_E2E_URL).
 // A guest who already has a Daily save and a Daily result in this browser,
@@ -282,7 +284,7 @@ try {
   assert.equal(await page.$("[data-testid=ul-start]"), null, "nothing new to play");
   assert.equal((await page.$$("button::-p-text(Replay)")).length, pool.length, "a Replay for every puzzle");
   await shot(page, "d05-lobby-exhausted");
-  log("all eight played: exhaustion message, Replay offered");
+  log(`all ${pool.length} played: exhaustion message, Replay offered`);
 
   // Replay the lost puzzle 2: counted as a replay, the loss stays.
   const clicked = await page.evaluate(() => {

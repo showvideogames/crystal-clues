@@ -1,3 +1,5 @@
+// SUPERSEDED on feature/unlimited-random: Play and Next now build a random board (src/unlimited/generate.js),
+// so this fixed-order flow no longer applies. Kept as the record of the fixed-pool beta; see random-check.mjs.
 // After appending a batch to the pool: a guest who already has beta-01 history
 // (seven finished boards and puzzle 8 in progress with a life lost) keeps all
 // of it byte-for-byte, resumes puzzle 8, finishes it, and Next opens the first

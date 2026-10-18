@@ -25,6 +25,9 @@ for (const o of overrides) {
   if (!c) { console.warn(`override target not in library: ${o.pair_id} ${o.text}`); continue; }
   if (o.status === "held") {
     c.status = "held"; c.heldReason = `override: ${o.reason}`;
+  } else if (o.status === "human_approved") {
+    // A person's decision that the hint is playable. The independent scores and reasons are untouched.
+    c.status = "human_approved"; c.heldReason = null;
   } else if (o.status === "release" && c.override) {
     c.status = c.provenance?.blindReview?.verdict === "PASS" ? "ai_reviewed" : "held"; c.heldReason = c.status === "held" ? "blind review: borderline" : null;
   } else { console.warn(`override for ${o.pair_id} ${o.text} ignored: it can only hold, or release a previous override`); continue; }

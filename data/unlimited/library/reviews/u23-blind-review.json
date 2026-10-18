@@ -1,0 +1,1541 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-23",
+    "date": "2026-10-17",
+    "input": "u23-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u23-blind-input.json; no other file, search, web lookup or API was consulted."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_honey__star",
+      "a": "HONEY",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "SWEET",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Honey is sweet (taste), but nothing about a star is sweet; the star side has no route."
+        },
+        {
+          "text": "GOLDEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "Honey is golden in colour and 'gold star' is a familiar phrase; a shared-property colour route like SWEET for APPLE+HONEY."
+        }
+      ],
+      "strong_hints": ["GOLDEN"],
+      "best_available": { "text": "GOLDEN", "why": "The only hint that reaches both words; golden honey and gold stars are both everyday images." },
+      "pair_note": "Thin pair; GOLDEN carries it alone and SWEET is honey-only filler."
+    },
+    {
+      "pair_id": "p_honey__train",
+      "a": "HONEY",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "CARGO",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Trains carry cargo, but honey is not recognisably cargo to a player; train-only."
+        },
+        {
+          "text": "BUN",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Honey bun is a familiar compound/endearment, but there is no route from bun to train."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CARGO", "why": "Neither hint reaches both words; CARGO at least admits honey as freight a train could carry, which BUN cannot do for train at all." },
+      "pair_note": "No PASS. Each hint is a one-sided compound; the pair needs a genuinely shared scene (e.g. a dining-car or a shared name) that neither hint supplies."
+    },
+    {
+      "pair_id": "p_honey__water",
+      "a": "HONEY",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "DISSOLVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Honey dissolves in water: a verb route where honey is the thing dissolving and water the solvent."
+        },
+        {
+          "text": "LEMON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Honey and lemon is a classic remedy pairing; lemon water is a familiar drink."
+        },
+        {
+          "text": "TEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Honey is stirred into tea; tea is made with boiling water."
+        }
+      ],
+      "strong_hints": ["TEA", "LEMON", "DISSOLVE"],
+      "best_available": { "text": "TEA", "why": "The most everyday scene: honey, lemon and hot water all meet in a cup of tea." },
+      "pair_note": "Strong pair; all three hints live in the same kitchen scene."
+    },
+    {
+      "pair_id": "p_honey__witch",
+      "a": "HONEY",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "GINGERBREAD",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The witch's gingerbread house in Hansel and Gretel is a famous scene; gingerbread is traditionally sweetened with honey (honey gingerbread/Lebkuchen), a moderate link."
+        },
+        {
+          "text": "HONEYSUCKLE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target", "one_sided"],
+          "verdict": "FAIL",
+          "reason": "Contains the target HONEY as a substring (rule failure) and has no route to witch anyway."
+        },
+        {
+          "text": "POTION",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Witches brew potions, but honey as a potion ingredient is not a recognisable scene; witch-only."
+        }
+      ],
+      "strong_hints": ["GINGERBREAD"],
+      "best_available": { "text": "GINGERBREAD", "why": "Reaches the witch through a universally known story and honey through a real, if secondary, ingredient link." },
+      "pair_note": "GINGERBREAD is the only workable hint; its honey side is moderate rather than immediate."
+    },
+    {
+      "pair_id": "p_honey__wolf",
+      "a": "HONEY",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "BEAR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Bears eat honey (Pooh, 'honey bear'); bear and wolf are the classic forest predators paired in fairy tales and The Jungle Book (Baloo and the wolf pack)."
+        },
+        {
+          "text": "BADGER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Honey badger is a familiar compound; badger to wolf is only 'another wild mammal', with no shared story or phrase."
+        }
+      ],
+      "strong_hints": ["BEAR"],
+      "best_available": { "text": "BEAR", "why": "Strong on honey and the most natural fellow-beast to wolf." },
+      "pair_note": "Both hints lean on honey compounds; BEAR has the better wolf side through shared forest/fairy-tale company."
+    },
+    {
+      "pair_id": "p_horse__ice",
+      "a": "HORSE",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "FROZEN",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Ice is frozen water; the only horse route is the water-horse Nokk in Frozen II, which is niche and needs explaining."
+        },
+        {
+          "text": "ICELANDIC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "Icelandic horse is a real breed, but the hint contains the target ICE as a substring, a rule failure."
+        },
+        {
+          "text": "SLEIGH",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A one-horse open sleigh is a famous image; sleighs glide over snow and ice, a moderate ice link."
+        }
+      ],
+      "strong_hints": ["SLEIGH"],
+      "best_available": { "text": "SLEIGH", "why": "The only legal hint reaching both; the horse-drawn sleigh on a frozen landscape is a shared winter scene." },
+      "pair_note": "ICELANDIC would have been the best clue but breaks the substring rule."
+    },
+    {
+      "pair_id": "p_horse__key",
+      "a": "HORSE",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "STABLE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Horses live in stables; there is no recognisable route from stable to key (the proverb about the stable door is about the horse, not a key)."
+        },
+        {
+          "text": "BOLT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A horse bolts (verb); a key turns the bolt of a lock (deadbolt), a lock-hardware route to key."
+        }
+      ],
+      "strong_hints": ["BOLT"],
+      "best_available": { "text": "BOLT", "why": "Neat double meaning: the bolting horse and the bolt a key throws." },
+      "pair_note": "BOLT is a genuine two-way clue; its key side goes through the lock rather than the key itself."
+    },
+    {
+      "pair_id": "p_horse__king",
+      "a": "HORSE",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "HUMPTY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'All the king's horses and all the king's men' in Humpty Dumpty names both words in one nursery rhyme."
+        },
+        {
+          "text": "KINGDOM",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "'My kingdom for a horse' is a fine route, but the hint contains the target KING as a substring, a rule failure."
+        },
+        {
+          "text": "KNIGHT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A knight rides a horse and serves a king; in chess the knight is the horse piece beside the king."
+        },
+        {
+          "text": "RICHARD",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "King Richard (Lionheart, Richard III) is a familiar royal name; the horse comes from Richard III's 'my kingdom for a horse', which many but not all players will have met."
+        }
+      ],
+      "strong_hints": ["HUMPTY", "KNIGHT", "RICHARD"],
+      "best_available": { "text": "HUMPTY", "why": "One rhyme everyone knows that literally contains the king's horses." },
+      "pair_note": "Rich pair; KINGDOM is lost only to the substring rule."
+    },
+    {
+      "pair_id": "p_horse__knight",
+      "a": "HORSE",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "JOUST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Knights joust on horseback; one scene holds both words."
+        },
+        {
+          "text": "ARMOR",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Knights wear armour; warhorses in tournaments are armoured too (barding), a recognisable if secondary image."
+        },
+        {
+          "text": "STEED",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "A steed is a horse (near-synonym) and 'the knight's steed' is a stock phrase; passes but gives the horse away almost directly."
+        },
+        {
+          "text": "CHESS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The chess knight is shaped like, and often called, the horse."
+        }
+      ],
+      "strong_hints": ["JOUST", "CHESS", "STEED", "ARMOR"],
+      "best_available": { "text": "JOUST", "why": "The most vivid single scene containing both a knight and a horse." },
+      "pair_note": "Every hint passes; STEED is flagged as a near-synonym of HORSE for the owner's judgement."
+    },
+    {
+      "pair_id": "p_horse__light",
+      "a": "HORSE",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "CAVALRY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cavalry are horse soldiers; 'light cavalry' / the Light Brigade is a familiar military phrase."
+        },
+        {
+          "text": "DARK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Dark horse' is a common compound and dark is the opposite of light."
+        },
+        {
+          "text": "SPEED",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Speed of light is a fixed phrase; horses are the archetypal fast animal (racing, galloping), a shared-property route."
+        }
+      ],
+      "strong_hints": ["DARK", "CAVALRY", "SPEED"],
+      "best_available": { "text": "DARK", "why": "Compound on one side, antonym on the other; both instant." },
+      "pair_note": "Solid pair with three different routes."
+    },
+    {
+      "pair_id": "p_horse__lion",
+      "a": "HORSE",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "NARNIA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Aslan the lion is Narnia's centrepiece; Narnia's talking horses (The Horse and His Boy, Bree) are a real but secondary element."
+        },
+        {
+          "text": "CAROUSEL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Carousel horses are iconic; lions appear on menagerie carousels but a player is unlikely to reach lion from carousel without prompting."
+        },
+        {
+          "text": "MANE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both the horse and the lion are the animals famous for a mane; a textbook shared property."
+        }
+      ],
+      "strong_hints": ["MANE", "NARNIA"],
+      "best_available": { "text": "MANE", "why": "The one physical feature these two animals uniquely share." },
+      "pair_note": "MANE is excellent; CAROUSEL's lion side is real but weak."
+    },
+    {
+      "pair_id": "p_horse__moon",
+      "a": "HORSE",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "SHOE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Horseshoe is immediate, but the moon side exists only as a crescent-shape resemblance that no player would reach unprompted."
+        },
+        {
+          "text": "MARE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "A mare is a female horse; the moon's dark plains are the lunar maria (Mare Tranquillitatis), a correct but specialist route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MARE", "why": "The only hint with a factual route to both words, though the lunar 'mare' is niche knowledge." },
+      "pair_note": "No PASS. MARE is a clever clue for astronomy-literate players but too specialist to pass outright."
+    },
+    {
+      "pair_id": "p_horse__mouse",
+      "a": "HORSE",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "SCARED",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic", "colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Horses are famously skittish and the mouse is the byword for timidity, but neither side is more than a mood association."
+        },
+        {
+          "text": "STABLE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Horse stable is immediate; mice living among the hay and grain of a stable is plausible but not a scene players reach readily."
+        },
+        {
+          "text": "CINDERELLA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "In Cinderella the fairy godmother turns the mice into horses; one story holds both."
+        }
+      ],
+      "strong_hints": ["CINDERELLA"],
+      "best_available": { "text": "CINDERELLA", "why": "The mice-into-horses transformation is one of the best-known scenes in any fairy tale." },
+      "pair_note": "CINDERELLA is excellent; the other two are soft stable/mood associations."
+    },
+    {
+      "pair_id": "p_horse__night",
+      "a": "HORSE",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "HEADLESS",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Headless Horseman rides a horse and haunts Sleepy Hollow by night."
+        },
+        {
+          "text": "MARE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A mare is a female horse and night+mare makes nightmare, a compound route."
+        },
+        {
+          "text": "REVERE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Paul Revere's midnight ride was on horseback through the night; US-centric but widely taught."
+        }
+      ],
+      "strong_hints": ["MARE", "HEADLESS", "REVERE"],
+      "best_available": { "text": "MARE", "why": "Direct horse word that also completes NIGHTMARE." },
+      "pair_note": "Strong pair; MARE is the standout."
+    },
+    {
+      "pair_id": "p_horse__ocean",
+      "a": "HORSE",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "POSEIDON",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "Poseidon is god of the sea; he is also god of horses who created them and drives a horse-drawn chariot, a true but mythology-buff route."
+        },
+        {
+          "text": "SEAHORSE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "Contains the target HORSE as a substring, a rule failure despite reaching both."
+        },
+        {
+          "text": "WAVES",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "british_only"],
+          "verdict": "FAIL",
+          "reason": "Ocean waves are immediate; the horse side rests on the poetic 'white horses' for breakers, which most players will not reach."
+        },
+        {
+          "text": "SEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "Sea is a near-synonym of ocean and sea+horse makes seahorse; a legal compound route that SEAHORSE itself breaks."
+        }
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": { "text": "SEA", "why": "Does everything SEAHORSE wanted to do without containing the target." },
+      "pair_note": "SEA is the legal form of the seahorse idea; POSEIDON is a good second for mythology-aware players."
+    },
+    {
+      "pair_id": "p_horse__pirate",
+      "a": "HORSE",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "BUCCANEER",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "synonym_of_target"],
+          "verdict": "FAIL",
+          "reason": "Buccaneer is simply a pirate; nothing points to horse."
+        },
+        {
+          "text": "SEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pirates sail the sea; sea+horse makes seahorse."
+        },
+        {
+          "text": "HIGHWAYMAN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A highwayman robs from horseback; he is the land-robber counterpart of the pirate, a shared outlaw category players recognise."
+        }
+      ],
+      "strong_hints": ["SEA", "HIGHWAYMAN"],
+      "best_available": { "text": "SEA", "why": "Immediate on both sides through the pirate's element and the seahorse compound." },
+      "pair_note": "SEA is strong; HIGHWAYMAN is a thoughtful category route; BUCCANEER is pirate-only."
+    },
+    {
+      "pair_id": "p_horse__queen",
+      "a": "HORSE",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "ASCOT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Royal Ascot is the horse-racing meeting the Queen famously attended each year; well known beyond Britain through the royal link."
+        },
+        {
+          "text": "CARRIAGE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Carriages are horse-drawn and the Queen rides in the royal carriage on state occasions."
+        },
+        {
+          "text": "RACES",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horse races are immediate; the Queen's love of the races is widely known, though a step removed."
+        }
+      ],
+      "strong_hints": ["CARRIAGE", "ASCOT", "RACES"],
+      "best_available": { "text": "CARRIAGE", "why": "A single image, the horse-drawn royal carriage, contains both words." },
+      "pair_note": "Good pair; ASCOT and RACES share the racing route."
+    },
+    {
+      "pair_id": "p_horse__ring",
+      "a": "HORSE",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "CIRCUS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The circus ring and the circus horse act are both classic circus images."
+        },
+        {
+          "text": "SHOW",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horse show is a familiar compound; the 'show ring' is where show horses are judged, a moderate ring link."
+        },
+        {
+          "text": "ARENA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horses are ridden in a riding arena; a ring (boxing, circus) is an arena, a near-synonym."
+        }
+      ],
+      "strong_hints": ["CIRCUS", "ARENA", "SHOW"],
+      "best_available": { "text": "CIRCUS", "why": "Ring and horse are both stock parts of the circus picture." },
+      "pair_note": "All three pass; SHOW's ring side is the softest."
+    },
+    {
+      "pair_id": "p_horse__robot",
+      "a": "HORSE",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "BULL",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Bull reaches horse only as a fellow rodeo/ranch animal and robot only via the 'mechanical bull' ride; neither route is clear enough to count."
+        },
+        {
+          "text": "WESTWORLD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Westworld is a Western theme park (horses) populated by robot hosts; one title holds both for anyone who knows it."
+        },
+        {
+          "text": "MECHANICAL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Robots are mechanical; the coin-operated mechanical horse ride is a familiar object."
+        }
+      ],
+      "strong_hints": ["WESTWORLD", "MECHANICAL"],
+      "best_available": { "text": "WESTWORLD", "why": "Horses and robots are the two defining ingredients of the franchise." },
+      "pair_note": "Hard pair; WESTWORLD is pop-culture dependent and MECHANICAL's horse side is modest."
+    },
+    {
+      "pair_id": "p_horse__rock",
+      "a": "HORSE",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "ROCKING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "Rocking horse is a perfect compound, but ROCKING contains the target ROCK as a substring, a rule failure."
+        },
+        {
+          "text": "CRAZY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Crazy Horse is a famous name (Lakota leader, memorial); the rock side is only via Neil Young's band Crazy Horse being a rock act, which itself goes through 'horse'."
+        },
+        {
+          "text": "SHOE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Horseshoe is immediate; nothing connects shoe to rock."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CRAZY", "why": "The only legal hint with any route to rock; ROCKING is the better clue but breaks the substring rule." },
+      "pair_note": "No PASS. The obvious clue (rocking horse) is forbidden by the substring rule; the pair needs a replacement such as a shared name or 'pet'."
+    },
+    {
+      "pair_id": "p_horse__salt",
+      "a": "HORSE",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "SWEAT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horses visibly sweat (lathered) and sweat is salty; a shared-property route."
+        },
+        {
+          "text": "LICK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A salt lick is the block horses and livestock lick; one object holds both."
+        },
+        {
+          "text": "WATER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Lead a horse to water; salt water is a fixed compound."
+        }
+      ],
+      "strong_hints": ["LICK", "SWEAT", "WATER"],
+      "best_available": { "text": "LICK", "why": "The salt lick is a single object that belongs to horses." },
+      "pair_note": "Strong pair across three routes."
+    },
+    {
+      "pair_id": "p_horse__shadow",
+      "a": "HORSE",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "RIDER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Horse rider is immediate; 'Shadow Riders' is an obscure novel/film and gives shadow no recognisable route."
+        },
+        {
+          "text": "SHY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "A horse shies (verb) and horses famously shy at shadows, but shadow is reached only as the thing shied at."
+        },
+        {
+          "text": "SPOOK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["variant_of:SHY"],
+          "verdict": "BORDERLINE",
+          "reason": "A horse spooks (verb), typically at a shadow, and a spook is a ghostly shadowy figure; same scene as SHY with a slightly better shadow side."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SPOOK", "why": "Reaches horse directly and gives shadow two half-routes (the thing that spooks a horse; a spectral figure)." },
+      "pair_note": "No PASS. Both live hints describe the same 'horse spooked by a shadow' scene, in which shadow is only the cause."
+    },
+    {
+      "pair_id": "p_horse__shark",
+      "a": "HORSE",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "TEETH",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Shark teeth are iconic; horse teeth are a well-known feature too (gift horse in the mouth, 'long in the tooth', horse-toothed grin)."
+        },
+        {
+          "text": "SEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Sharks live in the sea; sea+horse makes seahorse."
+        }
+      ],
+      "strong_hints": ["SEA", "TEETH"],
+      "best_available": { "text": "SEA", "why": "The seahorse compound makes the horse side as fast as the shark side." },
+      "pair_note": "Both pass; TEETH is the more playful shared property."
+    },
+    {
+      "pair_id": "p_horse__snake",
+      "a": "HORSE",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "GRASS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horses graze on grass; grass snake is a familiar compound (and 'snake in the grass' a stock phrase)."
+        },
+        {
+          "text": "REAR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A horse rears up on its hind legs; a cobra rears up to strike, the same verb on both sides."
+        }
+      ],
+      "strong_hints": ["GRASS", "REAR"],
+      "best_available": { "text": "GRASS", "why": "Instant on both sides with a compound and a phrase to help." },
+      "pair_note": "Good pair; REAR is a nice shared verb."
+    },
+    {
+      "pair_id": "p_horse__spider",
+      "a": "HORSE",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "BARN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horses are kept in barns; the barn spider is a real species and Charlotte of Charlotte's Web is one, spinning her web in a barn."
+        },
+        {
+          "text": "FLY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horsefly is a compound; spiders catch flies in their webs."
+        }
+      ],
+      "strong_hints": ["FLY", "BARN"],
+      "best_available": { "text": "FLY", "why": "Compound on one side, the spider's prey on the other." },
+      "pair_note": "Both pass; FLY is the stronger."
+    },
+    {
+      "pair_id": "p_horse__spring",
+      "a": "HORSE",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "JUMP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horses jump (show jumping); to spring is to jump, a verb synonym."
+        },
+        {
+          "text": "DERBY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "The Derby is a famous horse race; its spring timing (Kentucky Derby in May) is known to racing followers but not a route most players would take."
+        },
+        {
+          "text": "FOAL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A foal is a baby horse; foals, like lambs, are born in spring, a familiar seasonal scene."
+        }
+      ],
+      "strong_hints": ["JUMP", "FOAL"],
+      "best_available": { "text": "JUMP", "why": "Verb route that is immediate on both sides." },
+      "pair_note": "JUMP is excellent; DERBY's spring side is calendar knowledge."
+    },
+    {
+      "pair_id": "p_horse__star",
+      "a": "HORSE",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "BLAZE",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Blaze is a white facial marking and classic horse name, and stars blaze ('blazing star'); both routes are real but each is a step removed."
+        },
+        {
+          "text": "TRIGGER",
+          "connection_to_a": 1,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Trigger was Roy Rogers' horse, a dated reference, and star is reached only by calling Trigger a movie-star horse."
+        },
+        {
+          "text": "PEGASUS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pegasus is the winged horse of myth and a well-known constellation."
+        }
+      ],
+      "strong_hints": ["PEGASUS"],
+      "best_available": { "text": "PEGASUS", "why": "A horse that is literally among the stars." },
+      "pair_note": "PEGASUS carries the pair; BLAZE is a decent horsey double meaning that needs equestrian knowledge."
+    },
+    {
+      "pair_id": "p_horse__water",
+      "a": "HORSE",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "LEAD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'You can lead a horse to water' names both words in one proverb."
+        },
+        {
+          "text": "DRINK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'...but you can't make it drink' completes the same proverb; water is what is drunk."
+        },
+        {
+          "text": "TROUGH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A water trough is where horses drink; one object holds both."
+        }
+      ],
+      "strong_hints": ["LEAD", "TROUGH", "DRINK"],
+      "best_available": { "text": "LEAD", "why": "The proverb everybody knows, and LEAD is the word that triggers it." },
+      "pair_note": "Very strong pair."
+    },
+    {
+      "pair_id": "p_horse__witch",
+      "a": "HORSE",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "HAG",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "synonym_of_target"],
+          "verdict": "FAIL",
+          "reason": "Hag is a witch synonym; there is no route to horse (the worn-out horse is a 'nag', not a hag)."
+        },
+        {
+          "text": "BROOM",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Witches ride brooms; a horse has no recognisable link to a broom beyond the fact that both are ridden."
+        },
+        {
+          "text": "RIDE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "You ride a horse and a witch rides her broom; a shared verb."
+        }
+      ],
+      "strong_hints": ["RIDE"],
+      "best_available": { "text": "RIDE", "why": "The one thing a horse and a witch's broom have in common, expressed as a verb." },
+      "pair_note": "RIDE is the only two-way hint; HAG and BROOM are witch-only."
+    },
+    {
+      "pair_id": "p_horse__wolf",
+      "a": "HORSE",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "WILD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Wild horse is a compound (mustangs) and the wolf is the archetypal wild animal."
+        },
+        {
+          "text": "PREY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wolves hunt prey; horses are classic prey animals, and wolves hunting horses is the relation between the two."
+        },
+        {
+          "text": "PACK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wolf pack and packhorse are both everyday compounds."
+        }
+      ],
+      "strong_hints": ["PACK", "WILD", "PREY"],
+      "best_available": { "text": "PACK", "why": "Two compounds, one word." },
+      "pair_note": "Strong pair; PACK is the cleanest."
+    },
+    {
+      "pair_id": "p_ice__iron",
+      "a": "ICE",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "SKATES",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Ice skates are immediate; iron is reached only as the metal of the blade, which few players would name."
+        },
+        {
+          "text": "AGE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ice Age and Iron Age are both familiar compounds."
+        },
+        {
+          "text": "COLD",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Ice is cold; 'cold iron' is a folklore phrase and iron feels cold to the touch, but the iron side is a soft property link."
+        }
+      ],
+      "strong_hints": ["AGE"],
+      "best_available": { "text": "AGE", "why": "Parallel compounds that land both words instantly." },
+      "pair_note": "AGE is excellent; the other two are ice-first with weak iron sides."
+    },
+    {
+      "pair_id": "p_ice__key",
+      "a": "ICE",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "LOCK",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Lock and key are inseparable; ice is reached only through a frozen lock in winter (de-icer) or 'ice-locked', a seasonal scene rather than a firm link."
+        },
+        {
+          "text": "FROZEN",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Ice is frozen; a key is not frozen in any familiar sense (a stuck keyboard key is 'frozen' only loosely)."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "LOCK", "why": "Immediate on key and gives ice the frozen-lock scene; the only hint with any two-way reach." },
+      "pair_note": "No PASS. The pair wants a shared compound (e.g. a word that pairs with both) which neither hint supplies."
+    },
+    {
+      "pair_id": "p_ice__king",
+      "a": "ICE",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "ELVIS",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Elvis is 'the King'; nothing links Elvis to ice."
+        },
+        {
+          "text": "NIGHT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Night King of Game of Thrones is the lord of the ice-bound White Walkers; the single reference reaches king directly and ice through the character's nature, with cold nights as a fallback."
+        },
+        {
+          "text": "FROST",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Frost is ice crystals; 'the Frost King' / Jack Frost is a familiar winter-folklore figure, a moderate king link."
+        }
+      ],
+      "strong_hints": ["FROST", "NIGHT"],
+      "best_available": { "text": "FROST", "why": "Direct on ice with a traditional personified-king route." },
+      "pair_note": "Two moderate passes, each strong on one side and fair on the other; ELVIS is king-only."
+    },
+    {
+      "pair_id": "p_ice__knight",
+      "a": "ICE",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "WHITE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "'White knight' is a fixed phrase; ice and snow are the white of winter, a shared-colour route like GOLDEN for honey."
+        },
+        {
+          "text": "ARMOR",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Knights wear armour; ice as armour exists only in video games and is not a recognisable route."
+        }
+      ],
+      "strong_hints": ["WHITE"],
+      "best_available": { "text": "WHITE", "why": "Phrase on the knight side, colour on the ice side; the only hint that reaches both." },
+      "pair_note": "WHITE holds the pair on a colour route; ARMOR is knight-only."
+    },
+    {
+      "pair_id": "p_ice__light",
+      "a": "ICE",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "SPARKLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ice sparkles and sparkle is a quality of light; a shared-property verb."
+        },
+        {
+          "text": "NORTHERN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Northern Lights is a fixed compound; the frozen north (Arctic ice) gives ice a recognisable geographic route."
+        },
+        {
+          "text": "GLACIER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "A glacier is a river of ice; there is no route to light."
+        }
+      ],
+      "strong_hints": ["SPARKLE", "NORTHERN"],
+      "best_available": { "text": "SPARKLE", "why": "What ice does and what light does, in one word." },
+      "pair_note": "Two good passes; GLACIER is ice-only filler."
+    },
+    {
+      "pair_id": "p_ice__lion",
+      "a": "ICE",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "ASLAN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Aslan is Narnia's lion; he ends the White Witch's endless winter, so the ice side comes through the frozen Narnia he thaws."
+        },
+        {
+          "text": "AGE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "wrong_fact"],
+          "verdict": "FAIL",
+          "reason": "Ice Age is immediate, but the Ice Age films feature a sabre-toothed cat (Diego), not a lion, and no other route to lion exists."
+        },
+        {
+          "text": "NARNIA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Narnia is the land of eternal winter ruled over by ice until Aslan the lion returns; both words are central to the story."
+        }
+      ],
+      "strong_hints": ["NARNIA", "ASLAN"],
+      "best_available": { "text": "NARNIA", "why": "Names the frozen world rather than just its lion, so ice and lion are equally reachable." },
+      "pair_note": "Both passes come from the same story; AGE presumes a lion that is not in the film."
+    },
+    {
+      "pair_id": "p_ice__moon",
+      "a": "ICE",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "FROZEN",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Ice is frozen; the moon is not recognisably 'frozen' to a player without the icy-moon astronomy EUROPA already carries."
+        },
+        {
+          "text": "WINTER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Winter brings ice; 'winter moon' / the Cold Moon is a real but soft seasonal association."
+        },
+        {
+          "text": "EUROPA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Europa is Jupiter's ice-covered moon; a correct single reference reaching both for anyone with basic astronomy."
+        }
+      ],
+      "strong_hints": ["EUROPA"],
+      "best_available": { "text": "EUROPA", "why": "A real icy moon; the only hint with a firm route to both." },
+      "pair_note": "EUROPA carries the pair; FROZEN and WINTER are ice-first."
+    },
+    {
+      "pair_id": "p_ice__mouse",
+      "a": "ICE",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "FREEZER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Ice lives in the freezer; mouse has no recognisable freezer route."
+        },
+        {
+          "text": "FROZEN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ice is frozen water; 'my mouse is frozen' is a familiar computer complaint, giving mouse a genuine everyday route."
+        }
+      ],
+      "strong_hints": ["FROZEN"],
+      "best_available": { "text": "FROZEN", "why": "The frozen computer mouse makes this the only hint that reaches both words." },
+      "pair_note": "Hard pair; FROZEN's mouse side is the computer sense and should be judged on whether the owner accepts that reading."
+    },
+    {
+      "pair_id": "p_ice__night",
+      "a": "ICE",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "FREEZE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Freezing makes ice; forecasts warn of an overnight freeze, so night is the time temperatures drop below freezing."
+        },
+        {
+          "text": "FROST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Frost is ice crystals and forms overnight ('frost tonight'); a familiar weather scene."
+        },
+        {
+          "text": "KING",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Night King (Game of Thrones) is a familiar compound; Ice King (Adventure Time) and the Night King's icy nature give ice a moderate route."
+        }
+      ],
+      "strong_hints": ["FROST", "FREEZE", "KING"],
+      "best_available": { "text": "FROST", "why": "Ice that appears in the night; immediate on both." },
+      "pair_note": "All pass; FROST is the natural choice."
+    },
+    {
+      "pair_id": "p_ice__ocean",
+      "a": "ICE",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "ARCTIC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Arctic ice and the Arctic Ocean; a geographic route landing both."
+        },
+        {
+          "text": "FLOE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "An ice floe is a sheet of floating ice drifting on the ocean; the word is slightly uncommon but tied only to this scene."
+        },
+        {
+          "text": "ICEBERG",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "Contains the target ICE as a substring, a rule failure despite the obvious ocean route."
+        },
+        {
+          "text": "TITANIC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Titanic struck an iceberg and sank in the ocean; a universally known story holding both."
+        }
+      ],
+      "strong_hints": ["TITANIC", "ARCTIC", "FLOE"],
+      "best_available": { "text": "TITANIC", "why": "One story everyone knows, with ice and ocean as its two protagonists." },
+      "pair_note": "Strong pair; ICEBERG fails only on the substring rule."
+    }
+  ]
+}

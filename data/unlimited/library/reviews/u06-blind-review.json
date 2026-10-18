@@ -1,0 +1,951 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-6",
+    "date": "2026-10-17",
+    "input": "u06-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u06-blind-input.json; no other file, repository search, web lookup or API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_bank__snake",
+      "a": "BANK",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "WIND",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "A snake winds (verb), but WIND reaches BANK only through a strained picture of a winding riverbank or a plane banking in wind."
+        },
+        {
+          "text": "BASK",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Snakes bask in the sun; BANK is reached only through the scene of a snake basking on a sunny riverbank, which the hint itself does not carry."
+        },
+        {
+          "text": "RIVER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Riverbank is a compound, and a river 'snakes' through the land / snakes live along rivers, so both sides are reachable."
+        }
+      ],
+      "strong_hints": ["RIVER"],
+      "best_available": { "text": "RIVER", "why": "The only hint that reaches both words without borrowing the other." },
+      "pair_note": "RIVER carries the pair; WIND and BASK are snake-only hints."
+    },
+    {
+      "pair_id": "p_bank__spider",
+      "a": "BANK",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "WEB",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Spider web is immediate; BANK comes through web/online banking, a familiar phrase though a step removed."
+        }
+      ],
+      "strong_hints": ["WEB"],
+      "best_available": { "text": "WEB", "why": "Only hint, and the web-banking route is familiar enough to be fair." },
+      "pair_note": "Single serviceable hint; the bank side depends on the player thinking of online banking."
+    },
+    {
+      "pair_id": "p_bank__spring",
+      "a": "BANK",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "WATER",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Spring water is a compound; a bank is the edge of a body of water (riverbank), a looser but recognizable route."
+        },
+        {
+          "text": "BREAK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Break the bank' and 'spring break' are both everyday phrases."
+        },
+        {
+          "text": "RIVER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Riverbank is a compound; a spring is the source where a river springs up, a real but less immediate link."
+        }
+      ],
+      "strong_hints": ["BREAK", "RIVER", "WATER"],
+      "best_available": { "text": "BREAK", "why": "Two idioms a player knows cold, one for each side." },
+      "pair_note": "BREAK is excellent; WATER and RIVER are usable backups via riverbank."
+    },
+    {
+      "pair_id": "p_bank__star",
+      "a": "BANK",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "RATING",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Star rating is a compound; banks carry credit ratings, which is a familiar finance association."
+        }
+      ],
+      "strong_hints": ["RATING"],
+      "best_available": { "text": "RATING", "why": "Star side is instant and the credit-rating route to bank is fair." },
+      "pair_note": "Only hint; passes on the strength of the star-rating compound plus credit ratings."
+    },
+    {
+      "pair_id": "p_bank__train",
+      "a": "BANK",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "ROBBERY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bank robbery and train robbery are both classic compounds (Westerns, heist films)."
+        }
+      ],
+      "strong_hints": ["ROBBERY"],
+      "best_available": { "text": "ROBBERY", "why": "Equally strong on both sides and a shared Western scene." },
+      "pair_note": "Textbook two-sided hint."
+    },
+    {
+      "pair_id": "p_bank__water",
+      "a": "BANK",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "RIVER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Riverbank and river water; a single scene that contains both words."
+        }
+      ],
+      "strong_hints": ["RIVER"],
+      "best_available": { "text": "RIVER", "why": "The natural shared scene for this pair." },
+      "pair_note": "Strong single hint."
+    },
+    {
+      "pair_id": "p_bank__witch",
+      "a": "BANK",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "BROOM",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "A witch's broom is immediate; there is no recognizable route from BROOM to BANK."
+        },
+        {
+          "text": "GRINGOTTS",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Gringotts is the Harry Potter wizarding bank; WITCH is reached through the witches and wizards who bank there."
+        }
+      ],
+      "strong_hints": ["GRINGOTTS"],
+      "best_available": { "text": "GRINGOTTS", "why": "A brand-like proper noun that is literally a bank for witches and wizards." },
+      "pair_note": "GRINGOTTS depends on Harry Potter familiarity but that is broad; BROOM is one-sided filler."
+    },
+    {
+      "pair_id": "p_bank__wolf",
+      "a": "BANK",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "HOWL",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Wolves howl; nothing takes HOWL to BANK."
+        },
+        {
+          "text": "WALL",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "Wall Street is the home of banking, and 'The Wolf of Wall Street' supplies the wolf; both sides hang on the same well-known title."
+        }
+      ],
+      "strong_hints": ["WALL"],
+      "best_available": { "text": "WALL", "why": "The Wolf of Wall Street is a famous enough title to carry both words." },
+      "pair_note": "WALL is a judgement call: a single title bridges the pair, which the rubric allows as a familiar story, but neither side is direct."
+    },
+    {
+      "pair_id": "p_bat__bear",
+      "a": "BAT",
+      "b": "BEAR",
+      "hints": [
+        {
+          "text": "HIBERNATE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both animals famously hibernate; a true shared fact."
+        },
+        {
+          "text": "CAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bat cave and a bear's cave den are both stock images."
+        }
+      ],
+      "strong_hints": ["HIBERNATE", "CAVE"],
+      "best_available": { "text": "HIBERNATE", "why": "A shared behaviour that fits almost nothing else." },
+      "pair_note": "Two strong hints."
+    },
+    {
+      "pair_id": "p_bat__bell",
+      "a": "BAT",
+      "b": "BELL",
+      "hints": [
+        {
+          "text": "BELFRY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A belfry is the bell tower, and 'bats in the belfry' is a stock idiom."
+        }
+      ],
+      "strong_hints": ["BELFRY"],
+      "best_available": { "text": "BELFRY", "why": "Idiom plus literal definition, each pointing at one word." },
+      "pair_note": "Excellent single hint; slightly old-fashioned vocabulary."
+    },
+    {
+      "pair_id": "p_bat__bridge",
+      "a": "BAT",
+      "b": "BRIDGE",
+      "hints": [
+        {
+          "text": "AUSTIN",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["obscure", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "The Congress Avenue Bridge bat colony in Austin is a real shared scene, but a player who does not know it has no route to either word."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "AUSTIN", "why": "Only hint; valid fact, but the scene is regional knowledge." },
+      "pair_note": "No PASS. The Austin bat bridge is genuine but too niche to count on."
+    },
+    {
+      "pair_id": "p_bat__card",
+      "a": "BAT",
+      "b": "CARD",
+      "hints": [
+        {
+          "text": "BASEBALL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Baseball bat and baseball card are both compounds."
+        }
+      ],
+      "strong_hints": ["BASEBALL"],
+      "best_available": { "text": "BASEBALL", "why": "Two everyday compounds." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__castle",
+      "a": "BAT",
+      "b": "CASTLE",
+      "hints": [
+        {
+          "text": "VAMPIRE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Vampire bat is a compound and the vampire's castle is a stock Dracula scene."
+        },
+        {
+          "text": "DRACULA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["variant_of:VAMPIRE"],
+          "verdict": "PASS",
+          "reason": "Dracula turns into a bat and lives in Castle Dracula; the same story as VAMPIRE, named more specifically."
+        }
+      ],
+      "strong_hints": ["DRACULA", "VAMPIRE"],
+      "best_available": { "text": "DRACULA", "why": "Names the exact story where both words sit." },
+      "pair_note": "Both pass; they are the same route in two words."
+    },
+    {
+      "pair_id": "p_bat__cat",
+      "a": "BAT",
+      "b": "CAT",
+      "hints": [
+        {
+          "text": "GOTHAM",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Gotham is Batman's city, giving BAT; CAT comes through Catwoman, Gotham's other famous resident."
+        },
+        {
+          "text": "WOMAN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Catwoman is a household name and Batwoman is a known DC character; both are a word used as a name."
+        }
+      ],
+      "strong_hints": ["WOMAN", "GOTHAM"],
+      "best_available": { "text": "WOMAN", "why": "Catwoman and Batwoman are parallel names that need no backstory." },
+      "pair_note": "Both lean on DC Comics, which is broad enough."
+    },
+    {
+      "pair_id": "p_bat__crown",
+      "a": "BAT",
+      "b": "CROWN",
+      "hints": [
+        {
+          "text": "TOOTH",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "A dental crown gives TOOTH to CROWN, but bats' teeth are not a recognizable association for BAT."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TOOTH", "why": "Only hint; one-sided." },
+      "pair_note": "No PASS. The pair needs a new hint."
+    },
+    {
+      "pair_id": "p_bat__diamond",
+      "a": "BAT",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "BASEBALL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Baseball bat and the baseball diamond are both standard terms."
+        }
+      ],
+      "strong_hints": ["BASEBALL"],
+      "best_available": { "text": "BASEBALL", "why": "Both words live on the same field." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__dog",
+      "a": "BAT",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "HOT",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Hot dog is immediate; 'hot bat' is baseball slang for a hitting streak that ordinary players will not reach."
+        },
+        {
+          "text": "RABIES",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bats and dogs are the two animals most associated with rabies."
+        }
+      ],
+      "strong_hints": ["RABIES"],
+      "best_available": { "text": "RABIES", "why": "A real shared fact that is widely known." },
+      "pair_note": "RABIES carries the pair; HOT is dog-only."
+    },
+    {
+      "pair_id": "p_bat__dragon",
+      "a": "BAT",
+      "b": "DRAGON",
+      "hints": [
+        {
+          "text": "WINGS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Bat wings are iconic and dragons are classically drawn with bat-like wings."
+        }
+      ],
+      "strong_hints": ["WINGS"],
+      "best_available": { "text": "WINGS", "why": "The dragon's wings are literally modelled on the bat's." },
+      "pair_note": "Generic but a genuine shared feature."
+    },
+    {
+      "pair_id": "p_bat__egg",
+      "a": "BAT",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "CRACK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Crack of the bat' and cracking an egg."
+        }
+      ],
+      "strong_hints": ["CRACK"],
+      "best_available": { "text": "CRACK", "why": "Familiar phrase on each side." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__fire",
+      "a": "BAT",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "WOOD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wooden bat and firewood."
+        }
+      ],
+      "strong_hints": ["WOOD"],
+      "best_available": { "text": "WOOD", "why": "Compound on the fire side, material on the bat side." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__fish",
+      "a": "BAT",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "FLYING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Flying fish is a compound and the bat is the only flying mammal."
+        }
+      ],
+      "strong_hints": ["FLYING"],
+      "best_available": { "text": "FLYING", "why": "Compound plus defining trait." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__ghost",
+      "a": "BAT",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "HAUNTED",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ghosts haunt; the haunted house is the stock scene in which bats fly out."
+        },
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Bats and ghosts are both core Halloween icons."
+        }
+      ],
+      "strong_hints": ["HALLOWEEN", "HAUNTED"],
+      "best_available": { "text": "HALLOWEEN", "why": "Both words are on every Halloween decoration." },
+      "pair_note": "Two passes from the same spooky scene."
+    },
+    {
+      "pair_id": "p_bat__glass",
+      "a": "BAT",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "BROKEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Broken glass is immediate; a broken bat is a familiar baseball moment, and a bat is also what breaks glass."
+        }
+      ],
+      "strong_hints": ["BROKEN"],
+      "best_available": { "text": "BROKEN", "why": "Glass side instant, bat side fair via baseball." },
+      "pair_note": "Passes, somewhat glass-heavy."
+    },
+    {
+      "pair_id": "p_bat__gold",
+      "a": "BAT",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "GLOVE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Gold Glove is a well-known baseball award; bat and glove are the two pieces of baseball gear."
+        }
+      ],
+      "strong_hints": ["GLOVE"],
+      "best_available": { "text": "GLOVE", "why": "Gold Glove is the hook and bat follows as its partner." },
+      "pair_note": "Baseball-dependent but recognizable."
+    },
+    {
+      "pair_id": "p_bat__heart",
+      "a": "BAT",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "ECHO",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bats echolocate; an 'echo' is the common name for an echocardiogram, a heart scan."
+        },
+        {
+          "text": "BLOOD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Vampire bats drink blood; the heart pumps blood."
+        }
+      ],
+      "strong_hints": ["BLOOD", "ECHO"],
+      "best_available": { "text": "BLOOD", "why": "Immediate on both sides." },
+      "pair_note": "ECHO is a clever second route for players who know medical shorthand."
+    },
+    {
+      "pair_id": "p_bat__honey",
+      "a": "BAT",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "NECTAR",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "Honey is made from nectar; some bats are nectar-feeding pollinators, a true fact that many players will not hold."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "NECTAR", "why": "Only hint; honest fact but the bat side is specialist knowledge." },
+      "pair_note": "No PASS. Nectar bats are real but not widely known."
+    },
+    {
+      "pair_id": "p_bat__horse",
+      "a": "BAT",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "VAMPIRE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Vampire bat is immediate; the only route to HORSE is that vampire bats feed on livestock, which no player will reach."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "VAMPIRE", "why": "Only hint; effectively bat-only." },
+      "pair_note": "No PASS. The pair needs a new hint."
+    },
+    {
+      "pair_id": "p_bat__ice",
+      "a": "BAT",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "CAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bat cave and ice cave are both compounds."
+        }
+      ],
+      "strong_hints": ["CAVE"],
+      "best_available": { "text": "CAVE", "why": "Two compounds." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__iron",
+      "a": "BAT",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "MAN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Batman and Iron Man, two of the most famous superheroes."
+        }
+      ],
+      "strong_hints": ["MAN"],
+      "best_available": { "text": "MAN", "why": "Parallel compound names." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__key",
+      "a": "BAT",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "SECRET",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Secret key is a phrase; BAT is reached only by a rescue explanation about Batman's secret identity or secret Batcave."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SECRET", "why": "Only hint; key-only." },
+      "pair_note": "No PASS. The pair needs a new hint."
+    },
+    {
+      "pair_id": "p_bat__king",
+      "a": "BAT",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "VAMPIRE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Vampire bat is immediate; KING is reached only through Dracula as 'king of the vampires', a loose characterisation rather than a set phrase."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "VAMPIRE", "why": "Only hint; the king side is thin." },
+      "pair_note": "No PASS. Vampire-king is a trope, not a phrase players hold."
+    },
+    {
+      "pair_id": "p_bat__knight",
+      "a": "BAT",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "DARK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'The Dark Knight' is Batman, so one famous title reaches both words."
+        }
+      ],
+      "strong_hints": ["DARK"],
+      "best_available": { "text": "DARK", "why": "A single household title containing the pair." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__light",
+      "a": "BAT",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "SIGNAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Bat-Signal is a famous searchlight; signal lights and light signals are everyday."
+        }
+      ],
+      "strong_hints": ["SIGNAL"],
+      "best_available": { "text": "SIGNAL", "why": "The Bat-Signal is itself a light." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bat__lion",
+      "a": "BAT",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "CAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "Bat cave is immediate; lions are pictured in dens and on rocks rather than caves, and the 'cave lion' is an extinct species few know."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CAVE", "why": "Only hint; the lion side is a stretch." },
+      "pair_note": "No PASS. Lion's den is the phrase, not lion's cave."
+    },
+    {
+      "pair_id": "p_bat__moon",
+      "a": "BAT",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "NIGHT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Bats fly at night and the moon is the night sky's icon."
+        },
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Bats are Halloween icons; the full moon is the standard Halloween backdrop they are drawn against."
+        }
+      ],
+      "strong_hints": ["NIGHT", "HALLOWEEN"],
+      "best_available": { "text": "NIGHT", "why": "Both words are fixtures of the night." },
+      "pair_note": "Both pass; the bat-silhouette-against-the-moon picture carries HALLOWEEN."
+    },
+    {
+      "pair_id": "p_bat__mouse",
+      "a": "BAT",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "FLYING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Bats fly; MOUSE is reached only through the idea that a bat is a 'flying mouse', which uses the other target to get there."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "FLYING", "why": "Only hint; the pair-as-one-creature idea is cute but mouse alone is not reached." },
+      "pair_note": "No PASS. Judgement call: 'flying mouse' as a description of the pair may be acceptable to some."
+    },
+    {
+      "pair_id": "p_bat__night",
+      "a": "BAT",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "DARK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Night is dark; bats are creatures of the dark and Batman is the Dark Knight."
+        },
+        {
+          "text": "NOCTURNAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bats are the archetypal nocturnal animal and nocturnal means of the night."
+        }
+      ],
+      "strong_hints": ["NOCTURNAL", "DARK"],
+      "best_available": { "text": "NOCTURNAL", "why": "Precisely describes the bat and means night." },
+      "pair_note": "Two passes."
+    },
+    {
+      "pair_id": "p_bat__ocean",
+      "a": "BAT",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "RAY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Rays swim in the ocean; the 'bat ray' is a real species but far too specialist for a player to reach BAT."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "RAY", "why": "Only hint; ocean-only in practice." },
+      "pair_note": "No PASS. The pair needs a new hint."
+    },
+    {
+      "pair_id": "p_bat__pirate",
+      "a": "BAT",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "BLACK",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Bats are drawn black and pirates fly the black flag (Blackbeard), but colour alone points at many words."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BLACK", "why": "Only hint; both sides reachable but by colour only." },
+      "pair_note": "No PASS. Colour hint with no shared scene."
+    },
+    {
+      "pair_id": "p_bat__queen",
+      "a": "BAT",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "VAMPIRE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["obscure", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Vampire bat is immediate; QUEEN is reached only through 'Queen of the Damned' / vampire-queen fiction, which is niche."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "VAMPIRE", "why": "Only hint; the queen side needs genre knowledge." },
+      "pair_note": "No PASS. Vampire queen is a genre trope, not a shared phrase."
+    }
+  ]
+}

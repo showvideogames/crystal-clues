@@ -1,0 +1,1051 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-13",
+    "date": "2026-10-17",
+    "input": "u13-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u13-blind-input.json and no other file, search result, web page or API before scoring."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_cat__lion",
+      "a": "CAT",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "WHISKERS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Shared property: a house cat's whiskers and a lion's whiskers are the same familiar feature."
+        },
+        {
+          "text": "BIG",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Compound route: 'big cat' is the familiar phrase, and the lion is the archetypal big cat."
+        }
+      ],
+      "strong_hints": ["WHISKERS", "BIG"],
+      "best_available": { "text": "WHISKERS", "why": "Reaches both words directly through one physical feature every player can picture." },
+      "pair_note": "Easy pair; both hints are clean."
+    },
+    {
+      "pair_id": "p_cat__moon",
+      "a": "CAT",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "NIGHT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Shared scene: the moon belongs to the night, and the nocturnal cat prowling or silhouetted under it is a stock image."
+        }
+      ],
+      "strong_hints": ["NIGHT"],
+      "best_available": { "text": "NIGHT", "why": "A single familiar scene (cat out at night under the moon) covers both words." },
+      "pair_note": "Cat side is a little softer than the moon side but the scene is well known."
+    },
+    {
+      "pair_id": "p_cat__night",
+      "a": "CAT",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "ALLEY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Compound 'alley cat' for the cat; a dark alley at night is the stock setting for the night side."
+        },
+        {
+          "text": "PROWL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Verb route: cats prowl, and prowling is a night-time activity ('on the prowl at night', 'night prowler')."
+        }
+      ],
+      "strong_hints": ["PROWL", "ALLEY"],
+      "best_available": { "text": "PROWL", "why": "The verb binds the two words in one action rather than two separate images." },
+      "pair_note": "Both work; night side leans on atmosphere in each case."
+    },
+    {
+      "pair_id": "p_cat__ocean",
+      "a": "CAT",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "SHIP",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ship on the ocean is direct; the cat side is the traditional ship's cat kept aboard by sailors, a recognizable scene comparable to TREAT for APPLE+HORSE."
+        }
+      ],
+      "strong_hints": ["SHIP"],
+      "best_available": { "text": "SHIP", "why": "Only hint, and the ship's-cat tradition is familiar enough to make it fair." },
+      "pair_note": "Cat side depends on the ship's cat; players who do not know it will see SHIP as one-sided."
+    },
+    {
+      "pair_id": "p_cat__pirate",
+      "a": "CAT",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "EYE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Compound 'cat's eye' (marbles, glasses, slit pupils) for the cat; the pirate's eye patch for the pirate."
+        },
+        {
+          "text": "SHIP",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pirate ship is a stock compound; the cat side is the ship's cat tradition."
+        }
+      ],
+      "strong_hints": ["EYE", "SHIP"],
+      "best_available": { "text": "EYE", "why": "Both sides are instant and distinct images." },
+      "pair_note": "EYE is the clear winner; SHIP is serviceable."
+    },
+    {
+      "pair_id": "p_cat__queen",
+      "a": "CAT",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "CLEOPATRA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Cleopatra is a famous queen; the cat side runs through two hops (Cleopatra -> ancient Egypt -> sacred cats, plus the 'cat eye' eyeliner look), which a player may not make unaided."
+        },
+        {
+          "text": "EGYPT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ancient Egypt's cat worship is widely known; Egypt's queens (Cleopatra, Nefertiti) supply the queen side."
+        }
+      ],
+      "strong_hints": ["EGYPT"],
+      "best_available": { "text": "EGYPT", "why": "Cat-worshipping Egypt is a direct, widely known link and Cleopatra is a famous queen." },
+      "pair_note": "EGYPT carries the pair; CLEOPATRA reaches the cat only through Egypt."
+    },
+    {
+      "pair_id": "p_cat__ring",
+      "a": "CAT",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "TAIL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Cat's tail is direct, but ring reaches tail only through 'ring-tailed' (lemur, ringtail cat), a phrase a player would not recover from TAIL alone."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TAIL", "why": "Only hint offered; it is one-sided but the only candidate." },
+      "pair_note": "No PASS. Pair needs a new hint (e.g. BELL for a cat's collar bell / bell ring, or BOXING for cat fight / boxing ring)."
+    },
+    {
+      "pair_id": "p_cat__robot",
+      "a": "CAT",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "VACUUM",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Robot vacuum (Roomba) is direct; the cat riding or fleeing the vacuum is a well-known internet scene."
+        }
+      ],
+      "strong_hints": ["VACUUM"],
+      "best_available": { "text": "VACUUM", "why": "One widely shared scene (cat on a Roomba) that contains both words." },
+      "pair_note": "Good single hint."
+    },
+    {
+      "pair_id": "p_cat__rock",
+      "a": "CAT",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "PET",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pet cat is direct; the famous novelty 'pet rock' gives the rock side."
+        }
+      ],
+      "strong_hints": ["PET"],
+      "best_available": { "text": "PET", "why": "Compound on both sides with a satisfying twist." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__rose",
+      "a": "CAT",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "SCRATCH",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cats scratch; rose thorns scratch you when you pick them, a shared verb/property."
+        }
+      ],
+      "strong_hints": ["SCRATCH"],
+      "best_available": { "text": "SCRATCH", "why": "A single shared verb that fits both naturally." },
+      "pair_note": "Fine."
+    },
+    {
+      "pair_id": "p_cat__salt",
+      "a": "CAT",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "LICK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cats lick themselves; 'salt lick' is the compound for the salt side."
+        }
+      ],
+      "strong_hints": ["LICK"],
+      "best_available": { "text": "LICK", "why": "Verb on one side, familiar compound on the other." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__shadow",
+      "a": "CAT",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "SNEAK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cats sneak; 'sneaking in the shadows' is the stock phrase for the shadow side."
+        },
+        {
+          "text": "BLACK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "'Black cat' is a strong compound; shadows are dark/black, a shared-property route."
+        }
+      ],
+      "strong_hints": ["SNEAK", "BLACK"],
+      "best_available": { "text": "SNEAK", "why": "Binds the words in one action; BLACK is a colour route but still fair." },
+      "pair_note": "Both acceptable; colour flag on BLACK is informational only."
+    },
+    {
+      "pair_id": "p_cat__shark",
+      "a": "CAT",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "TIGER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A tiger is a big cat; 'tiger shark' is a well-known species."
+        }
+      ],
+      "strong_hints": ["TIGER"],
+      "best_available": { "text": "TIGER", "why": "Clean on both sides." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__snake",
+      "a": "CAT",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "HISS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both animals hiss; a shared behaviour everyone knows."
+        }
+      ],
+      "strong_hints": ["HISS"],
+      "best_available": { "text": "HISS", "why": "Direct shared behaviour." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__spider",
+      "a": "CAT",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "WOMAN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Catwoman is a household name; Spider-Woman is a real Marvel character and players reach it from Spider-Man even if they have not met her."
+        }
+      ],
+      "strong_hints": ["WOMAN"],
+      "best_available": { "text": "WOMAN", "why": "Superhero-name route on both sides." },
+      "pair_note": "Spider side slightly weaker than the cat side but recoverable."
+    },
+    {
+      "pair_id": "p_cat__spring",
+      "a": "CAT",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "POUNCE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "Cats pounce; spring as the verb 'to leap' is near-synonymous with pounce, an allowed verb route."
+        }
+      ],
+      "strong_hints": ["POUNCE"],
+      "best_available": { "text": "POUNCE", "why": "The cat's spring/pounce is one motion." },
+      "pair_note": "Relies on the verb sense of SPRING, not the season or coil."
+    },
+    {
+      "pair_id": "p_cat__star",
+      "a": "CAT",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "LEO",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Leo is a star sign/constellation; Leo is the lion, a big cat."
+        }
+      ],
+      "strong_hints": ["LEO"],
+      "best_available": { "text": "LEO", "why": "Zodiac lion covers both words." },
+      "pair_note": "Cat side goes through lion, but Leo-the-lion is widely known."
+    },
+    {
+      "pair_id": "p_cat__train",
+      "a": "CAT",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "LITTER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cat litter is direct; 'litter-train' / 'litter-trained' uses train as a verb, an allowed inflection route."
+        }
+      ],
+      "strong_hints": ["LITTER"],
+      "best_available": { "text": "LITTER", "why": "A familiar compound-verb (litter-training a cat) that contains both words." },
+      "pair_note": "Train side is the verb, not the locomotive."
+    },
+    {
+      "pair_id": "p_cat__water",
+      "a": "CAT",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "BATH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cats famously hate baths; bath water is direct."
+        }
+      ],
+      "strong_hints": ["BATH"],
+      "best_available": { "text": "BATH", "why": "A single shared scene (bathing a reluctant cat)." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__wolf",
+      "a": "CAT",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "FUR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Shared property: both animals are furred."
+        },
+        {
+          "text": "PREDATOR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Shared property: both are hunting predators."
+        }
+      ],
+      "strong_hints": ["PREDATOR", "FUR"],
+      "best_available": { "text": "PREDATOR", "why": "Slightly more specific than FUR while still reaching both." },
+      "pair_note": "Both broad but valid under the rubric; generic is a flag, not a rejection."
+    },
+    {
+      "pair_id": "p_crown__diamond",
+      "a": "CROWN",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "SET",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "A diamond is 'set' in a mount; a crown is set with gems, but the crown side is reached only by picturing the diamond already in the crown, and SET is a very broad word for a player to decode."
+        },
+        {
+          "text": "SPARKLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamonds sparkle; a jewelled crown sparkles, a shared property."
+        },
+        {
+          "text": "JEWEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Crown jewels' is the compound; a diamond is a jewel."
+        }
+      ],
+      "strong_hints": ["JEWEL", "SPARKLE"],
+      "best_available": { "text": "JEWEL", "why": "Compound on the crown side and a direct category on the diamond side." },
+      "pair_note": "JEWEL is strong; SET is a stretch on the crown side."
+    },
+    {
+      "pair_id": "p_crown__dog",
+      "a": "CROWN",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Crown-king is direct; the dog side rests on 'King' as a common dog name and the King Charles spaniel, which a player may not land on."
+        },
+        {
+          "text": "ROYAL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Royal crown is direct; the dog side runs through the Queen's royal corgis or the Royal Canin brand, both a step removed."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "KING", "why": "King Charles spaniel and the dog name 'King' give it a slightly firmer dog foothold than ROYAL." },
+      "pair_note": "No PASS. Both hints are crown-first with a thin dog side; CORGI-style routes are the natural fix (e.g. CORGI itself is not a hint here)."
+    },
+    {
+      "pair_id": "p_crown__dragon",
+      "a": "CROWN",
+      "b": "DRAGON",
+      "hints": [
+        {
+          "text": "THRONE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crown and throne are paired royal symbols; the dragon side is Game of Thrones, where dragons are central, a widely known story route."
+        }
+      ],
+      "strong_hints": ["THRONE"],
+      "best_available": { "text": "THRONE", "why": "Only hint; the Game of Thrones link is broad enough to carry the dragon." },
+      "pair_note": "Dragon side depends on one franchise, but a very famous one."
+    },
+    {
+      "pair_id": "p_crown__egg",
+      "a": "CROWN",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "FABERGE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["obscure", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Faberge eggs are famous; the crown side is that they were made for the Russian imperial crown (the Tsars) and are jewelled like crowns, which many players know only vaguely."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "FABERGE", "why": "Only hint; the imperial-egg link is real and moderately known." },
+      "pair_note": "No PASS. Defensible as a reach but not clean; a second opinion is worthwhile."
+    },
+    {
+      "pair_id": "p_crown__fire",
+      "a": "CROWN",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "GOLD",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "colour_mood_material"],
+          "verdict": "FAIL",
+          "reason": "Gold crown is direct; fire reaches gold only via 'refined by fire' or a loose colour resemblance, neither of which a player would see."
+        },
+        {
+          "text": "RING",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "'Ring of fire' is a familiar phrase; a crown is a ring-shaped circlet of jewellery, but a player is unlikely to move from RING to CROWN without prompting."
+        },
+        {
+          "text": "CANDLE",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Candle flame is direct; the crown side (St Lucia candle crown, Advent crown) is too obscure to count."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "RING", "why": "The only hint with a plausible, if thin, route to both (ring of fire; crown as a ring)." },
+      "pair_note": "No PASS. The pair wants a shared scene such as a dragon or a phoenix; none of these hints supply it."
+    },
+    {
+      "pair_id": "p_crown__fish",
+      "a": "CROWN",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crown-king is direct; kingfish, king salmon, king mackerel and the kingfisher give the fish side via familiar compounds."
+        }
+      ],
+      "strong_hints": ["KING"],
+      "best_available": { "text": "KING", "why": "Compound route on the fish side is real and reasonably known." },
+      "pair_note": "Acceptable; fish side is compound-dependent."
+    },
+    {
+      "pair_id": "p_crown__glass",
+      "a": "CROWN",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "CRYSTAL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "Crystal glass/glassware is direct; crowns and tiaras are studded with crystals, a shared-material route."
+        }
+      ],
+      "strong_hints": ["CRYSTAL"],
+      "best_available": { "text": "CRYSTAL", "why": "Material shared by both objects." },
+      "pair_note": "Fine."
+    },
+    {
+      "pair_id": "p_crown__gold",
+      "a": "CROWN",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "MIDAS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "King Midas wore the crown; his golden touch is the gold side."
+        },
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Crown-king is direct; the gold side (a king's gold, royal treasury) is reached mostly through the crown itself rather than independently."
+        }
+      ],
+      "strong_hints": ["MIDAS"],
+      "best_available": { "text": "MIDAS", "why": "One story that names both a crowned king and gold." },
+      "pair_note": "MIDAS is excellent; KING is a judgement call that leans crown-only."
+    },
+    {
+      "pair_id": "p_crown__horse",
+      "a": "CROWN",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "CHESS",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The knight piece is a horse; the king and queen pieces wear crowns."
+        },
+        {
+          "text": "TRIPLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The 'Triple Crown' of horse racing contains both words in one compound."
+        },
+        {
+          "text": "CARRIAGE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horse-drawn carriage is direct; the royal carriage (coronation procession) gives the crown side."
+        }
+      ],
+      "strong_hints": ["TRIPLE", "CHESS", "CARRIAGE"],
+      "best_available": { "text": "TRIPLE", "why": "Both words sit in one famous phrase." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_crown__ice",
+      "a": "CROWN",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "QUEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A queen wears a crown; 'ice queen' is a familiar compound."
+        },
+        {
+          "text": "ELSA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Elsa's ice powers are direct; her coronation as queen of Arendelle in Frozen gives the crown side."
+        }
+      ],
+      "strong_hints": ["QUEEN", "ELSA"],
+      "best_available": { "text": "QUEEN", "why": "Compound and role in one word." },
+      "pair_note": "Both good; ELSA is a story route."
+    },
+    {
+      "pair_id": "p_crown__iron",
+      "a": "CROWN",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "MASK",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "'The Man in the Iron Mask' is a known title; the crown side (the masked prisoner is the king's twin, a plot about the throne) needs the story explained."
+        },
+        {
+          "text": "THRONE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crown and throne are paired symbols; the Iron Throne of Game of Thrones gives the iron side."
+        },
+        {
+          "text": "FIST",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "'Iron fist' is the compound; the crown side is only the idiom 'rule with an iron fist', so the player must infer a monarch."
+        }
+      ],
+      "strong_hints": ["THRONE"],
+      "best_available": { "text": "THRONE", "why": "Compound on the iron side and a direct royal pairing on the crown side." },
+      "pair_note": "THRONE carries the pair; MASK and FIST are iron-first."
+    },
+    {
+      "pair_id": "p_crown__key",
+      "a": "CROWN",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "TOWER",
+          "connection_to_a": 1,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "FAIL",
+          "reason": "The Tower of London holds the Crown Jewels (moderate); the key side would be the Ceremony of the Keys, which almost no player would reach."
+        },
+        {
+          "text": "LOCK",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Lock and key is direct; there is no recognizable route from LOCK to CROWN."
+        },
+        {
+          "text": "KINGDOM",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A crown rules a kingdom; 'keys to the kingdom' is a familiar idiom (and Kingdom Hearts for gamers)."
+        }
+      ],
+      "strong_hints": ["KINGDOM"],
+      "best_available": { "text": "KINGDOM", "why": "The idiom binds both words." },
+      "pair_note": "KINGDOM is strong; TOWER and LOCK are filler."
+    },
+    {
+      "pair_id": "p_crown__king",
+      "a": "CROWN",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "THRONE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Throne, crown and king are one royal scene."
+        },
+        {
+          "text": "ROYAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Royal crown; a king is royalty."
+        },
+        {
+          "text": "CORONATION",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The coronation is the ceremony where the crown is placed on the king."
+        }
+      ],
+      "strong_hints": ["CORONATION", "THRONE", "ROYAL"],
+      "best_available": { "text": "CORONATION", "why": "Names the exact event joining the two words." },
+      "pair_note": "Trivially easy pair; all three fine."
+    },
+    {
+      "pair_id": "p_crown__knight",
+      "a": "CROWN",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A king wears the crown and knights his knights (and both are chess pieces)."
+        },
+        {
+          "text": "ARTHUR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "King Arthur wore the crown and led the Knights of the Round Table."
+        }
+      ],
+      "strong_hints": ["ARTHUR", "KING"],
+      "best_available": { "text": "ARTHUR", "why": "A single story containing a crowned king and his knights." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_crown__lion",
+      "a": "CROWN",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crown-king is direct; 'The Lion King' and 'king of the jungle' give the lion side."
+        }
+      ],
+      "strong_hints": ["KING"],
+      "best_available": { "text": "KING", "why": "Both sides immediate." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_crown__moon",
+      "a": "CROWN",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "DIANA",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Princess Diana gives the crown side; Diana is the Roman goddess of the moon."
+        },
+        {
+          "text": "HALO",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A halo is a crown-like ring worn on the head; a lunar halo is the ring of light around the moon, a shared-shape route."
+        }
+      ],
+      "strong_hints": ["DIANA", "HALO"],
+      "best_available": { "text": "DIANA", "why": "Two famous referents, one royal and one lunar, in one name." },
+      "pair_note": "HALO is a shape route with neither side at full strength; still fair."
+    },
+    {
+      "pair_id": "p_crown__mouse",
+      "a": "CROWN",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Crown-king is direct; the mouse side is the Mouse King of The Nutcracker, known mainly to ballet audiences."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "KING", "why": "Only hint; the Nutcracker's Mouse King is a real but moderate route." },
+      "pair_note": "No PASS. MICKEY-style routes (Disney royalty) would be stronger but are not offered."
+    },
+    {
+      "pair_id": "p_crown__night",
+      "a": "CROWN",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "PROM",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Prom king and queen are crowned; 'prom night' is the stock phrase."
+        }
+      ],
+      "strong_hints": ["PROM"],
+      "best_available": { "text": "PROM", "why": "One familiar scene with both words." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_crown__ocean",
+      "a": "CROWN",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "NEPTUNE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Neptune is the god/king of the sea; he is pictured crowned with his trident."
+        },
+        {
+          "text": "TRITON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "King Triton of The Little Mermaid is a crowned ruler of the ocean."
+        }
+      ],
+      "strong_hints": ["TRITON", "NEPTUNE"],
+      "best_available": { "text": "NEPTUNE", "why": "Broadest recognition; sea-king imagery includes the crown." },
+      "pair_note": "Both sea-king routes; fine."
+    },
+    {
+      "pair_id": "p_crown__pirate",
+      "a": "CROWN",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "TREASURE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pirate treasure is direct; a jewelled crown is a classic item in the treasure chest (and the Crown Jewels are literally treasure)."
+        }
+      ],
+      "strong_hints": ["TREASURE"],
+      "best_available": { "text": "TREASURE", "why": "A single stock image (treasure chest with a crown on top) contains both." },
+      "pair_note": "Fine."
+    }
+  ]
+}

@@ -1,0 +1,901 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-8",
+    "date": "2026-10-17",
+    "input": "u08-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u08-blind-input.json and consulted no other file, repository search, web source or API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_bear__ocean",
+      "a": "BEAR",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "POLAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Polar bear is a household compound and the polar oceans (Arctic/Antarctic) are the sea ice those bears hunt on, so one word covers both sides of a single scene."
+        }
+      ],
+      "strong_hints": ["POLAR"],
+      "best_available": { "text": "POLAR", "why": "Compound on one side, familiar geography on the other, and the two meet in one picture." },
+      "pair_note": "One hint, clean pass."
+    },
+    {
+      "pair_id": "p_bear__pirate",
+      "a": "BEAR",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "MASCOT",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Bears (Chicago Bears, costumed bear mascots) and pirates (Pittsburgh Pirates, countless school teams) are both stock team mascots, so the hint reaches each via the same sports-team route."
+        }
+      ],
+      "strong_hints": ["MASCOT"],
+      "best_available": { "text": "MASCOT", "why": "Both words are classic team identities; neither side is a stretch even if neither is unique." },
+      "pair_note": "Generic but genuinely two-sided; generic alone is not a rejection."
+    },
+    {
+      "pair_id": "p_bear__queen",
+      "a": "BEAR",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "BRAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pixar's Brave turns Queen Elinor into a bear, so the film title points at both words through one well-known story; players who have not seen it will get neither side."
+        }
+      ],
+      "strong_hints": ["BRAVE"],
+      "best_available": { "text": "BRAVE", "why": "A single familiar story (the Snow White model from the calibration) carries both words." },
+      "pair_note": "Story route is strong but all-or-nothing; recognizability moderate rather than broad."
+    },
+    {
+      "pair_id": "p_bear__ring",
+      "a": "BEAR",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "CIRCUS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Circus bear and circus ring are both everyday phrases and belong to the same scene."
+        }
+      ],
+      "strong_hints": ["CIRCUS"],
+      "best_available": { "text": "CIRCUS", "why": "Both compounds, one scene." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bear__robot",
+      "a": "BEAR",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "TEDDY",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Teddy bear is instant, but there is no recognizable teddy-robot phrase, character or scene, so the robot side is unreached."
+        },
+        {
+          "text": "TOY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Toy bear and toy robot are the two archetypal children's toys, sharing the same toy-box scene."
+        }
+      ],
+      "strong_hints": ["TOY"],
+      "best_available": { "text": "TOY", "why": "Equally strong on both sides and a shared setting." },
+      "pair_note": "TOY carries the pair; TEDDY is wholly one-sided."
+    },
+    {
+      "pair_id": "p_bear__rock",
+      "a": "BEAR",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "CAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bears den in caves (bear cave is a stock image) and a cave is a hollow in rock, so the hint lands on both via a single setting."
+        }
+      ],
+      "strong_hints": ["CAVE"],
+      "best_available": { "text": "CAVE", "why": "Strong on bear, adequate on rock, and the two meet physically." },
+      "pair_note": "Rock side is material-level but clearly recognizable."
+    },
+    {
+      "pair_id": "p_bear__rose",
+      "a": "BEAR",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "THORN",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Rose thorn is immediate, but the thorn-in-the-paw fable belongs to the lion, not the bear, leaving no recognizable bear route."
+        },
+        {
+          "text": "VALENTINE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A teddy bear and a bunch of roses are the two cliche Valentine's gifts, one shared shop-window scene."
+        }
+      ],
+      "strong_hints": ["VALENTINE"],
+      "best_available": { "text": "VALENTINE", "why": "Both words are the iconic gifts of the same occasion." },
+      "pair_note": "VALENTINE is excellent; THORN is one-sided."
+    },
+    {
+      "pair_id": "p_bear__salt",
+      "a": "BEAR",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "LICK",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Salt lick is a compound, and bears licking honey off their paws (Pooh) or visiting salt licks is a recognizable animal image, so both sides are reached though bear is the softer one."
+        }
+      ],
+      "strong_hints": ["LICK"],
+      "best_available": { "text": "LICK", "why": "Compound on salt plus a familiar bear behaviour; a deer is the more typical salt-lick animal, so bear is a step weaker." },
+      "pair_note": "Weak pass; the bear side depends on the honey-licking image rather than a phrase."
+    },
+    {
+      "pair_id": "p_bear__shadow",
+      "a": "BEAR",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "SHADE",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "synonym_of_target"],
+          "verdict": "FAIL",
+          "reason": "Shade is a near-synonym of shadow and has no recognizable bear route at all."
+        },
+        {
+          "text": "CAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Bear cave is solid, but shadow reaches cave only through darkness-as-mood or Plato's shadows on the cave wall, which few players will summon from the word alone."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CAVE", "why": "The only hint that reaches the bear; the shadow side is a dim mood link rather than a phrase or scene." },
+      "pair_note": "No PASS. Pair has no obvious shared scene; CAVE is the salvageable option."
+    },
+    {
+      "pair_id": "p_bear__shark",
+      "a": "BEAR",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "ATTACK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bear attack and shark attack are the two stock wild-animal-attack headlines."
+        }
+      ],
+      "strong_hints": ["ATTACK"],
+      "best_available": { "text": "ATTACK", "why": "Parallel compounds, both everyday." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bear__snake",
+      "a": "BEAR",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "DEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bear den and snake den (den of vipers) are both common phrases for the animals' lairs."
+        }
+      ],
+      "strong_hints": ["DEN"],
+      "best_available": { "text": "DEN", "why": "Same word, same sense, both animals." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bear__spider",
+      "a": "BEAR",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "HAIRY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "A hairy spider (tarantula) and a hairy bear are both immediate images; the hint is an attribute, but a defining one for each."
+        }
+      ],
+      "strong_hints": ["HAIRY"],
+      "best_available": { "text": "HAIRY", "why": "Attribute hint, but equally and strongly true of both." },
+      "pair_note": "Pass despite being descriptive rather than scene-based."
+    },
+    {
+      "pair_id": "p_bear__spring",
+      "a": "BEAR",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "WAKE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bears wake from hibernation in spring, so the hint names the moment that joins the two words; spring alone is reached via the general spring-awakening idea."
+        }
+      ],
+      "strong_hints": ["WAKE"],
+      "best_available": { "text": "WAKE", "why": "Names the exact scene the two words share." },
+      "pair_note": "Good pass; spring side slightly softer in isolation."
+    },
+    {
+      "pair_id": "p_bear__star",
+      "a": "BEAR",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "DIPPER",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Big Dipper is a star pattern and sits inside Ursa Major, the Great Bear, so a player with basic sky knowledge reaches both."
+        }
+      ],
+      "strong_hints": ["DIPPER"],
+      "best_available": { "text": "DIPPER", "why": "Star side is immediate; bear side needs the Great Bear fact, which is widely taught." },
+      "pair_note": "Pass; bear side depends on knowing the Dipper is part of the Bear constellation."
+    },
+    {
+      "pair_id": "p_bear__train",
+      "a": "BEAR",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "PADDINGTON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Paddington Bear is named for Paddington railway station where the Browns find him, so the story itself links bear and train."
+        },
+        {
+          "text": "CIRCUS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Circus bear and circus train (Dumbo, the travelling circus) are both familiar phrases from one scene."
+        }
+      ],
+      "strong_hints": ["PADDINGTON", "CIRCUS"],
+      "best_available": { "text": "PADDINGTON", "why": "A single character whose name is a station and who is a bear; CIRCUS is broader but less specific." },
+      "pair_note": "Two good hints; PADDINGTON is the more elegant, CIRCUS the more universal."
+    },
+    {
+      "pair_id": "p_bear__water",
+      "a": "BEAR",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "RIVER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A bear fishing salmon in a river is an iconic wildlife image, and a river is a body of water."
+        }
+      ],
+      "strong_hints": ["RIVER"],
+      "best_available": { "text": "RIVER", "why": "Iconic bear scene set in water." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bear__witch",
+      "a": "BEAR",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "BRAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "In Pixar's Brave the witch's spell turns the queen into a bear, so the title reaches both words through one story; players unfamiliar with the film get nothing."
+        }
+      ],
+      "strong_hints": ["BRAVE"],
+      "best_available": { "text": "BRAVE", "why": "Same story route as the BEAR+QUEEN pair; the witch is the story's spell-caster." },
+      "pair_note": "Pass via story; the witch is a slightly smaller part of the plot than the queen."
+    },
+    {
+      "pair_id": "p_bear__wolf",
+      "a": "BEAR",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "FOREST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Bears and wolves are the two archetypal forest predators of fairy tales and wildlife alike."
+        },
+        {
+          "text": "WILD",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Both are wild animals; the link is real on each side but very broad."
+        }
+      ],
+      "strong_hints": ["FOREST", "WILD"],
+      "best_available": { "text": "FOREST", "why": "Gives a concrete shared habitat rather than a category." },
+      "pair_note": "Both pass; FOREST is the sharper picture."
+    },
+    {
+      "pair_id": "p_bell__bridge",
+      "a": "BELL",
+      "b": "BRIDGE",
+      "hints": [
+        {
+          "text": "TOWER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bell tower is a plain compound and Tower Bridge is a famous landmark."
+        },
+        {
+          "text": "LONDON",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "London Bridge is a nursery-rhyme staple; bell reaches London through Big Ben and the Oranges-and-Lemons bells, which is familiar but less instant."
+        }
+      ],
+      "strong_hints": ["TOWER", "LONDON"],
+      "best_available": { "text": "TOWER", "why": "Compound on bell, landmark on bridge." },
+      "pair_note": "TOWER is the stronger of two passes."
+    },
+    {
+      "pair_id": "p_bell__card",
+      "a": "BELL",
+      "b": "CARD",
+      "hints": [
+        {
+          "text": "CHRISTMAS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Christmas bells and Christmas cards are both everyday seasonal compounds."
+        }
+      ],
+      "strong_hints": ["CHRISTMAS"],
+      "best_available": { "text": "CHRISTMAS", "why": "Two compounds from one occasion." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bell__cat",
+      "a": "BELL",
+      "b": "CAT",
+      "hints": [
+        {
+          "text": "COLLAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A cat collar with a bell on it is a single familiar object that contains both words."
+        }
+      ],
+      "strong_hints": ["COLLAR"],
+      "best_available": { "text": "COLLAR", "why": "The object that physically joins bell and cat." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bell__crown",
+      "a": "BELL",
+      "b": "CROWN",
+      "hints": [
+        {
+          "text": "CORONATION",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A coronation is the placing of the crown and is traditionally announced by pealing bells, so both belong to one ceremony."
+        }
+      ],
+      "strong_hints": ["CORONATION"],
+      "best_available": { "text": "CORONATION", "why": "One ceremony that features both words." },
+      "pair_note": "Pass; bell side is scene-based rather than a phrase."
+    },
+    {
+      "pair_id": "p_bell__diamond",
+      "a": "BELL",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "RING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bells ring and a diamond ring is a stock phrase, a tidy double meaning."
+        }
+      ],
+      "strong_hints": ["RING"],
+      "best_available": { "text": "RING", "why": "Pun-grade double meaning, both sides instant." },
+      "pair_note": "Excellent pass."
+    },
+    {
+      "pair_id": "p_bell__dragon",
+      "a": "BELL",
+      "b": "DRAGON",
+      "hints": [
+        {
+          "text": "TEMPLE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Temple bells are a fixed phrase and dragons decorate East Asian temples, so both sit in one recognizable setting."
+        }
+      ],
+      "strong_hints": ["TEMPLE"],
+      "best_available": { "text": "TEMPLE", "why": "Shared Asian-temple scene." },
+      "pair_note": "Pass; dragon side is imagery rather than a phrase."
+    },
+    {
+      "pair_id": "p_bell__egg",
+      "a": "BELL",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "TIMER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Egg timer is a compound and kitchen timers ring a bell when done."
+        }
+      ],
+      "strong_hints": ["TIMER"],
+      "best_available": { "text": "TIMER", "why": "Compound plus the object's own bell." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bell__fire",
+      "a": "BELL",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "ALARM",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Alarm bell and fire alarm are both everyday compounds."
+        },
+        {
+          "text": "STATION",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Fire station is instant, but bell reaches station mainly through the fire-station bell, i.e. via the other target; a railway station bell is a thinner independent route."
+        }
+      ],
+      "strong_hints": ["ALARM"],
+      "best_available": { "text": "ALARM", "why": "Parallel compounds, both universal." },
+      "pair_note": "ALARM is a clean pass; STATION leans on fire to reach bell."
+    },
+    {
+      "pair_id": "p_bell__fish",
+      "a": "BELL",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "DIVING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diving bell is a real compound and diving among fish is the ordinary picture of what divers see."
+        }
+      ],
+      "strong_hints": ["DIVING"],
+      "best_available": { "text": "DIVING", "why": "Compound on bell, natural scene on fish." },
+      "pair_note": "Pass; diving bell is known but not universal."
+    },
+    {
+      "pair_id": "p_bell__ghost",
+      "a": "BELL",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "TOLL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "colour_mood_material"],
+          "verdict": "FAIL",
+          "reason": "Bells toll, but ghost is reached only through a death-knell mood with no phrase, story or scene that a player would name."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TOLL", "why": "Only hint offered; it reaches bell strongly and ghost only as atmosphere." },
+      "pair_note": "No PASS. Pair needs a shared haunted scene (e.g. a midnight church) that this hint does not supply."
+    },
+    {
+      "pair_id": "p_bell__glass",
+      "a": "BELL",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "JAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A bell jar is a glass object by definition and glass jar is a plain compound."
+        },
+        {
+          "text": "DOME",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["variant_of:JAR"],
+          "verdict": "BORDERLINE",
+          "reason": "Glass dome is a common phrase, but bell reaches dome only through its shape or as a weaker name for the bell jar."
+        }
+      ],
+      "strong_hints": ["JAR"],
+      "best_available": { "text": "JAR", "why": "The bell jar is itself made of glass." },
+      "pair_note": "JAR is the right call; DOME is a paler version of it."
+    },
+    {
+      "pair_id": "p_bell__gold",
+      "a": "BELL",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "CHRISTMAS",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Christmas bells are a fixed phrase and gold is a Christmas staple (the Magi's gift, five gold rings, gold decorations)."
+        },
+        {
+          "text": "GOLDEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["contains_target", "synonym_of_target"],
+          "verdict": "BORDERLINE",
+          "reason": "Golden is a straight inflection of gold, which the rubric allows, but the bell side rests on the hymn phrase golden bells and the hint gives one target away while barely hinting the other."
+        }
+      ],
+      "strong_hints": ["CHRISTMAS"],
+      "best_available": { "text": "CHRISTMAS", "why": "Reaches both words without naming either." },
+      "pair_note": "GOLDEN is a judgement call: valid inflection route, but lopsided."
+    },
+    {
+      "pair_id": "p_bell__heart",
+      "a": "BELL",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "WEDDING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Wedding bells is a fixed phrase and hearts are the standard wedding decoration and symbol."
+        }
+      ],
+      "strong_hints": ["WEDDING"],
+      "best_available": { "text": "WEDDING", "why": "One occasion, strong on bell, serviceable on heart." },
+      "pair_note": "Pass; heart side is symbolic rather than phrasal."
+    },
+    {
+      "pair_id": "p_bell__honey",
+      "a": "BELL",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "SWEET",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "synonym_of_target", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Sweet is almost a definition of honey, while bell is reached only through sweet bell pepper or the sweet sound of bells, neither of which a player will land on from the word alone."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SWEET", "why": "Only hint offered; it reaches honey trivially and bell only by a side door." },
+      "pair_note": "No PASS. The pair lacks an obvious shared scene and SWEET does not create one."
+    },
+    {
+      "pair_id": "p_bell__horse",
+      "a": "BELL",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "SLEIGH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Sleigh bells is a fixed phrase and a horse-drawn sleigh is the vehicle they jingle on."
+        }
+      ],
+      "strong_hints": ["SLEIGH"],
+      "best_available": { "text": "SLEIGH", "why": "One winter scene containing both." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bell__ice",
+      "a": "BELL",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "CREAM",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Ice cream is instant, but cream reaches bell only via the ice-cream van's chime, which routes through the other target rather than the hint word."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CREAM", "why": "Only hint offered; the ice-cream-van bell is a real scene but needs ICE already solved to see it." },
+      "pair_note": "No PASS. A hint naming the van or chime directly would serve better."
+    },
+    {
+      "pair_id": "p_bell__iron",
+      "a": "BELL",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "CAST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cast iron is a fixed phrase and bells are cast in a foundry, the same metalworking sense on both sides."
+        }
+      ],
+      "strong_hints": ["CAST"],
+      "best_available": { "text": "CAST", "why": "Same verb sense joining both words." },
+      "pair_note": "Strong pass."
+    },
+    {
+      "pair_id": "p_bell__key",
+      "a": "BELL",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "HOTEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A hotel front desk has its bell (bellhop, desk bell) and hands out room keys, one shared lobby scene."
+        }
+      ],
+      "strong_hints": ["HOTEL"],
+      "best_available": { "text": "HOTEL", "why": "Both objects live on the same reception desk." },
+      "pair_note": "Clean pass."
+    },
+    {
+      "pair_id": "p_bell__king",
+      "a": "BELL",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "TOWER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Bell tower is a compound, but king reaches tower only through castle imagery or the chess rook, neither a phrase a player would volunteer."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TOWER", "why": "Only hint offered; strong on bell, loose on king." },
+      "pair_note": "No PASS. Needs a route that names the king more directly (e.g. a royal scene)."
+    },
+    {
+      "pair_id": "p_bell__knight",
+      "a": "BELL",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "CASTLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Knights and castles go together instantly, but a castle bell is not a stock phrase; church towers, not castles, are where players place bells."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CASTLE", "why": "Only hint offered; the knight side is strong and a castle bell is at least plausible." },
+      "pair_note": "No PASS, but close; a player might accept the medieval scene."
+    },
+    {
+      "pair_id": "p_bell__light",
+      "a": "BELL",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "TINKER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Tinker Bell is immediate, and she appears as a darting light in Peter Pan, but light is reached only through the character, i.e. via the other target."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TINKER", "why": "Only hint offered; the character does carry both ideas if the player knows she is shown as a glowing light." },
+      "pair_note": "No PASS by a hair; the story route exists but light is a secondary trait of the character."
+    },
+    {
+      "pair_id": "p_bell__lion",
+      "a": "BELL",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "CIRCUS",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Circus lion is instant, but there is no recognizable circus bell; the ringmaster uses a whistle and a boxing bell is a different venue."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CIRCUS", "why": "Only hint offered; it does not reach the bell." },
+      "pair_note": "No PASS. The pair needs a different route entirely."
+    }
+  ]
+}

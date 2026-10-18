@@ -1,0 +1,559 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-4",
+    "date": "2026-10-17",
+    "input": "u04-blind-input.json",
+    "rubric": "owner's corrected rubric 2026-10-17: no minimum hint count, no board competition, generic allowed when natural to both words, compounds judged as compounds, initialisms allowed",
+    "independence": "I read only u04-blind-input.json; no other file under data/unlimited, no repository search, no web or API lookups were used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_apple__bank",
+      "a": "APPLE",
+      "b": "BANK",
+      "hints": [
+        { "text": "VAULT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bank vault is direct; nothing reaches apple." },
+        { "text": "TELLER", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bank teller is direct; apple has no teller sense." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Apple core is direct; 'core banking' is industry jargon a stranger would not reach." },
+        { "text": "BRANCH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Bank branch is direct; apple only via the branch of an apple tree." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BRANCH", "why": "the only hint with any natural path to apple (tree branch) while nailing bank" },
+      "pair_note": "No hint reaches both words cleanly; BRANCH is the lone playable stretch."
+    },
+    {
+      "pair_id": "p_apple__bat",
+      "a": "APPLE",
+      "b": "BAT",
+      "hints": [
+        { "text": "WING", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bat wing is direct; apple has no wing." },
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; bat has no pie sense." },
+        { "text": "CAVE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bats live in caves; apple does not." },
+        { "text": "FRUIT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An apple is a fruit; a fruit bat is a familiar animal." }
+      ],
+      "strong_hints": ["FRUIT"],
+      "best_available": { "text": "FRUIT", "why": "category word for apple and a familiar compound for bat" },
+      "pair_note": "FRUIT carries the pair; the other three are single-sided."
+    },
+    {
+      "pair_id": "p_apple__bear",
+      "a": "APPLE",
+      "b": "BEAR",
+      "hints": [
+        { "text": "TREE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Apple tree is direct; bears climb trees but tree does not point at bear on its own." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; bear has no core sense." },
+        { "text": "TEDDY", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Teddy bear is direct; nothing for apple." },
+        { "text": "PICNIC", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Apples are picnic food and Yogi Bear raids picnic baskets, but both links need a step." },
+        { "text": "HONEY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Bears love honey; apple reached only via Honeycrisp or apples dipped in honey." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TREE", "why": "apple tree is instant and a bear in a tree is familiar imagery, the least strained second side" },
+      "pair_note": "Three playable stretches but nothing that reaches both words cleanly."
+    },
+    {
+      "pair_id": "p_apple__bell",
+      "a": "APPLE",
+      "b": "BELL",
+      "hints": [
+        { "text": "TEACHER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Apple for the teacher is classic; bell only via the school bell a teacher waits on." },
+        { "text": "CHIME", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Bells chime; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; bell has no core." },
+        { "text": "SCHOOL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "School bell is direct; the apple on the teacher's desk is standard back-to-school imagery." }
+      ],
+      "strong_hints": ["SCHOOL"],
+      "best_available": { "text": "SCHOOL", "why": "school bell is instant and the schoolroom apple is iconic enough to be found" },
+      "pair_note": "SCHOOL passes on iconography; TEACHER is the weaker mirror of the same idea."
+    },
+    {
+      "pair_id": "p_apple__bridge",
+      "a": "APPLE",
+      "b": "BRIDGE",
+      "hints": [
+        { "text": "BITE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Biting an apple is direct; a dental bridge is too far to count." },
+        { "text": "CIDER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple cider is direct; bridge has nothing." },
+        { "text": "LONDON", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "London Bridge is direct; the Big Apple is New York, not London." },
+        { "text": "BROOKLYN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Brooklyn Bridge is direct; apple only because Brooklyn is part of the Big Apple." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BROOKLYN", "why": "the bridge is unmistakable and the Big Apple link is at least a real path" },
+      "pair_note": "An awkward pair; BROOKLYN is a stretch and the rest are one-sided."
+    },
+    {
+      "pair_id": "p_apple__card",
+      "a": "APPLE",
+      "b": "CARD",
+      "hints": [
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; card has no pie sense." },
+        { "text": "DECK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Deck of cards is direct; apple has nothing." },
+        { "text": "GIFT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Gift card is direct; apple only as an Apple gift card or an apple given as a gift." },
+        { "text": "CREDIT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Credit card is direct; apple only via the Apple Card product." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GIFT", "why": "Apple gift cards hang in every checkout aisle, so the apple side is more findable than Apple Card" },
+      "pair_note": "Both playable hints lean on the company rather than the fruit; no clean double reach."
+    },
+    {
+      "pair_id": "p_apple__castle",
+      "a": "APPLE",
+      "b": "CASTLE",
+      "hints": [
+        { "text": "MOAT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Castle moat is direct; apple has nothing." },
+        { "text": "ORCHARD", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple orchard is direct; castle has nothing." },
+        { "text": "SNOW", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation", "variant_of:WHITE"], "verdict": "BORDERLINE", "reason": "Snow White's poisoned apple and her castle both require the whole fairy tale." },
+        { "text": "WHITE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:SNOW"], "verdict": "BORDERLINE", "reason": "White Castle is a familiar chain; apple only through Snow White's apple." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "WHITE", "why": "White Castle gives one certain side and Snow White gives a real if indirect route to apple" },
+      "pair_note": "Only the fairy tale bridges this pair, and it needs two steps on the apple side."
+    },
+    {
+      "pair_id": "p_apple__cat",
+      "a": "APPLE",
+      "b": "CAT",
+      "hints": [
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; cat has nothing." },
+        { "text": "WHISKERS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Cat whiskers are direct; apple has nothing." },
+        { "text": "PAW", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Cat paw is direct; apple has nothing." },
+        { "text": "TREE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Apple tree is direct; the cat stuck up a tree and the pet-store cat tree make cat findable." }
+      ],
+      "strong_hints": ["TREE"],
+      "best_available": { "text": "TREE", "why": "apple tree is instant and cat-in-a-tree is a universal trope" },
+      "pair_note": "TREE is a defensible pass; everything else is one-sided."
+    },
+    {
+      "pair_id": "p_apple__crown",
+      "a": "APPLE",
+      "b": "CROWN",
+      "hints": [
+        { "text": "JEWEL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Crown jewel is direct; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; crown has no core sense." },
+        { "text": "GALA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Gala is a top-selling apple variety; crown only via royalty attending a gala." },
+        { "text": "ROYAL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Royalty wear crowns; apple only via the Royal Gala variety name, which most US shoppers do not use." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GALA", "why": "the apple variety is a real foothold and formal galas at least evoke crowns" },
+      "pair_note": "No clean hint; GALA is the only one with a genuine two-sided path."
+    },
+    {
+      "pair_id": "p_apple__diamond",
+      "a": "APPLE",
+      "b": "DIAMOND",
+      "hints": [
+        { "text": "SHINY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material", "generic"], "verdict": "BORDERLINE", "reason": "Diamonds sparkle; a polished apple is shiny but the word does not point at apple." },
+        { "text": "CUT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "A diamond's cut is a defining term; cutting an apple is ordinary and generic." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; diamond has no core sense." },
+        { "text": "BASEBALL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Baseball diamond is direct; apple only via 'baseball and apple pie' Americana." },
+        { "text": "BIG", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Big Apple is a familiar compound; a big diamond is generic praise, not a pointer." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CUT", "why": "cut is the diamond term of art and slicing an apple is at least an everyday action" },
+      "pair_note": "Four playable stretches, none clean; the pair has no natural shared sense."
+    },
+    {
+      "pair_id": "p_apple__dog",
+      "a": "APPLE",
+      "b": "DOG",
+      "hints": [
+        { "text": "FETCH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dogs fetch; apple has nothing." },
+        { "text": "CRAB", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Crab apple is a familiar compound; crab has no dog sense." },
+        { "text": "BONE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dog bone is direct; apple has nothing." },
+        { "text": "HOT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Hot dog is direct; apple only via hot apple pie or hot cider." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HOT", "why": "hot dog is certain and hot apple pie is a common enough phrase to be a real second path" },
+      "pair_note": "HOT is the only two-sided hint and it leans on a phrase rather than the fruit."
+    },
+    {
+      "pair_id": "p_apple__dragon",
+      "a": "APPLE",
+      "b": "DRAGON",
+      "hints": [
+        { "text": "SCALES", "connection_to_a": 1, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragon scales are direct; weighing apples on grocery scales is too thin to reach apple." },
+        { "text": "FRUIT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An apple is a fruit; dragon fruit is a familiar supermarket item." },
+        { "text": "FIRE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragons breathe fire; apple has nothing." }
+      ],
+      "strong_hints": ["FRUIT"],
+      "best_available": { "text": "FRUIT", "why": "category word plus familiar compound" },
+      "pair_note": "FRUIT does the job alone."
+    },
+    {
+      "pair_id": "p_apple__egg",
+      "a": "APPLE",
+      "b": "EGG",
+      "hints": [
+        { "text": "YOLK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Egg yolk is direct; apple has nothing." },
+        { "text": "BASKET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "A basket of apples and an egg basket (or Easter basket) are both stock images." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; egg has no core." }
+      ],
+      "strong_hints": ["BASKET"],
+      "best_available": { "text": "BASKET", "why": "natural container for both" },
+      "pair_note": "BASKET is generic but genuinely natural to both words."
+    },
+    {
+      "pair_id": "p_apple__fire",
+      "a": "APPLE",
+      "b": "FIRE",
+      "hints": [
+        { "text": "BAKED", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Baked apple is direct; baking implies oven heat, which does not point at fire." },
+        { "text": "FLAME", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Flame nearly renames fire; apple has nothing." },
+        { "text": "CIDER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple cider is direct; fire has nothing." },
+        { "text": "WOOD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Firewood is direct; applewood (applewood-smoked bacon, apple-tree wood) is a familiar compound." }
+      ],
+      "strong_hints": ["WOOD"],
+      "best_available": { "text": "WOOD", "why": "two familiar compounds" },
+      "pair_note": "WOOD is the only hint that reaches both; the rest are one-sided."
+    },
+    {
+      "pair_id": "p_apple__fish",
+      "a": "APPLE",
+      "b": "FISH",
+      "hints": [
+        { "text": "FIN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Fish fin is direct; apple has nothing." },
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["british_only"], "verdict": "BORDERLINE", "reason": "Apple pie is direct; fish pie is a British dish most US solvers will not reach." },
+        { "text": "SAUCE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Applesauce and fish sauce are both familiar compounds." }
+      ],
+      "strong_hints": ["SAUCE"],
+      "best_available": { "text": "SAUCE", "why": "two familiar compounds" },
+      "pair_note": "SAUCE is clean; PIE is a US-unfriendly stretch."
+    },
+    {
+      "pair_id": "p_apple__ghost",
+      "a": "APPLE",
+      "b": "GHOST",
+      "hints": [
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; ghost has nothing." },
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghosts are Halloween icons; bobbing for apples and caramel apples are Halloween staples." },
+        { "text": "SHEET", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Sheet ghost costume is direct; apple has nothing." }
+      ],
+      "strong_hints": ["HALLOWEEN"],
+      "best_available": { "text": "HALLOWEEN", "why": "both words are holiday staples" },
+      "pair_note": "HALLOWEEN is a solid pass."
+    },
+    {
+      "pair_id": "p_apple__glass",
+      "a": "APPLE",
+      "b": "GLASS",
+      "hints": [
+        { "text": "WINDOW", "connection_to_a": 1, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Windows are glass; apple only as the rival of Microsoft Windows, which points away from Apple." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; glass has no core." },
+        { "text": "CIDER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic", "variant_of:JUICE"], "verdict": "BORDERLINE", "reason": "Apple cider is direct; a glass of cider is a generic container link." },
+        { "text": "JUICE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic", "variant_of:CIDER"], "verdict": "BORDERLINE", "reason": "Apple juice is direct; 'glass of juice' and juice glass are natural but generic." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "JUICE", "why": "apple juice is instant and a juice glass is a slightly more idiomatic object than a glass of cider" },
+      "pair_note": "Container links only; nothing reaches glass with real force."
+    },
+    {
+      "pair_id": "p_apple__gold",
+      "a": "APPLE",
+      "b": "GOLD",
+      "hints": [
+        { "text": "PARIS", "connection_to_a": 1, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "FAIL", "reason": "The Judgement of Paris and the golden apple of discord is real myth but far too obscure for either side." },
+        { "text": "RUSH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Gold rush is direct; apple has nothing." },
+        { "text": "MEDAL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Gold medal is direct; apple has nothing." },
+        { "text": "DELICIOUS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Red and Golden Delicious are famous apple varieties; gold only via the 'Golden' in Golden Delicious." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "DELICIOUS", "why": "the variety name is the only link that actually contains both ideas" },
+      "pair_note": "Golden Delicious is the one real bridge and it is a variant of the word, not the word."
+    },
+    {
+      "pair_id": "p_apple__heart",
+      "a": "APPLE",
+      "b": "HEART",
+      "hints": [
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Apple core is literal; core is the figurative heart of a matter." },
+        { "text": "HEALTHY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "An apple a day is the health cliche; heart-healthy is a familiar compound." },
+        { "text": "BEAT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Heartbeat is direct; apple has nothing." },
+        { "text": "DOCTOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An apple a day keeps the doctor away; heart doctor is an everyday phrase." },
+        { "text": "RED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Red apple and red Valentine heart are both default images, though colour hints are weaker by nature." }
+      ],
+      "strong_hints": ["DOCTOR", "HEALTHY", "CORE", "RED"],
+      "best_available": { "text": "DOCTOR", "why": "a proverb on one side and a plain phrase on the other" },
+      "pair_note": "A rich pair; RED passes only because both words are iconically red."
+    },
+    {
+      "pair_id": "p_apple__honey",
+      "a": "APPLE",
+      "b": "HONEY",
+      "hints": [
+        { "text": "SWEET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Honey is the sweet thing; apples are sweet but so is every fruit, so it does not point." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; honey has nothing." },
+        { "text": "BEE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Honey bee is direct; bees pollinate apple blossoms but that needs an explanation." },
+        { "text": "CRISP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Crisp apple and apple crisp are direct; Honeycrisp is a household apple name that reaches honey as a compound." }
+      ],
+      "strong_hints": ["CRISP"],
+      "best_available": { "text": "CRISP", "why": "the Honeycrisp compound covers both" },
+      "pair_note": "CRISP passes on the Honeycrisp compound; SWEET and BEE are generic or one-step stretches."
+    },
+    {
+      "pair_id": "p_apple__horse",
+      "a": "APPLE",
+      "b": "HORSE",
+      "hints": [
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; horse has nothing." },
+        { "text": "TREAT", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "An apple is the classic horse treat, but 'treat' alone points at neither word." },
+        { "text": "SADDLE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Horse saddle is direct; apple has nothing." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TREAT", "why": "the only hint whose idea genuinely involves both words, even if each side is weak" },
+      "pair_note": "The real link (horses eat apples) is not captured by any single hint here."
+    },
+    {
+      "pair_id": "p_apple__ice",
+      "a": "APPLE",
+      "b": "ICE",
+      "hints": [
+        { "text": "CUBE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ice cube is direct; apple has nothing." },
+        { "text": "CIDER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple cider is direct; ice cider is a niche product most will not know." },
+        { "text": "COLD", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Ice cold nearly renames ice; apple has no cold sense." },
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; ice has no pie sense in US usage." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "COLD", "why": "ice is certain and a crisp cold apple is the least implausible second side on offer" },
+      "pair_note": "Nothing here reaches both words; every hint is single-sided."
+    },
+    {
+      "pair_id": "p_apple__iron",
+      "a": "APPLE",
+      "b": "IRON",
+      "hints": [
+        { "text": "RUST", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Iron rusts; cedar-apple rust is a plant disease nobody will reach." },
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Apple pie is direct; a pie iron is a niche camping gadget." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Apple core is direct; Earth's iron core is schoolbook knowledge and 'iron core' a familiar phrase." }
+      ],
+      "strong_hints": ["CORE"],
+      "best_available": { "text": "CORE", "why": "Earth's iron core gives iron a real, findable path" },
+      "pair_note": "CORE is a modest but defensible pass; the rest fail."
+    },
+    {
+      "pair_id": "p_apple__key",
+      "a": "APPLE",
+      "b": "KEY",
+      "hints": [
+        { "text": "LOCK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lock and key is direct; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; a lock's core is locksmith jargon." },
+        { "text": "MAC", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple Mac is direct; nothing connects Mac to key." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CORE", "why": "apple is certain and a key does go into a lock's core, the only thread to key at all" },
+      "pair_note": "No hint reaches key from the apple side; the pair is unserved."
+    },
+    {
+      "pair_id": "p_apple__king",
+      "a": "APPLE",
+      "b": "KING",
+      "hints": [
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; king has no pie sense." },
+        { "text": "CANDY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Candy apple is direct; king only via king-size candy bars, which does not point at king." },
+        { "text": "CROWN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A king wears a crown; apple has no crown sense." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CANDY", "why": "candy apple is certain and king-size candy is at least a phrase containing king" },
+      "pair_note": "Nothing bridges this pair."
+    },
+    {
+      "pair_id": "p_apple__knight",
+      "a": "APPLE",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "ARMOR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Knight's armor is direct; apple has nothing." },
+        { "text": "TELL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "William Tell shot the apple; Tell was a crossbowman, not a knight." },
+        { "text": "SHINING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Knight in shining armor is direct; a shining polished apple is a weak descriptor link." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SHINING", "why": "the only hint with any path to apple while nailing knight" },
+      "pair_note": "SHINING is a stretch; TELL reaches apple nicely but misses knight entirely."
+    },
+    {
+      "pair_id": "p_apple__light",
+      "a": "APPLE",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "BULB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Light bulb is direct; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; light has no core." },
+        { "text": "NEWTON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Newton's apple is famous; his prism work on light is real but second-tier knowledge." },
+        { "text": "GREEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Green apple and green light (traffic) are both standard phrases." }
+      ],
+      "strong_hints": ["GREEN"],
+      "best_available": { "text": "GREEN", "why": "two set phrases" },
+      "pair_note": "GREEN passes on two fixed phrases; NEWTON is a thoughtful but uneven stretch."
+    },
+    {
+      "pair_id": "p_apple__lion",
+      "a": "APPLE",
+      "b": "LION",
+      "hints": [
+        { "text": "ROAR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lions roar; apple has nothing." },
+        { "text": "KING", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lion King is direct; apple has nothing." },
+        { "text": "ZOO", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lions live in zoos; apple has nothing." },
+        { "text": "NARNIA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "FAIL", "reason": "Aslan the lion is well known; the apple of youth in The Magician's Nephew is deep-cut trivia." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "NARNIA", "why": "the only hint with any genuine apple reference, however obscure" },
+      "pair_note": "No usable hint; the pair has no natural bridge."
+    },
+    {
+      "pair_id": "p_apple__moon",
+      "a": "APPLE",
+      "b": "MOON",
+      "hints": [
+        { "text": "NEWTON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Newton's apple is famous; that his gravity explained the moon's orbit needs a step." },
+        { "text": "FULL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Full moon is direct; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; the moon's core is not a thing people think of." },
+        { "text": "HARVEST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Harvest moon is a set phrase; the fall apple harvest is direct." }
+      ],
+      "strong_hints": ["HARVEST"],
+      "best_available": { "text": "HARVEST", "why": "autumn ties both words tightly" },
+      "pair_note": "HARVEST is a strong pass."
+    },
+    {
+      "pair_id": "p_apple__night",
+      "a": "APPLE",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "DARK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Dark nearly renames night; apple has nothing." },
+        { "text": "CIDER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple cider is direct; night has nothing." },
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Halloween night is the one holiday that happens after dark; bobbing for apples and caramel apples are Halloween staples." }
+      ],
+      "strong_hints": ["HALLOWEEN"],
+      "best_available": { "text": "HALLOWEEN", "why": "a night-time holiday with strong apple traditions" },
+      "pair_note": "HALLOWEEN carries the pair; the others are one-sided."
+    },
+    {
+      "pair_id": "p_apple__ocean",
+      "a": "APPLE",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "WAVE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ocean waves are direct; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; ocean has no core." },
+        { "text": "ATLANTIC", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Atlantic Ocean is direct; the Big Apple sitting on the Atlantic coast is too thin to count." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ATLANTIC", "why": "ocean is certain and New York's Atlantic coast is the only thread, however thin, toward the Big Apple" },
+      "pair_note": "Unserved pair; all three hints are single-sided."
+    },
+    {
+      "pair_id": "p_apple__pirate",
+      "a": "APPLE",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "PARROT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Pirate's parrot is direct; apple has nothing." },
+        { "text": "CIDER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple cider is direct; pirates drink rum, not cider." },
+        { "text": "SCURVY", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "wrong_fact"], "verdict": "FAIL", "reason": "Scurvy is pirate lore; the scurvy remedy was citrus, not apples." },
+        { "text": "SOFTWARE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Apple software is direct; software pirate / piracy is a familiar compound." }
+      ],
+      "strong_hints": ["SOFTWARE"],
+      "best_available": { "text": "SOFTWARE", "why": "company sense plus a familiar compound" },
+      "pair_note": "SOFTWARE is a clean pass; SCURVY rests on a false fruit link."
+    },
+    {
+      "pair_id": "p_apple__queen",
+      "a": "APPLE",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; queen has nothing." },
+        { "text": "BEE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Queen bee is direct; bees pollinate apple blossoms but that needs explaining." },
+        { "text": "SNOW", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation", "variant_of:POISON", "variant_of:EVIL"], "verdict": "BORDERLINE", "reason": "Snow White's poisoned apple and her queen (or The Snow Queen) both need the tale as a stepping stone." },
+        { "text": "POISON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:EVIL", "variant_of:SNOW"], "verdict": "BORDERLINE", "reason": "Poison apple is an iconic phrase; queen only as the one who poisoned it." },
+        { "text": "EVIL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:POISON", "variant_of:SNOW"], "verdict": "BORDERLINE", "reason": "Evil Queen is Disney's villain by name; apple only through her poisoned apple." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "POISON", "why": "poison apple is the strongest single phrase and the queen is the poisoner in the best-known fairy tale" },
+      "pair_note": "Every bridge runs through Snow White and each hint lands one side cleanly at most."
+    },
+    {
+      "pair_id": "p_apple__ring",
+      "a": "APPLE",
+      "b": "RING",
+      "hints": [
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; ring has no core." },
+        { "text": "TONE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ringtone is direct; tone does not reach apple." },
+        { "text": "DIAMOND", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Diamond ring is direct; apple has nothing." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TONE", "why": "ringtone is certain and the iPhone's default ringtone is the faintest thread to Apple" },
+      "pair_note": "Unserved pair; no hint reaches apple from the ring side."
+    },
+    {
+      "pair_id": "p_apple__robot",
+      "a": "APPLE",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "COMPUTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Apple computer is direct; a robot is a computer with a body in common imagination." },
+        { "text": "ARM", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Robot arm is direct; Apple's ARM chips are tech trivia." },
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; robot has nothing." },
+        { "text": "SIRI", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Siri is Apple's assistant; people routinely call voice assistants robots." }
+      ],
+      "strong_hints": ["COMPUTER", "SIRI"],
+      "best_available": { "text": "COMPUTER", "why": "both sides reachable without a brand" },
+      "pair_note": "Both passes rely on the company sense of apple; SIRI is the sharper but more brand-bound hint."
+    },
+    {
+      "pair_id": "p_apple__rock",
+      "a": "APPLE",
+      "b": "ROCK",
+      "hints": [
+        { "text": "HARD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Rock hard and hard rock are set phrases; apple only via hard cider or a hard, crunchy fruit." },
+        { "text": "CANDY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Candy apple and rock candy are both familiar compounds." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Apple core is direct; a rock core sample or Earth's rocky core needs a step." }
+      ],
+      "strong_hints": ["CANDY"],
+      "best_available": { "text": "CANDY", "why": "two familiar compounds" },
+      "pair_note": "CANDY is clean; the other two are playable stretches."
+    },
+    {
+      "pair_id": "p_apple__rose",
+      "a": "APPLE",
+      "b": "ROSE",
+      "hints": [
+        { "text": "RED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Red apple and red rose are both the default image, though colour is a soft hint by nature." },
+        { "text": "THORN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Rose thorn is direct; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; rose has no core." },
+        { "text": "BLOSSOM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Apple blossom is a familiar compound; a rose is a blossom and roses blossom." }
+      ],
+      "strong_hints": ["BLOSSOM", "RED"],
+      "best_available": { "text": "BLOSSOM", "why": "a compound for apple and a plain-sense flower word for rose" },
+      "pair_note": "Two passes; BLOSSOM is the more specific."
+    },
+    {
+      "pair_id": "p_apple__salt",
+      "a": "APPLE",
+      "b": "SALT",
+      "hints": [
+        { "text": "PIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple pie is direct; salt has no pie sense." },
+        { "text": "CARAMEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Caramel apple and salted caramel are both familiar compounds." },
+        { "text": "SEA", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Sea salt is direct; apple has nothing." }
+      ],
+      "strong_hints": ["CARAMEL"],
+      "best_available": { "text": "CARAMEL", "why": "two familiar compounds" },
+      "pair_note": "CARAMEL is a clean pass."
+    },
+    {
+      "pair_id": "p_apple__shadow",
+      "a": "APPLE",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "SHADE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Shade nearly renames shadow; apple has nothing." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; shadow has no core." },
+        { "text": "TREE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Apple tree is direct; trees cast shadows but tree does not point at shadow." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TREE", "why": "the only hint with any path to shadow while nailing apple" },
+      "pair_note": "No clean hint; TREE is the lone playable stretch."
+    },
+    {
+      "pair_id": "p_apple__shark",
+      "a": "APPLE",
+      "b": "SHARK",
+      "hints": [
+        { "text": "FIN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Shark fin is direct; apple has nothing." },
+        { "text": "BITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shark bite is direct; taking a bite of an apple (and the bitten Apple logo) is direct." },
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Apple core is direct; shark has no core." }
+      ],
+      "strong_hints": ["BITE"],
+      "best_available": { "text": "BITE", "why": "plain-sense action on both sides" },
+      "pair_note": "BITE is a strong pass."
+    }
+  ]
+}

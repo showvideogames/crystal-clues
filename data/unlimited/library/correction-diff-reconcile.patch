@@ -1,0 +1,95 @@
+diff --git a/scripts/unlimited/reconcile-preferences.mjs b/scripts/unlimited/reconcile-preferences.mjs
+index c25ec09..1cc0e6a 100644
+--- a/scripts/unlimited/reconcile-preferences.mjs
++++ b/scripts/unlimited/reconcile-preferences.mjs
+@@ -8,7 +8,8 @@
+ //
+ // For every pair with at least one playable (PASS) hint and no existing approved
+ // preference:
+-//   - best = finalBestAvailable || correctionBestAvailable || reviewerBestAvailable
++//   - best = correctionBestAvailable || reviewerBestAvailable (saved reviewer evidence;
++//     never the derived finalBestAvailable)
+ //   - if best is a playable hint and differs from the provisional top candidate
+ //     (hintChoices with no preference), record an approved canonical preference
+ //     with basis "reviewer_final_best_available", noting whether the two were a
+@@ -21,28 +22,26 @@
+ import { readFileSync, writeFileSync } from "node:fs";
+ import { hintChoices } from "./assemble-boards.mjs";
+ 
+-const DRY = process.argv.includes("--dry");
+-const LIB = "data/unlimited/library/pairs.json";
+-const PREF = "data/unlimited/library/preferences.json";
+-const OUT = "data/unlimited/library/preference-reconciliation.md";
+-const DATE = "2026-10-17";
+-
+-const lib = JSON.parse(readFileSync(LIB, "utf8"));
+-const pref = JSON.parse(readFileSync(PREF, "utf8"));
+-pref.pairs ||= {};
+-
+ const playableOf = (p) => p.clues.filter((c) => c.status === "ai_reviewed" || c.status === "human_approved");
+ const score = (c) => { const b = c.provenance?.blindReview || {}; return `${(b.a ?? 0)}/${(b.b ?? 0)}/${(b.fairness ?? 0)}`; };
+ const strength = (c) => { const b = c.provenance?.blindReview || {}; return ((b.a ?? 0) + (b.b ?? 0)) * 10 + (b.fairness ?? 0); };
+ 
++// Pure reconciliation: returns the new entries without touching prefPairs.
++// Approved entries (owner, parent or earlier reconciliation) always take
++// precedence and are never rewritten; held/rejected hints are never promoted.
++export function reconcile(pairs, prefPairs = {}, date = new Date().toISOString().slice(0, 10)) {
++const entries = {};
+ const added = [], same = [], contradictions = [], open = [], kept = [];
+-for (const p of lib.pairs) {
+-  const existing = pref.pairs[p.pair_id];
++for (const p of pairs) {
++  const existing = prefPairs[p.pair_id];
+   if (existing && existing.status === "approved") { kept.push(p.pair_id); continue; }
+   if (existing && existing.status === "proposed") open.push(`${p.pair_id}: proposed ${existing.canonical || (existing.equal || []).join("/")} (${existing.by || "?"})`);
+   const playable = playableOf(p);
+   if (!playable.length) continue;
+-  const best = p.finalBestAvailable || p.correctionBestAvailable || p.reviewerBestAvailable;
++  // Saved reviewer evidence only. finalBestAvailable is derived (it records what
++  // the tie-break would serve), so reading it first hid explicit reviewer picks
++  // (root cause of the missing SMOKEY and DRACULA entries, 2026-10-18).
++  const best = p.correctionBestAvailable || p.reviewerBestAvailable;
+   if (!best || !best.text) continue;
+   const provisional = hintChoices(p, playable, {}).hints[0];
+   const bestClue = playable.find((c) => c.text === best.text);
+@@ -57,7 +56,7 @@ for (const p of lib.pairs) {
+     status: "approved",
+     canonical: bestClue.text,
+     by: "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+-    date: DATE,
++    date,
+     basis: "reviewer_final_best_available",
+     reviewer: best.reviewer || null,
+     reason: best.why || null,
+@@ -68,10 +67,25 @@ for (const p of lib.pairs) {
+       note: tie ? "equal blind scores; library order would have served the displaced hint" : "reviewer named a lower-scored PASS hint as strongest; recorded as the reviewer's editorial call, flagged for the parent",
+     },
+   };
+-  if (!DRY) pref.pairs[p.pair_id] = entry;
++  entries[p.pair_id] = entry;
+   added.push(`${tie ? "tie" : "OVERRIDE"} ${p.pair_id} (${p.a}+${p.b}): ${bestClue.text} ${score(bestClue)} replaces ${provisional.text} ${score(provisional)} — ${best.why || ""}`);
+ }
+ 
++return { entries, added, same, contradictions, open, kept };
++}
++
++const isMain = !!process.argv[1] && process.argv[1].replace(/\\/g, "/").endsWith("reconcile-preferences.mjs");
++if (isMain) {
++const DRY = process.argv.includes("--dry");
++const LIB = "data/unlimited/library/pairs.json";
++const PREF = "data/unlimited/library/preferences.json";
++const OUT = "data/unlimited/library/preference-reconciliation.md";
++const DATE = new Date().toISOString().slice(0, 10);
++const lib = JSON.parse(readFileSync(LIB, "utf8"));
++const pref = JSON.parse(readFileSync(PREF, "utf8"));
++pref.pairs ||= {};
++const { entries, added, same, contradictions, open, kept } = reconcile(lib.pairs, pref.pairs, DATE);
++if (!DRY) Object.assign(pref.pairs, entries);
+ if (!DRY) {
+   pref._metadata.reconciled = { date: DATE, rule: "reviewer_final_best_available -> canonical when it differs from the provisional top candidate; contradictions left provisional", added: added.length };
+   writeFileSync(PREF, JSON.stringify(pref, null, 2) + "\n");
+@@ -93,3 +107,4 @@ const lines = [
+ ];
+ writeFileSync(OUT, lines.join("\n") + "\n");
+ console.log(`kept ${kept.length}, same ${same.length}, added ${added.length} (ties ${added.filter((l) => l.startsWith("tie")).length}), contradictions ${contradictions.length}, open ${open.length} -> ${OUT}${DRY ? " (dry)" : ""}`);
++}

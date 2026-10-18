@@ -1,0 +1,377 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-32",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "u32-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors + no-literal-false-facts reminder, 2026-10-18",
+    "independence": "I read only u32-blind-input.json; no other repository file, search, web or paid API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_shark__water",
+      "a": "SHARK",
+      "b": "WATER",
+      "hints": [
+        { "text": "JAWS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHARK: the Jaws film's great white; WATER: the film's iconic beach/ocean scene and 'safe to go back in the water' tagline." },
+        { "text": "FIN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHARK: the dorsal fin; WATER: the familiar scene of a fin cutting through the water (also swim fins)." },
+        { "text": "TANK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHARK: Shark Tank (TV show / aquarium shark tank); WATER: water tank compound." }
+      ],
+      "strong_hints": ["JAWS", "FIN", "TANK"],
+      "best_available": { "text": "JAWS", "why": "Instant shark link and the film is defined by the ocean scene; strongest joint image." },
+      "pair_note": "Healthy pair; all three hints work."
+    },
+    {
+      "pair_id": "p_shark__witch",
+      "a": "SHARK",
+      "b": "WITCH",
+      "hints": [
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SHARK: lives in the sea; WITCH: 'sea witch' is a familiar phrase (Ursula is literally called the sea witch)." },
+        { "text": "URSULA", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WITCH: Ursula the sea witch; SHARK: Ursula is an octopus-woman and her minions are eels, so there is no shark link." }
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": { "text": "SEA", "why": "Sea witch plus a sea creature reaches both cleanly." },
+      "pair_note": "URSULA only reaches WITCH; do not explain it as a shark link."
+    },
+    {
+      "pair_id": "p_shark__wolf",
+      "a": "SHARK",
+      "b": "WOLF",
+      "hints": [
+        { "text": "TEETH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHARK: rows of famous teeth; WOLF: fangs, 'what big teeth you have' from Red Riding Hood." },
+        { "text": "PREDATOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are iconic apex predators (and both slang for predatory people: loan shark, wolf)." },
+        { "text": "HUNTER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:PREDATOR"], "verdict": "PASS", "reason": "Shared property: both hunt prey, the wolf in packs and the shark alone." }
+      ],
+      "strong_hints": ["PREDATOR", "TEETH", "HUNTER"],
+      "best_available": { "text": "PREDATOR", "why": "The clearest shared category for both animals." },
+      "pair_note": "HUNTER is close to PREDATOR; both are fine."
+    },
+    {
+      "pair_id": "p_snake__spider",
+      "a": "SNAKE",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "FEAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: snakes and spiders are the two classic phobias." },
+        { "text": "VENOM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are known for venomous bites." },
+        { "text": "BITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:VENOM"], "verdict": "PASS", "reason": "Shared action: snake bite and spider bite are both everyday phrases." }
+      ],
+      "strong_hints": ["VENOM", "FEAR", "BITE"],
+      "best_available": { "text": "VENOM", "why": "Most specific property the two share." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_snake__spring",
+      "a": "SNAKE",
+      "b": "SPRING",
+      "hints": [
+        { "text": "WAKE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SNAKE: snakes emerge from winter dormancy; SPRING: the season nature 'wakes', but neither side lands without explanation." },
+        { "text": "SHED", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SNAKE: sheds its skin; SPRING: animals' spring shedding of winter coats is real but a weak route for most players." },
+        { "text": "COIL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SNAKE: a coiled snake; SPRING: a coil spring, a shared shape." }
+      ],
+      "strong_hints": ["COIL"],
+      "best_available": { "text": "COIL", "why": "A shared shape anyone sees immediately." },
+      "pair_note": "COIL carries the pair; WAKE and SHED depend on seasonal biology."
+    },
+    {
+      "pair_id": "p_snake__star",
+      "a": "SNAKE",
+      "b": "STAR",
+      "hints": [
+        { "text": "SERPENS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "synonym_of_target"], "verdict": "BORDERLINE", "reason": "SNAKE: Latin for serpent; STAR: a real constellation, but few players know it." },
+        { "text": "OPHIUCHUS", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "SNAKE: the 'serpent-bearer'; STAR: a constellation / the '13th zodiac sign'. Factually sound but obscure on both sides." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SNAKE: sea snake; STAR: sea star (starfish), both compounds." }
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": { "text": "SEA", "why": "Two familiar compounds, no astronomy knowledge needed." },
+      "pair_note": "The constellation hints are accurate but niche."
+    },
+    {
+      "pair_id": "p_snake__train",
+      "a": "SNAKE",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "TOY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "PASS", "reason": "TRAIN: the toy train set; SNAKE: the rubber toy snake prank. Broad, but both phrases are familiar." },
+        { "text": "WIND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Shared verb: a snake winds along and a train winds through the hills, both long sinuous shapes." }
+      ],
+      "strong_hints": ["WIND", "TOY"],
+      "best_available": { "text": "WIND", "why": "Captures the shared long winding motion players already see between the two." },
+      "pair_note": "WIND is the more pointed of the two; TOY is weaker on the snake side."
+    },
+    {
+      "pair_id": "p_snake__water",
+      "a": "SNAKE",
+      "b": "WATER",
+      "hints": [
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SNAKE: sea snake; WATER: sea water." },
+        { "text": "SWIM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "WATER: swimming is water-defined; SNAKE: snakes do swim but it is not a recognizable snake trait." },
+        { "text": "MOCCASIN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Compound 'water moccasin' is a snake (the cottonmouth), linking both at once; better known in the US." }
+      ],
+      "strong_hints": ["MOCCASIN", "SEA"],
+      "best_available": { "text": "MOCCASIN", "why": "The water moccasin is literally a water snake; the most pointed hint, SEA is the broader backup." },
+      "pair_note": "MOCCASIN is US-leaning but a single compound that names both."
+    },
+    {
+      "pair_id": "p_snake__witch",
+      "a": "SNAKE",
+      "b": "WITCH",
+      "hints": [
+        { "text": "MEDUSA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SNAKE: Medusa's hair of snakes; WITCH: she is a Gorgon, not a witch, so only a loose 'mythic villainess' link (calling her a witch would be wrong_fact)." },
+        { "text": "POTION", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WITCH: brewing potions; SNAKE: snake parts in the witches' brew ('fenny snake', 'adder's fork' in Macbeth) and snake oil, a real but second-hop route." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "POTION", "why": "No false fact needed; the witch's brew with snake ingredients is a real image, while MEDUSA risks implying she is a witch." },
+      "pair_note": "No PASS. Each hint is strong on one side only."
+    },
+    {
+      "pair_id": "p_snake__wolf",
+      "a": "SNAKE",
+      "b": "WOLF",
+      "hints": [
+        { "text": "VILLAIN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Shared story role: the serpent in Eden / Kaa and the Big Bad Wolf are archetypal villains (also 'snake in the grass', 'wolf in sheep's clothing')." },
+        { "text": "PREDATOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are predators, literally and as words for predatory people." }
+      ],
+      "strong_hints": ["VILLAIN", "PREDATOR"],
+      "best_available": { "text": "VILLAIN", "why": "Captures the shared storybook role, which is more pointed than the generic predator category." },
+      "pair_note": "Both fine; PREDATOR is broader."
+    },
+    {
+      "pair_id": "p_spider__spring",
+      "a": "SPIDER",
+      "b": "SPRING",
+      "hints": [
+        { "text": "POUNCE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "SPRING: to spring (verb) means to pounce; SPIDER: jumping/wolf spiders pounce on prey. Moderate on the spider side." },
+        { "text": "JUMPING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SPIDER: the jumping spider; SPRING: springing is jumping (verb route, springy)." }
+      ],
+      "strong_hints": ["JUMPING", "POUNCE"],
+      "best_available": { "text": "JUMPING", "why": "Jumping spider is a familiar compound and 'spring' as a verb is jump." },
+      "pair_note": "Both hints use the verb sense of SPRING."
+    },
+    {
+      "pair_id": "p_spider__star",
+      "a": "SPIDER",
+      "b": "STAR",
+      "hints": [
+        { "text": "LEGS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPIDER: eight legs; STAR: only via the radiating-points shape or a starfish's 'legs' (properly arms), a loose visual route." },
+        { "text": "WEB", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SPIDER: spider web; STAR: no recognizable web route (the Webb telescope is a different spelling)." },
+        { "text": "SPIDERMAN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target SPIDER; the STAR route (film star / superhero) is weak anyway." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "LEGS", "why": "The only legal hint that reaches STAR at all, through the radiating shape." },
+      "pair_note": "No PASS; a 'sea'-style compound or shape hint is needed."
+    },
+    {
+      "pair_id": "p_spider__train",
+      "a": "SPIDER",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "SPIDERMAN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target SPIDER; the TRAIN route is the Spider-Man 2 train-stopping scene." },
+        { "text": "TRACKS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "TRAIN: train tracks; SPIDER: no recognizable tracks link." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TRACKS", "why": "The only hint that does not contain a target, though it reaches TRAIN only." },
+      "pair_note": "No PASS; the real shared scene (Spider-Man 2 train) cannot be clued with the target word in it."
+    },
+    {
+      "pair_id": "p_spider__water",
+      "a": "SPIDER",
+      "b": "WATER",
+      "hints": [
+        { "text": "ITSY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared story: the Itsy Bitsy Spider climbed up the water spout." },
+        { "text": "SPOUT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:ITSY"], "verdict": "PASS", "reason": "WATER: water spout; SPIDER: the rhyme's spider climbs it." },
+        { "text": "RAIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:ITSY"], "verdict": "PASS", "reason": "WATER: rain is water; SPIDER: 'down came the rain and washed the spider out' in the same rhyme." }
+      ],
+      "strong_hints": ["SPOUT", "ITSY", "RAIN"],
+      "best_available": { "text": "SPOUT", "why": "Names the rhyme's water element and the spider scene at once." },
+      "pair_note": "All three rely on the same nursery rhyme."
+    },
+    {
+      "pair_id": "p_spider__witch",
+      "a": "SPIDER",
+      "b": "WITCH",
+      "hints": [
+        { "text": "SPOOKY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Shared property: both are stock spooky Halloween figures." },
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared scene: spiders and witches are both core Halloween icons." },
+        { "text": "COBWEB", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPIDER: spins cobwebs; WITCH: only via the cobwebbed witch's lair / Halloween decor image." }
+      ],
+      "strong_hints": ["HALLOWEEN", "SPOOKY"],
+      "best_available": { "text": "HALLOWEEN", "why": "The shared holiday scene is the clearest joint link." },
+      "pair_note": "COBWEB leans to SPIDER."
+    },
+    {
+      "pair_id": "p_spider__wolf",
+      "a": "SPIDER",
+      "b": "WOLF",
+      "hints": [
+        { "text": "PREDATOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are predators." },
+        { "text": "HUNTER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:PREDATOR"], "verdict": "PASS", "reason": "Shared property: both hunt; the wolf spider is named for hunting its prey like a wolf rather than using a web." }
+      ],
+      "strong_hints": ["HUNTER", "PREDATOR"],
+      "best_available": { "text": "HUNTER", "why": "Points at the wolf spider's defining hunting habit as well as the wolf." },
+      "pair_note": "Both are near-variants."
+    },
+    {
+      "pair_id": "p_spring__star",
+      "a": "SPRING",
+      "b": "STAR",
+      "hints": [
+        { "text": "BLOOM", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SPRING: spring bloom; STAR: no recognizable bloom route (star-named flowers are too far)." },
+        { "text": "TRAINING", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "SPRING: spring training; STAR: 'star players train' is a story invented to rescue the word." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TRAINING", "why": "Forced choice: spring training is a strong compound and baseball has All-Stars, though the star link is weak." },
+      "pair_note": "No PASS; both hints reach SPRING only."
+    },
+    {
+      "pair_id": "p_spring__train",
+      "a": "SPRING",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "COIL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SPRING: coil spring; TRAIN: no recognizable coil link." },
+        { "text": "BASEBALL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPRING and TRAIN: both reached only through the single phrase 'spring training' (TRAIN via -ing inflection), a two-step route." },
+        { "text": "TRAINING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target TRAIN as a substring (would otherwise be the spring-training compound)." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BASEBALL", "why": "The only legal hint that reaches both, via the spring-training phrase." },
+      "pair_note": "No PASS; the natural clue TRAINING breaks the substring rule."
+    },
+    {
+      "pair_id": "p_spring__water",
+      "a": "SPRING",
+      "b": "WATER",
+      "hints": [
+        { "text": "RAIN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SPRING: spring rains / April showers; WATER: rainwater." },
+        { "text": "BOTTLED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Compound: bottled spring water and bottled water." },
+        { "text": "FRESH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SPRING: spring-fresh / fresh spring water; WATER: fresh water." }
+      ],
+      "strong_hints": ["BOTTLED", "FRESH", "RAIN"],
+      "best_available": { "text": "BOTTLED", "why": "Points straight at the bottled spring water label." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_spring__witch",
+      "a": "SPRING",
+      "b": "WITCH",
+      "hints": [
+        { "text": "NARNIA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "WITCH: the White Witch; SPRING: her endless winter breaks into spring as Aslan returns, a real plot point in the story." },
+        { "text": "WALPURGIS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "WITCH: Walpurgis Night is the witches' night; SPRING: it is a 30 April spring festival. Accurate, but few players know it." }
+      ],
+      "strong_hints": ["NARNIA"],
+      "best_available": { "text": "NARNIA", "why": "Widely known story where the witch's winter yields to spring." },
+      "pair_note": "NARNIA is moderate on the spring side; WALPURGIS is correct but obscure."
+    },
+    {
+      "pair_id": "p_spring__wolf",
+      "a": "SPRING",
+      "b": "WOLF",
+      "hints": [
+        { "text": "POUNCE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "SPRING: to spring is to pounce (verb route); WOLF: a wolf pouncing on prey is a familiar image, moderately." },
+        { "text": "PUPS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WOLF: wolf pups; SPRING: wolf pups really are born in spring, but 'baby animal season' is a weak player route." }
+      ],
+      "strong_hints": ["POUNCE"],
+      "best_available": { "text": "POUNCE", "why": "The verb sense of spring maps directly to pounce and a wolf pouncing." },
+      "pair_note": "Moderate pair; both hints need a beat of thought."
+    },
+    {
+      "pair_id": "p_star__train",
+      "a": "STAR",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "NIGHT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "STAR: stars come out at night; TRAIN: 'night train' is a familiar phrase (sleeper trains, songs)." },
+        { "text": "EXPRESS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["british_only", "needs_explanation"], "verdict": "BORDERLINE", "reason": "TRAIN: express train; STAR: only via UK tabloids the Daily Express and Daily Star, a British-only route." }
+      ],
+      "strong_hints": ["NIGHT"],
+      "best_available": { "text": "NIGHT", "why": "A night train under the stars is one recognizable scene." },
+      "pair_note": "Thin pair; NIGHT is the moderate winner."
+    },
+    {
+      "pair_id": "p_star__water",
+      "a": "STAR",
+      "b": "WATER",
+      "hints": [
+        { "text": "REFLECTION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Shared scene: stars reflected on still water." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "STAR: sea star (starfish); WATER: sea water." },
+        { "text": "TWINKLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "STAR: 'Twinkle, Twinkle, Little Star'; WATER: only loosely, as light sparkling on water." }
+      ],
+      "strong_hints": ["SEA", "REFLECTION"],
+      "best_available": { "text": "SEA", "why": "Two everyday compounds, sea star and sea water." },
+      "pair_note": "TWINKLE leans to STAR."
+    },
+    {
+      "pair_id": "p_star__witch",
+      "a": "STAR",
+      "b": "WITCH",
+      "hints": [
+        { "text": "PENTAGRAM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "STAR: a five-pointed star; WITCH: the pentagram is the familiar witchcraft symbol." },
+        { "text": "SPELL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WITCH: casts spells; STAR: no recognizable spell route (wishing on a star is not a spell)." },
+        { "text": "WAND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WITCH: a witch's wand; STAR: the star-tipped wand, as carried by Glinda the Good Witch." }
+      ],
+      "strong_hints": ["PENTAGRAM", "WAND"],
+      "best_available": { "text": "PENTAGRAM", "why": "It is literally a star and the witchcraft emblem." },
+      "pair_note": "SPELL is one-sided."
+    },
+    {
+      "pair_id": "p_star__wolf",
+      "a": "STAR",
+      "b": "WOLF",
+      "hints": [
+        { "text": "SIRIUS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "STAR: Sirius, the brightest star; WOLF: it is the Dog Star (and Sirius Black turns into a dog), so the link is canine, not wolf; calling it a wolf star would be wrong_fact." },
+        { "text": "HOWL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WOLF: howling; STAR: only via the night-sky scene; the iconic image is howling at the moon, which is not a star." },
+        { "text": "LUPUS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "synonym_of_target"], "verdict": "BORDERLINE", "reason": "WOLF: Latin for wolf; STAR: Lupus is a real but little-known constellation." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HOWL", "why": "The most recognizable joint image (a wolf howling under a night sky), provided no one explains it as howling at a star." },
+      "pair_note": "No PASS; every route is either niche, canine-not-wolf, or moon-not-star."
+    },
+    {
+      "pair_id": "p_train__witch",
+      "a": "TRAIN",
+      "b": "WITCH",
+      "hints": [
+        { "text": "EXPRESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:HOGWARTS"], "verdict": "PASS", "reason": "TRAIN: express train; WITCH: the Hogwarts Express carrying young witches and wizards in Harry Potter." },
+        { "text": "PLATFORM", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:HOGWARTS"], "verdict": "PASS", "reason": "TRAIN: train platform; WITCH: Platform 9 3/4, where Hogwarts witches board, a familiar story scene." },
+        { "text": "HOGWARTS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "TRAIN: the Hogwarts Express; WITCH: Hogwarts School of Witchcraft and Wizardry." }
+      ],
+      "strong_hints": ["HOGWARTS", "EXPRESS", "PLATFORM"],
+      "best_available": { "text": "HOGWARTS", "why": "Names both the school of witchcraft and its famous train." },
+      "pair_note": "All three are one Harry Potter route; EXPRESS and PLATFORM are moderate on the witch side."
+    },
+    {
+      "pair_id": "p_train__wolf",
+      "a": "TRAIN",
+      "b": "WOLF",
+      "hints": [
+        { "text": "PACK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WOLF: wolf pack; TRAIN: 'pack train' (a line of pack animals) or a packed train, both weak." },
+        { "text": "HOWL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WOLF: howling; TRAIN: the howl of a train whistle in the night, a recognizable sound image but secondary." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HOWL", "why": "The lonesome howling whistle and the wolf's howl make a real sound-alike scene." },
+      "pair_note": "No PASS; HOWL is close to passing."
+    },
+    {
+      "pair_id": "p_water__wolf",
+      "a": "WATER",
+      "b": "WOLF",
+      "hints": [
+        { "text": "DRINK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WATER: drinking water; WOLF: wolves drink like any animal; the wolf idiom is 'wolf down' food, not drink." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "WATER: sea water; WOLF: 'sea wolf' (Jack London's The Sea-Wolf, coastal sea wolves) is real but not widely known." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SEA", "why": "The only hint with a genuine compound on the wolf side." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_witch__wolf",
+      "a": "WITCH",
+      "b": "WOLF",
+      "hints": [
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WITCH: core Halloween icon; WOLF: howling wolves and werewolves in Halloween imagery." },
+        { "text": "FAIRYTALE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared story role: the witch of Hansel and Gretel / Snow White and the Big Bad Wolf are both fairytale villains." },
+        { "text": "WEREWOLF", "connection_to_a": 1, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target WOLF as a substring." },
+        { "text": "HOOD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WOLF: Little Red Riding Hood; WITCH: only via a hooded cloak or the Into the Woods crossover, a weak route." }
+      ],
+      "strong_hints": ["FAIRYTALE", "HALLOWEEN"],
+      "best_available": { "text": "FAIRYTALE", "why": "The witch and the wolf are the two classic fairytale villains." },
+      "pair_note": "WEREWOLF is a rule failure."
+    }
+  ]
+}

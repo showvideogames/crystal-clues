@@ -1,0 +1,522 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-24",
+    "date": "2026-10-17",
+    "input": "u24-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u24-blind-input.json; no other file, repository search, web or API was consulted."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_ice__pirate",
+      "a": "ICE",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "ARCTIC", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Arctic ice is immediate, but nothing recognizable links the Arctic to pirates." },
+        { "text": "RUM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Rum is the pirate's drink; the ice side rests on 'rum on ice' / a rum cocktail, which is reachable but secondary." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "RUM", "why": "Pirate side is instant and 'rum on ice' is a real drinking phrase, so a player can land both; ARCTIC never reaches pirate." },
+      "pair_note": "No PASS. The pair is hard: ice and pirate share no obvious scene; RUM is the only hint that touches both."
+    },
+    {
+      "pair_id": "p_ice__ring",
+      "a": "ICE",
+      "b": "RING",
+      "hints": [
+        { "text": "BLING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Bling is flashy jewellery (rings), and 'ice' is the slang word for diamonds within the same bling vocabulary." },
+        { "text": "RINK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ice rink is direct, but a rink is not a ring to a player; the etymological link is invisible." },
+        { "text": "DIAMOND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A diamond ring is the archetypal ring, and 'ice' is the well-known slang for diamonds." }
+      ],
+      "strong_hints": ["DIAMOND", "BLING"],
+      "best_available": { "text": "DIAMOND", "why": "Both sides are broad and sit in the same jewellery scene." },
+      "pair_note": "Two good jewellery-route hints; RINK is a false friend."
+    },
+    {
+      "pair_id": "p_ice__robot",
+      "a": "ICE",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice is cold physically; a robot is 'cold' emotionally, a familiar shared-property stretch like RICH for BANK+KING." },
+        { "text": "FROZEN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:COLD"], "verdict": "BORDERLINE", "reason": "Frozen is ice; a robot 'freezes' when it seizes up (or the robot dance freeze), a thinner route than COLD." }
+      ],
+      "strong_hints": ["COLD"],
+      "best_available": { "text": "COLD", "why": "Cold-and-unfeeling is a standard way to describe robots, so the shared property is recognizable." },
+      "pair_note": "Only the shared-property route exists; COLD carries it, FROZEN is a weaker variant."
+    },
+    {
+      "pair_id": "p_ice__rock",
+      "a": "ICE",
+      "b": "ROCK",
+      "hints": [
+        { "text": "HARD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Rock-hard is idiomatic and ice is a hard solid; a defensible shared property." },
+        { "text": "ROCKS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "'On the rocks' means on ice, but the hint contains the target ROCK, which is a rule failure." },
+        { "text": "WHISKEY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Whiskey on ice and whiskey on the rocks are the same familiar bar order." },
+        { "text": "GLACIER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "A glacier is ice; glaciers grind and carry rock (moraine), which a player may or may not reach." }
+      ],
+      "strong_hints": ["WHISKEY", "HARD"],
+      "best_available": { "text": "WHISKEY", "why": "One ordinary drink order points at both words." },
+      "pair_note": "WHISKEY is excellent; ROCKS would be ideal but is disqualified by containing the target."
+    },
+    {
+      "pair_id": "p_ice__rose",
+      "a": "ICE",
+      "b": "ROSE",
+      "hints": [
+        { "text": "FROZEN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Frozen is ice; there is no familiar frozen-rose scene or phrase to reach rose." },
+        { "text": "FROST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Frost is ice; frost on rose petals (and frost killing roses) is a real garden image but not a strong pull toward rose specifically." },
+        { "text": "SCULPTURE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Ice sculpture is familiar; roses are a common sculpture subject but a player would more likely name a swan." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "FROST", "why": "A frosted rose is a recognizable image, giving the only two-way route offered." },
+      "pair_note": "No PASS; every hint is anchored on the ice side with a weak reach to rose."
+    },
+    {
+      "pair_id": "p_ice__salt",
+      "a": "ICE",
+      "b": "SALT",
+      "hints": [
+        { "text": "WINTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Winter brings ice, and salting the roads is a winter chore; a shared seasonal scene." },
+        { "text": "MELT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Salt melts ice; the two words meet in one everyday action." },
+        { "text": "ROAD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Road salt is spread to clear icy roads; the same scene as MELT viewed from the road." }
+      ],
+      "strong_hints": ["MELT", "ROAD", "WINTER"],
+      "best_available": { "text": "MELT", "why": "Salt melting ice is the direct, universally known interaction." },
+      "pair_note": "Strong pair; all three hints share the winter-road scene."
+    },
+    {
+      "pair_id": "p_ice__shadow",
+      "a": "ICE",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "SHADE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Shade is a near-synonym of shadow and has no recognizable route to ice." },
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Ice is cold; it is colder in the shadows, a real but secondary association for shadow." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "COLD", "why": "Shadows being cold is a lived experience, so a player can reach both, though shadow is not a strong pull." },
+      "pair_note": "No PASS; COLD is serviceable, SHADE is pure filler toward one side."
+    },
+    {
+      "pair_id": "p_ice__shark",
+      "a": "ICE",
+      "b": "SHARK",
+      "hints": [
+        { "text": "FIN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Shark fin is immediate; there is no fin route to ice." },
+        { "text": "GREENLAND", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Greenland is the ice sheet; the Greenland shark is a real, moderately known species (famous for its age)." }
+      ],
+      "strong_hints": ["GREENLAND"],
+      "best_available": { "text": "GREENLAND", "why": "Both facts are true and the shark side is reachable by a reasonably informed player." },
+      "pair_note": "GREENLAND is the only two-way hint and leans on a moderately niche animal fact."
+    },
+    {
+      "pair_id": "p_ice__snake",
+      "a": "ICE",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "BLOODED", "connection_to_a": 0, "connection_to_b": 1, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Only works via 'cold-blooded' to snake; 'blooded' alone does not reach ice." },
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice is cold; snakes are the archetypal cold-blooded animal, a familiar shared property." }
+      ],
+      "strong_hints": ["COLD"],
+      "best_available": { "text": "COLD", "why": "Cold-blooded is the standard snake descriptor and ice is cold." },
+      "pair_note": "COLD does the job; BLOODED is a fragment that only works if you already know the answer."
+    },
+    {
+      "pair_id": "p_ice__spider",
+      "a": "ICE",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "WEB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Spider web is immediate; nothing links web to ice." },
+        { "text": "FROST", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Frost is ice; a frosted web is a photo cliche but it points at web, not spider." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "FROST", "why": "Weak either way; frost on a spider's web is at least a real image, whereas WEB has zero ice side." },
+      "pair_note": "No PASS and no genuine two-way hint; the pair likely needs a new idea (e.g. a creature or brand that spans both)."
+    },
+    {
+      "pair_id": "p_ice__spring",
+      "a": "ICE",
+      "b": "SPRING",
+      "hints": [
+        { "text": "MELT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice melts and the spring melt is a familiar seasonal phrase." },
+        { "text": "THAW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:MELT"], "verdict": "PASS", "reason": "Ice thaws; 'spring thaw' is a set phrase." },
+        { "text": "BREAKUP", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "british_only"], "verdict": "BORDERLINE", "reason": "River-ice breakup as a spring season is real but regional (northern Canada/Alaska); most players will think of relationships." }
+      ],
+      "strong_hints": ["THAW", "MELT"],
+      "best_available": { "text": "THAW", "why": "'Spring thaw' is a set phrase and thaw implies ice." },
+      "pair_note": "Strong pair; BREAKUP is a regional term (flagged british_only in the sense of regional usage, not UK)."
+    },
+    {
+      "pair_id": "p_ice__star",
+      "a": "ICE",
+      "b": "STAR",
+      "hints": [
+        { "text": "TWINKLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Stars twinkle (nursery rhyme); ice sparkles or glitters rather than twinkles, so the ice side is a stretch." },
+        { "text": "SKATER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Ice skater is immediate; star via a figure-skating star or 'Stars on Ice' is reachable but secondary." },
+        { "text": "CRYSTAL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Ice crystal is a set phrase; crystal reaches star only via star-shaped snow crystals or crystal star ornaments." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SKATER", "why": "Ice is instant and the skating-star / 'Stars on Ice' association gives the most recognizable second step." },
+      "pair_note": "No PASS; every hint is anchored on one side with a soft reach to the other."
+    },
+    {
+      "pair_id": "p_ice__train",
+      "a": "ICE",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "SNOWPIERCER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Snowpiercer is a train that circles a frozen Earth; one story reaches both words for anyone who knows it." },
+        { "text": "POLAR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Polar ice is direct; train comes via The Polar Express, a familiar compound." },
+        { "text": "EXPRESS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Express train is direct; ice only via Polar Express (or Germany's ICE InterCity Express), both second-order." }
+      ],
+      "strong_hints": ["SNOWPIERCER", "POLAR"],
+      "best_available": { "text": "POLAR", "why": "Broader than Snowpiercer and the Polar Express is widely known." },
+      "pair_note": "Two usable story/brand routes; EXPRESS is the weaker half of the same compound."
+    },
+    {
+      "pair_id": "p_ice__water",
+      "a": "ICE",
+      "b": "WATER",
+      "hints": [
+        { "text": "CUBE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Ice cube is immediate; water only as the thing the cube is made of or dropped into, a weak pull toward water itself." },
+        { "text": "FROZEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice is frozen water; the hint names the exact relationship." },
+        { "text": "MELT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice melts into water; the reverse of FROZEN and equally direct." }
+      ],
+      "strong_hints": ["FROZEN", "MELT"],
+      "best_available": { "text": "FROZEN", "why": "'Frozen water' is literally the definition of ice." },
+      "pair_note": "Easy pair with two ideal hints."
+    },
+    {
+      "pair_id": "p_ice__witch",
+      "a": "ICE",
+      "b": "WITCH",
+      "hints": [
+        { "text": "ELSA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Elsa's ice powers are universally known; she is a queen/sorceress rather than a witch, so the witch side needs a hop." },
+        { "text": "WHITE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["colour_mood_material", "needs_explanation"], "verdict": "BORDERLINE", "reason": "The White Witch of Narnia rules an icy world, but 'white' alone reaches ice only as a colour and witch only via that one character." },
+        { "text": "NARNIA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Narnia under the White Witch is frozen in eternal winter; one familiar story carries both words." }
+      ],
+      "strong_hints": ["NARNIA"],
+      "best_available": { "text": "NARNIA", "why": "The frozen land and its witch are the two things everyone remembers about the story." },
+      "pair_note": "NARNIA is the clean story route; ELSA is nearly as good if the owner accepts 'ice witch' as a fair label for her."
+    },
+    {
+      "pair_id": "p_ice__wolf",
+      "a": "ICE",
+      "b": "WOLF",
+      "hints": [
+        { "text": "TUNDRA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:ARCTIC"], "verdict": "PASS", "reason": "Tundra is frozen ground and wolves are its signature predator; a shared habitat." },
+        { "text": "ARCTIC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Arctic ice is direct and the Arctic wolf is a well-known animal." },
+        { "text": "WINTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Winter brings ice; wolves howling in a winter forest is a stock scene." }
+      ],
+      "strong_hints": ["ARCTIC", "TUNDRA", "WINTER"],
+      "best_available": { "text": "ARCTIC", "why": "Arctic wolf is a named animal and Arctic ice is immediate." },
+      "pair_note": "Solid geography/habitat pair."
+    },
+    {
+      "pair_id": "p_iron__key",
+      "a": "IRON",
+      "b": "KEY",
+      "hints": [
+        { "text": "LOCK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Lock and key is instant; iron only via old iron locks, which is a weak pull toward iron." },
+        { "text": "SMITH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Blacksmith works iron and a locksmith cuts keys; one word, two familiar compounds." }
+      ],
+      "strong_hints": ["SMITH"],
+      "best_available": { "text": "SMITH", "why": "Both compounds are everyday words." },
+      "pair_note": "SMITH is an elegant compound route; LOCK is one-sided in practice."
+    },
+    {
+      "pair_id": "p_iron__king",
+      "a": "IRON",
+      "b": "KING",
+      "hints": [
+        { "text": "FIST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "'Iron fist' is a set phrase; a king ruling with a fist is reachable only after the iron step." },
+        { "text": "MASK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "The Man in the Iron Mask is the king's secret twin; the story links both, though the king side needs the plot." },
+        { "text": "THRONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Iron Throne (Game of Thrones) and a king's throne." }
+      ],
+      "strong_hints": ["THRONE", "MASK"],
+      "best_available": { "text": "THRONE", "why": "Iron Throne is one of the best-known modern compounds and throne means king." },
+      "pair_note": "THRONE is excellent; MASK is a fair story route."
+    },
+    {
+      "pair_id": "p_iron__knight",
+      "a": "IRON",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "SWORD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Knights carry swords and swords are forged from iron/steel; a shared scene." },
+        { "text": "ARMOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A knight in iron armor; both words sit in one image." },
+        { "text": "MAN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Iron Man is direct; knight via 'a man in armor' or Iron Man as a modern knight is a stretch." }
+      ],
+      "strong_hints": ["ARMOR", "SWORD"],
+      "best_available": { "text": "ARMOR", "why": "Suit of iron armor is the knight image." },
+      "pair_note": "Strong medieval scene; MAN is the weak one."
+    },
+    {
+      "pair_id": "p_iron__lion",
+      "a": "IRON",
+      "b": "LION",
+      "hints": [
+        { "text": "STRENGTH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron and the lion are both standard emblems of strength; a shared property like RICH for BANK+KING." },
+        { "text": "GATE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Iron gate is direct; lion via stone lions flanking gates or the Lion Gate is a secondary image." },
+        { "text": "CAGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A circus or zoo lion behind iron bars in a cage is one familiar scene." }
+      ],
+      "strong_hints": ["CAGE", "STRENGTH"],
+      "best_available": { "text": "CAGE", "why": "Iron cage and caged lion share a single picture." },
+      "pair_note": "Two usable hints; GATE is iron-weighted."
+    },
+    {
+      "pair_id": "p_iron__moon",
+      "a": "IRON",
+      "b": "MOON",
+      "hints": [
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Earth's iron core is broad; the moon's small core is a specialist fact and 'core' does not pull toward moon." },
+        { "text": "MAN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron Man and the Man in the Moon are both familiar compounds." },
+        { "text": "METEOR", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Iron meteorites and the moon's meteor craters are both true, but neither side is the first thing a player reaches from meteor." }
+      ],
+      "strong_hints": ["MAN"],
+      "best_available": { "text": "MAN", "why": "Two everyday phrases, no explanation needed." },
+      "pair_note": "MAN carries the pair; the astronomy hints are plausible but soft."
+    },
+    {
+      "pair_id": "p_iron__mouse",
+      "a": "IRON",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "CAGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron cage and a pet mouse's cage; a shared object." },
+        { "text": "TRAP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Mousetrap is immediate; iron via heavy iron traps (bear traps) is reachable but not a strong pull." }
+      ],
+      "strong_hints": ["CAGE"],
+      "best_available": { "text": "CAGE", "why": "Both are cage animals/materials in one picture." },
+      "pair_note": "CAGE is fine; TRAP is mouse-weighted."
+    },
+    {
+      "pair_id": "p_iron__night",
+      "a": "IRON",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "GATE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Iron gate is direct; there is no recognizable gate route to night." },
+        { "text": "CURTAIN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Iron Curtain is a set phrase; 'the curtain of night' is poetic and only a soft pull toward night." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CURTAIN", "why": "Only hint with any reach to night (nightfall as a curtain), and the iron side is strong." },
+      "pair_note": "No PASS; the pair needs a new idea (e.g. something that spans knight/night wordplay would not count, so a shared scene is required)."
+    },
+    {
+      "pair_id": "p_iron__ocean",
+      "a": "IRON",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "RUST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron rusts; salty ocean air and water are the classic cause of rust." },
+        { "text": "TITANIC", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Titanic sank in the ocean and was a great iron (steel) ship; the story reaches both." },
+        { "text": "SHIPWRECK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:TITANIC"], "verdict": "BORDERLINE", "reason": "Ocean is direct; iron only via the rusting iron hull of a wreck, a secondary image." },
+        { "text": "ANCHOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An iron anchor dropped in the ocean; one object, both words." }
+      ],
+      "strong_hints": ["ANCHOR", "RUST", "TITANIC"],
+      "best_available": { "text": "ANCHOR", "why": "Anchors are the iconic iron object of the sea." },
+      "pair_note": "Good pair; SHIPWRECK duplicates TITANIC with a weaker iron side."
+    },
+    {
+      "pair_id": "p_iron__pirate",
+      "a": "IRON",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "HOOK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Captain Hook's iron hook; the pirate's prosthetic is literally iron." },
+        { "text": "CANNON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pirate ships fire iron cannon; shared object." },
+        { "text": "CHAINS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Iron chains are direct; pirates in chains (captured, hanged) is a reachable but secondary image." }
+      ],
+      "strong_hints": ["HOOK", "CANNON"],
+      "best_available": { "text": "HOOK", "why": "The pirate hook is a named iron object." },
+      "pair_note": "Strong pair with two clean object routes."
+    },
+    {
+      "pair_id": "p_iron__queen",
+      "a": "IRON",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "CERSEI", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "Queen Cersei sits the Iron Throne; the story reaches both for Game of Thrones viewers." },
+        { "text": "LADY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Iron Lady is a famous epithet; a queen is the first lady of a realm, a fair rank route." },
+        { "text": "THRONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron Throne and a queen's throne." }
+      ],
+      "strong_hints": ["THRONE", "LADY", "CERSEI"],
+      "best_available": { "text": "THRONE", "why": "Broadest and most direct on both sides." },
+      "pair_note": "Three passes; CERSEI is the most fandom-dependent."
+    },
+    {
+      "pair_id": "p_iron__ring",
+      "a": "IRON",
+      "b": "RING",
+      "hints": [
+        { "text": "ANVIL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "An anvil is iron and an anvil rings when struck; verb sense of ring is allowed." },
+        { "text": "RUST", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Iron rusts; 'ring rust' (boxing) is too niche to count as a ring route." },
+        { "text": "FORGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron is forged, and the One Ring was forged (Lord of the Rings); forging a ring is familiar." }
+      ],
+      "strong_hints": ["FORGE", "ANVIL"],
+      "best_available": { "text": "FORGE", "why": "Forging iron and forging a ring are both common phrases." },
+      "pair_note": "FORGE and ANVIL work; RUST is one-sided."
+    },
+    {
+      "pair_id": "p_iron__robot",
+      "a": "IRON",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "METAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron is a metal; robots are metal; a shared material that is central to both." },
+        { "text": "GIANT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Iron Giant is a robot; one film title carries both words." },
+        { "text": "MAN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Iron Man is direct; robot via 'mechanical man' or the suit being robotic is a hop." }
+      ],
+      "strong_hints": ["METAL", "GIANT"],
+      "best_available": { "text": "METAL", "why": "Immediate on both sides." },
+      "pair_note": "Good pair; MAN is iron-weighted."
+    },
+    {
+      "pair_id": "p_iron__rock",
+      "a": "IRON",
+      "b": "ROCK",
+      "hints": [
+        { "text": "METEORITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A meteorite is a rock from space and iron meteorites are the famous kind." },
+        { "text": "MAGNET", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Magnets attract iron; rock only via magnetite/lodestone, a specialist step." },
+        { "text": "ORE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron ore is rock containing iron; the compound names both." }
+      ],
+      "strong_hints": ["ORE", "METEORITE"],
+      "best_available": { "text": "ORE", "why": "Iron ore is the everyday compound and ore is rock." },
+      "pair_note": "ORE is ideal; MAGNET is the weak one."
+    },
+    {
+      "pair_id": "p_iron__rose",
+      "a": "IRON",
+      "b": "ROSE",
+      "hints": [
+        { "text": "GARDEN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Rose garden is direct; iron only via wrought-iron garden gates and furniture, a soft pull." },
+        { "text": "MAIDEN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Iron Maiden is a set name; no recognizable maiden route reaches rose." },
+        { "text": "GATE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:GARDEN"], "verdict": "BORDERLINE", "reason": "Iron gate is direct; roses climbing a gate is a picture but not a strong rose pull." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GARDEN", "why": "The wrought-iron gate in a rose garden is the one scene that holds both, and rose garden is instant." },
+      "pair_note": "No PASS; the pair's only shared scene is a wrought-iron rose garden, which neither hint nails."
+    },
+    {
+      "pair_id": "p_iron__salt",
+      "a": "IRON",
+      "b": "SALT",
+      "hints": [
+        { "text": "MINERAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron and salt are both minerals, including on a nutrition label; a shared category." },
+        { "text": "SEA", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Sea salt is direct; sea has no recognizable iron route." },
+        { "text": "RUST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron rusts and salt is the famous accelerator of rust (salted roads, sea air)." }
+      ],
+      "strong_hints": ["MINERAL", "RUST"],
+      "best_available": { "text": "MINERAL", "why": "Both words are textbook minerals." },
+      "pair_note": "Two passes; SEA is filler toward salt only."
+    },
+    {
+      "pair_id": "p_iron__shadow",
+      "a": "IRON",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "BAR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Iron bar is direct; nothing recognizable links bar to shadow." },
+        { "text": "CURTAIN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Iron Curtain is a set phrase; a curtain casting shadow or the Cold War's 'shadow' is an invented rescue." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CURTAIN", "why": "Weak either way; a curtain at least darkens a room, whereas BAR has nothing on the shadow side." },
+      "pair_note": "No PASS and no genuine two-way hint; the pair needs a fresh idea."
+    },
+    {
+      "pair_id": "p_iron__shark",
+      "a": "IRON",
+      "b": "SHARK",
+      "hints": [
+        { "text": "JAWS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Jaws is the shark film; 'jaws of iron' or iron-jawed as a grip metaphor is a soft iron route." },
+        { "text": "CAGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shark-cage diving puts a diver in a metal (iron) cage; one scene, both words." }
+      ],
+      "strong_hints": ["CAGE"],
+      "best_available": { "text": "CAGE", "why": "Shark cage is a known compound and cages are iron." },
+      "pair_note": "CAGE carries the pair; JAWS is shark-weighted."
+    },
+    {
+      "pair_id": "p_iron__snake",
+      "a": "IRON",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "ROD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Iron rod is direct; snake via the rod of Asclepius or Moses' staff is a learned step." },
+        { "text": "COIL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "A snake coils; iron coil only via coiled iron/electromagnet cores, a soft pull." },
+        { "text": "PIPE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Iron pipe is direct; a plumber snakes a pipe with a drain snake, a familiar verb/tool use." }
+      ],
+      "strong_hints": ["PIPE"],
+      "best_available": { "text": "PIPE", "why": "Iron pipe plus the plumbing snake gives a genuine two-way route." },
+      "pair_note": "PIPE is a neat route; the others are one-sided in practice."
+    },
+    {
+      "pair_id": "p_iron__spider",
+      "a": "IRON",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "AVENGERS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:MARVEL"], "verdict": "PASS", "reason": "Iron Man is a founding Avenger and Spider-Man joins the team in the films." },
+        { "text": "MAN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron Man and Spider-Man; two of the best-known compounds in popular culture." },
+        { "text": "MARVEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both heroes are Marvel characters." }
+      ],
+      "strong_hints": ["MAN", "MARVEL", "AVENGERS"],
+      "best_available": { "text": "MAN", "why": "Both compounds are instant." },
+      "pair_note": "Excellent pair via the superhero route."
+    },
+    {
+      "pair_id": "p_iron__spring",
+      "a": "IRON",
+      "b": "SPRING",
+      "hints": [
+        { "text": "MATTRESS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Spring mattress is direct; iron bed frames are not an iron route a player would take from mattress." },
+        { "text": "COIL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Coil spring is direct; iron coil is a soft pull toward iron." },
+        { "text": "STEEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Steel is made from iron, and springs are steel; a shared material." }
+      ],
+      "strong_hints": ["STEEL"],
+      "best_available": { "text": "STEEL", "why": "Steel sits between the two words naturally." },
+      "pair_note": "STEEL carries the pair; the rest are spring-weighted."
+    },
+    {
+      "pair_id": "p_iron__star",
+      "a": "IRON",
+      "b": "STAR",
+      "hints": [
+        { "text": "CORE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Iron core (Earth) is broad; a star's core is a familiar notion and stars fuse up to iron in their cores." },
+        { "text": "MAN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Iron Man is direct; star via Starman or 'star of the film' is a stretch." },
+        { "text": "METEOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A meteor is a shooting star, and iron meteorites are the famous kind." }
+      ],
+      "strong_hints": ["METEOR", "CORE"],
+      "best_available": { "text": "METEOR", "why": "Shooting star is instant and iron meteorite is well known." },
+      "pair_note": "METEOR is the clean route; CORE passes on the strength of 'core' being a word used of both planets and stars."
+    },
+    {
+      "pair_id": "p_iron__train",
+      "a": "IRON",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "TRACKS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Train tracks are iron rails." },
+        { "text": "HORSE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "'Iron horse' is the classic nickname for a train; one phrase names both." },
+        { "text": "RAILS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TRACKS"], "verdict": "PASS", "reason": "Iron rails carry trains." }
+      ],
+      "strong_hints": ["HORSE", "TRACKS", "RAILS"],
+      "best_available": { "text": "HORSE", "why": "A single idiom that means both." },
+      "pair_note": "Strong pair; TRACKS and RAILS are near-duplicates."
+    },
+    {
+      "pair_id": "p_iron__water",
+      "a": "IRON",
+      "b": "WATER",
+      "hints": [
+        { "text": "STEAM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A steam iron is an everyday appliance and steam is boiled water." },
+        { "text": "PIPE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron pipes carry water." },
+        { "text": "RUST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Iron plus water makes rust; the two words are the recipe." }
+      ],
+      "strong_hints": ["STEAM", "RUST", "PIPE"],
+      "best_available": { "text": "STEAM", "why": "Steam iron is a named compound and steam is water." },
+      "pair_note": "Very strong pair."
+    },
+    {
+      "pair_id": "p_iron__witch",
+      "a": "IRON",
+      "b": "WITCH",
+      "hints": [
+        { "text": "HORSESHOE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "Horseshoes are iron; nailing one over the door to keep witches out is classic folklore, though not everyone knows the witch part." },
+        { "text": "WARD", "connection_to_a": 1, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Iron as a ward against witches is folklore lore; 'ward' alone pulls weakly toward either word." },
+        { "text": "CAULDRON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The witch's cauldron is a cast-iron pot; one object, both words." }
+      ],
+      "strong_hints": ["CAULDRON", "HORSESHOE"],
+      "best_available": { "text": "CAULDRON", "why": "Cast-iron cauldron is the witch's signature prop." },
+      "pair_note": "CAULDRON is ideal; HORSESHOE is a fair folklore route, WARD is too thin."
+    }
+  ]
+}

@@ -1,0 +1,521 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-18",
+    "date": "2026-10-17",
+    "input": "u18-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u18-blind-input.json and no other file, repository content, web page or API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_fire__glass",
+      "a": "FIRE",
+      "b": "GLASS",
+      "hints": [
+        { "text": "LANTERN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A lantern is a flame (fire) enclosed in a glass housing, one familiar object reaching both words." },
+        { "text": "BLOWN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Glass is blown (glassblowing) strongly, but fire is only reached via blowing a flame out or stoking it, a thin verb link." },
+        { "text": "FURNACE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A furnace holds fire, and glass is melted and worked in a glass furnace." }
+      ],
+      "strong_hints": ["LANTERN", "FURNACE"],
+      "best_available": { "text": "LANTERN", "why": "A single everyday object that is literally fire inside glass." },
+      "pair_note": "Two clean hints; BLOWN leans on glass alone."
+    },
+    {
+      "pair_id": "p_fire__gold",
+      "a": "FIRE",
+      "b": "GOLD",
+      "hints": [
+        { "text": "FORGE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A forge is a fire for working metal; gold is forged by goldsmiths, though iron is the more typical forge metal." },
+        { "text": "REFINED", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Gold is refined, and the familiar phrase 'refined by fire' / 'refiner's fire' supplies the fire side." },
+        { "text": "MELT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire melts things and melting gold is a familiar scene (gold bars, molten gold)." }
+      ],
+      "strong_hints": ["MELT", "FORGE", "REFINED"],
+      "best_available": { "text": "MELT", "why": "Shared verb that is vivid for both words without needing a phrase." },
+      "pair_note": "All three pass; MELT is the broadest."
+    },
+    {
+      "pair_id": "p_fire__honey",
+      "a": "FIRE",
+      "b": "HONEY",
+      "hints": [
+        { "text": "WAX", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Beeswax sits beside honey in the hive, and wax burns as candle fuel, reaching fire via candles." },
+        { "text": "BEE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bees make honey, but there is no recognizable bee route to fire." },
+        { "text": "SMOKE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Smoke comes from fire, and beekeepers smoke the hive to calm bees when harvesting honey." }
+      ],
+      "strong_hints": ["SMOKE", "WAX"],
+      "best_available": { "text": "SMOKE", "why": "The beekeeper's smoker is a recognizable scene and fire is immediate." },
+      "pair_note": "A hard pair; both passes need a hop on one side. BEE is pure filler on the fire side."
+    },
+    {
+      "pair_id": "p_fire__ice",
+      "a": "FIRE",
+      "b": "ICE",
+      "hints": [
+        { "text": "THRONES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Game of Thrones is the adaptation of 'A Song of Ice and Fire', naming both words." },
+        { "text": "OPPOSITES", "connection_to_a": 1, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Fire and ice are a classic pair of opposites; the hint points at the relationship between the two targets." },
+        { "text": "FROST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Frost is ice, and the fire side only arrives through Robert Frost's poem 'Fire and Ice', which few players will reach." }
+      ],
+      "strong_hints": ["THRONES", "OPPOSITES"],
+      "best_available": { "text": "THRONES", "why": "Both words are literally in the source title." },
+      "pair_note": "THRONES is excellent; FROST is clever but one-sided in practice."
+    },
+    {
+      "pair_id": "p_fire__key",
+      "a": "FIRE",
+      "b": "KEY",
+      "hints": [
+        { "text": "STRIKE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "You strike a match or flint to make fire, and you strike a key on a keyboard or piano." },
+        { "text": "IGNITION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ignition is the start of fire, and the ignition key starts a car." },
+        { "text": "ESCAPE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire escape and the Escape key are both familiar compounds." }
+      ],
+      "strong_hints": ["ESCAPE", "IGNITION", "STRIKE"],
+      "best_available": { "text": "ESCAPE", "why": "Two everyday compounds, zero explanation needed." },
+      "pair_note": "A model pair; all three are strong."
+    },
+    {
+      "pair_id": "p_fire__king",
+      "a": "FIRE",
+      "b": "KING",
+      "hints": [
+        { "text": "FIRED", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["contains_target", "one_sided"], "verdict": "FAIL", "reason": "Contains the target FIRE as a substring (rule failure); the king side is also absent." },
+        { "text": "BURGER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Burger King is the brand, and burgers are flame-grilled over fire (that chain's own slogan)." },
+        { "text": "DRAGON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Dragons breathe fire, but the king side is only a loose fantasy association (Dragon King), not a specific scene." }
+      ],
+      "strong_hints": ["BURGER"],
+      "best_available": { "text": "BURGER", "why": "Brand route to king plus the flame-grill image for fire." },
+      "pair_note": "FIRED is a rule failure. BURGER is the only servable hint."
+    },
+    {
+      "pair_id": "p_fire__knight",
+      "a": "FIRE",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "TORCH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A torch is fire; the knight side is only a generic medieval-castle image with no specific knight-and-torch scene." },
+        { "text": "DRAGON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dragons breathe fire and knights slay dragons (St George), a shared story." },
+        { "text": "FORGE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A forge is fire, and a knight's sword and armor come from the forge." }
+      ],
+      "strong_hints": ["DRAGON", "FORGE"],
+      "best_available": { "text": "DRAGON", "why": "The knight-versus-dragon story is universally known and fire is intrinsic to it." },
+      "pair_note": "DRAGON is excellent here; TORCH is mostly fire."
+    },
+    {
+      "pair_id": "p_fire__lion",
+      "a": "FIRE",
+      "b": "LION",
+      "hints": [
+        { "text": "MANE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A mane is the lion's defining feature, but there is no recognizable mane route to fire beyond poetic 'fiery mane'." },
+        { "text": "CIRCUS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The circus has lion tamers and fire-eaters/flaming hoops, one shared scene." },
+        { "text": "LEO", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Leo is the lion sign of the zodiac and is one of the fire signs." }
+      ],
+      "strong_hints": ["CIRCUS", "LEO"],
+      "best_available": { "text": "CIRCUS", "why": "Lion tamer and fire act in one tent." },
+      "pair_note": "MANE is one-sided filler; the other two are good."
+    },
+    {
+      "pair_id": "p_fire__moon",
+      "a": "FIRE",
+      "b": "MOON",
+      "hints": [
+        { "text": "LANTERN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "BORDERLINE", "reason": "A lantern holds a flame; the moon side relies on the moon-as-lantern poetic image or Mid-Autumn lantern festivals, which most players will not reach." },
+        { "text": "ROCKET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Rockets fly to the moon on a tail of fire." },
+        { "text": "RING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "'Ring of Fire' is a familiar phrase and a ring around the moon (halo) is a known sight." }
+      ],
+      "strong_hints": ["ROCKET", "RING"],
+      "best_available": { "text": "ROCKET", "why": "Fire at one end, moon at the other, one picture." },
+      "pair_note": "ROCKET is ideal; LANTERN does not reach the moon for most players."
+    },
+    {
+      "pair_id": "p_fire__mouse",
+      "a": "FIRE",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "SMOKE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Smoke is fire's companion but has no recognizable mouse connection." },
+        { "text": "WIRE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A wired computer mouse (and mice chewing wires) gives the mouse side; faulty wiring starting fires gives the fire side." }
+      ],
+      "strong_hints": ["WIRE"],
+      "best_available": { "text": "WIRE", "why": "The only hint that touches both words." },
+      "pair_note": "Hard pair; WIRE is adequate, SMOKE is filler."
+    },
+    {
+      "pair_id": "p_fire__night",
+      "a": "FIRE",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "BONFIRE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target FIRE as a substring (rule failure), though Bonfire Night would otherwise fit both." },
+        { "text": "FIREWORKS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target FIRE as a substring (rule failure)." },
+        { "text": "GLOW", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Fire glows, and a glow is something seen against the dark of night." },
+        { "text": "CAMP", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Campfire is the compound, and camping around the fire is a night scene." }
+      ],
+      "strong_hints": ["CAMP", "GLOW"],
+      "best_available": { "text": "CAMP", "why": "Campfire at night is one shared picture." },
+      "pair_note": "Two rule failures; CAMP and GLOW remain servable."
+    },
+    {
+      "pair_id": "p_fire__ocean",
+      "a": "FIRE",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "VOLCANO", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Volcanoes are fire and lava; many are undersea or form ocean islands (Hawaii)." },
+        { "text": "RING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Ring of Fire is the volcanic belt around the Pacific Ocean, reaching both words through one name." }
+      ],
+      "strong_hints": ["RING", "VOLCANO"],
+      "best_available": { "text": "RING", "why": "The Pacific Ring of Fire is literally fire and ocean." },
+      "pair_note": "Both pass; RING is the sharper one."
+    },
+    {
+      "pair_id": "p_fire__pirate",
+      "a": "FIRE",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "BEARD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "BORDERLINE", "reason": "Blackbeard gives the pirate side; the fire side relies on the legend that he lit fuses in his beard, which few players know." },
+        { "text": "CANNON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pirate ships fire cannons; 'fire' is the verb for a cannon." }
+      ],
+      "strong_hints": ["CANNON"],
+      "best_available": { "text": "CANNON", "why": "Verb route to fire plus the iconic pirate weapon." },
+      "pair_note": "CANNON is strong; BEARD needs trivia."
+    },
+    {
+      "pair_id": "p_fire__queen",
+      "a": "FIRE",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "FREDDIE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Freddie Mercury fronts Queen; the fire side only works via Freddy Krueger's burn story, a different Freddy and a stretch." },
+        { "text": "DAENERYS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Daenerys is the Dragon Queen of Game of Thrones, the Unburnt who walks through fire." }
+      ],
+      "strong_hints": ["DAENERYS"],
+      "best_available": { "text": "DAENERYS", "why": "Queen and fire are both core to the character." },
+      "pair_note": "DAENERYS is strong for anyone who knows the show; FREDDIE is one-sided."
+    },
+    {
+      "pair_id": "p_fire__ring",
+      "a": "FIRE",
+      "b": "RING",
+      "hints": [
+        { "text": "FORGE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A forge is fire, and the One Ring was forged in fire (Lord of the Rings)." },
+        { "text": "CASH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Johnny Cash's 'Ring of Fire' names both targets." },
+        { "text": "CIRCUS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The circus ring hosts fire-eaters and flaming hoops." }
+      ],
+      "strong_hints": ["CASH", "CIRCUS", "FORGE"],
+      "best_available": { "text": "CASH", "why": "The song title is exactly the pair." },
+      "pair_note": "Three good routes; CIRCUS is broadest, CASH is the neatest."
+    },
+    {
+      "pair_id": "p_fire__robot",
+      "a": "FIRE",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "FIGHTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Firefighter is the compound; fighting robots (BattleBots, mech fighters) give the robot side." },
+        { "text": "TERMINATOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Terminator is the iconic robot; fire arrives via its gunfire and the molten-steel finale." }
+      ],
+      "strong_hints": ["FIGHTER", "TERMINATOR"],
+      "best_available": { "text": "FIGHTER", "why": "Compound on one side, a known genre on the other." },
+      "pair_note": "Both pass at moderate strength; neither is a clean 2/2."
+    },
+    {
+      "pair_id": "p_fire__rock",
+      "a": "FIRE",
+      "b": "ROCK",
+      "hints": [
+        { "text": "FLINT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Flint is a rock used to strike fire." },
+        { "text": "LAVA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Lava is molten rock, burning hot." },
+        { "text": "VOLCANO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A volcano is a mountain of rock that erupts fire." }
+      ],
+      "strong_hints": ["FLINT", "LAVA", "VOLCANO"],
+      "best_available": { "text": "FLINT", "why": "A rock whose purpose is making fire." },
+      "pair_note": "Excellent pair; all three are strong."
+    },
+    {
+      "pair_id": "p_fire__rose",
+      "a": "FIRE",
+      "b": "ROSE",
+      "hints": [
+        { "text": "RISE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Rose is the past tense of rise (inflection route); flames and smoke rise, and the phoenix rises from fire." },
+        { "text": "RED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Fire is red and roses are red, a shared property both words own strongly." },
+        { "text": "PASSION", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Fiery passion and roses as symbols of passionate love share one mood." }
+      ],
+      "strong_hints": ["RED", "RISE", "PASSION"],
+      "best_available": { "text": "RED", "why": "The most immediate shared property for both words." },
+      "pair_note": "RED is the safe serve; RISE is clever and depends on the verb reading of ROSE."
+    },
+    {
+      "pair_id": "p_fire__salt",
+      "a": "FIRE",
+      "b": "SALT",
+      "hints": [
+        { "text": "MEAT", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Meat is grilled over fire and seasoned or preserved with salt, but neither link is specific enough to point at the word." },
+        { "text": "CURE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Salt-curing is strong; fire-curing (over fire or smoke) is real but less familiar than smoke-curing." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CURE", "why": "Salt is nailed and the fire-cured route exists even if it is secondary." },
+      "pair_note": "No PASS. Both hints are preservation-kitchen stretches; a smoke-based hint would serve this pair better."
+    },
+    {
+      "pair_id": "p_fire__shadow",
+      "a": "FIRE",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "CAVE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Plato's cave and the cave-dweller scene both have a fire casting shadows on the wall." },
+        { "text": "FLICKER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Flames flicker and so do the shadows they throw, one shared verb." },
+        { "text": "DANCE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Flames dance and shadows dance on the wall, a shared verb from the same firelit scene." }
+      ],
+      "strong_hints": ["FLICKER", "CAVE", "DANCE"],
+      "best_available": { "text": "FLICKER", "why": "The verb belongs to both words equally." },
+      "pair_note": "A pair with a natural shared scene; all three pass."
+    },
+    {
+      "pair_id": "p_fire__shark",
+      "a": "FIRE",
+      "b": "SHARK",
+      "hints": [
+        { "text": "ATTACK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shark attack is the compound; to open fire is to attack, and 'under fire' is a known phrase." },
+        { "text": "JAWS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Jaws is the shark film, but nothing recognizable ties jaws to fire." }
+      ],
+      "strong_hints": ["ATTACK"],
+      "best_available": { "text": "ATTACK", "why": "The only hint that reaches fire at all." },
+      "pair_note": "Hard pair; ATTACK is adequate, JAWS is one-sided."
+    },
+    {
+      "pair_id": "p_fire__snake",
+      "a": "FIRE",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "HISS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Snakes hiss, and a fire hisses when wet wood or water meets the flame." },
+        { "text": "DRAGON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Dragons breathe fire and are serpents in form (Chinese dragons especially)." },
+        { "text": "TONGUE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A snake's forked tongue and 'tongues of flame' are both familiar." }
+      ],
+      "strong_hints": ["TONGUE", "HISS", "DRAGON"],
+      "best_available": { "text": "TONGUE", "why": "Idiom on the fire side, anatomy on the snake side, both immediate." },
+      "pair_note": "All pass; TONGUE is the neatest."
+    },
+    {
+      "pair_id": "p_fire__spider",
+      "a": "FIRE",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "ANT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Fire ant is the compound; the spider side is only the shared creepy-crawly category." },
+        { "text": "WEB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A web is the spider's thing; there is no recognizable web route to fire." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ANT", "why": "At least the fire side is a real compound and ants sit next to spiders in a player's mind." },
+      "pair_note": "No PASS. Both hints are one-sided; the pair needs a new hint (e.g. a venom/burn route)."
+    },
+    {
+      "pair_id": "p_fire__spring",
+      "a": "FIRE",
+      "b": "SPRING",
+      "hints": [
+        { "text": "LEAP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Leap is a synonym of spring (the verb); flames leap, which supplies the fire side." },
+        { "text": "TRIGGER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Pulling the trigger fires a gun; a trigger is spring-loaded." },
+        { "text": "HOT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire is hot and hot spring is a familiar compound." }
+      ],
+      "strong_hints": ["HOT", "TRIGGER", "LEAP"],
+      "best_available": { "text": "HOT", "why": "Property on one side, compound on the other." },
+      "pair_note": "HOT is the clear serve; LEAP works but is near-synonymous with one target."
+    },
+    {
+      "pair_id": "p_fire__star",
+      "a": "FIRE",
+      "b": "STAR",
+      "hints": [
+        { "text": "BURNING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire burns and stars are burning balls of gas." },
+        { "text": "SHOOTING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shooting star is the compound; shooting is firing a gun." },
+        { "text": "SUN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The sun is a star and a ball of fire." }
+      ],
+      "strong_hints": ["SHOOTING", "SUN", "BURNING"],
+      "best_available": { "text": "SHOOTING", "why": "Compound plus verb, both instant." },
+      "pair_note": "Excellent pair; all three are strong."
+    },
+    {
+      "pair_id": "p_fire__train",
+      "a": "FIRE",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "COAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Coal fuels a fire and the coal-fired steam train." },
+        { "text": "STEAM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Steam train is the compound; steam is made by fire boiling water in the firebox." },
+        { "text": "ENGINE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire engine and train engine are both everyday compounds." }
+      ],
+      "strong_hints": ["ENGINE", "COAL", "STEAM"],
+      "best_available": { "text": "ENGINE", "why": "Two compounds, no explanation needed." },
+      "pair_note": "All pass; ENGINE and COAL are the strongest."
+    },
+    {
+      "pair_id": "p_fire__water",
+      "a": "FIRE",
+      "b": "WATER",
+      "hints": [
+        { "text": "HYDRANT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A fire hydrant supplies water to fight fire." },
+        { "text": "HOSE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A fire hose sprays water." },
+        { "text": "EXTINGUISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Water extinguishes fire; the verb binds the pair." }
+      ],
+      "strong_hints": ["HYDRANT", "HOSE", "EXTINGUISH"],
+      "best_available": { "text": "HYDRANT", "why": "One object that is fire on the label and water inside." },
+      "pair_note": "Excellent pair; all three are strong."
+    },
+    {
+      "pair_id": "p_fire__witch",
+      "a": "FIRE",
+      "b": "WITCH",
+      "hints": [
+        { "text": "CAULDRON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The witch's cauldron bubbles over a fire." },
+        { "text": "SALEM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["wrong_fact", "one_sided"], "verdict": "FAIL", "reason": "Salem is the witch-trial town, but the fire side depends on the misconception that Salem burned witches; they were hanged, so the route rests on a wrong fact." },
+        { "text": "STAKE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Witches were burned at the stake; the phrase carries both words." }
+      ],
+      "strong_hints": ["STAKE", "CAULDRON"],
+      "best_available": { "text": "STAKE", "why": "Burning at the stake is the shared story itself." },
+      "pair_note": "Two strong hints; SALEM is failed on the factual rule even though many players would follow the misconception."
+    },
+    {
+      "pair_id": "p_fire__wolf",
+      "a": "FIRE",
+      "b": "WOLF",
+      "hints": [
+        { "text": "BRICK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The brick house defeats the wolf in the Three Little Pigs; fire only arrives via the pot boiling in that house's fireplace or fire-bricks, both a hop too far." },
+        { "text": "TORCH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A torch is fire, and torches keep wolves at bay or lead the torch-bearing mob hunting the werewolf." },
+        { "text": "CAMPFIRE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target FIRE as a substring (rule failure)." }
+      ],
+      "strong_hints": ["TORCH"],
+      "best_available": { "text": "TORCH", "why": "Fire-to-ward-off-wolves is a recognizable wilderness scene." },
+      "pair_note": "CAMPFIRE is a rule failure; TORCH is the only servable hint."
+    },
+    {
+      "pair_id": "p_fish__ghost",
+      "a": "FISH",
+      "b": "GHOST",
+      "hints": [
+        { "text": "FLOAT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghosts float, and fish float (a fishing float, or the dead fish belly-up)." },
+        { "text": "PALE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "colour_mood_material"], "verdict": "FAIL", "reason": "Ghosts are pale, but fish are not recognizably pale as a defining property." }
+      ],
+      "strong_hints": ["FLOAT"],
+      "best_available": { "text": "FLOAT", "why": "Shared verb that fits both literally." },
+      "pair_note": "FLOAT is good; PALE is one-sided."
+    },
+    {
+      "pair_id": "p_fish__glass",
+      "a": "FISH",
+      "b": "GLASS",
+      "hints": [
+        { "text": "TANK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A fish tank is a glass tank." },
+        { "text": "AQUARIUM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TANK"], "verdict": "PASS", "reason": "An aquarium is fish behind glass; essentially the same route as TANK." },
+        { "text": "BOWL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A fishbowl is a glass bowl." }
+      ],
+      "strong_hints": ["TANK", "BOWL", "AQUARIUM"],
+      "best_available": { "text": "TANK", "why": "Fish tank is the most immediate compound." },
+      "pair_note": "All three pass and are near-equivalent routes."
+    },
+    {
+      "pair_id": "p_fish__heart",
+      "a": "FISH",
+      "b": "HEART",
+      "hints": [
+        { "text": "OMEGA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Omega-3 is the fish-oil nutrient marketed for heart health." },
+        { "text": "SALMON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [] , "verdict": "PASS", "reason": "Salmon is a fish and the standard example of a heart-healthy food." },
+        { "text": "OIL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Fish oil is the compound and it is taken for the heart." }
+      ],
+      "strong_hints": ["OMEGA", "OIL", "SALMON"],
+      "best_available": { "text": "OMEGA", "why": "Omega-3 is the exact bridge between fish and heart." },
+      "pair_note": "All three share the heart-healthy-fish route; OMEGA is the most pointed."
+    },
+    {
+      "pair_id": "p_fish__honey",
+      "a": "FISH",
+      "b": "HONEY",
+      "hints": [
+        { "text": "BEAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Bears eat honey and catch fish, the two foods everyone associates with them." },
+        { "text": "GLAZE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Honey glaze is the compound; honey-glazed salmon is a familiar dish reaching fish." }
+      ],
+      "strong_hints": ["BEAR", "GLAZE"],
+      "best_available": { "text": "BEAR", "why": "One animal whose two famous foods are the two targets." },
+      "pair_note": "BEAR is excellent; GLAZE is a fair kitchen route."
+    },
+    {
+      "pair_id": "p_fish__horse",
+      "a": "FISH",
+      "b": "HORSE",
+      "hints": [
+        { "text": "SEAHORSE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains the target HORSE as a substring (rule failure)." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fish live in the sea, and sea + horse makes seahorse." },
+        { "text": "MANE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "A mane is the horse's feature; no recognizable mane route reaches fish." }
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": { "text": "SEA", "why": "Habitat for fish plus the seahorse compound." },
+      "pair_note": "SEA does the job; SEAHORSE is a rule failure and MANE is one-sided."
+    },
+    {
+      "pair_id": "p_fish__ice",
+      "a": "FISH",
+      "b": "ICE",
+      "hints": [
+        { "text": "HOLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice fishing means cutting a hole in the ice to fish through." },
+        { "text": "FROZEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ice is frozen water and frozen fish is a supermarket staple." },
+        { "text": "MARKET", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Fish market is the compound; the fish there lie on ice." }
+      ],
+      "strong_hints": ["HOLE", "FROZEN", "MARKET"],
+      "best_available": { "text": "HOLE", "why": "The ice-fishing hole is one specific shared scene." },
+      "pair_note": "All pass; HOLE and FROZEN are the strongest."
+    },
+    {
+      "pair_id": "p_fish__iron",
+      "a": "FISH",
+      "b": "IRON",
+      "hints": [
+        { "text": "HOOK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A fish hook is the compound and hooks are iron/metal." },
+        { "text": "SKILLET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Cast-iron skillet is the compound; frying fish in a skillet reaches fish." },
+        { "text": "ANCHOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "An anchor is iron, but the fish side is only the generic sea theme or a fishing boat's anchor." }
+      ],
+      "strong_hints": ["HOOK", "SKILLET"],
+      "best_available": { "text": "HOOK", "why": "Compound on fish and an obvious metal object." },
+      "pair_note": "HOOK and SKILLET serve; ANCHOR leans on iron alone."
+    },
+    {
+      "pair_id": "p_fish__key",
+      "a": "FISH",
+      "b": "KEY",
+      "hints": [
+        { "text": "WEST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Key West is the compound, but fish only arrives through Key West's fishing reputation, which is a second hop." },
+        { "text": "FLORIDA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Florida Keys give the key side; Florida's sport-fishing fame gives the fish side." }
+      ],
+      "strong_hints": ["FLORIDA"],
+      "best_available": { "text": "FLORIDA", "why": "Geography route that at least evokes fishing directly." },
+      "pair_note": "Both hints use the same Keys geography; FLORIDA reaches fish a little more naturally than WEST."
+    },
+    {
+      "pair_id": "p_fish__king",
+      "a": "FISH",
+      "b": "KING",
+      "hints": [
+        { "text": "MACKEREL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Mackerel is a fish and king mackerel is a well-known species." },
+        { "text": "CRAB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "King crab is the compound; crab sits with fish as seafood/the fish counter." },
+        { "text": "KINGFISHER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains both targets KING and FISH as substrings (rule failure)." },
+        { "text": "SALMON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:MACKEREL"], "verdict": "PASS", "reason": "Salmon is a fish and king salmon (Chinook) is a familiar name." }
+      ],
+      "strong_hints": ["SALMON", "MACKEREL", "CRAB"],
+      "best_available": { "text": "SALMON", "why": "A more familiar fish than mackerel with the same king-species route." },
+      "pair_note": "Three passes on the king-species route; KINGFISHER is a rule failure."
+    },
+    {
+      "pair_id": "p_fish__knight",
+      "a": "FISH",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "SCALES", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Fish have scales; knights wore scale armor (scale mail)." },
+        { "text": "ARMOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:SCALES", "one_sided"], "verdict": "BORDERLINE", "reason": "Armor is the knight's; fish only arrive via scales-as-armor, the same idea as SCALES but from the weaker side." }
+      ],
+      "strong_hints": ["SCALES"],
+      "best_available": { "text": "SCALES", "why": "The shared-property route reaches both words directly." },
+      "pair_note": "Hard pair; SCALES is the one usable hint."
+    },
+    {
+      "pair_id": "p_fish__light",
+      "a": "FISH",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "GLOW", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Glow is light; glow-in-the-dark and bioluminescent fish (GloFish, deep-sea fish) reach fish." },
+        { "text": "LURE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A fishing lure is the compound; light lures fish and the anglerfish lures with its light." },
+        { "text": "ANGLER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "An angler is a fisher and the anglerfish carries its own light." }
+      ],
+      "strong_hints": ["ANGLER", "LURE", "GLOW"],
+      "best_available": { "text": "ANGLER", "why": "Fishing and the lit anglerfish in one word." },
+      "pair_note": "All pass; ANGLER is the most pointed."
+    }
+  ]
+}

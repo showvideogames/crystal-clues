@@ -1,0 +1,522 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-20",
+    "date": "2026-10-17",
+    "input": "u20-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u20-blind-input.json; no other file, search, web lookup or API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_ghost__rose",
+      "a": "GHOST",
+      "b": "ROSE",
+      "hints": [
+        { "text": "WREATH", "connection_to_a": 0, "connection_to_b": 1, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Rose wreaths exist (funeral flowers), but a wreath does not point at a ghost without a chain of grave-to-haunting reasoning." },
+        { "text": "GRAVE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghosts rise from graves, and a rose laid on a grave is a familiar graveside scene." },
+        { "text": "SCENT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Rose scent is immediate; the ghost side relies on the ghost-story trope of an unexplained perfume, which many players will not reach." }
+      ],
+      "strong_hints": ["GRAVE"],
+      "best_available": { "text": "GRAVE", "why": "The only hint that gives a shared scene (roses on a haunted grave) rather than a one-sided definition." },
+      "pair_note": "One solid shared-scene hint; the other two lean almost entirely on ROSE."
+    },
+    {
+      "pair_id": "p_ghost__salt",
+      "a": "GHOST",
+      "b": "SALT",
+      "hints": [
+        { "text": "SPILL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Spilling salt is a known superstition, but nothing about spilling points at a ghost." },
+        { "text": "CIRCLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A salt circle wards off ghosts and spirits in folklore and TV (Supernatural), and seance circles summon them, so the circle links both sides." },
+        { "text": "SHOULDER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Salt thrown over the shoulder is immediate; the ghost side (a presence looking over your shoulder, salt over the shoulder to blind the devil) is recognisable but softer." }
+      ],
+      "strong_hints": ["CIRCLE"],
+      "best_available": { "text": "CIRCLE", "why": "Folklore gives a real shared scene: a ring of salt keeps the ghost out." },
+      "pair_note": "CIRCLE carries the pair; SHOULDER is a defensible second if a softer ghost route is acceptable."
+    },
+    {
+      "pair_id": "p_ghost__shadow",
+      "a": "GHOST",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "FOLLOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A shadow follows you everywhere and a ghost follows (haunts) a person; shared verb." },
+        { "text": "FIGURE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghostly figure and shadowy figure are both stock phrases for a half-seen presence." }
+      ],
+      "strong_hints": ["FIGURE", "FOLLOW"],
+      "best_available": { "text": "FIGURE", "why": "Both compounds are everyday phrases pointing to the same spooky half-seen shape." },
+      "pair_note": "Two clean hints; the pair is easy because the words are already close."
+    },
+    {
+      "pair_id": "p_ghost__shark",
+      "a": "GHOST",
+      "b": "SHARK",
+      "hints": [
+        { "text": "JAWS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Jaws is the shark film; there is no ghost route at all." },
+        { "text": "WHITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Great white shark on one side, the white sheet ghost on the other; a colour, but anchored in a compound and a stock image." }
+      ],
+      "strong_hints": ["WHITE"],
+      "best_available": { "text": "WHITE", "why": "Great white plus the classic white ghost reaches both words at once." },
+      "pair_note": "WHITE is a strong serve; JAWS is pure filler on the ghost side."
+    },
+    {
+      "pair_id": "p_ghost__snake",
+      "a": "GHOST",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "GLIDE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Ghosts glide across the floor and snakes glide through grass; shared verb of silent movement." },
+        { "text": "RATTLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghosts rattle chains and a rattlesnake rattles; both routes are stock." },
+        { "text": "SHED", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Snakes shed skin, but shedding has no ghost meaning a player would see." }
+      ],
+      "strong_hints": ["RATTLE", "GLIDE"],
+      "best_available": { "text": "RATTLE", "why": "Chain-rattling ghost and rattlesnake are both instantly recognisable." },
+      "pair_note": "Two good verb and compound routes; SHED is one-sided."
+    },
+    {
+      "pair_id": "p_ghost__spider",
+      "a": "GHOST",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both are standard Halloween decorations and costumes." },
+        { "text": "ATTIC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The haunted attic and the spider-filled attic are the same dusty room." },
+        { "text": "COBWEB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Spiders spin cobwebs, and cobwebs dress every haunted house a ghost lives in." }
+      ],
+      "strong_hints": ["HALLOWEEN", "ATTIC", "COBWEB"],
+      "best_available": { "text": "HALLOWEEN", "why": "Broadest shared scene with both words equally present." },
+      "pair_note": "All three hints work; a strong pair."
+    },
+    {
+      "pair_id": "p_ghost__spring",
+      "a": "GHOST",
+      "b": "SPRING",
+      "hints": [
+        { "text": "WELL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "A spring feeds a well (wellspring); the ghost in the well is a known horror image (The Ring) but needs that reference." },
+        { "text": "RISE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Ghosts rise from the grave; water rises from a spring and things spring up, but the spring side is diffuse." },
+        { "text": "HOLY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Holy Ghost is a fixed phrase and holy springs or sacred wells are a familiar idea; both are compounds." }
+      ],
+      "strong_hints": ["HOLY"],
+      "best_available": { "text": "HOLY", "why": "Holy Ghost is unmistakable and holy spring is a real, recognisable phrase." },
+      "pair_note": "A hard pair; HOLY is the only hint that reaches both words through ordinary phrases."
+    },
+    {
+      "pair_id": "p_ghost__star",
+      "a": "GHOST",
+      "b": "STAR",
+      "hints": [
+        { "text": "DEAD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A ghost is a dead person and a dead star is an everyday astronomy phrase." },
+        { "text": "SWAYZE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Patrick Swayze is the star of the film Ghost; a proper name used as a hint." }
+      ],
+      "strong_hints": ["DEAD", "SWAYZE"],
+      "best_available": { "text": "DEAD", "why": "Broadest shared property; works without any pop-culture knowledge." },
+      "pair_note": "Both pass; SWAYZE is clever but skews to older players."
+    },
+    {
+      "pair_id": "p_ghost__train",
+      "a": "GHOST",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "PHANTOM", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target"], "verdict": "BORDERLINE", "reason": "Phantom is a straight synonym for ghost; the phantom train is a real trope but weaker than ghost train itself." },
+        { "text": "POLAR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "The Polar Express is a train; the hobo ghost on its roof is too obscure to count as a ghost route." },
+        { "text": "HOGWARTS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Hogwarts Express is a train and Hogwarts is full of ghosts (Nearly Headless Nick); one world, both words." }
+      ],
+      "strong_hints": ["HOGWARTS"],
+      "best_available": { "text": "HOGWARTS", "why": "A single famous setting that contains both a train and ghosts." },
+      "pair_note": "HOGWARTS is the serve; PHANTOM gives away the ghost side."
+    },
+    {
+      "pair_id": "p_ghost__water",
+      "a": "GHOST",
+      "b": "WATER",
+      "hints": [
+        { "text": "SHIP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghost ship is a fixed phrase and ships sail on water." },
+        { "text": "MOANING", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Ghosts moan; the water side exists only via Moaning Myrtle's bathroom, which is an explanation not a connection." },
+        { "text": "DROWNED", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Drowning happens in water and the drowned ghost is a standard ghost-story figure." }
+      ],
+      "strong_hints": ["SHIP", "DROWNED"],
+      "best_available": { "text": "SHIP", "why": "Ghost ship is the cleanest compound bridging both words." },
+      "pair_note": "Two good hints; MOANING fails on the water side."
+    },
+    {
+      "pair_id": "p_ghost__witch",
+      "a": "GHOST",
+      "b": "WITCH",
+      "hints": [
+        { "text": "HAUNTED", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Haunted is essentially the ghost's own adjective; witches appear in haunted houses only as general spookiness." },
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ghost and witch are the two classic Halloween costumes." },
+        { "text": "HOCUS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Hocus Pocus is the witch film and hocus pocus is witchcraft; the ghost in that film (Binx's spirit) is a detail, not a route most players hold." }
+      ],
+      "strong_hints": ["HALLOWEEN"],
+      "best_available": { "text": "HALLOWEEN", "why": "Equal, obvious footing for both words." },
+      "pair_note": "HALLOWEEN is the natural serve; the other two tilt toward one side each."
+    },
+    {
+      "pair_id": "p_ghost__wolf",
+      "a": "GHOST",
+      "b": "WOLF",
+      "hints": [
+        { "text": "THRONES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "In Game of Thrones, Ghost is Jon Snow's direwolf, so one name literally covers both words for anyone who knows the show." },
+        { "text": "HOWL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wolves howl at the moon and ghosts howl through haunted halls; shared sound verb." },
+        { "text": "MOOR", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["british_only", "needs_explanation"], "verdict": "BORDERLINE", "reason": "The foggy moor hosts both ghosts (Wuthering Heights) and wolf-like hounds (Baskervilles), but neither link is strong on its own." }
+      ],
+      "strong_hints": ["HOWL", "THRONES"],
+      "best_available": { "text": "HOWL", "why": "Broad shared verb that needs no franchise knowledge." },
+      "pair_note": "HOWL is universal; THRONES is a sharp pass for fans and a blank for others."
+    },
+    {
+      "pair_id": "p_glass__gold",
+      "a": "GLASS",
+      "b": "GOLD",
+      "hints": [
+        { "text": "LEAF", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Gold leaf is a compound; gilding on glass is a craft detail players will not reach from LEAF." },
+        { "text": "RIM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A gold-rimmed glass is a single familiar object." },
+        { "text": "GOBLET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Goblets are made of glass or of gold; both are stock images." }
+      ],
+      "strong_hints": ["GOBLET", "RIM"],
+      "best_available": { "text": "GOBLET", "why": "Both materials are classic goblet materials." },
+      "pair_note": "Two good object hints; LEAF is one-sided."
+    },
+    {
+      "pair_id": "p_glass__heart",
+      "a": "GLASS",
+      "b": "HEART",
+      "hints": [
+        { "text": "BROKEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Broken glass and broken heart are both everyday phrases." },
+        { "text": "SHATTER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:BROKEN"], "verdict": "PASS", "reason": "Glass shatters and hearts are shattered; same route as BROKEN with a stronger verb." },
+        { "text": "FRAGILE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fragile is the stock property of glass and of a tender heart." }
+      ],
+      "strong_hints": ["BROKEN", "SHATTER", "FRAGILE"],
+      "best_available": { "text": "BROKEN", "why": "The most familiar phrase on both sides." },
+      "pair_note": "All three pass; a very natural pair."
+    },
+    {
+      "pair_id": "p_glass__honey",
+      "a": "GLASS",
+      "b": "HONEY",
+      "hints": [
+        { "text": "AMBER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Honey is amber-coloured and amber glass is a standard bottle colour; a shared property, like SWEET for APPLE+HONEY." },
+        { "text": "JAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A honey jar is a glass jar; one object." }
+      ],
+      "strong_hints": ["JAR", "AMBER"],
+      "best_available": { "text": "JAR", "why": "The glass honey jar is literally both words in one object." },
+      "pair_note": "Both pass."
+    },
+    {
+      "pair_id": "p_glass__horse",
+      "a": "GLASS",
+      "b": "HORSE",
+      "hints": [
+        { "text": "FIGURINE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Glass figurines are a classic ornament and horses are a classic figurine subject." },
+        { "text": "CARRIAGE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A horse-drawn carriage on one side and Cinderella's glass carriage on the other." },
+        { "text": "MENAGERIE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "The Glass Menagerie is a famous play of glass animals, but its signature animal is a unicorn and the horse side is only generic." }
+      ],
+      "strong_hints": ["FIGURINE", "CARRIAGE"],
+      "best_available": { "text": "FIGURINE", "why": "Glass horse figurines are a recognisable single object." },
+      "pair_note": "Two passes; MENAGERIE needs the play and still only half-reaches horse."
+    },
+    {
+      "pair_id": "p_glass__iron",
+      "a": "GLASS",
+      "b": "IRON",
+      "hints": [
+        { "text": "CEILING", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Glass ceiling is a stock phrase; there is no familiar iron ceiling." },
+        { "text": "GREENHOUSE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Greenhouses are glass; the Victorian iron-and-glass frame is real but not what most players picture." },
+        { "text": "LANTERN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An old lantern is iron frame with glass panes; one familiar object." }
+      ],
+      "strong_hints": ["LANTERN"],
+      "best_available": { "text": "LANTERN", "why": "The only hint where both materials are visible in the same object." },
+      "pair_note": "LANTERN carries the pair; CEILING is one-sided filler."
+    },
+    {
+      "pair_id": "p_glass__key",
+      "a": "GLASS",
+      "b": "KEY",
+      "hints": [
+        { "text": "CASE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Glass case is immediate; a key case is not a phrase players hold." },
+        { "text": "CABINET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Glass cabinets and locked key cabinets (or the cabinet key) both land." }
+      ],
+      "strong_hints": ["CABINET"],
+      "best_available": { "text": "CABINET", "why": "A glass-fronted cabinet that locks with a key is a single scene." },
+      "pair_note": "CABINET works; CASE is one-sided."
+    },
+    {
+      "pair_id": "p_glass__king",
+      "a": "GLASS",
+      "b": "KING",
+      "hints": [
+        { "text": "ARTHUR", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "King Arthur is obvious; the glass side (Glastonbury as the Isle of Glass) is scholarly trivia." },
+        { "text": "GOBLET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A king drinks from a goblet and goblets are made of glass." },
+        { "text": "CASTLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Kings live in castles; the glass castle (memoir title, fairy-tale image) is a thinner phrase." }
+      ],
+      "strong_hints": ["GOBLET"],
+      "best_available": { "text": "GOBLET", "why": "Clean shared object." },
+      "pair_note": "GOBLET is the serve; ARTHUR is invented on the glass side."
+    },
+    {
+      "pair_id": "p_glass__knight",
+      "a": "GLASS",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "VISOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A knight's helmet visor is immediate; a glass visor (motorcycle or space helmet) is a loose association." },
+        { "text": "STAINED", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Stained glass is a compound and knights are a common stained-glass subject, but the knight side depends on picturing a church window." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "STAINED", "why": "A stained-glass knight is a real image players may see once prompted; VISOR barely reaches glass." },
+      "pair_note": "No PASS; both hints are half-connections."
+    },
+    {
+      "pair_id": "p_glass__light",
+      "a": "GLASS",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "PRISM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A glass prism splits light; one object, both words." },
+        { "text": "BULB", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A light bulb is a glass bulb." },
+        { "text": "WINDOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Windows are glass and let in light." }
+      ],
+      "strong_hints": ["BULB", "PRISM", "WINDOW"],
+      "best_available": { "text": "BULB", "why": "Most everyday object that is both." },
+      "pair_note": "All pass."
+    },
+    {
+      "pair_id": "p_glass__lion",
+      "a": "GLASS",
+      "b": "LION",
+      "hints": [
+        { "text": "ZOO", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Lions live at the zoo; the glass of the enclosure is there but secondary." },
+        { "text": "MENAGERIE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "PASS", "reason": "The Glass Menagerie gives the glass side and a menagerie is a collection of exotic beasts led by lions; both sides are real but literary." }
+      ],
+      "strong_hints": ["MENAGERIE"],
+      "best_available": { "text": "MENAGERIE", "why": "The only hint with a genuine route to both words, though it rewards readers." },
+      "pair_note": "Thin pair; MENAGERIE passes narrowly and ZOO is mostly lion."
+    },
+    {
+      "pair_id": "p_glass__moon",
+      "a": "GLASS",
+      "b": "MOON",
+      "hints": [
+        { "text": "FULL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Full moon and a full glass are both everyday phrases." },
+        { "text": "TELESCOPE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A telescope's glass lenses point at the moon; one scene." },
+        { "text": "LENS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:TELESCOPE"], "verdict": "BORDERLINE", "reason": "Lenses are glass; the moon arrives only via the implied telescope." }
+      ],
+      "strong_hints": ["FULL", "TELESCOPE"],
+      "best_available": { "text": "FULL", "why": "Two stock phrases with equal weight." },
+      "pair_note": "Two passes; LENS is a weaker form of TELESCOPE."
+    },
+    {
+      "pair_id": "p_glass__mouse",
+      "a": "GLASS",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "PAD", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mouse pad is a compound; nothing links a pad to glass." },
+        { "text": "CINDERELLA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The glass slipper and the helpful mice are both central to Cinderella." }
+      ],
+      "strong_hints": ["CINDERELLA"],
+      "best_available": { "text": "CINDERELLA", "why": "One story with both words as famous elements." },
+      "pair_note": "CINDERELLA is strong; PAD is one-sided."
+    },
+    {
+      "pair_id": "p_glass__night",
+      "a": "GLASS",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "NIGHTCAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Rule failure: the hint contains the target NIGHT, even though a nightcap is a glass of something at night." },
+        { "text": "WINE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A glass of wine is immediate; wine at night is only a loose evening association." },
+        { "text": "LANTERN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A glass lantern is lit at night; one scene." }
+      ],
+      "strong_hints": ["LANTERN"],
+      "best_available": { "text": "LANTERN", "why": "Clean object-and-scene route to both words." },
+      "pair_note": "LANTERN is the serve; NIGHTCAP must be removed as a contains_target failure."
+    },
+    {
+      "pair_id": "p_glass__ocean",
+      "a": "GLASS",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "AQUARIUM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An aquarium is a glass tank holding ocean life." },
+        { "text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "BORDERLINE", "reason": "Sea glass is a real compound, but sea is a near-synonym that hands over the ocean side." },
+        { "text": "BOTTLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A glass bottle with a message in it floats across the ocean." }
+      ],
+      "strong_hints": ["AQUARIUM", "BOTTLE"],
+      "best_available": { "text": "AQUARIUM", "why": "Both words are present in the one object." },
+      "pair_note": "Two clean passes; SEA is a judgement call on the synonym rule."
+    },
+    {
+      "pair_id": "p_glass__pirate",
+      "a": "GLASS",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "RUM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pirates drink rum and rum comes in a glass." },
+        { "text": "SPYGLASS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Rule failure: the hint contains the target GLASS, though the pirate spyglass is otherwise a perfect bridge." },
+        { "text": "EYE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Glass eye and the pirate's eye patch are both stock images." },
+        { "text": "BOTTLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Glass bottles of rum and ships in bottles belong to the pirate world." }
+      ],
+      "strong_hints": ["EYE", "RUM", "BOTTLE"],
+      "best_available": { "text": "EYE", "why": "Glass eye and pirate eye are each a two-word phrase a player sees at once." },
+      "pair_note": "Three passes; SPYGLASS must be dropped for containing the target."
+    },
+    {
+      "pair_id": "p_glass__queen",
+      "a": "GLASS",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "SLIPPER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Glass slipper is Cinderella's, and the story's royal is a prince, not a queen." },
+        { "text": "MIRROR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Mirrors are glass and the evil queen asks 'mirror, mirror' in Snow White." }
+      ],
+      "strong_hints": ["MIRROR"],
+      "best_available": { "text": "MIRROR", "why": "Snow White gives a shared scene on the owner's POISON calibration model." },
+      "pair_note": "MIRROR is strong; SLIPPER misses the queen."
+    },
+    {
+      "pair_id": "p_glass__ring",
+      "a": "GLASS",
+      "b": "RING",
+      "hints": [
+        { "text": "CLINK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Glasses clink in a toast; a struck glass rings, but ring-as-sound is a secondary reading of the target." },
+        { "text": "CRYSTAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Crystal glassware and a crystal ring are both familiar objects." },
+        { "text": "TOAST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Raising a glass is the toast; the ring only arrives via an implied wedding." }
+      ],
+      "strong_hints": ["CRYSTAL"],
+      "best_available": { "text": "CRYSTAL", "why": "A material both objects are commonly made of." },
+      "pair_note": "CRYSTAL is the only hint that reaches the ring directly."
+    },
+    {
+      "pair_id": "p_glass__robot",
+      "a": "GLASS",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "DOME", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Glass dome is a compound; the retro robot's glass dome head is a recognisable but dated image." },
+        { "text": "SCREEN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Screens are glass; a robot with a screen face is plausible but not a fixed association." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "DOME", "why": "The glass-domed robot head is a single image players may recall; SCREEN is more diffuse." },
+      "pair_note": "No PASS; both hints reach robot only through a specific mental picture."
+    },
+    {
+      "pair_id": "p_glass__rock",
+      "a": "GLASS",
+      "b": "ROCK",
+      "hints": [
+        { "text": "SHATTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Glass shatters, and a rock through a window is the thing that shatters it, but rock is the agent rather than the subject." },
+        { "text": "HOUSES", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Glass houses is immediate; the rock side depends on the proverb's thrown stones." },
+        { "text": "OBSIDIAN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Obsidian is volcanic glass and a rock; one word is literally both." }
+      ],
+      "strong_hints": ["OBSIDIAN"],
+      "best_available": { "text": "OBSIDIAN", "why": "A rock that is glass; exact on both sides." },
+      "pair_note": "OBSIDIAN is the serve; the other two circle the same glass-house-and-stone image."
+    },
+    {
+      "pair_id": "p_glass__rose",
+      "a": "GLASS",
+      "b": "ROSE",
+      "hints": [
+        { "text": "BEAST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Beauty and the Beast's enchanted rose sits under a glass bell jar; one famous scene." },
+        { "text": "STAINED", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Stained glass is immediate; the rose window of a cathedral is real but a specialist term." },
+        { "text": "VASE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Roses stand in a glass vase." }
+      ],
+      "strong_hints": ["VASE", "BEAST"],
+      "best_available": { "text": "VASE", "why": "Everyday object that holds both words." },
+      "pair_note": "Two passes; STAINED needs the rose-window term."
+    },
+    {
+      "pair_id": "p_glass__salt",
+      "a": "GLASS",
+      "b": "SALT",
+      "hints": [
+        { "text": "RIM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A salted rim on a cocktail glass is one image." },
+        { "text": "SHAKER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A salt shaker is a glass shaker." },
+        { "text": "MARGARITA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [] , "verdict": "PASS", "reason": "The margarita glass with its salt rim carries both words." }
+      ],
+      "strong_hints": ["RIM", "MARGARITA", "SHAKER"],
+      "best_available": { "text": "RIM", "why": "Most direct shared image." },
+      "pair_note": "All pass."
+    },
+    {
+      "pair_id": "p_glass__shadow",
+      "a": "GLASS",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "DARK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Shadows are dark and dark (tinted) glass is a familiar phrase; a shared property on the SWEET model." },
+        { "text": "SMOKED", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Smoked glass is a compound; smoke is not shadow." },
+        { "text": "TINTED", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Tinted glass is immediate and there is no shadow route." }
+      ],
+      "strong_hints": ["DARK"],
+      "best_available": { "text": "DARK", "why": "The only hint that touches shadow at all." },
+      "pair_note": "A hard pair; DARK passes narrowly as a shared property, the rest are glass-only."
+    },
+    {
+      "pair_id": "p_glass__shark",
+      "a": "GLASS",
+      "b": "SHARK",
+      "hints": [
+        { "text": "CAGE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Shark cage diving is immediate; the cage is steel and no glass cage phrase is familiar." },
+        { "text": "TUNNEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The aquarium glass tunnel with sharks swimming overhead is one scene." },
+        { "text": "TANK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shark tank is a fixed phrase and tanks are glass." }
+      ],
+      "strong_hints": ["TANK", "TUNNEL"],
+      "best_available": { "text": "TANK", "why": "Shark tank plus glass tank, both stock phrases." },
+      "pair_note": "Two passes; CAGE misses glass."
+    },
+    {
+      "pair_id": "p_glass__snake",
+      "a": "GLASS",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "LIZARD", "connection_to_a": 1, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "The glass lizard is a real legless lizard and lizards are snake kin, but neither route is strong for a general player." },
+        { "text": "TERRARIUM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A pet snake lives in a glass terrarium." },
+        { "text": "TANK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TERRARIUM"], "verdict": "PASS", "reason": "Snake tank and glass tank; same object as TERRARIUM in plainer words." }
+      ],
+      "strong_hints": ["TERRARIUM", "TANK"],
+      "best_available": { "text": "TERRARIUM", "why": "Specific to reptiles and unmistakably glass." },
+      "pair_note": "Two passes; LIZARD is too oblique."
+    },
+    {
+      "pair_id": "p_glass__spider",
+      "a": "GLASS",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "JAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Trapping a spider under a glass jar is a familiar household scene." },
+        { "text": "WINDOW", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Windows are glass and spiders spin webs in window corners." },
+        { "text": "CRACK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Glass cracks, and a spider crack is the web-shaped pattern, but the spider link rides on that one phrase." }
+      ],
+      "strong_hints": ["JAR", "WINDOW"],
+      "best_available": { "text": "JAR", "why": "Spider under a glass is the shared scene." },
+      "pair_note": "Two passes; CRACK is a fair stretch via the web-shaped crack."
+    },
+    {
+      "pair_id": "p_glass__spring",
+      "a": "GLASS",
+      "b": "SPRING",
+      "hints": [
+        { "text": "GREENHOUSE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Greenhouses are glass; spring planting links the season only loosely." },
+        { "text": "WATER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A glass of water and spring water are both everyday phrases." },
+        { "text": "BOTTLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:WATER"], "verdict": "BORDERLINE", "reason": "Glass bottle is immediate; spring arrives only as the bottled spring water inside." }
+      ],
+      "strong_hints": ["WATER"],
+      "best_available": { "text": "WATER", "why": "Two stock phrases that meet in a glass of spring water." },
+      "pair_note": "WATER is the serve; the other two orbit it."
+    },
+    {
+      "pair_id": "p_glass__star",
+      "a": "GLASS",
+      "b": "STAR",
+      "hints": [
+        { "text": "ORNAMENT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Glass ornaments and the star ornament on a Christmas tree." },
+        { "text": "TWINKLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Stars twinkle; glass sparkles rather than twinkles, so the glass side is approximate." },
+        { "text": "TELESCOPE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Glass lenses pointed at the stars." }
+      ],
+      "strong_hints": ["TELESCOPE", "ORNAMENT"],
+      "best_available": { "text": "TELESCOPE", "why": "Both words live in the same instrument and its use." },
+      "pair_note": "Two passes; TWINKLE leans on star."
+    },
+    {
+      "pair_id": "p_glass__train",
+      "a": "GLASS",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "STATION", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Train station is immediate; the glass roof of a grand station is a secondary image." },
+        { "text": "DINING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Dining car is a train compound; dining glassware is only a loose association." },
+        { "text": "WINDOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Train windows are glass; looking out of one is a shared scene." }
+      ],
+      "strong_hints": ["WINDOW"],
+      "best_available": { "text": "WINDOW", "why": "The train window is a single everyday object made of glass." },
+      "pair_note": "WINDOW carries the pair; the other two are train-first."
+    }
+  ]
+}

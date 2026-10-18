@@ -1,0 +1,513 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-27",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "u27-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors + no-literal-false-facts reminder, 2026-10-18",
+    "independence": "I read only u27-blind-input.json and no other file, repository search, web source or API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_light__shark",
+      "a": "LIGHT",
+      "b": "SHARK",
+      "hints": [
+        {"text": "GLOW", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "LIGHT: lights glow; SHARK: only via the true but little-known fact that some deep-sea sharks are bioluminescent, which most players will not reach."},
+        {"text": "LANTERN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "LIGHT: a lantern is a light; SHARK: the real lanternshark compound, accurate but niche."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "LANTERN", "why": "It names a real shark (lanternshark) and is plainly a light, so it is the only hint with a concrete compound route to SHARK."},
+      "pair_note": "No PASS; both routes depend on deep-sea shark trivia."
+    },
+    {
+      "pair_id": "p_light__snake",
+      "a": "LIGHT",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "BASK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "LIGHT: basking in the light / sunlight; SNAKE: the familiar scene of a snake basking on a warm rock."},
+        {"text": "SCALE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "SNAKE: snakes have scales; LIGHT: only an invented route (weighing something light on a scale), so it is effectively one-sided."},
+        {"text": "SUN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: sunlight; SNAKE: the familiar sunning-snake scene, moderate strength like TREAT for APPLE+HORSE."}
+      ],
+      "strong_hints": ["BASK", "SUN"],
+      "best_available": {"text": "BASK", "why": "Basking is strongly tied to snakes and naturally collocates with light/sunlight."},
+      "pair_note": "BASK and SUN rely on the same sunning scene; SCALE does not reach LIGHT."
+    },
+    {
+      "pair_id": "p_light__spider",
+      "a": "LIGHT",
+      "b": "SPIDER",
+      "hints": [
+        {"text": "WEB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SPIDER: spider web; LIGHT: no familiar compound or scene links web to light."},
+        {"text": "PORCH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "LIGHT: porch light compound; SPIDER: the familiar scene of spiders webbing around the porch light where bugs gather."}
+      ],
+      "strong_hints": ["PORCH"],
+      "best_available": {"text": "PORCH", "why": "Porch light is a solid compound and spiders around the porch light is a recognizable scene."},
+      "pair_note": "Single moderate PASS."
+    },
+    {
+      "pair_id": "p_light__spring",
+      "a": "LIGHT",
+      "b": "SPRING",
+      "hints": [
+        {"text": "DAY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "LIGHT: daylight compound; SPRING: the familiar phrase spring day, with daylight saving starting in spring as a bonus."},
+        {"text": "CLOCK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPRING: clock springs and 'spring forward'; LIGHT: only indirectly via daylight saving, which the word clock does not itself signal."},
+        {"text": "BULB", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: light bulb compound; SPRING: spring bulbs (tulips, daffodils) are a familiar gardening scene."}
+      ],
+      "strong_hints": ["BULB", "DAY"],
+      "best_available": {"text": "BULB", "why": "Two clean, familiar routes: light bulb and spring-flowering bulbs."},
+      "pair_note": "BULB is excellent; DAY is a fair second."
+    },
+    {
+      "pair_id": "p_light__star",
+      "a": "LIGHT",
+      "b": "STAR",
+      "hints": [
+        {"text": "SHINE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "LIGHT: lights shine; STAR: stars shine, a shared property."},
+        {"text": "YEAR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "LIGHT: light-year compound; STAR: only because light-years measure distances to stars, with no direct star-year phrase."},
+        {"text": "TWINKLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "STAR: 'Twinkle, twinkle, little star'; LIGHT: twinkling fairy/holiday lights."}
+      ],
+      "strong_hints": ["TWINKLE", "SHINE"],
+      "best_available": {"text": "TWINKLE", "why": "The nursery rhyme makes STAR unmistakable and twinkle lights reach LIGHT."},
+      "pair_note": "Easy pair; YEAR leans on LIGHT."
+    },
+    {
+      "pair_id": "p_light__train",
+      "a": "LIGHT",
+      "b": "TRAIN",
+      "hints": [
+        {"text": "SIGNAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: signal lights; TRAIN: railway signals, one shared scene."},
+        {"text": "TUNNEL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: 'light at the end of the tunnel'; TRAIN: trains running through tunnels (and the oncoming-train joke)."},
+        {"text": "RAIL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: light rail compound, itself a train system; TRAIN: trains run on rails."}
+      ],
+      "strong_hints": ["RAIL", "TUNNEL", "SIGNAL"],
+      "best_available": {"text": "RAIL", "why": "Light rail is a compound that is literally a kind of train."},
+      "pair_note": "Three solid PASSes."
+    },
+    {
+      "pair_id": "p_light__water",
+      "a": "LIGHT",
+      "b": "WATER",
+      "hints": [
+        {"text": "SPARKLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WATER: sparkling water; LIGHT: light sparkles, and sunlight sparkling on water is one scene."},
+        {"text": "RAINBOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Rainbows are sunlight refracted through water droplets, a true shared phenomenon reaching both."},
+        {"text": "REFLECTION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: light reflection; WATER: reflections in water."}
+      ],
+      "strong_hints": ["REFLECTION", "RAINBOW", "SPARKLE"],
+      "best_available": {"text": "REFLECTION", "why": "Directly physical for light and the classic image for water."},
+      "pair_note": "Strong pair, no issues."
+    },
+    {
+      "pair_id": "p_light__witch",
+      "a": "LIGHT",
+      "b": "WITCH",
+      "hints": [
+        {"text": "GLINDA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WITCH: Glinda the Good Witch; LIGHT: only via her glowing bubble or 'good = light' framing, which is thin."},
+        {"text": "WAND", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WITCH: witches' wands; LIGHT: only via wand-lighting spells (e.g. Lumos) or glow wands, not a firm route."},
+        {"text": "CANDLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: candlelight; WITCH: the familiar witch scene of candles at spells and rituals (e.g. Hocus Pocus), moderate."}
+      ],
+      "strong_hints": ["CANDLE"],
+      "best_available": {"text": "CANDLE", "why": "Candlelight is solid and candles are a stock prop of witch scenes."},
+      "pair_note": "Moderate pair; GLINDA and WAND lean on WITCH."
+    },
+    {
+      "pair_id": "p_light__wolf",
+      "a": "LIGHT",
+      "b": "WOLF",
+      "hints": [
+        {"text": "EYES", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WOLF: glowing wolf eyes in the dark; LIGHT: eyes reflecting/seeing light, a loose link on both sides."},
+        {"text": "MOON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LIGHT: moonlight; WOLF: the familiar (folkloric) image of a wolf howling at the moon."}
+      ],
+      "strong_hints": ["MOON"],
+      "best_available": {"text": "MOON", "why": "Moonlight plus the iconic howling-wolf image."},
+      "pair_note": "Wolf-howling-at-the-moon is a cultural image, not a behavioural fact; fine as a scene."
+    },
+    {
+      "pair_id": "p_lion__moon",
+      "a": "LION",
+      "b": "MOON",
+      "hints": [
+        {"text": "ROAR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "LION: lions roar; MOON: no route."},
+        {"text": "NIGHT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "MOON: the moon at night; LION: only loosely via lions hunting at night or 'The Lion Sleeps Tonight', weak."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "NIGHT", "why": "At least touches LION via nocturnal hunting; ROAR misses MOON entirely."},
+      "pair_note": "No PASS; needs a better hint."
+    },
+    {
+      "pair_id": "p_lion__mouse",
+      "a": "LION",
+      "b": "MOUSE",
+      "hints": [
+        {"text": "FABLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both via the fable 'The Lion and the Mouse'."},
+        {"text": "AESOP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:FABLE"], "verdict": "PASS", "reason": "Both via Aesop's 'The Lion and the Mouse'."},
+        {"text": "THORN", "connection_to_a": 1, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["wrong_fact", "one_sided"], "verdict": "FAIL", "reason": "The thorn belongs to Androcles and the Lion; in 'The Lion and the Mouse' the mouse gnaws through a net, so the MOUSE route is a wrong fact."}
+      ],
+      "strong_hints": ["AESOP", "FABLE"],
+      "best_available": {"text": "AESOP", "why": "Points precisely at the one story containing both."},
+      "pair_note": "THORN conflates two stories."
+    },
+    {
+      "pair_id": "p_lion__night",
+      "a": "LION",
+      "b": "NIGHT",
+      "hints": [
+        {"text": "TONIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains NIGHT as a substring (rule failure), even though 'The Lion Sleeps Tonight' would reach both."},
+        {"text": "SLEEPS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: 'The Lion Sleeps Tonight'; NIGHT: sleeping at night, inflected verb."},
+        {"text": "LOVE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Via Lion King's 'Can You Feel the Love Tonight', but love alone reaches neither lion nor night clearly."}
+      ],
+      "strong_hints": ["SLEEPS"],
+      "best_available": {"text": "SLEEPS", "why": "The song title makes both sides clear without containing a target."},
+      "pair_note": "TONIGHT is a hard rule fail."
+    },
+    {
+      "pair_id": "p_lion__ocean",
+      "a": "LION",
+      "b": "OCEAN",
+      "hints": [
+        {"text": "MANE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "BORDERLINE", "reason": "LION: the lion's mane; OCEAN: only via the lion's mane jellyfish, a real but niche ocean animal."},
+        {"text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "LION: sea lion compound; OCEAN: sea is a near-synonym, so it is very easy but valid."},
+        {"text": "FISH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: lionfish compound; OCEAN: fish live in the ocean (lionfish included)."}
+      ],
+      "strong_hints": ["FISH", "SEA"],
+      "best_available": {"text": "FISH", "why": "Lionfish is a clean compound and an ocean animal, without leaning on a synonym."},
+      "pair_note": "SEA works but is near-synonymous with OCEAN."
+    },
+    {
+      "pair_id": "p_lion__pirate",
+      "a": "LION",
+      "b": "PIRATE",
+      "hints": [
+        {"text": "FLAG", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "PIRATE: the Jolly Roger pirate flag; LION: only via lions on national/heraldic flags, a separate weak route."},
+        {"text": "ROAR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "LION: lions roar; PIRATE: pirates say 'arr', they are not known for roaring."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "FLAG", "why": "It reaches PIRATE strongly and LION at least through heraldry."},
+      "pair_note": "No PASS; needs a better hint."
+    },
+    {
+      "pair_id": "p_lion__queen",
+      "a": "LION",
+      "b": "QUEEN",
+      "hints": [
+        {"text": "CREST", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Both via royal heraldry: lions on the royal arms/crest associated with the Queen, moderate strength."},
+        {"text": "LIONESS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains LION as a substring (rule failure)."},
+        {"text": "NALA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "LION: Nala is a lioness in The Lion King; QUEEN: she becomes Simba's queen."},
+        {"text": "PRIDE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "LION: a lion pride; QUEEN: only via a stretched 'queen of the pride' or drag-queen/Pride link, not clear."}
+      ],
+      "strong_hints": ["NALA", "CREST"],
+      "best_available": {"text": "NALA", "why": "Names a lion who is a queen in the best-known lion story."},
+      "pair_note": "LIONESS is a rule failure; the rest are moderate."
+    },
+    {
+      "pair_id": "p_lion__ring",
+      "a": "LION",
+      "b": "RING",
+      "hints": [
+        {"text": "TAMER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: lion tamer; RING: the tamer works in the circus ring."},
+        {"text": "HOOP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "LION: the circus lion jumping through a hoop; RING: a hoop is a ring shape (near-synonym)."},
+        {"text": "CIRCUS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: circus lions; RING: the circus ring / three-ring circus."}
+      ],
+      "strong_hints": ["CIRCUS", "TAMER", "HOOP"],
+      "best_available": {"text": "CIRCUS", "why": "One scene containing both the lion and the ring."},
+      "pair_note": "All three share the circus scene."
+    },
+    {
+      "pair_id": "p_lion__robot",
+      "a": "LION",
+      "b": "ROBOT",
+      "hints": [
+        {"text": "MECHANICAL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "ROBOT: robots are mechanical; LION: no familiar route (mechanical lions are obscure)."},
+        {"text": "VOLTRON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Voltron is a giant robot formed from five robot lions, reaching both directly."}
+      ],
+      "strong_hints": ["VOLTRON"],
+      "best_available": {"text": "VOLTRON", "why": "The only hint that touches LION, and it nails both."},
+      "pair_note": "VOLTRON depends on cartoon familiarity; generation-dependent."
+    },
+    {
+      "pair_id": "p_lion__rock",
+      "a": "LION",
+      "b": "ROCK",
+      "hints": [
+        {"text": "SIMBA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: Simba the lion; ROCK: Simba presented on Pride Rock."},
+        {"text": "PRIDE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: a pride of lions; ROCK: Pride Rock compound."}
+      ],
+      "strong_hints": ["PRIDE", "SIMBA"],
+      "best_available": {"text": "PRIDE", "why": "Lion pride and Pride Rock both land directly."},
+      "pair_note": "Lion King carries the pair."
+    },
+    {
+      "pair_id": "p_lion__rose",
+      "a": "LION",
+      "b": "ROSE",
+      "hints": [
+        {"text": "BEAST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "ROSE: the enchanted rose in Beauty and the Beast; LION: the lion as king of beasts."},
+        {"text": "ENGLAND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "LION: the Three Lions emblem; ROSE: the Tudor/English rose, both national symbols of England."}
+      ],
+      "strong_hints": ["ENGLAND", "BEAST"],
+      "best_available": {"text": "ENGLAND", "why": "Both are national emblems of England, a single shared route."},
+      "pair_note": "ENGLAND is moderately known outside the UK but widely recognisable via football."
+    },
+    {
+      "pair_id": "p_lion__salt",
+      "a": "LION",
+      "b": "SALT",
+      "hints": [
+        {"text": "LICK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SALT: salt lick; LION: no familiar lion-lick route."},
+        {"text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: sea lion compound; SALT: sea salt compound."}
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": {"text": "SEA", "why": "Two clean compounds: sea lion and sea salt."},
+      "pair_note": "Single strong PASS."
+    },
+    {
+      "pair_id": "p_lion__shadow",
+      "a": "LION",
+      "b": "SHADOW",
+      "hints": [
+        {"text": "KING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "LION: The Lion King; SHADOW: only via the film's shadowy lands or the niche 'Shadow King', weak."},
+        {"text": "SCAR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "LION: Scar the Lion King villain; SHADOW: only via him living in his brother's shadow or the shadowlands, a stretch."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "SCAR", "why": "The dark villain living in Mufasa's shadow is the more evocative of two weak Lion King routes."},
+      "pair_note": "No PASS; both lean on LION."
+    },
+    {
+      "pair_id": "p_lion__shark",
+      "a": "LION",
+      "b": "SHARK",
+      "hints": [
+        {"text": "TEETH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are famous for big sharp teeth."},
+        {"text": "KING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "LION: king of the jungle / Lion King; SHARK: only a loose 'king of the sea' idea, not a set phrase."},
+        {"text": "PREDATOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are classic apex predators."}
+      ],
+      "strong_hints": ["PREDATOR", "TEETH"],
+      "best_available": {"text": "PREDATOR", "why": "Captures both animals' defining shared role."},
+      "pair_note": "Solid pair."
+    },
+    {
+      "pair_id": "p_lion__snake",
+      "a": "LION",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "KAA", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SNAKE: Kaa the python from The Jungle Book; LION: The Jungle Book has a tiger (Shere Khan), not a lion, so no route."},
+        {"text": "JUNGLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: 'king of the jungle' phrase; SNAKE: snakes in the jungle."}
+      ],
+      "strong_hints": ["JUNGLE"],
+      "best_available": {"text": "JUNGLE", "why": "A familiar phrase for LION and a natural habitat for SNAKE."},
+      "pair_note": "JUNGLE works as a phrase even though real lions live on savanna."
+    },
+    {
+      "pair_id": "p_lion__spider",
+      "a": "LION",
+      "b": "SPIDER",
+      "hints": [
+        {"text": "ANTLION", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "niche", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains LION as a substring (rule failure)."},
+        {"text": "HUNTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Shared property: lions hunt prey and many spiders are active hunters (e.g. huntsman spider), moderate."}
+      ],
+      "strong_hints": ["HUNTER"],
+      "best_available": {"text": "HUNTER", "why": "The only rule-compliant hint; a fair shared-property route."},
+      "pair_note": "HUNTER is broad but defensible like SWEET for APPLE+HONEY."
+    },
+    {
+      "pair_id": "p_lion__spring",
+      "a": "LION",
+      "b": "SPRING",
+      "hints": [
+        {"text": "LEAP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "LION: lions leap on prey; SPRING: to spring is to leap (verb route)."},
+        {"text": "POUNCE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:LEAP"], "verdict": "PASS", "reason": "LION: a lion pounces; SPRING: to spring on prey (verb route)."},
+        {"text": "MARCH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: 'in like a lion, out like a lamb'; SPRING: March begins spring."}
+      ],
+      "strong_hints": ["MARCH", "POUNCE", "LEAP"],
+      "best_available": {"text": "MARCH", "why": "The proverb ties March to lions and March is the start of spring."},
+      "pair_note": "LEAP and POUNCE are the same verb route."
+    },
+    {
+      "pair_id": "p_lion__star",
+      "a": "LION",
+      "b": "STAR",
+      "hints": [
+        {"text": "CONSTELLATION", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "STAR: constellations are star patterns; LION: Leo is the lion constellation, moderate."},
+        {"text": "LEO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: Leo the lion; STAR: Leo star sign / constellation."},
+        {"text": "MUFASA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: Mufasa the Lion King; STAR: his speech that the great kings look down from the stars."}
+      ],
+      "strong_hints": ["LEO", "MUFASA", "CONSTELLATION"],
+      "best_available": {"text": "LEO", "why": "Leo is both the lion and a star sign/constellation."},
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_lion__train",
+      "a": "LION",
+      "b": "TRAIN",
+      "hints": [
+        {"text": "CIRCUS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: circus lions; TRAIN: the circus train (e.g. Dumbo)."},
+        {"text": "TAMER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: lion tamer; TRAIN: a tamer trains animals (verb route)."}
+      ],
+      "strong_hints": ["CIRCUS", "TAMER"],
+      "best_available": {"text": "CIRCUS", "why": "Circus train and circus lions share one scene."},
+      "pair_note": "Good pair."
+    },
+    {
+      "pair_id": "p_lion__water",
+      "a": "LION",
+      "b": "WATER",
+      "hints": [
+        {"text": "SEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "LION: sea lion; WATER: sea water."},
+        {"text": "HOLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WATER: water hole; LION: the savanna scene of lions at the water hole."},
+        {"text": "FOUNTAIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "WATER: fountains spout water; LION: lion-head fountains are a familiar sight."}
+      ],
+      "strong_hints": ["SEA", "HOLE", "FOUNTAIN"],
+      "best_available": {"text": "SEA", "why": "Sea lion and sea water are both direct."},
+      "pair_note": "Three PASSes."
+    },
+    {
+      "pair_id": "p_lion__wolf",
+      "a": "LION",
+      "b": "WOLF",
+      "hints": [
+        {"text": "ROAR", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "LION: lions roar; WOLF: wolves howl, they do not roar."},
+        {"text": "PREDATOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are top predators."},
+        {"text": "PACK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WOLF: wolf pack; LION: lions live in prides, not packs, so no route."}
+      ],
+      "strong_hints": ["PREDATOR"],
+      "best_available": {"text": "PREDATOR", "why": "The only hint reaching both animals."},
+      "pair_note": "ROAR and PACK are one-sided."
+    },
+    {
+      "pair_id": "p_moon__mouse",
+      "a": "MOON",
+      "b": "MOUSE",
+      "hints": [
+        {"text": "GOODNIGHT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "MOON: the book Goodnight Moon; MOUSE: the little mouse hidden on its pages, familiar to readers of the book."},
+        {"text": "CHEESE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON: the folk joke that the moon is made of cheese; MOUSE: mice love cheese."}
+      ],
+      "strong_hints": ["CHEESE", "GOODNIGHT"],
+      "best_available": {"text": "CHEESE", "why": "Two famous cultural associations meeting in one word."},
+      "pair_note": "GOODNIGHT's MOUSE side needs knowledge of the book."
+    },
+    {
+      "pair_id": "p_moon__night",
+      "a": "MOON",
+      "b": "NIGHT",
+      "hints": [
+        {"text": "FULL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "MOON: full moon; NIGHT: only weakly via 'full night' or full-moon nights."},
+        {"text": "SKY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "NIGHT: night sky; MOON: the moon in the sky."},
+        {"text": "LIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON: moonlight; NIGHT: night light, both compounds."}
+      ],
+      "strong_hints": ["LIGHT", "SKY"],
+      "best_available": {"text": "LIGHT", "why": "Two clean compounds: moonlight and night light."},
+      "pair_note": "Easy pair."
+    },
+    {
+      "pair_id": "p_moon__pirate",
+      "a": "MOON",
+      "b": "PIRATE",
+      "hints": [
+        {"text": "CRESCENT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "MOON: crescent moon; PIRATE: no familiar route."},
+        {"text": "SAIL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "PIRATE: pirates sail; MOON: only a vague sailing-by-moonlight or sailing-to-the-moon image."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "SAIL", "why": "Strong on PIRATE and at least gestures at moonlit sailing."},
+      "pair_note": "No PASS; needs a better hint."
+    },
+    {
+      "pair_id": "p_moon__queen",
+      "a": "MOON",
+      "b": "QUEEN",
+      "hints": [
+        {"text": "NIGHT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "MOON: the moon at night; QUEEN: the familiar phrase 'Queen of the Night' (Magic Flute aria, night-blooming flower)."},
+        {"text": "SAILOR", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "MOON: Sailor Moon; QUEEN: only via the series' Queen Serenity lore, niche."}
+      ],
+      "strong_hints": ["NIGHT"],
+      "best_available": {"text": "NIGHT", "why": "Queen of the Night is a recognised phrase and night pairs naturally with the moon."},
+      "pair_note": "NIGHT is a moderate PASS; this is a judgement call."
+    },
+    {
+      "pair_id": "p_moon__ring",
+      "a": "MOON",
+      "b": "RING",
+      "hints": [
+        {"text": "PLANET", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: planets have moons and some have rings."},
+        {"text": "SATURN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Saturn is famous for its rings and has many moons (e.g. Titan)."},
+        {"text": "HALO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "MOON: the real halo/ring around the moon; RING: a halo is a ring of light."}
+      ],
+      "strong_hints": ["SATURN", "PLANET", "HALO"],
+      "best_available": {"text": "SATURN", "why": "The single object most associated with both rings and moons."},
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_moon__robot",
+      "a": "MOON",
+      "b": "ROBOT",
+      "hints": [
+        {"text": "SPACE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "MOON: the moon in space; ROBOT: robots and probes exploring space, moderate."},
+        {"text": "ROVER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON: lunar rovers (including robotic ones like Lunokhod/Yutu); ROBOT: rovers are robotic explorers."},
+        {"text": "LANDING", "connection_to_a": 2, "connection_to_b": 0, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "MOON: moon landing; ROBOT: only indirectly via robotic landers, no clear robot-landing phrase."}
+      ],
+      "strong_hints": ["ROVER", "SPACE"],
+      "best_available": {"text": "ROVER", "why": "A rover is a robot and the moon is a famous rover destination."},
+      "pair_note": "Avoid implying the crewed Apollo rover was a robot; robotic lunar rovers do exist."
+    },
+    {
+      "pair_id": "p_moon__rock",
+      "a": "MOON",
+      "b": "ROCK",
+      "hints": [
+        {"text": "METEOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "ROCK: meteors are space rocks; MOON: only via meteor impacts on the moon, which the word does not point at."},
+        {"text": "APOLLO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON: the Apollo landings; ROCK: Apollo brought back moon rocks."},
+        {"text": "CRATER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON: lunar craters; ROCK: craters are rocky impact holes made by space rocks."}
+      ],
+      "strong_hints": ["APOLLO", "CRATER"],
+      "best_available": {"text": "APOLLO", "why": "Moon rocks from the Apollo missions tie both directly."},
+      "pair_note": "Good pair."
+    },
+    {
+      "pair_id": "p_moon__rose",
+      "a": "MOON",
+      "b": "ROSE",
+      "hints": [
+        {"text": "FADE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "ROSE: roses fade; MOON: the moon fades at dawn; both are loose, poetic routes."},
+        {"text": "RISE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON: moonrise / the moon rises; ROSE: 'rose' is the past tense of rise (ordinary inflection)."}
+      ],
+      "strong_hints": ["RISE"],
+      "best_available": {"text": "RISE", "why": "A clever but fair inflection route plus moonrise."},
+      "pair_note": "RISE is a nice wordplay hint."
+    },
+    {
+      "pair_id": "p_moon__salt",
+      "a": "MOON",
+      "b": "SALT",
+      "hints": [
+        {"text": "SEA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SALT: sea salt; MOON: the moon pulls the sea's tides and its plains are called seas (Sea of Tranquility)."},
+        {"text": "TIDE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "MOON: the moon drives tides; SALT: only indirectly via tidal salt water or salt marshes."}
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": {"text": "SEA", "why": "Sea salt is direct and the sea links to the moon by tides and lunar seas."},
+      "pair_note": "Moderate pair."
+    },
+    {
+      "pair_id": "p_moon__shadow",
+      "a": "MOON",
+      "b": "SHADOW",
+      "hints": [
+        {"text": "DARK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON: the phrase 'dark side of the moon'; SHADOW: shadows are dark."},
+        {"text": "ECLIPSE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "An eclipse involves the moon and a cast shadow (Earth's shadow on the moon or the moon's shadow on Earth)."}
+      ],
+      "strong_hints": ["ECLIPSE", "DARK"],
+      "best_available": {"text": "ECLIPSE", "why": "Literally a moon-and-shadow event."},
+      "pair_note": "'Dark side of the moon' is a phrase, not a claim the far side is always dark."
+    },
+    {
+      "pair_id": "p_moon__shark",
+      "a": "MOON",
+      "b": "SHARK",
+      "hints": [
+        {"text": "NIGHT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "MOON: the moon at night; SHARK: only via sharks hunting at night (or the niche night shark species)."},
+        {"text": "TIDE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "MOON: the moon drives tides; SHARK: no familiar shark-tide route beyond both involving the ocean."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "NIGHT", "why": "At least reaches SHARK through nocturnal hunting."},
+      "pair_note": "No PASS; needs a better hint."
+    }
+  ]
+}

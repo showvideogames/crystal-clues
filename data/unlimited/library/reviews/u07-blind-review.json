@@ -1,0 +1,971 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-7",
+    "date": "2026-10-17",
+    "input": "u07-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u07-blind-input.json; no other file, repository search, web lookup or external API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_bat__ring",
+      "a": "BAT",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "CIRCLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["one_sided", "synonym_of_target"],
+          "verdict": "BORDERLINE",
+          "reason": "RING is reached as a near-synonym (a ring is a circle); BAT only via the loose verb image of bats circling overhead, which few players would land on."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CIRCLE", "why": "Only hint offered; RING side is solid but the BAT side is a weak verb image." },
+      "pair_note": "No PASS. The one hint is essentially a RING synonym with a thin BAT attachment."
+    },
+    {
+      "pair_id": "p_bat__robot",
+      "a": "BAT",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "SONAR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via echolocation (bat sonar is a schoolbook fact); ROBOT via sonar/ultrasonic sensors that robots and robot vacuums navigate with."
+        }
+      ],
+      "strong_hints": ["SONAR"],
+      "best_available": { "text": "SONAR", "why": "A shared sensing idea that genuinely reaches both words; robot side is a step less automatic than the bat side." },
+      "pair_note": "Single hint, passes on a shared 'navigates by sonar' route."
+    },
+    {
+      "pair_id": "p_bat__rock",
+      "a": "BAT",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "CAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via bats roosting in caves; ROCK via a cave being a hollow in rock with rock walls and formations."
+        },
+        {
+          "text": "OZZY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via the famous story of Ozzy Osbourne biting the head off a bat on stage; ROCK via Ozzy as a rock star."
+        }
+      ],
+      "strong_hints": ["CAVE", "OZZY"],
+      "best_available": { "text": "CAVE", "why": "Broadest and most immediate for both words; OZZY is an equally strong single-story hint but skews to older or rock-aware players." },
+      "pair_note": "Two good hints with different flavours: one scene (cave), one story (Ozzy)."
+    },
+    {
+      "pair_id": "p_bat__rose",
+      "a": "BAT",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "THORN",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "ROSE via its thorns; BAT has no route at all to THORN."
+        },
+        {
+          "text": "BLOOD",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "BAT via vampire bats drinking blood; ROSE only via the colour phrase 'blood-red rose', a mood/colour link."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BLOOD", "why": "Reaches BAT strongly and ROSE via a familiar colour phrase; the only hint with any two-sidedness." },
+      "pair_note": "No PASS. THORN is wholly one-sided; BLOOD leans on a colour route for ROSE."
+    },
+    {
+      "pair_id": "p_bat__salt",
+      "a": "BAT",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "CAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via bats roosting in caves; SALT via salt caves and salt mines (salt-cave therapy, Wieliczka), a recognised compound."
+        }
+      ],
+      "strong_hints": ["CAVE"],
+      "best_available": { "text": "CAVE", "why": "Bat side is automatic; 'salt cave' is a real, moderately familiar phrase that lets players reach SALT." },
+      "pair_note": "Passes on the strength of 'salt cave' as a compound; a second opinion on how familiar that phrase is would be reasonable."
+    },
+    {
+      "pair_id": "p_bat__shadow",
+      "a": "BAT",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "SILHOUETTE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "BAT via the iconic bat silhouette (Batman emblem, Halloween cut-outs); SHADOW via silhouette as a dark outline, near-synonym."
+        },
+        {
+          "text": "SIGNAL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "BAT via the Bat-Signal; SHADOW only because the Bat-Signal is a bat shadow projected onto the clouds, which players must reason out."
+        }
+      ],
+      "strong_hints": ["SILHOUETTE"],
+      "best_available": { "text": "SILHOUETTE", "why": "Both words land immediately; the bat silhouette is one of the most recognisable outlines there is." },
+      "pair_note": "SILHOUETTE is excellent; SIGNAL is a clever Batman route whose SHADOW side needs a reasoning step."
+    },
+    {
+      "pair_id": "p_bat__shark",
+      "a": "BAT",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "BITE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via the vampire-bat bite; SHARK via the shark bite, both everyday fears."
+        }
+      ],
+      "strong_hints": ["BITE"],
+      "best_available": { "text": "BITE", "why": "Clean two-sided hint on the animals' most famous action." },
+      "pair_note": "Single strong hint."
+    },
+    {
+      "pair_id": "p_bat__snake",
+      "a": "BAT",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "VENOM",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided", "wrong_fact"],
+          "verdict": "FAIL",
+          "reason": "SNAKE via snake venom; BAT fails because bats are not venomous (vampire bats bite but inject no venom)."
+        },
+        {
+          "text": "FANGS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via vampire-bat fangs (and the vampire image); SNAKE via snake fangs."
+        }
+      ],
+      "strong_hints": ["FANGS"],
+      "best_available": { "text": "FANGS", "why": "Both animals are defined by fangs in the popular imagination." },
+      "pair_note": "FANGS passes cleanly; VENOM rests on a false fact about bats."
+    },
+    {
+      "pair_id": "p_bat__spring",
+      "a": "BAT",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "TRAINING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SPRING via 'spring training' as a compound; BAT via that same scene being baseball batting practice."
+        }
+      ],
+      "strong_hints": ["TRAINING"],
+      "best_available": { "text": "TRAINING", "why": "One shared baseball scene reaches both words; mainly a North American phrase but very familiar there." },
+      "pair_note": "Strong single hint via the spring-training compound."
+    },
+    {
+      "pair_id": "p_bat__star",
+      "a": "BAT",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "NIGHT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via bats as nocturnal night flyers; STAR via stars appearing in the night sky."
+        },
+        {
+          "text": "BASEBALL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via the baseball bat; STAR via a baseball star or All-Star game, a familiar but secondary sense."
+        }
+      ],
+      "strong_hints": ["NIGHT", "BASEBALL"],
+      "best_available": { "text": "NIGHT", "why": "Both words are among the first things anyone associates with night." },
+      "pair_note": "Two passes; NIGHT is the stronger and fairer."
+    },
+    {
+      "pair_id": "p_bat__train",
+      "a": "BAT",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "TUNNEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "TRAIN via trains running through tunnels; BAT via bats roosting in dark tunnels (disused railway tunnels are classic bat roosts)."
+        }
+      ],
+      "strong_hints": ["TUNNEL"],
+      "best_available": { "text": "TUNNEL", "why": "A shared dark-passage setting that both words naturally occupy." },
+      "pair_note": "Strong single hint."
+    },
+    {
+      "pair_id": "p_bat__water",
+      "a": "BAT",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "SKIM",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["obscure", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "WATER via skimming stones or skimming the water's surface; BAT via bats skimming low over water to drink or catch insects, a true but little-known behaviour."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SKIM", "why": "Only hint; WATER is reached easily but the bat behaviour is a naturalist's fact rather than common knowledge." },
+      "pair_note": "No PASS. The bat side is accurate but obscure."
+    },
+    {
+      "pair_id": "p_bat__witch",
+      "a": "BAT",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "BROOM",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "WITCH via the witch's broomstick; BAT has no route to BROOM beyond sharing Halloween decor with it."
+        },
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT and WITCH are both stock Halloween icons; one shared scene reaches both directly."
+        }
+      ],
+      "strong_hints": ["HALLOWEEN"],
+      "best_available": { "text": "HALLOWEEN", "why": "Both words are first-tier Halloween imagery." },
+      "pair_note": "HALLOWEEN is excellent; BROOM is a witch-only attribute."
+    },
+    {
+      "pair_id": "p_bat__wolf",
+      "a": "BAT",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "FANGS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via vampire-bat fangs; WOLF via the wolf's bared fangs."
+        },
+        {
+          "text": "VAMPIRE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BAT via the vampire turning into a bat; WOLF via Dracula's wolf form and the vampire-versus-werewolf lore of Dracula and Twilight."
+        }
+      ],
+      "strong_hints": ["VAMPIRE", "FANGS"],
+      "best_available": { "text": "VAMPIRE", "why": "A single story world (Dracula) that contains both the bat and the wolf; FANGS is equally fair but more generic." },
+      "pair_note": "Two strong hints; VAMPIRE is the more specific shared story."
+    },
+    {
+      "pair_id": "p_bear__bell",
+      "a": "BEAR",
+      "b": "BELL",
+      "hints": [
+        {
+          "text": "TEDDY",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "BEAR via teddy bear; BELL has no route to TEDDY."
+        },
+        {
+          "text": "HIKING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "BEAR via hiking in bear country; BELL via the bear bell hikers wear to warn bears off, a scene known mainly to outdoors people."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HIKING", "why": "The bear-bell hiking scene genuinely joins both words, but only hikers will see the BELL side quickly." },
+      "pair_note": "No PASS. HIKING is a real shared scene and could be promoted if the owner judges bear bells familiar enough."
+    },
+    {
+      "pair_id": "p_bear__bridge",
+      "a": "BEAR",
+      "b": "BRIDGE",
+      "hints": [
+        {
+          "text": "CROSSING",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BRIDGE via a bridge crossing; BEAR via the 'Bear Crossing' road sign and bears crossing roads and rivers."
+        }
+      ],
+      "strong_hints": ["CROSSING"],
+      "best_available": { "text": "CROSSING", "why": "Bridge side is automatic and the wildlife-crossing sign gives BEAR a fair, recognisable route." },
+      "pair_note": "Passes; the bear side is the secondary one."
+    },
+    {
+      "pair_id": "p_bear__card",
+      "a": "BEAR",
+      "b": "CARD",
+      "hints": [
+        {
+          "text": "WILD",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CARD via the 'wild card' compound; BEAR via bears as wild animals ('wild bear')."
+        }
+      ],
+      "strong_hints": ["WILD"],
+      "best_available": { "text": "WILD", "why": "Both routes are ordinary usage; the bear side is generic but fair." },
+      "pair_note": "Single fair hint."
+    },
+    {
+      "pair_id": "p_bear__castle",
+      "a": "BEAR",
+      "b": "CASTLE",
+      "hints": [
+        {
+          "text": "BRAVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "BEAR via Pixar's Brave, where Merida's mother is turned into a bear; CASTLE via the Scottish castle of DunBroch where the film is set."
+        }
+      ],
+      "strong_hints": ["BRAVE"],
+      "best_available": { "text": "BRAVE", "why": "One well-known film carries both words, in the spirit of the POISON/Snow White anchor; players who miss the film get nothing." },
+      "pair_note": "Passes as a shared story; worth a second opinion on whether the bear transformation in Brave is widely remembered."
+    },
+    {
+      "pair_id": "p_bear__cat",
+      "a": "BEAR",
+      "b": "CAT",
+      "hints": [
+        {
+          "text": "PAWS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via bear paws; CAT via cat paws, both everyday."
+        },
+        {
+          "text": "CLAWS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via bear claws (also the pastry); CAT via a cat's retractable claws."
+        }
+      ],
+      "strong_hints": ["CLAWS", "PAWS"],
+      "best_available": { "text": "CLAWS", "why": "Slightly more distinctive than PAWS, which also fits dogs and rabbits; both are fully two-sided." },
+      "pair_note": "Two clean passes."
+    },
+    {
+      "pair_id": "p_bear__crown",
+      "a": "BEAR",
+      "b": "CROWN",
+      "hints": [
+        {
+          "text": "PADDINGTON",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation", "british_only"],
+          "verdict": "BORDERLINE",
+          "reason": "BEAR via Paddington Bear; CROWN via Paddington's tea with the Queen for the Platinum Jubilee and the Paddington tributes after her death, a largely British memory."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PADDINGTON", "why": "Only hint; the royal link is real and affectionate but not what most players carry for Paddington." },
+      "pair_note": "No PASS. The crown side depends on the 2022 Jubilee sketch."
+    },
+    {
+      "pair_id": "p_bear__diamond",
+      "a": "BEAR",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "BLACK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via the black bear; DIAMOND via black diamonds (the ski-run grade, the gem, the brand), both standard compounds."
+        }
+      ],
+      "strong_hints": ["BLACK"],
+      "best_available": { "text": "BLACK", "why": "Two established compounds, not a mood colour." },
+      "pair_note": "Single strong hint."
+    },
+    {
+      "pair_id": "p_bear__dog",
+      "a": "BEAR",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "HOUND",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["synonym_of_target", "obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "DOG via hound as a synonym; BEAR only via bear-hunting hounds (Plott hound, Karelian Bear Dog), which few players know."
+        },
+        {
+          "text": "FUR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "BEAR via thick bear fur; DOG via dog fur, both immediate even if the hint is broad."
+        }
+      ],
+      "strong_hints": ["FUR"],
+      "best_available": { "text": "FUR", "why": "Plain and two-sided; generic is not a defect under the rubric." },
+      "pair_note": "FUR passes; HOUND is mostly a DOG synonym."
+    },
+    {
+      "pair_id": "p_bear__dragon",
+      "a": "BEAR",
+      "b": "DRAGON",
+      "hints": [
+        {
+          "text": "CHINA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via the giant panda as China's bear; DRAGON via the Chinese dragon as the national symbol."
+        },
+        {
+          "text": "PANDA",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "BEAR via the panda being a bear; DRAGON via Kung Fu Panda, where Po becomes the Dragon Warrior."
+        }
+      ],
+      "strong_hints": ["CHINA", "PANDA"],
+      "best_available": { "text": "CHINA", "why": "Geography reaches both symbols without needing a film plot." },
+      "pair_note": "CHINA is the safer pass; PANDA passes on Kung Fu Panda's Dragon Warrior and deserves a second look."
+    },
+    {
+      "pair_id": "p_bear__egg",
+      "a": "BEAR",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "HUNT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "EGG via the Easter egg hunt; BEAR via the bear hunt (the picture book 'We're Going on a Bear Hunt' and bear hunting)."
+        }
+      ],
+      "strong_hints": ["HUNT"],
+      "best_available": { "text": "HUNT", "why": "Two familiar compounds that share the same word." },
+      "pair_note": "Single strong hint."
+    },
+    {
+      "pair_id": "p_bear__fire",
+      "a": "BEAR",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "CAMP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "FIRE via campfire; BEAR via bears raiding campsites, the classic camping worry."
+        },
+        {
+          "text": "SMOKEY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via Smokey Bear; FIRE via his 'only you can prevent wildfires' message and the smoke itself."
+        }
+      ],
+      "strong_hints": ["SMOKEY", "CAMP"],
+      "best_available": { "text": "SMOKEY", "why": "A single character who is both a bear and a fire mascot; CAMP is nearly as good and more international." },
+      "pair_note": "Two strong hints; SMOKEY is mainly a US reference."
+    },
+    {
+      "pair_id": "p_bear__fish",
+      "a": "BEAR",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "CATCH",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "FISH via the catch of the day; BEAR via the bear catching fish mid-leap, a familiar nature image though less automatic as a word link."
+        },
+        {
+          "text": "SALMON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "FISH via salmon being a fish; BEAR via grizzlies catching salmon at the falls."
+        }
+      ],
+      "strong_hints": ["SALMON", "CATCH"],
+      "best_available": { "text": "SALMON", "why": "The bear-at-the-salmon-run scene is iconic and salmon is unmistakably a fish." },
+      "pair_note": "Two passes; SALMON is the stronger."
+    },
+    {
+      "pair_id": "p_bear__ghost",
+      "a": "BEAR",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "SPIRIT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["synonym_of_target", "obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "GHOST via spirit as a synonym; BEAR via the spirit bear (Kermode) or the bear as a spirit animal, both a stretch for a general player."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SPIRIT", "why": "Only hint; the bear side exists (spirit bear, spirit animal) but is not what SPIRIT evokes." },
+      "pair_note": "No PASS. Essentially a GHOST synonym."
+    },
+    {
+      "pair_id": "p_bear__glass",
+      "a": "BEAR",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "JAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "GLASS via the glass jar; BEAR via Winnie the Pooh's head in the honey jar and gummy bears in a jar."
+        }
+      ],
+      "strong_hints": ["JAR"],
+      "best_available": { "text": "JAR", "why": "Material route for GLASS and a famous story scene for BEAR." },
+      "pair_note": "Single strong hint."
+    },
+    {
+      "pair_id": "p_bear__gold",
+      "a": "BEAR",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "GOLDILOCKS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "BORDERLINE",
+          "reason": "BEAR via Goldilocks and the Three Bears; GOLD via her golden locks, but the hint literally contains the target GOLD, which most hint rules forbid."
+        },
+        {
+          "text": "CALIFORNIA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via the grizzly on the California Bear Flag (and Cal's Golden Bears); GOLD via the Gold Rush and the Golden State."
+        }
+      ],
+      "strong_hints": ["CALIFORNIA"],
+      "best_available": { "text": "CALIFORNIA", "why": "Geography reaches both words strongly without embedding the target; GOLDILOCKS is a better story link but contains GOLD." },
+      "pair_note": "GOLDILOCKS is held at BORDERLINE purely on the contains-target flag; if the owner allows containment it is a top-tier hint."
+    },
+    {
+      "pair_id": "p_bear__heart",
+      "a": "BEAR",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "HUG",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "BEAR via the bear hug; HEART only via hugs as a gesture of love, a mood association rather than a scene or phrase."
+        },
+        {
+          "text": "CARE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "BEAR via the Care Bears; HEART via the heart badges on the Care Bears' tummies and 'caring heart', which players must reconstruct."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HUG", "why": "Bear hug is universal and hug-to-heart is an easy emotional step, though not a definite route." },
+      "pair_note": "No PASS. Both hints reach BEAR via a compound and HEART only via feeling."
+    },
+    {
+      "pair_id": "p_bear__horse",
+      "a": "BEAR",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "WILD",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HORSE via wild horses (the phrase and the song); BEAR via bears as wild animals."
+        }
+      ],
+      "strong_hints": ["WILD"],
+      "best_available": { "text": "WILD", "why": "Both are wild animals and 'wild horses' is a set phrase." },
+      "pair_note": "Single fair hint."
+    },
+    {
+      "pair_id": "p_bear__iron",
+      "a": "BEAR",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "CAGE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via the caged circus or zoo bear; IRON via the iron cage, the material cages are made of."
+        }
+      ],
+      "strong_hints": ["CAGE"],
+      "best_available": { "text": "CAGE", "why": "A single object that both words naturally attach to." },
+      "pair_note": "Single strong hint."
+    },
+    {
+      "pair_id": "p_bear__key",
+      "a": "BEAR",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "WIND",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "KEY via the wind-up key; BEAR via the wind-up toy bear, which exists but is not the first wind-up toy players picture."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "WIND", "why": "Only hint; the wind-up toy scene is coherent but the bear is incidental to it." },
+      "pair_note": "No PASS. Bear side is weak."
+    },
+    {
+      "pair_id": "p_bear__king",
+      "a": "BEAR",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "JUNGLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEAR via Baloo in The Jungle Book; KING via King Louie in the same story and 'king of the jungle'."
+        }
+      ],
+      "strong_hints": ["JUNGLE"],
+      "best_available": { "text": "JUNGLE", "why": "One story holds both a bear and a king, with the generic 'king of the jungle' as backup." },
+      "pair_note": "Strong single hint."
+    },
+    {
+      "pair_id": "p_bear__knight",
+      "a": "BEAR",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "ARMOR",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "KNIGHT via a knight's armour; BEAR only via the armoured bears of His Dark Materials, which most players will not reach."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ARMOR", "why": "Only hint; functionally one-sided for anyone who has not read Pullman." },
+      "pair_note": "No PASS. Close to a FAIL; kept BORDERLINE because the bear route is real."
+    },
+    {
+      "pair_id": "p_bear__light",
+      "a": "BEAR",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "NORTHERN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "LIGHT via the Northern Lights; BEAR via the polar bear of the far north and the Great Bear in the northern sky, neither a set phrase."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "NORTHERN", "why": "The Arctic scene (aurora over polar bears) is familiar, but BEAR has no compound with NORTHERN." },
+      "pair_note": "No PASS, but a plausible shared Arctic scene; a reasonable owner could promote it."
+    },
+    {
+      "pair_id": "p_bear__lion",
+      "a": "BEAR",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "ZOO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "BEAR and LION are both headline zoo animals."
+        },
+        {
+          "text": "OZ",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "LION via the Cowardly Lion of The Wizard of Oz; BEAR via the famous chant 'lions and tigers and bears, oh my!'."
+        }
+      ],
+      "strong_hints": ["OZ", "ZOO"],
+      "best_available": { "text": "OZ", "why": "A single story line names both animals; ZOO is fine but fits many animals." },
+      "pair_note": "Two passes."
+    },
+    {
+      "pair_id": "p_bear__moon",
+      "a": "BEAR",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "SKY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "MOON via the moon in the sky; BEAR via the Great Bear (Ursa Major, the Big Dipper's constellation) in the night sky."
+        }
+      ],
+      "strong_hints": ["SKY"],
+      "best_available": { "text": "SKY", "why": "Constellation route is a recognised path, comparable to the BROOKLYN/Big Apple anchor, though the bear side takes a step." },
+      "pair_note": "Passes narrowly; worth a second opinion on how readily players reach BEAR from SKY."
+    },
+    {
+      "pair_id": "p_bear__mouse",
+      "a": "BEAR",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "FUR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "BEAR via bear fur; MOUSE via its soft fur, both plain and two-sided."
+        }
+      ],
+      "strong_hints": ["FUR"],
+      "best_available": { "text": "FUR", "why": "Broad but reaches both words directly." },
+      "pair_note": "Single generic pass."
+    },
+    {
+      "pair_id": "p_bear__night",
+      "a": "BEAR",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "POLAR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "BEAR via polar bear; NIGHT via the 'polar night' of the Arctic winter, a real term that many players will not know."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "POLAR", "why": "Only hint; bear side is immediate and polar night is a genuine compound, just not a common one." },
+      "pair_note": "No PASS. Hinges on familiarity with 'polar night'."
+    }
+  ]
+}
