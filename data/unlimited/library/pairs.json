@@ -253,6 +253,16 @@
         "rejected": 1,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u13-blind-review.json",
+        "key": "data/unlimited/library/reviews/u13-blind-key.json",
+        "batch": "data/unlimited/library/batches/u13-batch.json",
+        "ai_reviewed": 49,
+        "held": 10,
+        "rejected": 5,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -26565,7 +26575,7 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "direct_association",
-          "wordAConnection": "A fort is a small castle.",
+          "wordAConnection": "A castle is fortified; coastal forts defend against pirates.",
           "wordBConnection": "Pirates and the forts built against them.",
           "revealExplanation": "A fort: a castle against the pirates.",
           "reference": null,
@@ -26587,6 +26597,13 @@
                 "synonym_of_target"
               ],
               "reason": "A fort is a near-synonym of a castle, and pirates attacking or holding a Caribbean fort (Pirates of the Caribbean, pirate-fort toy sets) is a recognizable scene."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-17",
+              "from": "A fort is a small castle.",
+              "to": "A castle is fortified; coastal forts defend against pirates.",
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         }
@@ -28441,6 +28458,117 @@
       ]
     },
     {
+      "pair_id": "p_cat__lion",
+      "a": "CAT",
+      "b": "LION",
+      "source": "u13",
+      "pairNote": "Easy pair; both hints are clean.",
+      "reviewerBestAvailable": {
+        "text": "WHISKERS",
+        "why": "Reaches both words directly through one physical feature every player can picture.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WHISKERS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A cat's whiskers.",
+          "wordBConnection": "A lion's whiskers.",
+          "revealExplanation": "Whiskers: house cat and lion alike.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared property: a house cat's whiskers and a lion's whiskers are the same familiar feature."
+            }
+          }
+        },
+        {
+          "text": "BIG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The big cats.",
+          "wordBConnection": "A lion is the big cat.",
+          "revealExplanation": "Big cats: the lion first of all.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Compound route: 'big cat' is the familiar phrase, and the lion is the archetypal big cat."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__moon",
+      "a": "CAT",
+      "b": "MOON",
+      "source": "u13",
+      "pairNote": "Cat side is a little softer than the moon side but the scene is well known.",
+      "reviewerBestAvailable": {
+        "text": "NIGHT",
+        "why": "A single familiar scene (cat out at night under the moon) covers both words.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "NIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Cats prowl at night.",
+          "wordBConnection": "The moon at night.",
+          "revealExplanation": "Night: the cat's hour, the moon's sky.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared scene: the moon belongs to the night, and the nocturnal cat prowling or silhouetted under it is a stock image."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_cat__mouse",
       "a": "CAT",
       "b": "MOUSE",
@@ -28682,6 +28810,861 @@
       }
     },
     {
+      "pair_id": "p_cat__night",
+      "a": "CAT",
+      "b": "NIGHT",
+      "source": "u13",
+      "pairNote": "Both work; night side leans on atmosphere in each case.",
+      "reviewerBestAvailable": {
+        "text": "PROWL",
+        "why": "The verb binds the two words in one action rather than two separate images.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ALLEY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "An alley cat.",
+          "wordBConnection": "The alley at night.",
+          "revealExplanation": "The alley cat at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Compound 'alley cat' for the cat; a dark alley at night is the stock setting for the night side."
+            }
+          }
+        },
+        {
+          "text": "PROWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cat on the prowl.",
+          "wordBConnection": "Prowling at night.",
+          "revealExplanation": "The cat's night prowl.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Verb route: cats prowl, and prowling is a night-time activity ('on the prowl at night', 'night prowler')."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__ocean",
+      "a": "CAT",
+      "b": "OCEAN",
+      "source": "u13",
+      "pairNote": "Cat side depends on the ship's cat; players who do not know it will see SHIP as one-sided.",
+      "reviewerBestAvailable": {
+        "text": "SHIP",
+        "why": "Only hint, and the ship's-cat tradition is familiar enough to make it fair.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SHIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ship's cat.",
+          "wordBConnection": "A ship on the ocean.",
+          "revealExplanation": "The ship's cat, out on the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Ship on the ocean is direct; the cat side is the traditional ship's cat kept aboard by sailors, a recognizable scene comparable to TREAT for APPLE+HORSE."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__pirate",
+      "a": "CAT",
+      "b": "PIRATE",
+      "source": "u13",
+      "pairNote": "EYE is the clear winner; SHIP is serviceable.",
+      "reviewerBestAvailable": {
+        "text": "EYE",
+        "why": "Both sides are instant and distinct images.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "EYE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cat's eye.",
+          "wordBConnection": "The pirate's eye patch.",
+          "revealExplanation": "An eye: the cat's, or the one under the pirate's patch.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Compound 'cat's eye' (marbles, glasses, slit pupils) for the cat; the pirate's eye patch for the pirate."
+            }
+          }
+        },
+        {
+          "text": "SHIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ship's cat.",
+          "wordBConnection": "A pirate ship.",
+          "revealExplanation": "The pirate ship's cat.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Pirate ship is a stock compound; the cat side is the ship's cat tradition."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__queen",
+      "a": "CAT",
+      "b": "QUEEN",
+      "source": "u13",
+      "pairNote": "EGYPT carries the pair; CLEOPATRA reaches the cat only through Egypt.",
+      "reviewerBestAvailable": {
+        "text": "EGYPT",
+        "why": "Cat-worshipping Egypt is a direct, widely known link and Cleopatra is a famous queen.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "EGYPT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Egypt's sacred cats.",
+          "wordBConnection": "Egypt's queen Cleopatra.",
+          "revealExplanation": "Egypt: cats and queens.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "ancient Egypt",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ancient Egypt's cat worship is widely known; Egypt's queens (Cleopatra, Nefertiti) supply the queen side."
+            }
+          }
+        },
+        {
+          "text": "CLEOPATRA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "famous_person",
+          "wordAConnection": "Cleopatra's cat-eye look.",
+          "wordBConnection": "Cleopatra was a queen.",
+          "revealExplanation": "Cleopatra: queen, with the cat eyes.",
+          "reference": {
+            "referenceType": "famous_person",
+            "source": "Cleopatra",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Cleopatra is a famous queen; the cat side runs through two hops (Cleopatra -> ancient Egypt -> sacred cats, plus the 'cat eye' eyeliner look), which a player may not make unaided."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__ring",
+      "a": "CAT",
+      "b": "RING",
+      "source": "u13",
+      "pairNote": "No PASS. Pair needs a new hint (e.g. BELL for a cat's collar bell / bell ring, or BOXING for cat fight / boxing ring).",
+      "reviewerBestAvailable": {
+        "text": "TAIL",
+        "why": "Only hint offered; it is one-sided but the only candidate.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TAIL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A cat's tail.",
+          "wordBConnection": "A ring-tailed animal's rings.",
+          "revealExplanation": "A tail: the cat's, with rings on it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Cat's tail is direct, but ring reaches tail only through 'ring-tailed' (lemur, ringtail cat), a phrase a player would not recover from TAIL alone."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__robot",
+      "a": "CAT",
+      "b": "ROBOT",
+      "source": "u13",
+      "pairNote": "Good single hint.",
+      "reviewerBestAvailable": {
+        "text": "VACUUM",
+        "why": "One widely shared scene (cat on a Roomba) that contains both words.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VACUUM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The cat on the robot vacuum.",
+          "wordBConnection": "A robot vacuum.",
+          "revealExplanation": "The cat riding the robot vacuum.",
+          "reference": {
+            "referenceType": "catchphrase",
+            "source": "the Roomba cat videos",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Robot vacuum (Roomba) is direct; the cat riding or fleeing the vacuum is a well-known internet scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__rock",
+      "a": "CAT",
+      "b": "ROCK",
+      "source": "u13",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "PET",
+        "why": "Compound on both sides with a satisfying twist.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A pet cat.",
+          "wordBConnection": "A pet rock.",
+          "revealExplanation": "Pet cat, pet rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pet cat is direct; the famous novelty 'pet rock' gives the rock side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__rose",
+      "a": "CAT",
+      "b": "ROSE",
+      "source": "u13",
+      "pairNote": "Fine.",
+      "reviewerBestAvailable": {
+        "text": "SCRATCH",
+        "why": "A single shared verb that fits both naturally.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCRATCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cat scratch.",
+          "wordBConnection": "Scratched by the rose's thorns.",
+          "revealExplanation": "A scratch: from the cat, or from the rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cats scratch; rose thorns scratch you when you pick them, a shared verb/property."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__salt",
+      "a": "CAT",
+      "b": "SALT",
+      "source": "u13",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "LICK",
+        "why": "Verb on one side, familiar compound on the other.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cat licking itself.",
+          "wordBConnection": "A salt lick.",
+          "revealExplanation": "A lick: the cat's, or of salt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cats lick themselves; 'salt lick' is the compound for the salt side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__shadow",
+      "a": "CAT",
+      "b": "SHADOW",
+      "source": "u13",
+      "pairNote": "Both acceptable; colour flag on BLACK is informational only.",
+      "reviewerBestAvailable": {
+        "text": "SNEAK",
+        "why": "Binds the words in one action; BLACK is a colour route but still fair.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SNEAK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cat sneaks.",
+          "wordBConnection": "Sneaking in the shadows.",
+          "revealExplanation": "Sneaking: the cat, in the shadows.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cats sneak; 'sneaking in the shadows' is the stock phrase for the shadow side."
+            }
+          }
+        },
+        {
+          "text": "BLACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A black cat.",
+          "wordBConnection": "A black shadow.",
+          "revealExplanation": "Black: the cat and the shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "'Black cat' is a strong compound; shadows are dark/black, a shared-property route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__shark",
+      "a": "CAT",
+      "b": "SHARK",
+      "source": "u13",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "TIGER",
+        "why": "Clean on both sides.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TIGER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A tiger is a cat.",
+          "wordBConnection": "A tiger shark.",
+          "revealExplanation": "Tiger: the cat, and the shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A tiger is a big cat; 'tiger shark' is a well-known species."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__snake",
+      "a": "CAT",
+      "b": "SNAKE",
+      "source": "u13",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "HISS",
+        "why": "Direct shared behaviour.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HISS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A cat's hiss.",
+          "wordBConnection": "A snake's hiss.",
+          "revealExplanation": "A hiss: cat or snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both animals hiss; a shared behaviour everyone knows."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__spider",
+      "a": "CAT",
+      "b": "SPIDER",
+      "source": "u13",
+      "pairNote": "Spider side slightly weaker than the cat side but recoverable.",
+      "reviewerBestAvailable": {
+        "text": "WOMAN",
+        "why": "Superhero-name route on both sides.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WOMAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Catwoman.",
+          "wordBConnection": "Spider-Woman.",
+          "revealExplanation": "Catwoman and Spider-Woman.",
+          "reference": {
+            "referenceType": "franchise_pair",
+            "source": "DC and Marvel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Catwoman is a household name; Spider-Woman is a real Marvel character and players reach it from Spider-Man even if they have not met her."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__spring",
+      "a": "CAT",
+      "b": "SPRING",
+      "source": "u13",
+      "pairNote": "Relies on the verb sense of SPRING, not the season or coil.",
+      "reviewerBestAvailable": {
+        "text": "POUNCE",
+        "why": "The cat's spring/pounce is one motion.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "POUNCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A cat pounces.",
+          "wordBConnection": "A pounce is a spring.",
+          "revealExplanation": "The cat springs: a pounce.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Cats pounce; spring as the verb 'to leap' is near-synonymous with pounce, an allowed verb route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__star",
+      "a": "CAT",
+      "b": "STAR",
+      "source": "u13",
+      "pairNote": "Cat side goes through lion, but Leo-the-lion is widely known.",
+      "reviewerBestAvailable": {
+        "text": "LEO",
+        "why": "Zodiac lion covers both words.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LEO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Leo is the lion, a cat.",
+          "wordBConnection": "Leo is a star sign.",
+          "revealExplanation": "Leo: the cat among the stars.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "the zodiac",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Leo is a star sign/constellation; Leo is the lion, a big cat."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__train",
+      "a": "CAT",
+      "b": "TRAIN",
+      "source": "u13",
+      "pairNote": "Train side is the verb, not the locomotive.",
+      "reviewerBestAvailable": {
+        "text": "LITTER",
+        "why": "A familiar compound-verb (litter-training a cat) that contains both words.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LITTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cat's litter box.",
+          "wordBConnection": "Litter-trained.",
+          "revealExplanation": "Litter-training the cat.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Cat litter is direct; 'litter-train' / 'litter-trained' uses train as a verb, an allowed inflection route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cat__water",
+      "a": "CAT",
+      "b": "WATER",
+      "source": "u13",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "BATH",
+        "why": "A single shared scene (bathing a reluctant cat).",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BATH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cat's bath.",
+          "wordBConnection": "A bath of water.",
+          "revealExplanation": "The cat and the bath water.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cats famously hate baths; bath water is direct."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_cat__witch",
       "a": "CAT",
       "b": "WITCH",
@@ -28894,6 +29877,490 @@
       }
     },
     {
+      "pair_id": "p_cat__wolf",
+      "a": "CAT",
+      "b": "WOLF",
+      "source": "u13",
+      "pairNote": "Both broad but valid under the rubric; generic is a flag, not a rejection.",
+      "reviewerBestAvailable": {
+        "text": "PREDATOR",
+        "why": "Slightly more specific than FUR while still reaching both.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FUR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A cat's fur.",
+          "wordBConnection": "A wolf's fur.",
+          "revealExplanation": "Fur: cat and wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: both animals are furred."
+            }
+          }
+        },
+        {
+          "text": "PREDATOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A cat is a predator.",
+          "wordBConnection": "A wolf is a predator.",
+          "revealExplanation": "Predators: cat and wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: both are hunting predators."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__diamond",
+      "a": "CROWN",
+      "b": "DIAMOND",
+      "source": "u13",
+      "pairNote": "JEWEL is strong; SET is a stretch on the crown side.",
+      "reviewerBestAvailable": {
+        "text": "JEWEL",
+        "why": "Compound on the crown side and a direct category on the diamond side.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "JEWEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The crown jewels are the most famous jewels there are.",
+          "wordBConnection": "And they are diamonds.",
+          "revealExplanation": "The crown jewels are diamonds.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Crown jewels' is the compound; a diamond is a jewel."
+            }
+          }
+        },
+        {
+          "text": "SPARKLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A crown sparkles.",
+          "wordBConnection": "Because of the diamonds in it.",
+          "revealExplanation": "A crown sparkles because of the diamonds in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diamonds sparkle; a jewelled crown sparkles, a shared property."
+            }
+          }
+        },
+        {
+          "text": "SET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A crown has stones set into its band.",
+          "wordBConnection": "A diamond is what gets set.",
+          "revealExplanation": "A diamond is set into the band of a crown.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "A diamond is 'set' in a mount; a crown is set with gems, but the crown side is reached only by picturing the diamond already in the crown, and SET is a very broad word for a player to decode."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__dog",
+      "a": "CROWN",
+      "b": "DOG",
+      "source": "u13",
+      "pairNote": "No PASS. Both hints are crown-first with a thin dog side; CORGI-style routes are the natural fix (e.g. CORGI itself is not a hint here).",
+      "reviewerBestAvailable": {
+        "text": "KING",
+        "why": "King Charles spaniel and the dog name 'King' give it a slightly firmer dog foothold than ROYAL.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "The king's crown.",
+          "wordBConnection": "A King Charles spaniel.",
+          "revealExplanation": "King: the crown, and the spaniel.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Crown-king is direct; the dog side rests on 'King' as a common dog name and the King Charles spaniel, which a player may not land on."
+            }
+          }
+        },
+        {
+          "text": "ROYAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The royal crown.",
+          "wordBConnection": "The royal corgis.",
+          "revealExplanation": "Royal: the crown, and the corgis.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Royal crown is direct; the dog side runs through the Queen's royal corgis or the Royal Canin brand, both a step removed."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__dragon",
+      "a": "CROWN",
+      "b": "DRAGON",
+      "source": "u13",
+      "pairNote": "Dragon side depends on one franchise, but a very famous one.",
+      "reviewerBestAvailable": {
+        "text": "THRONE",
+        "why": "Only hint; the Game of Thrones link is broad enough to carry the dragon.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The crown that goes with the throne.",
+          "wordBConnection": "Game of Thrones' dragons.",
+          "revealExplanation": "Game of Thrones: a crown and dragons.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Crown and throne are paired royal symbols; the dragon side is Game of Thrones, where dragons are central, a widely known story route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__egg",
+      "a": "CROWN",
+      "b": "EGG",
+      "source": "u13",
+      "pairNote": "No PASS. Defensible as a reach but not clean; a second opinion is worthwhile.",
+      "reviewerBestAvailable": {
+        "text": "FABERGE",
+        "why": "Only hint; the imperial-egg link is real and moderately known.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "FABERGE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "famous_object_place_or_event",
+          "wordAConnection": "Made for the Tsar's crown.",
+          "wordBConnection": "A Fabergé egg.",
+          "revealExplanation": "Fabergé: the jewelled eggs of the crown.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Fabergé eggs",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Faberge eggs are famous; the crown side is that they were made for the Russian imperial crown (the Tsars) and are jewelled like crowns, which many players know only vaguely."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__fire",
+      "a": "CROWN",
+      "b": "FIRE",
+      "source": "u13",
+      "pairNote": "No PASS. The pair wants a shared scene such as a dragon or a phoenix; none of these hints supply it.",
+      "reviewerBestAvailable": {
+        "text": "RING",
+        "why": "The only hint with a plausible, if thin, route to both (ring of fire; crown as a ring).",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "RING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "A crown is a ring worn on the head.",
+          "wordBConnection": "Ring of Fire is the familiar name.",
+          "revealExplanation": "Ring of Fire is a familiar name, and a crown is a ring worn on the head.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "'Ring of fire' is a familiar phrase; a crown is a ring-shaped circlet of jewellery, but a player is unlikely to move from RING to CROWN without prompting."
+            }
+          }
+        },
+        {
+          "text": "GOLD",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Crowns are made of gold.",
+          "wordBConnection": "Firelight is a golden colour.",
+          "revealExplanation": "Crowns are made of gold and firelight is a golden colour.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Gold crown is direct; fire reaches gold only via 'refined by fire' or a loose colour resemblance, neither of which a player would see."
+            }
+          }
+        },
+        {
+          "text": "CANDLE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A crown of candles is worn at midwinter.",
+          "wordBConnection": "A candle is a small flame carried about.",
+          "revealExplanation": "A crown of candles is worn at midwinter and a candle is a small flame carried about.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Candle flame is direct; the crown side (St Lucia candle crown, Advent crown) is too obscure to count."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__fish",
+      "a": "CROWN",
+      "b": "FISH",
+      "source": "u13",
+      "pairNote": "Acceptable; fish side is compound-dependent.",
+      "reviewerBestAvailable": {
+        "text": "KING",
+        "why": "Compound route on the fish side is real and reasonably known.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The king's crown.",
+          "wordBConnection": "A kingfish.",
+          "revealExplanation": "King: the crown, and the fish.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Crown-king is direct; kingfish, king salmon, king mackerel and the kingfisher give the fish side via familiar compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_crown__ghost",
       "a": "CROWN",
       "b": "GHOST",
@@ -29012,6 +30479,125 @@
           "CASTLE"
         ]
       }
+    },
+    {
+      "pair_id": "p_crown__glass",
+      "a": "CROWN",
+      "b": "GLASS",
+      "source": "u13",
+      "pairNote": "Fine.",
+      "reviewerBestAvailable": {
+        "text": "CRYSTAL",
+        "why": "Material shared by both objects.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRYSTAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A crown of crystal.",
+          "wordBConnection": "Crystal glass.",
+          "revealExplanation": "Crystal: a crown, or glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Crystal glass/glassware is direct; crowns and tiaras are studded with crystals, a shared-material route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__gold",
+      "a": "CROWN",
+      "b": "GOLD",
+      "source": "u13",
+      "pairNote": "MIDAS is excellent; KING is a judgement call that leans crown-only.",
+      "reviewerBestAvailable": {
+        "text": "MIDAS",
+        "why": "One story that names both a crowned king and gold.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MIDAS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "mythology_or_folklore",
+          "wordAConnection": "King Midas wore a crown.",
+          "wordBConnection": "The Midas touch: gold.",
+          "revealExplanation": "Midas: the crowned king of gold.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "King Midas",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "King Midas wore the crown; his golden touch is the gold side."
+            }
+          }
+        },
+        {
+          "text": "KING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The king's crown.",
+          "wordBConnection": "The king's gold.",
+          "revealExplanation": "A king: crowned, in gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Crown-king is direct; the gold side (a king's gold, royal treasury) is reached mostly through the crown itself rather than independently."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_crown__heart",
@@ -29254,6 +30840,561 @@
       }
     },
     {
+      "pair_id": "p_crown__horse",
+      "a": "CROWN",
+      "b": "HORSE",
+      "source": "u13",
+      "pairNote": "Strong pair.",
+      "reviewerBestAvailable": {
+        "text": "TRIPLE",
+        "why": "Both words sit in one famous phrase.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TRIPLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "title_or_name",
+          "wordAConnection": "The Triple Crown is the prize.",
+          "wordBConnection": "A horse wins it by taking all three great races.",
+          "revealExplanation": "The Triple Crown is the prize a horse wins by taking all three of the great races.",
+          "reference": {
+            "referenceType": "sport",
+            "source": "Triple Crown racing",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The 'Triple Crown' of horse racing contains both words in one compound."
+            }
+          }
+        },
+        {
+          "text": "CHESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "The king is the piece wearing the crown.",
+          "wordBConnection": "The knight beside it is a horse.",
+          "revealExplanation": "The chess knight is a horse and the king beside it is the piece wearing the crown.",
+          "reference": {
+            "referenceType": "game",
+            "source": "Chess",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The knight piece is a horse; the king and queen pieces wear crowns."
+            }
+          }
+        },
+        {
+          "text": "CARRIAGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The crowned monarch rides in a carriage.",
+          "wordBConnection": "Pulled by horses.",
+          "revealExplanation": "The crowned monarch rides in a carriage pulled by horses.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Horse-drawn carriage is direct; the royal carriage (coronation procession) gives the crown side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__ice",
+      "a": "CROWN",
+      "b": "ICE",
+      "source": "u13",
+      "pairNote": "Both good; ELSA is a story route.",
+      "reviewerBestAvailable": {
+        "text": "QUEEN",
+        "why": "Compound and role in one word.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "QUEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A queen's crown.",
+          "wordBConnection": "An ice queen.",
+          "revealExplanation": "A queen: crowned, and icy.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A queen wears a crown; 'ice queen' is a familiar compound."
+            }
+          }
+        },
+        {
+          "text": "ELSA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "fictional_character",
+          "wordAConnection": "Elsa's crown.",
+          "wordBConnection": "Elsa's ice.",
+          "revealExplanation": "Elsa: the crown and the ice.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Frozen",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Elsa's ice powers are direct; her coronation as queen of Arendelle in Frozen gives the crown side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__iron",
+      "a": "CROWN",
+      "b": "IRON",
+      "source": "u13",
+      "pairNote": "THRONE carries the pair; MASK and FIST are iron-first.",
+      "reviewerBestAvailable": {
+        "text": "THRONE",
+        "why": "Compound on the iron side and a direct royal pairing on the crown side.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The crown is what goes with the throne.",
+          "wordBConnection": "The Iron Throne is the one everybody pictures.",
+          "revealExplanation": "The Iron Throne is the seat and the crown is what goes with it.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Crown and throne are paired symbols; the Iron Throne of Game of Thrones gives the iron side."
+            }
+          }
+        },
+        {
+          "text": "MASK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Man in the Iron Mask is about who is entitled to the crown.",
+          "wordBConnection": "The mask itself is iron.",
+          "revealExplanation": "The Man in the Iron Mask is a story about who is entitled to wear the crown.",
+          "reference": {
+            "referenceType": "book",
+            "source": "The Man in the Iron Mask",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "'The Man in the Iron Mask' is a known title; the crown side (the masked prisoner is the king's twin, a plot about the throne) needs the story explained."
+            }
+          }
+        },
+        {
+          "text": "FIST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "compound_or_phrase",
+          "wordAConnection": "A crowned despot rules with one.",
+          "wordBConnection": "An iron fist is the phrase.",
+          "revealExplanation": "Ruling with an iron fist is what a crowned despot does.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "'Iron fist' is the compound; the crown side is only the idiom 'rule with an iron fist', so the player must infer a monarch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__key",
+      "a": "CROWN",
+      "b": "KEY",
+      "source": "u13",
+      "pairNote": "KINGDOM is strong; TOWER and LOCK are filler.",
+      "reviewerBestAvailable": {
+        "text": "KINGDOM",
+        "why": "The idiom binds both words.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "KINGDOM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The crown is what rules the kingdom.",
+          "wordBConnection": "The keys to the kingdom is the phrase.",
+          "revealExplanation": "The keys to the kingdom is the phrase and the crown is what rules the kingdom.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A crown rules a kingdom; 'keys to the kingdom' is a familiar idiom (and Kingdom Hearts for gamers)."
+            }
+          }
+        },
+        {
+          "text": "LOCK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The crown jewels are kept under lock and key.",
+          "wordBConnection": "A lock is what a key is for.",
+          "revealExplanation": "The crown jewels are kept under lock and key.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lock and key is direct; there is no recognizable route from LOCK to CROWN."
+            }
+          }
+        },
+        {
+          "text": "TOWER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The crown jewels are locked in the Tower of London.",
+          "wordBConnection": "The Ceremony of the Keys locks it every night.",
+          "revealExplanation": "The crown jewels are locked in the Tower of London and the Ceremony of the Keys locks it every night.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "The Tower of London holds the Crown Jewels (moderate); the key side would be the Ceremony of the Keys, which almost no player would reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__king",
+      "a": "CROWN",
+      "b": "KING",
+      "source": "u13",
+      "pairNote": "Trivially easy pair; all three fine.",
+      "reviewerBestAvailable": {
+        "text": "CORONATION",
+        "why": "Names the exact event joining the two words.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Crown and throne.",
+          "wordBConnection": "The king's throne.",
+          "revealExplanation": "The king on his throne, crown on.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Throne, crown and king are one royal scene."
+            }
+          }
+        },
+        {
+          "text": "ROYAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A royal crown.",
+          "wordBConnection": "A king is royal.",
+          "revealExplanation": "Royal: crown and king.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Royal crown; a king is royalty."
+            }
+          }
+        },
+        {
+          "text": "CORONATION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The crown placed at the coronation.",
+          "wordBConnection": "The king's coronation.",
+          "revealExplanation": "The coronation: the crown goes on the king.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The coronation is the ceremony where the crown is placed on the king."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__knight",
+      "a": "CROWN",
+      "b": "KNIGHT",
+      "source": "u13",
+      "pairNote": "Strong pair.",
+      "reviewerBestAvailable": {
+        "text": "ARTHUR",
+        "why": "A single story containing a crowned king and his knights.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The king's crown.",
+          "wordBConnection": "A knight serves the king.",
+          "revealExplanation": "The king: crowned, served by his knights.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A king wears the crown and knights his knights (and both are chess pieces)."
+            }
+          }
+        },
+        {
+          "text": "ARTHUR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "mythology_or_folklore",
+          "wordAConnection": "King Arthur's crown.",
+          "wordBConnection": "Arthur's knights of the Round Table.",
+          "revealExplanation": "King Arthur: the crown and the knights.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "King Arthur",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "King Arthur wore the crown and led the Knights of the Round Table."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_crown__light",
       "a": "CROWN",
       "b": "LIGHT",
@@ -29375,6 +31516,330 @@
         "status": "held",
         "stretch": false
       }
+    },
+    {
+      "pair_id": "p_crown__lion",
+      "a": "CROWN",
+      "b": "LION",
+      "source": "u13",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "KING",
+        "why": "Both sides immediate.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The king's crown.",
+          "wordBConnection": "The Lion King.",
+          "revealExplanation": "King: the crown, and the lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Crown-king is direct; 'The Lion King' and 'king of the jungle' give the lion side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__moon",
+      "a": "CROWN",
+      "b": "MOON",
+      "source": "u13",
+      "pairNote": "HALO is a shape route with neither side at full strength; still fair.",
+      "reviewerBestAvailable": {
+        "text": "DIANA",
+        "why": "Two famous referents, one royal and one lunar, in one name.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DIANA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "title_or_name",
+          "wordAConnection": "Diana was the princess in the tiara.",
+          "wordBConnection": "Diana was the Roman goddess of the moon.",
+          "revealExplanation": "Diana was the Roman goddess of the moon and Diana was the princess in the tiara.",
+          "reference": {
+            "referenceType": "name_or_homophone",
+            "source": "Diana, Roman goddess and Princess of Wales",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Princess Diana gives the crown side; Diana is the Roman goddess of the moon."
+            }
+          }
+        },
+        {
+          "text": "HALO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A crown is a ring that sits above the head.",
+          "wordBConnection": "A halo ring often appears around the moon.",
+          "revealExplanation": "A halo ring often appears around the moon, and a crown is a ring that sits above the head the same way.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A halo is a crown-like ring worn on the head; a lunar halo is the ring of light around the moon, a shared-shape route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__mouse",
+      "a": "CROWN",
+      "b": "MOUSE",
+      "source": "u13",
+      "pairNote": "No PASS. MICKEY-style routes (Disney royalty) would be stronger but are not offered.",
+      "reviewerBestAvailable": {
+        "text": "KING",
+        "why": "Only hint; the Nutcracker's Mouse King is a real but moderate route.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "KING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A king's crown.",
+          "wordBConnection": "The Mouse King.",
+          "revealExplanation": "The Nutcracker's Mouse King and his crown.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Nutcracker",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Crown-king is direct; the mouse side is the Mouse King of The Nutcracker, known mainly to ballet audiences."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__night",
+      "a": "CROWN",
+      "b": "NIGHT",
+      "source": "u13",
+      "pairNote": "Excellent.",
+      "reviewerBestAvailable": {
+        "text": "PROM",
+        "why": "One familiar scene with both words.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PROM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The prom queen's crown.",
+          "wordBConnection": "Prom night.",
+          "revealExplanation": "Prom night, and the crown that goes with it.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Prom king and queen are crowned; 'prom night' is the stock phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__ocean",
+      "a": "CROWN",
+      "b": "OCEAN",
+      "source": "u13",
+      "pairNote": "Both sea-king routes; fine.",
+      "reviewerBestAvailable": {
+        "text": "NEPTUNE",
+        "why": "Broadest recognition; sea-king imagery includes the crown.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TRITON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "fictional_character",
+          "wordAConnection": "King Triton's crown.",
+          "wordBConnection": "Triton rules the ocean.",
+          "revealExplanation": "King Triton: crown, ocean.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Little Mermaid",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "King Triton of The Little Mermaid is a crowned ruler of the ocean."
+            }
+          }
+        },
+        {
+          "text": "NEPTUNE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "mythology_or_folklore",
+          "wordAConnection": "Neptune's crown.",
+          "wordBConnection": "Neptune, god of the ocean.",
+          "revealExplanation": "Neptune: crowned ruler of the ocean.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "Roman mythology",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Neptune is the god/king of the sea; he is pictured crowned with his trident."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crown__pirate",
+      "a": "CROWN",
+      "b": "PIRATE",
+      "source": "u13",
+      "pairNote": "Fine.",
+      "reviewerBestAvailable": {
+        "text": "TREASURE",
+        "why": "A single stock image (treasure chest with a crown on top) contains both.",
+        "reviewer": "blind-subagent-13"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TREASURE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A jewelled crown in the treasure.",
+          "wordBConnection": "Pirate treasure.",
+          "revealExplanation": "Pirate treasure, a crown on top.",
+          "reference": null,
+          "provenance": {
+            "source": "u13",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-13",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirate treasure is direct; a jewelled crown is a classic item in the treasure chest (and the Crown Jewels are literally treasure)."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_diamond__ghost",

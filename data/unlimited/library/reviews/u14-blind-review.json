@@ -1,0 +1,1161 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-14",
+    "date": "2026-10-17",
+    "input": "u14-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u14-blind-input.json and no other file, search result, or web source before scoring."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_crown__queen",
+      "a": "CROWN",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "TIARA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "A tiara is a small crown (near-synonym of CROWN) and the classic headpiece a queen or princess wears."
+        },
+        {
+          "text": "ROYAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "The crown is the royal symbol and the queen is the royal person; broad but reaches both cleanly."
+        },
+        {
+          "text": "CORONATION",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A coronation is literally the crowning ceremony, and the queen is the person crowned in it; one shared scene."
+        }
+      ],
+      "strong_hints": ["CORONATION", "ROYAL", "TIARA"],
+      "best_available": { "text": "CORONATION", "why": "A single ceremony in which a crown is placed on a queen; both words are central to the scene." },
+      "pair_note": "Easy pair; all three hints pass. TIARA is a near-synonym of CROWN but still fair."
+    },
+    {
+      "pair_id": "p_crown__ring",
+      "a": "CROWN",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "GOLD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "Gold crown and gold ring are both canonical objects; the shared material is the defining one for both."
+        },
+        {
+          "text": "JEWEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crown Jewels is a familiar compound and a jewel is the stone set in a ring."
+        }
+      ],
+      "strong_hints": ["JEWEL", "GOLD"],
+      "best_available": { "text": "JEWEL", "why": "Crown Jewels plus the jewel in a ring; both routes are immediate." },
+      "pair_note": "Both pass; GOLD is a material route but an unusually strong one for two pieces of regalia/jewellery."
+    },
+    {
+      "pair_id": "p_crown__robot",
+      "a": "CROWN",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "METAL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "Robots are the archetypal metal thing; a crown is a metal (gold) object and 'metal crown' is also the dental term, so the material reaches both."
+        }
+      ],
+      "strong_hints": ["METAL"],
+      "best_available": { "text": "METAL", "why": "Only hint; defining for ROBOT and a fair material route for CROWN." },
+      "pair_note": "Judgement call: passed on the shared-property rule (like SWEET for APPLE+HONEY) but the CROWN side is a secondary property."
+    },
+    {
+      "pair_id": "p_crown__rock",
+      "a": "CROWN",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "JEWEL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crown Jewels for CROWN; a jewel is a precious stone and 'rock' is everyday slang for one ('look at that rock')."
+        }
+      ],
+      "strong_hints": ["JEWEL"],
+      "best_available": { "text": "JEWEL", "why": "Crown Jewels is immediate; jewel-as-rock is a familiar slang step." },
+      "pair_note": "Passes, but the ROCK side depends on the player reading rock as gemstone rather than stone or music."
+    },
+    {
+      "pair_id": "p_crown__rose",
+      "a": "CROWN",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "TUDOR",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Tudor rose is a famous emblem and the Tudors are a royal dynasty (the Tudor Crown is also a heraldic symbol)."
+        },
+        {
+          "text": "THORN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crown of thorns is a universally known phrase and roses have thorns."
+        },
+        {
+          "text": "GARLAND",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A garland of roses is a standard phrase and a garland worn on the head is a flower crown/wreath."
+        }
+      ],
+      "strong_hints": ["THORN", "TUDOR", "GARLAND"],
+      "best_available": { "text": "THORN", "why": "Crown of thorns and rose thorns; both routes are instant and broad." },
+      "pair_note": "THORN is excellent; TUDOR is good but history-dependent; GARLAND is the softest pass."
+    },
+    {
+      "pair_id": "p_crown__salt",
+      "a": "CROWN",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "TAX",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Salt tax is a well-known historical compound (gabelle, Salt March); taxes are paid to the Crown, but TAX does not point at CROWN clearly."
+        },
+        {
+          "text": "GANDHI",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Gandhi's Salt March reaches SALT; the march was against the British Crown's monopoly, but a player would not move from GANDHI to CROWN without that explanation."
+        },
+        {
+          "text": "NAVY",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Both sides are two-step: navy to Royal Navy to Crown, navy to sailor ('old salt') or seawater to SALT; neither reaches clearly."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TAX", "why": "Salt tax is a real compound and the Crown is the historical tax collector; the most concrete of three stretches." },
+      "pair_note": "No PASS. The pair is hard; all hints lean on the British-Crown-vs-salt-tax story, which only one side of each hint supports."
+    },
+    {
+      "pair_id": "p_crown__shadow",
+      "a": "CROWN",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "HEIR",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Heir to the crown is immediate; there is no ordinary route from HEIR to SHADOW."
+        },
+        {
+          "text": "HEAD",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Crown of the head / crown worn on the head is fine; HEAD gives no recognizable route to SHADOW."
+        },
+        {
+          "text": "TREE",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "The crown of a tree is a real but moderately known term; trees cast shadows, though 'shade' is the more natural word."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TREE", "why": "The only hint that touches both words (tree crown; tree shadow), even if each touch is light." },
+      "pair_note": "No PASS. HEIR and HEAD are pure CROWN filler; TREE is the only two-sided attempt."
+    },
+    {
+      "pair_id": "p_crown__shark",
+      "a": "CROWN",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "TEETH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Shark teeth are the animal's signature; a dental crown caps a tooth and the crown is the visible part of a tooth."
+        }
+      ],
+      "strong_hints": ["TEETH"],
+      "best_available": { "text": "TEETH", "why": "Both routes are familiar and the dental sense of CROWN is a satisfying twist." },
+      "pair_note": "Strong single hint."
+    },
+    {
+      "pair_id": "p_crown__snake",
+      "a": "CROWN",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "EGYPT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The pharaoh's crown carries the cobra (uraeus) and Egypt is linked to snakes via that image and Cleopatra's asp; one shared picture."
+        },
+        {
+          "text": "COBRA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["synonym_of_target"],
+          "verdict": "BORDERLINE",
+          "reason": "Cobra is a kind of snake (hyponym); the CROWN side relies on the cobra on the pharaoh's crown or 'king cobra' to king to crown, both second-step."
+        },
+        {
+          "text": "HOOD",
+          "connection_to_a": 0,
+          "connection_to_b": 1,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided","needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "A cobra's hood reaches SNAKE via one step; HOOD has no recognizable route to CROWN beyond 'both are on the head'."
+        }
+      ],
+      "strong_hints": ["EGYPT"],
+      "best_available": { "text": "EGYPT", "why": "The pharaoh's cobra crown binds both words in a single well-known image." },
+      "pair_note": "EGYPT is the one two-sided hint; COBRA is a snake hyponym with a thin crown step; HOOD fails."
+    },
+    {
+      "pair_id": "p_crown__spider",
+      "a": "CROWN",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "JEWEL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided","obscure"],
+          "verdict": "FAIL",
+          "reason": "Crown Jewels is immediate; the 'jewel spider' is an obscure species name and gives no recognizable route to SPIDER."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "JEWEL", "why": "Only hint offered; it is CROWN-only filler and should not be served." },
+      "pair_note": "No PASS. The pair has no usable hint here."
+    },
+    {
+      "pair_id": "p_crown__spring",
+      "a": "CROWN",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "MAY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "May is a spring month; the crowning of a May Queen at May Day is a real spring scene but not one most players will reach from MAY alone."
+        },
+        {
+          "text": "TREE",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Tree crown is a real term; trees blossom in spring, but TREE points at every season and at many other words first."
+        },
+        {
+          "text": "FLOWER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Flower crown is a familiar compound and spring flowers are the season's signature."
+        }
+      ],
+      "strong_hints": ["FLOWER"],
+      "best_available": { "text": "FLOWER", "why": "Flower crown plus spring flowers; both routes are immediate." },
+      "pair_note": "FLOWER carries the pair; MAY and TREE are soft."
+    },
+    {
+      "pair_id": "p_crown__star",
+      "a": "CROWN",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "SHINE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Stars shine by definition; a crown is shiny, but shining is not a defining property of CROWN the way sweetness is of an apple."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SHINE", "why": "Only hint; shared-property route that is strong for STAR and secondary for CROWN." },
+      "pair_note": "No PASS. Borderline shared-property hint."
+    },
+    {
+      "pair_id": "p_crown__train",
+      "a": "CROWN",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "ROYAL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic","variant_of:CORONATION"],
+          "verdict": "BORDERLINE",
+          "reason": "Royal crown is immediate; TRAIN is reached via the Royal Train or a royal gown's train, both secondary readings of TRAIN."
+        },
+        {
+          "text": "CORONATION",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Coronation is the crowning; the long train of the coronation robe carried by attendants is an iconic image, so TRAIN (gown sense) is a fair wordplay step."
+        }
+      ],
+      "strong_hints": ["CORONATION"],
+      "best_available": { "text": "CORONATION", "why": "Crowning scene plus the famous robe train; the most specific route to both words." },
+      "pair_note": "Judgement call: TRAIN is only reached through its garment sense; CORONATION makes that sense concrete, ROYAL does not."
+    },
+    {
+      "pair_id": "p_crown__water",
+      "a": "CROWN",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "CAP",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "A cap is headwear akin to a crown and 'crown cap' is the bottle-cap term; the cap of a water bottle reaches WATER, but both sides are one step removed."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CAP", "why": "Only hint; bottle cap touches both (crown cap / water bottle cap) but neither word is immediate." },
+      "pair_note": "No PASS. Clever but indirect."
+    },
+    {
+      "pair_id": "p_crown__witch",
+      "a": "CROWN",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "QUEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A queen wears the crown; Snow White's Evil Queen is a witch (and Narnia's White Witch is a queen), a familiar story route like POISON for APPLE+QUEEN."
+        }
+      ],
+      "strong_hints": ["QUEEN"],
+      "best_available": { "text": "QUEEN", "why": "Crown is immediate and the queen-who-is-a-witch is a well-known fairy-tale figure." },
+      "pair_note": "Passes on the Snow White calibration anchor."
+    },
+    {
+      "pair_id": "p_crown__wolf",
+      "a": "CROWN",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "ALPHA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Alpha wolf is a familiar compound; the CROWN side is only the metaphor alpha = leader = the one who wears the crown."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ALPHA", "why": "Only hint; strong for WOLF, metaphorical for CROWN." },
+      "pair_note": "No PASS. Leader-to-crown is a defensible metaphor but not a clear route."
+    },
+    {
+      "pair_id": "p_diamond__dog",
+      "a": "DIAMOND",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "COLLAR",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dog collar is immediate; a diamond collar (necklace, or the pampered pet's diamond-studded collar) is a recognizable image that joins the two."
+        }
+      ],
+      "strong_hints": ["COLLAR"],
+      "best_available": { "text": "COLLAR", "why": "One object, a diamond dog collar, contains both words." },
+      "pair_note": "Passes; DIAMOND side is secondary but the shared object is familiar."
+    },
+    {
+      "pair_id": "p_diamond__dragon",
+      "a": "DIAMOND",
+      "b": "DRAGON",
+      "hints": [
+        {
+          "text": "HOARD",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A dragon's hoard is the classic story image and that hoard is gold and gems, diamonds included."
+        }
+      ],
+      "strong_hints": ["HOARD"],
+      "best_available": { "text": "HOARD", "why": "The dragon-on-its-treasure scene points at both words." },
+      "pair_note": "Good single hint."
+    },
+    {
+      "pair_id": "p_diamond__egg",
+      "a": "DIAMOND",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "FABERGE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Faberge egg is a famous compound and Faberge is a jeweller whose eggs are encrusted with diamonds."
+        }
+      ],
+      "strong_hints": ["FABERGE"],
+      "best_available": { "text": "FABERGE", "why": "The jewelled egg is one object carrying both words." },
+      "pair_note": "Passes; players must know Faberge as a jeweller, which most who know the eggs do."
+    },
+    {
+      "pair_id": "p_diamond__fire",
+      "a": "DIAMOND",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "HEAT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Fire is heat; diamonds famously form under extreme heat and pressure, a widely known fact."
+        },
+        {
+          "text": "CARBON",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Diamond is pure carbon; fire reaches carbon through charcoal, soot and carbon dioxide, a second step."
+        },
+        {
+          "text": "VOLCANO",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Volcanoes are fire and lava; diamonds reach the surface in volcanic kimberlite, a fact fewer players hold."
+        }
+      ],
+      "strong_hints": ["HEAT"],
+      "best_available": { "text": "HEAT", "why": "Heat-and-pressure diamond formation is common knowledge and heat is fire's essence." },
+      "pair_note": "HEAT passes; CARBON and VOLCANO are true but each needs a step on one side."
+    },
+    {
+      "pair_id": "p_diamond__fish",
+      "a": "DIAMOND",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "SCALES",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Fish scales are immediate; diamonds are weighed on a jeweller's scales (carats), a plausible but not instant second sense."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SCALES", "why": "Only hint; double meaning touches both but the DIAMOND side is secondary." },
+      "pair_note": "No PASS. Reasonable wordplay, borderline reach."
+    },
+    {
+      "pair_id": "p_diamond__glass",
+      "a": "DIAMOND",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "CRYSTAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A diamond is a crystal and crystal is fine glassware; the word also names the diamond imitation."
+        },
+        {
+          "text": "CUT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond cut and cut glass are both standard compounds, and a diamond cuts glass."
+        }
+      ],
+      "strong_hints": ["CUT", "CRYSTAL"],
+      "best_available": { "text": "CUT", "why": "Compound on both sides plus the shared scene of a diamond scoring glass." },
+      "pair_note": "Both excellent."
+    },
+    {
+      "pair_id": "p_diamond__gold",
+      "a": "DIAMOND",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "MINE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond mine and gold mine are both everyday compounds."
+        },
+        {
+          "text": "RING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond ring and gold ring; a single ring is often both."
+        },
+        {
+          "text": "JEWELRY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Both are the two archetypal jewelry materials; broad but fully two-sided."
+        }
+      ],
+      "strong_hints": ["RING", "MINE", "JEWELRY"],
+      "best_available": { "text": "RING", "why": "One object made of gold and set with a diamond." },
+      "pair_note": "All three pass; this pair is naturally close."
+    },
+    {
+      "pair_id": "p_diamond__heart",
+      "a": "DIAMOND",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "RING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Diamond ring is immediate; the ring reaches HEART only through romance or heart-shaped settings."
+        },
+        {
+          "text": "CARD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamonds and hearts are two of the four card suits."
+        },
+        {
+          "text": "RED",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "Hearts are red and diamonds are the other red suit in a deck; the colour is a defining shared property here, not mood filler."
+        }
+      ],
+      "strong_hints": ["CARD", "RED"],
+      "best_available": { "text": "CARD", "why": "Both words are card suits; the most direct shared category." },
+      "pair_note": "CARD and RED both pass via the deck; RING is one-sided toward DIAMOND."
+    },
+    {
+      "pair_id": "p_diamond__honey",
+      "a": "DIAMOND",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "CLARITY",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Clarity is one of the diamond 4 Cs; honey is sold as 'clear' but 'clarity' gives no recognizable route to HONEY."
+        },
+        {
+          "text": "CRYSTAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond is a crystal and honey crystallises in the jar, a familiar kitchen fact."
+        },
+        {
+          "text": "RAW",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Raw honey is a shelf label and a raw (uncut) diamond is a recognised phrase even if 'rough' is the trade word."
+        }
+      ],
+      "strong_hints": ["CRYSTAL", "RAW"],
+      "best_available": { "text": "CRYSTAL", "why": "Direct for the gem and a familiar property of honey." },
+      "pair_note": "CRYSTAL and RAW pass; CLARITY is diamond-only."
+    },
+    {
+      "pair_id": "p_diamond__horse",
+      "a": "DIAMOND",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "STUD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond stud earrings and a stud horse/stud farm; both senses are everyday."
+        },
+        {
+          "text": "CARROT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Horses eat carrots; DIAMOND is reached only through the carrot/carat homophone joke, which is not one of the sanctioned routes."
+        },
+        {
+          "text": "RING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Diamond ring is immediate; horses are shown in a show ring or circus ring, a secondary sense of RING."
+        }
+      ],
+      "strong_hints": ["STUD"],
+      "best_available": { "text": "STUD", "why": "Clean double meaning, both senses broad." },
+      "pair_note": "STUD is excellent; CARROT is a pun the rubric does not explicitly allow (flag for owner); RING is soft on HORSE."
+    },
+    {
+      "pair_id": "p_diamond__ice",
+      "a": "DIAMOND",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "SPARKLE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Diamonds sparkle by reputation and frost/ice sparkles; 'ice' is also slang for diamonds, so the shared property is a natural bridge."
+        }
+      ],
+      "strong_hints": ["SPARKLE"],
+      "best_available": { "text": "SPARKLE", "why": "The property that makes ice a nickname for diamonds." },
+      "pair_note": "Passes; the pair is already linked by slang."
+    },
+    {
+      "pair_id": "p_diamond__iron",
+      "a": "DIAMOND",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "CUT",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Diamond cut is standard; 'cut iron' is not a phrase and IRON is reached only through cast/wrought iron confusion."
+        },
+        {
+          "text": "HARD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond is the hardest material and 'hard as iron' is idiom; the shared property defines both."
+        },
+        {
+          "text": "MINE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond mine and iron (ore) mine are both ordinary compounds."
+        }
+      ],
+      "strong_hints": ["MINE", "HARD"],
+      "best_available": { "text": "MINE", "why": "Concrete compound on both sides." },
+      "pair_note": "MINE and HARD pass; CUT is diamond-only."
+    },
+    {
+      "pair_id": "p_diamond__key",
+      "a": "DIAMOND",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "SAFE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamonds are what you lock in a safe and a key opens the safe; one shared scene."
+        },
+        {
+          "text": "CUT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Diamond cut and 'get a key cut' are both standard usages."
+        }
+      ],
+      "strong_hints": ["CUT", "SAFE"],
+      "best_available": { "text": "CUT", "why": "Standard verb/compound on both sides with no story needed." },
+      "pair_note": "Both pass; SAFE is the more pictorial, CUT the more direct."
+    },
+    {
+      "pair_id": "p_diamond__king",
+      "a": "DIAMOND",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "CARD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The king of diamonds is a playing card; suit and rank both reached."
+        }
+      ],
+      "strong_hints": ["CARD"],
+      "best_available": { "text": "CARD", "why": "One card names both words." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_diamond__knight",
+      "a": "DIAMOND",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "SHINING",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Knight in shining armour is a fixed phrase and 'shine bright like a diamond' / shining diamonds is a familiar property."
+        }
+      ],
+      "strong_hints": ["SHINING"],
+      "best_available": { "text": "SHINING", "why": "Fixed phrase for KNIGHT, defining property for DIAMOND." },
+      "pair_note": "Passes."
+    },
+    {
+      "pair_id": "p_diamond__light",
+      "a": "DIAMOND",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "SPARKLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Diamonds sparkle and sparkle is itself an effect of light."
+        },
+        {
+          "text": "PRISM",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A prism splits light; a cut diamond's facets act as prisms, giving its rainbow 'fire'."
+        },
+        {
+          "text": "CUT",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Diamond cut is standard; CUT has no ordinary route to LIGHT."
+        }
+      ],
+      "strong_hints": ["SPARKLE", "PRISM"],
+      "best_available": { "text": "SPARKLE", "why": "Immediate for both words." },
+      "pair_note": "SPARKLE and PRISM pass; CUT is diamond-only."
+    },
+    {
+      "pair_id": "p_diamond__lion",
+      "a": "DIAMOND",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "ROCK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Rock is slang for a diamond; LION is reached only via Pride Rock in The Lion King or lions on a rock, a scene most players will not jump to from ROCK alone."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ROCK", "why": "Only hint; strong for DIAMOND, story-dependent for LION." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_diamond__moon",
+      "a": "DIAMOND",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "SKY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The moon is in the sky; 'like a diamond in the sky' (Twinkle Twinkle) and 'Lucy in the Sky with Diamonds' are both famous."
+        },
+        {
+          "text": "RING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Diamond ring is immediate; MOON needs the ring/halo around the moon or the eclipse 'diamond ring effect', both secondary."
+        },
+        {
+          "text": "ROCK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Rock is slang for a diamond and moon rock is a familiar compound."
+        }
+      ],
+      "strong_hints": ["ROCK", "SKY"],
+      "best_available": { "text": "ROCK", "why": "Slang for the gem plus the moon rock compound." },
+      "pair_note": "ROCK and SKY pass; RING is diamond-leaning."
+    },
+    {
+      "pair_id": "p_diamond__mouse",
+      "a": "DIAMOND",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "TINY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "A mouse is the archetypal tiny animal; diamonds are small but TINY is not a defining property of a diamond."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TINY", "why": "Only hint; shared size property that is strong for MOUSE and weak for DIAMOND." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_diamond__night",
+      "a": "DIAMOND",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "SKY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Night sky is a compound; 'like a diamond in the sky' is the famous nursery-rhyme line."
+        },
+        {
+          "text": "TWINKLE",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Twinkle Twinkle Little Star compares the star to a diamond and stars twinkle at night; one shared rhyme reaches both."
+        }
+      ],
+      "strong_hints": ["SKY", "TWINKLE"],
+      "best_available": { "text": "SKY", "why": "Night sky compound plus the diamond-in-the-sky line." },
+      "pair_note": "Both pass via the nursery rhyme; TWINKLE is the softer of the two."
+    },
+    {
+      "pair_id": "p_diamond__ocean",
+      "a": "DIAMOND",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "TITANIC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The ship sank in the ocean and the film's Heart of the Ocean diamond is its central object."
+        }
+      ],
+      "strong_hints": ["TITANIC"],
+      "best_available": { "text": "TITANIC", "why": "One famous story holds both words." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_diamond__pirate",
+      "a": "DIAMOND",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "TREASURE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pirate treasure is the compound and diamonds are what treasure chests hold."
+        }
+      ],
+      "strong_hints": ["TREASURE"],
+      "best_available": { "text": "TREASURE", "why": "Pirate chest full of gems." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_diamond__queen",
+      "a": "DIAMOND",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "CROWN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The queen wears the crown and the crown jewels are set with famous diamonds."
+        },
+        {
+          "text": "CARD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The queen of diamonds is a playing card."
+        }
+      ],
+      "strong_hints": ["CARD", "CROWN"],
+      "best_available": { "text": "CARD", "why": "One card names both words." },
+      "pair_note": "Both pass."
+    },
+    {
+      "pair_id": "p_diamond__ring",
+      "a": "DIAMOND",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "WEDDING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wedding ring is the compound and the wedding diamond is part of the same scene."
+        },
+        {
+          "text": "ENGAGEMENT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Engagement ring is the compound and the diamond engagement ring is the canonical object."
+        }
+      ],
+      "strong_hints": ["ENGAGEMENT", "WEDDING"],
+      "best_available": { "text": "ENGAGEMENT", "why": "The diamond engagement ring is the single most familiar object joining both words." },
+      "pair_note": "Both pass; nearly interchangeable."
+    }
+  ]
+}
