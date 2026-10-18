@@ -1,0 +1,1381 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-17",
+    "date": "2026-10-17",
+    "input": "u17-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u17-blind-input.json; no other file, repository search, web lookup or external API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_dragon__water",
+      "a": "DRAGON",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "SERPENT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Dragon reads as a serpent (serpentine Chinese dragons, 'the great serpent'); water is reached only through 'sea serpent' or 'water snake', one step removed."
+        },
+        {
+          "text": "SEA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Sea dragon (the real fish and the mythic sea dragon) reaches dragon; the sea is water."
+        },
+        {
+          "text": "AVATAR",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Avatar: The Way of Water gives water; dragon arrives only via the dragon-like ikran/Toruk or the dragons of The Last Airbender, which needs explaining."
+        }
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": { "text": "SEA", "why": "Sea dragon is a familiar creature name and sea is plainly water; the only hint that reaches both sides without a detour." },
+      "pair_note": "One clean hint; SERPENT and AVATAR both lean on the water side being spelled out as 'sea'/'The Way of Water'."
+    },
+    {
+      "pair_id": "p_dragon__witch",
+      "a": "DRAGON",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "SPELL",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Witches cast spells; nothing in 'spell' points at a dragon."
+        },
+        {
+          "text": "FANTASY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Both are stock figures of the fantasy genre; broad, but it reaches both words equally."
+        },
+        {
+          "text": "MALEFICENT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Maleficent is Disney's Sleeping Beauty witch/sorceress who turns into a dragon in the 1959 film (and whose raven becomes one in the 2014 film)."
+        }
+      ],
+      "strong_hints": ["MALEFICENT", "FANTASY"],
+      "best_available": { "text": "MALEFICENT", "why": "A single well-known story that contains both a witch and a dragon." },
+      "pair_note": "MALEFICENT is the strong story route; FANTASY is a fair generic fallback; SPELL is witch-only."
+    },
+    {
+      "pair_id": "p_dragon__wolf",
+      "a": "DRAGON",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "SIGIL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "Game of Thrones house sigils: the Targaryen dragon and the Stark direwolf; the word itself is GoT-coded."
+        },
+        {
+          "text": "THRONES",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["variant_of:SIGIL"],
+          "verdict": "PASS",
+          "reason": "Game of Thrones is the shared story: dragons for the Targaryens, direwolves for the Starks."
+        },
+        {
+          "text": "BEAST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Both are beasts; a broad category word that nonetheless reaches both sides."
+        }
+      ],
+      "strong_hints": ["THRONES", "SIGIL", "BEAST"],
+      "best_available": { "text": "THRONES", "why": "The most widely recognised route; names the show where dragon and wolf are the two famous house animals." },
+      "pair_note": "All three pass; THRONES and SIGIL share the Game of Thrones route."
+    },
+    {
+      "pair_id": "p_egg__fire",
+      "a": "EGG",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "PHOENIX",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "The phoenix is reborn in fire; the egg side rests on the phoenix being a bird or on the 'phoenix egg' fantasy trope rather than a scene most players hold."
+        },
+        {
+          "text": "DRAGON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dragon eggs (Game of Thrones, fantasy generally) and fire-breathing dragons."
+        },
+        {
+          "text": "FRY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Frying an egg is immediate; fire is reached only as the heat under the pan or the sense of 'you'll fry'."
+        }
+      ],
+      "strong_hints": ["DRAGON"],
+      "best_available": { "text": "DRAGON", "why": "Both compounds (dragon egg, dragon fire) are familiar and equally strong." },
+      "pair_note": "DRAGON carries the pair; PHOENIX and FRY each have one strong side."
+    },
+    {
+      "pair_id": "p_egg__fish",
+      "a": "EGG",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "CAVIAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Caviar is fish eggs by definition."
+        },
+        {
+          "text": "SPAWN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["variant_of:CAVIAR"],
+          "verdict": "PASS",
+          "reason": "Fish spawn (lay eggs) and spawn is the mass of fish eggs itself."
+        },
+        {
+          "text": "ROE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["variant_of:CAVIAR"],
+          "verdict": "PASS",
+          "reason": "Roe is fish eggs; a shorter, slightly less everyday word than caviar."
+        }
+      ],
+      "strong_hints": ["CAVIAR", "ROE", "SPAWN"],
+      "best_available": { "text": "CAVIAR", "why": "Everyone knows caviar is fish eggs." },
+      "pair_note": "Three variants of the same fish-eggs route, all valid."
+    },
+    {
+      "pair_id": "p_egg__ghost",
+      "a": "EGG",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Ghosts are Halloween stock; egg is reached only through the egging prank, which players may not surface."
+        },
+        {
+          "text": "WHITE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "Egg white is a compound; the classic sheet ghost is white."
+        }
+      ],
+      "strong_hints": ["WHITE"],
+      "best_available": { "text": "WHITE", "why": "Egg white is a fixed compound and the white ghost is the default cartoon image." },
+      "pair_note": "WHITE is a colour route but anchored by the compound 'egg white'; HALLOWEEN leans ghost-side."
+    },
+    {
+      "pair_id": "p_egg__glass",
+      "a": "EGG",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "TIMER",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Egg timer is a compound; glass arrives only because many egg timers are small sand-filled hourglasses."
+        },
+        {
+          "text": "FRAGILE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Shared property: eggs and glass are the two archetypal fragile things."
+        },
+        {
+          "text": "CRACK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Verb route: you crack an egg and you crack glass."
+        }
+      ],
+      "strong_hints": ["CRACK", "FRAGILE"],
+      "best_available": { "text": "CRACK", "why": "The same verb applies naturally to both." },
+      "pair_note": "Two clean hints; TIMER is egg-first."
+    },
+    {
+      "pair_id": "p_egg__gold",
+      "a": "EGG",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "YOLK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Yolk is part of the egg; gold is reached only through the yolk's golden colour."
+        },
+        {
+          "text": "GOOSE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The goose that laid the golden egg (Aesop; Jack and the Beanstalk)."
+        },
+        {
+          "text": "GOLDEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "Golden egg is a perfect phrase, but GOLDEN contains the target GOLD as a substring."
+        }
+      ],
+      "strong_hints": ["GOOSE"],
+      "best_available": { "text": "GOOSE", "why": "A universally known story that is literally about a golden egg." },
+      "pair_note": "GOOSE is excellent; GOLDEN is a rule failure despite the obvious link."
+    },
+    {
+      "pair_id": "p_egg__heart",
+      "a": "EGG",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "YOLK",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Yolk is the egg's centre; nothing a player sees links yolk to heart without the cholesterol detour."
+        },
+        {
+          "text": "CHOLESTEROL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Eggs are the famous cholesterol food; cholesterol is the heart-health word."
+        }
+      ],
+      "strong_hints": ["CHOLESTEROL"],
+      "best_available": { "text": "CHOLESTEROL", "why": "The eggs-and-heart-health conversation is a shared cultural scene." },
+      "pair_note": "CHOLESTEROL is the only real bridge; YOLK is egg-only."
+    },
+    {
+      "pair_id": "p_egg__honey",
+      "a": "EGG",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "GLAZE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Honey glaze is common; egg glaze (egg wash) is the baker's other glaze."
+        },
+        {
+          "text": "BREAKFAST",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Eggs are the breakfast food; honey on toast, porridge or cereal is a recognisable breakfast item."
+        }
+      ],
+      "strong_hints": ["GLAZE", "BREAKFAST"],
+      "best_available": { "text": "GLAZE", "why": "Both words are things you glaze with, so the hint is balanced rather than egg-first." },
+      "pair_note": "Both pass at moderate strength; neither is a knockout."
+    },
+    {
+      "pair_id": "p_egg__horse",
+      "a": "EGG",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "DUMPTY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["variant_of:HUMPTY"],
+          "verdict": "PASS",
+          "reason": "Humpty Dumpty is the egg; 'all the king's horses' are in the same rhyme."
+        },
+        {
+          "text": "HUMPTY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Humpty Dumpty is the egg; the rhyme's second half is 'all the king's horses and all the king's men'."
+        }
+      ],
+      "strong_hints": ["HUMPTY", "DUMPTY"],
+      "best_available": { "text": "HUMPTY", "why": "The more natural half of the name; the horses are in the rhyme everyone knows." },
+      "pair_note": "Same route twice; horse side depends on recalling the rhyme's second line, so fairness is 1 not 2."
+    },
+    {
+      "pair_id": "p_egg__ice",
+      "a": "EGG",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "SHELL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Eggshell is a compound; a 'shell of ice' exists but is not a familiar image."
+        },
+        {
+          "text": "CRACK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crack an egg; ice cracks / a crack in the ice."
+        }
+      ],
+      "strong_hints": ["CRACK"],
+      "best_available": { "text": "CRACK", "why": "Verb that applies vividly to both." },
+      "pair_note": "CRACK is the pair; SHELL is egg-first."
+    },
+    {
+      "pair_id": "p_egg__iron",
+      "a": "EGG",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "PAN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Eggs are fried in a pan; the cast-iron pan."
+        },
+        {
+          "text": "SKILLET",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["variant_of:PAN"],
+          "verdict": "PASS",
+          "reason": "Eggs in a skillet; 'cast-iron skillet' is almost a fixed phrase."
+        }
+      ],
+      "strong_hints": ["SKILLET", "PAN"],
+      "best_available": { "text": "SKILLET", "why": "Cast-iron skillet is the tighter fixed phrase, and eggs are its signature dish." },
+      "pair_note": "Both pass on the same cooking route."
+    },
+    {
+      "pair_id": "p_egg__key",
+      "a": "EGG",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "LIME",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Key lime is a compound; egg is reached only via key lime pie being made with yolks, which no player would see."
+        },
+        {
+          "text": "EASTER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Easter egg is a compound; nothing links Easter to key."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "LIME", "why": "If forced, LIME at least rests on a true two-sided fact (key lime pie uses egg yolks); EASTER has nothing on the key side." },
+      "pair_note": "No PASS. Both hints are one-sided."
+    },
+    {
+      "pair_id": "p_egg__king",
+      "a": "EGG",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "FABERGE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Fabergé eggs were made for the Russian tsars; tsar is a near-king, so the royal side is one small step."
+        },
+        {
+          "text": "HUMPTY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Humpty Dumpty is the egg; 'all the king's horses and all the king's men' names the king outright."
+        }
+      ],
+      "strong_hints": ["HUMPTY", "FABERGE"],
+      "best_available": { "text": "HUMPTY", "why": "The rhyme literally contains the word king." },
+      "pair_note": "Both pass; HUMPTY is the stronger."
+    },
+    {
+      "pair_id": "p_egg__knight",
+      "a": "EGG",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "SHELL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Eggshell is immediate; reading a knight's armour as a 'shell' is an invented rescue."
+        },
+        {
+          "text": "HUMPTY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Humpty Dumpty is the egg; knight only via 'all the king's men' standing in for knights (or the White Knight nearby in Through the Looking-Glass), a stretch."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HUMPTY", "why": "The rhyme's king's men and the castle-wall setting give a weak but real medieval route; SHELL has none." },
+      "pair_note": "No PASS. The pair lacks a natural bridge in the supplied hints."
+    },
+    {
+      "pair_id": "p_egg__light",
+      "a": "EGG",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "FLUFFY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Light and fluffy' is the stock description of scrambled eggs and omelettes; fluffy is a near-synonym for light in texture."
+        },
+        {
+          "text": "CANDLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["obscure", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Candles give light; 'candling' an egg to check it is a real but niche farming term."
+        },
+        {
+          "text": "INCUBATOR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Egg incubator is immediate; light only via the heat-lamp bulb of a homemade incubator."
+        }
+      ],
+      "strong_hints": ["FLUFFY"],
+      "best_available": { "text": "FLUFFY", "why": "The phrase 'light and fluffy eggs' ties both words to one texture." },
+      "pair_note": "FLUFFY passes on a shared-property route; the other two each have one weak side."
+    },
+    {
+      "pair_id": "p_egg__lion",
+      "a": "EGG",
+      "b": "LION",
+      "hints": [
+        {
+          "text": "ZOO",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Lions live in zoos; nothing reaches egg."
+        },
+        {
+          "text": "PRIDE",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "A pride of lions; nothing reaches egg."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ZOO", "why": "Neither works; ZOO is marginally less hopeless because zoos do display hatching eggs, but it remains one-sided." },
+      "pair_note": "No PASS. Both hints are lion-only filler."
+    },
+    {
+      "pair_id": "p_egg__moon",
+      "a": "EGG",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "ROUND",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Shared shape: the moon is round and an egg is rounded (oval), a property route a player can see."
+        },
+        {
+          "text": "MOONCAKE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "Mooncakes hold a salted egg yolk, but MOONCAKE contains the target MOON."
+        },
+        {
+          "text": "FULL",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Full moon; nothing reaches egg."
+        }
+      ],
+      "strong_hints": ["ROUND"],
+      "best_available": { "text": "ROUND", "why": "The only hint that touches both sides, via shape." },
+      "pair_note": "ROUND is a modest pass; MOONCAKE is a rule failure; FULL is moon-only."
+    },
+    {
+      "pair_id": "p_egg__mouse",
+      "a": "EGG",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "STEAL",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Verb route: predators steal eggs and mice steal cheese, but neither side is a tight image for 'steal'."
+        },
+        {
+          "text": "NEST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Eggs sit in a nest; mice build nests."
+        }
+      ],
+      "strong_hints": ["NEST"],
+      "best_available": { "text": "NEST", "why": "A single everyday word that both words naturally own." },
+      "pair_note": "NEST carries the pair."
+    },
+    {
+      "pair_id": "p_egg__night",
+      "a": "EGG",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "NOG",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Eggnog; nothing reaches night."
+        },
+        {
+          "text": "OWL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Night owl is a compound; owl reaches egg only as 'a bird that lays eggs'."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "OWL", "why": "Night owl is a strong compound and an owl at least lays eggs; NOG has no night side at all." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_egg__ocean",
+      "a": "EGG",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "NEMO",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "Finding Nemo is set in the ocean; Nemo is the lone surviving egg of the film's opening scene."
+        },
+        {
+          "text": "TURTLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Sea turtles lay eggs on the beach and the hatchlings scramble into the ocean."
+        }
+      ],
+      "strong_hints": ["TURTLE", "NEMO"],
+      "best_available": { "text": "TURTLE", "why": "The turtle-egg-to-ocean scene is one of the most familiar nature images." },
+      "pair_note": "TURTLE is strong; NEMO depends on remembering the egg opening."
+    },
+    {
+      "pair_id": "p_egg__pirate",
+      "a": "EGG",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "TREASURE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Pirate treasure is immediate; egg only via the Easter egg hunt being a kind of treasure hunt."
+        },
+        {
+          "text": "PARROT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "The pirate's parrot; parrot reaches egg only as a bird that lays eggs."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TREASURE", "why": "Egg hunt as treasure hunt is a shared activity, a better egg route than 'birds lay eggs'." },
+      "pair_note": "No PASS. Both hints are pirate-first."
+    },
+    {
+      "pair_id": "p_egg__queen",
+      "a": "EGG",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "FABERGE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Fabergé eggs were imperial gifts to the tsarina/empress and sit in royal collections; queen is one step from the royal luxury egg."
+        },
+        {
+          "text": "ALIEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Alien franchise: the Alien Queen lays the eggs that hatch facehuggers."
+        },
+        {
+          "text": "BEE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Queen bee is a compound; the queen is the hive's egg-layer."
+        }
+      ],
+      "strong_hints": ["BEE", "ALIEN", "FABERGE"],
+      "best_available": { "text": "BEE", "why": "Queen bee is universal and her job of laying eggs is common knowledge." },
+      "pair_note": "All three pass; FABERGE is the weakest queen link (tsarina, not queen)."
+    },
+    {
+      "pair_id": "p_egg__ring",
+      "a": "EGG",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "ONION",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Onion ring; egg only via the batter, which is not a route a player sees."
+        },
+        {
+          "text": "YOLK",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Egg yolk; nothing reaches ring."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ONION", "why": "Neither works; ONION at least has egg-and-onion as a familiar food pairing behind it, whereas YOLK has no ring side." },
+      "pair_note": "No PASS. Two one-sided hints pointing opposite ways."
+    },
+    {
+      "pair_id": "p_egg__robot",
+      "a": "EGG",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "POD",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Pod loosely means an egg-like capsule and loosely evokes sci-fi machines (HAL's pod bay doors), but neither side is clear enough to follow."
+        },
+        {
+          "text": "EVE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "EVE from WALL-E is the sleek egg-shaped robot; her egg silhouette is her signature design."
+        }
+      ],
+      "strong_hints": ["EVE"],
+      "best_available": { "text": "EVE", "why": "A well-known character whose whole look is 'egg-shaped robot'." },
+      "pair_note": "EVE passes for anyone who has seen WALL-E; POD is vague on both sides."
+    },
+    {
+      "pair_id": "p_egg__rock",
+      "a": "EGG",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "HARD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hard-boiled egg; rock hard."
+        },
+        {
+          "text": "FOSSIL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Fossils are found in rock; fossilised dinosaur eggs are a familiar museum piece."
+        },
+        {
+          "text": "DINOSAUR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Dinosaur eggs are immediate; rock only via fossils being in rock."
+        }
+      ],
+      "strong_hints": ["HARD", "FOSSIL"],
+      "best_available": { "text": "HARD", "why": "Both compounds are everyday phrases." },
+      "pair_note": "HARD is the clean pass; FOSSIL and DINOSAUR share one route with FOSSIL the better-balanced."
+    },
+    {
+      "pair_id": "p_egg__rose",
+      "a": "EGG",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "SHELL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Eggshell; nothing reaches rose."
+        },
+        {
+          "text": "EASTER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "Easter egg is a compound; Easter is when Christ rose, reading ROSE as the past tense of rise (ordinary inflection)."
+        }
+      ],
+      "strong_hints": ["EASTER"],
+      "best_available": { "text": "EASTER", "why": "The 'rose' verb reading is a real, well-known Easter phrase ('He rose again'), and Easter egg is a compound." },
+      "pair_note": "EASTER passes only on the verb reading of ROSE; worth a second opinion if the owner wants the flower sense."
+    },
+    {
+      "pair_id": "p_egg__salt",
+      "a": "EGG",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "BOILED",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Boiled egg; nothing in 'boiled' points at salt."
+        },
+        {
+          "text": "SEASON",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Season with salt is near-synonymous; egg only as one of many things you season."
+        },
+        {
+          "text": "PEPPER",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Salt and pepper is the fixed pair; egg only as the breakfast plate they are shaken over."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PEPPER", "why": "Salt-and-pepper-on-eggs is a real breakfast scene, giving the most recognisable egg side of the three." },
+      "pair_note": "No PASS. The obvious shared scene (salting an egg) is not nailed by any supplied hint."
+    },
+    {
+      "pair_id": "p_egg__shadow",
+      "a": "EGG",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "CANDLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["obscure"],
+          "verdict": "BORDERLINE",
+          "reason": "Candlelight throws shadows; egg only via the niche practice of candling eggs."
+        },
+        {
+          "text": "SHELL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Eggshell; nothing reaches shadow."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CANDLE", "why": "The only hint with any egg side at all, even if candling is niche." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_egg__shark",
+      "a": "EGG",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "HATCH",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Eggs hatch; most players do not associate sharks with hatching from eggs."
+        },
+        {
+          "text": "PURSE",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": ["obscure", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "A 'mermaid's purse' is a shark egg case: a genuine two-sided link but niche natural-history knowledge."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PURSE", "why": "The only hint whose connection actually involves both egg and shark, even though it is niche." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_egg__snake",
+      "a": "EGG",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "CLUTCH",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "A clutch of eggs; snake only as one of the animals that lays a clutch."
+        },
+        {
+          "text": "HATCH",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Eggs hatch; the baby snake breaking out of its egg is a familiar image, but 'hatch' alone does not point at snake over any other egg-layer."
+        },
+        {
+          "text": "SWALLOW",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Snakes swallow prey whole; the egg-eating snake swallowing an egg whole is a famous nature-documentary image, and 'swallow a raw egg' is a phrase in its own right."
+        }
+      ],
+      "strong_hints": ["SWALLOW"],
+      "best_available": { "text": "SWALLOW", "why": "The only hint where the snake side is strong and the egg side is a recognisable scene." },
+      "pair_note": "SWALLOW passes; CLUTCH and HATCH are egg-first."
+    },
+    {
+      "pair_id": "p_egg__spider",
+      "a": "EGG",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "CHARLOTTE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "Charlotte's Web: Charlotte the spider's egg sac and her hatching children are the book's final act."
+        },
+        {
+          "text": "SAC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Egg sac is a compound and the spider's egg sac is its best-known instance."
+        }
+      ],
+      "strong_hints": ["SAC", "CHARLOTTE"],
+      "best_available": { "text": "SAC", "why": "Egg sac points straight at spiders." },
+      "pair_note": "Both pass."
+    },
+    {
+      "pair_id": "p_egg__star",
+      "a": "EGG",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "SUNNY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Sunny-side up egg; the sun is a star."
+        },
+        {
+          "text": "ANISE",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Star anise; egg only via Chinese tea eggs, which no player sees."
+        },
+        {
+          "text": "STARFISH",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "STARFISH contains the target STAR."
+        }
+      ],
+      "strong_hints": ["SUNNY"],
+      "best_available": { "text": "SUNNY", "why": "Sunny-side up is a universal egg phrase and sun-as-star is one step." },
+      "pair_note": "SUNNY passes; STARFISH is a rule failure; ANISE is star-only."
+    },
+    {
+      "pair_id": "p_egg__train",
+      "a": "EGG",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "DINING",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Dining car; egg only as a thing one eats."
+        },
+        {
+          "text": "CARTON",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Egg carton; nothing reaches train."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "DINING", "why": "Neither works; DINING at least sketches a breakfast-in-the-dining-car scene, whereas CARTON has no train side." },
+      "pair_note": "No PASS. Two one-sided hints pointing opposite ways."
+    },
+    {
+      "pair_id": "p_egg__water",
+      "a": "EGG",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "POACH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Poaching an egg is cooking it in water."
+        },
+        {
+          "text": "BOIL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Boil an egg; boil water."
+        },
+        {
+          "text": "FLOAT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The egg float test (a bad egg floats, a fresh one sinks) and floating on water."
+        }
+      ],
+      "strong_hints": ["POACH", "BOIL", "FLOAT"],
+      "best_available": { "text": "POACH", "why": "Poaching is specifically cooking an egg in water." },
+      "pair_note": "All three pass; FLOAT depends on the freshness test."
+    },
+    {
+      "pair_id": "p_egg__witch",
+      "a": "EGG",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Witches are Halloween stock; egg only through the egging prank."
+        },
+        {
+          "text": "CAULDRON",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Witch's cauldron; nothing reaches egg."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HALLOWEEN", "why": "Egging houses is a real Halloween association; CAULDRON has no egg side." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_egg__wolf",
+      "a": "EGG",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "HEN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Hens lay eggs; wolf only as the predator at the henhouse, and the fixed phrase is 'fox in the henhouse'."
+        },
+        {
+          "text": "DOWN",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "'Wolf down' is a phrasal verb; nothing in 'down' points at egg."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HEN", "why": "Predator-and-prey is a real if loose scene; DOWN is wolf-only." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_fire__fish",
+      "a": "FIRE",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "CAMPFIRE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "CAMPFIRE contains the target FIRE; cooking fish over a campfire would otherwise be a fair scene."
+        },
+        {
+          "text": "GRILL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Grilling is cooking over fire; grilled fish is a staple."
+        },
+        {
+          "text": "SMOKED",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Smoked fish (salmon, kippers); smoke comes from fire."
+        }
+      ],
+      "strong_hints": ["GRILL", "SMOKED"],
+      "best_available": { "text": "GRILL", "why": "Equally direct on both sides." },
+      "pair_note": "Two passes; CAMPFIRE is a rule failure."
+    },
+    {
+      "pair_id": "p_fire__ghost",
+      "a": "FIRE",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "SMOKE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Where there's smoke there's fire; ghost only as a wispy, smoke-like apparition, a mood resemblance rather than a scene."
+        },
+        {
+          "text": "CAMP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Campfire is a compound; ghost stories around the camp fire are the shared scene."
+        },
+        {
+          "text": "SPIRIT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "BORDERLINE",
+          "reason": "Spirit is a synonym for ghost; fire only via flammable spirits or 'fiery spirit'."
+        }
+      ],
+      "strong_hints": ["CAMP"],
+      "best_available": { "text": "CAMP", "why": "Campfire ghost stories put fire and ghost in one familiar scene." },
+      "pair_note": "CAMP is the clean pass; SMOKE and SPIRIT each lean one way."
+    }
+  ]
+}
