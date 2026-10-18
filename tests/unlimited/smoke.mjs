@@ -282,7 +282,7 @@ try {
   assert.equal(await page.$("[data-testid=ul-start]"), null, "nothing new to play");
   assert.equal((await page.$$("button::-p-text(Replay)")).length, pool.length, "a Replay for every puzzle");
   await shot(page, "d05-lobby-exhausted");
-  log("all eight played: exhaustion message, Replay offered");
+  log(`all ${pool.length} played: exhaustion message, Replay offered`);
 
   // Replay the lost puzzle 2: counted as a replay, the loss stays.
   const clicked = await page.evaluate(() => {
