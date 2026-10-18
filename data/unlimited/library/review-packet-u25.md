@@ -81,11 +81,11 @@ Playable hints: 1. Reviewer: TRAP carries the pair; JAW is a usable second route
 
 ### KEY + KING
 
-Playable hints: 0. Reviewer: No PASS; the pair is hard because KEY and KING share little beyond castles and chess. CASTLE is the only serviceable hint.
+Playable hints: 1. Reviewer: No PASS; the pair is hard because KEY and KING share little beyond castles and chess. CASTLE is the only serviceable hint.
 
 **Held**
 
-- **CASTLE** 1/2 fair 1 moderate: KING via the castle he rules from, KEY via 'keys to the castle'; the key side is a phrase rather than an object a player sees first. — held: blind review: borderline *(author: retained)*
+- **CASTLE** 1/2 fair 1 moderate: KING via the castle he rules from, KEY via 'keys to the castle'; the key side is a phrase rather than an object a player sees first. *(author: retained)*
 
 **Rejected**
 
@@ -95,11 +95,11 @@ Playable hints: 0. Reviewer: No PASS; the pair is hard because KEY and KING shar
 
 ### KEY + KNIGHT
 
-Playable hints: 0. Reviewer: No PASS; CASTLE is the only hint touching both sides.
+Playable hints: 1. Reviewer: No PASS; CASTLE is the only hint touching both sides.
 
 **Held**
 
-- **CASTLE** 1/2 fair 1 moderate: KNIGHT via the castle he defends, KEY via 'keys to the castle' or the castle gate key; the key side is thinner. — held: blind review: borderline *(author: retained)*
+- **CASTLE** 1/2 fair 1 moderate: KNIGHT via the castle he defends, KEY via 'keys to the castle' or the castle gate key; the key side is thinner. *(author: retained)*
 
 **Rejected**
 
@@ -121,11 +121,11 @@ Playable hints: 2. Reviewer: Strong pair; HOUSE and TURN both pass comfortably, 
 
 ### KEY + LION
 
-Playable hints: 0. Reviewer: No PASS; CAGE is a fair stretch, ZOO is purely one-sided.
+Playable hints: 1. Reviewer: No PASS; CAGE is a fair stretch, ZOO is purely one-sided.
 
 **Held**
 
-- **CAGE** 1/2 fair 1 moderate: LION via the lion's cage, KEY via the key that locks the cage; the key side is plausible but secondary. — held: blind review: borderline *(author: retained)*
+- **CAGE** 1/2 fair 1 moderate: LION via the lion's cage, KEY via the key that locks the cage; the key side is plausible but secondary. *(author: retained)*
 
 **Rejected**
 
@@ -205,12 +205,12 @@ Playable hints: 2. Reviewer: CHEST and TREASURE both work through the same scene
 
 ### KEY + QUEEN
 
-Playable hints: 0. Reviewer: No PASS; CITY is a clever alternative if the Queen City nickname is known to the audience.
+Playable hints: 1. Reviewer: No PASS; CITY is a clever alternative if the Queen City nickname is known to the audience.
 
 **Held**
 
 - **CITY** 2/1 fair 1 moderate [needs_explanation]: KEY via the ceremonial key to the city, QUEEN via the 'Queen City' nickname (Cincinnati, Charlotte); the queen side is regional. — held: blind review: borderline *(author: retained)*
-- **CASTLE** 1/2 fair 1 moderate: QUEEN via the royal castle, KEY via 'keys to the castle'; the key side is a phrase rather than a first association. — held: blind review: borderline *(author: retained)*
+- **CASTLE** 1/2 fair 1 moderate: QUEEN via the royal castle, KEY via 'keys to the castle'; the key side is a phrase rather than a first association. *(author: retained)*
 
 **Rejected**
 
@@ -218,7 +218,7 @@ Playable hints: 0. Reviewer: No PASS; CITY is a clever alternative if the Queen 
 
 ### KEY + RING
 
-Playable hints: 1. Reviewer: CHAIN is the one hint where the ring side stands on its own; JANITOR and FOB both route through 'key ring' and so lean on KEY.
+Playable hints: 2. Reviewer: CHAIN is the one hint where the ring side stands on its own; JANITOR and FOB both route through 'key ring' and so lean on KEY.
 
 **Retained**
 
@@ -226,7 +226,7 @@ Playable hints: 1. Reviewer: CHAIN is the one hint where the ring side stands on
 
 **Held**
 
-- **JANITOR** 2/1 fair 1 moderate: KEY via the janitor's jangling bunch of keys, RING only via the ring those keys hang on; the ring side depends on the key side. — held: blind review: borderline *(author: retained)*
+- **JANITOR** 2/1 fair 1 moderate: KEY via the janitor's jangling bunch of keys, RING only via the ring those keys hang on; the ring side depends on the key side. *(author: retained)*
 - **FOB** 2/1 fair 1 moderate [one_sided]: KEY via key fob is immediate; RING is reached only because the fob hangs on a key ring. — held: blind review: borderline *(author: retained)*
 
 **Rejected**
@@ -601,4 +601,4 @@ Playable hints: 2. Reviewer: COBRA is clean; KINGSNAKE falls to the substring ru
 
 ## Totals
 
-retained 57 · held 31 · rejected 42 across 40 pairs; 30 pairs have at least one playable hint.
+retained 57 · held 31 · rejected 42 across 40 pairs; 34 pairs have at least one playable hint.

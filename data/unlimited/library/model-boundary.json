@@ -1,0 +1,31 @@
+{
+  "_metadata": {
+    "written": "2026-10-18",
+    "note": "Which model produced each batch. Earlier subagents inherited the session model. The u26 reviewer wrote its complete review file at 2026-10-18T02:17Z and then received HTTP 429 (Fable limit, request id req_011Cg8u6QVvmKSYNqa2fTdom) on its final reply; the file was validated (40/40 pairs, 118/118 hints) and merged unchanged."
+  },
+  "batches": {
+    "u01-u26": {
+      "authoring": "claude-fable-5-1 (main session)",
+      "review": "claude-fable-5-1 (blind subagents inheriting the session model)"
+    },
+    "u27+": {
+      "authoring": "claude-opus-5-5 (main session, owner authorization 2026-10-18T06:18Z: \"Just Opus 5.5\")",
+      "review": "claude-opus-5-5 (blind subagents dispatched with model=opus; each records its model id in _metadata.model)"
+    }
+  },
+  "u26FailedAttempt": {
+    "reviewer": "blind-subagent-26",
+    "model": "claude-fable-5-1",
+    "outcome": "review file complete; agent reply failed with 429 rate_limit",
+    "file": "reviews/u26-blind-review.json",
+    "mtime": "2026-10-18T02:17Z"
+  },
+  "mainTurnEvidence": {
+    "recordedAt": "2026-10-18T06:23:59.362Z",
+    "servingModelPerSystemPrompt": "claude-opus-5-5 (Opus 5.5)",
+    "ownerUiReport": "Main UI verified Opus 5.5 High; usage credits OFF",
+    "sessionMetadataModelField": "claude-fable-5-1 (session-creation setting; the app refuses a session changing its own model, so this field was left as is)",
+    "note": "Historical Fable work keeps blindReview.model = claude-fable-5-1; nothing earlier is relabelled. New reviewers are dispatched with model=opus and must echo their model id in _metadata.model, checked before merge."
+  },
+  "historicalTagging": "blindReview.model=claude-fable-5-1 added to every hint reviewed in u01-u26 (provenance only; verdicts untouched)"
+}
