@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-18T06:41:39.605Z",
+  "generated": "2026-10-18T06:46:37.822Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 1116,
-  "reviewed": 1116,
-  "playable": 901,
-  "held_only": 164,
-  "rejected_only": 51,
+  "authored": 1156,
+  "reviewed": 1156,
+  "playable": 930,
+  "held_only": 173,
+  "rejected_only": 53,
   "candidate": 0,
-  "hole": 109,
+  "hole": 69,
   "closed": 0,
-  "withBestAvailableCandidate": 215,
+  "withBestAvailableCandidate": 226,
   "underGenerationHold": 1,
   "servedLive": 64,
   "pendingLocal": 0,
@@ -30,10 +30,10 @@
    "pendingBatches": []
   },
   "hints": {
-   "total": 2686,
-   "playable": 1492,
-   "held": 612,
-   "rejected": 582
+   "total": 2784,
+   "playable": 1543,
+   "held": 644,
+   "rejected": 597
   },
   "perWordHoles": {
    "APPLE": 0,
@@ -70,22 +70,22 @@
    "NIGHT": 0,
    "OCEAN": 0,
    "PIRATE": 0,
-   "QUEEN": 9,
-   "RING": 14,
-   "ROBOT": 13,
-   "ROCK": 12,
-   "ROSE": 13,
-   "SALT": 14,
-   "SHADOW": 14,
-   "SHARK": 15,
-   "SNAKE": 15,
-   "SPIDER": 15,
-   "SPRING": 14,
-   "STAR": 15,
-   "TRAIN": 14,
-   "WATER": 12,
-   "WITCH": 14,
-   "WOLF": 15
+   "QUEEN": 0,
+   "RING": 0,
+   "ROBOT": 0,
+   "ROCK": 6,
+   "ROSE": 10,
+   "SALT": 11,
+   "SHADOW": 11,
+   "SHARK": 11,
+   "SNAKE": 11,
+   "SPIDER": 12,
+   "SPRING": 11,
+   "STAR": 12,
+   "TRAIN": 11,
+   "WATER": 9,
+   "WITCH": 11,
+   "WOLF": 12
   },
   "batches": {
    "u04": {
@@ -298,11 +298,11 @@
    },
    "u30": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
-    "rejected_only": 0
+    "playable": 29,
+    "held_only": 9,
+    "rejected_only": 2
    },
    "u31": {
     "pairs": 40,
@@ -26002,8 +26002,28 @@
    "pair_id": "p_queen__shark",
    "a": "QUEEN",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "REEF",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "SHARK via 'reef shark'; QUEEN only through niche reef species (queen angelfish, queen conch) that few players would reach.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "At least both words share a sea setting (reef shark; queen angelfish/conch on reefs), whereas LOAN gives QUEEN nothing.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26011,8 +26031,21 @@
    "pair_id": "p_queen__snake",
    "a": "QUEEN",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CLEOPATRA",
+    "ASP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26020,8 +26053,28 @@
    "pair_id": "p_queen__spider",
    "a": "QUEEN",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "WIDOW",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "SPIDER via 'black widow'; QUEEN only via the idea of a widowed queen (dowager, Victoria in mourning), which is a stretch.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Black widow is a strong spider route and widowed queens give a faint QUEEN link; SHELOB has none.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26029,8 +26082,20 @@
    "pair_id": "p_queen__spring",
    "a": "QUEEN",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MAY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26038,8 +26103,28 @@
    "pair_id": "p_queen__star",
    "a": "QUEEN",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SHOOTING",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "STAR via 'shooting star'; QUEEN only if the player recalls the band Queen's 'Don't Stop Me Now', which mentions a shooting star.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The only hint that reaches both words at all, through the Queen song; the other two give STAR nothing.",
+    "stretch": false
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26047,8 +26132,22 @@
    "pair_id": "p_queen__train",
    "a": "QUEEN",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GOWN",
+    "ROBE",
+    "ROYAL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26056,8 +26155,28 @@
    "pair_id": "p_queen__water",
    "a": "QUEEN",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "MERMAID",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "WATER as the mermaid's home; QUEEN only via folklore and fantasy mermaid or sea queens, which is not a fixed familiar figure.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Strong on WATER, with at least a fairy-tale sea-queen image for QUEEN.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26065,8 +26184,22 @@
    "pair_id": "p_queen__witch",
    "a": "QUEEN",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "APPLE",
+    "EVIL",
+    "WHITE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26074,8 +26207,20 @@
    "pair_id": "p_queen__wolf",
    "a": "QUEEN",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "STARK"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26083,8 +26228,21 @@
    "pair_id": "p_ring__robot",
    "a": "RING",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BATTLE",
+    "BOXING"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26092,8 +26250,22 @@
    "pair_id": "p_ring__rock",
    "a": "RING",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DIAMOND",
+    "ENGAGEMENT",
+    "STONE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26101,8 +26273,22 @@
    "pair_id": "p_ring__rose",
    "a": "RING",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GOLD",
+    "POSIES",
+    "WEDDING"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26110,8 +26296,28 @@
    "pair_id": "p_ring__salt",
    "a": "RING",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CIRCLE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "RING because a ring is a circle (near-synonym); SALT via the folklore and horror trope of a protective salt circle, which is moderate at best.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Ring is a circle and a salt circle is a known trope; RIM is stronger for SALT but thinner for RING.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26119,8 +26325,22 @@
    "pair_id": "p_ring__shadow",
    "a": "RING",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MORDOR",
+    "ECLIPSE",
+    "SAURON"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26128,8 +26348,20 @@
    "pair_id": "p_ring__shark",
    "a": "RING",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TEETH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26137,8 +26369,20 @@
    "pair_id": "p_ring__snake",
    "a": "RING",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "OUROBOROS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26146,8 +26390,28 @@
    "pair_id": "p_ring__spider",
    "a": "RING",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "WEB",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "SPIDER via its web; RING only via the old internet 'webring' or the concentric rings of an orb web.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "A spider web's concentric rings and 'webring' give a faint RING link; ORB has none.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26155,8 +26419,28 @@
    "pair_id": "p_ring__spring",
    "a": "RING",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "COIL",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "SPRING because a spring is a coil; RING only because a coil is a run of ring-shaped loops.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Exact for SPRING and a shape link to RING; BELL gives SPRING nothing.",
+    "stretch": false
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26164,8 +26448,28 @@
    "pair_id": "p_ring__star",
    "a": "RING",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SATURN",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "RING via Saturn's rings; STAR only through the shared night-sky and astronomy scene, since Saturn is a planet, not a star (it must not be explained as one).",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Saturn's rings are certain, and Saturn shines like a star in the night sky.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26173,8 +26477,21 @@
    "pair_id": "p_ring__train",
    "a": "RING",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WEDDING",
+    "BELL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26182,8 +26499,22 @@
    "pair_id": "p_ring__water",
    "a": "RING",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BUOY",
+    "RIPPLE",
+    "BATHTUB"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26191,8 +26522,21 @@
    "pair_id": "p_ring__witch",
    "a": "RING",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MAGIC",
+    "FAIRY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26200,8 +26544,28 @@
    "pair_id": "p_ring__wolf",
    "a": "RING",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CIRCLE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "RING as a near-synonym of circle; WOLF only via wolves circling their prey (verb), a moderate image.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Ring = circle, plus wolves circling prey; HOWL is WOLF-only.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26236,8 +26600,20 @@
    "pair_id": "p_robot__rose",
    "a": "ROBOT",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ROSIE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26245,8 +26621,20 @@
    "pair_id": "p_robot__salt",
    "a": "ROBOT",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RUST"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26254,8 +26642,20 @@
    "pair_id": "p_robot__shadow",
    "a": "ROBOT",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MIMIC"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26263,8 +26663,20 @@
    "pair_id": "p_robot__shark",
    "a": "ROBOT",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MECHANICAL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26272,8 +26684,28 @@
    "pair_id": "p_robot__snake",
    "a": "ROBOT",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "ARM",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "ROBOT via 'robot arm'; SNAKE only via the snake-like flex of such arms (snake-arm robots are niche).",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Strong for ROBOT, with a faint snake-like-motion link; SLITHER is SNAKE-only.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26281,8 +26713,20 @@
    "pair_id": "p_robot__spider",
    "a": "ROBOT",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CRAWLER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26290,8 +26734,20 @@
    "pair_id": "p_robot__spring",
    "a": "ROBOT",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WINDUP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26299,8 +26755,22 @@
    "pair_id": "p_robot__star",
    "a": "ROBOT",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "R2D2",
+    "DROID",
+    "WARS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26308,8 +26778,20 @@
    "pair_id": "p_robot__train",
    "a": "ROBOT",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DRIVERLESS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26317,8 +26799,20 @@
    "pair_id": "p_robot__water",
    "a": "ROBOT",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RUST"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26326,8 +26820,20 @@
    "pair_id": "p_robot__witch",
    "a": "ROBOT",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "COSTUME"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26335,8 +26841,28 @@
    "pair_id": "p_robot__wolf",
    "a": "ROBOT",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "PACK",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "WOLF via 'wolf pack'; ROBOT gets only filler readings (battery pack, a pack of robots).",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "At least robot swarms or packs can be pictured; HOWL gives ROBOT nothing.",
+    "stretch": true
+   },
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26344,8 +26870,22 @@
    "pair_id": "p_rock__rose",
    "a": "ROCK",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DESERT",
+    "QUARTZ",
+    "GUNS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26353,8 +26893,21 @@
    "pair_id": "p_rock__salt",
    "a": "ROCK",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MINE",
+    "ROAD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26362,8 +26915,20 @@
    "pair_id": "p_rock__shadow",
    "a": "ROCK",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CAVE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26371,8 +26936,20 @@
    "pair_id": "p_rock__shark",
    "a": "ROCK",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "REEF"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -26380,8 +26957,21 @@
    "pair_id": "p_rock__snake",
    "a": "ROCK",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u30",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BASK",
+    "PYTHON"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u30",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },

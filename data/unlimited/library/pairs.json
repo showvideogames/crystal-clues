@@ -433,6 +433,16 @@
         "rejected": 11,
         "needsText": 1,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u30-blind-review.json",
+        "key": "data/unlimited/library/reviews/u30-blind-key.json",
+        "batch": "data/unlimited/library/batches/u30-batch.json",
+        "ai_reviewed": 51,
+        "held": 32,
+        "rejected": 15,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -98556,6 +98566,2094 @@
       ]
     },
     {
+      "pair_id": "p_queen__shark",
+      "a": "QUEEN",
+      "b": "SHARK",
+      "source": "u30",
+      "pairNote": "No PASS; the QUEEN side is the problem for both hints.",
+      "reviewerBestAvailable": {
+        "text": "REEF",
+        "why": "At least both words share a sea setting (reef shark; queen angelfish/conch on reefs), whereas LOAN gives QUEEN nothing.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "REEF",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The queen angelfish of the reef.",
+          "wordBConnection": "Reef sharks.",
+          "revealExplanation": "Reef: the queen angelfish, and reef sharks.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "SHARK via 'reef shark'; QUEEN only through niche reef species (queen angelfish, queen conch) that few players would reach.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LOAN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "queen side invented; one-sided",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SHARK via the compound 'loan shark'; QUEEN has no recognizable loan route, so it is one-sided filler.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__snake",
+      "a": "QUEEN",
+      "b": "SNAKE",
+      "source": "u30",
+      "pairNote": "ASP depends on the same Cleopatra scene.",
+      "reviewerBestAvailable": {
+        "text": "CLEOPATRA",
+        "why": "One famous story lands squarely on both words.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CLEOPATRA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Queen Cleopatra.",
+          "wordBConnection": "The asp, a snake.",
+          "revealExplanation": "Cleopatra: the queen and the asp.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Cleopatra",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "QUEEN as the famous queen of Egypt; SNAKE via the well-known story of her death by asp bite.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ASP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Cleopatra's asp.",
+          "wordBConnection": "An asp is a snake.",
+          "revealExplanation": "Asp: the queen's snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:CLEOPATRA"
+              ],
+              "reason": "SNAKE directly (an asp is a snake); QUEEN via the familiar Cleopatra-and-the-asp story.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MEDUSA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "Medusa is not a queen; invented title",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SNAKE via Medusa's snake hair; QUEEN only through minor routes (Marvel's Medusa, queen of the Inhumans, or rare myth variants), since the Gorgon is not usually a queen.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__spider",
+      "a": "QUEEN",
+      "b": "SPIDER",
+      "source": "u30",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "WIDOW",
+        "why": "Black widow is a strong spider route and widowed queens give a faint QUEEN link; SHELOB has none.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "WIDOW",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A widowed queen.",
+          "wordBConnection": "The black widow.",
+          "revealExplanation": "Widow: the queen, and the spider.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPIDER via 'black widow'; QUEEN only via the idea of a widowed queen (dowager, Victoria in mourning), which is a stretch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHELOB",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "queen title invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SPIDER via Tolkien's giant spider Shelob; she is not a queen, so the QUEEN side is missing.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__spring",
+      "a": "QUEEN",
+      "b": "SPRING",
+      "source": "u30",
+      "pairNote": "BEE is strong for QUEEN but thin for SPRING.",
+      "reviewerBestAvailable": {
+        "text": "MAY",
+        "why": "May Queen plus May as a spring month reaches both words.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MAY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The May Queen.",
+          "wordBConnection": "May is spring.",
+          "revealExplanation": "May: spring, and its queen.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "QUEEN via the May Queen of May Day festivals; SPRING because May is a spring month.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The queen bee.",
+          "wordBConnection": "Bees swarm in spring.",
+          "revealExplanation": "Bee: the queen, swarming in spring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "QUEEN via 'queen bee'; SPRING only via the seasonal scene of bees among spring flowers, which is loose.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__star",
+      "a": "QUEEN",
+      "b": "STAR",
+      "source": "u30",
+      "pairNote": "No PASS; BEAUTY and PROM are QUEEN-only.",
+      "reviewerBestAvailable": {
+        "text": "SHOOTING",
+        "why": "The only hint that reaches both words at all, through the Queen song; the other two give STAR nothing.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SHOOTING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "queen side absent; filler",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "needs_explanation",
+                "obscure"
+              ],
+              "reason": "STAR via 'shooting star'; QUEEN only if the player recalls the band Queen's 'Don't Stop Me Now', which mentions a shooting star.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BEAUTY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A beauty queen.",
+          "wordBConnection": "A beauty star.",
+          "revealExplanation": "Beauty: queen, and star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "QUEEN via 'beauty queen'; STAR has no familiar beauty phrase or scene, only vague glamour.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PROM",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The prom queen.",
+          "wordBConnection": "The star of the prom.",
+          "revealExplanation": "Prom: the queen, the night's star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "QUEEN via 'prom queen'; STAR has no recognizable prom route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__train",
+      "a": "QUEEN",
+      "b": "TRAIN",
+      "source": "u30",
+      "pairNote": "GOWN and ROBE use the same route.",
+      "reviewerBestAvailable": {
+        "text": "GOWN",
+        "why": "A queen's gown with a long train is one clear picture.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "GOWN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The queen's gown.",
+          "wordBConnection": "A gown's train.",
+          "revealExplanation": "Gown: the queen's, with a long train.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "TRAIN as the long trailing back of a gown; QUEEN via the familiar scene of a queen's ceremonial gown.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROBE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The queen's robe.",
+          "wordBConnection": "The robe's train.",
+          "revealExplanation": "Robe: the queen's train.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:GOWN"
+              ],
+              "reason": "QUEEN via coronation robes; TRAIN as the long train those robes trail.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROYAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The royal queen.",
+          "wordBConnection": "The royal train.",
+          "revealExplanation": "Royal: the queen's train.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "british_only"
+              ],
+              "reason": "QUEEN is royal; TRAIN via the Royal Train or a royal gown's train, which works at moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__water",
+      "a": "QUEEN",
+      "b": "WATER",
+      "source": "u30",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "MERMAID",
+        "why": "Strong on WATER, with at least a fairy-tale sea-queen image for QUEEN.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MERMAID",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A mermaid queen.",
+          "wordBConnection": "Mermaids live in water.",
+          "revealExplanation": "Mermaid: the queen of the water, in the tales.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WATER as the mermaid's home; QUEEN only via folklore and fantasy mermaid or sea queens, which is not a fixed familiar figure.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LADY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A royal lady.",
+          "wordBConnection": "The Lady of the Lake.",
+          "revealExplanation": "Lady: of the Lake, from the water.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "QUEEN as a royal lady; WATER only via the Arthurian Lady of the Lake, so both sides are weak.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__witch",
+      "a": "QUEEN",
+      "b": "WITCH",
+      "source": "u30",
+      "pairNote": "A strong pair; all three hints work.",
+      "reviewerBestAvailable": {
+        "text": "APPLE",
+        "why": "The Snow White apple scene joins the queen and the witch in one story.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "APPLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The queen's poisoned apple.",
+          "wordBConnection": "The witch offers the apple.",
+          "revealExplanation": "Apple: the queen-witch's poison.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Snow White story: the Evil Queen, disguised as an old witch-like hag, offers the poisoned apple.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "EVIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Evil Queen.",
+          "wordBConnection": "She becomes a witch.",
+          "revealExplanation": "Evil: the queen who became a witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "QUEEN via 'Evil Queen'; WITCH via the stock evil or wicked witch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WHITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Queen of Narnia.",
+          "wordBConnection": "The White Witch.",
+          "revealExplanation": "White: the witch who called herself queen.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WITCH via Narnia's White Witch (who rules as queen); QUEEN via the White Queen of Through the Looking-Glass and Narnia's self-styled queen.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__wolf",
+      "a": "QUEEN",
+      "b": "WOLF",
+      "source": "u30",
+      "pairNote": "STARK only works for Game of Thrones viewers, so this is a moderate pass.",
+      "reviewerBestAvailable": {
+        "text": "STARK",
+        "why": "One franchise covers both words: direwolves and a Stark queen.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "STARK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Sansa, Queen in the North.",
+          "wordBConnection": "The Stark direwolf.",
+          "revealExplanation": "Stark: the queen, and the wolf.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WOLF via House Stark's direwolf sigil in Game of Thrones; QUEEN via Sansa Stark becoming Queen in the North.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ALPHA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Queen of the pack.",
+          "wordBConnection": "The alpha wolf.",
+          "revealExplanation": "Alpha: the pack's queen.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WOLF via 'alpha wolf'; QUEEN only via the loose idea of a queen as the dominant 'alpha female'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__robot",
+      "a": "RING",
+      "b": "ROBOT",
+      "source": "u30",
+      "pairNote": "BATTLE and BOXING both use the fighting-ring scene.",
+      "reviewerBestAvailable": {
+        "text": "BOXING",
+        "why": "The boxing ring is certain, and boxing robots are a familiar toy and film image.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BATTLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The battle ring.",
+          "wordBConnection": "Battle robots.",
+          "revealExplanation": "Battle: robots in the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROBOT via robot battles (BattleBots-style shows); RING via the fighting ring or arena where battles happen.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BOXING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The boxing ring.",
+          "wordBConnection": "Robot boxing.",
+          "revealExplanation": "Boxing: robots in the ring.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Real Steel",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "RING via 'boxing ring'; ROBOT via boxing robots (Rock 'Em Sock 'Em Robots, Real Steel).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SMART",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A smart ring.",
+          "wordBConnection": "A smart robot.",
+          "revealExplanation": "Smart: ring, and robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "RING via the smart-ring gadget; ROBOT via the loose idea of smart machines; neither side is firm.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__rock",
+      "a": "RING",
+      "b": "ROCK",
+      "source": "u30",
+      "pairNote": "STONE is nearly a synonym of ROCK; keep it below the slang routes.",
+      "reviewerBestAvailable": {
+        "text": "DIAMOND",
+        "why": "Diamond ring plus 'rock' as slang for a diamond: clean on both sides.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "DIAMOND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A diamond ring.",
+          "wordBConnection": "A diamond is a rock.",
+          "revealExplanation": "Diamond: the rock on the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "RING via the diamond ring; ROCK via 'rock' as familiar slang for a diamond.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ENGAGEMENT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An engagement ring.",
+          "wordBConnection": "A rock on her finger.",
+          "revealExplanation": "Engagement: the ring and its rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:DIAMOND"
+              ],
+              "reason": "RING via 'engagement ring'; ROCK via the slang 'rock' for the engagement diamond.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "STONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ring's stone.",
+          "wordBConnection": "A stone is a rock.",
+          "revealExplanation": "Stone: the ring's rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "RING via the stone set in a ring; ROCK because stone is a near-synonym of rock.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__rose",
+      "a": "RING",
+      "b": "ROSE",
+      "source": "u30",
+      "pairNote": "A strong pair.",
+      "reviewerBestAvailable": {
+        "text": "POSIES",
+        "why": "The nursery rhyme puts ring and roses side by side.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "GOLD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold ring.",
+          "wordBConnection": "Rose gold.",
+          "revealExplanation": "Gold: a rose gold ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "RING via the gold ring; ROSE via 'rose gold'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "POSIES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Ring around the rosie.",
+          "wordBConnection": "Rosie, the rose of the rhyme.",
+          "revealExplanation": "Posies: ring around the rosie.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The nursery rhyme 'Ring a Ring o' Roses' (pocket full of posies) names both words.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A wedding ring.",
+          "wordBConnection": "Wedding roses.",
+          "revealExplanation": "Wedding: rings and roses.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "RING via 'wedding ring'; ROSE via the familiar wedding scene of roses in bouquets.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__salt",
+      "a": "RING",
+      "b": "SALT",
+      "source": "u30",
+      "pairNote": "No PASS; a close call between the two hints.",
+      "reviewerBestAvailable": {
+        "text": "CIRCLE",
+        "why": "Ring is a circle and a salt circle is a known trope; RIM is stronger for SALT but thinner for RING.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CIRCLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A ring is a circle.",
+          "wordBConnection": "A protective salt circle in folklore.",
+          "revealExplanation": "Circle: a ring, of salt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target",
+                "needs_explanation"
+              ],
+              "reason": "RING because a ring is a circle (near-synonym); SALT via the folklore and horror trope of a protective salt circle, which is moderate at best.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "RIM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A ring around the rim.",
+          "wordBConnection": "A salt rim.",
+          "revealExplanation": "Rim: a ring of salt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SALT via the salted rim of a margarita glass; RING only because a rim is ring-shaped.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__shadow",
+      "a": "RING",
+      "b": "SHADOW",
+      "source": "u30",
+      "pairNote": "ECLIPSE is the one route that does not depend on the franchise.",
+      "reviewerBestAvailable": {
+        "text": "MORDOR",
+        "why": "The ring verse places the Ring in Mordor, land of shadow.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MORDOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Ring forged in Mordor.",
+          "wordBConnection": "Mordor, where the shadows lie.",
+          "revealExplanation": "Mordor: the Ring, and the shadows.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lord of the Rings",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Lord of the Rings: the One Ring was forged in Mordor, 'where the shadows lie' in the famous ring verse.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ECLIPSE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ring of an annular eclipse.",
+          "wordBConnection": "An eclipse is a shadow.",
+          "revealExplanation": "Eclipse: a ring of light, and a shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SHADOW as the shadow cast in an eclipse; RING via the 'ring of fire' of an annular eclipse.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SAURON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Sauron's One Ring.",
+          "wordBConnection": "Sauron, the Shadow.",
+          "revealExplanation": "Sauron: the Ring, and the Shadow.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lord of the Rings",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:MORDOR"
+              ],
+              "reason": "RING as Sauron's One Ring; SHADOW via Sauron as 'the Shadow' looming over Middle-earth.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__shark",
+      "a": "RING",
+      "b": "SHARK",
+      "source": "u30",
+      "pairNote": "A moderate pair.",
+      "reviewerBestAvailable": {
+        "text": "TEETH",
+        "why": "Shark teeth are certain and the teething ring is a familiar object.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TEETH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ring of teeth.",
+          "wordBConnection": "Shark teeth.",
+          "revealExplanation": "Teeth: the shark's ring of them.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SHARK via its rows of teeth; RING via the teething ring (ordinary inflection).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CARD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A gambling ring.",
+          "wordBConnection": "A card shark.",
+          "revealExplanation": "Card: the shark of a gambling ring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SHARK via 'card shark'; RING only via boxing's ring-card holders, which is a weaker phrase.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__snake",
+      "a": "RING",
+      "b": "SNAKE",
+      "source": "u30",
+      "pairNote": "OUROBOROS is a less common word, but the image is exact.",
+      "reviewerBestAvailable": {
+        "text": "OUROBOROS",
+        "why": "One image is both a snake and a ring.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "OUROBOROS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ring-shaped symbol.",
+          "wordBConnection": "A snake eating its tail.",
+          "revealExplanation": "Ouroboros: the snake ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The ouroboros is a snake eating its own tail, forming a ring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "COIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A coil of rings.",
+          "wordBConnection": "A coiled snake.",
+          "revealExplanation": "Coil: the snake's rings.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SNAKE because snakes coil; RING only because a coil is a run of ring-like loops.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "NECKED",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Ring-necked.",
+          "wordBConnection": "The ring-necked snake.",
+          "revealExplanation": "Necked: the ring-necked snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Both words only through the real but little-known species name 'ring-necked snake'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__spider",
+      "a": "RING",
+      "b": "SPIDER",
+      "source": "u30",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "WEB",
+        "why": "A spider web's concentric rings and 'webring' give a faint RING link; ORB has none.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "WEB",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Rings of silk.",
+          "wordBConnection": "A spider web.",
+          "revealExplanation": "Web: the spider's rings of silk.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPIDER via its web; RING only via the old internet 'webring' or the concentric rings of an orb web.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ORB",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A round orb.",
+          "wordBConnection": "The orb-weaver spider.",
+          "revealExplanation": "Orb: the spider's round web.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SPIDER via the orb-weaver; an orb is a sphere, not a ring, so RING gets only a vague round-shape link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__spring",
+      "a": "RING",
+      "b": "SPRING",
+      "source": "u30",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "COIL",
+        "why": "Exact for SPRING and a shape link to RING; BELL gives SPRING nothing.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "COIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A coil of rings.",
+          "wordBConnection": "A coil spring.",
+          "revealExplanation": "Coil: the spring's rings.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SPRING because a spring is a coil; RING only because a coil is a run of ring-shaped loops.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BELL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell rings.",
+          "wordBConnection": "A spring-loaded bell.",
+          "revealExplanation": "Bell: rings on a spring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "RING via ringing a bell; SPRING has no recognizable bell phrase or scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__star",
+      "a": "RING",
+      "b": "STAR",
+      "source": "u30",
+      "pairNote": "No PASS. SATURN must be explained as a night-sky scene, not as a star.",
+      "reviewerBestAvailable": {
+        "text": "SATURN",
+        "why": "Saturn's rings are certain, and Saturn shines like a star in the night sky.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HALO",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A halo is a ring.",
+          "wordBConnection": "A halo of starlight.",
+          "revealExplanation": "Halo: a ring around a star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "RING because a halo is a ring of light; STAR only via halos around bright sky objects or starry haloes in religious art.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SATURN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Saturn's rings.",
+          "wordBConnection": "Saturn looks like a star.",
+          "revealExplanation": "Saturn: rings, shining like a star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "RING via Saturn's rings; STAR only through the shared night-sky and astronomy scene, since Saturn is a planet, not a star (it must not be explained as one).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__train",
+      "a": "RING",
+      "b": "TRAIN",
+      "source": "u30",
+      "pairNote": "A good pair.",
+      "reviewerBestAvailable": {
+        "text": "WEDDING",
+        "why": "Both words are wedding items: the ring and the dress train.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A wedding ring.",
+          "wordBConnection": "The train of a wedding dress.",
+          "revealExplanation": "Wedding: the ring and the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "RING via 'wedding ring'; TRAIN via the long train of a wedding dress.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BELL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell rings.",
+          "wordBConnection": "A train bell.",
+          "revealExplanation": "Bell: the train's, ringing.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "RING as what a bell does; TRAIN via the locomotive's bell or the crossing bell.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__water",
+      "a": "RING",
+      "b": "WATER",
+      "source": "u30",
+      "pairNote": "A strong pair.",
+      "reviewerBestAvailable": {
+        "text": "RIPPLE",
+        "why": "One picture shows both: rings spreading on water.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BUOY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ring buoy.",
+          "wordBConnection": "Floating on the water.",
+          "revealExplanation": "Buoy: the life ring in the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "RING via the ring buoy or life ring; WATER because buoys float on water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "RIPPLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rings of ripples.",
+          "wordBConnection": "Ripples on water.",
+          "revealExplanation": "Ripple: rings on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ripples are the expanding rings on a water surface.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BATHTUB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bathtub ring.",
+          "wordBConnection": "Bath water.",
+          "revealExplanation": "Bathtub: the ring the water leaves.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "WATER fills a bathtub; RING via the familiar 'bathtub ring' of grime at the waterline.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__witch",
+      "a": "RING",
+      "b": "WITCH",
+      "source": "u30",
+      "pairNote": "FAIRY is nice for players who know the 'witches' ring' name.",
+      "reviewerBestAvailable": {
+        "text": "MAGIC",
+        "why": "Magic ring and witch's magic both land directly.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MAGIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A magic ring.",
+          "wordBConnection": "A witch's magic.",
+          "revealExplanation": "Magic: the ring's, and the witch's.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "RING via the magic ring of fairy tales and Tolkien; WITCH as a practitioner of magic.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FAIRY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fairy ring.",
+          "wordBConnection": "Witches dance in fairy rings in folklore.",
+          "revealExplanation": "Fairy: the ring where witches dance in the old tales.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "RING via the 'fairy ring' of mushrooms (also called a witches' ring); WITCH via that folklore and the shared magical-folk scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SPELL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An enchanted ring.",
+          "wordBConnection": "A witch's spell.",
+          "revealExplanation": "Spell: the witch's, on the ring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:MAGIC"
+              ],
+              "reason": "WITCH casts spells; RING only via enchanted rings, a weaker step than MAGIC.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ring__wolf",
+      "a": "RING",
+      "b": "WOLF",
+      "source": "u30",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "CIRCLE",
+        "why": "Ring = circle, plus wolves circling prey; HOWL is WOLF-only.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CIRCLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A ring is a circle.",
+          "wordBConnection": "Wolves circle.",
+          "revealExplanation": "Circle: the wolves' ring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "RING as a near-synonym of circle; WOLF only via wolves circling their prey (verb), a moderate image.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HOWL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A howl rings out.",
+          "wordBConnection": "A wolf's howl.",
+          "revealExplanation": "Howl: the wolf's, ringing out.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WOLF via its howl; RING has no route except the vague sense of a sound ringing out.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_robot__rock",
       "a": "ROBOT",
       "b": "ROCK",
@@ -98707,6 +100805,1484 @@
         "status": "held",
         "stretch": false
       }
+    },
+    {
+      "pair_id": "p_robot__rose",
+      "a": "ROBOT",
+      "b": "ROSE",
+      "source": "u30",
+      "pairNote": "ROSIE does not contain the letters ROSE in order, so it is not a contains_target failure.",
+      "reviewerBestAvailable": {
+        "text": "ROSIE",
+        "why": "A famous robot whose name is a form of Rose.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ROSIE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Rosie the Robot.",
+          "wordBConnection": "Rosie, a pet name for Rose.",
+          "revealExplanation": "Rosie: the Jetsons robot, named like a rose.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Jetsons",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROBOT via Rosie, the Jetsons' robot maid; ROSE via Rosie as a pet form of the name Rose.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BEAST",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "household objects are not robots; invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROSE via the enchanted rose in Beauty and the Beast; ROBOT has no beast route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WALLE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "WALL-E's plant is a seedling, not a rose; wrong fact",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "wrong_fact"
+              ],
+              "reason": "ROBOT via Pixar's WALL-E; the film's key plant is a seedling, not a rose, so a rose link would be a false fact.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__salt",
+      "a": "ROBOT",
+      "b": "SALT",
+      "source": "u30",
+      "pairNote": "RUST is only a moderate pass.",
+      "reviewerBestAvailable": {
+        "text": "RUST",
+        "why": "Salt causes rust and robots suffer it, so RUST is a real link between the two.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RUST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rusting robot.",
+          "wordBConnection": "Salt causes rust.",
+          "revealExplanation": "Rust: salt on the robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Shared property: salt speeds up rusting of metal, and metal robots rust (cause and effect).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHAKER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A robot-shaped shaker.",
+          "wordBConnection": "A salt shaker.",
+          "revealExplanation": "Shaker: salt, robot-shaped.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT via 'salt shaker'; ROBOT has no shaker route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__shadow",
+      "a": "ROBOT",
+      "b": "SHADOW",
+      "source": "u30",
+      "pairNote": "MIMIC is a weak pass; a second opinion would help.",
+      "reviewerBestAvailable": {
+        "text": "MIMIC",
+        "why": "Shadows and robots both copy human movement.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MIMIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A robot mimics.",
+          "wordBConnection": "A shadow mimics you.",
+          "revealExplanation": "Mimic: robot and shadow copy you.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SHADOW copies your every move; ROBOT via robots and androids that mimic human movement, a shared copying property.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PUPPET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A robot puppet.",
+          "wordBConnection": "A shadow puppet.",
+          "revealExplanation": "Puppet: robot, and shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SHADOW via 'shadow puppet'; ROBOT only via the loose idea of a controlled mechanical figure.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__shark",
+      "a": "ROBOT",
+      "b": "SHARK",
+      "source": "u30",
+      "pairNote": "Both hints rely on the Jaws prop for one side.",
+      "reviewerBestAvailable": {
+        "text": "MECHANICAL",
+        "why": "Names the robot quality directly and recalls the mechanical Jaws shark.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MECHANICAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A mechanical robot.",
+          "wordBConnection": "The mechanical shark.",
+          "revealExplanation": "Mechanical: the robot shark of Jaws.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROBOT is mechanical; SHARK via the famously troublesome mechanical shark used to film Jaws.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "JAWS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The mechanical shark.",
+          "wordBConnection": "Jaws the shark.",
+          "revealExplanation": "Jaws: the mechanical shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SHARK via the film Jaws; ROBOT only via that film's animatronic shark prop, which is a step removed.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__snake",
+      "a": "ROBOT",
+      "b": "SNAKE",
+      "source": "u30",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "ARM",
+        "why": "Strong for ROBOT, with a faint snake-like-motion link; SLITHER is SNAKE-only.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ARM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A robot arm.",
+          "wordBConnection": "Bending like a snake.",
+          "revealExplanation": "Arm: the robot's, snaking.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "ROBOT via 'robot arm'; SNAKE only via the snake-like flex of such arms (snake-arm robots are niche).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SLITHER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A slithering snake robot.",
+          "wordBConnection": "A snake slithers.",
+          "revealExplanation": "Slither: the snake, and its robot copy.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SNAKE slithers; ROBOT has no ordinary slither route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__spider",
+      "a": "ROBOT",
+      "b": "SPIDER",
+      "source": "u30",
+      "pairNote": "BOT is a clipping of ROBOT; the owner should decide whether that counts as contains_target.",
+      "reviewerBestAvailable": {
+        "text": "CRAWLER",
+        "why": "Crawling spiders and crawler bots meet in one word.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRAWLER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A crawler bot.",
+          "wordBConnection": "A crawling spider.",
+          "revealExplanation": "Crawler: the robot, the spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SPIDER as a crawler; ROBOT via crawler robots and web crawlers, which are also called bots or spiders.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BOT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bot is a robot.",
+          "wordBConnection": "A spider bot crawls the web.",
+          "revealExplanation": "Bot: a web spider robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "ROBOT because BOT is its clipped form (near-synonym, letters inside the target); SPIDER only via web-spider bots.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LEGS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A legged robot.",
+          "wordBConnection": "A spider's legs.",
+          "revealExplanation": "Legs: spider, and robot.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "SPIDER via its eight legs; ROBOT only via legged and spider robots, which is loose.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__spring",
+      "a": "ROBOT",
+      "b": "SPRING",
+      "source": "u30",
+      "pairNote": "Good.",
+      "reviewerBestAvailable": {
+        "text": "WINDUP",
+        "why": "A wind-up robot is powered by a spring.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WINDUP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A wind-up robot.",
+          "wordBConnection": "A wind-up spring.",
+          "revealExplanation": "Wind-up: the robot's spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROBOT via the classic wind-up tin robot toy; SPRING because wind-up toys run on a coiled spring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "COIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A robot's coil.",
+          "wordBConnection": "A coil spring.",
+          "revealExplanation": "Coil: the robot's spring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SPRING because a spring is a coil; ROBOT only via coils inside machinery, which is vague.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__star",
+      "a": "ROBOT",
+      "b": "STAR",
+      "source": "u30",
+      "pairNote": "All three hints use Star Wars.",
+      "reviewerBestAvailable": {
+        "text": "R2D2",
+        "why": "An iconic robot from Star Wars.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "R2D2",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "R2-D2 is a robot.",
+          "wordBConnection": "Star Wars.",
+          "revealExplanation": "R2-D2: the robot of Star Wars.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:DROID"
+              ],
+              "reason": "ROBOT: R2-D2 is the most famous film robot; STAR via Star Wars.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DROID",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A droid is a robot.",
+          "wordBConnection": "Star Wars droids.",
+          "revealExplanation": "Droid: Star Wars' robots.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROBOT as droid; STAR via Star Wars, where droids are iconic.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WARS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Star Wars droids.",
+          "wordBConnection": "Star Wars.",
+          "revealExplanation": "Wars: Star Wars and its robots.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "STAR via 'Star Wars'; ROBOT via the TV show Robot Wars and Star Wars' droids.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__train",
+      "a": "ROBOT",
+      "b": "TRAIN",
+      "source": "u30",
+      "pairNote": "A moderate pair.",
+      "reviewerBestAvailable": {
+        "text": "DRIVERLESS",
+        "why": "Automated trains are a real robot-like scene.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DRIVERLESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Robot control.",
+          "wordBConnection": "A driverless train.",
+          "revealExplanation": "Driverless: the robot train.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "TRAIN via driverless metro trains; ROBOT via automated, robot-driven vehicles.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TRANSFORMERS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Transformers robots.",
+          "wordBConnection": "Robots that become trains.",
+          "revealExplanation": "Transformers: robots that become trains.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "ROBOT via the Transformers robots; TRAIN only via the few Transformers that turn into trains, or electrical transformers on railways, which is niche.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__water",
+      "a": "ROBOT",
+      "b": "WATER",
+      "source": "u30",
+      "pairNote": "TINMAN's ROBOT side is a recharacterization; do not call him a robot in an explanation.",
+      "reviewerBestAvailable": {
+        "text": "RUST",
+        "why": "Water causes rust and robots rust, so RUST links both words directly.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RUST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rusting robot.",
+          "wordBConnection": "Water causes rust.",
+          "revealExplanation": "Rust: water on the robot.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Cause and effect: water makes metal rust, and metal robots rust.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "POOL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A robot pool cleaner.",
+          "wordBConnection": "Pool water.",
+          "revealExplanation": "Pool: the robot that cleans the water.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WATER fills a pool; ROBOT only via robotic pool cleaners, a real but not obvious device.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TINMAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "not a single word; and the Tin Man is not a robot",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WATER via the Tin Man rusting in the rain in The Wizard of Oz; ROBOT only by treating the tin woodman as a proto-robot, which he is not literally.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__witch",
+      "a": "ROBOT",
+      "b": "WITCH",
+      "source": "u30",
+      "pairNote": "TINMAN is scored the same way as in robot/water.",
+      "reviewerBestAvailable": {
+        "text": "COSTUME",
+        "why": "Both are stock Halloween costumes.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "COSTUME",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A robot costume.",
+          "wordBConnection": "A witch costume.",
+          "revealExplanation": "Costume: robot or witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Halloween scene: witch and robot are both classic costumes.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TINMAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "not a single word; and the Tin Man is not a robot",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WITCH via The Wizard of Oz's witches; ROBOT only by treating the Tin Man as robot-like, which is a stretch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_robot__wolf",
+      "a": "ROBOT",
+      "b": "WOLF",
+      "source": "u30",
+      "pairNote": "No PASS; both hints are WOLF-only.",
+      "reviewerBestAvailable": {
+        "text": "PACK",
+        "why": "At least robot swarms or packs can be pictured; HOWL gives ROBOT nothing.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HOWL",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "robot side invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WOLF via its howl; ROBOT has no route (Howl's Moving Castle's Howl is a wizard, not a robot).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PACK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pack of robots.",
+          "wordBConnection": "A wolf pack.",
+          "revealExplanation": "Pack: wolves, and robot swarms.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WOLF via 'wolf pack'; ROBOT gets only filler readings (battery pack, a pack of robots).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__rose",
+      "a": "ROCK",
+      "b": "ROSE",
+      "source": "u30",
+      "pairNote": "A strong pair.",
+      "reviewerBestAvailable": {
+        "text": "GUNS",
+        "why": "One famous rock band named with Roses.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "DESERT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A desert rock.",
+          "wordBConnection": "The desert rose crystal.",
+          "revealExplanation": "Desert: the desert rose rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROSE via 'desert rose' (also the name of a rose-shaped crystal rock formation); ROCK via desert rock landscapes and that formation.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "QUARTZ",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Quartz is a rock.",
+          "wordBConnection": "Rose quartz.",
+          "revealExplanation": "Quartz: rose quartz, a rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROSE via 'rose quartz'; ROCK because quartz is a common rock-forming mineral (rock in everyday speech).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GUNS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A rock band.",
+          "wordBConnection": "Guns N' Roses.",
+          "revealExplanation": "Guns: Guns N' Roses rock.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Guns N' Roses",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Guns N' Roses, the rock band (brand and plural route).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__salt",
+      "a": "ROCK",
+      "b": "SALT",
+      "source": "u30",
+      "pairNote": "HALITE is exact but obscure.",
+      "reviewerBestAvailable": {
+        "text": "MINE",
+        "why": "Salt mines cut through rock: one familiar place.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rock mine.",
+          "wordBConnection": "A salt mine.",
+          "revealExplanation": "Mine: rock salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SALT via 'salt mine'; ROCK as what mines dig through, including rock-salt mines.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROAD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rock salt for roads.",
+          "wordBConnection": "Road salt.",
+          "revealExplanation": "Road: rock salt in winter.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Winter scene: road salt, spread as rock salt on icy roads.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HALITE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Halite is a rock.",
+          "wordBConnection": "Halite is salt.",
+          "revealExplanation": "Halite: rock salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Halite is the mineral name for rock salt, so it is exact for the compound, but the word is niche.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__shadow",
+      "a": "ROCK",
+      "b": "SHADOW",
+      "source": "u30",
+      "pairNote": "Fine.",
+      "reviewerBestAvailable": {
+        "text": "CAVE",
+        "why": "A rock cave full of shadows, plus Plato's allegory.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The rock cave.",
+          "wordBConnection": "Shadows on the cave wall.",
+          "revealExplanation": "Cave: shadows on rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROCK as what caves are made of; SHADOW via dark caves and Plato's cave of shadows.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHADE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "In the shade of a rock.",
+          "wordBConnection": "Shade is shadow.",
+          "revealExplanation": "Shade: the rock's shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "SHADOW because shade is a near-synonym; ROCK only via shade cast by a rock, which is weak.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__shark",
+      "a": "ROCK",
+      "b": "SHARK",
+      "source": "u30",
+      "pairNote": "ALCATRAZ is clever but leans on a myth for SHARK.",
+      "reviewerBestAvailable": {
+        "text": "REEF",
+        "why": "A reef is a rock-and-coral place where reef sharks live.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "REEF",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rocky reef.",
+          "wordBConnection": "Reef sharks.",
+          "revealExplanation": "Reef: rock, and its sharks.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SHARK via 'reef shark'; ROCK via rocky reefs.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ALCATRAZ",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Alcatraz is The Rock.",
+          "wordBConnection": "Said to be ringed by sharks.",
+          "revealExplanation": "Alcatraz: The Rock, and its shark legend.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "ROCK via Alcatraz's nickname 'The Rock'; SHARK only via the popular legend of shark-filled waters blocking escapes. The bay's sharks are mostly small and harmless, so an explanation must call it a legend, not a fact.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__snake",
+      "a": "ROCK",
+      "b": "SNAKE",
+      "source": "u30",
+      "pairNote": "RATTLESNAKE must be removed.",
+      "reviewerBestAvailable": {
+        "text": "BASK",
+        "why": "A snake on a rock is one picture.",
+        "reviewer": "blind-subagent-30"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BASK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A warm rock.",
+          "wordBConnection": "A snake basks.",
+          "revealExplanation": "Bask: the snake on the rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Familiar scene: a snake basking on a sun-warmed rock.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PYTHON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The rock python.",
+          "wordBConnection": "A python is a snake.",
+          "revealExplanation": "Python: the rock python.",
+          "reference": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SNAKE because a python is one; ROCK via the rock python (for example the African rock python).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "RATTLESNAKE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u30",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target SNAKE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-30",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Rule failure: the hint contains the target SNAKE.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u30-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_rock__water",

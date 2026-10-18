@@ -1,0 +1,510 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-30",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "u30-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors + no-literal-false-facts reminder, 2026-10-18",
+    "independence": "I read only u30-blind-input.json; no other repository file, search, web source or paid API was consulted."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_queen__shark",
+      "a": "QUEEN",
+      "b": "SHARK",
+      "hints": [
+        {"text": "LOAN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SHARK via the compound 'loan shark'; QUEEN has no recognizable loan route, so it is one-sided filler."},
+        {"text": "REEF", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["one_sided", "obscure", "needs_explanation"], "verdict": "FAIL", "reason": "SHARK via 'reef shark'; QUEEN only through niche reef species (queen angelfish, queen conch) that few players would reach."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "REEF", "why": "At least both words share a sea setting (reef shark; queen angelfish/conch on reefs), whereas LOAN gives QUEEN nothing."},
+      "pair_note": "No PASS; the QUEEN side is the problem for both hints."
+    },
+    {
+      "pair_id": "p_queen__snake",
+      "a": "QUEEN",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "MEDUSA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SNAKE via Medusa's snake hair; QUEEN only through minor routes (Marvel's Medusa, queen of the Inhumans, or rare myth variants), since the Gorgon is not usually a queen."},
+        {"text": "CLEOPATRA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "QUEEN as the famous queen of Egypt; SNAKE via the well-known story of her death by asp bite."},
+        {"text": "ASP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:CLEOPATRA"], "verdict": "PASS", "reason": "SNAKE directly (an asp is a snake); QUEEN via the familiar Cleopatra-and-the-asp story."}
+      ],
+      "strong_hints": ["CLEOPATRA", "ASP"],
+      "best_available": {"text": "CLEOPATRA", "why": "One famous story lands squarely on both words."},
+      "pair_note": "ASP depends on the same Cleopatra scene."
+    },
+    {
+      "pair_id": "p_queen__spider",
+      "a": "QUEEN",
+      "b": "SPIDER",
+      "hints": [
+        {"text": "SHELOB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SPIDER via Tolkien's giant spider Shelob; she is not a queen, so the QUEEN side is missing."},
+        {"text": "WIDOW", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPIDER via 'black widow'; QUEEN only via the idea of a widowed queen (dowager, Victoria in mourning), which is a stretch."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "WIDOW", "why": "Black widow is a strong spider route and widowed queens give a faint QUEEN link; SHELOB has none."},
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_queen__spring",
+      "a": "QUEEN",
+      "b": "SPRING",
+      "hints": [
+        {"text": "BEE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "QUEEN via 'queen bee'; SPRING only via the seasonal scene of bees among spring flowers, which is loose."},
+        {"text": "MAY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "QUEEN via the May Queen of May Day festivals; SPRING because May is a spring month."}
+      ],
+      "strong_hints": ["MAY"],
+      "best_available": {"text": "MAY", "why": "May Queen plus May as a spring month reaches both words."},
+      "pair_note": "BEE is strong for QUEEN but thin for SPRING."
+    },
+    {
+      "pair_id": "p_queen__star",
+      "a": "QUEEN",
+      "b": "STAR",
+      "hints": [
+        {"text": "BEAUTY", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "QUEEN via 'beauty queen'; STAR has no familiar beauty phrase or scene, only vague glamour."},
+        {"text": "PROM", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "QUEEN via 'prom queen'; STAR has no recognizable prom route."},
+        {"text": "SHOOTING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "BORDERLINE", "reason": "STAR via 'shooting star'; QUEEN only if the player recalls the band Queen's 'Don't Stop Me Now', which mentions a shooting star."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "SHOOTING", "why": "The only hint that reaches both words at all, through the Queen song; the other two give STAR nothing."},
+      "pair_note": "No PASS; BEAUTY and PROM are QUEEN-only."
+    },
+    {
+      "pair_id": "p_queen__train",
+      "a": "QUEEN",
+      "b": "TRAIN",
+      "hints": [
+        {"text": "GOWN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "TRAIN as the long trailing back of a gown; QUEEN via the familiar scene of a queen's ceremonial gown."},
+        {"text": "ROYAL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["british_only"], "verdict": "PASS", "reason": "QUEEN is royal; TRAIN via the Royal Train or a royal gown's train, which works at moderate strength."},
+        {"text": "ROBE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:GOWN"], "verdict": "PASS", "reason": "QUEEN via coronation robes; TRAIN as the long train those robes trail."}
+      ],
+      "strong_hints": ["GOWN", "ROBE", "ROYAL"],
+      "best_available": {"text": "GOWN", "why": "A queen's gown with a long train is one clear picture."},
+      "pair_note": "GOWN and ROBE use the same route."
+    },
+    {
+      "pair_id": "p_queen__water",
+      "a": "QUEEN",
+      "b": "WATER",
+      "hints": [
+        {"text": "LADY", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "QUEEN as a royal lady; WATER only via the Arthurian Lady of the Lake, so both sides are weak."},
+        {"text": "MERMAID", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WATER as the mermaid's home; QUEEN only via folklore and fantasy mermaid or sea queens, which is not a fixed familiar figure."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "MERMAID", "why": "Strong on WATER, with at least a fairy-tale sea-queen image for QUEEN."},
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_queen__witch",
+      "a": "QUEEN",
+      "b": "WITCH",
+      "hints": [
+        {"text": "APPLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Snow White story: the Evil Queen, disguised as an old witch-like hag, offers the poisoned apple."},
+        {"text": "EVIL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "QUEEN via 'Evil Queen'; WITCH via the stock evil or wicked witch."},
+        {"text": "WHITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WITCH via Narnia's White Witch (who rules as queen); QUEEN via the White Queen of Through the Looking-Glass and Narnia's self-styled queen."}
+      ],
+      "strong_hints": ["APPLE", "WHITE", "EVIL"],
+      "best_available": {"text": "APPLE", "why": "The Snow White apple scene joins the queen and the witch in one story."},
+      "pair_note": "A strong pair; all three hints work."
+    },
+    {
+      "pair_id": "p_queen__wolf",
+      "a": "QUEEN",
+      "b": "WOLF",
+      "hints": [
+        {"text": "ALPHA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WOLF via 'alpha wolf'; QUEEN only via the loose idea of a queen as the dominant 'alpha female'."},
+        {"text": "STARK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "WOLF via House Stark's direwolf sigil in Game of Thrones; QUEEN via Sansa Stark becoming Queen in the North."}
+      ],
+      "strong_hints": ["STARK"],
+      "best_available": {"text": "STARK", "why": "One franchise covers both words: direwolves and a Stark queen."},
+      "pair_note": "STARK only works for Game of Thrones viewers, so this is a moderate pass."
+    },
+    {
+      "pair_id": "p_ring__robot",
+      "a": "RING",
+      "b": "ROBOT",
+      "hints": [
+        {"text": "SMART", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "RING via the smart-ring gadget; ROBOT via the loose idea of smart machines; neither side is firm."},
+        {"text": "BATTLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROBOT via robot battles (BattleBots-style shows); RING via the fighting ring or arena where battles happen."},
+        {"text": "BOXING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "RING via 'boxing ring'; ROBOT via boxing robots (Rock 'Em Sock 'Em Robots, Real Steel)."}
+      ],
+      "strong_hints": ["BOXING", "BATTLE"],
+      "best_available": {"text": "BOXING", "why": "The boxing ring is certain, and boxing robots are a familiar toy and film image."},
+      "pair_note": "BATTLE and BOXING both use the fighting-ring scene."
+    },
+    {
+      "pair_id": "p_ring__rock",
+      "a": "RING",
+      "b": "ROCK",
+      "hints": [
+        {"text": "STONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "RING via the stone set in a ring; ROCK because stone is a near-synonym of rock."},
+        {"text": "DIAMOND", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "RING via the diamond ring; ROCK via 'rock' as familiar slang for a diamond."},
+        {"text": "ENGAGEMENT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:DIAMOND"], "verdict": "PASS", "reason": "RING via 'engagement ring'; ROCK via the slang 'rock' for the engagement diamond."}
+      ],
+      "strong_hints": ["DIAMOND", "ENGAGEMENT", "STONE"],
+      "best_available": {"text": "DIAMOND", "why": "Diamond ring plus 'rock' as slang for a diamond: clean on both sides."},
+      "pair_note": "STONE is nearly a synonym of ROCK; keep it below the slang routes."
+    },
+    {
+      "pair_id": "p_ring__rose",
+      "a": "RING",
+      "b": "ROSE",
+      "hints": [
+        {"text": "GOLD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "RING via the gold ring; ROSE via 'rose gold'."},
+        {"text": "WEDDING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "RING via 'wedding ring'; ROSE via the familiar wedding scene of roses in bouquets."},
+        {"text": "POSIES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The nursery rhyme 'Ring a Ring o' Roses' (pocket full of posies) names both words."}
+      ],
+      "strong_hints": ["POSIES", "GOLD", "WEDDING"],
+      "best_available": {"text": "POSIES", "why": "The nursery rhyme puts ring and roses side by side."},
+      "pair_note": "A strong pair."
+    },
+    {
+      "pair_id": "p_ring__salt",
+      "a": "RING",
+      "b": "SALT",
+      "hints": [
+        {"text": "CIRCLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target", "needs_explanation"], "verdict": "BORDERLINE", "reason": "RING because a ring is a circle (near-synonym); SALT via the folklore and horror trope of a protective salt circle, which is moderate at best."},
+        {"text": "RIM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SALT via the salted rim of a margarita glass; RING only because a rim is ring-shaped."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "CIRCLE", "why": "Ring is a circle and a salt circle is a known trope; RIM is stronger for SALT but thinner for RING."},
+      "pair_note": "No PASS; a close call between the two hints."
+    },
+    {
+      "pair_id": "p_ring__shadow",
+      "a": "RING",
+      "b": "SHADOW",
+      "hints": [
+        {"text": "MORDOR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Lord of the Rings: the One Ring was forged in Mordor, 'where the shadows lie' in the famous ring verse."},
+        {"text": "ECLIPSE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHADOW as the shadow cast in an eclipse; RING via the 'ring of fire' of an annular eclipse."},
+        {"text": "SAURON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:MORDOR"], "verdict": "PASS", "reason": "RING as Sauron's One Ring; SHADOW via Sauron as 'the Shadow' looming over Middle-earth."}
+      ],
+      "strong_hints": ["MORDOR", "ECLIPSE", "SAURON"],
+      "best_available": {"text": "MORDOR", "why": "The ring verse places the Ring in Mordor, land of shadow."},
+      "pair_note": "ECLIPSE is the one route that does not depend on the franchise."
+    },
+    {
+      "pair_id": "p_ring__shark",
+      "a": "RING",
+      "b": "SHARK",
+      "hints": [
+        {"text": "TEETH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SHARK via its rows of teeth; RING via the teething ring (ordinary inflection)."},
+        {"text": "CARD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SHARK via 'card shark'; RING only via boxing's ring-card holders, which is a weaker phrase."}
+      ],
+      "strong_hints": ["TEETH"],
+      "best_available": {"text": "TEETH", "why": "Shark teeth are certain and the teething ring is a familiar object."},
+      "pair_note": "A moderate pair."
+    },
+    {
+      "pair_id": "p_ring__snake",
+      "a": "RING",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "NECKED", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Both words only through the real but little-known species name 'ring-necked snake'."},
+        {"text": "COIL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "SNAKE because snakes coil; RING only because a coil is a run of ring-like loops."},
+        {"text": "OUROBOROS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The ouroboros is a snake eating its own tail, forming a ring."}
+      ],
+      "strong_hints": ["OUROBOROS"],
+      "best_available": {"text": "OUROBOROS", "why": "One image is both a snake and a ring."},
+      "pair_note": "OUROBOROS is a less common word, but the image is exact."
+    },
+    {
+      "pair_id": "p_ring__spider",
+      "a": "RING",
+      "b": "SPIDER",
+      "hints": [
+        {"text": "ORB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SPIDER via the orb-weaver; an orb is a sphere, not a ring, so RING gets only a vague round-shape link."},
+        {"text": "WEB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPIDER via its web; RING only via the old internet 'webring' or the concentric rings of an orb web."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "WEB", "why": "A spider web's concentric rings and 'webring' give a faint RING link; ORB has none."},
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_ring__spring",
+      "a": "RING",
+      "b": "SPRING",
+      "hints": [
+        {"text": "BELL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "RING via ringing a bell; SPRING has no recognizable bell phrase or scene."},
+        {"text": "COIL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "SPRING because a spring is a coil; RING only because a coil is a run of ring-shaped loops."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "COIL", "why": "Exact for SPRING and a shape link to RING; BELL gives SPRING nothing."},
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_ring__star",
+      "a": "RING",
+      "b": "STAR",
+      "hints": [
+        {"text": "HALO", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "RING because a halo is a ring of light; STAR only via halos around bright sky objects or starry haloes in religious art."},
+        {"text": "SATURN", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "RING via Saturn's rings; STAR only through the shared night-sky and astronomy scene, since Saturn is a planet, not a star (it must not be explained as one)."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "SATURN", "why": "Saturn's rings are certain, and Saturn shines like a star in the night sky."},
+      "pair_note": "No PASS. SATURN must be explained as a night-sky scene, not as a star."
+    },
+    {
+      "pair_id": "p_ring__train",
+      "a": "RING",
+      "b": "TRAIN",
+      "hints": [
+        {"text": "WEDDING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "RING via 'wedding ring'; TRAIN via the long train of a wedding dress."},
+        {"text": "BELL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "RING as what a bell does; TRAIN via the locomotive's bell or the crossing bell."}
+      ],
+      "strong_hints": ["WEDDING", "BELL"],
+      "best_available": {"text": "WEDDING", "why": "Both words are wedding items: the ring and the dress train."},
+      "pair_note": "A good pair."
+    },
+    {
+      "pair_id": "p_ring__water",
+      "a": "RING",
+      "b": "WATER",
+      "hints": [
+        {"text": "BATHTUB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "WATER fills a bathtub; RING via the familiar 'bathtub ring' of grime at the waterline."},
+        {"text": "BUOY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "RING via the ring buoy or life ring; WATER because buoys float on water."},
+        {"text": "RIPPLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Ripples are the expanding rings on a water surface."}
+      ],
+      "strong_hints": ["RIPPLE", "BUOY", "BATHTUB"],
+      "best_available": {"text": "RIPPLE", "why": "One picture shows both: rings spreading on water."},
+      "pair_note": "A strong pair."
+    },
+    {
+      "pair_id": "p_ring__witch",
+      "a": "RING",
+      "b": "WITCH",
+      "hints": [
+        {"text": "FAIRY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "RING via the 'fairy ring' of mushrooms (also called a witches' ring); WITCH via that folklore and the shared magical-folk scene."},
+        {"text": "MAGIC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "RING via the magic ring of fairy tales and Tolkien; WITCH as a practitioner of magic."},
+        {"text": "SPELL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:MAGIC"], "verdict": "BORDERLINE", "reason": "WITCH casts spells; RING only via enchanted rings, a weaker step than MAGIC."}
+      ],
+      "strong_hints": ["MAGIC", "FAIRY"],
+      "best_available": {"text": "MAGIC", "why": "Magic ring and witch's magic both land directly."},
+      "pair_note": "FAIRY is nice for players who know the 'witches' ring' name."
+    },
+    {
+      "pair_id": "p_ring__wolf",
+      "a": "RING",
+      "b": "WOLF",
+      "hints": [
+        {"text": "CIRCLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target"], "verdict": "BORDERLINE", "reason": "RING as a near-synonym of circle; WOLF only via wolves circling their prey (verb), a moderate image."},
+        {"text": "HOWL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WOLF via its howl; RING has no route except the vague sense of a sound ringing out."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "CIRCLE", "why": "Ring = circle, plus wolves circling prey; HOWL is WOLF-only."},
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_robot__rose",
+      "a": "ROBOT",
+      "b": "ROSE",
+      "hints": [
+        {"text": "BEAST", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "ROSE via the enchanted rose in Beauty and the Beast; ROBOT has no beast route."},
+        {"text": "WALLE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "wrong_fact"], "verdict": "FAIL", "reason": "ROBOT via Pixar's WALL-E; the film's key plant is a seedling, not a rose, so a rose link would be a false fact."},
+        {"text": "ROSIE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROBOT via Rosie, the Jetsons' robot maid; ROSE via Rosie as a pet form of the name Rose."}
+      ],
+      "strong_hints": ["ROSIE"],
+      "best_available": {"text": "ROSIE", "why": "A famous robot whose name is a form of Rose."},
+      "pair_note": "ROSIE does not contain the letters ROSE in order, so it is not a contains_target failure."
+    },
+    {
+      "pair_id": "p_robot__salt",
+      "a": "ROBOT",
+      "b": "SALT",
+      "hints": [
+        {"text": "RUST", "connection_to_a": 1, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Shared property: salt speeds up rusting of metal, and metal robots rust (cause and effect)."},
+        {"text": "SHAKER", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SALT via 'salt shaker'; ROBOT has no shaker route."}
+      ],
+      "strong_hints": ["RUST"],
+      "best_available": {"text": "RUST", "why": "Salt causes rust and robots suffer it, so RUST is a real link between the two."},
+      "pair_note": "RUST is only a moderate pass."
+    },
+    {
+      "pair_id": "p_robot__shadow",
+      "a": "ROBOT",
+      "b": "SHADOW",
+      "hints": [
+        {"text": "MIMIC", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SHADOW copies your every move; ROBOT via robots and androids that mimic human movement, a shared copying property."},
+        {"text": "PUPPET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SHADOW via 'shadow puppet'; ROBOT only via the loose idea of a controlled mechanical figure."}
+      ],
+      "strong_hints": ["MIMIC"],
+      "best_available": {"text": "MIMIC", "why": "Shadows and robots both copy human movement."},
+      "pair_note": "MIMIC is a weak pass; a second opinion would help."
+    },
+    {
+      "pair_id": "p_robot__shark",
+      "a": "ROBOT",
+      "b": "SHARK",
+      "hints": [
+        {"text": "MECHANICAL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROBOT is mechanical; SHARK via the famously troublesome mechanical shark used to film Jaws."},
+        {"text": "JAWS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SHARK via the film Jaws; ROBOT only via that film's animatronic shark prop, which is a step removed."}
+      ],
+      "strong_hints": ["MECHANICAL"],
+      "best_available": {"text": "MECHANICAL", "why": "Names the robot quality directly and recalls the mechanical Jaws shark."},
+      "pair_note": "Both hints rely on the Jaws prop for one side."
+    },
+    {
+      "pair_id": "p_robot__snake",
+      "a": "ROBOT",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "ARM", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "ROBOT via 'robot arm'; SNAKE only via the snake-like flex of such arms (snake-arm robots are niche)."},
+        {"text": "SLITHER", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SNAKE slithers; ROBOT has no ordinary slither route."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "ARM", "why": "Strong for ROBOT, with a faint snake-like-motion link; SLITHER is SNAKE-only."},
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_robot__spider",
+      "a": "ROBOT",
+      "b": "SPIDER",
+      "hints": [
+        {"text": "CRAWLER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SPIDER as a crawler; ROBOT via crawler robots and web crawlers, which are also called bots or spiders."},
+        {"text": "BOT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "BORDERLINE", "reason": "ROBOT because BOT is its clipped form (near-synonym, letters inside the target); SPIDER only via web-spider bots."},
+        {"text": "LEGS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "SPIDER via its eight legs; ROBOT only via legged and spider robots, which is loose."}
+      ],
+      "strong_hints": ["CRAWLER"],
+      "best_available": {"text": "CRAWLER", "why": "Crawling spiders and crawler bots meet in one word."},
+      "pair_note": "BOT is a clipping of ROBOT; the owner should decide whether that counts as contains_target."
+    },
+    {
+      "pair_id": "p_robot__spring",
+      "a": "ROBOT",
+      "b": "SPRING",
+      "hints": [
+        {"text": "COIL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "SPRING because a spring is a coil; ROBOT only via coils inside machinery, which is vague."},
+        {"text": "WINDUP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "ROBOT via the classic wind-up tin robot toy; SPRING because wind-up toys run on a coiled spring."}
+      ],
+      "strong_hints": ["WINDUP"],
+      "best_available": {"text": "WINDUP", "why": "A wind-up robot is powered by a spring."},
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_robot__star",
+      "a": "ROBOT",
+      "b": "STAR",
+      "hints": [
+        {"text": "DROID", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "ROBOT as droid; STAR via Star Wars, where droids are iconic."},
+        {"text": "WARS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "STAR via 'Star Wars'; ROBOT via the TV show Robot Wars and Star Wars' droids."},
+        {"text": "R2D2", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:DROID"], "verdict": "PASS", "reason": "ROBOT: R2-D2 is the most famous film robot; STAR via Star Wars."}
+      ],
+      "strong_hints": ["R2D2", "DROID", "WARS"],
+      "best_available": {"text": "R2D2", "why": "An iconic robot from Star Wars."},
+      "pair_note": "All three hints use Star Wars."
+    },
+    {
+      "pair_id": "p_robot__train",
+      "a": "ROBOT",
+      "b": "TRAIN",
+      "hints": [
+        {"text": "DRIVERLESS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "TRAIN via driverless metro trains; ROBOT via automated, robot-driven vehicles."},
+        {"text": "TRANSFORMERS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "ROBOT via the Transformers robots; TRAIN only via the few Transformers that turn into trains, or electrical transformers on railways, which is niche."}
+      ],
+      "strong_hints": ["DRIVERLESS"],
+      "best_available": {"text": "DRIVERLESS", "why": "Automated trains are a real robot-like scene."},
+      "pair_note": "A moderate pair."
+    },
+    {
+      "pair_id": "p_robot__water",
+      "a": "ROBOT",
+      "b": "WATER",
+      "hints": [
+        {"text": "POOL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WATER fills a pool; ROBOT only via robotic pool cleaners, a real but not obvious device."},
+        {"text": "RUST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Cause and effect: water makes metal rust, and metal robots rust."},
+        {"text": "TINMAN", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WATER via the Tin Man rusting in the rain in The Wizard of Oz; ROBOT only by treating the tin woodman as a proto-robot, which he is not literally."}
+      ],
+      "strong_hints": ["RUST"],
+      "best_available": {"text": "RUST", "why": "Water causes rust and robots rust, so RUST links both words directly."},
+      "pair_note": "TINMAN's ROBOT side is a recharacterization; do not call him a robot in an explanation."
+    },
+    {
+      "pair_id": "p_robot__witch",
+      "a": "ROBOT",
+      "b": "WITCH",
+      "hints": [
+        {"text": "TINMAN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WITCH via The Wizard of Oz's witches; ROBOT only by treating the Tin Man as robot-like, which is a stretch."},
+        {"text": "COSTUME", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Halloween scene: witch and robot are both classic costumes."}
+      ],
+      "strong_hints": ["COSTUME"],
+      "best_available": {"text": "COSTUME", "why": "Both are stock Halloween costumes."},
+      "pair_note": "TINMAN is scored the same way as in robot/water."
+    },
+    {
+      "pair_id": "p_robot__wolf",
+      "a": "ROBOT",
+      "b": "WOLF",
+      "hints": [
+        {"text": "HOWL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WOLF via its howl; ROBOT has no route (Howl's Moving Castle's Howl is a wizard, not a robot)."},
+        {"text": "PACK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WOLF via 'wolf pack'; ROBOT gets only filler readings (battery pack, a pack of robots)."}
+      ],
+      "strong_hints": [],
+      "best_available": {"text": "PACK", "why": "At least robot swarms or packs can be pictured; HOWL gives ROBOT nothing."},
+      "pair_note": "No PASS; both hints are WOLF-only."
+    },
+    {
+      "pair_id": "p_rock__rose",
+      "a": "ROCK",
+      "b": "ROSE",
+      "hints": [
+        {"text": "DESERT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROSE via 'desert rose' (also the name of a rose-shaped crystal rock formation); ROCK via desert rock landscapes and that formation."},
+        {"text": "QUARTZ", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "ROSE via 'rose quartz'; ROCK because quartz is a common rock-forming mineral (rock in everyday speech)."},
+        {"text": "GUNS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Guns N' Roses, the rock band (brand and plural route)."}
+      ],
+      "strong_hints": ["GUNS", "QUARTZ", "DESERT"],
+      "best_available": {"text": "GUNS", "why": "One famous rock band named with Roses."},
+      "pair_note": "A strong pair."
+    },
+    {
+      "pair_id": "p_rock__salt",
+      "a": "ROCK",
+      "b": "SALT",
+      "hints": [
+        {"text": "MINE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SALT via 'salt mine'; ROCK as what mines dig through, including rock-salt mines."},
+        {"text": "HALITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Halite is the mineral name for rock salt, so it is exact for the compound, but the word is niche."},
+        {"text": "ROAD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Winter scene: road salt, spread as rock salt on icy roads."}
+      ],
+      "strong_hints": ["MINE", "ROAD"],
+      "best_available": {"text": "MINE", "why": "Salt mines cut through rock: one familiar place."},
+      "pair_note": "HALITE is exact but obscure."
+    },
+    {
+      "pair_id": "p_rock__shadow",
+      "a": "ROCK",
+      "b": "SHADOW",
+      "hints": [
+        {"text": "CAVE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "ROCK as what caves are made of; SHADOW via dark caves and Plato's cave of shadows."},
+        {"text": "SHADE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "BORDERLINE", "reason": "SHADOW because shade is a near-synonym; ROCK only via shade cast by a rock, which is weak."}
+      ],
+      "strong_hints": ["CAVE"],
+      "best_available": {"text": "CAVE", "why": "A rock cave full of shadows, plus Plato's allegory."},
+      "pair_note": "Fine."
+    },
+    {
+      "pair_id": "p_rock__shark",
+      "a": "ROCK",
+      "b": "SHARK",
+      "hints": [
+        {"text": "ALCATRAZ", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "ROCK via Alcatraz's nickname 'The Rock'; SHARK only via the popular legend of shark-filled waters blocking escapes. The bay's sharks are mostly small and harmless, so an explanation must call it a legend, not a fact."},
+        {"text": "REEF", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHARK via 'reef shark'; ROCK via rocky reefs."}
+      ],
+      "strong_hints": ["REEF"],
+      "best_available": {"text": "REEF", "why": "A reef is a rock-and-coral place where reef sharks live."},
+      "pair_note": "ALCATRAZ is clever but leans on a myth for SHARK."
+    },
+    {
+      "pair_id": "p_rock__snake",
+      "a": "ROCK",
+      "b": "SNAKE",
+      "hints": [
+        {"text": "BASK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Familiar scene: a snake basking on a sun-warmed rock."},
+        {"text": "RATTLESNAKE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Rule failure: the hint contains the target SNAKE."},
+        {"text": "PYTHON", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SNAKE because a python is one; ROCK via the rock python (for example the African rock python)."}
+      ],
+      "strong_hints": ["BASK", "PYTHON"],
+      "best_available": {"text": "BASK", "why": "A snake on a rock is one picture."},
+      "pair_note": "RATTLESNAKE must be removed."
+    }
+  ]
+}

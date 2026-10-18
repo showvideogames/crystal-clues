@@ -3,13 +3,17 @@
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
 - pairs with an existing approved preference (untouched): 120
-- pairs where the reviewer's pick already was the provisional top candidate: 779
-- preferences added: 0 (0 ties, 0 overrides of a higher-scored hint)
+- pairs where the reviewer's pick already was the provisional top candidate: 804
+- preferences added: 4 (4 ties, 0 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 2
 - proposed entries still open: 12
 
 ## Added
 
+- tie p_ring__robot (RING+ROBOT): BOXING 2/1/2 replaces BATTLE 1/2/2 — The boxing ring is certain, and boxing robots are a familiar toy and film image.
+- tie p_ring__rose (RING+ROSE): POSIES 2/2/2 replaces GOLD 2/2/2 — The nursery rhyme puts ring and roses side by side.
+- tie p_ring__water (RING+WATER): RIPPLE 2/2/2 replaces BUOY 2/2/2 — One picture shows both: rings spreading on water.
+- tie p_rock__rose (ROCK+ROSE): GUNS 2/2/2 replaces DESERT 2/2/2 — One famous rock band named with Roses.
 
 ## Contradictions (unresolved, for the parent)
 
