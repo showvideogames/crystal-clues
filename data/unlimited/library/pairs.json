@@ -283,6 +283,16 @@
         "rejected": 9,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u16-blind-review.json",
+        "key": "data/unlimited/library/reviews/u16-blind-key.json",
+        "batch": "data/unlimited/library/batches/u16-batch.json",
+        "ai_reviewed": 57,
+        "held": 11,
+        "rejected": 21,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -37999,6 +38009,1817 @@
       ]
     },
     {
+      "pair_id": "p_dog__snake",
+      "a": "DOG",
+      "b": "SNAKE",
+      "source": "u16",
+      "pairNote": "BITE is excellent; RATTLE is pure one-sided filler.",
+      "reviewerBestAvailable": {
+        "text": "BITE",
+        "why": "Both 'dog bite' and 'snake bite' are stock phrases; nothing else needed.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dog bite.",
+          "wordBConnection": "A snake bite.",
+          "revealExplanation": "Bites: dog or snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dog bite and snake bite are both everyday phrases, a clean shared verb."
+            }
+          }
+        },
+        {
+          "text": "RATTLE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dog's rattling toy.",
+          "wordBConnection": "A rattlesnake.",
+          "revealExplanation": "Rattle: the snake's, or the dog toy.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Rattlesnake carries SNAKE instantly, but nothing in RATTLE reaches DOG (a baby's rattle is not a dog scene)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__spider",
+      "a": "DOG",
+      "b": "SPIDER",
+      "source": "u16",
+      "pairNote": "Both pass but neither is a slam dunk; TICK rewards knowledge, LEGS rewards counting.",
+      "reviewerBestAvailable": {
+        "text": "TICK",
+        "why": "A concrete dog scene plus a real biological link to spiders; more specific than LEGS.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ticks on the dog.",
+          "wordBConnection": "A tick is a spider relative.",
+          "revealExplanation": "A tick: the spider's cousin, on the dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Dogs famously pick up ticks; a tick is an eight-legged arachnid, the spider's close cousin, which most players half-know."
+            }
+          }
+        },
+        {
+          "text": "LEGS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Four legs.",
+          "wordBConnection": "Eight legs.",
+          "revealExplanation": "Legs: four on the dog, eight on the spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Eight legs is the spider's signature and four legs is a dog's; a broad shared property, generic but legitimate."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__spring",
+      "a": "DOG",
+      "b": "SPRING",
+      "source": "u16",
+      "pairNote": "No PASS. SPRINGER is disqualified on substring grounds despite being the natural bridge; a replacement such as a leaping or coiled image would be needed.",
+      "reviewerBestAvailable": {
+        "text": "BOUNCE",
+        "why": "The only legal hint here; the springy, bouncing dog is a plausible if soft route.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SPRINGER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A springer spaniel is a dog.",
+          "wordBConnection": "Springer: it springs.",
+          "revealExplanation": "The springer spaniel.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Springer spaniel is a fine dog route, but SPRINGER contains the target SPRING as a substring, which is a rule failure."
+            }
+          }
+        },
+        {
+          "text": "BOUNCE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A bouncing puppy.",
+          "wordBConnection": "A spring bounces.",
+          "revealExplanation": "Bounce: the puppy and the spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A spring bounces by definition; a bouncy, excited dog is a real image but far from the first thing BOUNCE suggests."
+            }
+          }
+        },
+        {
+          "text": "PUPPIES",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Puppies are dogs.",
+          "wordBConnection": "Spring litters.",
+          "revealExplanation": "Puppies, born in the spring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Puppies are simply young dogs; there is no recognizable puppies-in-spring scene that a player would reach SPRING from."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__star",
+      "a": "DOG",
+      "b": "STAR",
+      "source": "u16",
+      "pairNote": "Two complementary passes, one via astronomy and one via Hollywood.",
+      "reviewerBestAvailable": {
+        "text": "SIRIUS",
+        "why": "The Dog Star nickname ties both words together in a single well-known fact.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "LASSIE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Lassie is a dog.",
+          "wordBConnection": "Lassie was a star.",
+          "revealExplanation": "Lassie, the dog star of screen.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Lassie",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Lassie is the archetypal famous dog and was a Hollywood movie star, so STAR arrives through the celebrity sense."
+            }
+          }
+        },
+        {
+          "text": "SIRIUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Sirius is the Dog Star.",
+          "wordBConnection": "Sirius is the brightest star.",
+          "revealExplanation": "Sirius, the Dog Star.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Sirius / Canis Major",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Sirius is the brightest star and is nicknamed the Dog Star in Canis Major, a well-known astronomy fact."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__train",
+      "a": "DOG",
+      "b": "TRAIN",
+      "source": "u16",
+      "pairNote": "Both lean on TRAIN as a verb rather than a locomotive, which is fine under the rubric.",
+      "reviewerBestAvailable": {
+        "text": "OBEDIENCE",
+        "why": "'Obedience training' names the dog-training scene outright.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "OBEDIENCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dog obedience class.",
+          "wordBConnection": "Obedience training.",
+          "revealExplanation": "Obedience training for the dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Obedience training is the standard compound for dog training, hitting both words at once."
+            }
+          }
+        },
+        {
+          "text": "TRICKS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog's tricks.",
+          "wordBConnection": "Tricks are trained.",
+          "revealExplanation": "Tricks: what you train a dog to do.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dogs do tricks, and you train a dog to do them; TRAIN is reached as the verb in that shared scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__water",
+      "a": "DOG",
+      "b": "WATER",
+      "source": "u16",
+      "pairNote": "BOWL and PADDLE are solid; LAB depends on breed knowledge the hint does not surface.",
+      "reviewerBestAvailable": {
+        "text": "BOWL",
+        "why": "The dog's water bowl is the most concrete shared object.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog bowl.",
+          "wordBConnection": "A water bowl.",
+          "revealExplanation": "The dog's water bowl.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A dog's water bowl is a single household object naming both words."
+            }
+          }
+        },
+        {
+          "text": "PADDLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The doggy paddle.",
+          "wordBConnection": "Paddling in water.",
+          "revealExplanation": "The doggy paddle.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Paddling happens in water, and the doggy paddle is the familiar swimming stroke that carries DOG."
+            }
+          }
+        },
+        {
+          "text": "LAB",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A Lab is a dog.",
+          "wordBConnection": "Labs are water dogs.",
+          "revealExplanation": "The Lab, a dog that loves water.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Lab reads as Labrador (or laboratory); Labradors being water retrievers is true but a player sees no water in the word itself."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__witch",
+      "a": "DOG",
+      "b": "WITCH",
+      "source": "u16",
+      "pairNote": "TOTO is excellent; FAMILIAR is defensible but leans heavily on the witch side.",
+      "reviewerBestAvailable": {
+        "text": "TOTO",
+        "why": "One famous story contains both the dog and the witch.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TOTO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Toto is a dog.",
+          "wordBConnection": "The Wicked Witch grabs Toto.",
+          "revealExplanation": "Toto: the dog the witch snatched.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Wizard of Oz",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Toto is Dorothy's dog and the Wicked Witch's 'your little dog too' target in The Wizard of Oz, a shared story."
+            }
+          }
+        },
+        {
+          "text": "FAMILIAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A dog as a witch's familiar.",
+          "wordBConnection": "The witch's familiar.",
+          "revealExplanation": "The familiar: the witch's animal, sometimes a dog.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "A witch's familiar is a well-known trope, but the canonical familiar is a cat; a dog familiar (Faust's black poodle) is niche."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__wolf",
+      "a": "DOG",
+      "b": "WOLF",
+      "source": "u16",
+      "pairNote": "Three clean passes.",
+      "reviewerBestAvailable": {
+        "text": "HOWL",
+        "why": "The shared sound is the most immediate link between the two animals.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "PACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dog pack.",
+          "wordBConnection": "A wolf pack.",
+          "revealExplanation": "Packs: dogs and wolves.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wolf pack is the stock phrase and dogs are pack animals that run in packs."
+            }
+          }
+        },
+        {
+          "text": "HOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dog howls.",
+          "wordBConnection": "A wolf howls.",
+          "revealExplanation": "Howl: dog and wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both wolves and dogs howl; a shared verb everyone recognizes."
+            }
+          }
+        },
+        {
+          "text": "HUSKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A husky is a dog.",
+          "wordBConnection": "Huskies look like wolves.",
+          "revealExplanation": "The husky, the wolf-like dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A husky is a dog breed whose wolf-like look is exactly what people know it for."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__egg",
+      "a": "DRAGON",
+      "b": "EGG",
+      "source": "u16",
+      "pairNote": "Both pass; HATCH is the tighter one.",
+      "reviewerBestAvailable": {
+        "text": "HATCH",
+        "why": "The verb belongs to eggs and the dragon-hatching scene is iconic.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HATCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon hatchling.",
+          "wordBConnection": "An egg hatches.",
+          "revealExplanation": "Hatch: the dragon out of its egg.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Eggs hatch, and the hatching of dragon eggs is a staple scene in dragon stories."
+            }
+          }
+        },
+        {
+          "text": "NEST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon's nest.",
+          "wordBConnection": "Eggs in a nest.",
+          "revealExplanation": "The dragon's nest of eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Eggs sit in nests, and dragon nests of eggs are a familiar fantasy image (Game of Thrones, How to Train Your Dragon)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__fire",
+      "a": "DRAGON",
+      "b": "FIRE",
+      "source": "u16",
+      "pairNote": "BREATH is the ideal hint; FLAME passes but is nearly a synonym for FIRE, so it is weak as a puzzle.",
+      "reviewerBestAvailable": {
+        "text": "BREATH",
+        "why": "Fire breath is the dragon's whole identity in one word.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BREATH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dragon breath.",
+          "wordBConnection": "Fire breath.",
+          "revealExplanation": "The dragon's fiery breath.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fire breath / dragon's breath is the single defining dragon trait, naming both words."
+            }
+          }
+        },
+        {
+          "text": "FLAME",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon's flame.",
+          "wordBConnection": "Flame is fire.",
+          "revealExplanation": "Flame: fire, from the dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Dragons spit flame and flame is near-synonymous with fire; reaches both but gives FIRE away almost for free."
+            }
+          }
+        },
+        {
+          "text": "SMAUG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Smaug is a dragon.",
+          "wordBConnection": "Smaug breathes fire.",
+          "revealExplanation": "Smaug, the fire-breathing dragon.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Hobbit",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Smaug is the famous Hobbit dragon, and his fire-breathing ('I am fire') is what he does, though FIRE arrives only via the dragon."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__fish",
+      "a": "DRAGON",
+      "b": "FISH",
+      "source": "u16",
+      "pairNote": "SCALES is strong; KOI is a nice legend route; MAGIKARP is the same idea for a narrower audience.",
+      "reviewerBestAvailable": {
+        "text": "SCALES",
+        "why": "Universal shared property requiring no trivia.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SCALES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Dragon scales.",
+          "wordBConnection": "Fish scales.",
+          "revealExplanation": "Scales: dragon and fish.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both dragons and fish are covered in scales; a clean shared property."
+            }
+          }
+        },
+        {
+          "text": "KOI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The koi becomes a dragon.",
+          "wordBConnection": "A koi is a fish.",
+          "revealExplanation": "The koi: the fish that became a dragon.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Koi dragon legend",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Koi are fish, and the Chinese legend of the koi that leaps the waterfall to become a dragon is widely known through tattoos and Pokémon."
+            }
+          }
+        },
+        {
+          "text": "MAGIKARP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Magikarp evolves into a dragon.",
+          "wordBConnection": "Magikarp is a fish.",
+          "revealExplanation": "Magikarp: the fish that becomes a dragon.",
+          "reference": {
+            "referenceType": "game",
+            "source": "Pokémon",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation",
+                "variant_of:KOI"
+              ],
+              "reason": "Magikarp is a Pokémon fish that evolves into the sea-dragon-like Gyarados, but that is fan knowledge and Gyarados is not formally a dragon."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__ghost",
+      "a": "DRAGON",
+      "b": "GHOST",
+      "source": "u16",
+      "pairNote": "LEGEND is the only workable hint; HAUNTED is filler.",
+      "reviewerBestAvailable": {
+        "text": "LEGEND",
+        "why": "Both are creatures of legend; broad but it reaches both.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LEGEND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Dragons of legend.",
+          "wordBConnection": "Ghost legends.",
+          "revealExplanation": "Legends: dragons and ghosts.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Dragons are the legendary creature par excellence, and ghost legends / haunted-house legends are a familiar genre."
+            }
+          }
+        },
+        {
+          "text": "HAUNTED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon's haunt.",
+          "wordBConnection": "A haunted house.",
+          "revealExplanation": "Haunted: by the ghost, or the dragon's haunt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Haunted is purely a ghost word; dragons do not haunt anything."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__glass",
+      "a": "DRAGON",
+      "b": "GLASS",
+      "source": "u16",
+      "pairNote": "BLOWN passes on the verb route; STAINED is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "BLOWN",
+        "why": "Glass-blowing and fire-blowing share the verb.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BLOWN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon blows fire.",
+          "wordBConnection": "Blown glass.",
+          "revealExplanation": "Blown: glass, and the dragon's fire.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Blown glass is a familiar craft term and dragons blow fire and smoke; the shared verb carries both."
+            }
+          }
+        },
+        {
+          "text": "STAINED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A stained-glass dragon.",
+          "wordBConnection": "Stained glass.",
+          "revealExplanation": "Stained glass, with a dragon in it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Stained glass is instant, but nothing about STAINED reaches a dragon without inventing a church-window depiction."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__gold",
+      "a": "DRAGON",
+      "b": "GOLD",
+      "source": "u16",
+      "pairNote": "All three pass; this is a natural pairing.",
+      "reviewerBestAvailable": {
+        "text": "HOARD",
+        "why": "'Dragon's hoard' names the gold pile directly.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SMAUG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Smaug is a dragon.",
+          "wordBConnection": "Smaug sleeps on gold.",
+          "revealExplanation": "Smaug on his pile of gold.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Hobbit",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Smaug is the dragon who sleeps on a mountain of gold; a single shared image."
+            }
+          }
+        },
+        {
+          "text": "TREASURE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon guards the treasure.",
+          "wordBConnection": "Gold treasure.",
+          "revealExplanation": "Treasure: gold, under the dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragons guard treasure and treasure is gold."
+            }
+          }
+        },
+        {
+          "text": "HOARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon's hoard.",
+          "wordBConnection": "A hoard of gold.",
+          "revealExplanation": "The dragon's gold hoard.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:TREASURE"
+              ],
+              "reason": "A dragon's hoard is the stock phrase and a hoard of gold is what it contains."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__heart",
+      "a": "DRAGON",
+      "b": "HEART",
+      "source": "u16",
+      "pairNote": "No PASS. DRAGONHEART is disqualified by substring; a replacement that evokes the film or a dragon's heart scene without naming either word is needed.",
+      "reviewerBestAvailable": {
+        "text": "SLAIN",
+        "why": "The only legal hint, though it reaches only the dragon side.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DRAGONHEART",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "film_or_tv",
+          "wordAConnection": "Dragonheart's dragon, Draco.",
+          "wordBConnection": "Dragonheart.",
+          "revealExplanation": "Dragonheart, the film.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Dragonheart (1996)",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "The 1996 film is a real shared reference, but the hint literally contains both target words."
+            }
+          }
+        },
+        {
+          "text": "SLAIN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A slain dragon.",
+          "wordBConnection": "Slain through the heart.",
+          "revealExplanation": "Slain: the dragon, pierced through the heart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons get slain, but SLAIN has no route to HEART."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__honey",
+      "a": "DRAGON",
+      "b": "HONEY",
+      "source": "u16",
+      "pairNote": "No PASS. This pairing lacks a natural bridge; FRUIT is the best of a weak set.",
+      "reviewerBestAvailable": {
+        "text": "FRUIT",
+        "why": "Dragon fruit is solid and honey at least sits in the same sweet-food space.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "FRUIT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Dragon fruit.",
+          "wordBConnection": "Honeydew, a fruit.",
+          "revealExplanation": "Fruit: dragon fruit, honeydew.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragon fruit is a familiar compound, but FRUIT only reaches HONEY via a loose natural-sweetener or honeydew association."
+            }
+          }
+        },
+        {
+          "text": "SWEET",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A sweet dragon like Toothless.",
+          "wordBConnection": "Sweet honey.",
+          "revealExplanation": "Sweet: honey, and a gentle dragon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Honey is sweet, but nothing about a dragon is sweet; the dragon-fruit-is-sweet chain is an invented rescue."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__horse",
+      "a": "DRAGON",
+      "b": "HORSE",
+      "source": "u16",
+      "pairNote": "Three good passes.",
+      "reviewerBestAvailable": {
+        "text": "KNIGHT",
+        "why": "The knight-on-horse-versus-dragon tableau is universally known.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "KNIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The knight slays the dragon.",
+          "wordBConnection": "A knight on horseback.",
+          "revealExplanation": "The knight: on his horse, against the dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A knight rides a horse and slays a dragon; one figure links both."
+            }
+          }
+        },
+        {
+          "text": "ZODIAC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Year of the Dragon.",
+          "wordBConnection": "Year of the Horse.",
+          "revealExplanation": "Zodiac: the Dragon and the Horse.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Chinese zodiac",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Dragon and Horse are both signs of the Chinese zodiac."
+            }
+          }
+        },
+        {
+          "text": "RIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon rider.",
+          "wordBConnection": "Riding a horse.",
+          "revealExplanation": "Ride: a horse, or a dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "You ride a horse, and dragon-riding is a familiar fantasy scene (How to Train Your Dragon, Daenerys)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__ice",
+      "a": "DRAGON",
+      "b": "ICE",
+      "source": "u16",
+      "pairNote": "BREATH and THRONES pass; FROST is close to a synonym of ICE with a gamer-only dragon side.",
+      "reviewerBestAvailable": {
+        "text": "BREATH",
+        "why": "Breath works for both a fire-dragon and a frozen exhalation.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BREATH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dragon breath.",
+          "wordBConnection": "Ice breath.",
+          "revealExplanation": "Breath: fire or ice, from the dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragon's breath is iconic, and icy breath (visible in cold air, or an ice dragon's breath) is a recognizable image."
+            }
+          }
+        },
+        {
+          "text": "THRONES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The dragons of Game of Thrones.",
+          "wordBConnection": "A Song of Ice and Fire.",
+          "revealExplanation": "Game of Thrones: ice, and dragons.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Game of Thrones is the dragon show, and its source title A Song of Ice and Fire plus the ice dragon give the ICE side."
+            }
+          }
+        },
+        {
+          "text": "FROST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A frost dragon.",
+          "wordBConnection": "Frost is ice.",
+          "revealExplanation": "Frost: the ice dragon's breath.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target",
+                "needs_explanation"
+              ],
+              "reason": "Frost is nearly ice itself, while frost dragons are a fantasy-game trope (Skyrim, D&D) not everyone knows."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__iron",
+      "a": "DRAGON",
+      "b": "IRON",
+      "source": "u16",
+      "pairNote": "THRONE passes via Game of Thrones; FORGE is iron-only unless the player invents a dragon smithy.",
+      "reviewerBestAvailable": {
+        "text": "THRONE",
+        "why": "The Iron Throne and its dragon queen live in one story.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Dragons win the throne.",
+          "wordBConnection": "The Iron Throne.",
+          "revealExplanation": "The Iron Throne, and the dragons that fight for it.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Iron Throne is Game of Thrones' central object and dragons are that show's signature, a single shared story."
+            }
+          }
+        },
+        {
+          "text": "FORGE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Dragon fire, hot as a forge.",
+          "wordBConnection": "Iron is worked in a forge.",
+          "revealExplanation": "The forge: iron, in dragon-hot fire.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Iron is forged, but reaching a dragon requires the dragon-fire-forges-steel trope, which is not a common image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__key",
+      "a": "DRAGON",
+      "b": "KEY",
+      "source": "u16",
+      "pairNote": "No PASS. Each hint covers one side only; the pair needs a genuine bridge.",
+      "reviewerBestAvailable": {
+        "text": "GUARD",
+        "why": "Marginally better: a dragon guarding something a key opens is at least an imaginable scene.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "LOCK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon's locked treasure.",
+          "wordBConnection": "Key and lock.",
+          "revealExplanation": "Lock: for the key, and the dragon's hoard.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lock and key is instant, but no dragon scene involves a lock."
+            }
+          }
+        },
+        {
+          "text": "GUARD",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon on guard.",
+          "wordBConnection": "A key keeps guard.",
+          "revealExplanation": "Guard: the dragon, and the key.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons guard hoards, but GUARD does not lead to KEY without inventing a guarded key."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__king",
+      "a": "DRAGON",
+      "b": "KING",
+      "source": "u16",
+      "pairNote": "Two passes; KOMODO is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "THRONE",
+        "why": "King's throne is universal and the dragon side rides on the best-known dragon franchise.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ARTHUR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Pendragon, Arthur's family name.",
+          "wordBConnection": "King Arthur.",
+          "revealExplanation": "King Arthur Pendragon.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Arthurian legend",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "King Arthur is obvious, and his family name Pendragon plus Merlin's dragon prophecies give the dragon side to anyone who knows the legend."
+            }
+          }
+        },
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Dragons fight for the throne.",
+          "wordBConnection": "A king's throne.",
+          "revealExplanation": "The throne: a king's seat, won with dragons.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A king sits on a throne, and Game of Thrones is the modern dragon story."
+            }
+          }
+        },
+        {
+          "text": "KOMODO",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The Komodo dragon.",
+          "wordBConnection": "King of the lizards.",
+          "revealExplanation": "The Komodo dragon, king of lizards.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Komodo dragon is a clean compound, but there is no route from KOMODO to KING."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_dragon__knight",
       "a": "DRAGON",
       "b": "KNIGHT",
@@ -38114,6 +39935,1114 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_dragon__light",
+      "a": "DRAGON",
+      "b": "LIGHT",
+      "source": "u16",
+      "pairNote": "Both pass; FIRE is strongest.",
+      "reviewerBestAvailable": {
+        "text": "FIRE",
+        "why": "Fire is the dragon's trait and the verb 'light' attaches to it naturally.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FIRE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dragon fire.",
+          "wordBConnection": "Fire is light.",
+          "revealExplanation": "Fire: the dragon's light.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragons breathe fire, and you light a fire / fire gives light."
+            }
+          }
+        },
+        {
+          "text": "LANTERN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon lantern.",
+          "wordBConnection": "A lantern gives light.",
+          "revealExplanation": "Dragon lanterns, lit for the New Year.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A lantern is a light, and dragon lanterns are a familiar sight at Chinese lantern festivals and New Year parades."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__lion",
+      "a": "DRAGON",
+      "b": "LION",
+      "source": "u16",
+      "pairNote": "Three passes with varied routes.",
+      "reviewerBestAvailable": {
+        "text": "ROAR",
+        "why": "The shared sound needs no cultural knowledge.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "DANCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The dragon dance.",
+          "wordBConnection": "The lion dance.",
+          "revealExplanation": "Dance: dragon and lion, for the New Year.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Lunar New Year",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Dragon dance and lion dance are the two Chinese New Year performances."
+            }
+          }
+        },
+        {
+          "text": "ROAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The dragon roars.",
+          "wordBConnection": "The lion roars.",
+          "revealExplanation": "Roar: dragon and lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Lions roar and dragons roar; a shared verb."
+            }
+          }
+        },
+        {
+          "text": "CREST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon on the crest.",
+          "wordBConnection": "A lion on the crest.",
+          "revealExplanation": "Crests: the dragon and the lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Lions and dragons are the two classic heraldic beasts on crests (England's lions, Wales's dragon)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__moon",
+      "a": "DRAGON",
+      "b": "MOON",
+      "source": "u16",
+      "pairNote": "No PASS. ECLIPSE is a legitimate but niche legend route; NIGHT is filler.",
+      "reviewerBestAvailable": {
+        "text": "ECLIPSE",
+        "why": "At least rests on a real dragon myth, unlike NIGHT.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ECLIPSE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The eclipse dragon.",
+          "wordBConnection": "A lunar eclipse.",
+          "revealExplanation": "An eclipse: the dragon eating the moon.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Eclipse dragon myths",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "needs_explanation",
+                "obscure"
+              ],
+              "reason": "A lunar eclipse is a moon event, and East Asian myth says a dragon swallows the moon to cause it, but most Western players will not know that."
+            }
+          }
+        },
+        {
+          "text": "NIGHT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A night fury dragon.",
+          "wordBConnection": "The moon at night.",
+          "revealExplanation": "Night: the fury dragon under the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Moon at night is immediate, but dragons have no night association beyond the niche Night Fury."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__mouse",
+      "a": "DRAGON",
+      "b": "MOUSE",
+      "source": "u16",
+      "pairNote": "No PASS. The two hints are mirror-image one-siders.",
+      "reviewerBestAvailable": {
+        "text": "MUSHU",
+        "why": "A real dragon reference whose tiny size at least gestures toward mouse-scale.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TINY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A tiny dragon hatchling.",
+          "wordBConnection": "A tiny mouse.",
+          "revealExplanation": "Tiny: the mouse, and the hatchling.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Mice are tiny; dragons are the opposite, and no shared scene makes TINY point at a dragon."
+            }
+          }
+        },
+        {
+          "text": "MUSHU",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Mushu is a dragon.",
+          "wordBConnection": "A Disney, Mouse-house dragon the size of a mouse.",
+          "revealExplanation": "Mushu: the mouse-sized Disney dragon.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Mulan",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Mushu is Mulan's dragon, but his being small is not a route to MOUSE; the Disney-mouse link is an invented rescue."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__night",
+      "a": "DRAGON",
+      "b": "NIGHT",
+      "source": "u16",
+      "pairNote": "FURY passes; KNIGHT is disqualified by substring even though the homophone play is clever.",
+      "reviewerBestAvailable": {
+        "text": "FURY",
+        "why": "'Night Fury' is the compound and it is a dragon.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FURY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Toothless is a Night Fury dragon.",
+          "wordBConnection": "Night Fury.",
+          "revealExplanation": "The Night Fury dragon.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "How to Train Your Dragon",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Night Fury is Toothless's dragon species in How to Train Your Dragon, a compound naming both words."
+            }
+          }
+        },
+        {
+          "text": "KNIGHT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "The knight slays the dragon.",
+          "wordBConnection": "Knight sounds like night.",
+          "revealExplanation": "Knight: the dragon's foe, and a homophone of night.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Knights fight dragons, but KNIGHT contains the target NIGHT as a substring (K+NIGHT), a rule failure regardless of the homophone."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__ocean",
+      "a": "DRAGON",
+      "b": "OCEAN",
+      "source": "u16",
+      "pairNote": "Both pass; SERPENT is broader.",
+      "reviewerBestAvailable": {
+        "text": "SERPENT",
+        "why": "Sea serpent and dragon-as-serpent are both common.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SERPENT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon is a serpent.",
+          "wordBConnection": "A sea serpent.",
+          "revealExplanation": "The serpent: a dragon of the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragons are winged serpents in myth, and the sea serpent is the ocean's monster."
+            }
+          }
+        },
+        {
+          "text": "LEVIATHAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The leviathan is a dragon of the deep.",
+          "wordBConnection": "The leviathan of the ocean.",
+          "revealExplanation": "Leviathan: the ocean's dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The leviathan is the biblical sea monster of the ocean, usually depicted as a dragon-like serpent."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__pirate",
+      "a": "DRAGON",
+      "b": "PIRATE",
+      "source": "u16",
+      "pairNote": "Both pass; TREASURE is the obvious bridge.",
+      "reviewerBestAvailable": {
+        "text": "TREASURE",
+        "why": "Treasure is the defining object for both figures.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TREASURE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon's treasure.",
+          "wordBConnection": "Pirate treasure.",
+          "revealExplanation": "Treasure: dragon's and pirate's.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirates bury treasure and dragons guard it."
+            }
+          }
+        },
+        {
+          "text": "HOARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon's hoard.",
+          "wordBConnection": "The pirate's hoard.",
+          "revealExplanation": "Hoard: dragon and pirate.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:TREASURE"
+              ],
+              "reason": "Dragon's hoard is stock, and a pirate's hoard of treasure is a recognizable phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__queen",
+      "a": "DRAGON",
+      "b": "QUEEN",
+      "source": "u16",
+      "pairNote": "DAENERYS is strong; MALEFICENT's queen side is a factual conflation.",
+      "reviewerBestAvailable": {
+        "text": "DAENERYS",
+        "why": "The dragon queen in one name.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DAENERYS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Mother of Dragons.",
+          "wordBConnection": "The Dragon Queen.",
+          "revealExplanation": "Daenerys, the Dragon Queen.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Daenerys is the Mother of Dragons who styles herself Queen in Game of Thrones."
+            }
+          }
+        },
+        {
+          "text": "MALEFICENT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Maleficent becomes a dragon.",
+          "wordBConnection": "Maleficent, the dark queen of the Moors.",
+          "revealExplanation": "Maleficent: the queen who becomes a dragon.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Sleeping Beauty / Maleficent",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "wrong_fact"
+              ],
+              "reason": "Maleficent turns into a dragon in Sleeping Beauty, but she is an evil fairy, not a queen; calling her a queen conflates her with Snow White's Evil Queen."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__ring",
+      "a": "DRAGON",
+      "b": "RING",
+      "source": "u16",
+      "pairNote": "FIRE is excellent; SMAUG's ring side depends on Tolkien familiarity.",
+      "reviewerBestAvailable": {
+        "text": "FIRE",
+        "why": "Ring of Fire plus dragon fire is immediate.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FIRE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dragon fire.",
+          "wordBConnection": "A ring of fire.",
+          "revealExplanation": "Fire: the dragon's, and the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragon fire, and Ring of Fire is a familiar compound (the song, the volcano belt)."
+            }
+          }
+        },
+        {
+          "text": "SMAUG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Smaug is the dragon.",
+          "wordBConnection": "Bilbo finds the Ring on the way to Smaug.",
+          "revealExplanation": "Smaug: the dragon of the Ring story.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Hobbit",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Smaug is The Hobbit's dragon, and The Hobbit is the book in which Bilbo finds the One Ring, so RING arrives via the shared Tolkien story."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__robot",
+      "a": "DRAGON",
+      "b": "ROBOT",
+      "source": "u16",
+      "pairNote": "No PASS. The pair has no mainstream bridge; MECHA works only for anime and game fans.",
+      "reviewerBestAvailable": {
+        "text": "MECHA",
+        "why": "At least a real genre where robot dragons appear.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MECHA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A mecha dragon.",
+          "wordBConnection": "A mecha is a robot.",
+          "revealExplanation": "Mecha: a robot dragon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Mecha are giant robots in anime, and mecha-dragons exist in games (Mecha Dragon, Mechagodzilla-style), but both halves are genre knowledge."
+            }
+          }
+        },
+        {
+          "text": "SCALES",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Dragon scales.",
+          "wordBConnection": "A robot's metal scales.",
+          "revealExplanation": "Scales: on the dragon, on the robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons have scales; robots do not, and no robot scene involves scales."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__rock",
+      "a": "DRAGON",
+      "b": "ROCK",
+      "source": "u16",
+      "pairNote": "Both pass.",
+      "reviewerBestAvailable": {
+        "text": "CAVE",
+        "why": "Dragon's cave is the stronger lair image.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon's cave.",
+          "wordBConnection": "A cave in the rock.",
+          "revealExplanation": "The cave: rock, and the dragon inside.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A dragon's cave is its stock lair, and caves are hollows in rock."
+            }
+          }
+        },
+        {
+          "text": "MOUNTAIN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Smaug under the mountain.",
+          "wordBConnection": "A rock mountain.",
+          "revealExplanation": "The mountain: rock, with a dragon under it.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Mountains are rock, and dragons live under mountains (Smaug's Lonely Mountain) in the standard fantasy picture."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__rose",
+      "a": "DRAGON",
+      "b": "ROSE",
+      "source": "u16",
+      "pairNote": "No PASS. GEORGE is the only hint reaching both words and it leans British.",
+      "reviewerBestAvailable": {
+        "text": "GEORGE",
+        "why": "A genuine dragon reference with a real, if regional, rose link.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "GEORGE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "St George and the dragon.",
+          "wordBConnection": "The rose of St George's England.",
+          "revealExplanation": "St George: dragon slayer of the rose's England.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "St George",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "british_only",
+                "needs_explanation"
+              ],
+              "reason": "St George slew the dragon, and the red rose is worn on St George's Day as England's flower, but the rose side is English custom few others know."
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon's thorny spines.",
+          "wordBConnection": "A rose's thorns.",
+          "revealExplanation": "Thorns: on the rose, down the dragon's back.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Roses have thorns; a dragon's spikes are not called thorns and no shared scene exists."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__salt",
+      "a": "DRAGON",
+      "b": "SALT",
+      "source": "u16",
+      "pairNote": "Single hint, passes.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea salt and sea dragon are both established compounds.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea dragon.",
+          "wordBConnection": "Sea salt.",
+          "revealExplanation": "Sea: the dragon, and the salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sea salt is a stock compound, and the sea dragon (the real fish and the mythic sea serpent) gives the dragon side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__shadow",
+      "a": "DRAGON",
+      "b": "SHADOW",
+      "source": "u16",
+      "pairNote": "PUPPET passes on a moderate route; WINGS is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "PUPPET",
+        "why": "Shadow puppet and dragon puppet both exist as recognizable things.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PUPPET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon shadow puppet.",
+          "wordBConnection": "Shadow puppets.",
+          "revealExplanation": "Puppet: a shadow dragon on the wall.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Shadow puppets are a familiar art, and the Chinese parade dragon is a giant puppet carried on poles."
+            }
+          }
+        },
+        {
+          "text": "WINGS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dragon wings.",
+          "wordBConnection": "The shadow of the wings.",
+          "revealExplanation": "Wings: the dragon's, and the shadow they throw.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragon wings are iconic, but WINGS does not lead to SHADOW."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__shark",
+      "a": "DRAGON",
+      "b": "SHARK",
+      "source": "u16",
+      "pairNote": "TEETH is strong; FIN is shark-heavy.",
+      "reviewerBestAvailable": {
+        "text": "TEETH",
+        "why": "Both monsters are known for their teeth.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TEETH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Dragon teeth.",
+          "wordBConnection": "Shark teeth.",
+          "revealExplanation": "Teeth: dragon and shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shark teeth and dragon's teeth are both famous features (and 'dragon's teeth' is a phrase)."
+            }
+          }
+        },
+        {
+          "text": "FIN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A sea dragon's fins.",
+          "wordBConnection": "A shark fin.",
+          "revealExplanation": "Fins: the shark's, the sea dragon's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shark fin is instant, but dragons have fins only in sea-dragon or spined-back depictions, a soft reach."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_dragon__snake",
@@ -38268,6 +41197,314 @@
           "ZODIAC"
         ]
       }
+    },
+    {
+      "pair_id": "p_dragon__spider",
+      "a": "DRAGON",
+      "b": "SPIDER",
+      "source": "u16",
+      "pairNote": "MONSTER passes as a broad shared category; SHELOB is one-sided trivia.",
+      "reviewerBestAvailable": {
+        "text": "MONSTER",
+        "why": "The only hint touching both words.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MONSTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The dragon monster.",
+          "wordBConnection": "A giant spider monster.",
+          "revealExplanation": "Monsters: dragon and spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Dragons are monsters outright, and giant spiders are stock creature-feature monsters; broad but reaches both."
+            }
+          }
+        },
+        {
+          "text": "SHELOB",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Tolkien's dragon, Smaug.",
+          "wordBConnection": "Shelob the giant spider.",
+          "revealExplanation": "Shelob: Tolkien's spider, cousin to his dragon.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lord of the Rings",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Shelob is Tolkien's giant spider, but sharing a universe with Smaug is not a route from the hint to DRAGON."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__spring",
+      "a": "DRAGON",
+      "b": "SPRING",
+      "source": "u16",
+      "pairNote": "FESTIVAL passes; DRAGONFLY is disqualified.",
+      "reviewerBestAvailable": {
+        "text": "FESTIVAL",
+        "why": "Spring Festival with its dragon dance covers both words.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FESTIVAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The dragon dance.",
+          "wordBConnection": "The Spring Festival.",
+          "revealExplanation": "The Spring Festival, led by the dragon.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Lunar New Year / Spring Festival",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Chinese Spring Festival features dragon dances, and the Dragon Boat Festival is a dragon festival; both words share the festival scene."
+            }
+          }
+        },
+        {
+          "text": "DRAGONFLY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragonfly.",
+          "wordBConnection": "Spring dragonflies.",
+          "revealExplanation": "Dragonflies in spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "DRAGONFLY contains the target DRAGON as a substring, a rule failure; the spring side is also weak."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__star",
+      "a": "DRAGON",
+      "b": "STAR",
+      "source": "u16",
+      "pairNote": "Both pass on the same astronomy fact from opposite ends.",
+      "reviewerBestAvailable": {
+        "text": "CONSTELLATION",
+        "why": "Points at stars directly and at the dragon constellation for anyone who knows Draco.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CONSTELLATION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Draco, the dragon constellation.",
+          "wordBConnection": "A constellation of stars.",
+          "revealExplanation": "A constellation: the dragon among the stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Constellations are made of stars, and Draco the Dragon is one of the classic constellations."
+            }
+          }
+        },
+        {
+          "text": "DRACO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Draco means dragon.",
+          "wordBConnection": "Draco is a constellation of stars.",
+          "revealExplanation": "Draco: the dragon in the stars.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Draco constellation",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Draco is Latin for dragon (draconic), and Draco is a constellation of stars."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__train",
+      "a": "DRAGON",
+      "b": "TRAIN",
+      "source": "u16",
+      "pairNote": "Both pass via the same franchise; recognizable to anyone who knows the films.",
+      "reviewerBestAvailable": {
+        "text": "TOOTHLESS",
+        "why": "The dragon character's name makes DRAGON certain and the film title supplies TRAIN.",
+        "reviewer": "blind-subagent-16"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HICCUP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Hiccup's dragon.",
+          "wordBConnection": "Hiccup trains Toothless.",
+          "revealExplanation": "Hiccup, who trained a dragon.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "How to Train Your Dragon",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Hiccup is the hero of How to Train Your Dragon, a title that contains both targets."
+            }
+          }
+        },
+        {
+          "text": "TOOTHLESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Toothless is the dragon.",
+          "wordBConnection": "How to Train Your Dragon.",
+          "revealExplanation": "Toothless, from How to Train Your Dragon.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "How to Train Your Dragon",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u16",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-16",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:HICCUP"
+              ],
+              "reason": "Toothless is the dragon in How to Train Your Dragon, reaching both words through the same title."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_egg__spring",
