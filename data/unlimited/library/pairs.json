@@ -293,6 +293,16 @@
         "rejected": 21,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u17-blind-review.json",
+        "key": "data/unlimited/library/reviews/u17-blind-key.json",
+        "batch": "data/unlimited/library/batches/u17-batch.json",
+        "ai_reviewed": 46,
+        "held": 26,
+        "rejected": 25,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -41507,6 +41517,2801 @@
       ]
     },
     {
+      "pair_id": "p_dragon__water",
+      "a": "DRAGON",
+      "b": "WATER",
+      "source": "u17",
+      "pairNote": "One clean hint; SERPENT and AVATAR both lean on the water side being spelled out as 'sea'/'The Way of Water'.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea dragon is a familiar creature name and sea is plainly water; the only hint that reaches both sides without a detour.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea dragon.",
+          "wordBConnection": "Sea water.",
+          "revealExplanation": "Sea: the dragon, and the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sea dragon (the real fish and the mythic sea dragon) reaches dragon; the sea is water."
+            }
+          }
+        },
+        {
+          "text": "SERPENT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A dragon is a serpent.",
+          "wordBConnection": "A water serpent.",
+          "revealExplanation": "The serpent: a dragon in the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Dragon reads as a serpent (serpentine Chinese dragons, 'the great serpent'); water is reached only through 'sea serpent' or 'water snake', one step removed."
+            }
+          }
+        },
+        {
+          "text": "AVATAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The dragons of Avatar.",
+          "wordBConnection": "The Water Tribe.",
+          "revealExplanation": "Avatar: water benders and the first dragons.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Avatar: The Last Airbender",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Avatar: The Way of Water gives water; dragon arrives only via the dragon-like ikran/Toruk or the dragons of The Last Airbender, which needs explaining."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__witch",
+      "a": "DRAGON",
+      "b": "WITCH",
+      "source": "u17",
+      "pairNote": "MALEFICENT is the strong story route; FANTASY is a fair generic fallback; SPELL is witch-only.",
+      "reviewerBestAvailable": {
+        "text": "MALEFICENT",
+        "why": "A single well-known story that contains both a witch and a dragon.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MALEFICENT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Maleficent turns into a dragon.",
+          "wordBConnection": "Maleficent is the wicked witch of Sleeping Beauty.",
+          "revealExplanation": "Maleficent: the witch who became a dragon.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Sleeping Beauty",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Maleficent is Disney's Sleeping Beauty witch/sorceress who turns into a dragon in the 1959 film (and whose raven becomes one in the 2014 film)."
+            }
+          }
+        },
+        {
+          "text": "FANTASY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fantasy dragons.",
+          "wordBConnection": "Fantasy witches.",
+          "revealExplanation": "Fantasy: dragons and witches.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both are stock figures of the fantasy genre; broad, but it reaches both words equally."
+            }
+          }
+        },
+        {
+          "text": "SPELL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dragon under a spell.",
+          "wordBConnection": "A witch's spell.",
+          "revealExplanation": "Spell: the witch's, over the dragon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Witches cast spells; nothing in 'spell' points at a dragon."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dragon__wolf",
+      "a": "DRAGON",
+      "b": "WOLF",
+      "source": "u17",
+      "pairNote": "All three pass; THRONES and SIGIL share the Game of Thrones route.",
+      "reviewerBestAvailable": {
+        "text": "THRONES",
+        "why": "The most widely recognised route; names the show where dragon and wolf are the two famous house animals.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "THRONES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Targaryen dragon.",
+          "wordBConnection": "The Stark wolf.",
+          "revealExplanation": "Game of Thrones: dragon and wolf.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:SIGIL"
+              ],
+              "reason": "Game of Thrones is the shared story: dragons for the Targaryens, direwolves for the Starks."
+            }
+          }
+        },
+        {
+          "text": "SIGIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dragon sigil.",
+          "wordBConnection": "The wolf sigil.",
+          "revealExplanation": "Sigils: the dragon and the wolf.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Game of Thrones house sigils: the Targaryen dragon and the Stark direwolf; the word itself is GoT-coded."
+            }
+          }
+        },
+        {
+          "text": "BEAST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The dragon beast.",
+          "wordBConnection": "A wolf, a wild beast.",
+          "revealExplanation": "Beasts: dragon and wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both are beasts; a broad category word that nonetheless reaches both sides."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__fire",
+      "a": "EGG",
+      "b": "FIRE",
+      "source": "u17",
+      "pairNote": "DRAGON carries the pair; PHOENIX and FRY each have one strong side.",
+      "reviewerBestAvailable": {
+        "text": "DRAGON",
+        "why": "Both compounds (dragon egg, dragon fire) are familiar and equally strong.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DRAGON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Dragon eggs.",
+          "wordBConnection": "Dragon fire.",
+          "revealExplanation": "Dragon: eggs hatched in fire.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragon eggs (Game of Thrones, fantasy generally) and fire-breathing dragons."
+            }
+          }
+        },
+        {
+          "text": "PHOENIX",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The phoenix egg.",
+          "wordBConnection": "The phoenix bursts into fire.",
+          "revealExplanation": "The phoenix: fire, and the egg it rises from.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Phoenix myth",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "The phoenix is reborn in fire; the egg side rests on the phoenix being a bird or on the 'phoenix egg' fantasy trope rather than a scene most players hold."
+            }
+          }
+        },
+        {
+          "text": "FRY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A fried egg.",
+          "wordBConnection": "Frying over a fire.",
+          "revealExplanation": "Fry: the egg, over the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Frying an egg is immediate; fire is reached only as the heat under the pan or the sense of 'you'll fry'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__fish",
+      "a": "EGG",
+      "b": "FISH",
+      "source": "u17",
+      "pairNote": "Three variants of the same fish-eggs route, all valid.",
+      "reviewerBestAvailable": {
+        "text": "CAVIAR",
+        "why": "Everyone knows caviar is fish eggs.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "CAVIAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Caviar is eggs.",
+          "wordBConnection": "Sturgeon caviar.",
+          "revealExplanation": "Caviar: fish eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Caviar is fish eggs by definition."
+            }
+          }
+        },
+        {
+          "text": "SPAWN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Spawn are eggs.",
+          "wordBConnection": "Fish spawn.",
+          "revealExplanation": "Spawn: the fish's eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:CAVIAR"
+              ],
+              "reason": "Fish spawn (lay eggs) and spawn is the mass of fish eggs itself."
+            }
+          }
+        },
+        {
+          "text": "ROE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Roe are eggs.",
+          "wordBConnection": "Fish roe.",
+          "revealExplanation": "Roe: fish eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:CAVIAR"
+              ],
+              "reason": "Roe is fish eggs; a shorter, slightly less everyday word than caviar."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__ghost",
+      "a": "EGG",
+      "b": "GHOST",
+      "source": "u17",
+      "pairNote": "WHITE is a colour route but anchored by the compound 'egg white'; HALLOWEEN leans ghost-side.",
+      "reviewerBestAvailable": {
+        "text": "WHITE",
+        "why": "Egg white is a fixed compound and the white ghost is the default cartoon image.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WHITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Egg white.",
+          "wordBConnection": "A white ghost.",
+          "revealExplanation": "White: the egg's, and the ghost.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Egg white is a compound; the classic sheet ghost is white."
+            }
+          }
+        },
+        {
+          "text": "HALLOWEEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Egging houses at Halloween.",
+          "wordBConnection": "Halloween ghosts.",
+          "revealExplanation": "Halloween: ghosts, and eggs thrown at doors.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghosts are Halloween stock; egg is reached only through the egging prank, which players may not surface."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__glass",
+      "a": "EGG",
+      "b": "GLASS",
+      "source": "u17",
+      "pairNote": "Two clean hints; TIMER is egg-first.",
+      "reviewerBestAvailable": {
+        "text": "CRACK",
+        "why": "The same verb applies naturally to both.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CRACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Crack an egg.",
+          "wordBConnection": "Cracked glass.",
+          "revealExplanation": "Crack: the egg, or the glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Verb route: you crack an egg and you crack glass."
+            }
+          }
+        },
+        {
+          "text": "FRAGILE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A fragile egg.",
+          "wordBConnection": "Fragile glass.",
+          "revealExplanation": "Fragile: egg and glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared property: eggs and glass are the two archetypal fragile things."
+            }
+          }
+        },
+        {
+          "text": "TIMER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An egg timer.",
+          "wordBConnection": "The glass hourglass timer.",
+          "revealExplanation": "The egg timer, a little hourglass.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Egg timer is a compound; glass arrives only because many egg timers are small sand-filled hourglasses."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__gold",
+      "a": "EGG",
+      "b": "GOLD",
+      "source": "u17",
+      "pairNote": "GOOSE is excellent; GOLDEN is a rule failure despite the obvious link.",
+      "reviewerBestAvailable": {
+        "text": "GOOSE",
+        "why": "A universally known story that is literally about a golden egg.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GOOSE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The goose's egg.",
+          "wordBConnection": "The golden egg.",
+          "revealExplanation": "The goose that laid the golden egg.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Aesop / Jack and the Beanstalk",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The goose that laid the golden egg (Aesop; Jack and the Beanstalk)."
+            }
+          }
+        },
+        {
+          "text": "GOLDEN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "rejected",
+            "authorReason": "contains a target word",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Golden egg is a perfect phrase, but GOLDEN contains the target GOLD as a substring."
+            }
+          }
+        },
+        {
+          "text": "YOLK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The egg yolk.",
+          "wordBConnection": "A yolk is gold in colour.",
+          "revealExplanation": "The yolk: the egg's gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Yolk is part of the egg; gold is reached only through the yolk's golden colour."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__heart",
+      "a": "EGG",
+      "b": "HEART",
+      "source": "u17",
+      "pairNote": "CHOLESTEROL is the only real bridge; YOLK is egg-only.",
+      "reviewerBestAvailable": {
+        "text": "CHOLESTEROL",
+        "why": "The eggs-and-heart-health conversation is a shared cultural scene.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHOLESTEROL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs are high in cholesterol.",
+          "wordBConnection": "Cholesterol and heart health.",
+          "revealExplanation": "Cholesterol: in the egg, on the heart's mind.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Eggs are the famous cholesterol food; cholesterol is the heart-health word."
+            }
+          }
+        },
+        {
+          "text": "YOLK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The egg yolk.",
+          "wordBConnection": "The yolk, the heart of the egg.",
+          "revealExplanation": "The yolk: the egg's heart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Yolk is the egg's centre; nothing a player sees links yolk to heart without the cholesterol detour."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__honey",
+      "a": "EGG",
+      "b": "HONEY",
+      "source": "u17",
+      "pairNote": "Both pass at moderate strength; neither is a knockout.",
+      "reviewerBestAvailable": {
+        "text": "GLAZE",
+        "why": "Both words are things you glaze with, so the hint is balanced rather than egg-first.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "GLAZE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An egg glaze.",
+          "wordBConnection": "A honey glaze.",
+          "revealExplanation": "Glaze: egg or honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Honey glaze is common; egg glaze (egg wash) is the baker's other glaze."
+            }
+          }
+        },
+        {
+          "text": "BREAKFAST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs for breakfast.",
+          "wordBConnection": "Honey on breakfast toast.",
+          "revealExplanation": "Breakfast: eggs and honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Eggs are the breakfast food; honey on toast, porridge or cereal is a recognisable breakfast item."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__horse",
+      "a": "EGG",
+      "b": "HORSE",
+      "source": "u17",
+      "pairNote": "Same route twice; horse side depends on recalling the rhyme's second line, so fairness is 1 not 2.",
+      "reviewerBestAvailable": {
+        "text": "HUMPTY",
+        "why": "The more natural half of the name; the horses are in the rhyme everyone knows.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DUMPTY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Humpty Dumpty is an egg.",
+          "wordBConnection": "All the king's horses.",
+          "revealExplanation": "Dumpty: the egg and the king's horses.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:HUMPTY"
+              ],
+              "reason": "Humpty Dumpty is the egg; 'all the king's horses' are in the same rhyme."
+            }
+          }
+        },
+        {
+          "text": "HUMPTY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Humpty Dumpty is an egg.",
+          "wordBConnection": "All the king's horses.",
+          "revealExplanation": "Humpty Dumpty: the egg the king's horses couldn't fix.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Humpty Dumpty",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Humpty Dumpty is the egg; the rhyme's second half is 'all the king's horses and all the king's men'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__ice",
+      "a": "EGG",
+      "b": "ICE",
+      "source": "u17",
+      "pairNote": "CRACK is the pair; SHELL is egg-first.",
+      "reviewerBestAvailable": {
+        "text": "CRACK",
+        "why": "Verb that applies vividly to both.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Crack an egg.",
+          "wordBConnection": "Cracking ice.",
+          "revealExplanation": "Crack: the egg, or the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Crack an egg; ice cracks / a crack in the ice."
+            }
+          }
+        },
+        {
+          "text": "SHELL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An eggshell.",
+          "wordBConnection": "A shell of ice.",
+          "revealExplanation": "Shell: the egg's, or a shell of ice.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Eggshell is a compound; a 'shell of ice' exists but is not a familiar image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__iron",
+      "a": "EGG",
+      "b": "IRON",
+      "source": "u17",
+      "pairNote": "Both pass on the same cooking route.",
+      "reviewerBestAvailable": {
+        "text": "SKILLET",
+        "why": "Cast-iron skillet is the tighter fixed phrase, and eggs are its signature dish.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs in a pan.",
+          "wordBConnection": "An iron pan.",
+          "revealExplanation": "A pan: iron, for eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Eggs are fried in a pan; the cast-iron pan."
+            }
+          }
+        },
+        {
+          "text": "SKILLET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs in the skillet.",
+          "wordBConnection": "A cast-iron skillet.",
+          "revealExplanation": "The skillet: cast iron, with eggs in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:PAN"
+              ],
+              "reason": "Eggs in a skillet; 'cast-iron skillet' is almost a fixed phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__key",
+      "a": "EGG",
+      "b": "KEY",
+      "source": "u17",
+      "pairNote": "No PASS. Both hints are one-sided.",
+      "reviewerBestAvailable": {
+        "text": "LIME",
+        "why": "If forced, LIME at least rests on a true two-sided fact (key lime pie uses egg yolks); EASTER has nothing on the key side.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "LIME",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Key lime pie is made with egg yolks.",
+          "wordBConnection": "Key lime.",
+          "revealExplanation": "Lime: Key lime pie, made with eggs.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Key lime is a compound; egg is reached only via key lime pie being made with yolks, which no player would see."
+            }
+          }
+        },
+        {
+          "text": "EASTER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Easter eggs.",
+          "wordBConnection": "A hidden Easter egg unlocks a secret, like a key.",
+          "revealExplanation": "Easter: eggs, and the hidden keys called Easter eggs.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Easter egg is a compound; nothing links Easter to key."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__king",
+      "a": "EGG",
+      "b": "KING",
+      "source": "u17",
+      "pairNote": "Both pass; HUMPTY is the stronger.",
+      "reviewerBestAvailable": {
+        "text": "HUMPTY",
+        "why": "The rhyme literally contains the word king.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HUMPTY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Humpty Dumpty is an egg.",
+          "wordBConnection": "All the king's men.",
+          "revealExplanation": "Humpty Dumpty: the egg the king's men couldn't fix.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Humpty Dumpty",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Humpty Dumpty is the egg; 'all the king's horses and all the king's men' names the king outright."
+            }
+          }
+        },
+        {
+          "text": "FABERGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "famous_object_place_or_event",
+          "wordAConnection": "A Fabergé egg.",
+          "wordBConnection": "Made for the Tsar, a king.",
+          "revealExplanation": "Fabergé: eggs for a king.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Fabergé eggs",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fabergé eggs were made for the Russian tsars; tsar is a near-king, so the royal side is one small step."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__knight",
+      "a": "EGG",
+      "b": "KNIGHT",
+      "source": "u17",
+      "pairNote": "No PASS. The pair lacks a natural bridge in the supplied hints.",
+      "reviewerBestAvailable": {
+        "text": "HUMPTY",
+        "why": "The rhyme's king's men and the castle-wall setting give a weak but real medieval route; SHELL has none.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HUMPTY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Humpty Dumpty is an egg.",
+          "wordBConnection": "The king's men, his knights.",
+          "revealExplanation": "Humpty Dumpty: the egg, and the king's knights.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Humpty Dumpty",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Humpty Dumpty is the egg; knight only via 'all the king's men' standing in for knights (or the White Knight nearby in Through the Looking-Glass), a stretch."
+            }
+          }
+        },
+        {
+          "text": "SHELL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An eggshell.",
+          "wordBConnection": "The knight's shell of armour.",
+          "revealExplanation": "Shell: the egg's, and the knight's armour.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Eggshell is immediate; reading a knight's armour as a 'shell' is an invented rescue."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__light",
+      "a": "EGG",
+      "b": "LIGHT",
+      "source": "u17",
+      "pairNote": "FLUFFY passes on a shared-property route; the other two each have one weak side.",
+      "reviewerBestAvailable": {
+        "text": "FLUFFY",
+        "why": "The phrase 'light and fluffy eggs' ties both words to one texture.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FLUFFY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fluffy scrambled eggs.",
+          "wordBConnection": "Light and fluffy.",
+          "revealExplanation": "Fluffy: light, like good eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Light and fluffy' is the stock description of scrambled eggs and omelettes; fluffy is a near-synonym for light in texture."
+            }
+          }
+        },
+        {
+          "text": "CANDLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Candling an egg.",
+          "wordBConnection": "A candle gives light.",
+          "revealExplanation": "Candle: light, used to check an egg.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Candles give light; 'candling' an egg to check it is a real but niche farming term."
+            }
+          }
+        },
+        {
+          "text": "INCUBATOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Eggs in an incubator.",
+          "wordBConnection": "The incubator's warming light.",
+          "revealExplanation": "The incubator: eggs under a light.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Egg incubator is immediate; light only via the heat-lamp bulb of a homemade incubator."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__lion",
+      "a": "EGG",
+      "b": "LION",
+      "source": "u17",
+      "pairNote": "No PASS. Both hints are lion-only filler.",
+      "reviewerBestAvailable": {
+        "text": "ZOO",
+        "why": "Neither works; ZOO is marginally less hopeless because zoos do display hatching eggs, but it remains one-sided.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ZOO",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs in the zoo's hatchery.",
+          "wordBConnection": "Lions at the zoo.",
+          "revealExplanation": "The zoo: lions, and hatching eggs.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lions live in zoos; nothing reaches egg."
+            }
+          }
+        },
+        {
+          "text": "PRIDE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A clutch of eggs, a pride of lions.",
+          "wordBConnection": "A pride of lions.",
+          "revealExplanation": "Pride: the lion's group.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A pride of lions; nothing reaches egg."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__moon",
+      "a": "EGG",
+      "b": "MOON",
+      "source": "u17",
+      "pairNote": "ROUND is a modest pass; MOONCAKE is a rule failure; FULL is moon-only.",
+      "reviewerBestAvailable": {
+        "text": "ROUND",
+        "why": "The only hint that touches both sides, via shape.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ROUND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A round egg.",
+          "wordBConnection": "The round moon.",
+          "revealExplanation": "Round: egg and moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared shape: the moon is round and an egg is rounded (oval), a property route a player can see."
+            }
+          }
+        },
+        {
+          "text": "MOONCAKE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target MOON; listed to be rejected on record",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Mooncakes hold a salted egg yolk, but MOONCAKE contains the target MOON."
+            }
+          }
+        },
+        {
+          "text": "FULL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A full carton of eggs.",
+          "wordBConnection": "A full moon.",
+          "revealExplanation": "Full: the moon, and the carton.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Full moon; nothing reaches egg."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__mouse",
+      "a": "EGG",
+      "b": "MOUSE",
+      "source": "u17",
+      "pairNote": "NEST carries the pair.",
+      "reviewerBestAvailable": {
+        "text": "NEST",
+        "why": "A single everyday word that both words naturally own.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "NEST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs in a nest.",
+          "wordBConnection": "A mouse nest.",
+          "revealExplanation": "A nest: for eggs, or for mice.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Eggs sit in a nest; mice build nests."
+            }
+          }
+        },
+        {
+          "text": "STEAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Stolen eggs.",
+          "wordBConnection": "A thieving mouse.",
+          "revealExplanation": "Steal: the mouse, after the eggs.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Verb route: predators steal eggs and mice steal cheese, but neither side is a tight image for 'steal'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__night",
+      "a": "EGG",
+      "b": "NIGHT",
+      "source": "u17",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "OWL",
+        "why": "Night owl is a strong compound and an owl at least lays eggs; NOG has no night side at all.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "OWL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An owl's eggs.",
+          "wordBConnection": "A night owl.",
+          "revealExplanation": "The owl: night bird, egg layer.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Night owl is a compound; owl reaches egg only as 'a bird that lays eggs'."
+            }
+          }
+        },
+        {
+          "text": "NOG",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggnog.",
+          "wordBConnection": "Nog on a cold night.",
+          "revealExplanation": "Nog: eggnog for the night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Eggnog; nothing reaches night."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__ocean",
+      "a": "EGG",
+      "b": "OCEAN",
+      "source": "u17",
+      "pairNote": "TURTLE is strong; NEMO depends on remembering the egg opening.",
+      "reviewerBestAvailable": {
+        "text": "TURTLE",
+        "why": "The turtle-egg-to-ocean scene is one of the most familiar nature images.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TURTLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Turtle eggs on the beach.",
+          "wordBConnection": "The sea turtle.",
+          "revealExplanation": "The turtle: out of the ocean to lay her eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sea turtles lay eggs on the beach and the hatchlings scramble into the ocean."
+            }
+          }
+        },
+        {
+          "text": "NEMO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Nemo's egg.",
+          "wordBConnection": "Nemo lives in the ocean.",
+          "revealExplanation": "Nemo: the one egg that survived.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Finding Nemo",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Finding Nemo is set in the ocean; Nemo is the lone surviving egg of the film's opening scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__pirate",
+      "a": "EGG",
+      "b": "PIRATE",
+      "source": "u17",
+      "pairNote": "No PASS. Both hints are pirate-first.",
+      "reviewerBestAvailable": {
+        "text": "TREASURE",
+        "why": "Egg hunt as treasure hunt is a shared activity, a better egg route than 'birds lay eggs'.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TREASURE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An egg treasure hunt.",
+          "wordBConnection": "Pirate treasure.",
+          "revealExplanation": "Treasure: the pirate's, and the egg hunt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirate treasure is immediate; egg only via the Easter egg hunt being a kind of treasure hunt."
+            }
+          }
+        },
+        {
+          "text": "PARROT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A parrot's egg.",
+          "wordBConnection": "The pirate's parrot.",
+          "revealExplanation": "The parrot: pirate's bird, egg layer.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "The pirate's parrot; parrot reaches egg only as a bird that lays eggs."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__queen",
+      "a": "EGG",
+      "b": "QUEEN",
+      "source": "u17",
+      "pairNote": "All three pass; FABERGE is the weakest queen link (tsarina, not queen).",
+      "reviewerBestAvailable": {
+        "text": "BEE",
+        "why": "Queen bee is universal and her job of laying eggs is common knowledge.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "ALIEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The alien eggs.",
+          "wordBConnection": "The alien queen.",
+          "revealExplanation": "Alien: the queen and her eggs.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Aliens",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Alien franchise: the Alien Queen lays the eggs that hatch facehuggers."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The queen bee's eggs.",
+          "wordBConnection": "The queen bee.",
+          "revealExplanation": "The queen bee, laying her eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Queen bee is a compound; the queen is the hive's egg-layer."
+            }
+          }
+        },
+        {
+          "text": "FABERGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "famous_object_place_or_event",
+          "wordAConnection": "A Fabergé egg.",
+          "wordBConnection": "Fabergé eggs for royal women.",
+          "revealExplanation": "Fabergé: an egg for a queen.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Fabergé eggs",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fabergé eggs were imperial gifts to the tsarina/empress and sit in royal collections; queen is one step from the royal luxury egg."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__ring",
+      "a": "EGG",
+      "b": "RING",
+      "source": "u17",
+      "pairNote": "No PASS. Two one-sided hints pointing opposite ways.",
+      "reviewerBestAvailable": {
+        "text": "ONION",
+        "why": "Neither works; ONION at least has egg-and-onion as a familiar food pairing behind it, whereas YOLK has no ring side.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ONION",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Egg batter on the onion.",
+          "wordBConnection": "Onion rings.",
+          "revealExplanation": "Onion rings, battered in egg.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Onion ring; egg only via the batter, which is not a route a player sees."
+            }
+          }
+        },
+        {
+          "text": "YOLK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The egg yolk.",
+          "wordBConnection": "The yolk's ring of white.",
+          "revealExplanation": "The yolk, in its ring of white.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Egg yolk; nothing reaches ring."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__robot",
+      "a": "EGG",
+      "b": "ROBOT",
+      "source": "u17",
+      "pairNote": "EVE passes for anyone who has seen WALL-E; POD is vague on both sides.",
+      "reviewerBestAvailable": {
+        "text": "EVE",
+        "why": "A well-known character whose whole look is 'egg-shaped robot'.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "EVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "EVE is shaped like an egg.",
+          "wordBConnection": "EVE is a robot.",
+          "revealExplanation": "EVE: the egg-shaped robot.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "WALL-E",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "EVE from WALL-E is the sleek egg-shaped robot; her egg silhouette is her signature design."
+            }
+          }
+        },
+        {
+          "text": "POD",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "An egg-shaped pod.",
+          "wordBConnection": "A robot in its pod.",
+          "revealExplanation": "Pod: egg-shaped, robot inside.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation",
+                "obscure"
+              ],
+              "reason": "Pod loosely means an egg-like capsule and loosely evokes sci-fi machines (HAL's pod bay doors), but neither side is clear enough to follow."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__rock",
+      "a": "EGG",
+      "b": "ROCK",
+      "source": "u17",
+      "pairNote": "HARD is the clean pass; FOSSIL and DINOSAUR share one route with FOSSIL the better-balanced.",
+      "reviewerBestAvailable": {
+        "text": "HARD",
+        "why": "Both compounds are everyday phrases.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A hard-boiled egg.",
+          "wordBConnection": "Hard rock.",
+          "revealExplanation": "Hard: boiled egg, or rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hard-boiled egg; rock hard."
+            }
+          }
+        },
+        {
+          "text": "FOSSIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fossil eggs.",
+          "wordBConnection": "Fossils in rock.",
+          "revealExplanation": "Fossils: eggs turned to rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fossils are found in rock; fossilised dinosaur eggs are a familiar museum piece."
+            }
+          }
+        },
+        {
+          "text": "DINOSAUR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Dinosaur eggs.",
+          "wordBConnection": "Dinosaur bones in the rock.",
+          "revealExplanation": "Dinosaur: eggs, dug from rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dinosaur eggs are immediate; rock only via fossils being in rock."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__rose",
+      "a": "EGG",
+      "b": "ROSE",
+      "source": "u17",
+      "pairNote": "EASTER passes only on the verb reading of ROSE; worth a second opinion if the owner wants the flower sense.",
+      "reviewerBestAvailable": {
+        "text": "EASTER",
+        "why": "The 'rose' verb reading is a real, well-known Easter phrase ('He rose again'), and Easter egg is a compound.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "EASTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Easter eggs.",
+          "wordBConnection": "He rose at Easter.",
+          "revealExplanation": "Easter: eggs, and he rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Easter egg is a compound; Easter is when Christ rose, reading ROSE as the past tense of rise (ordinary inflection)."
+            }
+          }
+        },
+        {
+          "text": "SHELL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "An eggshell.",
+          "wordBConnection": "Shell-pink roses.",
+          "revealExplanation": "Shell: the egg's, and shell-pink roses.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Eggshell; nothing reaches rose."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__salt",
+      "a": "EGG",
+      "b": "SALT",
+      "source": "u17",
+      "pairNote": "No PASS. The obvious shared scene (salting an egg) is not nailed by any supplied hint.",
+      "reviewerBestAvailable": {
+        "text": "PEPPER",
+        "why": "Salt-and-pepper-on-eggs is a real breakfast scene, giving the most recognisable egg side of the three.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SEASON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Seasoned eggs.",
+          "wordBConnection": "Salt seasons.",
+          "revealExplanation": "Season: eggs with salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Season with salt is near-synonymous; egg only as one of many things you season."
+            }
+          }
+        },
+        {
+          "text": "PEPPER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Pepper on eggs.",
+          "wordBConnection": "Salt and pepper.",
+          "revealExplanation": "Pepper: with salt, on eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Salt and pepper is the fixed pair; egg only as the breakfast plate they are shaken over."
+            }
+          }
+        },
+        {
+          "text": "BOILED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A boiled egg.",
+          "wordBConnection": "Salt on a boiled egg.",
+          "revealExplanation": "Boiled egg, pinch of salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Boiled egg; nothing in 'boiled' points at salt."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__shadow",
+      "a": "EGG",
+      "b": "SHADOW",
+      "source": "u17",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "CANDLE",
+        "why": "The only hint with any egg side at all, even if candling is niche.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CANDLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Candling an egg.",
+          "wordBConnection": "Candle shadows.",
+          "revealExplanation": "Candle: light through the egg, shadows on the wall.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Candlelight throws shadows; egg only via the niche practice of candling eggs."
+            }
+          }
+        },
+        {
+          "text": "SHELL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An eggshell.",
+          "wordBConnection": "A shadow, an empty shell of a shape.",
+          "revealExplanation": "Shell: the egg's, and the hollow shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Eggshell; nothing reaches shadow."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__shark",
+      "a": "EGG",
+      "b": "SHARK",
+      "source": "u17",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "PURSE",
+        "why": "The only hint whose connection actually involves both egg and shark, even though it is niche.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "PURSE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A mermaid's purse is an egg case.",
+          "wordBConnection": "Shark egg cases.",
+          "revealExplanation": "The mermaid's purse: a shark's egg.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "A 'mermaid's purse' is a shark egg case: a genuine two-sided link but niche natural-history knowledge."
+            }
+          }
+        },
+        {
+          "text": "HATCH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An egg hatches.",
+          "wordBConnection": "Baby sharks hatch.",
+          "revealExplanation": "Hatch: shark pups out of their eggs.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Eggs hatch; most players do not associate sharks with hatching from eggs."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__snake",
+      "a": "EGG",
+      "b": "SNAKE",
+      "source": "u17",
+      "pairNote": "SWALLOW passes; CLUTCH and HATCH are egg-first.",
+      "reviewerBestAvailable": {
+        "text": "SWALLOW",
+        "why": "The only hint where the snake side is strong and the egg side is a recognisable scene.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SWALLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A swallowed egg.",
+          "wordBConnection": "A snake swallows whole.",
+          "revealExplanation": "Swallow: the snake and the egg.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Snakes swallow prey whole; the egg-eating snake swallowing an egg whole is a famous nature-documentary image, and 'swallow a raw egg' is a phrase in its own right."
+            }
+          }
+        },
+        {
+          "text": "CLUTCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A clutch of eggs.",
+          "wordBConnection": "A snake's clutch.",
+          "revealExplanation": "A clutch: the snake's eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A clutch of eggs; snake only as one of the animals that lays a clutch."
+            }
+          }
+        },
+        {
+          "text": "HATCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An egg hatches.",
+          "wordBConnection": "Snakes hatch.",
+          "revealExplanation": "Hatch: the snake out of its egg.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Eggs hatch; the baby snake breaking out of its egg is a familiar image, but 'hatch' alone does not point at snake over any other egg-layer."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__spider",
+      "a": "EGG",
+      "b": "SPIDER",
+      "source": "u17",
+      "pairNote": "Both pass.",
+      "reviewerBestAvailable": {
+        "text": "SAC",
+        "why": "Egg sac points straight at spiders.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SAC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An egg sac.",
+          "wordBConnection": "A spider's sac.",
+          "revealExplanation": "The spider's egg sac.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Egg sac is a compound and the spider's egg sac is its best-known instance."
+            }
+          }
+        },
+        {
+          "text": "CHARLOTTE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Charlotte's eggs.",
+          "wordBConnection": "Charlotte is the spider.",
+          "revealExplanation": "Charlotte: the spider and her eggs.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Charlotte's Web",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Charlotte's Web: Charlotte the spider's egg sac and her hatching children are the book's final act."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_egg__spring",
       "a": "EGG",
       "b": "SPRING",
@@ -41701,6 +44506,613 @@
           "CHICK"
         ]
       }
+    },
+    {
+      "pair_id": "p_egg__star",
+      "a": "EGG",
+      "b": "STAR",
+      "source": "u17",
+      "pairNote": "SUNNY passes; STARFISH is a rule failure; ANISE is star-only.",
+      "reviewerBestAvailable": {
+        "text": "SUNNY",
+        "why": "Sunny-side up is a universal egg phrase and sun-as-star is one step.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SUNNY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sunny-side-up egg.",
+          "wordBConnection": "The sun is a star.",
+          "revealExplanation": "Sunny: the egg, and our star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sunny-side up egg; the sun is a star."
+            }
+          }
+        },
+        {
+          "text": "STARFISH",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target STAR; listed to be rejected on record",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "STARFISH contains the target STAR."
+            }
+          }
+        },
+        {
+          "text": "ANISE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Tea eggs with anise.",
+          "wordBConnection": "Star anise.",
+          "revealExplanation": "Anise: star anise, in the tea egg.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Star anise; egg only via Chinese tea eggs, which no player sees."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__train",
+      "a": "EGG",
+      "b": "TRAIN",
+      "source": "u17",
+      "pairNote": "No PASS. Two one-sided hints pointing opposite ways.",
+      "reviewerBestAvailable": {
+        "text": "DINING",
+        "why": "Neither works; DINING at least sketches a breakfast-in-the-dining-car scene, whereas CARTON has no train side.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DINING",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs at breakfast in the dining car.",
+          "wordBConnection": "The train's dining car.",
+          "revealExplanation": "Dining: eggs in the train's dining car.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dining car; egg only as a thing one eats."
+            }
+          }
+        },
+        {
+          "text": "CARTON",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An egg carton.",
+          "wordBConnection": "A freight train of cartons.",
+          "revealExplanation": "Carton: the egg's, in the freight train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Egg carton; nothing reaches train."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__water",
+      "a": "EGG",
+      "b": "WATER",
+      "source": "u17",
+      "pairNote": "All three pass; FLOAT depends on the freshness test.",
+      "reviewerBestAvailable": {
+        "text": "POACH",
+        "why": "Poaching is specifically cooking an egg in water.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "POACH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A poached egg.",
+          "wordBConnection": "Poaching in water.",
+          "revealExplanation": "Poach: the egg in simmering water.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Poaching an egg is cooking it in water."
+            }
+          }
+        },
+        {
+          "text": "BOIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A boiled egg.",
+          "wordBConnection": "Boiling water.",
+          "revealExplanation": "Boil: the egg, in water.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Boil an egg; boil water."
+            }
+          }
+        },
+        {
+          "text": "FLOAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The float test for eggs.",
+          "wordBConnection": "Floating in water.",
+          "revealExplanation": "Float: the egg test in water.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The egg float test (a bad egg floats, a fresh one sinks) and floating on water."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__witch",
+      "a": "EGG",
+      "b": "WITCH",
+      "source": "u17",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "Egging houses is a real Halloween association; CAULDRON has no egg side.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HALLOWEEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Egging houses at Halloween.",
+          "wordBConnection": "Halloween witches.",
+          "revealExplanation": "Halloween: witches, and eggs on doors.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Witches are Halloween stock; egg only through the egging prank."
+            }
+          }
+        },
+        {
+          "text": "CAULDRON",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Eggs boiled in the pot.",
+          "wordBConnection": "A witch's cauldron.",
+          "revealExplanation": "The cauldron: the witch's pot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Witch's cauldron; nothing reaches egg."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_egg__wolf",
+      "a": "EGG",
+      "b": "WOLF",
+      "source": "u17",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "HEN",
+        "why": "Predator-and-prey is a real if loose scene; DOWN is wolf-only.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The hen's eggs.",
+          "wordBConnection": "The wolf at the henhouse.",
+          "revealExplanation": "The hen: her eggs, and the wolf after her.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hens lay eggs; wolf only as the predator at the henhouse, and the fixed phrase is 'fox in the henhouse'."
+            }
+          }
+        },
+        {
+          "text": "DOWN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Wolfing down eggs.",
+          "wordBConnection": "To wolf down.",
+          "revealExplanation": "Down: wolf down the eggs.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "'Wolf down' is a phrasal verb; nothing in 'down' points at egg."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__fish",
+      "a": "FIRE",
+      "b": "FISH",
+      "source": "u17",
+      "pairNote": "Two passes; CAMPFIRE is a rule failure.",
+      "reviewerBestAvailable": {
+        "text": "GRILL",
+        "why": "Equally direct on both sides.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "GRILL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A grill over the fire.",
+          "wordBConnection": "Grilled fish.",
+          "revealExplanation": "Grill: fish over the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Grilling is cooking over fire; grilled fish is a staple."
+            }
+          }
+        },
+        {
+          "text": "SMOKED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Smoke from the fire.",
+          "wordBConnection": "Smoked fish.",
+          "revealExplanation": "Smoked: fish, over a fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Smoked fish (salmon, kippers); smoke comes from fire."
+            }
+          }
+        },
+        {
+          "text": "CAMPFIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target FIRE; listed to be rejected on record",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "CAMPFIRE contains the target FIRE; cooking fish over a campfire would otherwise be a fair scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__ghost",
+      "a": "FIRE",
+      "b": "GHOST",
+      "source": "u17",
+      "pairNote": "CAMP is the clean pass; SMOKE and SPIRIT each lean one way.",
+      "reviewerBestAvailable": {
+        "text": "CAMP",
+        "why": "Campfire ghost stories put fire and ghost in one familiar scene.",
+        "reviewer": "blind-subagent-17"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAMP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A campfire is the fire.",
+          "wordBConnection": "Ghost stories are what get told around it.",
+          "revealExplanation": "Ghost stories are traditionally told around a campfire.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Campfire is a compound; ghost stories around the camp fire are the shared scene."
+            }
+          }
+        },
+        {
+          "text": "SMOKE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "Smoke rises off a fire.",
+          "wordBConnection": "And drifts in exactly the pale way ghosts are pictured.",
+          "revealExplanation": "Smoke rises from fire and drifts in exactly the pale, insubstantial way ghosts are pictured.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Where there's smoke there's fire; ghost only as a wispy, smoke-like apparition, a mood resemblance rather than a scene."
+            }
+          }
+        },
+        {
+          "text": "SPIRIT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "wordplay",
+          "wordAConnection": "Spirits are the flammable drinks that catch fire.",
+          "wordBConnection": "A ghost is a spirit.",
+          "revealExplanation": "A ghost is a spirit, and spirits are the flammable drinks that catch fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u17",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-17",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Spirit is a synonym for ghost; fire only via flammable spirits or 'fiery spirit'."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_fire__heart",
