@@ -68,6 +68,7 @@ import { resolveBoard, recentPairIds, playedTotal, feedbackJson } from "./histor
 import { generateBoard } from "./generate.js";
 import LIBRARY from "./random-library.json";
 import POOL from "./pool.json";
+import V1 from "./fixtures/generator-v1-board.json";
 
 describe("random boards in the history store", () => {
   beforeEach(() => localStorage.clear());
@@ -112,6 +113,22 @@ describe("random boards in the history store", () => {
     const json = JSON.parse(feedbackJson(s));
     expect(Object.keys(json.boards).sort()).toEqual(bs.map((b) => b.id).sort());
     expect(json.boards[bs[0].id]).toEqual(bs[0]);
+  });
+
+  it("a game saved by the released generator 1 (extras from the original 50) never changes when the library grows", () => {
+    const v1 = V1.board;
+    const before = JSON.stringify(v1);
+    // in progress, as the released build saved it; then a refresh under the new library
+    localStorage.setItem(STORE_KEY, JSON.stringify(startBoard(emptyStore(), v1, "expert")));
+    let s = readStore();
+    expect(JSON.stringify(resolveBoard(poolById, s, s.current.id))).toBe(before);   // Continue: same board
+    const fresh = rnd(31);                                                             // a new game uses the new library
+    expect(fresh.generator).toBe(2); expect(fresh.id).not.toBe(v1.id);
+    s = finishBoard(s, v1, { won: true, livesUsed: 2, difficulty: "expert" });
+    s = startBoard(s, { ...fresh, id: v1.id }, "easy", { replay: true });              // Replay: snapshot kept
+    expect(JSON.stringify(s.boards[v1.id])).toBe(before);
+    expect(writeStore(s)).toBe(true);
+    expect(JSON.stringify(readStore().boards[v1.id])).toBe(before);
   });
 
   it("the fixed pool is untouched: live beta-01/02 boards keep their ids and snapshots", () => {

@@ -17,6 +17,7 @@ import { Icon, PageHead, Sheet } from "../friends/ui.jsx";
 import POOL from "./pool.json";
 import LIBRARY from "./random-library.json";
 import { generateBoard, freshSeed, validateBoard } from "./generate.js";
+import { useFitCardWords } from "./fitWords.js";
 import { RATINGS, SAVE_HEADLINE, SAVE_DETAIL, readStore, writeStore, storageStatus, nextBoard, playedTotal, resolveBoard, recentPairIds, startBoard, finishBoard, rateClue, notePuzzle, feedbackFor, feedbackText, feedbackJson } from "./history.js";
 import "../friends/friends.css";
 import "./unlimited.css";
@@ -113,6 +114,10 @@ export default function UnlimitedView({ kit, onHome, onHowToPlay }) {
   // Leaving mid-game keeps the game (GameView saved its progress); the lobby offers Continue.
   const leave = useCallback(()=>{ setShowWhy(false); setScreen("lobby"); },[]);
 
+  // Long bank words (SCUBA DIVER, THANKSGIVING) are fitted on narrow phones; see fitWords.js.
+  const shellRef = useRef(null);
+  useFitCardWords(shellRef, [screen, current?.id, finished?.board?.id, run]);
+
   if(screen === "play" && (current || finished)){
     const board = current || finished.board;
     const difficulty = currentDifficulty || finished?.difficulty || "standard";
@@ -126,7 +131,7 @@ export default function UnlimitedView({ kit, onHome, onHowToPlay }) {
       </div>
     );
     return (
-      <div className="fr-game-shell ul-shell">
+      <div className="fr-game-shell ul-shell" ref={shellRef}>
         <div className="fr-playbar">
           <button type="button" className="fr-back" onClick={leave}><Icon name="back" size={18}/>Unlimited</button>
           <span className="grow"/>
@@ -183,7 +188,7 @@ function Lobby({ store, saved, played, current, choice, setChoice, failed, onPla
       <div className="fr-page fr-choose ul-lobby">
         <PageHead onBack={onHome} backLabel="Home" title="Unlimited"
           sub={`Guest beta · ${played} ${played === 1 ? "puzzle" : "puzzles"} played on this device`}/>
-        <p className="fr-help ul-beta-note">Every puzzle is put together at random from {LIBRARY.pairs.length} checked clue pairs on a {LIBRARY.words.length}-word list. Nothing is sent anywhere: your games and notes stay in this browser.</p>
+        <p className="fr-help ul-beta-note">Every puzzle is put together at random from {LIBRARY.pairs.length.toLocaleString("en-US")} checked clue pairs, with the other words drawn from all {LIBRARY.words.length.toLocaleString("en-US")} words in the game's word bank. Nothing is sent anywhere: your games and notes stay in this browser.</p>
         <SaveNotice state={saved}/>
 
         {current ? (

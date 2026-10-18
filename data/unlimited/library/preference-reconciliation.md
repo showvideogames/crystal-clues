@@ -1,15 +1,19 @@
-# Preference reconciliation — 2026-10-18 (dry run)
+# Preference reconciliation — 2026-10-18
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 150
-- pairs where the reviewer's pick already was the provisional top candidate: 762
-- preferences added: 0 (0 ties, 0 overrides of a higher-scored hint)
+- pairs with an existing approved preference (untouched): 153
+- pairs where the reviewer's pick already was the provisional top candidate: 898
+- preferences added: 4 (4 ties, 0 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 5
 - proposed entries still open: 12
 
 ## Added
 
+- tie p_cake__volcano (CAKE+VOLCANO): LAVA 2/2/2 replaces MOLTEN 2/2/2 — 'Lava cake' is the more common menu name, and the volcano side is the most direct possible.
+- tie p_explore__pool (EXPLORE+POOL): POLO 2/2/2 replaces MARCO 2/2/2 — The pool game is named after the explorer, so one name links both words, and that is satisfying to discover.
+- tie p_ninja__painting (NINJA+PAINTING): LEONARDO 2/2/2 replaces RAPHAEL 2/2/2 — Da Vinci is the most famous painter of the four namesakes, so the painting side is strongest.
+- tie p_painting__turtle (PAINTING+TURTLE): LEONARDO 2/2/2 replaces MICHELANGELO 2/2/2 — Leonardo is the more purely 'painter' name (Michelangelo is equally a sculptor), and he is the turtles' leader.
 
 ## Contradictions (unresolved, for the parent)
 

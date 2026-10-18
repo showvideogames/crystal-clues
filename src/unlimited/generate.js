@@ -5,14 +5,18 @@
 // A board is four pairs with eight distinct target words and four distinct
 // hint texts. Each pair serves exactly the library's choice for it; only an
 // approved equal-tier set is varied (randomly among its playable members).
-// The 20 other words are drawn without replacement from the fixed 50-word list
-// minus the eight targets. Geometry is the game's own (FriendCreator.jsx):
+// The 20 other words are drawn uniformly without replacement from the complete
+// word bank (library.words) minus the eight targets; there is no semantic
+// filtering against the rest of the board (the clue rules allow a hint to match
+// another word on the board, see scripts/unlimited/puzzle-clue-rules.mjs).
+// Generator 1 drew the extras from the original 50 words; boards it made keep
+// their saved snapshot unchanged. Geometry is the game's own (FriendCreator.jsx):
 //   clue i links [slot,edge] pairs 0:[0,0],[1,0] 1:[1,1],[2,1] 2:[3,2],[2,2] 3:[0,3],[3,3]
 //   and a card with orientation o shows words[(e-o+4)%4] at edge e.
 // The board is created once and frozen: the caller saves the whole object and
 // never re-derives it (refresh, Continue, history and Replay reuse the snapshot).
 
-export const GENERATOR_VERSION = 1;
+export const GENERATOR_VERSION = 2;
 const CLUE_LINKS = [[[0, 0], [1, 0]], [[1, 1], [2, 1]], [[3, 2], [2, 2]], [[0, 3], [3, 3]]];
 const CARD_IDS = ["c1", "c2", "c3", "c4", "c5", "c6", "c7"];
 export const norm = (t) => String(t ?? "").trim().toUpperCase().replace(/\s+/g, " ");
@@ -99,7 +103,7 @@ export function choosePairs(pairs, rng, { avoid = new Set(), tries = 60 } = {}) 
 /**
  * Builds one random board. Returns null only if the library cannot make any
  * valid board (fewer than four disjoint pairs with distinct hints).
- *   library: { words: string[50], pairs: [{ id, a, b, rule, hints:[{ text, ... }] }] }
+ *   library: { words: string[] (the word bank), pairs: [{ id, a, b, rule, hints:[{ text, ... }] }] }
  *   seed:    32-bit integer (freshSeed() in the browser; fixed in tests)
  *   avoid:   pair ids to skip when possible (e.g. the last few boards)
  */
@@ -141,7 +145,7 @@ export function generateBoard(library, { seed, avoid = new Set(), createdAt = ne
   const suffix = idSuffix ?? (seed >>> 0).toString(36).padStart(7, "0");
   const id = `r-${Date.parse(createdAt).toString(36)}-${suffix}`;
   return {
-    id, version: 1, kind: "random", generator: GENERATOR_VERSION, seed: seed >>> 0, createdAt, method,
+    id, version: 1, kind: "random", generator: GENERATOR_VERSION, library: library._metadata?.contentHash?.slice(0, 16) || null, seed: seed >>> 0, createdAt, method,
     title: "Random puzzle", status: "beta", humanApproved: false,
     clues: reveal.map((r) => r.clue), cards, solution: { slotCards, orientations, extraCards }, reveal,
   };
@@ -158,7 +162,7 @@ export function validateBoard(board, library) {
   if (ids.length !== 7) errs.push("seven cards");
   const all = ids.flatMap((k) => board.cards[k].words);
   if (all.length !== 28 || new Set(all).size !== 28) errs.push("28 distinct words");
-  if (!all.every((w) => W.has(w))) errs.push("every word from the fixed list");
+  if (!all.every((w) => W.has(w))) errs.push("every word from the word bank");
   const { slotCards, orientations, extraCards } = board.solution;
   if (slotCards.length !== 4 || extraCards.length !== 3 || new Set([...slotCards, ...extraCards]).size !== 7) errs.push("4 slot + 3 extra cards");
   const at = (s, e) => board.cards[slotCards[s]].words[(e - orientations[s] + 4) % 4];

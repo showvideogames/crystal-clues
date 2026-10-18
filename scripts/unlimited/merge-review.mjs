@@ -58,7 +58,7 @@ for (const rp of review.pairs) {
         source: kh.author === "pilot" ? "pilot-2026-10" : (batch?._metadata?.batch || "authored"),
         authorLabel: kh.author || null, authorReason: kh.reason || kh.of ? (kh.reason || `variant of ${kh.of}`) : null,
         prior: kh.prior || null,
-        blindReview: { reviewer: review._metadata?.reviewer || "blind-subagent", date: review._metadata?.date || null, verdict: h.verdict, a: h.connection_to_a, b: h.connection_to_b, fairness: h.fairness, recognizability: h.recognizability, flags: h.flags || [], reason: h.reason },
+        blindReview: { reviewer: review._metadata?.reviewer || "blind-subagent", ...(review._metadata?.model ? { model: review._metadata.model } : {}), date: review._metadata?.date || null, verdict: h.verdict, ...(h.delight != null ? { delight: h.delight } : {}), a: h.connection_to_a, b: h.connection_to_b, fairness: h.fairness, recognizability: h.recognizability, flags: h.flags || [], reason: h.reason },
       },
     };
   });

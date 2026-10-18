@@ -1,0 +1,806 @@
+{
+  "_metadata": {
+    "reviewer": "x01-reviewer-d",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "x01-d-review-input.json",
+    "rubric": "x01 expansion rubric (owner style examples, clicks-when-explained bar, explanation checked), 2026-10-18",
+    "independence": "I read only x01-d-review-input.json and opened no other file, ran no searches, and used no web or paid API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_africa__wizard",
+      "a": "AFRICA",
+      "b": "WIZARD",
+      "hints": [
+        {
+          "text": "TOTO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "AFRICA via Toto's hit song \"Africa\" and WIZARD via Dorothy's dog Toto in The Wizard of Oz; both facts are correct and the double reference is a real aha.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TOTO"],
+      "best_available": { "text": "TOTO", "why": "A clean pun on two very well-known references, both accurate." },
+      "pair_note": "Excellent pair; nothing to change."
+    },
+    {
+      "pair_id": "p_airport__carnival",
+      "a": "AIRPORT",
+      "b": "CARNIVAL",
+      "hints": [
+        {
+          "text": "CAROUSEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "AIRPORT via the baggage carousel and CARNIVAL via the merry-go-round carousel; a satisfying double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CAROUSEL"],
+      "best_available": { "text": "CAROUSEL", "why": "Two everyday senses of one word, both instantly recognised." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_ambulance__mirror",
+      "a": "AMBULANCE",
+      "b": "MIRROR",
+      "hints": [
+        {
+          "text": "REVERSE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "AMBULANCE via the mirror-reversed lettering on its hood and MIRROR via mirrors reversing images; the explanation is accurate.",
+          "fix": null
+        },
+        {
+          "text": "BACKWARDS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["variant_of:REVERSE"],
+          "verdict": "PASS",
+          "reason": "AMBULANCE via its backwards-printed name and MIRROR via backwards mirror writing; same idea as REVERSE, slightly less elegant because a mirror 'reverses' more naturally than it makes things 'backwards'.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["REVERSE", "BACKWARDS"],
+      "best_available": { "text": "REVERSE", "why": "Reads naturally on both sides (mirrors reverse; ambulance lettering is reversed) and the explanation is precise." },
+      "pair_note": "The two hints are the same route; serve one. Explanation for BACKWARDS could say 'drivers ahead' to be exact, but it is not wrong."
+    },
+    {
+      "pair_id": "p_back__camel",
+      "a": "BACK",
+      "b": "CAMEL",
+      "hints": [
+        {
+          "text": "STRAW",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both BACK and CAMEL come straight from the idiom 'the straw that broke the camel's back'.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["STRAW"],
+      "best_available": { "text": "STRAW", "why": "One familiar idiom supplies both words." },
+      "pair_note": "Strong idiom pair."
+    },
+    {
+      "pair_id": "p_baby__snake",
+      "a": "BABY",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "RATTLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BABY via a baby's toy rattle and SNAKE via the rattlesnake's tail rattle; accurate and fun contrast.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RATTLE"],
+      "best_available": { "text": "RATTLE", "why": "Natural on both sides with a nice comic contrast." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_basketball__river",
+      "a": "BASKETBALL",
+      "b": "RIVER",
+      "hints": [
+        {
+          "text": "JORDAN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BASKETBALL via Michael Jordan and RIVER via the Jordan River; both widely known.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["JORDAN"],
+      "best_available": { "text": "JORDAN", "why": "Famous name plus famous river; clicks immediately." },
+      "pair_note": "Strong pair. BASKETBALL also appears in p_basketball__oreo; fine if they are on different boards."
+    },
+    {
+      "pair_id": "p_bermuda__boxer",
+      "a": "BERMUDA",
+      "b": "BOXER",
+      "hints": [
+        {
+          "text": "SHORTS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BERMUDA via Bermuda shorts and BOXER via boxer shorts; two common compounds.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SHORTS"],
+      "best_available": { "text": "SHORTS", "why": "Completes two familiar compounds cleanly." },
+      "pair_note": "Solid compound pair; pleasant rather than surprising."
+    },
+    {
+      "pair_id": "p_bike__piano",
+      "a": "BIKE",
+      "b": "PIANO",
+      "hints": [
+        {
+          "text": "PEDAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BIKE via bike pedals and PIANO via piano pedals; both literal and correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PEDAL"],
+      "best_available": { "text": "PEDAL", "why": "Literal shared part, fair and quick." },
+      "pair_note": "Solid pair."
+    },
+    {
+      "pair_id": "p_blizzard__queen",
+      "a": "BLIZZARD",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "DAIRY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "QUEEN via Dairy Queen and BLIZZARD via its signature Blizzard treat; a brand route that clicks hard for U.S. players.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DAIRY"],
+      "best_available": { "text": "DAIRY", "why": "Brand double that turns BLIZZARD from weather into ice cream; satisfying reveal." },
+      "pair_note": "Strong, U.S.-centric but well within the audience."
+    },
+    {
+      "pair_id": "p_bowling__cat",
+      "a": "BOWLING",
+      "b": "CAT",
+      "hints": [
+        {
+          "text": "ALLEY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BOWLING via bowling alley and CAT via alley cat; two common compounds.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ALLEY"],
+      "best_available": { "text": "ALLEY", "why": "Two everyday compounds, no stretch." },
+      "pair_note": "Solid pair."
+    },
+    {
+      "pair_id": "p_calculator__vampire",
+      "a": "CALCULATOR",
+      "b": "VAMPIRE",
+      "hints": [
+        {
+          "text": "COUNT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CALCULATOR via counting numbers and VAMPIRE via Count Dracula, with Sesame Street's vampire Count tying both together; accurate and delightful.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["COUNT"],
+      "best_available": { "text": "COUNT", "why": "Double meaning plus the Sesame Street Count as a bonus bridge." },
+      "pair_note": "One of the best in the batch."
+    },
+    {
+      "pair_id": "p_coffee__island",
+      "a": "COFFEE",
+      "b": "ISLAND",
+      "hints": [
+        {
+          "text": "JAVA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "COFFEE via 'java' slang for coffee and ISLAND via the Indonesian island of Java; the explanation's origin story is correct and makes it click for those who did not know the island.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["JAVA"],
+      "best_available": { "text": "JAVA", "why": "Coffee side is instant and the island side is a pleasing reveal." },
+      "pair_note": "Island side is moderate recognisability, but the explanation lands it well."
+    },
+    {
+      "pair_id": "p_cool__pickle",
+      "a": "COOL",
+      "b": "PICKLE",
+      "hints": [
+        {
+          "text": "CUCUMBER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "COOL via the idiom 'cool as a cucumber' and PICKLE via pickles being cucumbers; mixes idiom and fact nicely.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CUCUMBER"],
+      "best_available": { "text": "CUCUMBER", "why": "Idiom on one side, food fact on the other; both obvious once seen." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_crash__puppet",
+      "a": "CRASH",
+      "b": "PUPPET",
+      "hints": [
+        {
+          "text": "DUMMY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CRASH via crash-test dummy and PUPPET via a ventriloquist's dummy; DUMMY is a kind of puppet rather than a plain synonym, so it stays fair.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DUMMY"],
+      "best_available": { "text": "DUMMY", "why": "Two vivid images of the same word." },
+      "pair_note": "Strong; the puppet side is close to synonymy but not a plain synonym."
+    },
+    {
+      "pair_id": "p_currency__deer",
+      "a": "CURRENCY",
+      "b": "DEER",
+      "hints": [
+        {
+          "text": "BUCK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CURRENCY via 'buck' as slang for a dollar and DEER via a male deer; classic double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BUCK"],
+      "best_available": { "text": "BUCK", "why": "Clean, well-known double meaning." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_dance__water",
+      "a": "DANCE",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "TAP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "DANCE via tap dance and WATER via tap water; two common compounds.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TAP"],
+      "best_available": { "text": "TAP", "why": "Two everyday compounds, instantly fair." },
+      "pair_note": "Solid pair."
+    },
+    {
+      "pair_id": "p_einstein__family",
+      "a": "EINSTEIN",
+      "b": "FAMILY",
+      "hints": [
+        {
+          "text": "RELATIVE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "EINSTEIN via the theory of relativity and FAMILY via relatives; a relative is a family member, not a synonym of 'family', so the pun holds.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RELATIVE"],
+      "best_available": { "text": "RELATIVE", "why": "Neat pun bridging physics and family." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_award__garbage",
+      "a": "AWARD",
+      "b": "GARBAGE",
+      "hints": [
+        {
+          "text": "OSCAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "AWARD via the Academy Award statuette and GARBAGE via Oscar the Grouch's trash can; accurate and funny contrast.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["OSCAR"],
+      "best_available": { "text": "OSCAR", "why": "Glamour versus garbage under one name; a real aha." },
+      "pair_note": "One of the best in the batch."
+    },
+    {
+      "pair_id": "p_bar__genius",
+      "a": "BAR",
+      "b": "GENIUS",
+      "hints": [
+        {
+          "text": "APPLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both BAR and GENIUS come via Apple's Genius Bar; the hint names the brand behind a phrase made of both targets, like BARNEY for PURPLE + DINOSAUR.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["APPLE"],
+      "best_available": { "text": "APPLE", "why": "Genius Bar is widely known and APPLE is the natural pointer to it." },
+      "pair_note": "Neither target links to APPLE on its own; the link only exists through the joined phrase. That is within the owner's examples but worth noting."
+    },
+    {
+      "pair_id": "p_grey__switzerland",
+      "a": "GREY",
+      "b": "SWITZERLAND",
+      "hints": [
+        {
+          "text": "NEUTRAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "GREY via neutral colours and SWITZERLAND via its famous political neutrality; both accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NEUTRAL"],
+      "best_available": { "text": "NEUTRAL", "why": "Two correct senses of neutral, quick to see." },
+      "pair_note": "Solid pair; the target spelling GREY is the board's concern, not the hint's."
+    },
+    {
+      "pair_id": "p_arrow__heel",
+      "a": "ARROW",
+      "b": "HEEL",
+      "hints": [
+        {
+          "text": "ACHILLES",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HEEL via 'Achilles' heel' and ARROW via the myth of the arrow that struck it; the explanation matches the common telling.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ACHILLES"],
+      "best_available": { "text": "ACHILLES", "why": "One myth supplies both words, and the idiom makes it broadly known." },
+      "pair_note": "Strong pair. ARROW also appears in p_arrow__violin; fine on separate boards."
+    },
+    {
+      "pair_id": "p_arrow__violin",
+      "a": "ARROW",
+      "b": "VIOLIN",
+      "hints": [
+        {
+          "text": "BOW",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ARROW via the archer's bow and VIOLIN via the violin bow; classic double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BOW"],
+      "best_available": { "text": "BOW", "why": "Clean, well-known double meaning." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_knot__wedding",
+      "a": "KNOT",
+      "b": "WEDDING",
+      "hints": [
+        {
+          "text": "TIE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "KNOT via tying a knot and WEDDING via the idiom 'tie the knot'; the explanation's wordplay is charming.",
+          "fix": null
+        },
+        {
+          "text": "HITCH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "KNOT via a hitch being a type of knot and WEDDING via 'getting hitched'; a hitch is a kind of knot rather than a plain synonym, so it stays fair.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TIE", "HITCH"],
+      "best_available": { "text": "TIE", "why": "The natural clue: 'tie the knot' links both words in one idiom, like TREASURE over DOUBLOON." },
+      "pair_note": "Two distinct, good routes. HITCH is closer to a synonym of KNOT; TIE is the more natural serve."
+    },
+    {
+      "pair_id": "p_mustard__suspect",
+      "a": "MUSTARD",
+      "b": "SUSPECT",
+      "hints": [
+        {
+          "text": "CLUE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "MUSTARD via Colonel Mustard and SUSPECT via the suspects of the board game Clue; accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CLUE"],
+      "best_available": { "text": "CLUE", "why": "Famous board game ties both words, with a fun meta echo of the game's own name." },
+      "pair_note": "Strong pair; CLUE as a hint word in a game called Cluevoyance may read as a wink, which is fine."
+    },
+    {
+      "pair_id": "p_greece__nasa",
+      "a": "GREECE",
+      "b": "NASA",
+      "hints": [
+        {
+          "text": "APOLLO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "NASA via the Apollo Moon program and GREECE via Apollo the Greek god; route is excellent, though calling Apollo 'the god of the sun' leans on a later identification with Helios.",
+          "fix": "Rewrite the explanation as \"NASA named its Moon missions after Apollo, the Greek god of light, music and prophecy.\" so it does not rest on the debatable sun-god label."
+        }
+      ],
+      "strong_hints": ["APOLLO"],
+      "best_available": { "text": "APOLLO", "why": "Myth and space history meet in one famous name." },
+      "pair_note": "Strong pair; the explanation tweak is optional polish, not a blocker."
+    },
+    {
+      "pair_id": "p_basketball__oreo",
+      "a": "BASKETBALL",
+      "b": "OREO",
+      "hints": [
+        {
+          "text": "DUNK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BASKETBALL via the slam dunk and OREO via dunking cookies in milk, a well-known Oreo ritual.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DUNK"],
+      "best_available": { "text": "DUNK", "why": "Two vivid, everyday uses of the same verb." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_cookie__palm",
+      "a": "COOKIE",
+      "b": "PALM",
+      "hints": [
+        {
+          "text": "FORTUNE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "COOKIE via fortune cookies and PALM via palm reading telling your fortune; both familiar.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["FORTUNE"],
+      "best_available": { "text": "FORTUNE", "why": "Two familiar fortune-telling routes, neatly matched." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_fire__pants",
+      "a": "FIRE",
+      "b": "PANTS",
+      "hints": [
+        {
+          "text": "LIAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both FIRE and PANTS come from the playground chant 'Liar, liar, pants on fire'; PG and universally known.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["LIAR"],
+      "best_available": { "text": "LIAR", "why": "One chant supplies both words; very satisfying." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_pizza__turtle",
+      "a": "PIZZA",
+      "b": "TURTLE",
+      "hints": [
+        {
+          "text": "NINJA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "TURTLE via Teenage Mutant Ninja Turtles and PIZZA via their famous love of pizza.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NINJA"],
+      "best_available": { "text": "NINJA", "why": "Well-known franchise ties both words in one picture." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_bird__plane",
+      "a": "BIRD",
+      "b": "PLANE",
+      "hints": [
+        {
+          "text": "SUPERMAN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both BIRD and PLANE come from the catchphrase 'It's a bird! It's a plane! It's Superman!'.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SUPERMAN"],
+      "best_available": { "text": "SUPERMAN", "why": "Iconic catchphrase supplies both words." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_golf__shirt",
+      "a": "GOLF",
+      "b": "SHIRT",
+      "hints": [
+        {
+          "text": "TEE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "GOLF via the golf tee and SHIRT via a tee as a T-shirt; tee names a kind of shirt, not a plain synonym of SHIRT.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TEE"],
+      "best_available": { "text": "TEE", "why": "Simple, fair double meaning." },
+      "pair_note": "Solid pair; the shirt side is close to synonymy but acceptable."
+    },
+    {
+      "pair_id": "p_insect__space",
+      "a": "INSECT",
+      "b": "SPACE",
+      "hints": [
+        {
+          "text": "BUZZ",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "INSECT via buzzing bugs and SPACE via Buzz Aldrin and Buzz Lightyear; both facts accurate and the double space reference is a treat.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BUZZ"],
+      "best_available": { "text": "BUZZ", "why": "Sound on one side, two famous space Buzzes on the other." },
+      "pair_note": "One of the best in the batch."
+    },
+    {
+      "pair_id": "p_honey__spell",
+      "a": "HONEY",
+      "b": "SPELL",
+      "hints": [
+        {
+          "text": "BEE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HONEY via honey bees and SPELL via spelling bees; two familiar compounds with a fun shift in meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BEE"],
+      "best_available": { "text": "BEE", "why": "Literal insect on one side, contest on the other." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_shrek__yoda",
+      "a": "SHREK",
+      "b": "YODA",
+      "hints": [
+        {
+          "text": "SWAMP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SHREK via his famous swamp and YODA via his home on the swamp planet Dagobah; both accurate, with the Yoda side slightly less top-of-mind.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SWAMP"],
+      "best_available": { "text": "SWAMP", "why": "Two green swamp dwellers; a nice reveal." },
+      "pair_note": "Strong; Yoda's swamp is well known to Star Wars viewers and lands once explained."
+    },
+    {
+      "pair_id": "p_china__shop",
+      "a": "CHINA",
+      "b": "SHOP",
+      "hints": [
+        {
+          "text": "BULL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both CHINA and SHOP come from the idiom 'a bull in a china shop'.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BULL"],
+      "best_available": { "text": "BULL", "why": "One famous idiom supplies both words." },
+      "pair_note": "Strong idiom pair; as with GENIUS BAR, the targets form one phrase and the hint completes it."
+    }
+  ]
+}
