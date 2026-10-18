@@ -443,6 +443,16 @@
         "rejected": 15,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u31-blind-review.json",
+        "key": "data/unlimited/library/reviews/u31-blind-key.json",
+        "batch": "data/unlimited/library/batches/u31-batch.json",
+        "ai_reviewed": 48,
+        "held": 27,
+        "rejected": 26,
+        "needsText": 1,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -102285,6 +102295,402 @@
       ]
     },
     {
+      "pair_id": "p_rock__spider",
+      "a": "ROCK",
+      "b": "SPIDER",
+      "source": "u31",
+      "pairNote": "Thin pair; CREVICE is a moderate scene hint, TARANTULA is spider-only.",
+      "reviewerBestAvailable": {
+        "text": "CREVICE",
+        "why": "Only hint that reaches both sides, via the spider-in-a-rock-crack scene.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CREVICE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A crevice in the rock.",
+          "wordBConnection": "A spider in the crevice.",
+          "revealExplanation": "Crevice: a spider in the rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROCK: a crevice is a crack in rock (rock crevice); SPIDER: the familiar scene of a spider hiding in a crack or crevice.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TARANTULA",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Under a desert rock.",
+          "wordBConnection": "A tarantula is a spider.",
+          "revealExplanation": "Tarantula: the spider under the rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SPIDER: a tarantula is a spider; ROCK: no recognizable route beyond \"tarantulas hide under rocks\", which is invented rescue.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__spring",
+      "a": "ROCK",
+      "b": "SPRING",
+      "source": "u31",
+      "pairNote": "MINERAL is the clear winner; HOT and WATER lean on the spring side.",
+      "reviewerBestAvailable": {
+        "text": "MINERAL",
+        "why": "Shared property that reaches both words cleanly: rocks are mineral, springs are mineral springs.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MINERAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rock minerals.",
+          "wordBConnection": "A mineral spring.",
+          "revealExplanation": "Mineral: the rock in the spring water.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "ROCK: rocks are made of minerals; SPRING: mineral spring / mineral water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HOT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Hot volcanic rock.",
+          "wordBConnection": "A hot spring.",
+          "revealExplanation": "Hot: the spring, heated by rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPRING: hot spring is a fixed compound; ROCK: \"hot rocks\"/hot-stone imagery or geothermally heated rock is a weaker route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WATER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Water from the rock.",
+          "wordBConnection": "Spring water.",
+          "revealExplanation": "Water: the spring, out of the rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "generic"
+              ],
+              "reason": "SPRING: spring water; ROCK: only a loose image of water flowing from rock, no fixed phrase.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__star",
+      "a": "ROCK",
+      "b": "STAR",
+      "source": "u31",
+      "pairNote": "Good pair; the \"rock star\" compound carries MUSIC and GUITAR.",
+      "reviewerBestAvailable": {
+        "text": "MUSIC",
+        "why": "Points straight at the compound \"rock star\" through rock music and music star.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MUSIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rock music.",
+          "wordBConnection": "A music star.",
+          "revealExplanation": "Music: the rock star.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "ROCK: rock music; STAR: a music star; together the familiar compound \"rock star\".",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GUITAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rock guitar.",
+          "wordBConnection": "A guitar star.",
+          "revealExplanation": "Guitar: the rock star's.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROCK: rock guitar; STAR: the rock-star-with-a-guitar scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHOOTING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A space rock.",
+          "wordBConnection": "A shooting star.",
+          "revealExplanation": "Shooting: the star that is really a rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "STAR: shooting star; ROCK: a shooting star is a meteor (true, a space rock burning up) but \"shooting\" does not point at ROCK for most players.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__train",
+      "a": "ROCK",
+      "b": "TRAIN",
+      "source": "u31",
+      "pairNote": "Rich pair with three working routes.",
+      "reviewerBestAvailable": {
+        "text": "TUNNEL",
+        "why": "Concrete shared scene: a train going through a tunnel cut in rock.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TUNNEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A tunnel through rock.",
+          "wordBConnection": "A train tunnel.",
+          "revealExplanation": "Tunnel: the train through the rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROCK: tunnels are bored through rock; TRAIN: the train tunnel scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rock from the mine.",
+          "wordBConnection": "A mine train.",
+          "revealExplanation": "Mine: the train, full of rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROCK: mining rock/ore; TRAIN: mine train (mining railway, the familiar mine-train ride).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROLL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Rock and roll.",
+          "wordBConnection": "A rolling train.",
+          "revealExplanation": "Roll: rock, and the train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROCK: rock and roll; TRAIN: trains roll (rolling stock), backed by the AC/DC song \"Rock 'n' Roll Train\".",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_rock__water",
       "a": "ROCK",
       "b": "WATER",
@@ -102408,6 +102814,696 @@
       }
     },
     {
+      "pair_id": "p_rock__witch",
+      "a": "ROCK",
+      "b": "WITCH",
+      "source": "u31",
+      "pairNote": "No PASS. Do not explain STONEHENGE as built or used by witches (that would be a wrong fact).",
+      "reviewerBestAvailable": {
+        "text": "STONEHENGE",
+        "why": "Only hint touching both words; the witch side is a pagan-gathering stretch.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "STONEHENGE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The stones of Stonehenge.",
+          "wordBConnection": "Imagined witches' rites.",
+          "revealExplanation": "Stonehenge: rocks, and witchy legend.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "ROCK: standing stones; WITCH: only via modern pagans/Wiccans gathering at solstice, and most players link Stonehenge to druids, not witches.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CAULDRON",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "stone cauldron is not a familiar image; rock side invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WITCH: the witch's cauldron; ROCK: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rock__wolf",
+      "a": "ROCK",
+      "b": "WOLF",
+      "source": "u31",
+      "pairNote": "No PASS; both hints are wolf-led.",
+      "reviewerBestAvailable": {
+        "text": "DEN",
+        "why": "A rocky den is a real place; HOWL leaves ROCK as scenery.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A rocky den.",
+          "wordBConnection": "A wolf den.",
+          "revealExplanation": "Den: the wolf's, among the rocks.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WOLF: wolf den; ROCK: dens in rocky caves or under boulders is a possible but weak scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HOWL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A wolf on a rock.",
+          "wordBConnection": "A wolf howls.",
+          "revealExplanation": "Howl: the wolf, up on the rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "WOLF: wolves howl; ROCK: only the poster image of a wolf howling from a rocky crag, where the rock is incidental.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__salt",
+      "a": "ROSE",
+      "b": "SALT",
+      "source": "u31",
+      "pairNote": "WATER is solid; the others lean on one side.",
+      "reviewerBestAvailable": {
+        "text": "WATER",
+        "why": "Two everyday compounds: rose water and salt water.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WATER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "A rose will die of salt water faster than anything else in the garden.",
+          "wordBConnection": "And the salt is what does it.",
+          "revealExplanation": "Salt water will kill a rose faster than anything else in the garden.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "ROSE: rose water; SALT: salt water; compound route on both sides.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DESERT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "A desert rose comes out of the ground shaped like a flower.",
+          "wordBConnection": "It is a cluster of crystals that forms in salt flats.",
+          "revealExplanation": "A desert rose is a cluster of crystals that forms in salt flats and comes out shaped like a flower.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROSE: desert rose (plant, crystal, Sting song); SALT: salt desert/salt flats is real but a weaker association.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PRESERVE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "Rose petals are preserved to make potpourri.",
+          "wordBConnection": "Salt is the preservative that does it.",
+          "revealExplanation": "Salt preserves food and rose petals are preserved with salt to make potpourri.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: salt preserves food; ROSE: rose-petal or rose-hip preserves are niche.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__shadow",
+      "a": "ROSE",
+      "b": "SHADOW",
+      "source": "u31",
+      "pairNote": "SONIC depends on gaming familiarity; the rest are generic or one-sided.",
+      "reviewerBestAvailable": {
+        "text": "SONIC",
+        "why": "Only hint that names a real shared context for both words (two Sonic characters).",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SONIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "fictional_character",
+          "wordAConnection": "Amy Rose is one of the regular cast.",
+          "wordBConnection": "Shadow the Hedgehog is another.",
+          "revealExplanation": "Amy Rose and Shadow the Hedgehog are both characters in the Sonic games.",
+          "reference": {
+            "referenceType": "franchise_pair",
+            "source": "Sonic the Hedgehog",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Brand route: Amy Rose and Shadow the Hedgehog are both well-known Sonic characters.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHADE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "wordplay",
+          "wordAConnection": "A rose will not flower in it.",
+          "wordBConnection": "Shade is the everyday word for shadow.",
+          "revealExplanation": "Shade is another word for shadow and a rose will not flower in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target",
+                "colour_mood_material"
+              ],
+              "reason": "SHADOW: near-synonym (shade); ROSE: \"rose\" as a shade of pink or roses in the shade, both weak.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BLACK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A black rose is the gothic image.",
+          "wordBConnection": "And a shadow reads as black on the ground.",
+          "revealExplanation": "A black rose is the gothic image and a shadow reads as black on the ground.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "ROSE: the black rose symbol; SHADOW: shadows look dark, a visual colour link only.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FADE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Roses fade in the vase.",
+          "wordBConnection": "Shadows fade as the light changes.",
+          "revealExplanation": "Roses fade in the vase and shadows fade as the light changes.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "ROSE: a rose fades; SHADOW: shadows fade; a generic verb that reaches neither strongly.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WILT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A rose wilts.",
+          "wordBConnection": "Something diminished is called a shadow of its former self.",
+          "revealExplanation": "A rose wilts, and something diminished is called a shadow of its former self.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROSE: roses wilt; SHADOW: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__shark",
+      "a": "ROSE",
+      "b": "SHARK",
+      "source": "u31",
+      "pairNote": "No PASS; both hints are rose-only. The pair needs a new hint.",
+      "reviewerBestAvailable": {
+        "text": "TITANIC",
+        "why": "Strong on ROSE and at least sets an ocean scene; still does not reach SHARK.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TITANIC",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "shark side absent",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROSE: Rose is the Titanic heroine; SHARK: no sharks in the story, so any shark explanation would be invented.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rose's thorns.",
+          "wordBConnection": "A shark's sharp teeth.",
+          "revealExplanation": "Thorn: the rose's, sharp like the shark's teeth.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROSE: rose thorns; SHARK: no recognizable route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__snake",
+      "a": "ROSE",
+      "b": "SNAKE",
+      "source": "u31",
+      "pairNote": "GARDEN carries the pair; THORN and BITE are one-sided.",
+      "reviewerBestAvailable": {
+        "text": "GARDEN",
+        "why": "Familiar compounds on both sides: rose garden and garden snake.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GARDEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The rose is what the garden is famous for.",
+          "wordBConnection": "The serpent is what was in it.",
+          "revealExplanation": "The serpent was in the garden and the rose is what the garden is famous for.",
+          "reference": {
+            "referenceType": "book",
+            "source": "the Garden of Eden",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROSE: rose garden; SNAKE: garden snake / the serpent in the Garden of Eden.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A rose hides thorns.",
+          "wordBConnection": "A snake hides in the grass. Both are the danger you do not see.",
+          "revealExplanation": "A rose hides thorns and a snake hides in the grass; both are the danger you do not see coming.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROSE: rose thorns; SNAKE: no route (thorns are not fangs).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BITE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A rose will draw blood if you grab it wrong.",
+          "wordBConnection": "A snake does it outright.",
+          "revealExplanation": "A snake bites and a rose will draw blood too if you grab it wrong.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SNAKE: snake bite; ROSE: roses do not bite, no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__spider",
+      "a": "ROSE",
+      "b": "SPIDER",
+      "source": "u31",
+      "pairNote": "GARDEN works; THORN is filler.",
+      "reviewerBestAvailable": {
+        "text": "GARDEN",
+        "why": "Rose garden and garden spider are both familiar phrases.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GARDEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rose garden.",
+          "wordBConnection": "A garden spider.",
+          "revealExplanation": "Garden: the spider among the roses.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROSE: rose garden; SPIDER: garden spider (a common name) and the garden-web scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rose's thorns.",
+          "wordBConnection": "A web on the thorns.",
+          "revealExplanation": "Thorn: the rose's, holding a web.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROSE: rose thorns; SPIDER: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_rose__spring",
       "a": "ROSE",
       "b": "SPRING",
@@ -102527,6 +103623,2607 @@
           "BUD"
         ]
       }
+    },
+    {
+      "pair_id": "p_rose__star",
+      "a": "ROSE",
+      "b": "STAR",
+      "source": "u31",
+      "pairNote": "Two moderate hints; both depend on recognizing a specific reference.",
+      "reviewerBestAvailable": {
+        "text": "PRINCE",
+        "why": "The Little Prince story holds both the rose and the stars.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PRINCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Little Prince's rose.",
+          "wordBConnection": "His home among the stars.",
+          "revealExplanation": "Prince: the Little Prince, his rose and his stars.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "The Little Prince",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Story route: The Little Prince loves his rose and lives on a tiny asteroid among the stars.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "COMPASS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The compass rose.",
+          "wordBConnection": "Its star shape.",
+          "revealExplanation": "Compass: the rose, shaped like a star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROSE: compass rose; STAR: navigating by the stars (the North Star as a compass), and the compass rose is drawn as a star.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__train",
+      "a": "ROSE",
+      "b": "TRAIN",
+      "source": "u31",
+      "pairNote": "Clean pair; BRIDE is a variant of WEDDING.",
+      "reviewerBestAvailable": {
+        "text": "WEDDING",
+        "why": "The wedding scene holds both the dress train and the roses.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Wedding roses.",
+          "wordBConnection": "A wedding train.",
+          "revealExplanation": "Wedding: roses and train.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "TRAIN: the train of a wedding dress; ROSE: wedding roses and bouquets.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BRIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The bride's roses.",
+          "wordBConnection": "The bride's train.",
+          "revealExplanation": "Bride: roses, and the dress train.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:WEDDING"
+              ],
+              "reason": "TRAIN: the bride's train; ROSE: the bride's roses; same scene as WEDDING.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__water",
+      "a": "ROSE",
+      "b": "WATER",
+      "source": "u31",
+      "pairNote": "ROSEWATER fails the contains-target rule; VASE is the safe hint.",
+      "reviewerBestAvailable": {
+        "text": "VASE",
+        "why": "The everyday scene of roses standing in a vase of water.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VASE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rose in a vase.",
+          "wordBConnection": "A vase of water.",
+          "revealExplanation": "Vase: the rose in water.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "ROSE: roses in a vase; WATER: a vase holds water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROSEWATER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "contains both targets",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains both ROSE and WATER as substrings, which breaks the rule.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PETALS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Rose petals.",
+          "wordBConnection": "Petals on the water.",
+          "revealExplanation": "Petals: roses on the water.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "ROSE: rose petals; WATER: petals floating on water is a loose image.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__witch",
+      "a": "ROSE",
+      "b": "WITCH",
+      "source": "u31",
+      "pairNote": "Fairy-tale pair; ENCHANTRESS is nearly a synonym of WITCH, worth a second opinion.",
+      "reviewerBestAvailable": {
+        "text": "ENCHANTRESS",
+        "why": "Directly evokes the enchanted-rose story and sits close to WITCH.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ENCHANTRESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The enchanted rose.",
+          "wordBConnection": "The enchantress.",
+          "revealExplanation": "Enchantress: the rose's maker.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "WITCH: an enchantress is a near-synonym; ROSE: the Beauty and the Beast enchantress who leaves the enchanted rose.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SPELL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The rose's spell.",
+          "wordBConnection": "A witch's spell.",
+          "revealExplanation": "Spell: the rose, under a witch's spell.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "WITCH: casts spells; ROSE: the spell on the enchanted rose in Beauty and the Beast and on Briar Rose in Sleeping Beauty.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BRIAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Briar Rose.",
+          "wordBConnection": "Cursed by Maleficent.",
+          "revealExplanation": "Briar: Briar Rose, cursed by a witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "ROSE: Briar Rose (Sleeping Beauty's name, and the wild rose); WITCH: only through Maleficent, a wicked fairy that players may or may not call a witch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rose__wolf",
+      "a": "ROSE",
+      "b": "WOLF",
+      "source": "u31",
+      "pairNote": "Both hints work; RED is more immediate.",
+      "reviewerBestAvailable": {
+        "text": "RED",
+        "why": "Reaches both broadly: red roses and Little Red Riding Hood's wolf.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Red roses.",
+          "wordBConnection": "Red Riding Hood's wolf.",
+          "revealExplanation": "Red: the rose, and Red Riding Hood's wolf.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "ROSE: red roses (\"roses are red\"); WOLF: Little Red Riding Hood and the wolf (story name route).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BEAST",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "the Beast is a chimera, not a wolf; invented route",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROSE: the enchanted rose in Beauty and the Beast; WOLF: a wolf is a beast, and wolves attack Belle in the same film.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__shadow",
+      "a": "SALT",
+      "b": "SHADOW",
+      "source": "u31",
+      "pairNote": "DOUBT is clever but indirect on the salt side.",
+      "reviewerBestAvailable": {
+        "text": "DOUBT",
+        "why": "Two familiar idioms of doubt: shadow of a doubt and grain of salt.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DOUBT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Take it with a pinch of salt.",
+          "wordBConnection": "Beyond a shadow of a doubt. The same thought twice.",
+          "revealExplanation": "Take it with a pinch of salt and beyond a shadow of a doubt are the same thought twice.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SHADOW: \"beyond a shadow of a doubt\"; SALT: \"take it with a grain of salt\" means to doubt it; idiom route on both sides.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DESERT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Salt flats are desert.",
+          "wordBConnection": "And the desert is where shadows are sharpest.",
+          "revealExplanation": "Salt flats are desert and the desert is where shadows are sharpest.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "SALT: salt deserts/flats; SHADOW: \"rain shadow\" deserts, a geography term few players will reach.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEASON",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "You season food with salt.",
+          "wordBConnection": "The season is what decides how long the shadows are.",
+          "revealExplanation": "You season food with salt, and the season is what decides how long the shadows are.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: season with salt; SHADOW: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__shark",
+      "a": "SALT",
+      "b": "SHARK",
+      "source": "u31",
+      "pairNote": "Easy pair; OCEAN duplicates SEA.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea salt is a fixed phrase and the sea is the shark's home.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sea salt.",
+          "wordBConnection": "Sea sharks.",
+          "revealExplanation": "Sea: salt and sharks.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "SALT: sea salt; SHARK: sharks live in the sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "OCEAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The salt ocean.",
+          "wordBConnection": "Sharks in the ocean.",
+          "revealExplanation": "Ocean: salt water, and sharks.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "variant_of:SEA"
+              ],
+              "reason": "SALT: the salty ocean; SHARK: ocean predator; same route as SEA.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__snake",
+      "a": "SALT",
+      "b": "SNAKE",
+      "source": "u31",
+      "pairNote": "SEA works; LICK would need a false \"snakes lick\" claim.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Two compounds: sea salt and sea snake.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The sea is salt.",
+          "wordBConnection": "And the sea snake lives in it.",
+          "revealExplanation": "The sea is salt and the sea snake lives in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SALT: sea salt; SNAKE: sea snake, a real animal.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DESERT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Salt flats are desert.",
+          "wordBConnection": "And rattlesnakes live out on them.",
+          "revealExplanation": "Rattlesnakes live out on the salt flats and desert.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SNAKE: desert snakes (rattlesnakes); SALT: salt deserts/flats are real but a weaker association.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LICK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A salt lick is put out for the animals.",
+          "wordBConnection": "A snake licks the air to taste it.",
+          "revealExplanation": "A salt lick is put out for the animals and a snake licks the air to taste it.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: salt lick; SNAKE: snakes flick their tongues rather than lick, so no fair route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__spider",
+      "a": "SALT",
+      "b": "SPIDER",
+      "source": "u31",
+      "pairNote": "No PASS; both hints are salt-only. The pair needs a new hint.",
+      "reviewerBestAvailable": {
+        "text": "CRYSTAL",
+        "why": "Strong on SALT; nothing reaches SPIDER, so it is a default only.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SPRINKLE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sprinkled salt.",
+          "wordBConnection": "To keep spiders out.",
+          "revealExplanation": "Sprinkle: salt against spiders.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: sprinkle salt; SPIDER: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CRYSTAL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salt crystals.",
+          "wordBConnection": "Crystals on a spider web.",
+          "revealExplanation": "Crystal: salt, on a web.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: salt crystals; SPIDER: no recognizable route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__spring",
+      "a": "SALT",
+      "b": "SPRING",
+      "source": "u31",
+      "pairNote": "Three working hints.",
+      "reviewerBestAvailable": {
+        "text": "WATER",
+        "why": "Two everyday compounds: salt water and spring water.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "WATER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "Salt water is one of the two kinds the word in front tells you about.",
+          "wordBConnection": "Spring water is the other.",
+          "revealExplanation": "Spring water and salt water are both bottled by the word that follows.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "SALT: salt water; SPRING: spring water; compound route on both sides.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MINERAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A mineral spring is naturally salty.",
+          "wordBConnection": "And it is a spring coming out of the ground.",
+          "revealExplanation": "A mineral spring is naturally salty water coming out of the ground.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "SALT: salt is a mineral (mineral salts); SPRING: mineral spring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "THAW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "Salt is thrown on the roads to force it.",
+          "wordBConnection": "Spring would have brought the thaw anyway.",
+          "revealExplanation": "Salt is thrown on roads to force the thaw that spring would bring anyway.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SPRING: the spring thaw; SALT: road salt thaws ice; shared verb route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__star",
+      "a": "SALT",
+      "b": "STAR",
+      "source": "u31",
+      "pairNote": "No PASS; both hints are one-sided. Something like SEA (sea salt / sea star) would reach both.",
+      "reviewerBestAvailable": {
+        "text": "CRACKER",
+        "why": "Default only; both hints are salt snack foods with nothing for STAR.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CRACKER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salt crackers.",
+          "wordBConnection": "Star crackers.",
+          "revealExplanation": "Cracker: salt and star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: salted crackers/saltines; STAR: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PRETZEL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salted pretzels.",
+          "wordBConnection": "Star-shaped pretzels.",
+          "revealExplanation": "Pretzel: salted, star-shaped.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: salted pretzels; STAR: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__train",
+      "a": "SALT",
+      "b": "TRAIN",
+      "source": "u31",
+      "pairNote": "No PASS; both hints reach only one side clearly.",
+      "reviewerBestAvailable": {
+        "text": "LAKE",
+        "why": "Strongest single side (Salt Lake) with a real, if niche, railroad history link.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "LAKE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Great Salt Lake.",
+          "wordBConnection": "Trains cross the lake.",
+          "revealExplanation": "Lake: the Salt Lake train crossing.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Lucin Cutoff",
+            "recognizability": "niche"
+          },
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "needs_explanation",
+                "obscure"
+              ],
+              "reason": "SALT: Salt Lake (City); TRAIN: only via the transcontinental railroad's golden spike in Utah, a history stretch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FREIGHT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Salt as freight.",
+          "wordBConnection": "A freight train.",
+          "revealExplanation": "Freight: salt on the train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "TRAIN: freight train; SALT: salt is hauled as bulk freight, but there is no familiar link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__water",
+      "a": "SALT",
+      "b": "WATER",
+      "source": "u31",
+      "pairNote": "Very easy pair; four passing hints.",
+      "reviewerBestAvailable": {
+        "text": "BRINE",
+        "why": "Brine simply is salt water.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 4,
+      "clues": [
+        {
+          "text": "BRINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Brine is salty.",
+          "wordBConnection": "Brine is water.",
+          "revealExplanation": "Brine: salt water.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Brine is salt water: both words in one definition, the familiar pickling brine.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TAFFY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salt water taffy.",
+          "wordBConnection": "Salt water taffy.",
+          "revealExplanation": "Taffy: salt water taffy.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Compound route: saltwater taffy.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "OCEAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean salt.",
+          "wordBConnection": "Ocean water.",
+          "revealExplanation": "Ocean: salt water.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "The ocean is salt water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sea salt.",
+          "wordBConnection": "Sea water.",
+          "revealExplanation": "Sea: salt water.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "variant_of:OCEAN"
+              ],
+              "reason": "The sea is salt water; same route as OCEAN.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__witch",
+      "a": "SALT",
+      "b": "WITCH",
+      "source": "u31",
+      "pairNote": "Folklore pair; SALEM is witch-only.",
+      "reviewerBestAvailable": {
+        "text": "CIRCLE",
+        "why": "The salt circle and the witch's circle are both familiar occult images.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CIRCLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A circle of salt.",
+          "wordBConnection": "Warding off witches.",
+          "revealExplanation": "Circle: salt against the witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SALT: the protective salt circle trope; WITCH: the witch's magic circle / coven circle.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salt as a ward.",
+          "wordBConnection": "Warding off witches.",
+          "revealExplanation": "Ward: salt, against witches.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "WITCH: protective wards and magic; SALT: the folklore of salt warding off evil.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SALEM",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "salt side is only a sound-alike; filler",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WITCH: the Salem witch trials; SALT: no route (the name only looks like SALT).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_salt__wolf",
+      "a": "SALT",
+      "b": "WOLF",
+      "source": "u31",
+      "pairNote": "No PASS; the pair needs a new hint.",
+      "reviewerBestAvailable": {
+        "text": "LICK",
+        "why": "Strong salt compound with a weak but true wolf link.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "LICK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A salt lick.",
+          "wordBConnection": "Wolves stalk the salt lick.",
+          "revealExplanation": "Lick: salt, where wolves hunt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: salt lick; WOLF: wolves lick (pups, wounds, \"licking its wounds\"), a weak generic animal link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HUNTER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "salt side invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "WOLF: wolf hunter; SALT: no recognizable route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__shark",
+      "a": "SHADOW",
+      "b": "SHARK",
+      "source": "u31",
+      "pairNote": "No PASS; both hints are shark-only.",
+      "reviewerBestAvailable": {
+        "text": "JAWS",
+        "why": "Strong shark side; the lurking dark-shape image is the only thing near SHADOW.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "JAWS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The shadow under the swimmers.",
+          "wordBConnection": "Jaws the shark.",
+          "revealExplanation": "Jaws: the shark's shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SHARK: Jaws; SHADOW: only a vague image of a dark shape under water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FIN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fin's shadow.",
+          "wordBConnection": "A shark fin.",
+          "revealExplanation": "Fin: the shark's, and its shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SHARK: shark fin; SHADOW: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__snake",
+      "a": "SHADOW",
+      "b": "SNAKE",
+      "source": "u31",
+      "pairNote": "LURK carries the pair; STRIKE is close behind.",
+      "reviewerBestAvailable": {
+        "text": "LURK",
+        "why": "Lurking in the shadows is a fixed image, and snakes are the classic lurker.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LURK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A shadow lurks.",
+          "wordBConnection": "So does a snake.",
+          "revealExplanation": "A snake lurks and so does a shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SHADOW: lurking in the shadows; SNAKE: a lurking snake, the ambush predator.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "STRIKE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cause_and_effect",
+          "wordAConnection": "Out of the shadows is where it comes from.",
+          "wordBConnection": "A snake strikes before you have seen it.",
+          "revealExplanation": "A snake strikes out of the shadows before you have seen it.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SNAKE: a snake strikes; SHADOW: \"strike from the shadows\" is a weaker phrase.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GRASS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "The grass is where the shadows lie.",
+          "wordBConnection": "A snake in the grass is the warning.",
+          "revealExplanation": "A snake in the grass is the warning and the grass is where the shadows lie.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SNAKE: snake in the grass; SHADOW: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__spider",
+      "a": "SHADOW",
+      "b": "SPIDER",
+      "source": "u31",
+      "pairNote": "Both hints are moderate, and they work together.",
+      "reviewerBestAvailable": {
+        "text": "LURK",
+        "why": "A clear shared verb: things lurk in shadows and spiders lurk in webs.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "LURK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Lurking in shadow.",
+          "wordBConnection": "A lurking spider.",
+          "revealExplanation": "Lurk: the spider, in shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SHADOW: lurking in the shadows; SPIDER: a spider lurking in its web.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CORNER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A shadowy corner.",
+          "wordBConnection": "A spider in the corner.",
+          "revealExplanation": "Corner: the spider, in the shadows.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SPIDER: spiders and cobwebs in corners; SHADOW: dark, shadowy corners.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__spring",
+      "a": "SHADOW",
+      "b": "SPRING",
+      "source": "u31",
+      "pairNote": "GROUNDHOG is excellent; LENGTH should go.",
+      "reviewerBestAvailable": {
+        "text": "GROUNDHOG",
+        "why": "The Groundhog Day story ties shadow to an early spring.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GROUNDHOG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "If it sees its shadow there are six more weeks of winter.",
+          "wordBConnection": "If it does not, spring comes early.",
+          "revealExplanation": "If the groundhog sees its shadow there are six more weeks of winter, and if it does not, spring comes early.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Groundhog Day",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Story route: on Groundhog Day, whether the groundhog sees his shadow decides whether spring comes early.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SUN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Real shadows need the sun.",
+          "wordBConnection": "And the returning spring sun is what starts casting them again.",
+          "revealExplanation": "The returning spring sun is what starts casting real shadows again.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "one_sided"
+              ],
+              "reason": "SHADOW: the sun casts shadows; SPRING: spring sunshine is only a loose link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LENGTH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "Shadows shorten.",
+          "wordBConnection": "As spring moves the sun higher in the sky.",
+          "revealExplanation": "Shadows shorten as spring moves the sun higher in the sky.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "SHADOW: shadow length; SPRING: no clear route (seasonal day length is a rescue).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__star",
+      "a": "SHADOW",
+      "b": "STAR",
+      "source": "u31",
+      "pairNote": "LIGHT works; ECLIPSE is borderline.",
+      "reviewerBestAvailable": {
+        "text": "LIGHT",
+        "why": "Starlight plus the light-and-shadow pairing reaches both words.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Light makes shadows.",
+          "wordBConnection": "Starlight.",
+          "revealExplanation": "Light: stars, and shadows.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "STAR: starlight; SHADOW: light and shadow, a familiar contrast.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ECLIPSE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An eclipse is a shadow.",
+          "wordBConnection": "The sun is a star.",
+          "revealExplanation": "Eclipse: shadow across a star.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SHADOW: an eclipse is a shadow; STAR: only because the sun is a star, a step most players will not take.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__train",
+      "a": "SHADOW",
+      "b": "TRAIN",
+      "source": "u31",
+      "pairNote": "No PASS; SHADOW is reached only by mood in both hints.",
+      "reviewerBestAvailable": {
+        "text": "GHOST",
+        "why": "Ghost train is a real compound, and ghosts and shadows share a spooky sense.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "GHOST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A shadowy ghost.",
+          "wordBConnection": "A ghost train.",
+          "revealExplanation": "Ghost: the shadowy ghost train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "TRAIN: ghost train (fairground ride, phantom trains); SHADOW: shadows as ghostly shapes is only a mood link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TUNNEL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Tunnel shadow.",
+          "wordBConnection": "A train tunnel.",
+          "revealExplanation": "Tunnel: the train into shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "TRAIN: train tunnel; SHADOW: tunnels are dark and shadowy, a mood link only.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__water",
+      "a": "SHADOW",
+      "b": "WATER",
+      "source": "u31",
+      "pairNote": "Moderate pair; SHADE is close to a synonym of SHADOW.",
+      "reviewerBestAvailable": {
+        "text": "REFLECTION",
+        "why": "A water reflection and a shadow are the two familiar \"copies\" of you made by light.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DEEP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Deep shadow.",
+          "wordBConnection": "Deep water.",
+          "revealExplanation": "Deep: shadow and water.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "WATER: deep water; SHADOW: deep shadows; a shared adjective in common phrases.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "REFLECTION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A shadowy reflection.",
+          "wordBConnection": "Reflection on water.",
+          "revealExplanation": "Reflection: shadow on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "WATER: a reflection in water; SHADOW: your shadow and your reflection are both your image cast by light.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHADE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "synonym of SHADOW with no real water route",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target",
+                "one_sided"
+              ],
+              "reason": "SHADOW: near-synonym; WATER: only the \"shade and water\" phrase from heat-safety advice.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__witch",
+      "a": "SHADOW",
+      "b": "WITCH",
+      "source": "u31",
+      "pairNote": "Weak-moderate pair; DARK is the only PASS and it is generic.",
+      "reviewerBestAvailable": {
+        "text": "DARK",
+        "why": "Shared property: shadows are dark and witches practise dark magic.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DARK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dark shadow.",
+          "wordBConnection": "A dark witch.",
+          "revealExplanation": "Dark: shadow and witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "SHADOW: shadows are dark; WITCH: dark magic and the dark witch; shared property.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HALLOWEEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Halloween shadows.",
+          "wordBConnection": "Halloween witches.",
+          "revealExplanation": "Halloween: shadows and witches.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WITCH: the classic Halloween witch; SHADOW: spooky shadows are only a mood link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BROOMSTICK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A broomstick shadow.",
+          "wordBConnection": "A witch's broomstick.",
+          "revealExplanation": "Broomstick: the witch's shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WITCH: the witch's broomstick; SHADOW: a broom silhouette against the moon is not a shadow.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shadow__wolf",
+      "a": "SHADOW",
+      "b": "WOLF",
+      "source": "u31",
+      "pairNote": "PUPPET carries the pair.",
+      "reviewerBestAvailable": {
+        "text": "PUPPET",
+        "why": "The wolf is one of the best-known hand-shadow puppets.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PUPPET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A shadow puppet.",
+          "wordBConnection": "The wolf hand shadow.",
+          "revealExplanation": "Puppet: the wolf on the wall.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SHADOW: shadow puppets; WOLF: the classic wolf hand-shadow.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HOWL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A howling shadow.",
+          "wordBConnection": "A wolf howls.",
+          "revealExplanation": "Howl: the wolf, a shadow in the moonlight.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WOLF: wolves howl; SHADOW: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shark__snake",
+      "a": "SHARK",
+      "b": "SNAKE",
+      "source": "u31",
+      "pairNote": "Easy pair with three valid routes.",
+      "reviewerBestAvailable": {
+        "text": "BITE",
+        "why": "Shark bite and snake bite are both everyday phrases.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A shark bite.",
+          "wordBConnection": "A snake bite.",
+          "revealExplanation": "Bite: shark or snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SHARK: shark bite; SNAKE: snake bite; both fixed compounds.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PREDATOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Shark predator.",
+          "wordBConnection": "Snake predator.",
+          "revealExplanation": "Predator: shark and snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: both are famous predators.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FEAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fear of sharks.",
+          "wordBConnection": "Fear of snakes.",
+          "revealExplanation": "Fear: sharks and snakes.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: both are classic feared animals (Jaws, fear of snakes).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shark__spider",
+      "a": "SHARK",
+      "b": "SPIDER",
+      "source": "u31",
+      "pairNote": "Both hints are generic but valid shared properties.",
+      "reviewerBestAvailable": {
+        "text": "FEAR",
+        "why": "Spiders and sharks are the two most commonly feared animals.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PREDATOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Shark predator.",
+          "wordBConnection": "Spider predator.",
+          "revealExplanation": "Predator: shark and spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: both are predators.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FEAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fear of sharks.",
+          "wordBConnection": "Fear of spiders.",
+          "revealExplanation": "Fear: sharks and spiders.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: both are classic phobias (arachnophobia, fear of sharks).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shark__spring",
+      "a": "SHARK",
+      "b": "SPRING",
+      "source": "u31",
+      "pairNote": "No PASS. JUMP (jump the shark / jump as spring) would be stronger.",
+      "reviewerBestAvailable": {
+        "text": "LEAP",
+        "why": "Reaches SPRING as a verb and SHARK through breaching or the \"jump the shark\" idiom.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "LEAP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A breaching shark leaps.",
+          "wordBConnection": "To spring is to leap.",
+          "revealExplanation": "Leap: the shark springs from the water.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target",
+                "needs_explanation"
+              ],
+              "reason": "SPRING: to spring is to leap (near-synonym of the verb); SHARK: sharks breaching or \"jump the shark\", which uses JUMP, not LEAP.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BREAK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Shark warnings at the beach.",
+          "wordBConnection": "Spring break.",
+          "revealExplanation": "Break: spring break, and the sharks offshore.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SPRING: spring break; SHARK: no route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shark__star",
+      "a": "SHARK",
+      "b": "STAR",
+      "source": "u31",
+      "pairNote": "SEA works; JAWS is shark-only.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea star is a real name for the starfish, and the sea is the shark's home.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sea sharks.",
+          "wordBConnection": "A sea star.",
+          "revealExplanation": "Sea: shark and sea star.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "STAR: sea star (starfish); SHARK: sharks live in the sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "JAWS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Jaws the shark.",
+          "wordBConnection": "The film's star.",
+          "revealExplanation": "Jaws: the shark that became a star.",
+          "reference": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SHARK: Jaws; STAR: only \"film star\", which does not tie to the shark.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_shark__train",
+      "a": "SHARK",
+      "b": "TRAIN",
+      "source": "u31",
+      "pairNote": "TANK is a nice double compound; BULLET is train-only.",
+      "reviewerBestAvailable": {
+        "text": "TANK",
+        "why": "Shark Tank and Thomas the Tank Engine are both familiar.",
+        "reviewer": "blind-subagent-31"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TANK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A shark tank.",
+          "wordBConnection": "A train tank car.",
+          "revealExplanation": "Tank: shark, and train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SHARK: shark tank (aquarium and TV show); TRAIN: tank engine (Thomas the Tank Engine) and tank cars.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BULLET",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u31",
+            "authorLabel": "rejected",
+            "authorReason": "the bullet train's nose was modelled on a kingfisher, not a shark; wrong fact",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-31",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "TRAIN: bullet train; SHARK: no route (there is no common \"bullet shark\"; the bull shark does not count).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u31-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_train__water",

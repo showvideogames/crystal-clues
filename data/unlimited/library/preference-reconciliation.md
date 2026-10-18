@@ -2,18 +2,16 @@
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 120
-- pairs where the reviewer's pick already was the provisional top candidate: 804
-- preferences added: 4 (4 ties, 0 overrides of a higher-scored hint)
+- pairs with an existing approved preference (untouched): 124
+- pairs where the reviewer's pick already was the provisional top candidate: 832
+- preferences added: 2 (2 ties, 0 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 2
 - proposed entries still open: 12
 
 ## Added
 
-- tie p_ring__robot (RING+ROBOT): BOXING 2/1/2 replaces BATTLE 1/2/2 — The boxing ring is certain, and boxing robots are a familiar toy and film image.
-- tie p_ring__rose (RING+ROSE): POSIES 2/2/2 replaces GOLD 2/2/2 — The nursery rhyme puts ring and roses side by side.
-- tie p_ring__water (RING+WATER): RIPPLE 2/2/2 replaces BUOY 2/2/2 — One picture shows both: rings spreading on water.
-- tie p_rock__rose (ROCK+ROSE): GUNS 2/2/2 replaces DESERT 2/2/2 — One famous rock band named with Roses.
+- tie p_shadow__water (SHADOW+WATER): REFLECTION 1/2/1 replaces DEEP 1/2/1 — A water reflection and a shadow are the two familiar "copies" of you made by light.
+- tie p_shark__spider (SHARK+SPIDER): FEAR 2/2/2 replaces PREDATOR 2/2/2 — Spiders and sharks are the two most commonly feared animals.
 
 ## Contradictions (unresolved, for the parent)
 
