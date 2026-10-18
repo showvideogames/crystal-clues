@@ -313,6 +313,16 @@
         "rejected": 14,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u20-blind-review.json",
+        "key": "data/unlimited/library/reviews/u20-blind-key.json",
+        "batch": "data/unlimited/library/batches/u20-batch.json",
+        "ai_reviewed": 63,
+        "held": 31,
+        "rejected": 17,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -49987,6 +49997,1512 @@
       }
     },
     {
+      "pair_id": "p_ghost__rose",
+      "a": "GHOST",
+      "b": "ROSE",
+      "source": "u20",
+      "pairNote": "One solid shared-scene hint; the other two lean almost entirely on ROSE.",
+      "reviewerBestAvailable": {
+        "text": "GRAVE",
+        "why": "The only hint that gives a shared scene (roses on a haunted grave) rather than a one-sided definition.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GRAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ghost is what rises from one.",
+          "wordBConnection": "Roses are what get laid on it.",
+          "revealExplanation": "Roses are laid on a grave and a ghost is what rises from one.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghosts rise from graves, and a rose laid on a grave is a familiar graveside scene."
+            }
+          }
+        },
+        {
+          "text": "SCENT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A smell with no source is a stock sign of a haunting.",
+          "wordBConnection": "And the smell is always roses.",
+          "revealExplanation": "The smell of roses with no roses in the room is a stock sign of a haunting.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Rose scent is immediate; the ghost side relies on the ghost-story trope of an unexplained perfume, which many players will not reach."
+            }
+          }
+        },
+        {
+          "text": "WREATH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A wreath is laid for the dead.",
+          "wordBConnection": "And it is woven out of roses.",
+          "revealExplanation": "A wreath of roses is laid for the dead.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Rose wreaths exist (funeral flowers), but a wreath does not point at a ghost without a chain of grave-to-haunting reasoning."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__salt",
+      "a": "GHOST",
+      "b": "SALT",
+      "source": "u20",
+      "pairNote": "CIRCLE carries the pair; SHOULDER is a defensible second if a softer ghost route is acceptable.",
+      "reviewerBestAvailable": {
+        "text": "CIRCLE",
+        "why": "Folklore gives a real shared scene: a ring of salt keeps the ghost out.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CIRCLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A ghost cannot cross one.",
+          "wordBConnection": "The circle is poured in salt.",
+          "revealExplanation": "A circle of salt is the traditional protection against a ghost crossing into a room.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A salt circle wards off ghosts and spirits in folklore and TV (Supernatural), and seance circles summon them, so the circle links both sides."
+            }
+          }
+        },
+        {
+          "text": "SHOULDER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "To keep the bad spirits off.",
+          "wordBConnection": "You throw the spilled salt over it.",
+          "revealExplanation": "You throw spilled salt over your shoulder to keep the bad spirits off.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Salt thrown over the shoulder is immediate; the ghost side (a presence looking over your shoulder, salt over the shoulder to blind the devil) is recognisable but softer."
+            }
+          }
+        },
+        {
+          "text": "SPILL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "What it is supposed to summon is nothing good.",
+          "wordBConnection": "Spilling salt is the old omen.",
+          "revealExplanation": "Spilling salt is the old omen, and what it is supposed to summon is nothing good.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Spilling salt is a known superstition, but nothing about spilling points at a ghost."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__shadow",
+      "a": "GHOST",
+      "b": "SHADOW",
+      "source": "u20",
+      "pairNote": "Two clean hints; the pair is easy because the words are already close.",
+      "reviewerBestAvailable": {
+        "text": "FIGURE",
+        "why": "Both compounds are everyday phrases pointing to the same spooky half-seen shape.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FOLLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "In every story the ghost follows you.",
+          "wordBConnection": "So does your shadow, all day long.",
+          "revealExplanation": "Your shadow follows you everywhere and so, in every story, does the ghost.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A shadow follows you everywhere and a ghost follows (haunts) a person; shared verb."
+            }
+          }
+        },
+        {
+          "text": "FIGURE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ghost is what people think they have seen.",
+          "wordBConnection": "A shadowy figure is the exact phrase they reach for.",
+          "revealExplanation": "A shadowy figure is the exact phrase people reach for when they think they have seen a ghost.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghostly figure and shadowy figure are both stock phrases for a half-seen presence."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__shark",
+      "a": "GHOST",
+      "b": "SHARK",
+      "source": "u20",
+      "pairNote": "WHITE is a strong serve; JAWS is pure filler on the ghost side.",
+      "reviewerBestAvailable": {
+        "text": "WHITE",
+        "why": "Great white plus the classic white ghost reaches both words at once.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WHITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A white ghost.",
+          "wordBConnection": "The great white shark.",
+          "revealExplanation": "White: the ghost, and the great white.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Great white shark on one side, the white sheet ghost on the other; a colour, but anchored in a compound and a stock image."
+            }
+          }
+        },
+        {
+          "text": "JAWS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Jaws haunts Amity like a ghost.",
+          "wordBConnection": "Jaws the shark.",
+          "revealExplanation": "Jaws: the shark that haunted a town.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Jaws",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Jaws is the shark film; there is no ghost route at all."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__snake",
+      "a": "GHOST",
+      "b": "SNAKE",
+      "source": "u20",
+      "pairNote": "Two good verb and compound routes; SHED is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "RATTLE",
+        "why": "Chain-rattling ghost and rattlesnake are both instantly recognisable.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RATTLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A ghost rattles its chains.",
+          "wordBConnection": "A rattlesnake rattles a warning.",
+          "revealExplanation": "A rattlesnake rattles a warning and a ghost rattles its chains.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghosts rattle chains and a rattlesnake rattles; both routes are stock."
+            }
+          }
+        },
+        {
+          "text": "GLIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ghost glides without a sound.",
+          "wordBConnection": "So does a snake.",
+          "revealExplanation": "A snake glides without a sound and so does a ghost.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Ghosts glide across the floor and snakes glide through grass; shared verb of silent movement."
+            }
+          }
+        },
+        {
+          "text": "SHED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A shed skin is left behind like an empty ghost of the animal.",
+          "wordBConnection": "And the animal is a snake.",
+          "revealExplanation": "A shed snakeskin is left behind as an empty, transparent ghost of the animal.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Snakes shed skin, but shedding has no ghost meaning a player would see."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__spider",
+      "a": "GHOST",
+      "b": "SPIDER",
+      "source": "u20",
+      "pairNote": "All three hints work; a strong pair.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "Broadest shared scene with both words equally present.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Halloween ghosts.",
+          "wordBConnection": "Halloween spiders.",
+          "revealExplanation": "Halloween: ghosts and spiders.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both are standard Halloween decorations and costumes."
+            }
+          }
+        },
+        {
+          "text": "ATTIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ghost in the attic.",
+          "wordBConnection": "Spiders in the attic.",
+          "revealExplanation": "The attic: spiders, and a ghost.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The haunted attic and the spider-filled attic are the same dusty room."
+            }
+          }
+        },
+        {
+          "text": "COBWEB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Cobwebs in the ghost's house.",
+          "wordBConnection": "A spider spins cobwebs.",
+          "revealExplanation": "Cobwebs: the spider's, in the haunted house.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Spiders spin cobwebs, and cobwebs dress every haunted house a ghost lives in."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__spring",
+      "a": "GHOST",
+      "b": "SPRING",
+      "source": "u20",
+      "pairNote": "A hard pair; HOLY is the only hint that reaches both words through ordinary phrases.",
+      "reviewerBestAvailable": {
+        "text": "HOLY",
+        "why": "Holy Ghost is unmistakable and holy spring is a real, recognisable phrase.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HOLY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "The Holy Ghost is one of the three.",
+          "wordBConnection": "A holy spring is what pilgrims walk to.",
+          "revealExplanation": "The Holy Ghost is one of the three, and a holy spring is what pilgrims walk to.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Holy Ghost is a fixed phrase and holy springs or sacred wells are a familiar idea; both are compounds."
+            }
+          }
+        },
+        {
+          "text": "WELL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The girl climbing out of the well is the ghost nobody forgets.",
+          "wordBConnection": "A spring is water welling up out of the ground.",
+          "revealExplanation": "A spring wells up out of the ground and the girl climbing out of the well is the ghost nobody forgets.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A spring feeds a well (wellspring); the ghost in the well is a known horror image (The Ring) but needs that reference."
+            }
+          }
+        },
+        {
+          "text": "RISE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "A ghost is something that rises from the grave.",
+          "wordBConnection": "In spring everything rises out of the ground.",
+          "revealExplanation": "In spring everything rises out of the ground and a ghost is something that rises from the grave.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Ghosts rise from the grave; water rises from a spring and things spring up, but the spring side is diffuse."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__star",
+      "a": "GHOST",
+      "b": "STAR",
+      "source": "u20",
+      "pairNote": "Both pass; SWAYZE is clever but skews to older players.",
+      "reviewerBestAvailable": {
+        "text": "DEAD",
+        "why": "Broadest shared property; works without any pop-culture knowledge.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DEAD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ghost is dead.",
+          "wordBConnection": "A dead star's light.",
+          "revealExplanation": "Dead: the ghost, and a star whose light outlives it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A ghost is a dead person and a dead star is an everyday astronomy phrase."
+            }
+          }
+        },
+        {
+          "text": "SWAYZE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Swayze starred in Ghost.",
+          "wordBConnection": "Swayze the movie star.",
+          "revealExplanation": "Swayze: star of Ghost.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Patrick Swayze, Ghost (1990)",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Patrick Swayze is the star of the film Ghost; a proper name used as a hint."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__train",
+      "a": "GHOST",
+      "b": "TRAIN",
+      "source": "u20",
+      "pairNote": "HOGWARTS is the serve; PHANTOM gives away the ghost side.",
+      "reviewerBestAvailable": {
+        "text": "HOGWARTS",
+        "why": "A single famous setting that contains both a train and ghosts.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HOGWARTS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Hogwarts' ghosts.",
+          "wordBConnection": "The Hogwarts Express.",
+          "revealExplanation": "Hogwarts: ghosts, and the Express.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Harry Potter",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Hogwarts Express is a train and Hogwarts is full of ghosts (Nearly Headless Nick); one world, both words."
+            }
+          }
+        },
+        {
+          "text": "PHANTOM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A phantom is a ghost.",
+          "wordBConnection": "A phantom train.",
+          "revealExplanation": "Phantom: ghost, and the phantom train.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Phantom is a straight synonym for ghost; the phantom train is a real trope but weaker than ghost train itself."
+            }
+          }
+        },
+        {
+          "text": "POLAR",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The ghost hobo on the Polar Express.",
+          "wordBConnection": "The Polar Express train.",
+          "revealExplanation": "Polar: the Express, and its ghost.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Polar Express",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "The Polar Express is a train; the hobo ghost on its roof is too obscure to count as a ghost route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__water",
+      "a": "GHOST",
+      "b": "WATER",
+      "source": "u20",
+      "pairNote": "Two good hints; MOANING fails on the water side.",
+      "reviewerBestAvailable": {
+        "text": "SHIP",
+        "why": "Ghost ship is the cleanest compound bridging both words.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SHIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ghost ship.",
+          "wordBConnection": "A ship on the water.",
+          "revealExplanation": "The ghost ship on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghost ship is a fixed phrase and ships sail on water."
+            }
+          }
+        },
+        {
+          "text": "DROWNED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The drowned ghost.",
+          "wordBConnection": "Drowned in water.",
+          "revealExplanation": "Drowned: in water, now a ghost.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Drowning happens in water and the drowned ghost is a standard ghost-story figure."
+            }
+          }
+        },
+        {
+          "text": "MOANING",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Moaning Myrtle the ghost.",
+          "wordBConnection": "She haunts the bathroom and its water.",
+          "revealExplanation": "Moaning Myrtle: the ghost in the bathroom.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Harry Potter",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Ghosts moan; the water side exists only via Moaning Myrtle's bathroom, which is an explanation not a connection."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__witch",
+      "a": "GHOST",
+      "b": "WITCH",
+      "source": "u20",
+      "pairNote": "HALLOWEEN is the natural serve; the other two tilt toward one side each.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "Equal, obvious footing for both words.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Halloween ghosts.",
+          "wordBConnection": "Halloween witches.",
+          "revealExplanation": "Halloween: ghosts and witches.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghost and witch are the two classic Halloween costumes."
+            }
+          }
+        },
+        {
+          "text": "HAUNTED",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Haunted by a ghost.",
+          "wordBConnection": "A witch's haunted house.",
+          "revealExplanation": "Haunted: ghosts, and the witch's house.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Haunted is essentially the ghost's own adjective; witches appear in haunted houses only as general spookiness."
+            }
+          }
+        },
+        {
+          "text": "HOCUS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Billy the ghost in Hocus Pocus.",
+          "wordBConnection": "The Sanderson witches.",
+          "revealExplanation": "Hocus Pocus: witches and a ghost.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Hocus Pocus",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Hocus Pocus is the witch film and hocus pocus is witchcraft; the ghost in that film (Binx's spirit) is a detail, not a route most players hold."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ghost__wolf",
+      "a": "GHOST",
+      "b": "WOLF",
+      "source": "u20",
+      "pairNote": "HOWL is universal; THRONES is a sharp pass for fans and a blank for others.",
+      "reviewerBestAvailable": {
+        "text": "HOWL",
+        "why": "Broad shared verb that needs no franchise knowledge.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A ghostly howl.",
+          "wordBConnection": "A wolf's howl.",
+          "revealExplanation": "Howl: the wolf's, and the ghost's.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wolves howl at the moon and ghosts howl through haunted halls; shared sound verb."
+            }
+          }
+        },
+        {
+          "text": "THRONES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Ghost the direwolf.",
+          "wordBConnection": "A direwolf.",
+          "revealExplanation": "Game of Thrones: Ghost, the wolf.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "In Game of Thrones, Ghost is Jon Snow's direwolf, so one name literally covers both words for anyone who knows the show."
+            }
+          }
+        },
+        {
+          "text": "MOOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A ghost on the moor.",
+          "wordBConnection": "A wolf on the moor.",
+          "revealExplanation": "The moor: ghost and wolf.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "british_only",
+                "needs_explanation"
+              ],
+              "reason": "The foggy moor hosts both ghosts (Wuthering Heights) and wolf-like hounds (Baskervilles), but neither link is strong on its own."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__gold",
+      "a": "GLASS",
+      "b": "GOLD",
+      "source": "u20",
+      "pairNote": "Two good object hints; LEAF is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "GOBLET",
+        "why": "Both materials are classic goblet materials.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RIM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The glass's rim.",
+          "wordBConnection": "A gold rim.",
+          "revealExplanation": "Rim: gold, on the glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A gold-rimmed glass is a single familiar object."
+            }
+          }
+        },
+        {
+          "text": "GOBLET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass goblet.",
+          "wordBConnection": "A gold goblet.",
+          "revealExplanation": "Goblets: glass or gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Goblets are made of glass or of gold; both are stock images."
+            }
+          }
+        },
+        {
+          "text": "LEAF",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Gold leaf on glass.",
+          "wordBConnection": "Gold leaf.",
+          "revealExplanation": "Leaf: gold leaf, on glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Gold leaf is a compound; gilding on glass is a craft detail players will not reach from LEAF."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__heart",
+      "a": "GLASS",
+      "b": "HEART",
+      "source": "u20",
+      "pairNote": "All three pass; a very natural pair.",
+      "reviewerBestAvailable": {
+        "text": "BROKEN",
+        "why": "The most familiar phrase on both sides.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BROKEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Broken glass.",
+          "wordBConnection": "A broken heart.",
+          "revealExplanation": "Broken: glass, or heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Broken glass and broken heart are both everyday phrases."
+            }
+          }
+        },
+        {
+          "text": "SHATTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Shattered glass.",
+          "wordBConnection": "A shattered heart.",
+          "revealExplanation": "Shatter: glass and heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:BROKEN"
+              ],
+              "reason": "Glass shatters and hearts are shattered; same route as BROKEN with a stronger verb."
+            }
+          }
+        },
+        {
+          "text": "FRAGILE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fragile glass.",
+          "wordBConnection": "A fragile heart.",
+          "revealExplanation": "Fragile: glass and heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fragile is the stock property of glass and of a tender heart."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__honey",
+      "a": "GLASS",
+      "b": "HONEY",
+      "source": "u20",
+      "pairNote": "Both pass.",
+      "reviewerBestAvailable": {
+        "text": "JAR",
+        "why": "The glass honey jar is literally both words in one object.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "AMBER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Amber glass.",
+          "wordBConnection": "Amber honey.",
+          "revealExplanation": "Amber: the glass, and the honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Honey is amber-coloured and amber glass is a standard bottle colour; a shared property, like SWEET for APPLE+HONEY."
+            }
+          }
+        },
+        {
+          "text": "JAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass jar.",
+          "wordBConnection": "A honey jar.",
+          "revealExplanation": "The jar: glass, full of honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A honey jar is a glass jar; one object."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__horse",
+      "a": "GLASS",
+      "b": "HORSE",
+      "source": "u20",
+      "pairNote": "Two passes; MENAGERIE needs the play and still only half-reaches horse.",
+      "reviewerBestAvailable": {
+        "text": "FIGURINE",
+        "why": "Glass horse figurines are a recognisable single object.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FIGURINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass figurine.",
+          "wordBConnection": "A horse figurine.",
+          "revealExplanation": "Figurine: a glass horse.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Glass figurines are a classic ornament and horses are a classic figurine subject."
+            }
+          }
+        },
+        {
+          "text": "CARRIAGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A glass carriage, in the story.",
+          "wordBConnection": "A horse-drawn carriage.",
+          "revealExplanation": "Carriage: glass in the tale, drawn by horses.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Cinderella",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A horse-drawn carriage on one side and Cinderella's glass carriage on the other."
+            }
+          }
+        },
+        {
+          "text": "MENAGERIE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Glass Menagerie.",
+          "wordBConnection": "The glass unicorn, a horse with a horn.",
+          "revealExplanation": "Menagerie: the glass unicorn horse.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "The Glass Menagerie",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "The Glass Menagerie is a famous play of glass animals, but its signature animal is a unicorn and the horse side is only generic."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_glass__ice",
       "a": "GLASS",
       "b": "ICE",
@@ -50108,6 +51624,2253 @@
           "FROST"
         ]
       }
+    },
+    {
+      "pair_id": "p_glass__iron",
+      "a": "GLASS",
+      "b": "IRON",
+      "source": "u20",
+      "pairNote": "LANTERN carries the pair; CEILING is one-sided filler.",
+      "reviewerBestAvailable": {
+        "text": "LANTERN",
+        "why": "The only hint where both materials are visible in the same object.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LANTERN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The lantern's glass.",
+          "wordBConnection": "An iron lantern.",
+          "revealExplanation": "The lantern: iron and glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An old lantern is iron frame with glass panes; one familiar object."
+            }
+          }
+        },
+        {
+          "text": "GREENHOUSE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Glass greenhouse panes.",
+          "wordBConnection": "An iron greenhouse frame.",
+          "revealExplanation": "The greenhouse: glass on iron.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Greenhouses are glass; the Victorian iron-and-glass frame is real but not what most players picture."
+            }
+          }
+        },
+        {
+          "text": "CEILING",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The glass ceiling.",
+          "wordBConnection": "An iron-and-glass station ceiling.",
+          "revealExplanation": "Ceiling: glass, held in iron.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Glass ceiling is a stock phrase; there is no familiar iron ceiling."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__key",
+      "a": "GLASS",
+      "b": "KEY",
+      "source": "u20",
+      "pairNote": "CABINET works; CASE is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "CABINET",
+        "why": "A glass-fronted cabinet that locks with a key is a single scene.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CABINET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass cabinet.",
+          "wordBConnection": "The cabinet's key.",
+          "revealExplanation": "The cabinet: glass, with a key.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Glass cabinets and locked key cabinets (or the cabinet key) both land."
+            }
+          }
+        },
+        {
+          "text": "CASE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass case.",
+          "wordBConnection": "The key to the case.",
+          "revealExplanation": "Case: glass, and the key to it.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Glass case is immediate; a key case is not a phrase players hold."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__king",
+      "a": "GLASS",
+      "b": "KING",
+      "source": "u20",
+      "pairNote": "GOBLET is the serve; ARTHUR is invented on the glass side.",
+      "reviewerBestAvailable": {
+        "text": "GOBLET",
+        "why": "Clean shared object.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GOBLET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass goblet.",
+          "wordBConnection": "The king's goblet.",
+          "revealExplanation": "Goblet: the king's glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A king drinks from a goblet and goblets are made of glass."
+            }
+          }
+        },
+        {
+          "text": "CASTLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The glass castle.",
+          "wordBConnection": "The king's castle.",
+          "revealExplanation": "Castle: the king's, and the glass one of tales.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Kings live in castles; the glass castle (memoir title, fairy-tale image) is a thinner phrase."
+            }
+          }
+        },
+        {
+          "text": "ARTHUR",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Glastonbury, Arthur's Isle of Glass.",
+          "wordBConnection": "King Arthur.",
+          "revealExplanation": "Arthur: the king of the Isle of Glass.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Arthurian legend",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "King Arthur is obvious; the glass side (Glastonbury as the Isle of Glass) is scholarly trivia."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__knight",
+      "a": "GLASS",
+      "b": "KNIGHT",
+      "source": "u20",
+      "pairNote": "No PASS; both hints are half-connections.",
+      "reviewerBestAvailable": {
+        "text": "STAINED",
+        "why": "A stained-glass knight is a real image players may see once prompted; VISOR barely reaches glass.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "VISOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glass visor.",
+          "wordBConnection": "A knight's visor.",
+          "revealExplanation": "Visor: the knight's, and glass.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A knight's helmet visor is immediate; a glass visor (motorcycle or space helmet) is a loose association."
+            }
+          }
+        },
+        {
+          "text": "STAINED",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Stained glass.",
+          "wordBConnection": "A knight in stained glass.",
+          "revealExplanation": "Stained glass, with a knight in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Stained glass is a compound and knights are a common stained-glass subject, but the knight side depends on picturing a church window."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__light",
+      "a": "GLASS",
+      "b": "LIGHT",
+      "source": "u20",
+      "pairNote": "All pass.",
+      "reviewerBestAvailable": {
+        "text": "BULB",
+        "why": "Most everyday object that is both.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "PRISM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass prism.",
+          "wordBConnection": "A prism splits light.",
+          "revealExplanation": "Prism: glass, bending light.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A glass prism splits light; one object, both words."
+            }
+          }
+        },
+        {
+          "text": "BULB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass bulb.",
+          "wordBConnection": "A light bulb.",
+          "revealExplanation": "The bulb: glass, giving light.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A light bulb is a glass bulb."
+            }
+          }
+        },
+        {
+          "text": "WINDOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Window glass.",
+          "wordBConnection": "Light through the window.",
+          "revealExplanation": "The window: glass letting in light.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Windows are glass and let in light."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__lion",
+      "a": "GLASS",
+      "b": "LION",
+      "source": "u20",
+      "pairNote": "Thin pair; MENAGERIE passes narrowly and ZOO is mostly lion.",
+      "reviewerBestAvailable": {
+        "text": "MENAGERIE",
+        "why": "The only hint with a genuine route to both words, though it rewards readers.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MENAGERIE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Glass Menagerie.",
+          "wordBConnection": "A menagerie with lions.",
+          "revealExplanation": "Menagerie: glass animals, or lions.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "The Glass Menagerie",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "The Glass Menagerie gives the glass side and a menagerie is a collection of exotic beasts led by lions; both sides are real but literary."
+            }
+          }
+        },
+        {
+          "text": "ZOO",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Zoo glass.",
+          "wordBConnection": "Zoo lions.",
+          "revealExplanation": "The zoo: lions behind glass.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Lions live at the zoo; the glass of the enclosure is there but secondary."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__moon",
+      "a": "GLASS",
+      "b": "MOON",
+      "source": "u20",
+      "pairNote": "Two passes; LENS is a weaker form of TELESCOPE.",
+      "reviewerBestAvailable": {
+        "text": "FULL",
+        "why": "Two stock phrases with equal weight.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FULL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A full glass.",
+          "wordBConnection": "A full moon.",
+          "revealExplanation": "Full: the glass, or the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Full moon and a full glass are both everyday phrases."
+            }
+          }
+        },
+        {
+          "text": "TELESCOPE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A telescope's glass.",
+          "wordBConnection": "A telescope on the moon.",
+          "revealExplanation": "Telescope: glass, aimed at the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A telescope's glass lenses point at the moon; one scene."
+            }
+          }
+        },
+        {
+          "text": "LENS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glass lens.",
+          "wordBConnection": "The moon through a lens.",
+          "revealExplanation": "Lens: glass, for the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:TELESCOPE"
+              ],
+              "reason": "Lenses are glass; the moon arrives only via the implied telescope."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__mouse",
+      "a": "GLASS",
+      "b": "MOUSE",
+      "source": "u20",
+      "pairNote": "CINDERELLA is strong; PAD is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "CINDERELLA",
+        "why": "One story with both words as famous elements.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CINDERELLA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The glass slipper.",
+          "wordBConnection": "Cinderella's mice.",
+          "revealExplanation": "Cinderella: glass slipper, mouse friends.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Cinderella",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The glass slipper and the helpful mice are both central to Cinderella."
+            }
+          }
+        },
+        {
+          "text": "PAD",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass desk pad.",
+          "wordBConnection": "A mouse pad.",
+          "revealExplanation": "Pad: the mouse's, on glass.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mouse pad is a compound; nothing links a pad to glass."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__night",
+      "a": "GLASS",
+      "b": "NIGHT",
+      "source": "u20",
+      "pairNote": "LANTERN is the serve; NIGHTCAP must be removed as a contains_target failure.",
+      "reviewerBestAvailable": {
+        "text": "LANTERN",
+        "why": "Clean object-and-scene route to both words.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LANTERN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass lantern.",
+          "wordBConnection": "A lantern at night.",
+          "revealExplanation": "Lantern: glass, for the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A glass lantern is lit at night; one scene."
+            }
+          }
+        },
+        {
+          "text": "NIGHTCAP",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target NIGHT",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Rule failure: the hint contains the target NIGHT, even though a nightcap is a glass of something at night."
+            }
+          }
+        },
+        {
+          "text": "WINE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A wine glass.",
+          "wordBConnection": "Wine at night.",
+          "revealExplanation": "Wine: a glass at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A glass of wine is immediate; wine at night is only a loose evening association."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__ocean",
+      "a": "GLASS",
+      "b": "OCEAN",
+      "source": "u20",
+      "pairNote": "Two clean passes; SEA is a judgement call on the synonym rule.",
+      "reviewerBestAvailable": {
+        "text": "AQUARIUM",
+        "why": "Both words are present in the one object.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "AQUARIUM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Aquarium glass.",
+          "wordBConnection": "An ocean aquarium.",
+          "revealExplanation": "The aquarium: the ocean behind glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An aquarium is a glass tank holding ocean life."
+            }
+          }
+        },
+        {
+          "text": "BOTTLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass bottle.",
+          "wordBConnection": "A message in a bottle in the ocean.",
+          "revealExplanation": "Bottle: glass, adrift on the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A glass bottle with a message in it floats across the ocean."
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Sea glass.",
+          "wordBConnection": "The sea is the ocean.",
+          "revealExplanation": "Sea: sea glass, from the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Sea glass is a real compound, but sea is a near-synonym that hands over the ocean side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__pirate",
+      "a": "GLASS",
+      "b": "PIRATE",
+      "source": "u20",
+      "pairNote": "Three passes; SPYGLASS must be dropped for containing the target.",
+      "reviewerBestAvailable": {
+        "text": "EYE",
+        "why": "Glass eye and pirate eye are each a two-word phrase a player sees at once.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "RUM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass of rum.",
+          "wordBConnection": "A pirate's rum.",
+          "revealExplanation": "Rum: the pirate's, by the glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirates drink rum and rum comes in a glass."
+            }
+          }
+        },
+        {
+          "text": "EYE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass eye.",
+          "wordBConnection": "A pirate's eye patch.",
+          "revealExplanation": "Eye: glass eye, pirate's patch.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Glass eye and the pirate's eye patch are both stock images."
+            }
+          }
+        },
+        {
+          "text": "BOTTLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass bottle.",
+          "wordBConnection": "The pirate's bottle of rum.",
+          "revealExplanation": "Bottle: glass, of the pirate's rum.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Glass bottles of rum and ships in bottles belong to the pirate world."
+            }
+          }
+        },
+        {
+          "text": "SPYGLASS",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target GLASS",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Rule failure: the hint contains the target GLASS, though the pirate spyglass is otherwise a perfect bridge."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__queen",
+      "a": "GLASS",
+      "b": "QUEEN",
+      "source": "u20",
+      "pairNote": "MIRROR is strong; SLIPPER misses the queen.",
+      "reviewerBestAvailable": {
+        "text": "MIRROR",
+        "why": "Snow White gives a shared scene on the owner's POISON calibration model.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MIRROR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A mirror is glass.",
+          "wordBConnection": "The Evil Queen's mirror.",
+          "revealExplanation": "Mirror, mirror: the Queen's glass.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Mirrors are glass and the evil queen asks 'mirror, mirror' in Snow White."
+            }
+          }
+        },
+        {
+          "text": "SLIPPER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The glass slipper.",
+          "wordBConnection": "Cinderella, the future queen.",
+          "revealExplanation": "Slipper: glass, for the future queen.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Glass slipper is Cinderella's, and the story's royal is a prince, not a queen."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__ring",
+      "a": "GLASS",
+      "b": "RING",
+      "source": "u20",
+      "pairNote": "CRYSTAL is the only hint that reaches the ring directly.",
+      "reviewerBestAvailable": {
+        "text": "CRYSTAL",
+        "why": "A material both objects are commonly made of.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRYSTAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Crystal glass.",
+          "wordBConnection": "A crystal ring.",
+          "revealExplanation": "Crystal: glass, or a ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Crystal glassware and a crystal ring are both familiar objects."
+            }
+          }
+        },
+        {
+          "text": "CLINK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Glasses clink.",
+          "wordBConnection": "A clink rings out.",
+          "revealExplanation": "Clink: the glass rings.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Glasses clink in a toast; a struck glass rings, but ring-as-sound is a secondary reading of the target."
+            }
+          }
+        },
+        {
+          "text": "TOAST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A toast with raised glasses.",
+          "wordBConnection": "The wedding toast, after the rings.",
+          "revealExplanation": "Toast: glasses up, rings on.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Raising a glass is the toast; the ring only arrives via an implied wedding."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__robot",
+      "a": "GLASS",
+      "b": "ROBOT",
+      "source": "u20",
+      "pairNote": "No PASS; both hints reach robot only through a specific mental picture.",
+      "reviewerBestAvailable": {
+        "text": "DOME",
+        "why": "The glass-domed robot head is a single image players may recall; SCREEN is more diffuse.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DOME",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glass dome.",
+          "wordBConnection": "The classic robot's dome.",
+          "revealExplanation": "Dome: the robot's glass head.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Glass dome is a compound; the retro robot's glass dome head is a recognisable but dated image."
+            }
+          }
+        },
+        {
+          "text": "SCREEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glass screen.",
+          "wordBConnection": "A robot's screen face.",
+          "revealExplanation": "Screen: glass, on the robot.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Screens are glass; a robot with a screen face is plausible but not a fixed association."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__rock",
+      "a": "GLASS",
+      "b": "ROCK",
+      "source": "u20",
+      "pairNote": "OBSIDIAN is the serve; the other two circle the same glass-house-and-stone image.",
+      "reviewerBestAvailable": {
+        "text": "OBSIDIAN",
+        "why": "A rock that is glass; exact on both sides.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "OBSIDIAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Obsidian is natural glass.",
+          "wordBConnection": "Obsidian is a rock.",
+          "revealExplanation": "Obsidian: a rock that is glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Obsidian is volcanic glass and a rock; one word is literally both."
+            }
+          }
+        },
+        {
+          "text": "SHATTER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Shattered glass.",
+          "wordBConnection": "A thrown rock.",
+          "revealExplanation": "Shatter: the rock through the glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Glass shatters, and a rock through a window is the thing that shatters it, but rock is the agent rather than the subject."
+            }
+          }
+        },
+        {
+          "text": "HOUSES",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Glass houses.",
+          "wordBConnection": "Don't throw stones.",
+          "revealExplanation": "Glass houses and thrown rocks.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Glass houses is immediate; the rock side depends on the proverb's thrown stones."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__rose",
+      "a": "GLASS",
+      "b": "ROSE",
+      "source": "u20",
+      "pairNote": "Two passes; STAINED needs the rose-window term.",
+      "reviewerBestAvailable": {
+        "text": "VASE",
+        "why": "Everyday object that holds both words.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BEAST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The glass bell jar.",
+          "wordBConnection": "The Beast's rose.",
+          "revealExplanation": "Beast: the enchanted rose under glass.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Beauty and the Beast",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Beauty and the Beast's enchanted rose sits under a glass bell jar; one famous scene."
+            }
+          }
+        },
+        {
+          "text": "VASE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass vase.",
+          "wordBConnection": "A rose in the vase.",
+          "revealExplanation": "The vase: glass, with a rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Roses stand in a glass vase."
+            }
+          }
+        },
+        {
+          "text": "STAINED",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Stained glass.",
+          "wordBConnection": "A rose window.",
+          "revealExplanation": "Stained glass: the rose window.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Stained glass is immediate; the rose window of a cathedral is real but a specialist term."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__salt",
+      "a": "GLASS",
+      "b": "SALT",
+      "source": "u20",
+      "pairNote": "All pass.",
+      "reviewerBestAvailable": {
+        "text": "RIM",
+        "why": "Most direct shared image.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "RIM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The glass rim.",
+          "wordBConnection": "A salt rim.",
+          "revealExplanation": "Rim: salt on the glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A salted rim on a cocktail glass is one image."
+            }
+          }
+        },
+        {
+          "text": "SHAKER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass shaker.",
+          "wordBConnection": "A salt shaker.",
+          "revealExplanation": "The shaker: glass, full of salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A salt shaker is a glass shaker."
+            }
+          }
+        },
+        {
+          "text": "MARGARITA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A margarita glass.",
+          "wordBConnection": "Salt on the margarita.",
+          "revealExplanation": "Margarita: glass and salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The margarita glass with its salt rim carries both words."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__shadow",
+      "a": "GLASS",
+      "b": "SHADOW",
+      "source": "u20",
+      "pairNote": "A hard pair; DARK passes narrowly as a shared property, the rest are glass-only.",
+      "reviewerBestAvailable": {
+        "text": "DARK",
+        "why": "The only hint that touches shadow at all.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DARK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Dark glass.",
+          "wordBConnection": "A dark shadow.",
+          "revealExplanation": "Dark: glass and shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Shadows are dark and dark (tinted) glass is a familiar phrase; a shared property on the SWEET model."
+            }
+          }
+        },
+        {
+          "text": "SMOKED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Smoked glass.",
+          "wordBConnection": "Smoked glass shades, like a shadow.",
+          "revealExplanation": "Smoked: glass that shadows.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Smoked glass is a compound; smoke is not shadow."
+            }
+          }
+        },
+        {
+          "text": "TINTED",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Tinted glass.",
+          "wordBConnection": "Tinted means shadowed.",
+          "revealExplanation": "Tinted: glass, in shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Tinted glass is immediate and there is no shadow route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__shark",
+      "a": "GLASS",
+      "b": "SHARK",
+      "source": "u20",
+      "pairNote": "Two passes; CAGE misses glass.",
+      "reviewerBestAvailable": {
+        "text": "TANK",
+        "why": "Shark tank plus glass tank, both stock phrases.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TUNNEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass tunnel.",
+          "wordBConnection": "Sharks over the tunnel.",
+          "revealExplanation": "Tunnel: glass, sharks above.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The aquarium glass tunnel with sharks swimming overhead is one scene."
+            }
+          }
+        },
+        {
+          "text": "TANK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass tank.",
+          "wordBConnection": "A shark tank.",
+          "revealExplanation": "Tank: glass, with a shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shark tank is a fixed phrase and tanks are glass."
+            }
+          }
+        },
+        {
+          "text": "CAGE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass-walled cage.",
+          "wordBConnection": "A shark cage.",
+          "revealExplanation": "Cage: shark cage, behind glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shark cage diving is immediate; the cage is steel and no glass cage phrase is familiar."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__snake",
+      "a": "GLASS",
+      "b": "SNAKE",
+      "source": "u20",
+      "pairNote": "Two passes; LIZARD is too oblique.",
+      "reviewerBestAvailable": {
+        "text": "TERRARIUM",
+        "why": "Specific to reptiles and unmistakably glass.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TERRARIUM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass terrarium.",
+          "wordBConnection": "A snake's terrarium.",
+          "revealExplanation": "Terrarium: glass, snake inside.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A pet snake lives in a glass terrarium."
+            }
+          }
+        },
+        {
+          "text": "TANK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass tank.",
+          "wordBConnection": "A snake tank.",
+          "revealExplanation": "Tank: glass, with a snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:TERRARIUM"
+              ],
+              "reason": "Snake tank and glass tank; same object as TERRARIUM in plainer words."
+            }
+          }
+        },
+        {
+          "text": "LIZARD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The glass lizard.",
+          "wordBConnection": "A legless lizard that looks like a snake.",
+          "revealExplanation": "Lizard: the glass lizard, snake lookalike.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "The glass lizard is a real legless lizard and lizards are snake kin, but neither route is strong for a general player."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__spider",
+      "a": "GLASS",
+      "b": "SPIDER",
+      "source": "u20",
+      "pairNote": "Two passes; CRACK is a fair stretch via the web-shaped crack.",
+      "reviewerBestAvailable": {
+        "text": "JAR",
+        "why": "Spider under a glass is the shared scene.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "JAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass jar.",
+          "wordBConnection": "A spider in the jar.",
+          "revealExplanation": "Jar: glass, for the spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Trapping a spider under a glass jar is a familiar household scene."
+            }
+          }
+        },
+        {
+          "text": "WINDOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Window glass.",
+          "wordBConnection": "A spider in the window.",
+          "revealExplanation": "Window: glass, with a spider's web.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Windows are glass and spiders spin webs in window corners."
+            }
+          }
+        },
+        {
+          "text": "CRACK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Cracked glass.",
+          "wordBConnection": "A spider crack, web-shaped.",
+          "revealExplanation": "Crack: the spider pattern in glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Glass cracks, and a spider crack is the web-shaped pattern, but the spider link rides on that one phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__spring",
+      "a": "GLASS",
+      "b": "SPRING",
+      "source": "u20",
+      "pairNote": "WATER is the serve; the other two orbit it.",
+      "reviewerBestAvailable": {
+        "text": "WATER",
+        "why": "Two stock phrases that meet in a glass of spring water.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WATER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass of water.",
+          "wordBConnection": "Spring water.",
+          "revealExplanation": "Water: spring water, by the glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A glass of water and spring water are both everyday phrases."
+            }
+          }
+        },
+        {
+          "text": "GREENHOUSE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glass greenhouse.",
+          "wordBConnection": "Spring planting in the greenhouse.",
+          "revealExplanation": "Greenhouse: glass, for spring seedlings.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Greenhouses are glass; spring planting links the season only loosely."
+            }
+          }
+        },
+        {
+          "text": "BOTTLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glass bottle.",
+          "wordBConnection": "Bottled spring water.",
+          "revealExplanation": "Bottle: glass, of spring water.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:WATER"
+              ],
+              "reason": "Glass bottle is immediate; spring arrives only as the bottled spring water inside."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__star",
+      "a": "GLASS",
+      "b": "STAR",
+      "source": "u20",
+      "pairNote": "Two passes; TWINKLE leans on star.",
+      "reviewerBestAvailable": {
+        "text": "TELESCOPE",
+        "why": "Both words live in the same instrument and its use.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ORNAMENT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass ornament.",
+          "wordBConnection": "A star ornament.",
+          "revealExplanation": "Ornament: a glass star.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Glass ornaments and the star ornament on a Christmas tree."
+            }
+          }
+        },
+        {
+          "text": "TELESCOPE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Telescope glass.",
+          "wordBConnection": "Stargazing by telescope.",
+          "revealExplanation": "Telescope: glass, for the stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Glass lenses pointed at the stars."
+            }
+          }
+        },
+        {
+          "text": "TWINKLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Twinkling glass.",
+          "wordBConnection": "A twinkling star.",
+          "revealExplanation": "Twinkle: star and glass.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Stars twinkle; glass sparkles rather than twinkles, so the glass side is approximate."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__train",
+      "a": "GLASS",
+      "b": "TRAIN",
+      "source": "u20",
+      "pairNote": "WINDOW carries the pair; the other two are train-first.",
+      "reviewerBestAvailable": {
+        "text": "WINDOW",
+        "why": "The train window is a single everyday object made of glass.",
+        "reviewer": "blind-subagent-20"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WINDOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Window glass.",
+          "wordBConnection": "A train window.",
+          "revealExplanation": "Window: glass, on the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Train windows are glass; looking out of one is a shared scene."
+            }
+          }
+        },
+        {
+          "text": "STATION",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A glass-roofed station.",
+          "wordBConnection": "A train station.",
+          "revealExplanation": "Station: glass roof, trains below.",
+          "reference": null,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Train station is immediate; the glass roof of a grand station is a secondary image."
+            }
+          }
+        },
+        {
+          "text": "DINING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Glasses in the dining car.",
+          "wordBConnection": "The train's dining car.",
+          "revealExplanation": "Dining: glasses on the train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u20",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-20",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dining car is a train compound; dining glassware is only a loose association."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_glass__water",
