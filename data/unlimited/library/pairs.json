@@ -343,6 +343,16 @@
         "rejected": 17,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u22-blind-review.json",
+        "key": "data/unlimited/library/reviews/u22-blind-key.json",
+        "batch": "data/unlimited/library/batches/u22-batch.json",
+        "ai_reviewed": 53,
+        "held": 30,
+        "rejected": 29,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -62355,6 +62365,620 @@
       ]
     },
     {
+      "pair_id": "p_heart__mouse",
+      "a": "HEART",
+      "b": "MOUSE",
+      "source": "u22",
+      "pairNote": "No PASS; RACING and MICKEY are pure mouse-or-heart filler.",
+      "reviewerBestAvailable": {
+        "text": "TIMID",
+        "why": "Only hint that touches both words; mouse is proverbial and a timid heart is at least readable.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TIMID",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A timid, faint heart.",
+          "wordBConnection": "A timid mouse.",
+          "revealExplanation": "Timid: a mouse, or a faint heart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Timid as a mouse is proverbial; heart only via a timid or faint heart, a loose shared-property route."
+            }
+          }
+        },
+        {
+          "text": "RACING",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A racing heart.",
+          "wordBConnection": "A mouse's tiny racing heartbeat.",
+          "revealExplanation": "Racing: a heart like a mouse's.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Heart racing is a familiar phrase, but nothing about a mouse races; wholly one-sided."
+            }
+          }
+        },
+        {
+          "text": "MICKEY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The heart of Disney.",
+          "wordBConnection": "Mickey Mouse.",
+          "revealExplanation": "Mickey: the mouse at Disney's heart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mickey Mouse is instant, but Mickey has no route to heart."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__night",
+      "a": "HEART",
+      "b": "NIGHT",
+      "source": "u22",
+      "pairNote": "LONELY carries the pair; DATE is serviceable backup.",
+      "reviewerBestAvailable": {
+        "text": "LONELY",
+        "why": "Reaches both words through common phrases with a shared mood.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LONELY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Lonely hearts.",
+          "wordBConnection": "A lonely night.",
+          "revealExplanation": "Lonely: hearts, and nights.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Lonely hearts (club, column) and a lonely night are both everyday phrases."
+            }
+          }
+        },
+        {
+          "text": "DATE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Dating is an affair of the heart.",
+          "wordBConnection": "Date night.",
+          "revealExplanation": "Date: the heart's business, on date night.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Date night is a set phrase; heart reached only through romance as the symbol of love."
+            }
+          }
+        },
+        {
+          "text": "BEAT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A heartbeat.",
+          "wordBConnection": "The beat of the night.",
+          "revealExplanation": "Beat: the heart's, and the night's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Heartbeat is immediate; night has no beat route beyond a strained nightclub or police-beat reading."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__ocean",
+      "a": "HEART",
+      "b": "OCEAN",
+      "source": "u22",
+      "pairNote": "Two solid hints; NECKLACE leans on the film prop.",
+      "reviewerBestAvailable": {
+        "text": "DEEP",
+        "why": "Broadest, needs no story knowledge.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DEEP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Deep in my heart.",
+          "wordBConnection": "The deep ocean.",
+          "revealExplanation": "Deep: heart and ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Deep in my heart and the deep ocean are both plain usages of the same adjective."
+            }
+          }
+        },
+        {
+          "text": "TITANIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Heart of the Ocean.",
+          "wordBConnection": "Titanic sank in the ocean.",
+          "revealExplanation": "Titanic: the Heart of the Ocean.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Titanic",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Titanic sank in the ocean and the film gave us My Heart Will Go On and the Heart of the Ocean necklace."
+            }
+          }
+        },
+        {
+          "text": "NECKLACE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A heart necklace.",
+          "wordBConnection": "The Heart of the Ocean necklace.",
+          "revealExplanation": "Necklace: the Heart of the Ocean.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Titanic",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Heart pendants are the classic necklace; ocean only through the Titanic Heart of the Ocean necklace."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__pirate",
+      "a": "HEART",
+      "b": "PIRATE",
+      "source": "u22",
+      "pairNote": "HEARTIES is a contains_target rule failure despite a good idea.",
+      "reviewerBestAvailable": {
+        "text": "CHEST",
+        "why": "Clean double meaning understood by everyone.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHEST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The heart is in the chest.",
+          "wordBConnection": "A pirate's treasure chest.",
+          "revealExplanation": "Chest: where the heart is, and the pirate's treasure.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A pirate treasure chest and the heart in your chest; Dead Man's Chest ties both."
+            }
+          }
+        },
+        {
+          "text": "HEARTIES",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target HEART",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Me hearties is pirate talk, but the hint contains HEART as a substring, a rule failure."
+            }
+          }
+        },
+        {
+          "text": "DAVY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Davy Jones' heart in the chest.",
+          "wordBConnection": "Davy Jones the pirate.",
+          "revealExplanation": "Davy Jones: the pirate without a heart.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Pirates of the Caribbean",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Davy Jones is pirate lore; heart only via the Pirates of the Caribbean Davy Jones who cut out his own heart."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__queen",
+      "a": "HEART",
+      "b": "QUEEN",
+      "source": "u22",
+      "pairNote": "Strong pair; DIANA is a fair but shakier nickname route.",
+      "reviewerBestAvailable": {
+        "text": "CARD",
+        "why": "Most direct; the queen of hearts is a single physical object.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The hearts suit.",
+          "wordBConnection": "The queen card.",
+          "revealExplanation": "Card: the queen of hearts.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hearts is a suit and the queen is a face card; the queen of hearts is one card."
+            }
+          }
+        },
+        {
+          "text": "ALICE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Queen of Hearts.",
+          "wordBConnection": "Alice's Queen.",
+          "revealExplanation": "Alice: the Queen of Hearts.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Alice in Wonderland",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Queen of Hearts is the Wonderland villain, reaching both words through one famous story."
+            }
+          }
+        },
+        {
+          "text": "DIANA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Diana, queen of people's hearts.",
+          "wordBConnection": "Diana, the people's queen.",
+          "revealExplanation": "Diana: the Queen of Hearts.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Princess Diana",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Diana was dubbed Queen of Hearts but was a princess, never queen; both sides lean on one nickname."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__ring",
+      "a": "HEART",
+      "b": "RING",
+      "source": "u22",
+      "pairNote": "No PASS; CLADDAGH is the best idea but too niche to carry the pair.",
+      "reviewerBestAvailable": {
+        "text": "ENGAGEMENT",
+        "why": "Ring is certain and heart-as-love is the most natural of the three loose heart routes.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CLADDAGH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The heart on the Claddagh.",
+          "wordBConnection": "The Claddagh ring.",
+          "revealExplanation": "Claddagh: the ring with the heart.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Claddagh ring",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "The Claddagh is a ring with hands holding a heart, perfect if known but niche outside Irish circles."
+            }
+          }
+        },
+        {
+          "text": "ENGAGEMENT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An engagement is a matter of the heart.",
+          "wordBConnection": "An engagement ring.",
+          "revealExplanation": "Engagement: the heart, and the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Engagement ring is immediate; heart only through love and proposal."
+            }
+          }
+        },
+        {
+          "text": "PROMISE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A promise from the heart.",
+          "wordBConnection": "A promise ring.",
+          "revealExplanation": "Promise: the heart's, in a ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Promise ring is a known term; heart via cross-my-heart sincerity, a loose route."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_heart__robot",
       "a": "HEART",
       "b": "ROBOT",
@@ -62502,6 +63126,2797 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_heart__rock",
+      "a": "HEART",
+      "b": "ROCK",
+      "source": "u22",
+      "pairNote": "All three serve; BAND rewards music knowledge.",
+      "reviewerBestAvailable": {
+        "text": "HARD",
+        "why": "Both compounds are everyday language.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "HARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A hard heart.",
+          "wordBConnection": "Hard rock.",
+          "revealExplanation": "Hard: heart and rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hard rock and hard-hearted are both common compounds."
+            }
+          }
+        },
+        {
+          "text": "STONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A heart of stone.",
+          "wordBConnection": "A stone is a rock.",
+          "revealExplanation": "Stone: the hard heart, and the rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Heart of stone is idiomatic and stone is a plain synonym of rock."
+            }
+          }
+        },
+        {
+          "text": "BAND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Heart is a band.",
+          "wordBConnection": "A rock band.",
+          "revealExplanation": "Band: Heart, the rock band.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Heart (band)",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Rock band is immediate; heart via Heart the rock band, a word-used-as-name route many players know."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__rose",
+      "a": "HEART",
+      "b": "ROSE",
+      "source": "u22",
+      "pairNote": "Strong pair across the board.",
+      "reviewerBestAvailable": {
+        "text": "VALENTINE",
+        "why": "One shared scene that contains both objects.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "LOVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A heart is one of the two standard symbols.",
+          "wordBConnection": "A red rose is the other.",
+          "revealExplanation": "A red rose and a heart are the two standard symbols of love.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The heart is the symbol of love and the rose its flower."
+            }
+          }
+        },
+        {
+          "text": "RED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The drawn heart is red.",
+          "wordBConnection": "So is the classic rose.",
+          "revealExplanation": "The classic rose and the drawn heart are both red.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Red heart and red rose are the default colours of both; a valid shared property."
+            }
+          }
+        },
+        {
+          "text": "VALENTINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Paper hearts are one of the two images.",
+          "wordBConnection": "Red roses are the other.",
+          "revealExplanation": "Red roses and paper hearts are the two images of Valentine's Day.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Valentine's Day",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hearts and roses are the two Valentine icons."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__salt",
+      "a": "HEART",
+      "b": "SALT",
+      "source": "u22",
+      "pairNote": "PRESSURE is a good hint; EARTH is filler.",
+      "reviewerBestAvailable": {
+        "text": "PRESSURE",
+        "why": "Blood pressure connects both through one familiar warning.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PRESSURE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "Blood pressure is what puts the heart under strain.",
+          "wordBConnection": "Salt is what raises it.",
+          "revealExplanation": "Salt raises blood pressure, which is what puts the heart under strain.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Blood pressure is a heart matter and salt is the thing doctors tell you raises it; one shared health scene."
+            }
+          }
+        },
+        {
+          "text": "TEARS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cause_and_effect",
+          "wordAConnection": "Heartbreak is what brings them.",
+          "wordBConnection": "Tears are salt water.",
+          "revealExplanation": "Tears are salt water and heartbreak is what brings them.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Tears are salty; heart only through heartbreak making you cry."
+            }
+          }
+        },
+        {
+          "text": "EARTH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Salt of the earth is what you call someone with a good heart.",
+          "wordBConnection": "The phrase is built on salt.",
+          "revealExplanation": "Salt of the earth is what you call someone with a good heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Salt of the earth is idiomatic, but heart of the earth is not a phrase players reach for."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__shadow",
+      "a": "HEART",
+      "b": "SHADOW",
+      "source": "u22",
+      "pairNote": "FOLLOW is the only real hint; LONG and DOUBT are shadow-only.",
+      "reviewerBestAvailable": {
+        "text": "FOLLOW",
+        "why": "Verb works literally for shadow and idiomatically for heart.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FOLLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Follow your heart is the advice everybody gives.",
+          "wordBConnection": "Your shadow follows you whether you want it to or not.",
+          "revealExplanation": "Follow your heart is the advice everybody gives, and your shadow follows you whether you want it to or not.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Follow your heart, and a shadow follows you everywhere; a clean verb route."
+            }
+          }
+        },
+        {
+          "text": "SECRET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "wordplay",
+          "wordAConnection": "A secret is kept in your heart.",
+          "wordBConnection": "Shadowy is the word for anything kept out of sight.",
+          "revealExplanation": "A secret is kept in your heart, and shadowy is the word for anything kept out of sight.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Secrets of the heart and secrets kept in the shadows share a hidden mood but neither side is a set phrase."
+            }
+          }
+        },
+        {
+          "text": "LONG",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A heart longs for what it has not got.",
+          "wordBConnection": "Shadows grow long at the end of the day.",
+          "revealExplanation": "A heart longs for what it has not got, and shadows grow long at the end of the day.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Long shadow is natural; a heart that longs is a different word sense and does not present itself."
+            }
+          }
+        },
+        {
+          "text": "DOUBT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Doubt is something you feel in your heart before you can argue it.",
+          "wordBConnection": "A shadow of a doubt is the phrase.",
+          "revealExplanation": "A shadow of a doubt is the phrase, and doubt is something you feel in your heart before you can argue it.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shadow of a doubt is idiomatic; heart has no doubt route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__shark",
+      "a": "HEART",
+      "b": "SHARK",
+      "source": "u22",
+      "pairNote": "No PASS; COLD is close and could be argued up.",
+      "reviewerBestAvailable": {
+        "text": "COLD",
+        "why": "Shared cold-blooded property reaches both, if a little loosely for shark.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "COLD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A cold heart.",
+          "wordBConnection": "A cold-blooded shark.",
+          "revealExplanation": "Cold: the heart, and the shark.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cold-hearted is a set word; shark via cold-blooded or cold-eyed predator, a reasonable but looser property."
+            }
+          }
+        },
+        {
+          "text": "LOAN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A heartless loan.",
+          "wordBConnection": "A loan shark.",
+          "revealExplanation": "Loan: the heartless shark's trade.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Loan shark is immediate; heart has nothing to do with loans."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__snake",
+      "a": "HEART",
+      "b": "SNAKE",
+      "source": "u22",
+      "pairNote": "Good pair; CHARM is the weakest PASS.",
+      "reviewerBestAvailable": {
+        "text": "TATTOO",
+        "why": "Both words are everyday tattoo imagery.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TATTOO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The heart is one of the two oldest designs in the parlour window.",
+          "wordBConnection": "The snake is the other.",
+          "revealExplanation": "The heart and the snake are the two oldest designs in the tattoo parlour window.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Heart and snake are two of the classic tattoo motifs, one shared scene."
+            }
+          }
+        },
+        {
+          "text": "COLD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "A villain is cold-hearted.",
+          "wordBConnection": "A snake is cold-blooded.",
+          "revealExplanation": "A snake is cold-blooded and a villain is cold-hearted.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cold-hearted and cold-blooded snake are both familiar."
+            }
+          }
+        },
+        {
+          "text": "CHARM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A charmer works their way into your heart.",
+          "wordBConnection": "A snake charmer works with a flute.",
+          "revealExplanation": "A snake charmer works with a flute and a charmer works their way into your heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Snake charmer is immediate; heart via the heart charm on a bracelet and charming your way into a heart."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__spider",
+      "a": "HEART",
+      "b": "SPIDER",
+      "source": "u22",
+      "pairNote": "VEINS carries the pair alone.",
+      "reviewerBestAvailable": {
+        "text": "VEINS",
+        "why": "Anatomy plus a familiar compound.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VEINS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The heart and its veins.",
+          "wordBConnection": "Spider veins.",
+          "revealExplanation": "Veins: the heart's, and spider veins.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The heart pumps blood through veins and spider veins are a common term."
+            }
+          }
+        },
+        {
+          "text": "CHARLOTTE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Charlotte's Web is full of heart.",
+          "wordBConnection": "Charlotte is the spider.",
+          "revealExplanation": "Charlotte: the spider with heart.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Charlotte's Web",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Charlotte is the spider in Charlotte's Web; there is no heart route from the name."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__spring",
+      "a": "HEART",
+      "b": "SPRING",
+      "source": "u22",
+      "pairNote": "LEAP is good; FEVER is one-and-a-half sided.",
+      "reviewerBestAvailable": {
+        "text": "LEAP",
+        "why": "Verb meaning covers spring directly and heart idiomatically.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LEAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Your heart leaps with joy.",
+          "wordBConnection": "To spring is to leap.",
+          "revealExplanation": "Your heart leaps with joy and to spring is to leap.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "My heart leapt is idiomatic and to spring is to leap; a clean verb route."
+            }
+          }
+        },
+        {
+          "text": "FEVER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "Spring fever is a complaint of the heart.",
+          "wordBConnection": "And it is named for the season it arrives in.",
+          "revealExplanation": "Spring fever is the restless, lovesick feeling, which is a complaint of the heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Spring fever is a set phrase; heart only through a racing feverish heart or the love-fever song."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__star",
+      "a": "HEART",
+      "b": "STAR",
+      "source": "u22",
+      "pairNote": "Strong pair; WISH is the softest.",
+      "reviewerBestAvailable": {
+        "text": "SHAPE",
+        "why": "Both words are literally shape names.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "EMOJI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The heart emoji.",
+          "wordBConnection": "The star emoji.",
+          "revealExplanation": "Emoji: heart and star.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The heart and star emoji are both among the most used."
+            }
+          }
+        },
+        {
+          "text": "SHAPE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A heart shape.",
+          "wordBConnection": "A star shape.",
+          "revealExplanation": "Shapes: heart and star.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Heart shape and star shape are two of the basic shapes children learn."
+            }
+          }
+        },
+        {
+          "text": "WISH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The heart's wish.",
+          "wordBConnection": "Wish upon a star.",
+          "revealExplanation": "Wish: from the heart, on a star.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Wish upon a star is immediate; heart via wishing with all your heart and the song's heart's-desire line."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__train",
+      "a": "HEART",
+      "b": "TRAIN",
+      "source": "u22",
+      "pairNote": "No PASS; BRIEF is the weakest hint in the file.",
+      "reviewerBestAvailable": {
+        "text": "WRECK",
+        "why": "Train is certain and heartbreak-as-wreck is a plausible jump.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "WRECK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A wrecked heart.",
+          "wordBConnection": "A train wreck.",
+          "revealExplanation": "Wreck: the heart's, and the train's.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Train wreck is a set phrase; heart via a wrecked heart as heartbreak, loose but readable."
+            }
+          }
+        },
+        {
+          "text": "TRACKS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The heart monitor's tracks.",
+          "wordBConnection": "Train tracks.",
+          "revealExplanation": "Tracks: the train's, and the heart monitor's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Train tracks is immediate; heart has no tracks route."
+            }
+          }
+        },
+        {
+          "text": "BRIEF",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A brief love affair.",
+          "wordBConnection": "Brief Encounter at the station.",
+          "revealExplanation": "Brief: the encounter at the train station.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Brief Encounter",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Only works via the 1945 film Brief Encounter set at a railway station; neither word is reached from the hint itself."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__water",
+      "a": "HEART",
+      "b": "WATER",
+      "source": "u22",
+      "pairNote": "PUMP is excellent; the other two are soft.",
+      "reviewerBestAvailable": {
+        "text": "PUMP",
+        "why": "Direct function match for both.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PUMP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The heart pumps.",
+          "wordBConnection": "A water pump.",
+          "revealExplanation": "Pump: the heart, and water.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The heart is a pump and a water pump is an everyday object."
+            }
+          }
+        },
+        {
+          "text": "FLOW",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The heart's flow.",
+          "wordBConnection": "Water flows.",
+          "revealExplanation": "Flow: from the heart, like water.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Water flows; heart via blood flow, a secondary step."
+            }
+          }
+        },
+        {
+          "text": "TEARS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Tears from a broken heart.",
+          "wordBConnection": "Tears are salt water.",
+          "revealExplanation": "Tears: the heart's water.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Tears are water; heart only through heartbreak tears."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__witch",
+      "a": "HEART",
+      "b": "WITCH",
+      "source": "u22",
+      "pairNote": "SNOW is a story route on par with the POISON anchor.",
+      "reviewerBestAvailable": {
+        "text": "SNOW",
+        "why": "Snow White is the shared story everyone knows.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SNOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The huntsman is sent for Snow White's heart.",
+          "wordBConnection": "The witch of Snow White.",
+          "revealExplanation": "Snow White: the witch wanted her heart.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Snow White's witch-queen demands the girl's heart in a box; one famous story reaches both."
+            }
+          }
+        },
+        {
+          "text": "SPELL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A spell on the heart.",
+          "wordBConnection": "A witch's spell.",
+          "revealExplanation": "Spell: the witch's, on the heart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Witches cast spells; heart via a love spell or being under someone's spell."
+            }
+          }
+        },
+        {
+          "text": "HUNTSMAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The huntsman brings a heart.",
+          "wordBConnection": "The witch's huntsman.",
+          "revealExplanation": "Huntsman: sent by the witch for a heart.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "The Snow White huntsman is sent by the witch-queen to bring back a heart; both links depend on recalling that detail."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__wolf",
+      "a": "HEART",
+      "b": "WOLF",
+      "source": "u22",
+      "pairNote": "WILD carries it; HUNTSMAN here is weaker than in HEART+WITCH.",
+      "reviewerBestAvailable": {
+        "text": "WILD",
+        "why": "Shared property through a common idiom.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WILD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A wild heart.",
+          "wordBConnection": "A wild wolf.",
+          "revealExplanation": "Wild: heart and wolf.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wild at heart is idiomatic and the wolf is the archetypal wild animal."
+            }
+          }
+        },
+        {
+          "text": "LONE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A lone heart.",
+          "wordBConnection": "A lone wolf.",
+          "revealExplanation": "Lone: wolf, and heart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Lone wolf is immediate; heart via lonely heart, a near-inflection but not the same word."
+            }
+          }
+        },
+        {
+          "text": "HUNTSMAN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The huntsman and the heart.",
+          "wordBConnection": "The huntsman kills the wolf.",
+          "revealExplanation": "Huntsman: the wolf's slayer, the heart's bearer.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Huntsman kills the wolf in Red Riding Hood, but the heart link comes from a different story (Snow White); mixing two tales to reach the pair is a rescue."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__horse",
+      "a": "HONEY",
+      "b": "HORSE",
+      "source": "u22",
+      "pairNote": "All three are good.",
+      "reviewerBestAvailable": {
+        "text": "COMB",
+        "why": "Compound on one side, everyday grooming on the other.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SUGAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sugar and honey do the same job in a jar.",
+          "wordBConnection": "A sugar lump is what you hold out flat for a horse.",
+          "revealExplanation": "A sugar lump is what you hold out flat for a horse, and sugar and honey are the same job in a jar.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey and sugar are twin sweeteners and pet names; sugar cubes are the classic horse treat."
+            }
+          }
+        },
+        {
+          "text": "OATS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "Honey is what goes on yours.",
+          "wordBConnection": "Oats are what the horse is fed.",
+          "revealExplanation": "Oats are what a horse is fed and honey is what goes on yours.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Horses eat oats; honey oats is a familiar cereal and granola pairing."
+            }
+          }
+        },
+        {
+          "text": "COMB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "Honeycomb is what holds the honey.",
+          "wordBConnection": "A currycomb is what grooms the horse.",
+          "revealExplanation": "A currycomb grooms the horse and honeycomb holds the honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honeycomb, and grooming a horse with a comb."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__ice",
+      "a": "HONEY",
+      "b": "ICE",
+      "source": "u22",
+      "pairNote": "TEA is the clear serve; LEMON is a fair second.",
+      "reviewerBestAvailable": {
+        "text": "TEA",
+        "why": "Both routes are drink-order plain.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey in the tea.",
+          "wordBConnection": "Iced tea.",
+          "revealExplanation": "Tea: honey, on ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey in tea and iced tea are both everyday."
+            }
+          }
+        },
+        {
+          "text": "LEMON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey and lemon.",
+          "wordBConnection": "Lemon ice.",
+          "revealExplanation": "Lemon: with honey, or iced.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Honey and lemon is a fixed pairing; ice via lemon ice or ice and a slice of lemon in a drink."
+            }
+          }
+        },
+        {
+          "text": "CREAM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Honey ice cream.",
+          "wordBConnection": "Ice cream.",
+          "revealExplanation": "Cream: honey ice cream.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice cream is immediate; honey via creamed honey or honey and cream, not a set pairing."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__iron",
+      "a": "HONEY",
+      "b": "IRON",
+      "source": "u22",
+      "pairNote": "Two good hints; TONIC is dated.",
+      "reviewerBestAvailable": {
+        "text": "WAFFLE",
+        "why": "Compound plus a shared breakfast picture.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "POT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "A honey pot sits on the table.",
+          "wordBConnection": "An iron pot hangs over the fire.",
+          "revealExplanation": "An iron pot hangs over the fire and a honey pot sits on the table.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey pot (Pooh) and cast-iron pot are both everyday."
+            }
+          }
+        },
+        {
+          "text": "WAFFLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey is what goes on top.",
+          "wordBConnection": "A waffle iron is what makes them.",
+          "revealExplanation": "A waffle iron makes them and honey is what goes on top.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Waffle iron is a compound and honey on waffles is a breakfast scene."
+            }
+          }
+        },
+        {
+          "text": "TONIC",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "A spoonful of honey is one of them.",
+          "wordBConnection": "An iron tonic is the other.",
+          "revealExplanation": "An iron tonic and a spoonful of honey are the two things people have always taken to feel stronger.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Iron tonic is an old-fashioned supplement and honey tonics exist, but neither is a phrase players reach for."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__key",
+      "a": "HONEY",
+      "b": "KEY",
+      "source": "u22",
+      "pairNote": "STICKY carries the pair; BEE is honey-only filler.",
+      "reviewerBestAvailable": {
+        "text": "STICKY",
+        "why": "Shared property that is literally true of both.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "STICKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Honey is the definition of sticky.",
+          "wordBConnection": "Sticky keys are the classic complaint about a piano.",
+          "revealExplanation": "Honey is sticky and sticky keys are the classic complaint about a piano or a keyboard.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey is sticky and sticky keys (keyboard or lock) are a familiar nuisance."
+            }
+          }
+        },
+        {
+          "text": "JAM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "wordplay",
+          "wordAConnection": "Jam is honey's neighbour on the breakfast table.",
+          "wordBConnection": "Keys jam and stick.",
+          "revealExplanation": "Keys jam and stick, and jam is honey's neighbour on the breakfast table.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Honey sits beside jam as a spread and a key can jam in a lock; both routes are adjacent rather than direct."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Honey comes from a bee.",
+          "wordBConnection": "B is a musical key.",
+          "revealExplanation": "Honey comes from a bee and B is a musical key.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honey bee is immediate; there is no bee route to key."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__king",
+      "a": "HONEY",
+      "b": "KING",
+      "source": "u22",
+      "pairNote": "No PASS; the pair has no obvious shared compound.",
+      "reviewerBestAvailable": {
+        "text": "MEAD",
+        "why": "Only hint touching both; honey is solid and the medieval court jump is reasonable.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MEAD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Mead is honey wine.",
+          "wordBConnection": "Mead in the king's hall.",
+          "revealExplanation": "Mead: the king's honey wine.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Mead is honey wine; king only via medieval mead halls and feasting kings."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A honey bee.",
+          "wordBConnection": "King Bee, the blues song.",
+          "revealExplanation": "Bee: honey bee, king bee.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honey bee is immediate but hives have queens, not kings."
+            }
+          }
+        },
+        {
+          "text": "SOLOMON",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Honey in Solomon's songs.",
+          "wordBConnection": "King Solomon.",
+          "revealExplanation": "Solomon: the king who sang of honey.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Song of Solomon",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "King Solomon is clear; honey only through a Song of Solomon line nobody would recall from the name."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__knight",
+      "a": "HONEY",
+      "b": "KNIGHT",
+      "source": "u22",
+      "pairNote": "No PASS; a hard pair.",
+      "reviewerBestAvailable": {
+        "text": "MEAD",
+        "why": "The medieval setting is the only thread between the two words.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MEAD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Mead is honey wine.",
+          "wordBConnection": "Knights drank mead.",
+          "revealExplanation": "Mead: the knight's honey wine.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Honey wine on one side; knight only through the medieval feast setting."
+            }
+          }
+        },
+        {
+          "text": "SWEET",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sweet honey.",
+          "wordBConnection": "The knight's sweetheart.",
+          "revealExplanation": "Sweet: honey, and the knight's sweetheart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honey is sweet; knights are not."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__light",
+      "a": "HONEY",
+      "b": "LIGHT",
+      "source": "u22",
+      "pairNote": "AMBER works; CANDLE is a beeswax stretch.",
+      "reviewerBestAvailable": {
+        "text": "AMBER",
+        "why": "Colour route is direct on both sides.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "AMBER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey is amber in the jar.",
+          "wordBConnection": "Amber is one of the three traffic lights.",
+          "revealExplanation": "Honey is amber-coloured and amber is one of the three traffic lights.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Honey is amber coloured and the amber light is a traffic signal; a valid shared property."
+            }
+          }
+        },
+        {
+          "text": "CANDLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cause_and_effect",
+          "wordAConnection": "A beeswax candle comes out of the same comb as the honey.",
+          "wordBConnection": "And it is burnt for its light.",
+          "revealExplanation": "A beeswax candle comes out of the same hive as the honey and is burnt for its light.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Candlelight is immediate; honey via beeswax or honey-scented candles, a step removed."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__lion",
+      "a": "HONEY",
+      "b": "LION",
+      "source": "u22",
+      "pairNote": "GOLDEN serves; SAMSON is a true story route but niche.",
+      "reviewerBestAvailable": {
+        "text": "GOLDEN",
+        "why": "Immediate colour association for both.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GOLDEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Golden honey.",
+          "wordBConnection": "A golden lion.",
+          "revealExplanation": "Golden: honey and lion.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Golden honey and the golden lion's mane; a shared colour property."
+            }
+          }
+        },
+        {
+          "text": "SAMSON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Honey in the lion's carcass.",
+          "wordBConnection": "Samson slew the lion.",
+          "revealExplanation": "Samson: the lion, and the honey inside it.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Book of Judges",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "needs_explanation",
+                "obscure"
+              ],
+              "reason": "Samson killed a lion and later found honey in its carcass; the lion is known, the honey detail is for Bible readers."
+            }
+          }
+        },
+        {
+          "text": "BADGER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The honey badger.",
+          "wordBConnection": "Honey badgers stand up to lions.",
+          "revealExplanation": "Badger: the honey badger that scares lions.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honey badger is immediate; badger has no lion route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__moon",
+      "a": "HONEY",
+      "b": "MOON",
+      "source": "u22",
+      "pairNote": "Two good hints; WEDDING is a pair-compound hint and should be confirmed acceptable in principle.",
+      "reviewerBestAvailable": {
+        "text": "HARVEST",
+        "why": "Each side stands on its own without needing the pair compound.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The honeymoon is the trip that follows the wedding.",
+          "wordBConnection": "It is named for the moon-month of sweetness after it.",
+          "revealExplanation": "The honeymoon follows the wedding and is named for the moon-month of sweetness after it.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wedding points straight at the compound honeymoon, which is the pair itself."
+            }
+          }
+        },
+        {
+          "text": "HARVEST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Harvesting the honey is what the beekeeper does at the end of summer.",
+          "wordBConnection": "The harvest moon is the one full moon with a name of its own.",
+          "revealExplanation": "The harvest moon is the one full moon with a name of its own, and harvesting the honey is what the beekeeper does at the end of the summer.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Harvest moon is a compound and beekeepers harvest honey."
+            }
+          }
+        },
+        {
+          "text": "MONTH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "The honeymoon was originally the first month of marriage.",
+          "wordBConnection": "Moon is the old root of the word month.",
+          "revealExplanation": "Moon is the old root of month, and the honeymoon was originally the first month of marriage.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "A lunar month reaches moon; honey only via the honeymoon-is-a-month etymology, which the hint does not surface."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__mouse",
+      "a": "HONEY",
+      "b": "MOUSE",
+      "source": "u22",
+      "pairNote": "TRAP alone; the other two are each one-sided.",
+      "reviewerBestAvailable": {
+        "text": "TRAP",
+        "why": "Two compounds with the same head word.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TRAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey as trap bait.",
+          "wordBConnection": "A mousetrap.",
+          "revealExplanation": "Trap: for the mouse, baited sweet.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Mouse trap and honey trap are both set phrases."
+            }
+          }
+        },
+        {
+          "text": "HOUSE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey, I'm home.",
+          "wordBConnection": "A mouse in the house.",
+          "revealExplanation": "House: a mouse in it, honey waiting.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "House mouse is immediate; honey has no house route beyond a beekeeping term."
+            }
+          }
+        },
+        {
+          "text": "POOH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Pooh's honey.",
+          "wordBConnection": "Pooh belongs to the Mouse house.",
+          "revealExplanation": "Pooh: honey lover, Disney's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Pooh and honey are inseparable, but there is no mouse in the Hundred Acre Wood."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__night",
+      "a": "HONEY",
+      "b": "NIGHT",
+      "source": "u22",
+      "pairNote": "MOON carries it.",
+      "reviewerBestAvailable": {
+        "text": "MOON",
+        "why": "Compound plus a natural association.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MOON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honeymoon.",
+          "wordBConnection": "The moon at night.",
+          "revealExplanation": "Moon: honeymoon, night moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honeymoon is a compound and the moon belongs to the night."
+            }
+          }
+        },
+        {
+          "text": "TEA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Honey tea.",
+          "wordBConnection": "Bedtime tea at night.",
+          "revealExplanation": "Tea: honey, before the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey in tea is plain; night via a bedtime cup, a shared scene but not a phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__ocean",
+      "a": "HONEY",
+      "b": "OCEAN",
+      "source": "u22",
+      "pairNote": "No PASS; both hints are one-sided and the pair needs a new idea.",
+      "reviewerBestAvailable": {
+        "text": "GOLDEN",
+        "why": "Honey is certain and a golden sea at sunset is at least a shared image, which is more than salted honey offers.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SALT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salted honey.",
+          "wordBConnection": "The salt ocean.",
+          "revealExplanation": "Salt: in the honey, in the ocean.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ocean salt is immediate; salted honey is a niche flavour that the hint does not evoke."
+            }
+          }
+        },
+        {
+          "text": "GOLDEN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Golden honey.",
+          "wordBConnection": "A golden ocean at sunset.",
+          "revealExplanation": "Golden: honey, and the sunset ocean.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Golden honey is plain; the ocean is only golden at a sunset, not a property players would name."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__pirate",
+      "a": "HONEY",
+      "b": "PIRATE",
+      "source": "u22",
+      "pairNote": "No PASS; drink routes only half-reach honey.",
+      "reviewerBestAvailable": {
+        "text": "RUM",
+        "why": "Pirate is certain and honey rum is a real, if secondary, product.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "RUM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Honey rum.",
+          "wordBConnection": "A pirate's rum.",
+          "revealExplanation": "Rum: honeyed, for the pirate.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirates and rum are inseparable; honey via honey rum or a hot toddy, a secondary pairing."
+            }
+          }
+        },
+        {
+          "text": "GROG",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Grog with honey.",
+          "wordBConnection": "Pirate grog.",
+          "revealExplanation": "Grog: the pirate's, sweetened with honey.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Grog is pirate drink; the honey-in-grog recipe is too niche to count."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__queen",
+      "a": "HONEY",
+      "b": "QUEEN",
+      "source": "u22",
+      "pairNote": "Strong pair; BEYONCE is a two-step chain.",
+      "reviewerBestAvailable": {
+        "text": "BEE",
+        "why": "Two compounds sharing the same head word.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BEE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey bees.",
+          "wordBConnection": "The queen bee.",
+          "revealExplanation": "Bee: the queen, and the honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey bee and queen bee are both compounds."
+            }
+          }
+        },
+        {
+          "text": "HIVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A hive of honey.",
+          "wordBConnection": "The queen's hive.",
+          "revealExplanation": "Hive: the queen's, full of honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The hive makes honey and is ruled by a queen; one shared scene."
+            }
+          }
+        },
+        {
+          "text": "BEYONCE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Beyhive, honey and all.",
+          "wordBConnection": "Queen Bey.",
+          "revealExplanation": "Beyoncé: Queen Bey of the hive.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Beyoncé",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Queen Bey is a famous nickname; honey only by chaining Bey to bee to honey."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__ring",
+      "a": "HONEY",
+      "b": "RING",
+      "source": "u22",
+      "pairNote": "Two usable hints; HONEYMOON is a contains_target failure.",
+      "reviewerBestAvailable": {
+        "text": "WEDDING",
+        "why": "Both halves are everyday; the honeymoon jump is natural.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The honeymoon follows the wedding.",
+          "wordBConnection": "A wedding ring.",
+          "revealExplanation": "Wedding: the ring, then the honeymoon.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Wedding ring is immediate; honey via the honeymoon that follows and honey as the spouse pet name."
+            }
+          }
+        },
+        {
+          "text": "GLAZED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey-glazed.",
+          "wordBConnection": "A glazed doughnut ring.",
+          "revealExplanation": "Glazed: a honey ring doughnut.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Honey-glazed is a fixed compound; ring via the glazed ring doughnut."
+            }
+          }
+        },
+        {
+          "text": "HONEYMOON",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target HONEY",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains HONEY as a substring, a rule failure regardless of the wedding link to ring."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__robot",
+      "a": "HONEY",
+      "b": "ROBOT",
+      "source": "u22",
+      "pairNote": "DRONE is the pair's natural hint.",
+      "reviewerBestAvailable": {
+        "text": "DRONE",
+        "why": "One word with two genuine senses.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Drone bees in the honey hive.",
+          "wordBConnection": "A drone is a robot.",
+          "revealExplanation": "Drone: the bee, and the robot.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A drone is a male honey bee and a flying robot; clean double meaning."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Honey bees.",
+          "wordBConnection": "Robot bees.",
+          "revealExplanation": "Bee: honey bee, robot bee.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Honey bee is immediate; robot only via the Transformers robot Bumblebee or robo-bee research."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__rock",
+      "a": "HONEY",
+      "b": "ROCK",
+      "source": "u22",
+      "pairNote": "Two usable hints; COMB is honey-only.",
+      "reviewerBestAvailable": {
+        "text": "AMBER",
+        "why": "Colour on one side and a literal stone on the other.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "AMBER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Amber honey.",
+          "wordBConnection": "Amber, the gem-like stone.",
+          "revealExplanation": "Amber: honey's colour, and a stone.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Honey is amber coloured and amber is a fossil-resin gemstone, i.e. a rock."
+            }
+          }
+        },
+        {
+          "text": "CANDY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honey candy.",
+          "wordBConnection": "Rock candy.",
+          "revealExplanation": "Candy: honey, or rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Rock candy is a compound; honey via honey candies and honey as a natural sweet."
+            }
+          }
+        },
+        {
+          "text": "COMB",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Honeycomb.",
+          "wordBConnection": "Honeycomb weathering in rock.",
+          "revealExplanation": "Comb: honeycomb, in the hive or the rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honeycomb is immediate; there is no comb route to rock."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_honey__rose",
@@ -62740,6 +66155,401 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_honey__shadow",
+      "a": "HONEY",
+      "b": "SHADOW",
+      "source": "u22",
+      "pairNote": "Three usable hints; STRETCH is shadow-only.",
+      "reviewerBestAvailable": {
+        "text": "MOON",
+        "why": "Compound plus a plain physical association.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MOON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A honeymoon is the trip after the wedding.",
+          "wordBConnection": "A moon shadow is the one the moon throws.",
+          "revealExplanation": "A honeymoon is the trip after the wedding and a moon shadow is the one the moon throws.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honeymoon is a compound and moonshadow or the moon casting shadows is natural."
+            }
+          }
+        },
+        {
+          "text": "DROP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Honey falls in a drop off the spoon.",
+          "wordBConnection": "A drop shadow is the soft edge a designer puts behind a box.",
+          "revealExplanation": "Honey falls in a drop off the spoon, and a drop shadow is the soft edge a designer puts behind a box.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A drop of honey or honey drops, and drop shadow from design software."
+            }
+          }
+        },
+        {
+          "text": "SPY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A honeytrap is standard spycraft.",
+          "wordBConnection": "So is tailing a target through a crowd.",
+          "revealExplanation": "A honeytrap and tailing a target are both standard spycraft.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "To shadow someone is spy work and the honey trap is a spy tactic; one espionage scene."
+            }
+          }
+        },
+        {
+          "text": "STRETCH",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "Honey stretches in a long thread off the spoon.",
+          "wordBConnection": "Shadows stretch out long in the late afternoon.",
+          "revealExplanation": "Honey stretches in a long thread off the spoon and shadows stretch out long in the late afternoon.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shadows stretch in the evening; honey does not stretch in any phrase players know."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__shark",
+      "a": "HONEY",
+      "b": "SHARK",
+      "source": "u22",
+      "pairNote": "No PASS; both hints are honey-only and the pair needs a fresh idea (e.g. a predator or bait route).",
+      "reviewerBestAvailable": {
+        "text": "BADGER",
+        "why": "Neither reaches shark; BADGER at least names a famous fearless predator that players loosely group with sharks, which is more than SWEET offers.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SWEET",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sweet honey.",
+          "wordBConnection": "The card shark's sweet talk.",
+          "revealExplanation": "Sweet: honey, and the shark's talk.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honey is sweet; sharks are not."
+            }
+          }
+        },
+        {
+          "text": "BADGER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The honey badger.",
+          "wordBConnection": "Fearless as a shark.",
+          "revealExplanation": "Badger: honey badger, land shark.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honey badger is immediate; badger has no shark route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__snake",
+      "a": "HONEY",
+      "b": "SNAKE",
+      "source": "u22",
+      "pairNote": "TONGUE carries it; CHARM is a fair second.",
+      "reviewerBestAvailable": {
+        "text": "TONGUE",
+        "why": "Literal for snake, idiomatic for honey.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TONGUE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "Honeyed words come off the tongue.",
+          "wordBConnection": "A forked tongue is what a snake is trusted with.",
+          "revealExplanation": "Honeyed words come off the tongue and a forked tongue is what a snake is trusted with; both describe sweet talk you should not believe.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A snake's forked tongue and a honeyed or honey-tongued speaker."
+            }
+          }
+        },
+        {
+          "text": "CHARM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "wordplay",
+          "wordAConnection": "Honeyed charm is how a smooth talker works.",
+          "wordBConnection": "A snake charmer does the other kind.",
+          "revealExplanation": "A snake charmer does the charming and honeyed charm is how a smooth talker works.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Snake charmer is immediate; honey via honeyed, charming words, a figurative stretch."
+            }
+          }
+        },
+        {
+          "text": "TRAP",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A honeytrap is the lure.",
+          "wordBConnection": "A snake in the grass is what you find once you are in it.",
+          "revealExplanation": "A honeytrap is the lure and a snake in the grass is what you find once you are in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Honey trap is a set phrase; snake trap is not something players would reach for."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_honey__spider",
+      "a": "HONEY",
+      "b": "SPIDER",
+      "source": "u22",
+      "pairNote": "Strong pair; all three serve.",
+      "reviewerBestAvailable": {
+        "text": "STICKY",
+        "why": "Literal shared property of both.",
+        "reviewer": "blind-subagent-22"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TRAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A honey trap.",
+          "wordBConnection": "The spider's trap.",
+          "revealExplanation": "Trap: honey trap, spider's web.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey trap is a set phrase and a spider's web is a trap."
+            }
+          }
+        },
+        {
+          "text": "FLY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Catch more flies with honey.",
+          "wordBConnection": "The spider catches flies.",
+          "revealExplanation": "Fly: caught by honey, caught by the spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Spiders catch flies, and you catch more flies with honey than vinegar."
+            }
+          }
+        },
+        {
+          "text": "STICKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Sticky honey.",
+          "wordBConnection": "A sticky web.",
+          "revealExplanation": "Sticky: honey, and the web.",
+          "reference": null,
+          "provenance": {
+            "source": "u22",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-22",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Honey is sticky and so is a spider's web."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_honey__spring",
