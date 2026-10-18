@@ -2,24 +2,14 @@
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 110
+- pairs with an existing approved preference (untouched): 120
 - pairs where the reviewer's pick already was the provisional top candidate: 779
-- preferences added: 10 (9 ties, 1 overrides of a higher-scored hint)
+- preferences added: 0 (0 ties, 0 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 2
 - proposed entries still open: 12
 
 ## Added
 
-- tie p_night__witch (NIGHT+WITCH): HALLOWEEN 2/2/2 replaces HOUR 2/2/2 — Broad shared scene that reaches both words instantly.
-- tie p_night__wolf (NIGHT+WOLF): MOON 2/2/2 replaces HOWL 2/2/2 — Classic image that ties both sides equally.
-- tie p_ocean__robot (OCEAN+ROBOT): SUBMERSIBLE 2/1/2 replaces DRONE 1/2/2 — Ocean side is unmistakable and robotic subs are a familiar idea.
-- tie p_ocean__rock (OCEAN+ROCK): WAVES 2/2/2 replaces CLIFF 2/2/2 — Waves crashing on rocks is a vivid shared scene.
-- tie p_ocean__spring (OCEAN+SPRING): TIDE 2/2/2 replaces WATER 2/2/2 — Spring tide is a genuine compound and tides are pure ocean.
-- tie p_pirate__rock (PIRATE+ROCK): SKULL 2/1/2 replaces SHIPWRECK 2/1/2 — Iconic pirate symbol plus Skull Rock.
-- OVERRIDE p_pirate__shark (PIRATE+SHARK): PLANK 2/1/2 replaces SEA 2/2/2 — A specific shared scene rather than a shared habitat.
-- tie p_pirate__witch (PIRATE+WITCH): CURSE 2/2/2 replaces COSTUME 2/2/2 — Natural verb route to WITCH plus the famous film title.
-- tie p_queen__rock (QUEEN+ROCK): BAND 2/2/2 replaces WILL 2/2/2 — Queen is a rock band, plain and broad.
-- tie p_queen__rose (QUEEN+ROSE): ALICE 2/2/2 replaces TUDOR 2/2/2 — One familiar story that features both a queen and roses.
 
 ## Contradictions (unresolved, for the parent)
 
