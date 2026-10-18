@@ -1,3 +1,5 @@
+// SUPERSEDED on feature/unlimited-random: Play and Next now build a random board (src/unlimited/generate.js),
+// so this fixed-order flow no longer applies. Kept as the record of the fixed-pool beta; see random-check.mjs.
 // Release-readiness check for the 32-board pool (beta-01 + beta-02 + local
 // candidate beta-03), at phone and desktop width, against the local dev server.
 // A guest who already finished 15 of the first 16 boards (mixed results, a

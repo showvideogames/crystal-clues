@@ -62,3 +62,62 @@ describe("Unlimited history store", () => {
     expect(readStore()).toEqual(s);
   });
 });
+
+// Random boards: frozen snapshots in the store, and compatibility with fixed-pool history.
+import { resolveBoard, recentPairIds, playedTotal, feedbackJson } from "./history.js";
+import { generateBoard } from "./generate.js";
+import LIBRARY from "./random-library.json";
+import POOL from "./pool.json";
+
+describe("random boards in the history store", () => {
+  beforeEach(() => localStorage.clear());
+  const poolById = new Map(POOL.boards.map((b) => [b.id, b]));
+  const rnd = (seed) => generateBoard(LIBRARY, { seed, createdAt: `2026-10-18T18:0${seed % 10}:00.000Z` });
+
+  it("reads a store written before random boards (no boards map) without losing anything", () => {
+    const old = { version: 1, played: { "beta-01-001": { outcome: "won", livesUsed: 1, difficulty: "standard", finishedAt: "2026-10-17T20:00:00.000Z", version: 1, replays: 0 } },
+      current: { id: "beta-02-008", version: 1, difficulty: "easy", replay: false, startedAt: "2026-10-17T21:00:00.000Z" }, feedback: [{ puzzleId: "beta-01-001", version: 1, position: 0, rating: "great" }] };
+    localStorage.setItem(STORE_KEY, JSON.stringify(old));
+    const s = readStore();
+    expect(s.played).toEqual(old.played);
+    expect(s.current).toEqual(old.current);
+    expect(s.feedback).toEqual(old.feedback);
+    expect(s.boards).toEqual({});
+    expect(resolveBoard(poolById, s, s.current.id)).toBe(poolById.get("beta-02-008")); // an in-progress fixed board still resolves
+    expect(resolveBoard(poolById, s, "beta-01-001").reveal).toEqual(poolById.get("beta-01-001").reveal); // frozen pool snapshot
+  });
+
+  it("freezes a random board on start; refresh, Continue and Replay resolve the exact same object", () => {
+    const b = rnd(11);
+    let s = startBoard(emptyStore(), b, "hardcore");
+    writeStore(s);
+    const reread = readStore();                       // a refresh
+    expect(resolveBoard(poolById, reread, reread.current.id)).toEqual(b);
+    s = finishBoard(reread, b, { won: true, livesUsed: 1, difficulty: "hardcore" });
+    const other = rnd(12);
+    s = startBoard(s, { ...other, id: b.id, clues: ["X", "Y", "Z", "W"] }, "easy", { replay: true }); // a different board under the same id must not replace the snapshot
+    expect(s.boards[b.id]).toEqual(b);
+    s = finishBoard(s, b, { won: false, livesUsed: 3, difficulty: "easy" });
+    expect(s.played[b.id]).toMatchObject({ outcome: "won", replays: 1 });
+    expect(playedTotal(s)).toBe(1);
+  });
+
+  it("knows the pairs of the last boards (for avoiding repeats) and exports the boards it played", () => {
+    let s = emptyStore();
+    const bs = [rnd(21), rnd(22), rnd(23), rnd(24)];
+    for (const b of bs) s = finishBoard(startBoard(s, b, "standard"), b, { won: true, livesUsed: 0, difficulty: "standard" });
+    const recent = recentPairIds(s, 3);
+    expect(recent.size).toBeGreaterThan(0);
+    for (const r of bs[3].reveal) expect(recent.has(r.pairId)).toBe(true);
+    const json = JSON.parse(feedbackJson(s));
+    expect(Object.keys(json.boards).sort()).toEqual(bs.map((b) => b.id).sort());
+    expect(json.boards[bs[0].id]).toEqual(bs[0]);
+  });
+
+  it("the fixed pool is untouched: live beta-01/02 boards keep their ids and snapshots", () => {
+    const ids = POOL.boards.map((b) => b.id);
+    expect(ids.filter((id) => id.startsWith("beta-01")).length).toBe(8);
+    expect(ids.filter((id) => id.startsWith("beta-02")).length).toBe(8);
+    expect(POOL.boards.every((b) => !b.kind)).toBe(true);
+  });
+});

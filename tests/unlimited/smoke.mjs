@@ -1,3 +1,5 @@
+// SUPERSEDED on feature/unlimited-random: Play and Next now build a random board (src/unlimited/generate.js),
+// so this fixed-order flow no longer applies. Kept as the record of the fixed-pool beta; see random-check.mjs.
 // Unlimited guest beta in a real browser at phone width, against the dev
 // server (node vite.js … --mode friends-local --port 5192, or FRIENDS_E2E_URL).
 // A guest who already has a Daily save and a Daily result in this browser,
