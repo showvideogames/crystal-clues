@@ -4,7 +4,7 @@
 
 - **Live site:** unchanged at main `a98a9b0`, serving **16 boards** (pool SHA-256 `dddd17a34ff84d5b82d699dcc0fc6f576862edc7d36290c7d265ac2a6cb82bbb`).
 - **Local candidate:** branch `feature/unlimited-batch-02` in the worktree `C:\Users\leviw\cluevoyance-unlimited`, HEAD `0d982e000c498874e8fadeb9d3e65f23dca87a42`. It holds **32 boards**: the 16 live boards byte-identical, plus beta-03 at indices 17–32. Pool SHA-256: `99f43d46d63cce8966578f2b492cb7feed5d81e8a3b3d0723f265ee3d3f95b42`.
-- **Nothing pushed, merged or deployed.** No live writes, no new analytics and no database changes. Browser tests ran only against the local dev server (127.0.0.1:5192) and the local stack. Authoring, review and this run used the included allowance on Opus 5.5, with paid extras off.
+- **Nothing pushed, merged or deployed.** No live writes, no new analytics and no database changes. Browser tests ran only against the local dev server (127.0.0.1:5192) and the local stack. The final authoring/review batches u27–u32 and release-readiness work used Opus 5.5; earlier batches retain their recorded Fable provenance, including recovered u26. Paid extras remained off.
 
 ## What changed versus live main
 
