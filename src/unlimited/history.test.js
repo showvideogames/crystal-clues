@@ -166,3 +166,59 @@ describe("saving when storage is full, blocked or unreadable", () => {
     expect(readStore()).toEqual(emptyStore()); // play continues from memory
   });
 });
+
+// Malformed saved data: never read as history, never written over.
+import { isValidStore } from "./history.js";
+
+describe("malformed saved data stays untouched", () => {
+  beforeEach(() => localStorage.clear());
+  const entry = { outcome: "won", livesUsed: 0, difficulty: "standard", finishedAt: "2026-10-17T20:00:00.000Z", version: 1, replays: 0 };
+  const good = { version: 1, played: { "beta-01-001": entry }, current: null, feedback: [], boards: {} };
+  const MALFORMED = {
+    "top level null": null,
+    "top level array": [good],
+    "version as text": { ...good, version: "1" },
+    "played null": { ...good, played: null },
+    "played array": { ...good, played: [entry] },
+    "played missing": { version: 1, current: null, feedback: [] },
+    "played entry null": { ...good, played: { "beta-01-001": null } },
+    "played entry array": { ...good, played: { "beta-01-001": [entry] } },
+    "current array": { ...good, current: ["beta-01-001"] },
+    "current without id": { ...good, current: { difficulty: "easy" } },
+    "feedback null": { ...good, feedback: null },
+    "feedback record": { ...good, feedback: { 0: {} } },
+    "feedback item null": { ...good, feedback: [null] },
+    "boards null": { ...good, boards: null },
+    "boards array": { ...good, boards: [{ id: "r-1" }] },
+    "boards entry null": { ...good, boards: { "r-1": null } },
+    "boards entry array": { ...good, boards: { "r-1": [] } },
+    "boards entry without id": { ...good, boards: { "r-1": { clues: [] } } },
+  };
+
+  for (const [name, value] of Object.entries(MALFORMED)) {
+    it(`${name}: reported unreadable, not read as history, never overwritten`, () => {
+      const raw = JSON.stringify(value);
+      localStorage.setItem(STORE_KEY, raw);
+      expect(isValidStore(value)).toBe(false);
+      expect(storageStatus()).toBe("unreadable");
+      expect(readStore()).toEqual(emptyStore());          // play continues from an empty in-memory store
+      const next = finishBoard(startBoard(readStore(), board(1), "standard"), board(1), { won: true, livesUsed: 0, difficulty: "standard" });
+      expect(writeStore(next)).toBe(false);               // refused
+      expect(localStorage.getItem(STORE_KEY)).toBe(raw);   // byte-identical
+    });
+  }
+
+  it("valid stores still load and save: today's, one without boards, one without feedback", () => {
+    const withoutBoards = { version: 1, played: { "beta-01-001": entry }, current: { id: "beta-02-008", version: 1, difficulty: "easy" }, feedback: [] };
+    const withoutFeedback = { version: 1, played: {}, current: null };
+    for (const v of [good, withoutBoards, withoutFeedback]) {
+      expect(isValidStore(v)).toBe(true);
+      localStorage.setItem(STORE_KEY, JSON.stringify(v));
+      expect(storageStatus()).toBe("ok");
+      const s = readStore();
+      expect(s.played).toEqual(v.played);
+      expect(Array.isArray(s.feedback) && s.boards && typeof s.boards === "object").toBe(true);
+      expect(writeStore(s)).toBe(true);
+    }
+  });
+});

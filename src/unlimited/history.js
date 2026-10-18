@@ -15,13 +15,32 @@ export const RATINGS = [
 
 export const emptyStore = () => ({ version: 1, played: {}, current: null, feedback: [], boards: {} });
 
+/** A record: a plain object, never null or an array. */
+const isRecord = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+
+/**
+ * Is this a version-1 store this code can read and safely write back? Every
+ * place a record is required must hold one (null and arrays are rejected):
+ *   played    record of id → record          (required)
+ *   current   null, or a record with a string id
+ *   feedback  array of records                (optional: older stores may lack it)
+ *   boards    record of id → record with a string id (optional: added with random boards)
+ */
+export function isValidStore(s) {
+  if (!isRecord(s) || s.version !== 1) return false;
+  if (!isRecord(s.played) || !Object.values(s.played).every(isRecord)) return false;
+  if (s.current !== undefined && s.current !== null && !(isRecord(s.current) && typeof s.current.id === "string")) return false;
+  if (s.feedback !== undefined && !(Array.isArray(s.feedback) && s.feedback.every(isRecord))) return false;
+  if (s.boards !== undefined && !(isRecord(s.boards) && Object.values(s.boards).every((b) => isRecord(b) && typeof b.id === "string"))) return false;
+  return true;
+}
+
 export function readStore() {
   try {
     const raw = localStorage.getItem(STORE_KEY);
     const s = raw ? JSON.parse(raw) : null;
-    if (!s || s.version !== 1 || typeof s.played !== "object") return emptyStore();
-    const boards = s.boards && typeof s.boards === "object" && !Array.isArray(s.boards) ? s.boards : {};
-    return { ...emptyStore(), ...s, feedback: Array.isArray(s.feedback) ? s.feedback : [], boards };
+    if (!isValidStore(s)) return emptyStore();
+    return { ...emptyStore(), ...s, current: s.current ?? null, feedback: s.feedback ?? [], boards: s.boards ?? {} };
   } catch {
     return emptyStore();
   }
@@ -38,8 +57,7 @@ export function storageStatus() {
   try {
     const raw = localStorage.getItem(STORE_KEY);
     if (raw === null) return "empty";
-    const s = JSON.parse(raw);
-    return s && s.version === 1 && typeof s.played === "object" ? "ok" : "unreadable";
+    return isValidStore(JSON.parse(raw)) ? "ok" : "unreadable";
   } catch (e) {
     return e instanceof SyntaxError ? "unreadable" : "unavailable";
   }
@@ -48,7 +66,7 @@ export function storageStatus() {
 /** What the player is told when Unlimited isn't being saved (shown by UnlimitedView's SaveNotice). */
 export const SAVE_HEADLINE = "Progress isn't saving in this browser. Keep this page open to avoid losing this game or your notes.";
 export const SAVE_DETAIL = {
-  failed: "This browser's storage is full or turned off, so Unlimited can't save right now. Anything already saved here is unchanged and nothing is deleted. If you refresh or leave, this game and any notes on it are lost; use Copy to keep your feedback. Saving starts again on its own if storage frees up.",
+  failed: "This browser's storage is full or turned off, so Unlimited can't save right now. Anything already saved here is unchanged and nothing is deleted. If you refresh or leave, this game and any notes on it are lost; use Copy to keep your feedback. We'll try saving again the next time your progress or notes change.",
   unavailable: "This browser isn't letting Unlimited use storage (it may be turned off or blocked), so nothing can be saved. If you refresh or leave, this game and any notes on it are lost; use Copy to keep your feedback.",
   unreadable: "Unlimited games already saved in this browser couldn't be read (they may be damaged or from a newer version of the game), so nothing is saved over them and they stay as they are. New games and notes aren't kept; use Copy to keep your feedback.",
 };
