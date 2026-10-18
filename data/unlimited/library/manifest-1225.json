@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-18T01:55:15.822Z",
+  "generated": "2026-10-18T01:55:17.748Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 836,
-  "reviewed": 836,
-  "playable": 678,
-  "held_only": 119,
-  "rejected_only": 39,
+  "authored": 876,
+  "reviewed": 876,
+  "playable": 713,
+  "held_only": 123,
+  "rejected_only": 40,
   "candidate": 0,
-  "hole": 389,
+  "hole": 349,
   "closed": 0,
-  "withBestAvailableCandidate": 158,
+  "withBestAvailableCandidate": 163,
   "underGenerationHold": 1,
   "servedLive": 64,
   "pendingLocal": 0,
@@ -30,10 +30,10 @@
    "pendingBatches": []
   },
   "hints": {
-   "total": 1919,
-   "playable": 1066,
-   "held": 434,
-   "rejected": 419
+   "total": 2032,
+   "playable": 1136,
+   "held": 449,
+   "rejected": 447
   },
   "perWordHoles": {
    "APPLE": 0,
@@ -56,36 +56,36 @@
    "GLASS": 0,
    "GOLD": 0,
    "HEART": 0,
-   "HONEY": 5,
-   "HORSE": 25,
-   "ICE": 27,
-   "IRON": 26,
-   "KEY": 26,
-   "KING": 26,
-   "KNIGHT": 27,
-   "LIGHT": 26,
-   "LION": 26,
-   "MOON": 25,
-   "MOUSE": 28,
-   "NIGHT": 27,
-   "OCEAN": 25,
-   "PIRATE": 27,
-   "QUEEN": 27,
-   "RING": 28,
-   "ROBOT": 27,
-   "ROCK": 26,
+   "HONEY": 0,
+   "HORSE": 0,
+   "ICE": 16,
+   "IRON": 25,
+   "KEY": 24,
+   "KING": 24,
+   "KNIGHT": 25,
+   "LIGHT": 24,
+   "LION": 24,
+   "MOON": 23,
+   "MOUSE": 26,
+   "NIGHT": 25,
+   "OCEAN": 23,
+   "PIRATE": 26,
+   "QUEEN": 26,
+   "RING": 27,
+   "ROBOT": 26,
+   "ROCK": 25,
    "ROSE": 25,
-   "SALT": 28,
-   "SHADOW": 27,
-   "SHARK": 27,
-   "SNAKE": 28,
-   "SPIDER": 28,
-   "SPRING": 26,
-   "STAR": 27,
-   "TRAIN": 27,
-   "WATER": 26,
-   "WITCH": 27,
-   "WOLF": 28
+   "SALT": 27,
+   "SHADOW": 26,
+   "SHARK": 26,
+   "SNAKE": 27,
+   "SPIDER": 27,
+   "SPRING": 25,
+   "STAR": 25,
+   "TRAIN": 26,
+   "WATER": 24,
+   "WITCH": 25,
+   "WOLF": 26
   },
   "batches": {
    "u04": {
@@ -242,11 +242,11 @@
    },
    "u23": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
-    "rejected_only": 0
+    "playable": 35,
+    "held_only": 4,
+    "rejected_only": 1
    },
    "u24": {
     "pairs": 40,
@@ -19075,8 +19075,20 @@
    "pair_id": "p_honey__star",
    "a": "HONEY",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GOLDEN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19084,8 +19096,28 @@
    "pair_id": "p_honey__train",
    "a": "HONEY",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CARGO",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Trains carry cargo, but honey is not recognisably cargo to a player; train-only.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "Neither hint reaches both words; CARGO at least admits honey as freight a train could carry, which BUN cannot do for train at all.",
+    "stretch": true
+   },
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19093,8 +19125,22 @@
    "pair_id": "p_honey__water",
    "a": "HONEY",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LEMON",
+    "TEA",
+    "DISSOLVE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19102,8 +19148,20 @@
    "pair_id": "p_honey__witch",
    "a": "HONEY",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GINGERBREAD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19111,8 +19169,20 @@
    "pair_id": "p_honey__wolf",
    "a": "HONEY",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BEAR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19120,8 +19190,20 @@
    "pair_id": "p_horse__ice",
    "a": "HORSE",
    "b": "ICE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SLEIGH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19151,8 +19233,20 @@
    "pair_id": "p_horse__key",
    "a": "HORSE",
    "b": "KEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BOLT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19160,8 +19254,22 @@
    "pair_id": "p_horse__king",
    "a": "HORSE",
    "b": "KING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HUMPTY",
+    "KNIGHT",
+    "RICHARD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19169,8 +19277,23 @@
    "pair_id": "p_horse__knight",
    "a": "HORSE",
    "b": "KNIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 4,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "JOUST",
+    "STEED",
+    "CHESS",
+    "ARMOR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19178,8 +19301,22 @@
    "pair_id": "p_horse__light",
    "a": "HORSE",
    "b": "LIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DARK",
+    "CAVALRY",
+    "SPEED"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19187,8 +19324,21 @@
    "pair_id": "p_horse__lion",
    "a": "HORSE",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MANE",
+    "NARNIA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19196,8 +19346,28 @@
    "pair_id": "p_horse__moon",
    "a": "HORSE",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "MARE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "A mare is a female horse; the moon's dark plains are the lunar maria (Mare Tranquillitatis), a correct but specialist route.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The only hint with a factual route to both words, though the lunar 'mare' is niche knowledge.",
+    "stretch": false
+   },
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19205,8 +19375,20 @@
    "pair_id": "p_horse__mouse",
    "a": "HORSE",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CINDERELLA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19214,8 +19396,22 @@
    "pair_id": "p_horse__night",
    "a": "HORSE",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MARE",
+    "REVERE",
+    "HEADLESS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19223,8 +19419,20 @@
    "pair_id": "p_horse__ocean",
    "a": "HORSE",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19232,8 +19440,21 @@
    "pair_id": "p_horse__pirate",
    "a": "HORSE",
    "b": "PIRATE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA",
+    "HIGHWAYMAN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19241,8 +19462,22 @@
    "pair_id": "p_horse__queen",
    "a": "HORSE",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CARRIAGE",
+    "ASCOT",
+    "RACES"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19250,8 +19485,22 @@
    "pair_id": "p_horse__ring",
    "a": "HORSE",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CIRCUS",
+    "ARENA",
+    "SHOW"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19259,8 +19508,21 @@
    "pair_id": "p_horse__robot",
    "a": "HORSE",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WESTWORLD",
+    "MECHANICAL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19268,8 +19530,28 @@
    "pair_id": "p_horse__rock",
    "a": "HORSE",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CRAZY",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Crazy Horse is a famous name (Lakota leader, memorial); the rock side is only via Neil Young's band Crazy Horse being a rock act, which itself goes through 'horse'.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The only legal hint with any route to rock; ROCKING is the better clue but breaks the substring rule.",
+    "stretch": false
+   },
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19299,8 +19581,22 @@
    "pair_id": "p_horse__salt",
    "a": "HORSE",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SWEAT",
+    "LICK",
+    "WATER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19308,8 +19604,28 @@
    "pair_id": "p_horse__shadow",
    "a": "HORSE",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SPOOK",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "A horse spooks (verb), typically at a shadow, and a spook is a ghostly shadowy figure; same scene as SHY with a slightly better shadow side.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Reaches horse directly and gives shadow two half-routes (the thing that spooks a horse; a spectral figure).",
+    "stretch": false
+   },
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19317,8 +19633,21 @@
    "pair_id": "p_horse__shark",
    "a": "HORSE",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA",
+    "TEETH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19326,8 +19655,21 @@
    "pair_id": "p_horse__snake",
    "a": "HORSE",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GRASS",
+    "REAR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19335,8 +19677,21 @@
    "pair_id": "p_horse__spider",
    "a": "HORSE",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FLY",
+    "BARN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19344,8 +19699,21 @@
    "pair_id": "p_horse__spring",
    "a": "HORSE",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "JUMP",
+    "FOAL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19353,8 +19721,20 @@
    "pair_id": "p_horse__star",
    "a": "HORSE",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PEGASUS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19384,8 +19764,22 @@
    "pair_id": "p_horse__water",
    "a": "HORSE",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LEAD",
+    "DRINK",
+    "TROUGH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19393,8 +19787,20 @@
    "pair_id": "p_horse__witch",
    "a": "HORSE",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RIDE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19402,8 +19808,22 @@
    "pair_id": "p_horse__wolf",
    "a": "HORSE",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WILD",
+    "PACK",
+    "PREY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19411,8 +19831,20 @@
    "pair_id": "p_ice__iron",
    "a": "ICE",
    "b": "IRON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "AGE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19420,8 +19852,28 @@
    "pair_id": "p_ice__key",
    "a": "ICE",
    "b": "KEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "LOCK",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Lock and key are inseparable; ice is reached only through a frozen lock in winter (de-icer) or 'ice-locked', a seasonal scene rather than a firm link.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Immediate on key and gives ice the frozen-lock scene; the only hint with any two-way reach.",
+    "stretch": true
+   },
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19429,8 +19881,21 @@
    "pair_id": "p_ice__king",
    "a": "ICE",
    "b": "KING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "NIGHT",
+    "FROST"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19438,8 +19903,20 @@
    "pair_id": "p_ice__knight",
    "a": "ICE",
    "b": "KNIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WHITE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19447,8 +19924,21 @@
    "pair_id": "p_ice__light",
    "a": "ICE",
    "b": "LIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SPARKLE",
+    "NORTHERN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19456,8 +19946,21 @@
    "pair_id": "p_ice__lion",
    "a": "ICE",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "NARNIA",
+    "ASLAN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19465,8 +19968,20 @@
    "pair_id": "p_ice__moon",
    "a": "ICE",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "EUROPA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19474,8 +19989,20 @@
    "pair_id": "p_ice__mouse",
    "a": "ICE",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FROZEN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19483,8 +20010,22 @@
    "pair_id": "p_ice__night",
    "a": "ICE",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FROST",
+    "FREEZE",
+    "KING"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -19492,8 +20033,22 @@
    "pair_id": "p_ice__ocean",
    "a": "ICE",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u23",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ARCTIC",
+    "TITANIC",
+    "FLOE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u23",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },

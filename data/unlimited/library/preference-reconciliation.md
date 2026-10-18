@@ -2,20 +2,19 @@
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 71
-- pairs where the reviewer's pick already was the provisional top candidate: 601
-- preferences added: 6 (6 ties, 0 overrides of a higher-scored hint)
+- pairs with an existing approved preference (untouched): 77
+- pairs where the reviewer's pick already was the provisional top candidate: 631
+- preferences added: 5 (5 ties, 0 overrides of a higher-scored hint)
 - contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 0
 - proposed entries still open: 12
 
 ## Added
 
-- tie p_heart__rose (HEART+ROSE): VALENTINE 2/2/2 replaces LOVE 2/2/2 — One shared scene that contains both objects.
-- tie p_heart__star (HEART+STAR): SHAPE 2/2/2 replaces EMOJI 2/2/2 — Both words are literally shape names.
-- tie p_honey__horse (HONEY+HORSE): COMB 2/2/2 replaces SUGAR 2/2/2 — Compound on one side, everyday grooming on the other.
-- tie p_honey__iron (HONEY+IRON): WAFFLE 2/2/2 replaces POT 2/2/2 — Compound plus a shared breakfast picture.
-- tie p_honey__moon (HONEY+MOON): HARVEST 2/2/2 replaces WEDDING 2/2/2 — Each side stands on its own without needing the pair compound.
-- tie p_honey__spider (HONEY+SPIDER): STICKY 2/2/2 replaces TRAP 2/2/2 — Literal shared property of both.
+- tie p_honey__water (HONEY+WATER): TEA 2/2/2 replaces LEMON 2/2/2 — The most everyday scene: honey, lemon and hot water all meet in a cup of tea.
+- tie p_horse__salt (HORSE+SALT): LICK 2/2/2 replaces SWEAT 2/2/2 — The salt lick is a single object that belongs to horses.
+- tie p_horse__wolf (HORSE+WOLF): PACK 2/2/2 replaces WILD 2/2/2 — Two compounds, one word.
+- tie p_ice__king (ICE+KING): FROST 2/1/1 replaces NIGHT 1/2/1 — Direct on ice with a traditional personified-king route.
+- tie p_ice__ocean (ICE+OCEAN): TITANIC 2/2/2 replaces ARCTIC 2/2/2 — One story everyone knows, with ice and ocean as its two protagonists.
 
 ## Contradictions (unresolved, for the parent)
 
