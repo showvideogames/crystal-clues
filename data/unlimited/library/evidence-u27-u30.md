@@ -46,7 +46,7 @@ Library: 1156 of 1225 pairs reviewed, 930 playable, 173 held-only, 53 rejected-o
 - FABLE for LION+MOUSE (2/2/2): Fable: the lion and the mouse.
 - AESOP for LION+MOUSE (2/2/2): Aesop: the lion and the mouse.
 
-## Weakest accepted clues (lowest blind scores among PASS)
+## Weakest accepted (playable) clues, lowest blind scores among PASS
 
 - PETER for PIRATE+SHADOW (1/1/1): Peter: the boy with the shadow and the pirates.
 - SPOOKY for NIGHT+SHADOW (1/1/1): Spooky: night and shadow.
@@ -61,46 +61,53 @@ Library: 1156 of 1225 pairs reviewed, 930 playable, 173 held-only, 53 rejected-o
 - REVENGE for PIRATE+QUEEN (2/1/1): Revenge: the pirate ship named for a queen.
 - VISION for NIGHT+SNAKE (2/1/1): Vision: the snake's, at night.
 
-## Pairs with no playable hint (38), best available kept as held
+## Pairs with no playable hint (38)
 
-- LIGHT+SHARK: LANTERN (GLOW held, LANTERN held)
-- LION+MOON: NIGHT (NIGHT held, ROAR rejected)
-- LION+PIRATE: FLAG (FLAG held, ROAR rejected)
-- LION+SHADOW: SCAR (KING held, SCAR held)
-- MOON+PIRATE: SAIL (SAIL held, CRESCENT rejected)
-- MOON+SHARK: NIGHT (NIGHT held, TIDE rejected)
-- MOON+SNAKE: ZODIAC (ZODIAC held, CYCLE held, CURVE held)
-- MOON+SPIDER: NIGHT (NIGHT held, WEB rejected)
-- MOUSE+OCEAN: SHIP (SHIP held, PAD rejected)
-- MOUSE+PIRATE: SHIP (MICKEY held, SHIP held)
-- MOUSE+RING: CLICK (TRAP rejected, CLICK rejected)
-- MOUSE+ROCK: HOLE (HOLE held, MICKEY rejected)
-- MOUSE+ROSE: GARDEN (GARDEN held, BRAMBLY rejected)
-- MOUSE+SHADOW: PUPPET (SCURRY held, PUPPET held)
-- MOUSE+STAR: MICKEY (HOLLYWOOD held, MICKEY held)
-- MOUSE+WATER: BOTTLE (BOTTLE held, DRIP rejected)
-- NIGHT+RING: PHONE (PHONE held, BELL rejected, ENGAGEMENT rejected)
-- NIGHT+SALT: SEA (SEA rejected, ROAD rejected)
-- NIGHT+WATER: SWIM (SWIM held, GLASS rejected)
-- OCEAN+TRAIN: COAST (TUNNEL held, COAST held)
-- OCEAN+WOLF: SEA (FISH held, SEA held)
-- PIRATE+SNAKE: VILLAIN (VILLAIN held, TREASURE held)
-- PIRATE+SPIDER: RIGGING (RIGGING held, SHIP rejected)
-- PIRATE+WOLF: SEA (SEA held, PACK rejected)
-- QUEEN+ROBOT: CHESS (CHESS held, BORG held)
-- QUEEN+SALT: TAX (TAX held, LOT rejected)
-- QUEEN+SHADOW: MIRROR (MIRROR held, EVIL held)
-- QUEEN+SHARK: REEF (REEF rejected, LOAN rejected)
-- QUEEN+SPIDER: WIDOW (WIDOW held, SHELOB rejected)
-- QUEEN+STAR: SHOOTING (SHOOTING held, BEAUTY rejected, PROM rejected)
-- QUEEN+WATER: MERMAID (MERMAID held, LADY held)
-- RING+SALT: CIRCLE (CIRCLE held, RIM held)
-- RING+SPIDER: WEB (WEB held, ORB rejected)
-- RING+SPRING: COIL (COIL held, BELL rejected)
-- RING+STAR: SATURN (HALO held, SATURN held)
-- RING+WOLF: CIRCLE (CIRCLE held, HOWL rejected)
-- ROBOT+SNAKE: ARM (ARM held, SLITHER rejected)
-- ROBOT+WOLF: PACK (HOWL rejected, PACK rejected)
+These pairs are not served. Each keeps its reviewed hints and raw rejections.
+
+### Held-only (34): at least one BORDERLINE (or held) best-available hint kept
+
+- LIGHT+SHARK: reviewer best available LANTERN (GLOW held, LANTERN held)
+- LION+MOON: reviewer best available NIGHT (NIGHT held, ROAR rejected)
+- LION+PIRATE: reviewer best available FLAG (FLAG held, ROAR rejected)
+- LION+SHADOW: reviewer best available SCAR (KING held, SCAR held)
+- MOON+PIRATE: reviewer best available SAIL (SAIL held, CRESCENT rejected)
+- MOON+SHARK: reviewer best available NIGHT (NIGHT held, TIDE rejected)
+- MOON+SNAKE: reviewer best available ZODIAC (ZODIAC held, CYCLE held, CURVE held)
+- MOON+SPIDER: reviewer best available NIGHT (NIGHT held, WEB rejected)
+- MOUSE+OCEAN: reviewer best available SHIP (SHIP held, PAD rejected)
+- MOUSE+PIRATE: reviewer best available SHIP (MICKEY held, SHIP held)
+- MOUSE+ROCK: reviewer best available HOLE (HOLE held, MICKEY rejected)
+- MOUSE+ROSE: reviewer best available GARDEN (GARDEN held, BRAMBLY rejected)
+- MOUSE+SHADOW: reviewer best available PUPPET (SCURRY held, PUPPET held)
+- MOUSE+STAR: reviewer best available MICKEY (HOLLYWOOD held, MICKEY held)
+- MOUSE+WATER: reviewer best available BOTTLE (BOTTLE held, DRIP rejected)
+- NIGHT+RING: reviewer best available PHONE (PHONE held, BELL rejected, ENGAGEMENT rejected)
+- NIGHT+WATER: reviewer best available SWIM (SWIM held, GLASS rejected)
+- OCEAN+TRAIN: reviewer best available COAST (TUNNEL held, COAST held)
+- OCEAN+WOLF: reviewer best available SEA (FISH held, SEA held)
+- PIRATE+SNAKE: reviewer best available VILLAIN (VILLAIN held, TREASURE held)
+- PIRATE+SPIDER: reviewer best available RIGGING (RIGGING held, SHIP rejected)
+- PIRATE+WOLF: reviewer best available SEA (SEA held, PACK rejected)
+- QUEEN+ROBOT: reviewer best available CHESS (CHESS held, BORG held)
+- QUEEN+SALT: reviewer best available TAX (TAX held, LOT rejected)
+- QUEEN+SHADOW: reviewer best available MIRROR (MIRROR held, EVIL held)
+- QUEEN+SPIDER: reviewer best available WIDOW (WIDOW held, SHELOB rejected)
+- QUEEN+STAR: reviewer best available SHOOTING (SHOOTING held, BEAUTY rejected, PROM rejected)
+- QUEEN+WATER: reviewer best available MERMAID (MERMAID held, LADY held)
+- RING+SALT: reviewer best available CIRCLE (CIRCLE held, RIM held)
+- RING+SPIDER: reviewer best available WEB (WEB held, ORB rejected)
+- RING+SPRING: reviewer best available COIL (COIL held, BELL rejected)
+- RING+STAR: reviewer best available SATURN (HALO held, SATURN held)
+- RING+WOLF: reviewer best available CIRCLE (CIRCLE held, HOWL rejected)
+- ROBOT+SNAKE: reviewer best available ARM (ARM held, SLITHER rejected)
+
+### Rejected-only (4): every hint failed; no servable best-available
+
+- MOUSE+RING: reviewer best available CLICK (TRAP rejected, CLICK rejected)
+- NIGHT+SALT: reviewer best available SEA (SEA rejected, ROAD rejected)
+- QUEEN+SHARK: reviewer best available REEF (REEF rejected, LOAN rejected)
+- ROBOT+WOLF: reviewer best available PACK (HOWL rejected, PACK rejected)
 
 ## Open items for the parent
 

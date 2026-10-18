@@ -1,0 +1,1771 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-31",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "u31-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors + no-literal-false-facts reminder, 2026-10-18",
+    "independence": "I read only u31-blind-input.json; no other repository file, search, web or paid API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_rock__spider",
+      "a": "ROCK",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "TARANTULA",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SPIDER: a tarantula is a spider; ROCK: no recognizable route beyond \"tarantulas hide under rocks\", which is invented rescue."
+        },
+        {
+          "text": "CREVICE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROCK: a crevice is a crack in rock (rock crevice); SPIDER: the familiar scene of a spider hiding in a crack or crevice."
+        }
+      ],
+      "strong_hints": [
+        "CREVICE"
+      ],
+      "best_available": {
+        "text": "CREVICE",
+        "why": "Only hint that reaches both sides, via the spider-in-a-rock-crack scene."
+      },
+      "pair_note": "Thin pair; CREVICE is a moderate scene hint, TARANTULA is spider-only."
+    },
+    {
+      "pair_id": "p_rock__spring",
+      "a": "ROCK",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "HOT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SPRING: hot spring is a fixed compound; ROCK: \"hot rocks\"/hot-stone imagery or geothermally heated rock is a weaker route."
+        },
+        {
+          "text": "WATER",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided",
+            "generic"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SPRING: spring water; ROCK: only a loose image of water flowing from rock, no fixed phrase."
+        },
+        {
+          "text": "MINERAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "ROCK: rocks are made of minerals; SPRING: mineral spring / mineral water."
+        }
+      ],
+      "strong_hints": [
+        "MINERAL"
+      ],
+      "best_available": {
+        "text": "MINERAL",
+        "why": "Shared property that reaches both words cleanly: rocks are mineral, springs are mineral springs."
+      },
+      "pair_note": "MINERAL is the clear winner; HOT and WATER lean on the spring side."
+    },
+    {
+      "pair_id": "p_rock__star",
+      "a": "ROCK",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "SHOOTING",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "STAR: shooting star; ROCK: a shooting star is a meteor (true, a space rock burning up) but \"shooting\" does not point at ROCK for most players."
+        },
+        {
+          "text": "MUSIC",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "ROCK: rock music; STAR: a music star; together the familiar compound \"rock star\"."
+        },
+        {
+          "text": "GUITAR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROCK: rock guitar; STAR: the rock-star-with-a-guitar scene."
+        }
+      ],
+      "strong_hints": [
+        "MUSIC",
+        "GUITAR"
+      ],
+      "best_available": {
+        "text": "MUSIC",
+        "why": "Points straight at the compound \"rock star\" through rock music and music star."
+      },
+      "pair_note": "Good pair; the \"rock star\" compound carries MUSIC and GUITAR."
+    },
+    {
+      "pair_id": "p_rock__train",
+      "a": "ROCK",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "ROLL",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROCK: rock and roll; TRAIN: trains roll (rolling stock), backed by the AC/DC song \"Rock 'n' Roll Train\"."
+        },
+        {
+          "text": "TUNNEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROCK: tunnels are bored through rock; TRAIN: the train tunnel scene."
+        },
+        {
+          "text": "MINE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROCK: mining rock/ore; TRAIN: mine train (mining railway, the familiar mine-train ride)."
+        }
+      ],
+      "strong_hints": [
+        "TUNNEL",
+        "MINE",
+        "ROLL"
+      ],
+      "best_available": {
+        "text": "TUNNEL",
+        "why": "Concrete shared scene: a train going through a tunnel cut in rock."
+      },
+      "pair_note": "Rich pair with three working routes."
+    },
+    {
+      "pair_id": "p_rock__witch",
+      "a": "ROCK",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "CAULDRON",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "WITCH: the witch's cauldron; ROCK: no route."
+        },
+        {
+          "text": "STONEHENGE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "ROCK: standing stones; WITCH: only via modern pagans/Wiccans gathering at solstice, and most players link Stonehenge to druids, not witches."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "STONEHENGE",
+        "why": "Only hint touching both words; the witch side is a pagan-gathering stretch."
+      },
+      "pair_note": "No PASS. Do not explain STONEHENGE as built or used by witches (that would be a wrong fact)."
+    },
+    {
+      "pair_id": "p_rock__wolf",
+      "a": "ROCK",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "DEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "WOLF: wolf den; ROCK: dens in rocky caves or under boulders is a possible but weak scene."
+        },
+        {
+          "text": "HOWL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided",
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "WOLF: wolves howl; ROCK: only the poster image of a wolf howling from a rocky crag, where the rock is incidental."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "DEN",
+        "why": "A rocky den is a real place; HOWL leaves ROCK as scenery."
+      },
+      "pair_note": "No PASS; both hints are wolf-led."
+    },
+    {
+      "pair_id": "p_rose__salt",
+      "a": "ROSE",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "WATER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "ROSE: rose water; SALT: salt water; compound route on both sides."
+        },
+        {
+          "text": "DESERT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "ROSE: desert rose (plant, crystal, Sting song); SALT: salt desert/salt flats is real but a weaker association."
+        },
+        {
+          "text": "PRESERVE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SALT: salt preserves food; ROSE: rose-petal or rose-hip preserves are niche."
+        }
+      ],
+      "strong_hints": [
+        "WATER"
+      ],
+      "best_available": {
+        "text": "WATER",
+        "why": "Two everyday compounds: rose water and salt water."
+      },
+      "pair_note": "WATER is solid; the others lean on one side."
+    },
+    {
+      "pair_id": "p_rose__shadow",
+      "a": "ROSE",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "SONIC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Brand route: Amy Rose and Shadow the Hedgehog are both well-known Sonic characters."
+        },
+        {
+          "text": "WILT",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "ROSE: roses wilt; SHADOW: no route."
+        },
+        {
+          "text": "FADE",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "ROSE: a rose fades; SHADOW: shadows fade; a generic verb that reaches neither strongly."
+        },
+        {
+          "text": "SHADE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "synonym_of_target",
+            "colour_mood_material"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SHADOW: near-synonym (shade); ROSE: \"rose\" as a shade of pink or roses in the shade, both weak."
+        },
+        {
+          "text": "BLACK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "colour_mood_material"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "ROSE: the black rose symbol; SHADOW: shadows look dark, a visual colour link only."
+        }
+      ],
+      "strong_hints": [
+        "SONIC"
+      ],
+      "best_available": {
+        "text": "SONIC",
+        "why": "Only hint that names a real shared context for both words (two Sonic characters)."
+      },
+      "pair_note": "SONIC depends on gaming familiarity; the rest are generic or one-sided."
+    },
+    {
+      "pair_id": "p_rose__shark",
+      "a": "ROSE",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "TITANIC",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "ROSE: Rose is the Titanic heroine; SHARK: no sharks in the story, so any shark explanation would be invented."
+        },
+        {
+          "text": "THORN",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "ROSE: rose thorns; SHARK: no recognizable route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "TITANIC",
+        "why": "Strong on ROSE and at least sets an ocean scene; still does not reach SHARK."
+      },
+      "pair_note": "No PASS; both hints are rose-only. The pair needs a new hint."
+    },
+    {
+      "pair_id": "p_rose__snake",
+      "a": "ROSE",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "THORN",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "ROSE: rose thorns; SNAKE: no route (thorns are not fangs)."
+        },
+        {
+          "text": "BITE",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SNAKE: snake bite; ROSE: roses do not bite, no route."
+        },
+        {
+          "text": "GARDEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROSE: rose garden; SNAKE: garden snake / the serpent in the Garden of Eden."
+        }
+      ],
+      "strong_hints": [
+        "GARDEN"
+      ],
+      "best_available": {
+        "text": "GARDEN",
+        "why": "Familiar compounds on both sides: rose garden and garden snake."
+      },
+      "pair_note": "GARDEN carries the pair; THORN and BITE are one-sided."
+    },
+    {
+      "pair_id": "p_rose__spider",
+      "a": "ROSE",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "THORN",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "ROSE: rose thorns; SPIDER: no route."
+        },
+        {
+          "text": "GARDEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROSE: rose garden; SPIDER: garden spider (a common name) and the garden-web scene."
+        }
+      ],
+      "strong_hints": [
+        "GARDEN"
+      ],
+      "best_available": {
+        "text": "GARDEN",
+        "why": "Rose garden and garden spider are both familiar phrases."
+      },
+      "pair_note": "GARDEN works; THORN is filler."
+    },
+    {
+      "pair_id": "p_rose__star",
+      "a": "ROSE",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "COMPASS",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROSE: compass rose; STAR: navigating by the stars (the North Star as a compass), and the compass rose is drawn as a star."
+        },
+        {
+          "text": "PRINCE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "PASS",
+          "reason": "Story route: The Little Prince loves his rose and lives on a tiny asteroid among the stars."
+        }
+      ],
+      "strong_hints": [
+        "PRINCE",
+        "COMPASS"
+      ],
+      "best_available": {
+        "text": "PRINCE",
+        "why": "The Little Prince story holds both the rose and the stars."
+      },
+      "pair_note": "Two moderate hints; both depend on recognizing a specific reference."
+    },
+    {
+      "pair_id": "p_rose__train",
+      "a": "ROSE",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "WEDDING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "TRAIN: the train of a wedding dress; ROSE: wedding roses and bouquets."
+        },
+        {
+          "text": "BRIDE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "variant_of:WEDDING"
+          ],
+          "verdict": "PASS",
+          "reason": "TRAIN: the bride's train; ROSE: the bride's roses; same scene as WEDDING."
+        }
+      ],
+      "strong_hints": [
+        "WEDDING",
+        "BRIDE"
+      ],
+      "best_available": {
+        "text": "WEDDING",
+        "why": "The wedding scene holds both the dress train and the roses."
+      },
+      "pair_note": "Clean pair; BRIDE is a variant of WEDDING."
+    },
+    {
+      "pair_id": "p_rose__water",
+      "a": "ROSE",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "ROSEWATER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "contains_target"
+          ],
+          "verdict": "FAIL",
+          "reason": "Contains both ROSE and WATER as substrings, which breaks the rule."
+        },
+        {
+          "text": "VASE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROSE: roses in a vase; WATER: a vase holds water."
+        },
+        {
+          "text": "PETALS",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "ROSE: rose petals; WATER: petals floating on water is a loose image."
+        }
+      ],
+      "strong_hints": [
+        "VASE"
+      ],
+      "best_available": {
+        "text": "VASE",
+        "why": "The everyday scene of roses standing in a vase of water."
+      },
+      "pair_note": "ROSEWATER fails the contains-target rule; VASE is the safe hint."
+    },
+    {
+      "pair_id": "p_rose__witch",
+      "a": "ROSE",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "SPELL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "WITCH: casts spells; ROSE: the spell on the enchanted rose in Beauty and the Beast and on Briar Rose in Sleeping Beauty."
+        },
+        {
+          "text": "ENCHANTRESS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "synonym_of_target"
+          ],
+          "verdict": "PASS",
+          "reason": "WITCH: an enchantress is a near-synonym; ROSE: the Beauty and the Beast enchantress who leaves the enchanted rose."
+        },
+        {
+          "text": "BRIAR",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "ROSE: Briar Rose (Sleeping Beauty's name, and the wild rose); WITCH: only through Maleficent, a wicked fairy that players may or may not call a witch."
+        }
+      ],
+      "strong_hints": [
+        "ENCHANTRESS",
+        "SPELL"
+      ],
+      "best_available": {
+        "text": "ENCHANTRESS",
+        "why": "Directly evokes the enchanted-rose story and sits close to WITCH."
+      },
+      "pair_note": "Fairy-tale pair; ENCHANTRESS is nearly a synonym of WITCH, worth a second opinion."
+    },
+    {
+      "pair_id": "p_rose__wolf",
+      "a": "ROSE",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "BEAST",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROSE: the enchanted rose in Beauty and the Beast; WOLF: a wolf is a beast, and wolves attack Belle in the same film."
+        },
+        {
+          "text": "RED",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "colour_mood_material"
+          ],
+          "verdict": "PASS",
+          "reason": "ROSE: red roses (\"roses are red\"); WOLF: Little Red Riding Hood and the wolf (story name route)."
+        }
+      ],
+      "strong_hints": [
+        "RED",
+        "BEAST"
+      ],
+      "best_available": {
+        "text": "RED",
+        "why": "Reaches both broadly: red roses and Little Red Riding Hood's wolf."
+      },
+      "pair_note": "Both hints work; RED is more immediate."
+    },
+    {
+      "pair_id": "p_salt__shadow",
+      "a": "SALT",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "SEASON",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SALT: season with salt; SHADOW: no route."
+        },
+        {
+          "text": "DOUBT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "PASS",
+          "reason": "SHADOW: \"beyond a shadow of a doubt\"; SALT: \"take it with a grain of salt\" means to doubt it; idiom route on both sides."
+        },
+        {
+          "text": "DESERT",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": [
+            "obscure",
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SALT: salt deserts/flats; SHADOW: \"rain shadow\" deserts, a geography term few players will reach."
+        }
+      ],
+      "strong_hints": [
+        "DOUBT"
+      ],
+      "best_available": {
+        "text": "DOUBT",
+        "why": "Two familiar idioms of doubt: shadow of a doubt and grain of salt."
+      },
+      "pair_note": "DOUBT is clever but indirect on the salt side."
+    },
+    {
+      "pair_id": "p_salt__shark",
+      "a": "SALT",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "SEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "SALT: sea salt; SHARK: sharks live in the sea."
+        },
+        {
+          "text": "OCEAN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic",
+            "variant_of:SEA"
+          ],
+          "verdict": "PASS",
+          "reason": "SALT: the salty ocean; SHARK: ocean predator; same route as SEA."
+        }
+      ],
+      "strong_hints": [
+        "SEA",
+        "OCEAN"
+      ],
+      "best_available": {
+        "text": "SEA",
+        "why": "Sea salt is a fixed phrase and the sea is the shark's home."
+      },
+      "pair_note": "Easy pair; OCEAN duplicates SEA."
+    },
+    {
+      "pair_id": "p_salt__snake",
+      "a": "SALT",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "DESERT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "SNAKE: desert snakes (rattlesnakes); SALT: salt deserts/flats are real but a weaker association."
+        },
+        {
+          "text": "SEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SALT: sea salt; SNAKE: sea snake, a real animal."
+        },
+        {
+          "text": "LICK",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SALT: salt lick; SNAKE: snakes flick their tongues rather than lick, so no fair route."
+        }
+      ],
+      "strong_hints": [
+        "SEA"
+      ],
+      "best_available": {
+        "text": "SEA",
+        "why": "Two compounds: sea salt and sea snake."
+      },
+      "pair_note": "SEA works; LICK would need a false \"snakes lick\" claim."
+    },
+    {
+      "pair_id": "p_salt__spider",
+      "a": "SALT",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "SPRINKLE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SALT: sprinkle salt; SPIDER: no route."
+        },
+        {
+          "text": "CRYSTAL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SALT: salt crystals; SPIDER: no recognizable route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "CRYSTAL",
+        "why": "Strong on SALT; nothing reaches SPIDER, so it is a default only."
+      },
+      "pair_note": "No PASS; both hints are salt-only. The pair needs a new hint."
+    },
+    {
+      "pair_id": "p_salt__spring",
+      "a": "SALT",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "THAW",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SPRING: the spring thaw; SALT: road salt thaws ice; shared verb route."
+        },
+        {
+          "text": "WATER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "SALT: salt water; SPRING: spring water; compound route on both sides."
+        },
+        {
+          "text": "MINERAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "SALT: salt is a mineral (mineral salts); SPRING: mineral spring."
+        }
+      ],
+      "strong_hints": [
+        "WATER",
+        "MINERAL",
+        "THAW"
+      ],
+      "best_available": {
+        "text": "WATER",
+        "why": "Two everyday compounds: salt water and spring water."
+      },
+      "pair_note": "Three working hints."
+    },
+    {
+      "pair_id": "p_salt__star",
+      "a": "SALT",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "CRACKER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SALT: salted crackers/saltines; STAR: no route."
+        },
+        {
+          "text": "PRETZEL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SALT: salted pretzels; STAR: no route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "CRACKER",
+        "why": "Default only; both hints are salt snack foods with nothing for STAR."
+      },
+      "pair_note": "No PASS; both hints are one-sided. Something like SEA (sea salt / sea star) would reach both."
+    },
+    {
+      "pair_id": "p_salt__train",
+      "a": "SALT",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "LAKE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "niche",
+          "flags": [
+            "needs_explanation",
+            "obscure"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SALT: Salt Lake (City); TRAIN: only via the transcontinental railroad's golden spike in Utah, a history stretch."
+        },
+        {
+          "text": "FREIGHT",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "TRAIN: freight train; SALT: salt is hauled as bulk freight, but there is no familiar link."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "LAKE",
+        "why": "Strongest single side (Salt Lake) with a real, if niche, railroad history link."
+      },
+      "pair_note": "No PASS; both hints reach only one side clearly."
+    },
+    {
+      "pair_id": "p_salt__water",
+      "a": "SALT",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "BRINE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Brine is salt water: both words in one definition, the familiar pickling brine."
+        },
+        {
+          "text": "TAFFY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Compound route: saltwater taffy."
+        },
+        {
+          "text": "OCEAN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "The ocean is salt water."
+        },
+        {
+          "text": "SEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic",
+            "variant_of:OCEAN"
+          ],
+          "verdict": "PASS",
+          "reason": "The sea is salt water; same route as OCEAN."
+        }
+      ],
+      "strong_hints": [
+        "BRINE",
+        "TAFFY",
+        "OCEAN",
+        "SEA"
+      ],
+      "best_available": {
+        "text": "BRINE",
+        "why": "Brine simply is salt water."
+      },
+      "pair_note": "Very easy pair; four passing hints."
+    },
+    {
+      "pair_id": "p_salt__witch",
+      "a": "SALT",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "WARD",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "WITCH: protective wards and magic; SALT: the folklore of salt warding off evil."
+        },
+        {
+          "text": "CIRCLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SALT: the protective salt circle trope; WITCH: the witch's magic circle / coven circle."
+        },
+        {
+          "text": "SALEM",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "WITCH: the Salem witch trials; SALT: no route (the name only looks like SALT)."
+        }
+      ],
+      "strong_hints": [
+        "CIRCLE",
+        "WARD"
+      ],
+      "best_available": {
+        "text": "CIRCLE",
+        "why": "The salt circle and the witch's circle are both familiar occult images."
+      },
+      "pair_note": "Folklore pair; SALEM is witch-only."
+    },
+    {
+      "pair_id": "p_salt__wolf",
+      "a": "SALT",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "HUNTER",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided",
+            "needs_explanation"
+          ],
+          "verdict": "FAIL",
+          "reason": "WOLF: wolf hunter; SALT: no recognizable route."
+        },
+        {
+          "text": "LICK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SALT: salt lick; WOLF: wolves lick (pups, wounds, \"licking its wounds\"), a weak generic animal link."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "LICK",
+        "why": "Strong salt compound with a weak but true wolf link."
+      },
+      "pair_note": "No PASS; the pair needs a new hint."
+    },
+    {
+      "pair_id": "p_shadow__shark",
+      "a": "SHADOW",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "JAWS",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SHARK: Jaws; SHADOW: only a vague image of a dark shape under water."
+        },
+        {
+          "text": "FIN",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SHARK: shark fin; SHADOW: no route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "JAWS",
+        "why": "Strong shark side; the lurking dark-shape image is the only thing near SHADOW."
+      },
+      "pair_note": "No PASS; both hints are shark-only."
+    },
+    {
+      "pair_id": "p_shadow__snake",
+      "a": "SHADOW",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "GRASS",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SNAKE: snake in the grass; SHADOW: no route."
+        },
+        {
+          "text": "LURK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SHADOW: lurking in the shadows; SNAKE: a lurking snake, the ambush predator."
+        },
+        {
+          "text": "STRIKE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "SNAKE: a snake strikes; SHADOW: \"strike from the shadows\" is a weaker phrase."
+        }
+      ],
+      "strong_hints": [
+        "LURK"
+      ],
+      "best_available": {
+        "text": "LURK",
+        "why": "Lurking in the shadows is a fixed image, and snakes are the classic lurker."
+      },
+      "pair_note": "LURK carries the pair; STRIKE is close behind."
+    },
+    {
+      "pair_id": "p_shadow__spider",
+      "a": "SHADOW",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "LURK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SHADOW: lurking in the shadows; SPIDER: a spider lurking in its web."
+        },
+        {
+          "text": "CORNER",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SPIDER: spiders and cobwebs in corners; SHADOW: dark, shadowy corners."
+        }
+      ],
+      "strong_hints": [
+        "LURK",
+        "CORNER"
+      ],
+      "best_available": {
+        "text": "LURK",
+        "why": "A clear shared verb: things lurk in shadows and spiders lurk in webs."
+      },
+      "pair_note": "Both hints are moderate, and they work together."
+    },
+    {
+      "pair_id": "p_shadow__spring",
+      "a": "SHADOW",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "SUN",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "generic",
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SHADOW: the sun casts shadows; SPRING: spring sunshine is only a loose link."
+        },
+        {
+          "text": "LENGTH",
+          "connection_to_a": 1,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": [
+            "one_sided",
+            "needs_explanation"
+          ],
+          "verdict": "FAIL",
+          "reason": "SHADOW: shadow length; SPRING: no clear route (seasonal day length is a rescue)."
+        },
+        {
+          "text": "GROUNDHOG",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Story route: on Groundhog Day, whether the groundhog sees his shadow decides whether spring comes early."
+        }
+      ],
+      "strong_hints": [
+        "GROUNDHOG"
+      ],
+      "best_available": {
+        "text": "GROUNDHOG",
+        "why": "The Groundhog Day story ties shadow to an early spring."
+      },
+      "pair_note": "GROUNDHOG is excellent; LENGTH should go."
+    },
+    {
+      "pair_id": "p_shadow__star",
+      "a": "SHADOW",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "ECLIPSE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SHADOW: an eclipse is a shadow; STAR: only because the sun is a star, a step most players will not take."
+        },
+        {
+          "text": "LIGHT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "STAR: starlight; SHADOW: light and shadow, a familiar contrast."
+        }
+      ],
+      "strong_hints": [
+        "LIGHT"
+      ],
+      "best_available": {
+        "text": "LIGHT",
+        "why": "Starlight plus the light-and-shadow pairing reaches both words."
+      },
+      "pair_note": "LIGHT works; ECLIPSE is borderline."
+    },
+    {
+      "pair_id": "p_shadow__train",
+      "a": "SHADOW",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "GHOST",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "TRAIN: ghost train (fairground ride, phantom trains); SHADOW: shadows as ghostly shapes is only a mood link."
+        },
+        {
+          "text": "TUNNEL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "TRAIN: train tunnel; SHADOW: tunnels are dark and shadowy, a mood link only."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "GHOST",
+        "why": "Ghost train is a real compound, and ghosts and shadows share a spooky sense."
+      },
+      "pair_note": "No PASS; SHADOW is reached only by mood in both hints."
+    },
+    {
+      "pair_id": "p_shadow__water",
+      "a": "SHADOW",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "DEEP",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "WATER: deep water; SHADOW: deep shadows; a shared adjective in common phrases."
+        },
+        {
+          "text": "REFLECTION",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "WATER: a reflection in water; SHADOW: your shadow and your reflection are both your image cast by light."
+        },
+        {
+          "text": "SHADE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "synonym_of_target",
+            "one_sided"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SHADOW: near-synonym; WATER: only the \"shade and water\" phrase from heat-safety advice."
+        }
+      ],
+      "strong_hints": [
+        "REFLECTION",
+        "DEEP"
+      ],
+      "best_available": {
+        "text": "REFLECTION",
+        "why": "A water reflection and a shadow are the two familiar \"copies\" of you made by light."
+      },
+      "pair_note": "Moderate pair; SHADE is close to a synonym of SHADOW."
+    },
+    {
+      "pair_id": "p_shadow__witch",
+      "a": "SHADOW",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "WITCH: the classic Halloween witch; SHADOW: spooky shadows are only a mood link."
+        },
+        {
+          "text": "BROOMSTICK",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "WITCH: the witch's broomstick; SHADOW: a broom silhouette against the moon is not a shadow."
+        },
+        {
+          "text": "DARK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "SHADOW: shadows are dark; WITCH: dark magic and the dark witch; shared property."
+        }
+      ],
+      "strong_hints": [
+        "DARK"
+      ],
+      "best_available": {
+        "text": "DARK",
+        "why": "Shared property: shadows are dark and witches practise dark magic."
+      },
+      "pair_note": "Weak-moderate pair; DARK is the only PASS and it is generic."
+    },
+    {
+      "pair_id": "p_shadow__wolf",
+      "a": "SHADOW",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "PUPPET",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SHADOW: shadow puppets; WOLF: the classic wolf hand-shadow."
+        },
+        {
+          "text": "HOWL",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "WOLF: wolves howl; SHADOW: no route."
+        }
+      ],
+      "strong_hints": [
+        "PUPPET"
+      ],
+      "best_available": {
+        "text": "PUPPET",
+        "why": "The wolf is one of the best-known hand-shadow puppets."
+      },
+      "pair_note": "PUPPET carries the pair."
+    },
+    {
+      "pair_id": "p_shark__snake",
+      "a": "SHARK",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "BITE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SHARK: shark bite; SNAKE: snake bite; both fixed compounds."
+        },
+        {
+          "text": "PREDATOR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "Shared property: both are famous predators."
+        },
+        {
+          "text": "FEAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "Shared property: both are classic feared animals (Jaws, fear of snakes)."
+        }
+      ],
+      "strong_hints": [
+        "BITE",
+        "PREDATOR",
+        "FEAR"
+      ],
+      "best_available": {
+        "text": "BITE",
+        "why": "Shark bite and snake bite are both everyday phrases."
+      },
+      "pair_note": "Easy pair with three valid routes."
+    },
+    {
+      "pair_id": "p_shark__spider",
+      "a": "SHARK",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "PREDATOR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "Shared property: both are predators."
+        },
+        {
+          "text": "FEAR",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [
+            "generic"
+          ],
+          "verdict": "PASS",
+          "reason": "Shared property: both are classic phobias (arachnophobia, fear of sharks)."
+        }
+      ],
+      "strong_hints": [
+        "FEAR",
+        "PREDATOR"
+      ],
+      "best_available": {
+        "text": "FEAR",
+        "why": "Spiders and sharks are the two most commonly feared animals."
+      },
+      "pair_note": "Both hints are generic but valid shared properties."
+    },
+    {
+      "pair_id": "p_shark__spring",
+      "a": "SHARK",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "LEAP",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [
+            "synonym_of_target",
+            "needs_explanation"
+          ],
+          "verdict": "BORDERLINE",
+          "reason": "SPRING: to spring is to leap (near-synonym of the verb); SHARK: sharks breaching or \"jump the shark\", which uses JUMP, not LEAP."
+        },
+        {
+          "text": "BREAK",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SPRING: spring break; SHARK: no route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": {
+        "text": "LEAP",
+        "why": "Reaches SPRING as a verb and SHARK through breaching or the \"jump the shark\" idiom."
+      },
+      "pair_note": "No PASS. JUMP (jump the shark / jump as spring) would be stronger."
+    },
+    {
+      "pair_id": "p_shark__star",
+      "a": "SHARK",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "SEA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "STAR: sea star (starfish); SHARK: sharks live in the sea."
+        },
+        {
+          "text": "JAWS",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "SHARK: Jaws; STAR: only \"film star\", which does not tie to the shark."
+        }
+      ],
+      "strong_hints": [
+        "SEA"
+      ],
+      "best_available": {
+        "text": "SEA",
+        "why": "Sea star is a real name for the starfish, and the sea is the shark's home."
+      },
+      "pair_note": "SEA works; JAWS is shark-only."
+    },
+    {
+      "pair_id": "p_shark__train",
+      "a": "SHARK",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "BULLET",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": [
+            "one_sided"
+          ],
+          "verdict": "FAIL",
+          "reason": "TRAIN: bullet train; SHARK: no route (there is no common \"bullet shark\"; the bull shark does not count)."
+        },
+        {
+          "text": "TANK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SHARK: shark tank (aquarium and TV show); TRAIN: tank engine (Thomas the Tank Engine) and tank cars."
+        }
+      ],
+      "strong_hints": [
+        "TANK"
+      ],
+      "best_available": {
+        "text": "TANK",
+        "why": "Shark Tank and Thomas the Tank Engine are both familiar."
+      },
+      "pair_note": "TANK is a nice double compound; BULLET is train-only."
+    }
+  ]
+}
