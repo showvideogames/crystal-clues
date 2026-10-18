@@ -403,6 +403,16 @@
         "rejected": 15,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u28-blind-review.json",
+        "key": "data/unlimited/library/reviews/u28-blind-key.json",
+        "batch": "data/unlimited/library/batches/u28-batch.json",
+        "ai_reviewed": 47,
+        "held": 28,
+        "rejected": 21,
+        "needsText": 2,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -90785,6 +90795,309 @@
       ]
     },
     {
+      "pair_id": "p_moon__snake",
+      "a": "MOON",
+      "b": "SNAKE",
+      "source": "u28",
+      "pairNote": "No PASS; MOON+SNAKE has no familiar shared scene in this list. ZODIAC is closest and could be argued up to a moderate PASS via Lunar New Year.",
+      "reviewerBestAvailable": {
+        "text": "ZODIAC",
+        "why": "Year of the Snake is a firm anchor and the lunar-calendar / moon-sign link is real, so it is the only hint where both sides are factual and themed together.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ZODIAC",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The whole Chinese calendar turns on the new moon.",
+          "wordBConnection": "And the Year of the Snake is one of its twelve.",
+          "revealExplanation": "The Year of the Snake is one of the twelve and the whole calendar turns on the new moon.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "the Chinese zodiac",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SNAKE is a Chinese zodiac animal (Year of the Snake); MOON reaches zodiac only via the lunar calendar behind that zodiac or the astrological 'moon sign', a secondary route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CYCLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "The moon's phases are the oldest cycle there is.",
+          "wordBConnection": "A snake shedding its skin is the other old symbol of renewal.",
+          "revealExplanation": "The moon's phases and a snake shedding its skin are both ancient symbols of renewal in cycles.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "MOON via the lunar cycle is strong; SNAKE needs the ouroboros (snake eating its tail as a symbol of the eternal cycle) or skin-shedding cycles, which most players will not reach.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CURVE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A crescent moon is defined by its curve.",
+          "wordBConnection": "So is a snake's body.",
+          "revealExplanation": "A crescent moon and a snake's body are both defined by their curve.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shape-only route: a crescent MOON is curved and a SNAKE curves as it moves, but the shared property is weak and points at many things.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__spider",
+      "a": "MOON",
+      "b": "SPIDER",
+      "source": "u28",
+      "pairNote": "No PASS. WEB is spider-only; NIGHT leans on a weak nocturnal-spider link.",
+      "reviewerBestAvailable": {
+        "text": "NIGHT",
+        "why": "Only hint that touches both words, via a moonlit night when spiders are active.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "NIGHT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The night moon.",
+          "wordBConnection": "Spiders hunt at night.",
+          "revealExplanation": "Night: the moon, and the spider's hunting hour.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "MOON at night is strong; SPIDER only via many spiders hunting or spinning at night, which is true but not a salient association.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WEB",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A web in the moonlight.",
+          "wordBConnection": "A spider's web.",
+          "revealExplanation": "Web: the spider's, lit by the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SPIDER web is direct; MOON has no recognizable 'web' route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__spring",
+      "a": "MOON",
+      "b": "SPRING",
+      "source": "u28",
+      "pairNote": "Strong pair: three valid routes, TIDE clearly best.",
+      "reviewerBestAvailable": {
+        "text": "TIDE",
+        "why": "'Spring tide' is a real compound that is itself caused by the moon, giving a tight two-sided link.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "The moon drives the tides.",
+          "wordBConnection": "A spring tide is the extra-high one at full and new moon.",
+          "revealExplanation": "The moon drives the tides, and a spring tide is the extra-high tide that arrives at full and new moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON drives the tides, and 'spring tide' is a standard compound (spring tides fall near new and full moon), so both sides meet in one fact.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "EASTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Easter is set by the first full moon after the equinox.",
+          "wordBConnection": "Which is why it wanders about in spring.",
+          "revealExplanation": "Easter falls on the first Sunday after the first full moon following the spring equinox.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "the dating of Easter",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPRING holiday; MOON because Easter's date is set by the first full moon after the spring equinox, a well-known piece of trivia.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "RABBIT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "Many cultures see a rabbit in the moon.",
+          "wordBConnection": "And the rabbit is the animal of spring.",
+          "revealExplanation": "Many cultures see a rabbit in the moon, and the rabbit is also the animal of spring and Easter.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "the moon rabbit",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "MOON via the familiar 'rabbit in the moon' folklore (Mid-Autumn moon rabbit); SPRING via spring bunnies and the Easter bunny.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_moon__star",
       "a": "MOON",
       "b": "STAR",
@@ -90911,6 +91224,295 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_moon__train",
+      "a": "MOON",
+      "b": "TRAIN",
+      "source": "u28",
+      "pairNote": "Only NIGHT works; moderate strength.",
+      "reviewerBestAvailable": {
+        "text": "NIGHT",
+        "why": "'Night train' is a familiar phrase and the moon is the night's emblem.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "NIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The night moon.",
+          "wordBConnection": "A night train.",
+          "revealExplanation": "Night: the train, under the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "MOON at night and the familiar 'night train' phrase; broad but both sides land.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "EXPRESS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Polar Express by moonlight.",
+          "wordBConnection": "An express train.",
+          "revealExplanation": "Express: the moonlit train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Express TRAIN is direct; MOON has no familiar 'express' route for a player.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__water",
+      "a": "MOON",
+      "b": "WATER",
+      "source": "u28",
+      "pairNote": "Two strong routes; ICE is a factual but obscure moon link.",
+      "reviewerBestAvailable": {
+        "text": "TIDE",
+        "why": "Direct cause-and-effect fact everyone knows.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "REFLECTION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The moon reflected.",
+          "wordBConnection": "A reflection on the water.",
+          "revealExplanation": "Reflection: the moon on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Classic scene of the MOON reflected on still WATER.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The moon causes tides.",
+          "wordBConnection": "The tide is moving water.",
+          "revealExplanation": "Tide: the moon moves the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The MOON's pull makes the tides of the sea's WATER; textbook link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ICE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Ice on the moon.",
+          "wordBConnection": "Ice is frozen water.",
+          "revealExplanation": "Ice: frozen water, found on the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WATER as ice is direct; MOON only via water ice detected in shadowed polar craters, true but not a player's association.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_moon__witch",
+      "a": "MOON",
+      "b": "WITCH",
+      "source": "u28",
+      "pairNote": "Good pair; FULL is moon-only filler.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "Shared stock scene that names both images at once.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A Halloween moon.",
+          "wordBConnection": "A Halloween witch.",
+          "revealExplanation": "Halloween: moon and witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Halloween imagery pairs a big full MOON with a WITCH silhouette; both are stock Halloween symbols.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BROOMSTICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A broomstick across the moon.",
+          "wordBConnection": "A witch's broomstick.",
+          "revealExplanation": "Broomstick: the witch, across the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WITCH's broomstick, and the iconic image of a witch on a broomstick flying across the MOON.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FULL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A full moon.",
+          "wordBConnection": "Witches meet at the full moon in folklore.",
+          "revealExplanation": "Full: the moon, and the witches' gathering.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Full MOON is direct; WITCH has no 'full' route beyond the moon itself.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_moon__wolf",
@@ -91071,6 +91673,2961 @@
           "NIGHT"
         ]
       }
+    },
+    {
+      "pair_id": "p_mouse__night",
+      "a": "MOUSE",
+      "b": "NIGHT",
+      "source": "u28",
+      "pairNote": "Strong pair; STIRRING depends on CHRISTMAS's poem.",
+      "reviewerBestAvailable": {
+        "text": "CHRISTMAS",
+        "why": "Famous poem naming both night and mouse.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "CHRISTMAS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Not even a mouse stirring.",
+          "wordBConnection": "The night before Christmas.",
+          "revealExplanation": "Christmas: the night, and the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Twas the Night Before Christmas' with its 'not even a mouse' line ties both words in one famous poem.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "NOCTURNAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Mice are nocturnal.",
+          "wordBConnection": "Nocturnal means of the night.",
+          "revealExplanation": "Nocturnal: the mouse comes out at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Mice are largely nocturnal, and nocturnal means active at NIGHT; shared-property route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "STIRRING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Not even a mouse.",
+          "wordBConnection": "'Twas the night before Christmas.",
+          "revealExplanation": "Stirring: not even a mouse, that night.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "A Visit from St. Nicholas",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:CHRISTMAS"
+              ],
+              "reason": "Same poem: 'not a creature was stirring, not even a MOUSE' on that NIGHT; needs the poem but the poem is famous.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__ocean",
+      "a": "MOUSE",
+      "b": "OCEAN",
+      "source": "u28",
+      "pairNote": "No PASS; weak pair overall.",
+      "reviewerBestAvailable": {
+        "text": "SHIP",
+        "why": "The only hint touching both sides, via a ship's stowaway mice.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SHIP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A ship's mouse.",
+          "wordBConnection": "A ship on the ocean.",
+          "revealExplanation": "Ship: across the ocean, a mouse aboard.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "OCEAN ship is direct; MOUSE only via stowaway rodents aboard ships, where rats are the usual image.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PAD",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "ocean-themed pads are not a real association; filler",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mouse pad is direct; OCEAN has no 'pad' route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__pirate",
+      "a": "MOUSE",
+      "b": "PIRATE",
+      "source": "u28",
+      "pairNote": "No PASS; both hints need a detour to reach one side.",
+      "reviewerBestAvailable": {
+        "text": "SHIP",
+        "why": "Pirate side is strong and the stowaway-mouse image is at least a familiar scene.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MICKEY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "pirate Mickey is not an established image; invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Mickey MOUSE is direct; PIRATE only via Disney's Pirates of the Caribbean or Mickey in pirate costume, a brand detour.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHIP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A ship's mouse.",
+          "wordBConnection": "A pirate ship.",
+          "revealExplanation": "Ship: the pirate's, with a mouse aboard.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "PIRATE ship is direct; MOUSE via ship-stowaway rodents (rats more typical) or Mickey's Steamboat Willie, both indirect.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__queen",
+      "a": "MOUSE",
+      "b": "QUEEN",
+      "source": "u28",
+      "pairNote": "PUSSYCAT is a good story route; MINNIE is mouse-only for most players.",
+      "reviewerBestAvailable": {
+        "text": "PUSSYCAT",
+        "why": "One well-known rhyme names both the queen and the mouse.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PUSSYCAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The cat frightened a little mouse.",
+          "wordBConnection": "Visiting the Queen.",
+          "revealExplanation": "Pussycat: the Queen's visitor, and the mouse under her chair.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Pussycat, Pussycat nursery rhyme",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Nursery rhyme 'Pussycat, Pussycat' where the cat visits the QUEEN and frightens a little MOUSE under her chair; one story covers both.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MINNIE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "'queen of Disney' is not an established title; invented route",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Minnie MOUSE is direct; QUEEN only via Queen Minnie in the Kingdom Hearts games, which few players would reach.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__ring",
+      "a": "MOUSE",
+      "b": "RING",
+      "source": "u28",
+      "pairNote": "No PASS; both hints are mouse-only.",
+      "reviewerBestAvailable": {
+        "text": "CLICK",
+        "why": "Forced pick: at least sits in the computer/phone sound family alongside 'ring', though it reaches RING only loosely.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TRAP",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "snap ring is an invented link",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mousetrap is direct; RING has no familiar 'trap' route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CLICK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Click the mouse.",
+          "wordBConnection": "The click of a ring box opening.",
+          "revealExplanation": "Click: the mouse, and the ring box.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "MOUSE click is direct; RING relates only as another sound word, not a connection.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__robot",
+      "a": "MOUSE",
+      "b": "ROBOT",
+      "source": "u28",
+      "pairNote": "Two moderate passes.",
+      "reviewerBestAvailable": {
+        "text": "COMPUTER",
+        "why": "Computer mouse is instant and robots are computer-driven machines.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MECHANICAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A mechanical mouse toy.",
+          "wordBConnection": "A mechanical robot.",
+          "revealExplanation": "Mechanical: the toy mouse, a tiny robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROBOT is mechanical; MOUSE via the wind-up mechanical mouse toy or the old mechanical (ball) computer mouse.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "COMPUTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A computer mouse.",
+          "wordBConnection": "A robot's computer brain.",
+          "revealExplanation": "Computer: the mouse, and the robot's brain.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Computer MOUSE is direct; ROBOT via computer-controlled machines, a familiar tech-family link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__rock",
+      "a": "MOUSE",
+      "b": "ROCK",
+      "source": "u28",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "HOLE",
+        "why": "Mouse hole is iconic and holes in rock / the band Hole give a thin second side.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HOLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A mouse hole.",
+          "wordBConnection": "A hole under the rock.",
+          "revealExplanation": "Hole: the mouse's, under a rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Mouse hole is direct; ROCK via holes in rock or the rock band Hole, neither a strong player association.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MICKEY",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "rock side invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mickey MOUSE is direct; ROCK has no familiar 'Mickey' route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__rose",
+      "a": "MOUSE",
+      "b": "ROSE",
+      "source": "u28",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "GARDEN",
+        "why": "Both can plausibly be found in a garden; BRAMBLY is too niche.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "GARDEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A garden mouse.",
+          "wordBConnection": "A rose garden.",
+          "revealExplanation": "Garden: roses, and a mouse.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Rose garden is direct; MOUSE only as a garden visitor (field or garden mouse), a weak scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BRAMBLY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Brambly Hedge mice.",
+          "wordBConnection": "Wild roses in the hedge.",
+          "revealExplanation": "Brambly: the hedge of mice and wild roses.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Brambly Hedge",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure",
+                "british_only"
+              ],
+              "reason": "MOUSE via the British children's books Brambly Hedge (a mouse community); ROSE only via brambles being thorny relatives in the rose family, which is a rescue explanation.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__salt",
+      "a": "MOUSE",
+      "b": "SALT",
+      "source": "u28",
+      "pairNote": "PANTRY is a moderate pass at best; could be argued down to BORDERLINE.",
+      "reviewerBestAvailable": {
+        "text": "PANTRY",
+        "why": "Only hint that places both in one recognizable scene.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PANTRY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pantry mouse.",
+          "wordBConnection": "Salt in the pantry.",
+          "revealExplanation": "Pantry: salt, and the mouse.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared kitchen scene: SALT is a pantry staple and a MOUSE raiding the pantry is a familiar image; moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LICK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A mouse licks salt.",
+          "wordBConnection": "A salt lick.",
+          "revealExplanation": "Lick: salt, licked by a mouse.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Salt lick is direct; MOUSE has no 'lick' route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__shadow",
+      "a": "MOUSE",
+      "b": "SHADOW",
+      "source": "u28",
+      "pairNote": "No PASS; both are half-strong.",
+      "reviewerBestAvailable": {
+        "text": "PUPPET",
+        "why": "Shadow puppetry of small animals is a recognizable scene, though a mouse is not the iconic shape.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SCURRY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A scurrying mouse.",
+          "wordBConnection": "Into the shadows.",
+          "revealExplanation": "Scurry: the mouse, into shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Mice scurry is a stock phrase; SHADOW only via literary 'scurrying shadows'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PUPPET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A mouse shadow puppet.",
+          "wordBConnection": "Shadow puppets.",
+          "revealExplanation": "Puppet: a mouse on the wall, in shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SHADOW puppet is a direct compound; MOUSE only as one possible animal shape or a mouse hand puppet, not a standard pairing.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__shark",
+      "a": "MOUSE",
+      "b": "SHARK",
+      "source": "u28",
+      "pairNote": "TEETH is a moderate pass; CAT is mouse-only for players.",
+      "reviewerBestAvailable": {
+        "text": "TEETH",
+        "why": "Teeth are a defining feature of both, if more famously the shark's.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TEETH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A mouse's teeth.",
+          "wordBConnection": "Shark teeth.",
+          "revealExplanation": "Teeth: mouse and shark.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SHARK teeth are iconic; MOUSE via rodent gnawing teeth (and the tooth-collecting mouse of Spanish and French folklore); shared-property route at moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CAT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The cat chases the mouse.",
+          "wordBConnection": "The catshark.",
+          "revealExplanation": "Cat: the mouse's foe, and the catshark.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Cat and MOUSE is direct; SHARK only via catsharks, a real but obscure shark family.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__snake",
+      "a": "MOUSE",
+      "b": "SNAKE",
+      "source": "u28",
+      "pairNote": "Strong pair with three overlapping routes.",
+      "reviewerBestAvailable": {
+        "text": "PREY",
+        "why": "Most direct statement of the predator-prey relationship.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SWALLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A swallowed mouse.",
+          "wordBConnection": "A snake swallows whole.",
+          "revealExplanation": "Swallow: the snake, the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Familiar scene of a SNAKE swallowing a MOUSE whole.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PREY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The mouse is prey.",
+          "wordBConnection": "The snake hunts.",
+          "revealExplanation": "Prey: the mouse, for the snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOUSE is classic SNAKE prey; predator-prey route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FEED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Mice as feed.",
+          "wordBConnection": "Feeding a pet snake.",
+          "revealExplanation": "Feed: a mouse for the snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:PREY"
+              ],
+              "reason": "Pet SNAKEs are fed mice (feeder mice); recognizable feeding scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__spider",
+      "a": "MOUSE",
+      "b": "SPIDER",
+      "source": "u28",
+      "pairNote": "Two moderate passes; WEB is a fun but indirect computer pun.",
+      "reviewerBestAvailable": {
+        "text": "PEST",
+        "why": "Clear shared category for both household creatures.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PEST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A mouse is a pest.",
+          "wordBConnection": "A spider in the house.",
+          "revealExplanation": "Pest: mouse and spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shared property: both are unwanted household pests (mice strongly, spiders commonly).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SCARY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Scared of a mouse.",
+          "wordBConnection": "Scared of a spider.",
+          "revealExplanation": "Scary: the mouse, and the spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "colour_mood_material"
+              ],
+              "reason": "Shared fear: the stock 'scared of mice' chair-standing image and the very common fear of spiders.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WEB",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Clicking the web with a mouse.",
+          "wordBConnection": "A spider's web.",
+          "revealExplanation": "Web: the spider's, and the one you click.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPIDER web is direct; MOUSE only via using a computer mouse to browse the World Wide Web, a pun-like detour.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__spring",
+      "a": "MOUSE",
+      "b": "SPRING",
+      "source": "u28",
+      "pairNote": "Solid pair; SNAP depends on the trap image.",
+      "reviewerBestAvailable": {
+        "text": "TRAP",
+        "why": "Mousetrap and spring trap converge on one object.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TRAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A mousetrap.",
+          "wordBConnection": "A spring trap.",
+          "revealExplanation": "Trap: the spring that catches the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Mousetrap is the compound, and the classic snap trap is driven by a SPRING (spring trap).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SNAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Snap goes the mousetrap.",
+          "wordBConnection": "A spring snaps.",
+          "revealExplanation": "Snap: the spring, the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:TRAP"
+              ],
+              "reason": "A SPRING snaps back; MOUSE via the spring-loaded mousetrap snapping shut.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__star",
+      "a": "MOUSE",
+      "b": "STAR",
+      "source": "u28",
+      "pairNote": "No PASS; both hints rely on the same Mickey-as-a-star idea and could be argued up together.",
+      "reviewerBestAvailable": {
+        "text": "MICKEY",
+        "why": "Mickey as a famous screen star is the most findable route; HOLLYWOOD needs the same fact in reverse.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HOLLYWOOD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Hollywood's famous mouse.",
+          "wordBConnection": "A Hollywood star.",
+          "revealExplanation": "Hollywood: the mouse who's a star.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Hollywood STARs are direct; MOUSE only via Mickey Mouse's star on the Walk of Fame, which requires that detail.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MICKEY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Mickey Mouse.",
+          "wordBConnection": "Mickey's Walk of Fame star.",
+          "revealExplanation": "Mickey: the mouse with a star.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Disney / Hollywood Walk of Fame",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Mickey MOUSE is direct; STAR only via Mickey being a cartoon star with a Walk of Fame star, a soft link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__train",
+      "a": "MOUSE",
+      "b": "TRAIN",
+      "source": "u28",
+      "pairNote": "TUNNEL is a moderate pass; MICKEY is mouse-only.",
+      "reviewerBestAvailable": {
+        "text": "TUNNEL",
+        "why": "Both genuinely travel through tunnels.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TUNNEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Mice in the tunnels.",
+          "wordBConnection": "Train tunnels.",
+          "revealExplanation": "Tunnel: trains, and the mice that live there.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "TRAIN tunnel is direct; MOUSE via mice burrowing tunnels, a true shared-property route at moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MICKEY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Mickey Mouse.",
+          "wordBConnection": "Walt dreamed up Mickey on a train.",
+          "revealExplanation": "Mickey: the mouse born on a train ride.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mickey MOUSE is direct; TRAIN only via Disneyland's railroad or Walt Disney's love of trains, which players would not reach.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__water",
+      "a": "MOUSE",
+      "b": "WATER",
+      "source": "u28",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "BOTTLE",
+        "why": "Pet-cage water bottle is a real if secondary scene for a pet mouse.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BOTTLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The mouse's bottle.",
+          "wordBConnection": "A water bottle.",
+          "revealExplanation": "Bottle: water for the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WATER bottle is direct; MOUSE via the drip water bottle on a pet rodent cage, a scene more associated with hamsters.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DRIP",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pet mouse's drip bottle.",
+          "wordBConnection": "A water drip.",
+          "revealExplanation": "Drip: water, for the pet mouse.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WATER drip is direct; MOUSE only through the same cage-bottle explanation, one step further removed.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__witch",
+      "a": "MOUSE",
+      "b": "WITCH",
+      "source": "u28",
+      "pairNote": "DAHL is a good story route; SPELL is the weaker generic version.",
+      "reviewerBestAvailable": {
+        "text": "DAHL",
+        "why": "Famous book and films directly link witches and a boy turned mouse.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DAHL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The boy turned into a mouse.",
+          "wordBConnection": "Dahl's The Witches.",
+          "revealExplanation": "Dahl: the witches who made a mouse.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Roald Dahl, The Witches",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Roald Dahl's The Witches, where the WITCHes turn the boy into a MOUSE; one story covers both.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SPELL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Turned into a mouse.",
+          "wordBConnection": "A witch's spell.",
+          "revealExplanation": "Spell: the witch's, making a mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WITCH casts spells; MOUSE only via stories of people turned into mice by a spell, which is the DAHL story without the anchor.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_mouse__wolf",
+      "a": "MOUSE",
+      "b": "WOLF",
+      "source": "u28",
+      "pairNote": "PREY is a moderate pass; FOX is a side-step.",
+      "reviewerBestAvailable": {
+        "text": "PREY",
+        "why": "Mouse is archetypal prey and wolf an archetypal predator.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PREY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The mouse is prey.",
+          "wordBConnection": "The wolf hunts.",
+          "revealExplanation": "Prey: the mouse, for the wolf.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOUSE as prey and WOLF as the archetypal predator stalking prey; predator-prey route, moderate on the wolf side.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FOX",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Foxes hunt mice.",
+          "wordBConnection": "The fox is the wolf's cousin.",
+          "revealExplanation": "Fox: mouse hunter, wolf cousin.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "A third animal: fox is a wolf's canid cousin and famously pounces on mice, but it relates to each word separately rather than linking them.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__ocean",
+      "a": "NIGHT",
+      "b": "OCEAN",
+      "source": "u28",
+      "pairNote": "MOON is clearly best; TIDE is ocean-only without the moon.",
+      "reviewerBestAvailable": {
+        "text": "MOON",
+        "why": "Strong link to both: night sky and ocean tides.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MOON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The night moon.",
+          "wordBConnection": "The moon over the ocean.",
+          "revealExplanation": "Moon: night, over the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "MOON lights the NIGHT and pulls the OCEAN's tides; also the moonlit-sea scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DARK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A dark night.",
+          "wordBConnection": "The dark ocean.",
+          "revealExplanation": "Dark: night and ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "colour_mood_material"
+              ],
+              "reason": "Dark NIGHT is direct; OCEAN via the dark deep sea, a mood/property route that points at many things.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TIDE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The night tide.",
+          "wordBConnection": "The ocean tide.",
+          "revealExplanation": "Tide: the ocean's, at night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "OCEAN tide is direct; NIGHT has no tide route of its own.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__pirate",
+      "a": "NIGHT",
+      "b": "PIRATE",
+      "source": "u28",
+      "pairNote": "RAID is a moderate pass; BLACK could be argued up via Blackbeard/black flag.",
+      "reviewerBestAvailable": {
+        "text": "RAID",
+        "why": "Pirate raid and night raid are both natural phrases.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RAID",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A night raid.",
+          "wordBConnection": "A pirate raid.",
+          "revealExplanation": "Raid: the pirate's, by night.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "PIRATEs raid ships and towns, and 'night raid' is a familiar phrase.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BLACK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Black night.",
+          "wordBConnection": "The pirate's black flag.",
+          "revealExplanation": "Black: the night, and the pirate flag.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Black NIGHT is direct; PIRATE via the black flag, Blackbeard or the Black Pearl, a colour route rather than a shared scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LANTERN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A lantern in the night.",
+          "wordBConnection": "The pirate's lantern.",
+          "revealExplanation": "Lantern: the pirate's, in the night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Lanterns light the NIGHT and hang on old PIRATE ships, but neither link is strong.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__queen",
+      "a": "NIGHT",
+      "b": "QUEEN",
+      "source": "u28",
+      "pairNote": "Strong pair.",
+      "reviewerBestAvailable": {
+        "text": "PROM",
+        "why": "Two equally familiar compounds.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "PROM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Prom night.",
+          "wordBConnection": "The prom queen.",
+          "revealExplanation": "Prom: the night, and its queen.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Prom night' and 'prom queen' are both stock phrases.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MOZART",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Queen of the Night.",
+          "wordBConnection": "Mozart's Queen.",
+          "revealExplanation": "Mozart: the Queen of the Night.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "The Magic Flute",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Mozart's Magic Flute features the Queen of the Night; one famous role names both.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DRAG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Drag night.",
+          "wordBConnection": "A drag queen.",
+          "revealExplanation": "Drag: the night, and the queen.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Drag QUEEN is direct, and a 'drag night' at a club is a familiar event.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__ring",
+      "a": "NIGHT",
+      "b": "RING",
+      "source": "u28",
+      "pairNote": "No PASS; all three hints are ring-led.",
+      "reviewerBestAvailable": {
+        "text": "PHONE",
+        "why": "The late-night phone call is the only scene touching both sides.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "PHONE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A call in the night.",
+          "wordBConnection": "A phone ring.",
+          "revealExplanation": "Phone: ringing in the night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "A PHONE rings; NIGHT via the familiar dread of a phone ringing in the middle of the night, a soft scene.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BELL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell in the night.",
+          "wordBConnection": "A bell rings.",
+          "revealExplanation": "Bell: ringing in the night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bells RING is direct; NIGHT has no familiar bell route ('night bell' is not a common phrase).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ENGAGEMENT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An engagement night.",
+          "wordBConnection": "An engagement ring.",
+          "revealExplanation": "Engagement: the night, and the ring.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Engagement RING is direct; NIGHT only by imagining the proposal happening at night.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__robot",
+      "a": "NIGHT",
+      "b": "ROBOT",
+      "source": "u28",
+      "pairNote": "VISION is a moderate pass.",
+      "reviewerBestAvailable": {
+        "text": "VISION",
+        "why": "Night vision compound plus robot vision/Marvel's Vision.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VISION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Night vision.",
+          "wordBConnection": "Robot vision.",
+          "revealExplanation": "Vision: night vision, robot vision.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "'Night vision' is a compound; ROBOT via robot/machine vision and Marvel's android Vision; moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SENTRY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The night watch.",
+          "wordBConnection": "A robot sentry.",
+          "revealExplanation": "Sentry: the robot, on night watch.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "NIGHT via night sentries on watch and ROBOT via sentry bots or guns in games and sci-fi; both links are secondary.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__rock",
+      "a": "NIGHT",
+      "b": "ROCK",
+      "source": "u28",
+      "pairNote": "Two moderate passes; ALL is filler.",
+      "reviewerBestAvailable": {
+        "text": "CLUB",
+        "why": "Nightclub compound plus rock club scene.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CLUB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A night club.",
+          "wordBConnection": "A rock club.",
+          "revealExplanation": "Club: nightclub, rock club.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Nightclub is a compound; ROCK via rock clubs where bands play.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CONCERT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A night concert.",
+          "wordBConnection": "A rock concert.",
+          "revealExplanation": "Concert: rock, at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Rock concert is a stock phrase, and concerts are a classic night out.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ALL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "All night.",
+          "wordBConnection": "Rock and roll all night.",
+          "revealExplanation": "All: rock and roll all night.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "KISS, Rock and Roll All Nite",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "needs_explanation"
+              ],
+              "reason": "'All night' is a phrase but ROCK needs a song lyric ('rock and roll all nite'); filler word rescued by an explanation.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__rose",
+      "a": "NIGHT",
+      "b": "ROSE",
+      "source": "u28",
+      "pairNote": "Two moderate passes.",
+      "reviewerBestAvailable": {
+        "text": "PROM",
+        "why": "Prom night is instant and roses are a standard prom flower.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BACHELOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Rose ceremony night.",
+          "wordBConnection": "The final rose.",
+          "revealExplanation": "Bachelor: the night of the roses.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Bachelor",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Bachelor's rose ceremony is iconic; NIGHT via the show's 'rose ceremony' nights and bachelor-party nights.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PROM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Prom night.",
+          "wordBConnection": "A rose corsage for prom.",
+          "revealExplanation": "Prom: the night, and the rose.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Prom night is a compound; ROSE via prom corsages and boutonnieres.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__salt",
+      "a": "NIGHT",
+      "b": "SALT",
+      "source": "u28",
+      "pairNote": "No PASS; both hints are salt-only.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Forced pick: a night at sea is at least an image; ROAD is equally thin.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The night sea.",
+          "wordBConnection": "Sea salt.",
+          "revealExplanation": "Sea: by night, and its salt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Sea SALT is direct; NIGHT has no route through sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ROAD",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Trucks salt overnight.",
+          "wordBConnection": "Road salt.",
+          "revealExplanation": "Road: salted overnight.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Road SALT is direct; NIGHT only via generic night driving, not a connection.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__shadow",
+      "a": "NIGHT",
+      "b": "SHADOW",
+      "source": "u28",
+      "pairNote": "Easy pair; DARK and SPOOKY are broad but valid.",
+      "reviewerBestAvailable": {
+        "text": "MOONLIGHT",
+        "why": "A specific scene linking both, not just a shared mood.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MOONLIGHT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Moonlight at night.",
+          "wordBConnection": "Moonlit shadows.",
+          "revealExplanation": "Moonlight: night shadows.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Moonlight fills the NIGHT and casts moon SHADOWs.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DARK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dark night.",
+          "wordBConnection": "A dark shadow.",
+          "revealExplanation": "Dark: night and shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Shared property: night is dark and a shadow is a dark area.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SPOOKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A spooky night.",
+          "wordBConnection": "Spooky shadows.",
+          "revealExplanation": "Spooky: night and shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic",
+                "colour_mood_material"
+              ],
+              "reason": "Shared mood: spooky night and spooky shadows are stock pairings; broad but both land.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__shark",
+      "a": "NIGHT",
+      "b": "SHARK",
+      "source": "u28",
+      "pairNote": "Good pair.",
+      "reviewerBestAvailable": {
+        "text": "WEEK",
+        "why": "Two familiar compounds, weeknight and Shark Week.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HUNT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A night hunt.",
+          "wordBConnection": "Sharks hunt.",
+          "revealExplanation": "Hunt: the shark's, at night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SHARKs are archetypal hunters and many hunt at night; 'night hunt' is a natural phrase; moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WEEK",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "night side invented",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Weeknight is a compound and Shark Week is a famous TV event.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__snake",
+      "a": "NIGHT",
+      "b": "SNAKE",
+      "source": "u28",
+      "pairNote": "VISION is a moderate, explanation-reliant pass; could be argued down to BORDERLINE.",
+      "reviewerBestAvailable": {
+        "text": "VISION",
+        "why": "Night vision plus snakes' heat sensing gives a specific shared ability.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "VISION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Night vision.",
+          "wordBConnection": "Snakes sense heat in the dark.",
+          "revealExplanation": "Vision: the snake's, at night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "'Night vision' compound; SNAKE via pit vipers sensing body heat in the dark, a well-known nature-documentary fact; moderate strength.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "NOCTURNAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Nocturnal means of the night.",
+          "wordBConnection": "Nocturnal snakes.",
+          "revealExplanation": "Nocturnal: the snake hunts at night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Nocturnal means NIGHT-active; many snakes are nocturnal, but snakes are not commonly thought of that way.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__spider",
+      "a": "NIGHT",
+      "b": "SPIDER",
+      "source": "u28",
+      "pairNote": "CRAWL is a moderate pass.",
+      "reviewerBestAvailable": {
+        "text": "CRAWL",
+        "why": "Nightcrawler compound plus creepy-crawly spider.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRAWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Creepy-crawlies of the night.",
+          "wordBConnection": "A crawling spider.",
+          "revealExplanation": "Crawl: the spider, by night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SPIDERs crawl, and 'nightcrawler' (the worm, the X-Men character) is a familiar compound.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "NOCTURNAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Nocturnal means of the night.",
+          "wordBConnection": "Nocturnal spiders.",
+          "revealExplanation": "Nocturnal: the night spider.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Nocturnal means NIGHT-active; many spiders hunt or spin at night, but the spider side is not a salient association.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__spring",
+      "a": "NIGHT",
+      "b": "SPRING",
+      "source": "u28",
+      "pairNote": "EQUINOX is a moderate pass; PEEPERS is a nice but niche route.",
+      "reviewerBestAvailable": {
+        "text": "EQUINOX",
+        "why": "Spring equinox is familiar and its day/night balance gives the night link.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "EQUINOX",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Equal night at the equinox.",
+          "wordBConnection": "The spring equinox.",
+          "revealExplanation": "Equinox: spring, and equal night.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Spring equinox is a standard phrase, and at the equinox day and NIGHT are roughly equal (the word means 'equal night').",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PEEPERS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Peepers sing at night.",
+          "wordBConnection": "Spring peepers.",
+          "revealExplanation": "Peepers: the frogs of spring nights.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Spring peepers are North American frogs whose chorus is heard on spring NIGHTs; real but regional and niche.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__star",
+      "a": "NIGHT",
+      "b": "STAR",
+      "source": "u28",
+      "pairNote": "Strong pair; STARRY must be removed for containing STAR.",
+      "reviewerBestAvailable": {
+        "text": "VANGOGH",
+        "why": "A single famous work titled with both ideas.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The night sky.",
+          "wordBConnection": "Stars in the sky.",
+          "revealExplanation": "Sky: night, full of stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Night sky is a compound and stars fill the sky.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GAZING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Gazing at night.",
+          "wordBConnection": "Stargazing.",
+          "revealExplanation": "Gazing: at the stars, at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Stargazing is a compound, done at NIGHT.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "VANGOGH",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "not a one-word form",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Van Gogh's The Starry Night names both the night and its swirling stars.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "STARRY",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target STAR",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Rule failure: STARRY contains the target STAR as a substring (would otherwise be 'Starry Night').",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__train",
+      "a": "NIGHT",
+      "b": "TRAIN",
+      "source": "u28",
+      "pairNote": "Good pair once MIDNIGHT (contains NIGHT) is removed.",
+      "reviewerBestAvailable": {
+        "text": "SLEEPER",
+        "why": "Sleeper train is literally the night train.",
+        "reviewer": "blind-subagent-28"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SLEEPER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A night of sleep.",
+          "wordBConnection": "A sleeper train.",
+          "revealExplanation": "Sleeper: the night train.",
+          "reference": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sleeper TRAIN is a standard term, and sleeping is what you do at NIGHT (sleeper = overnight train).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GEORGIA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The midnight hour.",
+          "wordBConnection": "The train to Georgia.",
+          "revealExplanation": "Georgia: the midnight train.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Gladys Knight & the Pips",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gladys Knight & the Pips' 'Midnight Train to Georgia' names the train and the night hour in one famous song.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MIDNIGHT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u28",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target NIGHT",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-28",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Rule failure: MIDNIGHT contains the target NIGHT as a substring (would otherwise be 'Midnight Train to Georgia').",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u28-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_ocean__pirate",

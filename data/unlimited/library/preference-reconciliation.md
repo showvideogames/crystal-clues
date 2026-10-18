@@ -2,26 +2,23 @@
 
 Rule (parent): the blind reviewer's explicit FINAL best_available is the served choice when it is a PASS hint; numerical ties are not editorial equality. Nothing here changes verdicts, statuses or live boards.
 
-- pairs with an existing approved preference (untouched): 98
-- pairs where the reviewer's pick already was the provisional top candidate: 736
-- preferences added: 8 (8 ties, 0 overrides of a higher-scored hint)
-- contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 0
+- pairs with an existing approved preference (untouched): 106
+- pairs where the reviewer's pick already was the provisional top candidate: 758
+- preferences added: 4 (4 ties, 0 overrides of a higher-scored hint)
+- contradictions flagged (reviewer prefers a non-PASS hint; left provisional): 2
 - proposed entries still open: 12
 
 ## Added
 
-- tie p_light__star (LIGHT+STAR): TWINKLE 2/2/2 replaces SHINE 2/2/2 — The nursery rhyme makes STAR unmistakable and twinkle lights reach LIGHT.
-- tie p_light__train (LIGHT+TRAIN): RAIL 2/2/2 replaces SIGNAL 2/2/2 — Light rail is a compound that is literally a kind of train.
-- tie p_light__water (LIGHT+WATER): REFLECTION 2/2/2 replaces SPARKLE 2/2/2 — Directly physical for light and the classic image for water.
-- tie p_lion__mouse (LION+MOUSE): AESOP 2/2/2 replaces FABLE 2/2/2 — Points precisely at the one story containing both.
-- tie p_lion__shark (LION+SHARK): PREDATOR 2/2/2 replaces TEETH 2/2/2 — Captures both animals' defining shared role.
-- tie p_moon__night (MOON+NIGHT): LIGHT 2/2/2 replaces SKY 2/2/2 — Two clean compounds: moonlight and night light.
-- tie p_moon__ring (MOON+RING): SATURN 2/2/2 replaces PLANET 2/2/2 — The single object most associated with both rings and moons.
-- tie p_moon__shadow (MOON+SHADOW): ECLIPSE 2/2/2 replaces DARK 2/2/2 — Literally a moon-and-shadow event.
+- tie p_moon__water (MOON+WATER): TIDE 2/2/2 replaces REFLECTION 2/2/2 — Direct cause-and-effect fact everyone knows.
+- tie p_mouse__robot (MOUSE+ROBOT): COMPUTER 2/1/2 replaces MECHANICAL 1/2/2 — Computer mouse is instant and robots are computer-driven machines.
+- tie p_mouse__snake (MOUSE+SNAKE): PREY 2/2/2 replaces SWALLOW 2/2/2 — Most direct statement of the predator-prey relationship.
+- tie p_night__rose (NIGHT+ROSE): PROM 2/1/2 replaces BACHELOR 1/2/2 — Prom night is instant and roses are a standard prom flower.
 
 ## Contradictions (unresolved, for the parent)
 
-- none
+- p_night__shark (NIGHT+SHARK): reviewer best_available WEEK is held while HUNT passed; left provisional (HUNT). why: Two familiar compounds, weeknight and Shark Week.
+- p_night__star (NIGHT+STAR): reviewer best_available VANGOGH is held while SKY/GAZING passed; left provisional (SKY). why: A single famous work titled with both ideas.
 
 ## Proposed entries not applied
 
