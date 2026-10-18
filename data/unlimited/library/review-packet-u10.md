@@ -271,15 +271,12 @@ Playable hints: 1. Reviewer: Good.
 
 ### CARD + CROWN
 
-Playable hints: 1. Reviewer: Both hints are the same route; interchangeable.
+Playable hints: 2. Reviewer: Both hints are the same route; interchangeable.
 
 **Retained**
 
+- **QUEEN** 2/2 fair 2 broad [variant_of:KING]: The queen is a playing card for CARD; a queen wears a crown for CROWN. *(author: variant — variant of KING)*
 - **KING** 2/2 fair 2 broad: The king is a playing card for CARD; a king wears a crown for CROWN. *(author: retained)*
-
-**Held**
-
-- **QUEEN** 2/2 fair 2 broad [variant_of:KING]: The queen is a playing card for CARD; a queen wears a crown for CROWN. — held: passed blind review; needs player-facing text *(author: variant — variant of KING)*
 
 ### CARD + DIAMOND
 
@@ -431,4 +428,4 @@ Playable hints: 1. Reviewer: Good.
 
 ## Totals
 
-retained 49 · held 9 · rejected 4 across 40 pairs; 36 pairs have at least one playable hint.
+retained 50 · held 8 · rejected 4 across 40 pairs; 36 pairs have at least one playable hint.

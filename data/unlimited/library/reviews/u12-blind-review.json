@@ -1,0 +1,931 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-12",
+    "date": "2026-10-17",
+    "input": "u12-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u12-blind-input.json; no other file, search, web lookup or API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_castle__moon",
+      "a": "CASTLE",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "SKY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Reaches CASTLE only through the phrase/film 'castle in the sky' while MOON is simply something in the sky; the castle side is a phrase a player may not land on."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SKY", "why": "Only hint offered; the moon side is immediate and 'castle in the sky' is a known phrase, so it is a fair stretch rather than filler." },
+      "pair_note": "No PASS. The pair wants a shared-scene word (a moonlit castle silhouette) rather than a location word."
+    },
+    {
+      "pair_id": "p_castle__mouse",
+      "a": "CASTLE",
+      "b": "MOUSE",
+      "hints": [
+        {
+          "text": "DISNEY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Disney castle logo/Cinderella Castle gives CASTLE and Mickey Mouse gives MOUSE; one brand, both sides instant."
+        }
+      ],
+      "strong_hints": ["DISNEY"],
+      "best_available": { "text": "DISNEY", "why": "Brand route that lands both words for virtually any player." },
+      "pair_note": "Excellent single hint."
+    },
+    {
+      "pair_id": "p_castle__night",
+      "a": "CASTLE",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "TORCH",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Torches line castle walls and torches are lit at night, so the scene exists, but neither side is a direct hit and TORCH points at many other things first."
+        },
+        {
+          "text": "DRACULA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dracula's castle is the iconic castle and Dracula is the creature of the night; one story carries both words."
+        }
+      ],
+      "strong_hints": ["DRACULA"],
+      "best_available": { "text": "DRACULA", "why": "A single familiar story that names both the castle and the night-dwelling vampire." },
+      "pair_note": "DRACULA is strong; TORCH is a plausible shared scene but diffuse."
+    },
+    {
+      "pair_id": "p_castle__ocean",
+      "a": "CASTLE",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "SAND",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Sandcastle is a compound for CASTLE and sand is the ocean beach for OCEAN; the shared beach scene is immediate."
+        }
+      ],
+      "strong_hints": ["SAND"],
+      "best_available": { "text": "SAND", "why": "Compound on one side, shared beach scene on the other; both broad." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_castle__pirate",
+      "a": "CASTLE",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "FORT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "A fort is a near-synonym of a castle, and pirates attacking or holding a Caribbean fort (Pirates of the Caribbean, pirate-fort toy sets) is a recognizable scene."
+        }
+      ],
+      "strong_hints": ["FORT"],
+      "best_available": { "text": "FORT", "why": "Castle side is near-certain; pirate side is a familiar film/toy scene." },
+      "pair_note": "Passes on the strength of the pirate-fort scene; a second opinion on whether FORT is too close to a synonym of CASTLE is reasonable."
+    },
+    {
+      "pair_id": "p_castle__queen",
+      "a": "CASTLE",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "ROYAL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "A castle is the royal residence and a queen is royalty; shared property that reaches both words directly."
+        },
+        {
+          "text": "THRONE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The throne room sits inside the castle and the queen sits on the throne; one object ties both."
+        }
+      ],
+      "strong_hints": ["THRONE", "ROYAL"],
+      "best_available": { "text": "THRONE", "why": "More concrete than ROYAL while reaching both words equally well." },
+      "pair_note": "Both pass; THRONE is the more specific image."
+    },
+    {
+      "pair_id": "p_castle__ring",
+      "a": "CASTLE",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "MOAT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "A moat is unmistakably castle; it reaches RING only through the shape idea that a moat rings the castle, which a player must reconstruct."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MOAT", "why": "Only hint; the ring-shaped-moat route is real but a shape stretch rather than a named connection." },
+      "pair_note": "No PASS. The ring side needs a stronger route (e.g. a story that has both a castle and a ring)."
+    },
+    {
+      "pair_id": "p_castle__robot",
+      "a": "CASTLE",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "TOY",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Toy robot is a classic toy and toy castles (playsets, building-brick castles) are common; shared-category route reaching both."
+        }
+      ],
+      "strong_hints": ["TOY"],
+      "best_available": { "text": "TOY", "why": "Both words are everyday toys; the castle side is slightly less automatic." },
+      "pair_note": "Weak PASS on a shared-category route; defensible under the rubric's shared-property allowance."
+    },
+    {
+      "pair_id": "p_castle__rock",
+      "a": "CASTLE",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "STONE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "Castles are built of stone and stone is a near-synonym of rock; both sides immediate, though the rock side is essentially a synonym."
+        },
+        {
+          "text": "CLIFF",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A castle perched on a cliff is a familiar image and a cliff is a rock face; the castle side depends on that image."
+        }
+      ],
+      "strong_hints": ["STONE", "CLIFF"],
+      "best_available": { "text": "STONE", "why": "Reaches both words without any scene-building, despite being close to a synonym of ROCK." },
+      "pair_note": "Both pass; flag STONE if synonym-of-target is a house rule."
+    },
+    {
+      "pair_id": "p_castle__rose",
+      "a": "CASTLE",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "GARDEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Rose garden is a compound and castle grounds have formal gardens; the castle side is secondary but recognizable."
+        },
+        {
+          "text": "BEAST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Beauty and the Beast: the Beast's castle and the enchanted rose; one story carries both words."
+        }
+      ],
+      "strong_hints": ["BEAST", "GARDEN"],
+      "best_available": { "text": "BEAST", "why": "Story route in which castle and rose are both central objects." },
+      "pair_note": "BEAST is the standout."
+    },
+    {
+      "pair_id": "p_castle__salt",
+      "a": "CASTLE",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "SEA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Sea salt is a compound for SALT, but the castle side relies only on castles standing by the sea (or sandcastles), which is not a named route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SEA", "why": "Only hint; the salt side is a compound, the castle side is scenery." },
+      "pair_note": "No PASS. The castle side needs a concrete tie."
+    },
+    {
+      "pair_id": "p_castle__shadow",
+      "a": "CASTLE",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "TOWER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "A tower is a castle part, but reaching SHADOW requires inventing 'a tall tower casts a shadow', which is not a recognizable connection."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TOWER", "why": "Only hint; serves the castle side only." },
+      "pair_note": "No PASS. The pair needs a word that itself evokes shadow (dark, gothic scene) and a castle."
+    },
+    {
+      "pair_id": "p_castle__shark",
+      "a": "CASTLE",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "MOAT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Moat is pure castle, and the shark-infested moat is a well-worn villain/cartoon trope that makes the shark side recognizable."
+        }
+      ],
+      "strong_hints": ["MOAT"],
+      "best_available": { "text": "MOAT", "why": "Castle side certain; shark side rides a familiar trope." },
+      "pair_note": "Passes on the shark-in-the-moat trope; a reviewer who does not know the trope would call it BORDERLINE."
+    },
+    {
+      "pair_id": "p_castle__snake",
+      "a": "CASTLE",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "DUNGEON",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "A dungeon is castle through and through, but snakes in a dungeon is a looser pit trope than cobwebs or rats; the snake side needs the player to imagine it."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "DUNGEON", "why": "Only hint; castle side is certain and the snake-pit image is plausible." },
+      "pair_note": "No PASS. Snake side is weaker than the spider version of the same hint."
+    },
+    {
+      "pair_id": "p_castle__spider",
+      "a": "CASTLE",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "DUNGEON",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Castle dungeon on one side; the cobwebbed, spider-filled dungeon is the stock image on the other."
+        }
+      ],
+      "strong_hints": ["DUNGEON"],
+      "best_available": { "text": "DUNGEON", "why": "Shared stock scene; the spider side is a standard set dressing." },
+      "pair_note": "Weak PASS; cobwebs are the real bridge."
+    },
+    {
+      "pair_id": "p_castle__spring",
+      "a": "CASTLE",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "GARDEN",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Castle gardens and gardens blooming in spring are both real, but neither side is a direct route; GARDEN points at many things before either target."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GARDEN", "why": "Only hint; both sides are soft associations." },
+      "pair_note": "No PASS. Both sides are atmospheric rather than named."
+    },
+    {
+      "pair_id": "p_castle__star",
+      "a": "CASTLE",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "DISNEY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Disney logo is a castle with a shooting star arcing over it, and 'Wish Upon a Star' is Disney's anthem; both words sit in one image."
+        }
+      ],
+      "strong_hints": ["DISNEY"],
+      "best_available": { "text": "DISNEY", "why": "A single logo contains both targets." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_castle__train",
+      "a": "CASTLE",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "HOGWARTS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hogwarts Castle and the Hogwarts Express; both words are headline features of the same story."
+        }
+      ],
+      "strong_hints": ["HOGWARTS"],
+      "best_available": { "text": "HOGWARTS", "why": "Story route with both words as named objects." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_castle__water",
+      "a": "CASTLE",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "MOAT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A moat is the water around a castle; both words are the definition."
+        }
+      ],
+      "strong_hints": ["MOAT"],
+      "best_available": { "text": "MOAT", "why": "Definitionally both words." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_castle__witch",
+      "a": "CASTLE",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "HOGWARTS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hogwarts is a castle and a school of witchcraft; both words are intrinsic."
+        },
+        {
+          "text": "OZ",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Wicked Witch is central to Oz and her castle is a key set piece, though Emerald City competes for the castle slot."
+        }
+      ],
+      "strong_hints": ["HOGWARTS", "OZ"],
+      "best_available": { "text": "HOGWARTS", "why": "Both words are named features of one place." },
+      "pair_note": "HOGWARTS is clearly stronger; OZ passes on the witch's castle scene."
+    },
+    {
+      "pair_id": "p_castle__wolf",
+      "a": "CASTLE",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "DRACULA",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dracula's castle is iconic, and the howling wolves he calls 'children of the night' are a recognizable part of the story and its films."
+        }
+      ],
+      "strong_hints": ["DRACULA"],
+      "best_available": { "text": "DRACULA", "why": "Story route; wolf side depends on remembering the howling wolves." },
+      "pair_note": "Passes; the wolf side is secondary within the story."
+    },
+    {
+      "pair_id": "p_cat__crown",
+      "a": "CAT",
+      "b": "CROWN",
+      "hints": [
+        {
+          "text": "LION",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A lion is a big cat, and the lion as 'king of beasts' (Lion King, heraldic crowned lion) gives CROWN."
+        }
+      ],
+      "strong_hints": ["LION"],
+      "best_available": { "text": "LION", "why": "Cat side is category membership; crown side is the king-of-beasts image." },
+      "pair_note": "Good single hint."
+    },
+    {
+      "pair_id": "p_cat__diamond",
+      "a": "CAT",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "EYE",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Cat's-eye is a compound for CAT, but EYE reaches DIAMOND only via 'cat's-eye is also a gemstone', an explanation invented to rescue the diamond side."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "EYE", "why": "Only hint; serves the cat side only." },
+      "pair_note": "No PASS. Needs a word that is itself a jewel or jewel-brand idea on the cat side."
+    },
+    {
+      "pair_id": "p_cat__dog",
+      "a": "CAT",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "PET",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Cat and dog are the two archetypal pets; the shared category is immediate."
+        },
+        {
+          "text": "RAIN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Raining cats and dogs' names both words in one idiom."
+        },
+        {
+          "text": "FIGHT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Fight like cats and dogs', plus catfight and dogfight as compounds; both words reached by idiom."
+        }
+      ],
+      "strong_hints": ["PET", "RAIN", "FIGHT"],
+      "best_available": { "text": "PET", "why": "Most reliable; RAIN is the most elegant idiom route." },
+      "pair_note": "All three pass; RAIN and FIGHT are idiom routes, PET is category."
+    },
+    {
+      "pair_id": "p_cat__dragon",
+      "a": "CAT",
+      "b": "DRAGON",
+      "hints": [
+        {
+          "text": "CLAWS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Both creatures are defined by their claws; shared physical property reaching both words."
+        }
+      ],
+      "strong_hints": ["CLAWS"],
+      "best_available": { "text": "CLAWS", "why": "Shared property true of both targets." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_cat__egg",
+      "a": "CAT",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "BASKET",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Eggs in a basket (Easter, 'all your eggs in one basket') for EGG; a kitten curled in a basket is a familiar image for CAT."
+        }
+      ],
+      "strong_hints": ["BASKET"],
+      "best_available": { "text": "BASKET", "why": "Egg side is idiomatic; cat side is a recognizable picture." },
+      "pair_note": "Weak PASS; the cat side is scene-based."
+    },
+    {
+      "pair_id": "p_cat__fire",
+      "a": "CAT",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "HEARTH",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The hearth is the fireplace for FIRE and the cat curled by the hearth is the classic cosy scene for CAT."
+        }
+      ],
+      "strong_hints": ["HEARTH"],
+      "best_available": { "text": "HEARTH", "why": "Shared domestic scene; HEARTH is a slightly old-fashioned word." },
+      "pair_note": "Passes; recognizability only moderate because HEARTH is literary."
+    },
+    {
+      "pair_id": "p_cat__fish",
+      "a": "CAT",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "CATFISH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "broad",
+          "flags": ["contains_target"],
+          "verdict": "FAIL",
+          "reason": "Contains both target words verbatim; a rule failure regardless of how well the compound fits."
+        },
+        {
+          "text": "TUNA",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Tuna is a fish and the stereotypical cat food; both words in one object."
+        },
+        {
+          "text": "BOWL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Fishbowl is a compound for FISH, and the cat staring into the fishbowl (or eating from its bowl) gives CAT."
+        }
+      ],
+      "strong_hints": ["TUNA", "BOWL"],
+      "best_available": { "text": "TUNA", "why": "Both words reached directly by one food." },
+      "pair_note": "CATFISH must be removed as a contains_target failure; TUNA is excellent."
+    },
+    {
+      "pair_id": "p_cat__ghost",
+      "a": "CAT",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The black cat and the ghost are both stock Halloween icons; one holiday carries both."
+        }
+      ],
+      "strong_hints": ["HALLOWEEN"],
+      "best_available": { "text": "HALLOWEEN", "why": "Shared iconography." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__glass",
+      "a": "CAT",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "MARBLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Marbles are glass for GLASS, and the cat's-eye marble is the best-known marble type for CAT; the cat side needs that specific knowledge."
+        },
+        {
+          "text": "WINDOW",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A window is glass for GLASS, and the cat sitting in the window is one of the most familiar cat images for CAT."
+        }
+      ],
+      "strong_hints": ["WINDOW", "MARBLE"],
+      "best_available": { "text": "WINDOW", "why": "Broader than MARBLE; the cat-in-the-window scene needs no special knowledge." },
+      "pair_note": "Both pass; MARBLE is clever but moderate recognizability."
+    },
+    {
+      "pair_id": "p_cat__gold",
+      "a": "CAT",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "FISH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Goldfish is a compound for GOLD and catfish (or cats eating fish) gives CAT; two compounds on one word."
+        }
+      ],
+      "strong_hints": ["FISH"],
+      "best_available": { "text": "FISH", "why": "Double compound, both broad." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__heart",
+      "a": "CAT",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "PURR",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Purr is pure cat; there is no familiar phrase or scene linking purring to HEART beyond a vague 'warms the heart' explanation."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PURR", "why": "Only hint; serves the cat side only." },
+      "pair_note": "No PASS. Needs a word such as a shared affection/love route or a named character."
+    },
+    {
+      "pair_id": "p_cat__honey",
+      "a": "CAT",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "LICK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "BORDERLINE",
+          "reason": "Cats lick themselves and their paws for CAT; honey is licked off a spoon or paw for HONEY, but that side is a verb applicable to any food."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "LICK", "why": "Only hint; verb route is real but the honey side is weak." },
+      "pair_note": "No PASS. The honey side wants a sweeter-specific route."
+    },
+    {
+      "pair_id": "p_cat__horse",
+      "a": "CAT",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "STABLE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horses live in stables for HORSE; the barn/stable cat is a familiar fixture for CAT."
+        },
+        {
+          "text": "WILD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Wildcat and wild horse are both ordinary compounds; reaches both equally."
+        }
+      ],
+      "strong_hints": ["WILD", "STABLE"],
+      "best_available": { "text": "WILD", "why": "Symmetric compound route." },
+      "pair_note": "Both pass."
+    },
+    {
+      "pair_id": "p_cat__ice",
+      "a": "CAT",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "COOL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "'Cool cat' is a familiar phrase for CAT and cool is the property of ice ('ice cool') for ICE."
+        }
+      ],
+      "strong_hints": ["COOL"],
+      "best_available": { "text": "COOL", "why": "Phrase on one side, property on the other, both broad." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_cat__iron",
+      "a": "CAT",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "BLACK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["colour_mood_material"],
+          "verdict": "BORDERLINE",
+          "reason": "Black cat is a strong compound for CAT; the iron side rests on cast/wrought iron being black, a colour association rather than a named route."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BLACK", "why": "Only hint; cat side certain, iron side is a colour association." },
+      "pair_note": "No PASS. Colour route is thin on the iron side."
+    },
+    {
+      "pair_id": "p_cat__key",
+      "a": "CAT",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "PIANO",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Piano keys give KEY directly; the cat walking across or playing the piano (Keyboard Cat, countless videos) gives CAT."
+        }
+      ],
+      "strong_hints": ["PIANO"],
+      "best_available": { "text": "PIANO", "why": "Key side certain; cat side a widely seen meme/scene." },
+      "pair_note": "Passes; the cat side leans on internet culture."
+    },
+    {
+      "pair_id": "p_cat__king",
+      "a": "CAT",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "LION",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A lion is a big cat and the king of beasts (The Lion King); both words direct."
+        }
+      ],
+      "strong_hints": ["LION"],
+      "best_available": { "text": "LION", "why": "Category plus title; both broad." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_cat__knight",
+      "a": "CAT",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "PUSS",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["synonym_of_target", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Puss is simply another word for cat; KNIGHT is reached only by casting Puss in Boots as a sword-wielding hero, who is a swashbuckler rather than a knight."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PUSS", "why": "Only hint; the Puss in Boots hero image is the sole knight route." },
+      "pair_note": "No PASS. Cat side is a synonym; knight side is a stretch."
+    },
+    {
+      "pair_id": "p_cat__light",
+      "a": "CAT",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "EYES",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Cat's eyes are a strong cat image, but reaching LIGHT requires the player to add 'eyes glow in / reflect light', which is an explanation rather than a named route."
+        },
+        {
+          "text": "LASER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cats chasing the laser pointer dot is universal for CAT, and a laser is a beam of light for LIGHT."
+        }
+      ],
+      "strong_hints": ["LASER"],
+      "best_available": { "text": "LASER", "why": "One familiar scene that is literally light and literally cat." },
+      "pair_note": "LASER is excellent; EYES is a stretch on the light side."
+    }
+  ]
+}

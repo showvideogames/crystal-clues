@@ -213,6 +213,16 @@
         "rejected": 4,
         "needsText": 1,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u10-blind-review.json",
+        "key": "data/unlimited/library/reviews/u10-blind-key.json",
+        "batch": "data/unlimited/library/batches/u10-batch.json",
+        "ai_reviewed": 50,
+        "held": 8,
+        "rejected": 4,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -22901,8 +22911,37 @@
         "why": "Marginally the more default royal; either serves.",
         "reviewer": "blind-subagent-10"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
+        {
+          "text": "QUEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The queen card.",
+          "wordBConnection": "The queen’s crown.",
+          "revealExplanation": "The queen: crowned, on the card.",
+          "reference": null,
+          "provenance": {
+            "source": "u10",
+            "authorLabel": "variant",
+            "authorReason": "variant of KING",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-10",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:KING"
+              ],
+              "reason": "The queen is a playing card for CARD; a queen wears a crown for CROWN."
+            }
+          }
+        },
         {
           "text": "KING",
           "status": "ai_reviewed",
@@ -22927,30 +22966,6 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "The king is a playing card for CARD; a king wears a crown for CROWN."
-            }
-          }
-        },
-        {
-          "text": "QUEEN",
-          "status": "held",
-          "heldReason": "passed blind review; needs player-facing text",
-          "provenance": {
-            "source": "u10",
-            "authorLabel": "variant",
-            "authorReason": "variant of KING",
-            "prior": null,
-            "blindReview": {
-              "reviewer": "blind-subagent-10",
-              "date": "2026-10-17",
-              "verdict": "PASS",
-              "a": 2,
-              "b": 2,
-              "fairness": 2,
-              "recognizability": "broad",
-              "flags": [
-                "variant_of:KING"
-              ],
-              "reason": "The queen is a playing card for CARD; a queen wears a crown for CROWN."
             }
           }
         }
