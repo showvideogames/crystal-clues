@@ -297,23 +297,23 @@ Playable hints: 1. Reviewer: Fish side is a one-step inference (moat is water); 
 
 ### CASTLE + GHOST
 
-Playable hints: 1. Reviewer: HAUNTED is clearly the better of two valid mood-based hints.
+Playable hints: 2. Reviewer: HAUNTED is clearly the better of two valid mood-based hints.
 
 **Retained**
 
 - **HAUNTED** 2/2 fair 2 broad: Haunted castle is a stock phrase and a haunting is done by a ghost. *(author: retained)*
-
-**Held**
-
-- **SPOOKY** 1/2 fair 2 broad [colour_mood_material, variant_of:HAUNTED]: Spooky is the ghost's mood, and the spooky castle is a standard Halloween / Dracula image. — held: passed blind review; needs player-facing text *(author: rejected — a mood word)*
+- **SPOOKY** 1/2 fair 2 broad [colour_mood_material, variant_of:HAUNTED]: Spooky is the ghost's mood, and the spooky castle is a standard Halloween / Dracula image. *(author: rejected — a mood word)*
 
 ### CASTLE + GLASS
 
-Playable hints: 0. Reviewer: CINDERELLA carries the pair; SLIPPER is a weaker variant.
+Playable hints: 1. Reviewer: CINDERELLA carries the pair; SLIPPER is a weaker variant.
+
+**Retained**
+
+- **CINDERELLA** 2/2 fair 2 broad: The glass slipper and the prince's castle (also Disney's Cinderella Castle) are both central to the story. *(author: variant — variant of SLIPPER)*
 
 **Held**
 
-- **CINDERELLA** 2/2 fair 2 broad: The glass slipper and the prince's castle (also Disney's Cinderella Castle) are both central to the story. — held: passed blind review; needs player-facing text *(author: variant — variant of SLIPPER)*
 - **SLIPPER** 1/2 fair 1 broad [variant_of:CINDERELLA]: Glass slipper is immediate, but castle needs the extra hop through Cinderella's story. — held: blind review: borderline *(author: retained)*
 
 ### CASTLE + GOLD
@@ -351,15 +351,12 @@ Playable hints: 2. Reviewer: KNIGHT is the stronger; STABLE is fair.
 
 ### CASTLE + ICE
 
-Playable hints: 1. Reviewer: Both valid; FROZEN depends on the film for the castle side.
+Playable hints: 2. Reviewer: Both valid; FROZEN depends on the film for the castle side.
 
 **Retained**
 
+- **ELSA** 2/2 fair 2 broad: Elsa has ice powers and builds the ice castle/palace in Frozen. *(author: variant — variant of FROZEN)*
 - **FROZEN** 1/2 fair 2 broad [variant_of:ELSA]: Frozen is literally ice, and the film Frozen supplies the ice castle and Arendelle castle. *(author: retained)*
-
-**Held**
-
-- **ELSA** 2/2 fair 2 broad: Elsa has ice powers and builds the ice castle/palace in Frozen. — held: passed blind review; needs player-facing text *(author: variant — variant of FROZEN)*
 
 ### CASTLE + IRON
 
@@ -408,4 +405,4 @@ Playable hints: 1. Reviewer: KING carries the pair; NARNIA is a fun but unreliab
 
 ## Totals
 
-retained 34 · held 16 · rejected 1 across 40 pairs; 29 pairs have at least one playable hint.
+retained 37 · held 13 · rejected 1 across 40 pairs; 30 pairs have at least one playable hint.
