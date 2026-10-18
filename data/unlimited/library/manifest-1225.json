@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-18T01:45:28.113Z",
+  "generated": "2026-10-18T01:46:41.680Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 756,
-  "reviewed": 756,
-  "playable": 612,
-  "held_only": 110,
-  "rejected_only": 34,
+  "authored": 796,
+  "reviewed": 796,
+  "playable": 647,
+  "held_only": 112,
+  "rejected_only": 37,
   "candidate": 0,
-  "hole": 469,
+  "hole": 429,
   "closed": 0,
-  "withBestAvailableCandidate": 144,
+  "withBestAvailableCandidate": 149,
   "underGenerationHold": 1,
   "servedLive": 64,
   "pendingLocal": 0,
@@ -30,10 +30,10 @@
    "pendingBatches": []
   },
   "hints": {
-   "total": 1691,
-   "playable": 944,
-   "held": 374,
-   "rejected": 373
+   "total": 1807,
+   "playable": 1014,
+   "held": 403,
+   "rejected": 390
   },
   "perWordHoles": {
    "APPLE": 0,
@@ -53,39 +53,39 @@
    "FIRE": 0,
    "FISH": 0,
    "GHOST": 0,
-   "GLASS": 2,
-   "GOLD": 29,
-   "HEART": 29,
-   "HONEY": 28,
-   "HORSE": 28,
-   "ICE": 30,
-   "IRON": 28,
-   "KEY": 29,
-   "KING": 29,
-   "KNIGHT": 30,
-   "LIGHT": 29,
-   "LION": 29,
-   "MOON": 28,
-   "MOUSE": 31,
-   "NIGHT": 30,
-   "OCEAN": 28,
+   "GLASS": 0,
+   "GOLD": 0,
+   "HEART": 19,
+   "HONEY": 26,
+   "HORSE": 26,
+   "ICE": 28,
+   "IRON": 27,
+   "KEY": 27,
+   "KING": 27,
+   "KNIGHT": 28,
+   "LIGHT": 27,
+   "LION": 27,
+   "MOON": 26,
+   "MOUSE": 30,
+   "NIGHT": 29,
+   "OCEAN": 27,
    "PIRATE": 29,
-   "QUEEN": 30,
+   "QUEEN": 29,
    "RING": 30,
-   "ROBOT": 29,
-   "ROCK": 29,
-   "ROSE": 27,
-   "SALT": 30,
-   "SHADOW": 30,
-   "SHARK": 30,
-   "SNAKE": 31,
-   "SPIDER": 31,
-   "SPRING": 28,
-   "STAR": 29,
-   "TRAIN": 29,
-   "WATER": 28,
-   "WITCH": 30,
-   "WOLF": 31
+   "ROBOT": 28,
+   "ROCK": 28,
+   "ROSE": 26,
+   "SALT": 29,
+   "SHADOW": 29,
+   "SHARK": 29,
+   "SNAKE": 30,
+   "SPIDER": 30,
+   "SPRING": 27,
+   "STAR": 28,
+   "TRAIN": 28,
+   "WATER": 27,
+   "WITCH": 28,
+   "WOLF": 29
   },
   "batches": {
    "u04": {
@@ -226,11 +226,11 @@
    },
    "u21": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
-    "rejected_only": 0
+    "playable": 35,
+    "held_only": 2,
+    "rejected_only": 3
    },
    "u22": {
     "pairs": 40,
@@ -17063,8 +17063,22 @@
    "pair_id": "p_glass__witch",
    "a": "GLASS",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BALL",
+    "CRYSTAL",
+    "MIRROR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17072,8 +17086,28 @@
    "pair_id": "p_glass__wolf",
    "a": "GLASS",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "WINDOW",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "A window is glass for GLASS; nothing recognizable ties a wolf to a window (the fairy-tale wolf comes to the door, not the window).",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "Only because a wolf peering in at grandmother's window is a faintly imaginable scene; it is still one-sided and should not be served as is.",
+    "stretch": true
+   },
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17081,8 +17115,22 @@
    "pair_id": "p_gold__heart",
    "a": "GOLD",
    "b": "HEART",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PURE",
+    "PENDANT",
+    "LOCKET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17090,8 +17138,21 @@
    "pair_id": "p_gold__honey",
    "a": "GOLD",
    "b": "HONEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LIQUID",
+    "AMBER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17099,8 +17160,20 @@
    "pair_id": "p_gold__horse",
    "a": "GOLD",
    "b": "HORSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PALOMINO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17108,8 +17181,20 @@
    "pair_id": "p_gold__ice",
    "a": "GOLD",
    "b": "ICE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "OLYMPICS"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17117,8 +17202,21 @@
    "pair_id": "p_gold__iron",
    "a": "GOLD",
    "b": "IRON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ORE",
+    "METAL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17126,8 +17224,20 @@
    "pair_id": "p_gold__key",
    "a": "GOLD",
    "b": "KEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CITY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17135,8 +17245,22 @@
    "pair_id": "p_gold__king",
    "a": "GOLD",
    "b": "KING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TUT",
+    "MIDAS",
+    "CROWN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17144,8 +17268,20 @@
    "pair_id": "p_gold__knight",
    "a": "GOLD",
    "b": "KNIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GRAIL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17153,8 +17289,22 @@
    "pair_id": "p_gold__light",
    "a": "GOLD",
    "b": "LIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HALO",
+    "GLOW",
+    "SUNSET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17162,8 +17312,20 @@
    "pair_id": "p_gold__lion",
    "a": "GOLD",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "STATUE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17171,8 +17333,20 @@
    "pair_id": "p_gold__moon",
    "a": "GOLD",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SUN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17180,8 +17354,28 @@
    "pair_id": "p_gold__mouse",
    "a": "GOLD",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CHEESE",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Mice eat cheese for MOUSE; cheese being yellowish is not a recognisable gold route.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "Marginally better than MICKEY because golden cheese is at least a visual, but it remains one-sided and should not be served.",
+    "stretch": true
+   },
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17189,8 +17383,22 @@
    "pair_id": "p_gold__night",
    "a": "GOLD",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "OSCARS",
+    "STARS",
+    "SILENCE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17198,8 +17406,22 @@
    "pair_id": "p_gold__ocean",
    "a": "GOLD",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SHIPWRECK",
+    "SUNKEN",
+    "GALLEON"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17232,8 +17454,22 @@
    "pair_id": "p_gold__queen",
    "a": "GOLD",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "THRONE",
+    "CROWN",
+    "JUBILEE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17264,8 +17500,21 @@
    "pair_id": "p_gold__robot",
    "a": "GOLD",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "C3PO",
+    "THREEPIO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17273,8 +17522,23 @@
    "pair_id": "p_gold__rock",
    "a": "GOLD",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 4,
+   "counts": {
+    "ai_reviewed": 4,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "VEIN",
+    "ORE",
+    "PROSPECTOR",
+    "NUGGET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17282,8 +17546,21 @@
    "pair_id": "p_gold__rose",
    "a": "GOLD",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PINK",
+    "IPHONE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17291,8 +17568,22 @@
    "pair_id": "p_gold__salt",
    "a": "GOLD",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FLAKES",
+    "MINE",
+    "WORTH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17300,8 +17591,28 @@
    "pair_id": "p_gold__shadow",
    "a": "GOLD",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 3,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "GLINT",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Gold glints for GOLD; a glint has no route to SHADOW.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "Nothing here is serviceable; GLINT is named only because it is a valid gold-side word, and it should not be served.",
+    "stretch": true
+   },
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17309,8 +17620,20 @@
    "pair_id": "p_gold__shark",
    "a": "GOLD",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TOOTH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17318,8 +17641,21 @@
    "pair_id": "p_gold__snake",
    "a": "GOLD",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BRACELET",
+    "CHAIN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17327,8 +17663,28 @@
    "pair_id": "p_gold__spider",
    "a": "GOLD",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SILK",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Spider silk for SPIDER; gold silk is a fabric colour for GOLD, a stretch.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Spider silk is immediate and gold silk is at least a recognisable material, making it the fairer of two stretches.",
+    "stretch": false
+   },
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17336,8 +17692,28 @@
    "pair_id": "p_gold__spring",
    "a": "GOLD",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "DAFFODIL",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "The daffodil is the spring flower for SPRING; 'golden daffodils' (Wordsworth) for GOLD is a colour phrase.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Daffodil is instant for spring and 'golden daffodils' is a well-worn phrase, so it is the least one-sided candidate.",
+    "stretch": false
+   },
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17345,8 +17721,21 @@
    "pair_id": "p_gold__star",
    "a": "GOLD",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "STICKER",
+    "SHERIFF"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17354,8 +17743,21 @@
    "pair_id": "p_gold__train",
    "a": "GOLD",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SPIKE",
+    "ROBBERY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17363,8 +17765,21 @@
    "pair_id": "p_gold__water",
    "a": "GOLD",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RIVER",
+    "PAN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17372,8 +17787,20 @@
    "pair_id": "p_gold__witch",
    "a": "GOLD",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 2,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ALCHEMY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17381,8 +17808,20 @@
    "pair_id": "p_gold__wolf",
    "a": "GOLD",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "STREET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17390,8 +17829,21 @@
    "pair_id": "p_heart__honey",
    "a": "HEART",
    "b": "HONEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LOVE",
+    "SWEET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17399,8 +17851,21 @@
    "pair_id": "p_heart__horse",
    "a": "HEART",
    "b": "HORSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RACE",
+    "BEAT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17408,8 +17873,21 @@
    "pair_id": "p_heart__ice",
    "a": "HEART",
    "b": "ICE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FROZEN",
+    "COLD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17440,8 +17918,21 @@
    "pair_id": "p_heart__key",
    "a": "HEART",
    "b": "KEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "UNLOCK",
+    "CHAIN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17449,8 +17940,21 @@
    "pair_id": "p_heart__king",
    "a": "HEART",
    "b": "KING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CARD",
+    "RICHARD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17458,8 +17962,20 @@
    "pair_id": "p_heart__knight",
    "a": "HEART",
    "b": "KNIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BRAVE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17467,8 +17983,20 @@
    "pair_id": "p_heart__light",
    "a": "HEART",
    "b": "LIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HEAVY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17476,8 +18004,22 @@
    "pair_id": "p_heart__lion",
    "a": "HEART",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "COURAGE",
+    "BRAVE",
+    "RICHARD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -17485,8 +18027,21 @@
    "pair_id": "p_heart__moon",
    "a": "HEART",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u21",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FULL",
+    "LOVE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u21",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },

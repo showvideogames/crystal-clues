@@ -333,6 +333,16 @@
         "rejected": 32,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u21-blind-review.json",
+        "key": "data/unlimited/library/reviews/u21-blind-key.json",
+        "batch": "data/unlimited/library/batches/u21-batch.json",
+        "ai_reviewed": 70,
+        "held": 29,
+        "rejected": 17,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -57884,6 +57894,1595 @@
       }
     },
     {
+      "pair_id": "p_glass__witch",
+      "a": "GLASS",
+      "b": "WITCH",
+      "source": "u21",
+      "pairNote": "All three hints work; CRYSTAL and BALL lean on the same crystal-ball scene, so they are near-variants of each other.",
+      "reviewerBestAvailable": {
+        "text": "CRYSTAL",
+        "why": "Crystal glassware and the witch's crystal ball reach both words at full strength with no story knowledge needed.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BALL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glass ball.",
+          "wordBConnection": "The witch's crystal ball.",
+          "revealExplanation": "Ball: the witch's, made of glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A glass ball (ornament, crystal ball) for GLASS; the witch gazing into her crystal ball (Wizard of Oz) for WITCH."
+            }
+          }
+        },
+        {
+          "text": "CRYSTAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Crystal glass.",
+          "wordBConnection": "The witch's crystal ball.",
+          "revealExplanation": "Crystal: glass, and the witch's ball.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Crystal is fine glassware for GLASS; the witch's crystal ball for WITCH."
+            }
+          }
+        },
+        {
+          "text": "MIRROR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A mirror is glass.",
+          "wordBConnection": "The witch's magic mirror.",
+          "revealExplanation": "Mirror: the witch's glass.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Snow White",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "A mirror is glass (looking glass) for GLASS; the wicked queen-witch's magic mirror in Snow White for WITCH, a step less direct."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_glass__wolf",
+      "a": "GLASS",
+      "b": "WOLF",
+      "source": "u21",
+      "pairNote": "No usable hint. Both candidates are wholly one-sided; the pair needs new candidates (e.g. a shared-fable or shared-object route) before it can run.",
+      "reviewerBestAvailable": {
+        "text": "WINDOW",
+        "why": "Only because a wolf peering in at grandmother's window is a faintly imaginable scene; it is still one-sided and should not be served as is.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "WINDOW",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Window glass.",
+          "wordBConnection": "The wolf at the window.",
+          "revealExplanation": "Window: glass, and the wolf outside it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A window is glass for GLASS; nothing recognizable ties a wolf to a window (the fairy-tale wolf comes to the door, not the window)."
+            }
+          }
+        },
+        {
+          "text": "HOWL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A howl that shatters glass.",
+          "wordBConnection": "A wolf's howl.",
+          "revealExplanation": "Howl: the wolf's, loud enough for glass.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Wolves howl for WOLF; a howl has no route to glass."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__heart",
+      "a": "GOLD",
+      "b": "HEART",
+      "source": "u21",
+      "pairNote": "Strong pair; the targets themselves form 'heart of gold'. PENDANT and LOCKET use the same jewellery route.",
+      "reviewerBestAvailable": {
+        "text": "LOCKET",
+        "why": "The heart-shaped gold locket is one object that is both words at once.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "PURE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Pure gold.",
+          "wordBConnection": "A pure heart.",
+          "revealExplanation": "Pure: gold, and heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pure gold (24-karat) for GOLD; pure of heart / a pure heart for HEART."
+            }
+          }
+        },
+        {
+          "text": "PENDANT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold pendant.",
+          "wordBConnection": "A heart pendant.",
+          "revealExplanation": "Pendant: a gold heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:LOCKET"
+              ],
+              "reason": "A gold pendant for GOLD; a heart pendant for HEART, the classic heart-shaped gold pendant unites them."
+            }
+          }
+        },
+        {
+          "text": "LOCKET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold locket.",
+          "wordBConnection": "A heart-shaped locket.",
+          "revealExplanation": "The locket: gold, heart-shaped.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A gold locket for GOLD; the heart-shaped locket for HEART, a single familiar object."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__honey",
+      "a": "GOLD",
+      "b": "HONEY",
+      "source": "u21",
+      "pairNote": "LIQUID is the clear serve; AMBER rides a colour route the rubric allows; DRIP leans heavily on the honey side.",
+      "reviewerBestAvailable": {
+        "text": "LIQUID",
+        "why": "Honey is literally called liquid gold, so the hint sits exactly between the two words.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "LIQUID",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Liquid gold.",
+          "wordBConnection": "Honey is liquid gold.",
+          "revealExplanation": "Liquid gold: honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Liquid gold' is a familiar phrase (often said of honey itself) for GOLD; honey is a liquid, sold as liquid honey, for HONEY."
+            }
+          }
+        },
+        {
+          "text": "AMBER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Amber-gold.",
+          "wordBConnection": "Amber honey.",
+          "revealExplanation": "Amber: honey, and gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Amber honey is the standard colour grade for HONEY; amber as a golden hue for GOLD is a shared-colour route like SWEET for APPLE+HONEY."
+            }
+          }
+        },
+        {
+          "text": "DRIP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Dripping in gold.",
+          "wordBConnection": "Honey drips.",
+          "revealExplanation": "Drip: honey, and gold.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Honey drips for HONEY; GOLD is reached only through the idiom 'dripping in gold' or molten gold, a stretch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__horse",
+      "a": "GOLD",
+      "b": "HORSE",
+      "source": "u21",
+      "pairNote": "HORSESHOE is a rule failure, not a quality failure. PALOMINO's fairness depends on players knowing the breed's colour.",
+      "reviewerBestAvailable": {
+        "text": "PALOMINO",
+        "why": "A golden horse by definition; the only hint that reaches both sides cleanly.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PALOMINO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A palomino's golden coat.",
+          "wordBConnection": "A palomino is a horse.",
+          "revealExplanation": "The palomino: the gold horse.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A palomino is a horse for HORSE and is defined by its golden coat for GOLD; moderately known (Trigger, Mr. Ed)."
+            }
+          }
+        },
+        {
+          "text": "TROPHY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A gold trophy.",
+          "wordBConnection": "The horse race trophy.",
+          "revealExplanation": "Trophy: gold, for the horse.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A gold trophy for GOLD; HORSE only via racing trophies, which is a step removed."
+            }
+          }
+        },
+        {
+          "text": "HORSESHOE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target HORSE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target HORSE as a substring; the lucky gold horseshoe charm would otherwise reach GOLD."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__ice",
+      "a": "GOLD",
+      "b": "ICE",
+      "source": "u21",
+      "pairNote": "MEDAL and SKATING each carry only half the Olympics route; OLYMPICS is the complete one.",
+      "reviewerBestAvailable": {
+        "text": "OLYMPICS",
+        "why": "Gold medals and ice sports both live inside the Winter Olympics; it is the one hint that reaches both words directly.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "OLYMPICS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Olympic gold.",
+          "wordBConnection": "The Winter Olympics on ice.",
+          "revealExplanation": "Olympics: gold, on the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Olympic gold for GOLD; the Winter Olympics' ice events (skating, hockey, curling) for ICE."
+            }
+          }
+        },
+        {
+          "text": "MEDAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A gold medal.",
+          "wordBConnection": "Medals on the ice.",
+          "revealExplanation": "Medal: gold, won on ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Gold medal for GOLD; ICE only through figure-skating medals, a two-step chain."
+            }
+          }
+        },
+        {
+          "text": "SKATING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Skating gold.",
+          "wordBConnection": "Ice skating.",
+          "revealExplanation": "Skating: gold on the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Ice skating for ICE; GOLD only via winning skating gold, the mirror image of MEDAL's weakness."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__iron",
+      "a": "GOLD",
+      "b": "IRON",
+      "source": "u21",
+      "pairNote": "PYRITE is a clever, factually correct hint whose iron side will be invisible to most players.",
+      "reviewerBestAvailable": {
+        "text": "ORE",
+        "why": "Gold ore and iron ore are equally familiar compounds, so the hint is balanced and fair.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ORE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Gold ore.",
+          "wordBConnection": "Iron ore.",
+          "revealExplanation": "Ore: gold or iron.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold ore for GOLD; iron ore for IRON, both everyday compounds."
+            }
+          }
+        },
+        {
+          "text": "METAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Gold is a metal.",
+          "wordBConnection": "Iron is a metal.",
+          "revealExplanation": "Metals: gold and iron.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both are metals; a category route that reaches each word plainly."
+            }
+          }
+        },
+        {
+          "text": "PYRITE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Pyrite is fool's gold.",
+          "wordBConnection": "Pyrite is an iron mineral.",
+          "revealExplanation": "Pyrite: fool's gold, made of iron.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Fool's gold for GOLD is well known; pyrite being iron sulfide for IRON is correct but needs chemistry knowledge."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__key",
+      "a": "GOLD",
+      "b": "KEY",
+      "source": "u21",
+      "pairNote": "TICKET and CHARLIE are the same Wonka idea and both ignore KEY; only CITY is serviceable.",
+      "reviewerBestAvailable": {
+        "text": "CITY",
+        "why": "Key to the city and City of Gold are both set phrases, giving each side a clear, independent path.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CITY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold key.",
+          "wordBConnection": "The key to the city.",
+          "revealExplanation": "City: the gold key to it.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "City of Gold / El Dorado for GOLD; the key to the city for KEY."
+            }
+          }
+        },
+        {
+          "text": "TICKET",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The golden ticket.",
+          "wordBConnection": "The ticket is the key.",
+          "revealExplanation": "Ticket: golden, the key to Wonka's.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Golden ticket (Wonka) for GOLD; no recognizable route to KEY."
+            }
+          }
+        },
+        {
+          "text": "CHARLIE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The golden ticket.",
+          "wordBConnection": "The ticket is the key to the factory.",
+          "revealExplanation": "Charlie: the golden ticket, his key in.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Charlie and the Chocolate Factory",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Charlie finds the golden ticket, a two-step route to GOLD; nothing reaches KEY."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__king",
+      "a": "GOLD",
+      "b": "KING",
+      "source": "u21",
+      "pairNote": "Three clean hints; no concerns.",
+      "reviewerBestAvailable": {
+        "text": "MIDAS",
+        "why": "The golden-touch king is the pair in one name.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TUT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Tut's gold mask.",
+          "wordBConnection": "King Tut.",
+          "revealExplanation": "Tut: the king in the gold mask.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Tutankhamun",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "King Tut for KING; his golden death mask and treasures for GOLD."
+            }
+          }
+        },
+        {
+          "text": "MIDAS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Midas turned things to gold.",
+          "wordBConnection": "King Midas.",
+          "revealExplanation": "Midas: the king with the golden touch.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Greek myth",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "King Midas for KING; his golden touch for GOLD, a single famous story."
+            }
+          }
+        },
+        {
+          "text": "CROWN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold crown.",
+          "wordBConnection": "The king's crown.",
+          "revealExplanation": "Crown: the king's, in gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A gold crown for GOLD; the king's crown for KING."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__knight",
+      "a": "GOLD",
+      "b": "KNIGHT",
+      "source": "u21",
+      "pairNote": "GRAIL is the only hint where the gold side is a recognised image; ARMOR and SPURS reach gold only by colour or history.",
+      "reviewerBestAvailable": {
+        "text": "GRAIL",
+        "why": "The knightly quest and the golden cup are both part of the same familiar legend.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GRAIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The golden Grail.",
+          "wordBConnection": "Knights seek the Grail.",
+          "revealExplanation": "Grail: gold, the knights' quest.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Arthurian legend",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Knights quest for the Holy Grail for KNIGHT; the grail is pictured as a golden chalice for GOLD."
+            }
+          }
+        },
+        {
+          "text": "ARMOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Golden armor.",
+          "wordBConnection": "A knight's armor.",
+          "revealExplanation": "Armor: the knight's, gilded.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A knight's armor for KNIGHT; golden armor for GOLD is a fantasy image rather than a set association."
+            }
+          }
+        },
+        {
+          "text": "SPURS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Golden spurs.",
+          "wordBConnection": "A knight's spurs.",
+          "revealExplanation": "Spurs: the knight's golden spurs.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Knights 'earn their spurs' for KNIGHT; golden spurs as the badge of knighthood for GOLD is historically right but niche."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__light",
+      "a": "GOLD",
+      "b": "LIGHT",
+      "source": "u21",
+      "pairNote": "GOLDEN is a rule failure; the other three are all serviceable, HALO strongest.",
+      "reviewerBestAvailable": {
+        "text": "HALO",
+        "why": "A halo is simultaneously a light phenomenon and a golden ring.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "HALO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold halo.",
+          "wordBConnection": "A halo of light.",
+          "revealExplanation": "Halo: gold light.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A halo is a ring of light for LIGHT and is painted gold for GOLD."
+            }
+          }
+        },
+        {
+          "text": "GLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold glow.",
+          "wordBConnection": "A glow is light.",
+          "revealExplanation": "Glow: golden light.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Light glows for LIGHT; a golden glow is a stock phrase for GOLD."
+            }
+          }
+        },
+        {
+          "text": "SUNSET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A golden sunset.",
+          "wordBConnection": "Sunset light.",
+          "revealExplanation": "Sunset: gold light.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Sunset light / golden hour for LIGHT; the golden sunset sky for GOLD."
+            }
+          }
+        },
+        {
+          "text": "GOLDEN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target GOLD",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target",
+                "variant_of:GLOW"
+              ],
+              "reason": "Contains the target GOLD; golden light would otherwise be the route to LIGHT."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__lion",
+      "a": "GOLD",
+      "b": "LION",
+      "source": "u21",
+      "pairNote": "SIMBA and MANE reach gold only through the lion's colour; STATUE is the one hint with a real gold-side route.",
+      "reviewerBestAvailable": {
+        "text": "STATUE",
+        "why": "Both words are standard subjects of statues, and a golden lion statue is itself a familiar object.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "STATUE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold statue.",
+          "wordBConnection": "Lion statues.",
+          "revealExplanation": "Statue: a gold lion.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold statues (Oscar, idols) for GOLD; lion statues guarding steps and gates for LION."
+            }
+          }
+        },
+        {
+          "text": "MANE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A golden mane.",
+          "wordBConnection": "The lion's mane.",
+          "revealExplanation": "Mane: the lion's gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "The lion's mane for LION; a 'golden mane' for GOLD is a colour stretch."
+            }
+          }
+        },
+        {
+          "text": "SIMBA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Simba's golden coat.",
+          "wordBConnection": "Simba the lion.",
+          "revealExplanation": "Simba: the golden lion.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Lion King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Simba is a lion for LION; GOLD only through his golden fur, which no player would name unprompted."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__moon",
+      "a": "GOLD",
+      "b": "MOON",
+      "source": "u21",
+      "pairNote": "Only SUN reaches gold convincingly; CRESCENT and HARVEST are moon-first hints.",
+      "reviewerBestAvailable": {
+        "text": "SUN",
+        "why": "Sun pairs with moon by habit and with gold by colour and emblem; both routes are instant.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SUN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The golden sun.",
+          "wordBConnection": "Sun and moon.",
+          "revealExplanation": "Sun: gold, partner to the moon.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sun and moon are the classic pairing for MOON; the golden sun for GOLD."
+            }
+          }
+        },
+        {
+          "text": "CRESCENT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A gold crescent.",
+          "wordBConnection": "A crescent moon.",
+          "revealExplanation": "Crescent: the moon, in gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Crescent moon for MOON; a gold crescent for GOLD is a jewellery image at best."
+            }
+          }
+        },
+        {
+          "text": "HARVEST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Golden harvest.",
+          "wordBConnection": "The harvest moon.",
+          "revealExplanation": "Harvest: the golden moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Harvest moon for MOON; golden harvest / harvest gold for GOLD is a colour-phrase stretch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__mouse",
+      "a": "GOLD",
+      "b": "MOUSE",
+      "source": "u21",
+      "pairNote": "No usable hint; both candidates ignore GOLD entirely. The pair needs fresh candidates.",
+      "reviewerBestAvailable": {
+        "text": "CHEESE",
+        "why": "Marginally better than MICKEY because golden cheese is at least a visual, but it remains one-sided and should not be served.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MICKEY",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The golden Mickey statue.",
+          "wordBConnection": "Mickey Mouse.",
+          "revealExplanation": "Mickey: the mouse in gold.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Disney",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mickey Mouse for MOUSE; no route to GOLD."
+            }
+          }
+        },
+        {
+          "text": "CHEESE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Golden cheese.",
+          "wordBConnection": "The mouse's cheese.",
+          "revealExplanation": "Cheese: gold, for the mouse.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Mice eat cheese for MOUSE; cheese being yellowish is not a recognisable gold route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__night",
+      "a": "GOLD",
+      "b": "NIGHT",
+      "source": "u21",
+      "pairNote": "Three good hints with three different routes; SILENCE is the most elegant, STARS the broadest.",
+      "reviewerBestAvailable": {
+        "text": "STARS",
+        "why": "Gold star and night stars are both immediate for any player.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "OSCARS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The gold Oscar statue.",
+          "wordBConnection": "Oscar night.",
+          "revealExplanation": "Oscars: gold statues on the big night.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Academy Awards",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The gold statuette for GOLD; 'Oscar night' for NIGHT."
+            }
+          }
+        },
+        {
+          "text": "STARS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Gold stars.",
+          "wordBConnection": "Stars at night.",
+          "revealExplanation": "Stars: gold, in the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold stars for GOLD; the night sky's stars for NIGHT."
+            }
+          }
+        },
+        {
+          "text": "SILENCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Silence is golden.",
+          "wordBConnection": "The silent night.",
+          "revealExplanation": "Silence: golden, and the night's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "'Silence is golden' for GOLD; 'Silent Night' for NIGHT, two set phrases reached by ordinary inflection."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__ocean",
+      "a": "GOLD",
+      "b": "OCEAN",
+      "source": "u21",
+      "pairNote": "All three draw on the same treasure-ship scene; SHIPWRECK is the broadest version.",
+      "reviewerBestAvailable": {
+        "text": "SHIPWRECK",
+        "why": "The sunken-treasure scene is universally known and names both words at once.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SHIPWRECK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Shipwreck gold.",
+          "wordBConnection": "A shipwreck in the ocean.",
+          "revealExplanation": "Shipwreck: gold on the ocean floor.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shipwreck gold / treasure for GOLD; wrecks lie in the ocean for OCEAN."
+            }
+          }
+        },
+        {
+          "text": "SUNKEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sunken gold.",
+          "wordBConnection": "Sunken in the ocean.",
+          "revealExplanation": "Sunken: gold on the ocean floor.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:SHIPWRECK"
+              ],
+              "reason": "Sunken treasure / gold for GOLD; sunken in the ocean for OCEAN."
+            }
+          }
+        },
+        {
+          "text": "GALLEON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A galleon full of gold.",
+          "wordBConnection": "A galleon on the ocean.",
+          "revealExplanation": "Galleon: gold across the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Spanish galleons carried gold for GOLD and sailed the ocean for OCEAN."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_gold__pirate",
       "a": "GOLD",
       "b": "PIRATE",
@@ -58110,6 +59709,102 @@
       }
     },
     {
+      "pair_id": "p_gold__queen",
+      "a": "GOLD",
+      "b": "QUEEN",
+      "source": "u21",
+      "pairNote": "Clean pair; JUBILEE is the most specific and slightly UK-leaning but still well known.",
+      "reviewerBestAvailable": {
+        "text": "CROWN",
+        "why": "Gold crown and queen's crown are the first associations for both words.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "THRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold throne.",
+          "wordBConnection": "The queen's throne.",
+          "revealExplanation": "Throne: the queen's, in gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A golden throne for GOLD; the queen on her throne for QUEEN."
+            }
+          }
+        },
+        {
+          "text": "CROWN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold crown.",
+          "wordBConnection": "The queen's crown.",
+          "revealExplanation": "Crown: the queen's, in gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A gold crown for GOLD; a queen's crown for QUEEN."
+            }
+          }
+        },
+        {
+          "text": "JUBILEE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Golden Jubilee.",
+          "wordBConnection": "The Queen's Jubilee.",
+          "revealExplanation": "Jubilee: the Queen's golden one.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Golden Jubilee for GOLD; the Queen's Jubilee for QUEEN, widely covered beyond the UK."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_gold__ring",
       "a": "GOLD",
       "b": "RING",
@@ -58233,6 +59928,1663 @@
           "BAND"
         ]
       }
+    },
+    {
+      "pair_id": "p_gold__robot",
+      "a": "GOLD",
+      "b": "ROBOT",
+      "source": "u21",
+      "pairNote": "C3PO and THREEPIO are the same hint in two spellings; serve one.",
+      "reviewerBestAvailable": {
+        "text": "C3PO",
+        "why": "The most recognised golden robot in popular culture.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "C3PO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "C-3PO is gold.",
+          "wordBConnection": "C-3PO is a robot.",
+          "revealExplanation": "C-3PO: the gold robot.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Star Wars",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The golden Star Wars droid is both GOLD and ROBOT in one name."
+            }
+          }
+        },
+        {
+          "text": "THREEPIO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Threepio is golden.",
+          "wordBConnection": "Threepio is a droid.",
+          "revealExplanation": "Threepio: the golden droid.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Star Wars",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:C3PO"
+              ],
+              "reason": "C-3PO is a golden robot: the spelled-out nickname reaches both GOLD and ROBOT, though the spelling is less instantly read than C3PO."
+            }
+          }
+        },
+        {
+          "text": "PLATED",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Gold-plated.",
+          "wordBConnection": "A plated robot.",
+          "revealExplanation": "Plated: a robot in gold.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gold-plated for GOLD; a robot's metal plating for ROBOT is a weaker, descriptive route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__rock",
+      "a": "GOLD",
+      "b": "ROCK",
+      "source": "u21",
+      "pairNote": "A strong mining pair; all four hints share one scene but each reaches both words.",
+      "reviewerBestAvailable": {
+        "text": "ORE",
+        "why": "Ore is literally gold-bearing rock, so neither side is a stretch.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 4,
+      "clues": [
+        {
+          "text": "VEIN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold vein.",
+          "wordBConnection": "A vein in the rock.",
+          "revealExplanation": "Vein: gold, through rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A gold vein for GOLD; veins run through rock for ROCK."
+            }
+          }
+        },
+        {
+          "text": "ORE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Gold ore.",
+          "wordBConnection": "Ore is rock.",
+          "revealExplanation": "Ore: rock with gold in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold ore for GOLD; ore is metal-bearing rock for ROCK."
+            }
+          }
+        },
+        {
+          "text": "PROSPECTOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold prospector.",
+          "wordBConnection": "Prospecting the rock.",
+          "revealExplanation": "Prospector: gold from the rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Prospectors hunt gold for GOLD; they pick through rock for ROCK, a recognisable scene."
+            }
+          }
+        },
+        {
+          "text": "NUGGET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold nugget.",
+          "wordBConnection": "A nugget is a lump of rock.",
+          "revealExplanation": "Nugget: gold, in rock form.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold nugget for GOLD; a nugget is a small lump of rock for ROCK."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__rose",
+      "a": "GOLD",
+      "b": "ROSE",
+      "source": "u21",
+      "pairNote": "The targets form 'rose gold'; PINK and IPHONE both lean on that compound, GILDED leans only on gold.",
+      "reviewerBestAvailable": {
+        "text": "PINK",
+        "why": "Pink is the colour of a rose and the literal description of rose/pink gold.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PINK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Pink gold.",
+          "wordBConnection": "Rose is pink.",
+          "revealExplanation": "Pink: rose gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Rose is a shade of pink for ROSE; pink gold is the other name for rose gold for GOLD."
+            }
+          }
+        },
+        {
+          "text": "IPHONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The gold iPhone.",
+          "wordBConnection": "Rose gold iPhone.",
+          "revealExplanation": "iPhone: rose gold.",
+          "reference": {
+            "referenceType": "brand_or_product",
+            "source": "Apple iPhone",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The gold and rose-gold iPhone finishes make the brand reach both GOLD and ROSE, as Apple does for APPLE+CARD."
+            }
+          }
+        },
+        {
+          "text": "GILDED",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Gilded is gold.",
+          "wordBConnection": "A gilded rose.",
+          "revealExplanation": "Gilded: a rose in gold.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Gilded means gold-coated for GOLD; a gilded rose (gold-dipped gift rose) for ROSE is a product, not a set association."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__salt",
+      "a": "GOLD",
+      "b": "SALT",
+      "source": "u21",
+      "pairNote": "Three good hints; WORTH is the most satisfying idiom-based route.",
+      "reviewerBestAvailable": {
+        "text": "MINE",
+        "why": "Gold mine and salt mine are equally common compounds.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "FLAKES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Gold flakes.",
+          "wordBConnection": "Salt flakes.",
+          "revealExplanation": "Flakes: gold or salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gold flakes (leaf, Goldschlager) for GOLD; flaky sea salt for SALT."
+            }
+          }
+        },
+        {
+          "text": "MINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold mine.",
+          "wordBConnection": "A salt mine.",
+          "revealExplanation": "Mines: gold or salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold mine for GOLD; salt mine for SALT."
+            }
+          }
+        },
+        {
+          "text": "WORTH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Worth its weight in gold.",
+          "wordBConnection": "Worth your salt.",
+          "revealExplanation": "Worth: in gold, or your salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "'Worth its weight in gold' for GOLD; 'worth one's salt' for SALT, two idioms."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__shadow",
+      "a": "GOLD",
+      "b": "SHADOW",
+      "source": "u21",
+      "pairNote": "No usable hint. EYESHADOW shows the intended route (makeup) but breaks the substring rule; a hint like a makeup brand or 'LID' would need testing instead.",
+      "reviewerBestAvailable": {
+        "text": "GLINT",
+        "why": "Nothing here is serviceable; GLINT is named only because it is a valid gold-side word, and it should not be served.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "EYESHADOW",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target SHADOW",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target SHADOW; gold eyeshadow would otherwise reach both words."
+            }
+          }
+        },
+        {
+          "text": "GLINT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A glint of gold.",
+          "wordBConnection": "A glint in the shadow.",
+          "revealExplanation": "Glint: gold, in the shadows.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Gold glints for GOLD; a glint has no route to SHADOW."
+            }
+          }
+        },
+        {
+          "text": "SHIMMER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Gold shimmer.",
+          "wordBConnection": "Shimmer eyeshadow.",
+          "revealExplanation": "Shimmer: gold, on the eyelid.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "variant_of:GLINT"
+              ],
+              "reason": "Gold shimmers for GOLD; nothing reaches SHADOW."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__shark",
+      "a": "GOLD",
+      "b": "SHARK",
+      "source": "u21",
+      "pairNote": "TOOTH carries the pair alone; LOAN is a shark-first hint.",
+      "reviewerBestAvailable": {
+        "text": "TOOTH",
+        "why": "Gold tooth and shark tooth are both instant compounds.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TOOTH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold tooth.",
+          "wordBConnection": "A shark tooth.",
+          "revealExplanation": "Tooth: gold, or shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A gold tooth for GOLD; a shark tooth for SHARK."
+            }
+          }
+        },
+        {
+          "text": "LOAN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Gold pawned for a loan.",
+          "wordBConnection": "A loan shark.",
+          "revealExplanation": "Loan: the shark's trade, gold as collateral.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Loan shark for SHARK; a gold loan (gold as collateral) for GOLD is regionally familiar but faint for most players."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__snake",
+      "a": "GOLD",
+      "b": "SNAKE",
+      "source": "u21",
+      "pairNote": "SLYTHERIN is a factual miss; BRACELET and CHAIN both work through jewellery.",
+      "reviewerBestAvailable": {
+        "text": "BRACELET",
+        "why": "The gold snake bracelet is a single familiar object.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BRACELET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold bracelet.",
+          "wordBConnection": "A snake bracelet.",
+          "revealExplanation": "Bracelet: a gold snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A gold bracelet for GOLD; the coiled snake bracelet / armband for SNAKE, a recognised jewellery design."
+            }
+          }
+        },
+        {
+          "text": "CHAIN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold chain.",
+          "wordBConnection": "A snake chain.",
+          "revealExplanation": "Chain: gold, snake style.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Gold chain for GOLD; snake chain is a jewellery chain style, and a chain is snake-like, for SNAKE."
+            }
+          }
+        },
+        {
+          "text": "SLYTHERIN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "House colours in gold and silver.",
+          "wordBConnection": "Slytherin's snake.",
+          "revealExplanation": "Slytherin: the snake house.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Harry Potter",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "wrong_fact",
+                "one_sided"
+              ],
+              "reason": "The serpent house for SNAKE; Slytherin's colours are green and silver, not gold (gold belongs to Gryffindor), so the GOLD side is a wrong fact."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__spider",
+      "a": "GOLD",
+      "b": "SPIDER",
+      "source": "u21",
+      "pairNote": "No PASS. Both hints hover around the golden orb-weaver spider, which few players know; the pair wants a new angle.",
+      "reviewerBestAvailable": {
+        "text": "SILK",
+        "why": "Spider silk is immediate and gold silk is at least a recognisable material, making it the fairer of two stretches.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SILK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Golden silk.",
+          "wordBConnection": "Spider silk.",
+          "revealExplanation": "Silk: the spider's, in gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Spider silk for SPIDER; gold silk is a fabric colour for GOLD, a stretch."
+            }
+          }
+        },
+        {
+          "text": "ORB",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The golden orb weaver.",
+          "wordBConnection": "An orb-weaver spider.",
+          "revealExplanation": "Orb: the golden orb-weaver spider.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Orb-weaver spiders for SPIDER; the golden orb of royal regalia (and the golden orb-weaver) for GOLD; both sides require specialist knowledge."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__spring",
+      "a": "GOLD",
+      "b": "SPRING",
+      "source": "u21",
+      "pairNote": "No PASS. The two flower hints reach gold only by colour; POT ignores spring entirely.",
+      "reviewerBestAvailable": {
+        "text": "DAFFODIL",
+        "why": "Daffodil is instant for spring and 'golden daffodils' is a well-worn phrase, so it is the least one-sided candidate.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DAFFODIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Golden daffodils.",
+          "wordBConnection": "Spring daffodils.",
+          "revealExplanation": "Daffodil: spring's gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "The daffodil is the spring flower for SPRING; 'golden daffodils' (Wordsworth) for GOLD is a colour phrase."
+            }
+          }
+        },
+        {
+          "text": "FORSYTHIA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Golden forsythia.",
+          "wordBConnection": "Early spring forsythia.",
+          "revealExplanation": "Forsythia: spring's first gold.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "colour_mood_material"
+              ],
+              "reason": "Forsythia is an early-spring shrub for SPRING; its yellow-gold blossom for GOLD is a colour route few players will know."
+            }
+          }
+        },
+        {
+          "text": "POT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A pot of gold.",
+          "wordBConnection": "The spring rainbow's pot of gold.",
+          "revealExplanation": "Pot: of gold, at spring's rainbow end.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Pot of gold for GOLD; no route to SPRING."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__star",
+      "a": "GOLD",
+      "b": "STAR",
+      "source": "u21",
+      "pairNote": "STICKER and SHERIFF are both good; TREE needs the Christmas scene to be supplied by the player.",
+      "reviewerBestAvailable": {
+        "text": "STICKER",
+        "why": "Everyone has seen a gold star sticker; it is the compound itself.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "STICKER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold sticker.",
+          "wordBConnection": "A star sticker.",
+          "revealExplanation": "Sticker: a gold star.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The gold star sticker is one object that is both GOLD and STAR."
+            }
+          }
+        },
+        {
+          "text": "SHERIFF",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold badge.",
+          "wordBConnection": "The sheriff's star.",
+          "revealExplanation": "Sheriff: the gold star badge.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The sheriff's badge is a gold star: STAR by shape, GOLD by metal."
+            }
+          }
+        },
+        {
+          "text": "TREE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Gold tree ornaments.",
+          "wordBConnection": "The star on the tree.",
+          "revealExplanation": "Tree: the gold star on top.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "The Christmas tree's star topper for STAR and gold tinsel for GOLD; a shared scene, but neither link is direct from the bare word TREE."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__train",
+      "a": "GOLD",
+      "b": "TRAIN",
+      "source": "u21",
+      "pairNote": "SPIKE's gold side is US-history knowledge; ROBBERY is broader but gold is one of several things trains carry.",
+      "reviewerBestAvailable": {
+        "text": "SPIKE",
+        "why": "Rail spike and Golden Spike reach both words through one piece of railway history.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SPIKE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The golden spike.",
+          "wordBConnection": "The spike that finished the train line.",
+          "revealExplanation": "Spike: the golden one, on the railroad.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Golden Spike, 1869",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Railroad spike for TRAIN; the Golden Spike that completed the transcontinental railroad for GOLD, well known in the US."
+            }
+          }
+        },
+        {
+          "text": "ROBBERY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A gold robbery.",
+          "wordBConnection": "The Great Train Robbery.",
+          "revealExplanation": "Robbery: gold, off the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The Great Train Robbery / Wild West train robbery for TRAIN; the gold shipment being robbed for GOLD, a recognised scene."
+            }
+          }
+        },
+        {
+          "text": "RUSH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The gold rush.",
+          "wordBConnection": "Rush hour trains.",
+          "revealExplanation": "Rush: gold rush, rush hour.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold rush for GOLD; rush-hour trains for TRAIN is a loose association."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__water",
+      "a": "GOLD",
+      "b": "WATER",
+      "source": "u21",
+      "pairNote": "GOLDFISH is a rule failure; RIVER and PAN share the prospecting scene.",
+      "reviewerBestAvailable": {
+        "text": "RIVER",
+        "why": "The gold-in-the-river scene is familiar and the water side is literal.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RIVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "River gold.",
+          "wordBConnection": "A river is water.",
+          "revealExplanation": "River: water, with gold in it.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Gold panned from rivers for GOLD; a river is water for WATER."
+            }
+          }
+        },
+        {
+          "text": "PAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Panning for gold.",
+          "wordBConnection": "A pan of river water.",
+          "revealExplanation": "Pan: gold from the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Panning for gold for GOLD; the pan is swirled in water (and a pan of water is everyday) for WATER."
+            }
+          }
+        },
+        {
+          "text": "GOLDFISH",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target GOLD",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target GOLD; the fish in water would otherwise reach WATER."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__witch",
+      "a": "GOLD",
+      "b": "WITCH",
+      "source": "u21",
+      "pairNote": "ALCHEMY carries the pair; GLINDA and CAULDRON are witch-only filler.",
+      "reviewerBestAvailable": {
+        "text": "ALCHEMY",
+        "why": "Only hint with a gold-side route; the witch side is a reasonable magic-arts leap.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ALCHEMY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Alchemy makes gold.",
+          "wordBConnection": "Witchcraft and alchemy.",
+          "revealExplanation": "Alchemy: the witch's craft for gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Alchemists sought to make gold for GOLD; alchemy as a sister art to witchcraft (potions, magic) for WITCH."
+            }
+          }
+        },
+        {
+          "text": "GLINDA",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Glinda's golden gown.",
+          "wordBConnection": "Glinda the Good Witch.",
+          "revealExplanation": "Glinda: the good witch in gold.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Wizard of Oz",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Glinda the Good Witch for WITCH; nothing about her reaches GOLD."
+            }
+          }
+        },
+        {
+          "text": "CAULDRON",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Alchemy's cauldron for gold.",
+          "wordBConnection": "The witch's cauldron.",
+          "revealExplanation": "Cauldron: the witch's pot, the alchemist's gold.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "The witch's cauldron for WITCH; the leprechaun's pot is not usually called a cauldron, so GOLD is not reached."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_gold__wolf",
+      "a": "GOLD",
+      "b": "WOLF",
+      "source": "u21",
+      "pairNote": "STREET is the serve; EYES is a shared-property route that is too diffuse to land.",
+      "reviewerBestAvailable": {
+        "text": "STREET",
+        "why": "Two set phrases, one per side, with no factual stretch.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "STREET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Streets paved with gold.",
+          "wordBConnection": "The Wolf of Wall Street.",
+          "revealExplanation": "Street: Wall Street's wolf, paved with gold.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Wolf of Wall Street",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Streets paved with gold for GOLD; The Wolf of Wall Street for WOLF."
+            }
+          }
+        },
+        {
+          "text": "EYES",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Golden eyes.",
+          "wordBConnection": "A wolf's eyes.",
+          "revealExplanation": "Eyes: the wolf's, gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Wolves' golden/amber eyes are the shared property, but EYES alone points at neither GOLD nor WOLF without that specific image."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__honey",
+      "a": "HEART",
+      "b": "HONEY",
+      "source": "u21",
+      "pairNote": "SWEET and LOVE are strong; DARLING is honey-first.",
+      "reviewerBestAvailable": {
+        "text": "SWEET",
+        "why": "Sweetheart and sweet honey are both instant.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "LOVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The heart is love's symbol.",
+          "wordBConnection": "Honey is what you call someone you love.",
+          "revealExplanation": "Honey is what you call someone you love and the heart is love's symbol.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The heart is the symbol of love for HEART; honey is a term of endearment, like love, for HONEY."
+            }
+          }
+        },
+        {
+          "text": "SWEET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Sweetheart is the word.",
+          "wordBConnection": "Honey is the definition of sweet.",
+          "revealExplanation": "Sweetheart is the word and honey is the definition of sweet.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sweetheart for HEART; honey is sweet for HONEY."
+            }
+          }
+        },
+        {
+          "text": "DARLING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "synonym_or_related",
+          "wordAConnection": "Sweetheart is one of them.",
+          "wordBConnection": "Honey is another.",
+          "revealExplanation": "Honey, darling and sweetheart are the same pet name three times over.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Darling and honey are sibling endearments for HONEY; HEART is reached only via 'sweetheart' or 'dear heart', a step away."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__horse",
+      "a": "HEART",
+      "b": "HORSE",
+      "source": "u21",
+      "pairNote": "RACE is the clean serve; BEAT works via idiom; GALLOP is RACE's weaker cousin.",
+      "reviewerBestAvailable": {
+        "text": "RACE",
+        "why": "Heart race and horse race are equally everyday.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RACE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Your heart races when you are frightened.",
+          "wordBConnection": "Horses race for a living.",
+          "revealExplanation": "Horses race and your heart races when you are frightened.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A racing heart for HEART; horse race for HORSE."
+            }
+          }
+        },
+        {
+          "text": "BEAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A heart beats.",
+          "wordBConnection": "Hooves beat the ground.",
+          "revealExplanation": "A heart beats and hooves beat the ground.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Heartbeat for HEART; 'beating a dead horse' and the beat of hooves for HORSE."
+            }
+          }
+        },
+        {
+          "text": "GALLOP",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A galloping heart is one going far too fast.",
+          "wordBConnection": "A gallop is the horse's fastest gait.",
+          "revealExplanation": "A horse gallops and a galloping heart is one going far too fast.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Horses gallop for HORSE; a 'galloping heart' for HEART is literary and less common than 'racing'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__ice",
+      "a": "HEART",
+      "b": "ICE",
+      "source": "u21",
+      "pairNote": "FROZEN and COLD are solid; ELSA is a judgement call that could rise to PASS if the Frozen plot counts as a familiar story like Snow White.",
+      "reviewerBestAvailable": {
+        "text": "FROZEN",
+        "why": "Frozen heart and frozen ice are both immediate, and the Disney film reinforces the pairing.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A frozen heart.",
+          "wordBConnection": "Frozen is ice.",
+          "revealExplanation": "Frozen: the heart of ice.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Frozen",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A frozen heart (and the film's plot) for HEART; frozen water is ice for ICE."
+            }
+          }
+        },
+        {
+          "text": "COLD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cold heart.",
+          "wordBConnection": "Ice is cold.",
+          "revealExplanation": "Cold: the heart, and the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cold-hearted for HEART; ice is cold for ICE."
+            }
+          }
+        },
+        {
+          "text": "ELSA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Elsa strikes Anna's heart.",
+          "wordBConnection": "Elsa makes ice.",
+          "revealExplanation": "Elsa: ice in the heart.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Frozen",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Elsa's ice powers for ICE; HEART only via her freezing Anna's heart, a plot point rather than an instant association."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_heart__iron",
@@ -58379,6 +61731,581 @@
           "PUMP"
         ]
       }
+    },
+    {
+      "pair_id": "p_heart__key",
+      "a": "HEART",
+      "b": "KEY",
+      "source": "u21",
+      "pairNote": "UNLOCK is excellent; LOCKET is heart-first.",
+      "reviewerBestAvailable": {
+        "text": "UNLOCK",
+        "why": "The 'key to my heart' idea makes unlock reach both words at full strength.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "UNLOCK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Unlocking someone's heart is the phrase.",
+          "wordBConnection": "A key is what unlocks.",
+          "revealExplanation": "A key unlocks a door and the phrase is unlocking someone's heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A key unlocks for KEY; unlocking someone's heart / 'key to my heart' for HEART."
+            }
+          }
+        },
+        {
+          "text": "CHAIN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "A heart pendant is worn on one.",
+          "wordBConnection": "So is a key.",
+          "revealExplanation": "A heart pendant and a key are both worn on a chain round the neck.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Keychain for KEY; a heart on a chain (necklace) for HEART."
+            }
+          }
+        },
+        {
+          "text": "LOCKET",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "wordplay",
+          "wordAConnection": "A locket is heart-shaped.",
+          "wordBConnection": "And named for the lock a key would open.",
+          "revealExplanation": "A locket is heart-shaped and named for the lock a key would open.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "A heart locket for HEART; KEY only via 'key to my heart' locket designs or the 'lock' inside the word, not a set association."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__king",
+      "a": "HEART",
+      "b": "KING",
+      "source": "u21",
+      "pairNote": "LIONHEART is a rule failure; RICHARD delivers the same idea legally.",
+      "reviewerBestAvailable": {
+        "text": "CARD",
+        "why": "The king of hearts is a single card that is both words.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The hearts suit.",
+          "wordBConnection": "The king card.",
+          "revealExplanation": "Card: the king of hearts.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The king card and the hearts suit (king of hearts) for KING and HEART."
+            }
+          }
+        },
+        {
+          "text": "RICHARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Richard the Lionheart.",
+          "wordBConnection": "King Richard.",
+          "revealExplanation": "Richard: the Lionheart king.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Richard I",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "King Richard for KING; Richard the Lionheart for HEART, a compound counting as the compound."
+            }
+          }
+        },
+        {
+          "text": "LIONHEART",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target HEART",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target HEART; otherwise the same route as RICHARD."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__knight",
+      "a": "HEART",
+      "b": "KNIGHT",
+      "source": "u21",
+      "pairNote": "BRAVE carries the pair; CHIVALRY and LADY are knight-first with a romance stretch to heart.",
+      "reviewerBestAvailable": {
+        "text": "BRAVE",
+        "why": "Brave heart and brave knight are both stock phrases.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BRAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A brave heart.",
+          "wordBConnection": "A brave knight.",
+          "revealExplanation": "Brave: heart and knight.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Braveheart / a brave heart for HEART; a brave knight for KNIGHT."
+            }
+          }
+        },
+        {
+          "text": "CHIVALRY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Chivalry, from the heart.",
+          "wordBConnection": "A knight's chivalry.",
+          "revealExplanation": "Chivalry: the knight's heart.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Chivalry is the knightly code for KNIGHT; HEART only through courtly romance, a diffuse link."
+            }
+          }
+        },
+        {
+          "text": "LADY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The lady of his heart.",
+          "wordBConnection": "The knight's lady.",
+          "revealExplanation": "Lady: the knight's, who holds his heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "The knight's lady for KNIGHT; HEART only via the lady who holds his heart, which needs the courtly-love frame."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__light",
+      "a": "HEART",
+      "b": "LIGHT",
+      "source": "u21",
+      "pairNote": "HEAVY is a good serve; the pair itself also reads as 'light heart'. FEATHER is light-first.",
+      "reviewerBestAvailable": {
+        "text": "HEAVY",
+        "why": "The idiom and the antonym are both instant.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HEAVY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "contrast",
+          "wordAConnection": "A heavy heart is the opposite of a light one.",
+          "wordBConnection": "Heavy is the opposite of light.",
+          "revealExplanation": "A heavy heart is the opposite of a light one, and heavy is the opposite of light.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A heavy heart for HEART; heavy is the opposite of light for LIGHT."
+            }
+          }
+        },
+        {
+          "text": "FEATHER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "In Egyptian myth the heart is weighed against one.",
+          "wordBConnection": "Light as a feather is the phrase for weighing nothing.",
+          "revealExplanation": "In Egyptian myth the heart is weighed against a feather, and light as a feather is the phrase for weighing nothing.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "the Egyptian weighing of the heart",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "Light as a feather for LIGHT; HEART only via the Egyptian weighing of the heart against a feather, which is niche."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__lion",
+      "a": "HEART",
+      "b": "LION",
+      "source": "u21",
+      "pairNote": "Three clean hints; the pair is 'lionheart' itself.",
+      "reviewerBestAvailable": {
+        "text": "COURAGE",
+        "why": "The Wizard of Oz gives the lion courage and the shared meaning of heart as courage closes the loop.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "COURAGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Courage comes from the heart.",
+          "wordBConnection": "The Cowardly Lion's courage.",
+          "revealExplanation": "Courage: the lion's wish, the heart's gift.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Wizard of Oz",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Heart means courage ('take heart') for HEART; the Cowardly Lion seeking courage for LION."
+            }
+          }
+        },
+        {
+          "text": "BRAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A brave heart.",
+          "wordBConnection": "Brave as a lion.",
+          "revealExplanation": "Brave: heart of a lion.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Braveheart / brave heart for HEART; the brave lion for LION."
+            }
+          }
+        },
+        {
+          "text": "RICHARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Lionheart.",
+          "wordBConnection": "Lionheart.",
+          "revealExplanation": "Richard the Lionheart.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Richard I",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Richard the Lionheart reaches LION and HEART through one epithet."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_heart__moon",
+      "a": "HEART",
+      "b": "MOON",
+      "source": "u21",
+      "pairNote": "FULL is the serve; LOVE is a fair romance route; PINE relies on the rare verb sense of moon.",
+      "reviewerBestAvailable": {
+        "text": "FULL",
+        "why": "Full moon and full heart are both set phrases.",
+        "reviewer": "blind-subagent-21"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FULL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "word_before_after",
+          "wordAConnection": "A full heart means being overwhelmed with feeling.",
+          "wordBConnection": "A full moon is the striking phase.",
+          "revealExplanation": "A full moon is the striking phase, and a full heart means being overwhelmed with feeling.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A full heart for HEART; a full moon for MOON."
+            }
+          }
+        },
+        {
+          "text": "LOVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The heart is the symbol of love.",
+          "wordBConnection": "Moonlight is its traditional setting.",
+          "revealExplanation": "The heart is the symbol of love and moonlight is its traditional setting.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The heart as love's symbol for HEART; the moon as the romantic emblem ('to the moon and back') for MOON."
+            }
+          }
+        },
+        {
+          "text": "PINE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "To pine is to ache with longing, which is a matter of the heart.",
+          "wordBConnection": "Mooning over somebody is the same thing.",
+          "revealExplanation": "To pine is to ache with longing, which is both a matter of the heart and what mooning over someone means.",
+          "reference": null,
+          "provenance": {
+            "source": "u21",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-21",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "To pine is a heart's yearning for HEART; 'to moon over' someone is a synonym of pine for MOON, a verb route too clever to land."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_heart__robot",
