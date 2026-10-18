@@ -29,10 +29,14 @@ const strength = (c) => { const b = c.provenance?.blindReview || {}; return ((b.
  * Pure: builds the manifest from the shortlist words, the library, the pool
  * and (optionally) the previous manifest whose assignments must be kept.
  */
-export function buildManifest({ words, lib, pool, previous = null, now = new Date().toISOString() }) {
+export function buildManifest({ words, lib, pool, previous = null, now = new Date().toISOString(), released = null }) {
   const sorted = [...words].sort();
   const byId = new Map(lib.pairs.map((p) => [p.pair_id, p]));
-  const pendingBatches = new Set((pool._metadata?.batches || []).filter((b) => b.appended).map((b) => b.batch));
+  // A pool batch is live only if data/unlimited/boards/releases.json lists it; otherwise it is pending/local.
+  // Without a releases list, batches appended after the first are treated as pending.
+  const allBatches = (pool._metadata?.batches || []).map((b) => b.batch);
+  const releasedSet = released ? new Set(released) : null;
+  const pendingBatches = new Set(releasedSet ? allBatches.filter((b) => !releasedSet.has(b)) : (pool._metadata?.batches || []).filter((b) => b.appended).map((b) => b.batch));
   const batchOf = (id) => id.replace(/-\d+$/, "");
   const servedIn = {}, pendingIn = {};
   for (const b of pool.boards) for (const r of b.reveal) {
@@ -116,7 +120,9 @@ if (isMain) {
   const lib = JSON.parse(readFileSync("data/unlimited/library/pairs.json", "utf8"));
   const pool = JSON.parse(readFileSync("src/unlimited/pool.json", "utf8"));
   const previous = existsSync(OUT) ? JSON.parse(readFileSync(OUT, "utf8")) : null;
-  const manifest = buildManifest({ words, lib, pool, previous });
+  const REL = "data/unlimited/boards/releases.json";
+  const released = existsSync(REL) ? JSON.parse(readFileSync(REL, "utf8")).released.map((r) => r.batch) : null;
+  const manifest = buildManifest({ words, lib, pool, previous, released });
   if (previous) {
     const moved = manifest.pairs.filter((p) => { const q = previous.pairs.find((x) => x.pair_id === p.pair_id); return q?.plannedBatch && q.plannedBatch !== p.plannedBatch; });
     if (moved.length) { console.error(`refusing to write: ${moved.length} assignment(s) would change`); process.exit(1); }

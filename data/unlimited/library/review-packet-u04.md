@@ -1,6 +1,6 @@
 # Cluevoyance Unlimited — review packet (u04)
 
-Generated 2026-10-17 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
+Generated 2026-10-18 from data/unlimited/library/pairs.json. Every status below is the result of a fresh blind review in this session (pair + hint only, no author text). Historical pilot scores are provenance only. No hint is human-approved.
 
 ## The 50-word shortlist
 
@@ -261,12 +261,15 @@ Playable hints: 1. Reviewer: WOOD is the only hint that reaches both; the rest a
 
 ### APPLE + FISH
 
-Playable hints: 2. Reviewer: SAUCE is clean; PIE is a US-unfriendly stretch.
+Playable hints: 1. Reviewer: SAUCE is clean; PIE is a US-unfriendly stretch.
 
 **Retained**
 
 - **SAUCE** 2/2 fair 2 broad: Applesauce and fish sauce are both familiar compounds. *(author: retained)*
-- **PIE** 2/1 fair 1 moderate (corrected): Apple pie is the archetypal pie; fish pie is a real, well-known dish in Britain though less so elsewhere. *(author: rejected — APPLE only)*
+
+**Held**
+
+- **PIE** 2/1 fair 1 moderate (corrected): Apple pie is the archetypal pie; fish pie is a real, well-known dish in Britain though less so elsewhere. — held: override: fish pie is regional (British); held as a stretch for consistency with FINGER. SAUCE is the strong primary for APPLE+FISH. *(author: rejected — APPLE only)*
 
 **Rejected**
 
@@ -330,7 +333,7 @@ Playable hints: 4. Reviewer: A rich pair; RED passes only because both words are
 
 ### APPLE + HONEY
 
-Playable hints: 1. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and BEE are generic or one-step stretches.
+Playable hints: 2. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and BEE are generic or one-step stretches.
 
 **Retained**
 
@@ -338,7 +341,7 @@ Playable hints: 1. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and 
 
 **Held**
 
-- **SWEET** 1/2 fair 1 broad [generic, colour_mood_material] (corrected): Honey is the definition of sweet; apples are sweet but also tart, so SWEET names honey first and apple only loosely. — held: correction review: borderline *(author: retained)*
+- **SWEET** 1/2 fair 1 broad [generic, colour_mood_material] (corrected): Honey is the definition of sweet; apples are sweet but also tart, so SWEET names honey first and apple only loosely. *(author: retained)*
 - **BEE** 1/2 fair 1 moderate [one_sided] (corrected): Honey bee is direct; bees pollinating apple blossom is true and known but not what a player reaches for from BEE. — held: correction review: borderline *(author: rejected — HONEY only; apple blossoms are a hop)*
 
 **Rejected**
@@ -472,7 +475,7 @@ Playable hints: 1. Reviewer: HALLOWEEN carries the pair; the others are one-side
 
 **Retained**
 
-- **HALLOWEEN** 2/2 fair 2 broad: Halloween night is the one holiday that happens after dark; bobbing for apples and caramel apples are Halloween staples. *(author: retained)*
+- **HALLOWEEN** 2/2 fair 2 broad: Halloween night, with bobbing for apples. (Wording corrected 2026-10-17 by the parent: the original claimed Halloween is the one holiday after dark, which is false; verdict unchanged.) *(author: retained)*
 
 **Rejected**
 
@@ -616,4 +619,4 @@ Playable hints: 1. Reviewer: BITE is a strong pass.
 
 ## Totals
 
-retained 41 · held 17 · rejected 93 across 40 pairs; 30 pairs have at least one playable hint.
+retained 40 · held 18 · rejected 93 across 40 pairs; 30 pairs have at least one playable hint.

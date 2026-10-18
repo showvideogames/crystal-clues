@@ -194,7 +194,8 @@
         "needsText": 0,
         "pairs": 40
       }
-    ]
+    ],
+    "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
   },
   "pairs": [
     {
@@ -205,9 +206,8 @@
       "pairNote": "No hint reaches both words cleanly; BRANCH is the lone playable stretch.",
       "reviewerBestAvailable": {
         "text": "BRANCH",
-        "why": "Clean double meaning that lands on both targets without explanation.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "the only hint with any natural path to apple (tree branch) while nailing bank",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -323,7 +323,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "BRANCH",
+        "why": "Clean double meaning that lands on both targets without explanation.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "BRANCH",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__bat",
@@ -437,7 +449,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FRUIT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__bear",
@@ -447,9 +465,8 @@
       "pairNote": "Three playable stretches but nothing that reaches both words cleanly.",
       "reviewerBestAvailable": {
         "text": "TREE",
-        "why": "The APPLE side is certain and a bear in a tree is a widely known image; it is the least lopsided of three borderline hints.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "apple tree is instant and a bear in a tree is familiar imagery, the least strained second side",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 0,
       "clues": [
@@ -623,7 +640,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "TREE",
+        "why": "The APPLE side is certain and a bear in a tree is a widely known image; it is the least lopsided of three borderline hints.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "TREE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__bell",
@@ -632,10 +661,9 @@
       "source": "u04",
       "pairNote": "SCHOOL passes on iconography; TEACHER is the weaker mirror of the same idea.",
       "reviewerBestAvailable": {
-        "text": "TEACHER",
-        "why": "One classroom scene covers both targets; the bell side is slightly less direct than the apple side.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "SCHOOL",
+        "why": "school bell is instant and the schoolroom apple is iconic enough to be found",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 2,
       "clues": [
@@ -755,7 +783,21 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "TEACHER",
+        "why": "One classroom scene covers both targets; the bell side is slightly less direct than the apple side.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "SCHOOL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "TEACHER"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__bridge",
@@ -765,9 +807,8 @@
       "pairNote": "An awkward pair; BROOKLYN is a stretch and the rest are one-sided.",
       "reviewerBestAvailable": {
         "text": "BROOKLYN",
-        "why": "Only hint, and a fair geography route per the anchor.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "the bridge is unmistakable and the Big Apple link is at least a real path",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -893,7 +934,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "BROOKLYN",
+        "why": "Only hint, and a fair geography route per the anchor.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "BROOKLYN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__card",
@@ -903,9 +956,8 @@
       "pairNote": "Both playable hints lean on the company rather than the fruit; no clean double reach.",
       "reviewerBestAvailable": {
         "text": "GIFT",
-        "why": "Apple gift cards are more universally known than Apple Card.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "Apple gift cards hang in every checkout aisle, so the apple side is more findable than Apple Card",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 2,
       "clues": [
@@ -1040,7 +1092,21 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "GIFT",
+        "why": "Apple gift cards are more universally known than Apple Card.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "GIFT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CREDIT"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__castle",
@@ -1049,10 +1115,9 @@
       "source": "u04",
       "pairNote": "Only the fairy tale bridges this pair, and it needs two steps on the apple side.",
       "reviewerBestAvailable": {
-        "text": "SNOW",
-        "why": "SNOW evokes Snow White more readily than WHITE does, and that story is the only real bridge between apple and castle.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "WHITE",
+        "why": "White Castle gives one certain side and Snow White gives a real if indirect route to apple",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 0,
       "clues": [
@@ -1193,7 +1258,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "SNOW",
+        "why": "SNOW evokes Snow White more readily than WHITE does, and that story is the only real bridge between apple and castle.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "SNOW",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_apple__cat",
@@ -1308,7 +1385,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TREE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__crown",
@@ -1318,9 +1401,8 @@
       "pairNote": "No clean hint; GALA is the only one with a genuine two-sided path.",
       "reviewerBestAvailable": {
         "text": "GALA",
-        "why": "The only hint; serviceable for APPLE but it does not point at CROWN.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "the apple variety is a real foothold and formal galas at least evoke crowns",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 0,
       "clues": [
@@ -1445,7 +1527,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "GALA",
+        "why": "The only hint; serviceable for APPLE but it does not point at CROWN.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "GALA",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__diamond",
@@ -1455,9 +1549,8 @@
       "pairNote": "Four playable stretches, none clean; the pair has no natural shared sense.",
       "reviewerBestAvailable": {
         "text": "CUT",
-        "why": "Both senses are direct and common; no explanation needed.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "cut is the diamond term of art and slicing an apple is at least an everyday action",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -1652,7 +1745,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "CUT",
+        "why": "Both senses are direct and common; no explanation needed.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "CUT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__dog",
@@ -1662,9 +1767,8 @@
       "pairNote": "HOT is the only two-sided hint and it leans on a phrase rather than the fruit.",
       "reviewerBestAvailable": {
         "text": "HOT",
-        "why": "Hot dog is instant and hot apple cider/pie gives a fair route to APPLE.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "hot dog is certain and hot apple pie is a common enough phrase to be a real second path",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -1780,7 +1884,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "HOT",
+        "why": "Hot dog is instant and hot apple cider/pie gives a fair route to APPLE.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "HOT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__dragon",
@@ -1870,7 +1986,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FRUIT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__egg",
@@ -1962,7 +2084,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BASKET",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__fire",
@@ -2083,7 +2211,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WOOD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__fish",
@@ -2092,12 +2226,11 @@
       "source": "u04",
       "pairNote": "SAUCE is clean; PIE is a US-unfriendly stretch.",
       "reviewerBestAvailable": {
-        "text": "PIE",
-        "why": "Compound on both sides; fish pie is the only recognizability risk.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "SAUCE",
+        "why": "two familiar compounds",
+        "reviewer": "blind-subagent-4"
       },
-      "playableHints": 2,
+      "playableHints": 1,
       "clues": [
         {
           "text": "SAUCE",
@@ -2128,8 +2261,8 @@
         },
         {
           "text": "PIE",
-          "status": "ai_reviewed",
-          "heldReason": null,
+          "status": "held",
+          "heldReason": "override: fish pie is regional (British); held as a stretch for consistency with FINGER. SAUCE is the strong primary for APPLE+FISH.",
           "provenance": {
             "source": "u04",
             "authorLabel": "rejected",
@@ -2165,7 +2298,13 @@
           "wordBConnection": "Fish pie.",
           "revealExplanation": "Apple pie, fish pie.",
           "reference": null,
-          "type": "compound_or_phrase"
+          "type": "compound_or_phrase",
+          "override": {
+            "by": "parent (resume calibration notes, 2026-10-17)",
+            "date": "2026-10-17",
+            "status": "held",
+            "reason": "fish pie is regional (British); held as a stretch for consistency with FINGER. SAUCE is the strong primary for APPLE+FISH."
+          }
         },
         {
           "text": "FIN",
@@ -2191,7 +2330,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "PIE",
+        "why": "Compound on both sides; fish pie is the only recognizability risk.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "SAUCE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__ghost",
@@ -2281,7 +2432,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HALLOWEEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__glass",
@@ -2291,9 +2448,8 @@
       "pairNote": "Container links only; nothing reaches glass with real force.",
       "reviewerBestAvailable": {
         "text": "JUICE",
-        "why": "Apple juice is more universal than cider and the glass is implicit in the drink.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "apple juice is instant and a juice glass is a slightly more idiomatic object than a glass of cider",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 2,
       "clues": [
@@ -2430,7 +2586,21 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "JUICE",
+        "why": "Apple juice is more universal than cider and the glass is implicit in the drink.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "JUICE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CIDER"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__gold",
@@ -2440,9 +2610,8 @@
       "pairNote": "Golden Delicious is the one real bridge and it is a variant of the word, not the word.",
       "reviewerBestAvailable": {
         "text": "DELICIOUS",
-        "why": "Valid per the anchor; the gold side relies on the Golden Delicious variety.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "the variety name is the only link that actually contains both ideas",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -2569,7 +2738,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "DELICIOUS",
+        "why": "Valid per the anchor; the gold side relies on the Golden Delicious variety.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "DELICIOUS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__heart",
@@ -2578,10 +2759,9 @@
       "source": "u04",
       "pairNote": "A rich pair; RED passes only because both words are iconically red.",
       "reviewerBestAvailable": {
-        "text": "RED",
-        "why": "Both targets are red in their emblematic form.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "DOCTOR",
+        "why": "a proverb on one side and a plain phrase on the other",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 4,
       "clues": [
@@ -2739,7 +2919,23 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "RED",
+        "why": "Both targets are red in their emblematic form.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "CORE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HEALTHY",
+          "DOCTOR",
+          "RED"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__honey",
@@ -2748,12 +2944,11 @@
       "source": "u04",
       "pairNote": "CRISP passes on the Honeycrisp compound; SWEET and BEE are generic or one-step stretches.",
       "reviewerBestAvailable": {
-        "text": "SWEET",
-        "why": "Both sides are reachable without specialist knowledge, which BEE's apple side needs.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "CRISP",
+        "why": "the Honeycrisp compound covers both",
+        "reviewer": "blind-subagent-4"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
         {
           "text": "CRISP",
@@ -2784,8 +2979,8 @@
         },
         {
           "text": "SWEET",
-          "status": "held",
-          "heldReason": "correction review: borderline",
+          "status": "human_approved",
+          "heldReason": null,
           "type": "shared_category",
           "wordAConnection": "A sweet apple.",
           "wordBConnection": "Sweet as honey.",
@@ -2824,6 +3019,12 @@
               "reason": "Honey is the definition of sweet; apples are sweet but also tart, so SWEET names honey first and apple only loosely.",
               "calibration": "parent calibration 2026-10-17 (anchors: BRANCH, JUICE/CIDER, POISON, DELICIOUS, TREAT, CREDIT/GIFT, BROOKLYN); recorded apart from human approval"
             }
+          },
+          "override": {
+            "by": "parent (resume calibration notes, 2026-10-17)",
+            "date": "2026-10-17",
+            "status": "human_approved",
+            "reason": "a shared property both words are known for is a valid route, consistently with RICH for BANK+KING; the blind/correction scores and reasons stay recorded as they were"
           }
         },
         {
@@ -2886,7 +3087,21 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "SWEET",
+        "why": "Both sides are reachable without specialist knowledge, which BEE's apple side needs.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "CRISP",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "SWEET"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__horse",
@@ -2896,9 +3111,8 @@
       "pairNote": "The real link (horses eat apples) is not captured by any single hint here.",
       "reviewerBestAvailable": {
         "text": "TREAT",
-        "why": "Shared feeding scene per the anchor.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "the only hint whose idea genuinely involves both words, even if each side is weak",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -2992,7 +3206,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "TREAT",
+        "why": "Shared feeding scene per the anchor.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "TREAT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__ice",
@@ -3001,10 +3227,9 @@
       "source": "u04",
       "pairNote": "Nothing here reaches both words; every hint is single-sided.",
       "reviewerBestAvailable": {
-        "text": "FROST",
-        "why": "Only hint; it will reach ICE but not APPLE.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "COLD",
+        "why": "ice is certain and a crisp cold apple is the least implausible second side on offer",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 0,
       "clues": [
@@ -3144,7 +3369,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "FROST",
+        "why": "Only hint; it will reach ICE but not APPLE.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "FROST",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_apple__iron",
@@ -3235,7 +3472,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CORE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__key",
@@ -3244,10 +3487,9 @@
       "source": "u04",
       "pairNote": "No hint reaches key from the apple side; the pair is unserved.",
       "reviewerBestAvailable": {
-        "text": "COMMAND",
-        "why": "The Command key is familiar enough as an Apple key to be fair, though non-Mac users may need a beat.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "CORE",
+        "why": "apple is certain and a key does go into a lock's core, the only thread to key at all",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -3366,7 +3608,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "COMMAND",
+        "why": "The Command key is familiar enough as an Apple key to be fair, though non-Mac users may need a beat.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "COMMAND",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__king",
@@ -3375,10 +3629,9 @@
       "source": "u04",
       "pairNote": "Nothing bridges this pair.",
       "reviewerBestAvailable": {
-        "text": "ROYAL",
-        "why": "Only hint; fine for KING, thin for APPLE.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "CANDY",
+        "why": "candy apple is certain and king-size candy is at least a phrase containing king",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 0,
       "clues": [
@@ -3495,7 +3748,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "ROYAL",
+        "why": "Only hint; fine for KING, thin for APPLE.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "ROYAL",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_apple__knight",
@@ -3505,9 +3770,8 @@
       "pairNote": "SHINING is a stretch; TELL reaches apple nicely but misses knight entirely.",
       "reviewerBestAvailable": {
         "text": "SHINING",
-        "why": "Only hint; strong for KNIGHT, weak for APPLE.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "the only hint with any path to apple while nailing knight",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 0,
       "clues": [
@@ -3604,7 +3868,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "SHINING",
+        "why": "Only hint; strong for KNIGHT, weak for APPLE.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "SHINING",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__light",
@@ -3613,10 +3889,9 @@
       "source": "u04",
       "pairNote": "GREEN passes on two fixed phrases; NEWTON is a thoughtful but uneven stretch.",
       "reviewerBestAvailable": {
-        "text": "NEWTON",
-        "why": "Only hint; a knowledgeable player gets both, a casual one gets only APPLE.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "GREEN",
+        "why": "two set phrases",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -3742,7 +4017,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "NEWTON",
+        "why": "Only hint; a knowledgeable player gets both, a casual one gets only APPLE.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "GREEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__lion",
@@ -3864,7 +4151,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "NARNIA",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__moon",
@@ -3873,10 +4166,9 @@
       "source": "u04",
       "pairNote": "HARVEST is a strong pass.",
       "reviewerBestAvailable": {
-        "text": "NEWTON",
-        "why": "A single shared story (gravity: apple falls, moon orbits) rather than two facts.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "HARVEST",
+        "why": "autumn ties both words tightly",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 2,
       "clues": [
@@ -3998,7 +4290,21 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "NEWTON",
+        "why": "A single shared story (gravity: apple falls, moon orbits) rather than two facts.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "HARVEST",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "NEWTON"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__mouse",
@@ -4159,7 +4465,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "COMPUTER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__night",
@@ -4181,7 +4493,7 @@
           "type": "direct_association",
           "wordAConnection": "Bobbing for apples at Halloween.",
           "wordBConnection": "Halloween night.",
-          "revealExplanation": "Halloween night, bobbing for apples.",
+          "revealExplanation": "Halloween night, with bobbing for apples.",
           "reference": null,
           "stretch": true,
           "provenance": {
@@ -4198,7 +4510,8 @@
               "fairness": 2,
               "recognizability": "broad",
               "flags": [],
-              "reason": "Halloween night is the one holiday that happens after dark; bobbing for apples and caramel apples are Halloween staples."
+              "reason": "Halloween night, with bobbing for apples. (Wording corrected 2026-10-17 by the parent: the original claimed Halloween is the one holiday after dark, which is false; verdict unchanged.)",
+              "reasonOriginal": "Halloween night is the one holiday that happens after dark; bobbing for apples and caramel apples are Halloween staples."
             }
           }
         },
@@ -4251,7 +4564,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HALLOWEEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__ocean",
@@ -4344,7 +4663,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ATLANTIC",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__pirate",
@@ -4460,7 +4785,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SOFTWARE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__queen",
@@ -4470,9 +4801,8 @@
       "pairNote": "Every bridge runs through Snow White and each hint lands one side cleanly at most.",
       "reviewerBestAvailable": {
         "text": "POISON",
-        "why": "Set phrase for APPLE and the queen's deed in the same story; broadest recognizability.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "poison apple is the strongest single phrase and the queen is the poisoner in the best-known fairy tale",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 2,
       "clues": [
@@ -4679,7 +5009,21 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "POISON",
+        "why": "Set phrase for APPLE and the queen's deed in the same story; broadest recognizability.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "POISON",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "SNOW"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__ring",
@@ -4772,7 +5116,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TONE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__robot",
@@ -4823,8 +5173,8 @@
           "heldReason": null,
           "type": "cultural_reference",
           "wordAConnection": "Siri is Apple's assistant.",
-          "wordBConnection": "Siri talks like a robot.",
-          "revealExplanation": "Siri: Apple's robotic assistant.",
+          "wordBConnection": "People playfully call Siri a robot.",
+          "revealExplanation": "Siri: Apple’s assistant, a robot in the playful sense.",
           "reference": {
             "referenceType": "brand_or_mascot",
             "source": "Apple Siri",
@@ -4846,7 +5196,8 @@
               "flags": [],
               "reason": "Siri is Apple's assistant; people routinely call voice assistants robots."
             }
-          }
+          },
+          "calibrationNote": "parent 2026-10-17: a playful metaphorical association, not a literal robot"
         },
         {
           "text": "ARM",
@@ -4897,7 +5248,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "COMPUTER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "SIRI"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__rock",
@@ -4906,10 +5265,9 @@
       "source": "u04",
       "pairNote": "CANDY is clean; the other two are playable stretches.",
       "reviewerBestAvailable": {
-        "text": "CORE",
-        "why": "Certain for APPLE and defensible for ROCK; HARD does not reach APPLE at all.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "text": "CANDY",
+        "why": "two familiar compounds",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 1,
       "clues": [
@@ -5015,7 +5373,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "CORE",
+        "why": "Certain for APPLE and defensible for ROCK; HARD does not reach APPLE at all.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "CANDY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__rose",
@@ -5134,7 +5504,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RED",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "BLOSSOM"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__salt",
@@ -5224,7 +5602,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CARAMEL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__shadow",
@@ -5234,9 +5618,8 @@
       "pairNote": "No clean hint; TREE is the lone playable stretch.",
       "reviewerBestAvailable": {
         "text": "TREE",
-        "why": "Only hint; the apple side is solid and the shadow side is a recognizable scene even if secondary.",
-        "reviewer": "correction-subagent-u04",
-        "correction": true
+        "why": "the only hint with any path to shadow while nailing apple",
+        "reviewer": "blind-subagent-4"
       },
       "playableHints": 0,
       "clues": [
@@ -5329,7 +5712,19 @@
             }
           }
         }
-      ]
+      ],
+      "correctionBestAvailable": {
+        "text": "TREE",
+        "why": "Only hint; the apple side is solid and the shadow side is a recognizable scene even if secondary.",
+        "reviewer": "correction-subagent-u04",
+        "note": "chosen over the corrected subset of hints only"
+      },
+      "finalBestAvailable": {
+        "text": "TREE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__shark",
@@ -5419,7 +5814,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BITE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__snake",
@@ -5590,7 +5991,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "EVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "EDEN"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__spider",
@@ -5656,7 +6065,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BITE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__spring",
@@ -5726,7 +6141,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLOSSOM",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__star",
@@ -5794,7 +6215,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FRUIT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__train",
@@ -5896,7 +6323,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CRATE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_apple__water",
@@ -5960,7 +6393,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BOBBING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_apple__witch",
@@ -6061,7 +6500,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SNOW",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "POISON"
+        ]
+      }
     },
     {
       "pair_id": "p_apple__wolf",
@@ -6131,7 +6578,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "GRANNY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__bat",
@@ -6225,7 +6678,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLOOD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__bear",
@@ -6325,7 +6784,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "MARKET",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__bell",
@@ -6389,7 +6854,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ALARM",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__bridge",
@@ -6487,7 +6958,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CANAL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "RIVER"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__card",
@@ -6631,7 +7110,16 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "DEBIT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ATM",
+          "CREDIT"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__castle",
@@ -6644,7 +7132,7 @@
         "why": "Finance word that also names a familiar castle room.",
         "reviewer": "blind-subagent-5"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
         {
           "text": "TREASURY",
@@ -6698,8 +7186,8 @@
         },
         {
           "text": "KEEP",
-          "status": "held",
-          "heldReason": "blind review: borderline",
+          "status": "human_approved",
+          "heldReason": null,
           "type": "homophone_wordplay",
           "wordAConnection": "A bank keeps your money.",
           "wordBConnection": "A castle's keep.",
@@ -6721,9 +7209,23 @@
               "flags": [],
               "reason": "The castle keep is a set term, and a bank keeps your money, but the BANK side is a verb pun rather than a recognizable phrase."
             }
+          },
+          "override": {
+            "by": "parent (resume calibration notes, 2026-10-17)",
+            "date": "2026-10-17",
+            "status": "human_approved",
+            "reason": "castle keep / the bank keeps your money: a verb route is valid, consistently with RICH for BANK+KING; the blind score and reason stay recorded as they were"
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TREASURY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "KEEP"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__cat",
@@ -6789,7 +7291,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BURGLAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__crown",
@@ -6914,7 +7422,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "GOLD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ROYAL",
+          "SOVEREIGN"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__diamond",
@@ -7026,7 +7543,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HEIST",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__dog",
@@ -7092,7 +7615,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "GUARD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__dragon",
@@ -7188,7 +7717,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "GOLD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HOARD"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__egg",
@@ -7254,7 +7791,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "NEST",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__fire",
@@ -7350,7 +7893,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BREAK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ALARM",
+          "SAFE"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__fish",
@@ -7416,7 +7968,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RIVER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__ghost",
@@ -7429,12 +7987,12 @@
         "why": "The only hint where both sides are set phrases, even if 'ghost account' is less universal.",
         "reviewer": "blind-subagent-5"
       },
-      "playableHints": 1,
+      "playableHints": 0,
       "clues": [
         {
           "text": "ACCOUNT",
-          "status": "ai_reviewed",
-          "heldReason": null,
+          "status": "held",
+          "heldReason": "override: 'ghost account' is a specialist phrase: best-available stretch for BANK+GHOST, not a confident general-US hint.",
           "type": "direct_association",
           "wordAConnection": "A bank account is the everyday kind.",
           "wordBConnection": "A ghost account is the dormant or fake one nobody is behind.",
@@ -7456,6 +8014,14 @@
               "flags": [],
               "reason": "Bank account is a compound and a ghost account (abandoned or fake account) is a reasonably familiar phrase."
             }
+          },
+          "stretch": true,
+          "calibrationNote": "parent 2026-10-17: specialist phrase; best-available stretch, not a confident general-US hint",
+          "override": {
+            "by": "parent (resume calibration notes, 2026-10-17)",
+            "date": "2026-10-17",
+            "status": "held",
+            "reason": "'ghost account' is a specialist phrase: best-available stretch for BANK+GHOST, not a confident general-US hint."
           }
         },
         {
@@ -7566,7 +8132,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ACCOUNT",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bank__glass",
@@ -7633,7 +8205,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WINDOW",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__gold",
@@ -7724,7 +8302,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "VAULT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "RESERVE"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__heart",
@@ -7832,7 +8418,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLOOD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "STEAL"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__honey",
@@ -7930,7 +8524,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "STORE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__horse",
@@ -8042,7 +8642,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "STABLE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bank__ice",
@@ -8111,7 +8717,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FROZEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "RIVER"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__iron",
@@ -8224,7 +8838,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BAR",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bank__key",
@@ -8338,7 +8958,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "VAULT",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bank__king",
@@ -8434,7 +9060,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ROYAL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "RICH"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__knight",
@@ -8503,7 +9137,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CHARGE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ARMOR"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__light",
@@ -8628,7 +9270,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FLOOD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "STREET"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__lion",
@@ -8695,7 +9345,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "STATUE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__moon",
@@ -8797,7 +9453,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SILVER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "RIVER"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__mouse",
@@ -8864,7 +9528,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ONLINE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__night",
@@ -8931,7 +9601,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "DEPOSIT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__ocean",
@@ -8997,7 +9673,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SAND",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__pirate",
@@ -9092,7 +9774,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "LOOT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ROB"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__queen",
@@ -9162,7 +9852,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ENGLAND",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__ring",
@@ -9227,7 +9923,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SAFE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__robot",
@@ -9295,7 +9997,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ATM",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bank__rock",
@@ -9364,7 +10072,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RIVER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__rose",
@@ -9460,7 +10174,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HEDGE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__salt",
@@ -9558,7 +10278,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WORTH",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "DEPOSIT",
+          "SALARY"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__shadow",
@@ -9630,7 +10359,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CLOUD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__shark",
@@ -9716,7 +10451,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "LOAN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__snake",
@@ -9817,7 +10558,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RIVER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__spider",
@@ -9859,7 +10606,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WEB",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__spring",
@@ -9957,7 +10710,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BREAK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "WATER",
+          "RIVER"
+        ]
+      }
     },
     {
       "pair_id": "p_bank__star",
@@ -10000,7 +10762,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RATING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__train",
@@ -10042,7 +10810,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ROBBERY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__water",
@@ -10084,7 +10858,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RIVER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__witch",
@@ -10155,7 +10935,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "GRINGOTTS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bank__wolf",
@@ -10227,7 +11013,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WALL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__bear",
@@ -10296,7 +11088,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HIBERNATE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CAVE"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__bell",
@@ -10338,7 +11138,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BELFRY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__bridge",
@@ -10388,7 +11194,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "AUSTIN",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__card",
@@ -10430,7 +11242,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BASEBALL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__castle",
@@ -10509,7 +11327,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "VAMPIRE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "DRACULA"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__cat",
@@ -10587,7 +11413,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WOMAN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "GOTHAM"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__crown",
@@ -10633,7 +11467,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TOOTH",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__diamond",
@@ -10675,7 +11515,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BASEBALL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__dog",
@@ -10748,7 +11594,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RABIES",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__dragon",
@@ -10792,7 +11644,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WINGS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__egg",
@@ -10834,7 +11692,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CRACK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__fire",
@@ -10876,7 +11740,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WOOD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__fish",
@@ -10918,7 +11788,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FLYING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__ghost",
@@ -10989,7 +11865,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HALLOWEEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HAUNTED"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__glass",
@@ -11032,7 +11916,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BROKEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__gold",
@@ -11079,7 +11969,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "GLOVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__heart",
@@ -11149,7 +12045,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLOOD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ECHO"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__honey",
@@ -11194,7 +12098,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "NECTAR",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__horse",
@@ -11240,7 +12150,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "VAMPIRE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__ice",
@@ -11282,7 +12198,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__iron",
@@ -11328,7 +12250,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "MAN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__key",
@@ -11374,7 +12302,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SECRET",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__king",
@@ -11423,7 +12357,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "VAMPIRE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__knight",
@@ -11469,7 +12409,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "DARK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__light",
@@ -11515,7 +12461,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SIGNAL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__lion",
@@ -11560,7 +12512,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAVE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__moon",
@@ -11633,7 +12591,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "NIGHT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HALLOWEEN"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__mouse",
@@ -11677,7 +12643,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FLYING",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bat__night",
@@ -11748,7 +12720,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "DARK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "NOCTURNAL"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__ocean",
@@ -11794,7 +12774,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RAY",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__pirate",
@@ -11839,7 +12825,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLACK",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__queen",
@@ -11885,7 +12877,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "VAMPIRE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__ring",
@@ -11931,7 +12929,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CIRCLE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__robot",
@@ -11973,7 +12977,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SONAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__rock",
@@ -12046,7 +13056,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "OZZY"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__rose",
@@ -12115,7 +13133,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLOOD",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__salt",
@@ -12158,7 +13182,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__shadow",
@@ -12235,7 +13265,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SILHOUETTE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__shark",
@@ -12277,7 +13313,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BITE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__snake",
@@ -12344,7 +13386,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FANGS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__spider",
@@ -12543,7 +13591,17 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HALLOWEEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HANG",
+          "MAN",
+          "CREEPY"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__spring",
@@ -12586,7 +13644,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TRAINING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__star",
@@ -12655,7 +13719,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "NIGHT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "BASEBALL"
+        ]
+      }
     },
     {
       "pair_id": "p_bat__train",
@@ -12698,7 +13770,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TUNNEL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__water",
@@ -12744,7 +13822,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SKIM",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bat__witch",
@@ -12810,7 +13894,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HALLOWEEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bat__wolf",
@@ -12883,7 +13973,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FANGS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "VAMPIRE"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__bell",
@@ -12952,7 +14050,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HIKING",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bear__bridge",
@@ -12994,7 +14098,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CROSSING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__card",
@@ -13036,7 +14146,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WILD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__castle",
@@ -13084,7 +14200,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BRAVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__cat",
@@ -13153,7 +14275,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "PAWS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CLAWS"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__crown",
@@ -13203,7 +14333,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "PADDINGTON",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bear__diamond",
@@ -13245,7 +14381,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLACK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__dog",
@@ -13320,7 +14462,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FUR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__dragon",
@@ -13396,7 +14544,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CHINA",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "PANDA"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__egg",
@@ -13438,7 +14594,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HUNT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__fire",
@@ -13511,7 +14673,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAMP",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "SMOKEY"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__fish",
@@ -13580,7 +14750,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SALMON",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CATCH"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__ghost",
@@ -13629,7 +14807,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SPIRIT",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bear__glass",
@@ -13672,7 +14856,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "JAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__gold",
@@ -13742,7 +14932,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CALIFORNIA",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__heart",
@@ -13817,7 +15013,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HUG",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bear__honey",
@@ -13959,7 +15161,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "POOH",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HIVE"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__horse",
@@ -14001,7 +15211,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WILD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__ice",
@@ -14143,7 +15359,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "POLAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ARCTIC"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__iron",
@@ -14185,7 +15409,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAGE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__key",
@@ -14230,7 +15460,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WIND",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bear__king",
@@ -14276,7 +15512,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "JUNGLE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__knight",
@@ -14326,7 +15568,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ARMOR",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bear__light",
@@ -14369,7 +15617,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "NORTHERN",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bear__lion",
@@ -14444,7 +15698,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ZOO",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "OZ"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__moon",
@@ -14487,7 +15749,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SKY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__mouse",
@@ -14531,7 +15799,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FUR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__night",
@@ -14575,7 +15849,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "POLAR",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bear__ocean",
@@ -14617,7 +15897,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "POLAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__pirate",
@@ -14666,7 +15952,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "MASCOT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__queen",
@@ -14712,7 +16004,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BRAVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__ring",
@@ -14754,7 +16052,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CIRCUS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__robot",
@@ -14832,7 +16136,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TOY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__rock",
@@ -14874,7 +16184,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__rose",
@@ -14940,7 +16256,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "VALENTINE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__salt",
@@ -14983,7 +16305,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "LICK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__shadow",
@@ -15053,7 +16381,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAVE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bear__shark",
@@ -15095,7 +16429,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ATTACK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__snake",
@@ -15137,7 +16477,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "DEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__spider",
@@ -15182,7 +16528,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HAIRY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__spring",
@@ -15224,7 +16576,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WAKE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__star",
@@ -15266,7 +16624,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "DIPPER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__train",
@@ -15339,7 +16703,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "PADDINGTON",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CIRCUS"
+        ]
+      }
     },
     {
       "pair_id": "p_bear__water",
@@ -15381,7 +16753,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RIVER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__witch",
@@ -15427,7 +16805,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BRAVE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bear__wolf",
@@ -15500,7 +16884,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FOREST",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "WILD"
+        ]
+      }
     },
     {
       "pair_id": "p_bell__bridge",
@@ -15573,7 +16965,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TOWER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "LONDON"
+        ]
+      }
     },
     {
       "pair_id": "p_bell__card",
@@ -15615,7 +17015,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CHRISTMAS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__castle",
@@ -15726,7 +17132,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "TOWER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__cat",
@@ -15768,7 +17180,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "COLLAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__crown",
@@ -15811,7 +17229,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CORONATION",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__diamond",
@@ -15853,7 +17277,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "RING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__dog",
@@ -15970,7 +17400,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "PAVLOV",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__dragon",
@@ -16013,7 +17449,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TEMPLE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__egg",
@@ -16055,7 +17497,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TIMER",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__fire",
@@ -16124,7 +17572,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ALARM",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__fish",
@@ -16167,7 +17621,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "DIVING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__ghost",
@@ -16213,7 +17673,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TOLL",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bell__glass",
@@ -16284,7 +17750,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "JAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__gold",
@@ -16352,7 +17824,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CHRISTMAS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__heart",
@@ -16396,7 +17874,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WEDDING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__honey",
@@ -16443,7 +17927,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SWEET",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bell__horse",
@@ -16485,7 +17975,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SLEIGH",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__ice",
@@ -16529,7 +18025,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CREAM",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bell__iron",
@@ -16571,7 +18073,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAST",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__key",
@@ -16613,7 +18121,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HOTEL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_bell__king",
@@ -16658,7 +18172,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TOWER",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bell__knight",
@@ -16701,7 +18221,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CASTLE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bell__light",
@@ -16749,7 +18275,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TINKER",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bell__lion",
@@ -16794,7 +18326,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CIRCUS",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "rejected",
+        "stretch": true
+      }
     },
     {
       "pair_id": "p_bell__ring",
@@ -16939,7 +18477,16 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "WEDDING",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "BOXING",
+          "TONE"
+        ]
+      }
     },
     {
       "pair_id": "p_bridge__crown",
@@ -17085,7 +18632,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "DENTIST",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "TOOTH"
+        ]
+      }
     },
     {
       "pair_id": "p_bridge__fire",
@@ -17198,7 +18753,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BURN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CROSS"
+        ]
+      }
     },
     {
       "pair_id": "p_bridge__heart",
@@ -17306,7 +18869,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CARD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CROSS"
+        ]
+      }
     },
     {
       "pair_id": "p_bridge__honey",
@@ -17462,7 +19033,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TOOTH",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_bridge__key",
@@ -17574,7 +19151,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SONG",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "STONE"
+        ]
+      }
     },
     {
       "pair_id": "p_card__queen",
@@ -17716,7 +19301,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "HEARTS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ALICE"
+        ]
+      }
     },
     {
       "pair_id": "p_castle__dragon",
@@ -17835,7 +19428,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "PRINCESS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_castle__king",
@@ -17950,7 +19549,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "CHESS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_cat__mouse",
@@ -18181,7 +19786,17 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CHASE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "TOM",
+          "JERRY",
+          "WHISKERS"
+        ]
+      }
     },
     {
       "pair_id": "p_cat__witch",
@@ -18383,7 +19998,17 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SALEM",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HALLOWEEN",
+          "FAMILIAR",
+          "BLACK"
+        ]
+      }
     },
     {
       "pair_id": "p_crown__ghost",
@@ -18495,7 +20120,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HAMLET",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CASTLE"
+        ]
+      }
     },
     {
       "pair_id": "p_crown__heart",
@@ -18607,7 +20240,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "QUEEN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "KING"
+        ]
+      }
     },
     {
       "pair_id": "p_crown__honey",
@@ -18721,7 +20362,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "QUEEN",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_crown__light",
@@ -18838,7 +20485,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "LIBERTY",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_diamond__ghost",
@@ -18954,7 +20607,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CURSE",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_diamond__rose",
@@ -19065,7 +20724,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CUT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "LOVE"
+        ]
+      }
     },
     {
       "pair_id": "p_diamond__salt",
@@ -19173,7 +20840,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CRYSTAL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ROCK",
+          "MINE"
+        ]
+      }
     },
     {
       "pair_id": "p_diamond__snake",
@@ -19290,6 +20966,12 @@
         "by": "parent (after the owner's playtest of beta-01-002)",
         "date": "2026-10-17",
         "reason": "owner found BACK indirect (reached it via the Arizona Diamondbacks); PATTERN and SCALE are held borderline, so the pair has no clean TREASURE-level hint. Future generation hold only: the live beta-01-002 snapshot and completed history stay exactly as they are."
+      },
+      "finalBestAvailable": {
+        "text": "BACK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
       }
     },
     {
@@ -19455,7 +21137,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BOWL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "PET",
+          "BONE"
+        ]
+      }
     },
     {
       "pair_id": "p_dragon__knight",
@@ -19566,7 +21257,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "SLAY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_dragon__snake",
@@ -19712,7 +21409,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "SCALES",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "ZODIAC"
+        ]
+      }
     },
     {
       "pair_id": "p_egg__spring",
@@ -19899,7 +21604,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ROLL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "EASTER",
+          "CHICK"
+        ]
+      }
     },
     {
       "pair_id": "p_fire__heart",
@@ -20009,7 +21723,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BURN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "PASSION",
+          "WARM"
+        ]
+      }
     },
     {
       "pair_id": "p_fire__horse",
@@ -20126,7 +21849,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WILD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_fire__iron",
@@ -20268,7 +21997,17 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FORGE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "HOT",
+          "SMITH",
+          "BRAND"
+        ]
+      }
     },
     {
       "pair_id": "p_fire__light",
@@ -20410,7 +22149,17 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "MATCH",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "TORCH",
+          "SPARK",
+          "CANDLE"
+        ]
+      }
     },
     {
       "pair_id": "p_fish__gold",
@@ -20607,7 +22356,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FINGER",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_ghost__horse",
@@ -20725,7 +22480,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HEADLESS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_ghost__key",
@@ -20836,7 +22597,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SKELETON",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_ghost__light",
@@ -20954,7 +22721,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "FLICKER",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_glass__ice",
@@ -21069,7 +22842,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "CLEAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "FROST"
+        ]
+      }
     },
     {
       "pair_id": "p_glass__water",
@@ -21184,7 +22965,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "CLEAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "DRINK"
+        ]
+      }
     },
     {
       "pair_id": "p_gold__pirate",
@@ -21400,7 +23189,17 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "TREASURE",
+        "basis": "canonical",
+        "provisional": false,
+        "alternatives": [
+          "DOUBLOON",
+          "COIN",
+          "TOOTH"
+        ]
+      }
     },
     {
       "pair_id": "p_gold__ring",
@@ -21517,7 +23316,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "OLYMPIC",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "BAND"
+        ]
+      }
     },
     {
       "pair_id": "p_heart__iron",
@@ -21655,7 +23462,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLOOD",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "PUMP"
+        ]
+      }
     },
     {
       "pair_id": "p_heart__robot",
@@ -21798,7 +23613,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "ARTIFICIAL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_honey__rose",
@@ -21912,7 +23733,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "NECTAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_honey__salt",
@@ -22024,7 +23851,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SWEET",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_honey__spring",
@@ -22134,7 +23967,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "POLLEN",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_horse__iron",
@@ -22248,7 +24087,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "SMITH",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_horse__rose",
@@ -22368,7 +24213,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WAR",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_horse__train",
@@ -22478,7 +24329,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "TRACK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_ice__queen",
@@ -22688,7 +24545,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "ELSA",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "FROZEN",
+          "SNOW"
+        ]
+      }
     },
     {
       "pair_id": "p_iron__light",
@@ -22798,7 +24664,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HEAVY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "CAST"
+        ]
+      }
     },
     {
       "pair_id": "p_key__rose",
@@ -22910,7 +24784,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "MAP",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "PRESS"
+        ]
+      }
     },
     {
       "pair_id": "p_key__spring",
@@ -23021,7 +24903,13 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "WIND",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_king__lion",
@@ -23253,7 +25141,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "MUFASA",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "SIMBA",
+          "JUNGLE"
+        ]
+      }
     },
     {
       "pair_id": "p_king__star",
@@ -23374,7 +25271,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "ELVIS",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "BETHLEHEM"
+        ]
+      }
     },
     {
       "pair_id": "p_knight__night",
@@ -23545,7 +25450,16 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLACK",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "DARK",
+          "MARE"
+        ]
+      }
     },
     {
       "pair_id": "p_light__shadow",
@@ -23689,7 +25603,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "CAST",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "DARK"
+        ]
+      }
     },
     {
       "pair_id": "p_lion__witch",
@@ -23813,7 +25735,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "WARDROBE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "NARNIA"
+        ]
+      }
     },
     {
       "pair_id": "p_moon__ocean",
@@ -23975,7 +25905,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLUE",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "TIDE"
+        ]
+      }
     },
     {
       "pair_id": "p_moon__star",
@@ -24093,7 +26031,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "SKY",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_moon__wolf",
@@ -24240,7 +26184,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "HOWL",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "NIGHT"
+        ]
+      }
     },
     {
       "pair_id": "p_ocean__pirate",
@@ -24359,7 +26311,15 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "CARIBBEAN",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "SHIP"
+        ]
+      }
     },
     {
       "pair_id": "p_ocean__shark",
@@ -24504,7 +26464,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "REEF",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_robot__rock",
@@ -24646,7 +26612,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "METAL",
+        "basis": "reviewer-best-available (not playable)",
+        "status": "held",
+        "stretch": false
+      }
     },
     {
       "pair_id": "p_rock__water",
@@ -24759,7 +26731,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "SKIP",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_rose__spring",
@@ -24872,7 +26850,15 @@
             }
           }
         }
-      ]
+      ],
+      "finalBestAvailable": {
+        "text": "BLOOM",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": [
+          "BUD"
+        ]
+      }
     },
     {
       "pair_id": "p_train__water",
@@ -24959,7 +26945,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "STEAM",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     },
     {
       "pair_id": "p_water__witch",
@@ -25075,7 +27067,13 @@
           }
         }
       ],
-      "reviewerBestAvailable": null
+      "reviewerBestAvailable": null,
+      "finalBestAvailable": {
+        "text": "MELT",
+        "basis": "provisional",
+        "provisional": true,
+        "alternatives": []
+      }
     }
   ]
 }

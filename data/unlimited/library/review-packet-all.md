@@ -261,12 +261,15 @@ Playable hints: 1. Reviewer: WOOD is the only hint that reaches both; the rest a
 
 ### APPLE + FISH
 
-Playable hints: 2. Reviewer: SAUCE is clean; PIE is a US-unfriendly stretch.
+Playable hints: 1. Reviewer: SAUCE is clean; PIE is a US-unfriendly stretch.
 
 **Retained**
 
 - **SAUCE** 2/2 fair 2 broad: Applesauce and fish sauce are both familiar compounds. *(author: retained)*
-- **PIE** 2/1 fair 1 moderate (corrected): Apple pie is the archetypal pie; fish pie is a real, well-known dish in Britain though less so elsewhere. *(author: rejected — APPLE only)*
+
+**Held**
+
+- **PIE** 2/1 fair 1 moderate (corrected): Apple pie is the archetypal pie; fish pie is a real, well-known dish in Britain though less so elsewhere. — held: override: fish pie is regional (British); held as a stretch for consistency with FINGER. SAUCE is the strong primary for APPLE+FISH. *(author: rejected — APPLE only)*
 
 **Rejected**
 
@@ -330,7 +333,7 @@ Playable hints: 4. Reviewer: A rich pair; RED passes only because both words are
 
 ### APPLE + HONEY
 
-Playable hints: 1. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and BEE are generic or one-step stretches.
+Playable hints: 2. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and BEE are generic or one-step stretches.
 
 **Retained**
 
@@ -338,7 +341,7 @@ Playable hints: 1. Reviewer: CRISP passes on the Honeycrisp compound; SWEET and 
 
 **Held**
 
-- **SWEET** 1/2 fair 1 broad [generic, colour_mood_material] (corrected): Honey is the definition of sweet; apples are sweet but also tart, so SWEET names honey first and apple only loosely. — held: correction review: borderline *(author: retained)*
+- **SWEET** 1/2 fair 1 broad [generic, colour_mood_material] (corrected): Honey is the definition of sweet; apples are sweet but also tart, so SWEET names honey first and apple only loosely. *(author: retained)*
 - **BEE** 1/2 fair 1 moderate [one_sided] (corrected): Honey bee is direct; bees pollinating apple blossom is true and known but not what a player reaches for from BEE. — held: correction review: borderline *(author: rejected — HONEY only; apple blossoms are a hop)*
 
 **Rejected**
@@ -491,7 +494,7 @@ Playable hints: 1. Reviewer: HALLOWEEN carries the pair; the others are one-side
 
 **Retained**
 
-- **HALLOWEEN** 2/2 fair 2 broad: Halloween night is the one holiday that happens after dark; bobbing for apples and caramel apples are Halloween staples. *(author: retained)*
+- **HALLOWEEN** 2/2 fair 2 broad: Halloween night, with bobbing for apples. (Wording corrected 2026-10-17 by the parent: the original claimed Halloween is the one holiday after dark, which is false; verdict unchanged.) *(author: retained)*
 
 **Rejected**
 
@@ -809,7 +812,7 @@ Playable hints: 3. Reviewer: Three clean banking compounds; CREDIT and DEBIT are
 
 ### BANK + CASTLE
 
-Playable hints: 1. Reviewer: TREASURY is a fair PASS; KEEP is a pleasant pun that may deserve a second look.
+Playable hints: 2. Reviewer: TREASURY is a fair PASS; KEEP is a pleasant pun that may deserve a second look.
 
 **Retained**
 
@@ -818,7 +821,7 @@ Playable hints: 1. Reviewer: TREASURY is a fair PASS; KEEP is a pleasant pun tha
 **Held**
 
 - **MOAT** 1/2 fair 1 moderate: Castle moat is immediate, but a moat having banks (or the finance sense of 'moat') is a stretch. — held: blind review: borderline *(author: rejected — CASTLE only)*
-- **KEEP** 1/2 fair 1 moderate: The castle keep is a set term, and a bank keeps your money, but the BANK side is a verb pun rather than a recognizable phrase. — held: blind review: borderline *(author: retained)*
+- **KEEP** 1/2 fair 1 moderate: The castle keep is a set term, and a bank keeps your money, but the BANK side is a verb pun rather than a recognizable phrase. *(author: retained)*
 
 ### BANK + CAT
 
@@ -920,14 +923,11 @@ Playable hints: 1. Reviewer: RIVER is strong; FIN is a slang stretch.
 
 ### BANK + GHOST
 
-Playable hints: 1. Reviewer: A hard pair; ACCOUNT is a modest PASS and worth a second opinion, the rest are each one-sided in a different direction.
-
-**Retained**
-
-- **ACCOUNT** 2/1 fair 2 moderate: Bank account is a compound and a ghost account (abandoned or fake account) is a reasonably familiar phrase. *(author: retained)*
+Playable hints: 0. Reviewer: A hard pair; ACCOUNT is a modest PASS and worth a second opinion, the rest are each one-sided in a different direction.
 
 **Held**
 
+- **ACCOUNT** 2/1 fair 2 moderate: Bank account is a compound and a ghost account (abandoned or fake account) is a reasonably familiar phrase. — held: override: 'ghost account' is a specialist phrase: best-available stretch for BANK+GHOST, not a confident general-US hint. *(author: retained)*
 - **VANISH** 1/2 fair 1 moderate: Ghosts vanish, but money vanishing from a bank is a mood rather than a phrase. — held: blind review: borderline *(author: retained)*
 - **TOWN** 1/2 fair 1 moderate: Ghost town is a compound, but BANK is reached only as a building every town has. — held: blind review: borderline *(author: retained)*
 - **SHEET** 1/2 fair 1 moderate: The bedsheet ghost is immediate, but BANK is reached only through a balance sheet. — held: blind review: borderline *(author: retained)*
@@ -3313,4 +3313,4 @@ Playable hints: 1. Reviewer: Everything rides the Wicked Witch's melting; MELT s
 
 ## Totals
 
-retained 332 · held 178 · rejected 221 across 276 pairs; 223 pairs have at least one playable hint.
+retained 330 · held 180 · rejected 221 across 276 pairs; 222 pairs have at least one playable hint.
