@@ -303,6 +303,16 @@
         "rejected": 25,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u18-blind-review.json",
+        "key": "data/unlimited/library/reviews/u18-blind-key.json",
+        "batch": "data/unlimited/library/batches/u18-batch.json",
+        "ai_reviewed": 82,
+        "held": 14,
+        "rejected": 14,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -30008,8 +30018,8 @@
           "heldReason": null,
           "type": "direct_association",
           "wordAConnection": "The crown jewels are the most famous jewels there are.",
-          "wordBConnection": "And they are diamonds.",
-          "revealExplanation": "The crown jewels are diamonds.",
+          "wordBConnection": "Diamonds are among them.",
+          "revealExplanation": "The crown jewels include diamonds.",
           "reference": null,
           "provenance": {
             "source": "u13",
@@ -30026,6 +30036,20 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "'Crown jewels' is the compound; a diamond is a jewel."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-17",
+              "source": "parent bounded sample of the u13-u16 bundle",
+              "before": {
+                "revealExplanation": "The crown jewels are diamonds.",
+                "wordBConnection": "And they are diamonds."
+              },
+              "after": {
+                "revealExplanation": "The crown jewels include diamonds.",
+                "wordBConnection": "Diamonds are among them."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -33674,9 +33698,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "direct_association",
-          "wordAConnection": "A diamond is a crystal that never changes.",
-          "wordBConnection": "Honey crystallises in the jar.",
-          "revealExplanation": "Honey crystallises in the jar and a diamond is a crystal that never will.",
+          "wordAConnection": "A diamond is a crystal.",
+          "wordBConnection": "Honey can crystallize in the jar.",
+          "revealExplanation": "A diamond is a crystal; honey can crystallize in the jar.",
           "reference": null,
           "provenance": {
             "source": "u14",
@@ -33693,6 +33717,22 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Diamond is a crystal and honey crystallises in the jar, a familiar kitchen fact."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-17",
+              "source": "parent bounded sample of the u13-u16 bundle",
+              "before": {
+                "revealExplanation": "Honey crystallises in the jar and a diamond is a crystal that never will.",
+                "wordAConnection": "A diamond is a crystal that never changes.",
+                "wordBConnection": "Honey crystallises in the jar."
+              },
+              "after": {
+                "revealExplanation": "A diamond is a crystal; honey can crystallize in the jar.",
+                "wordAConnection": "A diamond is a crystal.",
+                "wordBConnection": "Honey can crystallize in the jar."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -35401,7 +35441,7 @@
           "type": "cultural_reference",
           "wordAConnection": "A baseball diamond is the infield.",
           "wordBConnection": "Spring training is when the season starts.",
-          "revealExplanation": "A baseball diamond is the infield and spring training is when the season starts.",
+          "revealExplanation": "A baseball diamond and spring training.",
           "reference": {
             "referenceType": "sport",
             "source": "baseball",
@@ -35422,6 +35462,18 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "A baseball field is the diamond and spring training opens the baseball year."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-17",
+              "source": "parent bounded sample of the u13-u16 bundle",
+              "before": {
+                "revealExplanation": "A baseball diamond is the infield and spring training is when the season starts."
+              },
+              "after": {
+                "revealExplanation": "A baseball diamond and spring training."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -37318,7 +37370,7 @@
           "type": "direct_association",
           "wordAConnection": "The doggy paddle.",
           "wordBConnection": "Paddling in the ocean.",
-          "revealExplanation": "Paddle: doggy style, in the ocean.",
+          "revealExplanation": "The doggy paddle, swimming in the ocean.",
           "reference": null,
           "provenance": {
             "source": "u15",
@@ -37335,6 +37387,18 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Doggy paddle is the swimming stroke and paddling in the ocean (or paddleboarding) is everyday."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-17",
+              "source": "parent bounded sample of the u13-u16 bundle",
+              "before": {
+                "revealExplanation": "Paddle: doggy style, in the ocean."
+              },
+              "after": {
+                "revealExplanation": "The doggy paddle, swimming in the ocean."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -45115,6 +45179,200 @@
       ]
     },
     {
+      "pair_id": "p_fire__glass",
+      "a": "FIRE",
+      "b": "GLASS",
+      "source": "u18",
+      "pairNote": "Two clean hints; BLOWN leans on glass alone.",
+      "reviewerBestAvailable": {
+        "text": "LANTERN",
+        "why": "A single everyday object that is literally fire inside glass.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "LANTERN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The lantern's flame.",
+          "wordBConnection": "The lantern's glass.",
+          "revealExplanation": "A lantern: fire behind glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A lantern is a flame (fire) enclosed in a glass housing, one familiar object reaching both words."
+            }
+          }
+        },
+        {
+          "text": "FURNACE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A furnace is fire.",
+          "wordBConnection": "Glass is made in a furnace.",
+          "revealExplanation": "The furnace: fire, making glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A furnace holds fire, and glass is melted and worked in a glass furnace."
+            }
+          }
+        },
+        {
+          "text": "BLOWN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Blown over the furnace fire.",
+          "wordBConnection": "Blown glass.",
+          "revealExplanation": "Blown: glass, shaped in fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Glass is blown (glassblowing) strongly, but fire is only reached via blowing a flame out or stoking it, a thin verb link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__gold",
+      "a": "FIRE",
+      "b": "GOLD",
+      "source": "u18",
+      "pairNote": "All three pass; MELT is the broadest.",
+      "reviewerBestAvailable": {
+        "text": "MELT",
+        "why": "Shared verb that is vivid for both words without needing a phrase.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MELT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fire melts.",
+          "wordBConnection": "Melted gold.",
+          "revealExplanation": "Melt: gold, in the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fire melts things and melting gold is a familiar scene (gold bars, molten gold)."
+            }
+          }
+        },
+        {
+          "text": "FORGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The forge fire.",
+          "wordBConnection": "Gold at the forge.",
+          "revealExplanation": "The forge: fire for the gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A forge is a fire for working metal; gold is forged by goldsmiths, though iron is the more typical forge metal."
+            }
+          }
+        },
+        {
+          "text": "REFINED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Refined by fire.",
+          "wordBConnection": "Refined gold.",
+          "revealExplanation": "Refined: gold, through fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Gold is refined, and the familiar phrase 'refined by fire' / 'refiner's fire' supplies the fire side."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_fire__heart",
       "a": "FIRE",
       "b": "HEART",
@@ -45232,6 +45490,104 @@
           "WARM"
         ]
       }
+    },
+    {
+      "pair_id": "p_fire__honey",
+      "a": "FIRE",
+      "b": "HONEY",
+      "source": "u18",
+      "pairNote": "A hard pair; both passes need a hop on one side. BEE is pure filler on the fire side.",
+      "reviewerBestAvailable": {
+        "text": "SMOKE",
+        "why": "The beekeeper's smoker is a recognizable scene and fire is immediate.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WAX",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A wax candle is what you burn.",
+          "wordBConnection": "Beeswax comes out of the same comb as the honey.",
+          "revealExplanation": "Beeswax comes out of the same hive as the honey and a wax candle is what you burn.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Beeswax sits beside honey in the hive, and wax burns as candle fuel, reaching fire via candles."
+            }
+          }
+        },
+        {
+          "text": "SMOKE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "Smoke comes off a fire.",
+          "wordBConnection": "Beekeepers use it to calm the hive before taking the honey.",
+          "revealExplanation": "Smoke comes from fire, and beekeepers use smoke to calm the hive before taking honey.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Smoke comes from fire, and beekeepers smoke the hive to calm bees when harvesting honey."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "lateral_connection",
+          "wordAConnection": "A beekeeper's smoker is a small fire carried to the hive.",
+          "wordBConnection": "Bees are what make the honey.",
+          "revealExplanation": "Bees make honey, and a beekeeper's smoker is a small fire carried to the hive.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bees make honey, but there is no recognizable bee route to fire."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_fire__horse",
@@ -45355,6 +45711,115 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_fire__ice",
+      "a": "FIRE",
+      "b": "ICE",
+      "source": "u18",
+      "pairNote": "THRONES is excellent; FROST is clever but one-sided in practice.",
+      "reviewerBestAvailable": {
+        "text": "THRONES",
+        "why": "Both words are literally in the source title.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "THRONES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A Song of Ice and Fire.",
+          "wordBConnection": "A Song of Ice and Fire.",
+          "revealExplanation": "Game of Thrones: ice and fire.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Game of Thrones is the adaptation of 'A Song of Ice and Fire', naming both words."
+            }
+          }
+        },
+        {
+          "text": "OPPOSITES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fire, one of the pair.",
+          "wordBConnection": "Ice, the other.",
+          "revealExplanation": "Opposites: fire and ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Fire and ice are a classic pair of opposites; the hint points at the relationship between the two targets."
+            }
+          }
+        },
+        {
+          "text": "FROST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Frost wrote Fire and Ice.",
+          "wordBConnection": "Frost is ice.",
+          "revealExplanation": "Frost: ice, and the poet of Fire and Ice.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Robert Frost, Fire and Ice",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Frost is ice, and the fire side only arrives through Robert Frost's poem 'Fire and Ice', which few players will reach."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_fire__iron",
@@ -45509,6 +45974,302 @@
       }
     },
     {
+      "pair_id": "p_fire__key",
+      "a": "FIRE",
+      "b": "KEY",
+      "source": "u18",
+      "pairNote": "A model pair; all three are strong.",
+      "reviewerBestAvailable": {
+        "text": "ESCAPE",
+        "why": "Two everyday compounds, zero explanation needed.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "STRIKE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "You strike a match to make fire.",
+          "wordBConnection": "A keystroke is a strike of a key.",
+          "revealExplanation": "You strike a match to make fire and a keystroke is a strike of a key.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "You strike a match or flint to make fire, and you strike a key on a keyboard or piano."
+            }
+          }
+        },
+        {
+          "text": "IGNITION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "Firing the engine is what it does.",
+          "wordBConnection": "The ignition key is what you turn.",
+          "revealExplanation": "The ignition key is turned to fire the engine.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ignition is the start of fire, and the ignition key starts a car."
+            }
+          }
+        },
+        {
+          "text": "ESCAPE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A fire escape gets you out of the building.",
+          "wordBConnection": "A key gets you out of a locked room.",
+          "revealExplanation": "A fire escape gets you out of a building and a key gets you out of a locked room.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fire escape and the Escape key are both familiar compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__king",
+      "a": "FIRE",
+      "b": "KING",
+      "source": "u18",
+      "pairNote": "FIRED is a rule failure. BURGER is the only servable hint.",
+      "reviewerBestAvailable": {
+        "text": "BURGER",
+        "why": "Brand route to king plus the flame-grill image for fire.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BURGER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Flame-grilled burgers.",
+          "wordBConnection": "Burger King.",
+          "revealExplanation": "Burger King: flame-grilled over fire.",
+          "reference": {
+            "referenceType": "brand_or_product",
+            "source": "Burger King",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Burger King is the brand, and burgers are flame-grilled over fire (that chain's own slogan)."
+            }
+          }
+        },
+        {
+          "text": "DRAGON",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Dragon fire.",
+          "wordBConnection": "The Dragon King.",
+          "revealExplanation": "Dragon: fire-breather, king of beasts in legend.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dragons breathe fire, but the king side is only a loose fantasy association (Dragon King), not a specific scene."
+            }
+          }
+        },
+        {
+          "text": "FIRED",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target FIRE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target",
+                "one_sided"
+              ],
+              "reason": "Contains the target FIRE as a substring (rule failure); the king side is also absent."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__knight",
+      "a": "FIRE",
+      "b": "KNIGHT",
+      "source": "u18",
+      "pairNote": "DRAGON is excellent here; TORCH is mostly fire.",
+      "reviewerBestAvailable": {
+        "text": "DRAGON",
+        "why": "The knight-versus-dragon story is universally known and fire is intrinsic to it.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DRAGON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dragon fire.",
+          "wordBConnection": "The knight slays the dragon.",
+          "revealExplanation": "The dragon: fire, against the knight.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dragons breathe fire and knights slay dragons (St George), a shared story."
+            }
+          }
+        },
+        {
+          "text": "FORGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The forge fire.",
+          "wordBConnection": "A knight's forged sword.",
+          "revealExplanation": "The forge: fire, for the knight's blade.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A forge is fire, and a knight's sword and armor come from the forge."
+            }
+          }
+        },
+        {
+          "text": "TORCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A torch is fire.",
+          "wordBConnection": "The knight carries a torch.",
+          "revealExplanation": "Torch: fire in the knight's hand.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A torch is fire; the knight side is only a generic medieval-castle image with no specific knight-and-torch scene."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_fire__light",
       "a": "FIRE",
       "b": "LIGHT",
@@ -45659,6 +46420,2179 @@
           "CANDLE"
         ]
       }
+    },
+    {
+      "pair_id": "p_fire__lion",
+      "a": "FIRE",
+      "b": "LION",
+      "source": "u18",
+      "pairNote": "MANE is one-sided filler; the other two are good.",
+      "reviewerBestAvailable": {
+        "text": "CIRCUS",
+        "why": "Lion tamer and fire act in one tent.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CIRCUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The circus ring of fire.",
+          "wordBConnection": "Circus lions.",
+          "revealExplanation": "The circus: lions through fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The circus has lion tamers and fire-eaters/flaming hoops, one shared scene."
+            }
+          }
+        },
+        {
+          "text": "LEO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Leo is a fire sign.",
+          "wordBConnection": "Leo is the lion.",
+          "revealExplanation": "Leo: the lion, a fire sign.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Leo is the lion sign of the zodiac and is one of the fire signs."
+            }
+          }
+        },
+        {
+          "text": "MANE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fiery mane.",
+          "wordBConnection": "A lion's mane.",
+          "revealExplanation": "Mane: the lion's, like fire.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A mane is the lion's defining feature, but there is no recognizable mane route to fire beyond poetic 'fiery mane'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__moon",
+      "a": "FIRE",
+      "b": "MOON",
+      "source": "u18",
+      "pairNote": "ROCKET is ideal; LANTERN does not reach the moon for most players.",
+      "reviewerBestAvailable": {
+        "text": "ROCKET",
+        "why": "Fire at one end, moon at the other, one picture.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ROCKET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A rocket lifts off on a column of fire.",
+          "wordBConnection": "The moon is the place rockets were built to reach.",
+          "revealExplanation": "A rocket lifts off on a column of fire and the moon is the place rockets were built to reach.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Rockets fly to the moon on a tail of fire."
+            }
+          }
+        },
+        {
+          "text": "RING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Ring of Fire is a well-known name.",
+          "wordBConnection": "A ring or halo often appears around the moon.",
+          "revealExplanation": "Ring of Fire is a well-known name, and a ring or halo often appears around the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "'Ring of Fire' is a familiar phrase and a ring around the moon (halo) is a known sight."
+            }
+          }
+        },
+        {
+          "text": "LANTERN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A lantern holds a small fire.",
+          "wordBConnection": "Lanterns are what get floated at the Moon Festival.",
+          "revealExplanation": "A lantern holds a small fire, and lanterns are what get floated at the Moon Festival.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "A lantern holds a flame; the moon side relies on the moon-as-lantern poetic image or Mid-Autumn lantern festivals, which most players will not reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__mouse",
+      "a": "FIRE",
+      "b": "MOUSE",
+      "source": "u18",
+      "pairNote": "Hard pair; WIRE is adequate, SMOKE is filler.",
+      "reviewerBestAvailable": {
+        "text": "WIRE",
+        "why": "The only hint that touches both words.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WIRE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Chewed wires start fires.",
+          "wordBConnection": "Mice chew wires.",
+          "revealExplanation": "Wire: chewed by the mouse, sparking fire.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A wired computer mouse (and mice chewing wires) gives the mouse side; faulty wiring starting fires gives the fire side."
+            }
+          }
+        },
+        {
+          "text": "SMOKE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Smoke from the fire.",
+          "wordBConnection": "Smoke out the mice.",
+          "revealExplanation": "Smoke: the fire's, and smoking out mice.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Smoke is fire's companion but has no recognizable mouse connection."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__night",
+      "a": "FIRE",
+      "b": "NIGHT",
+      "source": "u18",
+      "pairNote": "Two rule failures; CAMP and GLOW remain servable.",
+      "reviewerBestAvailable": {
+        "text": "CAMP",
+        "why": "Campfire at night is one shared picture.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "GLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fire's glow.",
+          "wordBConnection": "A glow in the night.",
+          "revealExplanation": "Glow: the fire's, in the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fire glows, and a glow is something seen against the dark of night."
+            }
+          }
+        },
+        {
+          "text": "CAMP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A campfire.",
+          "wordBConnection": "Camping at night.",
+          "revealExplanation": "Camp: the fire, at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Campfire is the compound, and camping around the fire is a night scene."
+            }
+          }
+        },
+        {
+          "text": "BONFIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target FIRE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target FIRE as a substring (rule failure), though Bonfire Night would otherwise fit both."
+            }
+          }
+        },
+        {
+          "text": "FIREWORKS",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target FIRE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target FIRE as a substring (rule failure)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__ocean",
+      "a": "FIRE",
+      "b": "OCEAN",
+      "source": "u18",
+      "pairNote": "Both pass; RING is the sharper one.",
+      "reviewerBestAvailable": {
+        "text": "RING",
+        "why": "The Pacific Ring of Fire is literally fire and ocean.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The Ring of Fire.",
+          "wordBConnection": "The ring around the Pacific Ocean.",
+          "revealExplanation": "The Ring of Fire around the Pacific.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Pacific Ring of Fire",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Ring of Fire is the volcanic belt around the Pacific Ocean, reaching both words through one name."
+            }
+          }
+        },
+        {
+          "text": "VOLCANO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A volcano's fire.",
+          "wordBConnection": "Volcanic islands in the ocean.",
+          "revealExplanation": "Volcano: fire out of the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Volcanoes are fire and lava; many are undersea or form ocean islands (Hawaii)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__pirate",
+      "a": "FIRE",
+      "b": "PIRATE",
+      "source": "u18",
+      "pairNote": "CANNON is strong; BEARD needs trivia.",
+      "reviewerBestAvailable": {
+        "text": "CANNON",
+        "why": "Verb route to fire plus the iconic pirate weapon.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CANNON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fire the cannon!",
+          "wordBConnection": "A pirate's cannon.",
+          "revealExplanation": "Cannon: fire! says the pirate.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirate ships fire cannons; 'fire' is the verb for a cannon."
+            }
+          }
+        },
+        {
+          "text": "BEARD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Blackbeard's smoking, fiery beard.",
+          "wordBConnection": "Blackbeard the pirate.",
+          "revealExplanation": "Blackbeard's beard, lit with fire.",
+          "reference": {
+            "referenceType": "person",
+            "source": "Blackbeard",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "one_sided",
+                "obscure"
+              ],
+              "reason": "Blackbeard gives the pirate side; the fire side relies on the legend that he lit fuses in his beard, which few players know."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__queen",
+      "a": "FIRE",
+      "b": "QUEEN",
+      "source": "u18",
+      "pairNote": "DAENERYS is strong for anyone who knows the show; FREDDIE is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "DAENERYS",
+        "why": "Queen and fire are both core to the character.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DAENERYS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Daenerys walks through fire.",
+          "wordBConnection": "Daenerys the queen.",
+          "revealExplanation": "Daenerys: the queen fire cannot burn.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Game of Thrones",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Daenerys is the Dragon Queen of Game of Thrones, the Unburnt who walks through fire."
+            }
+          }
+        },
+        {
+          "text": "FREDDIE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Queen's pyrotechnic shows.",
+          "wordBConnection": "Freddie fronted Queen.",
+          "revealExplanation": "Freddie: Queen's frontman, on a stage of fire.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Queen",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Freddie Mercury fronts Queen; the fire side only works via Freddy Krueger's burn story, a different Freddy and a stretch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__ring",
+      "a": "FIRE",
+      "b": "RING",
+      "source": "u18",
+      "pairNote": "Three good routes; CIRCUS is broadest, CASH is the neatest.",
+      "reviewerBestAvailable": {
+        "text": "CASH",
+        "why": "The song title is exactly the pair.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "FORGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The forge fire.",
+          "wordBConnection": "A forged ring.",
+          "revealExplanation": "Forge: the ring, in fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A forge is fire, and the One Ring was forged in fire (Lord of the Rings)."
+            }
+          }
+        },
+        {
+          "text": "CASH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Ring of Fire.",
+          "wordBConnection": "Ring of Fire.",
+          "revealExplanation": "Johnny Cash: Ring of Fire.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Johnny Cash, Ring of Fire",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Johnny Cash's 'Ring of Fire' names both targets."
+            }
+          }
+        },
+        {
+          "text": "CIRCUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A circus ring of fire.",
+          "wordBConnection": "The circus ring.",
+          "revealExplanation": "The circus: a ring of fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The circus ring hosts fire-eaters and flaming hoops."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__robot",
+      "a": "FIRE",
+      "b": "ROBOT",
+      "source": "u18",
+      "pairNote": "Both pass at moderate strength; neither is a clean 2/2.",
+      "reviewerBestAvailable": {
+        "text": "FIGHTER",
+        "why": "Compound on one side, a known genre on the other.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FIGHTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A firefighter.",
+          "wordBConnection": "Firefighting robots.",
+          "revealExplanation": "Fighter: fire fighter, robot style.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Firefighter is the compound; fighting robots (BattleBots, mech fighters) give the robot side."
+            }
+          }
+        },
+        {
+          "text": "TERMINATOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Terminator rises from the flames.",
+          "wordBConnection": "The Terminator is a robot.",
+          "revealExplanation": "The Terminator: robot, out of the fire.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Terminator",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Terminator is the iconic robot; fire arrives via its gunfire and the molten-steel finale."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__rock",
+      "a": "FIRE",
+      "b": "ROCK",
+      "source": "u18",
+      "pairNote": "Excellent pair; all three are strong.",
+      "reviewerBestAvailable": {
+        "text": "FLINT",
+        "why": "A rock whose purpose is making fire.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "FLINT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Flint sparks fire.",
+          "wordBConnection": "Flint is a rock.",
+          "revealExplanation": "Flint: the rock that makes fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Flint is a rock used to strike fire."
+            }
+          }
+        },
+        {
+          "text": "LAVA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fiery lava.",
+          "wordBConnection": "Lava is molten rock.",
+          "revealExplanation": "Lava: rock on fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Lava is molten rock, burning hot."
+            }
+          }
+        },
+        {
+          "text": "VOLCANO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Volcanic fire.",
+          "wordBConnection": "Volcanic rock.",
+          "revealExplanation": "Volcano: fire and rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A volcano is a mountain of rock that erupts fire."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__rose",
+      "a": "FIRE",
+      "b": "ROSE",
+      "source": "u18",
+      "pairNote": "RED is the safe serve; RISE is clever and depends on the verb reading of ROSE.",
+      "reviewerBestAvailable": {
+        "text": "RED",
+        "why": "The most immediate shared property for both words.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "RED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Flame is red.",
+          "wordBConnection": "So is the classic rose.",
+          "revealExplanation": "The classic rose and the colour of flame are both red.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Fire is red and roses are red, a shared property both words own strongly."
+            }
+          }
+        },
+        {
+          "text": "RISE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Smoke and flames rise off a fire.",
+          "wordBConnection": "Rose is the past tense of rise.",
+          "revealExplanation": "Smoke and flames rise, and rose is the past tense of rise.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Rose is the past tense of rise (inflection route); flames and smoke rise, and the phoenix rises from fire."
+            }
+          }
+        },
+        {
+          "text": "PASSION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Passion is described as fiery.",
+          "wordBConnection": "Red roses are its symbol.",
+          "revealExplanation": "Red roses are the symbol of passion and passion is described as fiery.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Fiery passion and roses as symbols of passionate love share one mood."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__salt",
+      "a": "FIRE",
+      "b": "SALT",
+      "source": "u18",
+      "pairNote": "No PASS. Both hints are preservation-kitchen stretches; a smoke-based hint would serve this pair better.",
+      "reviewerBestAvailable": {
+        "text": "CURE",
+        "why": "Salt is nailed and the fire-cured route exists even if it is secondary.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CURE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "Curing can be done by smoking over a fire.",
+          "wordBConnection": "Or by packing the thing in salt.",
+          "revealExplanation": "Curing meat is done by salting it or by smoking it over a fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Salt-curing is strong; fire-curing (over fire or smoke) is real but less familiar than smoke-curing."
+            }
+          }
+        },
+        {
+          "text": "MEAT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "Meat is cooked over fire.",
+          "wordBConnection": "And preserved with salt.",
+          "revealExplanation": "Meat is preserved with salt and cooked over fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Meat is grilled over fire and seasoned or preserved with salt, but neither link is specific enough to point at the word."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__shadow",
+      "a": "FIRE",
+      "b": "SHADOW",
+      "source": "u18",
+      "pairNote": "A pair with a natural shared scene; all three pass.",
+      "reviewerBestAvailable": {
+        "text": "FLICKER",
+        "why": "The verb belongs to both words equally.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "FLICKER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "Firelight flickers.",
+          "wordBConnection": "Which makes the shadows it casts flicker too.",
+          "revealExplanation": "Firelight flickers, which makes the shadows it casts flicker too.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Flames flicker and so do the shadows they throw, one shared verb."
+            }
+          }
+        },
+        {
+          "text": "CAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "In Plato's cave a fire burns behind the prisoners.",
+          "wordBConnection": "The shadows on the wall are all they ever see.",
+          "revealExplanation": "In Plato's cave a fire behind the prisoners casts the shadows they mistake for reality.",
+          "reference": {
+            "referenceType": "book",
+            "source": "Plato's allegory of the cave",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Plato's cave and the cave-dweller scene both have a fire casting shadows on the wall."
+            }
+          }
+        },
+        {
+          "text": "DANCE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Flames are said to dance.",
+          "wordBConnection": "So are the shadows they throw on a wall.",
+          "revealExplanation": "Flames are said to dance, and so are the shadows they throw on a wall.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Flames dance and shadows dance on the wall, a shared verb from the same firelit scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__shark",
+      "a": "FIRE",
+      "b": "SHARK",
+      "source": "u18",
+      "pairNote": "Hard pair; ATTACK is adequate, JAWS is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "ATTACK",
+        "why": "The only hint that reaches fire at all.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ATTACK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fire attacks.",
+          "wordBConnection": "A shark attack.",
+          "revealExplanation": "Attack: shark's, or fire's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shark attack is the compound; to open fire is to attack, and 'under fire' is a known phrase."
+            }
+          }
+        },
+        {
+          "text": "JAWS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Jaws ends in a fiery explosion.",
+          "wordBConnection": "Jaws the shark.",
+          "revealExplanation": "Jaws: the shark, and the fiery end.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Jaws",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Jaws is the shark film, but nothing recognizable ties jaws to fire."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__snake",
+      "a": "FIRE",
+      "b": "SNAKE",
+      "source": "u18",
+      "pairNote": "All pass; TONGUE is the neatest.",
+      "reviewerBestAvailable": {
+        "text": "TONGUE",
+        "why": "Idiom on the fire side, anatomy on the snake side, both immediate.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TONGUE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Flames are called tongues of fire.",
+          "wordBConnection": "A snake has a famous forked one.",
+          "revealExplanation": "Flames are called tongues of fire, and a snake has a famous forked tongue.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A snake's forked tongue and 'tongues of flame' are both familiar."
+            }
+          }
+        },
+        {
+          "text": "HISS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fire hisses as it burns.",
+          "wordBConnection": "A snake hisses in warning.",
+          "revealExplanation": "A fire hisses as it burns and a snake hisses in warning.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Snakes hiss, and a fire hisses when wet wood or water meets the flame."
+            }
+          }
+        },
+        {
+          "text": "DRAGON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A dragon breathes fire.",
+          "wordBConnection": "And is a giant serpent.",
+          "revealExplanation": "A dragon is a giant serpent that breathes fire.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "dragons",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Dragons breathe fire and are serpents in form (Chinese dragons especially)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__spider",
+      "a": "FIRE",
+      "b": "SPIDER",
+      "source": "u18",
+      "pairNote": "No PASS. Both hints are one-sided; the pair needs a new hint (e.g. a venom/burn route).",
+      "reviewerBestAvailable": {
+        "text": "ANT",
+        "why": "At least the fire side is a real compound and ants sit next to spiders in a player's mind.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ANT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Fire ants.",
+          "wordBConnection": "Ants and spiders, the crawling bugs.",
+          "revealExplanation": "Ant: fire ants, cousins of the spider in the bug world.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Fire ant is the compound; the spider side is only the shared creepy-crawly category."
+            }
+          }
+        },
+        {
+          "text": "WEB",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fire spreads like a web.",
+          "wordBConnection": "A spider's web.",
+          "revealExplanation": "Web: the spider's, and the spread of fire.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A web is the spider's thing; there is no recognizable web route to fire."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__spring",
+      "a": "FIRE",
+      "b": "SPRING",
+      "source": "u18",
+      "pairNote": "HOT is the clear serve; LEAP works but is near-synonymous with one target.",
+      "reviewerBestAvailable": {
+        "text": "HOT",
+        "why": "Property on one side, compound on the other.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "HOT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Fire is the definition of hot.",
+          "wordBConnection": "A hot spring is the natural feature.",
+          "revealExplanation": "A hot spring is a natural feature, and fire is the definition of hot.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fire is hot and hot spring is a familiar compound."
+            }
+          }
+        },
+        {
+          "text": "LEAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Flames leap upward.",
+          "wordBConnection": "To spring is to leap.",
+          "revealExplanation": "Flames leap upward, and to spring is to leap.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Leap is a synonym of spring (the verb); flames leap, which supplies the fire side."
+            }
+          }
+        },
+        {
+          "text": "TRIGGER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "You pull the trigger to fire.",
+          "wordBConnection": "The trigger works on a spring.",
+          "revealExplanation": "You pull the trigger to fire, and the trigger works on a spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Pulling the trigger fires a gun; a trigger is spring-loaded."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__star",
+      "a": "FIRE",
+      "b": "STAR",
+      "source": "u18",
+      "pairNote": "Excellent pair; all three are strong.",
+      "reviewerBestAvailable": {
+        "text": "SHOOTING",
+        "why": "Compound plus verb, both instant.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BURNING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A burning fire.",
+          "wordBConnection": "A burning star.",
+          "revealExplanation": "Burning: fire and star.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fire burns and stars are burning balls of gas."
+            }
+          }
+        },
+        {
+          "text": "SHOOTING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Shooting fire.",
+          "wordBConnection": "A shooting star.",
+          "revealExplanation": "Shooting: star, or fire.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Shooting star is the compound; shooting is firing a gun."
+            }
+          }
+        },
+        {
+          "text": "SUN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The sun's fire.",
+          "wordBConnection": "The sun is a star.",
+          "revealExplanation": "The sun: a star made of fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The sun is a star and a ball of fire."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__train",
+      "a": "FIRE",
+      "b": "TRAIN",
+      "source": "u18",
+      "pairNote": "All pass; ENGINE and COAL are the strongest.",
+      "reviewerBestAvailable": {
+        "text": "ENGINE",
+        "why": "Two compounds, no explanation needed.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "COAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A coal fire.",
+          "wordBConnection": "A coal train.",
+          "revealExplanation": "Coal: fire, for the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Coal fuels a fire and the coal-fired steam train."
+            }
+          }
+        },
+        {
+          "text": "ENGINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fire engine.",
+          "wordBConnection": "A train engine.",
+          "revealExplanation": "Engine: fire engine, train engine.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fire engine and train engine are both everyday compounds."
+            }
+          }
+        },
+        {
+          "text": "STEAM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The firebox makes the steam.",
+          "wordBConnection": "A steam train.",
+          "revealExplanation": "Steam: the train, driven by fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Steam train is the compound; steam is made by fire boiling water in the firebox."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__water",
+      "a": "FIRE",
+      "b": "WATER",
+      "source": "u18",
+      "pairNote": "Excellent pair; all three are strong.",
+      "reviewerBestAvailable": {
+        "text": "HYDRANT",
+        "why": "One object that is fire on the label and water inside.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "HYDRANT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fire hydrant.",
+          "wordBConnection": "A hydrant gives water.",
+          "revealExplanation": "The hydrant: water for the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A fire hydrant supplies water to fight fire."
+            }
+          }
+        },
+        {
+          "text": "HOSE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fire hose.",
+          "wordBConnection": "A hose sprays water.",
+          "revealExplanation": "The hose: water on the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A fire hose sprays water."
+            }
+          }
+        },
+        {
+          "text": "EXTINGUISH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Extinguish the fire.",
+          "wordBConnection": "Water extinguishes.",
+          "revealExplanation": "Extinguish: fire, with water.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Water extinguishes fire; the verb binds the pair."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__witch",
+      "a": "FIRE",
+      "b": "WITCH",
+      "source": "u18",
+      "pairNote": "Two strong hints; SALEM is failed on the factual rule even though many players would follow the misconception.",
+      "reviewerBestAvailable": {
+        "text": "STAKE",
+        "why": "Burning at the stake is the shared story itself.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CAULDRON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A cauldron over the fire.",
+          "wordBConnection": "A witch's cauldron.",
+          "revealExplanation": "The cauldron: the witch's, over fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "The witch's cauldron bubbles over a fire."
+            }
+          }
+        },
+        {
+          "text": "STAKE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Burned at the stake.",
+          "wordBConnection": "A witch at the stake.",
+          "revealExplanation": "The stake: the witch, and the fire.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Witches were burned at the stake; the phrase carries both words."
+            }
+          }
+        },
+        {
+          "text": "SALEM",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Fire-and-brimstone Salem.",
+          "wordBConnection": "The Salem witches.",
+          "revealExplanation": "Salem: witches, and fiery sermons.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Salem witch trials",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "wrong_fact",
+                "one_sided"
+              ],
+              "reason": "Salem is the witch-trial town, but the fire side depends on the misconception that Salem burned witches; they were hanged, so the route rests on a wrong fact."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fire__wolf",
+      "a": "FIRE",
+      "b": "WOLF",
+      "source": "u18",
+      "pairNote": "CAMPFIRE is a rule failure; TORCH is the only servable hint.",
+      "reviewerBestAvailable": {
+        "text": "TORCH",
+        "why": "Fire-to-ward-off-wolves is a recognizable wilderness scene.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TORCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A torch is fire.",
+          "wordBConnection": "Wolves fear the torch.",
+          "revealExplanation": "Torch: fire to keep the wolf away.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A torch is fire, and torches keep wolves at bay or lead the torch-bearing mob hunting the werewolf."
+            }
+          }
+        },
+        {
+          "text": "BRICK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The wolf falls into the fire.",
+          "wordBConnection": "The wolf and the brick house.",
+          "revealExplanation": "Brick: the house the wolf couldn't blow down, and the fire below.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "The Three Little Pigs",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "The brick house defeats the wolf in the Three Little Pigs; fire only arrives via the pot boiling in that house's fireplace or fire-bricks, both a hop too far."
+            }
+          }
+        },
+        {
+          "text": "CAMPFIRE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target FIRE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target FIRE as a substring (rule failure)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__ghost",
+      "a": "FISH",
+      "b": "GHOST",
+      "source": "u18",
+      "pairNote": "FLOAT is good; PALE is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "FLOAT",
+        "why": "Shared verb that fits both literally.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FLOAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fish float in water.",
+          "wordBConnection": "Ghosts float.",
+          "revealExplanation": "Float: fish and ghost.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ghosts float, and fish float (a fishing float, or the dead fish belly-up)."
+            }
+          }
+        },
+        {
+          "text": "PALE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A pale fish.",
+          "wordBConnection": "A pale ghost.",
+          "revealExplanation": "Pale: the ghost and the fish.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Ghosts are pale, but fish are not recognizably pale as a defining property."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__glass",
+      "a": "FISH",
+      "b": "GLASS",
+      "source": "u18",
+      "pairNote": "All three pass and are near-equivalent routes.",
+      "reviewerBestAvailable": {
+        "text": "TANK",
+        "why": "Fish tank is the most immediate compound.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TANK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fish tank.",
+          "wordBConnection": "A glass tank.",
+          "revealExplanation": "The glass fish tank.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A fish tank is a glass tank."
+            }
+          }
+        },
+        {
+          "text": "AQUARIUM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fish in the aquarium.",
+          "wordBConnection": "The aquarium's glass walls.",
+          "revealExplanation": "The aquarium: fish behind glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:TANK"
+              ],
+              "reason": "An aquarium is fish behind glass; essentially the same route as TANK."
+            }
+          }
+        },
+        {
+          "text": "BOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fishbowl.",
+          "wordBConnection": "A glass bowl.",
+          "revealExplanation": "The glass fishbowl.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A fishbowl is a glass bowl."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_fish__gold",
@@ -45862,6 +48796,830 @@
         "status": "held",
         "stretch": false
       }
+    },
+    {
+      "pair_id": "p_fish__heart",
+      "a": "FISH",
+      "b": "HEART",
+      "source": "u18",
+      "pairNote": "All three share the heart-healthy-fish route; OMEGA is the most pointed.",
+      "reviewerBestAvailable": {
+        "text": "OMEGA",
+        "why": "Omega-3 is the exact bridge between fish and heart.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "OMEGA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Omega-3 in fish oil.",
+          "wordBConnection": "Omega-3 for the heart.",
+          "revealExplanation": "Omega-3: fish oil for the heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Omega-3 is the fish-oil nutrient marketed for heart health."
+            }
+          }
+        },
+        {
+          "text": "SALMON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salmon is a fish.",
+          "wordBConnection": "Salmon for heart health.",
+          "revealExplanation": "Salmon: fish for the heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Salmon is a fish and the standard example of a heart-healthy food."
+            }
+          }
+        },
+        {
+          "text": "OIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fish oil.",
+          "wordBConnection": "Oil for the heart.",
+          "revealExplanation": "Fish oil, for the heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fish oil is the compound and it is taken for the heart."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__honey",
+      "a": "FISH",
+      "b": "HONEY",
+      "source": "u18",
+      "pairNote": "BEAR is excellent; GLAZE is a fair kitchen route.",
+      "reviewerBestAvailable": {
+        "text": "BEAR",
+        "why": "One animal whose two famous foods are the two targets.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BEAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bears catch fish.",
+          "wordBConnection": "Bears love honey.",
+          "revealExplanation": "The bear: fish and honey eater.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bears eat honey and catch fish, the two foods everyone associates with them."
+            }
+          }
+        },
+        {
+          "text": "GLAZE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Glazed fish.",
+          "wordBConnection": "A honey glaze.",
+          "revealExplanation": "Glaze: honey on the fish.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Honey glaze is the compound; honey-glazed salmon is a familiar dish reaching fish."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__horse",
+      "a": "FISH",
+      "b": "HORSE",
+      "source": "u18",
+      "pairNote": "SEA does the job; SEAHORSE is a rule failure and MANE is one-sided.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Habitat for fish plus the seahorse compound.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sea fish.",
+          "wordBConnection": "A seahorse.",
+          "revealExplanation": "Sea: fish, and the seahorse.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fish live in the sea, and sea + horse makes seahorse."
+            }
+          }
+        },
+        {
+          "text": "SEAHORSE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target HORSE",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target HORSE as a substring (rule failure)."
+            }
+          }
+        },
+        {
+          "text": "MANE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The lionfish's mane of spines.",
+          "wordBConnection": "A horse's mane.",
+          "revealExplanation": "Mane: the horse's, and the lionfish's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A mane is the horse's feature; no recognizable mane route reaches fish."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__ice",
+      "a": "FISH",
+      "b": "ICE",
+      "source": "u18",
+      "pairNote": "All pass; HOLE and FROZEN are the strongest.",
+      "reviewerBestAvailable": {
+        "text": "HOLE",
+        "why": "The ice-fishing hole is one specific shared scene.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "HOLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fishing through the hole.",
+          "wordBConnection": "A hole in the ice.",
+          "revealExplanation": "A hole in the ice, for fishing.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice fishing means cutting a hole in the ice to fish through."
+            }
+          }
+        },
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Frozen fish.",
+          "wordBConnection": "Frozen means ice.",
+          "revealExplanation": "Frozen: fish, on ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ice is frozen water and frozen fish is a supermarket staple."
+            }
+          }
+        },
+        {
+          "text": "MARKET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The fish market.",
+          "wordBConnection": "Fish on ice at the market.",
+          "revealExplanation": "The market: fish on ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fish market is the compound; the fish there lie on ice."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__iron",
+      "a": "FISH",
+      "b": "IRON",
+      "source": "u18",
+      "pairNote": "HOOK and SKILLET serve; ANCHOR leans on iron alone.",
+      "reviewerBestAvailable": {
+        "text": "HOOK",
+        "why": "Compound on fish and an obvious metal object.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HOOK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fish hook.",
+          "wordBConnection": "An iron hook.",
+          "revealExplanation": "Hook: iron, for the fish.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A fish hook is the compound and hooks are iron/metal."
+            }
+          }
+        },
+        {
+          "text": "SKILLET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fish in the skillet.",
+          "wordBConnection": "A cast-iron skillet.",
+          "revealExplanation": "The skillet: cast iron, for fish.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Cast-iron skillet is the compound; frying fish in a skillet reaches fish."
+            }
+          }
+        },
+        {
+          "text": "ANCHOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The fishing boat's anchor.",
+          "wordBConnection": "An iron anchor.",
+          "revealExplanation": "Anchor: iron, on the fishing boat.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "An anchor is iron, but the fish side is only the generic sea theme or a fishing boat's anchor."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__key",
+      "a": "FISH",
+      "b": "KEY",
+      "source": "u18",
+      "pairNote": "Both hints use the same Keys geography; FLORIDA reaches fish a little more naturally than WEST.",
+      "reviewerBestAvailable": {
+        "text": "FLORIDA",
+        "why": "Geography route that at least evokes fishing directly.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FLORIDA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Fishing in Florida.",
+          "wordBConnection": "The Florida Keys.",
+          "revealExplanation": "Florida: the Keys, and the fishing.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Florida Keys give the key side; Florida's sport-fishing fame gives the fish side."
+            }
+          }
+        },
+        {
+          "text": "WEST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Key West fishing.",
+          "wordBConnection": "Key West.",
+          "revealExplanation": "Key West: fishing capital.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Key West",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Key West is the compound, but fish only arrives through Key West's fishing reputation, which is a second hop."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__king",
+      "a": "FISH",
+      "b": "KING",
+      "source": "u18",
+      "pairNote": "Three passes on the king-species route; KINGFISHER is a rule failure.",
+      "reviewerBestAvailable": {
+        "text": "SALMON",
+        "why": "A more familiar fish than mackerel with the same king-species route.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "MACKEREL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Mackerel is a fish.",
+          "wordBConnection": "King mackerel.",
+          "revealExplanation": "King mackerel.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Mackerel is a fish and king mackerel is a well-known species."
+            }
+          }
+        },
+        {
+          "text": "SALMON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Salmon is a fish.",
+          "wordBConnection": "King salmon.",
+          "revealExplanation": "King salmon.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:MACKEREL"
+              ],
+              "reason": "Salmon is a fish and king salmon (Chinook) is a familiar name."
+            }
+          }
+        },
+        {
+          "text": "CRAB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Crab fishing.",
+          "wordBConnection": "King crab.",
+          "revealExplanation": "King crab, caught by the fishing fleet.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "King crab is the compound; crab sits with fish as seafood/the fish counter."
+            }
+          }
+        },
+        {
+          "text": "KINGFISHER",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "rejected",
+            "authorReason": "contains both targets",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains both targets KING and FISH as substrings (rule failure)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__knight",
+      "a": "FISH",
+      "b": "KNIGHT",
+      "source": "u18",
+      "pairNote": "Hard pair; SCALES is the one usable hint.",
+      "reviewerBestAvailable": {
+        "text": "SCALES",
+        "why": "The shared-property route reaches both words directly.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCALES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Fish scales.",
+          "wordBConnection": "A knight's scale armor.",
+          "revealExplanation": "Scales: on the fish, on the knight's mail.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Fish have scales; knights wore scale armor (scale mail)."
+            }
+          }
+        },
+        {
+          "text": "ARMOR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A fish's scaly armor.",
+          "wordBConnection": "A knight's armor.",
+          "revealExplanation": "Armor: the knight's, and the fish's scales.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:SCALES",
+                "one_sided"
+              ],
+              "reason": "Armor is the knight's; fish only arrive via scales-as-armor, the same idea as SCALES but from the weaker side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fish__light",
+      "a": "FISH",
+      "b": "LIGHT",
+      "source": "u18",
+      "pairNote": "All pass; ANGLER is the most pointed.",
+      "reviewerBestAvailable": {
+        "text": "ANGLER",
+        "why": "Fishing and the lit anglerfish in one word.",
+        "reviewer": "blind-subagent-18"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "ANGLER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The anglerfish.",
+          "wordBConnection": "The angler's glowing light.",
+          "revealExplanation": "Angler: the fish with the light.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "An angler is a fisher and the anglerfish carries its own light."
+            }
+          }
+        },
+        {
+          "text": "GLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Glowing fish.",
+          "wordBConnection": "A glow is light.",
+          "revealExplanation": "Glow: the fish's own light.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Glow is light; glow-in-the-dark and bioluminescent fish (GloFish, deep-sea fish) reach fish."
+            }
+          }
+        },
+        {
+          "text": "LURE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A fishing lure.",
+          "wordBConnection": "The anglerfish's glowing lure.",
+          "revealExplanation": "Lure: light that draws the fish.",
+          "reference": null,
+          "provenance": {
+            "source": "u18",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-18",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A fishing lure is the compound; light lures fish and the anglerfish lures with its light."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_ghost__horse",

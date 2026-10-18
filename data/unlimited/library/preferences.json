@@ -4,7 +4,12 @@
     "written": "2026-10-17",
     "rule": "When one hint for a pair is clearly best, it is THE served hint: the assembler uses it or does not use the pair on that board (it never falls back to a weaker alternative to satisfy the four-distinct-hints rule or the hint-once-per-batch cap). Only an APPROVED equal set is varied among; if none of its members is playable there is no choice (never an unapproved fallback). With no approved entry the assembler takes exactly one stable provisional candidate (best blind score, then library order, then text) and records the selection as provisional: a numerical score tie is not editorial equivalence, and nothing is picked at random (parent correction 2026-10-17). All other good library alternatives stay in the library untouched.",
     "statuses": "approved = applied by the assembler (owner or parent decision); proposed = the session's editorial suggestion, listed for the parent, NOT applied until approved. Live snapshots and completed history are never changed by this file.",
-    "fields": "canonical: the one hint that must win; equal: hints the assembler may vary among (only read when there is no canonical); by / date / reason: provenance."
+    "fields": "canonical: the one hint that must win; equal: hints the assembler may vary among (only read when there is no canonical); by / date / reason: provenance.",
+    "reconciled": {
+      "date": "2026-10-17",
+      "rule": "reviewer_final_best_available -> canonical when it differs from the provisional top candidate; contradictions left provisional",
+      "added": 46
+    }
   },
   "pairs": {
     "p_gold__pirate": {
@@ -127,6 +132,834 @@
           "RAINBOW",
           "BEAM"
         ]
+      }
+    },
+    "p_bridge__diamond": {
+      "status": "approved",
+      "canonical": "CARD",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-9",
+      "reason": "Shortest path to both words with no stretch.",
+      "evidence": {
+        "displaced": "TRUMP",
+        "scores": {
+          "CARD": "2/2/2",
+          "TRUMP": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_bridge__iron": {
+      "status": "approved",
+      "canonical": "RUST",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-9",
+      "reason": "Most everyday word of the three with a clear picture on both sides.",
+      "evidence": {
+        "displaced": "GIRDER",
+        "scores": {
+          "RUST": "1/2/2",
+          "GIRDER": "2/2/1"
+        },
+        "numericalTie": false,
+        "note": "reviewer named a lower-scored PASS hint as strongest; recorded as the reviewer's editorial call, flagged for the parent"
+      }
+    },
+    "p_bridge__pirate": {
+      "status": "approved",
+      "canonical": "SHIP",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "Pirate ship is instant and the ship's bridge is a well-known second sense of bridge.",
+      "evidence": {
+        "displaced": "PLANK",
+        "scores": {
+          "SHIP": "2/2/2",
+          "PLANK": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_bridge__salt": {
+      "status": "approved",
+      "canonical": "ICE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "Winter-road scene that everybody has met: bridges ice, salt melts it.",
+      "evidence": {
+        "displaced": "RUST",
+        "scores": {
+          "ICE": "2/2/2",
+          "RUST": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_bridge__spring": {
+      "status": "approved",
+      "canonical": "SUSPENSION",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "Both sides are direct, well-known senses with no filler.",
+      "evidence": {
+        "displaced": "WATER",
+        "scores": {
+          "SUSPENSION": "2/2/2",
+          "WATER": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_bridge__train": {
+      "status": "approved",
+      "canonical": "RAILROAD",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "Plain compound on both sides, universally known.",
+      "evidence": {
+        "displaced": "TRESTLE",
+        "scores": {
+          "RAILROAD": "2/2/2",
+          "TRESTLE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_bridge__water": {
+      "status": "approved",
+      "canonical": "TROUBLED",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "One iconic phrase names the whole pair.",
+      "evidence": {
+        "displaced": "RIVER",
+        "scores": {
+          "TROUBLED": "2/2/2",
+          "RIVER": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_card__crown": {
+      "status": "approved",
+      "canonical": "KING",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "Marginally the more default royal; either serves.",
+      "evidence": {
+        "displaced": "QUEEN",
+        "scores": {
+          "KING": "2/2/2",
+          "QUEEN": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_card__diamond": {
+      "status": "approved",
+      "canonical": "SUIT",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "Cleanest: diamonds are literally a suit of cards.",
+      "evidence": {
+        "displaced": "ACE",
+        "scores": {
+          "SUIT": "2/2/2",
+          "ACE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_card__dog": {
+      "status": "approved",
+      "canonical": "POKER",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "A single famous image holds both words.",
+      "evidence": {
+        "displaced": "WILD",
+        "scores": {
+          "POKER": "2/2/2",
+          "WILD": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_card__heart": {
+      "status": "approved",
+      "canonical": "VALENTINE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-10",
+      "reason": "A single scene most people have lived.",
+      "evidence": {
+        "displaced": "SUIT",
+        "scores": {
+          "VALENTINE": "2/2/2",
+          "SUIT": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_card__night": {
+      "status": "approved",
+      "canonical": "POKER",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-11",
+      "reason": "More specific than GAME; poker night evokes the cards-on-the-table scene directly.",
+      "evidence": {
+        "displaced": "GAME",
+        "scores": {
+          "POKER": "2/2/2",
+          "GAME": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_castle__crown": {
+      "status": "approved",
+      "canonical": "KING",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-11",
+      "reason": "A concrete figure that owns both objects.",
+      "evidence": {
+        "displaced": "ROYAL",
+        "scores": {
+          "KING": "2/2/2",
+          "ROYAL": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_castle__queen": {
+      "status": "approved",
+      "canonical": "THRONE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-12",
+      "reason": "More concrete than ROYAL while reaching both words equally well.",
+      "evidence": {
+        "displaced": "ROYAL",
+        "scores": {
+          "THRONE": "2/2/2",
+          "ROYAL": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_cat__glass": {
+      "status": "approved",
+      "canonical": "WINDOW",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-12",
+      "reason": "Broader than MARBLE; the cat-in-the-window scene needs no special knowledge.",
+      "evidence": {
+        "displaced": "MARBLE",
+        "scores": {
+          "WINDOW": "1/2/1",
+          "MARBLE": "1/2/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_cat__night": {
+      "status": "approved",
+      "canonical": "PROWL",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-13",
+      "reason": "The verb binds the two words in one action rather than two separate images.",
+      "evidence": {
+        "displaced": "ALLEY",
+        "scores": {
+          "PROWL": "2/1/1",
+          "ALLEY": "2/1/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_cat__wolf": {
+      "status": "approved",
+      "canonical": "PREDATOR",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-13",
+      "reason": "Slightly more specific than FUR while still reaching both.",
+      "evidence": {
+        "displaced": "FUR",
+        "scores": {
+          "PREDATOR": "2/2/2",
+          "FUR": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_crown__king": {
+      "status": "approved",
+      "canonical": "CORONATION",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-13",
+      "reason": "Names the exact event joining the two words.",
+      "evidence": {
+        "displaced": "THRONE",
+        "scores": {
+          "CORONATION": "2/2/2",
+          "THRONE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_crown__knight": {
+      "status": "approved",
+      "canonical": "ARTHUR",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-13",
+      "reason": "A single story containing a crowned king and his knights.",
+      "evidence": {
+        "displaced": "KING",
+        "scores": {
+          "ARTHUR": "2/2/2",
+          "KING": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_crown__ocean": {
+      "status": "approved",
+      "canonical": "NEPTUNE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-13",
+      "reason": "Broadest recognition; sea-king imagery includes the crown.",
+      "evidence": {
+        "displaced": "TRITON",
+        "scores": {
+          "NEPTUNE": "1/2/1",
+          "TRITON": "2/2/1"
+        },
+        "numericalTie": false,
+        "note": "reviewer named a lower-scored PASS hint as strongest; recorded as the reviewer's editorial call, flagged for the parent"
+      }
+    },
+    "p_crown__queen": {
+      "status": "approved",
+      "canonical": "CORONATION",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "A single ceremony in which a crown is placed on a queen; both words are central to the scene.",
+      "evidence": {
+        "displaced": "TIARA",
+        "scores": {
+          "CORONATION": "2/2/2",
+          "TIARA": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_crown__ring": {
+      "status": "approved",
+      "canonical": "JEWEL",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "Crown Jewels plus the jewel in a ring; both routes are immediate.",
+      "evidence": {
+        "displaced": "GOLD",
+        "scores": {
+          "JEWEL": "2/2/2",
+          "GOLD": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_diamond__glass": {
+      "status": "approved",
+      "canonical": "CUT",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "Compound on both sides plus the shared scene of a diamond scoring glass.",
+      "evidence": {
+        "displaced": "CRYSTAL",
+        "scores": {
+          "CUT": "2/2/2",
+          "CRYSTAL": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_diamond__gold": {
+      "status": "approved",
+      "canonical": "RING",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "One object made of gold and set with a diamond.",
+      "evidence": {
+        "displaced": "MINE",
+        "scores": {
+          "RING": "2/2/2",
+          "MINE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_diamond__iron": {
+      "status": "approved",
+      "canonical": "MINE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "Concrete compound on both sides.",
+      "evidence": {
+        "displaced": "HARD",
+        "scores": {
+          "MINE": "2/2/2",
+          "HARD": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_diamond__key": {
+      "status": "approved",
+      "canonical": "CUT",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "Standard verb/compound on both sides with no story needed.",
+      "evidence": {
+        "displaced": "SAFE",
+        "scores": {
+          "CUT": "2/2/2",
+          "SAFE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_diamond__queen": {
+      "status": "approved",
+      "canonical": "CARD",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "One card names both words.",
+      "evidence": {
+        "displaced": "CROWN",
+        "scores": {
+          "CARD": "2/2/2",
+          "CROWN": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_diamond__ring": {
+      "status": "approved",
+      "canonical": "ENGAGEMENT",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-14",
+      "reason": "The diamond engagement ring is the single most familiar object joining both words.",
+      "evidence": {
+        "displaced": "WEDDING",
+        "scores": {
+          "ENGAGEMENT": "2/2/2",
+          "WEDDING": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_diamond__star": {
+      "status": "approved",
+      "canonical": "TWINKLE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-15",
+      "reason": "The nursery rhyme names both targets, so it is a shared text and not just a shared property.",
+      "evidence": {
+        "displaced": "SPARKLE",
+        "scores": {
+          "TWINKLE": "2/2/2",
+          "SPARKLE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_dog__star": {
+      "status": "approved",
+      "canonical": "SIRIUS",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-16",
+      "reason": "The Dog Star nickname ties both words together in a single well-known fact.",
+      "evidence": {
+        "displaced": "LASSIE",
+        "scores": {
+          "SIRIUS": "1/2/1",
+          "LASSIE": "2/1/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_dog__wolf": {
+      "status": "approved",
+      "canonical": "HOWL",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-16",
+      "reason": "The shared sound is the most immediate link between the two animals.",
+      "evidence": {
+        "displaced": "PACK",
+        "scores": {
+          "HOWL": "2/2/2",
+          "PACK": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_dragon__gold": {
+      "status": "approved",
+      "canonical": "HOARD",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-16",
+      "reason": "'Dragon's hoard' names the gold pile directly.",
+      "evidence": {
+        "displaced": "SMAUG",
+        "scores": {
+          "HOARD": "2/2/2",
+          "SMAUG": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_dragon__king": {
+      "status": "approved",
+      "canonical": "THRONE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-16",
+      "reason": "King's throne is universal and the dragon side rides on the best-known dragon franchise.",
+      "evidence": {
+        "displaced": "ARTHUR",
+        "scores": {
+          "THRONE": "1/2/1",
+          "ARTHUR": "1/2/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_dragon__lion": {
+      "status": "approved",
+      "canonical": "ROAR",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-16",
+      "reason": "The shared sound needs no cultural knowledge.",
+      "evidence": {
+        "displaced": "DANCE",
+        "scores": {
+          "ROAR": "2/2/2",
+          "DANCE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_dragon__train": {
+      "status": "approved",
+      "canonical": "TOOTHLESS",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-16",
+      "reason": "The dragon character's name makes DRAGON certain and the film title supplies TRAIN.",
+      "evidence": {
+        "displaced": "HICCUP",
+        "scores": {
+          "TOOTHLESS": "2/2/1",
+          "HICCUP": "2/2/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_egg__horse": {
+      "status": "approved",
+      "canonical": "HUMPTY",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-17",
+      "reason": "The more natural half of the name; the horses are in the rhyme everyone knows.",
+      "evidence": {
+        "displaced": "DUMPTY",
+        "scores": {
+          "HUMPTY": "2/1/1",
+          "DUMPTY": "2/1/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_egg__iron": {
+      "status": "approved",
+      "canonical": "SKILLET",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-17",
+      "reason": "Cast-iron skillet is the tighter fixed phrase, and eggs are its signature dish.",
+      "evidence": {
+        "displaced": "PAN",
+        "scores": {
+          "SKILLET": "2/2/2",
+          "PAN": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_egg__queen": {
+      "status": "approved",
+      "canonical": "BEE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-17",
+      "reason": "Queen bee is universal and her job of laying eggs is common knowledge.",
+      "evidence": {
+        "displaced": "ALIEN",
+        "scores": {
+          "BEE": "1/2/2",
+          "ALIEN": "2/2/1"
+        },
+        "numericalTie": false,
+        "note": "reviewer named a lower-scored PASS hint as strongest; recorded as the reviewer's editorial call, flagged for the parent"
+      }
+    },
+    "p_fire__honey": {
+      "status": "approved",
+      "canonical": "SMOKE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "The beekeeper's smoker is a recognizable scene and fire is immediate.",
+      "evidence": {
+        "displaced": "WAX",
+        "scores": {
+          "SMOKE": "2/1/1",
+          "WAX": "1/2/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_fire__key": {
+      "status": "approved",
+      "canonical": "ESCAPE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "Two everyday compounds, zero explanation needed.",
+      "evidence": {
+        "displaced": "STRIKE",
+        "scores": {
+          "ESCAPE": "2/2/2",
+          "STRIKE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_fire__night": {
+      "status": "approved",
+      "canonical": "CAMP",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "Campfire at night is one shared picture.",
+      "evidence": {
+        "displaced": "GLOW",
+        "scores": {
+          "CAMP": "2/1/1",
+          "GLOW": "2/1/1"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_fire__ring": {
+      "status": "approved",
+      "canonical": "CASH",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "The song title is exactly the pair.",
+      "evidence": {
+        "displaced": "FORGE",
+        "scores": {
+          "CASH": "2/2/2",
+          "FORGE": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_fire__star": {
+      "status": "approved",
+      "canonical": "SHOOTING",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "Compound plus verb, both instant.",
+      "evidence": {
+        "displaced": "BURNING",
+        "scores": {
+          "SHOOTING": "2/2/2",
+          "BURNING": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_fire__train": {
+      "status": "approved",
+      "canonical": "ENGINE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "Two compounds, no explanation needed.",
+      "evidence": {
+        "displaced": "COAL",
+        "scores": {
+          "ENGINE": "2/2/2",
+          "COAL": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_fire__witch": {
+      "status": "approved",
+      "canonical": "STAKE",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "Burning at the stake is the shared story itself.",
+      "evidence": {
+        "displaced": "CAULDRON",
+        "scores": {
+          "STAKE": "2/2/2",
+          "CAULDRON": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
+      }
+    },
+    "p_fish__king": {
+      "status": "approved",
+      "canonical": "SALMON",
+      "by": "parent standing rule 2026-10-17: explicit FINAL reviewer best_available wins over the numerical tie-break",
+      "date": "2026-10-17",
+      "basis": "reviewer_final_best_available",
+      "reviewer": "blind-subagent-18",
+      "reason": "A more familiar fish than mackerel with the same king-species route.",
+      "evidence": {
+        "displaced": "MACKEREL",
+        "scores": {
+          "SALMON": "2/2/2",
+          "MACKEREL": "2/2/2"
+        },
+        "numericalTie": true,
+        "note": "equal blind scores; library order would have served the displaced hint"
       }
     }
   }
