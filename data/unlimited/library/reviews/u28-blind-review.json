@@ -1,0 +1,428 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-28",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "u28-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors + no-literal-false-facts reminder, 2026-10-18",
+    "independence": "I read only u28-blind-input.json; I opened no other file, ran no repository search, and used no web or paid API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_moon__snake", "a": "MOON", "b": "SNAKE",
+      "hints": [
+        { "text": "ZODIAC", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SNAKE is a Chinese zodiac animal (Year of the Snake); MOON reaches zodiac only via the lunar calendar behind that zodiac or the astrological 'moon sign', a secondary route." },
+        { "text": "CURVE", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Shape-only route: a crescent MOON is curved and a SNAKE curves as it moves, but the shared property is weak and points at many things." },
+        { "text": "CYCLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "MOON via the lunar cycle is strong; SNAKE needs the ouroboros (snake eating its tail as a symbol of the eternal cycle) or skin-shedding cycles, which most players will not reach." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ZODIAC", "why": "Year of the Snake is a firm anchor and the lunar-calendar / moon-sign link is real, so it is the only hint where both sides are factual and themed together." },
+      "pair_note": "No PASS; MOON+SNAKE has no familiar shared scene in this list. ZODIAC is closest and could be argued up to a moderate PASS via Lunar New Year."
+    },
+    {
+      "pair_id": "p_moon__spider", "a": "MOON", "b": "SPIDER",
+      "hints": [
+        { "text": "WEB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "SPIDER web is direct; MOON has no recognizable 'web' route." },
+        { "text": "NIGHT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "MOON at night is strong; SPIDER only via many spiders hunting or spinning at night, which is true but not a salient association." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "NIGHT", "why": "Only hint that touches both words, via a moonlit night when spiders are active." },
+      "pair_note": "No PASS. WEB is spider-only; NIGHT leans on a weak nocturnal-spider link."
+    },
+    {
+      "pair_id": "p_moon__spring", "a": "MOON", "b": "SPRING",
+      "hints": [
+        { "text": "EASTER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "SPRING holiday; MOON because Easter's date is set by the first full moon after the spring equinox, a well-known piece of trivia." },
+        { "text": "RABBIT", "connection_to_a": 1, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "MOON via the familiar 'rabbit in the moon' folklore (Mid-Autumn moon rabbit); SPRING via spring bunnies and the Easter bunny." },
+        { "text": "TIDE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON drives the tides, and 'spring tide' is a standard compound (spring tides fall near new and full moon), so both sides meet in one fact." }
+      ],
+      "strong_hints": ["TIDE", "EASTER", "RABBIT"],
+      "best_available": { "text": "TIDE", "why": "'Spring tide' is a real compound that is itself caused by the moon, giving a tight two-sided link." },
+      "pair_note": "Strong pair: three valid routes, TIDE clearly best."
+    },
+    {
+      "pair_id": "p_moon__train", "a": "MOON", "b": "TRAIN",
+      "hints": [
+        { "text": "EXPRESS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Express TRAIN is direct; MOON has no familiar 'express' route for a player." },
+        { "text": "NIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "MOON at night and the familiar 'night train' phrase; broad but both sides land." }
+      ],
+      "strong_hints": ["NIGHT"],
+      "best_available": { "text": "NIGHT", "why": "'Night train' is a familiar phrase and the moon is the night's emblem." },
+      "pair_note": "Only NIGHT works; moderate strength."
+    },
+    {
+      "pair_id": "p_moon__water", "a": "MOON", "b": "WATER",
+      "hints": [
+        { "text": "REFLECTION", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Classic scene of the MOON reflected on still WATER." },
+        { "text": "ICE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WATER as ice is direct; MOON only via water ice detected in shadowed polar craters, true but not a player's association." },
+        { "text": "TIDE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The MOON's pull makes the tides of the sea's WATER; textbook link." }
+      ],
+      "strong_hints": ["TIDE", "REFLECTION"],
+      "best_available": { "text": "TIDE", "why": "Direct cause-and-effect fact everyone knows." },
+      "pair_note": "Two strong routes; ICE is a factual but obscure moon link."
+    },
+    {
+      "pair_id": "p_moon__witch", "a": "MOON", "b": "WITCH",
+      "hints": [
+        { "text": "HALLOWEEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Halloween imagery pairs a big full MOON with a WITCH silhouette; both are stock Halloween symbols." },
+        { "text": "BROOMSTICK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "WITCH's broomstick, and the iconic image of a witch on a broomstick flying across the MOON." },
+        { "text": "FULL", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Full MOON is direct; WITCH has no 'full' route beyond the moon itself." }
+      ],
+      "strong_hints": ["HALLOWEEN", "BROOMSTICK"],
+      "best_available": { "text": "HALLOWEEN", "why": "Shared stock scene that names both images at once." },
+      "pair_note": "Good pair; FULL is moon-only filler."
+    },
+    {
+      "pair_id": "p_mouse__night", "a": "MOUSE", "b": "NIGHT",
+      "hints": [
+        { "text": "CHRISTMAS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "'Twas the Night Before Christmas' with its 'not even a mouse' line ties both words in one famous poem." },
+        { "text": "STIRRING", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:CHRISTMAS"], "verdict": "PASS", "reason": "Same poem: 'not a creature was stirring, not even a MOUSE' on that NIGHT; needs the poem but the poem is famous." },
+        { "text": "NOCTURNAL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Mice are largely nocturnal, and nocturnal means active at NIGHT; shared-property route." }
+      ],
+      "strong_hints": ["CHRISTMAS", "NOCTURNAL", "STIRRING"],
+      "best_available": { "text": "CHRISTMAS", "why": "Famous poem naming both night and mouse." },
+      "pair_note": "Strong pair; STIRRING depends on CHRISTMAS's poem."
+    },
+    {
+      "pair_id": "p_mouse__ocean", "a": "MOUSE", "b": "OCEAN",
+      "hints": [
+        { "text": "PAD", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mouse pad is direct; OCEAN has no 'pad' route." },
+        { "text": "SHIP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "OCEAN ship is direct; MOUSE only via stowaway rodents aboard ships, where rats are the usual image." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SHIP", "why": "The only hint touching both sides, via a ship's stowaway mice." },
+      "pair_note": "No PASS; weak pair overall."
+    },
+    {
+      "pair_id": "p_mouse__pirate", "a": "MOUSE", "b": "PIRATE",
+      "hints": [
+        { "text": "MICKEY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Mickey MOUSE is direct; PIRATE only via Disney's Pirates of the Caribbean or Mickey in pirate costume, a brand detour." },
+        { "text": "SHIP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "PIRATE ship is direct; MOUSE via ship-stowaway rodents (rats more typical) or Mickey's Steamboat Willie, both indirect." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SHIP", "why": "Pirate side is strong and the stowaway-mouse image is at least a familiar scene." },
+      "pair_note": "No PASS; both hints need a detour to reach one side."
+    },
+    {
+      "pair_id": "p_mouse__queen", "a": "MOUSE", "b": "QUEEN",
+      "hints": [
+        { "text": "MINNIE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Minnie MOUSE is direct; QUEEN only via Queen Minnie in the Kingdom Hearts games, which few players would reach." },
+        { "text": "PUSSYCAT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Nursery rhyme 'Pussycat, Pussycat' where the cat visits the QUEEN and frightens a little MOUSE under her chair; one story covers both." }
+      ],
+      "strong_hints": ["PUSSYCAT"],
+      "best_available": { "text": "PUSSYCAT", "why": "One well-known rhyme names both the queen and the mouse." },
+      "pair_note": "PUSSYCAT is a good story route; MINNIE is mouse-only for most players."
+    },
+    {
+      "pair_id": "p_mouse__ring", "a": "MOUSE", "b": "RING",
+      "hints": [
+        { "text": "TRAP", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mousetrap is direct; RING has no familiar 'trap' route." },
+        { "text": "CLICK", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "MOUSE click is direct; RING relates only as another sound word, not a connection." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CLICK", "why": "Forced pick: at least sits in the computer/phone sound family alongside 'ring', though it reaches RING only loosely." },
+      "pair_note": "No PASS; both hints are mouse-only."
+    },
+    {
+      "pair_id": "p_mouse__robot", "a": "MOUSE", "b": "ROBOT",
+      "hints": [
+        { "text": "MECHANICAL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "ROBOT is mechanical; MOUSE via the wind-up mechanical mouse toy or the old mechanical (ball) computer mouse." },
+        { "text": "COMPUTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Computer MOUSE is direct; ROBOT via computer-controlled machines, a familiar tech-family link." }
+      ],
+      "strong_hints": ["COMPUTER", "MECHANICAL"],
+      "best_available": { "text": "COMPUTER", "why": "Computer mouse is instant and robots are computer-driven machines." },
+      "pair_note": "Two moderate passes."
+    },
+    {
+      "pair_id": "p_mouse__rock", "a": "MOUSE", "b": "ROCK",
+      "hints": [
+        { "text": "MICKEY", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mickey MOUSE is direct; ROCK has no familiar 'Mickey' route." },
+        { "text": "HOLE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Mouse hole is direct; ROCK via holes in rock or the rock band Hole, neither a strong player association." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "HOLE", "why": "Mouse hole is iconic and holes in rock / the band Hole give a thin second side." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_mouse__rose", "a": "MOUSE", "b": "ROSE",
+      "hints": [
+        { "text": "BRAMBLY", "connection_to_a": 1, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure", "british_only"], "verdict": "FAIL", "reason": "MOUSE via the British children's books Brambly Hedge (a mouse community); ROSE only via brambles being thorny relatives in the rose family, which is a rescue explanation." },
+        { "text": "GARDEN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Rose garden is direct; MOUSE only as a garden visitor (field or garden mouse), a weak scene." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GARDEN", "why": "Both can plausibly be found in a garden; BRAMBLY is too niche." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_mouse__salt", "a": "MOUSE", "b": "SALT",
+      "hints": [
+        { "text": "LICK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Salt lick is direct; MOUSE has no 'lick' route." },
+        { "text": "PANTRY", "connection_to_a": 1, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": ["generic"], "verdict": "PASS", "reason": "Shared kitchen scene: SALT is a pantry staple and a MOUSE raiding the pantry is a familiar image; moderate strength." }
+      ],
+      "strong_hints": ["PANTRY"],
+      "best_available": { "text": "PANTRY", "why": "Only hint that places both in one recognizable scene." },
+      "pair_note": "PANTRY is a moderate pass at best; could be argued down to BORDERLINE."
+    },
+    {
+      "pair_id": "p_mouse__shadow", "a": "MOUSE", "b": "SHADOW",
+      "hints": [
+        { "text": "SCURRY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Mice scurry is a stock phrase; SHADOW only via literary 'scurrying shadows'." },
+        { "text": "PUPPET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SHADOW puppet is a direct compound; MOUSE only as one possible animal shape or a mouse hand puppet, not a standard pairing." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PUPPET", "why": "Shadow puppetry of small animals is a recognizable scene, though a mouse is not the iconic shape." },
+      "pair_note": "No PASS; both are half-strong."
+    },
+    {
+      "pair_id": "p_mouse__shark", "a": "MOUSE", "b": "SHARK",
+      "hints": [
+        { "text": "TEETH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "SHARK teeth are iconic; MOUSE via rodent gnawing teeth (and the tooth-collecting mouse of Spanish and French folklore); shared-property route at moderate strength." },
+        { "text": "CAT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Cat and MOUSE is direct; SHARK only via catsharks, a real but obscure shark family." }
+      ],
+      "strong_hints": ["TEETH"],
+      "best_available": { "text": "TEETH", "why": "Teeth are a defining feature of both, if more famously the shark's." },
+      "pair_note": "TEETH is a moderate pass; CAT is mouse-only for players."
+    },
+    {
+      "pair_id": "p_mouse__snake", "a": "MOUSE", "b": "SNAKE",
+      "hints": [
+        { "text": "SWALLOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Familiar scene of a SNAKE swallowing a MOUSE whole." },
+        { "text": "PREY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOUSE is classic SNAKE prey; predator-prey route." },
+        { "text": "FEED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:PREY"], "verdict": "PASS", "reason": "Pet SNAKEs are fed mice (feeder mice); recognizable feeding scene." }
+      ],
+      "strong_hints": ["PREY", "SWALLOW", "FEED"],
+      "best_available": { "text": "PREY", "why": "Most direct statement of the predator-prey relationship." },
+      "pair_note": "Strong pair with three overlapping routes."
+    },
+    {
+      "pair_id": "p_mouse__spider", "a": "MOUSE", "b": "SPIDER",
+      "hints": [
+        { "text": "PEST", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shared property: both are unwanted household pests (mice strongly, spiders commonly)." },
+        { "text": "SCARY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic", "colour_mood_material"], "verdict": "PASS", "reason": "Shared fear: the stock 'scared of mice' chair-standing image and the very common fear of spiders." },
+        { "text": "WEB", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SPIDER web is direct; MOUSE only via using a computer mouse to browse the World Wide Web, a pun-like detour." }
+      ],
+      "strong_hints": ["PEST", "SCARY"],
+      "best_available": { "text": "PEST", "why": "Clear shared category for both household creatures." },
+      "pair_note": "Two moderate passes; WEB is a fun but indirect computer pun."
+    },
+    {
+      "pair_id": "p_mouse__spring", "a": "MOUSE", "b": "SPRING",
+      "hints": [
+        { "text": "SNAP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["variant_of:TRAP"], "verdict": "PASS", "reason": "A SPRING snaps back; MOUSE via the spring-loaded mousetrap snapping shut." },
+        { "text": "TRAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Mousetrap is the compound, and the classic snap trap is driven by a SPRING (spring trap)." }
+      ],
+      "strong_hints": ["TRAP", "SNAP"],
+      "best_available": { "text": "TRAP", "why": "Mousetrap and spring trap converge on one object." },
+      "pair_note": "Solid pair; SNAP depends on the trap image."
+    },
+    {
+      "pair_id": "p_mouse__star", "a": "MOUSE", "b": "STAR",
+      "hints": [
+        { "text": "HOLLYWOOD", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Hollywood STARs are direct; MOUSE only via Mickey Mouse's star on the Walk of Fame, which requires that detail." },
+        { "text": "MICKEY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Mickey MOUSE is direct; STAR only via Mickey being a cartoon star with a Walk of Fame star, a soft link." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MICKEY", "why": "Mickey as a famous screen star is the most findable route; HOLLYWOOD needs the same fact in reverse." },
+      "pair_note": "No PASS; both hints rely on the same Mickey-as-a-star idea and could be argued up together."
+    },
+    {
+      "pair_id": "p_mouse__train", "a": "MOUSE", "b": "TRAIN",
+      "hints": [
+        { "text": "TUNNEL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "TRAIN tunnel is direct; MOUSE via mice burrowing tunnels, a true shared-property route at moderate strength." },
+        { "text": "MICKEY", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mickey MOUSE is direct; TRAIN only via Disneyland's railroad or Walt Disney's love of trains, which players would not reach." }
+      ],
+      "strong_hints": ["TUNNEL"],
+      "best_available": { "text": "TUNNEL", "why": "Both genuinely travel through tunnels." },
+      "pair_note": "TUNNEL is a moderate pass; MICKEY is mouse-only."
+    },
+    {
+      "pair_id": "p_mouse__water", "a": "MOUSE", "b": "WATER",
+      "hints": [
+        { "text": "BOTTLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "WATER bottle is direct; MOUSE via the drip water bottle on a pet rodent cage, a scene more associated with hamsters." },
+        { "text": "DRIP", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "WATER drip is direct; MOUSE only through the same cage-bottle explanation, one step further removed." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BOTTLE", "why": "Pet-cage water bottle is a real if secondary scene for a pet mouse." },
+      "pair_note": "No PASS."
+    },
+    {
+      "pair_id": "p_mouse__witch", "a": "MOUSE", "b": "WITCH",
+      "hints": [
+        { "text": "SPELL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "WITCH casts spells; MOUSE only via stories of people turned into mice by a spell, which is the DAHL story without the anchor." },
+        { "text": "DAHL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Roald Dahl's The Witches, where the WITCHes turn the boy into a MOUSE; one story covers both." }
+      ],
+      "strong_hints": ["DAHL"],
+      "best_available": { "text": "DAHL", "why": "Famous book and films directly link witches and a boy turned mouse." },
+      "pair_note": "DAHL is a good story route; SPELL is the weaker generic version."
+    },
+    {
+      "pair_id": "p_mouse__wolf", "a": "MOUSE", "b": "WOLF",
+      "hints": [
+        { "text": "FOX", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "A third animal: fox is a wolf's canid cousin and famously pounces on mice, but it relates to each word separately rather than linking them." },
+        { "text": "PREY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOUSE as prey and WOLF as the archetypal predator stalking prey; predator-prey route, moderate on the wolf side." }
+      ],
+      "strong_hints": ["PREY"],
+      "best_available": { "text": "PREY", "why": "Mouse is archetypal prey and wolf an archetypal predator." },
+      "pair_note": "PREY is a moderate pass; FOX is a side-step."
+    },
+    {
+      "pair_id": "p_night__ocean", "a": "NIGHT", "b": "OCEAN",
+      "hints": [
+        { "text": "DARK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic", "colour_mood_material"], "verdict": "BORDERLINE", "reason": "Dark NIGHT is direct; OCEAN via the dark deep sea, a mood/property route that points at many things." },
+        { "text": "TIDE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "OCEAN tide is direct; NIGHT has no tide route of its own." },
+        { "text": "MOON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "MOON lights the NIGHT and pulls the OCEAN's tides; also the moonlit-sea scene." }
+      ],
+      "strong_hints": ["MOON"],
+      "best_available": { "text": "MOON", "why": "Strong link to both: night sky and ocean tides." },
+      "pair_note": "MOON is clearly best; TIDE is ocean-only without the moon."
+    },
+    {
+      "pair_id": "p_night__pirate", "a": "NIGHT", "b": "PIRATE",
+      "hints": [
+        { "text": "BLACK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "BORDERLINE", "reason": "Black NIGHT is direct; PIRATE via the black flag, Blackbeard or the Black Pearl, a colour route rather than a shared scene." },
+        { "text": "RAID", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "PIRATEs raid ships and towns, and 'night raid' is a familiar phrase." },
+        { "text": "LANTERN", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Lanterns light the NIGHT and hang on old PIRATE ships, but neither link is strong." }
+      ],
+      "strong_hints": ["RAID"],
+      "best_available": { "text": "RAID", "why": "Pirate raid and night raid are both natural phrases." },
+      "pair_note": "RAID is a moderate pass; BLACK could be argued up via Blackbeard/black flag."
+    },
+    {
+      "pair_id": "p_night__queen", "a": "NIGHT", "b": "QUEEN",
+      "hints": [
+        { "text": "PROM", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "'Prom night' and 'prom queen' are both stock phrases." },
+        { "text": "MOZART", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Mozart's Magic Flute features the Queen of the Night; one famous role names both." },
+        { "text": "DRAG", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Drag QUEEN is direct, and a 'drag night' at a club is a familiar event." }
+      ],
+      "strong_hints": ["PROM", "MOZART", "DRAG"],
+      "best_available": { "text": "PROM", "why": "Two equally familiar compounds." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_night__ring", "a": "NIGHT", "b": "RING",
+      "hints": [
+        { "text": "BELL", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Bells RING is direct; NIGHT has no familiar bell route ('night bell' is not a common phrase)." },
+        { "text": "ENGAGEMENT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Engagement RING is direct; NIGHT only by imagining the proposal happening at night." },
+        { "text": "PHONE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "A PHONE rings; NIGHT via the familiar dread of a phone ringing in the middle of the night, a soft scene." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PHONE", "why": "The late-night phone call is the only scene touching both sides." },
+      "pair_note": "No PASS; all three hints are ring-led."
+    },
+    {
+      "pair_id": "p_night__robot", "a": "NIGHT", "b": "ROBOT",
+      "hints": [
+        { "text": "VISION", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "'Night vision' is a compound; ROBOT via robot/machine vision and Marvel's android Vision; moderate strength." },
+        { "text": "SENTRY", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "NIGHT via night sentries on watch and ROBOT via sentry bots or guns in games and sci-fi; both links are secondary." }
+      ],
+      "strong_hints": ["VISION"],
+      "best_available": { "text": "VISION", "why": "Night vision compound plus robot vision/Marvel's Vision." },
+      "pair_note": "VISION is a moderate pass."
+    },
+    {
+      "pair_id": "p_night__rock", "a": "NIGHT", "b": "ROCK",
+      "hints": [
+        { "text": "ALL", "connection_to_a": 1, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["generic", "needs_explanation"], "verdict": "FAIL", "reason": "'All night' is a phrase but ROCK needs a song lyric ('rock and roll all nite'); filler word rescued by an explanation." },
+        { "text": "CLUB", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Nightclub is a compound; ROCK via rock clubs where bands play." },
+        { "text": "CONCERT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Rock concert is a stock phrase, and concerts are a classic night out." }
+      ],
+      "strong_hints": ["CLUB", "CONCERT"],
+      "best_available": { "text": "CLUB", "why": "Nightclub compound plus rock club scene." },
+      "pair_note": "Two moderate passes; ALL is filler."
+    },
+    {
+      "pair_id": "p_night__rose", "a": "NIGHT", "b": "ROSE",
+      "hints": [
+        { "text": "BACHELOR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Bachelor's rose ceremony is iconic; NIGHT via the show's 'rose ceremony' nights and bachelor-party nights." },
+        { "text": "PROM", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Prom night is a compound; ROSE via prom corsages and boutonnieres." }
+      ],
+      "strong_hints": ["PROM", "BACHELOR"],
+      "best_available": { "text": "PROM", "why": "Prom night is instant and roses are a standard prom flower." },
+      "pair_note": "Two moderate passes."
+    },
+    {
+      "pair_id": "p_night__salt", "a": "NIGHT", "b": "SALT",
+      "hints": [
+        { "text": "SEA", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Sea SALT is direct; NIGHT has no route through sea." },
+        { "text": "ROAD", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Road SALT is direct; NIGHT only via generic night driving, not a connection." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SEA", "why": "Forced pick: a night at sea is at least an image; ROAD is equally thin." },
+      "pair_note": "No PASS; both hints are salt-only."
+    },
+    {
+      "pair_id": "p_night__shadow", "a": "NIGHT", "b": "SHADOW",
+      "hints": [
+        { "text": "MOONLIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Moonlight fills the NIGHT and casts moon SHADOWs." },
+        { "text": "SPOOKY", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic", "colour_mood_material"], "verdict": "PASS", "reason": "Shared mood: spooky night and spooky shadows are stock pairings; broad but both land." },
+        { "text": "DARK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Shared property: night is dark and a shadow is a dark area." }
+      ],
+      "strong_hints": ["MOONLIGHT", "DARK", "SPOOKY"],
+      "best_available": { "text": "MOONLIGHT", "why": "A specific scene linking both, not just a shared mood." },
+      "pair_note": "Easy pair; DARK and SPOOKY are broad but valid."
+    },
+    {
+      "pair_id": "p_night__shark", "a": "NIGHT", "b": "SHARK",
+      "hints": [
+        { "text": "WEEK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Weeknight is a compound and Shark Week is a famous TV event." },
+        { "text": "HUNT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SHARKs are archetypal hunters and many hunt at night; 'night hunt' is a natural phrase; moderate strength." }
+      ],
+      "strong_hints": ["WEEK", "HUNT"],
+      "best_available": { "text": "WEEK", "why": "Two familiar compounds, weeknight and Shark Week." },
+      "pair_note": "Good pair."
+    },
+    {
+      "pair_id": "p_night__snake", "a": "NIGHT", "b": "SNAKE",
+      "hints": [
+        { "text": "VISION", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "'Night vision' compound; SNAKE via pit vipers sensing body heat in the dark, a well-known nature-documentary fact; moderate strength." },
+        { "text": "NOCTURNAL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Nocturnal means NIGHT-active; many snakes are nocturnal, but snakes are not commonly thought of that way." }
+      ],
+      "strong_hints": ["VISION"],
+      "best_available": { "text": "VISION", "why": "Night vision plus snakes' heat sensing gives a specific shared ability." },
+      "pair_note": "VISION is a moderate, explanation-reliant pass; could be argued down to BORDERLINE."
+    },
+    {
+      "pair_id": "p_night__spider", "a": "NIGHT", "b": "SPIDER",
+      "hints": [
+        { "text": "NOCTURNAL", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Nocturnal means NIGHT-active; many spiders hunt or spin at night, but the spider side is not a salient association." },
+        { "text": "CRAWL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "SPIDERs crawl, and 'nightcrawler' (the worm, the X-Men character) is a familiar compound." }
+      ],
+      "strong_hints": ["CRAWL"],
+      "best_available": { "text": "CRAWL", "why": "Nightcrawler compound plus creepy-crawly spider." },
+      "pair_note": "CRAWL is a moderate pass."
+    },
+    {
+      "pair_id": "p_night__spring", "a": "NIGHT", "b": "SPRING",
+      "hints": [
+        { "text": "EQUINOX", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Spring equinox is a standard phrase, and at the equinox day and NIGHT are roughly equal (the word means 'equal night')." },
+        { "text": "PEEPERS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Spring peepers are North American frogs whose chorus is heard on spring NIGHTs; real but regional and niche." }
+      ],
+      "strong_hints": ["EQUINOX"],
+      "best_available": { "text": "EQUINOX", "why": "Spring equinox is familiar and its day/night balance gives the night link." },
+      "pair_note": "EQUINOX is a moderate pass; PEEPERS is a nice but niche route."
+    },
+    {
+      "pair_id": "p_night__star", "a": "NIGHT", "b": "STAR",
+      "hints": [
+        { "text": "GAZING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Stargazing is a compound, done at NIGHT." },
+        { "text": "STARRY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Rule failure: STARRY contains the target STAR as a substring (would otherwise be 'Starry Night')." },
+        { "text": "VANGOGH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Van Gogh's The Starry Night names both the night and its swirling stars." },
+        { "text": "SKY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Night sky is a compound and stars fill the sky." }
+      ],
+      "strong_hints": ["VANGOGH", "SKY", "GAZING"],
+      "best_available": { "text": "VANGOGH", "why": "A single famous work titled with both ideas." },
+      "pair_note": "Strong pair; STARRY must be removed for containing STAR."
+    },
+    {
+      "pair_id": "p_night__train", "a": "NIGHT", "b": "TRAIN",
+      "hints": [
+        { "text": "MIDNIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Rule failure: MIDNIGHT contains the target NIGHT as a substring (would otherwise be 'Midnight Train to Georgia')." },
+        { "text": "SLEEPER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Sleeper TRAIN is a standard term, and sleeping is what you do at NIGHT (sleeper = overnight train)." },
+        { "text": "GEORGIA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Gladys Knight & the Pips' 'Midnight Train to Georgia' names the train and the night hour in one famous song." }
+      ],
+      "strong_hints": ["SLEEPER", "GEORGIA"],
+      "best_available": { "text": "SLEEPER", "why": "Sleeper train is literally the night train." },
+      "pair_note": "Good pair once MIDNIGHT (contains NIGHT) is removed."
+    }
+  ]
+}
