@@ -1,0 +1,523 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-22",
+    "date": "2026-10-17",
+    "input": "u22-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u22-blind-input.json; no other file, repository search, web or API was consulted."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_heart__mouse",
+      "a": "HEART",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "RACING", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Heart racing is a familiar phrase, but nothing about a mouse races; wholly one-sided." },
+        { "text": "TIMID", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Timid as a mouse is proverbial; heart only via a timid or faint heart, a loose shared-property route." },
+        { "text": "MICKEY", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Mickey Mouse is instant, but Mickey has no route to heart." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "TIMID", "why": "Only hint that touches both words; mouse is proverbial and a timid heart is at least readable." },
+      "pair_note": "No PASS; RACING and MICKEY are pure mouse-or-heart filler."
+    },
+    {
+      "pair_id": "p_heart__night",
+      "a": "HEART",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "DATE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Date night is a set phrase; heart reached only through romance as the symbol of love." },
+        { "text": "LONELY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Lonely hearts (club, column) and a lonely night are both everyday phrases." },
+        { "text": "BEAT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Heartbeat is immediate; night has no beat route beyond a strained nightclub or police-beat reading." }
+      ],
+      "strong_hints": ["LONELY"],
+      "best_available": { "text": "LONELY", "why": "Reaches both words through common phrases with a shared mood." },
+      "pair_note": "LONELY carries the pair; DATE is serviceable backup."
+    },
+    {
+      "pair_id": "p_heart__ocean",
+      "a": "HEART",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "DEEP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Deep in my heart and the deep ocean are both plain usages of the same adjective." },
+        { "text": "TITANIC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Titanic sank in the ocean and the film gave us My Heart Will Go On and the Heart of the Ocean necklace." },
+        { "text": "NECKLACE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Heart pendants are the classic necklace; ocean only through the Titanic Heart of the Ocean necklace." }
+      ],
+      "strong_hints": ["DEEP", "TITANIC"],
+      "best_available": { "text": "DEEP", "why": "Broadest, needs no story knowledge." },
+      "pair_note": "Two solid hints; NECKLACE leans on the film prop."
+    },
+    {
+      "pair_id": "p_heart__pirate",
+      "a": "HEART",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "HEARTIES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Me hearties is pirate talk, but the hint contains HEART as a substring, a rule failure." },
+        { "text": "DAVY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Davy Jones is pirate lore; heart only via the Pirates of the Caribbean Davy Jones who cut out his own heart." },
+        { "text": "CHEST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A pirate treasure chest and the heart in your chest; Dead Man's Chest ties both." }
+      ],
+      "strong_hints": ["CHEST"],
+      "best_available": { "text": "CHEST", "why": "Clean double meaning understood by everyone." },
+      "pair_note": "HEARTIES is a contains_target rule failure despite a good idea."
+    },
+    {
+      "pair_id": "p_heart__queen",
+      "a": "HEART",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "DIANA", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Diana was dubbed Queen of Hearts but was a princess, never queen; both sides lean on one nickname." },
+        { "text": "CARD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Hearts is a suit and the queen is a face card; the queen of hearts is one card." },
+        { "text": "ALICE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The Queen of Hearts is the Wonderland villain, reaching both words through one famous story." }
+      ],
+      "strong_hints": ["CARD", "ALICE"],
+      "best_available": { "text": "CARD", "why": "Most direct; the queen of hearts is a single physical object." },
+      "pair_note": "Strong pair; DIANA is a fair but shakier nickname route."
+    },
+    {
+      "pair_id": "p_heart__ring",
+      "a": "HEART",
+      "b": "RING",
+      "hints": [
+        { "text": "CLADDAGH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "The Claddagh is a ring with hands holding a heart, perfect if known but niche outside Irish circles." },
+        { "text": "ENGAGEMENT", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Engagement ring is immediate; heart only through love and proposal." },
+        { "text": "PROMISE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Promise ring is a known term; heart via cross-my-heart sincerity, a loose route." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ENGAGEMENT", "why": "Ring is certain and heart-as-love is the most natural of the three loose heart routes." },
+      "pair_note": "No PASS; CLADDAGH is the best idea but too niche to carry the pair."
+    },
+    {
+      "pair_id": "p_heart__rock",
+      "a": "HEART",
+      "b": "ROCK",
+      "hints": [
+        { "text": "HARD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Hard rock and hard-hearted are both common compounds." },
+        { "text": "STONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Heart of stone is idiomatic and stone is a plain synonym of rock." },
+        { "text": "BAND", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Rock band is immediate; heart via Heart the rock band, a word-used-as-name route many players know." }
+      ],
+      "strong_hints": ["HARD", "STONE", "BAND"],
+      "best_available": { "text": "HARD", "why": "Both compounds are everyday language." },
+      "pair_note": "All three serve; BAND rewards music knowledge."
+    },
+    {
+      "pair_id": "p_heart__rose",
+      "a": "HEART",
+      "b": "ROSE",
+      "hints": [
+        { "text": "LOVE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The heart is the symbol of love and the rose its flower." },
+        { "text": "RED", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Red heart and red rose are the default colours of both; a valid shared property." },
+        { "text": "VALENTINE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Hearts and roses are the two Valentine icons." }
+      ],
+      "strong_hints": ["VALENTINE", "LOVE", "RED"],
+      "best_available": { "text": "VALENTINE", "why": "One shared scene that contains both objects." },
+      "pair_note": "Strong pair across the board."
+    },
+    {
+      "pair_id": "p_heart__salt",
+      "a": "HEART",
+      "b": "SALT",
+      "hints": [
+        { "text": "PRESSURE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Blood pressure is a heart matter and salt is the thing doctors tell you raises it; one shared health scene." },
+        { "text": "TEARS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Tears are salty; heart only through heartbreak making you cry." },
+        { "text": "EARTH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Salt of the earth is idiomatic, but heart of the earth is not a phrase players reach for." }
+      ],
+      "strong_hints": ["PRESSURE"],
+      "best_available": { "text": "PRESSURE", "why": "Blood pressure connects both through one familiar warning." },
+      "pair_note": "PRESSURE is a good hint; EARTH is filler."
+    },
+    {
+      "pair_id": "p_heart__shadow",
+      "a": "HEART",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "LONG", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Long shadow is natural; a heart that longs is a different word sense and does not present itself." },
+        { "text": "SECRET", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Secrets of the heart and secrets kept in the shadows share a hidden mood but neither side is a set phrase." },
+        { "text": "DOUBT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Shadow of a doubt is idiomatic; heart has no doubt route." },
+        { "text": "FOLLOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Follow your heart, and a shadow follows you everywhere; a clean verb route." }
+      ],
+      "strong_hints": ["FOLLOW"],
+      "best_available": { "text": "FOLLOW", "why": "Verb works literally for shadow and idiomatically for heart." },
+      "pair_note": "FOLLOW is the only real hint; LONG and DOUBT are shadow-only."
+    },
+    {
+      "pair_id": "p_heart__shark",
+      "a": "HEART",
+      "b": "SHARK",
+      "hints": [
+        { "text": "LOAN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Loan shark is immediate; heart has nothing to do with loans." },
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Cold-hearted is a set word; shark via cold-blooded or cold-eyed predator, a reasonable but looser property." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "COLD", "why": "Shared cold-blooded property reaches both, if a little loosely for shark." },
+      "pair_note": "No PASS; COLD is close and could be argued up."
+    },
+    {
+      "pair_id": "p_heart__snake",
+      "a": "HEART",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "CHARM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Snake charmer is immediate; heart via the heart charm on a bracelet and charming your way into a heart." },
+        { "text": "TATTOO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Heart and snake are two of the classic tattoo motifs, one shared scene." },
+        { "text": "COLD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Cold-hearted and cold-blooded snake are both familiar." }
+      ],
+      "strong_hints": ["TATTOO", "COLD", "CHARM"],
+      "best_available": { "text": "TATTOO", "why": "Both words are everyday tattoo imagery." },
+      "pair_note": "Good pair; CHARM is the weakest PASS."
+    },
+    {
+      "pair_id": "p_heart__spider",
+      "a": "HEART",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "CHARLOTTE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Charlotte is the spider in Charlotte's Web; there is no heart route from the name." },
+        { "text": "VEINS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The heart pumps blood through veins and spider veins are a common term." }
+      ],
+      "strong_hints": ["VEINS"],
+      "best_available": { "text": "VEINS", "why": "Anatomy plus a familiar compound." },
+      "pair_note": "VEINS carries the pair alone."
+    },
+    {
+      "pair_id": "p_heart__spring",
+      "a": "HEART",
+      "b": "SPRING",
+      "hints": [
+        { "text": "FEVER", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Spring fever is a set phrase; heart only through a racing feverish heart or the love-fever song." },
+        { "text": "LEAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "My heart leapt is idiomatic and to spring is to leap; a clean verb route." }
+      ],
+      "strong_hints": ["LEAP"],
+      "best_available": { "text": "LEAP", "why": "Verb meaning covers spring directly and heart idiomatically." },
+      "pair_note": "LEAP is good; FEVER is one-and-a-half sided."
+    },
+    {
+      "pair_id": "p_heart__star",
+      "a": "HEART",
+      "b": "STAR",
+      "hints": [
+        { "text": "EMOJI", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The heart and star emoji are both among the most used." },
+        { "text": "WISH", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Wish upon a star is immediate; heart via wishing with all your heart and the song's heart's-desire line." },
+        { "text": "SHAPE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Heart shape and star shape are two of the basic shapes children learn." }
+      ],
+      "strong_hints": ["SHAPE", "EMOJI", "WISH"],
+      "best_available": { "text": "SHAPE", "why": "Both words are literally shape names." },
+      "pair_note": "Strong pair; WISH is the softest."
+    },
+    {
+      "pair_id": "p_heart__train",
+      "a": "HEART",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "BRIEF", "connection_to_a": 0, "connection_to_b": 0, "fairness": 0, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "FAIL", "reason": "Only works via the 1945 film Brief Encounter set at a railway station; neither word is reached from the hint itself." },
+        { "text": "TRACKS", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Train tracks is immediate; heart has no tracks route." },
+        { "text": "WRECK", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Train wreck is a set phrase; heart via a wrecked heart as heartbreak, loose but readable." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "WRECK", "why": "Train is certain and heartbreak-as-wreck is a plausible jump." },
+      "pair_note": "No PASS; BRIEF is the weakest hint in the file."
+    },
+    {
+      "pair_id": "p_heart__water",
+      "a": "HEART",
+      "b": "WATER",
+      "hints": [
+        { "text": "FLOW", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Water flows; heart via blood flow, a secondary step." },
+        { "text": "TEARS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Tears are water; heart only through heartbreak tears." },
+        { "text": "PUMP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The heart is a pump and a water pump is an everyday object." }
+      ],
+      "strong_hints": ["PUMP"],
+      "best_available": { "text": "PUMP", "why": "Direct function match for both." },
+      "pair_note": "PUMP is excellent; the other two are soft."
+    },
+    {
+      "pair_id": "p_heart__witch",
+      "a": "HEART",
+      "b": "WITCH",
+      "hints": [
+        { "text": "SPELL", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Witches cast spells; heart via a love spell or being under someone's spell." },
+        { "text": "SNOW", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Snow White's witch-queen demands the girl's heart in a box; one famous story reaches both." },
+        { "text": "HUNTSMAN", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "The Snow White huntsman is sent by the witch-queen to bring back a heart; both links depend on recalling that detail." }
+      ],
+      "strong_hints": ["SNOW"],
+      "best_available": { "text": "SNOW", "why": "Snow White is the shared story everyone knows." },
+      "pair_note": "SNOW is a story route on par with the POISON anchor."
+    },
+    {
+      "pair_id": "p_heart__wolf",
+      "a": "HEART",
+      "b": "WOLF",
+      "hints": [
+        { "text": "LONE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Lone wolf is immediate; heart via lonely heart, a near-inflection but not the same word." },
+        { "text": "HUNTSMAN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "FAIL", "reason": "Huntsman kills the wolf in Red Riding Hood, but the heart link comes from a different story (Snow White); mixing two tales to reach the pair is a rescue." },
+        { "text": "WILD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wild at heart is idiomatic and the wolf is the archetypal wild animal." }
+      ],
+      "strong_hints": ["WILD"],
+      "best_available": { "text": "WILD", "why": "Shared property through a common idiom." },
+      "pair_note": "WILD carries it; HUNTSMAN here is weaker than in HEART+WITCH."
+    },
+    {
+      "pair_id": "p_honey__horse",
+      "a": "HONEY",
+      "b": "HORSE",
+      "hints": [
+        { "text": "SUGAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey and sugar are twin sweeteners and pet names; sugar cubes are the classic horse treat." },
+        { "text": "OATS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Horses eat oats; honey oats is a familiar cereal and granola pairing." },
+        { "text": "COMB", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honeycomb, and grooming a horse with a comb." }
+      ],
+      "strong_hints": ["COMB", "SUGAR", "OATS"],
+      "best_available": { "text": "COMB", "why": "Compound on one side, everyday grooming on the other." },
+      "pair_note": "All three are good."
+    },
+    {
+      "pair_id": "p_honey__ice",
+      "a": "HONEY",
+      "b": "ICE",
+      "hints": [
+        { "text": "CREAM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Ice cream is immediate; honey via creamed honey or honey and cream, not a set pairing." },
+        { "text": "TEA", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey in tea and iced tea are both everyday." },
+        { "text": "LEMON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Honey and lemon is a fixed pairing; ice via lemon ice or ice and a slice of lemon in a drink." }
+      ],
+      "strong_hints": ["TEA", "LEMON"],
+      "best_available": { "text": "TEA", "why": "Both routes are drink-order plain." },
+      "pair_note": "TEA is the clear serve; LEMON is a fair second."
+    },
+    {
+      "pair_id": "p_honey__iron",
+      "a": "HONEY",
+      "b": "IRON",
+      "hints": [
+        { "text": "TONIC", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["obscure"], "verdict": "BORDERLINE", "reason": "Iron tonic is an old-fashioned supplement and honey tonics exist, but neither is a phrase players reach for." },
+        { "text": "POT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey pot (Pooh) and cast-iron pot are both everyday." },
+        { "text": "WAFFLE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Waffle iron is a compound and honey on waffles is a breakfast scene." }
+      ],
+      "strong_hints": ["WAFFLE", "POT"],
+      "best_available": { "text": "WAFFLE", "why": "Compound plus a shared breakfast picture." },
+      "pair_note": "Two good hints; TONIC is dated."
+    },
+    {
+      "pair_id": "p_honey__key",
+      "a": "HONEY",
+      "b": "KEY",
+      "hints": [
+        { "text": "JAM", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["generic"], "verdict": "BORDERLINE", "reason": "Honey sits beside jam as a spread and a key can jam in a lock; both routes are adjacent rather than direct." },
+        { "text": "STICKY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey is sticky and sticky keys (keyboard or lock) are a familiar nuisance." },
+        { "text": "BEE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honey bee is immediate; there is no bee route to key." }
+      ],
+      "strong_hints": ["STICKY"],
+      "best_available": { "text": "STICKY", "why": "Shared property that is literally true of both." },
+      "pair_note": "STICKY carries the pair; BEE is honey-only filler."
+    },
+    {
+      "pair_id": "p_honey__king",
+      "a": "HONEY",
+      "b": "KING",
+      "hints": [
+        { "text": "MEAD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Mead is honey wine; king only via medieval mead halls and feasting kings." },
+        { "text": "BEE", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honey bee is immediate but hives have queens, not kings." },
+        { "text": "SOLOMON", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "King Solomon is clear; honey only through a Song of Solomon line nobody would recall from the name." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MEAD", "why": "Only hint touching both; honey is solid and the medieval court jump is reasonable." },
+      "pair_note": "No PASS; the pair has no obvious shared compound."
+    },
+    {
+      "pair_id": "p_honey__knight",
+      "a": "HONEY",
+      "b": "KNIGHT",
+      "hints": [
+        { "text": "SWEET", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honey is sweet; knights are not." },
+        { "text": "MEAD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Honey wine on one side; knight only through the medieval feast setting." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MEAD", "why": "The medieval setting is the only thread between the two words." },
+      "pair_note": "No PASS; a hard pair."
+    },
+    {
+      "pair_id": "p_honey__light",
+      "a": "HONEY",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "CANDLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "BORDERLINE", "reason": "Candlelight is immediate; honey via beeswax or honey-scented candles, a step removed." },
+        { "text": "AMBER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Honey is amber coloured and the amber light is a traffic signal; a valid shared property." }
+      ],
+      "strong_hints": ["AMBER"],
+      "best_available": { "text": "AMBER", "why": "Colour route is direct on both sides." },
+      "pair_note": "AMBER works; CANDLE is a beeswax stretch."
+    },
+    {
+      "pair_id": "p_honey__lion",
+      "a": "HONEY",
+      "b": "LION",
+      "hints": [
+        { "text": "BADGER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honey badger is immediate; badger has no lion route." },
+        { "text": "GOLDEN", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Golden honey and the golden lion's mane; a shared colour property." },
+        { "text": "SAMSON", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "BORDERLINE", "reason": "Samson killed a lion and later found honey in its carcass; the lion is known, the honey detail is for Bible readers." }
+      ],
+      "strong_hints": ["GOLDEN"],
+      "best_available": { "text": "GOLDEN", "why": "Immediate colour association for both." },
+      "pair_note": "GOLDEN serves; SAMSON is a true story route but niche."
+    },
+    {
+      "pair_id": "p_honey__moon",
+      "a": "HONEY",
+      "b": "MOON",
+      "hints": [
+        { "text": "MONTH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "A lunar month reaches moon; honey only via the honeymoon-is-a-month etymology, which the hint does not surface." },
+        { "text": "WEDDING", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wedding points straight at the compound honeymoon, which is the pair itself." },
+        { "text": "HARVEST", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Harvest moon is a compound and beekeepers harvest honey." }
+      ],
+      "strong_hints": ["HARVEST", "WEDDING"],
+      "best_available": { "text": "HARVEST", "why": "Each side stands on its own without needing the pair compound." },
+      "pair_note": "Two good hints; WEDDING is a pair-compound hint and should be confirmed acceptable in principle."
+    },
+    {
+      "pair_id": "p_honey__mouse",
+      "a": "HONEY",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "HOUSE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "House mouse is immediate; honey has no house route beyond a beekeeping term." },
+        { "text": "POOH", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Pooh and honey are inseparable, but there is no mouse in the Hundred Acre Wood." },
+        { "text": "TRAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Mouse trap and honey trap are both set phrases." }
+      ],
+      "strong_hints": ["TRAP"],
+      "best_available": { "text": "TRAP", "why": "Two compounds with the same head word." },
+      "pair_note": "TRAP alone; the other two are each one-sided."
+    },
+    {
+      "pair_id": "p_honey__night",
+      "a": "HONEY",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "TEA", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Honey in tea is plain; night via a bedtime cup, a shared scene but not a phrase." },
+        { "text": "MOON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honeymoon is a compound and the moon belongs to the night." }
+      ],
+      "strong_hints": ["MOON"],
+      "best_available": { "text": "MOON", "why": "Compound plus a natural association." },
+      "pair_note": "MOON carries it."
+    },
+    {
+      "pair_id": "p_honey__ocean",
+      "a": "HONEY",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "SALT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Ocean salt is immediate; salted honey is a niche flavour that the hint does not evoke." },
+        { "text": "GOLDEN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "colour_mood_material"], "verdict": "FAIL", "reason": "Golden honey is plain; the ocean is only golden at a sunset, not a property players would name." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GOLDEN", "why": "Honey is certain and a golden sea at sunset is at least a shared image, which is more than salted honey offers." },
+      "pair_note": "No PASS; both hints are one-sided and the pair needs a new idea."
+    },
+    {
+      "pair_id": "p_honey__pirate",
+      "a": "HONEY",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "GROG", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Grog is pirate drink; the honey-in-grog recipe is too niche to count." },
+        { "text": "RUM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Pirates and rum are inseparable; honey via honey rum or a hot toddy, a secondary pairing." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "RUM", "why": "Pirate is certain and honey rum is a real, if secondary, product." },
+      "pair_note": "No PASS; drink routes only half-reach honey."
+    },
+    {
+      "pair_id": "p_honey__queen",
+      "a": "HONEY",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "BEYONCE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Queen Bey is a famous nickname; honey only by chaining Bey to bee to honey." },
+        { "text": "BEE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey bee and queen bee are both compounds." },
+        { "text": "HIVE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "The hive makes honey and is ruled by a queen; one shared scene." }
+      ],
+      "strong_hints": ["BEE", "HIVE"],
+      "best_available": { "text": "BEE", "why": "Two compounds sharing the same head word." },
+      "pair_note": "Strong pair; BEYONCE is a two-step chain."
+    },
+    {
+      "pair_id": "p_honey__ring",
+      "a": "HONEY",
+      "b": "RING",
+      "hints": [
+        { "text": "HONEYMOON", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Contains HONEY as a substring, a rule failure regardless of the wedding link to ring." },
+        { "text": "WEDDING", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wedding ring is immediate; honey via the honeymoon that follows and honey as the spouse pet name." },
+        { "text": "GLAZED", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Honey-glazed is a fixed compound; ring via the glazed ring doughnut." }
+      ],
+      "strong_hints": ["WEDDING", "GLAZED"],
+      "best_available": { "text": "WEDDING", "why": "Both halves are everyday; the honeymoon jump is natural." },
+      "pair_note": "Two usable hints; HONEYMOON is a contains_target failure."
+    },
+    {
+      "pair_id": "p_honey__robot",
+      "a": "HONEY",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "DRONE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A drone is a male honey bee and a flying robot; clean double meaning." },
+        { "text": "BEE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "Honey bee is immediate; robot only via the Transformers robot Bumblebee or robo-bee research." }
+      ],
+      "strong_hints": ["DRONE"],
+      "best_available": { "text": "DRONE", "why": "One word with two genuine senses." },
+      "pair_note": "DRONE is the pair's natural hint."
+    },
+    {
+      "pair_id": "p_honey__rock",
+      "a": "HONEY",
+      "b": "ROCK",
+      "hints": [
+        { "text": "COMB", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honeycomb is immediate; there is no comb route to rock." },
+        { "text": "CANDY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Rock candy is a compound; honey via honey candies and honey as a natural sweet." },
+        { "text": "AMBER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": ["colour_mood_material"], "verdict": "PASS", "reason": "Honey is amber coloured and amber is a fossil-resin gemstone, i.e. a rock." }
+      ],
+      "strong_hints": ["AMBER", "CANDY"],
+      "best_available": { "text": "AMBER", "why": "Colour on one side and a literal stone on the other." },
+      "pair_note": "Two usable hints; COMB is honey-only."
+    },
+    {
+      "pair_id": "p_honey__shadow",
+      "a": "HONEY",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "DROP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A drop of honey or honey drops, and drop shadow from design software." },
+        { "text": "SPY", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "To shadow someone is spy work and the honey trap is a spy tactic; one espionage scene." },
+        { "text": "STRETCH", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Shadows stretch in the evening; honey does not stretch in any phrase players know." },
+        { "text": "MOON", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honeymoon is a compound and moonshadow or the moon casting shadows is natural." }
+      ],
+      "strong_hints": ["MOON", "DROP", "SPY"],
+      "best_available": { "text": "MOON", "why": "Compound plus a plain physical association." },
+      "pair_note": "Three usable hints; STRETCH is shadow-only."
+    },
+    {
+      "pair_id": "p_honey__shark",
+      "a": "HONEY",
+      "b": "SHARK",
+      "hints": [
+        { "text": "SWEET", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honey is sweet; sharks are not." },
+        { "text": "BADGER", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honey badger is immediate; badger has no shark route." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BADGER", "why": "Neither reaches shark; BADGER at least names a famous fearless predator that players loosely group with sharks, which is more than SWEET offers." },
+      "pair_note": "No PASS; both hints are honey-only and the pair needs a fresh idea (e.g. a predator or bait route)."
+    },
+    {
+      "pair_id": "p_honey__snake",
+      "a": "HONEY",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "CHARM", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "BORDERLINE", "reason": "Snake charmer is immediate; honey via honeyed, charming words, a figurative stretch." },
+        { "text": "TRAP", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Honey trap is a set phrase; snake trap is not something players would reach for." },
+        { "text": "TONGUE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A snake's forked tongue and a honeyed or honey-tongued speaker." }
+      ],
+      "strong_hints": ["TONGUE"],
+      "best_available": { "text": "TONGUE", "why": "Literal for snake, idiomatic for honey." },
+      "pair_note": "TONGUE carries it; CHARM is a fair second."
+    },
+    {
+      "pair_id": "p_honey__spider",
+      "a": "HONEY",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "TRAP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey trap is a set phrase and a spider's web is a trap." },
+        { "text": "FLY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Spiders catch flies, and you catch more flies with honey than vinegar." },
+        { "text": "STICKY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Honey is sticky and so is a spider's web." }
+      ],
+      "strong_hints": ["STICKY", "FLY", "TRAP"],
+      "best_available": { "text": "STICKY", "why": "Literal shared property of both." },
+      "pair_note": "Strong pair; all three serve."
+    }
+  ]
+}

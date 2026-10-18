@@ -46077,7 +46077,7 @@
           "type": "compound_or_phrase",
           "wordAConnection": "A fire escape gets you out of the building.",
           "wordBConnection": "A key gets you out of a locked room.",
-          "revealExplanation": "A fire escape gets you out of a building and a key gets you out of a locked room.",
+          "revealExplanation": "A fire escape and the Escape key.",
           "reference": null,
           "provenance": {
             "source": "u18",
@@ -46094,6 +46094,18 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Fire escape and the Escape key are both familiar compounds."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-18",
+              "source": "parent bounded sample of the u17-u20 bundle",
+              "before": {
+                "revealExplanation": "A fire escape gets you out of a building and a key gets you out of a locked room."
+              },
+              "after": {
+                "revealExplanation": "A fire escape and the Escape key."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         }
@@ -47289,7 +47301,7 @@
           "type": "direct_association",
           "wordAConnection": "Fiery lava.",
           "wordBConnection": "Lava is molten rock.",
-          "revealExplanation": "Lava: rock on fire.",
+          "revealExplanation": "Glowing molten rock, with a fiery appearance.",
           "reference": null,
           "provenance": {
             "source": "u18",
@@ -47306,6 +47318,18 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Lava is molten rock, burning hot."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-18",
+              "source": "parent bounded sample of the u17-u20 bundle",
+              "before": {
+                "revealExplanation": "Lava: rock on fire."
+              },
+              "after": {
+                "revealExplanation": "Glowing molten rock, with a fiery appearance."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         },
@@ -48036,7 +48060,7 @@
           "type": "direct_association",
           "wordAConnection": "The sun's fire.",
           "wordBConnection": "The sun is a star.",
-          "revealExplanation": "The sun: a star made of fire.",
+          "revealExplanation": "The Sun is a star, often pictured as a fiery ball.",
           "reference": null,
           "provenance": {
             "source": "u18",
@@ -48053,6 +48077,18 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "The sun is a star and a ball of fire."
+            },
+            "textCorrection": {
+              "by": "parent",
+              "date": "2026-10-18",
+              "source": "parent bounded sample of the u17-u20 bundle",
+              "before": {
+                "revealExplanation": "The sun: a star made of fire."
+              },
+              "after": {
+                "revealExplanation": "The Sun is a star, often pictured as a fiery ball."
+              },
+              "note": "player-facing text only; verdict and status unchanged"
             }
           }
         }
@@ -55303,7 +55339,7 @@
         "why": "Glass horse figurines are a recognisable single object.",
         "reviewer": "blind-subagent-20"
       },
-      "playableHints": 2,
+      "playableHints": 1,
       "clues": [
         {
           "text": "FIGURINE",
@@ -55335,8 +55371,8 @@
         },
         {
           "text": "CARRIAGE",
-          "status": "ai_reviewed",
-          "heldReason": null,
+          "status": "held",
+          "heldReason": "override: the explanation invents a glass carriage for Cinderella (her coach is a pumpkin; the glass item is the slipper); held pending a factual-support correction, raw blind PASS preserved in provenance; FIGURINE already carries GLASS+HORSE",
           "type": "cultural_reference",
           "wordAConnection": "A glass carriage, in the story.",
           "wordBConnection": "A horse-drawn carriage.",
@@ -55361,7 +55397,18 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "A horse-drawn carriage on one side and Cinderella's glass carriage on the other."
+            },
+            "factualCorrection": {
+              "by": "parent",
+              "date": "2026-10-18",
+              "note": "Cinderella rides a pumpkin coach; the glass object in the tale is the slipper. The author text turned a visual association into a false fact. Held pending a factual-support correction; FIGURINE carries the pair."
             }
+          },
+          "override": {
+            "by": "parent (bounded sample of the u17-u20 bundle)",
+            "date": "2026-10-18",
+            "status": "held",
+            "reason": "the explanation invents a glass carriage for Cinderella (her coach is a pumpkin; the glass item is the slipper); held pending a factual-support correction, raw blind PASS preserved in provenance; FIGURINE already carries GLASS+HORSE"
           }
         },
         {
