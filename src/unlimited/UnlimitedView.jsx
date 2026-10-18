@@ -11,13 +11,13 @@
 // per clue and a note per puzzle. Everything the player does is saved in this
 // browser only (history.js); the screens say so, and the feedback can be
 // copied or downloaded. No account, no server, no payment, no homepage link.
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { DIFF_OPTIONS, DIFFICULTY_LABELS, MAX_LIVES } from "../game/shared";
 import { Icon, PageHead, Sheet } from "../friends/ui.jsx";
 import POOL from "./pool.json";
 import LIBRARY from "./random-library.json";
 import { generateBoard, freshSeed, validateBoard } from "./generate.js";
-import { RATINGS, readStore, writeStore, nextBoard, playedTotal, resolveBoard, recentPairIds, startBoard, finishBoard, rateClue, notePuzzle, feedbackFor, feedbackText, feedbackJson } from "./history.js";
+import { RATINGS, readStore, writeStore, storageStatus, nextBoard, playedTotal, resolveBoard, recentPairIds, startBoard, finishBoard, rateClue, notePuzzle, feedbackFor, feedbackText, feedbackJson } from "./history.js";
 import "../friends/friends.css";
 import "./unlimited.css";
 
@@ -69,7 +69,18 @@ function download(name, text){
 export default function UnlimitedView({ kit, onHome, onHowToPlay }) {
   const { GameView } = kit;
   const [store, setStore] = useState(readStore);
-  const update = useCallback((fn)=>setStore((s)=>writeStore(fn(s))),[]);
+  // "ok", or why this browser is not keeping Unlimited right now: "failed" (a save
+  // failed: storage full or blocked), "unreadable" (saved data we must not write
+  // over) or "unavailable" (storage off). Play continues from memory either way.
+  const [saved, setSaved] = useState(()=>{ const st = storageStatus(); return st === "unreadable" || st === "unavailable" ? st : "ok"; });
+  const storeRef = useRef(store);
+  const update = useCallback((fn)=>{
+    const next = fn(storeRef.current);
+    storeRef.current = next;
+    setStore(next);
+    if(writeStore(next)) setSaved("ok");
+    else { const st = storageStatus(); setSaved(st === "unreadable" || st === "unavailable" ? st : "failed"); }
+  },[]);
   const current = resolveBoard(byId, store, store.current?.id);
   const [screen, setScreen] = useState(()=>(current ? "play" : "lobby"));
   const [run, setRun] = useState(0);
@@ -121,10 +132,11 @@ export default function UnlimitedView({ kit, onHome, onHowToPlay }) {
           <span className="grow"/>
           <span className="fr-chip" data-testid="ul-chip" data-board-id={board.id}>{isRandom(board) ? "Random puzzle" : `Puzzle ${board.index} of ${boards.length}`} · {DIFFICULTY_LABELS[difficulty]}{store.current?.replay ? " · replay" : ""}</span>
         </div>
+        <SaveNotice state={saved}/>
         <GameView key={`${board.id}-${run}`} puzzle={puzzle} difficulty={difficulty} unlimited
           onFinished={handleFinished} endControls={endControls}/>
         {showWhy && finished && (
-          <WhySheet board={board} result={finished} store={store} update={update} onClose={()=>setShowWhy(false)}
+          <WhySheet board={board} result={finished} store={store} update={update} saved={saved} onClose={()=>setShowWhy(false)}
             onNext={()=>playNew(difficulty)}/>
         )}
       </div>
@@ -132,13 +144,22 @@ export default function UnlimitedView({ kit, onHome, onHowToPlay }) {
   }
 
   return (
-    <Lobby store={store} update={update} played={played} current={current} choice={choice} setChoice={setChoice} failed={failed}
+    <Lobby store={store} update={update} saved={saved} played={played} current={current} choice={choice} setChoice={setChoice} failed={failed}
       onPlay={(diff)=>playNew(diff)} onReplay={(board, diff)=>start(board, diff, { replay:true })} onContinue={()=>{ setFinished(null); setScreen("play"); }}
       onHome={onHome} onHowToPlay={onHowToPlay}/>
   );
 }
 
-function Lobby({ store, played, current, choice, setChoice, failed, onPlay, onReplay, onContinue, onHome, onHowToPlay }){
+/** Said plainly when this browser is not keeping Unlimited, so nothing promises a resume that won't happen. */
+function SaveNotice({ state }){
+  if(state === "ok") return null;
+  const text = state === "unreadable"
+    ? "Your saved Unlimited games in this browser couldn't be read, so nothing will be saved over them. You can keep playing, but new games and notes won't be kept."
+    : "This browser isn't saving Unlimited right now (storage is full or turned off). You can keep playing, but this puzzle and your notes won't be kept if you refresh or leave the page. Your earlier games are unchanged.";
+  return <p className="ul-save-notice" role="alert" data-testid="ul-save-notice">{text}</p>;
+}
+
+function Lobby({ store, saved, played, current, choice, setChoice, failed, onPlay, onReplay, onContinue, onHome, onHowToPlay }){
   const [copied,setCopied] = useState("");
   const notes = store.feedback.length;
   const copy = async ()=>{ setCopied((await copyText(feedbackText(store))) ? "Copied ✓" : "Copy failed"); setTimeout(()=>setCopied(""), 2500); };
@@ -153,6 +174,7 @@ function Lobby({ store, played, current, choice, setChoice, failed, onPlay, onRe
         <PageHead onBack={onHome} backLabel="Home" title="Unlimited"
           sub={`Guest beta · ${played} ${played === 1 ? "puzzle" : "puzzles"} played on this device`}/>
         <p className="fr-help ul-beta-note">Every puzzle is put together at random from {LIBRARY.pairs.length} checked clue pairs on a {LIBRARY.words.length}-word list. Nothing is sent anywhere: your games and notes stay in this browser.</p>
+        <SaveNotice state={saved}/>
 
         {current ? (
           <div className="fr-card ul-card">
@@ -219,7 +241,7 @@ function Lobby({ store, played, current, choice, setChoice, failed, onPlay, onRe
 
 // After the game: each clue with its pair and both sides, a rating per clue,
 // a note for the puzzle. Saved as tapped, in this browser only.
-function WhySheet({ board, result, store, update, onClose, onNext }){
+function WhySheet({ board, result, store, update, saved, onClose, onNext }){
   const ctx = { board, difficulty: result.difficulty, outcome: result.won ? "won" : "lost", livesUsed: result.livesUsed };
   const mine = feedbackFor(store, board);
   const ratingAt = (pos) => mine.find((f)=>f.position === pos)?.rating || null;
@@ -257,7 +279,9 @@ function WhySheet({ board, result, store, update, onClose, onNext }){
       <label className="fr-label" htmlFor="ul-note">Anything else about this puzzle?</label>
       <textarea id="ul-note" className="fr-input ul-note" rows={3} maxLength={500} value={note} placeholder="Optional. For example: which card you nearly placed instead."
         onChange={(e)=>changeNote(e.target.value)}/>
-      <p className="fr-help ul-saved-note">Saved on this device only — nothing is sent. Copy it to share with the Cluevoyance team.</p>
+      <p className="fr-help ul-saved-note" data-testid="ul-saved-note">{saved === "ok"
+        ? "Saved on this device only — nothing is sent. Copy it to share with the Cluevoyance team."
+        : "Not saved: this browser isn't keeping Unlimited notes right now. Use Copy to keep your feedback."}</p>
       <div className="fr-row ul-why-actions">
         <button type="button" className="fr-btn secondary sm" onClick={copy} data-testid="ul-why-copy">{copied || "Copy all feedback"}</button>
         {onNext ? <button type="button" className="fr-btn primary sm" onClick={onNext} data-testid="ul-why-next">Next puzzle</button>

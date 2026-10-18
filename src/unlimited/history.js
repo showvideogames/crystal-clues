@@ -27,9 +27,34 @@ export function readStore() {
   }
 }
 
+/**
+ * How this browser's saved Unlimited data looks right now:
+ *   "ok"          a readable store (or nothing saved yet: "empty")
+ *   "unreadable"  something is saved but it is not a store this version can read
+ *                 (damaged, or written by a newer version): never written over
+ *   "unavailable" storage cannot be read at all (blocked or turned off)
+ */
+export function storageStatus() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw === null) return "empty";
+    const s = JSON.parse(raw);
+    return s && s.version === 1 && typeof s.played === "object" ? "ok" : "unreadable";
+  } catch (e) {
+    return e instanceof SyntaxError ? "unreadable" : "unavailable";
+  }
+}
+
+/**
+ * Saves the store. Returns true only if it was actually written. It never
+ * writes over saved data it cannot read (that would erase someone's history),
+ * and a failed write (storage full or blocked) leaves what was saved before
+ * exactly as it was; the caller keeps playing from memory and tells the player.
+ */
 export function writeStore(store) {
-  try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch { /* private mode or quota: the game still plays */ }
-  return store;
+  const status = storageStatus();
+  if (status === "unreadable" || status === "unavailable") return false;
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); return true; } catch { return false; }
 }
 
 /** The next unplayed board, in batch order (so testers can compare "puzzle 3"); null when every board has been played. */

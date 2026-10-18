@@ -121,3 +121,48 @@ describe("random boards in the history store", () => {
     expect(POOL.boards.every((b) => !b.kind)).toBe(true);
   });
 });
+
+// Storage full, blocked or unreadable: never lose or overwrite what is saved, and report it.
+import { storageStatus } from "./history.js";
+import { vi, afterEach } from "vitest";
+
+describe("saving when storage is full, blocked or unreadable", () => {
+  beforeEach(() => localStorage.clear());
+  afterEach(() => vi.restoreAllMocks());
+  const saved = () => ({ version: 1, played: { "beta-01-001": { outcome: "won", livesUsed: 0, difficulty: "standard", finishedAt: "2026-10-17T20:00:00.000Z", version: 1, replays: 0 } }, current: null, feedback: [], boards: {} });
+
+  it("reports a successful save", () => {
+    expect(storageStatus()).toBe("empty");
+    expect(writeStore(saved())).toBe(true);
+    expect(storageStatus()).toBe("ok");
+  });
+
+  it("a full storage (QuotaExceededError) fails the save and leaves the saved history exactly as it was", () => {
+    writeStore(saved());
+    const before = localStorage.getItem(STORE_KEY);
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new DOMException("The quota has been exceeded.", "QuotaExceededError"); });
+    const bigger = startBoard(readStore(), { id: "r-test", version: 1, kind: "random", reveal: [], clues: [], createdAt: "2026-10-18T19:00:00.000Z" }, "standard");
+    expect(writeStore(bigger)).toBe(false);
+    vi.restoreAllMocks();
+    expect(localStorage.getItem(STORE_KEY)).toBe(before);
+    expect(readStore().played).toEqual(saved().played);
+  });
+
+  it("never writes over saved data it cannot read (damaged, or from a newer version)", () => {
+    for (const raw of ["{not json", JSON.stringify({ version: 2, played: { x: 1 }, boards: { r1: {} } })]) {
+      localStorage.setItem(STORE_KEY, raw);
+      expect(storageStatus()).toBe("unreadable");
+      expect(writeStore(saved())).toBe(false);
+      expect(localStorage.getItem(STORE_KEY)).toBe(raw);
+    }
+  });
+
+  it("blocked storage (reads throw) is reported as unavailable and nothing is attempted", () => {
+    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => { throw new DOMException("denied", "SecurityError"); });
+    const set = vi.spyOn(Storage.prototype, "setItem");
+    expect(storageStatus()).toBe("unavailable");
+    expect(writeStore(saved())).toBe(false);
+    expect(set).not.toHaveBeenCalled();
+    expect(readStore()).toEqual(emptyStore()); // play continues from memory
+  });
+});
