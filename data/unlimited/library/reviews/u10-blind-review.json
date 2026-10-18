@@ -1,0 +1,1031 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-10",
+    "date": "2026-10-17",
+    "input": "u10-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u10-blind-input.json; no other file, repository search, web lookup or API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_bridge__night",
+      "a": "BRIDGE",
+      "b": "NIGHT",
+      "hints": [
+        {
+          "text": "LIGHTS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bridges are famously strung with lights (bridge lights), and night-lights / lights coming on at night reach NIGHT; the shared scene is a bridge lit up at night."
+        }
+      ],
+      "strong_hints": ["LIGHTS"],
+      "best_available": { "text": "LIGHTS", "why": "One familiar picture, a lit bridge at night, carries both words." },
+      "pair_note": "Single hint, solid shared scene."
+    },
+    {
+      "pair_id": "p_bridge__ocean",
+      "a": "BRIDGE",
+      "b": "OCEAN",
+      "hints": [
+        {
+          "text": "BAY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bay Bridge (San Francisco) is a famous compound for BRIDGE; a bay is an inlet of the ocean for OCEAN."
+        }
+      ],
+      "strong_hints": ["BAY"],
+      "best_available": { "text": "BAY", "why": "Compound on one side, geography on the other; both routes are everyday knowledge." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_bridge__pirate",
+      "a": "BRIDGE",
+      "b": "PIRATE",
+      "hints": [
+        {
+          "text": "PLANK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A plank bridge / wooden-plank footbridge reaches BRIDGE; walking the plank is the stock pirate scene for PIRATE."
+        },
+        {
+          "text": "SHIP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A ship's bridge (the command deck) reaches BRIDGE; pirate ship is the obvious compound for PIRATE."
+        }
+      ],
+      "strong_hints": ["SHIP", "PLANK"],
+      "best_available": { "text": "SHIP", "why": "Pirate ship is instant and the ship's bridge is a well-known second sense of bridge." },
+      "pair_note": "Two good hints with different routes."
+    },
+    {
+      "pair_id": "p_bridge__queen",
+      "a": "BRIDGE",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "QUEENSBORO",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 0,
+          "recognizability": "niche",
+          "flags": ["contains_target", "obscure"],
+          "verdict": "FAIL",
+          "reason": "Queensboro Bridge is a real New York bridge for BRIDGE, but the hint literally contains QUEEN (via Queens), which is a rule failure, and the name is only known locally."
+        },
+        {
+          "text": "LONDON",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "London Bridge (the nursery rhyme and the landmark) reaches BRIDGE; the Queen of England / Buckingham Palace in London reaches QUEEN."
+        }
+      ],
+      "strong_hints": ["LONDON"],
+      "best_available": { "text": "LONDON", "why": "Both routes are world-famous and neither needs the other explained." },
+      "pair_note": "QUEENSBORO should be removed for containing the target; LONDON is strong enough on its own."
+    },
+    {
+      "pair_id": "p_bridge__ring",
+      "a": "BRIDGE",
+      "b": "RING",
+      "hints": [
+        {
+          "text": "ROPE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Rope bridge is a stock image for BRIDGE; the ropes of a boxing ring (on the ropes) reach RING through a familiar scene, though a player must think of boxing."
+        }
+      ],
+      "strong_hints": ["ROPE"],
+      "best_available": { "text": "ROPE", "why": "The only hint; the boxing-ring ropes make the RING side recognizable even if not the first association." },
+      "pair_note": "Judgement call: the RING side relies on the boxing scene; a second opinion could call this BORDERLINE."
+    },
+    {
+      "pair_id": "p_bridge__robot",
+      "a": "BRIDGE",
+      "b": "ROBOT",
+      "hints": [
+        {
+          "text": "DATA",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Data the android on the bridge of the Enterprise reaches ROBOT easily (and robots process data), but BRIDGE is only reached if the player already has Star Trek in mind."
+        },
+        {
+          "text": "STEEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["colour_mood_material"],
+          "verdict": "PASS",
+          "reason": "Steel bridge is a standard compound for BRIDGE; robots are stereotypically built of steel (Real Steel, man of steel imagery) for ROBOT, a defensible shared-material route."
+        }
+      ],
+      "strong_hints": ["STEEL"],
+      "best_available": { "text": "STEEL", "why": "Both words are things made of steel in everyone's mental picture; no story has to be supplied." },
+      "pair_note": "DATA is clever but the bridge half depends on a franchise frame the hint does not supply."
+    },
+    {
+      "pair_id": "p_bridge__rock",
+      "a": "BRIDGE",
+      "b": "ROCK",
+      "hints": [
+        {
+          "text": "STONE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "PASS",
+          "reason": "Stone bridge is a classic compound for BRIDGE; stone is a near-synonym of ROCK, which makes that side trivial but not unfair."
+        },
+        {
+          "text": "ARCH",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Arch bridge reaches BRIDGE directly; natural rock arches (Arches National Park, sea arches) reach ROCK as a recognizable formation."
+        }
+      ],
+      "strong_hints": ["STONE", "ARCH"],
+      "best_available": { "text": "STONE", "why": "Unmissable on both sides; the synonym flag is a note, not a defect under this rubric." },
+      "pair_note": "Both work; STONE is the safer serve."
+    },
+    {
+      "pair_id": "p_bridge__rose",
+      "a": "BRIDGE",
+      "b": "ROSE",
+      "hints": [
+        {
+          "text": "COMPASS",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "Compass rose is a strong compound for ROSE; BRIDGE is reached only by knowing the compass sits on a ship's bridge, a nautical step most players will not make unprompted."
+        },
+        {
+          "text": "ARCH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Arch bridge reaches BRIDGE; a rose arch (garden arch covered in climbing roses) is a familiar scene for ROSE."
+        }
+      ],
+      "strong_hints": ["ARCH"],
+      "best_available": { "text": "ARCH", "why": "Both sides are literal, familiar arches." },
+      "pair_note": "COMPASS is a nice idea whose bridge half is too nautical to stand alone."
+    },
+    {
+      "pair_id": "p_bridge__salt",
+      "a": "BRIDGE",
+      "b": "SALT",
+      "hints": [
+        {
+          "text": "RUST",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Rusting steel bridges are a familiar image for BRIDGE; road salt and sea salt causing rust is common knowledge for SALT, and the two combine into one scene."
+        },
+        {
+          "text": "ICE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The road sign Bridge Ices Before Road reaches BRIDGE; salting roads to melt ice reaches SALT."
+        },
+        {
+          "text": "SAILOR",
+          "connection_to_a": 1,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "An old salt is a sailor (idiom) for SALT and a sailor stands on the ship's bridge for BRIDGE, but each half needs a secondary sense and together they feel assembled."
+        }
+      ],
+      "strong_hints": ["ICE", "RUST"],
+      "best_available": { "text": "ICE", "why": "Winter-road scene that everybody has met: bridges ice, salt melts it." },
+      "pair_note": "Two good hints; SAILOR is defensible but weaker than either."
+    },
+    {
+      "pair_id": "p_bridge__shadow",
+      "a": "BRIDGE",
+      "b": "SHADOW",
+      "hints": [
+        {
+          "text": "FALL",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "London Bridge is falling down and bridge collapses reach BRIDGE; a shadow falls across something is an everyday verb phrase for SHADOW."
+        },
+        {
+          "text": "UNDER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Under the bridge (trolls, the song) is a stock phrase for BRIDGE; under the shadow of / in the shadow reaches SHADOW."
+        },
+        {
+          "text": "TROLL",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Troll under the bridge is excellent for BRIDGE, but nothing recognizable ties a troll to SHADOW; the shadow half is filler."
+        },
+        {
+          "text": "HAND",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hand shadows / shadow puppets reach SHADOW strongly; a bridge hand (the card game) reaches BRIDGE through ordinary usage, though the player must switch senses."
+        }
+      ],
+      "strong_hints": ["UNDER", "FALL", "HAND"],
+      "best_available": { "text": "UNDER", "why": "Under the bridge and in the shadow are both idioms a player meets constantly." },
+      "pair_note": "TROLL should go; HAND depends on the card-game sense of bridge, worth a second look."
+    },
+    {
+      "pair_id": "p_bridge__shark",
+      "a": "BRIDGE",
+      "b": "SHARK",
+      "hints": [
+        {
+          "text": "BAY",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Bay Bridge reaches BRIDGE; SHARK is reached only through sharks sighted in a bay or the Australian place-name Shark Bay, neither of which a player would name readily."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BAY", "why": "Only hint; the shark half is a thin coastal association rather than a shared scene." },
+      "pair_note": "No PASS. The pair wants something like FIN or CARD (card shark / bridge the card game) that reaches both sides."
+    },
+    {
+      "pair_id": "p_bridge__snake",
+      "a": "BRIDGE",
+      "b": "SNAKE",
+      "hints": [
+        {
+          "text": "CABLE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["variant_of:ROPE"],
+          "verdict": "BORDERLINE",
+          "reason": "Cable bridge / cable-stayed bridge reaches BRIDGE; SNAKE is reached only through cables snaking across a floor (snake as a verb), a looser link than the rope-looks-like-a-snake image."
+        },
+        {
+          "text": "RIVER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bridge over a river is the default bridge scene; the Snake River and rivers that snake through valleys reach SNAKE by name and by verb."
+        },
+        {
+          "text": "ROPE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "BORDERLINE",
+          "reason": "Rope bridge reaches BRIDGE; the coiled rope mistaken for a snake is a recognizable shape likeness for SNAKE but not a scene or phrase most players would reach for."
+        }
+      ],
+      "strong_hints": ["RIVER"],
+      "best_available": { "text": "RIVER", "why": "Reaches SNAKE two ways (place-name and verb) and BRIDGE instantly." },
+      "pair_note": "ROPE and CABLE lean on the same shape likeness; keep RIVER."
+    },
+    {
+      "pair_id": "p_bridge__spider",
+      "a": "BRIDGE",
+      "b": "SPIDER",
+      "hints": [
+        {
+          "text": "SUSPENSION",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "Suspension bridge is the obvious compound for BRIDGE; a spider hanging suspended on its thread, or webs likened to suspension bridges, reaches SPIDER only with some reconstruction."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SUSPENSION", "why": "Only hint; the spider half is a plausible image but not a phrase anyone uses." },
+      "pair_note": "No PASS. WEB or SILK/THREAD-style hints would serve this pair better."
+    },
+    {
+      "pair_id": "p_bridge__spring",
+      "a": "BRIDGE",
+      "b": "SPRING",
+      "hints": [
+        {
+          "text": "WATER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bridge over water reaches BRIDGE; spring water is a standard compound for SPRING."
+        },
+        {
+          "text": "BOUNCE",
+          "connection_to_a": 0,
+          "connection_to_b": 2,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "FAIL",
+          "reason": "Springs bounce, which nails SPRING, but bridges are not thought of as bouncing; the BRIDGE half is absent."
+        },
+        {
+          "text": "SUSPENSION",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Suspension bridge reaches BRIDGE; a car's suspension is made of springs, reaching SPRING."
+        }
+      ],
+      "strong_hints": ["SUSPENSION", "WATER"],
+      "best_available": { "text": "SUSPENSION", "why": "Both sides are direct, well-known senses with no filler." },
+      "pair_note": "Drop BOUNCE; the other two are strong."
+    },
+    {
+      "pair_id": "p_bridge__star",
+      "a": "BRIDGE",
+      "b": "STAR",
+      "hints": [
+        {
+          "text": "TREK",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Star Trek is an instant compound for STAR; the bridge of the Enterprise is the franchise's most famous set, reaching BRIDGE through the same story."
+        }
+      ],
+      "strong_hints": ["TREK"],
+      "best_available": { "text": "TREK", "why": "A single world-famous story holds both words." },
+      "pair_note": "Both halves travel through one franchise, which the rubric accepts (cf. POISON for APPLE+QUEEN)."
+    },
+    {
+      "pair_id": "p_bridge__train",
+      "a": "BRIDGE",
+      "b": "TRAIN",
+      "hints": [
+        {
+          "text": "TRESTLE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A trestle is a type of bridge for BRIDGE and railway trestles carry trains for TRAIN; the word itself is a little less everyday."
+        },
+        {
+          "text": "RAILROAD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Railroad bridge reaches BRIDGE; railroad train reaches TRAIN."
+        }
+      ],
+      "strong_hints": ["RAILROAD", "TRESTLE"],
+      "best_available": { "text": "RAILROAD", "why": "Plain compound on both sides, universally known." },
+      "pair_note": "Good pair."
+    },
+    {
+      "pair_id": "p_bridge__water",
+      "a": "BRIDGE",
+      "b": "WATER",
+      "hints": [
+        {
+          "text": "RIVER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bridges cross rivers for BRIDGE; river water for WATER."
+        },
+        {
+          "text": "TROUBLED",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bridge Over Troubled Water is a famous song title containing both targets in one phrase."
+        }
+      ],
+      "strong_hints": ["TROUBLED", "RIVER"],
+      "best_available": { "text": "TROUBLED", "why": "One iconic phrase names the whole pair." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_bridge__witch",
+      "a": "BRIDGE",
+      "b": "WITCH",
+      "hints": [
+        {
+          "text": "RIVER",
+          "connection_to_a": 2,
+          "connection_to_b": 0,
+          "fairness": 0,
+          "recognizability": "moderate",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "FAIL",
+          "reason": "Bridge over a river reaches BRIDGE; WITCH is reached only via witch-ducking in rivers, a historical detail players would not recall from the word RIVER."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "RIVER", "why": "Only hint, and the witch half is effectively missing." },
+      "pair_note": "No PASS. Something like HAG/TROLL-adjacent folklore or WICKED-style stories would need a hint that actually meets WITCH; RIVER does not."
+    },
+    {
+      "pair_id": "p_bridge__wolf",
+      "a": "BRIDGE",
+      "b": "WOLF",
+      "hints": [
+        {
+          "text": "CROSSING",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": ["one_sided"],
+          "verdict": "BORDERLINE",
+          "reason": "A bridge crossing is a direct compound for BRIDGE; WOLF is reached only through wildlife-crossing signs or Red Riding Hood crossing the woods, neither of which names a wolf."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CROSSING", "why": "Only hint; the wolf half is a weak animal-crossing association." },
+      "pair_note": "No PASS. The pair lacks a natural shared scene; consider retiring it or finding a story that holds both (e.g. Billy Goats Gruff would be TROLL, not WOLF)."
+    },
+    {
+      "pair_id": "p_card__castle",
+      "a": "CARD",
+      "b": "CASTLE",
+      "hints": [
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The king is a playing card for CARD; kings live in castles for CASTLE."
+        },
+        {
+          "text": "HOUSE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "House of cards is an iconic phrase for CARD; a castle is a grand house (a man's home is his castle) for CASTLE."
+        }
+      ],
+      "strong_hints": ["KING", "HOUSE"],
+      "best_available": { "text": "KING", "why": "Both halves are immediate and concrete." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__cat",
+      "a": "CARD",
+      "b": "CAT",
+      "hints": [
+        {
+          "text": "WILD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wild card for CARD; wildcat for CAT."
+        }
+      ],
+      "strong_hints": ["WILD"],
+      "best_available": { "text": "WILD", "why": "Two everyday compounds." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__crown",
+      "a": "CARD",
+      "b": "CROWN",
+      "hints": [
+        {
+          "text": "QUEEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": ["variant_of:KING"],
+          "verdict": "PASS",
+          "reason": "The queen is a playing card for CARD; a queen wears a crown for CROWN."
+        },
+        {
+          "text": "KING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The king is a playing card for CARD; a king wears a crown for CROWN."
+        }
+      ],
+      "strong_hints": ["KING", "QUEEN"],
+      "best_available": { "text": "KING", "why": "Marginally the more default royal; either serves." },
+      "pair_note": "Both hints are the same route; interchangeable."
+    },
+    {
+      "pair_id": "p_card__diamond",
+      "a": "CARD",
+      "b": "DIAMOND",
+      "hints": [
+        {
+          "text": "ACE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The ace is a playing card for CARD; ace of diamonds is a familiar phrase for DIAMOND."
+        },
+        {
+          "text": "SUIT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cards come in suits for CARD; diamonds is one of the four suits for DIAMOND."
+        }
+      ],
+      "strong_hints": ["SUIT", "ACE"],
+      "best_available": { "text": "SUIT", "why": "Cleanest: diamonds are literally a suit of cards." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__dog",
+      "a": "CARD",
+      "b": "DOG",
+      "hints": [
+        {
+          "text": "WILD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wild card for CARD; wild dog is a familiar compound for DOG."
+        },
+        {
+          "text": "POKER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Poker is a card game for CARD; the Dogs Playing Poker paintings are a famous shared scene for DOG."
+        }
+      ],
+      "strong_hints": ["POKER", "WILD"],
+      "best_available": { "text": "POKER", "why": "A single famous image holds both words." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__dragon",
+      "a": "CARD",
+      "b": "DRAGON",
+      "hints": [
+        {
+          "text": "MAGIC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Magic card tricks and the card game Magic: The Gathering reach CARD; dragons belong to the magic / fantasy world for DRAGON."
+        }
+      ],
+      "strong_hints": ["MAGIC"],
+      "best_available": { "text": "MAGIC", "why": "Fantasy frame reaches both, with the trading-card game as a bonus." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__egg",
+      "a": "CARD",
+      "b": "EGG",
+      "hints": [
+        {
+          "text": "EASTER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Easter card (greeting card) for CARD; Easter egg for EGG."
+        }
+      ],
+      "strong_hints": ["EASTER"],
+      "best_available": { "text": "EASTER", "why": "One holiday, two compounds." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__fire",
+      "a": "CARD",
+      "b": "FIRE",
+      "hints": [
+        {
+          "text": "WILD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Wild card for CARD; wildfire for FIRE."
+        }
+      ],
+      "strong_hints": ["WILD"],
+      "best_available": { "text": "WILD", "why": "Two everyday compounds." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__fish",
+      "a": "CARD",
+      "b": "FISH",
+      "hints": [
+        {
+          "text": "GO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Go Fish is a children's card game, reaching CARD through the game and FISH through its name."
+        }
+      ],
+      "strong_hints": ["GO"],
+      "best_available": { "text": "GO", "why": "The phrase Go Fish is the pair." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__ghost",
+      "a": "CARD",
+      "b": "GHOST",
+      "hints": [
+        {
+          "text": "HALLOWEEN",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Halloween greeting cards reach CARD, a lesser-known holiday-card category; ghosts are the Halloween icon for GHOST."
+        }
+      ],
+      "strong_hints": ["HALLOWEEN"],
+      "best_available": { "text": "HALLOWEEN", "why": "The ghost half is unmissable and holiday cards are a known route." },
+      "pair_note": "Card side is the weaker, but recognizable."
+    },
+    {
+      "pair_id": "p_card__glass",
+      "a": "CARD",
+      "b": "GLASS",
+      "hints": [
+        {
+          "text": "HOUSE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "House of cards for CARD; glass house (people in glass houses) for GLASS."
+        }
+      ],
+      "strong_hints": ["HOUSE"],
+      "best_available": { "text": "HOUSE", "why": "Two idioms, both universal." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__gold",
+      "a": "CARD",
+      "b": "GOLD",
+      "hints": [
+        {
+          "text": "CREDIT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Credit card for CARD; the Gold Card tier of credit cards (Amex Gold and the like) reaches GOLD as a familiar phrase."
+        }
+      ],
+      "strong_hints": ["CREDIT"],
+      "best_available": { "text": "CREDIT", "why": "Gold card is a well-worn phrase, so the pair is reachable." },
+      "pair_note": "Gold half depends on the credit-card tier; a second reviewer might call it BORDERLINE."
+    },
+    {
+      "pair_id": "p_card__heart",
+      "a": "CARD",
+      "b": "HEART",
+      "hints": [
+        {
+          "text": "SUIT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Cards come in suits for CARD; hearts is a suit for HEART."
+        },
+        {
+          "text": "VALENTINE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Valentine card for CARD; the Valentine heart for HEART."
+        }
+      ],
+      "strong_hints": ["VALENTINE", "SUIT"],
+      "best_available": { "text": "VALENTINE", "why": "A single scene most people have lived." },
+      "pair_note": "Excellent pair."
+    },
+    {
+      "pair_id": "p_card__honey",
+      "a": "CARD",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "VALENTINE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Valentine card for CARD; honey as the pet name for your Valentine / sweetheart reaches HONEY through the endearment sense."
+        }
+      ],
+      "strong_hints": ["VALENTINE"],
+      "best_available": { "text": "VALENTINE", "why": "Only hint; the endearment route is recognizable if not literal." },
+      "pair_note": "Honey half rides on the pet-name sense; acceptable but not strong."
+    },
+    {
+      "pair_id": "p_card__horse",
+      "a": "CARD",
+      "b": "HORSE",
+      "hints": [
+        {
+          "text": "RACE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The race card (the day's list of races, and the idiom playing the race card) reaches CARD; horse race reaches HORSE directly."
+        }
+      ],
+      "strong_hints": ["RACE"],
+      "best_available": { "text": "RACE", "why": "Horse race is instant and race card is a real phrase on both sides of the Atlantic." },
+      "pair_note": "Card half leans on an idiom; fine."
+    },
+    {
+      "pair_id": "p_card__ice",
+      "a": "CARD",
+      "b": "ICE",
+      "hints": [
+        {
+          "text": "HOCKEY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hockey trading cards reach CARD; ice hockey reaches ICE."
+        }
+      ],
+      "strong_hints": ["HOCKEY"],
+      "best_available": { "text": "HOCKEY", "why": "Compound on both sides." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__iron",
+      "a": "CARD",
+      "b": "IRON",
+      "hints": [
+        {
+          "text": "GOLF",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A golf scorecard reaches CARD; irons are golf clubs for IRON."
+        }
+      ],
+      "strong_hints": ["GOLF"],
+      "best_available": { "text": "GOLF", "why": "One sport supplies both words." },
+      "pair_note": "Good."
+    },
+    {
+      "pair_id": "p_card__key",
+      "a": "CARD",
+      "b": "KEY",
+      "hints": [
+        {
+          "text": "HOTEL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The hotel key card is a single object that is both a card and a key."
+        }
+      ],
+      "strong_hints": ["HOTEL"],
+      "best_available": { "text": "HOTEL", "why": "The two targets literally form the compound key card at a hotel." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_card__king",
+      "a": "CARD",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "DECK",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Deck of cards reaches CARD; KING is reached because the king is a card in the deck, so the hint names the container of both targets."
+        },
+        {
+          "text": "HEARTS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hearts is a card suit and game for CARD; king of hearts is a stock phrase for KING."
+        }
+      ],
+      "strong_hints": ["HEARTS", "DECK"],
+      "best_available": { "text": "HEARTS", "why": "King of hearts is a phrase; DECK only reaches KING through CARD." },
+      "pair_note": "DECK is near one-sided (king only via being a card); flagged for a second opinion."
+    },
+    {
+      "pair_id": "p_card__knight",
+      "a": "CARD",
+      "b": "KNIGHT",
+      "hints": [
+        {
+          "text": "TAROT",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Tarot cards reach CARD instantly; the Knight is a court card in every tarot suit, reaching KNIGHT for anyone who has seen a deck."
+        }
+      ],
+      "strong_hints": ["TAROT"],
+      "best_available": { "text": "TAROT", "why": "Card half is immediate and the knight court card is a real feature of the deck." },
+      "pair_note": "Knight half is a little specialist; acceptable."
+    },
+    {
+      "pair_id": "p_card__light",
+      "a": "CARD",
+      "b": "LIGHT",
+      "hints": [
+        {
+          "text": "GREEN",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Green card (US residency) for CARD; green light for LIGHT."
+        }
+      ],
+      "strong_hints": ["GREEN"],
+      "best_available": { "text": "GREEN", "why": "Two universal compounds." },
+      "pair_note": "Good."
+    }
+  ]
+}

@@ -193,6 +193,16 @@
         "rejected": 8,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u09-blind-review.json",
+        "key": "data/unlimited/library/reviews/u09-blind-key.json",
+        "batch": "data/unlimited/library/batches/u09-batch.json",
+        "ai_reviewed": 38,
+        "held": 11,
+        "rejected": 12,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -18335,6 +18345,396 @@
       }
     },
     {
+      "pair_id": "p_bell__moon",
+      "a": "BELL",
+      "b": "MOON",
+      "source": "u09",
+      "pairNote": "SILVER carries the pair; RING is a decent verb for BELL but the moon side depends on a weather saying.",
+      "reviewerBestAvailable": {
+        "text": "SILVER",
+        "why": "Both sides are familiar fixed phrases (Silver Bells, silvery moon) that a player will accept immediately.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SILVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "Silver bells.",
+          "wordBConnection": "The silvery moon.",
+          "revealExplanation": "Silver bells under a silvery moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "'Silver Bells' (the Christmas song) and the silver/silvery moon are both stock phrases, a defensible shared-property route like SWEET for APPLE+HONEY."
+            }
+          }
+        },
+        {
+          "text": "RING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "homophone_wordplay",
+          "wordAConnection": "Ring the bell.",
+          "wordBConnection": "A ring around the moon.",
+          "revealExplanation": "Ring: a bell's, or the halo round the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A bell rings (verb), while the moon side relies on the folk saying 'ring around the moon' (lunar halo); most players reach for Saturn first, so the moon side is only half-lit."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__mouse",
+      "a": "BELL",
+      "b": "MOUSE",
+      "source": "u09",
+      "pairNote": "CAT is excellent; CHEESE never touches BELL.",
+      "reviewerBestAvailable": {
+        "text": "CAT",
+        "why": "The belled cat stalking a mouse is a single familiar scene that names both targets.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A bell on the cat.",
+          "wordBConnection": "The mice who want it there.",
+          "revealExplanation": "Belling the cat: the mice and their bell.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "the fable of belling the cat",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cat and mouse is the classic pairing, and a cat wears a collar bell / Aesop's mice 'bell the cat', one shared scene reaching both words."
+            }
+          }
+        },
+        {
+          "text": "CHEESE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "rejected",
+            "authorReason": "MOUSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Mouse eats cheese, but nothing recognizable ties cheese to a bell (a glass cheese bell/dome is far too niche), so this is one-sided filler."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__night",
+      "a": "BELL",
+      "b": "NIGHT",
+      "source": "u09",
+      "pairNote": "MIDNIGHT fails only on the contains-target rule; CHRISTMAS is the serviceable hint.",
+      "reviewerBestAvailable": {
+        "text": "CHRISTMAS",
+        "why": "Christmas bells and Christmas night/Silent Night both read quickly and legally.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHRISTMAS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Christmas bells.",
+          "wordBConnection": "Christmas night.",
+          "revealExplanation": "Bells on Christmas night.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Christmas bells/Jingle Bells on one side; 'the night before Christmas', Christmas night and the carol Silent Night on the other, a shared festive scene."
+            }
+          }
+        },
+        {
+          "text": "MIDNIGHT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The bell striking midnight.",
+          "wordBConnection": "Midnight, the middle of the night.",
+          "revealExplanation": "The midnight bell.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Midnight bells (New Year, church chimes) would be a fine route, but MIDNIGHT literally contains the target NIGHT, which is a rule failure."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__ocean",
+      "a": "BELL",
+      "b": "OCEAN",
+      "source": "u09",
+      "pairNote": "Two passes; DIVING is clearly stronger, BUOY leans on the bell-buoy compound.",
+      "reviewerBestAvailable": {
+        "text": "DIVING",
+        "why": "Diving bell plus ocean diving is a clean compound route on both sides.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DIVING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A diving bell.",
+          "wordBConnection": "Diving in the ocean.",
+          "revealExplanation": "A diving bell in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diving bell is a well-known compound and ocean diving is the obvious scene, so one word reaches both squarely."
+            }
+          }
+        },
+        {
+          "text": "BUOY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell buoy.",
+          "wordBConnection": "A buoy in the ocean.",
+          "revealExplanation": "A bell buoy on the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A buoy floats in the ocean and a bell buoy is a real nautical compound; the bell side is moderately known rather than universal."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__pirate",
+      "a": "BELL",
+      "b": "PIRATE",
+      "source": "u09",
+      "pairNote": "Single strong hint.",
+      "reviewerBestAvailable": {
+        "text": "SHIP",
+        "why": "Ship's bell and pirate ship are both instant.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SHIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ship's bell.",
+          "wordBConnection": "A pirate ship.",
+          "revealExplanation": "The bell on the pirate ship.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Ship's bell is a familiar compound and pirate ship is the stock phrase, giving one nautical scene for both."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__queen",
+      "a": "BELL",
+      "b": "QUEEN",
+      "source": "u09",
+      "pairNote": "CORONATION is a fair scene hint; BEE does nothing for BELL.",
+      "reviewerBestAvailable": {
+        "text": "CORONATION",
+        "why": "Royal ceremony with bells ringing out is a recognizable scene that contains both words.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CORONATION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Coronation bells.",
+          "wordBConnection": "The queen's coronation.",
+          "revealExplanation": "Bells for the queen's coronation.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A queen's coronation is direct, and church bells pealing for a coronation is a familiar shared scene, if a secondary feature of it."
+            }
+          }
+        },
+        {
+          "text": "BEE",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "rejected",
+            "authorReason": "QUEEN only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Queen bee is strong, but there is no recognizable bee-to-bell link, so the hint is one-sided."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bell__ring",
       "a": "BELL",
       "b": "RING",
@@ -18487,6 +18887,852 @@
           "TONE"
         ]
       }
+    },
+    {
+      "pair_id": "p_bell__robot",
+      "a": "BELL",
+      "b": "ROBOT",
+      "source": "u09",
+      "pairNote": "Material route only, but both sides are vivid enough to pass.",
+      "reviewerBestAvailable": {
+        "text": "METAL",
+        "why": "Both targets are strongly and immediately 'made of metal'.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "METAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A metal bell.",
+          "wordBConnection": "A metal robot.",
+          "revealExplanation": "Both are metal.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Bells are cast metal (bell metal is even an alloy name) and robots are archetypally metal, a defensible shared-material route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__rock",
+      "a": "BELL",
+      "b": "ROCK",
+      "source": "u09",
+      "pairNote": "Solid single hint.",
+      "reviewerBestAvailable": {
+        "text": "METAL",
+        "why": "Bell metal plus rock/metal music gives two independent but familiar routes.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "METAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A metal bell.",
+          "wordBConnection": "Heavy metal rock.",
+          "revealExplanation": "Metal: a bell, or the loud kind of rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Bells are metal, and rock pairs with metal as music genres (rock and heavy metal) as well as mineral matter, so the rock side is more than a material match."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__rose",
+      "a": "BELL",
+      "b": "ROSE",
+      "source": "u09",
+      "pairNote": "No legal pass; BELLE fails on the rule, THORN on one-sidedness.",
+      "reviewerBestAvailable": {
+        "text": "BELLE",
+        "why": "If the contains-target rule were waived, Belle's rose is a genuine story link; THORN never reaches BELL at all.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "BELLE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Belle sounds like bell.",
+          "wordBConnection": "Belle and the enchanted rose.",
+          "revealExplanation": "Belle: a bell by sound, and the rose of her story.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Beauty and the Beast",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target",
+                "variant_of:BELL"
+              ],
+              "reason": "Belle and the enchanted rose (Beauty and the Beast) is a fine rose route, but BELLE contains and is essentially a spelling variant of the target BELL, a rule failure."
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "rejected",
+            "authorReason": "ROSE only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Rose thorn is direct, but thorn has no recognizable link to a bell, so this is one-sided."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__salt",
+      "a": "BELL",
+      "b": "SALT",
+      "source": "u09",
+      "pairNote": "Textbook hint.",
+      "reviewerBestAvailable": {
+        "text": "PEPPER",
+        "why": "Compound on both sides with no stretch.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PEPPER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A bell pepper.",
+          "wordBConnection": "Salt and pepper.",
+          "revealExplanation": "Pepper: the bell kind, and salt's partner.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bell pepper and salt and pepper are both everyday compounds, an excellent two-sided hint."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__shadow",
+      "a": "BELL",
+      "b": "SHADOW",
+      "source": "u09",
+      "pairNote": "No pass; TOWER is the only candidate and the shadow link is loose.",
+      "reviewerBestAvailable": {
+        "text": "TOWER",
+        "why": "Only hint offered; the bell-tower half is strong and the shadow half is plausible if not specific.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOWER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bell tower.",
+          "wordBConnection": "The tower's shadow.",
+          "revealExplanation": "The shadow of the bell tower.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bell tower is a strong compound, but the shadow side is only 'a tower casts a long shadow', which any tall object does."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__shark",
+      "a": "BELL",
+      "b": "SHARK",
+      "source": "u09",
+      "pairNote": "Good single hint.",
+      "reviewerBestAvailable": {
+        "text": "DIVING",
+        "why": "Compound plus well-known activity.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DIVING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A diving bell.",
+          "wordBConnection": "Diving with sharks.",
+          "revealExplanation": "A diving bell among the sharks.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diving bell is the compound and shark (cage) diving is a familiar scene, so both sides are reached directly."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__snake",
+      "a": "BELL",
+      "b": "SNAKE",
+      "source": "u09",
+      "pairNote": "No pass; RATTLE is a near miss on the bell side.",
+      "reviewerBestAvailable": {
+        "text": "RATTLE",
+        "why": "Only hint offered; the snake side is excellent and the bell side is reachable via a bell rattle toy.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "RATTLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bell rings like a rattle.",
+          "wordBConnection": "A rattlesnake.",
+          "revealExplanation": "A rattle: the snake's warning, like a bell.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Rattlesnake is direct, but bells jingle rather than rattle; the bell side depends on a baby rattle with bells or jingle bells 'rattling', which is a stretch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__spider",
+      "a": "BELL",
+      "b": "SPIDER",
+      "source": "u09",
+      "pairNote": "No usable hint for this pair.",
+      "reviewerBestAvailable": {
+        "text": "TOWER",
+        "why": "Only hint offered; it does not reach SPIDER and should not be served.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOWER",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell tower.",
+          "wordBConnection": "Spiders in the tower's cobwebs.",
+          "revealExplanation": "The cobwebbed bell tower.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Bell tower is strong, but nothing recognizable connects a spider to a tower (the nursery spider climbs a water spout, not a tower), so this is one-sided."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__spring",
+      "a": "BELL",
+      "b": "SPRING",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "FLOWER",
+        "why": "The bluebell is a spring flower, uniting both sides in one object.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FLOWER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The bluebell flower.",
+          "wordBConnection": "A spring flower.",
+          "revealExplanation": "Bluebells: the flower of spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bellflower/bluebell are flowers and spring flowers are the stock scene; the bluebell is itself a spring flower, so one image covers both."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__star",
+      "a": "BELL",
+      "b": "STAR",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "CHRISTMAS",
+        "why": "Both targets are standard Christmas decorations.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHRISTMAS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Christmas bells.",
+          "wordBConnection": "The Christmas star.",
+          "revealExplanation": "Christmas: bells and the star.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Christmas bells and the Christmas star (tree-topper, star of Bethlehem) are both core ornaments of the same scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__train",
+      "a": "BELL",
+      "b": "TRAIN",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "CROSSING",
+        "why": "The level-crossing scene contains both a train and a ringing bell.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CROSSING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The crossing bell.",
+          "wordBConnection": "A train at the crossing.",
+          "revealExplanation": "The railroad crossing: bell ringing, train coming.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A railroad/level crossing is where the train passes and the crossing bell clangs, one shared scene for both words."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__water",
+      "a": "BELL",
+      "b": "WATER",
+      "source": "u09",
+      "pairNote": "Two passes; DIVING is the clearer serve.",
+      "reviewerBestAvailable": {
+        "text": "DIVING",
+        "why": "Compound plus the most ordinary water activity.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DIVING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "compound_or_phrase",
+          "wordAConnection": "A diving bell.",
+          "wordBConnection": "Diving under water.",
+          "revealExplanation": "A diving bell under the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diving bell on one side, diving into water on the other, both direct."
+            }
+          }
+        },
+        {
+          "text": "BUOY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bell buoy.",
+          "wordBConnection": "A buoy on the water.",
+          "revealExplanation": "A bell buoy on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A buoy floats on water and a bell buoy is a real nautical compound; the bell side is moderately known."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__witch",
+      "a": "BELL",
+      "b": "WITCH",
+      "source": "u09",
+      "pairNote": "No pass; CANDLE is a legitimate but niche route worth a second opinion.",
+      "reviewerBestAvailable": {
+        "text": "CANDLE",
+        "why": "The bell-book-and-candle phrase genuinely binds all three ideas, so a knowing player gets both; BROOM reaches only the witch.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CANDLE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Bell, book and candle.",
+          "wordBConnection": "Bell, Book and Candle is a witch story.",
+          "revealExplanation": "Bell, book and candle: the witch's phrase.",
+          "reference": {
+            "referenceType": "catchphrase",
+            "source": "bell, book and candle",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Witches and candles are a familiar ritual image, and 'bell, book and candle' (the witchcraft/exorcism phrase and film) ties bell to candle, but that phrase is not widely known enough to call the bell side clear."
+            }
+          }
+        },
+        {
+          "text": "BROOM",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "rejected",
+            "authorReason": "WITCH only",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Witch's broom is direct, but nothing links a broom to a bell, so this is one-sided filler."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bell__wolf",
+      "a": "BELL",
+      "b": "WOLF",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "SHEEP",
+        "why": "Belled sheep and the wolf at the fold make a single picture.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SHEEP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The bell on the sheep.",
+          "wordBConnection": "The wolf among the sheep.",
+          "revealExplanation": "Sheep: belled, and watched by the wolf.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sheep wear bells (the bellwether), and wolf-and-sheep is a stock pairing, so a belled flock stalked by a wolf is one shared scene."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__card",
+      "a": "BRIDGE",
+      "b": "CARD",
+      "source": "u09",
+      "pairNote": "Both pass; TRUMP is the sharper serve.",
+      "reviewerBestAvailable": {
+        "text": "TRUMP",
+        "why": "More specific than GAME while still immediate on both sides.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TRUMP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Trumps in bridge.",
+          "wordBConnection": "A trump card.",
+          "revealExplanation": "Trump: in bridge, in cards.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bridge the card game is played with trumps and trump card is an everyday phrase, one card-table scene."
+            }
+          }
+        },
+        {
+          "text": "GAME",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bridge is a game.",
+          "wordBConnection": "A card game.",
+          "revealExplanation": "Bridge, the card game.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bridge is a game and card game is a stock compound; broad but it reaches both words directly."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__castle",
+      "a": "BRIDGE",
+      "b": "CASTLE",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "MOAT",
+        "why": "Castle-moat-drawbridge is one image.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MOAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bridge over the moat.",
+          "wordBConnection": "A castle's moat.",
+          "revealExplanation": "The castle moat and its bridge.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A castle moat is crossed by a drawbridge, a single familiar scene containing both."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__cat",
+      "a": "BRIDGE",
+      "b": "CAT",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "ARCH",
+        "why": "Noun for the bridge, verb for the cat, both instant.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ARCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bridge's arch.",
+          "wordBConnection": "A cat arching its back.",
+          "revealExplanation": "An arch: a bridge's, or a cat's back.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "An arch bridge is a basic bridge type and a cat arches its back (verb), both direct."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_bridge__crown",
@@ -18643,6 +19889,238 @@
       }
     },
     {
+      "pair_id": "p_bridge__diamond",
+      "a": "BRIDGE",
+      "b": "DIAMOND",
+      "source": "u09",
+      "pairNote": "All three pass via the card game; DECK is the weakest because diamond is reached only through the deck's contents.",
+      "reviewerBestAvailable": {
+        "text": "CARD",
+        "why": "Shortest path to both words with no stretch.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "TRUMP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "In bridge a suit is named as trumps.",
+          "wordBConnection": "Diamonds is one of the four that can be.",
+          "revealExplanation": "In bridge a suit is named as trumps and diamonds is one of the four that can be.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bridge is the trump-based card game and diamonds are a suit that is named trumps, one card-table route."
+            }
+          }
+        },
+        {
+          "text": "CARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Bridge is a card game.",
+          "wordBConnection": "Diamonds is a card suit.",
+          "revealExplanation": "Diamonds is a card suit and bridge is a card game.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bridge is a card game and diamonds are a card suit, both immediate."
+            }
+          }
+        },
+        {
+          "text": "DECK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "Bridge is played with the standard deck.",
+          "wordBConnection": "Diamonds is one of its four suits.",
+          "revealExplanation": "Both come out of the same deck of fifty-two: bridge is the game, diamonds is the suit.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:CARD"
+              ],
+              "reason": "Bridge deck is a real structural term and bridge is played with a deck of cards; diamonds are one suit in that deck, a slightly less direct but still fair route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__dog",
+      "a": "BRIDGE",
+      "b": "DOG",
+      "source": "u09",
+      "pairNote": "Excellent single hint.",
+      "reviewerBestAvailable": {
+        "text": "RAINBOW",
+        "why": "The Rainbow Bridge poem is well known among pet owners and unites both targets.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RAINBOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Rainbow Bridge.",
+          "wordBConnection": "Where a dog goes at the end.",
+          "revealExplanation": "The Rainbow Bridge: a dog's last crossing.",
+          "reference": {
+            "referenceType": "catchphrase",
+            "source": "the Rainbow Bridge poem",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "The Rainbow Bridge is the widely shared pet-afterlife phrase for a dog that has died, a single familiar story reaching both words."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__dragon",
+      "a": "BRIDGE",
+      "b": "DRAGON",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "BURN",
+        "why": "Idiom on one side, defining trait on the other.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BURN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Burning your bridges.",
+          "wordBConnection": "A dragon's burn.",
+          "revealExplanation": "Burn: bridges, or whatever a dragon breathes on.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "'Burn your bridges' is a stock idiom and dragons burn things with fire, both direct."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__egg",
+      "a": "BRIDGE",
+      "b": "EGG",
+      "source": "u09",
+      "pairNote": "No pass; CRACK is a one-and-a-half-sided hint.",
+      "reviewerBestAvailable": {
+        "text": "CRACK",
+        "why": "Only hint offered; egg side is perfect and a cracked concrete bridge is at least a plausible image.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CRACK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A crack in the bridge.",
+          "wordBConnection": "A cracked egg.",
+          "revealExplanation": "A crack: in a bridge, in an egg.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Cracking an egg is direct, but a cracked bridge is just structural damage that could apply to any object, so the bridge side is not specific."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bridge__fire",
       "a": "BRIDGE",
       "b": "FIRE",
@@ -18762,6 +20240,231 @@
           "CROSS"
         ]
       }
+    },
+    {
+      "pair_id": "p_bridge__fish",
+      "a": "BRIDGE",
+      "b": "FISH",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "RIVER",
+        "why": "Bridge over the river, fish in the river.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RIVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bridge over the river.",
+          "wordBConnection": "River fish.",
+          "revealExplanation": "The river: bridge above, fish below.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A bridge spans a river and fish swim in it, one everyday scene for both."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__ghost",
+      "a": "BRIDGE",
+      "b": "GHOST",
+      "source": "u09",
+      "pairNote": "No usable hint for this pair.",
+      "reviewerBestAvailable": {
+        "text": "TOLL",
+        "why": "Only hint offered; it does not reach GHOST and should not be served.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOLL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A toll is what you pay to cross a bridge.",
+          "wordBConnection": "A bell tolls for the dead.",
+          "revealExplanation": "A toll is what you pay to cross a bridge and a bell tolls for the dead.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Toll bridge is direct, but ghost is reached only by a two-step invention (bell tolls for the dead, the dead become ghosts), which is a rescue explanation."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__glass",
+      "a": "BRIDGE",
+      "b": "GLASS",
+      "source": "u09",
+      "pairNote": "SPECTACLES is the legal version of GLASSES; slightly formal but widely understood.",
+      "reviewerBestAvailable": {
+        "text": "SPECTACLES",
+        "why": "Same eyewear route as GLASSES without containing the target.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SPECTACLES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The bridge of the spectacles.",
+          "wordBConnection": "Spectacle lenses are glass.",
+          "revealExplanation": "Spectacles: a glass lens on each side of the bridge.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Spectacles have a bridge that sits on the nose, and spectacles are glass lenses / another word for glasses, reaching both legally."
+            }
+          }
+        },
+        {
+          "text": "GLASSES",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target GLASS",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "The bridge of a pair of glasses is a great route, but GLASSES is the plural of the target GLASS and contains it, a rule failure."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__gold",
+      "a": "BRIDGE",
+      "b": "GOLD",
+      "source": "u09",
+      "pairNote": "GATE is a two-step via one very famous name; GOLDEN fails only on the rule.",
+      "reviewerBestAvailable": {
+        "text": "GATE",
+        "why": "Legal route to the Golden Gate Bridge, which carries gold in its name.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GATE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Golden Gate Bridge.",
+          "wordBConnection": "Golden Gate.",
+          "revealExplanation": "The Golden Gate Bridge.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "San Francisco",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "GATE summons the Golden Gate Bridge, a familiar phrase that supplies both the bridge and, through 'Golden', the gold; fair in the way BROOKLYN is for APPLE+BRIDGE."
+            }
+          }
+        },
+        {
+          "text": "GOLDEN",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target GOLD",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target",
+                "variant_of:GOLD"
+              ],
+              "reason": "Golden Gate Bridge is the obvious route, but GOLDEN contains and inflects the target GOLD, a rule failure."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_bridge__heart",
@@ -19042,6 +20745,250 @@
       }
     },
     {
+      "pair_id": "p_bridge__horse",
+      "a": "BRIDGE",
+      "b": "HORSE",
+      "source": "u09",
+      "pairNote": "WOODEN carries the pair; VIOLIN is clever but niche, NOSE is half-generic.",
+      "reviewerBestAvailable": {
+        "text": "WOODEN",
+        "why": "Trojan/rocking horse plus wooden bridge are both instant.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "WOODEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A wooden bridge is the oldest kind.",
+          "wordBConnection": "The wooden horse is how Troy fell.",
+          "revealExplanation": "A wooden bridge is the oldest kind and the wooden horse is how Troy fell.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "Trojan Horse",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Wooden bridge is an ordinary compound and the wooden horse (Trojan horse, rocking horse) is famous, so the material route is specific on both sides."
+            }
+          }
+        },
+        {
+          "text": "NOSE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "wordplay",
+          "wordAConnection": "The bridge of the nose is the bony ridge.",
+          "wordBConnection": "A horse wins by a nose.",
+          "revealExplanation": "The bridge of the nose is the bony ridge, and a horse wins by a nose.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Bridge of the nose is direct, but a horse's nose is no more distinctive than any animal's, so the horse side is weak."
+            }
+          }
+        },
+        {
+          "text": "VIOLIN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "lateral_connection",
+          "wordAConnection": "A violin has a bridge holding the strings up.",
+          "wordBConnection": "Its bow is strung with horsehair.",
+          "revealExplanation": "A violin has a bridge holding the strings up and a bow strung with horsehair.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "A violin has a bridge and its bow is strung with horsehair, a real single-object route, but both facts are musician's knowledge rather than common currency."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__ice",
+      "a": "BRIDGE",
+      "b": "ICE",
+      "source": "u09",
+      "pairNote": "Passes; bridge side is strongest for North American drivers.",
+      "reviewerBestAvailable": {
+        "text": "FREEZE",
+        "why": "The bridge-freezes-first sign is well known and the ice side is trivial.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FREEZE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Bridges freeze first.",
+          "wordBConnection": "Freeze into ice.",
+          "revealExplanation": "Bridge freezes before road.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Water freezes to ice, and the road sign 'Bridge Ices/Freezes Before Road' makes bridges freezing a familiar scene for drivers."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__iron",
+      "a": "BRIDGE",
+      "b": "IRON",
+      "source": "u09",
+      "pairNote": "Three passes in the same industrial scene; RIVET is the most niche.",
+      "reviewerBestAvailable": {
+        "text": "RUST",
+        "why": "Most everyday word of the three with a clear picture on both sides.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "GIRDER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A bridge is built out of girders.",
+          "wordBConnection": "Girders are iron.",
+          "revealExplanation": "A bridge is built out of iron girders.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Girder bridge and iron/steel girder are both standard engineering compounds, slightly technical vocabulary."
+            }
+          }
+        },
+        {
+          "text": "RUST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cause_and_effect",
+          "wordAConnection": "A bridge is forever being repainted.",
+          "wordBConnection": "Rust is what iron does if you let it.",
+          "revealExplanation": "An iron bridge rusts, which is why they are forever being repainted.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Iron rusts by definition and a rusty old iron bridge is a familiar image, so one process reaches both."
+            }
+          }
+        },
+        {
+          "text": "RIVET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An iron bridge is held together by thousands of rivets.",
+          "wordBConnection": "Rivets are how iron plate is joined.",
+          "revealExplanation": "An iron bridge is thousands of rivets holding plate to plate.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Riveted iron bridges are a classic image and rivets are iron/steel fasteners; the iron side is a made-of route but a vivid one."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bridge__key",
       "a": "BRIDGE",
       "b": "KEY",
@@ -19160,6 +21107,390 @@
           "STONE"
         ]
       }
+    },
+    {
+      "pair_id": "p_bridge__king",
+      "a": "BRIDGE",
+      "b": "KING",
+      "source": "u09",
+      "pairNote": "No usable hint for this pair.",
+      "reviewerBestAvailable": {
+        "text": "TOLL",
+        "why": "Only hint offered; it does not reach KING and should not be served.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOLL",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A toll bridge.",
+          "wordBConnection": "The king collects the toll.",
+          "revealExplanation": "A toll: paid at the bridge, paid to the king.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "Toll bridge is direct, but 'kings levied tolls' is a historical explanation invented to rescue the word; no player sees king from toll."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__knight",
+      "a": "BRIDGE",
+      "b": "KNIGHT",
+      "source": "u09",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "CASTLE",
+        "why": "Drawbridge and knights in one picture.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CASTLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The castle drawbridge.",
+          "wordBConnection": "The castle's knights.",
+          "revealExplanation": "The castle: its bridge and its knights.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A castle has a drawbridge and houses knights, a single medieval scene for both."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__light",
+      "a": "BRIDGE",
+      "b": "LIGHT",
+      "source": "u09",
+      "pairNote": "BEAM and RAINBOW both pass; TOWER's light side is loose.",
+      "reviewerBestAvailable": {
+        "text": "BEAM",
+        "why": "Compound on both sides with zero stretch.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RAINBOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "In Norse myth the rainbow is the bridge to Asgard.",
+          "wordBConnection": "A rainbow is made of light.",
+          "revealExplanation": "A rainbow is made of light and in Norse myth it is the bridge to Asgard.",
+          "reference": {
+            "referenceType": "mythology_or_folklore",
+            "source": "Norse myth, the Bifrost",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A rainbow is light split by rain, and the rainbow bridge (Bifrost, the pet poem) is a familiar phrase, so both sides are reached."
+            }
+          }
+        },
+        {
+          "text": "BEAM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "A beam bridge is the plainest kind there is.",
+          "wordBConnection": "A beam of light is the plainest kind of light.",
+          "revealExplanation": "A beam bridge is the plainest kind there is and a beam of light is the plainest kind of light.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Beam bridge / bridge beams and light beam are both everyday compounds, an excellent double."
+            }
+          }
+        },
+        {
+          "text": "TOWER",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "title_or_name",
+          "wordAConnection": "Tower Bridge is the famous crossing.",
+          "wordBConnection": "A lighthouse is a tower built to hold a light.",
+          "revealExplanation": "Tower Bridge is the famous crossing and a lighthouse is a tower built to hold a light.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Tower Bridge",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Tower Bridge and suspension-bridge towers are direct, but light is reached only via a lighthouse/light tower, which the bare word does not clearly evoke."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__lion",
+      "a": "BRIDGE",
+      "b": "LION",
+      "source": "u09",
+      "pairNote": "No pass; STATUE is a near miss worth a second opinion.",
+      "reviewerBestAvailable": {
+        "text": "STATUE",
+        "why": "Only hint offered; the lion-statues-at-the-bridgehead scene is real but the bridge side is secondary.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "STATUE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The statues on a bridge.",
+          "wordBConnection": "Stone lion statues.",
+          "revealExplanation": "The lion statues at the bridge.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Guardian lion statues are a strong image and stone lions do flank famous bridges, but statue alone does not clearly point at a bridge for most players."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__moon",
+      "a": "BRIDGE",
+      "b": "MOON",
+      "source": "u09",
+      "pairNote": "OVER carries the pair; CRESCENT and ARCH both rely on shape for the weaker side.",
+      "reviewerBestAvailable": {
+        "text": "OVER",
+        "why": "Idiomatic on both sides and instantly readable.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "OVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "wordplay",
+          "wordAConnection": "Over is where a bridge takes you.",
+          "wordBConnection": "Over the moon means delighted.",
+          "revealExplanation": "Over the moon means delighted, and over is where a bridge takes you.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Bridge over (troubled water, a river) and 'over the moon' / the cow jumped over the moon are both stock phrases."
+            }
+          }
+        },
+        {
+          "text": "CRESCENT",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A single-span bridge makes a crescent over the water.",
+          "wordBConnection": "A crescent is the shape of the moon.",
+          "revealExplanation": "A crescent is the shape of the moon and the shape of a single-span bridge over the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Crescent moon is direct, but 'crescent bridge' is not a phrase; the bridge side is only that an arched span is crescent-shaped."
+            }
+          }
+        },
+        {
+          "text": "ARCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A bridge is an arch.",
+          "wordBConnection": "The moon shows an arc when it is a crescent.",
+          "revealExplanation": "A bridge is an arch, and the moon arcs across the sky and shows an arc when it is a crescent.",
+          "reference": null,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:CRESCENT"
+              ],
+              "reason": "Arch bridge is direct, but the moon is reached only by shape (a crescent or the moon's arc across the sky), which is not a recognized phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bridge__mouse",
+      "a": "BRIDGE",
+      "b": "MOUSE",
+      "source": "u09",
+      "pairNote": "No usable hint for this pair.",
+      "reviewerBestAvailable": {
+        "text": "CROSSING",
+        "why": "Only hint offered; it does not reach MOUSE and should not be served.",
+        "reviewer": "blind-subagent-9"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CROSSING",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Crossing the bridge.",
+          "wordBConnection": "A mouse crossing the floor.",
+          "revealExplanation": "A crossing: the bridge, or the mouse's dash.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u09",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-9",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A bridge is a crossing, but nothing recognizable links a mouse to crossing, so this is one-sided filler."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_card__queen",
@@ -20962,16 +23293,16 @@
           }
         }
       ],
-      "generationHold": {
-        "by": "parent (after the owner's playtest of beta-01-002)",
-        "date": "2026-10-17",
-        "reason": "owner found BACK indirect (reached it via the Arizona Diamondbacks); PATTERN and SCALE are held borderline, so the pair has no clean TREASURE-level hint. Future generation hold only: the live beta-01-002 snapshot and completed history stay exactly as they are."
-      },
       "finalBestAvailable": {
         "text": "BACK",
         "basis": "provisional",
         "provisional": true,
         "alternatives": []
+      },
+      "generationHold": {
+        "by": "parent (after the owner's playtest of beta-01-002)",
+        "date": "2026-10-17",
+        "reason": "owner found BACK indirect (reached it via the Arizona Diamondbacks); PATTERN and SCALE are held borderline, so the pair has no clean TREASURE-level hint. Future generation hold only: the live beta-01-002 snapshot and completed history stay exactly as they are."
       }
     },
     {
