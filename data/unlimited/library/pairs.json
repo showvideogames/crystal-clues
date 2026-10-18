@@ -423,6 +423,16 @@
         "rejected": 21,
         "needsText": 1,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u29-blind-review.json",
+        "key": "data/unlimited/library/reviews/u29-blind-key.json",
+        "batch": "data/unlimited/library/batches/u29-batch.json",
+        "ai_reviewed": 60,
+        "held": 27,
+        "rejected": 11,
+        "needsText": 1,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -94651,6 +94661,282 @@
       ]
     },
     {
+      "pair_id": "p_night__water",
+      "a": "NIGHT",
+      "b": "WATER",
+      "source": "u29",
+      "pairNote": "Weak pair for these hints; no PASS. Something like MOONLIT/REFLECTION or TIDE might serve better.",
+      "reviewerBestAvailable": {
+        "text": "SWIM",
+        "why": "Only hint touching both sides, via 'night swim'.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SWIM",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A night swim.",
+          "wordBConnection": "Swimming in water.",
+          "revealExplanation": "Swim: in the water, at night.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "WATER: you swim in water; NIGHT: only via the loose phrase 'night swim', which is a scene but not a strong one.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GLASS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The nightstand glass.",
+          "wordBConnection": "A glass of water.",
+          "revealExplanation": "Glass: water by the bed at night.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WATER: glass of water; NIGHT: no recognizable route (a bedside glass of water is invented rescue).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__witch",
+      "a": "NIGHT",
+      "b": "WITCH",
+      "source": "u29",
+      "pairNote": "MIDNIGHT must be dropped for containing NIGHT.",
+      "reviewerBestAvailable": {
+        "text": "HALLOWEEN",
+        "why": "Broad shared scene that reaches both words instantly.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HOUR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An hour of the night.",
+          "wordBConnection": "The witching hour.",
+          "revealExplanation": "Hour: the witching hour of the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "WITCH: 'the witching hour' (ordinary inflection); NIGHT: the witching hour is the dead of night, plus 'night hours'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HALLOWEEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Halloween night.",
+          "wordBConnection": "Halloween witches.",
+          "revealExplanation": "Halloween: the witches' night.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "NIGHT: Halloween night; WITCH: the iconic Halloween witch costume/figure.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MIDNIGHT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target NIGHT",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target NIGHT as a substring, a rule failure, despite the good witching-hour route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_night__wolf",
+      "a": "NIGHT",
+      "b": "WOLF",
+      "source": "u29",
+      "pairNote": "WEREWOLF fails on substring.",
+      "reviewerBestAvailable": {
+        "text": "MOON",
+        "why": "Classic image that ties both sides equally.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A howl in the night.",
+          "wordBConnection": "A wolf's howl.",
+          "revealExplanation": "Howl: the wolf, in the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WOLF: wolves howl; NIGHT: the familiar scene of a howl in the night.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MOON",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The night moon.",
+          "wordBConnection": "A wolf howls at the moon.",
+          "revealExplanation": "Moon: the night's, and the wolf's.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "NIGHT: the moon in the night sky; WOLF: the wolf howling at the moon image.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WEREWOLF",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target WOLF",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target WOLF as a substring, a rule failure.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_ocean__pirate",
       "a": "OCEAN",
       "b": "PIRATE",
@@ -94780,6 +95066,659 @@
           "SHIP"
         ]
       }
+    },
+    {
+      "pair_id": "p_ocean__queen",
+      "a": "OCEAN",
+      "b": "QUEEN",
+      "source": "u29",
+      "pairNote": "MARY is a variant route of LINER and leans on the same knowledge.",
+      "reviewerBestAvailable": {
+        "text": "LINER",
+        "why": "Direct ocean compound plus the well-known Queen-named liners.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LINER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An ocean liner.",
+          "wordBConnection": "The Queen liners.",
+          "revealExplanation": "Liner: the ocean queens.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "OCEAN: 'ocean liner' compound; QUEEN: the famous Queen Mary / Queen Elizabeth liners.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MARY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The Queen Mary crossed the ocean.",
+          "wordBConnection": "The Queen Mary.",
+          "revealExplanation": "Mary: the Queen Mary, ocean liner.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "QUEEN: Queen Mary; OCEAN: only through knowing the Queen Mary ocean liner, an indirect second step.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MERMAID",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ocean's mermaids.",
+          "wordBConnection": "A mermaid queen.",
+          "revealExplanation": "Mermaid: queen of the ocean in the tales.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "OCEAN: mermaids live in the ocean; QUEEN: no familiar mermaid-queen story reaches it.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__ring",
+      "a": "OCEAN",
+      "b": "RING",
+      "source": "u29",
+      "pairNote": "Good pair.",
+      "reviewerBestAvailable": {
+        "text": "FIRE",
+        "why": "The Pacific Ring of Fire hits both words as one familiar phrase.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "FIRE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Around the Pacific Ocean.",
+          "wordBConnection": "The Ring of Fire.",
+          "revealExplanation": "Fire: the ring around the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "RING: 'Ring of Fire'; OCEAN: the Pacific Ocean's Ring of Fire.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ATOLL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "An ocean atoll.",
+          "wordBConnection": "An atoll is ring-shaped.",
+          "revealExplanation": "Atoll: a ring in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "OCEAN: atolls are ocean coral islands; RING: an atoll is a ring-shaped reef (true shared property).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BUOY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Buoys in the ocean.",
+          "wordBConnection": "A ring buoy.",
+          "revealExplanation": "Buoy: the life ring in the ocean.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "OCEAN: buoys float at sea; RING: the ring buoy / life ring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__robot",
+      "a": "OCEAN",
+      "b": "ROBOT",
+      "source": "u29",
+      "pairNote": "Both moderate; neither is a giveaway.",
+      "reviewerBestAvailable": {
+        "text": "SUBMERSIBLE",
+        "why": "Ocean side is unmistakable and robotic subs are a familiar idea.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "DRONE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean drones.",
+          "wordBConnection": "A drone is a robot.",
+          "revealExplanation": "Drone: a robot in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROBOT: drones are robotic craft; OCEAN: underwater/ocean drones used for exploration.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SUBMERSIBLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean submersibles.",
+          "wordBConnection": "Robotic submersibles.",
+          "revealExplanation": "Submersible: the ocean's robot explorer.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "OCEAN: deep-sea submersibles; ROBOT: robotic/remotely operated submersibles (ROVs).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__rock",
+      "a": "OCEAN",
+      "b": "ROCK",
+      "source": "u29",
+      "pairNote": "POOL is acceptable for UK players but weaker on the OCEAN side.",
+      "reviewerBestAvailable": {
+        "text": "WAVES",
+        "why": "Waves crashing on rocks is a vivid shared scene.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CLIFF",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean cliffs.",
+          "wordBConnection": "A rock cliff.",
+          "revealExplanation": "Cliff: rock, over the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "OCEAN: cliffs overlooking the ocean; ROCK: cliffs are rock faces.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "WAVES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean waves.",
+          "wordBConnection": "Waves on the rocks.",
+          "revealExplanation": "Waves: the ocean, on rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "OCEAN: ocean waves; ROCK: the familiar scene of waves crashing on rocks.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "POOL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Ocean pools.",
+          "wordBConnection": "Rock pools.",
+          "revealExplanation": "Pool: rock pools by the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "british_only"
+              ],
+              "reason": "ROCK: 'rock pool' compound (more British; US says tide pool); OCEAN: only indirectly, rock pools sit at the seashore.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__rose",
+      "a": "OCEAN",
+      "b": "ROSE",
+      "source": "u29",
+      "pairNote": "HEART depends on the same film; slightly harder.",
+      "reviewerBestAvailable": {
+        "text": "TITANIC",
+        "why": "One broadly known story reaching both words.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TITANIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Titanic sank in the ocean.",
+          "wordBConnection": "Rose of Titanic.",
+          "revealExplanation": "Titanic: Rose, and the ocean.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Titanic",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "OCEAN: the Titanic sank in the Atlantic Ocean; ROSE: Rose is the film's heroine.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HEART",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Heart of the Ocean.",
+          "wordBConnection": "Rose's necklace.",
+          "revealExplanation": "Heart: Rose's Heart of the Ocean.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Titanic",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "OCEAN and ROSE: the 'Heart of the Ocean' necklace worn by Rose in Titanic.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__salt",
+      "a": "OCEAN",
+      "b": "SALT",
+      "source": "u29",
+      "pairNote": "SEA is nearly a synonym of OCEAN; serve WATER first.",
+      "reviewerBestAvailable": {
+        "text": "WATER",
+        "why": "Salt water / ocean water is clean and not a synonym giveaway.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "WATER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean water.",
+          "wordBConnection": "Salt water.",
+          "revealExplanation": "Water: salt, in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SALT: 'salt water'; OCEAN: ocean water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The sea is the ocean.",
+          "wordBConnection": "Sea salt.",
+          "revealExplanation": "Sea: ocean salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "SALT: 'sea salt'; OCEAN: sea is a near-synonym, which makes it easy but not wrong.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BRINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean brine.",
+          "wordBConnection": "Brine is salty.",
+          "revealExplanation": "Brine: the ocean's salt water.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SALT: brine is salt water; OCEAN: 'the briny' / seawater is brine.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__shadow",
+      "a": "OCEAN",
+      "b": "SHADOW",
+      "source": "u29",
+      "pairNote": "Hard pair; DEEP is the only clean route.",
+      "reviewerBestAvailable": {
+        "text": "DEEP",
+        "why": "Real collocations on both sides.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DEEP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "The deep ocean.",
+          "wordBConnection": "Deep shadow.",
+          "revealExplanation": "Deep: ocean and shadow.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "OCEAN: the deep ocean / 'the deep'; SHADOW: the common collocation 'deep shadow(s)'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHARK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "A shark in the ocean.",
+          "wordBConnection": "The shark's shadow below.",
+          "revealExplanation": "Shark: a shadow in the ocean.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "OCEAN: sharks live in the ocean; SHADOW: only via the visual of a shark's shadow beneath the surface, a stretch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_ocean__shark",
@@ -94936,6 +95875,2679 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_ocean__snake",
+      "a": "OCEAN",
+      "b": "SNAKE",
+      "source": "u29",
+      "pairNote": "Both top hints are synonym-adjacent; EEL is the fairest non-giveaway.",
+      "reviewerBestAvailable": {
+        "text": "SERPENT",
+        "why": "Sea serpent links both, though serpent is a synonym of SNAKE.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SERPENT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea serpent of the ocean.",
+          "wordBConnection": "A serpent is a snake.",
+          "revealExplanation": "Serpent: the ocean's sea snake.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "SNAKE: serpent is a synonym; OCEAN: the legendary sea serpent.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The sea is the ocean.",
+          "wordBConnection": "A sea snake.",
+          "revealExplanation": "Sea: the sea snake of the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "SNAKE: 'sea snake' (real animal); OCEAN: sea is a near-synonym.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "EEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean eels.",
+          "wordBConnection": "An eel looks like a snake.",
+          "revealExplanation": "Eel: the ocean's snake lookalike.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "OCEAN: eels live in the sea; SNAKE: shared snake-like body shape (true shared property, eels are fish not snakes).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__spider",
+      "a": "OCEAN",
+      "b": "SPIDER",
+      "source": "u29",
+      "pairNote": "SEA leans on an obscure animal.",
+      "reviewerBestAvailable": {
+        "text": "CRAB",
+        "why": "Spider crab is fairly well known and crabs are clearly ocean animals.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CRAB",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean crabs.",
+          "wordBConnection": "The spider crab.",
+          "revealExplanation": "Crab: the ocean's spider crab.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SPIDER: the spider crab (e.g. Japanese spider crab); OCEAN: crabs are sea creatures.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The sea is the ocean.",
+          "wordBConnection": "Sea spiders.",
+          "revealExplanation": "Sea: sea spiders, in the ocean.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "synonym_of_target",
+                "obscure"
+              ],
+              "reason": "SPIDER: 'sea spider' is a real but little-known animal; OCEAN: sea is a near-synonym.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__spring",
+      "a": "OCEAN",
+      "b": "SPRING",
+      "source": "u29",
+      "pairNote": "BREAK reaches OCEAN only loosely.",
+      "reviewerBestAvailable": {
+        "text": "TIDE",
+        "why": "Spring tide is a genuine compound and tides are pure ocean.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WATER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean water.",
+          "wordBConnection": "Spring water.",
+          "revealExplanation": "Water: ocean, or spring.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "SPRING: 'spring water'; OCEAN: ocean water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean tides.",
+          "wordBConnection": "A spring tide.",
+          "revealExplanation": "Tide: the spring tide of the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "SPRING: 'spring tide' (real term); OCEAN: ocean tides.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BREAK",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The ocean beach.",
+          "wordBConnection": "Spring break.",
+          "revealExplanation": "Break: spring break, at the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPRING: 'spring break'; OCEAN: only via waves breaking or beach trips, a looser second side.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__star",
+      "a": "OCEAN",
+      "b": "STAR",
+      "source": "u29",
+      "pairNote": "STARFISH must go; PATRICK carries the same idea legally.",
+      "reviewerBestAvailable": {
+        "text": "PATRICK",
+        "why": "Well-known character whose surname and home hit both words.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PATRICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Patrick lives in the ocean.",
+          "wordBConnection": "Patrick Star.",
+          "revealExplanation": "Patrick: the ocean's Star.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "SpongeBob SquarePants",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "STAR: Patrick Star (SpongeBob); OCEAN: he is a starfish living under the sea in Bikini Bottom.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "NAVIGATION",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean navigation.",
+          "wordBConnection": "Navigating by the stars.",
+          "revealExplanation": "Navigation: stars, across the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "STAR: celestial navigation by the stars; OCEAN: sailors navigating across oceans.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "STARFISH",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target STAR",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target STAR as a substring, a rule failure.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__train",
+      "a": "OCEAN",
+      "b": "TRAIN",
+      "source": "u29",
+      "pairNote": "No PASS; a hard pair for these hints.",
+      "reviewerBestAvailable": {
+        "text": "COAST",
+        "why": "Strong on OCEAN, with a passable coastal-railway scene for TRAIN.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TUNNEL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A tunnel under the sea.",
+          "wordBConnection": "A train tunnel.",
+          "revealExplanation": "Tunnel: a train under the sea.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "TRAIN: train tunnels; OCEAN: only via undersea tunnels like the Channel Tunnel, which runs under a sea channel rather than an ocean.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "COAST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The ocean coast.",
+          "wordBConnection": "A coastal train.",
+          "revealExplanation": "Coast: the train along the ocean.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "OCEAN: the ocean coast; TRAIN: coastal rail lines or a train 'coasting', both loose.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__water",
+      "a": "OCEAN",
+      "b": "WATER",
+      "source": "u29",
+      "pairNote": "Easy pair; all three work.",
+      "reviewerBestAvailable": {
+        "text": "WAVE",
+        "why": "Immediate on both sides.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "WAVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Ocean waves.",
+          "wordBConnection": "A wave of water.",
+          "revealExplanation": "Wave: ocean water.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "OCEAN: ocean waves; WATER: waves are moving water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SALT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The salty ocean.",
+          "wordBConnection": "Salt water.",
+          "revealExplanation": "Salt: ocean water.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WATER: 'salt water'; OCEAN: the ocean is salty.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "DEEP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The deep ocean.",
+          "wordBConnection": "Deep water.",
+          "revealExplanation": "Deep: ocean water.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "OCEAN: the deep ocean; WATER: 'deep water'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__witch",
+      "a": "OCEAN",
+      "b": "WITCH",
+      "source": "u29",
+      "pairNote": "Good pair.",
+      "reviewerBestAvailable": {
+        "text": "URSULA",
+        "why": "A single famous character embodying both words.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "URSULA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Ursula lives under the ocean.",
+          "wordBConnection": "Ursula is a sea witch.",
+          "revealExplanation": "Ursula: the ocean's witch.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Little Mermaid",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WITCH: Ursula the sea witch in The Little Mermaid; OCEAN: she lives under the sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The sea is the ocean.",
+          "wordBConnection": "The sea witch.",
+          "revealExplanation": "Sea: the sea witch of the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "WITCH: 'sea witch' (Ursula's title); OCEAN: sea is a near-synonym.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_ocean__wolf",
+      "a": "OCEAN",
+      "b": "WOLF",
+      "source": "u29",
+      "pairNote": "No PASS; both routes are obscure compounds.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea wolf is at least a real phrase with some cultural footprint.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "FISH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Ocean fish.",
+          "wordBConnection": "The wolffish.",
+          "revealExplanation": "Fish: the ocean's wolffish.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "OCEAN: ocean fish; WOLF: only via the wolffish, a niche animal.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The sea is the ocean.",
+          "wordBConnection": "Sea wolves.",
+          "revealExplanation": "Sea: sea wolves of the coast.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "synonym_of_target",
+                "obscure"
+              ],
+              "reason": "WOLF: 'sea wolf' (Jack London's The Sea-Wolf, coastal sea wolves); OCEAN: near-synonym; the compound is not widely known.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__queen",
+      "a": "PIRATE",
+      "b": "QUEEN",
+      "source": "u29",
+      "pairNote": "REVENGE is the weakest, relying on knowing the ship's full name.",
+      "reviewerBestAvailable": {
+        "text": "ANNE",
+        "why": "Two independent pirate routes plus a real queen.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "ANNE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Blackbeard's ship.",
+          "wordBConnection": "Named for Queen Anne.",
+          "revealExplanation": "Anne: Queen Anne's Revenge, the pirate ship.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Queen Anne's Revenge",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "QUEEN: Queen Anne; PIRATE: Blackbeard's ship Queen Anne's Revenge and pirate Anne Bonny.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ELIZABETH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Elizabeth's privateers.",
+          "wordBConnection": "Queen Elizabeth.",
+          "revealExplanation": "Elizabeth: the queen of the privateers.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "QUEEN: Queen Elizabeth; PIRATE: Elizabeth Swann in Pirates of the Caribbean and Elizabeth I's privateers.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "REVENGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Blackbeard's Revenge.",
+          "wordBConnection": "Queen Anne's Revenge.",
+          "revealExplanation": "Revenge: the pirate ship named for a queen.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Both sides via the phrase Queen Anne's Revenge, Blackbeard's pirate ship (counts as the familiar name).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__ring",
+      "a": "PIRATE",
+      "b": "RING",
+      "source": "u29",
+      "pairNote": "EARRING fails on substring.",
+      "reviewerBestAvailable": {
+        "text": "GOLD",
+        "why": "Familiar collocation on both sides.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GOLD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Pirate gold.",
+          "wordBConnection": "A gold ring.",
+          "revealExplanation": "Gold: the pirate's, and the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "PIRATE: pirate gold; RING: gold ring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "EARRING",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "rejected",
+            "authorReason": "contains the target RING",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target"
+              ],
+              "reason": "Contains the target RING as a substring, a rule failure, though the pirate-earring image is apt.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TREASURE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Pirate treasure.",
+          "wordBConnection": "Rings in the treasure.",
+          "revealExplanation": "Treasure: the pirate's rings.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "PIRATE: pirate treasure; RING: a ring can be treasure, but that side is thin.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__robot",
+      "a": "PIRATE",
+      "b": "ROBOT",
+      "source": "u29",
+      "pairNote": "Both acceptable.",
+      "reviewerBestAvailable": {
+        "text": "ANIMATRONIC",
+        "why": "Concrete shared scene (the Disney ride).",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "ANIMATRONIC",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The ride's pirates.",
+          "wordBConnection": "Animatronics are robots.",
+          "revealExplanation": "Animatronic: robot pirates of the ride.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Pirates of the Caribbean ride",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "PIRATE: animatronic pirates of the Disney Pirates of the Caribbean ride; ROBOT: animatronics are robotic figures.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SPACE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Space pirates.",
+          "wordBConnection": "Space robots.",
+          "revealExplanation": "Space: pirates and robots.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "PIRATE: 'space pirate' sci-fi trope; ROBOT: space robots/rovers.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__rock",
+      "a": "PIRATE",
+      "b": "ROCK",
+      "source": "u29",
+      "pairNote": "Both moderate.",
+      "reviewerBestAvailable": {
+        "text": "SKULL",
+        "why": "Iconic pirate symbol plus Skull Rock.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SHIPWRECK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate shipwreck.",
+          "wordBConnection": "Wrecked on the rocks.",
+          "revealExplanation": "Shipwreck: the pirate, on the rocks.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "PIRATE: pirate shipwrecks; ROCK: ships wrecked on the rocks.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SKULL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The pirate's skull flag.",
+          "wordBConnection": "Skull Rock.",
+          "revealExplanation": "Skull: the pirate's, and Skull Rock.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Peter Pan",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "PIRATE: skull and crossbones; ROCK: Skull Rock, the pirate cove in Peter Pan.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__rose",
+      "a": "PIRATE",
+      "b": "ROSE",
+      "source": "u29",
+      "pairNote": "MAP depends on the same compass-rose idea one step removed.",
+      "reviewerBestAvailable": {
+        "text": "COMPASS",
+        "why": "Direct compound 'compass rose' plus pirate navigation.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "COMPASS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate's compass.",
+          "wordBConnection": "The compass rose.",
+          "revealExplanation": "Compass: the pirate's, and its rose.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROSE: 'compass rose'; PIRATE: navigating by compass (Jack Sparrow's compass).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "MAP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate map.",
+          "wordBConnection": "The compass rose on the map.",
+          "revealExplanation": "Map: the pirate's, with a compass rose.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "PIRATE: treasure map; ROSE: the compass rose drawn on maps.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__salt",
+      "a": "PIRATE",
+      "b": "SALT",
+      "source": "u29",
+      "pairNote": "OLD is a variant of the SAILOR (old salt) route and weaker.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea salt plus pirates at sea is immediate.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Pirates of the sea.",
+          "wordBConnection": "Sea salt.",
+          "revealExplanation": "Sea: pirates, and salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SALT: 'sea salt'; PIRATE: pirates at sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SAILOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate is a sailor.",
+          "wordBConnection": "A salt is a sailor.",
+          "revealExplanation": "Sailor: pirate, or old salt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "PIRATE: pirates are sailors; SALT: 'old salt' means a seasoned sailor.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "OLD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "An old pirate.",
+          "wordBConnection": "An old salt.",
+          "revealExplanation": "Old: an old salt of a pirate.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SALT: 'old salt'; PIRATE: only via the old-sea-dog image, so each side needs the same idiom.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__shadow",
+      "a": "PIRATE",
+      "b": "SHADOW",
+      "source": "u29",
+      "pairNote": "PETER is a variant; serve only one.",
+      "reviewerBestAvailable": {
+        "text": "PETERPAN",
+        "why": "Full name makes the shared story unmistakable.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PETER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Peter fights pirates.",
+          "wordBConnection": "Peter's runaway shadow.",
+          "revealExplanation": "Peter: the boy with the shadow and the pirates.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Peter Pan",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "variant_of:PETERPAN"
+              ],
+              "reason": "Same Peter Pan route (shadow and Hook's pirates), weaker without 'Pan'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PETERPAN",
+          "status": "held",
+          "heldReason": "passed blind review; needs player-facing text",
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "rejected",
+            "authorReason": "not a single word",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "SHADOW: Peter Pan's runaway shadow; PIRATE: Captain Hook's pirates.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__shark",
+      "a": "PIRATE",
+      "b": "SHARK",
+      "source": "u29",
+      "pairNote": "Fine pair.",
+      "reviewerBestAvailable": {
+        "text": "PLANK",
+        "why": "A specific shared scene rather than a shared habitat.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Pirates of the sea.",
+          "wordBConnection": "Sharks of the sea.",
+          "revealExplanation": "Sea: pirates and sharks.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "PIRATE: pirates sail the sea; SHARK: sharks live in the sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PLANK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Pirates make you walk the plank.",
+          "wordBConnection": "Sharks waiting below.",
+          "revealExplanation": "Plank: the pirate's, sharks below.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "PIRATE: walking the plank; SHARK: the familiar cartoon scene of sharks circling below the plank.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__snake",
+      "a": "PIRATE",
+      "b": "SNAKE",
+      "source": "u29",
+      "pairNote": "No PASS; a hard pair.",
+      "reviewerBestAvailable": {
+        "text": "VILLAIN",
+        "why": "Both are stock villains; the clearest of two loose routes.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "VILLAIN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A pirate villain.",
+          "wordBConnection": "A snake villain.",
+          "revealExplanation": "Villain: pirate, or snake.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "PIRATE: pirate villains like Captain Hook; SNAKE: snakes as villain figures (Kaa, the Eden serpent, 'a snake' for a traitor), a broad stretch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TREASURE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Pirate treasure.",
+          "wordBConnection": "A snake guarding treasure.",
+          "revealExplanation": "Treasure: the pirate's, guarded by a snake.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "PIRATE: pirate treasure; SNAKE: only the adventure-film trope of snakes guarding treasure, loose.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__spider",
+      "a": "PIRATE",
+      "b": "SPIDER",
+      "source": "u29",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "RIGGING",
+        "why": "Web-like rigging is the only route that reaches SPIDER at all.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "RIGGING",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Pirates climb the rigging.",
+          "wordBConnection": "Rigging laced like a web.",
+          "revealExplanation": "Rigging: the pirate's web of ropes.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "PIRATE: ship's rigging pirates climb; SPIDER: only the visual of rigging looking like a web, a metaphor not a fact.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHIP",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate ship.",
+          "wordBConnection": "Spiders below deck.",
+          "revealExplanation": "Ship: pirates, and spiders below deck.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "PIRATE: pirate ship; SPIDER: no recognizable route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__spring",
+      "a": "PIRATE",
+      "b": "SPRING",
+      "source": "u29",
+      "pairNote": "YOUTH and FOUNTAIN share the same Fountain-of-Youth route; FOUNTAIN is closer to SPRING.",
+      "reviewerBestAvailable": {
+        "text": "FOUNTAIN",
+        "why": "Strong water-source link to SPRING and a film route to PIRATE.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FOUNTAIN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Pirates seek the Fountain of Youth.",
+          "wordBConnection": "A fountain is a spring.",
+          "revealExplanation": "Fountain: the spring the pirates sought.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Pirates of the Caribbean: On Stranger Tides",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SPRING: a spring is a natural fountain of water; PIRATE: the Fountain of Youth hunted in On Stranger Tides.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "YOUTH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Pirates hunt the fountain of youth.",
+          "wordBConnection": "The spring of youth.",
+          "revealExplanation": "Youth: the spring pirates sought.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "PIRATE: the Fountain of Youth quest in Pirates of the Caribbean: On Stranger Tides; SPRING: springtime of youth / fountain-as-spring, each side one step removed.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__star",
+      "a": "PIRATE",
+      "b": "STAR",
+      "source": "u29",
+      "pairNote": "TREASURE is filler here.",
+      "reviewerBestAvailable": {
+        "text": "NAVIGATE",
+        "why": "Clear shared scene of sailing by the stars.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "NAVIGATE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Pirates navigate the seas.",
+          "wordBConnection": "Navigating by the stars.",
+          "revealExplanation": "Navigate: the pirate, by the stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "STAR: navigating by the stars; PIRATE: pirates navigating the seas.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TREASURE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Pirate treasure.",
+          "wordBConnection": "Treasure among the stars.",
+          "revealExplanation": "Treasure: pirates, in the stars.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "PIRATE: pirate treasure; STAR: no recognizable route (Treasure Planet is too indirect).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__train",
+      "a": "PIRATE",
+      "b": "TRAIN",
+      "source": "u29",
+      "pairNote": "HEIST is the same idea, weaker on PIRATE.",
+      "reviewerBestAvailable": {
+        "text": "ROBBER",
+        "why": "Shared role as robbers, with 'train robber' a familiar phrase.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ROBBER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate is a sea robber.",
+          "wordBConnection": "A train robber.",
+          "revealExplanation": "Robber: of the sea, or of the train.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "TRAIN: train robber (Great Train Robbery); PIRATE: pirates are robbers at sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "HEIST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A pirate heist.",
+          "wordBConnection": "A train heist.",
+          "revealExplanation": "Heist: pirate or train.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "TRAIN: train heist; PIRATE: pirates plunder, but 'heist' is not their usual word.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__water",
+      "a": "PIRATE",
+      "b": "WATER",
+      "source": "u29",
+      "pairNote": "Easy pair.",
+      "reviewerBestAvailable": {
+        "text": "PLANK",
+        "why": "Specific scene that reaches both words.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "PLANK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The pirate's plank.",
+          "wordBConnection": "Into the water.",
+          "revealExplanation": "Plank: the pirate's walk into the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "PIRATE: walk the plank; WATER: the plank drops you into the water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Pirates of the sea.",
+          "wordBConnection": "Sea water.",
+          "revealExplanation": "Sea: the pirate's water.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "PIRATE: pirates of the sea; WATER: the sea is water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "SHIP",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate ship.",
+          "wordBConnection": "A ship on water.",
+          "revealExplanation": "Ship: the pirate's, on the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "PIRATE: pirate ship; WATER: ships sail on water.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__witch",
+      "a": "PIRATE",
+      "b": "WITCH",
+      "source": "u29",
+      "pairNote": "TIA is a deep cut.",
+      "reviewerBestAvailable": {
+        "text": "CURSE",
+        "why": "Natural verb route to WITCH plus the famous film title.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "COSTUME",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A pirate costume.",
+          "wordBConnection": "A witch costume.",
+          "revealExplanation": "Costume: pirate or witch.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both sides: classic Halloween costumes (pirate costume, witch costume).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CURSE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Cursed pirates.",
+          "wordBConnection": "A witch's curse.",
+          "revealExplanation": "Curse: the witch's, on the pirates.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "WITCH: witches cast curses; PIRATE: cursed pirates and The Curse of the Black Pearl.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "TIA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Tia Dalma helps the pirates.",
+          "wordBConnection": "Tia Dalma is a sea witch.",
+          "revealExplanation": "Tia: the pirates' witch.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Pirates of the Caribbean",
+            "recognizability": "niche"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Both sides via Tia Dalma, the mystic of Pirates of the Caribbean; too niche, and she is styled a voodoo priestess rather than plainly a witch.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pirate__wolf",
+      "a": "PIRATE",
+      "b": "WOLF",
+      "source": "u29",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Sea wolf is the only route that touches both.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A sea raider.",
+          "wordBConnection": "The Sea-Wolf.",
+          "revealExplanation": "Sea: the sea-wolf, a pirate-like captain.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Jack London, The Sea-Wolf",
+            "recognizability": "niche"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "WOLF and PIRATE: 'sea wolf' as an old name for a pirate/raider, a niche compound; PIRATE also loosely at sea.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "PACK",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pirate crew.",
+          "wordBConnection": "A wolf pack.",
+          "revealExplanation": "Pack: wolves, and a pirate crew.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "WOLF: wolf pack; PIRATE: no recognizable route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__ring",
+      "a": "QUEEN",
+      "b": "RING",
+      "source": "u29",
+      "pairNote": "BOXING is filler for QUEEN.",
+      "reviewerBestAvailable": {
+        "text": "JEWEL",
+        "why": "Ordinary jewellery link to both.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "JEWEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The queen's jewels.",
+          "wordBConnection": "A jewelled ring.",
+          "revealExplanation": "Jewel: the queen's ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "QUEEN: the crown jewels; RING: a jewelled ring.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "CROWN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The queen's crown.",
+          "wordBConnection": "A crown, shaped like a ring.",
+          "revealExplanation": "Crown: the queen's ring of gold.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "QUEEN: the queen's crown; RING: only as a fellow piece of jewellery or ring-shaped band, a loose link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BOXING",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "rejected",
+            "authorReason": "Queensberry is not the queen; invented route",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "RING: boxing ring; QUEEN: no recognizable route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__robot",
+      "a": "QUEEN",
+      "b": "ROBOT",
+      "source": "u29",
+      "pairNote": "No PASS; CHESS is a close call.",
+      "reviewerBestAvailable": {
+        "text": "CHESS",
+        "why": "Broad on QUEEN, and chess machines are a familiar robot trope.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "CHESS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The chess queen.",
+          "wordBConnection": "A chess robot.",
+          "revealExplanation": "Chess: the queen, against a robot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "QUEEN: the chess queen; ROBOT: chess-playing machines (Deep Blue, chess robots), which are computers more than robots.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BORG",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Borg Queen.",
+          "wordBConnection": "The Borg are cyborgs.",
+          "revealExplanation": "Borg: the queen of the machines.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Star Trek",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "QUEEN: the Borg Queen of Star Trek; ROBOT: the Borg are cyborgs, close but not robots; fan-niche.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__rock",
+      "a": "QUEEN",
+      "b": "ROCK",
+      "source": "u29",
+      "pairNote": "Strong pair.",
+      "reviewerBestAvailable": {
+        "text": "BAND",
+        "why": "Queen is a rock band, plain and broad.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "WILL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Queen's anthem.",
+          "wordBConnection": "We Will Rock You.",
+          "revealExplanation": "Will: We Will Rock You, by Queen.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Queen",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Both sides via Queen's song 'We Will Rock You'.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "BAND",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Queen is a band.",
+          "wordBConnection": "A rock band.",
+          "revealExplanation": "Band: Queen, the rock band.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Queen",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "QUEEN: the band Queen; ROCK: rock band.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "FREDDIE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Freddie of Queen.",
+          "wordBConnection": "A rock legend.",
+          "revealExplanation": "Freddie: Queen's rock frontman.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Queen",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "QUEEN: Freddie Mercury fronted Queen; ROCK: a rock legend.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__rose",
+      "a": "QUEEN",
+      "b": "ROSE",
+      "source": "u29",
+      "pairNote": "GARDEN leans on the same Wonderland scene but is weaker on QUEEN.",
+      "reviewerBestAvailable": {
+        "text": "ALICE",
+        "why": "One familiar story that features both a queen and roses.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "TUDOR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Tudor queens.",
+          "wordBConnection": "The Tudor rose.",
+          "revealExplanation": "Tudor: queens, and the rose.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "ROSE: the Tudor rose emblem; QUEEN: Tudor queens (Elizabeth I, Mary I).",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "ALICE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The Queen of Hearts.",
+          "wordBConnection": "Painting the roses red.",
+          "revealExplanation": "Alice: the Queen's painted roses.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Alice in Wonderland",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Both sides via Alice in Wonderland: the Queen of Hearts and the white roses painted red.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "GARDEN",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The queen's garden.",
+          "wordBConnection": "A rose garden.",
+          "revealExplanation": "Garden: the queen's roses.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "ROSE: rose garden; QUEEN: only via the Queen of Hearts' garden or royal gardens, a loose link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__salt",
+      "a": "QUEEN",
+      "b": "SALT",
+      "source": "u29",
+      "pairNote": "No PASS; a very hard pair.",
+      "reviewerBestAvailable": {
+        "text": "TAX",
+        "why": "The only hint that touches both sides at all.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TAX",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Royal taxes.",
+          "wordBConnection": "The salt tax.",
+          "revealExplanation": "Tax: the crown's, on salt.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "SALT: historic salt taxes (Gandhi's Salt March against British rule); QUEEN: only via crown/royal taxation, a vague link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "LOT",
+          "status": "rejected",
+          "heldReason": null,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "rejected",
+            "authorReason": "Lot's wife is not a queen; invented route",
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "SALT: Lot's wife turned to a pillar of salt; QUEEN: no recognizable route.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_queen__shadow",
+      "a": "QUEEN",
+      "b": "SHADOW",
+      "source": "u29",
+      "pairNote": "No PASS.",
+      "reviewerBestAvailable": {
+        "text": "MIRROR",
+        "why": "Concrete Snow White object; both are images of the self.",
+        "reviewer": "blind-subagent-29"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MIRROR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "The Queen's magic mirror.",
+          "wordBConnection": "A shadow in the mirror.",
+          "revealExplanation": "Mirror: the queen's, with a shadow in it.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "QUEEN: the Evil Queen's magic mirror; SHADOW: only as a fellow likeness/double of a person, a loose link.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        },
+        {
+          "text": "EVIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The Evil Queen.",
+          "wordBConnection": "Evil in the shadows.",
+          "revealExplanation": "Evil: the queen, and the shadows.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u29",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-29",
+              "date": "2026-10-18",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "generic"
+              ],
+              "reason": "QUEEN: the Evil Queen; SHADOW: shadows as a sinister/evil image (dark forces), broad.",
+              "model": "claude-opus-5-5",
+              "modelEvidence": "reviews/u29-blind-review.json _metadata.model, echoed from the reviewer system prompt; dispatcher model=opus"
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_robot__rock",

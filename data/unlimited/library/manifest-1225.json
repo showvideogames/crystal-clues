@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-18T06:38:11.831Z",
+  "generated": "2026-10-18T06:41:39.605Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 1076,
-  "reviewed": 1076,
-  "playable": 870,
-  "held_only": 155,
+  "authored": 1116,
+  "reviewed": 1116,
+  "playable": 901,
+  "held_only": 164,
   "rejected_only": 51,
   "candidate": 0,
-  "hole": 149,
+  "hole": 109,
   "closed": 0,
-  "withBestAvailableCandidate": 206,
+  "withBestAvailableCandidate": 215,
   "underGenerationHold": 1,
   "servedLive": 64,
   "pendingLocal": 0,
@@ -30,10 +30,10 @@
    "pendingBatches": []
   },
   "hints": {
-   "total": 2588,
-   "playable": 1432,
-   "held": 585,
-   "rejected": 571
+   "total": 2686,
+   "playable": 1492,
+   "held": 612,
+   "rejected": 582
   },
   "perWordHoles": {
    "APPLE": 0,
@@ -67,25 +67,25 @@
    "LION": 0,
    "MOON": 0,
    "MOUSE": 0,
-   "NIGHT": 3,
-   "OCEAN": 15,
-   "PIRATE": 16,
-   "QUEEN": 17,
-   "RING": 17,
-   "ROBOT": 16,
-   "ROCK": 15,
-   "ROSE": 16,
-   "SALT": 17,
-   "SHADOW": 17,
-   "SHARK": 16,
-   "SNAKE": 17,
-   "SPIDER": 17,
-   "SPRING": 16,
-   "STAR": 17,
-   "TRAIN": 16,
-   "WATER": 15,
-   "WITCH": 17,
-   "WOLF": 18
+   "NIGHT": 0,
+   "OCEAN": 0,
+   "PIRATE": 0,
+   "QUEEN": 9,
+   "RING": 14,
+   "ROBOT": 13,
+   "ROCK": 12,
+   "ROSE": 13,
+   "SALT": 14,
+   "SHADOW": 14,
+   "SHARK": 15,
+   "SNAKE": 15,
+   "SPIDER": 15,
+   "SPRING": 14,
+   "STAR": 15,
+   "TRAIN": 14,
+   "WATER": 12,
+   "WITCH": 14,
+   "WOLF": 15
   },
   "batches": {
    "u04": {
@@ -290,10 +290,10 @@
    },
    "u29": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
+    "playable": 31,
+    "held_only": 9,
     "rejected_only": 0
    },
    "u30": {
@@ -25016,8 +25016,28 @@
    "pair_id": "p_night__water",
    "a": "NIGHT",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SWIM",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "WATER: you swim in water; NIGHT: only via the loose phrase 'night swim', which is a scene but not a strong one.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Only hint touching both sides, via 'night swim'.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25025,8 +25045,21 @@
    "pair_id": "p_night__witch",
    "a": "NIGHT",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HOUR",
+    "HALLOWEEN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25034,8 +25067,21 @@
    "pair_id": "p_night__wolf",
    "a": "NIGHT",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HOWL",
+    "MOON"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25066,8 +25112,20 @@
    "pair_id": "p_ocean__queen",
    "a": "OCEAN",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LINER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25075,8 +25133,22 @@
    "pair_id": "p_ocean__ring",
    "a": "OCEAN",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FIRE",
+    "ATOLL",
+    "BUOY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25084,8 +25156,21 @@
    "pair_id": "p_ocean__robot",
    "a": "OCEAN",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DRONE",
+    "SUBMERSIBLE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25093,8 +25178,21 @@
    "pair_id": "p_ocean__rock",
    "a": "OCEAN",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CLIFF",
+    "WAVES"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25102,8 +25200,21 @@
    "pair_id": "p_ocean__rose",
    "a": "OCEAN",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TITANIC",
+    "HEART"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25111,8 +25222,22 @@
    "pair_id": "p_ocean__salt",
    "a": "OCEAN",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WATER",
+    "SEA",
+    "BRINE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25120,8 +25245,20 @@
    "pair_id": "p_ocean__shadow",
    "a": "OCEAN",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "DEEP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25151,8 +25288,22 @@
    "pair_id": "p_ocean__snake",
    "a": "OCEAN",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SERPENT",
+    "SEA",
+    "EEL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25160,8 +25311,20 @@
    "pair_id": "p_ocean__spider",
    "a": "OCEAN",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CRAB"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25169,8 +25332,21 @@
    "pair_id": "p_ocean__spring",
    "a": "OCEAN",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WATER",
+    "TIDE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25178,8 +25354,21 @@
    "pair_id": "p_ocean__star",
    "a": "OCEAN",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PATRICK",
+    "NAVIGATION"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25187,8 +25376,28 @@
    "pair_id": "p_ocean__train",
    "a": "OCEAN",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "COAST",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "OCEAN: the ocean coast; TRAIN: coastal rail lines or a train 'coasting', both loose.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Strong on OCEAN, with a passable coastal-railway scene for TRAIN.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25196,8 +25405,22 @@
    "pair_id": "p_ocean__water",
    "a": "OCEAN",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WAVE",
+    "SALT",
+    "DEEP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25205,8 +25428,21 @@
    "pair_id": "p_ocean__witch",
    "a": "OCEAN",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "URSULA",
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25214,8 +25450,28 @@
    "pair_id": "p_ocean__wolf",
    "a": "OCEAN",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SEA",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "WOLF: 'sea wolf' (Jack London's The Sea-Wolf, coastal sea wolves); OCEAN: near-synonym; the compound is not widely known.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Sea wolf is at least a real phrase with some cultural footprint.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25223,8 +25479,22 @@
    "pair_id": "p_pirate__queen",
    "a": "PIRATE",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ANNE",
+    "ELIZABETH",
+    "REVENGE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25232,8 +25502,20 @@
    "pair_id": "p_pirate__ring",
    "a": "PIRATE",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GOLD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25241,8 +25523,21 @@
    "pair_id": "p_pirate__robot",
    "a": "PIRATE",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ANIMATRONIC",
+    "SPACE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25250,8 +25545,21 @@
    "pair_id": "p_pirate__rock",
    "a": "PIRATE",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SHIPWRECK",
+    "SKULL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25259,8 +25567,21 @@
    "pair_id": "p_pirate__rose",
    "a": "PIRATE",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "COMPASS",
+    "MAP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25268,8 +25589,21 @@
    "pair_id": "p_pirate__salt",
    "a": "PIRATE",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA",
+    "SAILOR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25277,8 +25611,20 @@
    "pair_id": "p_pirate__shadow",
    "a": "PIRATE",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PETER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25286,8 +25632,21 @@
    "pair_id": "p_pirate__shark",
    "a": "PIRATE",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA",
+    "PLANK"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25295,8 +25654,28 @@
    "pair_id": "p_pirate__snake",
    "a": "PIRATE",
    "b": "SNAKE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "VILLAIN",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "PIRATE: pirate villains like Captain Hook; SNAKE: snakes as villain figures (Kaa, the Eden serpent, 'a snake' for a traitor), a broad stretch.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Both are stock villains; the clearest of two loose routes.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25304,8 +25683,28 @@
    "pair_id": "p_pirate__spider",
    "a": "PIRATE",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "RIGGING",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "PIRATE: ship's rigging pirates climb; SPIDER: only the visual of rigging looking like a web, a metaphor not a fact.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Web-like rigging is the only route that reaches SPIDER at all.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25313,8 +25712,20 @@
    "pair_id": "p_pirate__spring",
    "a": "PIRATE",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FOUNTAIN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25322,8 +25733,20 @@
    "pair_id": "p_pirate__star",
    "a": "PIRATE",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "NAVIGATE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25331,8 +25754,20 @@
    "pair_id": "p_pirate__train",
    "a": "PIRATE",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "ROBBER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25340,8 +25775,22 @@
    "pair_id": "p_pirate__water",
    "a": "PIRATE",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PLANK",
+    "SEA",
+    "SHIP"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25349,8 +25798,21 @@
    "pair_id": "p_pirate__witch",
    "a": "PIRATE",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "COSTUME",
+    "CURSE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25358,8 +25820,28 @@
    "pair_id": "p_pirate__wolf",
    "a": "PIRATE",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SEA",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "WOLF and PIRATE: 'sea wolf' as an old name for a pirate/raider, a niche compound; PIRATE also loosely at sea.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Sea wolf is the only route that touches both.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25367,8 +25849,20 @@
    "pair_id": "p_queen__ring",
    "a": "QUEEN",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "JEWEL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25376,8 +25870,28 @@
    "pair_id": "p_queen__robot",
    "a": "QUEEN",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "CHESS",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "QUEEN: the chess queen; ROBOT: chess-playing machines (Deep Blue, chess robots), which are computers more than robots.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Broad on QUEEN, and chess machines are a familiar robot trope.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25385,8 +25899,22 @@
    "pair_id": "p_queen__rock",
    "a": "QUEEN",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WILL",
+    "BAND",
+    "FREDDIE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25394,8 +25922,21 @@
    "pair_id": "p_queen__rose",
    "a": "QUEEN",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "TUDOR",
+    "ALICE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25403,8 +25944,28 @@
    "pair_id": "p_queen__salt",
    "a": "QUEEN",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TAX",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "SALT: historic salt taxes (Gandhi's Salt March against British rule); QUEEN: only via crown/royal taxation, a vague link.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "The only hint that touches both sides at all.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -25412,8 +25973,28 @@
    "pair_id": "p_queen__shadow",
    "a": "QUEEN",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u29",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "MIRROR",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "QUEEN: the Evil Queen's magic mirror; SHADOW: only as a fellow likeness/double of a person, a loose link.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Concrete Snow White object; both are images of the self.",
+    "stretch": true
+   },
    "plannedBatch": "u29",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
