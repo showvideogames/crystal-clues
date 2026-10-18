@@ -1,7 +1,7 @@
 {
  "_metadata": {
   "title": "Exhaustive pair manifest for the approved 50-word shortlist",
-  "generated": "2026-10-18T01:16:05.418Z",
+  "generated": "2026-10-18T01:22:27.380Z",
   "library": "data/unlimited/library/pairs.json",
   "states": "playable | held_only | rejected_only | candidate | hole",
   "lifecycle": "planned | authored | reviewed | closed",
@@ -11,15 +11,15 @@
  "summary": {
   "words": 50,
   "pairs": 1225,
-  "authored": 516,
-  "reviewed": 516,
-  "playable": 413,
-  "held_only": 79,
-  "rejected_only": 24,
+  "authored": 556,
+  "reviewed": 556,
+  "playable": 444,
+  "held_only": 85,
+  "rejected_only": 27,
   "candidate": 0,
-  "hole": 709,
+  "hole": 669,
   "closed": 0,
-  "withBestAvailableCandidate": 103,
+  "withBestAvailableCandidate": 112,
   "underGenerationHold": 1,
   "servedLive": 64,
   "pendingLocal": 0,
@@ -30,10 +30,10 @@
    "pendingBatches": []
   },
   "hints": {
-   "total": 1096,
-   "playable": 592,
-   "held": 249,
-   "rejected": 255
+   "total": 1170,
+   "playable": 642,
+   "held": 264,
+   "rejected": 264
   },
   "perWordHoles": {
    "APPLE": 0,
@@ -46,46 +46,46 @@
    "CASTLE": 0,
    "CAT": 0,
    "CROWN": 0,
-   "DIAMOND": 11,
-   "DOG": 37,
-   "DRAGON": 36,
-   "EGG": 37,
-   "FIRE": 34,
+   "DIAMOND": 0,
+   "DOG": 8,
+   "DRAGON": 35,
+   "EGG": 36,
+   "FIRE": 33,
    "FISH": 36,
-   "GHOST": 35,
-   "GLASS": 36,
-   "GOLD": 35,
-   "HEART": 35,
-   "HONEY": 35,
-   "HORSE": 33,
-   "ICE": 36,
-   "IRON": 34,
-   "KEY": 35,
-   "KING": 36,
-   "KNIGHT": 36,
-   "LIGHT": 34,
-   "LION": 36,
-   "MOON": 35,
-   "MOUSE": 38,
-   "NIGHT": 37,
-   "OCEAN": 35,
-   "PIRATE": 36,
-   "QUEEN": 37,
-   "RING": 37,
-   "ROBOT": 37,
-   "ROCK": 37,
-   "ROSE": 34,
-   "SALT": 37,
-   "SHADOW": 38,
-   "SHARK": 38,
+   "GHOST": 34,
+   "GLASS": 35,
+   "GOLD": 34,
+   "HEART": 34,
+   "HONEY": 34,
+   "HORSE": 32,
+   "ICE": 35,
+   "IRON": 33,
+   "KEY": 34,
+   "KING": 35,
+   "KNIGHT": 35,
+   "LIGHT": 33,
+   "LION": 35,
+   "MOON": 34,
+   "MOUSE": 37,
+   "NIGHT": 36,
+   "OCEAN": 34,
+   "PIRATE": 35,
+   "QUEEN": 36,
+   "RING": 36,
+   "ROBOT": 35,
+   "ROCK": 35,
+   "ROSE": 33,
+   "SALT": 36,
+   "SHADOW": 36,
+   "SHARK": 36,
    "SNAKE": 37,
-   "SPIDER": 39,
-   "SPRING": 35,
-   "STAR": 37,
-   "TRAIN": 37,
-   "WATER": 35,
-   "WITCH": 37,
-   "WOLF": 38
+   "SPIDER": 38,
+   "SPRING": 34,
+   "STAR": 36,
+   "TRAIN": 36,
+   "WATER": 34,
+   "WITCH": 36,
+   "WOLF": 37
   },
   "batches": {
    "u04": {
@@ -178,11 +178,11 @@
    },
    "u15": {
     "pairs": 40,
-    "hole": 40,
+    "hole": 0,
     "candidate": 0,
-    "playable": 0,
-    "held_only": 0,
-    "rejected_only": 0
+    "playable": 31,
+    "held_only": 6,
+    "rejected_only": 3
    },
    "u16": {
     "pairs": 40,
@@ -11139,8 +11139,28 @@
    "pair_id": "p_diamond__robot",
    "a": "DIAMOND",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "HARD",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Diamond is the proverbial hardest substance; a robot is only loosely hard (rigid metal body, hard-wired), so the robot side leans on a weak material property.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Only hint offered; the diamond side is unmistakable and a player can reach a metal robot through 'hard' with some effort.",
+    "stretch": true
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11148,8 +11168,21 @@
    "pair_id": "p_diamond__rock",
    "a": "DIAMOND",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "MINE",
+    "GEM"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11204,8 +11237,28 @@
    "pair_id": "p_diamond__shadow",
    "a": "DIAMOND",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "ECLIPSE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "The 'diamond ring' effect of a total solar eclipse is real but specialist knowledge, while an eclipse is literally the moon's shadow.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Shadow side is solid and the diamond-ring effect is at least a genuine, nameable fact for astronomy-aware players.",
+    "stretch": false
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11213,8 +11266,20 @@
    "pair_id": "p_diamond__shark",
    "a": "DIAMOND",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CARD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11245,8 +11310,28 @@
    "pair_id": "p_diamond__spider",
    "a": "DIAMOND",
    "b": "SPIDER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "DEW",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Dew beading on a spider web is a recognisable scene and dewdrops are poetically called diamonds, but each side only works once the player already pictures the web.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Only hint; the dew-jewelled web is a genuine shared image even if neither word is reached directly.",
+    "stretch": true
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11254,8 +11339,22 @@
    "pair_id": "p_diamond__spring",
    "a": "DIAMOND",
    "b": "SPRING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BASEBALL",
+    "APRIL",
+    "WEDDING"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11263,8 +11362,21 @@
    "pair_id": "p_diamond__star",
    "a": "DIAMOND",
    "b": "STAR",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SPARKLE",
+    "TWINKLE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11272,8 +11384,20 @@
    "pair_id": "p_diamond__train",
    "a": "DIAMOND",
    "b": "TRAIN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HEIST"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11281,8 +11405,21 @@
    "pair_id": "p_diamond__water",
    "a": "DIAMOND",
    "b": "WATER",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SPARKLING",
+    "CLEAR"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11290,8 +11427,28 @@
    "pair_id": "p_diamond__witch",
    "a": "DIAMOND",
    "b": "WITCH",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SLIPPERS",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "The Wicked Witch covets the slippers in The Wizard of Oz, but they are ruby (silver in the book), never diamond, so the diamond side rests on a wrong fact.",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "Only hint offered; it reaches WITCH but has no honest path to DIAMOND.",
+    "stretch": true
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11299,8 +11456,28 @@
    "pair_id": "p_diamond__wolf",
    "a": "DIAMOND",
    "b": "WOLF",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "FANG",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "Wolf fang is immediate; there is no recognised diamond route (diamond-studded grillz is not a familiar 'fang' scene).",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "Only hint offered; it is wolf-only filler.",
+    "stretch": true
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11308,8 +11485,28 @@
    "pair_id": "p_dog__dragon",
    "a": "DOG",
    "b": "DRAGON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 2,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "TOOTHLESS",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Toothless is the dragon in How to Train Your Dragon, famously written to behave like a big puppy; the dog side depends on knowing that characterisation (or an old toothless dog).",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Dragon side is a named character; the puppy-like behaviour is a genuine shared trait for anyone who knows the films.",
+    "stretch": false
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11317,8 +11514,20 @@
    "pair_id": "p_dog__egg",
    "a": "DOG",
    "b": "EGG",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HUNT"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11326,8 +11535,21 @@
    "pair_id": "p_dog__fire",
    "a": "DOG",
    "b": "FIRE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HYDRANT",
+    "DALMATIAN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11359,8 +11581,21 @@
    "pair_id": "p_dog__ghost",
    "a": "DOG",
    "b": "GHOST",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SCOOBY",
+    "ZERO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11368,8 +11603,21 @@
    "pair_id": "p_dog__glass",
    "a": "DOG",
    "b": "GLASS",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BOWL",
+    "WINDOW"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11377,8 +11625,20 @@
    "pair_id": "p_dog__gold",
    "a": "DOG",
    "b": "GOLD",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RETRIEVER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11386,8 +11646,20 @@
    "pair_id": "p_dog__heart",
    "a": "DOG",
    "b": "HEART",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LOVE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11395,8 +11667,28 @@
    "pair_id": "p_dog__honey",
    "a": "DOG",
    "b": "HONEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SWEETIE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "Sweetie and honey are interchangeable endearments (and honey is sweet); the dog side is only that people call their dogs sweetie, which applies to any pet or person.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Only hint offered; honey side is solid, dog side is a fond-owner stretch.",
+    "stretch": true
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11404,8 +11696,21 @@
    "pair_id": "p_dog__horse",
    "a": "DOG",
    "b": "HORSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "RACE",
+    "RANCH"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11413,8 +11718,21 @@
    "pair_id": "p_dog__ice",
    "a": "DOG",
    "b": "ICE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SLED",
+    "HUSKY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11422,8 +11740,20 @@
    "pair_id": "p_dog__iron",
    "a": "DOG",
    "b": "IRON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CHAIN"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11431,8 +11761,28 @@
    "pair_id": "p_dog__key",
    "a": "DOG",
    "b": "KEY",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "rejected_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "SIT",
+    "status": "rejected",
+    "verdict": "FAIL",
+    "reason": "'Sit' is the first dog command; no recognisable key route exists (a 'sit' key, dog-sitting with a house key, and sitting at piano keys are all invented).",
+    "heldReason": null,
+    "namedByReviewer": true,
+    "why": "Only hint offered; it is dog-only filler.",
+    "stretch": true
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11440,8 +11790,20 @@
    "pair_id": "p_dog__king",
    "a": "DOG",
    "b": "KING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CHARLES"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11449,8 +11811,20 @@
    "pair_id": "p_dog__knight",
    "a": "DOG",
    "b": "KNIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LOYAL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11458,8 +11832,21 @@
    "pair_id": "p_dog__light",
    "a": "DOG",
    "b": "LIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "GUIDE",
+    "LASER"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11467,8 +11854,28 @@
    "pair_id": "p_dog__lion",
    "a": "DOG",
    "b": "LION",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 0,
+    "held": 1,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [],
+   "state": "held_only",
+   "lifecycle": "reviewed",
+   "bestAvailableCandidate": {
+    "text": "MANE",
+    "status": "held",
+    "verdict": "BORDERLINE",
+    "reason": "The mane is the lion's signature; only a few dog breeds (chow, Tibetan mastiff, the lion-cut Pomeranian) are described as maned.",
+    "heldReason": "blind review: borderline",
+    "namedByReviewer": true,
+    "why": "Lion side is iconic and maned dog breeds give a thin but real dog route.",
+    "stretch": true
+   },
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11476,8 +11883,20 @@
    "pair_id": "p_dog__moon",
    "a": "DOG",
    "b": "MOON",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "HOWL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11485,8 +11904,21 @@
    "pair_id": "p_dog__mouse",
    "a": "DOG",
    "b": "MOUSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CAT",
+    "PLUTO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11494,8 +11926,21 @@
    "pair_id": "p_dog__night",
    "a": "DOG",
    "b": "NIGHT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "WATCH",
+    "HOWL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11503,8 +11948,21 @@
    "pair_id": "p_dog__ocean",
    "a": "DOG",
    "b": "OCEAN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PADDLE",
+    "SEAL"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11512,8 +11970,21 @@
    "pair_id": "p_dog__pirate",
    "a": "DOG",
    "b": "PIRATE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SEA",
+    "SCURVY"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11521,8 +11992,20 @@
    "pair_id": "p_dog__queen",
    "a": "DOG",
    "b": "QUEEN",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 1,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "CORGI"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11530,8 +12013,20 @@
    "pair_id": "p_dog__ring",
    "a": "DOG",
    "b": "RING",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SHOW"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11539,8 +12034,22 @@
    "pair_id": "p_dog__robot",
    "a": "DOG",
    "b": "ROBOT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 3,
+   "counts": {
+    "ai_reviewed": 3,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "SPOT",
+    "K9",
+    "AIBO"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11548,8 +12057,20 @@
    "pair_id": "p_dog__rock",
    "a": "DOG",
    "b": "ROCK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 1,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "PET"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11557,8 +12078,20 @@
    "pair_id": "p_dog__rose",
    "a": "DOG",
    "b": "ROSE",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BUD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11566,8 +12099,21 @@
    "pair_id": "p_dog__salt",
    "a": "DOG",
    "b": "SALT",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "LICK",
+    "SEA"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11575,8 +12121,21 @@
    "pair_id": "p_dog__shadow",
    "a": "DOG",
    "b": "SHADOW",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 2,
+    "held": 0,
+    "rejected": 0,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "FOLLOW",
+    "HOMEWARD"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },
@@ -11584,8 +12143,20 @@
    "pair_id": "p_dog__shark",
    "a": "DOG",
    "b": "SHARK",
-   "state": "hole",
-   "lifecycle": "planned",
+   "source": "u15",
+   "hints": 2,
+   "counts": {
+    "ai_reviewed": 1,
+    "held": 0,
+    "rejected": 1,
+    "candidate": 0,
+    "human_approved": 0
+   },
+   "playable": [
+    "BITE"
+   ],
+   "state": "playable",
+   "lifecycle": "reviewed",
    "plannedBatch": "u15",
    "assignedAt": "2026-10-17T21:54:43.301Z"
   },

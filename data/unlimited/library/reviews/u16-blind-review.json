@@ -1,0 +1,500 @@
+{
+  "_metadata": {
+    "reviewer": "blind-subagent-16",
+    "date": "2026-10-17",
+    "input": "u16-blind-input.json",
+    "rubric": "owner-clarified rubric with calibration anchors, 2026-10-17",
+    "independence": "I read only u16-blind-input.json and consulted no other file, search, web page or API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_dog__snake",
+      "a": "DOG",
+      "b": "SNAKE",
+      "hints": [
+        { "text": "RATTLE", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Rattlesnake carries SNAKE instantly, but nothing in RATTLE reaches DOG (a baby's rattle is not a dog scene)." },
+        { "text": "BITE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dog bite and snake bite are both everyday phrases, a clean shared verb." }
+      ],
+      "strong_hints": ["BITE"],
+      "best_available": { "text": "BITE", "why": "Both 'dog bite' and 'snake bite' are stock phrases; nothing else needed." },
+      "pair_note": "BITE is excellent; RATTLE is pure one-sided filler."
+    },
+    {
+      "pair_id": "p_dog__spider",
+      "a": "DOG",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "TICK", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Dogs famously pick up ticks; a tick is an eight-legged arachnid, the spider's close cousin, which most players half-know." },
+        { "text": "LEGS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Eight legs is the spider's signature and four legs is a dog's; a broad shared property, generic but legitimate." }
+      ],
+      "strong_hints": ["TICK", "LEGS"],
+      "best_available": { "text": "TICK", "why": "A concrete dog scene plus a real biological link to spiders; more specific than LEGS." },
+      "pair_note": "Both pass but neither is a slam dunk; TICK rewards knowledge, LEGS rewards counting."
+    },
+    {
+      "pair_id": "p_dog__spring",
+      "a": "DOG",
+      "b": "SPRING",
+      "hints": [
+        { "text": "PUPPIES", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "synonym_of_target"], "verdict": "FAIL", "reason": "Puppies are simply young dogs; there is no recognizable puppies-in-spring scene that a player would reach SPRING from." },
+        { "text": "SPRINGER", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Springer spaniel is a fine dog route, but SPRINGER contains the target SPRING as a substring, which is a rule failure." },
+        { "text": "BOUNCE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "A spring bounces by definition; a bouncy, excited dog is a real image but far from the first thing BOUNCE suggests." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "BOUNCE", "why": "The only legal hint here; the springy, bouncing dog is a plausible if soft route." },
+      "pair_note": "No PASS. SPRINGER is disqualified on substring grounds despite being the natural bridge; a replacement such as a leaping or coiled image would be needed."
+    },
+    {
+      "pair_id": "p_dog__star",
+      "a": "DOG",
+      "b": "STAR",
+      "hints": [
+        { "text": "LASSIE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Lassie is the archetypal famous dog and was a Hollywood movie star, so STAR arrives through the celebrity sense." },
+        { "text": "SIRIUS", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Sirius is the brightest star and is nicknamed the Dog Star in Canis Major, a well-known astronomy fact." }
+      ],
+      "strong_hints": ["SIRIUS", "LASSIE"],
+      "best_available": { "text": "SIRIUS", "why": "The Dog Star nickname ties both words together in a single well-known fact." },
+      "pair_note": "Two complementary passes, one via astronomy and one via Hollywood."
+    },
+    {
+      "pair_id": "p_dog__train",
+      "a": "DOG",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "TRICKS", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dogs do tricks, and you train a dog to do them; TRAIN is reached as the verb in that shared scene." },
+        { "text": "OBEDIENCE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Obedience training is the standard compound for dog training, hitting both words at once." }
+      ],
+      "strong_hints": ["OBEDIENCE", "TRICKS"],
+      "best_available": { "text": "OBEDIENCE", "why": "'Obedience training' names the dog-training scene outright." },
+      "pair_note": "Both lean on TRAIN as a verb rather than a locomotive, which is fine under the rubric."
+    },
+    {
+      "pair_id": "p_dog__water",
+      "a": "DOG",
+      "b": "WATER",
+      "hints": [
+        { "text": "LAB", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Lab reads as Labrador (or laboratory); Labradors being water retrievers is true but a player sees no water in the word itself." },
+        { "text": "PADDLE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Paddling happens in water, and the doggy paddle is the familiar swimming stroke that carries DOG." },
+        { "text": "BOWL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A dog's water bowl is a single household object naming both words." }
+      ],
+      "strong_hints": ["BOWL", "PADDLE"],
+      "best_available": { "text": "BOWL", "why": "The dog's water bowl is the most concrete shared object." },
+      "pair_note": "BOWL and PADDLE are solid; LAB depends on breed knowledge the hint does not surface."
+    },
+    {
+      "pair_id": "p_dog__witch",
+      "a": "DOG",
+      "b": "WITCH",
+      "hints": [
+        { "text": "FAMILIAR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "A witch's familiar is a well-known trope, but the canonical familiar is a cat; a dog familiar (Faust's black poodle) is niche." },
+        { "text": "TOTO", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Toto is Dorothy's dog and the Wicked Witch's 'your little dog too' target in The Wizard of Oz, a shared story." }
+      ],
+      "strong_hints": ["TOTO"],
+      "best_available": { "text": "TOTO", "why": "One famous story contains both the dog and the witch." },
+      "pair_note": "TOTO is excellent; FAMILIAR is defensible but leans heavily on the witch side."
+    },
+    {
+      "pair_id": "p_dog__wolf",
+      "a": "DOG",
+      "b": "WOLF",
+      "hints": [
+        { "text": "PACK", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Wolf pack is the stock phrase and dogs are pack animals that run in packs." },
+        { "text": "HUSKY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A husky is a dog breed whose wolf-like look is exactly what people know it for." },
+        { "text": "HOWL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both wolves and dogs howl; a shared verb everyone recognizes." }
+      ],
+      "strong_hints": ["HOWL", "PACK", "HUSKY"],
+      "best_available": { "text": "HOWL", "why": "The shared sound is the most immediate link between the two animals." },
+      "pair_note": "Three clean passes."
+    },
+    {
+      "pair_id": "p_dragon__egg",
+      "a": "DRAGON",
+      "b": "EGG",
+      "hints": [
+        { "text": "NEST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Eggs sit in nests, and dragon nests of eggs are a familiar fantasy image (Game of Thrones, How to Train Your Dragon)." },
+        { "text": "HATCH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Eggs hatch, and the hatching of dragon eggs is a staple scene in dragon stories." }
+      ],
+      "strong_hints": ["HATCH", "NEST"],
+      "best_available": { "text": "HATCH", "why": "The verb belongs to eggs and the dragon-hatching scene is iconic." },
+      "pair_note": "Both pass; HATCH is the tighter one."
+    },
+    {
+      "pair_id": "p_dragon__fire",
+      "a": "DRAGON",
+      "b": "FIRE",
+      "hints": [
+        { "text": "SMAUG", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Smaug is the famous Hobbit dragon, and his fire-breathing ('I am fire') is what he does, though FIRE arrives only via the dragon." },
+        { "text": "BREATH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Fire breath / dragon's breath is the single defining dragon trait, naming both words." },
+        { "text": "FLAME", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Dragons spit flame and flame is near-synonymous with fire; reaches both but gives FIRE away almost for free." }
+      ],
+      "strong_hints": ["BREATH", "SMAUG", "FLAME"],
+      "best_available": { "text": "BREATH", "why": "Fire breath is the dragon's whole identity in one word." },
+      "pair_note": "BREATH is the ideal hint; FLAME passes but is nearly a synonym for FIRE, so it is weak as a puzzle."
+    },
+    {
+      "pair_id": "p_dragon__fish",
+      "a": "DRAGON",
+      "b": "FISH",
+      "hints": [
+        { "text": "SCALES", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Both dragons and fish are covered in scales; a clean shared property." },
+        { "text": "KOI", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "Koi are fish, and the Chinese legend of the koi that leaps the waterfall to become a dragon is widely known through tattoos and Pokémon." },
+        { "text": "MAGIKARP", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "needs_explanation", "variant_of:KOI"], "verdict": "BORDERLINE", "reason": "Magikarp is a Pokémon fish that evolves into the sea-dragon-like Gyarados, but that is fan knowledge and Gyarados is not formally a dragon." }
+      ],
+      "strong_hints": ["SCALES", "KOI"],
+      "best_available": { "text": "SCALES", "why": "Universal shared property requiring no trivia." },
+      "pair_note": "SCALES is strong; KOI is a nice legend route; MAGIKARP is the same idea for a narrower audience."
+    },
+    {
+      "pair_id": "p_dragon__ghost",
+      "a": "DRAGON",
+      "b": "GHOST",
+      "hints": [
+        { "text": "HAUNTED", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Haunted is purely a ghost word; dragons do not haunt anything." },
+        { "text": "LEGEND", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Dragons are the legendary creature par excellence, and ghost legends / haunted-house legends are a familiar genre." }
+      ],
+      "strong_hints": ["LEGEND"],
+      "best_available": { "text": "LEGEND", "why": "Both are creatures of legend; broad but it reaches both." },
+      "pair_note": "LEGEND is the only workable hint; HAUNTED is filler."
+    },
+    {
+      "pair_id": "p_dragon__glass",
+      "a": "DRAGON",
+      "b": "GLASS",
+      "hints": [
+        { "text": "BLOWN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Blown glass is a familiar craft term and dragons blow fire and smoke; the shared verb carries both." },
+        { "text": "STAINED", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Stained glass is instant, but nothing about STAINED reaches a dragon without inventing a church-window depiction." }
+      ],
+      "strong_hints": ["BLOWN"],
+      "best_available": { "text": "BLOWN", "why": "Glass-blowing and fire-blowing share the verb." },
+      "pair_note": "BLOWN passes on the verb route; STAINED is one-sided."
+    },
+    {
+      "pair_id": "p_dragon__gold",
+      "a": "DRAGON",
+      "b": "GOLD",
+      "hints": [
+        { "text": "SMAUG", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Smaug is the dragon who sleeps on a mountain of gold; a single shared image." },
+        { "text": "TREASURE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dragons guard treasure and treasure is gold." },
+        { "text": "HOARD", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": ["variant_of:TREASURE"], "verdict": "PASS", "reason": "A dragon's hoard is the stock phrase and a hoard of gold is what it contains." }
+      ],
+      "strong_hints": ["HOARD", "TREASURE", "SMAUG"],
+      "best_available": { "text": "HOARD", "why": "'Dragon's hoard' names the gold pile directly." },
+      "pair_note": "All three pass; this is a natural pairing."
+    },
+    {
+      "pair_id": "p_dragon__heart",
+      "a": "DRAGON",
+      "b": "HEART",
+      "hints": [
+        { "text": "SLAIN", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragons get slain, but SLAIN has no route to HEART." },
+        { "text": "DRAGONHEART", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "moderate", "flags": ["contains_target"], "verdict": "FAIL", "reason": "The 1996 film is a real shared reference, but the hint literally contains both target words." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "SLAIN", "why": "The only legal hint, though it reaches only the dragon side." },
+      "pair_note": "No PASS. DRAGONHEART is disqualified by substring; a replacement that evokes the film or a dragon's heart scene without naming either word is needed."
+    },
+    {
+      "pair_id": "p_dragon__honey",
+      "a": "DRAGON",
+      "b": "HONEY",
+      "hints": [
+        { "text": "FRUIT", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Dragon fruit is a familiar compound, but FRUIT only reaches HONEY via a loose natural-sweetener or honeydew association." },
+        { "text": "SWEET", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "colour_mood_material"], "verdict": "FAIL", "reason": "Honey is sweet, but nothing about a dragon is sweet; the dragon-fruit-is-sweet chain is an invented rescue." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "FRUIT", "why": "Dragon fruit is solid and honey at least sits in the same sweet-food space." },
+      "pair_note": "No PASS. This pairing lacks a natural bridge; FRUIT is the best of a weak set."
+    },
+    {
+      "pair_id": "p_dragon__horse",
+      "a": "DRAGON",
+      "b": "HORSE",
+      "hints": [
+        { "text": "KNIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A knight rides a horse and slays a dragon; one figure links both." },
+        { "text": "RIDE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "You ride a horse, and dragon-riding is a familiar fantasy scene (How to Train Your Dragon, Daenerys)." },
+        { "text": "ZODIAC", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Dragon and Horse are both signs of the Chinese zodiac." }
+      ],
+      "strong_hints": ["KNIGHT", "ZODIAC", "RIDE"],
+      "best_available": { "text": "KNIGHT", "why": "The knight-on-horse-versus-dragon tableau is universally known." },
+      "pair_note": "Three good passes."
+    },
+    {
+      "pair_id": "p_dragon__ice",
+      "a": "DRAGON",
+      "b": "ICE",
+      "hints": [
+        { "text": "BREATH", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dragon's breath is iconic, and icy breath (visible in cold air, or an ice dragon's breath) is a recognizable image." },
+        { "text": "FROST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["synonym_of_target", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Frost is nearly ice itself, while frost dragons are a fantasy-game trope (Skyrim, D&D) not everyone knows." },
+        { "text": "THRONES", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Game of Thrones is the dragon show, and its source title A Song of Ice and Fire plus the ice dragon give the ICE side." }
+      ],
+      "strong_hints": ["BREATH", "THRONES"],
+      "best_available": { "text": "BREATH", "why": "Breath works for both a fire-dragon and a frozen exhalation." },
+      "pair_note": "BREATH and THRONES pass; FROST is close to a synonym of ICE with a gamer-only dragon side."
+    },
+    {
+      "pair_id": "p_dragon__iron",
+      "a": "DRAGON",
+      "b": "IRON",
+      "hints": [
+        { "text": "FORGE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Iron is forged, but reaching a dragon requires the dragon-fire-forges-steel trope, which is not a common image." },
+        { "text": "THRONE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Iron Throne is Game of Thrones' central object and dragons are that show's signature, a single shared story." }
+      ],
+      "strong_hints": ["THRONE"],
+      "best_available": { "text": "THRONE", "why": "The Iron Throne and its dragon queen live in one story." },
+      "pair_note": "THRONE passes via Game of Thrones; FORGE is iron-only unless the player invents a dragon smithy."
+    },
+    {
+      "pair_id": "p_dragon__key",
+      "a": "DRAGON",
+      "b": "KEY",
+      "hints": [
+        { "text": "LOCK", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Lock and key is instant, but no dragon scene involves a lock." },
+        { "text": "GUARD", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragons guard hoards, but GUARD does not lead to KEY without inventing a guarded key." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GUARD", "why": "Marginally better: a dragon guarding something a key opens is at least an imaginable scene." },
+      "pair_note": "No PASS. Each hint covers one side only; the pair needs a genuine bridge."
+    },
+    {
+      "pair_id": "p_dragon__king",
+      "a": "DRAGON",
+      "b": "KING",
+      "hints": [
+        { "text": "ARTHUR", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "King Arthur is obvious, and his family name Pendragon plus Merlin's dragon prophecies give the dragon side to anyone who knows the legend." },
+        { "text": "KOMODO", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Komodo dragon is a clean compound, but there is no route from KOMODO to KING." },
+        { "text": "THRONE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A king sits on a throne, and Game of Thrones is the modern dragon story." }
+      ],
+      "strong_hints": ["THRONE", "ARTHUR"],
+      "best_available": { "text": "THRONE", "why": "King's throne is universal and the dragon side rides on the best-known dragon franchise." },
+      "pair_note": "Two passes; KOMODO is one-sided."
+    },
+    {
+      "pair_id": "p_dragon__light",
+      "a": "DRAGON",
+      "b": "LIGHT",
+      "hints": [
+        { "text": "FIRE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dragons breathe fire, and you light a fire / fire gives light." },
+        { "text": "LANTERN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "A lantern is a light, and dragon lanterns are a familiar sight at Chinese lantern festivals and New Year parades." }
+      ],
+      "strong_hints": ["FIRE", "LANTERN"],
+      "best_available": { "text": "FIRE", "why": "Fire is the dragon's trait and the verb 'light' attaches to it naturally." },
+      "pair_note": "Both pass; FIRE is strongest."
+    },
+    {
+      "pair_id": "p_dragon__lion",
+      "a": "DRAGON",
+      "b": "LION",
+      "hints": [
+        { "text": "CREST", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Lions and dragons are the two classic heraldic beasts on crests (England's lions, Wales's dragon)." },
+        { "text": "DANCE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Dragon dance and lion dance are the two Chinese New Year performances." },
+        { "text": "ROAR", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Lions roar and dragons roar; a shared verb." }
+      ],
+      "strong_hints": ["ROAR", "DANCE", "CREST"],
+      "best_available": { "text": "ROAR", "why": "The shared sound needs no cultural knowledge." },
+      "pair_note": "Three passes with varied routes."
+    },
+    {
+      "pair_id": "p_dragon__moon",
+      "a": "DRAGON",
+      "b": "MOON",
+      "hints": [
+        { "text": "NIGHT", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Moon at night is immediate, but dragons have no night association beyond the niche Night Fury." },
+        { "text": "ECLIPSE", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["needs_explanation", "obscure"], "verdict": "BORDERLINE", "reason": "A lunar eclipse is a moon event, and East Asian myth says a dragon swallows the moon to cause it, but most Western players will not know that." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "ECLIPSE", "why": "At least rests on a real dragon myth, unlike NIGHT." },
+      "pair_note": "No PASS. ECLIPSE is a legitimate but niche legend route; NIGHT is filler."
+    },
+    {
+      "pair_id": "p_dragon__mouse",
+      "a": "DRAGON",
+      "b": "MOUSE",
+      "hints": [
+        { "text": "TINY", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided", "colour_mood_material"], "verdict": "FAIL", "reason": "Mice are tiny; dragons are the opposite, and no shared scene makes TINY point at a dragon." },
+        { "text": "MUSHU", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "needs_explanation"], "verdict": "FAIL", "reason": "Mushu is Mulan's dragon, but his being small is not a route to MOUSE; the Disney-mouse link is an invented rescue." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MUSHU", "why": "A real dragon reference whose tiny size at least gestures toward mouse-scale." },
+      "pair_note": "No PASS. The two hints are mirror-image one-siders."
+    },
+    {
+      "pair_id": "p_dragon__night",
+      "a": "DRAGON",
+      "b": "NIGHT",
+      "hints": [
+        { "text": "KNIGHT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "Knights fight dragons, but KNIGHT contains the target NIGHT as a substring (K+NIGHT), a rule failure regardless of the homophone." },
+        { "text": "FURY", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Night Fury is Toothless's dragon species in How to Train Your Dragon, a compound naming both words." }
+      ],
+      "strong_hints": ["FURY"],
+      "best_available": { "text": "FURY", "why": "'Night Fury' is the compound and it is a dragon." },
+      "pair_note": "FURY passes; KNIGHT is disqualified by substring even though the homophone play is clever."
+    },
+    {
+      "pair_id": "p_dragon__ocean",
+      "a": "DRAGON",
+      "b": "OCEAN",
+      "hints": [
+        { "text": "LEVIATHAN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The leviathan is the biblical sea monster of the ocean, usually depicted as a dragon-like serpent." },
+        { "text": "SERPENT", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dragons are winged serpents in myth, and the sea serpent is the ocean's monster." }
+      ],
+      "strong_hints": ["SERPENT", "LEVIATHAN"],
+      "best_available": { "text": "SERPENT", "why": "Sea serpent and dragon-as-serpent are both common." },
+      "pair_note": "Both pass; SERPENT is broader."
+    },
+    {
+      "pair_id": "p_dragon__pirate",
+      "a": "DRAGON",
+      "b": "PIRATE",
+      "hints": [
+        { "text": "HOARD", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["variant_of:TREASURE"], "verdict": "PASS", "reason": "Dragon's hoard is stock, and a pirate's hoard of treasure is a recognizable phrase." },
+        { "text": "TREASURE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Pirates bury treasure and dragons guard it." }
+      ],
+      "strong_hints": ["TREASURE", "HOARD"],
+      "best_available": { "text": "TREASURE", "why": "Treasure is the defining object for both figures." },
+      "pair_note": "Both pass; TREASURE is the obvious bridge."
+    },
+    {
+      "pair_id": "p_dragon__queen",
+      "a": "DRAGON",
+      "b": "QUEEN",
+      "hints": [
+        { "text": "MALEFICENT", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "moderate", "flags": ["one_sided", "wrong_fact"], "verdict": "FAIL", "reason": "Maleficent turns into a dragon in Sleeping Beauty, but she is an evil fairy, not a queen; calling her a queen conflates her with Snow White's Evil Queen." },
+        { "text": "DAENERYS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Daenerys is the Mother of Dragons who styles herself Queen in Game of Thrones." }
+      ],
+      "strong_hints": ["DAENERYS"],
+      "best_available": { "text": "DAENERYS", "why": "The dragon queen in one name." },
+      "pair_note": "DAENERYS is strong; MALEFICENT's queen side is a factual conflation."
+    },
+    {
+      "pair_id": "p_dragon__ring",
+      "a": "DRAGON",
+      "b": "RING",
+      "hints": [
+        { "text": "FIRE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Dragon fire, and Ring of Fire is a familiar compound (the song, the volcano belt)." },
+        { "text": "SMAUG", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "Smaug is The Hobbit's dragon, and The Hobbit is the book in which Bilbo finds the One Ring, so RING arrives via the shared Tolkien story." }
+      ],
+      "strong_hints": ["FIRE", "SMAUG"],
+      "best_available": { "text": "FIRE", "why": "Ring of Fire plus dragon fire is immediate." },
+      "pair_note": "FIRE is excellent; SMAUG's ring side depends on Tolkien familiarity."
+    },
+    {
+      "pair_id": "p_dragon__robot",
+      "a": "DRAGON",
+      "b": "ROBOT",
+      "hints": [
+        { "text": "SCALES", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragons have scales; robots do not, and no robot scene involves scales." },
+        { "text": "MECHA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "niche", "flags": ["obscure", "needs_explanation"], "verdict": "BORDERLINE", "reason": "Mecha are giant robots in anime, and mecha-dragons exist in games (Mecha Dragon, Mechagodzilla-style), but both halves are genre knowledge." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MECHA", "why": "At least a real genre where robot dragons appear." },
+      "pair_note": "No PASS. The pair has no mainstream bridge; MECHA works only for anime and game fans."
+    },
+    {
+      "pair_id": "p_dragon__rock",
+      "a": "DRAGON",
+      "b": "ROCK",
+      "hints": [
+        { "text": "MOUNTAIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Mountains are rock, and dragons live under mountains (Smaug's Lonely Mountain) in the standard fantasy picture." },
+        { "text": "CAVE", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "A dragon's cave is its stock lair, and caves are hollows in rock." }
+      ],
+      "strong_hints": ["CAVE", "MOUNTAIN"],
+      "best_available": { "text": "CAVE", "why": "Dragon's cave is the stronger lair image." },
+      "pair_note": "Both pass."
+    },
+    {
+      "pair_id": "p_dragon__rose",
+      "a": "DRAGON",
+      "b": "ROSE",
+      "hints": [
+        { "text": "THORN", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Roses have thorns; a dragon's spikes are not called thorns and no shared scene exists." },
+        { "text": "GEORGE", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "niche", "flags": ["british_only", "needs_explanation"], "verdict": "BORDERLINE", "reason": "St George slew the dragon, and the red rose is worn on St George's Day as England's flower, but the rose side is English custom few others know." }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "GEORGE", "why": "A genuine dragon reference with a real, if regional, rose link." },
+      "pair_note": "No PASS. GEORGE is the only hint reaching both words and it leans British."
+    },
+    {
+      "pair_id": "p_dragon__salt",
+      "a": "DRAGON",
+      "b": "SALT",
+      "hints": [
+        { "text": "SEA", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Sea salt is a stock compound, and the sea dragon (the real fish and the mythic sea serpent) gives the dragon side." }
+      ],
+      "strong_hints": ["SEA"],
+      "best_available": { "text": "SEA", "why": "Sea salt and sea dragon are both established compounds." },
+      "pair_note": "Single hint, passes."
+    },
+    {
+      "pair_id": "p_dragon__shadow",
+      "a": "DRAGON",
+      "b": "SHADOW",
+      "hints": [
+        { "text": "PUPPET", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Shadow puppets are a familiar art, and the Chinese parade dragon is a giant puppet carried on poles." },
+        { "text": "WINGS", "connection_to_a": 2, "connection_to_b": 0, "fairness": 0, "recognizability": "broad", "flags": ["one_sided"], "verdict": "FAIL", "reason": "Dragon wings are iconic, but WINGS does not lead to SHADOW." }
+      ],
+      "strong_hints": ["PUPPET"],
+      "best_available": { "text": "PUPPET", "why": "Shadow puppet and dragon puppet both exist as recognizable things." },
+      "pair_note": "PUPPET passes on a moderate route; WINGS is one-sided."
+    },
+    {
+      "pair_id": "p_dragon__shark",
+      "a": "DRAGON",
+      "b": "SHARK",
+      "hints": [
+        { "text": "FIN", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "broad", "flags": ["one_sided"], "verdict": "BORDERLINE", "reason": "Shark fin is instant, but dragons have fins only in sea-dragon or spined-back depictions, a soft reach." },
+        { "text": "TEETH", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "recognizability": "broad", "flags": [], "verdict": "PASS", "reason": "Shark teeth and dragon's teeth are both famous features (and 'dragon's teeth' is a phrase)." }
+      ],
+      "strong_hints": ["TEETH"],
+      "best_available": { "text": "TEETH", "why": "Both monsters are known for their teeth." },
+      "pair_note": "TEETH is strong; FIN is shark-heavy."
+    },
+    {
+      "pair_id": "p_dragon__spider",
+      "a": "DRAGON",
+      "b": "SPIDER",
+      "hints": [
+        { "text": "SHELOB", "connection_to_a": 0, "connection_to_b": 2, "fairness": 0, "recognizability": "niche", "flags": ["one_sided", "obscure"], "verdict": "FAIL", "reason": "Shelob is Tolkien's giant spider, but sharing a universe with Smaug is not a route from the hint to DRAGON." },
+        { "text": "MONSTER", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "broad", "flags": ["generic"], "verdict": "PASS", "reason": "Dragons are monsters outright, and giant spiders are stock creature-feature monsters; broad but reaches both." }
+      ],
+      "strong_hints": ["MONSTER"],
+      "best_available": { "text": "MONSTER", "why": "The only hint touching both words." },
+      "pair_note": "MONSTER passes as a broad shared category; SHELOB is one-sided trivia."
+    },
+    {
+      "pair_id": "p_dragon__spring",
+      "a": "DRAGON",
+      "b": "SPRING",
+      "hints": [
+        { "text": "DRAGONFLY", "connection_to_a": 2, "connection_to_b": 1, "fairness": 0, "recognizability": "broad", "flags": ["contains_target"], "verdict": "FAIL", "reason": "DRAGONFLY contains the target DRAGON as a substring, a rule failure; the spring side is also weak." },
+        { "text": "FESTIVAL", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "The Chinese Spring Festival features dragon dances, and the Dragon Boat Festival is a dragon festival; both words share the festival scene." }
+      ],
+      "strong_hints": ["FESTIVAL"],
+      "best_available": { "text": "FESTIVAL", "why": "Spring Festival with its dragon dance covers both words." },
+      "pair_note": "FESTIVAL passes; DRAGONFLY is disqualified."
+    },
+    {
+      "pair_id": "p_dragon__star",
+      "a": "DRAGON",
+      "b": "STAR",
+      "hints": [
+        { "text": "CONSTELLATION", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Constellations are made of stars, and Draco the Dragon is one of the classic constellations." },
+        { "text": "DRACO", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "recognizability": "moderate", "flags": ["needs_explanation"], "verdict": "PASS", "reason": "Draco is Latin for dragon (draconic), and Draco is a constellation of stars." }
+      ],
+      "strong_hints": ["CONSTELLATION", "DRACO"],
+      "best_available": { "text": "CONSTELLATION", "why": "Points at stars directly and at the dragon constellation for anyone who knows Draco." },
+      "pair_note": "Both pass on the same astronomy fact from opposite ends."
+    },
+    {
+      "pair_id": "p_dragon__train",
+      "a": "DRAGON",
+      "b": "TRAIN",
+      "hints": [
+        { "text": "HICCUP", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": [], "verdict": "PASS", "reason": "Hiccup is the hero of How to Train Your Dragon, a title that contains both targets." },
+        { "text": "TOOTHLESS", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "recognizability": "moderate", "flags": ["variant_of:HICCUP"], "verdict": "PASS", "reason": "Toothless is the dragon in How to Train Your Dragon, reaching both words through the same title." }
+      ],
+      "strong_hints": ["TOOTHLESS", "HICCUP"],
+      "best_available": { "text": "TOOTHLESS", "why": "The dragon character's name makes DRAGON certain and the film title supplies TRAIN." },
+      "pair_note": "Both pass via the same franchise; recognizable to anyone who knows the films."
+    }
+  ]
+}

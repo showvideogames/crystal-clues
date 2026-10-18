@@ -273,6 +273,16 @@
         "rejected": 8,
         "needsText": 0,
         "pairs": 40
+      },
+      {
+        "review": "data/unlimited/library/reviews/u15-blind-review.json",
+        "key": "data/unlimited/library/reviews/u15-blind-key.json",
+        "batch": "data/unlimited/library/batches/u15-batch.json",
+        "ai_reviewed": 50,
+        "held": 15,
+        "rejected": 9,
+        "needsText": 0,
+        "pairs": 40
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -34714,6 +34724,123 @@
       ]
     },
     {
+      "pair_id": "p_diamond__robot",
+      "a": "DIAMOND",
+      "b": "ROBOT",
+      "source": "u15",
+      "pairNote": "No PASS. The robot side of HARD is a shared-property stretch rather than a recognised scene; a hint like CUT or STEEL-style compound would serve better.",
+      "reviewerBestAvailable": {
+        "text": "HARD",
+        "why": "Only hint offered; the diamond side is unmistakable and a player can reach a metal robot through 'hard' with some effort.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HARD",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "Diamond is the hardest thing there is.",
+          "wordBConnection": "A hard metal robot.",
+          "revealExplanation": "Hard: the diamond, and the robot's shell.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Diamond is the proverbial hardest substance; a robot is only loosely hard (rigid metal body, hard-wired), so the robot side leans on a weak material property."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__rock",
+      "a": "DIAMOND",
+      "b": "ROCK",
+      "source": "u15",
+      "pairNote": "MINE is the clean serve. GEM passes but is close to naming the category diamond belongs to; the rock side is category-adjacent rather than a scene.",
+      "reviewerBestAvailable": {
+        "text": "MINE",
+        "why": "Both sides are concrete and broad; no definitional lean.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "MINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A diamond mine.",
+          "wordBConnection": "Mines are dug through rock.",
+          "revealExplanation": "A mine: diamonds out of the rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diamond mine is a stock compound and rock is what is dug out of (and surrounds) a mine."
+            }
+          }
+        },
+        {
+          "text": "GEM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A diamond is a gem.",
+          "wordBConnection": "A gem is a precious rock.",
+          "revealExplanation": "A gem: the diamond is one, and a gem is a rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target"
+              ],
+              "reason": "Diamond is the archetypal gem (near-hypernym), and rock reaches it through 'rocks and gems' collections and 'rock' as slang for a diamond ring."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_diamond__rose",
       "a": "DIAMOND",
       "b": "ROSE",
@@ -34950,6 +35077,123 @@
       }
     },
     {
+      "pair_id": "p_diamond__shadow",
+      "a": "DIAMOND",
+      "b": "SHADOW",
+      "source": "u15",
+      "pairNote": "No PASS. ECLIPSE is the only defensible hint and it depends on niche eclipse lore; WINDOW is an invented route.",
+      "reviewerBestAvailable": {
+        "text": "ECLIPSE",
+        "why": "Shadow side is solid and the diamond-ring effect is at least a genuine, nameable fact for astronomy-aware players.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ECLIPSE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cause_and_effect",
+          "wordAConnection": "The diamond ring is the flash everybody waits for.",
+          "wordBConnection": "An eclipse is a shadow crossing the sun.",
+          "revealExplanation": "An eclipse is a shadow, and the diamond ring is the flash everybody waits for as it ends.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure",
+                "needs_explanation"
+              ],
+              "reason": "The 'diamond ring' effect of a total solar eclipse is real but specialist knowledge, while an eclipse is literally the moon's shadow."
+            }
+          }
+        },
+        {
+          "text": "WINDOW",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Old leaded windows are made of diamond panes.",
+          "wordBConnection": "And they throw diamond shadows across the floor.",
+          "revealExplanation": "Old leaded windows are made of diamond panes and they throw diamond shadows across the floor.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 1,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "needs_explanation",
+                "one_sided"
+              ],
+              "reason": "Diamond-paned lattice windows are a niche architectural detail and a window casting a shadow is incidental; neither side is a route a player would recognise."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__shark",
+      "a": "DIAMOND",
+      "b": "SHARK",
+      "source": "u15",
+      "pairNote": "Excellent single hint.",
+      "reviewerBestAvailable": {
+        "text": "CARD",
+        "why": "Two broad, independent, familiar routes meet cleanly.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The diamonds suit of cards.",
+          "wordBConnection": "A card shark.",
+          "revealExplanation": "Cards: the diamond suit, and the card shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diamonds are a playing-card suit and 'card shark' is a familiar phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_diamond__snake",
       "a": "DIAMOND",
       "b": "SNAKE",
@@ -35071,6 +35315,656 @@
         "date": "2026-10-17",
         "reason": "owner found BACK indirect (reached it via the Arizona Diamondbacks); PATTERN and SCALE are held borderline, so the pair has no clean TREASURE-level hint. Future generation hold only: the live beta-01-002 snapshot and completed history stay exactly as they are."
       }
+    },
+    {
+      "pair_id": "p_diamond__spider",
+      "a": "DIAMOND",
+      "b": "SPIDER",
+      "source": "u15",
+      "pairNote": "No PASS. The shared scene is real but poetic; many players will not get from DEW to DIAMOND without the web already in mind.",
+      "reviewerBestAvailable": {
+        "text": "DEW",
+        "why": "Only hint; the dew-jewelled web is a genuine shared image even if neither word is reached directly.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DEW",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Dewdrops sparkle like diamonds.",
+          "wordBConnection": "Dew on a spider's web.",
+          "revealExplanation": "Dew: diamonds on the spider's web.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Dew beading on a spider web is a recognisable scene and dewdrops are poetically called diamonds, but each side only works once the player already pictures the web."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__spring",
+      "a": "DIAMOND",
+      "b": "SPRING",
+      "source": "u15",
+      "pairNote": "Three usable hints; BASEBALL strongest, APRIL needs birthstone knowledge, WEDDING is solid on diamond and fair on spring.",
+      "reviewerBestAvailable": {
+        "text": "BASEBALL",
+        "why": "Both routes are familiar compounds (baseball diamond, spring training).",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "BASEBALL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "A baseball diamond is the infield.",
+          "wordBConnection": "Spring training is when the season starts.",
+          "revealExplanation": "A baseball diamond is the infield and spring training is when the season starts.",
+          "reference": {
+            "referenceType": "sport",
+            "source": "baseball",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A baseball field is the diamond and spring training opens the baseball year."
+            }
+          }
+        },
+        {
+          "text": "APRIL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The diamond is April's birthstone.",
+          "wordBConnection": "April is the heart of spring.",
+          "revealExplanation": "April is the heart of spring and the diamond is April's birthstone.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Diamond is April's birthstone and April is a spring month; the birthstone fact is widely known but not universal."
+            }
+          }
+        },
+        {
+          "text": "WEDDING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The diamond goes on the finger.",
+          "wordBConnection": "Spring is when the weddings are.",
+          "revealExplanation": "The diamond goes on the finger and spring is when the weddings are.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diamond ring is the wedding jewel; 'spring wedding' is a familiar seasonal phrase though June and summer compete."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__star",
+      "a": "DIAMOND",
+      "b": "STAR",
+      "source": "u15",
+      "pairNote": "Both pass; they are near-synonyms, so serving both gives little extra information.",
+      "reviewerBestAvailable": {
+        "text": "TWINKLE",
+        "why": "The nursery rhyme names both targets, so it is a shared text and not just a shared property.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SPARKLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A sparkling diamond.",
+          "wordBConnection": "A sparkling star.",
+          "revealExplanation": "Sparkle: diamond and star.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:TWINKLE"
+              ],
+              "reason": "Diamonds sparkle and stars sparkle; a clean shared property."
+            }
+          }
+        },
+        {
+          "text": "TWINKLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Like a diamond in the sky.",
+          "wordBConnection": "Twinkle, twinkle, little star.",
+          "revealExplanation": "Twinkle, twinkle: the star like a diamond.",
+          "reference": {
+            "referenceType": "song_or_musician",
+            "source": "Twinkle, Twinkle, Little Star",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "variant_of:SPARKLE"
+              ],
+              "reason": "'Twinkle, Twinkle, Little Star ... like a diamond in the sky' ties both words together in one universally known rhyme."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__train",
+      "a": "DIAMOND",
+      "b": "TRAIN",
+      "source": "u15",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "HEIST",
+        "why": "Two familiar crime-fiction compounds.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HEIST",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A diamond heist.",
+          "wordBConnection": "A train heist.",
+          "revealExplanation": "Heists: diamonds, or trains.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Diamond heist and train heist (the Great Train Robbery) are both stock crime-story setups."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__water",
+      "a": "DIAMOND",
+      "b": "WATER",
+      "source": "u15",
+      "pairNote": "Both pass comfortably.",
+      "reviewerBestAvailable": {
+        "text": "SPARKLING",
+        "why": "Compound on the water side plus the diamond's signature property.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SPARKLING",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A sparkling diamond.",
+          "wordBConnection": "Sparkling water.",
+          "revealExplanation": "Sparkling: diamond, or water.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sparkling diamond is a stock description and sparkling water is a stock product."
+            }
+          }
+        },
+        {
+          "text": "CLEAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A flawless, clear diamond.",
+          "wordBConnection": "Clear water.",
+          "revealExplanation": "Clear: the diamond and the water.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Clarity is a defining diamond quality (the 'C' of clarity) and clear water is an everyday phrase."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__witch",
+      "a": "DIAMOND",
+      "b": "WITCH",
+      "source": "u15",
+      "pairNote": "No PASS. Replace: the slippers route misremembers the gem.",
+      "reviewerBestAvailable": {
+        "text": "SLIPPERS",
+        "why": "Only hint offered; it reaches WITCH but has no honest path to DIAMOND.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SLIPPERS",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Jewelled slippers sparkle like diamonds.",
+          "wordBConnection": "The Wicked Witch wants the slippers.",
+          "revealExplanation": "The slippers the witch wanted, glittering like diamonds.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "The Wizard of Oz",
+            "recognizability": "broad"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "moderate",
+              "flags": [
+                "wrong_fact",
+                "one_sided"
+              ],
+              "reason": "The Wicked Witch covets the slippers in The Wizard of Oz, but they are ruby (silver in the book), never diamond, so the diamond side rests on a wrong fact."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_diamond__wolf",
+      "a": "DIAMOND",
+      "b": "WOLF",
+      "source": "u15",
+      "pairNote": "No PASS. Needs a fresh hint; FANG is wholly one-sided.",
+      "reviewerBestAvailable": {
+        "text": "FANG",
+        "why": "Only hint offered; it is wolf-only filler.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "FANG",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A diamond fang on a grill.",
+          "wordBConnection": "A wolf's fangs.",
+          "revealExplanation": "Fangs: a wolf's, or a diamond one in a grill.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Wolf fang is immediate; there is no recognised diamond route (diamond-studded grillz is not a familiar 'fang' scene)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__dragon",
+      "a": "DOG",
+      "b": "DRAGON",
+      "source": "u15",
+      "pairNote": "No PASS. TOOTHLESS is close to passing for the film's audience; TAIL is a shared property that does not distinguish.",
+      "reviewerBestAvailable": {
+        "text": "TOOTHLESS",
+        "why": "Dragon side is a named character; the puppy-like behaviour is a genuine shared trait for anyone who knows the films.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TOOTHLESS",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "cultural_reference",
+          "wordAConnection": "Toothless behaves like a dog.",
+          "wordBConnection": "Toothless is the dragon.",
+          "revealExplanation": "Toothless: a dragon who acts like a dog.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "How to Train Your Dragon",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "Toothless is the dragon in How to Train Your Dragon, famously written to behave like a big puppy; the dog side depends on knowing that characterisation (or an old toothless dog)."
+            }
+          }
+        },
+        {
+          "text": "TAIL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A dog's wagging tail.",
+          "wordBConnection": "A dragon's tail.",
+          "revealExplanation": "Tails: wagging dog, lashing dragon.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "generic"
+              ],
+              "reason": "Both creatures have tails (dogs wag, dragons lash), but the property belongs to nearly every animal and singles out neither."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__egg",
+      "a": "DOG",
+      "b": "EGG",
+      "source": "u15",
+      "pairNote": "HUNT carries the pair; BREAKFAST is regional.",
+      "reviewerBestAvailable": {
+        "text": "HUNT",
+        "why": "Two broad compounds.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HUNT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A hunting dog.",
+          "wordBConnection": "An Easter egg hunt.",
+          "revealExplanation": "A hunt: the dog's job, and the Easter eggs.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Hunting dog and Easter egg hunt are both familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "BREAKFAST",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "The dog begging at breakfast.",
+          "wordBConnection": "Eggs for breakfast.",
+          "revealExplanation": "Breakfast: eggs, and the dog underfoot.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "british_only",
+                "one_sided"
+              ],
+              "reason": "Eggs are the breakfast food; the dog side relies on the British idiom 'dog's breakfast' (a mess), which most non-UK players will not reach."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__fire",
+      "a": "DOG",
+      "b": "FIRE",
+      "source": "u15",
+      "pairNote": "Two strong hints.",
+      "reviewerBestAvailable": {
+        "text": "HYDRANT",
+        "why": "Compound on the fire side plus an iconic dog scene.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "HYDRANT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Dogs and fire hydrants.",
+          "wordBConnection": "A fire hydrant.",
+          "revealExplanation": "The fire hydrant the dog visits.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Fire hydrant is the compound and the dog-at-the-hydrant is a universal cartoon scene."
+            }
+          }
+        },
+        {
+          "text": "DALMATIAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A Dalmatian is a dog.",
+          "wordBConnection": "The firehouse mascot.",
+          "revealExplanation": "The Dalmatian, the firehouse dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dalmatian is a dog breed and the traditional firehouse dog."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_dog__fish",
@@ -35245,6 +36139,1864 @@
           "BONE"
         ]
       }
+    },
+    {
+      "pair_id": "p_dog__ghost",
+      "a": "DOG",
+      "b": "GHOST",
+      "source": "u15",
+      "pairNote": "Both pass; ZERO is the more niche but still a fair single-character route.",
+      "reviewerBestAvailable": {
+        "text": "SCOOBY",
+        "why": "Universally known dog whose defining activity is ghosts.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SCOOBY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Scooby is a dog.",
+          "wordBConnection": "Scooby hunts ghosts.",
+          "revealExplanation": "Scooby-Doo: the ghost-hunting dog.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Scooby-Doo",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Scooby-Doo is a cartoon dog whose entire franchise is chasing ghosts."
+            }
+          }
+        },
+        {
+          "text": "ZERO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Zero is a dog.",
+          "wordBConnection": "Zero is a ghost.",
+          "revealExplanation": "Zero, the ghost dog from The Nightmare Before Christmas.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "The Nightmare Before Christmas",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Zero is Jack Skellington's ghost dog in The Nightmare Before Christmas, a single character who is both targets."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__glass",
+      "a": "DOG",
+      "b": "GLASS",
+      "source": "u15",
+      "pairNote": "Both pass.",
+      "reviewerBestAvailable": {
+        "text": "BOWL",
+        "why": "Compound on the dog side and material on the glass side; nothing to explain.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "BOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog bowl.",
+          "wordBConnection": "A glass bowl.",
+          "revealExplanation": "Bowls: the dog's, or glass.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dog bowl is a compound and a glass bowl is an everyday object."
+            }
+          }
+        },
+        {
+          "text": "WINDOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dog waiting at the window.",
+          "wordBConnection": "Window glass.",
+          "revealExplanation": "The window: glass, and a dog's nose against it.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Windows are glass; 'How Much Is That Doggie in the Window' and the dog-at-the-window scene cover the dog side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__gold",
+      "a": "DOG",
+      "b": "GOLD",
+      "source": "u15",
+      "pairNote": "RETRIEVER is the clean serve; GOLDEN fails only on contains_target; MEDAL is gold-heavy.",
+      "reviewerBestAvailable": {
+        "text": "RETRIEVER",
+        "why": "Same golden-retriever route as GOLDEN without containing the target.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RETRIEVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A retriever is a dog.",
+          "wordBConnection": "The golden retriever.",
+          "revealExplanation": "The golden retriever.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Retriever is a dog and 'golden retriever' delivers gold through its ordinary inflection."
+            }
+          }
+        },
+        {
+          "text": "GOLDEN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A golden retriever.",
+          "wordBConnection": "Golden means gold.",
+          "revealExplanation": "Golden: the retriever, and the gold.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "contains_target",
+                "variant_of:RETRIEVER"
+              ],
+              "reason": "Golden retriever reaches dog, but GOLDEN literally contains the target GOLD, which is a rule failure rather than a weak route."
+            }
+          }
+        },
+        {
+          "text": "MEDAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A dog-show medal.",
+          "wordBConnection": "A gold medal.",
+          "revealExplanation": "A gold medal, dog-show style.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Gold medal is immediate; dogs win medals only in dog shows or as decorated hero dogs, a thin route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__heart",
+      "a": "DOG",
+      "b": "HEART",
+      "source": "u15",
+      "pairNote": "LOVE is a defensible shared-mood route like SWEET for APPLE+HONEY; LOYAL tilts to dog.",
+      "reviewerBestAvailable": {
+        "text": "LOVE",
+        "why": "Heart side is iconic and the dog side is a widely felt association.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LOVE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dog's unconditional love.",
+          "wordBConnection": "The heart means love.",
+          "revealExplanation": "Love: the dog's, and the heart's.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "The heart is the symbol of love; dogs reach it through puppy love and the unconditional-love cliche of man's best friend."
+            }
+          }
+        },
+        {
+          "text": "LOYAL",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A dog's loyalty.",
+          "wordBConnection": "A loyal heart.",
+          "revealExplanation": "Loyal: a dog, and a heart.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "colour_mood_material"
+              ],
+              "reason": "Loyalty is the dog's defining virtue, but a 'loyal heart' is only a loose figurative phrase for the heart side."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__honey",
+      "a": "DOG",
+      "b": "HONEY",
+      "source": "u15",
+      "pairNote": "No PASS. SWEETIE behaves like a synonym of HONEY with a decorative dog side.",
+      "reviewerBestAvailable": {
+        "text": "SWEETIE",
+        "why": "Only hint offered; honey side is solid, dog side is a fond-owner stretch.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SWEETIE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "shared_category",
+          "wordAConnection": "A sweetie of a dog.",
+          "wordBConnection": "Honey, like sweetie, is a pet name.",
+          "revealExplanation": "Sweetie: like honey, and like a good dog.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided",
+                "synonym_of_target"
+              ],
+              "reason": "Sweetie and honey are interchangeable endearments (and honey is sweet); the dog side is only that people call their dogs sweetie, which applies to any pet or person."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__horse",
+      "a": "DOG",
+      "b": "HORSE",
+      "source": "u15",
+      "pairNote": "RACE is clean; RANCH is a fair shared scene; PONY nearly names the horse.",
+      "reviewerBestAvailable": {
+        "text": "RACE",
+        "why": "Both sides are established sports with the same word.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "RACE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog race.",
+          "wordBConnection": "A horse race.",
+          "revealExplanation": "Races: dogs and horses.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Horse race and dog (greyhound) race are both familiar betting sports."
+            }
+          }
+        },
+        {
+          "text": "RANCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The ranch dog.",
+          "wordBConnection": "Ranch horses.",
+          "revealExplanation": "The ranch: horses and the dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Horses are the ranch animal and the ranch dog / cattle dog is a recognisable part of the same scene."
+            }
+          }
+        },
+        {
+          "text": "PONY",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "homophone_wordplay",
+          "wordAConnection": "A dog as big as a pony.",
+          "wordBConnection": "A pony is a small horse.",
+          "revealExplanation": "Pony: a small horse, or a huge dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "synonym_of_target",
+                "one_sided"
+              ],
+              "reason": "A pony is a small horse (near-synonym); the dog side is only the 'that dog is the size of a pony' joke about big breeds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__ice",
+      "a": "DOG",
+      "b": "ICE",
+      "source": "u15",
+      "pairNote": "Both pass; HUSKY needs the breed's arctic image, which is widely held.",
+      "reviewerBestAvailable": {
+        "text": "SLED",
+        "why": "Compound on the dog side and the sled's surface on the ice side.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SLED",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "Sled dogs.",
+          "wordBConnection": "A sled over the ice.",
+          "revealExplanation": "Sled dogs on the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dog sled is a compound and sleds run on ice and snow."
+            }
+          }
+        },
+        {
+          "text": "HUSKY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A husky is a dog.",
+          "wordBConnection": "Huskies run on ice.",
+          "revealExplanation": "The husky, the dog of the ice.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Husky is a dog breed defined by hauling sleds across ice and snow."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__iron",
+      "a": "DOG",
+      "b": "IRON",
+      "source": "u15",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "CHAIN",
+        "why": "Concrete object on both sides.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHAIN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A chained dog.",
+          "wordBConnection": "An iron chain.",
+          "revealExplanation": "A chain: iron, holding the dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "A chained dog is a stock image and chains are the stock iron object."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__key",
+      "a": "DOG",
+      "b": "KEY",
+      "source": "u15",
+      "pairNote": "No PASS. Needs a fresh hint.",
+      "reviewerBestAvailable": {
+        "text": "SIT",
+        "why": "Only hint offered; it is dog-only filler.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SIT",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Sit! The first dog command.",
+          "wordBConnection": "The dog-sitter gets the key.",
+          "revealExplanation": "Sit: the command, and the sitter who holds the key.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 0,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "'Sit' is the first dog command; no recognisable key route exists (a 'sit' key, dog-sitting with a house key, and sitting at piano keys are all invented)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__king",
+      "a": "DOG",
+      "b": "KING",
+      "source": "u15",
+      "pairNote": "CHARLES is excellent; CORGI belongs with QUEEN rather than KING.",
+      "reviewerBestAvailable": {
+        "text": "CHARLES",
+        "why": "One name that is literally both a king and a dog breed.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHARLES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "The King Charles spaniel.",
+          "wordBConnection": "King Charles.",
+          "revealExplanation": "King Charles: the king, and the spaniel.",
+          "reference": {
+            "referenceType": "person",
+            "source": "King Charles / Cavalier King Charles spaniel",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "King Charles is the monarch and the King Charles spaniel is a dog breed named for him."
+            }
+          }
+        },
+        {
+          "text": "CORGI",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A corgi is a dog.",
+          "wordBConnection": "The royal corgis.",
+          "revealExplanation": "The corgi, the royal dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Corgi is a dog; the royal association belongs to Queen Elizabeth, and the current King is known for not keeping corgis, so the king side is a generation off."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__knight",
+      "a": "DOG",
+      "b": "KNIGHT",
+      "source": "u15",
+      "pairNote": "LOYAL passes on shared virtue; HOUND nearly names the dog.",
+      "reviewerBestAvailable": {
+        "text": "LOYAL",
+        "why": "A shared-property route like RICH for BANK+KING, with both sides strongly associated.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LOYAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A loyal dog.",
+          "wordBConnection": "A knight sworn loyal.",
+          "revealExplanation": "Loyal: the dog and the knight.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "colour_mood_material"
+              ],
+              "reason": "Loyalty is the defining virtue of both the dog and the chivalric knight sworn to a lord."
+            }
+          }
+        },
+        {
+          "text": "HOUND",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A hound is a dog.",
+          "wordBConnection": "A knight's hunting hounds.",
+          "revealExplanation": "Hounds: the knight's hunting dogs.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "synonym_of_target",
+                "one_sided"
+              ],
+              "reason": "Hound is a synonym for dog; the knight side (medieval hunting hounds, 'The Hound' Sandor Clegane who is pointedly not a knight) is indirect."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__light",
+      "a": "DOG",
+      "b": "LIGHT",
+      "source": "u15",
+      "pairNote": "GUIDE is strong; LASER passes with a cat-leaning dog side.",
+      "reviewerBestAvailable": {
+        "text": "GUIDE",
+        "why": "Compound on each side.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "GUIDE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A guide dog.",
+          "wordBConnection": "A guiding light.",
+          "revealExplanation": "Guide: the dog, and the light.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Guide dog and guiding light are both familiar compounds."
+            }
+          }
+        },
+        {
+          "text": "LASER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog chasing a laser dot.",
+          "wordBConnection": "A laser is light.",
+          "revealExplanation": "A laser: light the dog chases.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "A laser is a beam of light and pets chasing a laser pointer is a recognisable scene, though cats own it more than dogs."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__lion",
+      "a": "DOG",
+      "b": "LION",
+      "source": "u15",
+      "pairNote": "No PASS. Both hints are lion-heavy; PRIDE is pure one-sided filler.",
+      "reviewerBestAvailable": {
+        "text": "MANE",
+        "why": "Lion side is iconic and maned dog breeds give a thin but real dog route.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "MANE",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "Fluffy dogs with a mane.",
+          "wordBConnection": "A lion's mane.",
+          "revealExplanation": "A mane: the lion's, and the fluffy dog's.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "The mane is the lion's signature; only a few dog breeds (chow, Tibetan mastiff, the lion-cut Pomeranian) are described as maned."
+            }
+          }
+        },
+        {
+          "text": "PRIDE",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A dog is its owner's pride.",
+          "wordBConnection": "A pride of lions.",
+          "revealExplanation": "Pride: a lion pride, or your pride in your dog.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "A pride is a group of lions; there is no recognised dog route to 'pride'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__moon",
+      "a": "DOG",
+      "b": "MOON",
+      "source": "u15",
+      "pairNote": "HOWL carries the pair; LAIKA is a space fact mis-aimed at the moon.",
+      "reviewerBestAvailable": {
+        "text": "HOWL",
+        "why": "One scene that names both words.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog howls.",
+          "wordBConnection": "Howling at the moon.",
+          "revealExplanation": "Howling at the moon.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dogs howl and howling at the moon is the stock image."
+            }
+          }
+        },
+        {
+          "text": "LAIKA",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Laika was a dog.",
+          "wordBConnection": "Laika went to space.",
+          "revealExplanation": "Laika, the dog who went to space.",
+          "reference": {
+            "referenceType": "famous_object_place_or_event",
+            "source": "Laika, Sputnik 2",
+            "recognizability": "moderate"
+          },
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 2,
+              "b": 1,
+              "fairness": 0,
+              "recognizability": "niche",
+              "flags": [
+                "wrong_fact",
+                "obscure",
+                "one_sided"
+              ],
+              "reason": "Laika was the Soviet space dog, but she orbited Earth on Sputnik 2 and never went to the moon, so the implied dog-on-the-moon route is a wrong fact and space-adjacent at best."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__mouse",
+      "a": "DOG",
+      "b": "MOUSE",
+      "source": "u15",
+      "pairNote": "Both strong; PLUTO is a tidy single-character route.",
+      "reviewerBestAvailable": {
+        "text": "CAT",
+        "why": "Two universal pairings through one word.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "CAT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The dog chases the cat.",
+          "wordBConnection": "The cat chases the mouse.",
+          "revealExplanation": "The cat: chased by the dog, chasing the mouse.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Cat and dog, cat and mouse: the cat is the shared partner of both."
+            }
+          }
+        },
+        {
+          "text": "PLUTO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Pluto is a dog.",
+          "wordBConnection": "Pluto belongs to Mickey Mouse.",
+          "revealExplanation": "Pluto: Mickey Mouse's dog.",
+          "reference": {
+            "referenceType": "fictional_character",
+            "source": "Disney",
+            "recognizability": "broad"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pluto is Mickey Mouse's pet dog."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__night",
+      "a": "DOG",
+      "b": "NIGHT",
+      "source": "u15",
+      "pairNote": "Both pass; WATCH is the cleaner route.",
+      "reviewerBestAvailable": {
+        "text": "WATCH",
+        "why": "Compound on both sides.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "WATCH",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A watchdog.",
+          "wordBConnection": "The night watch.",
+          "revealExplanation": "Watch: the watchdog, the night watch.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Watchdog and night watch are both stock compounds."
+            }
+          }
+        },
+        {
+          "text": "HOWL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog's howl.",
+          "wordBConnection": "Howling in the night.",
+          "revealExplanation": "A howl in the night.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dogs howl and the howl-in-the-night scene is familiar, though the moon owns 'howl' more than night does."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__ocean",
+      "a": "DOG",
+      "b": "OCEAN",
+      "source": "u15",
+      "pairNote": "Both pass; SEAL's dog side is a recognised likeness rather than a phrase.",
+      "reviewerBestAvailable": {
+        "text": "PADDLE",
+        "why": "Compound on the dog side and literal on the ocean side.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "PADDLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "The doggy paddle.",
+          "wordBConnection": "Paddling in the ocean.",
+          "revealExplanation": "Paddle: doggy style, in the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Doggy paddle is the swimming stroke and paddling in the ocean (or paddleboarding) is everyday."
+            }
+          }
+        },
+        {
+          "text": "SEAL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "Seals look like ocean dogs.",
+          "wordBConnection": "Seals live in the ocean.",
+          "revealExplanation": "The seal: the dog of the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Seals live in the ocean and are widely called sea dogs / ocean puppies for their dog-like faces and behaviour."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__pirate",
+      "a": "DOG",
+      "b": "PIRATE",
+      "source": "u15",
+      "pairNote": "Both pass; SCURVY is a fun phrase route.",
+      "reviewerBestAvailable": {
+        "text": "SEA",
+        "why": "Broad on both sides with the sea-dog compound.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea dog.",
+          "wordBConnection": "A pirate is a sea dog.",
+          "revealExplanation": "Sea dog: the pirate.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Pirates sail the sea and 'sea dog' is the stock term for an old sailor or pirate."
+            }
+          }
+        },
+        {
+          "text": "SCURVY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Scurvy dog.",
+          "wordBConnection": "The pirate curse.",
+          "revealExplanation": "Scurvy dog, the pirate's insult.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Scurvy is the pirate's disease and 'ye scurvy dog' is the stock pirate insult."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__queen",
+      "a": "DOG",
+      "b": "QUEEN",
+      "source": "u15",
+      "pairNote": "Strong single hint.",
+      "reviewerBestAvailable": {
+        "text": "CORGI",
+        "why": "Breed plus iconic royal owner.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CORGI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A corgi is a dog.",
+          "wordBConnection": "The Queen's corgis.",
+          "revealExplanation": "The Queen's corgis.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Corgi is a dog breed and the Queen's corgis are world-famous."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__ring",
+      "a": "DOG",
+      "b": "RING",
+      "source": "u15",
+      "pairNote": "SHOW carries the pair; COLLAR is dog-heavy.",
+      "reviewerBestAvailable": {
+        "text": "SHOW",
+        "why": "One scene that holds both words.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SHOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog show.",
+          "wordBConnection": "The show ring.",
+          "revealExplanation": "The dog show, in the ring.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dog show is a compound and the show ring is where it happens."
+            }
+          }
+        },
+        {
+          "text": "COLLAR",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A dog collar.",
+          "wordBConnection": "The collar's metal ring.",
+          "revealExplanation": "The collar: a ring for the dog.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Dog collar is immediate; the ring side is only that a collar is ring-shaped (or has a ring for the lead), a shape stretch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__robot",
+      "a": "DOG",
+      "b": "ROBOT",
+      "source": "u15",
+      "pairNote": "All three are robot-dog references; SPOT is the broadest, AIBO the most niche.",
+      "reviewerBestAvailable": {
+        "text": "SPOT",
+        "why": "Familiar dog name plus the most-seen robot dog.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 3,
+      "clues": [
+        {
+          "text": "SPOT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Spot the dog.",
+          "wordBConnection": "Spot the robot dog.",
+          "revealExplanation": "Spot: a dog's name, and a robot dog.",
+          "reference": {
+            "referenceType": "brand_or_product",
+            "source": "Boston Dynamics Spot",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Spot is the classic dog name and the name of Boston Dynamics' widely seen robot dog."
+            }
+          }
+        },
+        {
+          "text": "K9",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "K-9 means canine.",
+          "wordBConnection": "K9 the robot dog.",
+          "revealExplanation": "K9: canine, and the robot dog.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Doctor Who",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "K9 is the canine initialism and K-9 is Doctor Who's robot dog."
+            }
+          }
+        },
+        {
+          "text": "AIBO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Aibo is a dog.",
+          "wordBConnection": "Aibo is a robot.",
+          "revealExplanation": "Aibo, the robot dog.",
+          "reference": {
+            "referenceType": "brand_or_product",
+            "source": "Sony Aibo",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "niche",
+              "flags": [
+                "obscure"
+              ],
+              "reason": "Aibo is Sony's robot dog; a single product that is both targets, but a brand many players will not know."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__rock",
+      "a": "DOG",
+      "b": "ROCK",
+      "source": "u15",
+      "pairNote": "PET carries the pair; FETCH is dog-heavy.",
+      "reviewerBestAvailable": {
+        "text": "PET",
+        "why": "Compound on the rock side and category on the dog side.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A pet dog.",
+          "wordBConnection": "A pet rock.",
+          "revealExplanation": "Pets: a dog, or a rock.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dogs are the archetypal pet and the pet rock is a famous novelty."
+            }
+          }
+        },
+        {
+          "text": "FETCH",
+          "status": "held",
+          "heldReason": "blind review: borderline",
+          "type": "direct_association",
+          "wordAConnection": "A dog plays fetch.",
+          "wordBConnection": "Fetching a rock.",
+          "revealExplanation": "Fetch: the dog and the rock.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "BORDERLINE",
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Fetch is the dog's game; rocks are an incidental thing thrown, with sticks and balls far more typical."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__rose",
+      "a": "DOG",
+      "b": "ROSE",
+      "source": "u15",
+      "pairNote": "BUD passes on a name route; THORN is rose-only filler.",
+      "reviewerBestAvailable": {
+        "text": "BUD",
+        "why": "Compound on the rose side and a familiar dog name.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BUD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "A dog is your bud.",
+          "wordBConnection": "A rosebud.",
+          "revealExplanation": "Bud: the rose's, and your dog.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Rosebud is a compound; the dog side comes from Bud/Buddy as a stock dog name (Air Bud)."
+            }
+          }
+        },
+        {
+          "text": "THORN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A thorn in the dog's paw.",
+          "wordBConnection": "A rose's thorns.",
+          "revealExplanation": "A thorn: off the rose, in the dog's paw.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Rose thorn is immediate; there is no recognised dog route (the thorn-in-the-paw fable is a lion, 'dog rose' is a botanical name few know)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__salt",
+      "a": "DOG",
+      "b": "SALT",
+      "source": "u15",
+      "pairNote": "Two strong hints.",
+      "reviewerBestAvailable": {
+        "text": "LICK",
+        "why": "Verb on the dog side, compound on the salt side, both broad.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "LICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog's lick.",
+          "wordBConnection": "A salt lick.",
+          "revealExplanation": "Lick: the dog's, and the salt lick.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dogs lick everything and a salt lick is a compound."
+            }
+          }
+        },
+        {
+          "text": "SEA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A sea dog.",
+          "wordBConnection": "Sea salt.",
+          "revealExplanation": "Sea: dog and salt.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Sea salt and sea dog are both stock compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__shadow",
+      "a": "DOG",
+      "b": "SHADOW",
+      "source": "u15",
+      "pairNote": "Both pass; HOMEWARD rewards film knowledge.",
+      "reviewerBestAvailable": {
+        "text": "FOLLOW",
+        "why": "Shared verb that is defining for both words.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 2,
+      "clues": [
+        {
+          "text": "FOLLOW",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "direct_association",
+          "wordAConnection": "A dog follows you.",
+          "wordBConnection": "Your shadow follows you.",
+          "revealExplanation": "Follow: the dog, like a shadow.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dogs follow at your heels and a shadow follows you everywhere; 'follow like a shadow' is a stock phrase."
+            }
+          }
+        },
+        {
+          "text": "HOMEWARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "cultural_reference",
+          "wordAConnection": "Shadow and Chance are the dogs.",
+          "wordBConnection": "Shadow is the old retriever.",
+          "revealExplanation": "Homeward Bound: Shadow the dog.",
+          "reference": {
+            "referenceType": "film_or_tv",
+            "source": "Homeward Bound",
+            "recognizability": "moderate"
+          },
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "flags": [],
+              "reason": "Homeward Bound is the lost-pets film whose golden retriever is named Shadow, so one title names both."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_dog__shark",
+      "a": "DOG",
+      "b": "SHARK",
+      "source": "u15",
+      "pairNote": "BITE carries the pair; FIN is shark-only filler.",
+      "reviewerBestAvailable": {
+        "text": "BITE",
+        "why": "Same compound on both sides.",
+        "reviewer": "blind-subagent-15"
+      },
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BITE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "shared_category",
+          "wordAConnection": "A dog bite.",
+          "wordBConnection": "A shark bite.",
+          "revealExplanation": "Bites: dog or shark.",
+          "reference": null,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "PASS",
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "flags": [],
+              "reason": "Dog bite and shark bite are both stock phrases."
+            }
+          }
+        },
+        {
+          "text": "FIN",
+          "status": "rejected",
+          "heldReason": null,
+          "type": "homophone_wordplay",
+          "wordAConnection": "The dogfish is a shark.",
+          "wordBConnection": "A shark's fin.",
+          "revealExplanation": "Fin: the shark's, and the dogfish is one.",
+          "reference": null,
+          "stretch": true,
+          "provenance": {
+            "source": "u15",
+            "authorLabel": "retained",
+            "authorReason": null,
+            "prior": null,
+            "blindReview": {
+              "reviewer": "blind-subagent-15",
+              "date": "2026-10-17",
+              "verdict": "FAIL",
+              "a": 0,
+              "b": 2,
+              "fairness": 0,
+              "recognizability": "broad",
+              "flags": [
+                "one_sided"
+              ],
+              "reason": "Shark fin is iconic; dogs have no fins and the dogfish (a small shark) is too indirect to count."
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_dragon__knight",
