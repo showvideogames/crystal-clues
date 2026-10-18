@@ -21,7 +21,26 @@
       "CHESS",
       "FROST",
       "REEF"
-    ]
+    ],
+    "corrections": [
+      {
+        "date": "2026-10-18",
+        "by": "parent review of the 64 candidate clues",
+        "changes": [
+          "beta-03-005 BEAR+FIRE CAMP -> SMOKEY (saved reviewer pick, now canonical)",
+          "beta-03-011 BAT+CASTLE VAMPIRE -> DRACULA (saved reviewer pick, now canonical)",
+          "beta-03-015 MOON+SHADOW ECLIPSE text",
+          "beta-03-013 ROSE+SNAKE GARDEN reveal"
+        ],
+        "note": "same boards, ids, cards, solutions and seed; hint swaps in place, reveal text re-copied from the library"
+      }
+    ],
+    "revealRefreshed": {
+      "at": "2026-10-18T07:04:18.677Z",
+      "changed": 4,
+      "unchanged": 60,
+      "note": "player text re-copied from the library; boards, pairs, hints and ids unchanged"
+    }
   },
   "boards": [
     {
@@ -728,7 +747,7 @@
       "clues": [
         "BURN",
         "BOBBING",
-        "CAMP",
+        "SMOKEY",
         "NIGHT"
       ],
       "cards": {
@@ -852,19 +871,25 @@
         },
         {
           "position": 2,
-          "clue": "CAMP",
+          "clue": "SMOKEY",
           "wordA": "BEAR",
           "wordB": "FIRE",
           "pairId": "p_bear__fire",
           "hintStatus": "ai_reviewed",
-          "wordAConnection": "Bears raiding the camp.",
-          "wordBConnection": "A campfire.",
-          "revealExplanation": "Camp: the fire, and the bear nosing round it.",
-          "reference": null,
+          "wordAConnection": "Smokey Bear.",
+          "wordBConnection": "Smokey warns about forest fires.",
+          "revealExplanation": "Smokey Bear and forest fires.",
+          "reference": {
+            "referenceType": "brand_or_mascot",
+            "source": "Smokey Bear",
+            "recognizability": "broad"
+          },
           "hintChoice": {
-            "rule": "provisional",
-            "provisional": true,
-            "alternatives": []
+            "rule": "canonical",
+            "provisional": false,
+            "alternatives": [
+              "CAMP"
+            ]
           }
         },
         {
@@ -1751,7 +1776,7 @@
       "humanApproved": false,
       "clues": [
         "COMB",
-        "VAMPIRE",
+        "DRACULA",
         "CHESS",
         "SILVER"
       ],
@@ -1859,23 +1884,25 @@
         },
         {
           "position": 1,
-          "clue": "VAMPIRE",
+          "clue": "DRACULA",
           "wordA": "BAT",
           "wordB": "CASTLE",
           "pairId": "p_bat__castle",
           "hintStatus": "ai_reviewed",
-          "wordAConnection": "A vampire bat.",
-          "wordBConnection": "The vampire’s castle.",
-          "revealExplanation": "The vampire: his bat, his castle.",
+          "wordAConnection": "Dracula becomes a bat.",
+          "wordBConnection": "Dracula's castle.",
+          "revealExplanation": "Dracula: his castle, and his bat form.",
           "reference": {
             "referenceType": "fictional_character",
             "source": "Dracula",
             "recognizability": "broad"
           },
           "hintChoice": {
-            "rule": "provisional",
-            "provisional": true,
-            "alternatives": []
+            "rule": "canonical",
+            "provisional": false,
+            "alternatives": [
+              "VAMPIRE"
+            ]
           }
         },
         {
@@ -2193,7 +2220,7 @@
           "hintStatus": "ai_reviewed",
           "wordAConnection": "The rose is what the garden is famous for.",
           "wordBConnection": "The serpent is what was in it.",
-          "revealExplanation": "The serpent was in the garden and the rose is what the garden is famous for.",
+          "revealExplanation": "A rose garden; the serpent in the Garden of Eden.",
           "reference": {
             "referenceType": "book",
             "source": "the Garden of Eden",
@@ -2590,9 +2617,9 @@
           "wordB": "SHADOW",
           "pairId": "p_moon__shadow",
           "hintStatus": "ai_reviewed",
-          "wordAConnection": "The moon is one of the two bodies involved.",
-          "wordBConnection": "An eclipse is nothing but a shadow falling.",
-          "revealExplanation": "An eclipse is nothing but a shadow: the moon's on the earth, or the earth's on the moon.",
+          "wordAConnection": "The Moon participates in solar and lunar eclipses.",
+          "wordBConnection": "The Moon casts a shadow on Earth, or passes into Earth’s shadow.",
+          "revealExplanation": "A solar or lunar eclipse involves the Moon and a shadow.",
           "reference": null,
           "hintChoice": {
             "rule": "canonical",
