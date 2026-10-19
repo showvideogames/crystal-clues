@@ -15,7 +15,8 @@ import { loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const REQ = "data/unlimited/expansion/x03-requests.json";
 const NOTE = "x03 owner additions (2026-10-19)";
-const req = JSON.parse(readFileSync(REQ, "utf8"));
+const req = JSON.parse(readFileSync(process.env.REQUESTS || REQ, "utf8"));
+const CLIENT = new Map(JSON.parse(readFileSync("src/unlimited/random-library.json", "utf8")).pairs.map((p) => [p.id, p]));
 const [cmd, ...rest] = process.argv.slice(2);
 const today = () => new Date().toISOString().slice(0, 10);
 const readJson = (p) => JSON.parse(readFileSync(p, "utf8"));
@@ -43,7 +44,8 @@ function status(ix, rejections, overrides, it) {
   if (rule) return { key: "not added", detail: `hint rule: ${rule}` };
   if (rec) return { key: rec.decision, detail: rec.reason };
   if (!clue) return { key: it.intent === "review" ? "pending review" : "NOT ADDED", detail: "" };
-  const served = servedHints(ix, pair).hints.some((h) => h.text === clue.text);
+  // Served = present among the pair's choices in the real client export (what boards can show).
+  const served = !!CLIENT.get(id)?.hints.some((h) => h.text === clue.text);
   const r = clue.provenance?.blindReview;
   const verdict = r ? ` ${r.verdict} ${r.a}/${r.b}/${r.fairness}${r.delight != null ? ` d${r.delight}` : ""}` : "";
   if (!isX03(clue)) return { key: "already present", detail: `${clue.provenance?.source || "?"}, ${clue.status}${served ? ", served" : ", not served"}` };
