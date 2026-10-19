@@ -15,6 +15,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { loadCatalogue, pairOf, hintProblem, normWord, PLAYABLE, servedHints } from "./catalogue-lib.mjs";
 import { loadRejections, rejectionFor } from "./rejections-lib.mjs";
+import { collapse } from "./collapse-lib.mjs";
 
 const GROUPS = "data/unlimited/related/groups.json";
 const ROUTES = "data/unlimited/related/hint-routes.json";
@@ -57,7 +58,7 @@ for (const h of hints) {
       const { a, b, id } = pairOf(x.word, y.word);
       const [xa, xb] = a === x.word ? [x, y] : [y, x];
       const cand = { hint, pair_id: id, a, b, routes: `${routes[i].id}×${routes[j].id}`, strength: [xa.strength, xb.strength], score: xa.strength + xb.strength,
-        links: { [a]: end(sentence(xa.clause)), [b]: end(sentence(xb.clause)) }, why: end(`${sentence(xa.clause)}, and ${xb.clause}`) };
+        links: { [a]: end(sentence(xa.clause)), [b]: end(sentence(xb.clause)) }, why: end(collapse(sentence(xa.clause), sentence(xb.clause)) ?? `${sentence(xa.clause)}, and ${xb.clause}`) };
       const prev = seen.get(id);
       if (prev && prev.score >= cand.score) continue;
       seen.set(id, cand);

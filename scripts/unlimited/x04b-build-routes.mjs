@@ -75,7 +75,7 @@ const F = {
   UMBRELLA: [
     "rain | keeping dry | RAIN:2:an umbrella keeps off the rain ; STORM:1:you open an umbrella in a storm",
     "sun | keeping cool | BEACH:2:a beach umbrella keeps off the sun ; SHADE:2:an umbrella gives shade",
-    "drink | the cocktail umbrella | DRINK:2:tropical drinks come with tiny paper umbrellas",
+    "drink | the cocktail umbrella | DRINK:2:tropical drinks are often garnished with tiny paper umbrellas",
     "poppins | Mary Poppins | WIND:1:Mary Poppins floats in on the wind holding her umbrella" ],
   PHARAOH: [
     "*egypt | ancient Egypt | EGYPT:2:pharaohs ruled ancient Egypt ; PYRAMID:2:many pharaohs, especially in the Old Kingdom, were buried in pyramids ; MUMMY:2:pharaohs were preserved as mummies ; KING:2:a pharaoh was an Egyptian king ; GOLD:1:King Tut was buried with a solid gold mask ; TREASURE:1:King Tut's tomb was packed with treasure ; SNAKE:1:a cobra rises from the front of a pharaoh's crown" ],

@@ -29,7 +29,7 @@ const F = {
   LAVA: { seeds: ["SPICY+LAMP", "ISLAND+LAMP"], routes: [
     "volcano | a volcano's lava | VOLCANO:2:volcanoes erupt with lava ; ISLAND:1:volcanic islands like Hawaii were built from lava",
     "lamp | a lava lamp | LAMP:2:a lava lamp glows with slow-moving blobs",
-    "heat | lava-hot | HOT:2:lava is molten rock, about as hot as anything gets ; SPICY:1:spicy food can feel lava-hot",
+    "heat | lava-hot | HOT:2:lava is molten rock, hot enough to glow red ; SPICY:1:spicy food can feel lava-hot",
     "cake | lava cake | CAKE:2:a lava cake has a molten center ; CHOCOLATE:2:chocolate lava cake oozes in the middle",
     "game | the floor is lava | GAME:1:\"the floor is lava\" is a classic kids' game" ] },
   DECK: { seeds: [], routes: [
@@ -92,11 +92,11 @@ const F = {
     "stage | take a bow | STAGE:2:performers take a bow on stage ; PERFORMANCE:1:actors bow after a performance",
     "ship | a ship's bow | SHIP:1:the front of a ship is its bow ; BOAT:1:the front of a boat is its bow" ] },
   SHELL: { seeds: [], routes: [
-    "armor | an animal's shell | TURTLE:2:a turtle hides in its shell ; SNAIL:2:a snail carries its shell ; CRAB:2:a crab has a hard shell",
+    "armor | an animal's shell | TURTLE:2:a turtle carries its shell on its back ; SNAIL:2:a snail carries its shell ; CRAB:2:a crab has a hard shell",
     "beach | seashells | BEACH:2:you collect seashells on the beach ; OCEAN:1:seashells wash in from the ocean",
     "egg | an eggshell | EGG:2:an egg has a shell ; NUT:2:a nut has a hard shell",
     "taco | a taco shell | TACO:2:a crunchy taco comes in a hard shell",
-    "mario | Mario Kart shells | MARIO:2:Mario players fire turtle shells at each other in Mario Kart",
+    "mario | Mario Kart shells | MARIO:2:in Mario Kart, racers fire Koopa turtle shells at each other",
     "gas | Shell gas | GAS:2:Shell is a gas station brand",
     "ammo | an ammo shell | AMMO:1:a shell is a round of ammunition" ] },
   CRUST: { seeds: [], routes: [
@@ -128,7 +128,7 @@ const F = {
     "flight | wings to fly | BIRD:2:birds fly with wings ; ANGEL:2:angels are pictured with wings ; BUTTERFLY:1:butterflies have colorful wings ; FAIRY:1:fairies flutter on tiny wings ; DRAGON:1:dragons fly on huge wings",
     "plane | a plane's wing | PLANE:2:a plane has two wings ; JET:1:a jet's wings hold its engines ; PILOT:1:new pilots earn their wings",
     "food | chicken wings | BUFFALO:2:buffalo wings are spicy chicken wings ; SPICY:1:hot wings are famously spicy",
-    "building | a building's wing | HOSPITAL:2:a hospital has a wing for each department ; MUSEUM:1:a museum has wings for different exhibits ; BUILDING:1:a big building is split into wings" ] },
+    "building | a building's wing | HOSPITAL:2:big hospitals are divided into wings, like the maternity wing ; MUSEUM:1:a museum has wings for different exhibits ; BUILDING:1:a big building is split into wings" ] },
   PUNCH: { seeds: [], routes: [
     "boxing | a punch | BOXING:2:boxers throw punches ; FIGHTER:1:fighters land punches",
     "drink | fruit punch | FRUIT:2:fruit punch is a sweet fruit drink ; PARTY:2:a bowl of punch is a party classic ; DRINK:1:punch is a party drink",
@@ -152,7 +152,7 @@ const F = {
     "computer | a computer chip | COMPUTER:2:a computer runs on chips ; PHONE:1:every phone has computer chips",
     "snack | potato chips | POTATO:2:potato chips are a classic snack ; SALSA:2:chips and salsa go together ; SNACK:1:chips are a favorite snack",
     "casino | casino chips | CASINO:2:gamblers bet with casino chips ; GAMBLE:1:you gamble with chips at the table",
-    "cookie | chocolate chips | COOKIE:2:chocolate chip cookies ; CHOCOLATE:2:chocolate chips go in cookies",
+    "cookie | chocolate chips | COOKIE:2:chocolate chips stud classic cookies ; CHOCOLATE:2:chocolate chips go in cookies",
     "golf | a chip shot | GOLF:1:a chip shot pops a golf ball onto the green",
     "wood | wood chips | WOOD:1:wood chips cover playgrounds" ] },
 };
