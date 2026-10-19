@@ -589,11 +589,102 @@
         "held": 2,
         "rejected": 0,
         "newPairs": 30
+      },
+      {
+        "review": "data/unlimited/library/reviews/x04-v-review.json",
+        "key": "data/unlimited/library/reviews/x04-v-review-key.json",
+        "appendOnly": true,
+        "ai_reviewed": 16,
+        "held": 5,
+        "rejected": 2,
+        "newPairs": 23
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
   },
   "pairs": [
+    {
+      "pair_id": "p_accessory__charm",
+      "a": "ACCESSORY",
+      "b": "CHARM",
+      "source": "x04-v",
+      "pairNote": "Solid, easy pair; the phrase-join on the CHARM side is about as familiar as phrases get.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BRACELET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A bracelet is a classic accessory.",
+          "wordBConnection": "A charm bracelet carries little charms.",
+          "revealExplanation": "A charm bracelet is an accessory hung with little charms.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S01",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "phrase_join",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "ACCESSORY via a bracelet being a textbook accessory; CHARM via the instantly familiar 'charm bracelet'; clean and fair, if not surprising.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_africa__camera",
+      "a": "AFRICA",
+      "b": "CAMERA",
+      "source": "x04-v",
+      "pairNote": "Natural scene clue; CAMERA side is softer than AFRICA but still immediate once you picture a safari jeep.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SAFARI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Africa is famous for safaris.",
+          "wordBConnection": "Safari-goers bring cameras.",
+          "revealExplanation": "Africa is famous for safaris, where you bring a camera to spot wildlife.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S06",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "AFRICA via the iconic African safari; CAMERA via the photo safari scene of tourists snapping wildlife; clicks naturally.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
     {
       "pair_id": "p_africa__internet",
       "a": "AFRICA",
@@ -625,6 +716,47 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "owner-selected pair, x02 brief 2026-10-19: Africa is famous for its safaris, and Safari is Apple's web browser."
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_africa__joke",
+      "a": "AFRICA",
+      "b": "JOKE",
+      "source": "x04-v",
+      "pairNote": "Best of the HYENA pairs: both sides are specific to hyenas rather than to any animal.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HYENA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Hyenas live in Africa.",
+          "wordBConnection": "The hyena's call sounds like laughter.",
+          "revealExplanation": "Hyenas roam Africa with a cackle that sounds like laughing at a joke.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S21",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_property",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "AFRICA via the hyena as a savanna animal (Lion King); JOKE via the famous 'laughing hyena' cackle; a pleasing pairing of two strong routes.",
+              "fix": null
+            }
           }
         }
       ]
@@ -1495,6 +1627,49 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "x04 owner supplement (2026-10-19), 055: The hyena is the animal famous for a cackle that sounds like laughing at a joke."
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_animal__photo",
+      "a": "ANIMAL",
+      "b": "PHOTO",
+      "source": "x04-v",
+      "pairNote": "ANIMAL is a broad word, but SAFARI points at it cleanly; 'photo safari' makes the PHOTO side genuinely solid.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SAFARI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Safaris are all about wild animals.",
+          "wordBConnection": "Safari-goers come home with wildlife photos.",
+          "revealExplanation": "On safari, you photograph wild animals.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S04",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "generic"
+              ],
+              "reason": "ANIMAL via a safari being all about wild animals; PHOTO via the familiar 'photo safari'; easy and fair.",
+              "fix": null
+            }
           }
         }
       ]
@@ -8896,7 +9071,7 @@
           "type": "owner",
           "wordAConnection": "Its blade drops like an axe.",
           "wordBConnection": "King Louis XVI met the guillotine.",
-          "revealExplanation": "A guillotine's heavy blade drops like an axe, and it ended the reign of France's King Louis XVI.",
+          "revealExplanation": "A guillotine's heavy blade drops like an axe, and France's King Louis XVI was executed by one.",
           "reference": null,
           "provenance": {
             "source": "owner-discovery",
@@ -8904,7 +9079,18 @@
             "date": "2026-10-19",
             "note": "x04 owner supplement (2026-10-19), 073",
             "via": "catalogue add",
-            "blindReview": null
+            "blindReview": null,
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
+              "date": "2026-10-19",
+              "from": {
+                "revealExplanation": "A guillotine's heavy blade drops like an axe, and it ended the reign of France's King Louis XVI."
+              },
+              "to": {
+                "revealExplanation": "A guillotine's heavy blade drops like an axe, and France's King Louis XVI was executed by one."
+              },
+              "note": "x04 text check: Louis XVI's reign ended in 1792 when the monarchy was abolished; the guillotine executed him afterward (January 1793), so it did not 'end the reign'.; player-facing text only; verdict and status unchanged"
+            }
           },
           "override": {
             "by": "owner",
@@ -9377,6 +9563,47 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "BANANA via the banana peel; SLIP via the classic slapstick gag of slipping on one."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_band__bug",
+      "a": "BAND",
+      "b": "BUG",
+      "source": "x04-v",
+      "pairNote": "Excellent. The explanation slightly simplifies the name origin (it punned on beetles and 'beat'), but nothing stated is false.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BEATLES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "The Beatles are a legendary band.",
+          "wordBConnection": "Beetles are bugs.",
+          "revealExplanation": "The Beatles named themselves after beetles, the bugs, and became the biggest band ever.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S25",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BAND via the Beatles being the archetypal band; BUG via the Beatles/beetles pun in the name; a real 'oh, nice' moment.",
+              "fix": null
             }
           }
         }
@@ -17642,6 +17869,93 @@
       ]
     },
     {
+      "pair_id": "p_beach__bird",
+      "a": "BEACH",
+      "b": "BIRD",
+      "source": "x04-v",
+      "pairNote": "Easy and correct; low delight because BIRD is the hint's own category, but that alone is not a reason to fail.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEAGULL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Seagulls rule the beach.",
+          "wordBConnection": "A seagull is a bird.",
+          "revealExplanation": "The seagull is the classic beach bird.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S09",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 0,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "generic"
+              ],
+              "reason": "BEACH via seagulls swarming the beach scene; BIRD via a seagull simply being a bird; clear and fair though flat, since the BIRD side is just category membership.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_beach__crane",
+      "a": "BEACH",
+      "b": "CRANE",
+      "source": "x04-v",
+      "pairNote": "The CRANE side is a category overlap, not a link; close to FAIL. Players would more likely read CRANE as origami or construction.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SEAGULL",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "owner-variation",
+          "wordAConnection": "Seagulls rule the beach.",
+          "wordBConnection": "Cranes and seagulls are both waterbirds.",
+          "revealExplanation": "Like the crane, the seagull is a waterbird, and it's the one you meet at the beach.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S14",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "shared_property",
+              "delight": 0,
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "BEACH via the classic beach seagull is strong, but CRANE rests only on 'both are waterbirds', which does not make SEAGULL bring CRANE to mind over any other bird word.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_beach__crow",
       "a": "BEACH",
       "b": "CROW",
@@ -20777,6 +21091,49 @@
           "WILD"
         ]
       }
+    },
+    {
+      "pair_id": "p_beast__joke",
+      "a": "BEAST",
+      "b": "JOKE",
+      "source": "x04-v",
+      "pairNote": "Weaker than AFRICA + JOKE, but hyenas are stereotypically 'beasts', so it still clicks.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HYENA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "The hyena is a wild beast.",
+          "wordBConnection": "The hyena's call sounds like laughter.",
+          "revealExplanation": "The hyena is the beast whose cackle sounds like laughing at a joke.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S20",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_property",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "generic"
+              ],
+              "reason": "JOKE via the laughing hyena; BEAST via the hyena's image as a snarling, scavenging wild beast (the Lion King villains); the BEAST side is looser but natural.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_beast__library",
@@ -24475,6 +24832,49 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "x04 owner supplement (2026-10-19), 080: Articuno is the legendary ice-type bird Pokemon."
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bird__ocean",
+      "a": "BIRD",
+      "b": "OCEAN",
+      "source": "x04-v",
+      "pairNote": "Slightly nicer than BEACH + BIRD because 'sea' in SEAGULL nods to OCEAN.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEAGULL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A seagull is a bird.",
+          "wordBConnection": "Seagulls soar over the ocean.",
+          "revealExplanation": "The seagull is the bird that soars over the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S10",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "generic"
+              ],
+              "reason": "BIRD via a seagull being a bird; OCEAN via the seabird over the waves, reinforced by the 'sea' in its name; easy and fair.",
+              "fix": null
+            }
           }
         }
       ]
@@ -29454,6 +29854,47 @@
       ]
     },
     {
+      "pair_id": "p_bug__music",
+      "a": "BUG",
+      "b": "MUSIC",
+      "source": "x04-v",
+      "pairNote": "As strong as BAND + BUG; MUSIC is a touch broader than BAND but equally clear.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BEATLES",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Beetles are bugs.",
+          "wordBConnection": "The Beatles are music legends.",
+          "revealExplanation": "The Beatles named themselves after beetles, the bugs, and changed music forever.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S24",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BUG via the Beatles/beetles pun; MUSIC via the Beatles as music legends; satisfying pop-culture wordplay.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bus__waiter",
       "a": "BUS",
       "b": "WAITER",
@@ -29532,6 +29973,56 @@
         "reviewer": "x02-revision-reviewer",
         "round": "revision"
       }
+    },
+    {
+      "pair_id": "p_business__weapon",
+      "a": "BUSINESS",
+      "b": "WEAPON",
+      "source": "x04-v",
+      "pairNote": "Needs a different idea; the 'arms dealer' / arms-trade angle would be a more natural route to BUSINESS than store names.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "ARMORY",
+          "status": "held",
+          "heldReason": "override: owner proposal; x04 reviewer FAIL: the BUSINESS side rests on gun shops calling themselves Armory, which reads as invented; DEALER was an assistant alternative, not approved. Needs the owner decision",
+          "type": "owner-variation",
+          "wordAConnection": "Gun stores often call themselves armories.",
+          "wordBConnection": "An armory is where weapons are stored.",
+          "revealExplanation": "An armory stores weapons, and many gun shops do business under the name \"Armory.\"",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "U04",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "FAIL",
+              "mechanism": "other",
+              "delight": 0,
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "better_hint": null,
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "WEAPON via an armory storing weapons is solid, but BUSINESS rests on the claim that gun shops name themselves 'Armory', an explanation invented to rescue a word ARMORY does not evoke.",
+              "fix": null
+            }
+          },
+          "override": {
+            "by": "main session (x04): owner proposal kept, not served",
+            "date": "2026-10-19",
+            "status": "held",
+            "reason": "owner proposal; x04 reviewer FAIL: the BUSINESS side rests on gun shops calling themselves Armory, which reads as invented; DEALER was an assistant alternative, not approved. Needs the owner decision"
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_butterfly__caterpillar",
@@ -30068,6 +30559,47 @@
       ]
     },
     {
+      "pair_id": "p_camera__wild",
+      "a": "CAMERA",
+      "b": "WILD",
+      "source": "x04-v",
+      "pairNote": "Good scene clue; works the same way as the other SAFARI photo pairs.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SAFARI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Safari-goers bring cameras.",
+          "wordBConnection": "A safari goes out into the wild.",
+          "revealExplanation": "On safari, you bring a camera to see animals in the wild.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S05",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "WILD via a safari heading into the wild to see wild animals; CAMERA via the photo-safari scene; natural and fair.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_camp__chocolate",
       "a": "CAMP",
       "b": "CHOCOLATE",
@@ -30106,6 +30638,50 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "S'mores are the campfire treat (CAMP) built around a chocolate square (CHOCOLATE)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_camp__cookie",
+      "a": "CAMP",
+      "b": "COOKIE",
+      "source": "x04-v",
+      "pairNote": "S'MORE is a lovely word but the COOKIE side is a stretch; SCOUT is the obvious stronger hint. The apostrophe-less spelling SMORE may also look odd to players.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SMORE",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "owner-variation",
+          "wordAConnection": "S'mores are a camping classic.",
+          "wordBConnection": "Graham crackers make the cookie-like sandwich.",
+          "revealExplanation": "S'mores are the campfire treat: toasted marshmallow and chocolate squished between graham crackers.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S02",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": "SCOUT",
+              "flags": [
+                "better_hint_exists",
+                "needs_explanation"
+              ],
+              "reason": "CAMP via s'mores as the campfire treat is perfect, but COOKIE only works by calling graham crackers 'cookie-like', and SCOUT (Girl Scout cookies + scout camp) hits both sides far more cleanly.",
+              "fix": null
             }
           }
         }
@@ -33035,7 +33611,7 @@
           "heldReason": null,
           "type": "owner",
           "wordAConnection": "Piracy was a real (if risky) career.",
-          "wordBConnection": "Pirates make captives walk the plank.",
+          "wordBConnection": "Storybook pirates make captives walk the plank.",
           "revealExplanation": "In pirate stories, captives walk the plank, and piracy was a career on the high seas.",
           "reference": null,
           "provenance": {
@@ -33044,7 +33620,18 @@
             "date": "2026-10-19",
             "note": "x04 owner supplement (2026-10-19), 061",
             "via": "catalogue add",
-            "blindReview": null
+            "blindReview": null,
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
+              "date": "2026-10-19",
+              "from": {
+                "wordBConnection": "Pirates make captives walk the plank."
+              },
+              "to": {
+                "wordBConnection": "Storybook pirates make captives walk the plank."
+              },
+              "note": "x04 text check: PLANK line states walking the plank as literal pirate practice; it is mostly legend, and the explanation itself hedges with 'In pirate stories'.; player-facing text only; verdict and status unchanged"
+            }
           },
           "override": {
             "by": "owner",
@@ -41534,6 +42121,50 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Both have pincer claws, crabs on their front legs and scorpions on their pedipalps; a direct physical-feature link."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_crane__ocean",
+      "a": "CRANE",
+      "b": "OCEAN",
+      "source": "x04-v",
+      "pairNote": "Same weakness as BEACH + CRANE; close to FAIL.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SEAGULL",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "owner-variation",
+          "wordAConnection": "Cranes and seagulls are both waterbirds.",
+          "wordBConnection": "Seagulls soar over the ocean.",
+          "revealExplanation": "Like the crane, the seagull is a waterbird, and it's the one soaring over the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S15",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "shared_property",
+              "delight": 0,
+              "a": 0,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "one_sided",
+                "needs_explanation"
+              ],
+              "reason": "OCEAN via the seagull soaring over the sea is strong, but CRANE rests only on 'both are waterbirds', which gives no reason to pick CRANE over any other bird on the board.",
+              "fix": null
             }
           }
         }
@@ -54334,7 +54965,7 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "cultural_reference",
-          "wordAConnection": "Dragons win the throne.",
+          "wordAConnection": "Dragons fight for the throne.",
           "wordBConnection": "The Iron Throne.",
           "revealExplanation": "In Game of Thrones, Daenerys and her dragons fight to claim the Iron Throne.",
           "reference": {
@@ -54360,16 +54991,29 @@
               "model": "claude-fable-5-1"
             },
             "textCorrection": {
-              "by": "main session (claude-opus-5-5), x04 coordinator brief",
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
               "date": "2026-10-19",
               "from": {
-                "revealExplanation": "The Iron Throne, and the dragons that fight for it."
+                "wordAConnection": "Dragons win the throne."
               },
               "to": {
-                "revealExplanation": "In Game of Thrones, Daenerys and her dragons fight to claim the Iron Throne."
+                "wordAConnection": "Dragons fight for the throne."
               },
-              "note": "x04 brief: explanation must say why the hint clicks; player-facing text only; verdict and status unchanged"
-            }
+              "note": "x04 text check: DRAGON line 'Dragons win the throne' is false: in Game of Thrones the dragon melts the Iron Throne and Daenerys never wins it.; player-facing text only; verdict and status unchanged"
+            },
+            "textCorrectionHistory": [
+              {
+                "by": "main session (claude-opus-5-5), x04 coordinator brief",
+                "date": "2026-10-19",
+                "from": {
+                  "revealExplanation": "The Iron Throne, and the dragons that fight for it."
+                },
+                "to": {
+                  "revealExplanation": "In Game of Thrones, Daenerys and her dragons fight to claim the Iron Throne."
+                },
+                "note": "x04 brief: explanation must say why the hint clicks; player-facing text only; verdict and status unchanged"
+              }
+            ]
           }
         },
         {
@@ -61167,6 +61811,47 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "x03 owner additions (2026-10-19), A-28: A cliff is the sheer rock face of a mountain, where the ground suddenly ends."
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_envelope__taste",
+      "a": "ENVELOPE",
+      "b": "TASTE",
+      "source": "x04-v",
+      "pairNote": "Clean, fair and a little funny.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "You lick an envelope to seal it.",
+          "wordBConnection": "A lick gives you a taste.",
+          "revealExplanation": "You lick an envelope to seal it, and a lick gives you a taste.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S17",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "ENVELOPE via licking the flap to seal it (with the familiar gross glue taste); TASTE via a lick being how you taste something; tidy and satisfying.",
+              "fix": null
+            }
           }
         }
       ]
@@ -76009,6 +76694,58 @@
       }
     },
     {
+      "pair_id": "p_glass__plank",
+      "a": "GLASS",
+      "b": "PLANK",
+      "source": "x04-v",
+      "pairNote": "The intended scene is pirates, so the hint should be PIRATE; the current text also leans on a non-thing ('plank deck').",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "TELESCOPE",
+          "status": "held",
+          "heldReason": "override: owner proposal; x04 reviewer FAIL: PLANK needs a pirate-ship detour TELESCOPE does not supply (reviewer suggests PIRATE: spyglass + walk the plank). Needs the owner decision; SPYGLASS was an assistant alternative, not approved",
+          "type": "owner-variation",
+          "wordAConnection": "A telescope's lenses are glass.",
+          "wordBConnection": "Pirate ships are built of planks.",
+          "revealExplanation": "On a pirate ship, the captain scans the sea through a spyglass, a telescope, from the plank deck.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "U01",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "FAIL",
+              "mechanism": "scene",
+              "delight": 0,
+              "a": 1,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "better_hint": "PIRATE",
+              "flags": [
+                "one_sided",
+                "needs_explanation",
+                "better_hint_exists",
+                "text_fix"
+              ],
+              "reason": "GLASS works via lenses/spyglass, but PLANK needs a pirate-ship detour that TELESCOPE does not supply (and 'plank deck' is invented); PIRATE (spyglass + walk the plank) is the obvious far better hint.",
+              "fix": "A pirate captain scans the sea through his spyglass, a telescope, and makes captives walk the plank."
+            }
+          },
+          "override": {
+            "by": "main session (x04): owner proposal kept, not served",
+            "date": "2026-10-19",
+            "status": "held",
+            "reason": "owner proposal; x04 reviewer FAIL: PLANK needs a pirate-ship detour TELESCOPE does not supply (reviewer suggests PIRATE: spyglass + walk the plank). Needs the owner decision; SPYGLASS was an assistant alternative, not approved"
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_glass__queen",
       "a": "GLASS",
       "b": "QUEEN",
@@ -82480,7 +83217,7 @@
           "type": "owner",
           "wordAConnection": "The hammerhead's head is shaped like a hammer.",
           "wordBConnection": "There are hundreds of shark species.",
-          "revealExplanation": "The hammerhead is a shark species with a head shaped like a hammer.",
+          "revealExplanation": "Hammerheads are sharks with a head shaped like a hammer.",
           "reference": null,
           "provenance": {
             "source": "owner-discovery",
@@ -82488,7 +83225,18 @@
             "date": "2026-10-19",
             "note": "x04 owner supplement (2026-10-19), 062",
             "via": "catalogue add",
-            "blindReview": null
+            "blindReview": null,
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
+              "date": "2026-10-19",
+              "from": {
+                "revealExplanation": "The hammerhead is a shark species with a head shaped like a hammer."
+              },
+              "to": {
+                "revealExplanation": "Hammerheads are sharks with a head shaped like a hammer."
+              },
+              "note": "x04 text check: 'The hammerhead is a shark species' is inaccurate: hammerheads are a group of about nine species.; player-facing text only; verdict and status unchanged"
+            }
           },
           "override": {
             "by": "owner",
@@ -93366,7 +94114,7 @@
           "type": "cultural_reference",
           "wordAConnection": "Narnia frozen in ice.",
           "wordBConnection": "Aslan the lion.",
-          "revealExplanation": "Aslan the lion lives in a land trapped in the White Witch's winter.",
+          "revealExplanation": "Aslan the lion returns to Narnia, a land trapped in the White Witch's icy winter.",
           "reference": {
             "referenceType": "film_or_tv",
             "source": "The Chronicles of Narnia",
@@ -93390,16 +94138,29 @@
               "model": "claude-fable-5-1"
             },
             "textCorrection": {
-              "by": "main session (claude-opus-5-5), x04 coordinator brief",
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
               "date": "2026-10-19",
               "from": {
-                "revealExplanation": "Narnia: the lion, and the ice."
-              },
-              "to": {
                 "revealExplanation": "Aslan the lion lives in a land trapped in the White Witch's winter."
               },
-              "note": "x04 brief: explanation must say why the hint clicks; player-facing text only; verdict and status unchanged"
-            }
+              "to": {
+                "revealExplanation": "Aslan the lion returns to Narnia, a land trapped in the White Witch's icy winter."
+              },
+              "note": "x04 text check: Explanation never names Narnia, the hint word.; Aslan does not live in the frozen land; he returns to it.; player-facing text only; verdict and status unchanged"
+            },
+            "textCorrectionHistory": [
+              {
+                "by": "main session (claude-opus-5-5), x04 coordinator brief",
+                "date": "2026-10-19",
+                "from": {
+                  "revealExplanation": "Narnia: the lion, and the ice."
+                },
+                "to": {
+                  "revealExplanation": "Aslan the lion lives in a land trapped in the White Witch's winter."
+                },
+                "note": "x04 brief: explanation must say why the hint clicks; player-facing text only; verdict and status unchanged"
+              }
+            ]
           }
         },
         {
@@ -99464,6 +100225,94 @@
       }
     },
     {
+      "pair_id": "p_joke__species",
+      "a": "JOKE",
+      "b": "SPECIES",
+      "source": "x04-v",
+      "pairNote": "SPECIES is a near-empty side. Also, 'the hyena' is not one species (there are four), so the line is loose.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HYENA",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "owner-variation",
+          "wordAConnection": "The hyena's call sounds like laughter.",
+          "wordBConnection": "The hyena is an animal species.",
+          "revealExplanation": "The hyena is the species whose cackle sounds like laughing at a joke.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S23",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "shared_property",
+              "delight": 0,
+              "a": 2,
+              "b": 0,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "one_sided",
+                "generic",
+                "text_fix"
+              ],
+              "reason": "JOKE via the laughing hyena is strong, but SPECIES only via 'the hyena is an animal species', which is true of every animal and gives no reason to pick SPECIES.",
+              "fix": "Hyenas are a family of four animal species, and the spotted hyena's cackle sounds like laughing at a joke."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_joke__wild",
+      "a": "JOKE",
+      "b": "WILD",
+      "source": "x04-v",
+      "pairNote": "Weaker than AFRICA + JOKE and BEAST + JOKE; WILD is an adjective that any wild-animal hint would touch.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HYENA",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "owner-variation",
+          "wordAConnection": "The hyena's call sounds like laughter.",
+          "wordBConnection": "Hyenas live in the wild.",
+          "revealExplanation": "In the wild, the hyena's cackle sounds like laughing at a joke.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S22",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "shared_property",
+              "delight": 0,
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "generic"
+              ],
+              "reason": "JOKE via the laughing hyena is strong, but WILD only via 'hyenas live in the wild', which fits any wild animal and makes the pairing feel unearned.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_joke__zoo",
       "a": "JOKE",
       "b": "ZOO",
@@ -105164,7 +106013,7 @@
           "heldReason": null,
           "type": "owner",
           "wordAConnection": "Evel Knievel was the king of daredevils.",
-          "wordBConnection": "He jumped motorcycles over buses and canyons.",
+          "wordBConnection": "He jumped motorcycles over rows of cars and buses.",
           "revealExplanation": "Evel Knievel was the king of daredevil motorcycle stunts.",
           "reference": null,
           "provenance": {
@@ -105173,7 +106022,18 @@
             "date": "2026-10-19",
             "note": "x04 owner supplement (2026-10-19), 045",
             "via": "catalogue add",
-            "blindReview": null
+            "blindReview": null,
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
+              "date": "2026-10-19",
+              "from": {
+                "wordBConnection": "He jumped motorcycles over buses and canyons."
+              },
+              "to": {
+                "wordBConnection": "He jumped motorcycles over rows of cars and buses."
+              },
+              "note": "x04 text check: STUNT line is false about canyons: Knievel's Snake River Canyon attempt was in a rocket-powered Skycycle, not a motorcycle, and it failed.; player-facing text only; verdict and status unchanged"
+            }
           },
           "override": {
             "by": "owner",
@@ -112009,6 +112869,47 @@
           "SEA"
         ]
       }
+    },
+    {
+      "pair_id": "p_lion__photo",
+      "a": "LION",
+      "b": "PHOTO",
+      "source": "x04-v",
+      "pairNote": "Probably the best of the SAFARI pairs: LION is specific to safaris.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SAFARI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Lions are a safari highlight.",
+          "wordBConnection": "Safari-goers come home with wildlife photos.",
+          "revealExplanation": "On safari, everyone hopes for a photo of a lion.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S07",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "LION via the lion as the headline safari sighting; PHOTO via the photo safari; vivid and immediate scene.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_lion__pirate",
@@ -119202,6 +120103,47 @@
       ]
     },
     {
+      "pair_id": "p_needle__north",
+      "a": "NEEDLE",
+      "b": "NORTH",
+      "source": "x04-v",
+      "pairNote": "Clear and correct ('points north' is the everyday shorthand for magnetic north).",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "COMPASS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A compass has a magnetic needle.",
+          "wordBConnection": "A compass points north.",
+          "revealExplanation": "A compass needle always points north.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S08",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "NEEDLE via the compass's magnetic needle; NORTH via it pointing north; an easy, satisfying fact clue.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_needle__potato",
       "a": "NEEDLE",
       "b": "POTATO",
@@ -121354,6 +122296,47 @@
         "reviewer": "x02-revision-reviewer",
         "round": "revision"
       }
+    },
+    {
+      "pair_id": "p_ocean__pigeon",
+      "a": "OCEAN",
+      "b": "PIGEON",
+      "source": "x04-v",
+      "pairNote": "The PIGEON side is an analogy rather than a fact, but it is a widely shared one and the text frames it as 'like', so it is fair.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SEAGULL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Seagulls live by the ocean.",
+          "wordBConnection": "Seagulls act like seaside pigeons.",
+          "revealExplanation": "Seagulls are like the pigeons of the ocean shore.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S12",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_property",
+              "delight": 1,
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "OCEAN via the seabird by the sea; PIGEON via the familiar joke that seagulls are the scavenging 'pigeons of the beach'; a fun visual analogy.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_ocean__pirate",
@@ -123642,7 +124625,7 @@
           "status": "human_approved",
           "heldReason": null,
           "type": "owner",
-          "wordAConnection": "Investing pays off over years, past to present.",
+          "wordAConnection": "Investing can pay off over years, past to present.",
           "wordBConnection": "You invest in stocks.",
           "revealExplanation": "If you had invested in stocks years in the past, you might be rich today.",
           "reference": null,
@@ -123652,7 +124635,18 @@
             "date": "2026-10-19",
             "note": "x04 owner supplement (2026-10-19), 065",
             "via": "catalogue add",
-            "blindReview": null
+            "blindReview": null,
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
+              "date": "2026-10-19",
+              "from": {
+                "wordAConnection": "Investing pays off over years, past to present."
+              },
+              "to": {
+                "wordAConnection": "Investing can pay off over years, past to present."
+              },
+              "note": "x04 text check: PAST line overstates: investing does not always pay off; wording also a bit clumsy.; player-facing text only; verdict and status unchanged"
+            }
           },
           "override": {
             "by": "owner",
@@ -125908,8 +126902,8 @@
           "heldReason": null,
           "type": "owner",
           "wordAConnection": "A kangaroo's pouch is like a pocket.",
-          "wordBConnection": "The kangaroo is an animal species.",
-          "revealExplanation": "The kangaroo is a species with a built-in pocket: its pouch.",
+          "wordBConnection": "There are several kangaroo species.",
+          "revealExplanation": "Every kangaroo species has a built-in pocket: its pouch.",
           "reference": null,
           "provenance": {
             "source": "owner-discovery",
@@ -125917,7 +126911,20 @@
             "date": "2026-10-19",
             "note": "x04 owner supplement (2026-10-19), 018",
             "via": "catalogue add",
-            "blindReview": null
+            "blindReview": null,
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
+              "date": "2026-10-19",
+              "from": {
+                "revealExplanation": "The kangaroo is a species with a built-in pocket: its pouch.",
+                "wordBConnection": "The kangaroo is an animal species."
+              },
+              "to": {
+                "revealExplanation": "Every kangaroo species has a built-in pocket: its pouch.",
+                "wordBConnection": "There are several kangaroo species."
+              },
+              "note": "x04 text check: 'The kangaroo is a species' is inaccurate: there are several kangaroo species.; player-facing text only; verdict and status unchanged"
+            }
           },
           "override": {
             "by": "owner",
@@ -127730,6 +128737,47 @@
               "better_hint": null,
               "flags": [],
               "reason": "RAIN falls from clouds, WEB services store files in the cloud; fair, a touch looser than COMPUTER + RAIN.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_rat__turn",
+      "a": "RAT",
+      "b": "TURN",
+      "source": "x04-v",
+      "pairNote": "Neat, fair scene clue.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MAZE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Lab rats are famous for running mazes.",
+          "wordBConnection": "A maze is full of twists and turns.",
+          "revealExplanation": "A lab rat twists and turns its way through a maze.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S03",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "RAT via the lab rat in a maze; TURN via a maze's twists and turns; both sides click instantly.",
               "fix": null
             }
           }
@@ -136189,7 +137237,7 @@
           "status": "human_approved",
           "heldReason": null,
           "type": "owner",
-          "wordAConnection": "Their biggest hit was \"The Sound of Silence.\"",
+          "wordAConnection": "One of their biggest hits was \"The Sound of Silence.\"",
           "wordBConnection": "Garfunkel sang with Paul Simon.",
           "revealExplanation": "Simon & Garfunkel sang the classic song \"The Sound of Silence.\"",
           "reference": null,
@@ -136199,7 +137247,18 @@
             "date": "2026-10-19",
             "note": "x04 owner supplement (2026-10-19), 001",
             "via": "catalogue add",
-            "blindReview": null
+            "blindReview": null,
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x04-text-checker fix",
+              "date": "2026-10-19",
+              "from": {
+                "wordAConnection": "Their biggest hit was \"The Sound of Silence.\""
+              },
+              "to": {
+                "wordAConnection": "One of their biggest hits was \"The Sound of Silence.\""
+              },
+              "note": "x04 text check: 'Their biggest hit' is doubtful: 'Bridge over Troubled Water' is usually counted as Simon & Garfunkel's biggest hit.; player-facing text only; verdict and status unchanged"
+            }
           },
           "override": {
             "by": "owner",
@@ -138524,6 +139583,49 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_stamp__taste",
+      "a": "STAMP",
+      "b": "TASTE",
+      "source": "x04-v",
+      "pairNote": "Slightly weaker than ENVELOPE + TASTE since U.S. stamps are now self-adhesive, but the text says 'old-fashioned', so it is accurate.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LICK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Old stamps had to be licked.",
+          "wordBConnection": "A lick gives you a taste.",
+          "revealExplanation": "Old-fashioned stamps had to be licked, and a lick gives you a taste.",
+          "reference": null,
+          "provenance": {
+            "source": "x04-v",
+            "request": "S18",
+            "blindReview": {
+              "reviewer": "x04-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "dated"
+              ],
+              "reason": "STAMP via lick-and-stick postage stamps; TASTE via a lick giving a taste; the stamp route is a bit dated but still widely known.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_star__train",

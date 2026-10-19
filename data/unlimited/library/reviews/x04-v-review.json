@@ -1,0 +1,541 @@
+{
+ "_metadata": {
+  "reviewer": "x04-reviewer-v",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "input": "x04-v-review-input.json",
+  "rubric": "x04 rubric (natural-click standard + five content questions), 2026-10-19",
+  "independence": "I read only the instructions file and the single input file x04-v-review-input.json; no other file, repository search, web or paid API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_accessory__charm",
+   "a": "ACCESSORY",
+   "b": "CHARM",
+   "hints": [
+    {
+     "text": "BRACELET",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ACCESSORY via a bracelet being a textbook accessory; CHARM via the instantly familiar 'charm bracelet'; clean and fair, if not surprising.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BRACELET"],
+   "pair_note": "Solid, easy pair; the phrase-join on the CHARM side is about as familiar as phrases get."
+  },
+  {
+   "pair_id": "p_africa__camera",
+   "a": "AFRICA",
+   "b": "CAMERA",
+   "hints": [
+    {
+     "text": "SAFARI",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "AFRICA via the iconic African safari; CAMERA via the photo safari scene of tourists snapping wildlife; clicks naturally.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAFARI"],
+   "pair_note": "Natural scene clue; CAMERA side is softer than AFRICA but still immediate once you picture a safari jeep."
+  },
+  {
+   "pair_id": "p_africa__joke",
+   "a": "AFRICA",
+   "b": "JOKE",
+   "hints": [
+    {
+     "text": "HYENA",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "AFRICA via the hyena as a savanna animal (Lion King); JOKE via the famous 'laughing hyena' cackle; a pleasing pairing of two strong routes.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HYENA"],
+   "pair_note": "Best of the HYENA pairs: both sides are specific to hyenas rather than to any animal."
+  },
+  {
+   "pair_id": "p_animal__photo",
+   "a": "ANIMAL",
+   "b": "PHOTO",
+   "hints": [
+    {
+     "text": "SAFARI",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "ANIMAL via a safari being all about wild animals; PHOTO via the familiar 'photo safari'; easy and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAFARI"],
+   "pair_note": "ANIMAL is a broad word, but SAFARI points at it cleanly; 'photo safari' makes the PHOTO side genuinely solid."
+  },
+  {
+   "pair_id": "p_band__bug",
+   "a": "BAND",
+   "b": "BUG",
+   "hints": [
+    {
+     "text": "BEATLES",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via the Beatles being the archetypal band; BUG via the Beatles/beetles pun in the name; a real 'oh, nice' moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BEATLES"],
+   "pair_note": "Excellent. The explanation slightly simplifies the name origin (it punned on beetles and 'beat'), but nothing stated is false."
+  },
+  {
+   "pair_id": "p_beach__bird",
+   "a": "BEACH",
+   "b": "BIRD",
+   "hints": [
+    {
+     "text": "SEAGULL",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "BEACH via seagulls swarming the beach scene; BIRD via a seagull simply being a bird; clear and fair though flat, since the BIRD side is just category membership.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SEAGULL"],
+   "pair_note": "Easy and correct; low delight because BIRD is the hint's own category, but that alone is not a reason to fail."
+  },
+  {
+   "pair_id": "p_beach__crane",
+   "a": "BEACH",
+   "b": "CRANE",
+   "hints": [
+    {
+     "text": "SEAGULL",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 0,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["one_sided", "needs_explanation"],
+     "verdict": "BORDERLINE",
+     "reason": "BEACH via the classic beach seagull is strong, but CRANE rests only on 'both are waterbirds', which does not make SEAGULL bring CRANE to mind over any other bird word.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The CRANE side is a category overlap, not a link; close to FAIL. Players would more likely read CRANE as origami or construction."
+  },
+  {
+   "pair_id": "p_beast__joke",
+   "a": "BEAST",
+   "b": "JOKE",
+   "hints": [
+    {
+     "text": "HYENA",
+     "mechanism": "shared_property",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "JOKE via the laughing hyena; BEAST via the hyena's image as a snarling, scavenging wild beast (the Lion King villains); the BEAST side is looser but natural.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HYENA"],
+   "pair_note": "Weaker than AFRICA + JOKE, but hyenas are stereotypically 'beasts', so it still clicks."
+  },
+  {
+   "pair_id": "p_bird__ocean",
+   "a": "BIRD",
+   "b": "OCEAN",
+   "hints": [
+    {
+     "text": "SEAGULL",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "BIRD via a seagull being a bird; OCEAN via the seabird over the waves, reinforced by the 'sea' in its name; easy and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SEAGULL"],
+   "pair_note": "Slightly nicer than BEACH + BIRD because 'sea' in SEAGULL nods to OCEAN."
+  },
+  {
+   "pair_id": "p_bug__music",
+   "a": "BUG",
+   "b": "MUSIC",
+   "hints": [
+    {
+     "text": "BEATLES",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BUG via the Beatles/beetles pun; MUSIC via the Beatles as music legends; satisfying pop-culture wordplay.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BEATLES"],
+   "pair_note": "As strong as BAND + BUG; MUSIC is a touch broader than BAND but equally clear."
+  },
+  {
+   "pair_id": "p_business__weapon",
+   "a": "BUSINESS",
+   "b": "WEAPON",
+   "hints": [
+    {
+     "text": "ARMORY",
+     "mechanism": "other",
+     "connection_to_a": 0,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["one_sided", "needs_explanation"],
+     "verdict": "FAIL",
+     "reason": "WEAPON via an armory storing weapons is solid, but BUSINESS rests on the claim that gun shops name themselves 'Armory', an explanation invented to rescue a word ARMORY does not evoke.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Needs a different idea; the 'arms dealer' / arms-trade angle would be a more natural route to BUSINESS than store names."
+  },
+  {
+   "pair_id": "p_camera__wild",
+   "a": "CAMERA",
+   "b": "WILD",
+   "hints": [
+    {
+     "text": "SAFARI",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "WILD via a safari heading into the wild to see wild animals; CAMERA via the photo-safari scene; natural and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAFARI"],
+   "pair_note": "Good scene clue; works the same way as the other SAFARI photo pairs."
+  },
+  {
+   "pair_id": "p_camp__cookie",
+   "a": "CAMP",
+   "b": "COOKIE",
+   "hints": [
+    {
+     "text": "SMORE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": "SCOUT",
+     "flags": ["better_hint_exists", "needs_explanation"],
+     "verdict": "BORDERLINE",
+     "reason": "CAMP via s'mores as the campfire treat is perfect, but COOKIE only works by calling graham crackers 'cookie-like', and SCOUT (Girl Scout cookies + scout camp) hits both sides far more cleanly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "S'MORE is a lovely word but the COOKIE side is a stretch; SCOUT is the obvious stronger hint. The apostrophe-less spelling SMORE may also look odd to players."
+  },
+  {
+   "pair_id": "p_crane__ocean",
+   "a": "CRANE",
+   "b": "OCEAN",
+   "hints": [
+    {
+     "text": "SEAGULL",
+     "mechanism": "shared_property",
+     "connection_to_a": 0,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["one_sided", "needs_explanation"],
+     "verdict": "BORDERLINE",
+     "reason": "OCEAN via the seagull soaring over the sea is strong, but CRANE rests only on 'both are waterbirds', which gives no reason to pick CRANE over any other bird on the board.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Same weakness as BEACH + CRANE; close to FAIL."
+  },
+  {
+   "pair_id": "p_envelope__taste",
+   "a": "ENVELOPE",
+   "b": "TASTE",
+   "hints": [
+    {
+     "text": "LICK",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ENVELOPE via licking the flap to seal it (with the familiar gross glue taste); TASTE via a lick being how you taste something; tidy and satisfying.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LICK"],
+   "pair_note": "Clean, fair and a little funny."
+  },
+  {
+   "pair_id": "p_glass__plank",
+   "a": "GLASS",
+   "b": "PLANK",
+   "hints": [
+    {
+     "text": "TELESCOPE",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 0,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "moderate",
+     "better_hint": "PIRATE",
+     "flags": ["one_sided", "needs_explanation", "better_hint_exists", "text_fix"],
+     "verdict": "FAIL",
+     "reason": "GLASS works via lenses/spyglass, but PLANK needs a pirate-ship detour that TELESCOPE does not supply (and 'plank deck' is invented); PIRATE (spyglass + walk the plank) is the obvious far better hint.",
+     "fix": "A pirate captain scans the sea through his spyglass, a telescope, and makes captives walk the plank."
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The intended scene is pirates, so the hint should be PIRATE; the current text also leans on a non-thing ('plank deck')."
+  },
+  {
+   "pair_id": "p_joke__species",
+   "a": "JOKE",
+   "b": "SPECIES",
+   "hints": [
+    {
+     "text": "HYENA",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 0,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["one_sided", "generic", "text_fix"],
+     "verdict": "BORDERLINE",
+     "reason": "JOKE via the laughing hyena is strong, but SPECIES only via 'the hyena is an animal species', which is true of every animal and gives no reason to pick SPECIES.",
+     "fix": "Hyenas are a family of four animal species, and the spotted hyena's cackle sounds like laughing at a joke."
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "SPECIES is a near-empty side. Also, 'the hyena' is not one species (there are four), so the line is loose."
+  },
+  {
+   "pair_id": "p_joke__wild",
+   "a": "JOKE",
+   "b": "WILD",
+   "hints": [
+    {
+     "text": "HYENA",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "BORDERLINE",
+     "reason": "JOKE via the laughing hyena is strong, but WILD only via 'hyenas live in the wild', which fits any wild animal and makes the pairing feel unearned.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Weaker than AFRICA + JOKE and BEAST + JOKE; WILD is an adjective that any wild-animal hint would touch."
+  },
+  {
+   "pair_id": "p_lion__photo",
+   "a": "LION",
+   "b": "PHOTO",
+   "hints": [
+    {
+     "text": "SAFARI",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LION via the lion as the headline safari sighting; PHOTO via the photo safari; vivid and immediate scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAFARI"],
+   "pair_note": "Probably the best of the SAFARI pairs: LION is specific to safaris."
+  },
+  {
+   "pair_id": "p_needle__north",
+   "a": "NEEDLE",
+   "b": "NORTH",
+   "hints": [
+    {
+     "text": "COMPASS",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "NEEDLE via the compass's magnetic needle; NORTH via it pointing north; an easy, satisfying fact clue.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["COMPASS"],
+   "pair_note": "Clear and correct ('points north' is the everyday shorthand for magnetic north)."
+  },
+  {
+   "pair_id": "p_ocean__pigeon",
+   "a": "OCEAN",
+   "b": "PIGEON",
+   "hints": [
+    {
+     "text": "SEAGULL",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "OCEAN via the seabird by the sea; PIGEON via the familiar joke that seagulls are the scavenging 'pigeons of the beach'; a fun visual analogy.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SEAGULL"],
+   "pair_note": "The PIGEON side is an analogy rather than a fact, but it is a widely shared one and the text frames it as 'like', so it is fair."
+  },
+  {
+   "pair_id": "p_rat__turn",
+   "a": "RAT",
+   "b": "TURN",
+   "hints": [
+    {
+     "text": "MAZE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RAT via the lab rat in a maze; TURN via a maze's twists and turns; both sides click instantly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MAZE"],
+   "pair_note": "Neat, fair scene clue."
+  },
+  {
+   "pair_id": "p_stamp__taste",
+   "a": "STAMP",
+   "b": "TASTE",
+   "hints": [
+    {
+     "text": "LICK",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["dated"],
+     "verdict": "PASS",
+     "reason": "STAMP via lick-and-stick postage stamps; TASTE via a lick giving a taste; the stamp route is a bit dated but still widely known.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LICK"],
+   "pair_note": "Slightly weaker than ENVELOPE + TASTE since U.S. stamps are now self-adhesive, but the text says 'old-fashioned', so it is accurate."
+  }
+ ]
+}
