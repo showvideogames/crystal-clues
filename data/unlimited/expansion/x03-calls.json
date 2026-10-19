@@ -4,6 +4,42 @@
     "main_session": "claude-opus-5-5 (authoring of requests, explanations, related-word index and routes; not counted as separate calls)"
   },
   "calls": [
-    { "id": "x03-text-checker", "purpose": "fact and wording check of the 46 owner-addition explanations (verdicts not judged)", "input": "data/unlimited/library/reviews/x03-owner-text-input.json", "output": "data/unlimited/library/reviews/x03-owner-text-check.json", "modelEcho": "claude-opus-5-5", "tokens": 81506, "toolUses": 6, "durationMs": 95883, "result": "43 ok, 3 fixed (MCDOUBLE, PERCY, DUNE) with provenance.textCorrection" }
+    {
+      "id": "x03-text-checker",
+      "purpose": "fact and wording check of the 46 owner-addition explanations (verdicts not judged)",
+      "input": "data/unlimited/library/reviews/x03-owner-text-input.json",
+      "output": "data/unlimited/library/reviews/x03-owner-text-check.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 81506,
+      "toolUses": 6,
+      "durationMs": 95883,
+      "result": "43 ok, 3 fixed (MCDOUBLE, PERCY, DUNE) with provenance.textCorrection"
+    },
+    {
+      "id": "x03-index-reviewer",
+      "purpose": "check the pilot related-word index against the whole 1,202-word bank (missing / wrong / senses)",
+      "input": [
+        "data/unlimited/related/groups.json",
+        "data/unlimited/related/hint-routes.json",
+        "bank word list"
+      ],
+      "output": "data/unlimited/related/index-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 122012,
+      "toolUses": 7,
+      "durationMs": 350336,
+      "result": "59 missing words suggested (mostly strength 1, many new meanings), 3 never-pairs, clause fixes; applied selectively (addedBy x03-index-reviewer)"
+    },
+    {
+      "id": "x03-reviewer-v",
+      "purpose": "independent review of the owner variations (x03 brief section 3 + ORIOLE)",
+      "input": "data/unlimited/library/reviews/x03-v-review-input.json",
+      "output": "data/unlimited/library/reviews/x03-v-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 92632,
+      "toolUses": 6,
+      "durationMs": 172229,
+      "result": "32 PASS, 2 BORDERLINE (WEB+JUNGLE SAFARI, TOY+POTATO HEAD), 0 FAIL; 2 text fixes applied"
+    }
   ]
 }

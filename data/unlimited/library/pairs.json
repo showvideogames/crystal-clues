@@ -580,6 +580,15 @@
         "ai_reviewed": 3,
         "held": 0,
         "rejected": 0
+      },
+      {
+        "review": "data/unlimited/library/reviews/x03-v-review.json",
+        "key": "data/unlimited/library/reviews/x03-v-review-key.json",
+        "appendOnly": true,
+        "ai_reviewed": 32,
+        "held": 2,
+        "rejected": 0,
+        "newPairs": 30
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -616,6 +625,47 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "owner-selected pair, x02 brief 2026-10-19: Africa is famous for its safaris, and Safari is Apple's web browser."
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_africa__web",
+      "a": "AFRICA",
+      "b": "WEB",
+      "source": "x03-v",
+      "pairNote": "Ideal pair for SAFARI; both sides are direct.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SAFARI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Africa is famous for its safaris.",
+          "wordBConnection": "Safari is Apple's web browser.",
+          "revealExplanation": "Safari is a web browser, and Africa is famous for its wildlife safaris.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-04",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "AFRICA via the classic wildlife safari, WEB via Apple's Safari browser; a clean double meaning that matches the owner-approved INTERNET + AFRICA example.",
+              "fix": null
+            }
           }
         }
       ]
@@ -1313,6 +1363,47 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Animal is the wild Muppet drummer (ANIMAL, read as a name) and Muppets are puppets (PUPPET)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_antarctica__computer",
+      "a": "ANTARCTICA",
+      "b": "COMPUTER",
+      "source": "x03-v",
+      "pairNote": "Solid; FROZEN is reused across many COMPUTER pairs in this batch, which matters only if two such targets share a board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Antarctica is a frozen continent.",
+          "wordBConnection": "A frozen computer stops responding.",
+          "revealExplanation": "A frozen computer stops responding, and Antarctica is a frozen continent.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-34",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "ANTARCTICA via the frozen continent, COMPUTER via a frozen (unresponsive) machine; the same double meaning as the owner-approved STATUE + COMPUTER.",
+              "fix": null
             }
           }
         }
@@ -13629,7 +13720,7 @@
       "source": "owner-discovery",
       "pairNote": null,
       "reviewerBestAvailable": null,
-      "playableHints": 2,
+      "playableHints": 3,
       "clues": [
         {
           "text": "CARDINAL",
@@ -13677,6 +13768,36 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "x03 owner additions (2026-10-19), A-20: The Toronto Blue Jays play baseball, and the blue jay is a noisy, crested bird."
+          }
+        },
+        {
+          "text": "ORIOLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "The Baltimore Orioles are an MLB team.",
+          "wordBConnection": "The oriole is an orange-and-black songbird.",
+          "revealExplanation": "The Baltimore Orioles play baseball, and the oriole is an orange-and-black songbird.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "A-21",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BASEBALL via the Baltimore Orioles, BIRD via the orange-and-black songbird; a fair team-name double meaning on par with the served CARDINAL and JAY.",
+              "fix": null
+            }
           }
         }
       ]
@@ -23791,6 +23912,47 @@
       ]
     },
     {
+      "pair_id": "p_black__white",
+      "a": "BLACK",
+      "b": "WHITE",
+      "source": "x03-v",
+      "pairNote": "Many hints fit this pair (ZEBRA, PANDA, PIANO, OREO); none is clearly better than CHESS, though ZEBRA or PANDA might feel more playful.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "One chess player has the black pieces.",
+          "wordBConnection": "The other has white, and white moves first.",
+          "revealExplanation": "In chess, black plays against white.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-14",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BLACK and WHITE are the two sides in chess, and the line's 'white moves first' is accurate; fair and quick, if not a big surprise.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_blizzard__queen",
       "a": "BLIZZARD",
       "b": "QUEEN",
@@ -23873,6 +24035,47 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Smurfs are famously blue and live in mushroom houses; the mushroom side is a pleasing detail."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_board__horse",
+      "a": "BOARD",
+      "b": "HORSE",
+      "source": "x03-v",
+      "pairNote": "Good use of CHESS; the HORSE side is the satisfying part.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Chess is played on a checkered board.",
+          "wordBConnection": "The chess knight is shaped like a horse's head.",
+          "revealExplanation": "Chess is played on a board, and its knight is shaped like a horse.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-13",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BOARD via the chessboard, HORSE via the horse-headed knight; the knight step gives a nice small click.",
+              "fix": null
             }
           }
         }
@@ -37575,6 +37778,47 @@
       ]
     },
     {
+      "pair_id": "p_chair__food",
+      "a": "CHAIR",
+      "b": "FOOD",
+      "source": "x03-v",
+      "pairNote": "The FOOD side relies on spotting 'bean' in the word, which is the intended charm.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BEANBAG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A beanbag chair is a squishy chair.",
+          "wordBConnection": "Beans are a food.",
+          "revealExplanation": "A beanbag chair is a squishy seat named after a food: beans.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-29",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "other",
+              "delight": 1,
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CHAIR via the beanbag chair, FOOD via the 'bean' inside the word; the owner approved the same idea for FOOD + COUCH, and CHAIR is an even tighter fit.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_charm__leprechaun",
       "a": "CHARM",
       "b": "LEPRECHAUN",
@@ -37613,6 +37857,47 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "CHARM via Lucky Charms (and 'lucky charm'); LEPRECHAUN via Lucky the Leprechaun mascot and leprechaun luck folklore."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_check__king",
+      "a": "CHECK",
+      "b": "KING",
+      "source": "x03-v",
+      "pairNote": "Easy but clean.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CHESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Check means the king is under attack.",
+          "wordBConnection": "The king is the piece you must protect in chess.",
+          "revealExplanation": "In chess, you put the king in check.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-15",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CHECK via putting the king in check, KING via the chess piece you must protect; accurate and instant.",
+              "fix": null
             }
           }
         }
@@ -38553,7 +38838,7 @@
         "why": "One instantly known character covers both words with no explanation needed.",
         "reviewer": "x02-reviewer-b"
       },
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
         {
           "text": "RONALD",
@@ -38581,6 +38866,36 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Ronald McDonald is the iconic clown (CLOWN) and the face of McDonald's hamburgers (HAMBURGER); one character cleanly reaches both."
+            }
+          }
+        },
+        {
+          "text": "MCDONALDS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Ronald McDonald is McDonald's clown mascot.",
+          "wordBConnection": "McDonald's is famous for its hamburgers.",
+          "revealExplanation": "Ronald McDonald is the clown mascot of McDonald's, home of the hamburger.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-27",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CLOWN via Ronald McDonald, HAMBURGER via McDonald's burgers; a brand written as one word, fair to a U.S. audience.",
+              "fix": null
             }
           }
         }
@@ -38851,6 +39166,47 @@
       ]
     },
     {
+      "pair_id": "p_cold__computer",
+      "a": "COLD",
+      "b": "COMPUTER",
+      "source": "x03-v",
+      "pairNote": "Fine; the COLD side is very direct.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Freezing cold makes things frozen.",
+          "wordBConnection": "A frozen computer stops responding.",
+          "revealExplanation": "A frozen computer stops responding, and anything left out in the cold can freeze.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-32",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "COLD via freezing temperatures, COMPUTER via a frozen screen; close to COLD but not a plain synonym, so it stays fair.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_comedy__turkey",
       "a": "COMEDY",
       "b": "TURKEY",
@@ -39012,6 +39368,47 @@
       ]
     },
     {
+      "pair_id": "p_computer__frost",
+      "a": "COMPUTER",
+      "b": "FROST",
+      "source": "x03-v",
+      "pairNote": "Standard FROZEN double meaning.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A frozen computer stops responding.",
+          "wordBConnection": "Frost is a coat of tiny ice crystals.",
+          "revealExplanation": "A frozen computer stops responding, and frost is a coat of tiny ice crystals.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-33",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "COMPUTER via a frozen machine, FROST via frozen ice crystals; accurate and fair.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_computer__ice",
       "a": "COMPUTER",
       "b": "ICE",
@@ -39042,6 +39439,101 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "x03 owner additions (2026-10-19), A-46: Ice is frozen water, and a frozen computer stops responding."
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_computer__penguin",
+      "a": "COMPUTER",
+      "b": "PENGUIN",
+      "source": "x03-v",
+      "pairNote": "Explanation implies all penguins live in Antarctica (the line already says 'many'). LINUX (Tux the penguin mascot) is a cleverer route but too niche to count as clearly better.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A frozen computer stops responding.",
+          "wordBConnection": "Many penguins live in frozen Antarctica.",
+          "revealExplanation": "A frozen computer stops responding, and many penguins live in frozen Antarctica.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-35",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 1,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "text_fix"
+              ],
+              "reason": "COMPUTER via a frozen machine, PENGUIN via icy Antarctic habitat; the penguin side is one step removed but penguins and ice are a strong popular association.",
+              "fix": "A frozen computer stops responding, and many penguins live in frozen Antarctica."
+            },
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x03-reviewer-v fix",
+              "date": "2026-10-19",
+              "from": {
+                "revealExplanation": "A frozen computer stops responding, and penguins live in frozen Antarctica."
+              },
+              "to": {
+                "revealExplanation": "A frozen computer stops responding, and many penguins live in frozen Antarctica."
+              },
+              "note": "reviewer text_fix: not all penguins live in Antarctica; player-facing text only; verdict and status unchanged"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_computer__rain",
+      "a": "COMPUTER",
+      "b": "RAIN",
+      "source": "x03-v",
+      "pairNote": "Classic and satisfying.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CLOUD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Computers back up files to the cloud.",
+          "wordBConnection": "Rain falls from clouds.",
+          "revealExplanation": "Rain falls from clouds, and computers store files in the cloud.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-01",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "RAIN falls from clouds, COMPUTER files are backed up to the cloud; a crisp, familiar double meaning.",
+              "fix": null
+            }
           }
         }
       ]
@@ -39091,6 +39583,47 @@
       ]
     },
     {
+      "pair_id": "p_computer__snow",
+      "a": "COMPUTER",
+      "b": "SNOW",
+      "source": "x03-v",
+      "pairNote": "Standard FROZEN double meaning; the Disney film (Olaf, snow) adds a little extra pull.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A frozen computer stops responding.",
+          "wordBConnection": "Snow is frozen water.",
+          "revealExplanation": "A frozen computer stops responding, and snow is frozen water.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-30",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "COMPUTER via a frozen machine, SNOW as frozen water; accurate and fair.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_computer__statue",
       "a": "COMPUTER",
       "b": "STATUE",
@@ -39126,13 +39659,69 @@
       ]
     },
     {
+      "pair_id": "p_computer__winter",
+      "a": "COMPUTER",
+      "b": "WINTER",
+      "source": "x03-v",
+      "pairNote": "Lakes and ponds usually freeze only on the surface; drop 'solid'.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "A frozen computer stops responding.",
+          "wordBConnection": "Winter freezes lakes and ponds over.",
+          "revealExplanation": "A frozen computer stops responding, and winter freezes lakes and ponds over.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-31",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "text_fix"
+              ],
+              "reason": "COMPUTER via a frozen machine, WINTER via frozen weather; fair, though the explanation overstates lakes freezing 'solid'.",
+              "fix": "A frozen computer stops responding, and winter freezes lakes and ponds over."
+            },
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x03-reviewer-v fix",
+              "date": "2026-10-19",
+              "from": {
+                "revealExplanation": "A frozen computer stops responding, and winter freezes lakes and ponds solid.",
+                "wordBConnection": "Winter freezes lakes and ponds."
+              },
+              "to": {
+                "revealExplanation": "A frozen computer stops responding, and winter freezes lakes and ponds over.",
+                "wordBConnection": "Winter freezes lakes and ponds over."
+              },
+              "note": "reviewer text_fix: lakes freeze over, not solid; player-facing text only; verdict and status unchanged"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_cookie__milk",
       "a": "COOKIE",
       "b": "MILK",
       "source": "owner-discovery",
       "pairNote": null,
       "reviewerBestAvailable": null,
-      "playableHints": 1,
+      "playableHints": 3,
       "clues": [
         {
           "text": "DIP",
@@ -39156,6 +39745,66 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "owner-selected pair, x02 brief 2026-10-19: Dip your cookie in milk."
+          }
+        },
+        {
+          "text": "DUNK",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Cookies are made for dunking.",
+          "wordBConnection": "Milk is the classic dunking drink.",
+          "revealExplanation": "Dunk your cookie in a glass of milk.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-17",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "Both COOKIE and MILK come together in the familiar scene of dunking a cookie in milk; slightly more vivid than the served DIP.",
+              "fix": null
+            }
+          }
+        },
+        {
+          "text": "OREO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Oreo is the world's best-selling cookie.",
+          "wordBConnection": "Oreos are famously dunked in milk.",
+          "revealExplanation": "Oreos are the classic cookie to twist, lick and dunk in milk.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-18",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "COOKIE because an Oreo is the iconic cookie, MILK through the twist-lick-dunk ritual and 'Milk's favorite cookie' branding; a specific, pleasing reference rather than a synonym.",
+              "fix": null
+            }
           }
         }
       ]
@@ -43375,6 +44024,47 @@
       ]
     },
     {
+      "pair_id": "p_desert__worm",
+      "a": "DESERT",
+      "b": "WORM",
+      "source": "x03-v",
+      "pairNote": "Excellent; recent films make the WORM side broadly known.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DUNE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Dunes are hills of desert sand.",
+          "wordBConnection": "Giant sandworms roam the planet in Dune.",
+          "revealExplanation": "In Dune, giant sandworms rule a desert planet of endless sand dunes.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-26",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DESERT via sand dunes, WORM via the giant sandworms of Dune; works as plain word and as pop culture at once, with accurate text.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_detective__pokemon",
       "a": "DETECTIVE",
       "b": "POKEMON",
@@ -46679,6 +47369,47 @@
       ]
     },
     {
+      "pair_id": "p_dinosaur__king",
+      "a": "DINOSAUR",
+      "b": "KING",
+      "source": "x03-v",
+      "pairNote": "Best home for REX in this batch.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "REX",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "T. rex is the most famous dinosaur.",
+          "wordBConnection": "Rex is Latin for king.",
+          "revealExplanation": "Tyrannosaurus rex means \"tyrant lizard king\": rex is Latin for king.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-23",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DINOSAUR via T. rex, KING via rex being Latin for king; the 'tyrant lizard king' translation is correct and gives a real 'oh, nice'.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_dinosaur__toy",
       "a": "DINOSAUR",
       "b": "TOY",
@@ -46752,6 +47483,88 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "MALARIA is a DISEASE famously spread by MOSQUITO bites; accurate and direct."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_disease__pirate",
+      "a": "DISEASE",
+      "b": "PIRATE",
+      "source": "x03-v",
+      "pairNote": "Strongest of the three SCURVY pairs; the 'ye scurvy dog' echo adds fun.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCURVY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Scurvy is a disease caused by lack of vitamin C.",
+          "wordBConnection": "Scurvy plagued sailors and pirates on long voyages.",
+          "revealExplanation": "Scurvy is the disease that plagued sailors and pirates on long voyages.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-21",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DISEASE via scurvy itself (vitamin C deficiency, correctly stated), PIRATE via sailors on long voyages and the pirate-speak 'scurvy dog'.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_disney__ice",
+      "a": "DISNEY",
+      "b": "ICE",
+      "source": "x03-v",
+      "pairNote": "Very good use of FROZEN.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Frozen is a hit Disney movie.",
+          "wordBConnection": "Ice is frozen water, and Elsa has ice powers.",
+          "revealExplanation": "Frozen is Disney's hit movie about Elsa's ice powers, and ice is frozen water.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-38",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DISNEY via the hit film Frozen, ICE via frozen water and Elsa's ice powers; both sides land at once.",
+              "fix": null
             }
           }
         }
@@ -50263,6 +51076,88 @@
           "HUSKY"
         ]
       }
+    },
+    {
+      "pair_id": "p_doll__fashion",
+      "a": "DOLL",
+      "b": "FASHION",
+      "source": "x03-v",
+      "pairNote": "An obvious, excellent hint.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BARBIE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Barbie is the famous doll.",
+          "wordBConnection": "Barbie is known for her fashion and outfits.",
+          "revealExplanation": "Barbie is the world's most famous fashion doll.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-09",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DOLL and FASHION both point straight at Barbie, the famous fashion doll; easy but exactly right.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_doll__pink",
+      "a": "DOLL",
+      "b": "PINK",
+      "source": "x03-v",
+      "pairNote": "Strong, culturally fresh link.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BARBIE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Barbie is the famous fashion doll.",
+          "wordBConnection": "Barbie's signature color is pink.",
+          "revealExplanation": "Barbie is the world's most famous doll, and pink is her signature color.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-08",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DOLL via Barbie the doll, PINK via 'Barbie pink' and the 2023 film's pink everything; slightly more fun than DOLL + FASHION.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_donkey__godzilla",
@@ -90312,6 +91207,47 @@
       }
     },
     {
+      "pair_id": "p_ice__movie",
+      "a": "ICE",
+      "b": "MOVIE",
+      "source": "x03-v",
+      "pairNote": "Good; DISNEY + ICE is the tighter version of the same idea.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Ice is frozen water, and Elsa has ice powers.",
+          "wordBConnection": "Frozen is Disney's hit animated movie.",
+          "revealExplanation": "Frozen is Disney's hit movie about Elsa's ice powers, and ice is frozen water.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-36",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "ICE via frozen water and Elsa's powers, MOVIE via the Disney film; fair, though MOVIE is a broad target.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_ice__night",
       "a": "ICE",
       "b": "NIGHT",
@@ -95904,6 +96840,50 @@
         "reviewer": "x02-revision-reviewer",
         "round": "revision"
       }
+    },
+    {
+      "pair_id": "p_jungle__web",
+      "a": "JUNGLE",
+      "b": "WEB",
+      "source": "x03-v",
+      "pairNote": "Use AMAZON for this pair; keep SAFARI for AFRICA + WEB.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "SAFARI",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "owner-variation",
+          "wordAConnection": "A safari is a trip into the wild.",
+          "wordBConnection": "Safari is Apple's web browser.",
+          "revealExplanation": "Safari is a web browser, and a safari is an adventure trip into the wild.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-03",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": "AMAZON",
+              "flags": [
+                "one_sided",
+                "better_hint_exists"
+              ],
+              "reason": "WEB via the Safari browser is solid, but JUNGLE is weak because safaris are savanna trips (the line has to fall back on 'a trip into the wild'), and AMAZON (rainforest + the website) hits both sides squarely.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_key__king",
@@ -101513,6 +102493,49 @@
       }
     },
     {
+      "pair_id": "p_king__toy",
+      "a": "KING",
+      "b": "TOY",
+      "source": "x03-v",
+      "pairNote": "Weaker than DINOSAUR + KING or the owner's TOY + DINOSAUR, since KING needs the Latin step; close to the BORDERLINE line.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "REX",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Rex is Latin for king.",
+          "wordBConnection": "Rex is Toy Story's dinosaur toy.",
+          "revealExplanation": "Rex is Toy Story's nervous dinosaur toy, and rex is Latin for king.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-24",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "needs_explanation"
+              ],
+              "reason": "TOY via Toy Story's Rex is instant; KING via Latin rex is less immediate but widely known through T. rex and Oedipus Rex, and it clicks on explanation.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_king__train",
       "a": "KING",
       "b": "TRAIN",
@@ -105037,6 +106060,47 @@
       ]
     },
     {
+      "pair_id": "p_lead__science",
+      "a": "LEAD",
+      "b": "SCIENCE",
+      "source": "x03-v",
+      "pairNote": "Good; LEAD is arguably a more pleasing target than GOLD since it is the less obvious half.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ALCHEMY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Alchemists tried to turn lead into gold.",
+          "wordBConnection": "Alchemy was the forerunner of modern chemistry.",
+          "revealExplanation": "Alchemy, the forerunner of chemistry, tried to turn lead into gold.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-28",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "LEAD via the lead-into-gold quest, SCIENCE via alchemy as chemistry's forerunner (accurately framed); mirrors the owner-approved GOLD + SCIENCE.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_leak__mario",
       "a": "LEAK",
       "b": "MARIO",
@@ -105119,6 +106183,47 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Lemon: grated lemon zest; life: 'zest for life'. Both phrases are common."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lemon__pirate",
+      "a": "LEMON",
+      "b": "PIRATE",
+      "source": "x03-v",
+      "pairNote": "Nice: neither target names a disease, so the hint feels discovered.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCURVY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Lemon juice was given to sailors to prevent scurvy.",
+          "wordBConnection": "Scurvy plagued sailors and pirates on long voyages.",
+          "revealExplanation": "Sailors and pirates on long voyages got scurvy, and lemon juice became the cure.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-22",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "LEMON via citrus juice given to sailors against scurvy (historically accurate), PIRATE via long voyages and 'scurvy dog'; a satisfying fact link.",
+              "fix": null
             }
           }
         }
@@ -114836,6 +115941,47 @@
       }
     },
     {
+      "pair_id": "p_movie__snowman",
+      "a": "MOVIE",
+      "b": "SNOWMAN",
+      "source": "x03-v",
+      "pairNote": "Strong; Olaf makes it delightful.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "FROZEN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Frozen is Disney's hit animated movie.",
+          "wordBConnection": "Olaf is Frozen's lovable snowman.",
+          "revealExplanation": "Frozen is Disney's hit movie, starring Olaf the snowman.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-37",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "MOVIE via the Disney film, SNOWMAN via Olaf; also reads literally as a frozen snowman.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_movie__trash",
       "a": "MOVIE",
       "b": "TRASH",
@@ -118956,6 +120102,47 @@
       }
     },
     {
+      "pair_id": "p_ocean__yellow",
+      "a": "OCEAN",
+      "b": "YELLOW",
+      "source": "x03-v",
+      "pairNote": "Excellent; older but still universally known reference.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SUBMARINE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Submarines travel under the ocean.",
+          "wordBConnection": "The Beatles' Yellow Submarine.",
+          "revealExplanation": "The Beatles sang about a yellow submarine, and submarines travel deep under the ocean.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-05",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "OCEAN via submarines travelling underwater, YELLOW via the Beatles' Yellow Submarine; a well-known song that gives a real click.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_octopus__spongebob",
       "a": "OCTOPUS",
       "b": "SPONGEBOB",
@@ -119276,6 +120463,47 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "OPERA via The Phantom of the Opera and STAR WARS via The Phantom Menace; it is a title-word join, but both titles are instantly familiar and the pairing is satisfying, so it clears the exceptional bar."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_orange__pirate",
+      "a": "ORANGE",
+      "b": "PIRATE",
+      "source": "x03-v",
+      "pairNote": "Fine; LEMON + PIRATE is the cleaner version.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCURVY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Oranges' vitamin C prevents scurvy.",
+          "wordBConnection": "Scurvy plagued sailors and pirates on long voyages.",
+          "revealExplanation": "Sailors and pirates on long voyages got scurvy from a lack of vitamin C, which oranges provide.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-20",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "ORANGE via the vitamin C that prevents scurvy, PIRATE via long voyages; accurate and fair, slightly less vivid than LEMON since the naval history is about lemons and limes.",
+              "fix": null
             }
           }
         }
@@ -119604,6 +120832,47 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "RAT via the Pied Piper of Hamelin and PICKLE via Peter Piper's pickled peppers; two famous Pipers. The pickle side is a half-step away (via 'pickled') but clicks."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pig__toy",
+      "a": "PIG",
+      "b": "TOY",
+      "source": "x03-v",
+      "pairNote": "Nice two-layer hint (character plus pun).",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "HAMM",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Hamm is a pink piggy bank.",
+          "wordBConnection": "Hamm is one of the Toy Story toys.",
+          "revealExplanation": "Hamm is the wisecracking piggy bank in Toy Story.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-10",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "TOY via Toy Story's Hamm, PIG via the piggy bank and the 'ham' pun in his name; works even for players who half-remember the film.",
+              "fix": null
             }
           }
         }
@@ -121505,6 +122774,51 @@
       ]
     },
     {
+      "pair_id": "p_potato__toy",
+      "a": "POTATO",
+      "b": "TOY",
+      "source": "x03-v",
+      "pairNote": "The single-phrase blank makes this flat; no obvious one-word replacement stands out, so it may simply be a weak pair.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "HEAD",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "owner-variation",
+          "wordAConnection": "His head is a potato.",
+          "wordBConnection": "Mr. Potato Head is a classic toy.",
+          "revealExplanation": "Mr. Potato Head is the classic toy with a potato for a head.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-25",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "phrase_join",
+              "delight": 1,
+              "a": 2,
+              "b": 1,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "phrase_join_weak",
+                "one_sided",
+                "generic"
+              ],
+              "reason": "POTATO via 'Potato Head' is instant, but TOY is reached only by already completing that same phrase; HEAD on its own does not suggest TOY and fits many board words.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_prince__sea",
       "a": "PRINCE",
       "b": "SEA",
@@ -123058,6 +124372,47 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_rain__web",
+      "a": "RAIN",
+      "b": "WEB",
+      "source": "x03-v",
+      "pairNote": "Good; COMPUTER + RAIN is the tighter home for CLOUD.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CLOUD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Rain falls from clouds.",
+          "wordBConnection": "Web services keep files in the cloud.",
+          "revealExplanation": "Rain falls from clouds, and web services keep your files in the cloud.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-02",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "RAIN falls from clouds, WEB services store files in the cloud; fair, a touch looser than COMPUTER + RAIN.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_referee__zebra",
@@ -132430,6 +133785,47 @@
         "reviewer": "x01-revision-reviewer",
         "round": "revision"
       }
+    },
+    {
+      "pair_id": "p_space__toy",
+      "a": "SPACE",
+      "b": "TOY",
+      "source": "x03-v",
+      "pairNote": "Excellent; two independent routes to SPACE.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BUZZ",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "owner-variation",
+          "wordAConnection": "Buzz is a space ranger.",
+          "wordBConnection": "Buzz Lightyear is a Toy Story toy.",
+          "revealExplanation": "Buzz Lightyear is Toy Story's space ranger toy.",
+          "reference": null,
+          "provenance": {
+            "source": "x03-v",
+            "request": "V-06",
+            "blindReview": {
+              "reviewer": "x03-reviewer-v",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "TOY via Buzz Lightyear, SPACE via his space-ranger role (and astronaut Buzz Aldrin as a bonus route); instant and fun.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_spice__sugar",
