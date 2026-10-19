@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
 import { hintChoices, normHint } from "./assemble-boards.mjs";
+import { loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const LIB = "data/unlimited/library/pairs.json";
 const PREF = "data/unlimited/library/preferences.json";
@@ -31,6 +32,7 @@ const words = bank.words;
 if (words.length < 100 || new Set(words).size !== words.length || words.some((w) => w !== normHint(w) || !w)) throw new Error("the word-bank snapshot must be distinct, normalised words");
 if (words.length !== bank._metadata.distinctNormalised || bank._metadata.rowCount !== bank._metadata.databaseCount) throw new Error("the word-bank snapshot is incomplete");
 const W = new Set(words);
+const rejections = loadRejections();
 
 const pairs = [];
 const tally = { libraryPairs: lib.pairs.length, withPlayableHint: 0, generationHold: 0, noChoice: 0, eligible: 0, rules: {} };
@@ -42,6 +44,7 @@ for (const p of lib.pairs) {
   if (p.generationHold) { tally.generationHold++; continue; }
   const ch = hintChoices(p, playable, preferences);
   if (!ch.hints.length) { tally.noChoice++; continue; }
+  for (const h of ch.hints) { const r = rejectionFor(rejections, p.a, p.b, h.text); if (r) throw new Error(`${p.pair_id} ${h.text}: recorded as ${r.decision} in rejections.json; run apply-overrides.mjs`); }
   tally.eligible++; tally.rules[ch.rule] = (tally.rules[ch.rule] || 0) + 1;
   pairs.push({
     id: p.pair_id, a: p.a, b: p.b, rule: ch.rule,

@@ -4,8 +4,10 @@
 // (that is what the blind review is for); it can hold a passed hint out of
 // the beta with a stated reason, or release a hold that was itself an
 // override. Each applied override is recorded on the hint as `override`.
+// Owner rejections/holds from rejections.json are applied last.
 //   node scripts/unlimited/apply-overrides.mjs
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { loadRejections } from "./rejections-lib.mjs";
 const LIB = "data/unlimited/library/pairs.json";
 const OVR = "data/unlimited/library/overrides.json";
 const lib = JSON.parse(readFileSync(LIB, "utf8"));
@@ -32,6 +34,15 @@ for (const o of overrides) {
     c.status = c.provenance?.blindReview?.verdict === "PASS" ? "ai_reviewed" : "held"; c.heldReason = c.status === "held" ? "blind review: borderline" : null;
   } else { console.warn(`override for ${o.pair_id} ${o.text} ignored: it can only hold, or release a previous override`); continue; }
   c.override = { by: o.by, date: o.date, status: o.status, reason: o.reason };
+  applied++;
+}
+// Owner rejections and holds (rejections.json) win over any review or override:
+// a re-review or a new merge cannot bring a recorded combination back.
+for (const e of loadRejections()) {
+  const c = lib.pairs.find((x) => x.pair_id === e.pair_id)?.clues.find((x) => x.text === e.hint);
+  if (!c) continue;   // not in the library: the entry still blocks catalogue add and drafting
+  c.status = e.decision; c.heldReason = `owner ${e.decision === "rejected" ? "rejection" : "hold"}: ${e.reason}`;
+  c.override = { by: e.by, date: e.date, status: e.decision, reason: e.reason, via: "rejections.json" };
   applied++;
 }
 for (const p of lib.pairs) p.playableHints = p.clues.filter((c) => c.status === "ai_reviewed" || c.status === "human_approved").length;

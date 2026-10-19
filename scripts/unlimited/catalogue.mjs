@@ -16,8 +16,10 @@
 // `add` records an owner or friend-play discovery. Without --approve the hint is a
 // "candidate": kept with its provenance, not served until a review or the owner
 // approves it. Nothing here edits an existing hint's text, review or status.
+// A pair + hint the owner rejected or held (rejections.json) is refused.
 import { readFileSync, writeFileSync } from "node:fs";
 import { PATHS, loadCatalogue, pairOf, pairState, stats, wordCoverage, emptyPairs, servedHints, search, hintProblem, normWord, PLAYABLE } from "./catalogue-lib.mjs";
+import { REJECTIONS, loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const [cmd, ...rest] = process.argv.slice(2);
 const flags = {}; const args = [];
@@ -87,6 +89,8 @@ if (cmd === "stats") {
   const text = normWord(args[2]);
   const problem = hintProblem(text, a, b);
   need(!problem, `${text}: ${problem}`);
+  const recorded = rejectionFor(loadRejections(), a, b, text);
+  need(!recorded, `${a} + ${b} → ${text} is recorded as ${recorded?.decision} by ${recorded?.by} (${recorded?.reason}); lift it in ${REJECTIONS} with the owner first`);
   const owner = String(flags.by).toLowerCase() === "owner";
   need(!(flags.approve || flags.prefer) || owner, "--approve and --prefer record the owner's decision; use them only with --by owner");
   const lib = JSON.parse(readFileSync(PATHS.pairs, "utf8"));

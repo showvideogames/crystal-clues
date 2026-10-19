@@ -21135,9 +21135,9 @@
           "status": "ai_reviewed",
           "heldReason": null,
           "type": "direct_association",
-          "wordAConnection": "Wedding bells.",
-          "wordBConnection": "Hearts on the wedding.",
-          "revealExplanation": "Wedding bells and hearts.",
+          "wordAConnection": "Wedding bells ring to celebrate.",
+          "wordBConnection": "Hearts stand for two people in love.",
+          "revealExplanation": "Wedding bells ring to celebrate two people in love.",
           "reference": null,
           "provenance": {
             "source": "u08",
@@ -21157,6 +21157,21 @@
               ],
               "reason": "Wedding bells is a fixed phrase and hearts are the standard wedding decoration and symbol.",
               "model": "claude-fable-5-1"
+            },
+            "textCorrection": {
+              "by": "owner",
+              "date": "2026-10-19",
+              "from": {
+                "revealExplanation": "Wedding bells and hearts.",
+                "wordAConnection": "Wedding bells.",
+                "wordBConnection": "Hearts on the wedding."
+              },
+              "to": {
+                "revealExplanation": "Wedding bells ring to celebrate two people in love.",
+                "wordAConnection": "Wedding bells ring to celebrate.",
+                "wordBConnection": "Hearts stand for two people in love."
+              },
+              "note": "owner x03 brief: improved WEDDING explanation (owner wording); per-word lines aligned to it; player-facing text only; verdict and status unchanged"
             }
           }
         }
@@ -57297,12 +57312,12 @@
         "why": "A genuine 'oh, nice' double with accurate facts on both sides.",
         "reviewer": "x02-reviewer-c"
       },
-      "playableHints": 1,
+      "playableHints": 0,
       "clues": [
         {
           "text": "MEMPHIS",
-          "status": "ai_reviewed",
-          "heldReason": null,
+          "status": "rejected",
+          "heldReason": "owner rejection: x02 review: the ancient Egyptian city connection is too obscure for the intended audience",
           "type": "wordplay",
           "wordAConnection": "Memphis was a capital of ancient Egypt",
           "wordBConnection": "Elvis lived at Graceland in Memphis, Tennessee",
@@ -57326,6 +57341,13 @@
               "flags": [],
               "reason": "Memphis was a capital of ancient EGYPT and Memphis, Tennessee is home to ELVIS's Graceland; two famous places, one name."
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-19",
+            "status": "rejected",
+            "reason": "x02 review: the ancient Egyptian city connection is too obscure for the intended audience",
+            "via": "rejections.json"
           }
         }
       ]
@@ -57931,8 +57953,8 @@
           "heldReason": null,
           "type": "scene",
           "wordAConnection": "Vader tells Luke he is his father.",
-          "wordBConnection": "Vader slices off Luke's hand in their duel.",
-          "revealExplanation": "In The Empire Strikes Back, Darth Vader cuts off Luke's hand and then reveals he is Luke's father.",
+          "wordBConnection": "Luke loses a hand in his duel with Vader.",
+          "revealExplanation": "In The Empire Strikes Back, Luke loses a hand dueling Darth Vader, who then reveals he is Luke's father.",
           "reference": null,
           "provenance": {
             "source": "x02-e",
@@ -57951,6 +57973,19 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "FATHER via \"I am your father\" and HAND via Vader cutting off Luke's hand in the same Empire Strikes Back duel; one famous scene."
+            },
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), owner x03 brief",
+              "date": "2026-10-19",
+              "from": {
+                "revealExplanation": "In The Empire Strikes Back, Darth Vader cuts off Luke's hand and then reveals he is Luke's father.",
+                "wordBConnection": "Vader slices off Luke's hand in their duel."
+              },
+              "to": {
+                "revealExplanation": "In The Empire Strikes Back, Luke loses a hand dueling Darth Vader, who then reveals he is Luke's father.",
+                "wordBConnection": "Luke loses a hand in his duel with Vader."
+              },
+              "note": "owner: VADER is fine with a concise, non-graphic explanation; player-facing text only; verdict and status unchanged"
             }
           }
         }

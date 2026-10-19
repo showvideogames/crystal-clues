@@ -10,15 +10,18 @@
 //   - a pair already in the library (including owner discoveries) is dropped: it is never re-reviewed or overwritten;
 //   - a pair drafted twice across files is kept in the first file only;
 //   - a hint must be one word, letters only, not containing or contained in a target (hintProblem);
-//     a failing hint is dropped with the reason; a pair left with no hint is dropped.
+//     a failing hint is dropped with the reason; a pair left with no hint is dropped;
+//   - a hint the owner rejected or held for that pair (rejections.json) is dropped the same way.
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { loadCatalogue, pairOf, hintProblem, normWord } from "./catalogue-lib.mjs";
+import { loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const excludeOriginal = process.argv.includes("--exclude-original");
 const [batchName, ...files] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 if (!batchName || !files.length) { console.error("usage: prepare-expansion.mjs <batch-name> <authored.json>..."); process.exit(2); }
 const ix = loadCatalogue();
+const rejections = loadRejections();
 const seen = new Map();
 const report = { batch: batchName, files: [], dropped: [], hintsDropped: [] };
 for (const file of files) {
@@ -38,7 +41,8 @@ for (const file of files) {
     const clues = [];
     for (const c of p.clues || []) {
       const text = normWord(c.text);
-      const problem = hintProblem(text, a, b);
+      const recorded = rejectionFor(rejections, a, b, text);
+      const problem = hintProblem(text, a, b) || (recorded && `recorded as ${recorded.decision} by ${recorded.by} (rejections.json)`);
       if (problem) { report.hintsDropped.push({ file: name, pair: `${a} + ${b}`, hint: text, why: problem }); continue; }
       if (clues.some((x) => x.text === text)) continue;
       clues.push({ ...c, text, ...(swap ? { wordAConnection: c.wordBConnection, wordBConnection: c.wordAConnection } : {}) });
