@@ -1,0 +1,854 @@
+{
+  "_metadata": {
+    "reviewer": "x01-reviewer-c",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-18",
+    "input": "x01-c-review-input.json",
+    "rubric": "x01 expansion rubric (owner style examples, clicks-when-explained bar, explanation checked), 2026-10-18",
+    "independence": "I read only x01-c-review-input.json and no other file, repository content or web source; the only other file touched is this output, parsed afterwards to check it is valid JSON."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_eagle__moon",
+      "a": "EAGLE",
+      "b": "MOON",
+      "hints": [
+        {
+          "text": "APOLLO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Moon via the Apollo lunar program, Eagle via Apollo 11's lunar module and the famous 'The Eagle has landed'; the explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["APOLLO"],
+      "best_available": { "text": "APOLLO", "why": "A clean historical double hit with a quotable payoff." },
+      "pair_note": "Excellent pair; nothing to change."
+    },
+    {
+      "pair_id": "p_agent__mole",
+      "a": "AGENT",
+      "b": "MOLE",
+      "hints": [
+        {
+          "text": "UNDERCOVER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Agent via a secret agent going undercover; mole via the playful 'under cover' underground pun, and the spy sense of mole backs it up.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["UNDERCOVER"],
+      "best_available": { "text": "UNDERCOVER", "why": "Works on both the spy sense and the burrowing-animal pun." },
+      "pair_note": "The explanation could also say that 'mole' is spy slang for an undercover agent, but it is accurate and charming as written."
+    },
+    {
+      "pair_id": "p_fox__grape",
+      "a": "FOX",
+      "b": "GRAPE",
+      "hints": [
+        {
+          "text": "AESOP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both sides via Aesop's fable 'The Fox and the Grapes'; the fox is the best-known Aesop animal, and the grapes come in through that one fable.",
+          "fix": null
+        },
+        {
+          "text": "SOUR",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "Grape via the idiom 'sour grapes'; fox via the fable that gave us the idiom, a satisfying click once explained.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["AESOP", "SOUR"],
+      "best_available": { "text": "AESOP", "why": "Points squarely at the fable that holds both words, whereas SOUR leans toward the grape side." },
+      "pair_note": "Both are good. SOUR is more fun but leans on the grape side; AESOP is the more even, fairer clue."
+    },
+    {
+      "pair_id": "p_painting__turtle",
+      "a": "PAINTING",
+      "b": "TURTLE",
+      "hints": [
+        {
+          "text": "MICHELANGELO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["variant_of:LEONARDO"],
+          "verdict": "PASS",
+          "reason": "Painting via the Sistine Chapel ceiling, turtle via the Teenage Mutant Ninja Turtle named Michelangelo; both facts are correct.",
+          "fix": null
+        },
+        {
+          "text": "LEONARDO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["variant_of:MICHELANGELO"],
+          "verdict": "PASS",
+          "reason": "Painting via Leonardo da Vinci and the Mona Lisa, turtle via the Ninja Turtles' leader; both facts are correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["LEONARDO", "MICHELANGELO"],
+      "best_available": { "text": "LEONARDO", "why": "Leonardo is the more purely 'painter' name (Michelangelo is equally a sculptor), and he is the turtles' leader." },
+      "pair_note": "These are the same idea twice; serve one. DONATELLO would be weaker because he was a sculptor."
+    },
+    {
+      "pair_id": "p_crab__scorpion",
+      "a": "CRAB",
+      "b": "SCORPION",
+      "hints": [
+        {
+          "text": "ZODIAC",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Crab via Cancer and scorpion via Scorpio; the explanation is accurate.",
+          "fix": null
+        },
+        {
+          "text": "PINCERS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both have pincer claws, crabs on their front legs and scorpions on their pedipalps; a direct physical-feature link.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ZODIAC", "PINCERS"],
+      "best_available": { "text": "ZODIAC", "why": "A neat categorical link that feels a little cleverer than a shared body part." },
+      "pair_note": "Both are solid. Watch the board: ZODIAC collides with RAM, BULL, GOAT, LION or FISH, and PINCERS with LOBSTER."
+    },
+    {
+      "pair_id": "p_claw__santa",
+      "a": "CLAW",
+      "b": "SANTA",
+      "hints": [
+        {
+          "text": "CLAUS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Santa via Santa Claus; claw via the homophone 'claws'; a simple pun that clicks instantly.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CLAUS"],
+      "best_available": { "text": "CLAUS", "why": "The natural pun linking these two words." },
+      "pair_note": "Judgement call: CLAUS sounds exactly like the plural of the target CLAW, but it is a different word with its own meaning, not a spelling of the plural, so I treat it as an allowed pun rather than synonym_of_target. It gives CLAW away by sound, which makes it easy rather than unfair."
+    },
+    {
+      "pair_id": "p_bone__milk",
+      "a": "BONE",
+      "b": "MILK",
+      "hints": [
+        {
+          "text": "CALCIUM",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Milk via its well-known calcium content, bone via the calcium stored in the skeleton (about 99% of the body's); the explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CALCIUM"],
+      "best_available": { "text": "CALCIUM", "why": "The textbook link, familiar from 'milk builds strong bones'." },
+      "pair_note": "Straightforward and fair."
+    },
+    {
+      "pair_id": "p_fish__pupil",
+      "a": "FISH",
+      "b": "PUPIL",
+      "hints": [
+        {
+          "text": "SCHOOL",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Pupil via a school as a place of learning, fish via a school of fish; a classic double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SCHOOL"],
+      "best_available": { "text": "SCHOOL", "why": "A crisp double meaning that hits both words fully." },
+      "pair_note": "Strong. PUPIL also carries an eye meaning, which adds a nice bit of misdirection."
+    },
+    {
+      "pair_id": "p_chick__easter",
+      "a": "CHICK",
+      "b": "EASTER",
+      "hints": [
+        {
+          "text": "PEEPS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Chick via the peep sound and the chick-shaped candy, Easter via Peeps as an iconic U.S. Easter-basket treat.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PEEPS"],
+      "best_available": { "text": "PEEPS", "why": "A brand that is literally a chick sold at Easter, which is very satisfying." },
+      "pair_note": "Strongly American, which matches the intended audience."
+    },
+    {
+      "pair_id": "p_doe__rabbit",
+      "a": "DOE",
+      "b": "RABBIT",
+      "hints": [
+        {
+          "text": "BAMBI",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Doe via Bambi's mother, rabbit via Thumper; both facts are correct for the Disney film.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BAMBI"],
+      "best_available": { "text": "BAMBI", "why": "A beloved story that contains both words." },
+      "pair_note": "Watch the board: BAMBI also points at DEER, SKUNK or OWL if any of them is present."
+    },
+    {
+      "pair_id": "p_donkey__king",
+      "a": "DONKEY",
+      "b": "KING",
+      "hints": [
+        {
+          "text": "KONG",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Donkey via the Nintendo character Donkey Kong, king via King Kong; both are giant apes, so the explanation holds.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["KONG"],
+      "best_available": { "text": "KONG", "why": "Two famous compounds finished by one word, a real 'oh, nice' moment." },
+      "pair_note": "One of the best in the batch."
+    },
+    {
+      "pair_id": "p_goat__troll",
+      "a": "GOAT",
+      "b": "TROLL",
+      "hints": [
+        {
+          "text": "GRUFF",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Goat via 'Three Billy Goats Gruff', troll via the same tale's troll (the 'gruff troll' line is a bonus); naming the story calls up both characters.",
+          "fix": null
+        },
+        {
+          "text": "BRIDGE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Troll via the classic troll under the bridge, goat via the goats crossing it in 'Three Billy Goats Gruff'.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GRUFF", "BRIDGE"],
+      "best_available": { "text": "GRUFF", "why": "Only one story uses this word, and that story holds both targets." },
+      "pair_note": "GRUFF is the more distinctive clue; BRIDGE is fine but leans on the troll side."
+    },
+    {
+      "pair_id": "p_kiwi__penguin",
+      "a": "KIWI",
+      "b": "PENGUIN",
+      "hints": [
+        {
+          "text": "FLIGHTLESS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both are well-known flightless birds; the explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["FLIGHTLESS"],
+      "best_available": { "text": "FLIGHTLESS", "why": "A direct, fair categorical link; KIWI read as a fruit adds mild misdirection." },
+      "pair_note": "Watch the board for OSTRICH, EMU, DODO or CHICKEN."
+    },
+    {
+      "pair_id": "p_penguin__waiter",
+      "a": "PENGUIN",
+      "b": "WAITER",
+      "hints": [
+        {
+          "text": "TUXEDO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Penguin via its tuxedo-like black-and-white coloring, waiter via the formal black-tie uniform; a familiar visual metaphor that the explanation keeps as one.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TUXEDO"],
+      "best_available": { "text": "TUXEDO", "why": "A familiar image that ties a bird to a job with a smile." },
+      "pair_note": "Good. The explanation correctly frames the penguin side as 'looking dressed for dinner' rather than as a literal fact."
+    },
+    {
+      "pair_id": "p_ship__skeleton",
+      "a": "SHIP",
+      "b": "SKELETON",
+      "hints": [
+        {
+          "text": "CREW",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ship via its crew, skeleton via the idiom 'skeleton crew'; the explanation defines the idiom correctly.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CREW"],
+      "best_available": { "text": "CREW", "why": "An idiom twist that makes SKELETON click nicely." },
+      "pair_note": "Strong. A skeleton crew of pirate ghosts makes it even more vivid."
+    },
+    {
+      "pair_id": "p_piano__reptile",
+      "a": "PIANO",
+      "b": "REPTILE",
+      "hints": [
+        {
+          "text": "SCALES",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Piano via practicing musical scales, reptile via scaly skin; a classic double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SCALES"],
+      "best_available": { "text": "SCALES", "why": "A clean double meaning, with a witty explanation." },
+      "pair_note": "Watch the board for FISH, DRAGON or JUSTICE."
+    },
+    {
+      "pair_id": "p_amazon__bat",
+      "a": "AMAZON",
+      "b": "BAT",
+      "hints": [
+        {
+          "text": "ECHO",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Amazon via its Echo smart speaker, bat via echolocation; both facts are correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ECHO"],
+      "best_available": { "text": "ECHO", "why": "The brand twist on AMAZON (players may think of the rainforest first) makes a satisfying reveal." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_dwarf__snow",
+      "a": "DWARF",
+      "b": "SNOW",
+      "hints": [
+        {
+          "text": "WHITE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Snow via Snow White (and white snow), dwarf via both the Seven Dwarfs and the white dwarf star; a double route on each side.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WHITE"],
+      "best_available": { "text": "WHITE", "why": "Snow White plus white dwarf is a lovely layered link." },
+      "pair_note": "WHITE is a broad color word, but the Snow White story locks it to this pair."
+    },
+    {
+      "pair_id": "p_sand__snow",
+      "a": "SAND",
+      "b": "SNOW",
+      "hints": [
+        {
+          "text": "STORM",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both via the compounds sandstorm and snowstorm; the explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["STORM"],
+      "best_available": { "text": "STORM", "why": "Two everyday compounds; fair and quick." },
+      "pair_note": "Fine but low on surprise. Watch the board for THUNDER, BRAIN, RAIN or FIRE. Alternatives such as CASTLE (sandcastle, snow castle) or MAN (sandman, snowman) are worth considering; SNOWMAN plus SANDMAN might delight more."
+    },
+    {
+      "pair_id": "p_rooster__weather",
+      "a": "ROOSTER",
+      "b": "WEATHER",
+      "hints": [
+        {
+          "text": "VANE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "Weather via the compound 'weather vane', rooster via the classic rooster figure on top of a vane; the explanation is accurate, and the rooster side clicks once you picture it.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["VANE"],
+      "best_available": { "text": "VANE", "why": "The iconic rooster weather vane ties the two together." },
+      "pair_note": "The weather side is immediate; the rooster side is a familiar image rather than a word link, but it is fair. A note for a second opinion: some players may read VANE as 'vain' (the proud rooster), which is a happy accident."
+    },
+    {
+      "pair_id": "p_boxing__saturn",
+      "a": "BOXING",
+      "b": "SATURN",
+      "hints": [
+        {
+          "text": "RING",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Boxing via the boxing ring, Saturn via its rings; the explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RING"],
+      "best_available": { "text": "RING", "why": "A crisp double meaning that reaches across sport and space." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_flower__honey",
+      "a": "FLOWER",
+      "b": "HONEY",
+      "hints": [
+        {
+          "text": "BEE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Flower via bees collecting nectar, honey via bees making it; the explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BEE"],
+      "best_available": { "text": "BEE", "why": "The perfect natural clue, in the spirit of GOLD + PIRATE -> TREASURE." },
+      "pair_note": "Obvious, but correctly so."
+    },
+    {
+      "pair_id": "p_flower__taste",
+      "a": "FLOWER",
+      "b": "TASTE",
+      "hints": [
+        {
+          "text": "BUD",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Flower via the flower bud, taste via taste buds; a clean double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BUD"],
+      "best_available": { "text": "BUD", "why": "A neat double meaning with a small 'aha'." },
+      "pair_note": "Strong; it pairs nicely with the FLOWER + HONEY pair as a contrast."
+    },
+    {
+      "pair_id": "p_olive__peace",
+      "a": "OLIVE",
+      "b": "PEACE",
+      "hints": [
+        {
+          "text": "BRANCH",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both via the idiom 'extend an olive branch', a peace offering; the explanation is accurate.",
+          "fix": null
+        },
+        {
+          "text": "DOVE",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Peace via the dove as a peace symbol, olive via the dove carrying an olive branch in that symbol (and in the Noah story).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BRANCH", "DOVE"],
+      "best_available": { "text": "BRANCH", "why": "The idiom 'olive branch' covers both words in one familiar phrase." },
+      "pair_note": "Both are good. DOVE leans on the peace side, and BRANCH is the more balanced clue."
+    },
+    {
+      "pair_id": "p_planet__plant",
+      "a": "PLANET",
+      "b": "PLANT",
+      "hints": [
+        {
+          "text": "VENUS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Planet via Venus, plant via the Venus flytrap; both facts are correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["VENUS"],
+      "best_available": { "text": "VENUS", "why": "A memorable name shared by a planet and a famous carnivorous plant." },
+      "pair_note": "Strong; the near-identical spelling of PLANET and PLANT adds to the fun."
+    },
+    {
+      "pair_id": "p_bear__forest",
+      "a": "BEAR",
+      "b": "FOREST",
+      "hints": [
+        {
+          "text": "SMOKEY",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bear via Smokey Bear, forest via his long-running 'Only you can prevent forest fires' campaign.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SMOKEY"],
+      "best_available": { "text": "SMOKEY", "why": "An iconic U.S. mascot who is literally both words." },
+      "pair_note": "The slogan was updated to 'wildfires' in 2001, but 'forest fires' remains the famous phrase, and the explanation says 'decades', which is fair."
+    },
+    {
+      "pair_id": "p_crane__paper",
+      "a": "CRANE",
+      "b": "PAPER",
+      "hints": [
+        {
+          "text": "ORIGAMI",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Paper via origami as paper folding, crane via the paper crane as origami's signature model.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ORIGAMI"],
+      "best_available": { "text": "ORIGAMI", "why": "Pins the bird sense of CRANE, which could otherwise be read as the machine." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_cliff__closet",
+      "a": "CLIFF",
+      "b": "CLOSET",
+      "hints": [
+        {
+          "text": "HANGER",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Closet via clothes hangers, cliff via the compound 'cliffhanger'; a satisfying compound-plus-object twist.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HANGER"],
+      "best_available": { "text": "HANGER", "why": "A real 'oh, nice' moment once 'cliffhanger' lands." },
+      "pair_note": "One of the best in the batch."
+    },
+    {
+      "pair_id": "p_ice__stone",
+      "a": "ICE",
+      "b": "STONE",
+      "hints": [
+        {
+          "text": "AGE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both via the compounds Ice Age and Stone Age; the explanation is accurate (the Ice Age movies add familiarity).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["AGE"],
+      "best_available": { "text": "AGE", "why": "Two famous eras finished by the same word." },
+      "pair_note": "Watch the board for BRONZE, IRON, GOLDEN or SPACE."
+    },
+    {
+      "pair_id": "p_salad__titanic",
+      "a": "SALAD",
+      "b": "TITANIC",
+      "hints": [
+        {
+          "text": "ICEBERG",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Titanic via the iceberg it struck, salad via iceberg lettuce; both facts are correct, and the 'sinks into your salad' line is playful rather than false.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ICEBERG"],
+      "best_available": { "text": "ICEBERG", "why": "An unexpected but airtight pairing of history and lunch." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_soda__volcano",
+      "a": "SODA",
+      "b": "VOLCANO",
+      "hints": [
+        {
+          "text": "ERUPT",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "Volcano via volcanic eruptions, soda via a shaken soda fizzing over (and the classic baking-soda volcano); the idea is sound, but the explanation mentions only the soda side.",
+          "fix": "Rewrite the explanation to name both sides, e.g. 'Volcanoes erupt, and so does a shaken soda, or the baking-soda volcano from the school science fair.'"
+        }
+      ],
+      "strong_hints": ["ERUPT"],
+      "best_available": { "text": "ERUPT", "why": "A natural link; the science-fair volcano adds a second route." },
+      "pair_note": "Only the explanation needs a touch-up."
+    },
+    {
+      "pair_id": "p_computer__cookie",
+      "a": "COMPUTER",
+      "b": "COOKIE",
+      "hints": [
+        {
+          "text": "BYTE",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Computer via data measured in bytes, cookie via the homophone 'bite'; a light pun, and the cookie side is a little thinner.",
+          "fix": null
+        },
+        {
+          "text": "CHIP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Computer via the computer chip, cookie via the chocolate chip; a clean double meaning, with a funny explanation.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHIP", "BYTE"],
+      "best_available": { "text": "CHIP", "why": "A true double meaning on both sides, with no pun needed." },
+      "pair_note": "CHIP is clearly stronger. BYTE is acceptable as a pun but leans on spelling, and 'bite' fits almost any food."
+    },
+    {
+      "pair_id": "p_ice-cream__sunday",
+      "a": "ICE CREAM",
+      "b": "SUNDAY",
+      "hints": [
+        {
+          "text": "SUNDAE",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ice cream via the sundae dessert, Sunday via the identical sound; the explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SUNDAE"],
+      "best_available": { "text": "SUNDAE", "why": "The perfect homophone bridge between these two words." },
+      "pair_note": "Judgement call: SUNDAE is a homophone of the target SUNDAY and a type of ice cream dish, but it is neither a synonym nor a spelling of either target, so I pass it. It is easy, but it delights."
+    },
+    {
+      "pair_id": "p_alps__cheese",
+      "a": "ALPS",
+      "b": "CHEESE",
+      "hints": [
+        {
+          "text": "SWISS",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Alps via the Swiss Alps, cheese via Swiss cheese; both are familiar phrases.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SWISS"],
+      "best_available": { "text": "SWISS", "why": "Two common compounds that share one adjective." },
+      "pair_note": "Fine. 'Swiss cheese' is a U.S. name for Emmental-style cheese, which does come from Switzerland, so the explanation holds. Watch the board for WATCH, ARMY, KNIFE, BANK or CHOCOLATE."
+    },
+    {
+      "pair_id": "p_bird__cricket",
+      "a": "BIRD",
+      "b": "CRICKET",
+      "hints": [
+        {
+          "text": "CHIRP",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bird via birdsong chirps, cricket via the chirp crickets make by rubbing their wings; both facts in the explanation are correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHIRP"],
+      "best_available": { "text": "CHIRP", "why": "A shared sound, plus a nice fact about how crickets make it." },
+      "pair_note": "Solid. The sport meaning of CRICKET is British-leaning but irrelevant here, since the insect sense is universal in the U.S."
+    }
+  ]
+}

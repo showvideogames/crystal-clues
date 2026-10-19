@@ -2,14 +2,18 @@ import { describe, it, expect } from "vitest";
 import LIBRARY from "./random-library.json";
 import { generateBoard, validateBoard, choosePairs, mulberry32, shuffle, norm } from "./generate.js";
 import { DIFFICULTY_EXTRA } from "../game/shared";
+import BANK from "../../data/unlimited/wordbank/wordbank.json";
+import V1 from "./fixtures/generator-v1-board.json";
 
 const AT = "2026-10-18T18:00:00.000Z";
 const gen = (seed, opts = {}) => generateBoard(LIBRARY, { seed, createdAt: AT, ...opts });
 
 describe("random-library.json (served choices only)", () => {
-  it("holds the fixed 50 words and only eligible pairs with their served hints", () => {
-    expect(LIBRARY.words).toHaveLength(50);
-    expect(new Set(LIBRARY.words).size).toBe(50);
+  it("holds the complete word bank and only eligible pairs with their served hints", () => {
+    expect(LIBRARY.words).toEqual(BANK.words);                       // the paged, count-verified snapshot
+    expect(LIBRARY.words.length).toBe(BANK._metadata.databaseCount); // no duplicates were dropped
+    expect(new Set(LIBRARY.words).size).toBe(LIBRARY.words.length);
+    expect(LIBRARY._metadata.wordBank.contentHash).toBe(BANK._metadata.contentHash);
     expect(LIBRARY.pairs.length).toBe(LIBRARY._metadata.tally.eligible);
     const W = new Set(LIBRARY.words);
     for (const p of LIBRARY.pairs) {
@@ -52,7 +56,34 @@ describe("generateBoard", () => {
       expect(b.kind).toBe("random");
       expect(b.reveal.every((r) => r.wordAConnection && r.wordBConnection)).toBe(true);
     }
-    expect(filler.size).toBe(50); // every word turns up as a filler somewhere
+    expect(filler.size).toBe(LIBRARY.words.length); // every bank word turns up as an extra somewhere
+  });
+
+  it("draws the 20 extras uniformly from the whole bank, multiword entries intact", () => {
+    const count = new Map(LIBRARY.words.map((w) => [w, 0]));
+    const N = 4000;
+    for (let s = 1; s <= N; s++) {
+      const b = gen(s * 104729 + 17);
+      const targets = new Set(b.reveal.flatMap((r) => [r.wordA, r.wordB]));
+      for (const w of Object.values(b.cards).flatMap((c) => c.words)) if (!targets.has(w)) count.set(w, count.get(w) + 1);
+    }
+    const nonTargets = [...count].filter(([w]) => !LIBRARY.pairs.some((p) => p.a === w || p.b === w)).map(([, n]) => n);
+    const mean = nonTargets.reduce((a, n) => a + n, 0) / nonTargets.length;
+    expect(mean).toBeGreaterThan(60); expect(mean).toBeLessThan(75);       // 20 of ~1,188 per board
+    expect(Math.min(...nonTargets)).toBeGreaterThan(mean * 0.5);
+    expect(Math.max(...nonTargets)).toBeLessThan(mean * 1.6);
+    for (const w of LIBRARY.words.filter((x) => x.includes(" "))) expect(count.get(w)).toBeGreaterThan(0);
+  });
+
+  it("never changes a board saved by the released generator 1", () => {
+    const b = V1.board;
+    expect(b.generator).toBe(1);
+    expect(Object.values(b.cards).flatMap((c) => c.words)).toHaveLength(28);
+    // Its words came from the original 50; they are all still in the bank, but the
+    // snapshot is the record: nothing re-derives it from today's library.
+    for (const w of Object.values(b.cards).flatMap((c) => c.words)) expect(LIBRARY.words).toContain(w);
+    const again = JSON.parse(JSON.stringify(b));
+    expect(again).toEqual(b);
   });
 
   it("serves exactly the library choice for each pair (no weaker fallback)", () => {

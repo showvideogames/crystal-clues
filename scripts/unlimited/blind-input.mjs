@@ -5,9 +5,14 @@
 // reviewer therefore scores each hint on its own and cannot be led by the
 // author. The author's own labels are written to a separate key file that the
 // reviewer must not open; merge-review.mjs joins the two afterwards.
-//   node scripts/unlimited/blind-input.mjs <batch.json> <out-input.json> <out-key.json>
+//   node scripts/unlimited/blind-input.mjs <batch.json> <out-input.json> <out-key.json> [--with-explanations]
+// --with-explanations (expansion batches, owner brief 2026-10-18: a hint should
+// "click and feel satisfying when explained"): each hint carries only its short
+// player-facing revealExplanation, so the reviewer judges the hint as players
+// will meet it after the game. Author ranks, labels and types stay hidden.
 import { readFileSync, writeFileSync } from "node:fs";
-const [batchPath, inPath, keyPath] = process.argv.slice(2);
+const [batchPath, inPath, keyPath] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+const withExplanations = process.argv.includes("--with-explanations");
 if (!batchPath || !inPath || !keyPath) { console.error("usage: blind-input.mjs <batch> <input-out> <key-out>"); process.exit(2); }
 const batch = JSON.parse(readFileSync(batchPath, "utf8"));
 // Deterministic shuffle (seeded by the pair id) so the file is reproducible.
@@ -22,7 +27,8 @@ for (const p of batch.pairs) {
     ...(p.rejected || []).map((r) => ({ text: r.text, author: "rejected", reason: r.reason })),
   ];
   const order = shuffle(all, hash(p.pair_id));
-  input.pairs.push({ pair_id: p.pair_id, a: p.a, b: p.b, hints: order.map((h) => h.text) });
+  const explain = (t) => (p.clues.find((c) => c.text === t) || (p.variants || []).find((v) => v.text === t))?.revealExplanation || "";
+  input.pairs.push({ pair_id: p.pair_id, a: p.a, b: p.b, hints: withExplanations ? order.map((h) => ({ text: h.text, explanation: explain(h.text) })) : order.map((h) => h.text) });
   key.pairs.push({ pair_id: p.pair_id, hints: order });
 }
 writeFileSync(inPath, JSON.stringify(input, null, 2));

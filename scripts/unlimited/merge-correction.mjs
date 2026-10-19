@@ -21,7 +21,7 @@ for (const rp of review.pairs) {
   const src = batch.pairs.find((x) => x.pair_id === rp.pair_id);
   if (!p || !src) { console.warn(`no library/batch record for ${rp.pair_id}`); continue; }
   for (const h of rp.hints) {
-    const cr = { reviewer: review._metadata?.reviewer || "correction-subagent", date: review._metadata?.date || null, verdict: h.verdict, a: h.connection_to_a, b: h.connection_to_b, fairness: h.fairness, recognizability: h.recognizability, flags: h.flags || [], reason: h.reason, calibration: calibration || null };
+    const cr = { reviewer: review._metadata?.reviewer || "correction-subagent", ...(review._metadata?.model ? { model: review._metadata.model } : {}), date: review._metadata?.date || null, verdict: h.verdict, ...(h.delight != null ? { delight: h.delight } : {}), a: h.connection_to_a, b: h.connection_to_b, fairness: h.fairness, recognizability: h.recognizability, flags: h.flags || [], reason: h.reason, calibration: calibration || null };
     let c = p.clues.find((x) => x.text === h.text);
     const text = (src.clues || []).find((x) => x.text === h.text) || (src.laterText || []).find((x) => x.text === h.text);
     if (!c) {
