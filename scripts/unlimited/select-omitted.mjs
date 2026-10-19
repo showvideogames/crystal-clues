@@ -21,12 +21,13 @@ const state = src.hints.map((h) => {
   const used = new Map(); for (const c of inLib) for (const w of [c.a, c.b]) used.set(w, (used.get(w) || 0) + 1);
   return { hint: h.hint, covered: new Set(inLib.map((c) => c.routes)), used, pool: h.candidates.filter((c) => c.class === "new" && c.strength[0] === 2 && c.strength[1] === 2) };
 });
+const hash = (t) => [...t].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);   // stable tie-break, not alphabetical
 const novelty = (s, c) => (s.used.get(c.a) || 0) + (s.used.get(c.b) || 0);   // lower = fresher words
 const take = (s, c, reason) => { picked.push({ ...c, reason }); pickedIds.add(`${c.hint}|${c.pair_id}`); s.used.set(c.a, (s.used.get(c.a) || 0) + 1); s.used.set(c.b, (s.used.get(c.b) || 0) + 1); s.covered.add(c.routes); };
 // 1. uncovered route combinations
 for (const s of state) {
   const combos = [...new Set(s.pool.map((c) => c.routes))].filter((r) => !s.covered.has(r));
-  for (const r of combos) { if (picked.length >= MAX) break; const best = s.pool.filter((c) => c.routes === r).sort((x, y) => novelty(s, x) - novelty(s, y) || x.pair_id.localeCompare(y.pair_id))[0]; take(s, best, "route combination with no library pair yet"); }
+  for (const r of combos) { if (picked.length >= MAX) break; const best = s.pool.filter((c) => c.routes === r).sort((x, y) => novelty(s, x) - novelty(s, y) || hash(x.pair_id) - hash(y.pair_id))[0]; take(s, best, "route combination with no library pair yet"); }
 }
 // 2. fresh words, round-robin across hints
 let progress = true;
@@ -34,7 +35,7 @@ while (picked.length < MAX && progress) {
   progress = false;
   for (const s of state) {
     if (picked.length >= MAX) break;
-    const rest = s.pool.filter((c) => !pickedIds.has(`${c.hint}|${c.pair_id}`)).sort((x, y) => novelty(s, x) - novelty(s, y) || x.pair_id.localeCompare(y.pair_id));
+    const rest = s.pool.filter((c) => !pickedIds.has(`${c.hint}|${c.pair_id}`)).sort((x, y) => novelty(s, x) - novelty(s, y) || hash(x.pair_id) - hash(y.pair_id));
     if (rest.length && novelty(s, rest[0]) === 0) { take(s, rest[0], "both words new for this hint"); progress = true; }
   }
 }
