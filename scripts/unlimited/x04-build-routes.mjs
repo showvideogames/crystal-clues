@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const F = {
   SEAGULL: { seeds: ["BEACH+PIGEON", "BEACH+CROW", "OCEAN+CROW"], routes: [
-    "coast | the seaside | BEACH:2:seagulls swarm every beach ; OCEAN:2:seagulls soar over the ocean ; PORT:1:seagulls crowd every fishing port ; LIGHTHOUSE:1:seagulls wheel around the lighthouse ; BOAT:1:seagulls trail fishing boats for scraps",
+    "coast | the seaside | BEACH:2:seagulls are a familiar sight at the beach ; OCEAN:2:seagulls soar over the ocean ; PORT:1:seagulls crowd every fishing port ; LIGHTHOUSE:1:seagulls wheel around the lighthouse ; BOAT:1:seagulls trail fishing boats for scraps",
     "bird | a bird like these | PIGEON:2:seagulls beg for scraps like seaside pigeons ; CROW:2:seagulls scavenge like seaside crows ; BIRD:2:the seagull is a familiar bird ; CRANE:1:like the crane, the seagull is a waterbird",
     "thief | the snack thief | FRY:2:seagulls swoop in to steal your french fries ; SNACK:2:seagulls are famous for snatching snacks ; THIEF:1:seagulls are notorious beach-snack thieves" ] },
   SLAM: { seeds: ["BASKETBALL+POETRY", "DOOR+POETRY"], routes: [
@@ -131,7 +131,7 @@ const F = {
     "building | a building's wing | HOSPITAL:2:a hospital has a wing for each department ; MUSEUM:1:a museum has wings for different exhibits ; BUILDING:1:a big building is split into wings" ] },
   PUNCH: { seeds: [], routes: [
     "boxing | a punch | BOXING:2:boxers throw punches ; FIGHTER:1:fighters land punches",
-    "drink | fruit punch | FRUIT:2:fruit punch is a sweet red drink ; PARTY:2:a bowl of punch is a party classic ; DRINK:1:punch is a party drink",
+    "drink | fruit punch | FRUIT:2:fruit punch is a sweet fruit drink ; PARTY:2:a bowl of punch is a party classic ; DRINK:1:punch is a party drink",
     "joke | a punchline | JOKE:2:a joke ends with the punchline",
     "paper | a hole punch | PAPER:2:a hole punch makes holes in paper",
     "ticket | punch a ticket | TICKET:1:a conductor punches your ticket ; CLOCK:1:workers punch the clock" ] },
@@ -147,7 +147,7 @@ const F = {
     "hardware | nuts and bolts | SCREW:2:bolts and screws hold things together ; NUT:2:a bolt twists into a nut ; HARDWARE:1:bolts are basic hardware",
     "run | to bolt | FAST:1:to bolt is to run off fast ; RACE:1:Usain Bolt won Olympic sprint races",
     "lock | a door bolt | LOCK:2:you slide a bolt to lock a door ; DOOR:1:a bolt locks the door",
-    "dog | Disney's Bolt | DOG:1:Bolt is Disney's superhero dog ; DISNEY:1:Bolt is a Disney movie about a superhero dog" ] },
+    "dog | Disney's Bolt | DOG:1:Bolt is the Disney dog who believes his TV superpowers are real ; DISNEY:1:Bolt is a Disney movie about a TV-star dog who believes his fictional superpowers are real" ] },
   CHIP: { seeds: [], routes: [
     "computer | a computer chip | COMPUTER:2:a computer runs on chips ; PHONE:1:every phone has computer chips",
     "snack | potato chips | POTATO:2:potato chips are a classic snack ; SALSA:2:chips and salsa go together ; SNACK:1:chips are a favorite snack",

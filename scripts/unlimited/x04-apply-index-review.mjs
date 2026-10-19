@@ -42,6 +42,7 @@ fix("RING", "PLANET", { clause: "some planets, like Saturn, are circled by rings
 fix("NET", "INTERNET", "remove");
 fix("NET", "WEB", { strength: 1, clause: "the web is the part of the Net you browse" });
 fix("NET", "SOCCER", { clause: "a soccer goal ends up in the back of the net" });
+fix("MINT", "CARD", { clause: "collectors describe pristine cards as being in mint condition" });
 fix("SCALE", "COURT", { clause: "Lady Justice holds the scales outside many courthouses" });
 // BOLT: RACE is about Usain Bolt, not the verb; give it its own route.
 { const f = word("BOLT", "RACE"); f.r.words = f.r.words.filter((x) => x !== f.m); hint("BOLT").routes.push({ id: "usain", label: "Usain Bolt", words: [{ ...f.m, fixedBy: by }] }); }

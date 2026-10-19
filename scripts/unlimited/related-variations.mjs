@@ -30,6 +30,8 @@ const checkpoint = arg("checkpoint");
 const hints = JSON.parse(readFileSync(ROUTES, "utf8")).hints.filter((h) => (!only || h.hint === only) && (!checkpoint || h.checkpoint === checkpoint));
 const requests = JSON.parse(readFileSync(REQUESTS, "utf8")).items;
 const sentence = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+// End a sentence, without a stray period after a closing exclamation or question ("Mine! Mine!").
+const end = (s) => (/[.!?]["'”]?$/.test(s) ? s : s + ".");
 
 const problems = [];
 for (const g of groups.values()) for (const m of [...g.members, ...(g.notMembers || [])]) if (!ix.inBank.has(normWord(m.word))) problems.push(`group ${g.id}: ${m.word} is not a bank word`);
@@ -55,7 +57,7 @@ for (const h of hints) {
       const { a, b, id } = pairOf(x.word, y.word);
       const [xa, xb] = a === x.word ? [x, y] : [y, x];
       const cand = { hint, pair_id: id, a, b, routes: `${routes[i].id}×${routes[j].id}`, strength: [xa.strength, xb.strength], score: xa.strength + xb.strength,
-        links: { [a]: sentence(xa.clause) + ".", [b]: sentence(xb.clause) + "." }, why: `${sentence(xa.clause)}, and ${xb.clause}.` };
+        links: { [a]: end(sentence(xa.clause)), [b]: end(sentence(xb.clause)) }, why: end(`${sentence(xa.clause)}, and ${xb.clause}`) };
       const prev = seen.get(id);
       if (prev && prev.score >= cand.score) continue;
       seen.set(id, cand);
