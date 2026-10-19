@@ -1,0 +1,817 @@
+{
+ "_metadata": {
+  "reviewer": "x04b-reviewer-e",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "input": "x04b-re-input.json",
+  "rubric": "x04 rubric (natural-click standard + five content questions), 2026-10-19",
+  "independence": "I read only the instructions file and the single input file x04b-re-input.json; no other file, repository search, web or paid API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_beach__cocktail",
+   "a": "BEACH",
+   "b": "COCKTAIL",
+   "hints": [
+    {
+     "text": "UMBRELLA",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEACH via the beach umbrella and COCKTAIL via the little paper umbrella in a tropical drink; together they paint one vacation scene and click instantly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UMBRELLA"],
+   "pair_note": "The best of the umbrella set: both sides are the vacation image of an umbrella, so it reads as one scene."
+  },
+  {
+   "pair_id": "p_beach__drink",
+   "a": "BEACH",
+   "b": "DRINK",
+   "hints": [
+    {
+     "text": "UMBRELLA",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEACH via the beach umbrella and DRINK via the paper drink umbrella; DRINK is a broader word than COCKTAIL, so that side lands a beat slower but still lands.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UMBRELLA"],
+   "pair_note": "A slightly weaker version of BEACH + COCKTAIL; it still works as a beach-bar scene."
+  },
+  {
+   "pair_id": "p_beach__rain",
+   "a": "BEACH",
+   "b": "RAIN",
+   "hints": [
+    {
+     "text": "UMBRELLA",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RAIN via the everyday rain umbrella and BEACH via the beach umbrella; easy, but the sun-versus-rain contrast is pleasant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UMBRELLA"],
+   "pair_note": "Easy and fair."
+  },
+  {
+   "pair_id": "p_brother__ghost",
+   "a": "BROTHER",
+   "b": "GHOST",
+   "hints": [
+    {
+     "text": "LUIGI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "BROTHER clicks at once via the Mario Bros., but GHOST depends on knowing Luigi's Mansion, a secondary association much like the Falcon/ship case the owner rejected; gamers will love it, others won't see it.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Every LUIGI + GHOST pair depends on how well Luigi's Mansion is known. I scored them all BORDERLINE; if the owner thinks the series is mainstream enough, these move up to PASS."
+  },
+  {
+   "pair_id": "p_brother__green",
+   "a": "BROTHER",
+   "b": "GREEN",
+   "hints": [
+    {
+     "text": "LUIGI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BROTHER via the Super Mario Bros. and GREEN via Luigi's signature green outfit; both are core, widely known Luigi traits.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LUIGI"],
+   "pair_note": "Solid pop-culture clue: green is Luigi's defining look."
+  },
+  {
+   "pair_id": "p_brother__mario",
+   "a": "BROTHER",
+   "b": "MARIO",
+   "hints": [
+    {
+     "text": "LUIGI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MARIO via his brother Luigi and BROTHER via the Super Mario Bros.; instant and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LUIGI"],
+   "pair_note": "Very easy, but a clean click."
+  },
+  {
+   "pair_id": "p_chocolate__cold",
+   "a": "CHOCOLATE",
+   "b": "COLD",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "COLD via the adjective frosty and CHOCOLATE via the Wendy's chocolate Frosty; a nice double meaning that Americans will get.",
+     "fix": "A Wendy's Frosty is a thick, frozen chocolate dessert, somewhere between a shake and soft serve."
+    }
+   ],
+   "strong_hints": ["FROSTY"],
+   "pair_note": "A satisfying brand-plus-adjective double meaning. The text calls a Frosty a shake, which is loose: it is eaten with a spoon."
+  },
+  {
+   "pair_id": "p_christmas__snowman",
+   "a": "CHRISTMAS",
+   "b": "SNOWMAN",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNOWMAN via Frosty the Snowman and CHRISTMAS via the holiday song and TV special; instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FROSTY"],
+   "pair_note": "Easy and fair. The two lines say nearly the same thing, but nothing in them is false."
+  },
+  {
+   "pair_id": "p_cocktail__rain",
+   "a": "COCKTAIL",
+   "b": "RAIN",
+   "hints": [
+    {
+     "text": "UMBRELLA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RAIN via the ordinary umbrella and COCKTAIL via the tiny paper umbrella; the contrast between a rainstorm and a tiki drink makes a fun 'oh' moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UMBRELLA"],
+   "pair_note": "A nice contrast between a big umbrella and a tiny one."
+  },
+  {
+   "pair_id": "p_cocktail__shade",
+   "a": "COCKTAIL",
+   "b": "SHADE",
+   "hints": [
+    {
+     "text": "UMBRELLA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SHADE via a sun or patio umbrella and COCKTAIL via the paper drink umbrella; together they read as a poolside scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UMBRELLA"],
+   "pair_note": "Works fine; a touch less vivid than BEACH + COCKTAIL."
+  },
+  {
+   "pair_id": "p_cold__hat",
+   "a": "COLD",
+   "b": "HAT",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "COLD via the adjective frosty and HAT via the magic silk hat that brings Frosty to life in the song; the hat side takes a moment but is a famous story beat.",
+     "fix": "Frosty comes to life when the children place a magic silk hat on his head."
+    }
+   ],
+   "strong_hints": ["FROSTY"],
+   "pair_note": "The hat is the best-known detail of the Frosty song, so this is fair. In the song the children put the hat on him; he does not put it on himself."
+  },
+  {
+   "pair_id": "p_cold__snowman",
+   "a": "COLD",
+   "b": "SNOWMAN",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "COLD via the adjective and SNOWMAN via Frosty the Snowman; easy and clean.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FROSTY"],
+   "pair_note": "Easy. COLD and SNOWMAN are already close to each other, so the click is mild."
+  },
+  {
+   "pair_id": "p_drink__rain",
+   "a": "DRINK",
+   "b": "RAIN",
+   "hints": [
+    {
+     "text": "UMBRELLA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RAIN via the everyday umbrella and DRINK via the paper drink umbrella; DRINK is broader than COCKTAIL, but the umbrella drink is iconic enough.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UMBRELLA"],
+   "pair_note": "A slightly softer version of COCKTAIL + RAIN."
+  },
+  {
+   "pair_id": "p_egypt__king",
+   "a": "EGYPT",
+   "b": "KING",
+   "hints": [
+    {
+     "text": "PHARAOH",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "EGYPT and KING via the basic fact that pharaohs were the kings of ancient Egypt; close to a definition, but instantly fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PHARAOH"],
+   "pair_note": "TUT (King Tut) is a fun alternative for this pair, though PHARAOH is fine."
+  },
+  {
+   "pair_id": "p_egypt__mummy",
+   "a": "EGYPT",
+   "b": "MUMMY",
+   "hints": [
+    {
+     "text": "PHARAOH",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "EGYPT via the pharaohs who ruled it and MUMMY via mummified pharaohs; an easy, accurate click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PHARAOH"],
+   "pair_note": "Easy and accurate."
+  },
+  {
+   "pair_id": "p_egypt__pyramid",
+   "a": "EGYPT",
+   "b": "PYRAMID",
+   "hints": [
+    {
+     "text": "PHARAOH",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "EGYPT via the pharaohs and PYRAMID via the pyramid tombs built for them; instant.",
+     "fix": "Many pharaohs, especially in the Old Kingdom, were buried in pyramids."
+    }
+   ],
+   "strong_hints": ["PHARAOH"],
+   "pair_note": "Saying 'pharaohs were buried in pyramids' is too broad: later pharaohs such as Tutankhamun were buried in the Valley of the Kings. Hedging the line fixes it."
+  },
+  {
+   "pair_id": "p_game__spider",
+   "a": "GAME",
+   "b": "SPIDER",
+   "hints": [
+    {
+     "text": "PARKER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "SPIDER clicks at once via Peter Parker, but GAME needs the Parker Brothers brand, which older players know well and many younger players won't think of unprompted.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "A real two-Parkers double meaning that is pleasant once explained; whether Parker Brothers is still familiar enough is a judgement call."
+  },
+  {
+   "pair_id": "p_game__web",
+   "a": "GAME",
+   "b": "WEB",
+   "hints": [
+    {
+     "text": "PARKER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation"],
+     "verdict": "BORDERLINE",
+     "reason": "Both sides are indirect: GAME needs Parker Brothers, and WEB goes Parker to Spider-Man to web-slinging; most players won't put the two together.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The weakest PARKER pair: neither side is direct. It is close to FAIL."
+  },
+  {
+   "pair_id": "p_ghost__green",
+   "a": "GHOST",
+   "b": "GREEN",
+   "hints": [
+    {
+     "text": "LUIGI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation"],
+     "verdict": "BORDERLINE",
+     "reason": "GREEN via Luigi's outfit is solid, but GHOST relies on Luigi's Mansion, and with no BROTHER or MARIO side to anchor it the player has to arrive at Luigi from two secondary traits.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Like the other GHOST pairs, it depends on how well Luigi's Mansion is known; this is the least anchored of them."
+  },
+  {
+   "pair_id": "p_ghost__mario",
+   "a": "GHOST",
+   "b": "MARIO",
+   "hints": [
+    {
+     "text": "LUIGI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": "BOO",
+     "flags": ["better_hint_exists", "needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "MARIO via his brother Luigi is instant, but GHOST depends on Luigi's Mansion; BOO, the ghost enemy in Mario games, links both sides directly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "BOO would be a strong PASS for this pair: it is a ghost and a classic Mario character."
+  },
+  {
+   "pair_id": "p_god__king",
+   "a": "GOD",
+   "b": "KING",
+   "hints": [
+    {
+     "text": "PHARAOH",
+     "mechanism": "fact",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": "ZEUS",
+     "flags": ["better_hint_exists"],
+     "verdict": "BORDERLINE",
+     "reason": "KING via the pharaoh as Egypt's ruler is instant, and GOD via the god-king idea is accurate but a schoolbook detail most players won't reach first; ZEUS (king of the gods) hits both at once.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The facts are accurate. GOD is the soft side; ZEUS is the obvious stronger hint."
+  },
+  {
+   "pair_id": "p_green__mario",
+   "a": "GREEN",
+   "b": "MARIO",
+   "hints": [
+    {
+     "text": "LUIGI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MARIO via his brother and GREEN via Luigi's green outfit; Luigi is often summed up as 'green Mario', so it clicks.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LUIGI"],
+   "pair_note": "Clean and fair."
+  },
+  {
+   "pair_id": "p_hat__mug",
+   "a": "HAT",
+   "b": "MUG",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "phrase_join",
+     "connection_to_a": 1,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["phrase_join_weak", "needs_explanation", "text_fix"],
+     "verdict": "BORDERLINE",
+     "reason": "HAT needs the magic hat from the Frosty song, and MUG needs the phrase 'frosty mug'; both are secondary readings, and each side uses a different sense of the word.",
+     "fix": "Frosty comes to life when the children place a magic silk hat on his head."
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Two weak sides that use different senses of FROSTY; few players would get there. Close to FAIL."
+  },
+  {
+   "pair_id": "p_hat__snowman",
+   "a": "HAT",
+   "b": "SNOWMAN",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "SNOWMAN via Frosty the Snowman and HAT via his iconic magic silk hat; the hat is central to Frosty's image, so the click is natural.",
+     "fix": "Frosty comes to life when the children place a magic silk hat on his head."
+    }
+   ],
+   "strong_hints": ["FROSTY"],
+   "pair_note": "Good scene clue: you picture Frosty in his hat. Correct the detail of who puts the hat on."
+  },
+  {
+   "pair_id": "p_ice-cream__snowman",
+   "a": "ICE CREAM",
+   "b": "SNOWMAN",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNOWMAN via Frosty the Snowman and ICE CREAM via the Wendy's Frosty; two famous Frostys make a satisfying double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FROSTY"],
+   "pair_note": "One of the best in the batch. Strictly, Wendy's sells the Frosty as a frozen dairy dessert, but 'soft-serve treat' is fine for players."
+  },
+  {
+   "pair_id": "p_king__mummy",
+   "a": "KING",
+   "b": "MUMMY",
+   "hints": [
+    {
+     "text": "PHARAOH",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": "TUT",
+     "flags": ["better_hint_exists"],
+     "verdict": "PASS",
+     "reason": "KING via the pharaoh as Egyptian king and MUMMY via mummified pharaohs; instant and accurate. TUT (King Tut, the most famous mummy) is a livelier alternative.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PHARAOH"],
+   "pair_note": "PHARAOH passes; TUT would likely be more fun and would also pass."
+  },
+  {
+   "pair_id": "p_king__pyramid",
+   "a": "KING",
+   "b": "PYRAMID",
+   "hints": [
+    {
+     "text": "PHARAOH",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "KING via the pharaoh as Egyptian king and PYRAMID via the pyramid tombs; easy and fair.",
+     "fix": "Many pharaohs, especially in the Old Kingdom, were buried in pyramids."
+    }
+   ],
+   "strong_hints": ["PHARAOH"],
+   "pair_note": "Fine. Hedge the pyramid line, since not every pharaoh was buried in one."
+  },
+  {
+   "pair_id": "p_mario__mushroom",
+   "a": "MARIO",
+   "b": "MUSHROOM",
+   "hints": [
+    {
+     "text": "LUIGI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": "TOAD",
+     "flags": ["better_hint_exists"],
+     "verdict": "BORDERLINE",
+     "reason": "MARIO via his brother is instant, but MUSHROOM goes through the Super Mushroom, a game-wide power-up rather than anything specific to Luigi; the served TOAD is a mushroom person and is clearly better.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Keep TOAD; LUIGI adds nothing for this pair."
+  },
+  {
+   "pair_id": "p_marvel__spider",
+   "a": "MARVEL",
+   "b": "SPIDER",
+   "hints": [
+    {
+     "text": "PARKER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SPIDER via Peter Parker as Spider-Man and MARVEL via Spider-Man as Marvel's flagship hero; easy, broad pop culture.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PARKER"],
+   "pair_note": "The explanation repeats itself ('Marvel's Spider-Man... is Spider-Man') but nothing in it is false."
+  },
+  {
+   "pair_id": "p_mummy__pyramid",
+   "a": "MUMMY",
+   "b": "PYRAMID",
+   "hints": [
+    {
+     "text": "PHARAOH",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "MUMMY via mummified pharaohs and PYRAMID via their tombs; together they make the classic ancient-Egypt tomb scene.",
+     "fix": "Many pharaohs, especially in the Old Kingdom, were buried in pyramids."
+    }
+   ],
+   "strong_hints": ["PHARAOH"],
+   "pair_note": "The best PHARAOH pair: the mummy in the pyramid is one picture."
+  },
+  {
+   "pair_id": "p_newspaper__web",
+   "a": "NEWSPAPER",
+   "b": "WEB",
+   "hints": [
+    {
+     "text": "PARKER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation"],
+     "verdict": "BORDERLINE",
+     "reason": "WEB via Spider-Man's webs is quick, but NEWSPAPER needs the Daily Bugle detail, a secondary trait players are unlikely to think of from the hint alone.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The fact is accurate and there is a pleasant 'oh, the Bugle' after the reveal, but the newspaper side takes real effort."
+  },
+  {
+   "pair_id": "p_photo__web",
+   "a": "PHOTO",
+   "b": "WEB",
+   "hints": [
+    {
+     "text": "PARKER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "WEB via Spider-Man is quick, and PHOTO via Peter Parker's job as a photographer is a better-known trait than the newspaper but still secondary for casual fans.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The closest PARKER call: Peter the photographer is in most Spider-Man films, so this could reasonably be a PASS."
+  },
+  {
+   "pair_id": "p_rain__shade",
+   "a": "RAIN",
+   "b": "SHADE",
+   "hints": [
+    {
+     "text": "UMBRELLA",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RAIN and SHADE via the two jobs an umbrella does, keeping off rain and blocking sun; easy and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UMBRELLA"],
+   "pair_note": "Plain but clean."
+  },
+  {
+   "pair_id": "p_spider__superhero",
+   "a": "SPIDER",
+   "b": "SUPERHERO",
+   "hints": [
+    {
+     "text": "PARKER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SPIDER via Spider-Man and SUPERHERO via Peter Parker's secret double life; easy and fair, if flat.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PARKER"],
+   "pair_note": "Easy, with little delight, but fair."
+  },
+  {
+   "pair_id": "p_spider__web",
+   "a": "SPIDER",
+   "b": "WEB",
+   "hints": [
+    {
+     "text": "PARKER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": "CHARLOTTE",
+     "flags": ["better_hint_exists"],
+     "verdict": "PASS",
+     "reason": "SPIDER via Spider-Man and WEB via his web-slinging; easy. CHARLOTTE (Charlotte's Web, whose heroine is a spider) is a more charming alternative.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PARKER"],
+   "pair_note": "PARKER passes; CHARLOTTE would be a delightful second hint for this pair."
+  }
+ ]
+}

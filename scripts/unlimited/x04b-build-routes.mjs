@@ -11,17 +11,17 @@ const F = {
     "*hp | Harry Potter | WIZARD:2:Harry Potter is the world's most famous boy wizard ; WAND:2:Harry Potter casts spells with his wand ; OWL:2:Harry Potter's owl Hedwig delivers his mail ; BROOM:2:Harry Potter flies a broom at Quidditch ; HOGWARTS:2:Harry Potter studies at Hogwarts ; GLASSES:2:Harry Potter wears round glasses ; LIGHTNING:2:Harry Potter has a lightning-bolt scar ; CLOAK:1:Harry Potter hides under an invisibility cloak ; TRAIN:1:Harry Potter rides the Hogwarts Express ; MAGIC:1:Harry Potter goes to a school of magic",
     "pottery | a potter | BOWL:2:a potter shapes bowls from clay ; WHEEL:2:a potter shapes clay on a spinning wheel ; MUG:1:a potter makes clay mugs" ],
   GOTHAM: [
-    "*city | Batman's Gotham City | BAT:2:Batman protects Gotham City ; PENGUIN:2:the Penguin is a Gotham City villain ; JOKE:1:the Joker terrorizes Gotham City ; CAT:1:Catwoman prowls the rooftops of Gotham ; CAVE:1:the Batcave is hidden beneath Gotham ; NIGHT:1:Batman patrols Gotham by night ; SUPERHERO:1:Batman is Gotham City's superhero" ],
+    "*city | Batman's Gotham City | BAT:2:Batman protects Gotham City ; PENGUIN:2:the Penguin is a Gotham City villain ; JOKE:1:the Joker terrorizes Gotham City ; CAT:1:Catwoman prowls the rooftops of Gotham ; CAVE:1:the Batcave is hidden beneath Wayne Manor, just outside Gotham City ; NIGHT:1:Batman patrols Gotham by night ; SUPERHERO:1:Batman is Gotham City's superhero" ],
   OGRE: [
     "*shrek | Shrek | SHREK:2:Shrek is the world's most famous ogre ; DONKEY:2:Donkey is the ogre Shrek's best friend ; LAYER:2:Shrek says ogres are like onions: they have layers ; PRINCESS:1:Princess Fiona turns out to be an ogre too",
     "monster | a fairy-tale brute | FAIRYTALE:2:ogres are fairy-tale monsters ; GIANT:1:ogres are giant brutes from old stories ; MONSTER:1:an ogre is a hulking monster ; TROLL:1:ogres and trolls are both fairy-tale brutes" ],
   PIXAR: [
-    "*films | Pixar movies | TOY:2:Toy Story was Pixar's first movie ; LAMP:2:Pixar's logo is a hopping desk lamp ; CAR:2:Pixar made Cars ; FISH:2:Pixar's Finding Nemo follows a lost clownfish ; ROBOT:2:Pixar's WALL-E is a lonely little robot ; MONSTER:2:Pixar made Monsters, Inc. ; RAT:2:Pixar's Ratatouille stars a rat who cooks ; HOUSE:1:in Pixar's Up, a house floats away on balloons ; DISNEY:1:Pixar is part of Disney" ],
+    "*films | Pixar movies | TOY:2:Toy Story was Pixar's first feature film ; LAMP:2:Pixar's logo is a hopping desk lamp ; CAR:2:Pixar made Cars ; FISH:2:Pixar's Finding Nemo follows a lost clownfish ; ROBOT:2:Pixar's WALL-E is a lonely little robot ; MONSTER:2:Pixar made Monsters, Inc. ; RAT:2:Pixar's Ratatouille stars a rat who cooks ; HOUSE:1:in Pixar's Up, a house floats away on balloons ; DISNEY:1:Pixar is part of Disney" ],
   SHERLOCK: [
     "*holmes | Sherlock Holmes | DETECTIVE:2:Sherlock Holmes is the most famous fictional detective ; PIPE:2:Sherlock Holmes is pictured puffing a pipe ; LONDON:2:Sherlock Holmes lives on Baker Street in London ; HAT:1:Sherlock Holmes wears a deerstalker hat ; VIOLIN:1:Sherlock Holmes plays the violin ; SUSPECT:1:Sherlock Holmes unmasks the guilty suspect" ],
   APOLLO: [
     "moon | the Apollo missions | MOON:2:Apollo 11 landed on the Moon ; NASA:2:Apollo was NASA's Moon program ; ASTRONAUT:2:Apollo astronauts walked on the Moon ; SPACE:1:the Apollo missions flew into space",
-    "god | the Greek god | SUN:2:Apollo is the Greek god of the sun ; GOD:1:Apollo is a Greek god ; MUSIC:1:Apollo is also the Greek god of music ; GREECE:1:Apollo was worshipped in ancient Greece",
+    "god | the Greek god | SUN:2:Apollo is the Greek god of light, often linked with the sun ; GOD:1:Apollo is a Greek god ; MUSIC:1:Apollo is also the Greek god of music ; GREECE:1:Apollo was worshipped in ancient Greece",
     "theater | Harlem's Apollo | THEATER:1:Harlem's Apollo Theater is a legendary music hall" ],
   ICEBERG: [
     "titanic | the Titanic | TITANIC:2:the Titanic sank after hitting an iceberg ; SHIP:2:icebergs are a danger to every ship",
@@ -63,14 +63,14 @@ const F = {
     "color | midnight blue | BLUE:1:midnight blue is a very dark blue" ],
   JAWS: [
     "*movie | the movie Jaws | SHARK:2:Jaws is the classic shark movie ; BEACH:2:Jaws made beachgoers afraid to swim ; MOVIE:1:Jaws was the first summer blockbuster",
-    "bond | the Bond villain | BOND:1:Jaws is the steel-toothed James Bond villain",
+    "bond | the Bond villain | BOND:1:Jaws is the steel-toothed henchman from the James Bond films",
     "mouth | your jaws | MOUTH:2:your jaws open and close your mouth ; TOOTH:1:your teeth sit in your jaws ; BITE:2:your jaws clamp shut when you bite" ],
   WALRUS: [
     "look | the walrus look | MOUSTACHE:2:a big droopy mustache is called a walrus mustache ; IVORY:2:a walrus's tusks are ivory",
     "habitat | life on the ice | SEAL:2:the walrus is a big cousin of the seal ; ICE:1:walruses haul out onto the ice ; POLAR:1:walruses live in polar waters" ],
   RAINBOW: [
     "*gold | the end of the rainbow | LEPRECHAUN:2:a leprechaun's pot of gold waits at the end of the rainbow ; GOLD:2:legend says there's a pot of gold at the end of the rainbow ; UNICORN:2:unicorns and rainbows go together",
-    "sky | in the sky | COLOR:2:a rainbow shows every color ; STORM:1:a rainbow can appear after a storm ; SKY:1:a rainbow arcs across the sky",
+    "sky | in the sky | COLOR:2:a rainbow spreads sunlight into a band of colors ; STORM:1:a rainbow can appear after a storm ; SKY:1:a rainbow arcs across the sky",
     "oz | Over the Rainbow | WIZARD:1:\"Over the Rainbow\" is the famous song from The Wizard of Oz" ],
   UMBRELLA: [
     "rain | keeping dry | RAIN:2:an umbrella keeps off the rain ; STORM:1:you open an umbrella in a storm",
@@ -78,11 +78,11 @@ const F = {
     "drink | the cocktail umbrella | DRINK:2:tropical drinks come with tiny paper umbrellas",
     "poppins | Mary Poppins | WIND:1:Mary Poppins floats in on the wind holding her umbrella" ],
   PHARAOH: [
-    "*egypt | ancient Egypt | EGYPT:2:pharaohs ruled ancient Egypt ; PYRAMID:2:pharaohs were buried in pyramids ; MUMMY:2:pharaohs were preserved as mummies ; KING:2:a pharaoh was an Egyptian king ; GOLD:1:King Tut was buried with a solid gold mask ; TREASURE:1:King Tut's tomb was packed with treasure ; SNAKE:1:a cobra rises from the front of a pharaoh's crown" ],
+    "*egypt | ancient Egypt | EGYPT:2:pharaohs ruled ancient Egypt ; PYRAMID:2:many pharaohs, especially in the Old Kingdom, were buried in pyramids ; MUMMY:2:pharaohs were preserved as mummies ; KING:2:a pharaoh was an Egyptian king ; GOLD:1:King Tut was buried with a solid gold mask ; TREASURE:1:King Tut's tomb was packed with treasure ; SNAKE:1:a cobra rises from the front of a pharaoh's crown" ],
   LUIGI: [
     "*mario | Mario's brother | MARIO:2:Luigi is Mario's younger brother ; BROTHER:2:Luigi is one of the Super Mario Bros. ; GREEN:2:Luigi wears green ; GHOST:2:in Luigi's Mansion, Luigi hunts ghosts ; PIPE:1:Luigi travels through green warp pipes ; VIDEO GAME:1:Luigi is a Nintendo video game hero" ],
   FROSTY: [
-    "*snowman | Frosty the Snowman | SNOWMAN:2:Frosty is the famous snowman of the Christmas song ; HAT:2:Frosty comes to life when he puts on a magic hat ; MAGIC:1:Frosty's magic hat brings him to life ; CHRISTMAS:1:Frosty the Snowman is a Christmas classic",
+    "*snowman | Frosty the Snowman | SNOWMAN:2:Frosty is the famous snowman of the Christmas song ; HAT:2:Frosty comes to life when the children place a magic silk hat on his head ; MAGIC:1:Frosty's magic silk hat brings him to life ; CHRISTMAS:1:Frosty the Snowman is a Christmas classic",
     "cold | frosty weather | COLD:2:frosty means icy cold ; WINTER:1:a frosty winter morning ; MORNING:1:a frosty morning glitters with ice ; MUG:1:a frosty mug comes straight from the freezer" ],
   PARKER: [
     "*spiderman | Peter Parker | SPIDER:2:Peter Parker is Spider-Man ; WEB:2:as Spider-Man, Peter Parker shoots webs ; NEWSPAPER:1:Peter Parker sells photos to the Daily Bugle newspaper ; CAMERA:1:Peter Parker is a newspaper photographer ; PHOTO:1:Peter Parker snaps photos of Spider-Man for the Daily Bugle ; MARVEL:1:Peter Parker is Marvel's Spider-Man ; SUPERHERO:1:Peter Parker leads a double life as a superhero" ],

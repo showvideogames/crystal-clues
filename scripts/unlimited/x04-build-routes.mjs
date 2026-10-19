@@ -95,7 +95,7 @@ const F = {
     "armor | an animal's shell | TURTLE:2:a turtle hides in its shell ; SNAIL:2:a snail carries its shell ; CRAB:2:a crab has a hard shell",
     "beach | seashells | BEACH:2:you collect seashells on the beach ; OCEAN:1:seashells wash in from the ocean",
     "egg | an eggshell | EGG:2:an egg has a shell ; NUT:2:a nut has a hard shell",
-    "taco | a taco shell | TACO:2:a crunchy taco shell",
+    "taco | a taco shell | TACO:2:a crunchy taco comes in a hard shell",
     "mario | Mario Kart shells | MARIO:2:Mario players fire turtle shells at each other in Mario Kart",
     "gas | Shell gas | GAS:2:Shell is a gas station brand",
     "ammo | an ammo shell | AMMO:1:a shell is a round of ammunition" ] },

@@ -1,0 +1,356 @@
+{
+ "_metadata": {
+  "reviewer": "x04b-reviewer-a",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "input": "x04b-ra-input.json",
+  "rubric": "x04 rubric (natural-click standard + five content questions), 2026-10-19",
+  "independence": "Apart from the instructions file, I read only x04b-ra-input.json; I opened no other file, ran no repository search, and used no web or paid API."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_bat__knight", "a": "BAT", "b": "KNIGHT",
+   "hints": [
+    {"text": "GOTHAM", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BAT via Batman, KNIGHT via The Dark Knight, both protectors of Gotham; a clean, instant Batman click.", "fix": null}
+   ],
+   "strong_hints": ["GOTHAM"],
+   "pair_note": "GOTHAM and the served DARK are both good; GOTHAM is the more fun of the two."
+  },
+  {
+   "pair_id": "p_bat__penguin", "a": "BAT", "b": "PENGUIN",
+   "hints": [
+    {"text": "GOTHAM", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BAT via Batman and PENGUIN via the Gotham villain; two animals recast as hero and villain is a real 'oh, nice' moment.", "fix": null}
+   ],
+   "strong_hints": ["GOTHAM"],
+   "pair_note": "One of the best Gotham pairs: both targets look like animals until the hint lands."
+  },
+  {
+   "pair_id": "p_bat__scarecrow", "a": "BAT", "b": "SCARECROW",
+   "hints": [
+    {"text": "GOTHAM", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BAT via Batman; SCARECROW via the Batman villain (well known from Batman Begins), a second-tier rogue so it takes a beat, but the click is real.", "fix": null}
+   ],
+   "strong_hints": ["GOTHAM"],
+   "pair_note": "SCARECROW also pulls toward Oz, which is fair misdirection; slightly weaker than PENGUIN."
+  },
+  {
+   "pair_id": "p_bowl__hogwarts", "a": "BOWL", "b": "HOGWARTS",
+   "hints": [
+    {"text": "POTTER", "mechanism": "double_meaning", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BOWL via the clay potter's craft, HOGWARTS via Harry Potter; a fair double meaning that clicks nicely.", "fix": null}
+   ],
+   "strong_hints": ["POTTER"],
+   "pair_note": "Good double-meaning use of POTTER; the bowl side needs a half-second shift away from the wizard."
+  },
+  {
+   "pair_id": "p_bowl__wand", "a": "BOWL", "b": "WAND",
+   "hints": [
+    {"text": "POTTER", "mechanism": "double_meaning", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BOWL via a clay potter, WAND via Harry Potter's wand; satisfying two-sense click.", "fix": null}
+   ],
+   "strong_hints": ["POTTER"],
+   "pair_note": "Same double meaning as BOWL+HOGWARTS; equally good."
+  },
+  {
+   "pair_id": "p_broom__hogwarts", "a": "BROOM", "b": "HOGWARTS",
+   "hints": [
+    {"text": "POTTER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BROOM via Harry's Quidditch broomstick, HOGWARTS via his school; easy and fair.", "fix": null}
+   ],
+   "strong_hints": ["POTTER"],
+   "pair_note": "The served QUIDDITCH is a bit more specific and satisfying, but POTTER is also a genuinely good hint; both can stand."
+  },
+  {
+   "pair_id": "p_car__monster", "a": "CAR", "b": "MONSTER",
+   "hints": [
+    {"text": "PIXAR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CAR via Cars and MONSTER via Monsters, Inc.; both are Pixar titles, an easy clean click.", "fix": null}
+   ],
+   "strong_hints": ["PIXAR"],
+   "pair_note": "Solid, easy Pixar pair."
+  },
+  {
+   "pair_id": "p_car__printer", "a": "CAR", "b": "PRINTER",
+   "hints": [
+    {"text": "JAM", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CAR via traffic jam, PRINTER via paper jam; both phrases are instantly familiar and share the relatable 'stuck' frustration.", "fix": null}
+   ],
+   "strong_hints": ["JAM"],
+   "pair_note": "A phrase-join that earns its place: both jams are everyday annoyances."
+  },
+  {
+   "pair_id": "p_car__robot", "a": "CAR", "b": "ROBOT",
+   "hints": [
+    {"text": "PIXAR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CAR via Cars; ROBOT via WALL-E, which needs one recall step since 'robot' is not in the title, but WALL-E is iconic.", "fix": null}
+   ],
+   "strong_hints": ["PIXAR"],
+   "pair_note": "Fine; the robot side is a step less direct than the title-word sides."
+  },
+  {
+   "pair_id": "p_cave__knight", "a": "CAVE", "b": "KNIGHT",
+   "hints": [
+    {"text": "GOTHAM", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": "BATMAN", "flags": ["better_hint_exists", "text_fix"], "verdict": "BORDERLINE", "reason": "CAVE via the Batcave and KNIGHT via The Dark Knight both route through Batman rather than the city itself, so GOTHAM adds a step that BATMAN (Batcave, the Dark Knight) would not; also the Batcave sits beneath Wayne Manor, not under the city.", "fix": "The Batcave is hidden beneath Wayne Manor, just outside Gotham City."}
+   ],
+   "strong_hints": [],
+   "pair_note": "Both targets are Batman's own things, not the city's; BATMAN is the obvious stronger hint here."
+  },
+  {
+   "pair_id": "p_detective__london", "a": "DETECTIVE", "b": "LONDON",
+   "hints": [
+    {"text": "SHERLOCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DETECTIVE via Sherlock Holmes himself, LONDON via his Baker Street home; easy and fair.", "fix": null}
+   ],
+   "strong_hints": ["SHERLOCK"],
+   "pair_note": "Easy, solid."
+  },
+  {
+   "pair_id": "p_detective__pipe", "a": "DETECTIVE", "b": "PIPE",
+   "hints": [
+    {"text": "SHERLOCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DETECTIVE via Holmes's job, PIPE via his iconic pipe; instant classic image.", "fix": null}
+   ],
+   "strong_hints": ["SHERLOCK"],
+   "pair_note": "Easy and iconic."
+  },
+  {
+   "pair_id": "p_detective__suspect", "a": "DETECTIVE", "b": "SUSPECT",
+   "hints": [
+    {"text": "SHERLOCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 0, "recognizability": "broad", "better_hint": "ALIBI", "flags": ["one_sided", "better_hint_exists"], "verdict": "BORDERLINE", "reason": "DETECTIVE is Sherlock's job, but SUSPECT is reached only through 'detectives deal with suspects', not anything Sherlock-specific, so the hint is lopsided; ALIBI (a detective checks it, a suspect gives it) hits both evenly.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "The pair itself is directly related; a hint should sit between them (ALIBI, CLUE) rather than on top of DETECTIVE."
+  },
+  {
+   "pair_id": "p_donkey__fairytale", "a": "DONKEY", "b": "FAIRYTALE",
+   "hints": [
+    {"text": "OGRE", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FAIRYTALE via ogres as fairy-tale monsters; DONKEY via Shrek's sidekick, one quick step from OGRE to Shrek.", "fix": null}
+   ],
+   "strong_hints": ["OGRE"],
+   "pair_note": "SHREK would also work (Donkey; a fairy-tale parody), but OGRE is not clearly weaker."
+  },
+  {
+   "pair_id": "p_donkey__green", "a": "DONKEY", "b": "GREEN",
+   "hints": [
+    {"text": "OGRE", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GREEN via Shrek the green ogre, DONKEY via Shrek's best friend; OGRE leads straight to Shrek, so both land.", "fix": null}
+   ],
+   "strong_hints": ["OGRE"],
+   "pair_note": "Works through the Shrek image; fine."
+  },
+  {
+   "pair_id": "p_donkey__shrek", "a": "DONKEY", "b": "SHREK",
+   "hints": [
+    {"text": "OGRE", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SHREK is the famous ogre and DONKEY is his best friend; easy, with Donkey one short step away.", "fix": null}
+   ],
+   "strong_hints": ["OGRE"],
+   "pair_note": "Easy; OGRE is Shrek's species, not a synonym of the target."
+  },
+  {
+   "pair_id": "p_draft__pocket", "a": "DRAFT", "b": "POCKET",
+   "hints": [
+    {"text": "PICK", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DRAFT via draft pick (choose) and POCKET via pickpocket (steal); both instantly familiar, with a pleasant shift in sense.", "fix": null}
+   ],
+   "strong_hints": ["PICK"],
+   "pair_note": "Good phrase-join; the two senses of 'pick' add a little twist."
+  },
+  {
+   "pair_id": "p_fairytale__green", "a": "FAIRYTALE", "b": "GREEN",
+   "hints": [
+    {"text": "OGRE", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FAIRYTALE via ogres as fairy-tale monsters, GREEN via Shrek's green skin; the green side leans on Shrek but that image is universal.", "fix": null}
+   ],
+   "strong_hints": ["OGRE"],
+   "pair_note": "Fine; GREEN is the softer side since many things are green."
+  },
+  {
+   "pair_id": "p_fairytale__layer", "a": "FAIRYTALE", "b": "LAYER",
+   "hints": [
+    {"text": "OGRE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FAIRYTALE via ogres in fairy tales, LAYER via Shrek's famous 'ogres have layers' line; the quote makes it a fun click.", "fix": null}
+   ],
+   "strong_hints": ["OGRE"],
+   "pair_note": "The layers quote carries this nicely."
+  },
+  {
+   "pair_id": "p_fish__lamp", "a": "FISH", "b": "LAMP",
+   "hints": [
+    {"text": "PIXAR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FISH via Finding Nemo, LAMP via the hopping-lamp logo before every Pixar film; the lamp is a satisfying 'oh, right' moment.", "fix": null}
+   ],
+   "strong_hints": ["PIXAR"],
+   "pair_note": "The logo lamp is the fun half of any PIXAR pair."
+  },
+  {
+   "pair_id": "p_fish__monster", "a": "FISH", "b": "MONSTER",
+   "hints": [
+    {"text": "PIXAR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FISH via Finding Nemo, MONSTER via Monsters, Inc.; easy Pixar click.", "fix": null}
+   ],
+   "strong_hints": ["PIXAR"],
+   "pair_note": "Easy, solid."
+  },
+  {
+   "pair_id": "p_glasses__lightning", "a": "GLASSES", "b": "LIGHTNING",
+   "hints": [
+    {"text": "POTTER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GLASSES via Harry's round specs and LIGHTNING via his scar; together they draw his face, an instant and satisfying picture.", "fix": null}
+   ],
+   "strong_hints": ["POTTER"],
+   "pair_note": "Excellent visual pair; the two targets are the two things everyone draws on Harry."
+  },
+  {
+   "pair_id": "p_green__layer", "a": "GREEN", "b": "LAYER",
+   "hints": [
+    {"text": "OGRE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GREEN via Shrek's green skin and LAYER via his 'ogres have layers' line; both are signature Shrek, a fun click.", "fix": null}
+   ],
+   "strong_hints": ["OGRE"],
+   "pair_note": "Strong Shrek pair without naming Shrek."
+  },
+  {
+   "pair_id": "p_guitar__ice", "a": "GUITAR", "b": "ICE",
+   "hints": [
+    {"text": "PICK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GUITAR via a guitar pick and ICE via an ice pick; two different tools named PICK, both instantly familiar.", "fix": null}
+   ],
+   "strong_hints": ["PICK"],
+   "pair_note": "Clean and easy."
+  },
+  {
+   "pair_id": "p_guitar__lock", "a": "GUITAR", "b": "LOCK",
+   "hints": [
+    {"text": "PICK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GUITAR via a guitar pick, LOCK via picking a lock; noun versus verb sense, both instant.", "fix": null}
+   ],
+   "strong_hints": ["PICK"],
+   "pair_note": "Clean and easy."
+  },
+  {
+   "pair_id": "p_guitar__pocket", "a": "GUITAR", "b": "POCKET",
+   "hints": [
+    {"text": "PICK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GUITAR via a guitar pick, POCKET via picking pockets; two clear senses of PICK.", "fix": null}
+   ],
+   "strong_hints": ["PICK"],
+   "pair_note": "Clean and easy."
+  },
+  {
+   "pair_id": "p_hat__pipe", "a": "HAT", "b": "PIPE",
+   "hints": [
+    {"text": "SHERLOCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "HAT via the deerstalker and PIPE via his pipe; together they are the Sherlock silhouette, an instant visual click.", "fix": null}
+   ],
+   "strong_hints": ["SHERLOCK"],
+   "pair_note": "Best of the Sherlock pairs: the two props are the costume."
+  },
+  {
+   "pair_id": "p_ice__lock", "a": "ICE", "b": "LOCK",
+   "hints": [
+    {"text": "PICK", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "ICE via an ice pick, LOCK via picking a lock (a lock pick); both familiar and easy.", "fix": null}
+   ],
+   "strong_hints": ["PICK"],
+   "pair_note": "Fine phrase-join; both are tools called picks."
+  },
+  {
+   "pair_id": "p_ice__pocket", "a": "ICE", "b": "POCKET",
+   "hints": [
+    {"text": "PICK", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "ICE via an ice pick, POCKET via pickpocket; both compounds instantly familiar.", "fix": null}
+   ],
+   "strong_hints": ["PICK"],
+   "pair_note": "Fine, easy phrase-join."
+  },
+  {
+   "pair_id": "p_knight__new-york", "a": "KNIGHT", "b": "NEW YORK",
+   "hints": [
+    {"text": "GOTHAM", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "KNIGHT via The Dark Knight's city; NEW YORK via Gotham as the city's real nickname (and Batman's model city), which many know and the rest enjoy learning.", "fix": null}
+   ],
+   "strong_hints": ["GOTHAM"],
+   "pair_note": "The NYC nickname is a nice reveal; not everyone knows it, but it is widely referenced."
+  },
+  {
+   "pair_id": "p_knight__penguin", "a": "KNIGHT", "b": "PENGUIN",
+   "hints": [
+    {"text": "GOTHAM", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "KNIGHT via The Dark Knight, PENGUIN via the Gotham villain; hero and villain of the same city, easy once Batman comes to mind.", "fix": null}
+   ],
+   "strong_hints": ["GOTHAM"],
+   "pair_note": "BATMAN would work equally well; GOTHAM is fine."
+  },
+  {
+   "pair_id": "p_lamp__rat", "a": "LAMP", "b": "RAT",
+   "hints": [
+    {"text": "PIXAR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "LAMP via the Pixar logo lamp, RAT via Ratatouille's cooking rat; a fun pairing of two unlikely words.", "fix": null}
+   ],
+   "strong_hints": ["PIXAR"],
+   "pair_note": "Strong: neither word looks Pixar-ish until the hint lands."
+  },
+  {
+   "pair_id": "p_layer__shrek", "a": "LAYER", "b": "SHREK",
+   "hints": [
+    {"text": "OGRE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SHREK is the famous ogre and LAYER comes from his 'ogres have layers' line; easy and fair.", "fix": null}
+   ],
+   "strong_hints": ["OGRE"],
+   "pair_note": "The served ONION is the more delightful hint, but OGRE is also genuinely good (it is literally the quote); both can stand."
+  },
+  {
+   "pair_id": "p_london__pipe", "a": "LONDON", "b": "PIPE",
+   "hints": [
+    {"text": "SHERLOCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "LONDON via his Baker Street home, PIPE via his iconic pipe; easy and fair.", "fix": null}
+   ],
+   "strong_hints": ["SHERLOCK"],
+   "pair_note": "Solid."
+  },
+  {
+   "pair_id": "p_london__street", "a": "LONDON", "b": "STREET",
+   "hints": [
+    {"text": "SHERLOCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 0, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "BORDERLINE", "reason": "LONDON is Holmes's city, but STREET is reached only through the 'Baker Street' address, and a word as generic as STREET is unlikely to be picked from SHERLOCK; the explanation also states the Baker Street fact twice.", "fix": "Sherlock Holmes is London's most famous detective, and he lives at 221B Baker Street."}
+   ],
+   "strong_hints": [],
+   "pair_note": "Both sides lean on the same Baker Street fact, so the two lines barely differ; no obviously better one-word hint comes to mind."
+  },
+  {
+   "pair_id": "p_london__violin", "a": "LONDON", "b": "VIOLIN",
+   "hints": [
+    {"text": "SHERLOCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "LONDON via Baker Street; VIOLIN via Holmes's violin playing, a real deeper cut from the books and the Cumberbatch and Downey versions that takes a moment of thought; unsure how many casual players know it.", "fix": null}
+   ],
+   "strong_hints": ["SHERLOCK"],
+   "pair_note": "A pleasant deeper-cut fact; worth a second opinion on how familiar the violin is."
+  },
+  {
+   "pair_id": "p_new-york__penguin", "a": "NEW YORK", "b": "PENGUIN",
+   "hints": [
+    {"text": "GOTHAM", "mechanism": "double_meaning", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "NEW YORK via Gotham as the city's nickname, PENGUIN via the Gotham villain; a fun two-sense click for those who know the nickname.", "fix": null}
+   ],
+   "strong_hints": ["GOTHAM"],
+   "pair_note": "Nice twist pair; the NYC side depends on knowing the nickname."
+  },
+  {
+   "pair_id": "p_owl__wheel", "a": "OWL", "b": "WHEEL",
+   "hints": [
+    {"text": "POTTER", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "OWL via Hedwig and owl post, WHEEL via the potter's wheel; two unrelated words joined by two senses of POTTER, a real 'oh, nice'.", "fix": null}
+   ],
+   "strong_hints": ["POTTER"],
+   "pair_note": "Best POTTER pair in the batch: both sides are strong and the senses are fully different."
+  },
+  {
+   "pair_id": "p_owl__wizard", "a": "OWL", "b": "WIZARD",
+   "hints": [
+    {"text": "POTTER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "OWL via Hedwig, WIZARD via the boy wizard himself; easy and fair.", "fix": null}
+   ],
+   "strong_hints": ["POTTER"],
+   "pair_note": "Easy."
+  },
+  {
+   "pair_id": "p_printer__toast", "a": "PRINTER", "b": "TOAST",
+   "hints": [
+    {"text": "JAM", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "PRINTER via a paper jam, TOAST via jam the spread; a crisp, funny double meaning.", "fix": null}
+   ],
+   "strong_hints": ["JAM"],
+   "pair_note": "Excellent double meaning; better than CAR+PRINTER because the senses differ."
+  },
+  {
+   "pair_id": "p_rat__toy", "a": "RAT", "b": "TOY",
+   "hints": [
+    {"text": "PIXAR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "RAT via Ratatouille, TOY via Toy Story; easy Pixar click, but Toy Story was Pixar's first feature film, not its first movie (Pixar made earlier shorts).", "fix": "Toy Story was Pixar's first feature film."}
+   ],
+   "strong_hints": ["PIXAR"],
+   "pair_note": "Solid; small accuracy fix on the TOY line."
+  },
+  {
+   "pair_id": "p_robot__toy", "a": "ROBOT", "b": "TOY",
+   "hints": [
+    {"text": "PIXAR", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "ROBOT via WALL-E, TOY via Toy Story; easy, with the same 'first feature film' wording fix on the TOY line.", "fix": "Toy Story was Pixar's first feature film."}
+   ],
+   "strong_hints": ["PIXAR"],
+   "pair_note": "Fine; ROBOT needs one WALL-E step."
+  },
+  {
+   "pair_id": "p_spell__wizard", "a": "SPELL", "b": "WIZARD",
+   "hints": [
+    {"text": "POTTER", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 0, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "WIZARD via the boy wizard, SPELL via the spells central to Harry Potter; flat because the two targets are directly related anyway, but clear and fair.", "fix": null}
+   ],
+   "strong_hints": ["POTTER"],
+   "pair_note": "Easy and unexciting; acceptable, not a highlight."
+  }
+ ]
+}

@@ -1,0 +1,932 @@
+{
+ "_metadata": {
+  "reviewer": "x04b-reviewer-d",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "input": "x04b-rd-input.json",
+  "rubric": "x04 rubric (natural-click standard + five content questions), 2026-10-19",
+  "independence": "I read only the instructions file and the single input file x04b-rd-input.json; no other file, repository search, web or paid API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_ball__dance",
+   "a": "BALL",
+   "b": "DANCE",
+   "hints": [
+    {
+     "text": "DISCO",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BALL via the disco ball and DANCE via disco dancing on the dance floor; an instant, fair click even if a little plain.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DISCO"],
+   "pair_note": "Clean and easy; BALL could also read as a formal dance, but DISCO resolves both sides cleanly."
+  },
+  {
+   "pair_id": "p_ball__fever",
+   "a": "BALL",
+   "b": "FEVER",
+   "hints": [
+    {
+     "text": "DISCO",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BALL via the disco ball and FEVER via Saturday Night Fever (and 'disco fever'); the pop-culture side gives a nice 'oh' moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DISCO"],
+   "pair_note": "Good pop-culture pairing; FEVER is the fun side."
+  },
+  {
+   "pair_id": "p_ball__mirror",
+   "a": "BALL",
+   "b": "MIRROR",
+   "hints": [
+    {
+     "text": "DISCO",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BALL via the disco ball and MIRROR via the mirrored tiles of that same ball (a 'mirror ball'); one object, instant click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DISCO"],
+   "pair_note": "Both sides route through the single object, so it is easy rather than clever, but fair."
+  },
+  {
+   "pair_id": "p_beach__bite",
+   "a": "BEACH",
+   "b": "BITE",
+   "hints": [
+    {
+     "text": "JAWS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEACH via the Jaws movie's beach panic and BITE via jaws chomping (and the shark's bite); fair and quick.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAWS"],
+   "pair_note": "BITE works on both the anatomy and movie readings, which makes it very solid."
+  },
+  {
+   "pair_id": "p_beach__bond",
+   "a": "BEACH",
+   "b": "BOND",
+   "hints": [
+    {
+     "text": "JAWS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["text_fix", "uncertain"],
+     "verdict": "PASS",
+     "reason": "BEACH via the Jaws shark movie and BOND via Jaws, Richard Kiel's steel-toothed henchman; a great double reference for most adults, though younger players may not know the Bond character.",
+     "fix": "Jaws is the steel-toothed henchman from the James Bond films."
+    }
+   ],
+   "strong_hints": ["JAWS"],
+   "pair_note": "Highest-delight JAWS pairing but the Bond side is 1970s pop culture; Jaws is a henchman rather than the main villain, hence the text fix. Worth a second opinion on recognizability."
+  },
+  {
+   "pair_id": "p_beach__mouth",
+   "a": "BEACH",
+   "b": "MOUTH",
+   "hints": [
+    {
+     "text": "JAWS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEACH via the Jaws movie and MOUTH via the anatomical jaws; a genuine double meaning that clicks quickly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAWS"],
+   "pair_note": "Nice movie-versus-anatomy split."
+  },
+  {
+   "pair_id": "p_beach__shark",
+   "a": "BEACH",
+   "b": "SHARK",
+   "hints": [
+    {
+     "text": "JAWS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEACH via the Amity Island beach scenes of Jaws and SHARK via the film's great white; very easy, very fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAWS"],
+   "pair_note": "The obvious hint for this pair, and a good one."
+  },
+  {
+   "pair_id": "p_bite__shark",
+   "a": "BITE",
+   "b": "SHARK",
+   "hints": [
+    {
+     "text": "JAWS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BITE via jaws clamping shut and SHARK via the Jaws movie; immediate click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAWS"],
+   "pair_note": "Easy; BITE and SHARK already sit close together, so delight is modest."
+  },
+  {
+   "pair_id": "p_cinderella__clock",
+   "a": "CINDERELLA",
+   "b": "CLOCK",
+   "hints": [
+    {
+     "text": "MIDNIGHT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CINDERELLA via her midnight deadline and CLOCK via the clock striking twelve in that same scene; instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MIDNIGHT"],
+   "pair_note": "The clock striking midnight is itself the Cinderella scene, so this is easy and fair."
+  },
+  {
+   "pair_id": "p_cinderella__new-year",
+   "a": "CINDERELLA",
+   "b": "NEW YEAR",
+   "hints": [
+    {
+     "text": "MIDNIGHT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CINDERELLA via the stroke-of-midnight deadline and NEW YEAR via the midnight countdown; two unrelated famous midnights make a satisfying click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MIDNIGHT"],
+   "pair_note": "One of the best in the batch: distant targets, one shared moment."
+  },
+  {
+   "pair_id": "p_cinderella__snack",
+   "a": "CINDERELLA",
+   "b": "SNACK",
+   "hints": [
+    {
+     "text": "MIDNIGHT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CINDERELLA via her midnight deadline and SNACK via the familiar 'midnight snack'; an odd couple that clicks neatly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MIDNIGHT"],
+   "pair_note": "SNACK side is a phrase join, but an instantly familiar one, and the pairing is fun."
+  },
+  {
+   "pair_id": "p_clock__pumpkin",
+   "a": "CLOCK",
+   "b": "PUMPKIN",
+   "hints": [
+    {
+     "text": "MIDNIGHT",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CLOCK via the clock striking twelve and PUMPKIN via the coach turning back into a pumpkin at midnight; a Cinderella scene built from two props.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MIDNIGHT"],
+   "pair_note": "Good scene-building; the player assembles Cinderella without her name on the board."
+  },
+  {
+   "pair_id": "p_clock__snack",
+   "a": "CLOCK",
+   "b": "SNACK",
+   "hints": [
+    {
+     "text": "MIDNIGHT",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CLOCK via the clock striking midnight and SNACK via 'midnight snack'; both are instantly familiar, though the click is plain.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MIDNIGHT"],
+   "pair_note": "Acceptable but one of the flatter MIDNIGHT pairings; CLOCK points at many times of day."
+  },
+  {
+   "pair_id": "p_color__gold",
+   "a": "COLOR",
+   "b": "GOLD",
+   "hints": [
+    {
+     "text": "RAINBOW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "COLOR via the rainbow's band of colors and GOLD via the pot of gold at the rainbow's end; easy and fair.",
+     "fix": "A rainbow spreads sunlight into a band of colors."
+    }
+   ],
+   "strong_hints": ["RAINBOW"],
+   "pair_note": "Fine; 'every color' is a slight literal overstatement (no brown, no pink), so a softer line is suggested."
+  },
+  {
+   "pair_id": "p_color__leprechaun",
+   "a": "COLOR",
+   "b": "LEPRECHAUN",
+   "hints": [
+    {
+     "text": "RAINBOW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "COLOR via the rainbow's colors and LEPRECHAUN via his pot of gold at the end of the rainbow; quick and fair.",
+     "fix": "A rainbow spreads sunlight into a band of colors."
+    }
+   ],
+   "strong_hints": ["RAINBOW"],
+   "pair_note": "Solid; same 'every color' softening as the other COLOR pairs."
+  },
+  {
+   "pair_id": "p_color__unicorn",
+   "a": "COLOR",
+   "b": "UNICORN",
+   "hints": [
+    {
+     "text": "RAINBOW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "COLOR via the rainbow's colors and UNICORN via the ubiquitous rainbow-unicorn imagery; familiar to a broad audience.",
+     "fix": "A rainbow spreads sunlight into a band of colors."
+    }
+   ],
+   "strong_hints": ["RAINBOW"],
+   "pair_note": "Unicorn-rainbow is pop imagery rather than legend, but it is everywhere, so it clicks."
+  },
+  {
+   "pair_id": "p_dance__fever",
+   "a": "DANCE",
+   "b": "FEVER",
+   "hints": [
+    {
+     "text": "DISCO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DANCE via disco dancing and FEVER via Saturday Night Fever / 'disco fever'; easy.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DISCO"],
+   "pair_note": "'Dance fever' is itself a phrase, so the pair is close, but DISCO is the natural umbrella."
+  },
+  {
+   "pair_id": "p_dance__mirror",
+   "a": "DANCE",
+   "b": "MIRROR",
+   "hints": [
+    {
+     "text": "DISCO",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DANCE via the disco dance floor and MIRROR via the mirrored disco ball; a clear scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DISCO"],
+   "pair_note": "MIRROR side needs one step (mirror ball) but it is a familiar step."
+  },
+  {
+   "pair_id": "p_egg__taco",
+   "a": "EGG",
+   "b": "TACO",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "EGG via its shell and TACO via the crunchy taco shell; a quick, fair food pairing.",
+     "fix": "An egg has a shell, and a crunchy taco comes in a shell (TACO line: 'A crunchy taco comes in a shell.')."
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "Idea is fine; the explanation and TACO line are sentence fragments and should be rewritten."
+  },
+  {
+   "pair_id": "p_fever__mirror",
+   "a": "FEVER",
+   "b": "MIRROR",
+   "hints": [
+    {
+     "text": "DISCO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FEVER via Saturday Night Fever and MIRROR via the mirrored disco ball; both sides need one step, but both steps are familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DISCO"],
+   "pair_note": "A little more thought than the BALL pairs, but the click is real."
+  },
+  {
+   "pair_id": "p_gas__mario",
+   "a": "GAS",
+   "b": "MARIO",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GAS via the Shell gas-station brand and MARIO via the Koopa shells thrown in Mario Kart; two unrelated worlds meeting on one word.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "A fun double meaning; Mario Kart shells (red/green/blue) are widely known."
+  },
+  {
+   "pair_id": "p_gas__nut",
+   "a": "GAS",
+   "b": "NUT",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GAS via the Shell station brand and NUT via its hard shell; fair double meaning, mildly satisfying.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "Fine but less playful than the MARIO or TACO pairings with GAS."
+  },
+  {
+   "pair_id": "p_gas__taco",
+   "a": "GAS",
+   "b": "TACO",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "GAS via the Shell station brand and TACO via the taco shell; a pleasingly unlikely double meaning (and a road-trip scene of gas station plus taco stop).",
+     "fix": "Shell is a gas station brand, and a crunchy taco comes in a shell."
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "Good; fix the fragmentary taco wording."
+  },
+  {
+   "pair_id": "p_gold__leprechaun",
+   "a": "GOLD",
+   "b": "LEPRECHAUN",
+   "hints": [
+    {
+     "text": "RAINBOW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "GOLD and LEPRECHAUN both via the pot of gold at the end of the rainbow; easy, though both sides travel the same single route.",
+     "fix": "A leprechaun guards a pot of gold at the end of the rainbow, and that pot is full of gold coins."
+    }
+   ],
+   "strong_hints": ["RAINBOW"],
+   "pair_note": "The explanation repeats the same sentence for both words; it reads awkwardly and should be varied. GOLD and LEPRECHAUN are already closely linked, so RAINBOW is easy rather than clever."
+  },
+  {
+   "pair_id": "p_gold__light",
+   "a": "GOLD",
+   "b": "LIGHT",
+   "hints": [
+    {
+     "text": "RAINBOW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GOLD via the pot of gold at the rainbow's end and LIGHT via sunlight split into colors; accurate and fair, at least as clear as the served HALO.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RAINBOW"],
+   "pair_note": "RAINBOW and the served HALO can both stand; RAINBOW's LIGHT side is a real physical fact."
+  },
+  {
+   "pair_id": "p_gold__unicorn",
+   "a": "GOLD",
+   "b": "UNICORN",
+   "hints": [
+    {
+     "text": "RAINBOW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GOLD via the pot of gold at the rainbow's end and UNICORN via rainbow-unicorn pop imagery; pleasant and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RAINBOW"],
+   "pair_note": "Two fantasy touchpoints of the rainbow; works."
+  },
+  {
+   "pair_id": "p_ice__moustache",
+   "a": "ICE",
+   "b": "MOUSTACHE",
+   "hints": [
+    {
+     "text": "WALRUS",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ICE via walruses hauling out on Arctic ice and MOUSTACHE via the visual 'walrus mustache'; the visual analogy lands with a smile.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WALRUS"],
+   "pair_note": "Exactly the visual-analogy style the owner asked for."
+  },
+  {
+   "pair_id": "p_ivory__seal",
+   "a": "IVORY",
+   "b": "SEAL",
+   "hints": [
+    {
+     "text": "WALRUS",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "IVORY via the walrus's ivory tusks and SEAL via the walrus as a seal-like pinniped; accurate and reachable.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WALRUS"],
+   "pair_note": "IVORY will pull many players toward ELEPHANT first, but tusks plus SEAL resolves to WALRUS fairly."
+  },
+  {
+   "pair_id": "p_leprechaun__unicorn",
+   "a": "LEPRECHAUN",
+   "b": "UNICORN",
+   "hints": [
+    {
+     "text": "RAINBOW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LEPRECHAUN via his pot of gold at the rainbow's end and UNICORN via rainbow-unicorn imagery; two magical creatures meeting on the rainbow is a cheerful click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RAINBOW"],
+   "pair_note": "Best of the RAINBOW group: neither target is a plain property of rainbows."
+  },
+  {
+   "pair_id": "p_mario__nut",
+   "a": "MARIO",
+   "b": "NUT",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MARIO via the Koopa shells of Mario Kart and NUT via its hard shell; fair, mildly fun.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "Works; NUT is the plain side."
+  },
+  {
+   "pair_id": "p_mario__taco",
+   "a": "MARIO",
+   "b": "TACO",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "MARIO via Mario Kart's thrown shells and TACO via the crunchy taco shell; a silly, satisfying collision of meanings.",
+     "fix": "Mario players fire turtle shells at each other in Mario Kart, and a crunchy taco comes in a shell."
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "Fun; fix the taco fragment."
+  },
+  {
+   "pair_id": "p_mirror__suit",
+   "a": "MIRROR",
+   "b": "SUIT",
+   "hints": [
+    {
+     "text": "DISCO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["one_sided", "needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "MIRROR via the mirrored disco ball is clear, but SUIT reaches DISCO only through Travolta's white suit or leisure suits, which most players will not think of from SUIT alone.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The Travolta image is iconic once seen, but SUIT has many stronger associations (card suit, business suit, lawsuit); a reviewer who weights the Saturday Night Fever pose more heavily might pass it."
+  },
+  {
+   "pair_id": "p_moustache__polar",
+   "a": "MOUSTACHE",
+   "b": "POLAR",
+   "hints": [
+    {
+     "text": "WALRUS",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOUSTACHE via the walrus mustache and POLAR via the walrus as an Arctic animal; POLAR leans to 'polar bear' first, but WALRUS is fair once MOUSTACHE is in view.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WALRUS"],
+   "pair_note": "POLAR side is softer than ICE or SEAL; passable because the MOUSTACHE side does the work."
+  },
+  {
+   "pair_id": "p_moustache__seal",
+   "a": "MOUSTACHE",
+   "b": "SEAL",
+   "hints": [
+    {
+     "text": "WALRUS",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOUSTACHE via the walrus mustache and SEAL via the walrus as the seal's big tusked cousin; picturing a mustached seal gets you there with a grin.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WALRUS"],
+   "pair_note": "Strong: 'seal with a mustache' is practically a definition of a walrus."
+  },
+  {
+   "pair_id": "p_mouth__shark",
+   "a": "MOUTH",
+   "b": "SHARK",
+   "hints": [
+    {
+     "text": "JAWS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOUTH via anatomical jaws and SHARK via the Jaws movie (and the shark's own jaws); instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAWS"],
+   "pair_note": "Easy and fair; overlaps BEACH+MOUTH and BITE+SHARK in feel."
+  },
+  {
+   "pair_id": "p_new-year__snack",
+   "a": "NEW YEAR",
+   "b": "SNACK",
+   "hints": [
+    {
+     "text": "MIDNIGHT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "NEW YEAR via the midnight countdown and SNACK via 'midnight snack'; clean and familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MIDNIGHT"],
+   "pair_note": "Pleasant; less memorable than the Cinderella pairings."
+  },
+  {
+   "pair_id": "p_pumpkin__snack",
+   "a": "PUMPKIN",
+   "b": "SNACK",
+   "hints": [
+    {
+     "text": "MIDNIGHT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "SNACK via 'midnight snack' is instant, and PUMPKIN via the coach turning back into a pumpkin at midnight is a well-known idiom, though PUMPKIN first suggests Halloween or pie.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MIDNIGHT"],
+   "pair_note": "PUMPKIN side needs the Cinderella step without Cinderella or CLOCK on the board; I lean PASS because 'turn into a pumpkin at midnight' is a common saying, but it is the weakest MIDNIGHT pair."
+  },
+  {
+   "pair_id": "p_sea__snail",
+   "a": "SEA",
+   "b": "SNAIL",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SEA via seashells (and the 'sells seashells by the seashore' tongue twister) and SNAIL via the shell it carries; easy and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "SHELL is not contained in SEA, so the 'seashell' compound is acceptable."
+  },
+  {
+   "pair_id": "p_shark__swimming",
+   "a": "SHARK",
+   "b": "SWIMMING",
+   "hints": [
+    {
+     "text": "JAWS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SHARK via the Jaws movie and SWIMMING via the film's famous fear of going in the water; SWIMMING is the softer side but the movie premise carries it.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAWS"],
+   "pair_note": "'Scared a generation out of swimming' is hyperbole but reads as a figure of speech, not a false fact."
+  },
+  {
+   "pair_id": "p_taco__turtle",
+   "a": "TACO",
+   "b": "TURTLE",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "TACO via the taco shell and TURTLE via its protective shell; instant and fair.",
+     "fix": "A crunchy taco comes in a shell, and a turtle hides in its shell."
+    }
+   ],
+   "strong_hints": ["SHELL"],
+   "pair_note": "Easy; fix the taco fragment."
+  }
+ ]
+}
