@@ -278,6 +278,7 @@ function WhySheet({ board, result, store, update, saved, onClose, onNext }){
           <li key={r.position} className="ul-why-item" data-testid="ul-why-item">
             <div className="ul-why-clue">{r.clue}</div>
             <div className="ul-why-pair">{r.wordA} + {r.wordB}</div>
+            {r.revealExplanation && <p className="ul-why-explain" data-testid="ul-why-explain">{r.revealExplanation}</p>}
             <p className="ul-why-side"><b>{r.wordA}</b> — {r.wordAConnection}</p>
             <p className="ul-why-side"><b>{r.wordB}</b> — {r.wordBConnection}</p>
             {r.reference?.source && <p className="ul-why-source">From {r.reference.source}</p>}
