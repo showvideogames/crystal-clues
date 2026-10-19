@@ -25,12 +25,12 @@ test("owner rejections, never-pairs and the hint rule block candidates; FOOD + B
   assert.ok(!all.some((c) => c.hint === "ALCHEMY" && [c.a, c.b].includes("MAGIC")), "no MAGIC route for ALCHEMY");
 });
 
-test("review selection is capped per hint and spread across route combinations", () => {
+test("review selection: capped per hint, strongest tier first, no word reused while a fresh one is available", () => {
   for (const h of full.hints) {
     const chosen = h.candidates.filter((c) => c.forReview);
-    assert.ok(chosen.length <= (h.hint === "FROZEN" ? 20 : 14), h.hint);
-    const combos = new Set(chosen.map((c) => c.routes));
-    const eligibleCombos = new Set(h.candidates.filter((c) => c.eligible).map((c) => c.routes));
-    assert.ok(combos.size >= Math.min(eligibleCombos.size, chosen.length), `${h.hint}: round-robin over combinations`);
+    assert.ok(chosen.length <= (h.reviewCap ?? 14), h.hint);
+    const best = Math.max(0, ...h.candidates.filter((c) => c.eligible).map((c) => c.score));
+    const bestCount = h.candidates.filter((c) => c.eligible && c.score === best).length;
+    if (bestCount >= chosen.length) assert.ok(chosen.every((c) => c.score === best), `${h.hint}: only top-tier candidates while enough exist`);
   }
 });

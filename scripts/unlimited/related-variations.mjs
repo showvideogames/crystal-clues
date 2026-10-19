@@ -77,18 +77,30 @@ for (const h of hints) {
   }
   // Recall: the seeds must come back out of the routes.
   const recall = (h.seeds || []).map((s) => { const [x, y] = s.split("+"); const id = pairOf(x, y).id; return { seed: s, found: cands.some((c) => c.pair_id === id) }; });
-  // Round-robin across route combinations, strongest first within each.
-  const byCombo = new Map();
-  for (const c of cands.filter((c) => c.eligible).sort((p, q) => q.score - p.score || p.pair_id.localeCompare(q.pair_id))) {
-    if (!byCombo.has(c.routes)) byCombo.set(c.routes, []);
-    byCombo.get(c.routes).push(c);
-  }
-  const chosen = [];
-  const queues = [...byCombo.values()];
+  // Selection for review: strongest tier first (both words at strength 2, then 2+1),
+  // round-robin across route combinations within a tier, and within a combination
+  // the candidate whose words have been used least for this hint so far (ties by a
+  // stable hash of the pair id, never alphabetical endpoints).
+  const hash = (s) => [...s].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);
+  const chosen = []; const usedWords = new Map();
   const hcap = h.reviewCap ?? cap;
-  while (chosen.length < hcap && queues.some((q) => q.length)) for (const q of queues) { if (q.length && chosen.length < hcap) chosen.push(q.shift()); }
+  const eligible = cands.filter((c) => c.eligible);
+  for (const tier of [...new Set(eligible.map((c) => c.score))].sort((a, b) => b - a)) {
+    const byCombo = new Map();
+    for (const c of eligible.filter((c) => c.score === tier)) { if (!byCombo.has(c.routes)) byCombo.set(c.routes, []); byCombo.get(c.routes).push(c); }
+    let progress = true;
+    while (chosen.length < hcap && progress) {
+      progress = false;
+      for (const q of byCombo.values()) {
+        if (chosen.length >= hcap || !q.length) continue;
+        q.sort((x, y) => ((usedWords.get(x.a) || 0) + (usedWords.get(x.b) || 0)) - ((usedWords.get(y.a) || 0) + (usedWords.get(y.b) || 0)) || hash(x.pair_id) - hash(y.pair_id));
+        const c = q.shift(); chosen.push(c); progress = true;
+        for (const w of [c.a, c.b]) usedWords.set(w, (usedWords.get(w) || 0) + 1);
+      }
+    }
+  }
   for (const c of chosen) c.forReview = true;
-  out.push({ hint, routes: routes.map((r) => ({ id: r.id, label: r.label, words: r.members.map((m) => m.word) })), recall, candidates: cands.sort((p, q) => (q.forReview ? 1 : 0) - (p.forReview ? 1 : 0) || q.score - p.score || p.pair_id.localeCompare(q.pair_id)) });
+  out.push({ hint, checkpoint: h.checkpoint || null, reviewCap: h.reviewCap ?? cap, routes: routes.map((r) => ({ id: r.id, label: r.label, words: r.members.map((m) => m.word) })), recall, candidates: cands.sort((p, q) => (q.forReview ? 1 : 0) - (p.forReview ? 1 : 0) || q.score - p.score || p.pair_id.localeCompare(q.pair_id)) });
 }
 
 const summary = out.map((h) => {

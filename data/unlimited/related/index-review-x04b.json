@@ -1,0 +1,382 @@
+{
+  "_metadata": {
+    "reviewer": "x04b-index-reviewer",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-19",
+    "inputs": ["groups.json", "hint-routes.json", "bank-1203.txt"],
+    "independence": "I read only the instructions file plus groups.json (size/structure only; no x04b route references a group), hint-routes.json (the 25 x04b hints) and bank-1203.txt, with no repository search, web or paid API."
+  },
+  "hints": [
+    {
+      "hint": "POTTER",
+      "missing": [
+        { "word": "SPELL", "route": "hp", "strength": 2, "clause": "Harry Potter learns to cast spells", "why": "spells are the core of the series; as instant as WAND" },
+        { "word": "WITCH", "route": "hp", "strength": 1, "clause": "Harry Potter's friend Hermione is a brilliant witch", "why": "Hogwarts School of Witchcraft and Wizardry; the WIZARD counterpart" },
+        { "word": "HAT", "route": "hp", "strength": 1, "clause": "the Sorting Hat puts Harry Potter in Gryffindor", "why": "the Sorting Hat is one of the best-known props" },
+        { "word": "STONE", "route": "hp", "strength": 1, "clause": "the first book is Harry Potter and the Sorcerer's Stone", "why": "U.S. title of book and film one" },
+        { "word": "PHOENIX", "route": "hp", "strength": 1, "clause": "Harry Potter and the Order of the Phoenix is the fifth book", "why": "title word, plus Dumbledore's phoenix Fawkes" },
+        { "word": "CASTLE", "route": "hp", "strength": 1, "clause": "Harry Potter's school, Hogwarts, is a castle", "why": "the castle image is central to the films and theme parks" },
+        { "word": "SNAKE", "route": "hp", "strength": 1, "clause": "Harry Potter can talk to snakes, the symbol of Slytherin", "why": "Parseltongue, Slytherin's serpent and Nagini are all well known" },
+        { "word": "RABBIT", "route": "NEW: Beatrix Potter", "strength": 1, "clause": "Beatrix Potter wrote The Tale of Peter Rabbit", "why": "a clearly separate familiar meaning of POTTER; gives a third route" },
+        { "word": "PLATE", "route": "pottery", "strength": 1, "clause": "a potter makes clay plates", "why": "same footing as MUG" },
+        { "word": "CUP", "route": "pottery", "strength": 1, "clause": "a potter shapes cups from clay", "why": "same footing as MUG" },
+        { "word": "JAR", "route": "pottery", "strength": 1, "clause": "a potter throws clay jars", "why": "classic pottery vessel" },
+        { "word": "PORCELAIN", "route": "pottery", "strength": 1, "clause": "a potter can work in fine porcelain", "why": "porcelain is a pottery material" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "TRAIN", "note": "reads first as a locomotive or as 'to teach'; the Hogwarts Express link needs a moment, strength 1 is right" },
+        { "word": "WHEEL", "note": "car or Ferris wheel is the default reading; 'potter's wheel' is fine" },
+        { "word": "STONE", "note": "if added, the board reading is rock; the Sorcerer's Stone link is title-dependent" }
+      ]
+    },
+    {
+      "hint": "GOTHAM",
+      "missing": [
+        { "word": "KNIGHT", "route": "city", "strength": 2, "clause": "the Dark Knight protects Gotham City", "why": "'The Dark Knight' is Batman's most famous title; as strong as BAT" },
+        { "word": "ROBIN", "route": "city", "strength": 1, "clause": "Robin fights crime in Gotham beside Batman", "why": "Batman's sidekick; very familiar" },
+        { "word": "COMIC", "route": "city", "strength": 1, "clause": "Gotham City comes from the Batman comics", "why": "Gotham is a comic-book city" },
+        { "word": "SCARECROW", "route": "city", "strength": 1, "clause": "the Scarecrow is a Gotham City villain", "why": "same pattern as PENGUIN; known from Batman Begins" },
+        { "word": "CLOWN", "route": "city", "strength": 1, "clause": "the Joker is the clown who terrorizes Gotham", "why": "lands the Joker more cleanly than JOKE does" },
+        { "word": "NEW YORK", "route": "NEW: nickname for New York City", "strength": 1, "clause": "Gotham is an old nickname for New York City", "why": "a familiar separate meaning; gives a two-route pair (e.g. BAT + NEW YORK)" }
+      ],
+      "wrong_or_weak": [
+        { "word": "JOKE", "route": "city", "problem": "JOKE is not the Joker; the link works only as a near-pun, and solvers may not get from 'joke' to Gotham", "fix": "keep at strength 1 only if puns are accepted; otherwise prefer CLOWN" }
+      ],
+      "senses": [
+        { "word": "BAT", "note": "baseball bat or the animal; the Batman reading has to be inferred" },
+        { "word": "PENGUIN", "note": "reads as the bird; the villain reading is the only link to Gotham" },
+        { "word": "CAT", "note": "reads as a pet; Catwoman is a step away" },
+        { "word": "ROBIN", "note": "if added, the bird is the default reading" }
+      ]
+    },
+    {
+      "hint": "OGRE",
+      "missing": [
+        { "word": "GREEN", "route": "shrek", "strength": 2, "clause": "Shrek is a big green ogre", "why": "green is the defining look of the most famous ogre" },
+        { "word": "DRAGON", "route": "shrek", "strength": 1, "clause": "in Shrek, the ogre rescues Fiona from a dragon's castle", "why": "the Dragon, Donkey's love interest, is a main character" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "TROLL", "note": "an internet troll is a common reading; the fairy-tale sense is still natural" },
+        { "word": "GIANT", "note": "can read as the adjective 'huge'; either reading still points at an ogre" },
+        { "word": "LAYER", "note": "a cake or clothing layer by default; works only through the Shrek onion line, which is well known" }
+      ]
+    },
+    {
+      "hint": "PIXAR",
+      "missing": [
+        { "word": "COWBOY", "route": "films", "strength": 1, "clause": "Pixar's Woody is a toy cowboy", "why": "Toy Story's lead character" },
+        { "word": "SPACE", "route": "films", "strength": 1, "clause": "Pixar's Buzz Lightyear is a space ranger", "why": "Buzz and 'to infinity and beyond'" },
+        { "word": "BUG", "route": "films", "strength": 1, "clause": "Pixar made A Bug's Life", "why": "title word, same pattern as CAR for Cars" },
+        { "word": "SUPERHERO", "route": "films", "strength": 1, "clause": "Pixar's The Incredibles are a family of superheroes", "why": "a major franchise" },
+        { "word": "CHEF", "route": "films", "strength": 1, "clause": "in Pixar's Ratatouille, a rat dreams of becoming a chef", "why": "a second word from Ratatouille's premise" },
+        { "word": "SOUL", "route": "films", "strength": 1, "clause": "Pixar made Soul", "why": "title word of a recent Oscar-winning film" },
+        { "word": "INSIDE", "route": "films", "strength": 1, "clause": "Pixar made Inside Out", "why": "title word of one of Pixar's biggest hits" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "HOUSE", "note": "generic word; the Up balloon house needs a moment, strength 1 is right" },
+        { "word": "FISH", "note": "generic; fine because Finding Nemo is so well known" }
+      ]
+    },
+    {
+      "hint": "SHERLOCK",
+      "missing": [
+        { "word": "GLASS", "route": "holmes", "strength": 1, "clause": "Sherlock Holmes peers through a magnifying glass", "why": "the magnifying glass is his signature prop" },
+        { "word": "DOCTOR", "route": "holmes", "strength": 1, "clause": "Dr. Watson is Sherlock Holmes's partner", "why": "Watson is as famous as Holmes" },
+        { "word": "CASE", "route": "holmes", "strength": 1, "clause": "Sherlock Holmes cracks every case", "why": "standard detective vocabulary" },
+        { "word": "STREET", "route": "holmes", "strength": 1, "clause": "Sherlock Holmes lives at 221B Baker Street", "why": "Baker Street is the best-known fictional address" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "PIPE", "note": "a plumbing pipe is the default reading" },
+        { "word": "CASE", "note": "if added, a suitcase or phone case is the default reading" },
+        { "word": "GLASS", "note": "if added, a drinking glass is the default reading" }
+      ]
+    },
+    {
+      "hint": "APOLLO",
+      "missing": [
+        { "word": "BOXER", "route": "NEW: Apollo Creed (Rocky)", "strength": 1, "clause": "Apollo Creed is the champion boxer Rocky fights", "why": "a familiar separate meaning that has no route yet" },
+        { "word": "OLYMPUS", "route": "god", "strength": 1, "clause": "Apollo is one of the gods of Mount Olympus", "why": "the standard frame for Greek gods" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "SPACE", "note": "can read as 'gap' or 'room'; it still works here" },
+        { "word": "THEATER", "note": "generic; the Harlem Apollo link needs a moment, strength 1 is right" }
+      ]
+    },
+    {
+      "hint": "ICEBERG",
+      "missing": [
+        { "word": "SALAD", "route": "NEW: iceberg lettuce", "strength": 1, "clause": "iceberg lettuce is the classic salad lettuce", "why": "the most everyday meaning of ICEBERG; no route covers it yet" },
+        { "word": "BOAT", "route": "titanic", "strength": 1, "clause": "icebergs are a danger to every boat at sea", "why": "parallel to SHIP" },
+        { "word": "SEAL", "route": "polar", "strength": 1, "clause": "seals haul out on floating icebergs", "why": "a common nature-documentary image" },
+        { "word": "SINK", "route": "titanic", "strength": 1, "clause": "the Titanic sank after hitting an iceberg", "why": "the verb at the heart of the story; see senses" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "SINK", "note": "if added, the kitchen sink is the default reading" },
+        { "word": "SEAL", "note": "if added, can read as a stamp or 'seal a deal'" },
+        { "word": "PENGUIN", "note": "fine, but penguins are Antarctic only; do not pair the clause with the Arctic" }
+      ]
+    },
+    {
+      "hint": "PICNIC",
+      "missing": [
+        { "word": "TABLE", "route": "gear", "strength": 2, "clause": "families gather at a picnic table", "why": "'picnic table' is one of the most common phrases for the hint; a clear omission" },
+        { "word": "FLY", "route": "pests", "strength": 1, "clause": "flies buzz around every picnic", "why": "the classic picnic pest after ants" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "BEAR", "note": "the verb 'bear' is possible but rare on a board; fine" },
+        { "word": "FLY", "note": "if added, the verb 'fly' is the default reading" },
+        { "word": "PARK", "note": "the verb 'park a car' is a possible reading" }
+      ]
+    },
+    {
+      "hint": "CAMPFIRE",
+      "missing": [
+        { "word": "FLAME", "route": "setup", "strength": 1, "clause": "campfire flames dance in the dark", "why": "a direct physical link" },
+        { "word": "STICK", "route": "setup", "strength": 1, "clause": "you roast marshmallows on a stick over the campfire", "why": "the marshmallow stick is iconic" },
+        { "word": "CHOCOLATE", "route": "NEW: s'mores", "strength": 1, "clause": "s'mores are made with chocolate melted over a campfire", "why": "the s'mores ritual is the defining campfire treat" },
+        { "word": "GUITAR", "route": "stories", "strength": 1, "clause": "someone always strums a guitar by the campfire", "why": "goes with SONG" }
+      ],
+      "wrong_or_weak": [
+        { "word": "TENT", "route": "setup", "problem": "TENT is not part of 'building the fire', and sitting in the same route as LOG and WOOD blocks good two-route pairs like TENT + LOG", "fix": "move TENT to its own route (e.g. 'the campsite') or rename the setup route" }
+      ],
+      "senses": [
+        { "word": "LOG", "note": "a ship's log or 'log in' are possible readings; the fire sense dominates" },
+        { "word": "STORY", "note": "a building storey is possible but rare" }
+      ]
+    },
+    {
+      "hint": "STRIPES",
+      "missing": [
+        { "word": "STAR", "route": "NEW: the Stars and Stripes", "strength": 2, "clause": "the U.S. flag is the Stars and Stripes", "why": "the fixed phrase 'stars and stripes', the most famous use of the hint in the U.S.; a clear omission (FLAG itself is not in the bank)" },
+        { "word": "AMERICA", "route": "NEW: the Stars and Stripes", "strength": 1, "clause": "America's flag is the Stars and Stripes", "why": "the same route, from the country side" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "CANE", "note": "a walking cane is the default reading; the candy-cane link needs a moment, so 2 may be generous (consider 1)" },
+        { "word": "STAR", "note": "if added, reads as a celebrity or a night-sky star; the phrase still clicks" }
+      ]
+    },
+    {
+      "hint": "SPOTS",
+      "missing": [
+        { "word": "DEER", "route": "animals", "strength": 1, "clause": "a baby deer is covered in white spots", "why": "Bambi's fawn spots are well known" },
+        { "word": "SUN", "route": "NEW: sunspots", "strength": 1, "clause": "dark sunspots dot the face of the sun", "why": "a familiar compound and a separate meaning" }
+      ],
+      "wrong_or_weak": [
+        { "word": "TREASURE", "route": "place", "problem": "the idiom is singular ('X marks the spot'); with the plural hint SPOTS the link loosens", "fix": "keep at 1, but treat the place route as the weakest; prefer animal + dice pairs" },
+        { "word": "MAP", "route": "place", "problem": "same singular-idiom issue as TREASURE", "fix": "keep at 1 with the same caution" }
+      ],
+      "senses": [
+        { "word": "DOG", "note": "generic; 'Spot' as a classic dog name helps" },
+        { "word": "DICE", "note": "people call them dots or pips more often than spots; fine at 2" }
+      ]
+    },
+    {
+      "hint": "POOH",
+      "missing": [
+        { "word": "KANGAROO", "route": "hundredacre", "strength": 1, "clause": "Kanga, Pooh's motherly friend, is a kangaroo", "why": "Kanga and Roo are main characters, same pattern as TIGER/DONKEY/PIG" },
+        { "word": "ROBIN", "route": "hundredacre", "strength": 1, "clause": "Christopher Robin is Pooh's best friend", "why": "the main human character" },
+        { "word": "BEE", "route": "hundredacre", "strength": 1, "clause": "Pooh gets chased by bees while stealing honey", "why": "an iconic scene" },
+        { "word": "DISNEY", "route": "hundredacre", "strength": 1, "clause": "Winnie the Pooh is a beloved Disney character", "why": "most U.S. audiences know Pooh through Disney" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "ROBIN", "note": "if added, the bird is the default reading" },
+        { "word": "WOOD", "note": "reads as lumber; Hundred Acre Wood needs a moment, strength 1 is right" },
+        { "word": "TIGER", "note": "Tigger is not literally called a tiger in most retellings; fine at 1" }
+      ]
+    },
+    {
+      "hint": "ELF",
+      "missing": [
+        { "word": "COOKIE", "route": "NEW: the Keebler elves", "strength": 1, "clause": "the Keebler elves bake cookies in a hollow tree", "why": "a familiar U.S. ad image, separate from Santa" },
+        { "word": "GIFT", "route": "santa", "strength": 1, "clause": "Santa's elves wrap the gifts", "why": "goes with TOY" },
+        { "word": "DWARF", "route": "fantasy", "strength": 1, "clause": "elves and dwarves are classic fantasy races", "why": "the Tolkien pairing" },
+        { "word": "GREEN", "route": "santa", "strength": 1, "clause": "Santa's elves dress in green", "why": "standard costume" },
+        { "word": "SYRUP", "route": "movie", "strength": 1, "clause": "Buddy the Elf pours syrup on his spaghetti", "why": "the most quoted bit of the film; gives the one-word movie route a real member" }
+      ],
+      "wrong_or_weak": [
+        { "word": "MOVIE", "route": "movie", "problem": "generic; as the only member of its route it can only pair across routes, and MOVIE + SANTA reads like a hint for any Christmas film", "fix": "keep at 1 and add SYRUP to the route, or drop the route" }
+      ],
+      "senses": [
+        { "word": "NORTH", "note": "a bare compass direction; North Pole needs a moment, strength 1 is right" },
+        { "word": "SHOE", "note": "the Elves and the Shoemaker is less known in the U.S.; fine at 1" }
+      ]
+    },
+    {
+      "hint": "GARLIC",
+      "missing": [
+        { "word": "PRESS", "route": "cooking", "strength": 1, "clause": "a garlic press crushes the cloves", "why": "a common kitchen tool phrase" },
+        { "word": "SALT", "route": "cooking", "strength": 1, "clause": "garlic salt is a pantry staple", "why": "a fixed compound" },
+        { "word": "POWDER", "route": "cooking", "strength": 1, "clause": "garlic powder is a pantry staple", "why": "a fixed compound" },
+        { "word": "BULB", "route": "cooking", "strength": 1, "clause": "garlic grows as a bulb of cloves", "why": "a bulb of garlic is the standard term" }
+      ],
+      "wrong_or_weak": [
+        { "word": "KITCHEN", "route": "cooking", "problem": "too generic: almost any food is 'a kitchen staple', so it does not point at garlic", "fix": "remove (or keep at 1 only if the cooking route needs filler)" }
+      ],
+      "senses": [
+        { "word": "PRESS", "note": "if added, the news press or a push button is the default reading" },
+        { "word": "BULB", "note": "if added, a light bulb is the default reading" }
+      ]
+    },
+    {
+      "hint": "SONIC",
+      "missing": [
+        { "word": "FOX", "route": "hedgehog", "strength": 1, "clause": "Sonic's sidekick Tails is a two-tailed fox", "why": "Tails is in every game and both films" },
+        { "word": "HAMBURGER", "route": "NEW: Sonic Drive-In", "strength": 1, "clause": "Sonic Drive-In serves burgers to your car", "why": "a nationwide U.S. fast-food chain with heavy TV ads; stronger in the South and Midwest" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "RING", "note": "a wedding or phone ring is the default reading" },
+        { "word": "SOUND", "note": "a body of water, or 'sound' as in healthy, are possible readings" }
+      ]
+    },
+    {
+      "hint": "DISCO",
+      "missing": [
+        { "word": "CLUB", "route": "dance", "strength": 1, "clause": "a disco is a dance club", "why": "near-definition" },
+        { "word": "SUIT", "route": "dance", "strength": 1, "clause": "John Travolta's white suit is the iconic disco look", "why": "the Saturday Night Fever poster" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "BALL", "note": "a sports ball or a formal ball are default readings; 'disco ball' is fine" },
+        { "word": "FEVER", "note": "reads as illness; works only through the film title or 'disco fever'" },
+        { "word": "SUIT", "note": "if added, can read as a card suit or a lawsuit" }
+      ]
+    },
+    {
+      "hint": "MIDNIGHT",
+      "missing": [
+        { "word": "PUMPKIN", "route": "cinderella", "strength": 1, "clause": "at midnight, Cinderella's coach turns back into a pumpkin", "why": "the second-best-known detail of the midnight deadline" },
+        { "word": "BALL", "route": "clock", "strength": 1, "clause": "the Times Square ball drops at midnight on New Year's Eve", "why": "iconic; also pairs well with CINDERELLA across routes" },
+        { "word": "KISS", "route": "clock", "strength": 1, "clause": "couples share a kiss at midnight on New Year's", "why": "a well-known tradition" },
+        { "word": "OIL", "route": "NEW: burning the midnight oil", "strength": 1, "clause": "working late is burning the midnight oil", "why": "a common idiom and a separate meaning" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "BLUE", "note": "plain color word; the 'midnight blue' link needs a moment, strength 1 is right" },
+        { "word": "BALL", "note": "if added, reads as a sports ball; also Cinderella's ball, which reinforces the hint" }
+      ]
+    },
+    {
+      "hint": "JAWS",
+      "missing": [
+        { "word": "BOAT", "route": "movie", "strength": 1, "clause": "in Jaws, 'you're gonna need a bigger boat'", "why": "the most quoted line of the film" },
+        { "word": "SWIMMING", "route": "movie", "strength": 1, "clause": "Jaws scared a generation out of swimming in the ocean", "why": "goes with BEACH" },
+        { "word": "CROCODILE", "route": "mouth", "strength": 1, "clause": "a crocodile's powerful jaws snap shut", "why": "the animal best known for its jaws after the shark" },
+        { "word": "FIREFIGHTER", "route": "NEW: the Jaws of Life", "strength": 1, "clause": "firefighters use the Jaws of Life to free people from wrecks", "why": "a familiar separate meaning" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "BOND", "note": "reads as a financial bond or 'to bond'; the Bond villain is older pop culture, strength 1 is right" },
+        { "word": "BOAT", "note": "if added, generic; it lands through the famous quote" }
+      ]
+    },
+    {
+      "hint": "WALRUS",
+      "missing": [],
+      "wrong_or_weak": [
+        { "word": "IVORY", "route": "look", "problem": "ivory points first to elephants; walrus tusks are ivory but most solvers need a moment", "fix": "lower to strength 1" }
+      ],
+      "senses": [
+        { "word": "SEAL", "note": "can read as a stamp, 'seal a deal' or a Navy SEAL" },
+        { "word": "MOUSTACHE", "note": "the bank spelling is MOUSTACHE while the clause says 'mustache'; that is fine, just keep the board word as spelled" }
+      ]
+    },
+    {
+      "hint": "RAINBOW",
+      "missing": [
+        { "word": "SUN", "route": "sky", "strength": 1, "clause": "a rainbow appears when the sun shines through rain", "why": "basic rainbow science" },
+        { "word": "LIGHT", "route": "sky", "strength": 1, "clause": "a rainbow is sunlight split into colors", "why": "a direct link" }
+      ],
+      "wrong_or_weak": [
+        { "word": "UNICORN", "route": "gold", "problem": "unicorns have nothing to do with the end of the rainbow; in the sameRoute 'gold' route, UNICORN + GOLD or UNICORN + LEPRECHAUN would be read as one scene that does not exist", "fix": "move UNICORN to its own route (e.g. 'rainbow whimsy') so it pairs only across routes" }
+      ],
+      "senses": [
+        { "word": "WIZARD", "note": "generic fantasy word; Oz needs a moment, strength 1 is right" },
+        { "word": "STORM", "note": "fine; a rainbow follows a storm" }
+      ]
+    },
+    {
+      "hint": "UMBRELLA",
+      "missing": [
+        { "word": "COCKTAIL", "route": "drink", "strength": 2, "clause": "a tiny paper umbrella tops a tropical cocktail", "why": "'cocktail umbrella' is the fixed phrase; stronger than DRINK" },
+        { "word": "SUN", "route": "sun", "strength": 1, "clause": "an umbrella shields you from the sun", "why": "the route's own meaning" },
+        { "word": "PATIO", "route": "sun", "strength": 1, "clause": "a patio umbrella shades the table", "why": "a common compound" },
+        { "word": "FLY", "route": "poppins", "strength": 1, "clause": "Mary Poppins flies with her umbrella", "why": "the central Mary Poppins image; gives that route a better member than WIND" }
+      ],
+      "wrong_or_weak": [
+        { "word": "WIND", "route": "poppins", "problem": "Mary Poppins arrives on the east wind, but most solvers will not get there; the natural WIND link is the gust that flips an umbrella inside out", "fix": "move to the rain route with the clause 'a gust of wind flips your umbrella inside out' at strength 1, and use FLY for Poppins" }
+      ],
+      "senses": [
+        { "word": "SHADE", "note": "a lamp shade or a color shade are possible readings" },
+        { "word": "FLY", "note": "if added, the insect is a possible reading" }
+      ]
+    },
+    {
+      "hint": "PHARAOH",
+      "missing": [
+        { "word": "MASK", "route": "egypt", "strength": 1, "clause": "King Tut was buried in a gold death mask", "why": "the most famous pharaoh artifact" },
+        { "word": "GOD", "route": "egypt", "strength": 1, "clause": "pharaohs were worshipped as living gods", "why": "standard schoolbook fact" }
+      ],
+      "wrong_or_weak": [
+        { "word": "SNAKE", "route": "egypt", "problem": "the uraeus cobra is accurate but obscure; a general audience will not link SNAKE to a pharaoh without a defence", "fix": "remove, or keep at 1 only as a last resort" }
+      ],
+      "senses": [
+        { "word": "KING", "note": "chess king or a card king are possible readings; still fine" },
+        { "word": "MUMMY", "note": "can read as British 'mommy'; the Egyptian reading dominates" }
+      ]
+    },
+    {
+      "hint": "LUIGI",
+      "missing": [
+        { "word": "MUSHROOM", "route": "mario", "strength": 1, "clause": "Luigi grows big by eating a Super Mushroom", "why": "the Mushroom Kingdom and power-up" },
+        { "word": "PRINCESS", "route": "mario", "strength": 1, "clause": "Luigi helps rescue Princess Peach", "why": "the core plot of the games" },
+        { "word": "MOUSTACHE", "route": "mario", "strength": 1, "clause": "Luigi sports a bushy mustache", "why": "the brothers' signature look" },
+        { "word": "VACUUM", "route": "mario", "strength": 1, "clause": "in Luigi's Mansion, Luigi sucks up ghosts with a vacuum", "why": "goes with GHOST and is very memorable" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "PIPE", "note": "a plumbing pipe is the default, but that also fits a plumber" },
+        { "word": "GHOST", "note": "fine, but only through Luigi's Mansion" }
+      ]
+    },
+    {
+      "hint": "FROSTY",
+      "missing": [
+        { "word": "PIPE", "route": "snowman", "strength": 1, "clause": "Frosty the Snowman has a corncob pipe", "why": "a line from the song" },
+        { "word": "BUTTON", "route": "snowman", "strength": 1, "clause": "Frosty the Snowman has a button nose", "why": "a line from the song" },
+        { "word": "CHOCOLATE", "route": "NEW: the Wendy's Frosty", "strength": 1, "clause": "a Wendy's Frosty is a thick chocolate shake", "why": "a widely known separate meaning" },
+        { "word": "ICE CREAM", "route": "NEW: the Wendy's Frosty", "strength": 1, "clause": "a Wendy's Frosty is a soft-serve ice cream treat", "why": "the same Frosty route; also echoes the cold sense" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "MUG", "note": "can read as 'to rob'; the frosty-mug link needs a moment, strength 1 is right" },
+        { "word": "HAT", "note": "generic; it lands through the magic hat" }
+      ]
+    },
+    {
+      "hint": "PARKER",
+      "missing": [
+        { "word": "NEW YORK", "route": "spiderman", "strength": 1, "clause": "Peter Parker swings through New York City", "why": "Spider-Man's home city" },
+        { "word": "GAME", "route": "NEW: Parker Brothers", "strength": 1, "clause": "Parker Brothers made classic board games like Monopoly", "why": "a familiar separate meaning; gives a two-route pair" }
+      ],
+      "wrong_or_weak": [
+        { "word": "PHOTO", "route": "spiderman", "problem": "a near-duplicate of CAMERA; PHOTO + CAMERA would be a near-synonym pair on one board", "fix": "keep both but block CAMERA + PHOTO as a pair, or drop PHOTO" }
+      ],
+      "senses": [
+        { "word": "WEB", "note": "the internet sense is the default reading" },
+        { "word": "MARVEL", "note": "can read as 'to wonder'; the brand reading is fine" }
+      ]
+    }
+  ],
+  "groups": [],
+  "summary": "The x04b routes are mostly accurate; the main gaps are familiar meanings with no route yet (STRIPES Stars and Stripes via STAR/AMERICA, ICEBERG lettuce, GOTHAM as New York, Wendy's Frosty, Jaws of Life, Apollo Creed, Beatrix Potter) and a few clear one-word omissions (PICNIC TABLE, GOTHAM KNIGHT, UMBRELLA COCKTAIL, POOH KANGAROO, OGRE GREEN). The structural fixes are TENT (CAMPFIRE), UNICORN (RAINBOW) and WIND (UMBRELLA), each in a route that does not match its meaning; the weak entries are GARLIC KITCHEN and PHARAOH SNAKE, and WALRUS IVORY should drop to 1. Note that SHELF would be an obvious ELF target (Elf on the Shelf) but contains the hint, so it is correctly absent; no x04b route references a groups.json group, so there are no group findings."
+}

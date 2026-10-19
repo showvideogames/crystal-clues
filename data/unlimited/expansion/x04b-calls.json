@@ -1,0 +1,17 @@
+{
+  "_metadata": {
+    "purpose": "x04b checkpoint content calls (ceiling 10). Agent tool, model opus (echo claude-opus-5-5); extraUsage.enabled=false verified via get_usage before dispatch (5h 13%, weekly 69%). Each agent gets its own scratch folder and may not open others."
+  },
+  "calls": [
+    {
+      "n": 1,
+      "id": "x04b-index-reviewer",
+      "purpose": "check the 25 x04b families against the whole 1,203-word bank",
+      "output": "data/unlimited/related/index-review-x04b.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 117666,
+      "durationMs": 371982,
+      "result": "90 missing words, 13 new meanings, route fixes (TENT, UNICORN, WIND), removals (KITCHEN, SNAKE, JOKE->CLOWN, X marks the spot); applied by x04b-apply-index-review.mjs"
+    }
+  ]
+}
