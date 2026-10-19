@@ -24,6 +24,21 @@
       "tokens": 88099,
       "durationMs": 155507,
       "result": "16 PASS, 5 BORDERLINE, 2 FAIL (TELESCOPE, ARMORY kept held as owner proposals)"
+    },
+    {
+      "n": 3,
+      "id": "x04-index-reviewer",
+      "purpose": "check the 25 x04 families against the whole 1,203-word bank",
+      "input": [
+        "data/unlimited/related/groups.json",
+        "data/unlimited/related/hint-routes.json",
+        "bank word list"
+      ],
+      "output": "data/unlimited/related/index-review-x04.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 170050,
+      "durationMs": 475676,
+      "result": "122 missing words (23 new meanings), 14 clause/strength fixes, group notes; applied by x04-apply-index-review.mjs"
     }
   ]
 }

@@ -5,7 +5,7 @@
 // each of two different routes (meanings) of the hint, or two words from one
 // shared work when a route allows it. Proposals are only candidates: every one
 // still goes through content review (the index never approves anything).
-//   node scripts/unlimited/related-variations.mjs [--hint FROZEN] [--cap 14] [--batch <out.json>] [--json <out.json>]
+//   node scripts/unlimited/related-variations.mjs [--hint FROZEN] [--checkpoint x04] [--cap 14] [--batch <out.json>] [--json <out.json>]
 // Checks: every index word is a bank word; each hint's seed pairs are regenerated
 // (recall). Each candidate is classified: hint rule, owner rejection/hold,
 // "never" pairs, already in the library with this hint, an owner request, or new.
@@ -26,7 +26,8 @@ const only = arg("hint") ? normWord(arg("hint")) : null;
 const ix = loadCatalogue();
 const rejections = loadRejections();
 const groups = new Map(JSON.parse(readFileSync(GROUPS, "utf8")).groups.map((g) => [g.id, g]));
-const hints = JSON.parse(readFileSync(ROUTES, "utf8")).hints.filter((h) => !only || h.hint === only);
+const checkpoint = arg("checkpoint");
+const hints = JSON.parse(readFileSync(ROUTES, "utf8")).hints.filter((h) => (!only || h.hint === only) && (!checkpoint || h.checkpoint === checkpoint));
 const requests = JSON.parse(readFileSync(REQUESTS, "utf8")).items;
 const sentence = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -100,6 +101,6 @@ if (arg("batch")) {
     if (!byPair.has(c.pair_id)) byPair.set(c.pair_id, { pair_id: c.pair_id, a: c.a, b: c.b, clues: [], variants: [], rejected: [] });
     byPair.get(c.pair_id).clues.push({ text: c.hint, type: "related-index", wordAConnection: c.links[c.a], wordBConnection: c.links[c.b], revealExplanation: c.why, reference: null, routes: c.routes, strength: c.strength });
   }
-  writeFileSync(arg("batch"), JSON.stringify({ _metadata: { batch: "x03-p", source: [GROUPS, ROUTES], prepared: new Date().toISOString().slice(0, 10), cap, note: "related-word pilot proposals for review" }, pairs: [...byPair.values()] }, null, 1) + "\n");
+  writeFileSync(arg("batch"), JSON.stringify({ _metadata: { batch: arg("name", "x03-p"), source: [GROUPS, ROUTES], prepared: new Date().toISOString().slice(0, 10), cap, note: "related-word pilot proposals for review" }, pairs: [...byPair.values()] }, null, 1) + "\n");
   console.log(`${arg("batch")}: ${byPair.size} pairs`);
 }
