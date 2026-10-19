@@ -45,6 +45,9 @@ remove("GOTHAM", "JOKE");
 if (!find("GOTHAM", "CLOWN")) hint("GOTHAM").routes[0].words.push({ word: "CLOWN", strength: 1, clause: "the Joker, a villainous clown, terrorizes Gotham City", addedBy: by });
 remove("SPOTS", "TREASURE"); remove("SPOTS", "MAP");
 hint("PARKER").never = [...(hint("PARKER").never || []), { pair: "CAMERA+PHOTO", why: "near-synonyms (index review)" }];
+// coordinator: Frosty dessert wording (#57, #63)
+set("FROSTY", "CHOCOLATE", { clause: "a chocolate Frosty from Wendy's is a thick, frozen dairy dessert you eat with a spoon" });
+set("FROSTY", "ICE CREAM", { clause: "a Wendy's Frosty is a frozen dairy dessert much like soft-serve ice cream" });
 for (const h of routes.hints.filter((x) => x.checkpoint === "x04b")) h.routes = h.routes.filter((r) => r.words.length);
 routes._metadata.indexReviewX04b = "data/unlimited/related/index-review-x04b.json applied by scripts/unlimited/x04b-apply-index-review.mjs";
 writeFileSync(R, JSON.stringify(routes, null, 1) + "\n");

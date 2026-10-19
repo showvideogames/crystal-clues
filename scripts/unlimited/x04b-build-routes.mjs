@@ -24,7 +24,7 @@ const F = {
     "god | the Greek god | SUN:2:Apollo is the Greek god of light, often linked with the sun ; GOD:1:Apollo is a Greek god ; MUSIC:1:Apollo is also the Greek god of music ; GREECE:1:Apollo was worshipped in ancient Greece",
     "theater | Harlem's Apollo | THEATER:1:Harlem's Apollo Theater is a legendary music hall" ],
   ICEBERG: [
-    "titanic | the Titanic | TITANIC:2:the Titanic sank after hitting an iceberg ; SHIP:2:icebergs are a danger to every ship",
+    "titanic | the Titanic | TITANIC:2:the Titanic sank after hitting an iceberg ; SHIP:2:icebergs are a hazard for ships at sea",
     "polar | polar seas | ANTARCTICA:2:giant icebergs break off Antarctica ; POLAR:2:icebergs float in polar seas ; PENGUIN:1:penguins ride on icebergs ; OCEAN:1:icebergs drift across the ocean" ],
   PICNIC: [
     "gear | the picnic spread | BASKET:2:you pack lunch in a picnic basket ; BLANKET:2:you spread out a picnic blanket",
