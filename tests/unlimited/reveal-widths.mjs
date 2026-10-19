@@ -20,7 +20,7 @@ const OUT = process.argv[2] ? path.resolve(process.argv[2]) : null;
 if (OUT) fs.mkdirSync(OUT, { recursive: true });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const lib = JSON.parse(fs.readFileSync("src/unlimited/random-library.json", "utf8"));
-const WANT = ["p_crown__iron", "p_axe__king", "p_cake__couch", "p_crow__movie"];
+const WANT = ["p_crown__iron", "p_axe__king", "p_bath__sport", "p_crow__movie"];
 const chosen = WANT.map((id) => lib.pairs.find((p) => p.id === id));
 assert.ok(chosen.every(Boolean), "the four sample pairs are served by the client library");
 const board = generateBoard({ ...lib, pairs: chosen }, { seed: 4242, createdAt: "2026-10-19T12:00:00.000Z", idSuffix: "revealwidth" });
