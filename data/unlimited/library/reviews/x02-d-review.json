@@ -1,0 +1,876 @@
+{
+  "_metadata": {
+    "reviewer": "x02-reviewer-d",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-19",
+    "input": "x02-d-review-input.json",
+    "rubric": "x02 rubric (owner style examples, clicks-when-explained bar, fewer phrase-joins, mechanism labelled, explanation checked), 2026-10-19",
+    "independence": "I read only the instructions file and x02-d-review-input.json; no other repository file, search, web or paid API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_bone__funny",
+      "a": "BONE",
+      "b": "FUNNY",
+      "hints": [
+        {
+          "text": "HUMERUS",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BONE: the humerus is the upper-arm bone where the funny bone sits; FUNNY: it sounds like 'humorous', a classic pun that clicks instantly.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HUMERUS"],
+      "best_available": { "text": "HUMERUS", "why": "A well-loved pun that hits both words cleanly and the explanation is accurate." },
+      "pair_note": "Excellent pair; nothing to change."
+    },
+    {
+      "pair_id": "p_angel__devil",
+      "a": "ANGEL",
+      "b": "DEVIL",
+      "hints": [
+        {
+          "text": "CAKE",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ANGEL: angel food cake; DEVIL: devil's food cake; a phrase-join, but both are instantly familiar U.S. cakes and the light/dark opposites make it satisfying.",
+          "fix": null
+        },
+        {
+          "text": "SHOULDER",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ANGEL and DEVIL: the iconic cartoon conscience scene with an angel on one shoulder and a devil on the other; one image covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SHOULDER", "CAKE"],
+      "best_available": { "text": "SHOULDER", "why": "A scene rather than a phrase-join, exactly the style the owner wants more of, and it lands both sides at once." },
+      "pair_note": "Two good options; SHOULDER is preferred under the fewer-phrase-joins guidance."
+    },
+    {
+      "pair_id": "p_cockroach__viking",
+      "a": "COCKROACH",
+      "b": "VIKING",
+      "hints": [
+        {
+          "text": "RAID",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "COCKROACH: Raid, the famous bug spray; VIKING: Viking raids; an odd pair joined neatly by a brand/verb double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RAID"],
+      "best_available": { "text": "RAID", "why": "Unexpected pairing resolved by a clean double meaning everyone knows." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_internet__jar",
+      "a": "INTERNET",
+      "b": "JAR",
+      "hints": [
+        {
+          "text": "COOKIE",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "INTERNET: browser cookies that track you; JAR: the cookie jar; a double meaning in the same spirit as the owner's INTERNET + AFRICA -> SAFARI.",
+          "fix": "Name the jar in the explanation, e.g. 'One kind of cookie lives in the jar; the other kind tracks your browsing.'"
+        }
+      ],
+      "strong_hints": ["COOKIE"],
+      "best_available": { "text": "COOKIE", "why": "Natural, broad double meaning; only the explanation needs to mention the jar." },
+      "pair_note": "Good; explanation currently never mentions JAR."
+    },
+    {
+      "pair_id": "p_axe__helicopter",
+      "a": "AXE",
+      "b": "HELICOPTER",
+      "hints": [
+        {
+          "text": "CHOPPER",
+          "mechanism": "double_meaning",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target"],
+          "verdict": "FAIL",
+          "reason": "HELICOPTER: 'chopper' is simply the everyday slang synonym for helicopter, which the rubric fails; AXE: an axe chops, but calling an axe a 'chopper' is looser.",
+          "fix": null
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CHOPPER", "why": "The double meaning is fun, but it is a plain synonym of HELICOPTER; served only if the synonym rule is relaxed for double meanings." },
+      "pair_note": "Judgement call: strict rule reading makes this a FAIL; a lenient reading would make it BORDERLINE. Needs a non-synonym hint."
+    },
+    {
+      "pair_id": "p_referee__zebra",
+      "a": "REFEREE",
+      "b": "ZEBRA",
+      "hints": [
+        {
+          "text": "STRIPES",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "REFEREE: black-and-white striped shirts; ZEBRA: its stripes; and refs really are nicknamed 'zebras' in U.S. sports.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["STRIPES"],
+      "best_available": { "text": "STRIPES", "why": "Clean shared property with a true bonus fact in the explanation." },
+      "pair_note": "Solid if a little direct."
+    },
+    {
+      "pair_id": "p_cushion__turkey",
+      "a": "CUSHION",
+      "b": "TURKEY",
+      "hints": [
+        {
+          "text": "STUFFING",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CUSHION: the stuffing inside it; TURKEY: Thanksgiving stuffing; a tidy double meaning with a funny eat-it/sit-on-it contrast.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["STUFFING"],
+      "best_available": { "text": "STUFFING", "why": "Natural double meaning, both sides instant." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_lady__radio",
+      "a": "LADY",
+      "b": "RADIO",
+      "hints": [
+        {
+          "text": "GAGA",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "LADY: Lady Gaga; RADIO: Queen's 'Radio Ga Ga', which really inspired her stage name; the true origin fact lifts it above a plain name-join.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GAGA"],
+      "best_available": { "text": "GAGA", "why": "Pop culture with a satisfying true backstory." },
+      "pair_note": "Radio Ga Ga is less known to younger players, but the explanation makes it click."
+    },
+    {
+      "pair_id": "p_guardian__tree",
+      "a": "GUARDIAN",
+      "b": "TREE",
+      "hints": [
+        {
+          "text": "GROOT",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "GUARDIAN: Groot is one of the Guardians of the Galaxy; TREE: he is a tree creature; one character covers both, in the BARNEY style.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GROOT"],
+      "best_available": { "text": "GROOT", "why": "Exactly the owner's character-links-both style." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_door__wood",
+      "a": "DOOR",
+      "b": "WOOD",
+      "hints": [
+        {
+          "text": "KNOCK",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["phrase_join_weak", "generic"],
+          "verdict": "BORDERLINE",
+          "reason": "DOOR: knock on the door; WOOD: knock on wood; fair and familiar but a 'knock on ___' fill-in of the HAT/MAGIC -> TRICK kind the owner wants fewer of.",
+          "fix": null
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "KNOCK", "why": "Fair and instantly understood; only held back by the phrase-join guidance." },
+      "pair_note": "Usable fallback; a non-phrase idea would be preferred."
+    },
+    {
+      "pair_id": "p_canal__hat",
+      "a": "CANAL",
+      "b": "HAT",
+      "hints": [
+        {
+          "text": "PANAMA",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "moderate",
+          "flags": ["phrase_join_weak"],
+          "verdict": "BORDERLINE",
+          "reason": "CANAL: the Panama Canal; HAT: the Panama hat, which many younger U.S. players will not know; a name-only join, though the Ecuador aside is a nice touch and accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PANAMA", "why": "Fair and factually careful; the hat side is the soft spot." },
+      "pair_note": "Judgement call: could pass if Panama hat is judged broadly familiar."
+    },
+    {
+      "pair_id": "p_cheese__knife",
+      "a": "CHEESE",
+      "b": "KNIFE",
+      "hints": [
+        {
+          "text": "SWISS",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CHEESE: holey Swiss cheese; KNIFE: the Swiss Army knife; both genuinely come from Switzerland, so it is a shared origin rather than a bare name-join.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SWISS"],
+      "best_available": { "text": "SWISS", "why": "Both sides instant and the explanation is true." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_cup__hockey",
+      "a": "CUP",
+      "b": "HOCKEY",
+      "hints": [
+        {
+          "text": "STANLEY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HOCKEY and CUP: the Stanley Cup is hockey's trophy, with a bonus nod to the viral Stanley tumbler cup that makes the explanation playful.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["STANLEY"],
+      "best_available": { "text": "STANLEY", "why": "Broad U.S. reference with a current pop-culture wink." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_christmas__thief",
+      "a": "CHRISTMAS",
+      "b": "THIEF",
+      "hints": [
+        {
+          "text": "GRINCH",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CHRISTMAS and THIEF: How the Grinch Stole Christmas; one character covers both directly.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GRINCH"],
+      "best_available": { "text": "GRINCH", "why": "The natural perfect hint." },
+      "pair_note": "Direct but ideal."
+    },
+    {
+      "pair_id": "p_joke__road",
+      "a": "JOKE",
+      "b": "ROAD",
+      "hints": [
+        {
+          "text": "CHICKEN",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "JOKE and ROAD: 'Why did the chicken cross the road?', the most famous joke there is; the punchline explanation is a charming touch.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHICKEN"],
+      "best_available": { "text": "CHICKEN", "why": "Iconic shared reference with a witty explanation." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_mind__parachute",
+      "a": "MIND",
+      "b": "PARACHUTE",
+      "hints": [
+        {
+          "text": "OPEN",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "moderate",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "MIND: an open mind; PARACHUTE: it has to open; the 'minds are like parachutes' saying ties them into a satisfying shared property.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["OPEN"],
+      "best_available": { "text": "OPEN", "why": "Works even without the saying, and the saying makes it click." },
+      "pair_note": "OPEN may tempt other board words (door, jar), but generic is not a reason to reject."
+    },
+    {
+      "pair_id": "p_fall__wall",
+      "a": "FALL",
+      "b": "WALL",
+      "hints": [
+        {
+          "text": "HUMPTY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "WALL and FALL: Humpty Dumpty sat on a wall and had a great fall; one nursery rhyme covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HUMPTY"],
+      "best_available": { "text": "HUMPTY", "why": "Instantly recognised, and the pair even rhymes like the verse." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_fair__wheel",
+      "a": "FAIR",
+      "b": "WHEEL",
+      "hints": [
+        {
+          "text": "FERRIS",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "WHEEL: the Ferris wheel; FAIR: a fairground staple, and the explanation's true fact (built for the 1893 Chicago World's Fair) adds a nice click.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["FERRIS"],
+      "best_available": { "text": "FERRIS", "why": "Natural and backed by an accurate history fact." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_scale__scorpion",
+      "a": "SCALE",
+      "b": "SCORPION",
+      "hints": [
+        {
+          "text": "ZODIAC",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "SCALE: Libra's scales; SCORPION: Scorpio; both are zodiac symbols and really are adjacent signs, though the explanation never says which symbol is which.",
+          "fix": "Spell out the symbols, e.g. 'Libra's scales and Scorpio's scorpion sit side by side in the zodiac.'"
+        }
+      ],
+      "strong_hints": ["ZODIAC"],
+      "best_available": { "text": "ZODIAC", "why": "Fair, broad, and the neighbour fact is true." },
+      "pair_note": "Watch boards with other zodiac creatures (fish, crab, lion, bull, ram)."
+    },
+    {
+      "pair_id": "p_fishing__siren",
+      "a": "FISHING",
+      "b": "SIREN",
+      "hints": [
+        {
+          "text": "LURE",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "FISHING: a fishing lure; SIREN: the mythical sirens lured sailors; noun/verb double meaning with a nice mythic twist on SIREN.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["LURE"],
+      "best_available": { "text": "LURE", "why": "Elegant double meaning that recasts SIREN away from alarms." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bakery__dice",
+      "a": "BAKERY",
+      "b": "DICE",
+      "hints": [
+        {
+          "text": "ROLL",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "BAKERY: bread rolls; DICE: rolling the dice; clean noun/verb double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ROLL"],
+      "best_available": { "text": "ROLL", "why": "Fair, natural double meaning." },
+      "pair_note": "Fine; a little plain."
+    },
+    {
+      "pair_id": "p_eye__school",
+      "a": "EYE",
+      "b": "SCHOOL",
+      "hints": [
+        {
+          "text": "PUPIL",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "EYE: the pupil of the eye; SCHOOL: a pupil is a student; classic double meaning with a charming explanation.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PUPIL"],
+      "best_available": { "text": "PUPIL", "why": "Textbook double meaning, satisfying and fair." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bond__cocktail",
+      "a": "BOND",
+      "b": "COCKTAIL",
+      "hints": [
+        {
+          "text": "SHAKEN",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BOND and COCKTAIL: James Bond's martini, 'shaken, not stirred'; one famous catchphrase covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SHAKEN"],
+      "best_available": { "text": "SHAKEN", "why": "Iconic pop-culture line, lands immediately." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_coffee__rail",
+      "a": "COFFEE",
+      "b": "RAIL",
+      "hints": [
+        {
+          "text": "GRIND",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "COFFEE: grinding beans; RAIL: a skateboard rail grind, a bit less universal but clear once explained.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GRIND"],
+      "best_available": { "text": "GRIND", "why": "Fair double meaning; the skate side is moderately familiar." },
+      "pair_note": "Rail side leans on skate culture; still broadly understood."
+    },
+    {
+      "pair_id": "p_brush__nurse",
+      "a": "BRUSH",
+      "b": "NURSE",
+      "hints": [
+        {
+          "text": "SCRUBS",
+          "mechanism": "double_meaning",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "NURSE: nurses wear scrubs; BRUSH: a scrub brush scrubs; the brush side is a touch softer but clicks on reading.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SCRUBS"],
+      "best_available": { "text": "SCRUBS", "why": "Clear double meaning, plus a TV-show echo." },
+      "pair_note": "Acceptable; brush side slightly weaker."
+    },
+    {
+      "pair_id": "p_bus__waiter",
+      "a": "BUS",
+      "b": "WAITER",
+      "hints": [
+        {
+          "text": "TABLES",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "BUS: to bus tables; WAITER: to wait tables; a phrase-join, but turning BUS from a vehicle into a restaurant verb is a genuine 'oh, nice' twist.",
+          "fix": "Use the word 'bus' so the link is explicit, e.g. 'A busser buses the tables; a waiter waits them.'"
+        }
+      ],
+      "strong_hints": ["TABLES"],
+      "best_available": { "text": "TABLES", "why": "Exceptional phrase-join thanks to the BUS-as-verb reveal." },
+      "pair_note": "Explanation should name the busing explicitly."
+    },
+    {
+      "pair_id": "p_gift__mummy",
+      "a": "GIFT",
+      "b": "MUMMY",
+      "hints": [
+        {
+          "text": "WRAP",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "GIFT: gift wrap; MUMMY: wrapped in bandages; a funny shared property with a witty explanation.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WRAP"],
+      "best_available": { "text": "WRAP", "why": "Playful shared property; the 'only one is a nice surprise' line lands." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_switch__worm",
+      "a": "SWITCH",
+      "b": "WORM",
+      "hints": [
+        {
+          "text": "BAIT",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SWITCH: 'bait and switch'; WORM: worms are classic fishing bait; only the switch side is a phrase-join, and both sides are instant.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BAIT"],
+      "best_available": { "text": "BAIT", "why": "Fair, broad, and the idiom repurposes SWITCH nicely." },
+      "pair_note": "Borderline-to-pass judgement under the phrase-join guidance; I lean pass because the worm side is a real property."
+    },
+    {
+      "pair_id": "p_leak__mario",
+      "a": "LEAK",
+      "b": "MARIO",
+      "hints": [
+        {
+          "text": "PLUMBER",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "MARIO: Nintendo's famous plumber; LEAK: plumbers fix leaks; direct and fair.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PLUMBER"],
+      "best_available": { "text": "PLUMBER", "why": "Natural, accurate and broad." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_detective__pokemon",
+      "a": "DETECTIVE",
+      "b": "POKEMON",
+      "hints": [
+        {
+          "text": "PIKACHU",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "POKEMON: Pikachu is the flagship Pokemon; DETECTIVE: the Detective Pikachu film and game, where he wears a deerstalker.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PIKACHU"],
+      "best_available": { "text": "PIKACHU", "why": "One character covers both, accurately." },
+      "pair_note": "Solid; the POKEMON side is very direct."
+    },
+    {
+      "pair_id": "p_opera__organ",
+      "a": "OPERA",
+      "b": "ORGAN",
+      "hints": [
+        {
+          "text": "PHANTOM",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "OPERA: The Phantom of the Opera; ORGAN: the musical's famous pipe-organ riff and the Phantom at his organ.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PHANTOM"],
+      "best_available": { "text": "PHANTOM", "why": "Famous work linking both; the organ riff is instantly evoked." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_hammer__marvel",
+      "a": "HAMMER",
+      "b": "MARVEL",
+      "hints": [
+        {
+          "text": "THOR",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "HAMMER: Thor's hammer Mjolnir; MARVEL: Thor is a Marvel hero; explanation only covers the hammer side.",
+          "fix": "Mention Marvel, e.g. 'Only the worthy can lift Marvel's Thor's hammer, Mjolnir.'"
+        }
+      ],
+      "strong_hints": ["THOR"],
+      "best_available": { "text": "THOR", "why": "Direct and broad character link." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_snail__spongebob",
+      "a": "SNAIL",
+      "b": "SPONGEBOB",
+      "hints": [
+        {
+          "text": "GARY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SPONGEBOB and SNAIL: Gary is SpongeBob's meowing pet snail; one character covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GARY"],
+      "best_available": { "text": "GARY", "why": "Accurate, broad character link with a fun detail." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_tiger__wood",
+      "a": "TIGER",
+      "b": "WOOD",
+      "hints": [
+        {
+          "text": "GOLF",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "TIGER: Tiger Woods the golfer; WOOD: a wood is a golf club; the hidden 'Tiger Woods' in the pair makes GOLF a satisfying reveal.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GOLF"],
+      "best_available": { "text": "GOLF", "why": "Two routes into golf, with the Tiger Woods name as a bonus." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_newspaper__planet",
+      "a": "NEWSPAPER",
+      "b": "PLANET",
+      "hints": [
+        {
+          "text": "SUPERMAN",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "NEWSPAPER: Clark Kent works at the Daily Planet; PLANET: Superman comes from planet Krypton; a neat double use of 'planet'.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SUPERMAN"],
+      "best_available": { "text": "SUPERMAN", "why": "Character link with a lovely planet/Daily Planet twist." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bench__chocolate",
+      "a": "BENCH",
+      "b": "CHOCOLATE",
+      "hints": [
+        {
+          "text": "GUMP",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BENCH and CHOCOLATE: Forrest Gump on the bus-stop bench with his box of chocolates; one iconic scene covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GUMP"],
+      "best_available": { "text": "GUMP", "why": "Iconic film scene; exactly the owner's preferred style." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_tornado__wheat",
+      "a": "TORNADO",
+      "b": "WHEAT",
+      "hints": [
+        {
+          "text": "KANSAS",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "TORNADO: Tornado Alley and Dorothy's twister in The Wizard of Oz; WHEAT: Kansas is the Wheat State; true facts plus a pop-culture nod.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["KANSAS"],
+      "best_available": { "text": "KANSAS", "why": "Accurate place link with a Wizard of Oz bonus." },
+      "pair_note": "Strong."
+    }
+  ]
+}

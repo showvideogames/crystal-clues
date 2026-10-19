@@ -1,0 +1,932 @@
+{
+  "_metadata": {
+    "reviewer": "x02-reviewer-e",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-19",
+    "input": "x02-e-review-input.json",
+    "rubric": "x02 rubric (owner style examples, clicks-when-explained bar, fewer phrase-joins, mechanism labelled, explanation checked), 2026-10-19",
+    "independence": "Apart from the instructions file, I read only x02-e-review-input.json and opened no other file, repository search, web page or API."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_donkey__godzilla",
+      "a": "DONKEY",
+      "b": "GODZILLA",
+      "hints": [
+        {
+          "text": "KONG",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "DONKEY via Nintendo's Donkey Kong and GODZILLA via the Godzilla vs. Kong film rivalry; one giant-ape name joins a video game and a monster movie.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["KONG"],
+      "best_available": { "text": "KONG", "why": "Instant on both sides, and pairing an arcade ape with a monster-movie rival is fun." },
+      "pair_note": "Ideal pair; nothing to change."
+    },
+    {
+      "pair_id": "p_carpet__lamp",
+      "a": "CARPET",
+      "b": "LAMP",
+      "hints": [
+        {
+          "text": "ALADDIN",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CARPET via Aladdin's magic carpet and LAMP via the Genie's lamp; one story covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ALADDIN"],
+      "best_available": { "text": "ALADDIN", "why": "The most natural hint possible for these two words." },
+      "pair_note": "Easy and fair. Not a surprise, but it is the right hint."
+    },
+    {
+      "pair_id": "p_lady__queen",
+      "a": "LADY",
+      "b": "QUEEN",
+      "hints": [
+        {
+          "text": "GAGA",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "LADY via Lady Gaga and QUEEN via the band's \"Radio Ga Ga,\" which gave her the name; the Queen side takes a beat but lands as a real 'oh, nice'.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GAGA"],
+      "best_available": { "text": "GAGA", "why": "A true name-origin fact that joins a pop star to a rock band." },
+      "pair_note": "Most players will get QUEEN via \"Radio Ga Ga\" even if they don't know the name-origin story."
+    },
+    {
+      "pair_id": "p_cinderella__crocodile",
+      "a": "CINDERELLA",
+      "b": "CROCODILE",
+      "hints": [
+        {
+          "text": "CLOCK",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CINDERELLA via the midnight clock and CROCODILE via Peter Pan's ticking crocodile that swallowed a clock; two famous story scenes.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CLOCK"],
+      "best_available": { "text": "CLOCK", "why": "Two iconic storybook clocks; it clicks right away." },
+      "pair_note": "Strong. This is the story-based style the owner wants more of."
+    },
+    {
+      "pair_id": "p_noodle__piano",
+      "a": "NOODLE",
+      "b": "PIANO",
+      "hints": [
+        {
+          "text": "CHOPSTICKS",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "NOODLE via eating with chopsticks and PIANO via the beginner tune \"Chopsticks\"; a clean double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHOPSTICKS"],
+      "best_available": { "text": "CHOPSTICKS", "why": "A real double meaning that both sides grasp immediately." },
+      "pair_note": "One of the batch's best."
+    },
+    {
+      "pair_id": "p_diamond__pencil",
+      "a": "DIAMOND",
+      "b": "PENCIL",
+      "hints": [
+        {
+          "text": "GRAPHITE",
+          "mechanism": "fact",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "PENCIL via graphite \"lead\" and DIAMOND via both being forms of carbon; the diamond side needs basic science, but most players will accept it once it is explained.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GRAPHITE"],
+      "best_available": { "text": "GRAPHITE", "why": "A true and fairly well-known chemistry fact; the pencil side guides the solve." },
+      "pair_note": "The diamond side is the weaker one, but the idea is sound and the explanation is accurate."
+    },
+    {
+      "pair_id": "p_architecture__plane",
+      "a": "ARCHITECTURE",
+      "b": "PLANE",
+      "hints": [
+        {
+          "text": "WRIGHT",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ARCHITECTURE via Frank Lloyd Wright and PLANE via the Wright brothers; one surname, two famous American pioneers.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WRIGHT"],
+      "best_available": { "text": "WRIGHT", "why": "Two famous people share one name, which makes a satisfying reveal." },
+      "pair_note": "Excellent. Labelled double_meaning because two different people share the name."
+    },
+    {
+      "pair_id": "p_opera__star-wars",
+      "a": "OPERA",
+      "b": "STAR WARS",
+      "hints": [
+        {
+          "text": "PHANTOM",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "OPERA via The Phantom of the Opera and STAR WARS via The Phantom Menace; it is a title-word join, but both titles are instantly familiar and the pairing is satisfying, so it clears the exceptional bar.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PHANTOM"],
+      "best_available": { "text": "PHANTOM", "why": "Two blockbuster titles share one word, and the Opera side is a real character." },
+      "pair_note": "A title-word join that qualifies as exceptional. The facts are correct: Episode I is The Phantom Menace."
+    },
+    {
+      "pair_id": "p_skateboard__tiger",
+      "a": "SKATEBOARD",
+      "b": "TIGER",
+      "hints": [
+        {
+          "text": "TONY",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SKATEBOARD via Tony Hawk and TIGER via Tony the Tiger; two famous Tonys.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TONY"],
+      "best_available": { "text": "TONY", "why": "Two household Tonys; it's playful and fair." },
+      "pair_note": "Strong pop-culture pair."
+    },
+    {
+      "pair_id": "p_elvis__wedding",
+      "a": "ELVIS",
+      "b": "WEDDING",
+      "hints": [
+        {
+          "text": "VEGAS",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ELVIS via his Vegas legacy and impersonators, and WEDDING via quickie Vegas chapels; the Elvis-officiated chapel wedding brings both together.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["VEGAS"],
+      "best_available": { "text": "VEGAS", "why": "One vivid scene contains both targets." },
+      "pair_note": "The combined-idea explanation is a good example of the style."
+    },
+    {
+      "pair_id": "p_electricity__river",
+      "a": "ELECTRICITY",
+      "b": "RIVER",
+      "hints": [
+        {
+          "text": "CURRENT",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ELECTRICITY via electric current and RIVER via a river's current; a textbook double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CURRENT"],
+      "best_available": { "text": "CURRENT", "why": "The perfect natural hint for this pair." },
+      "pair_note": "Classic and familiar rather than surprising, but correct."
+    },
+    {
+      "pair_id": "p_hammer__thunder",
+      "a": "HAMMER",
+      "b": "THUNDER",
+      "hints": [
+        {
+          "text": "THOR",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HAMMER via Mjolnir and THUNDER via Thor being the god of thunder; one character covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["THOR"],
+      "best_available": { "text": "THOR", "why": "Obvious, but it is the natural hint." },
+      "pair_note": "Easy solve."
+    },
+    {
+      "pair_id": "p_father__hand",
+      "a": "FATHER",
+      "b": "HAND",
+      "hints": [
+        {
+          "text": "VADER",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "FATHER via \"I am your father\" and HAND via Vader cutting off Luke's hand in the same Empire Strikes Back duel; one famous scene.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["VADER"],
+      "best_available": { "text": "VADER", "why": "Both targets come from the same iconic duel." },
+      "pair_note": "Excellent scene-based hint; the facts are correct."
+    },
+    {
+      "pair_id": "p_chimney__penguin",
+      "a": "CHIMNEY",
+      "b": "PENGUIN",
+      "hints": [
+        {
+          "text": "POPPINS",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CHIMNEY via Bert's chimney sweeps (\"Step in Time\") and PENGUIN via the cartoon penguin waiters in \"Jolly Holiday\"; the penguin side is a little less famous but clicks once mentioned.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["POPPINS"],
+      "best_available": { "text": "POPPINS", "why": "Two memorable scenes from one beloved film." },
+      "pair_note": "The facts are accurate. The penguin side is the softer one."
+    },
+    {
+      "pair_id": "p_cricket__whale",
+      "a": "CRICKET",
+      "b": "WHALE",
+      "hints": [
+        {
+          "text": "PINOCCHIO",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CRICKET via Jiminy Cricket and WHALE via Monstro; one Disney story covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PINOCCHIO"],
+      "best_available": { "text": "PINOCCHIO", "why": "One story, two famous creatures." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_santa__thief",
+      "a": "SANTA",
+      "b": "THIEF",
+      "hints": [
+        {
+          "text": "GRINCH",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SANTA via the Grinch's Santa disguise and THIEF via his stealing Christmas; one story, both sides.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GRINCH"],
+      "best_available": { "text": "GRINCH", "why": "The Santa-suit thief is exactly what both words point to." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_tooth__unicorn",
+      "a": "TOOTH",
+      "b": "UNICORN",
+      "hints": [
+        {
+          "text": "NARWHAL",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "TOOTH via the narwhal's tusk being a tooth and UNICORN via its nickname \"unicorn of the sea\"; a great fact.",
+          "fix": "Drop the false cause-and-effect: \"A narwhal's spiral 'horn' is really a long tooth, and it earns the narwhal the nickname unicorn of the sea.\" (The nickname comes from the horn-like look, not from it being a tooth.)"
+        }
+      ],
+      "strong_hints": ["NARWHAL"],
+      "best_available": { "text": "NARWHAL", "why": "A delightful true fact that covers both words." },
+      "pair_note": "Only the explanation's 'which is why' needs a light edit."
+    },
+    {
+      "pair_id": "p_dynamite__einstein",
+      "a": "DYNAMITE",
+      "b": "EINSTEIN",
+      "hints": [
+        {
+          "text": "NOBEL",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "DYNAMITE via Alfred Nobel inventing it and EINSTEIN via his 1921 Nobel Prize; the irony of dynamite funding a prize makes it satisfying.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NOBEL"],
+      "best_available": { "text": "NOBEL", "why": "True on both sides, with a nice surprise on the dynamite side." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_elvis__pyramid",
+      "a": "ELVIS",
+      "b": "PYRAMID",
+      "hints": [
+        {
+          "text": "MEMPHIS",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 1,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation", "text_fix"],
+          "verdict": "BORDERLINE",
+          "reason": "ELVIS via Graceland in Memphis is instant, but PYRAMID via ancient Egypt's Memphis depends on geography most U.S. players don't know, so the pyramid side is the weak one.",
+          "fix": "Add the U.S. hook: \"Elvis's Graceland is in Memphis, which has its own giant Pyramid arena and is named after the ancient Egyptian capital near the pyramids.\""
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MEMPHIS", "why": "Clever two-Memphis idea; it works best if the explanation also mentions the Memphis Pyramid in Tennessee." },
+      "pair_note": "The idea is good, but the pyramid side is soft. Mentioning Memphis's own Pyramid arena could push it to PASS."
+    },
+    {
+      "pair_id": "p_tornado__wizard",
+      "a": "TORNADO",
+      "b": "WIZARD",
+      "hints": [
+        {
+          "text": "KANSAS",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "TORNADO via the Kansas twister (and tornado country) and WIZARD via The Wizard of Oz's \"not in Kansas anymore\"; one story covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["KANSAS"],
+      "best_available": { "text": "KANSAS", "why": "Natural and fair; there is no setting more fitting for this pair." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_duck__football",
+      "a": "DUCK",
+      "b": "FOOTBALL",
+      "hints": [
+        {
+          "text": "DOWN",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "DUCK via down feathers and FOOTBALL via downs; a clean double meaning with a nice misdirect.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DOWN"],
+      "best_available": { "text": "DOWN", "why": "A crisp double meaning that hides well on a board." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_angel__football",
+      "a": "ANGEL",
+      "b": "FOOTBALL",
+      "hints": [
+        {
+          "text": "CHARLIE",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ANGEL via Charlie's Angels and FOOTBALL via Lucy pulling the football away from Charlie Brown; two famous Charlies, and the Peanuts gag is a lovely reveal.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHARLIE"],
+      "best_available": { "text": "CHARLIE", "why": "The Charlie Brown football gag makes it a real 'oh, nice'." },
+      "pair_note": "The Angel side reads as a title join, but the football side is a scene, so overall it is a two-Charlies double reference."
+    },
+    {
+      "pair_id": "p_arm__funny",
+      "a": "ARM",
+      "b": "FUNNY",
+      "hints": [
+        {
+          "text": "HUMERUS",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ARM via the upper-arm bone and FUNNY via the 'humorous' pun (and the funny-bone joke); a classic, beloved pun.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HUMERUS"],
+      "best_available": { "text": "HUMERUS", "why": "A well-known pun that fits the pair perfectly." },
+      "pair_note": "Optionally, the explanation could also mention the funny bone."
+    },
+    {
+      "pair_id": "p_ear__fly",
+      "a": "EAR",
+      "b": "FLY",
+      "hints": [
+        {
+          "text": "DUMBO",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "EAR via Dumbo's huge ears and FLY via his flying with them; one character, one image.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DUMBO"],
+      "best_available": { "text": "DUMBO", "why": "A single image that combines both words." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_door__joke",
+      "a": "DOOR",
+      "b": "JOKE",
+      "hints": [
+        {
+          "text": "KNOCK",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "DOOR via knocking on a door and JOKE via the knock-knock joke; the joke side is a compound, but it is instantly familiar and the joke itself pretends to knock at a door, so it passes as exceptional.",
+          "fix": "Make it one idea rather than circular: \"Every knock-knock joke pretends someone is knocking at your door.\""
+        }
+      ],
+      "strong_hints": ["KNOCK"],
+      "best_available": { "text": "KNOCK", "why": "The natural hint, and the two sides really are one idea." },
+      "pair_note": "\"Starts with a knock\" in the explanation is circular; the fix combines the two sides."
+    },
+    {
+      "pair_id": "p_pickle__rat",
+      "a": "PICKLE",
+      "b": "RAT",
+      "hints": [
+        {
+          "text": "PIPER",
+          "mechanism": "double_meaning",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "RAT via the Pied Piper of Hamelin and PICKLE via Peter Piper's pickled peppers; two famous Pipers. The pickle side is a half-step away (via 'pickled') but clicks.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PIPER"],
+      "best_available": { "text": "PIPER", "why": "Two classic nursery-lore Pipers; it's a satisfying pairing." },
+      "pair_note": "It uses the same tongue-twister as PECK for KISS + PEPPER. Avoid serving both in one session, and watch boards that include PEPPER."
+    },
+    {
+      "pair_id": "p_kiss__pepper",
+      "a": "KISS",
+      "b": "PEPPER",
+      "hints": [
+        {
+          "text": "PECK",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "KISS via a peck on the cheek and PEPPER via \"a peck of pickled peppers\"; a peck is a kind of kiss rather than a plain synonym, and the unit-of-measure meaning gives the double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PECK"],
+      "best_available": { "text": "PECK", "why": "A neat double meaning tied to a famous tongue-twister." },
+      "pair_note": "Peck is close to a synonym for KISS, but it is a specific kind of kiss, so I did not flag it. It shares the Peter Piper source with the PIPER hint."
+    },
+    {
+      "pair_id": "p_new-year__science",
+      "a": "NEW YEAR",
+      "b": "SCIENCE",
+      "hints": [
+        {
+          "text": "NYE",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "NEW YEAR via the familiar abbreviation NYE and SCIENCE via Bill Nye the Science Guy; an abbreviation at NYC level that doubles as a surname.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NYE"],
+      "best_available": { "text": "NYE", "why": "A clever abbreviation-and-surname double meaning." },
+      "pair_note": "The abbreviation is about as familiar as NYC, so it fits the owner's exception."
+    },
+    {
+      "pair_id": "p_bear__stapler",
+      "a": "BEAR",
+      "b": "STAPLER",
+      "hints": [
+        {
+          "text": "DWIGHT",
+          "mechanism": "shared_reference",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "STAPLER via the stapler in Jell-O prank and BEAR via the meme \"Bears. Beets. Battlestar Galactica.\"; The Office is mainstream U.S. TV, though the bear side leans on fan-favourite quotes.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DWIGHT"],
+      "best_available": { "text": "DWIGHT", "why": "Two iconic Office bits about one character." },
+      "pair_note": "A judgement call: The Office is hugely popular, but players who have not seen it will miss the bear side."
+    },
+    {
+      "pair_id": "p_snake__whip",
+      "a": "SNAKE",
+      "b": "WHIP",
+      "hints": [
+        {
+          "text": "INDIANA",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "WHIP via Indiana Jones's signature whip and SNAKE via his famous fear of snakes; one character, and the state name makes a fun disguise.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["INDIANA"],
+      "best_available": { "text": "INDIANA", "why": "Both targets are Indy's best-known traits." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_chef__pig",
+      "a": "CHEF",
+      "b": "PIG",
+      "hints": [
+        {
+          "text": "MUPPET",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CHEF via the Swedish Chef and PIG via Miss Piggy; both are well-known Muppets.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["MUPPET"],
+      "best_available": { "text": "MUPPET", "why": "A fair cast-member link for both words." },
+      "pair_note": "Pleasant. The chef side is slightly less immediate than Piggy."
+    },
+    {
+      "pair_id": "p_hood__sheep",
+      "a": "HOOD",
+      "b": "SHEEP",
+      "hints": [
+        {
+          "text": "WOLF",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HOOD via the wolf in Little Red Riding Hood and SHEEP via the wolf in sheep's clothing; both are classic fable villains.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WOLF"],
+      "best_available": { "text": "WOLF", "why": "Natural, fair and story-based." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_bench__feather",
+      "a": "BENCH",
+      "b": "FEATHER",
+      "hints": [
+        {
+          "text": "GUMP",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BENCH via Forrest on the bus-stop bench and FEATHER via the floating feather in the film's famous opening; one scene covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GUMP"],
+      "best_available": { "text": "GUMP", "why": "One iconic film opening contains both targets." },
+      "pair_note": "Excellent scene hint."
+    },
+    {
+      "pair_id": "p_road__sky",
+      "a": "ROAD",
+      "b": "SKY",
+      "hints": [
+        {
+          "text": "CHICKEN",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "ROAD via the chicken that crosses the road and SKY via Chicken Little's falling sky; two famous chicken stories.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHICKEN"],
+      "best_available": { "text": "CHICKEN", "why": "Two universally known chicken references." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_gum__squirrel",
+      "a": "GUM",
+      "b": "SQUIRREL",
+      "hints": [
+        {
+          "text": "WONKA",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "GUM via Violet's blueberry gum and SQUIRREL via Veruca and the nut-sorting squirrels (book and 2005 film); the squirrel side is softer for fans of the 1971 film, which used geese.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WONKA"],
+      "best_available": { "text": "WONKA", "why": "Two memorable kid-comeuppance scenes from one story." },
+      "pair_note": "The squirrel side depends on which version a player knows, but it is correct."
+    },
+    {
+      "pair_id": "p_horseshoe__rabbit",
+      "a": "HORSESHOE",
+      "b": "RABBIT",
+      "hints": [
+        {
+          "text": "LUCKY",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HORSESHOE and RABBIT (via the rabbit's foot) are both classic good-luck charms; a clean shared property.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["LUCKY"],
+      "best_available": { "text": "LUCKY", "why": "The obvious shared property; fair and natural." },
+      "pair_note": "Pleasant rather than surprising."
+    },
+    {
+      "pair_id": "p_cactus__tea",
+      "a": "CACTUS",
+      "b": "TEA",
+      "hints": [
+        {
+          "text": "ARIZONA",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CACTUS via Arizona's saguaros and TEA via AriZona iced tea; a place and a brand share one name.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ARIZONA"],
+      "best_available": { "text": "ARIZONA", "why": "A fun state-and-brand double that U.S. players will know." },
+      "pair_note": "Strong for a U.S. audience."
+    },
+    {
+      "pair_id": "p_golf__loch-ness",
+      "a": "GOLF",
+      "b": "LOCH NESS",
+      "hints": [
+        {
+          "text": "SCOTLAND",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "GOLF via Scotland as golf's birthplace and LOCH NESS via its Scottish home; straightforward geography.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SCOTLAND"],
+      "best_available": { "text": "SCOTLAND", "why": "Fair and accurate; it is the natural link." },
+      "pair_note": "A bit plain, but correct."
+    },
+    {
+      "pair_id": "p_bee__toy",
+      "a": "BEE",
+      "b": "TOY",
+      "hints": [
+        {
+          "text": "BUZZ",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "BEE via the buzzing sound and TOY via Buzz Lightyear from Toy Story; a sound and a character share one word.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BUZZ"],
+      "best_available": { "text": "BUZZ", "why": "A sound-and-character double meaning, in the spirit of TOY + DINOSAUR -> REX." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_coffee__comedy",
+      "a": "COFFEE",
+      "b": "COMEDY",
+      "hints": [
+        {
+          "text": "ROAST",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "COFFEE via roasted beans and COMEDY via a celebrity roast; a clean double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ROAST"],
+      "best_available": { "text": "ROAST", "why": "A crisp double meaning with nice misdirection." },
+      "pair_note": "Strong."
+    }
+  ]
+}

@@ -54,8 +54,9 @@ test("served hint: an approved canonical wins, otherwise the strongest playable 
 test("the real catalogue: full bank, every library pair inside it, owner examples recorded", () => {
   const ix = loadCatalogue();
   const s = stats(ix);
-  assert.equal(s.bankWords, 1196);
-  assert.equal(s.possiblePairs, 714610);
+  const snap = JSON.parse(readFileSync("data/unlimited/wordbank/wordbank.json", "utf8"))._metadata;
+  assert.equal(s.bankWords, snap.databaseCount);              // the paged, count-verified snapshot
+  assert.equal(s.possiblePairs, pairCount(snap.databaseCount));
   assert.deepEqual(s.pairWordsOutsideBank, []);
   for (const [id, hint] of [["p_food__zombie", "BRAINS"], ["p_apple__big", "NYC"], ["p_calculator__camouflage", "AMBUSH"], ["p_dinosaur__friend", "BARNEY"], ["p_christmas__robot", "EVE"]]) {
     const p = ix.byId.get(id);

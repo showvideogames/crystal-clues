@@ -1,0 +1,945 @@
+{
+  "_metadata": {
+    "reviewer": "x02-reviewer-a",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-19",
+    "input": "x02-a-review-input.json",
+    "rubric": "x02 rubric (owner style examples, clicks-when-explained bar, fewer phrase-joins, mechanism labelled, explanation checked), 2026-10-19",
+    "independence": "I read only the instructions file and the single input file x02-a-review-input.json; no other file, repository search, web or paid API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_carpet__genie",
+      "a": "CARPET",
+      "b": "GENIE",
+      "hints": [
+        {
+          "text": "ALADDIN",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both the Magic Carpet and the Genie are Aladdin's companions in the story and the Disney film; instant on both sides.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ALADDIN"],
+      "best_available": { "text": "ALADDIN", "why": "The natural, instantly fair link for both sidekicks." },
+      "pair_note": "Easy but clean; the obvious hint is the right one here."
+    },
+    {
+      "pair_id": "p_mario__pipe",
+      "a": "MARIO",
+      "b": "PIPE",
+      "hints": [
+        {
+          "text": "PLUMBER",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Mario is famously a plumber, and pipes are a plumber's stock in trade (plus Mario's warp pipes), so both sides click.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PLUMBER"],
+      "best_available": { "text": "PLUMBER", "why": "Ties Mario's job to the pipes he travels through." },
+      "pair_note": "Solid, fair, mildly playful."
+    },
+    {
+      "pair_id": "p_chess__church",
+      "a": "CHESS",
+      "b": "CHURCH",
+      "hints": [
+        {
+          "text": "BISHOP",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A bishop is a chess piece and a church official; a true double meaning that lands at once.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BISHOP"],
+      "best_available": { "text": "BISHOP", "why": "Textbook double meaning for both targets." },
+      "pair_note": "Model hint of the style the owner wants."
+    },
+    {
+      "pair_id": "p_giant__jack",
+      "a": "GIANT",
+      "b": "JACK",
+      "hints": [
+        {
+          "text": "BEANSTALK",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Jack and the Beanstalk: Jack climbs the beanstalk and meets the giant at the top.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BEANSTALK"],
+      "best_available": { "text": "BEANSTALK", "why": "The fairy tale ties both targets directly." },
+      "pair_note": "Clean story link."
+    },
+    {
+      "pair_id": "p_trash__trophy",
+      "a": "TRASH",
+      "b": "TROPHY",
+      "hints": [
+        {
+          "text": "OSCAR",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Oscar the Grouch lives in a trash can and the Oscar is Hollywood's trophy; two unrelated Oscars meet neatly.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["OSCAR"],
+      "best_available": { "text": "OSCAR", "why": "A real 'oh, nice' double reference." },
+      "pair_note": "One of the strongest in the batch."
+    },
+    {
+      "pair_id": "p_goat__kid",
+      "a": "GOAT",
+      "b": "KID",
+      "hints": [
+        {
+          "text": "BILLY",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Billy goat and Billy the Kid are both instantly familiar, and the extra layer (a kid is a baby goat) makes this phrase-join satisfying rather than mechanical.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BILLY"],
+      "best_available": { "text": "BILLY", "why": "Two famous phrases plus the goat/kid wordplay." },
+      "pair_note": "A phrase-join, but one of the exceptional kind the owner still accepts."
+    },
+    {
+      "pair_id": "p_cross__road",
+      "a": "CROSS",
+      "b": "ROAD",
+      "hints": [
+        {
+          "text": "CHICKEN",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The classic joke 'Why did the chicken cross the road?' supplies both words in one breath.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHICKEN"],
+      "best_available": { "text": "CHICKEN", "why": "Universally known joke covering both targets." },
+      "pair_note": "Very easy, but fair and a little fun."
+    },
+    {
+      "pair_id": "p_godzilla__skyscraper",
+      "a": "GODZILLA",
+      "b": "SKYSCRAPER",
+      "hints": [
+        {
+          "text": "KONG",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "King Kong battled Godzilla on film (1962 and 2021) and famously climbed the Empire State Building.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["KONG"],
+      "best_available": { "text": "KONG", "why": "Both targets are iconic parts of the Kong story." },
+      "pair_note": "Strong pop-culture link."
+    },
+    {
+      "pair_id": "p_octopus__spongebob",
+      "a": "OCTOPUS",
+      "b": "SPONGEBOB",
+      "hints": [
+        {
+          "text": "SQUIDWARD",
+          "mechanism": "shared_reference",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Squidward is SpongeBob's neighbor, and despite his name he is officially an octopus; the octopus side is a surprise fact that delivers a great reveal.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SQUIDWARD"],
+      "best_available": { "text": "SQUIDWARD", "why": "Easy SpongeBob side plus a delightful trivia twist on the octopus side." },
+      "pair_note": "Works best if no SQUID tile is on the board to mislead."
+    },
+    {
+      "pair_id": "p_hair__tower",
+      "a": "HAIR",
+      "b": "TOWER",
+      "hints": [
+        {
+          "text": "RAPUNZEL",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Rapunzel is locked in a tower and lets down her long hair; both are the heart of the tale.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RAPUNZEL"],
+      "best_available": { "text": "RAPUNZEL", "why": "Defining story for both targets." },
+      "pair_note": "Clean and fair."
+    },
+    {
+      "pair_id": "p_statue__torch",
+      "a": "STATUE",
+      "b": "TORCH",
+      "hints": [
+        {
+          "text": "LIBERTY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Statue of Liberty (dedicated 1886) is the statue, and her raised torch is its defining feature.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["LIBERTY"],
+      "best_available": { "text": "LIBERTY", "why": "One landmark covers both targets." },
+      "pair_note": "Straightforward; the explanation's date is correct."
+    },
+    {
+      "pair_id": "p_morning__mountain",
+      "a": "MORNING",
+      "b": "MOUNTAIN",
+      "hints": [
+        {
+          "text": "DEW",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "Morning dew and Mountain Dew are both instantly familiar, and the nature-versus-soda twist gives this phrase-join a real click.",
+          "fix": "Replace 'fills cans of Mountain Dew' with 'gives Mountain Dew its name' so the explanation does not read as a literal claim about what is in the can."
+        }
+      ],
+      "strong_hints": ["DEW"],
+      "best_available": { "text": "DEW", "why": "Both phrases are household; the soda brand adds a light twist." },
+      "pair_note": "Phrase-join passed as exceptional; a second opinion could reasonably call it BORDERLINE under the fewer-phrase-joins guidance."
+    },
+    {
+      "pair_id": "p_keyboard__prison",
+      "a": "KEYBOARD",
+      "b": "PRISON",
+      "hints": [
+        {
+          "text": "ESCAPE",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Esc (Escape) key sits on every keyboard, and escape is what prisoners plot; a neat double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ESCAPE"],
+      "best_available": { "text": "ESCAPE", "why": "Crisp double meaning across tech and crime." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_fashion__plane",
+      "a": "FASHION",
+      "b": "PLANE",
+      "hints": [
+        {
+          "text": "RUNWAY",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A runway is both the catwalk for fashion shows and the strip planes take off from.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RUNWAY"],
+      "best_available": { "text": "RUNWAY", "why": "Perfect two-sense word." },
+      "pair_note": "One of the batch's best double meanings."
+    },
+    {
+      "pair_id": "p_circus__ear",
+      "a": "CIRCUS",
+      "b": "EAR",
+      "hints": [
+        {
+          "text": "DUMBO",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dumbo is the circus elephant whose huge ears let him fly; both targets are central to the film.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DUMBO"],
+      "best_available": { "text": "DUMBO", "why": "Character defined by both targets." },
+      "pair_note": "Clean."
+    },
+    {
+      "pair_id": "p_game__jungle",
+      "a": "GAME",
+      "b": "JUNGLE",
+      "hints": [
+        {
+          "text": "JUMANJI",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Jumanji is a magical board game (later a video game) that unleashes the jungle on its players.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["JUMANJI"],
+      "best_available": { "text": "JUMANJI", "why": "The film is literally a jungle game." },
+      "pair_note": "Solid."
+    },
+    {
+      "pair_id": "p_blue__mushroom",
+      "a": "BLUE",
+      "b": "MUSHROOM",
+      "hints": [
+        {
+          "text": "SMURF",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Smurfs are famously blue and live in mushroom houses; the mushroom side is a pleasing detail.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SMURF"],
+      "best_available": { "text": "SMURF", "why": "Both targets are signature Smurf details." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_memory__swimming",
+      "a": "MEMORY",
+      "b": "SWIMMING",
+      "hints": [
+        {
+          "text": "DORY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dory's short-term memory loss and her 'just keep swimming' motto cover both targets.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DORY"],
+      "best_available": { "text": "DORY", "why": "Character trait plus catchphrase, one for each side." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_olympus__strong",
+      "a": "OLYMPUS",
+      "b": "STRONG",
+      "hints": [
+        {
+          "text": "HERCULES",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "Hercules is the byword for strength, and as Zeus's son he earns a place on Mount Olympus (the goal of the Disney film); the hint works but the explanation never mentions Olympus.",
+          "fix": "Rewrite as 'Zeus's son Hercules used his legendary strength to earn his place on Mount Olympus.' so both targets are explained."
+        }
+      ],
+      "strong_hints": ["HERCULES"],
+      "best_available": { "text": "HERCULES", "why": "Strength and Olympus are both core to the hero." },
+      "pair_note": "Good hint with a one-sided explanation; fix the text."
+    },
+    {
+      "pair_id": "p_horseshoe__leprechaun",
+      "a": "HORSESHOE",
+      "b": "LEPRECHAUN",
+      "hints": [
+        {
+          "text": "LUCKY",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Horseshoes and leprechauns are both luck symbols, and Lucky Charms (Lucky the Leprechaun, horseshoe marshmallows) doubles the link.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["LUCKY"],
+      "best_available": { "text": "LUCKY", "why": "Shared luck symbolism with a cereal-box bonus." },
+      "pair_note": "Two routes reinforce each other; strong."
+    },
+    {
+      "pair_id": "p_hawk__skateboard",
+      "a": "HAWK",
+      "b": "SKATEBOARD",
+      "hints": [
+        {
+          "text": "TONY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "TONY completes Tony Hawk, the world's most famous skateboarder, covering both sides; but the claim he 'made skateboarding famous' overstates history.",
+          "fix": "Rewrite as 'Tony Hawk, skateboarding's biggest star, landed the first 900 in 1999.' to avoid the overstatement."
+        }
+      ],
+      "strong_hints": ["TONY"],
+      "best_available": { "text": "TONY", "why": "Famous person links both targets." },
+      "pair_note": "Leans on a first-name fill-in for HAWK, but the skateboard side makes it a person-reference rather than a mechanical join."
+    },
+    {
+      "pair_id": "p_monster__truck",
+      "a": "MONSTER",
+      "b": "TRUCK",
+      "hints": [
+        {
+          "text": "BIGFOOT",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bigfoot is a legendary monster and also the name of the original, most famous monster truck.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BIGFOOT"],
+      "best_available": { "text": "BIGFOOT", "why": "Two senses of one name, one per target." },
+      "pair_note": "Great find; the truck side may surprise some players, which adds to the payoff."
+    },
+    {
+      "pair_id": "p_mount__washington",
+      "a": "MOUNT",
+      "b": "WASHINGTON",
+      "hints": [
+        {
+          "text": "RUSHMORE",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Mount Rushmore names the mount, and Washington's is the leftmost (and first completed) of its four faces.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RUSHMORE"],
+      "best_available": { "text": "RUSHMORE", "why": "Landmark that contains both ideas." },
+      "pair_note": "Fair; 'first of four' is accurate reading left to right."
+    },
+    {
+      "pair_id": "p_pepper__pickle",
+      "a": "PEPPER",
+      "b": "PICKLE",
+      "hints": [
+        {
+          "text": "PETER",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["variant_of:PIPER"],
+          "verdict": "BORDERLINE",
+          "reason": "The tongue twister links both, but PETER alone pulls toward Peter Pan, Peter Parker or Peter Rabbit before Peter Piper, so it points less sharply than PIPER.",
+          "fix": null
+        },
+        {
+          "text": "PIPER",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "PIPER summons 'Peter Piper picked a peck of pickled peppers' almost uniquely, and its P-sounds echo both targets.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PIPER"],
+      "best_available": { "text": "PIPER", "why": "The more distinctive half of the tongue twister's name." },
+      "pair_note": "Serve PIPER; PETER is the weaker variant of the same idea."
+    },
+    {
+      "pair_id": "p_platypus__spy",
+      "a": "PLATYPUS",
+      "b": "SPY",
+      "hints": [
+        {
+          "text": "PERRY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Perry the Platypus from Phineas and Ferb is secretly the spy Agent P.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PERRY"],
+      "best_available": { "text": "PERRY", "why": "One character who is both targets." },
+      "pair_note": "Strongest for players under about 30; older players may need the explanation."
+    },
+    {
+      "pair_id": "p_hero__sub",
+      "a": "HERO",
+      "b": "SUB",
+      "hints": [
+        {
+          "text": "SANDWICH",
+          "mechanism": "shared_property",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Sub and hero are both names for the long sandwich; the sub side is instant and the hero side is the small reveal.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SANDWICH"],
+      "best_available": { "text": "SANDWICH", "why": "The natural category for both names." },
+      "pair_note": "Plain but fair; the 'hero is a sandwich too' realisation gives it a modest click."
+    },
+    {
+      "pair_id": "p_internet__safari",
+      "a": "INTERNET",
+      "b": "SAFARI",
+      "hints": [
+        {
+          "text": "BROWSER",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "You use a browser to get on the internet, and Safari is Apple's browser; the explanation only covers the Safari side and misses the nicer Internet Explorer angle.",
+          "fix": "Rewrite as 'Internet Explorer and Safari are both web browsers.' so both targets are explained."
+        }
+      ],
+      "strong_hints": ["BROWSER"],
+      "best_available": { "text": "BROWSER", "why": "Both targets are (or name) web browsers." },
+      "pair_note": "Mirror of the owner's INTERNET + AFRICA -> SAFARI example; fine."
+    },
+    {
+      "pair_id": "p_ireland__wizard",
+      "a": "IRELAND",
+      "b": "WIZARD",
+      "hints": [
+        {
+          "text": "EMERALD",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ireland is the Emerald Isle and the Wizard of Oz rules the Emerald City; two famous green nicknames meet.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["EMERALD"],
+      "best_available": { "text": "EMERALD", "why": "Two well-known emerald places, one per target." },
+      "pair_note": "Strong; the wizard side takes one step (Oz) but it is a very familiar step."
+    },
+    {
+      "pair_id": "p_spice__sugar",
+      "a": "SPICE",
+      "b": "SUGAR",
+      "hints": [
+        {
+          "text": "POWERPUFF",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Powerpuff Girls were made from sugar, spice and everything nice (plus Chemical X), per the show's famous intro.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["POWERPUFF"],
+      "best_available": { "text": "POWERPUFF", "why": "Pop-culture origin story naming both ingredients." },
+      "pair_note": "Fun, accurate pop-culture link."
+    },
+    {
+      "pair_id": "p_oak__squirrel",
+      "a": "OAK",
+      "b": "SQUIRREL",
+      "hints": [
+        {
+          "text": "ACORN",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "Acorns are the oak's seed and the squirrel's favourite stash; the idea is sound, but 'every mighty oak' starting from a squirrel's forgotten acorn overstates the fact.",
+          "fix": "Rewrite as 'Oaks grow from acorns, and squirrels bury acorns, then forget a few that sprout into new oaks.' to keep the charm without the false 'every'."
+        }
+      ],
+      "strong_hints": ["ACORN"],
+      "best_available": { "text": "ACORN", "why": "The natural link for both targets." },
+      "pair_note": "Good hint; tidy the hyperbole in the explanation."
+    },
+    {
+      "pair_id": "p_hen__kiss",
+      "a": "HEN",
+      "b": "KISS",
+      "hints": [
+        {
+          "text": "PECK",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hens peck at feed, and a peck is a quick kiss; a sweet, exact double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PECK"],
+      "best_available": { "text": "PECK", "why": "Perfect double meaning." },
+      "pair_note": "Excellent, low-key style."
+    },
+    {
+      "pair_id": "p_clown__pie",
+      "a": "CLOWN",
+      "b": "PIE",
+      "hints": [
+        {
+          "text": "SLAPSTICK",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Clowns perform slapstick and a pie in the face is the genre's signature gag; the scene ties both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SLAPSTICK"],
+      "best_available": { "text": "SLAPSTICK", "why": "Names the comedy style both targets embody." },
+      "pair_note": "Fair; slightly broader than the others, but the pie-in-the-face image makes it click."
+    },
+    {
+      "pair_id": "p_beast__library",
+      "a": "BEAST",
+      "b": "LIBRARY",
+      "hints": [
+        {
+          "text": "BELLE",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Belle falls for the Beast, and his gift of the castle library is one of the film's best-loved scenes.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BELLE"],
+      "best_available": { "text": "BELLE", "why": "The library scene makes the second side satisfying." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bill__science",
+      "a": "BILL",
+      "b": "SCIENCE",
+      "hints": [
+        {
+          "text": "NYE",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Bill Nye the Science Guy names both targets, and the theme-song chant in the explanation is a nice touch.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NYE"],
+      "best_available": { "text": "NYE", "why": "One famous person covers both words." },
+      "pair_note": "Strong for a U.S. audience."
+    },
+    {
+      "pair_id": "p_tea__whistle",
+      "a": "TEA",
+      "b": "WHISTLE",
+      "hints": [
+        {
+          "text": "KETTLE",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A tea kettle whistles when the water boils; one kitchen scene covers both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["KETTLE"],
+      "best_available": { "text": "KETTLE", "why": "Natural, everyday link." },
+      "pair_note": "Plain but satisfying."
+    },
+    {
+      "pair_id": "p_giant__tiny",
+      "a": "GIANT",
+      "b": "TINY",
+      "hints": [
+        {
+          "text": "GULLIVER",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Gulliver is a giant among the tiny Lilliputians (and tiny among Brobdingnag's giants), so both sizes are his story.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GULLIVER"],
+      "best_available": { "text": "GULLIVER", "why": "Classic story built on exactly this contrast." },
+      "pair_note": "Explanation is accurate; mentioning Brobdingnag too would make it even nicer but is optional."
+    },
+    {
+      "pair_id": "p_candy__ticket",
+      "a": "CANDY",
+      "b": "TICKET",
+      "hints": [
+        {
+          "text": "WONKA",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Willy Wonka is the candy maker, and the golden tickets hidden in his bars drive the story.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WONKA"],
+      "best_available": { "text": "WONKA", "why": "Candy and golden ticket are the story's core." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_ball__cinderella",
+      "a": "BALL",
+      "b": "CINDERELLA",
+      "hints": [
+        {
+          "text": "MIDNIGHT",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["wrong_fact", "text_fix"],
+          "verdict": "FAIL",
+          "reason": "The hint itself is good (Cinderella must flee the ball at midnight, and the Times Square ball lands at midnight), but the explanation says midnight 'starts' the ball drop, when the drop begins at 11:59 and ends at midnight.",
+          "fix": "Rewrite as 'Midnight ends Cinderella's night at the ball, and it's when the New Year's ball finishes its drop.' to correct the fact."
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MIDNIGHT", "why": "Strong idea; it becomes a PASS once the ball-drop wording is corrected." },
+      "pair_note": "Failed only for the false explanation; the hint idea is fine and the fix is a one-line rewrite."
+    },
+    {
+      "pair_id": "p_india__jungle",
+      "a": "INDIA",
+      "b": "JUNGLE",
+      "hints": [
+        {
+          "text": "MOWGLI",
+          "mechanism": "shared_reference",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Mowgli is the jungle boy of The Jungle Book, which Kipling set in the jungles of India; the jungle side is instant and the India side clicks once explained.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["MOWGLI"],
+      "best_available": { "text": "MOWGLI", "why": "Famous character whose story is set in India's jungle." },
+      "pair_note": "India side is the weaker half but true and fair."
+    },
+    {
+      "pair_id": "p_prince__sea",
+      "a": "PRINCE",
+      "b": "SEA",
+      "hints": [
+        {
+          "text": "ARIEL",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Little Mermaid's Ariel lives under the sea and gives up her voice to be with Prince Eric.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ARIEL"],
+      "best_available": { "text": "ARIEL", "why": "Both targets are central to her story." },
+      "pair_note": "Clean."
+    }
+  ]
+}
