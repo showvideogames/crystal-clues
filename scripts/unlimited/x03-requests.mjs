@@ -14,7 +14,8 @@ import { PATHS, loadCatalogue, pairOf, hintProblem, normWord, PLAYABLE, servedHi
 import { loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const REQ = "data/unlimited/expansion/x03-requests.json";
-const NOTE = "x03 owner additions (2026-10-19)";
+const TAG = process.env.TAG || "x03";
+const NOTE = process.env.NOTE || "x03 owner additions (2026-10-19)";
 const req = JSON.parse(readFileSync(process.env.REQUESTS || REQ, "utf8"));
 const CLIENT = new Map(JSON.parse(readFileSync("src/unlimited/random-library.json", "utf8")).pairs.map((p) => [p.id, p]));
 const [cmd, ...rest] = process.argv.slice(2);
@@ -25,7 +26,7 @@ function clueOf(ix, it) {
   const { id } = pairOf(it.a, it.b);
   return { id, pair: ix.byId.get(id) || null, clue: ix.byId.get(id)?.clues.find((c) => c.text === normWord(it.hint)) || null };
 }
-const isX03 = (c) => String(c.provenance?.note || "").startsWith("x03") || String(c.provenance?.source || "").startsWith("x03");
+const isX03 = (c) => String(c.provenance?.note || "").startsWith(TAG) || String(c.provenance?.source || "").startsWith(TAG);
 
 function status(ix, rejections, overrides, it) {
   const missing = [it.a, it.b].filter((w) => !ix.inBank.has(normWord(w)));
@@ -40,6 +41,7 @@ function status(ix, rejections, overrides, it) {
     if (!rec || rec.decision !== it.intent) return { key: `NOT RECORDED`, detail: `expected ${it.intent} in rejections.json` };
     return { key: it.intent === "rejected" ? "rejected (recorded)" : "held (recorded)", detail: `${rec.reason}${clue ? `; library hint status ${clue.status}` : "; not in the library"}` };
   }
+  if (it.intent === "pending") return { key: clue ? "pending (recorded, held)" : "pending owner decision", detail: it.note || "" };
   const rule = hintProblem(it.hint, normWord(it.a), normWord(it.b));
   if (rule) return { key: "not added", detail: `hint rule: ${rule}` };
   if (rec) return { key: rec.decision, detail: rec.reason };
@@ -80,6 +82,8 @@ if (cmd === "check") {
     const { id, pair, clue } = clueOf(ix, it);
     if (clue) { console.log(`present: ${it.ref} ${it.a} + ${it.b} → ${it.hint}`); continue; }
     if ([it.a, it.b].some((w) => !ix.inBank.has(normWord(w)))) { console.log(`missing bank word: ${it.ref}`); continue; }
+    const rule = hintProblem(it.hint, normWord(it.a), normWord(it.b));
+    if (rule) { console.log(`hint rule, kept in the ledger: ${it.ref} ${it.hint}: ${rule}`); continue; }
     const approve = it.intent === "owner_add";
     const prefer = approve && !equal[id] && !pair && !ix.preferences[id];
     const args = [CLI, "add", it.a, it.b, it.hint, "--by", "owner", "--type", "owner", "--why", it.why, "--a", it.links?.[it.a] ?? "", "--b", it.links?.[it.b] ?? "", "--note", `${NOTE}, ${it.ref}`];
@@ -119,7 +123,7 @@ if (cmd === "check") {
     p.request.push(it.ref);
     p.clues.push({ text: normWord(it.hint), type: "owner-variation", wordAConnection: it.links[a] ?? it.links[it.a], wordBConnection: it.links[b] ?? it.links[it.b], revealExplanation: it.why, reference: null, request: it.ref });
   }
-  writeFileSync(out, JSON.stringify({ _metadata: { batch: "x03-v", source: REQ, prepared: today(), note: "owner variations to review (x03 brief section 3, plus ORIOLE)" }, pairs: [...byPair.values()] }, null, 1) + "\n");
+  writeFileSync(out, JSON.stringify({ _metadata: { batch: process.env.BATCH || "x03-v", source: process.env.REQUESTS || REQ, prepared: today(), note: "owner variations to review (x03 brief section 3, plus ORIOLE)" }, pairs: [...byPair.values()] }, null, 1) + "\n");
   console.log(`${out}: ${byPair.size} pairs, ${[...byPair.values()].reduce((n, p) => n + p.clues.length, 0)} hints; skipped ${skipped.length}:\n  ${skipped.join("\n  ")}`);
 } else {
   console.log(readFileSync(new URL(import.meta.url), "utf8").split("\n").filter((l) => l.startsWith("//")).map((l) => l.slice(3)).join("\n"));
