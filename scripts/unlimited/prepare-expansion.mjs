@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // Checks drafted expansion batches before review and writes the review-ready batch files.
-//   node scripts/unlimited/prepare-expansion.mjs <batch-name> <authored.json>...   (e.g. x01 x01-a-authored.json ...)
+//   node scripts/unlimited/prepare-expansion.mjs <batch-name> <authored.json>... [--exclude-original]
+//   (e.g. x01 x01-a-authored.json ...). --exclude-original drops any pair using an original-50 word
+//   (x02: bring uncovered words in, so the original 50 stop dominating the targets).
 // For each authored file it writes <same dir>/<batch>-batch.json and prints a report.
 // Mechanical rules only (quality is the reviewer's job):
 //   - both targets must be in the word-bank snapshot, distinct, and not both original-50 words;
@@ -13,7 +15,8 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { loadCatalogue, pairOf, hintProblem, normWord } from "./catalogue-lib.mjs";
 
-const [batchName, ...files] = process.argv.slice(2);
+const excludeOriginal = process.argv.includes("--exclude-original");
+const [batchName, ...files] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 if (!batchName || !files.length) { console.error("usage: prepare-expansion.mjs <batch-name> <authored.json>..."); process.exit(2); }
 const ix = loadCatalogue();
 const seen = new Map();
@@ -27,6 +30,7 @@ for (const file of files) {
     const why = !ix.inBank.has(a) || !ix.inBank.has(b) ? `not in the word bank: ${[a, b].filter((w) => !ix.inBank.has(w)).join(", ")}`
       : a === b ? "same word twice"
       : ix.original.has(a) && ix.original.has(b) ? "both original-50 words (already covered)"
+      : excludeOriginal && (ix.original.has(a) || ix.original.has(b)) ? "uses an original-50 word (excluded in this batch)"
       : ix.byId.has(id) ? "already in the library (kept as it is)"
       : seen.has(id) ? `also drafted in ${seen.get(id)} (kept there)` : null;
     if (why) { report.dropped.push({ file: name, pair: `${a} + ${b}`, why }); continue; }
