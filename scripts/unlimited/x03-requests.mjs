@@ -10,7 +10,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
-import { PATHS, loadCatalogue, pairOf, hintProblem, normWord, PLAYABLE, servedHints } from "./catalogue-lib.mjs";
+import { PATHS, loadCatalogue, pairOf, hintProblem, normWord, PLAYABLE } from "./catalogue-lib.mjs";
 import { loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const REQ = "data/unlimited/expansion/x03-requests.json";
@@ -31,7 +31,7 @@ const isX03 = (c) => String(c.provenance?.note || "").startsWith(TAG) || String(
 function status(ix, rejections, overrides, it) {
   const missing = [it.a, it.b].filter((w) => !ix.inBank.has(normWord(w)));
   if (missing.length) return { key: "missing bank word", detail: missing.join(", ") };
-  const { id, pair, clue } = clueOf(ix, it);
+  const { id, clue } = clueOf(ix, it);
   if (it.hint === "*") {
     const hold = overrides.find((o) => o.pair_id === id && o.status === "hold_pair");
     return hold ? { key: "held", detail: `pair hold (overrides.json, ${hold.by}): ${hold.reason.slice(0, 120)}…` } : { key: "NOT HELD", detail: "expected a hold_pair override" };

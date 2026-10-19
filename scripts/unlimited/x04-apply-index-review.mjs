@@ -14,7 +14,6 @@ const review = JSON.parse(readFileSync("data/unlimited/related/index-review-x04.
 const routes = JSON.parse(readFileSync(R, "utf8"));
 const by = "x04-index-reviewer";
 const hint = (h) => routes.hints.find((x) => x.checkpoint === "x04" && x.hint === h);
-const route = (h, id) => hint(h).routes.find((r) => r.id === id);
 const word = (h, w) => { for (const r of hint(h).routes) { const m = r.words.find((x) => x.word === w); if (m) return { r, m }; } return null; };
 let added = 0, newRoutes = 0;
 for (const h of review.hints) {
