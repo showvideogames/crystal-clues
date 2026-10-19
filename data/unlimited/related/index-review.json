@@ -1,0 +1,234 @@
+{
+  "_metadata": {
+    "reviewer": "x03-index-reviewer",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-19",
+    "inputs": ["groups.json", "hint-routes.json", "bank-1202.txt"],
+    "independence": "I read only the instructions file and the three named inputs (groups.json, hint-routes.json, bank-1202.txt); no repository search, web or paid API was used."
+  },
+  "hints": [
+    {
+      "hint": "FROZEN",
+      "missing": [
+        { "word": "DEVICE", "route": "device", "strength": 1, "clause": "a frozen device stops responding", "why": "the bank's own generic word for the route; reads naturally" },
+        { "word": "TELEVISION", "route": "device", "strength": 1, "clause": "a frozen TV picture is stuck on one frame", "why": "frozen streams and TV pictures are a common everyday annoyance" },
+        { "word": "PIPE", "route": "icy", "strength": 1, "clause": "frozen pipes can burst in a cold snap", "why": "'frozen pipes' is a familiar household winter phrase" },
+        { "word": "NORTH", "route": "icy", "strength": 1, "clause": "the frozen North stays icy much of the year", "why": "'the frozen North' is a stock phrase; also North Pole" },
+        { "word": "SKATE", "route": "icy", "strength": 1, "clause": "you can skate on a frozen pond", "why": "skating is the classic thing done on frozen water" },
+        { "word": "HOCKEY", "route": "icy", "strength": 1, "clause": "hockey is played on ice, and college hockey's championship is the Frozen Four", "why": "ice link plus the well-known 'Frozen Four'" },
+        { "word": "CASTLE", "route": "film", "strength": 1, "clause": "Elsa builds an ice castle in Frozen", "why": "the ice palace is one of the film's iconic images (Let It Go scene)" },
+        { "word": "PRINCE", "route": "film", "strength": 1, "clause": "Prince Hans turns out to be Frozen's villain", "why": "Hans is a main character; 'prince' is a natural Disney word" },
+        { "word": "HEART", "route": "film", "strength": 1, "clause": "in Frozen, only an act of true love can thaw a frozen heart", "why": "the film's central plot device and the opening song 'Frozen Heart'" },
+        { "word": "DANCE", "route": "still", "strength": 1, "clause": "in freeze dance, everyone stays frozen when the music stops", "why": "freeze dance is a familiar kids' party game, parallel to freeze tag" },
+        { "word": "STAR WARS", "route": "NEW: frozen in carbonite", "strength": 1, "clause": "Han Solo is frozen in carbonite in Star Wars", "why": "famous scene from The Empire Strikes Back; a clearly separate picture of being frozen" }
+      ],
+      "wrong_or_weak": [
+        { "word": "TAG", "route": "still", "problem": "strength 2 is high: FROZEN to TAG needs the step through 'freeze tag'", "fix": "lower to strength 1" },
+        { "word": "MAMMOTH", "route": "icy", "problem": "clause slightly imprecise: mammoths are found in Siberian permafrost, not 'ice'", "fix": "clause: 'woolly mammoths have been found frozen in the Siberian permafrost'" },
+        { "word": "SNOWMAN", "route": "film", "problem": "contains SNOW (water route), so the cross-route pair SNOW + SNOWMAN puts a word inside another on one board", "fix": "add never: SNOW+SNOWMAN" },
+        { "word": "ICE CREAM", "route": "food", "problem": "contains ICE (water route), so ICE + ICE CREAM would be a containment pair", "fix": "add never: ICE+ICE CREAM" },
+        { "word": "FILM", "route": "film", "problem": "the film route is sameRoute, so MOVIE + FILM (synonyms) could be generated", "fix": "add never: MOVIE+FILM (and prefer pairing FILM/MOVIE with a character word)" }
+      ],
+      "senses": [
+        { "word": "COLD", "note": "also the illness (a cold)" },
+        { "word": "CHILL", "note": "also 'relax' (chill out)" },
+        { "word": "TAG", "note": "also a price tag or label" },
+        { "word": "QUEEN", "note": "also the chess/card piece and the band Queen" },
+        { "word": "TABLET", "note": "also a pill or stone tablet" },
+        { "word": "CONSOLE", "note": "also 'to comfort'" },
+        { "word": "BANK", "note": "also a river bank" },
+        { "word": "SCREEN", "note": "also a window screen" },
+        { "word": "TROLL", "note": "also an internet troll or a bridge troll" },
+        { "word": "BLIZZARD", "note": "also the Dairy Queen frozen treat (a second, helpful frozen link)" },
+        { "word": "FILM", "note": "also camera film or a thin layer" }
+      ]
+    },
+    {
+      "hint": "BEANBAG",
+      "missing": [
+        { "word": "SEED", "route": "food", "strength": 1, "clause": "a bean is an edible seed", "why": "beans are seeds; a natural category word" },
+        { "word": "RICE", "route": "food", "strength": 1, "clause": "rice and beans is a classic meal", "why": "very common food pairing" },
+        { "word": "COFFEE", "route": "food", "strength": 1, "clause": "coffee is brewed from roasted beans", "why": "'coffee beans' is instant; drink rather than food, so 1" },
+        { "word": "JELLY", "route": "food", "strength": 1, "clause": "jelly beans are a favorite candy", "why": "jelly bean is a familiar compound" },
+        { "word": "JACK", "route": "NEW: magic beans (Jack and the Beanstalk)", "strength": 1, "clause": "Jack trades the cow for magic beans in Jack and the Beanstalk", "why": "best-known story about beans" },
+        { "word": "GIANT", "route": "NEW: magic beans (Jack and the Beanstalk)", "strength": 1, "clause": "Jack's magic beans grow a beanstalk up to the giant's castle", "why": "same story; pairs with a seat word" },
+        { "word": "FOAM", "route": "NEW: what fills it", "strength": 1, "clause": "beanbag chairs are usually filled with foam beads", "why": "accurate (polystyrene foam beads); a 'needs a moment' fact" },
+        { "word": "SOFT", "route": "seat", "strength": 1, "clause": "a beanbag is a soft, squishy seat", "why": "the defining property of the seat" },
+        { "word": "HOLE", "route": "NEW: beanbag toss (cornhole)", "strength": 1, "clause": "in cornhole, you toss beanbags at a hole in a board", "why": "cornhole is a very familiar U.S. backyard game" },
+        { "word": "CARNIVAL", "route": "NEW: beanbag toss (cornhole)", "strength": 1, "clause": "beanbag toss is a classic carnival game", "why": "familiar fair/carnival booth" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "CUSHION", "note": "also a billiard-table cushion or a financial cushion; fine in context" },
+        { "word": "HOLE", "note": "if added, the golf hole sense could pull toward other hints" }
+      ]
+    },
+    {
+      "hint": "ALCHEMY",
+      "missing": [
+        { "word": "FLASK", "route": "science", "strength": 1, "clause": "alchemists heated mixtures in glass flasks", "why": "the flask is the stock image of an alchemist's workbench" },
+        { "word": "STONE", "route": "NEW: the Philosopher's Stone", "strength": 1, "clause": "the Philosopher's Stone was alchemy's legendary goal", "why": "well known via Harry Potter and the Sorcerer's/Philosopher's Stone" },
+        { "word": "NOVEL", "route": "NEW: The Alchemist (book)", "strength": 1, "clause": "The Alchemist by Paulo Coelho is a best-selling novel", "why": "widely read; keep at 1 because not everyone knows it" }
+      ],
+      "wrong_or_weak": [
+        { "word": "SILVER", "route": "metal", "problem": "clause is awkward ('tried to make precious silver and gold')", "fix": "clause: 'alchemists tried to turn base metals into silver and gold'" }
+      ],
+      "senses": [
+        { "word": "LAB", "note": "also the Labrador dog breed" },
+        { "word": "LEAD", "note": "also to lead / the lead role; already noted in groups.json" },
+        { "word": "IRON", "note": "also the clothes iron; already noted" },
+        { "word": "MERCURY", "note": "also the planet, the god and Freddie Mercury; already noted" },
+        { "word": "COPPER", "note": "also slang for a police officer" }
+      ]
+    },
+    {
+      "hint": "PLANK",
+      "missing": [
+        { "word": "SEA", "route": "pirate", "strength": 1, "clause": "in pirate stories, prisoners walk the plank into the sea", "why": "the plank ends over the sea; natural partner to GYM or WOOD" },
+        { "word": "BRIDGE", "route": "wood", "strength": 1, "clause": "a rope bridge is strung with wooden planks", "why": "familiar adventure-movie image" }
+      ],
+      "wrong_or_weak": [
+        { "word": "PIRATE", "route": "pirate", "problem": "states as fact something that is mostly legend (walking the plank was rare in history)", "fix": "clause: 'in pirate stories, captives are made to walk the plank'" },
+        { "word": "SHARK", "route": "pirate", "problem": "same legend-as-fact issue", "fix": "clause: 'in pirate stories, prisoners walk the plank into shark-filled water'" },
+        { "word": "PHYSICAL", "route": "exercise", "problem": "weak and sense-prone: PHYSICAL alone usually means a checkup or an adjective; 'a staple of PE class' is overstated", "fix": "keep at 1 with clause 'the plank is a classic physical-fitness exercise', or remove" }
+      ],
+      "senses": [
+        { "word": "DECK", "note": "also a deck of cards; already noted" },
+        { "word": "LOG", "note": "also a logbook or computer log" },
+        { "word": "PINE", "note": "also 'to pine' (long for)" },
+        { "word": "RAFT", "note": "many rafts are inflatable, not planks; also 'a raft of' = many" },
+        { "word": "SHARK", "note": "also a loan shark or pool shark" },
+        { "word": "CAPTAIN", "note": "also a team captain or Captain America" },
+        { "word": "SHIP", "note": "also 'to ship' (send)" }
+      ]
+    },
+    {
+      "hint": "EAGLE",
+      "missing": [
+        { "word": "NASA", "route": "moon", "strength": 1, "clause": "NASA's Apollo 11 lunar module was named the Eagle", "why": "direct link to the moon route" },
+        { "word": "QUARTER", "route": "america", "strength": 1, "clause": "for decades the U.S. quarter had an eagle on the back", "why": "accurate (1932-1998); the eagle is a U.S. national emblem" },
+        { "word": "EYE", "route": "NEW: eagle-eyed", "strength": 1, "clause": "someone eagle-eyed spots every detail", "why": "common idiom" },
+        { "word": "BAND", "route": "NEW: the Eagles (band)", "strength": 1, "clause": "the Eagles are a classic American rock band", "why": "very well known to a U.S. audience" },
+        { "word": "HOTEL", "route": "NEW: the Eagles (band)", "strength": 1, "clause": "the Eagles sang \"Hotel California\"", "why": "their signature song" },
+        { "word": "LAWYER", "route": "NEW: legal eagle", "strength": 1, "clause": "a sharp lawyer is called a legal eagle", "why": "familiar rhyming idiom" }
+      ],
+      "wrong_or_weak": [
+        { "word": "MOON", "route": "moon", "problem": "clause is accurate but clunky (says 'Eagle' twice)", "fix": "clause: 'Apollo 11's lunar module, the Eagle, landed on the Moon (\"The Eagle has landed\")'" }
+      ],
+      "senses": [
+        { "word": "QUARTER", "note": "if added: also a quarter of an hour or a game" },
+        { "word": "BAND", "note": "if added: also a rubber band or wristband" }
+      ]
+    },
+    {
+      "hint": "CARDINAL",
+      "missing": [
+        { "word": "ROME", "route": "church", "strength": 1, "clause": "cardinals meet at the Vatican in Rome to elect the pope", "why": "the papal conclave is widely covered" },
+        { "word": "MAP", "route": "direction", "strength": 1, "clause": "a map's compass rose shows the four cardinal directions", "why": "where people learn the term" },
+        { "word": "NUMBER", "route": "NEW: cardinal numbers", "strength": 1, "clause": "one, two and three are cardinal numbers", "why": "a separate, school-familiar meaning" }
+      ],
+      "wrong_or_weak": [
+        { "word": "RED", "route": "bird", "problem": "strength 1 undersells it: the route is literally 'the red bird'", "fix": "raise to strength 2" },
+        { "word": "RELIGION", "route": "church", "problem": "clause does not mention religion, so the link reads loosely", "fix": "clause: 'a cardinal is a high-ranking leader in the Catholic religion'" }
+      ],
+      "senses": [
+        { "word": "RED", "note": "fits both the bird and the church (cardinals wear red robes); harmless but the explanation should say which" },
+        { "word": "NORTH", "note": "could be read as North Pole / cold on a board with icy words" }
+      ]
+    },
+    {
+      "hint": "FALCON",
+      "missing": [
+        { "word": "FAST", "route": "bird", "strength": 1, "clause": "the peregrine falcon is the fastest animal on Earth", "why": "accurate (in its dive) and widely known" },
+        { "word": "HUNT", "route": "bird", "strength": 1, "clause": "in falconry, trained falcons hunt for their handlers", "why": "falconry is the familiar human use" },
+        { "word": "SMUGGLER", "route": "starwars", "strength": 1, "clause": "smuggler Han Solo flies the Millennium Falcon", "why": "Han is famously a smuggler" },
+        { "word": "PILOT", "route": "starwars", "strength": 1, "clause": "Han Solo pilots the Millennium Falcon", "why": "direct" },
+        { "word": "SHIP", "route": "starwars", "strength": 1, "clause": "the Millennium Falcon is Han Solo's ship", "why": "direct" },
+        { "word": "MARVEL", "route": "NEW: Marvel's Falcon", "strength": 1, "clause": "the Falcon, Sam Wilson, is a Marvel superhero", "why": "major MCU character (The Falcon and the Winter Soldier)" },
+        { "word": "SUPERHERO", "route": "NEW: Marvel's Falcon", "strength": 1, "clause": "the Falcon is a winged Marvel superhero", "why": "same" },
+        { "word": "DETECTIVE", "route": "NEW: The Maltese Falcon", "strength": 1, "clause": "The Maltese Falcon is a classic detective story", "why": "famous Bogart film noir; keep at 1" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "SPACE", "note": "also supported by SpaceX's Falcon rockets; the clause may cite either" },
+        { "word": "SHIP", "note": "if added: a board reader may think of sea ships first" }
+      ]
+    },
+    {
+      "hint": "RAVEN",
+      "missing": [
+        { "word": "HAIR", "route": "NEW: raven-haired", "strength": 1, "clause": "raven-haired means having glossy black hair", "why": "common descriptive phrase" },
+        { "word": "HOGWARTS", "route": "NEW: Ravenclaw", "strength": 1, "clause": "Ravenclaw is one of the four houses of Hogwarts", "why": "very familiar to Harry Potter readers; target does not contain the hint" },
+        { "word": "TOWER", "route": "NEW: Tower of London ravens", "strength": 1, "clause": "ravens famously live at the Tower of London", "why": "well-known legend; keep at 1" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "BLACK", "note": "fine; could also read as the Raven's Baltimore team colors (purple and black)" }
+      ]
+    },
+    {
+      "hint": "JAY",
+      "missing": [
+        { "word": "CANADA", "route": "baseball", "strength": 1, "clause": "the Toronto Blue Jays are Canada's only MLB team", "why": "accurate and a good cross-route partner" },
+        { "word": "WALK", "route": "NEW: jaywalking", "strength": 2, "clause": "to jaywalk is to cross the street carelessly", "why": "'jaywalk' is an instant compound" },
+        { "word": "STREET", "route": "NEW: jaywalking", "strength": 1, "clause": "jaywalking is crossing the street outside a crosswalk", "why": "same meaning" },
+        { "word": "NOVEL", "route": "NEW: Jay Gatsby", "strength": 1, "clause": "Jay Gatsby is the title character of the novel The Great Gatsby", "why": "standard U.S. high-school reading; keep at 1" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "BLUE", "note": "also 'sad'" },
+        { "word": "WALK", "note": "if added: also a walk in baseball, which could blur with the baseball route" }
+      ]
+    },
+    {
+      "hint": "ORIOLE",
+      "missing": [
+        { "word": "BLACK", "route": "bird", "strength": 1, "clause": "the Baltimore oriole is bright orange and black", "why": "the bird's other color; also the team colors" }
+      ],
+      "wrong_or_weak": [],
+      "senses": [
+        { "word": "ORANGE", "note": "fruit vs color; the color is meant (and orioles do eat orange halves, so either reading helps)" }
+      ]
+    },
+    {
+      "hint": "HAWK",
+      "missing": [
+        { "word": "WATCH", "route": "NEW: watch like a hawk", "strength": 1, "clause": "to watch like a hawk is to watch very closely", "why": "very common idiom" },
+        { "word": "EYE", "route": "NEW: hawk-eyed", "strength": 1, "clause": "hawk-eyed means having very sharp eyes", "why": "common idiom" },
+        { "word": "MARVEL", "route": "NEW: Marvel's Hawkeye", "strength": 1, "clause": "Hawkeye is one of Marvel's Avengers", "why": "major MCU character" },
+        { "word": "ARROW", "route": "NEW: Marvel's Hawkeye", "strength": 1, "clause": "Hawkeye is the Avengers' bow-and-arrow archer", "why": "his defining trait" },
+        { "word": "VIDEO GAME", "route": "skate", "strength": 1, "clause": "Tony Hawk's Pro Skater is a classic skateboarding video game", "why": "hugely popular series" },
+        { "word": "FOOTBALL", "route": "NEW: Seattle Seahawks", "strength": 1, "clause": "the Seattle Seahawks play football", "why": "team name extends the hint, so 1 not 2" },
+        { "word": "HOCKEY", "route": "NEW: Chicago Blackhawks", "strength": 1, "clause": "the Chicago Blackhawks play hockey", "why": "same caveat" },
+        { "word": "HELICOPTER", "route": "NEW: Black Hawk helicopter", "strength": 1, "clause": "the Black Hawk is the U.S. Army's famous helicopter", "why": "widely known (Black Hawk Down)" }
+      ],
+      "wrong_or_weak": [
+        { "word": "SKATE", "route": "skate", "problem": "SKATE alone most often means ice or roller skates, not skateboarding", "fix": "keep strength 1; clause: 'Tony Hawk is the most famous skater in skateboarding'" }
+      ],
+      "senses": [
+        { "word": "SKATE", "note": "ice skate, roller skate, and the fish" },
+        { "word": "WATCH", "note": "if added: also a wristwatch" }
+      ]
+    }
+  ],
+  "groups": [
+    { "group": "frozen-water", "missing": [], "wrong": [] },
+    { "group": "icy-cold", "missing": [ { "word": "NORTH", "reason": "the frozen North / North Pole" }, { "word": "PIPE", "reason": "frozen pipes in winter" } ], "wrong": [] },
+    { "group": "devices-that-freeze", "missing": [ { "word": "DEVICE", "reason": "the generic word for the group" }, { "word": "TELEVISION", "reason": "a frozen TV picture" } ], "wrong": [] },
+    { "group": "disney-frozen", "missing": [ { "word": "CASTLE", "reason": "Elsa's ice castle" }, { "word": "PRINCE", "reason": "Prince Hans" }, { "word": "HEART", "reason": "a frozen heart thawed by true love" } ], "wrong": [ { "word": "FILM", "problem": "not wrong, but with MOVIE in a sameRoute group it allows a synonym pair" } ] },
+    { "group": "frozen-still", "missing": [ { "word": "DANCE", "reason": "freeze dance" } ], "wrong": [] },
+    { "group": "frozen-food", "missing": [], "wrong": [] },
+    { "group": "frozen-money", "missing": [], "wrong": [] },
+    { "group": "seating", "missing": [], "wrong": [ { "word": "BENCH", "problem": "a BEANBAG-specific exclusion recorded in a generic group: BENCH is a seat; better kept as a hint-level exclusion so other hints can use it" } ] },
+    { "group": "foods-beans", "missing": [ { "word": "SEED", "reason": "beans are edible seeds" } ], "wrong": [] },
+    { "group": "metals", "missing": [], "wrong": [] },
+    { "group": "wood-and-timber", "missing": [ { "word": "TREE", "reason": "wood comes from trees" }, { "word": "MAPLE", "reason": "a common hardwood, like OAK" }, { "word": "CABIN", "reason": "a log cabin" }, { "word": "FENCE", "reason": "wooden fences" }, { "word": "BRIDGE", "reason": "wooden plank bridges" } ], "wrong": [] },
+    { "group": "pirate-life", "missing": [ { "word": "TREASURE", "reason": "the core pirate word (strength 2)" }, { "word": "HOOK", "reason": "Captain Hook" }, { "word": "CANNON", "reason": "ship's cannons" }, { "word": "SKULL", "reason": "skull and crossbones" }, { "word": "SAIL", "reason": "pirate ships sail" }, { "word": "ISLAND", "reason": "treasure island" }, { "word": "MAP", "reason": "treasure map" }, { "word": "SWORD", "reason": "cutlass fights" }, { "word": "SEA", "reason": "pirates of the sea" } ], "wrong": [] },
+    { "group": "gym-exercise", "missing": [ { "word": "WEIGHT", "reason": "weightlifting" }, { "word": "FLEX", "reason": "flexing muscles" }, { "word": "STRONG", "reason": "exercise makes you strong" } ], "wrong": [] },
+    { "group": "birds", "missing": [ { "word": "CHICK", "reason": "a baby bird" }, { "word": "KIWI", "reason": "a flightless bird (sense: also the fruit)" }, { "word": "PHOENIX", "reason": "a mythical bird (strength 1)" } ], "wrong": [] },
+    { "group": "sports", "missing": [], "wrong": [] },
+    { "group": "bat-animal", "missing": [ { "word": "CAVERN", "reason": "bats roost in caverns" } ], "wrong": [] },
+    { "group": "bat-equipment", "missing": [ { "word": "SWING", "reason": "you swing a bat" } ], "wrong": [] }
+  ],
+  "summary": "The index is accurate overall: every listed word is in the bank and no listed link is false, but several hints miss familiar separate meanings (beanbag toss and Jack's magic beans for BEANBAG; the Eagles band and 'legal eagle' for EAGLE; Marvel's Falcon and Hawkeye; jaywalking for JAY; cardinal numbers; Ravenclaw). The most important fixes are pair-level blocks for containment (SNOW+SNOWMAN, ICE+ICE CREAM) and synonyms (MOVIE+FILM in the sameRoute film route), plus rewording PLANK's pirate clauses so a legend is not stated as fact and weakening or removing PHYSICAL."
+}
