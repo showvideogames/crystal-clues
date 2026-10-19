@@ -57,7 +57,7 @@ test("the real catalogue: full bank, every library pair inside it, owner example
   assert.equal(s.bankWords, 1196);
   assert.equal(s.possiblePairs, 714610);
   assert.deepEqual(s.pairWordsOutsideBank, []);
-  for (const [id, hint] of [["p_food__zombie", "BRAINS"], ["p_apple__big", "NYC"], ["p_calculator__camouflage", "AMBUSH"]]) {
+  for (const [id, hint] of [["p_food__zombie", "BRAINS"], ["p_apple__big", "NYC"], ["p_calculator__camouflage", "AMBUSH"], ["p_dinosaur__friend", "BARNEY"], ["p_christmas__robot", "EVE"]]) {
     const p = ix.byId.get(id);
     const c = p.clues.find((x) => x.text === hint);
     assert.equal(c.status, "human_approved"); assert.equal(c.provenance.source, "owner-discovery");

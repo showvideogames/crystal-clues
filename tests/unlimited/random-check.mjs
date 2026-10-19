@@ -36,8 +36,9 @@ const hintsOnScreen = (page) => page.$$eval(".game .ctab", (els) => els.map((e) 
 const wordsOnScreen = async (page) => { const b = await readBoard(page); return [...b.board, ...b.tray].flatMap((c) => c.words).sort(); };
 const submit = async (page) => { await page.locator("button.sbtn").click(); await sleep(4600); };
 const solveAndFinish = async (page, b) => { await solve(page, asView(b)); await page.locator("button.sbtn").click(); await page.waitForSelector("[data-testid=ul-end]", { timeout: 20000 }); await sleep(600); };
-const label = (page, t) => page.evaluate((x) => { let d = document.getElementById("__test_label"); if (!d) { d = document.createElement("div"); d.id = "__test_label"; document.body.appendChild(d); }
-  d.textContent = `TEST DATA / LOCAL RANDOM BUILD · ${x}`; Object.assign(d.style, { position: "fixed", left: "0", right: "0", top: "0", zIndex: "99999", background: "rgba(180,0,0,0.88)", color: "#fff", font: "600 12px/1.6 system-ui, sans-serif", textAlign: "center", pointerEvents: "none", padding: "2px 4px" }); }, t);
+const TAG = process.env.TEST_LABEL || "LOCAL RANDOM BUILD";
+const label = (page, t) => page.evaluate((x, tag) => { let d = document.getElementById("__test_label"); if (!d) { d = document.createElement("div"); d.id = "__test_label"; document.body.appendChild(d); }
+  d.textContent = `TEST DATA / ${tag} · ${x}`; Object.assign(d.style, { position: "fixed", left: "0", right: "0", top: "0", zIndex: "99999", background: "rgba(180,0,0,0.88)", color: "#fff", font: "600 12px/1.6 system-ui, sans-serif", textAlign: "center", pointerEvents: "none", padding: "2px 4px" }); }, t, TAG);
 const shots = [];
 const shot = async (page, name, tag) => { if (!OUT) return; await label(page, tag); await sleep(350); const f = path.join(OUT, `${name}.png`); await page.screenshot({ path: f }); await page.evaluate(() => document.getElementById("__test_label")?.remove()); shots.push(f); log("screenshot", name); };
 const openLobby = async (page) => { await page.goto(`${URL}/unlimited`, { waitUntil: "networkidle0" }); await page.waitForSelector("[data-testid=ul-start], [data-testid=ul-continue]"); };

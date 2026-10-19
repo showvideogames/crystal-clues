@@ -30,7 +30,13 @@ Owner-approved examples, recorded as owner decisions (`human_approved` in `overr
 
 GOLD + PIRATE → TREASURE was already the approved canonical hint and is unchanged.
 
-**Missing example word:** PURPLE is not in the word bank, so PURPLE + DINOSAUR → BARNEY was not added. The catalogue refuses words outside the bank and never adds them. DINOSAUR is in the bank.
+**Missing example word:** PURPLE is not in the word bank, so PURPLE + DINOSAUR → BARNEY was not added; the catalogue refuses words outside the bank and never adds them.
+
+**Added before release (owner, 2026-10-19), as owner decisions and preferred hints:**
+- DINOSAUR + FRIEND → BARNEY, in place of PURPLE + DINOSAUR. PURPLE is still not added.
+- ROBOT + CHRISTMAS → EVE: EVE is the robot in WALL-E, plus Christmas Eve.
+
+All four words were checked in the live bank (still 1,196 words).
 
 **Target words:** 281 distinct target words can now appear (was 50). **231 of them are newly represented**, including the multiword ICE CREAM and NEW YEAR.
 
@@ -72,7 +78,7 @@ GOLD + PIRATE → TREASURE was already the approved canonical hint and is unchan
 
 ## 3. The catalogue
 
-`scripts/unlimited/catalogue.mjs` (on top of `catalogue-lib.mjs`) covers every unordered pair of the 1,196 bank words: **714,610 possible pairs**. 1,368 are stored, and the other **713,242 are empty pairs represented virtually**: computed on demand, never written out.
+`scripts/unlimited/catalogue.mjs` (on top of `catalogue-lib.mjs`) covers every unordered pair of the 1,196 bank words: **714,610 possible pairs**. 1,370 are stored, and the other **713,240 are empty pairs represented virtually**: computed on demand, never written out.
 
 - `stats`: bank size, possible / stored / empty pairs, pair states, target-word coverage.
 - `show <WORD> <WORD>`: every hint for a pair, with its status, review scores and model, explanation, provenance, overrides, and the hint served today; or "empty".
@@ -86,7 +92,7 @@ Each populated pair keeps any number of hints, each with its own status, indepen
 
 ## 4. Integration and variety
 
-`src/unlimited/random-library.json`: **1,123 eligible pairs** (980 before + 140 new + 3 owner), 1,196 words. Each board still has four distinct hints, eight distinct targets and 20 unique extras (checked on every generated board). Saved boards, progress, Replay, feedback and fixed-board history are untouched.
+`src/unlimited/random-library.json`: **1,125 eligible pairs** (980 before + 140 new + 5 owner), 1,196 words. Each board still has four distinct hints, eight distinct targets and 20 unique extras (checked on every generated board). Saved boards, progress, Replay, feedback and fixed-board history are untouched.
 
 Simulated players (200 players × 30 boards each, the app's own flow: a fresh seed per board, the last 3 boards' pairs avoided):
 
