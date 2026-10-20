@@ -355,12 +355,12 @@ test("x15: 213 candidates on unseen pairs; 207 served after blind review, 5 held
   assert.match(byId.get("p_ball__ram").clues[0].revealExplanation, /Dodge Ram/);
 });
 
-test("x16: 210 candidates on unseen pairs; 206 served after blind review, 4 BORDERLINE held; RUSSIAN serves DOLL + NEST; text fixes traceable", () => {
+test("x16: 210 candidates on unseen pairs; 206 PASS, 4 BORDERLINE coordinator-accepted; RUSSIAN serves DOLL + NEST (BABUSHKA held); text fixes traceable", () => {
   const x16 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x16").map((c) => ({ p, c })));
   assert.equal(x16.length, 210);
   const n = (s) => x16.filter(({ c }) => c.status === s).length;
-  // BABUSHKA (review PASS) is kept as a held option while the coordinator-selected RUSSIAN serves DOLL + NEST.
-  assert.equal(n("ai_reviewed"), 205); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
+  // + VICTORIA, MAVERICK, DAREDEVIL, TREAD coordinator-accepted; BABUSHKA (review PASS) kept as a held option while RUSSIAN serves DOLL + NEST.
+  assert.equal(n("ai_reviewed"), 209); assert.equal(n("held"), 1); assert.equal(n("rejected"), 0);
   for (const { p, c } of x16) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const dn = byId.get("p_doll__nest");
   const ru = dn.clues.find((c) => c.text === "RUSSIAN");
@@ -371,7 +371,7 @@ test("x16: 210 candidates on unseen pairs; 206 served after blind review, 4 BORD
   assert.doesNotMatch(bald.revealExplanation + bald.wordBConnection, /so is the bald eagle/);
   assert.match(bald.provenance.textCorrection.from.revealExplanation, /so is the bald eagle/);
   const mav = byId.get("p_cowboy__jet").clues[0];
-  assert.equal(mav.status, "held"); assert.equal(mav.provenance.blindReview.verdict, "BORDERLINE"); assert.doesNotMatch(mav.revealExplanation + mav.wordAConnection, /Dallas/);
+  assert.equal(mav.status, "ai_reviewed"); assert.equal(mav.override.status, "coordinator_accept"); assert.equal(mav.provenance.blindReview.verdict, "BORDERLINE"); assert.equal(mav.reference.recognizability, "moderate"); assert.doesNotMatch(mav.revealExplanation + mav.wordAConnection, /Dallas/);
   assert.match(byId.get("p_bomb__bus").clues[0].revealExplanation, /50 mph/);
   assert.doesNotMatch(byId.get("p_new-york__square").clues[0].revealExplanation, /landmarks/);
 });

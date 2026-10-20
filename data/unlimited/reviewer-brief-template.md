@@ -2,6 +2,8 @@
 
 Fill in <BATCH>, <ID>, <N> and <DATE>; adapt the batch description paragraph. Earlier briefs (x03-x12) are kept as they were run; this template is the current wording.
 
+Changed 2026-10-20 (parent, after the x16 review): added the per-line accuracy check below question 4. Clever stretches stay allowed and universal familiarity is not required.
+
 Changed 2026-10-20 after the synonym-rule audit (data/unlimited/clue-generation-guide.md, "Synonyms"): the old FAIL item "a plain synonym ... of a target" was an assistant-written review rule, not an owner requirement or a game rule. The structural rules are unchanged and live in code (scripts/unlimited/catalogue-lib.mjs hintProblem: one word, never equal to, containing or contained in a target).
 
 ---
@@ -20,6 +22,8 @@ Ask of every hint:
 3. Is there a clearly better hint for this pair? If so, name it in better_hint. A better hint existing is a reason for BORDERLINE only when this one is clearly weaker AND unremarkable; two genuinely good hints for one pair can both PASS.
 4. Does the explanation reveal a real, true connection rather than invent one? Are the per-word lines accurate?
 5. Is this a satisfying clue, even if easy?
+
+Per-line accuracy check (do it for the explanation AND each per-word line): connect the HINT to that target, do not merely define the target; avoid unsupported always / every / first / only / current superlatives ("a typical honeybee colony has a queen", not "every hive"); no invented scene details (the Turtles shout Cowabunga, not "while eating pizza"); never treat a brand or character name as literal biology (Mr. Clean has a bald head; the bald eagle is named bald, it is not featherless). Keep each line concise and factual. A line that fails this check while the hint route itself is sound is a text fix: PASS or BORDERLINE as the route deserves, add the flag "text_fix", and write the corrected sentence in "fix". It is not a FAIL on its own. This check does not penalise clever stretches or require universal familiarity.
 
 The owner's current standard (latest calibration, 2026-10-19/20):
 - Indirect familiar knowledge with an aha payoff is EXCELLENT, not weak. Her favourite: EINSTEIN + FAMILY -> RELATIVE ("chef's kiss": Einstein -> relativity -> relative). BUS + GOLF -> DRIVER is a "10/10 hint" (a clear double meaning; other words also fitting one side is NOT a reason to fail it). A place or property plus a category is fine: ANTARCTICA + ROOSTER -> PENGUIN ("a rooster is a bird; penguins are the birds of Antarctica").
