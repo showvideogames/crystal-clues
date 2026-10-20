@@ -23,7 +23,7 @@
 // approves it. Nothing here edits an existing hint's text, review or status.
 // A pair + hint the owner rejected or held (rejections.json) is refused.
 import { readFileSync, writeFileSync } from "node:fs";
-import { PATHS, loadCatalogue, pairOf, pairState, stats, wordCoverage, emptyPairs, servedHints, search, hintProblem, normWord, PLAYABLE, coverageSummary, pairAttempts, listHolds, ADVISORY_KINDS } from "./catalogue-lib.mjs";
+import { PATHS, loadCatalogue, pairOf, pairState, stats, wordCoverage, emptyPairs, servedHints, search, hintProblem, normWord, PLAYABLE, coverageSummary, pairAttempts, listHolds, ADVISORY_KINDS, normHint, hintKey } from "./catalogue-lib.mjs";
 import { REJECTIONS, loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const [cmd, ...rest] = process.argv.slice(2);
@@ -117,7 +117,7 @@ if (cmd === "stats") {
   need(!missing.length, `not in the word bank snapshot: ${missing.join(", ")} (add words to the bank first; the catalogue never adds them)`);
   need(a !== b, "a pair needs two different words");
   const typed = normWord(args[0]) === a;   // --a / --b follow the order the words were typed
-  const text = normWord(args[2]);
+  const text = normHint(args[2]);
   const problem = hintProblem(text, a, b);
   need(!problem, `${text}: ${problem}`);
   const recorded = rejectionFor(loadRejections(), a, b, text);
@@ -127,7 +127,8 @@ if (cmd === "stats") {
   const lib = JSON.parse(readFileSync(PATHS.pairs, "utf8"));
   let p = lib.pairs.find((x) => x.pair_id === id);
   if (!p) { p = { pair_id: id, a, b, source: owner ? "owner-discovery" : "friend-play", pairNote: null, reviewerBestAvailable: null, playableHints: 0, clues: [] }; lib.pairs.push(p); }
-  need(!p.clues.some((c) => normWord(c.text) === text), `${text} is already recorded for ${a} + ${b} (see: show ${a} ${b})`);
+  const same = p.clues.find((c) => hintKey(c.text) === hintKey(text));
+  need(!same, `${text} is already recorded for ${a} + ${b}${same && same.text !== text ? ` as ${same.text}` : ""} (see: show ${a} ${b})`);
   const c = {
     text, status: "candidate", heldReason: flags.approve ? null : "discovery: awaiting review or owner approval",
     type: flags.type || "discovery", wordAConnection: (typed ? flags.a : flags.b) || "", wordBConnection: (typed ? flags.b : flags.a) || "", revealExplanation: flags.why, reference: null,

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import LIBRARY from "./random-library.json";
-import { generateBoard, validateBoard, choosePairs, mulberry32, shuffle, norm } from "./generate.js";
+import { generateBoard, validateBoard, choosePairs, mulberry32, shuffle, norm, hintKey } from "./generate.js";
 import { DIFFICULTY_EXTRA } from "../game/shared";
 import BANK from "../../data/unlimited/wordbank/wordbank.json";
 import V1 from "./fixtures/generator-v1-board.json";
@@ -139,6 +139,23 @@ describe("hint choice rules", () => {
       expect(new Set(b.clues).size).toBe(4);
       expect(b.clues.filter((c) => c === "SAME").length).toBeLessThanOrEqual(1);
     }
+  });
+
+  it("conventional spellings (K9, AC/DC, CAP'N) are kept exactly; two spellings of one hint never share a board", () => {
+    expect(hintKey("AC/DC")).toBe("ACDC"); expect(hintKey("cap’n")).toBe("CAPN"); expect(norm("ac/dc")).toBe("AC/DC");
+    const lib = { words: words50, pairs: [
+      pair("W00", "W01", "canonical", "AC/DC"), pair("W02", "W03", "canonical", "ACDC"),
+      pair("W04", "W05", "provisional", "K9"), pair("W06", "W07", "provisional", "CAP'N"), pair("W08", "W09", "provisional", "Z3") ] };
+    for (let s = 1; s <= 200; s++) {
+      const b = generateBoard(lib, { seed: s, createdAt: AT });
+      expect(new Set(b.clues.map(hintKey)).size).toBe(4);
+      expect(b.clues.includes("AC/DC") && b.clues.includes("ACDC")).toBe(false);
+      for (const c of b.clues) expect(["AC/DC", "ACDC", "K9", "CAP'N", "Z3"]).toContain(c); // stored spelling, nothing stripped
+      expect(validateBoard(b, lib)).toEqual([]);
+    }
+    const forged = generateBoard(lib, { seed: 3, createdAt: AT });
+    const twin = { ...forged, clues: ["AC/DC", "ACDC", ...forged.clues.slice(2)] };
+    expect(validateBoard(twin, lib)).toContain("four distinct hint texts");
   });
 
   it("an equal set whose members all collide yields no choice for that pair (never a fallback)", () => {

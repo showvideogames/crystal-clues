@@ -30,15 +30,28 @@ export function pairOf(x, y) {
 
 export const pairCount = (n) => (n * (n - 1)) / 2;
 
-/** A hint may be one word: letters only (a familiar abbreviation such as NYC is letters too). */
+/** A hint as stored and shown: normWord, with a curly apostrophe (’ ‘ ʼ) written as a straight one. */
+export const normHint = (t) => normWord(t).replace(/[‘’ʼ]/g, "'");
+/** Letters and digits only: how two spellings of one hint are compared (AC/DC = ACDC, CAP'N = CAPN). */
+export const hintKey = (t) => normHint(t).replace(/[^A-Z0-9]/g, "");
+const HINT_SHAPE = /^[A-Z0-9](?:[A-Z0-9]|[/'](?=[A-Z0-9]))*$/;
+
+/**
+ * A hint is one word: letters (a familiar abbreviation such as NYC is letters too), plus the
+ * conventional spellings the owner allowed (2026-10-19): digits (K9), a slash (AC/DC) and an
+ * apostrophe (CAP'N). A slash or apostrophe sits only between two letters or digits, never
+ * doubled, leading or trailing; a hint needs at least one letter. Spaces, hyphens and any
+ * other characters are refused. Target checks compare letters and digits only.
+ */
 export function hintProblem(text, a, b) {
-  const t = normWord(text);
-  if (!/^[A-Z]+$/.test(t)) return "a hint is one word, letters only";
+  const t = normHint(text);
+  if (!HINT_SHAPE.test(t) || !/[A-Z]/.test(t)) return "a hint is one word: letters, with digits, a slash or an apostrophe only inside a conventional spelling (K9, AC/DC, CAP'N)";
+  const key = hintKey(t);
   for (const w of [a, b]) {
-    const bare = normWord(w).replace(/ /g, "");
-    if (t === bare) return `the hint is a target (${w})`;
-    if (t.includes(bare)) return `the hint contains a target (${w})`;
-    if (bare.includes(t)) return `a target contains the hint (${w})`;
+    const bare = hintKey(w);
+    if (key === bare) return `the hint is a target (${w})`;
+    if (key.includes(bare)) return `the hint contains a target (${w})`;
+    if (bare.includes(key)) return `a target contains the hint (${w})`;
   }
   return null;
 }
@@ -203,22 +216,22 @@ export function currentState(ix, p) {
 
 function attemptFromClue(p, c, rejs, overrides) {
   const d = activeDecision(c); const r = reviewOf(c);
-  const t = normWord(c.text);
+  const t = hintKey(c.text);
   const kept = c.override?.history || [];
-  const extra = overrides.filter((o) => o.superseded && o.pair_id === p.pair_id && normWord(o.text) === t && !kept.some((h) => h.date === o.date && h.by === o.by && h.status === o.status));
+  const extra = overrides.filter((o) => o.superseded && o.pair_id === p.pair_id && hintKey(o.text) === t && !kept.some((h) => h.date === o.date && h.by === o.by && h.status === o.status));
   return {
     text: c.text, inLibrary: true, status: c.status, decision: d,
     advisory: adviseKind({ status: c.status, decider: d.decider, flags: r?.flags, reason: [c.heldReason, c.override?.reason, r?.reason].filter(Boolean).join(" | ") }),
     review: r ? { verdict: r.verdict, a: r.a, b: r.b, fairness: r.fairness, delight: r.delight ?? null, flags: r.flags || [], reason: r.reason || null } : null,
     source: c.provenance?.source || null, addedBy: c.provenance?.addedBy || null, explanation: c.revealExplanation || "",
-    recorded: rejs.filter((e) => normWord(e.hint) === t), history: [...kept, ...extra],
+    recorded: rejs.filter((e) => hintKey(e.hint) === t), history: [...kept, ...extra],
   };
 }
 
 function attemptFromRejection(e) {
   const decider = deciderOf(e.by);
   return {
-    text: normWord(e.hint), inLibrary: false, status: e.decision, decision: { status: e.decision, by: e.by, decider, reason: e.reason, via: "rejections.json" },
+    text: normHint(e.hint), inLibrary: false, status: e.decision, decision: { status: e.decision, by: e.by, decider, reason: e.reason, via: "rejections.json" },
     advisory: adviseKind({ status: e.decision, decider, reason: e.reason }), review: null, source: null, addedBy: null, explanation: "", recorded: [e], history: [],
   };
 }
@@ -229,7 +242,7 @@ export function pairAttempts(ix, x, y, { rejections = [], overrides = [] } = {})
   const p = ix.byId.get(id);
   const rejs = rejectionsByPair(rejections).get(id) || [];
   const attempts = (p?.clues || []).map((c) => attemptFromClue(p, c, rejs, overrides));
-  for (const e of rejs) if (!attempts.some((t) => normWord(t.text) === normWord(e.hint))) attempts.push(attemptFromRejection(e));
+  for (const e of rejs) if (!attempts.some((t) => hintKey(t.text) === hintKey(e.hint))) attempts.push(attemptFromRejection(e));
   const state = currentState(ix, p);
   return {
     a, b, id, inBank: ix.inBank.has(a) && ix.inBank.has(b), ...pairEvidence(p, rejs), state,

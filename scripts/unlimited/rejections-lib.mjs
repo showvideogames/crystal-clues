@@ -7,7 +7,7 @@
 //   - export-random-library.mjs refuses to export one as a served choice.
 // Lifting an entry is a person's decision: edit the file with the owner.
 import { readFileSync, existsSync } from "node:fs";
-import { pairOf, normWord } from "./catalogue-lib.mjs";
+import { pairOf, hintKey } from "./catalogue-lib.mjs";
 
 export const REJECTIONS = "data/unlimited/library/rejections.json";
 export const DECISIONS = new Set(["rejected", "held"]);
@@ -26,6 +26,6 @@ export function loadRejections(path = REJECTIONS) {
 /** The recorded decision for this pair (either word order) and hint, or null. */
 export function rejectionFor(entries, x, y, hint) {
   const { id } = pairOf(x, y);
-  const t = normWord(hint);
-  return entries.find((e) => e.pair_id === id && normWord(e.hint) === t) || null;
+  const t = hintKey(hint);   // one hint in any spelling: AC/DC = ACDC, CAP’N = CAP'N
+  return entries.find((e) => e.pair_id === id && hintKey(e.hint) === t) || null;
 }

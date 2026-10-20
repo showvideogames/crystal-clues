@@ -20,6 +20,8 @@ export const GENERATOR_VERSION = 2;
 const CLUE_LINKS = [[[0, 0], [1, 0]], [[1, 1], [2, 1]], [[3, 2], [2, 2]], [[0, 3], [3, 3]]];
 const CARD_IDS = ["c1", "c2", "c3", "c4", "c5", "c6", "c7"];
 export const norm = (t) => String(t ?? "").trim().toUpperCase().replace(/\s+/g, " ");
+// Letters and digits only, for "same hint" checks: AC/DC and ACDC, or CAP'N and CAP’N, are one hint.
+export const hintKey = (t) => norm(t).replace(/[^A-Z0-9]/g, "");
 
 export function mulberry32(seed) {
   let a = seed >>> 0;
@@ -48,10 +50,10 @@ function pickHints(chosen, rng) {
   const order = chosen.map((p, i) => i).sort((x, y) => (chosen[x].hints.length - chosen[y].hints.length) || (x - y));
   const picked = new Array(chosen.length);
   for (const i of order) {
-    const free = chosen[i].hints.filter((h) => !used.has(norm(h.text)));
+    const free = chosen[i].hints.filter((h) => !used.has(hintKey(h.text)));
     if (!free.length) return null;
     const h = chosen[i].rule === "equal-tier" ? free[Math.floor(rng() * free.length)] : free[0];
-    used.add(norm(h.text)); picked[i] = h;
+    used.add(hintKey(h.text)); picked[i] = h;
   }
   for (let i = 0; i < chosen.length; i++) out.push(picked[i]);
   return out;
@@ -157,7 +159,7 @@ export function validateBoard(board, library) {
   const W = new Set(library.words);
   const byId = new Map(library.pairs.map((p) => [p.id, p]));
   if (board.clues?.length !== 4) errs.push("four clues");
-  if (new Set(board.clues.map(norm)).size !== 4) errs.push("four distinct hint texts");
+  if (new Set(board.clues.map(hintKey)).size !== 4) errs.push("four distinct hint texts");
   const ids = Object.keys(board.cards);
   if (ids.length !== 7) errs.push("seven cards");
   const all = ids.flatMap((k) => board.cards[k].words);
