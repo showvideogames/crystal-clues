@@ -262,9 +262,12 @@ test("x11 owner proposals: CAROLING, VOILA, NOAH coordinator-accepted; CAP'N pen
   assert.match(byId.get("p_sheep__ship").clues[0].revealExplanation, /familiar Bible story/);
   for (const id of ["p_cannon__cereal", "p_cereal__pirate"]) assert.deepEqual(byId.get(id).clues.map((x) => x.text), ["CAP'N"], "pending on the apostrophe at first; stored as CAP'N once allowed, never respelled");
   for (const w of ["lion", "giraffe", "rat", "whale"]) assert.equal(byId.get(`p_${w}__ship`), undefined, "proposal only");
-  // x20 drafted CROW + SHIP -> NEST independently; it matches the proposal family, so it is held, never served, until the parent decides
-  const crow = byId.get("p_crow__ship"); assert.deepEqual(crow.clues.map((c) => [c.text, c.status, c.provenance.source]), [["NEST", "held", "x20"]]);
-  assert.match(crow.clues[0].override.reason, /proposal-only animal x SHIP family/); assert.ok(!client.pairs.some((x) => x.id === "p_crow__ship"));
+  // x20 drafted CROW + SHIP -> NEST independently; the parent's source audit approved it (the x11 entry was an assistant proposal, not an owner hold)
+  const crow = byId.get("p_crow__ship"); assert.deepEqual(crow.clues.map((c) => [c.text, c.status, c.provenance.source]), [["NEST", "ai_reviewed", "x20"]]);
+  assert.equal(crow.clues[0].override.status, "coordinator_accept"); assert.match(crow.clues[0].override.reason, /assistant-prepared proposal awaiting parent review, not an owner hold/);
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_crow__ship").hints.map((h) => h.text), ["NEST"]);
+  const { reservedPairIds } = await import("./reserved-pairs.mjs"); const res = reservedPairIds();
+  assert.ok(!res.has("p_crow__ship")); assert.ok(res.has("p_rat__ship") && res.has("p_ship__whale") && res.has("p_lion__ship"));
   assert.equal(byId.get("p_bird__ship"), undefined, "BIRD + SHIP still only the owner FALCON hold");
   // the checker and batch builds treat the whole x11 animal x SHIP proposal as reserved for coordinator review
   const { spawnSync } = await import("node:child_process");
@@ -468,7 +471,8 @@ test("x20: 221 candidates on unseen pairs; 211 PASS + 9 BORDERLINE accepted; FEE
   const n = (s) => x20.filter(({ c }) => c.status === s).length;
   // + CROW + SHIP -> NEST (review PASS) held: it belongs to the x11 owner proposal-only animal x SHIP family
   // the parent then accepted 9 BORDERLINE rows; BAIT is kept held behind the coordinator-selected FEED
-  assert.equal(n("ai_reviewed"), 219); assert.equal(n("held"), 2); assert.equal(n("rejected"), 0);
+  // CROW + SHIP -> NEST then approved by the parent's source audit; only BAIT stays held
+  assert.equal(n("ai_reviewed"), 220); assert.equal(n("held"), 1); assert.equal(n("rejected"), 0);
   const it = byId.get("p_internet__troll").clues; const feed = it.find((c) => c.text === "FEED");
   assert.equal(feed.override.status, "coordinator_accept"); assert.equal(feed.provenance.blindReview, null); assert.equal(it.find((c) => c.text === "BAIT").status, "held");
   assert.deepEqual(client.pairs.find((x) => x.id === "p_internet__troll").hints.map((h) => h.text), ["FEED"]);
