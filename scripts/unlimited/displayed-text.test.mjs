@@ -277,12 +277,18 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/']/.test(h.text))), "only letters, digits, / and ' in served hints");
 });
 
-test("x12: 162 served from blind review, 5 more coordinator-accepted, 1 held, 2 rejected; coordinator wording corrections traceable; existing served pairs untouched", () => {
+test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
   const x12 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x12").map((c) => ({ p, c })));
   assert.equal(x12.length, 170);
   const n = (s) => x12.filter(({ c }) => c.status === s).length;
   // 162 PASS, then 5 BORDERLINE accepted by the coordinator (x12 cleanup); RING (BAND + FINGER) still held.
-  assert.equal(n("ai_reviewed"), 167); assert.equal(n("held"), 1); assert.equal(n("rejected"), 2);
+  // + RING (BAND + WEDDING, BAND + FINGER) and STRAP (BAND + WATCH) accepted by the coordinator after the synonym-rule audit.
+  assert.equal(n("ai_reviewed"), 170); assert.equal(n("held"), 0); assert.equal(n("rejected"), 0);
+  for (const [id, t, v] of [["p_band__wedding", "RING", "FAIL"], ["p_band__finger", "RING", "BORDERLINE"], ["p_band__watch", "STRAP", "FAIL"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === t);
+    assert.equal(c.override.status, "coordinator_accept"); assert.equal(c.provenance.blindReview.verdict, v, "raw review kept");
+  }
+  assert.match(byId.get("p_band__watch").clues[0].override.reason, /WRIST .*unselected/);
   for (const t of ["SMASHING", "ROCK", "PLANTS", "CONTROLLER", "SOCKET"]) {
     const c = x12.find(({ c }) => c.text === t && c.override?.status === "coordinator_accept")?.c;
     assert.ok(c, t); assert.equal(c.provenance.blindReview.verdict, "BORDERLINE", "the raw review stays on record"); assert.match(c.override.by, /not an owner decision/);
