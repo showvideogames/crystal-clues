@@ -430,12 +430,20 @@ test("x18: 219 candidates on unseen pairs; 211 PASS + CANON, JAZZ, GORILLA accep
   const cp = byId.get("p_cook__slow").clues; assert.equal(cp.length, 1); assert.equal(cp[0].text, "CROCK-POT"); assert.equal(cp[0].provenance.hintSpelling.from, "CROCKPOT");
 });
 
-test("x19: 210 candidates on unseen pairs; 199 PASS, 11 BORDERLINE held; SCIENTIST serves BROWN + EINSTEIN (DOC held); text fixes traceable", () => {
+test("x19: 210 candidates on unseen pairs; 199 PASS + 6 BORDERLINE accepted; SCIENTIST, ARES, STRING, SATELLITE, SANDERSON coordinator selections; text fixes traceable", () => {
   const x19 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x19").map((c) => ({ p, c })));
   assert.equal(x19.length, 210);
   const n = (s) => x19.filter(({ c }) => c.status === s).length;
   // DOC (review PASS) is familiarity-held: it relies on the Back to the Future dog named Einstein.
-  assert.equal(n("ai_reviewed"), 198); assert.equal(n("held"), 12); assert.equal(n("rejected"), 0);
+  // + CAFE, POINT, ROMAN, ISLAND, DOLLY, SLEDGE accepted; held: DOC, KRATOS, FIDDLE, TELESCOPE, MACBETH (valid alternatives) and QUARK (familiarity, pair open)
+  assert.equal(n("ai_reviewed"), 204); assert.equal(n("held"), 6); assert.equal(n("rejected"), 0);
+  for (const [id, h, old] of [["p_god__war", "ARES", "KRATOS"], ["p_bow__violin", "STRING", "FIDDLE"], ["p_dish__radio", "SATELLITE", "TELESCOPE"], ["p_sister__witch", "SANDERSON", "MACBETH"]]) {
+    const cs = byId.get(id).clues; const sel = cs.find((c) => c.text === h);
+    assert.equal(sel.override.status, "coordinator_accept"); assert.equal(sel.provenance.blindReview, null);
+    assert.equal(cs.find((c) => c.text === old).status, "held");
+    assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), [h]);
+  }
+  assert.ok(!client.pairs.some((x) => x.id === "p_charm__top"));
   for (const { p, c } of x19) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const be = byId.get("p_brown__einstein").clues; const sci = be.find((c) => c.text === "SCIENTIST");
   assert.equal(sci.override.status, "coordinator_accept"); assert.equal(sci.provenance.blindReview, null);
