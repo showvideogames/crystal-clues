@@ -156,3 +156,12 @@ test("synonym audit: naming one sense of one target is not a blanket failure (RI
   assert.match(hintProblem("RIN", "BAND", "RING"), /target contains the hint/);
   assert.equal(hintProblem("RING", "BAND", "WEDDING"), null);
 });
+
+test("British-only audit: regional words are a familiarity note, not an automatic fail or a rule", () => {
+  const brief = readFileSync("data/unlimited/reviewer-brief-template.md", "utf8");
+  assert.doesNotMatch(brief, /fail niche fandom, British-only usage/);
+  assert.match(brief, /British or regional word is not an automatic fail/);
+  assert.notEqual(adviseKind({ status: "held", decider: "reviewer", flags: ["british_only"], reason: "British usage" }), "rule");
+  const client = JSON.parse(readFileSync("src/unlimited/random-library.json", "utf8"));
+  for (const [id, h] of [["p_italy__trunk", "BOOT"], ["p_cream__tennis", "WIMBLEDON"], ["p_jam__pickle", "TROUBLE"]]) assert.ok(client.pairs.find((p) => p.id === id)?.hints.some((x) => x.text === h), `${id} ${h}`);
+});

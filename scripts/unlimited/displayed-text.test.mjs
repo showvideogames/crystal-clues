@@ -348,7 +348,8 @@ test("x15: 213 candidates on unseen pairs; 207 served after blind review, 5 held
   const x15 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x15").map((c) => ({ p, c })));
   assert.equal(x15.length, 213);
   const n = (s) => x15.filter(({ c }) => c.status === s).length;
-  assert.equal(n("ai_reviewed"), 207); assert.equal(n("held"), 5); assert.equal(n("rejected"), 1);
+  // + BOOT, PUPPET, ROOK, WIMBLEDON x2 coordinator-accepted; JAR kept (held) while TROUBLE serves JAM + PICKLE.
+  assert.equal(n("ai_reviewed"), 212); assert.equal(n("held"), 1); assert.equal(n("rejected"), 0);
   for (const { p, c } of x15) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   assert.doesNotMatch(byId.get("p_japan__penguin").clues[0].revealExplanation, /last country/);
   assert.match(byId.get("p_ball__ram").clues[0].revealExplanation, /Dodge Ram/);
