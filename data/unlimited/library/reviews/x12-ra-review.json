@@ -1,0 +1,1001 @@
+{
+ "_metadata": {
+  "reviewer": "x12-reviewer-a",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x12-ra-input.json",
+  "rubric": "x12 rubric (latest owner calibration: RELATIVE/DRIVER/PENGUIN), 2026-10-20",
+  "independence": "I read only x12-ra-input.json and no other file, repository content, web page or API."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_africa__band",
+   "a": "AFRICA",
+   "b": "BAND",
+   "hints": [
+    {
+     "text": "TOTO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "AFRICA: Toto's 'Africa' is a ubiquitous, much-memed hit; BAND: Toto is that band, so one well-known song fact covers both sides cleanly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TOTO"],
+   "pair_note": "Clean song-to-band clue; the Wizard of Oz dog is a harmless decoy that only adds to the aha."
+  },
+  {
+   "pair_id": "p_award__tooth",
+   "a": "AWARD",
+   "b": "TOOTH",
+   "hints": [
+    {
+     "text": "PLAQUE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "AWARD: an award plaque on the wall; TOOTH: dental plaque. Two distinct, everyday senses of one word.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PLAQUE"],
+   "pair_note": "Textbook double meaning, the DRIVER model."
+  },
+  {
+   "pair_id": "p_band__chess",
+   "a": "BAND",
+   "b": "CHESS",
+   "hints": [
+    {
+     "text": "QUEEN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND: Queen the rock band; CHESS: the queen is the most powerful piece. Both senses are instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["QUEEN"],
+   "pair_note": "Strong. QUEEN is also the hint for BAND+KING; fine per pair, but avoid serving both on one board."
+  },
+  {
+   "pair_id": "p_band__dragon",
+   "a": "BAND",
+   "b": "DRAGON",
+   "hints": [
+    {
+     "text": "IMAGINE",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DRAGON: completes the name Imagine Dragons; BAND: Imagine Dragons is a hugely popular band. A plain name completion, but the name is instantly familiar and the hint has only one completer.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["IMAGINE"],
+   "pair_note": "Name completion with a band as the category. It passes because the name is iconic, but it is flat compared with the double meanings in this batch, and Lennon's 'Imagine' may briefly send players elsewhere."
+  },
+  {
+   "pair_id": "p_band__finger",
+   "a": "BAND",
+   "b": "FINGER",
+   "hints": [
+    {
+     "text": "RING",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": "GOLD",
+     "flags": ["synonym_of_target", "better_hint_exists", "text_fix", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "BAND: a wedding band is a ring; FINGER: a ring goes on a finger, the ring finger. Both sides use the same jewelry sense, so RING is close to a sense-synonym of BAND rather than a double meaning, and there is no aha.",
+     "fix": "A wedding band is a ring."
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Reaches both words easily, but it is close to a plain synonym and flat; a strict reading could FAIL it. GOLD (gold band; Goldfinger) gives a real two-route aha."
+  },
+  {
+   "pair_id": "p_band__king",
+   "a": "BAND",
+   "b": "KING",
+   "hints": [
+    {
+     "text": "QUEEN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "BAND: Queen the rock band; KING: king and queen are the classic royal pair. The KING side is very direct but both routes are true and familiar.",
+     "fix": "A queen is the king's royal partner."
+    }
+   ],
+   "strong_hints": ["QUEEN"],
+   "pair_note": "Solid if easy. The fix is minor: a queen consort does not literally rule alongside the king. Watch for a clash with the BAND+CHESS QUEEN on a shared board."
+  },
+  {
+   "pair_id": "p_band__pink",
+   "a": "BAND",
+   "b": "PINK",
+   "hints": [
+    {
+     "text": "FLOYD",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PINK: completes the name Pink Floyd; BAND: Pink Floyd is a legendary rock band. The completion is unique and instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLOYD"],
+   "pair_note": "Iconic name completion. Some players will think of George Floyd first; that is not inappropriate, but the owner may want to know."
+  },
+  {
+   "pair_id": "p_band__spice",
+   "a": "BAND",
+   "b": "SPICE",
+   "hints": [
+    {
+     "text": "GIRLS",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SPICE: completes the name Spice Girls; BAND: the Spice Girls are the quintessential girl band, so 'girl band' adds a second echo.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GIRLS"],
+   "pair_note": "GIRLS fits many phrases, but under the DRIVER rule that is not a reason to fail it; with SPICE on the board, Spice Girls clicks at once."
+  },
+  {
+   "pair_id": "p_band__valentine",
+   "a": "BAND",
+   "b": "VALENTINE",
+   "hints": [
+    {
+     "text": "KISS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND: KISS, the face-painted classic rock band; VALENTINE: a kiss is the stock Valentine's gesture (and Hershey's Kisses).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KISS"],
+   "pair_note": "Good band-plus-everyday-word double meaning."
+  },
+  {
+   "pair_id": "p_bank__chess",
+   "a": "BANK",
+   "b": "CHESS",
+   "hints": [
+    {
+     "text": "CHECK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BANK: you cash a check at the bank; CHESS: check threatens the king. Two distinct, very familiar senses.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CHECK"],
+   "pair_note": "Excellent classic double meaning."
+  },
+  {
+   "pair_id": "p_baseball__fishing",
+   "a": "BASEBALL",
+   "b": "FISHING",
+   "hints": [
+    {
+     "text": "CATCH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL: fielders make a catch; FISHING: a fisherman's catch of the day.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CATCH"],
+   "pair_note": "Easy and clean; the 'catch of the day' sense keeps it from being one-note."
+  },
+  {
+   "pair_id": "p_baseball__thief",
+   "a": "BASEBALL",
+   "b": "THIEF",
+   "hints": [
+    {
+     "text": "STEAL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL: stealing a base; THIEF: a thief steals. The THIEF side is near-definitional, but the baseball sense supplies the payoff.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STEAL"],
+   "pair_note": "Strong pairing of a sports term with a literal one."
+  },
+  {
+   "pair_id": "p_bear__jungle",
+   "a": "BEAR",
+   "b": "JUNGLE",
+   "hints": [
+    {
+     "text": "BALOO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEAR: Baloo is the bear; JUNGLE: he is from The Jungle Book. The Disney film makes both sides instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BALOO"],
+   "pair_note": "Familiar character clue."
+  },
+  {
+   "pair_id": "p_bird__video-game",
+   "a": "BIRD",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "ANGRY",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BIRD: completes Angry Birds; VIDEO GAME: Angry Birds is one of the best-known mobile games.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ANGRY"],
+   "pair_note": "Instantly familiar title completion; easy but fair."
+  },
+  {
+   "pair_id": "p_box__radio",
+   "a": "BOX",
+   "b": "RADIO",
+   "hints": [
+    {
+     "text": "PANDORA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOX: Pandora's box from myth; RADIO: Pandora the internet radio service. A myth and a brand, both widely known in the U.S.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PANDORA"],
+   "pair_note": "Nice myth/brand aha. The myth's original vessel was a jar, but 'box' is the standard English idiom, so the text is fine."
+  },
+  {
+   "pair_id": "p_calendar__palm",
+   "a": "CALENDAR",
+   "b": "PALM",
+   "hints": [
+    {
+     "text": "DATE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CALENDAR: a calendar is full of dates; PALM: dates are the fruit of the date palm.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DATE"],
+   "pair_note": "Excellent double meaning; the PALM side gives a small, satisfying aha."
+  },
+  {
+   "pair_id": "p_captain__fish",
+   "a": "CAPTAIN",
+   "b": "FISH",
+   "hints": [
+    {
+     "text": "NEMO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FISH: Nemo, the clownfish in Finding Nemo; CAPTAIN: Captain Nemo of Jules Verne's Nautilus. Two different famous Nemos.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NEMO"],
+   "pair_note": "Captain Nemo is a bit older but still widely known; a real 'oh, nice' moment."
+  },
+  {
+   "pair_id": "p_card__golf",
+   "a": "CARD",
+   "b": "GOLF",
+   "hints": [
+    {
+     "text": "CLUB",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CARD: clubs is a card suit; GOLF: golfers swing clubs.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CLUB"],
+   "pair_note": "Clean, familiar double meaning."
+  },
+  {
+   "pair_id": "p_card__toilet",
+   "a": "CARD",
+   "b": "TOILET",
+   "hints": [
+    {
+     "text": "FLUSH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CARD: a flush is a poker hand; TOILET: you flush a toilet. A comic contrast that stays PG.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLUSH"],
+   "pair_note": "Fun, surprising pairing."
+  },
+  {
+   "pair_id": "p_caterpillar__swimming",
+   "a": "CATERPILLAR",
+   "b": "SWIMMING",
+   "hints": [
+    {
+     "text": "BUTTERFLY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CATERPILLAR: a caterpillar becomes a butterfly; SWIMMING: the butterfly stroke.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BUTTERFLY"],
+   "pair_note": "Excellent; a life-cycle fact plus a sports term."
+  },
+  {
+   "pair_id": "p_cereal__tiger",
+   "a": "CEREAL",
+   "b": "TIGER",
+   "hints": [
+    {
+     "text": "TONY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TIGER: Tony the Tiger; CEREAL: he is the Frosted Flakes mascot. A classic mascot covers both sides.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TONY"],
+   "pair_note": "Cereal-mascot reference, explicitly fine under the rubric."
+  },
+  {
+   "pair_id": "p_chocolate__planet",
+   "a": "CHOCOLATE",
+   "b": "PLANET",
+   "hints": [
+    {
+     "text": "MARS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PLANET: Mars, the red planet; CHOCOLATE: the Mars bar and the Mars candy company. The bar is more British, but most Americans still know the name.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MARS"],
+   "pair_note": "The Mars bar itself is less common in U.S. stores, but the Mars candy brand is widely recognized, so I did not flag it as British-only."
+  },
+  {
+   "pair_id": "p_code__snake",
+   "a": "CODE",
+   "b": "SNAKE",
+   "hints": [
+    {
+     "text": "PYTHON",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNAKE: a python is a big snake; CODE: Python is a very popular programming language.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PYTHON"],
+   "pair_note": "Strong. The CODE side is now mainstream knowledge."
+  },
+  {
+   "pair_id": "p_computer__weather",
+   "a": "COMPUTER",
+   "b": "WEATHER",
+   "hints": [
+    {
+     "text": "CLOUD",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "COMPUTER: cloud storage; WEATHER: clouds bring rain.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CLOUD"],
+   "pair_note": "Clean modern double meaning."
+  },
+  {
+   "pair_id": "p_diamond__video-game",
+   "a": "DIAMOND",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "MINECRAFT",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME: Minecraft is one of the best-selling games ever; DIAMOND: diamonds (diamond pickaxe and armor) are its iconic prized ore.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MINECRAFT"],
+   "pair_note": "The DIAMOND side relies on game knowledge, but Minecraft diamonds are famous well beyond players (memes, parents). Older non-gamers may need the explanation."
+  },
+  {
+   "pair_id": "p_dog__funny",
+   "a": "DOG",
+   "b": "FUNNY",
+   "hints": [
+    {
+     "text": "GOOFY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DOG: Goofy is Disney's dog; FUNNY: goofy means silly. The adjective is close to the target, but the character sense makes it a real double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GOOFY"],
+   "pair_note": "Delightful; the 'is Goofy a dog?' trivia only helps."
+  },
+  {
+   "pair_id": "p_dream__soccer",
+   "a": "DREAM",
+   "b": "SOCCER",
+   "hints": [
+    {
+     "text": "GOAL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SOCCER: players score goals; DREAM: a dream is a life goal.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GOAL"],
+   "pair_note": "Easy and fair; the DREAM side is figurative but natural."
+  },
+  {
+   "pair_id": "p_eye__flower",
+   "a": "EYE",
+   "b": "FLOWER",
+   "hints": [
+    {
+     "text": "IRIS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "EYE: the iris is the colored part of the eye; FLOWER: the iris is a flower.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["IRIS"],
+   "pair_note": "Classic, excellent."
+  },
+  {
+   "pair_id": "p_eye__whip",
+   "a": "EYE",
+   "b": "WHIP",
+   "hints": [
+    {
+     "text": "LASH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "EYE: eyelashes; WHIP: a lash is a stroke of a whip. The hint itself does not contain either target.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LASH"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_fishing__football",
+   "a": "FISHING",
+   "b": "FOOTBALL",
+   "hints": [
+    {
+     "text": "TACKLE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FOOTBALL: players tackle; FISHING: fishing gear is tackle (tackle box).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TACKLE"],
+   "pair_note": "Excellent; the fishing sense is a pleasing reveal."
+  },
+  {
+   "pair_id": "p_football__poetry",
+   "a": "FOOTBALL",
+   "b": "POETRY",
+   "hints": [
+    {
+     "text": "RAVEN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FOOTBALL: the Baltimore Ravens (NFL); POETRY: Poe's 'The Raven'. The team is in fact named after the poem, which deepens the aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RAVEN"],
+   "pair_note": "One of the best in the batch. Optionally add to the explanation: 'The Ravens are named after Poe's poem.' (true, but not a required fix)."
+  },
+  {
+   "pair_id": "p_giant__map",
+   "a": "GIANT",
+   "b": "MAP",
+   "hints": [
+    {
+     "text": "ATLAS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "MAP: an atlas is a book of maps; GIANT: Atlas, the Titan of myth who holds up the sky. Titans are commonly called giants, so the GIANT side takes one small step.",
+     "fix": "An atlas is a book of maps, and Atlas is the giant Titan of myth who held up the sky."
+    }
+   ],
+   "strong_hints": ["ATLAS"],
+   "pair_note": "Good aha. The 'named after' claim is shaky (Mercator said he named his atlas after a legendary King Atlas of Mauretania), so the fix drops it."
+  },
+  {
+   "pair_id": "p_hair__rabbit",
+   "a": "HAIR",
+   "b": "RABBIT",
+   "hints": [
+    {
+     "text": "HARE",
+     "mechanism": "other",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "RABBIT: a hare is the rabbit's close cousin; HAIR: 'hare' sounds just like 'hair' (the classic pun). It works by homophone, and the RABBIT side is close to a near-synonym.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HARE"],
+   "pair_note": "A homophone pun reaching both words fairly. I am unsure whether the owner treats hare as too near a synonym of rabbit; it is a different animal, so I passed it."
+  },
+  {
+   "pair_id": "p_horse__virus",
+   "a": "HORSE",
+   "b": "VIRUS",
+   "hints": [
+    {
+     "text": "TROJAN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "HORSE: the Trojan Horse; VIRUS: a trojan is malicious software, popularly called a 'Trojan horse virus'.",
+     "fix": "A trojan is sneaky computer malware, often called a virus."
+    }
+   ],
+   "strong_hints": ["TROJAN"],
+   "pair_note": "Strong idea. Strictly, a trojan is malware that does not self-replicate, so it is not a virus; the fix keeps the line accurate."
+  },
+  {
+   "pair_id": "p_mail__slow",
+   "a": "MAIL",
+   "b": "SLOW",
+   "hints": [
+    {
+     "text": "SNAIL",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MAIL: 'snail mail'; SLOW: snails are proverbially slow (and snail mail is called that because it is slow).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SNAIL"],
+   "pair_note": "A phrase-join backed by a property, and the two sides reinforce each other."
+  },
+  {
+   "pair_id": "p_mouse__video-game",
+   "a": "MOUSE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "PIKACHU",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOUSE: Pikachu is the 'Mouse Pokemon'; VIDEO GAME: Pikachu is the face of the Pokemon games.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PIKACHU"],
+   "pair_note": "Familiar character. Some players won't know Pikachu is a mouse, but it clicks on reveal."
+  },
+  {
+   "pair_id": "p_new-year__screen",
+   "a": "NEW YEAR",
+   "b": "SCREEN",
+   "hints": [
+    {
+     "text": "RESOLUTION",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "NEW YEAR: New Year's resolutions; SCREEN: screen resolution.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RESOLUTION"],
+   "pair_note": "Excellent double meaning."
+  },
+  {
+   "pair_id": "p_phone__video-game",
+   "a": "PHONE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "SNAKE",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PHONE: Snake came preloaded on Nokia mobile phones; VIDEO GAME: Snake is a classic game. A nostalgic aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SNAKE"],
+   "pair_note": "Older but widely remembered, which the rubric allows. Avoid serving it on a board that also has the CODE+SNAKE PYTHON pair."
+  },
+  {
+   "pair_id": "p_planet__sea",
+   "a": "PLANET",
+   "b": "SEA",
+   "hints": [
+    {
+     "text": "NEPTUNE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PLANET: Neptune is the eighth planet; SEA: Neptune is the Roman god of the sea.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NEPTUNE"],
+   "pair_note": "Accurate and familiar."
+  },
+  {
+   "pair_id": "p_princess__tea",
+   "a": "PRINCESS",
+   "b": "TEA",
+   "hints": [
+    {
+     "text": "JASMINE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PRINCESS: Princess Jasmine from Aladdin; TEA: jasmine tea.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JASMINE"],
+   "pair_note": "A delightful character-plus-everyday-item link."
+  },
+  {
+   "pair_id": "p_road__video-game",
+   "a": "ROAD",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "FROGGER",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ROAD: Frogger is all about crossing a busy road; VIDEO GAME: it is a classic arcade game.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FROGGER"],
+   "pair_note": "Classic arcade reference; clear and satisfying."
+  },
+  {
+   "pair_id": "p_street__video-game",
+   "a": "STREET",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "FIGHTER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "STREET: completes Street Fighter; VIDEO GAME: Street Fighter is a landmark fighting game.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FIGHTER"],
+   "pair_note": "Iconic title completion; flat but instantly familiar."
+  },
+  {
+   "pair_id": "p_vacuum__video-game",
+   "a": "VACUUM",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "KIRBY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME: Kirby, Nintendo's puffball hero; VACUUM: Kirby is a long-running U.S. vacuum brand, and the character literally inhales things like a vacuum.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KIRBY"],
+   "pair_note": "A lovely triple resonance. The vacuum brand is less known to younger players, but Kirby's sucking-up power carries the VACUUM side anyway."
+  }
+ ]
+}

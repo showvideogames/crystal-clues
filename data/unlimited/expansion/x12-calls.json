@@ -1,0 +1,67 @@
+{
+ "_metadata": {
+  "purpose": "x12 checkpoint calls (authorized: at most 2 drafting + 5 review + 1 recovery, 8 total). Used: 0 drafting (candidates drafted in-session), 4 review, 0 recovery. Agent tool, model opus, included allowance only; extraUsage.enabled=false verified via get_usage immediately before dispatch (5h 17%, weekly 74%). The unused x06 recovery call was not used.",
+  "date": "2026-10-20",
+  "used": {
+   "drafting": 0,
+   "review": 4,
+   "recovery": 0
+  },
+  "usageAfter": "5h 20%, weekly 74%, extraUsage.enabled=false",
+  "postReview": "28 wording corrections applied with correct-text.mjs (21 parent post-review corrections, 7 reviewer accuracy fixes); raw review files unchanged"
+ },
+ "calls": [
+  {
+   "id": "x12-reviewer-a",
+   "kind": "blind review",
+   "input": "data/unlimited/library/reviews/x12-ra-input.json",
+   "output": "data/unlimited/library/reviews/x12-ra-review.json",
+   "modelEcho": "claude-opus-5-5",
+   "hints": 43,
+   "verdicts": {
+    "PASS": 42,
+    "BORDERLINE": 1,
+    "FAIL": 0
+   }
+  },
+  {
+   "id": "x12-reviewer-b",
+   "kind": "blind review",
+   "input": "data/unlimited/library/reviews/x12-rb-input.json",
+   "output": "data/unlimited/library/reviews/x12-rb-review.json",
+   "modelEcho": "claude-opus-5-5",
+   "hints": 43,
+   "verdicts": {
+    "PASS": 40,
+    "BORDERLINE": 2,
+    "FAIL": 1
+   }
+  },
+  {
+   "id": "x12-reviewer-c",
+   "kind": "blind review",
+   "input": "data/unlimited/library/reviews/x12-rc-input.json",
+   "output": "data/unlimited/library/reviews/x12-rc-review.json",
+   "modelEcho": "claude-opus-5-5",
+   "hints": 42,
+   "verdicts": {
+    "PASS": 40,
+    "BORDERLINE": 1,
+    "FAIL": 1
+   }
+  },
+  {
+   "id": "x12-reviewer-d",
+   "kind": "blind review",
+   "input": "data/unlimited/library/reviews/x12-rd-input.json",
+   "output": "data/unlimited/library/reviews/x12-rd-review.json",
+   "modelEcho": "claude-opus-5-5",
+   "hints": 42,
+   "verdicts": {
+    "PASS": 40,
+    "BORDERLINE": 2,
+    "FAIL": 0
+   }
+  }
+ ]
+}

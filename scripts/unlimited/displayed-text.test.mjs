@@ -276,3 +276,19 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/']/.test(h.text))), "only letters, digits, / and ' in served hints");
 });
+
+test("x12: 162 served from blind review, 6 held, 2 rejected; coordinator wording corrections traceable; existing served pairs untouched", () => {
+  const x12 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x12").map((c) => ({ p, c })));
+  assert.equal(x12.length, 170);
+  const n = (s) => x12.filter(({ c }) => c.status === s).length;
+  assert.equal(n("ai_reviewed"), 162); assert.equal(n("held"), 6); assert.equal(n("rejected"), 2);
+  for (const { p, c } of x12) {
+    const served = client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text);
+    assert.equal(!!served, c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  }
+  const spam = x12.find(({ c }) => c.text === "SPAM").c;
+  assert.match(spam.revealExplanation, /canned pork with ham/); assert.match(spam.provenance.textCorrection.note, /parent post-review correction/);
+  assert.match(spam.provenance.textCorrection.from.revealExplanation, /canned ham/, "the old text is kept");
+  assert.equal(x12.find(({ c }) => c.text === "NINTENDO").c.revealExplanation, "Nintendo makes the Switch video game console.");
+  assert.doesNotMatch(x12.find(({ c }) => c.text === "GALAXY").c.revealExplanation, /star system/);
+});

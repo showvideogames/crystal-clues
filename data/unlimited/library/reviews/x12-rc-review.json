@@ -1,0 +1,978 @@
+{
+ "_metadata": {
+  "reviewer": "x12-reviewer-c",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x12-rc-input.json",
+  "rubric": "x12 rubric (latest owner calibration: RELATIVE/DRIVER/PENGUIN), 2026-10-20",
+  "independence": "I read only x12-rc-input.json (and re-read my own output to validate it); no other repository file, search, web or paid API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_angel__video-game",
+   "a": "ANGEL",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "HALO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ANGEL via the halo angels are drawn with; VIDEO GAME via the Halo series, a clean double meaning with a nice click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HALO"],
+   "pair_note": "Excellent pair; HALO is the obvious and right hint."
+  },
+  {
+   "pair_id": "p_band__bird",
+   "a": "BAND",
+   "b": "BIRD",
+   "hints": [
+    {
+     "text": "EAGLES",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via the Eagles of Hotel California; BIRD via the bird of prey; classic rock is fine for a U.S. audience.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["EAGLES"],
+   "pair_note": "Solid and fair; text is accurate."
+  },
+  {
+   "pair_id": "p_band__doctor",
+   "a": "BAND",
+   "b": "DOCTOR",
+   "hints": [
+    {
+     "text": "WHO",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "BAND via The Who; DOCTOR via Doctor Who; both names are instantly familiar and the pairing is a satisfying click, so this phrase-join earns its pass.",
+     "fix": "Doctor Who is the classic TV show about a time traveler called the Doctor."
+    }
+   ],
+   "strong_hints": ["WHO"],
+   "pair_note": "Good phrase-join. The DOCTOR line (and explanation) calls Doctor Who the time traveller; the character is 'the Doctor', and U.S. spelling is 'traveler'. Minor polish only."
+  },
+  {
+   "pair_id": "p_band__elastic",
+   "a": "BAND",
+   "b": "ELASTIC",
+   "hints": [
+    {
+     "text": "RUBBER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "BAND via 'rubber band'; ELASTIC via rubber's defining stretchiness; easy and flat but fair and unambiguous.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RUBBER"],
+   "pair_note": "Low delight (the pair itself nearly spells 'elastic band'), but it is a clean, fair easy clue. The BAND line 'A rubber band.' is terse; something like 'A rubber band is a stretchy loop.' would read better."
+  },
+  {
+   "pair_id": "p_band__garage",
+   "a": "BAND",
+   "b": "GARAGE",
+   "hints": [
+    {
+     "text": "ROCK",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["phrase_join_weak", "text_fix"],
+     "verdict": "BORDERLINE",
+     "reason": "BAND via 'rock band' is fine, but GARAGE depends on the genre name 'garage rock', which is less instantly familiar, and the pairing has no real payoff.",
+     "fix": "Garage rock is raw rock music named after bands that practiced in garages."
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The GARAGE line 'Garage rock is made in a garage' turns the genre name into a literal claim. No clearly better one-word hint found; ROCK is serviceable but unremarkable."
+  },
+  {
+   "pair_id": "p_band__march",
+   "a": "BAND",
+   "b": "MARCH",
+   "hints": [
+    {
+     "text": "PARADE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via marching bands in a parade; MARCH via marching down the street in a parade; a clear, vivid scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PARADE"],
+   "pair_note": "Clean scene clue; St. Patrick's Day parades in March are a small bonus reading."
+  },
+  {
+   "pair_id": "p_band__road",
+   "a": "BAND",
+   "b": "ROAD",
+   "hints": [
+    {
+     "text": "ABBEY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ROAD via 'Abbey Road'; BAND via Abbey Road being the Beatles album with the famous crossing cover, an indirect but well-known aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ABBEY"],
+   "pair_note": "BAND side is one step indirect (Abbey Road -> Beatles -> band), which is the satisfying kind. Lines are accurate."
+  },
+  {
+   "pair_id": "p_band__thief",
+   "a": "BAND",
+   "b": "THIEF",
+   "hints": [
+    {
+     "text": "POLICE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via The Police of 'Every Breath You Take'; THIEF via the police catching thieves; a crisp double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["POLICE"],
+   "pair_note": "Strong; the band reading is a pleasant twist on an obvious association."
+  },
+  {
+   "pair_id": "p_band__wedding",
+   "a": "BAND",
+   "b": "WEDDING",
+   "hints": [
+    {
+     "text": "RING",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target", "uncertain"],
+     "verdict": "FAIL",
+     "reason": "BAND via ring being a synonym of band in the jewelry sense, and WEDDING via 'wedding ring'; both sides use the same sense, so the hint just restates the compound 'wedding band' with a synonym rather than linking two ideas.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Judgement call: it is easy and works, but it is a synonym restatement rather than a double meaning. A hint using the music sense of band (for example RECEPTION, where the band plays) would be a real link, though not clearly great."
+  },
+  {
+   "pair_id": "p_baseball__cake",
+   "a": "BASEBALL",
+   "b": "CAKE",
+   "hints": [
+    {
+     "text": "BATTER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL via the batter at the plate; CAKE via cake batter; a classic, clean double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BATTER"],
+   "pair_note": "DRIVER-style double meaning; excellent."
+  },
+  {
+   "pair_id": "p_baseball__music",
+   "a": "BASEBALL",
+   "b": "MUSIC",
+   "hints": [
+    {
+     "text": "HIT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL via a base hit; MUSIC via a hit song; a clear double meaning even though other words could fit one side.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HIT"],
+   "pair_note": "Simple and fair. The explanation is a fragment; 'A hit is a popular song, and a batter gets a hit in baseball.' would read better."
+  },
+  {
+   "pair_id": "p_basketball__cookie",
+   "a": "BASKETBALL",
+   "b": "COOKIE",
+   "hints": [
+    {
+     "text": "DUNK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASKETBALL via the slam dunk; COOKIE via dunking a cookie in milk; a fun, vivid double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DUNK"],
+   "pair_note": "Excellent and playful."
+  },
+  {
+   "pair_id": "p_beef__vampire",
+   "a": "BEEF",
+   "b": "VAMPIRE",
+   "hints": [
+    {
+     "text": "STEAK",
+     "mechanism": "other",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "PASS",
+     "reason": "BEEF via steak as a cut of beef; VAMPIRE only via the homophone 'stake', a well-known groaner pun that the explanation states honestly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STEAK"],
+   "pair_note": "Judgement call: the vampire side works by sound, not spelling, and players see only the written word. The steak/stake pun is familiar and satisfying, and no better hint exists for this pair, so I lean PASS."
+  },
+  {
+   "pair_id": "p_book__fishing",
+   "a": "BOOK",
+   "b": "FISHING",
+   "hints": [
+    {
+     "text": "WORM",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOOK via 'bookworm'; FISHING via worms as bait; instantly familiar on both sides.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WORM"],
+   "pair_note": "Clean, easy and pleasant."
+  },
+  {
+   "pair_id": "p_boxing__pants",
+   "a": "BOXING",
+   "b": "PANTS",
+   "hints": [
+    {
+     "text": "BELT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOXING via the championship title belt; PANTS via the belt that holds them up; a clear double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BELT"],
+   "pair_note": "Solid; 'below the belt' adds a little extra boxing flavour."
+  },
+  {
+   "pair_id": "p_candy__genius",
+   "a": "CANDY",
+   "b": "GENIUS",
+   "hints": [
+    {
+     "text": "NERDS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CANDY via Nerds candy; GENIUS via nerds as the brainy type, a slight stretch from nerd to genius but an easy one.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NERDS"],
+   "pair_note": "SMARTIES (candy / 'smarty') is an equally good alternative; neither is clearly better. The GENIUS line slightly overstates ('A nerd is a brainy genius type'); 'Nerds are known as brainy types.' would be more precise."
+  },
+  {
+   "pair_id": "p_card__clown",
+   "a": "CARD",
+   "b": "CLOWN",
+   "hints": [
+    {
+     "text": "JOKER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CARD via the joker in a deck; CLOWN via joker as a jester/clown, reinforced by Batman's clown villain.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JOKER"],
+   "pair_note": "Strong and obvious in the good way."
+  },
+  {
+   "pair_id": "p_card__shovel",
+   "a": "CARD",
+   "b": "SHOVEL",
+   "hints": [
+    {
+     "text": "SPADE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CARD via the spades suit; SHOVEL via a spade being a digging tool; a classic double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPADE"],
+   "pair_note": "Fine; lines are accurate (a spade is a type of shovel)."
+  },
+  {
+   "pair_id": "p_cat__dwarf",
+   "a": "CAT",
+   "b": "DWARF",
+   "hints": [
+    {
+     "text": "GRUMPY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "CAT via the Grumpy Cat meme; DWARF via Grumpy of Snow White's seven dwarfs; two famous Grumpies make a real 'oh, nice'.",
+     "fix": "Grumpy Cat was a famous internet cat."
+    }
+   ],
+   "strong_hints": ["GRUMPY"],
+   "pair_note": "One of the best in the batch. Grumpy Cat died in 2019, so the CAT line should be past tense."
+  },
+  {
+   "pair_id": "p_cereal__leprechaun",
+   "a": "CEREAL",
+   "b": "LEPRECHAUN",
+   "hints": [
+    {
+     "text": "LUCKY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "CEREAL via Lucky Charms; LEPRECHAUN via Lucky the Leprechaun mascot and the luck-of-the-Irish association; a familiar cereal-mascot reference.",
+     "fix": "Lucky the Leprechaun is the Lucky Charms mascot."
+    }
+   ],
+   "strong_hints": ["LUCKY"],
+   "pair_note": "Strong. The LEPRECHAUN line starts with 'Its', which is unclear when the line is read on its own."
+  },
+  {
+   "pair_id": "p_chocolate__kiss",
+   "a": "CHOCOLATE",
+   "b": "KISS",
+   "hints": [
+    {
+     "text": "HERSHEY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHOCOLATE via Hershey's the chocolate maker; KISS via Hershey's Kisses; an instantly familiar brand link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HERSHEY"],
+   "pair_note": "Easy, fair brand clue."
+  },
+  {
+   "pair_id": "p_church__head",
+   "a": "CHURCH",
+   "b": "HEAD",
+   "hints": [
+    {
+     "text": "TEMPLE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHURCH via a temple as a place of worship; HEAD via the temple at the side of the head; a satisfying double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TEMPLE"],
+   "pair_note": "Good; the text correctly says 'place of worship' rather than claiming a temple is a church."
+  },
+  {
+   "pair_id": "p_computer__insect",
+   "a": "COMPUTER",
+   "b": "INSECT",
+   "hints": [
+    {
+     "text": "BUG",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "COMPUTER via a software bug; INSECT via bug as an everyday word for an insect; the two senses are genuinely distinct, so it reads as a double meaning rather than a restatement.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BUG"],
+   "pair_note": "Judgement call: BUG is close to a colloquial synonym of INSECT, but unlike RING/WEDDING the other side uses a separate sense, so I pass it as a classic double meaning."
+  },
+  {
+   "pair_id": "p_dance__new-year",
+   "a": "DANCE",
+   "b": "NEW YEAR",
+   "hints": [
+    {
+     "text": "BALL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DANCE via a ball as a formal dance; NEW YEAR via the Times Square ball drop; a nice double meaning with a vivid image.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BALL"],
+   "pair_note": "Strong; accurate text."
+  },
+  {
+   "pair_id": "p_disney__planet",
+   "a": "DISNEY",
+   "b": "PLANET",
+   "hints": [
+    {
+     "text": "PLUTO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DISNEY via Mickey's dog Pluto; PLANET via Pluto the former ninth planet; the text handles the demotion correctly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PLUTO"],
+   "pair_note": "Excellent; one of the best in the batch."
+  },
+  {
+   "pair_id": "p_dog__pilot",
+   "a": "DOG",
+   "b": "PILOT",
+   "hints": [
+    {
+     "text": "SNOOPY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DOG via Snoopy, Charlie Brown's beagle; PILOT via his famous World War I Flying Ace routine against the Red Baron, familiar Peanuts knowledge with a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SNOOPY"],
+   "pair_note": "The PILOT side is one step indirect but well known (doghouse-as-plane, Red Baron)."
+  },
+  {
+   "pair_id": "p_duck__video-game",
+   "a": "DUCK",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "HUNT",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "DUCK via 'duck hunt'; VIDEO GAME only through that same phrase as the classic NES Duck Hunt, which is iconic enough (light gun, laughing dog) to click for most U.S. players.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HUNT"],
+   "pair_note": "Judgement call: HUNT reaches VIDEO GAME only via the title 'Duck Hunt', so both sides rest on one phrase. The title is famous, so I pass it, but younger players may miss the game side."
+  },
+  {
+   "pair_id": "p_eye__jar",
+   "a": "EYE",
+   "b": "JAR",
+   "hints": [
+    {
+     "text": "LID",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "EYE via 'eyelid'; JAR via a jar lid; instantly familiar on both sides with a neat 'both are covers' symmetry.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LID"],
+   "pair_note": "Easy, clean, pleasant."
+  },
+  {
+   "pair_id": "p_fish__guitar",
+   "a": "FISH",
+   "b": "GUITAR",
+   "hints": [
+    {
+     "text": "BASS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FISH via bass the fish; GUITAR via the bass guitar; a classic double meaning (and heteronym).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BASS"],
+   "pair_note": "Classic. The explanation 'A bass is a fish and a guitar' is slightly loose; the lines are accurate."
+  },
+  {
+   "pair_id": "p_football__horse",
+   "a": "FOOTBALL",
+   "b": "HORSE",
+   "hints": [
+    {
+     "text": "COLT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FOOTBALL via the Indianapolis Colts; HORSE via a colt being a young (male) horse; a fair sports-team double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["COLT"],
+   "pair_note": "BRONCO (Denver Broncos) would be an equally good alternative; neither is clearly better."
+  },
+  {
+   "pair_id": "p_fruit__valentine",
+   "a": "FRUIT",
+   "b": "VALENTINE",
+   "hints": [
+    {
+     "text": "DATE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FRUIT via the date fruit; VALENTINE via a Valentine's date; a crisp double meaning with a nice switch.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DATE"],
+   "pair_note": "Excellent; the VALENTINE line 'A Valentine's date.' is terse but true."
+  },
+  {
+   "pair_id": "p_gum__sea",
+   "a": "GUM",
+   "b": "SEA",
+   "hints": [
+    {
+     "text": "TRIDENT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GUM via Trident gum; SEA via the trident of the sea god Poseidon/Neptune (and King Triton); a satisfying brand-plus-myth link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TRIDENT"],
+   "pair_note": "One of the best in the batch; text is accurate."
+  },
+  {
+   "pair_id": "p_ham__mail",
+   "a": "HAM",
+   "b": "MAIL",
+   "hints": [
+    {
+     "text": "SPAM",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "HAM via Spam, the canned pork-and-ham meat; MAIL via spam as junk email; a great double meaning.",
+     "fix": "Spam is canned pork made with ham."
+    }
+   ],
+   "strong_hints": ["SPAM"],
+   "pair_note": "Strong idea, but 'Spam is canned ham' (line and explanation) is inaccurate: Spam is canned pork with ham, not canned ham. The explanation should also say 'junk email' rather than 'junk mail'."
+  },
+  {
+   "pair_id": "p_link__video-game",
+   "a": "LINK",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "ZELDA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LINK via the hero of The Legend of Zelda; VIDEO GAME via the Zelda series itself; plays nicely on the famous Link-is-not-Zelda mix-up.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ZELDA"],
+   "pair_note": "Excellent; text is accurate."
+  },
+  {
+   "pair_id": "p_marvel__thunder",
+   "a": "MARVEL",
+   "b": "THUNDER",
+   "hints": [
+    {
+     "text": "THOR",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MARVEL via Thor the Avenger; THUNDER via Thor the Norse god of thunder; easy and fully accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["THOR"],
+   "pair_note": "Obvious but clean and satisfying."
+  },
+  {
+   "pair_id": "p_music__soccer",
+   "a": "MUSIC",
+   "b": "SOCCER",
+   "hints": [
+    {
+     "text": "SCORE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MUSIC via a film or musical score; SOCCER via scoring a goal; a clear double meaning (other sports fitting is not a reason to fail).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCORE"],
+   "pair_note": "Solid DRIVER-style double meaning."
+  },
+  {
+   "pair_id": "p_peace__soap",
+   "a": "PEACE",
+   "b": "SOAP",
+   "hints": [
+    {
+     "text": "DOVE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PEACE via the dove as a peace symbol; SOAP via the Dove bar brand; a satisfying symbol-plus-brand double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DOVE"],
+   "pair_note": "Strong. (Dove markets its bar as a 'beauty bar', but 'soap brand' is the everyday understanding and is fine.)"
+  },
+  {
+   "pair_id": "p_pig__video-game",
+   "a": "PIG",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "ANGRY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME via Angry Birds; PIG via the green pigs the birds are flung at, familiar indirect knowledge with a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ANGRY"],
+   "pair_note": "PIG side is one step indirect (Angry Birds -> green pigs), but Angry Birds is ubiquitous; satisfying."
+  },
+  {
+   "pair_id": "p_pocket__video-game",
+   "a": "POCKET",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "POKEMON",
+     "mechanism": "fact",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME via the Pokémon series; POCKET via the true fact that Pokémon is short for 'Pocket Monsters', a widely circulated piece of trivia that gives a good aha once explained.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["POKEMON"],
+   "pair_note": "Judgement call: the POCKET side depends on knowing 'Pocket Monsters'. Fans and many casual players know it; others will get it only from the explanation. Could be BORDERLINE under a stricter read."
+  },
+  {
+   "pair_id": "p_race__video-game",
+   "a": "RACE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "KART",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RACE via go-kart racing; VIDEO GAME via Mario Kart; both sides stand on their own and Mario Kart is iconic.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KART"],
+   "pair_note": "Clean and fair."
+  },
+  {
+   "pair_id": "p_soccer__tent",
+   "a": "SOCCER",
+   "b": "TENT",
+   "hints": [
+    {
+     "text": "PITCH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "TENT via pitching a tent; SOCCER via the pitch as the field, a British-origin term now common in U.S. soccer coverage; the baseball misdirection makes the switch satisfying.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Judgement call: 'pitch' for a soccer field leans British, but U.S. World Cup and MLS coverage uses it widely. The SOCCER line could read 'In soccer, the field is often called the pitch.'"
+  },
+  {
+   "pair_id": "p_tennis__valentine",
+   "a": "TENNIS",
+   "b": "VALENTINE",
+   "hints": [
+    {
+     "text": "LOVE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TENNIS via 'love' meaning zero; VALENTINE via Valentine's Day love; a well-known and charming double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LOVE"],
+   "pair_note": "Excellent; accurate text."
+  }
+ ]
+}

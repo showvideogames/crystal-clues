@@ -1,0 +1,356 @@
+{
+ "_metadata": {
+  "reviewer": "x12-reviewer-b",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x12-rb-input.json",
+  "rubric": "x12 rubric (latest owner calibration: RELATIVE/DRIVER/PENGUIN), 2026-10-20",
+  "independence": "I read only x12-rb-input.json and judged every hint on its merits, opening no other file, repository search or web source."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_america__golf", "a": "AMERICA", "b": "GOLF",
+   "hints": [
+    {"text": "EAGLE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The bald eagle is America's national bird, and an eagle is two under par in golf: a clean, satisfying double meaning.", "fix": null}
+   ],
+   "strong_hints": ["EAGLE"],
+   "pair_note": "Classic double meaning with accurate text."
+  },
+  {
+   "pair_id": "p_baby__basketball", "a": "BABY", "b": "BASKETBALL",
+   "hints": [
+    {"text": "DRIBBLE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "Babies dribble (drool) and basketball players dribble the ball; a fun double meaning, though Americans say 'drool' more often than 'dribble' for babies.", "fix": null}
+   ],
+   "strong_hints": ["DRIBBLE"],
+   "pair_note": "Strong; the baby sense of 'dribble' leans slightly British but is widely understood in the U.S."
+  },
+  {
+   "pair_id": "p_band__dance", "a": "BAND", "b": "DANCE",
+   "hints": [
+    {"text": "ABBA", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "ABBA is an iconic band (BAND), and 'Dancing Queen' plus its disco image brings DANCE to mind right away.", "fix": null}
+   ],
+   "strong_hints": ["ABBA"],
+   "pair_note": "Pleasant pop-culture link; text accurate."
+  },
+  {
+   "pair_id": "p_band__ear", "a": "BAND", "b": "EAR",
+   "hints": [
+    {"text": "DRUM", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "The eardrum is the instantly familiar compound for EAR, and drums are a core band instrument; a neat body-part/music pivot.", "fix": "BAND line: \"Most bands have a drummer keeping the beat.\""}
+   ],
+   "strong_hints": ["DRUM"],
+   "pair_note": "Good. 'Every band needs a drum' overstates it (a cappella and string bands exist); softer wording suggested."
+  },
+  {
+   "pair_id": "p_band__football", "a": "BAND", "b": "FOOTBALL",
+   "hints": [
+    {"text": "EAGLES", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Eagles ('Hotel California') are a classic rock band and the Philadelphia Eagles are an NFL team; both senses are very familiar.", "fix": null}
+   ],
+   "strong_hints": ["EAGLES"],
+   "pair_note": "Strong. Same root word as EAGLE on AMERICA/GOLF; worth keeping them from appearing together on one board."
+  },
+  {
+   "pair_id": "p_band__lead", "a": "BAND", "b": "LEAD",
+   "hints": [
+    {"text": "ZEPPELIN", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "ZEPPELIN brings up Led Zeppelin (BAND) at once, and 'Led' is the band's deliberate spelling of LEAD, from the 'lead balloon' joke; a real aha.", "fix": "LEAD line: \"The band spelled 'lead' as 'Led', from a joke that they would go down like a lead balloon.\""}
+   ],
+   "strong_hints": ["ZEPPELIN"],
+   "pair_note": "Clever and true. The LEAD line should say plainly that 'Led' means lead, so players who miss the homophone still get the click."
+  },
+  {
+   "pair_id": "p_band__pumpkin", "a": "BAND", "b": "PUMPKIN",
+   "hints": [
+    {"text": "SMASHING", "mechanism": "phrase_join", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["phrase_join_weak", "text_fix", "uncertain"], "verdict": "BORDERLINE", "reason": "PUMPKIN links strongly (the band name, plus Halloween pumpkin smashing), but BAND is reached only by knowing the 90s band The Smashing Pumpkins, which is less universal than the Stones or Zeppelin; a plain band-name join.", "fix": "PUMPKIN line: \"The band's full name is The Smashing Pumpkins.\""}
+   ],
+   "strong_hints": [],
+   "pair_note": "Plausible for players over 35; younger players may not see BAND. The line 'Their name is about smashing pumpkins' claims a meaning the band never really gave."
+  },
+  {
+   "pair_id": "p_band__stone", "a": "BAND", "b": "STONE",
+   "hints": [
+    {"text": "ROLLING", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Rolling Stones are about as famous as a band name gets, and 'a rolling stone gathers no moss' gives STONE a second route.", "fix": null}
+   ],
+   "strong_hints": ["ROLLING"],
+   "pair_note": "A band-name phrase join that earns its place because the name and the proverb are both instant."
+  },
+  {
+   "pair_id": "p_band__watch", "a": "BAND", "b": "WATCH",
+   "hints": [
+    {"text": "STRAP", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 0, "recognizability": "broad", "better_hint": "WRIST", "flags": ["synonym_of_target", "better_hint_exists"], "verdict": "FAIL", "reason": "STRAP is basically a synonym of BAND (a watch band is a strap), so it just restates one target instead of linking two; WRIST (wristband, wristwatch) does the job properly.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Replace with WRIST: wristband + wristwatch is a clean, satisfying double compound."
+  },
+  {
+   "pair_id": "p_baseball__boxing", "a": "BASEBALL", "b": "BOXING",
+   "hints": [
+    {"text": "GLOVE", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Boxing gloves and baseball gloves are equally iconic gear; clear, easy and fair.", "fix": null}
+   ],
+   "strong_hints": ["GLOVE"],
+   "pair_note": "Easy and fine; other sports also use gloves, but these two are the defining ones."
+  },
+  {
+   "pair_id": "p_baseball__lemon", "a": "BASEBALL", "b": "LEMON",
+   "hints": [
+    {"text": "PITCHER", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The baseball pitcher, and a pitcher of lemonade (lemon to lemonade to pitcher); a one-step indirect link with a nice payoff.", "fix": null}
+   ],
+   "strong_hints": ["PITCHER"],
+   "pair_note": "In the RELATIVE mould: an indirect but familiar route on the LEMON side."
+  },
+  {
+   "pair_id": "p_basketball__camera", "a": "BASKETBALL", "b": "CAMERA",
+   "hints": [
+    {"text": "SHOT", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "A basketball shot and a camera shot (photo) are both everyday senses; a clear double meaning.", "fix": "BASKETBALL line: \"In basketball, you take a shot at the hoop.\""}
+   ],
+   "strong_hints": ["SHOT"],
+   "pair_note": "Solid. The line 'You shoot a basketball shot' is clunky."
+  },
+  {
+   "pair_id": "p_bear__station", "a": "BEAR", "b": "STATION",
+   "hints": [
+    {"text": "PADDINGTON", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Paddington Bear is widely known from the books and films, and he is named after London's Paddington Station, where the family finds him in the story; true and satisfying.", "fix": null}
+   ],
+   "strong_hints": ["PADDINGTON"],
+   "pair_note": "The station side leans on a London fact, but it is central to the famous story and the films, so it clicks."
+  },
+  {
+   "pair_id": "p_block__video-game", "a": "BLOCK", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "TETRIS", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Tetris is the best-known video game, and it is all about falling blocks; easy and fair.", "fix": null}
+   ],
+   "strong_hints": ["TETRIS"],
+   "pair_note": "Easy, clean. (Minecraft would also work; Tetris is at least as good.)"
+  },
+  {
+   "pair_id": "p_boxer__mountain", "a": "BOXER", "b": "MOUNTAIN",
+   "hints": [
+    {"text": "ROCKY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Rocky Balboa is the iconic movie boxer, and the Rocky Mountains are the iconic U.S. range; a satisfying double meaning.", "fix": null}
+   ],
+   "strong_hints": ["ROCKY"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_camera__cereal", "a": "CAMERA", "b": "CEREAL",
+   "hints": [
+    {"text": "SNAP", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "You snap a photo, and Snap is one of the Rice Krispies elves (Snap, Crackle and Pop); a classic mascot gives a real aha.", "fix": null}
+   ],
+   "strong_hints": ["SNAP"],
+   "pair_note": "Cereal mascots are fine per calibration; text accurate."
+  },
+  {
+   "pair_id": "p_car__card", "a": "CAR", "b": "CARD",
+   "hints": [
+    {"text": "JACK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A car jack lifts a car, and the jack is a face card; a crisp double meaning that also plays on the near-identical target words.", "fix": null}
+   ],
+   "strong_hints": ["JACK"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_card__pilot", "a": "CARD", "b": "PILOT",
+   "hints": [
+    {"text": "ACE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The ace is a playing card, and a flying ace is a top fighter pilot; both senses are well known.", "fix": null}
+   ],
+   "strong_hints": ["ACE"],
+   "pair_note": "Good. Strictly an ace has five or more aerial kills, but 'top fighter pilot' is a fair gloss."
+  },
+  {
+   "pair_id": "p_casino__desert", "a": "CASINO", "b": "DESERT",
+   "hints": [
+    {"text": "VEGAS", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Las Vegas is the casino city, and it sits in the Mojave Desert; a familiar place-plus-property link.", "fix": null}
+   ],
+   "strong_hints": ["VEGAS"],
+   "pair_note": "Easy, accurate."
+  },
+  {
+   "pair_id": "p_cave__voice", "a": "CAVE", "b": "VOICE",
+   "hints": [
+    {"text": "ECHO", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Shouting in a cave makes an echo, and an echo is your voice coming back; a natural scene link.", "fix": null}
+   ],
+   "strong_hints": ["ECHO"],
+   "pair_note": "Clean and easy."
+  },
+  {
+   "pair_id": "p_chess__shop", "a": "CHESS", "b": "SHOP",
+   "hints": [
+    {"text": "PAWN", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The pawn is a chess piece, and a pawn shop is a familiar store; a satisfying double meaning.", "fix": null}
+   ],
+   "strong_hints": ["PAWN"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_christmas__sock", "a": "CHRISTMAS", "b": "SOCK",
+   "hints": [
+    {"text": "STOCKING", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "The Christmas stocking is a giant decorative sock, and a stocking is itself a long sock; immediate, if close to a near-synonym of SOCK.", "fix": null}
+   ],
+   "strong_hints": ["STOCKING"],
+   "pair_note": "Not a plain synonym (a stocking is a distinct garment), but it sits close; the Christmas sense carries it."
+  },
+  {
+   "pair_id": "p_computer__house", "a": "COMPUTER", "b": "HOUSE",
+   "hints": [
+    {"text": "WINDOWS", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Microsoft Windows runs on computers, and houses have windows; a brand-and-object double meaning that clicks.", "fix": null}
+   ],
+   "strong_hints": ["WINDOWS"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_crash__video-game", "a": "CRASH", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "BANDICOOT", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "BANDICOOT means almost nothing except Crash Bandicoot, the PlayStation mascot, so it points hard at both CRASH and VIDEO GAME; a name join, but the hint word is distinctive.", "fix": null}
+   ],
+   "strong_hints": ["BANDICOOT"],
+   "pair_note": "A name join. Instantly familiar to most players under about 45; older non-gamers may only know the bandicoot as an animal. A second opinion is welcome."
+  },
+  {
+   "pair_id": "p_dinosaur__video-game", "a": "DINOSAUR", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "YOSHI", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Yoshi is Mario's green dinosaur sidekick in Nintendo video games; a familiar character that covers both sides with a small aha.", "fix": null}
+   ],
+   "strong_hints": ["YOSHI"],
+   "pair_note": "Good character link."
+  },
+  {
+   "pair_id": "p_dog__halloween", "a": "DOG", "b": "HALLOWEEN",
+   "hints": [
+    {"text": "TREAT", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Dog treats for a good dog and trick-or-treat candy on Halloween; clear and fair.", "fix": null}
+   ],
+   "strong_hints": ["TREAT"],
+   "pair_note": "Fine. Pairs nicely with TRICK on HALLOWEEN/MAGIC, but avoid showing both on one board."
+  },
+  {
+   "pair_id": "p_duck__flower", "a": "DUCK", "b": "FLOWER",
+   "hints": [
+    {"text": "DAISY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Daisy Duck is Donald's girlfriend, and a daisy is a common flower; a familiar character double meaning.", "fix": null}
+   ],
+   "strong_hints": ["DAISY"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_eye__giant", "a": "EYE", "b": "GIANT",
+   "hints": [
+    {"text": "CYCLOPS", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A cyclops is a one-eyed giant from Greek myth; the one word holds both targets.", "fix": null}
+   ],
+   "strong_hints": ["CYCLOPS"],
+   "pair_note": "Clean."
+  },
+  {
+   "pair_id": "p_fairy__soda", "a": "FAIRY", "b": "SODA",
+   "hints": [
+    {"text": "SPRITE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Sprite is a lemon-lime soda, and a sprite is a fairy-like spirit; a brand double meaning with a nice 'oh'.", "fix": null}
+   ],
+   "strong_hints": ["SPRITE"],
+   "pair_note": "Excellent brand double meaning."
+  },
+  {
+   "pair_id": "p_fishing__movie", "a": "FISHING", "b": "MOVIE",
+   "hints": [
+    {"text": "REEL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A fishing reel, and a reel of movie film; a classic double meaning.", "fix": null}
+   ],
+   "strong_hints": ["REEL"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_football__soup", "a": "FOOTBALL", "b": "SOUP",
+   "hints": [
+    {"text": "BOWL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Soup is served in a bowl, and football has the Super Bowl and college bowl games; a fun double meaning.", "fix": null}
+   ],
+   "strong_hints": ["BOWL"],
+   "pair_note": "Strong, in the DRIVER mould."
+  },
+  {
+   "pair_id": "p_guitar__video-game", "a": "GUITAR", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "HERO", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "Guitar Hero is a hugely familiar title, so HERO plus GUITAR clicks, and the title itself is the VIDEO GAME; a title join that is instantly familiar.", "fix": "GUITAR line: \"In Guitar Hero, you play along on a guitar-shaped controller.\""}
+   ],
+   "strong_hints": ["HERO"],
+   "pair_note": "A phrase join that passes because the title is iconic. The line 'You play a toy guitar.' is vague."
+  },
+  {
+   "pair_id": "p_halloween__magic", "a": "HALLOWEEN", "b": "MAGIC",
+   "hints": [
+    {"text": "TRICK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "'Trick or treat' on Halloween and a magician's tricks; both senses come to mind at once.", "fix": null}
+   ],
+   "strong_hints": ["TRICK"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_judge__tennis", "a": "JUDGE", "b": "TENNIS",
+   "hints": [
+    {"text": "COURT", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A judge rules in a court of law, and tennis is played on a court; a clean double meaning.", "fix": null}
+   ],
+   "strong_hints": ["COURT"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_map__north", "a": "MAP", "b": "NORTH",
+   "hints": [
+    {"text": "COMPASS", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A compass points north, and maps carry a compass rose and are read with a compass; a natural navigation scene.", "fix": null}
+   ],
+   "strong_hints": ["COMPASS"],
+   "pair_note": "Easy and accurate."
+  },
+  {
+   "pair_id": "p_mushroom__video-game", "a": "MUSHROOM", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "MARIO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Mario is the best-known video game hero, and the Super Mushroom that makes him grow is one of his signature items.", "fix": null}
+   ],
+   "strong_hints": ["MARIO"],
+   "pair_note": "Easy, satisfying."
+  },
+  {
+   "pair_id": "p_north__princess", "a": "NORTH", "b": "PRINCESS",
+   "hints": [
+    {"text": "AURORA", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The aurora borealis is the northern lights, and Princess Aurora is Disney's Sleeping Beauty; a lovely double meaning.", "fix": null}
+   ],
+   "strong_hints": ["AURORA"],
+   "pair_note": "Excellent; the Disney princess name is well known."
+  },
+  {
+   "pair_id": "p_pie__tooth", "a": "PIE", "b": "TOOTH",
+   "hints": [
+    {"text": "FILLING", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Pie filling, and a dentist's filling in a tooth; a satisfying double meaning.", "fix": null}
+   ],
+   "strong_hints": ["FILLING"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_planet__war", "a": "PLANET", "b": "WAR",
+   "hints": [
+    {"text": "MARS", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Mars is the red planet and the Roman god of war it is named after; widely known and it clicks.", "fix": null}
+   ],
+   "strong_hints": ["MARS"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_quarter__video-game", "a": "QUARTER", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "ARCADE", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Arcade video games famously took a quarter a play; a familiar nostalgic scene for both sides.", "fix": null}
+   ],
+   "strong_hints": ["ARCADE"],
+   "pair_note": "Classic arcade references are fine per calibration."
+  },
+  {
+   "pair_id": "p_smell__soccer", "a": "SMELL", "b": "SOCCER",
+   "hints": [
+    {"text": "FOUL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A foul smell, and a foul called by a soccer referee; a clear double meaning (other sports have fouls too, which is no reason to fail it).", "fix": null}
+   ],
+   "strong_hints": ["FOUL"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_switch__video-game", "a": "SWITCH", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "NINTENDO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "Nintendo makes video games and the Nintendo Switch console, so both targets are immediate.", "fix": "Explanation: \"Nintendo makes video games and the Nintendo Switch console.\""}
+   ],
+   "strong_hints": ["NINTENDO"],
+   "pair_note": "Easy and fair. The explanation's 'a switch turns on a light' is a confusing aside, since the hint does not use that sense."
+  },
+  {
+   "pair_id": "p_video-game__zombie", "a": "VIDEO GAME", "b": "ZOMBIE",
+   "hints": [
+    {"text": "PLANTS", "mechanism": "phrase_join", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["phrase_join_weak", "text_fix", "uncertain"], "verdict": "BORDERLINE", "reason": "Both sides run only through the title Plants vs. Zombies, and PLANTS on its own is a generic word that does not lead to ZOMBIE or VIDEO GAME until you recall the game.", "fix": "ZOMBIE line: \"In the game, you plant plants to stop zombies from reaching your house.\""}
+   ],
+   "strong_hints": [],
+   "pair_note": "The game is popular, but the hint is a bare title join with no second route. A fair case can be made for PASS; second opinion welcome."
+  }
+ ]
+}
