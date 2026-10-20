@@ -305,13 +305,18 @@ test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, t
   assert.doesNotMatch(x12.find(({ c }) => c.text === "GALAXY").c.revealExplanation, /star system/);
 });
 
-test("x13: 127 candidates on unseen pairs; 122 served from blind review, 5 held; reviewer accuracy fixes traceable", () => {
+test("x13: 127 candidates on unseen pairs; 122 served from blind review, 4 holds accepted, MARCHING replaced by ROCK; reviewer accuracy fixes traceable", () => {
   const x13 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x13").map((c) => ({ p, c })));
   assert.equal(x13.length, 127);
   const n = (s) => x13.filter(({ c }) => c.status === s).length;
-  assert.equal(n("ai_reviewed"), 122); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
+  // 122 PASS, then PURPLE, ROLL, STAR and CROSSING accepted by the coordinator; MARCHING kept (held) as a less-preferred proposal, ROCK serves BAND + SCHOOL.
+  assert.equal(n("ai_reviewed"), 126); assert.equal(n("held"), 1); assert.equal(n("rejected"), 0);
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_band__school").hints.map((h) => h.text), ["ROCK"]);
+  assert.match(byId.get("p_band__school").clues.find((c) => c.text === "MARCHING").override.reason, /not a rejection/);
+  assert.equal(byId.get("p_chess__sand").clues.find((c) => c.text === "CASTLE").wordAConnection, "You can castle in chess.");
   for (const { p, c } of x13) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const shrek = x13.find(({ c }) => c.text === "SHREK").c;
-  assert.doesNotMatch(shrek.revealExplanation, /wife|marr/i); assert.match(shrek.provenance.textCorrection.note, /reviewer-suggested accuracy fix/);
+  assert.doesNotMatch(shrek.revealExplanation, /wife|marr/i); assert.match(shrek.revealExplanation, /^In the Shrek films/);
+  const tc = JSON.stringify(shrek.provenance.textCorrection); assert.match(tc, /parent post-review text cleanup/); assert.match(tc, /reviewer-suggested accuracy fix/, "earlier correction kept as history");
   assert.match(x13.find(({ c }) => c.text === "STEM").c.revealExplanation, /technology, engineering/);
 });
