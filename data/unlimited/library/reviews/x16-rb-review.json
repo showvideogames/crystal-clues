@@ -1,0 +1,978 @@
+{
+ "_metadata": {
+  "reviewer": "x16-reviewer-b",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x16-rb-input.json",
+  "rubric": "x16 rubric (template 2026-10-20)",
+  "independence": "Apart from the brief, I read only x16-rb-input.json and opened no other file, folder, repository search, web page or API."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_alien__fox",
+   "a": "ALIEN",
+   "b": "FOX",
+   "hints": [
+    {
+     "text": "MULDER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ALIEN via Mulder the X-Files alien hunter, FOX via his first name Fox; FOX looks like an animal on the board, so the reveal is a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MULDER"],
+   "pair_note": "Strong pop-culture pair; X-Files is 1990s but still widely known."
+  },
+  {
+   "pair_id": "p_arm__statue",
+   "a": "ARM",
+   "b": "STATUE",
+   "hints": [
+    {
+     "text": "VENUS",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "STATUE via the Venus de Milo and ARM via its famously missing arms; the planet/goddess misdirect makes the click satisfying.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VENUS"],
+   "pair_note": "Accurate and indirect; a good example of the owner's preferred aha style."
+  },
+  {
+   "pair_id": "p_bar__pole",
+   "a": "BAR",
+   "b": "POLE",
+   "hints": [
+    {
+     "text": "VAULT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "POLE via the pole vault, BAR both via the crossbar a vaulter clears and gold bars kept in a bank vault.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VAULT"],
+   "pair_note": "BAR gets two routes, which makes it more robust."
+  },
+  {
+   "pair_id": "p_base__thief",
+   "a": "BASE",
+   "b": "THIEF",
+   "hints": [
+    {
+     "text": "STEAL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASE via stealing a base in baseball, THIEF via what a thief does; easy but clean.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STEAL"],
+   "pair_note": "Easy clue; THIEF side is direct, BASE side gives the twist."
+  },
+  {
+   "pair_id": "p_beat__heart",
+   "a": "BEAT",
+   "b": "HEART",
+   "hints": [
+    {
+     "text": "PULSE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "BEAT because a pulse is a beat, HEART because the pulse is the heartbeat felt in the arteries; accurate and fair, if not surprising.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PULSE"],
+   "pair_note": "Plain but sound. SKIP (a heart skips a beat) is a phrase-join alternative, not clearly better."
+  },
+  {
+   "pair_id": "p_big__piano",
+   "a": "BIG",
+   "b": "PIANO",
+   "hints": [
+    {
+     "text": "HANKS",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BIG via the Tom Hanks film title, PIANO via its iconic toy-store floor-piano scene; BIG reads as an adjective until the film clicks.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HANKS"],
+   "pair_note": "One of the best in the batch: iconic scene, nice misdirect on BIG."
+  },
+  {
+   "pair_id": "p_bolt__olympus",
+   "a": "BOLT",
+   "b": "OLYMPUS",
+   "hints": [
+    {
+     "text": "ZEUS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOLT via Zeus's lightning bolts, OLYMPUS via his throne on Mount Olympus; obvious but correct.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ZEUS"],
+   "pair_note": "Easy; BOLT could pull toward Usain Bolt, which adds a little misdirect."
+  },
+  {
+   "pair_id": "p_boss__turtle",
+   "a": "BOSS",
+   "b": "TURTLE",
+   "hints": [
+    {
+     "text": "BOWSER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOSS via Bowser as Mario's final boss, TURTLE via his being King Koopa, a turtle-like creature; accurate and fun.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BOWSER"],
+   "pair_note": "Good video-game pair with an aha on TURTLE."
+  },
+  {
+   "pair_id": "p_brother__plane",
+   "a": "BROTHER",
+   "b": "PLANE",
+   "hints": [
+    {
+     "text": "WRIGHT",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "BROTHER via the Wright brothers, PLANE via their 1903 first powered flight; the homophone with RIGHT adds a small twist.",
+     "fix": "PLANE line: \"The Wright brothers made the first powered airplane flight in 1903.\""
+    }
+   ],
+   "strong_hints": ["WRIGHT"],
+   "pair_note": "Idea is solid; the PLANE line's \"first plane\" is loose (gliders came earlier), so tighten to \"first powered airplane flight\"."
+  },
+  {
+   "pair_id": "p_button__mouse",
+   "a": "BUTTON",
+   "b": "MOUSE",
+   "hints": [
+    {
+     "text": "CLICK",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BUTTON via clicking a button, MOUSE via the computer mouse click; MOUSE reads as an animal first, giving a small aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CLICK"],
+   "pair_note": "Easy and clean."
+  },
+  {
+   "pair_id": "p_candy__punch",
+   "a": "CANDY",
+   "b": "PUNCH",
+   "hints": [
+    {
+     "text": "SUCKER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CANDY via a sucker being a lollipop, PUNCH via the familiar \"sucker punch\"; a true double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SUCKER"],
+   "pair_note": "Strong double meaning; PUNCH also tempts toward the drink, which is fun misdirect."
+  },
+  {
+   "pair_id": "p_case__keyboard",
+   "a": "CASE",
+   "b": "KEYBOARD",
+   "hints": [
+    {
+     "text": "SHIFT",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "KEYBOARD via the Shift key, CASE via Shift switching letters to upper case; CASE reads as a box or court case first, so it clicks nicely.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHIFT"],
+   "pair_note": "Neat indirect link; lines are accurate."
+  },
+  {
+   "pair_id": "p_chair__high",
+   "a": "CHAIR",
+   "b": "HIGH",
+   "hints": [
+    {
+     "text": "MUSICAL",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHAIR via the party game musical chairs, HIGH via Disney's High School Musical; both phrases are instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MUSICAL"],
+   "pair_note": "Phrase-join, but both phrases are instant and HIGH is otherwise hard to clue, so it earns a PASS."
+  },
+  {
+   "pair_id": "p_chest__cold",
+   "a": "CHEST",
+   "b": "COLD",
+   "hints": [
+    {
+     "text": "VICKS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHEST via rubbing Vicks VapoRub on the chest, COLD via using it for a cold; a familiar brand memory.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VICKS"],
+   "pair_note": "Good brand clue; \"chest cold\" reinforces it."
+  },
+  {
+   "pair_id": "p_christmas__skeleton",
+   "a": "CHRISTMAS",
+   "b": "SKELETON",
+   "hints": [
+    {
+     "text": "NIGHTMARE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHRISTMAS via the title The Nightmare Before Christmas, SKELETON via its skeleton hero Jack Skellington.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NIGHTMARE"],
+   "pair_note": "Strong; NIGHTMARE alone does not obviously suggest either word until the film clicks."
+  },
+  {
+   "pair_id": "p_coat__dream",
+   "a": "COAT",
+   "b": "DREAM",
+   "hints": [
+    {
+     "text": "JOSEPH",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "COAT via Joseph's coat of many colors, DREAM via his interpreting dreams, with the musical Joseph and the Amazing Technicolor Dreamcoat joining both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JOSEPH"],
+   "pair_note": "Excellent; the explanation could optionally name the Technicolor Dreamcoat musical, which literally fuses both targets."
+  },
+  {
+   "pair_id": "p_conductor__race",
+   "a": "CONDUCTOR",
+   "b": "RACE",
+   "hints": [
+    {
+     "text": "BATON",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CONDUCTOR via the conductor's baton, RACE via the baton passed in a relay race; two distinct worlds sharing one object.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BATON"],
+   "pair_note": "Strong; CONDUCTOR could also read as a train conductor, adding misdirect."
+  },
+  {
+   "pair_id": "p_cowboy__kid",
+   "a": "COWBOY",
+   "b": "KID",
+   "hints": [
+    {
+     "text": "BILLY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "KID via the name Billy the Kid, COWBOY via his place as a Wild West legend (he is better described as an outlaw, so this side is looser); billy goat / kid adds a bonus route to KID.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BILLY"],
+   "pair_note": "COWBOY side relies on the general Wild West image of Billy the Kid; fair, but the weaker side of the pair. A judgement call between PASS and BORDERLINE."
+  },
+  {
+   "pair_id": "p_cross__kiss",
+   "a": "CROSS",
+   "b": "KISS",
+   "hints": [
+    {
+     "text": "X",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "CROSS via X as a cross shape or cross mark, KISS via the X written as a kiss at the end of a note (XOXO); a crisp, clever double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["X"],
+   "pair_note": "Content is excellent; the only question is whether a single-letter hint is acceptable in the product format (uncertain flag is about format, not the idea)."
+  },
+  {
+   "pair_id": "p_dessert__shoe",
+   "a": "DESSERT",
+   "b": "SHOE",
+   "hints": [
+    {
+     "text": "COBBLER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DESSERT via peach cobbler, SHOE via a cobbler as a shoe repairer; a classic clean double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["COBBLER"],
+   "pair_note": "Textbook double meaning."
+  },
+  {
+   "pair_id": "p_dish__moon",
+   "a": "DISH",
+   "b": "MOON",
+   "hints": [
+    {
+     "text": "DIDDLE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "DISH via the dish running away with the spoon and MOON via the cow jumping over the moon, both in Hey Diddle Diddle; a fun, playful nursery-rhyme pull.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DIDDLE"],
+   "pair_note": "Lines are accurate. Uncertain only because \"diddle\" has a mild slang sense in some contexts; in the nursery-rhyme frame it reads as PG to me."
+  },
+  {
+   "pair_id": "p_doll__nest",
+   "a": "DOLL",
+   "b": "NEST",
+   "hints": [
+    {
+     "text": "BABUSHKA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "DOLL via the common U.S. name \"babushka doll\" and NEST via those being Russian nesting dolls; BABUSHKA first suggests grandmother or headscarf, so the doll route is an aha that some players will need explained.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BABUSHKA"],
+   "pair_note": "Explanation is honest (matryoshka is the proper Russian term, babushka doll is a widespread English nickname). MATRYOSHKA is more correct but less known; RUSSIAN is easier but flatter. Second-opinion candidate on familiarity."
+  },
+  {
+   "pair_id": "p_ear__hammer",
+   "a": "EAR",
+   "b": "HAMMER",
+   "hints": [
+    {
+     "text": "ANVIL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HAMMER via the blacksmith's hammer and anvil, EAR via the middle-ear bones nicknamed hammer, anvil and stirrup; accurate and a satisfying school-biology aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ANVIL"],
+   "pair_note": "Correct anatomy (malleus/incus). Neat that HAMMER is itself an ear bone too."
+  },
+  {
+   "pair_id": "p_fan__tail",
+   "a": "FAN",
+   "b": "TAIL",
+   "hints": [
+    {
+     "text": "PEACOCK",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TAIL via the peacock's famous tail and FAN via the way it fans that tail out; one vivid image covering both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PEACOCK"],
+   "pair_note": "Biologically the display is the train (tail coverts), but \"tail\" is the universal everyday description, so I do not treat it as a factual error."
+  },
+  {
+   "pair_id": "p_fishing__pan",
+   "a": "FISHING",
+   "b": "PAN",
+   "hints": [
+    {
+     "text": "HOOK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FISHING via a fishing hook, PAN via Captain Hook, Peter Pan's enemy; PAN reads as cookware first, so it clicks nicely.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HOOK"],
+   "pair_note": "Strong double meaning."
+  },
+  {
+   "pair_id": "p_full__thanksgiving",
+   "a": "FULL",
+   "b": "THANKSGIVING",
+   "hints": [
+    {
+     "text": "STUFFED",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "FULL via feeling stuffed, THANKSGIVING via the stuffed turkey (and feeling stuffed after the meal); a warm, satisfying double.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STUFFED"],
+   "pair_note": "Synonym of FULL, but the second connection is genuine and fun."
+  },
+  {
+   "pair_id": "p_genius__iron",
+   "a": "GENIUS",
+   "b": "IRON",
+   "hints": [
+    {
+     "text": "STARK",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "IRON via Tony Stark being Iron Man, GENIUS via his famous \"genius, billionaire, playboy, philanthropist\" self-description.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STARK"],
+   "pair_note": "Strong; STARK also reads as an adjective, giving misdirect."
+  },
+  {
+   "pair_id": "p_halloween__magician",
+   "a": "HALLOWEEN",
+   "b": "MAGICIAN",
+   "hints": [
+    {
+     "text": "TRICK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HALLOWEEN via trick or treat, MAGICIAN via magic tricks; easy and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TRICK"],
+   "pair_note": "Easy, satisfying."
+  },
+  {
+   "pair_id": "p_heart__room",
+   "a": "HEART",
+   "b": "ROOM",
+   "hints": [
+    {
+     "text": "CHAMBER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "ROOM because a chamber is a room, HEART via its four chambers; accurate with a pleasant anatomy twist.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CHAMBER"],
+   "pair_note": "Synonym of ROOM, but the HEART connection is real and well known."
+  },
+  {
+   "pair_id": "p_ikea__lego",
+   "a": "IKEA",
+   "b": "LEGO",
+   "hints": [
+    {
+     "text": "INSTRUCTIONS",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "IKEA via its famous wordless flat-pack assembly instructions, LEGO via its step-by-step building booklets; a relatable shared experience.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["INSTRUCTIONS"],
+   "pair_note": "SCANDINAVIAN or ASSEMBLY would also work; none is clearly better. INSTRUCTIONS has the most shared-experience charm."
+  },
+  {
+   "pair_id": "p_keyboard__soft",
+   "a": "KEYBOARD",
+   "b": "SOFT",
+   "hints": [
+    {
+     "text": "PIANO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "KEYBOARD via the piano as the classic keyboard instrument, SOFT via the Italian dynamic marking piano (p) meaning softly; a real aha for anyone with a little music background.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PIANO"],
+   "pair_note": "Accurate. Non-musicians may need the explanation for SOFT; the piano's \"soft pedal\" is an extra everyday route that could be mentioned."
+  },
+  {
+   "pair_id": "p_link__princess",
+   "a": "LINK",
+   "b": "PRINCESS",
+   "hints": [
+    {
+     "text": "ZELDA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LINK via the series' hero Link, PRINCESS via Princess Zelda; LINK reads as a chain or web link first, so the reveal clicks.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ZELDA"],
+   "pair_note": "Widely known franchise; lines are accurate."
+  },
+  {
+   "pair_id": "p_memory__sheep",
+   "a": "MEMORY",
+   "b": "SHEEP",
+   "hints": [
+    {
+     "text": "RAM",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MEMORY via RAM as computer memory, SHEEP via a ram as a male sheep; a crisp double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RAM"],
+   "pair_note": "Top-tier double meaning."
+  },
+  {
+   "pair_id": "p_mouth__organ",
+   "a": "MOUTH",
+   "b": "ORGAN",
+   "hints": [
+    {
+     "text": "HARMONICA",
+     "mechanism": "other",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["british_only"],
+     "verdict": "PASS",
+     "reason": "MOUTH via playing it with the mouth, ORGAN via its nickname \"mouth organ\"; ORGAN reads as a body part first, so the nickname is a modest aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HARMONICA"],
+   "pair_note": "\"Mouth organ\" is more common in British usage but known to many U.S. players; familiarity note only."
+  },
+  {
+   "pair_id": "p_old__spice",
+   "a": "OLD",
+   "b": "SPICE",
+   "hints": [
+    {
+     "text": "SAGE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "SPICE via sage on the spice rack, OLD via a sage as a wise elder (\"old sage\"); the OLD side is connotation rather than definition, but the lines say so honestly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAGE"],
+   "pair_note": "The targets together spell the brand Old Spice; SAGE is far more interesting than a brand-category hint like COLOGNE. Sage is technically an herb, which the lines handle carefully. Second-opinion candidate on the OLD side."
+  },
+  {
+   "pair_id": "p_pencil__tie",
+   "a": "PENCIL",
+   "b": "TIE",
+   "hints": [
+    {
+     "text": "DRAW",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PENCIL via drawing with a pencil, TIE via a tied game being a draw; TIE reads as a necktie first, which makes it click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DRAW"],
+   "pair_note": "Clean double meaning."
+  },
+  {
+   "pair_id": "p_pilot__top",
+   "a": "PILOT",
+   "b": "TOP",
+   "hints": [
+    {
+     "text": "MAVERICK",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PILOT via Maverick as a Navy fighter pilot, TOP via the film title Top Gun; TOP is a hard word that this unlocks nicely.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MAVERICK"],
+   "pair_note": "Strong, refreshed by Top Gun: Maverick (2022)."
+  },
+  {
+   "pair_id": "p_play__skull",
+   "a": "PLAY",
+   "b": "SKULL",
+   "hints": [
+    {
+     "text": "HAMLET",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PLAY via Hamlet being Shakespeare's play, SKULL via the iconic \"Alas, poor Yorick\" skull scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HAMLET"],
+   "pair_note": "Accurate quote and scene; PLAY side is a bit generic but fair."
+  },
+  {
+   "pair_id": "p_queen__sister",
+   "a": "QUEEN",
+   "b": "SISTER",
+   "hints": [
+    {
+     "text": "ELSA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "QUEEN via Elsa's coronation as queen of Arendelle, SISTER via her bond with Anna in Frozen.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ELSA"],
+   "pair_note": "Easy, broadly known, accurate."
+  },
+  {
+   "pair_id": "p_rome__thumb",
+   "a": "ROME",
+   "b": "THUMB",
+   "hints": [
+    {
+     "text": "GLADIATOR",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "ROME via gladiators in the Colosseum (and the film Gladiator), THUMB via the famous thumbs-up/thumbs-down verdict; the explanation rightly frames the thumb gesture as a film image.",
+     "fix": "THUMB line: \"In the movies, the crowd gives a thumbs up or down to decide a gladiator's fate.\""
+    }
+   ],
+   "strong_hints": ["GLADIATOR"],
+   "pair_note": "Historians are unsure what the real gesture was, so the THUMB line should keep the \"in the movies\" framing the explanation already uses."
+  },
+  {
+   "pair_id": "p_skateboard__surfing",
+   "a": "SKATEBOARD",
+   "b": "SURFING",
+   "hints": [
+    {
+     "text": "WIPEOUT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SURFING via surfers wiping out on waves, SKATEBOARD via skaters wiping out; the surf-rock classic Wipe Out adds flavor.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WIPEOUT"],
+   "pair_note": "Fair and easy; GNARLY is a fun slang alternative but not clearly better."
+  },
+  {
+   "pair_id": "p_strength__vegetable",
+   "a": "STRENGTH",
+   "b": "VEGETABLE",
+   "hints": [
+    {
+     "text": "SPINACH",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VEGETABLE because spinach is a leafy green, STRENGTH via Popeye's spinach-fueled strength; the Popeye route is the aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPINACH"],
+   "pair_note": "POPEYE would be an equally good, more indirect alternative; both can pass."
+  }
+ ]
+}

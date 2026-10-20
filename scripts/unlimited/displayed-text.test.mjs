@@ -354,3 +354,24 @@ test("x15: 213 candidates on unseen pairs; 207 served after blind review, 5 held
   assert.doesNotMatch(byId.get("p_japan__penguin").clues[0].revealExplanation, /last country/);
   assert.match(byId.get("p_ball__ram").clues[0].revealExplanation, /Dodge Ram/);
 });
+
+test("x16: 210 candidates on unseen pairs; 206 served after blind review, 4 BORDERLINE held; RUSSIAN serves DOLL + NEST; text fixes traceable", () => {
+  const x16 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x16").map((c) => ({ p, c })));
+  assert.equal(x16.length, 210);
+  const n = (s) => x16.filter(({ c }) => c.status === s).length;
+  // BABUSHKA (review PASS) is kept as a held option while the coordinator-selected RUSSIAN serves DOLL + NEST.
+  assert.equal(n("ai_reviewed"), 205); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x16) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const dn = byId.get("p_doll__nest");
+  const ru = dn.clues.find((c) => c.text === "RUSSIAN");
+  assert.equal(ru.status, "ai_reviewed"); assert.equal(ru.override.status, "coordinator_accept"); assert.equal(ru.provenance.blindReview, null);
+  assert.equal(dn.clues.find((c) => c.text === "BABUSHKA").provenance.blindReview.verdict, "PASS");
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_doll__nest").hints.map((h) => h.text), ["RUSSIAN"]);
+  const bald = byId.get("p_clean__eagle").clues[0];
+  assert.doesNotMatch(bald.revealExplanation + bald.wordBConnection, /so is the bald eagle/);
+  assert.match(bald.provenance.textCorrection.from.revealExplanation, /so is the bald eagle/);
+  const mav = byId.get("p_cowboy__jet").clues[0];
+  assert.equal(mav.status, "held"); assert.equal(mav.provenance.blindReview.verdict, "BORDERLINE"); assert.doesNotMatch(mav.revealExplanation + mav.wordAConnection, /Dallas/);
+  assert.match(byId.get("p_bomb__bus").clues[0].revealExplanation, /50 mph/);
+  assert.doesNotMatch(byId.get("p_new-york__square").clues[0].revealExplanation, /landmarks/);
+});

@@ -1,0 +1,978 @@
+{
+ "_metadata": {
+  "reviewer": "x16-reviewer-e",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x16-re-input.json",
+  "rubric": "x16 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the single input file x16-re-input.json; no other files, repository searches, web or APIs were used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_animal__pig",
+   "a": "ANIMAL",
+   "b": "PIG",
+   "hints": [
+    {
+     "text": "MUPPET",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ANIMAL is the Muppets' wild drummer and PIG points to Miss Piggy, so both sides land via one beloved cast with a nice reinterpretation of ANIMAL.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MUPPET"],
+   "pair_note": "Strong shared-reference pair; the ANIMAL-as-a-name turn is the aha."
+  },
+  {
+   "pair_id": "p_banana__bowling",
+   "a": "BANANA",
+   "b": "BOWLING",
+   "hints": [
+    {
+     "text": "SPLIT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Banana split (dessert) and a bowling split (pin leave) are two distinct, instantly familiar senses of SPLIT.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPLIT"],
+   "pair_note": "Textbook double meaning."
+  },
+  {
+   "pair_id": "p_bark__spice",
+   "a": "BARK",
+   "b": "SPICE",
+   "hints": [
+    {
+     "text": "CINNAMON",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Cinnamon is plainly a spice, and the true, satisfying fact that cinnamon sticks are rolled inner tree bark links BARK.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CINNAMON"],
+   "pair_note": "Indirect familiar knowledge with a real aha on the BARK side; facts are accurate."
+  },
+  {
+   "pair_id": "p_bat__sound",
+   "a": "BAT",
+   "b": "SOUND",
+   "hints": [
+    {
+     "text": "ECHO",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "An echo is reflected sound, and bats famously navigate by echolocation; both routes are well known and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ECHO"],
+   "pair_note": "Clean, fair, slightly easy."
+  },
+  {
+   "pair_id": "p_bee__story",
+   "a": "BEE",
+   "b": "STORY",
+   "hints": [
+    {
+     "text": "BUZZ",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Bees buzz, and Buzz Lightyear leads straight to Toy Story; the STORY side runs through a film title but Toy Story is instantly familiar, so it clicks.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BUZZ"],
+   "pair_note": "STORY side is a title link (Buzz -> Toy Story), a little looser than the bee side but fair and fun."
+  },
+  {
+   "pair_id": "p_board__ghost",
+   "a": "BOARD",
+   "b": "GHOST",
+   "hints": [
+    {
+     "text": "OUIJA",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A Ouija board is the board game and is popularly used to 'contact' ghosts; explanation correctly frames the ghost link as 'in stories'.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["OUIJA"],
+   "pair_note": "Solid and PG; spooky but mainstream."
+  },
+  {
+   "pair_id": "p_book__fire",
+   "a": "BOOK",
+   "b": "FIRE",
+   "hints": [
+    {
+     "text": "KINDLE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Kindle the e-reader holds books and to kindle is to light a fire; a crisp brand-versus-verb double meaning (with a bonus nod to the Kindle Fire).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KINDLE"],
+   "pair_note": "One of the best in the batch."
+  },
+  {
+   "pair_id": "p_brain__ice-cream",
+   "a": "BRAIN",
+   "b": "ICE CREAM",
+   "hints": [
+    {
+     "text": "FREEZE",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "'Brain freeze' is an instantly familiar phrase and ice cream is both frozen and its classic cause, so the two sides reinforce each other.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FREEZE"],
+   "pair_note": "Phrase-join, but a genuinely satisfying scene rather than a bare blank."
+  },
+  {
+   "pair_id": "p_bus__round",
+   "a": "BUS",
+   "b": "ROUND",
+   "hints": [
+    {
+     "text": "WHEELS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "'The Wheels on the Bus go round and round' delivers both words from one universally known song, and wheels are literally round.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WHEELS"],
+   "pair_note": "Charming; the song makes it click instantly."
+  },
+  {
+   "pair_id": "p_candle__wing",
+   "a": "CANDLE",
+   "b": "WING",
+   "hints": [
+    {
+     "text": "WAX",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Candles are made of wax, and Icarus's wax-and-feather wings are a widely taught myth, giving an indirect but satisfying aha on the WING side.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WAX"],
+   "pair_note": "WING side needs the Icarus step, which is familiar enough and pays off nicely."
+  },
+  {
+   "pair_id": "p_card__hole",
+   "a": "CARD",
+   "b": "HOLE",
+   "hints": [
+    {
+     "text": "ACE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "An ace is a playing card and a hole-in-one is an ace in golf, with the bonus idiom 'ace in the hole' tying card and hole together.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ACE"],
+   "pair_note": "Excellent; 'ace in the hole' doubles the payoff."
+  },
+  {
+   "pair_id": "p_caterpillar__tank",
+   "a": "CATERPILLAR",
+   "b": "TANK",
+   "hints": [
+    {
+     "text": "TREAD",
+     "mechanism": "fact",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "TANK treads are obvious, but CATERPILLAR only links via the term 'caterpillar track' (or Caterpillar machinery), which many players read as the bug and may not connect to TREAD.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "True connection, but the caterpillar-track naming is mid-familiarity; a second opinion on whether players will see it is worthwhile."
+  },
+  {
+   "pair_id": "p_check__duck",
+   "a": "CHECK",
+   "b": "DUCK",
+   "hints": [
+    {
+     "text": "BILL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A restaurant check is the bill and a duck has a bill; two clean, distinct senses.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BILL"],
+   "pair_note": "Classic double meaning in the DRIVER mould."
+  },
+  {
+   "pair_id": "p_chocolate__life",
+   "a": "CHOCOLATE",
+   "b": "LIFE",
+   "hints": [
+    {
+     "text": "GUMP",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "Forrest Gump's box-of-chocolates line delivers both CHOCOLATE and LIFE from one iconic quote.",
+     "fix": "LIFE line: \"My mama always said life was like a box of chocolates\" is his famous line."
+    }
+   ],
+   "strong_hints": ["GUMP"],
+   "pair_note": "Great hint; the film line is 'life was like', so the quoted LIFE line should not present 'is like' as the exact words."
+  },
+  {
+   "pair_id": "p_cloud__mushroom",
+   "a": "CLOUD",
+   "b": "MUSHROOM",
+   "hints": [
+    {
+     "text": "NUCLEAR",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A nuclear blast produces the famous mushroom cloud, so the hint calls up the single image that contains both targets.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NUCLEAR"],
+   "pair_note": "Both targets come from one compound image; easy but fair and PG as written."
+  },
+  {
+   "pair_id": "p_comic__photo",
+   "a": "COMIC",
+   "b": "PHOTO",
+   "hints": [
+    {
+     "text": "FLASH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The Flash is a famous comic-book hero and a camera flash lights a photo; superhero-versus-camera is a neat double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLASH"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_court__joke",
+   "a": "COURT",
+   "b": "JOKE",
+   "hints": [
+    {
+     "text": "JESTER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "'Court jester' is an instantly familiar phrase and jesters' whole job was jokes, so both sides are natural.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JESTER"],
+   "pair_note": "Phrase-join on the COURT side backed by a real role link to JOKE; easy but satisfying."
+  },
+  {
+   "pair_id": "p_cricket__puppet",
+   "a": "CRICKET",
+   "b": "PUPPET",
+   "hints": [
+    {
+     "text": "PINOCCHIO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Pinocchio is the wooden puppet and Jiminy Cricket is his conscience; one beloved story gives both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PINOCCHIO"],
+   "pair_note": "Strong story pair."
+  },
+  {
+   "pair_id": "p_day__shadow",
+   "a": "DAY",
+   "b": "SHADOW",
+   "hints": [
+    {
+     "text": "GROUNDHOG",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Groundhog Day (holiday and film) gives DAY, and the groundhog seeing his shadow is the central tradition, so both click at once.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GROUNDHOG"],
+   "pair_note": "Excellent; lines are accurate to the tradition."
+  },
+  {
+   "pair_id": "p_diamond__sweet",
+   "a": "DIAMOND",
+   "b": "SWEET",
+   "hints": [
+    {
+     "text": "CAROLINE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "'Sweet Caroline' gives SWEET and its singer-songwriter Neil Diamond gives DIAMOND; a stadium-singalong classic most U.S. players know.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAROLINE"],
+   "pair_note": "Title-plus-artist; the DIAMOND-as-surname turn is a nice aha."
+  },
+  {
+   "pair_id": "p_dog__team",
+   "a": "DOG",
+   "b": "TEAM",
+   "hints": [
+    {
+     "text": "SLED",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Sled dogs run in a sled team; one familiar scene gives both words.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SLED"],
+   "pair_note": "Simple and fair."
+  },
+  {
+   "pair_id": "p_dragon__treasure",
+   "a": "DRAGON",
+   "b": "TREASURE",
+   "hints": [
+    {
+     "text": "HOARD",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A hoard is a heap of treasure, and the dragon sleeping on its hoard is a fantasy staple, so both sides land.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HOARD"],
+   "pair_note": "Solid fantasy scene."
+  },
+  {
+   "pair_id": "p_eye__laser",
+   "a": "EYE",
+   "b": "LASER",
+   "hints": [
+    {
+     "text": "CYCLOPS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The mythical Cyclops has one eye and the X-Men's Cyclops shoots beams from his eyes; 'laser-like' is carefully worded, so the facts hold.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CYCLOPS"],
+   "pair_note": "Myth plus superhero, both mainstream; good aha."
+  },
+  {
+   "pair_id": "p_feather__letter",
+   "a": "FEATHER",
+   "b": "LETTER",
+   "hints": [
+    {
+     "text": "QUILL",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A quill is a feather pen and was used to write letters; both routes are true and familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["QUILL"],
+   "pair_note": "Pleasant, easy."
+  },
+  {
+   "pair_id": "p_fountain__young",
+   "a": "FOUNTAIN",
+   "b": "YOUNG",
+   "hints": [
+    {
+     "text": "YOUTH",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "YOUTH names the state of being YOUNG and completes the instantly familiar 'Fountain of Youth', whose whole point is keeping you young, so both sides connect honestly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["YOUTH"],
+   "pair_note": "Synonym on one side, but the Fountain of Youth legend makes it a real two-sided link; easy."
+  },
+  {
+   "pair_id": "p_garbage__picture",
+   "a": "GARBAGE",
+   "b": "PICTURE",
+   "hints": [
+    {
+     "text": "OSCAR",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Oscar the Grouch lives in a garbage can and the Best Picture Oscar is the top film award; two unrelated Oscars meeting is a real 'oh, nice'.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["OSCAR"],
+   "pair_note": "Top-tier."
+  },
+  {
+   "pair_id": "p_grape__swing",
+   "a": "GRAPE",
+   "b": "SWING",
+   "hints": [
+    {
+     "text": "VINE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Grapes grow on vines and Tarzan swings on vines; both images are instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VINE"],
+   "pair_note": "Fair and pleasant."
+  },
+  {
+   "pair_id": "p_hawk__theater",
+   "a": "HAWK",
+   "b": "THEATER",
+   "hints": [
+    {
+     "text": "TONY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Tony Hawk the skateboarder and the Tony Awards for theater are two famous, unrelated Tonys; turning HAWK into a surname is the aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TONY"],
+   "pair_note": "Excellent name double meaning."
+  },
+  {
+   "pair_id": "p_horn__unicorn",
+   "a": "HORN",
+   "b": "UNICORN",
+   "hints": [
+    {
+     "text": "NARWHAL",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The narwhal's horn-like tusk and its 'unicorn of the sea' nickname reach both words; the text correctly calls it a tusk rather than a true horn.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NARWHAL"],
+   "pair_note": "Accurate and delightful."
+  },
+  {
+   "pair_id": "p_jack__pirate",
+   "a": "JACK",
+   "b": "PIRATE",
+   "hints": [
+    {
+     "text": "SPARROW",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Captain Jack Sparrow gives JACK by name and PIRATE by role, from a hugely popular film series.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPARROW"],
+   "pair_note": "Easy but satisfying; the bird-word misdirection helps."
+  },
+  {
+   "pair_id": "p_leaf__leprechaun",
+   "a": "LEAF",
+   "b": "LEPRECHAUN",
+   "hints": [
+    {
+     "text": "CLOVER",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The four-leaf clover gives LEAF, and clovers/shamrocks sit alongside leprechauns as Irish luck symbols, so both connect.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CLOVER"],
+   "pair_note": "Fair St. Patrick's Day cluster."
+  },
+  {
+   "pair_id": "p_magnet__needle",
+   "a": "MAGNET",
+   "b": "NEEDLE",
+   "hints": [
+    {
+     "text": "COMPASS",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A compass has a needle, and that needle is a magnet that points north; true and familiar on both sides.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["COMPASS"],
+   "pair_note": "Clean science link."
+  },
+  {
+   "pair_id": "p_middle__target",
+   "a": "MIDDLE",
+   "b": "TARGET",
+   "hints": [
+    {
+     "text": "BULLSEYE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "The bullseye is the middle of a target, with the bonus that Bullseye is Target's famous dog mascot; both sides are strong.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BULLSEYE"],
+   "pair_note": "Near-synonym for MIDDLE but the double layer on TARGET makes it excellent."
+  },
+  {
+   "pair_id": "p_ninja__shell",
+   "a": "NINJA",
+   "b": "SHELL",
+   "hints": [
+    {
+     "text": "TURTLE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Teenage Mutant Ninja Turtles give NINJA and turtles carry shells; obvious but fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TURTLE"],
+   "pair_note": "Easy; fine."
+  },
+  {
+   "pair_id": "p_painting__soup",
+   "a": "PAINTING",
+   "b": "SOUP",
+   "hints": [
+    {
+     "text": "WARHOL",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Andy Warhol's Campbell's Soup Cans paintings deliver both words from one iconic artwork.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WARHOL"],
+   "pair_note": "Strong pop-art reference."
+  },
+  {
+   "pair_id": "p_photo__track",
+   "a": "PHOTO",
+   "b": "TRACK",
+   "hints": [
+    {
+     "text": "ALBUM",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A photo album holds photos and a music album is made of tracks; two everyday senses of ALBUM.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ALBUM"],
+   "pair_note": "Clean double meaning."
+  },
+  {
+   "pair_id": "p_pizza__surfing",
+   "a": "PIZZA",
+   "b": "SURFING",
+   "hints": [
+    {
+     "text": "COWABUNGA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "Cowabunga is classic 1960s surfer slang and the catchphrase of the pizza-loving Ninja Turtles, so SURFING is direct and PIZZA lands via TMNT with a fun aha.",
+     "fix": "PIZZA line: It's the catchphrase of the pizza-loving Teenage Mutant Ninja Turtles."
+    }
+   ],
+   "strong_hints": ["COWABUNGA"],
+   "pair_note": "Delightful; the current PIZZA line implies they say it specifically while eating pizza, which overstates it."
+  },
+  {
+   "pair_id": "p_police__shield",
+   "a": "POLICE",
+   "b": "SHIELD",
+   "hints": [
+    {
+     "text": "BADGE",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Police carry badges, many badges are shield-shaped, and 'shield' is well-known cop-show slang for a badge, so both sides are true.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BADGE"],
+   "pair_note": "Fair; SHIELD side helped by TV police slang."
+  },
+  {
+   "pair_id": "p_right__ship",
+   "a": "RIGHT",
+   "b": "SHIP",
+   "hints": [
+    {
+     "text": "STARBOARD",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Starboard is the right-hand side of a ship facing forward; one true definition covers both targets.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STARBOARD"],
+   "pair_note": "Definitional but fair and familiar."
+  },
+  {
+   "pair_id": "p_shakespeare__skull",
+   "a": "SHAKESPEARE",
+   "b": "SKULL",
+   "hints": [
+    {
+     "text": "HAMLET",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Hamlet is Shakespeare's play and the 'Alas, poor Yorick' skull scene is its most famous image; the quote is given correctly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HAMLET"],
+   "pair_note": "Strong and accurate."
+  },
+  {
+   "pair_id": "p_spice__worm",
+   "a": "SPICE",
+   "b": "WORM",
+   "hints": [
+    {
+     "text": "DUNE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "Dune's plot centers on the spice and its giant sandworms, both iconic and boosted by the recent films; 'guard the spice' is a loose description of the worms' role.",
+     "fix": "In Dune, the precious spice is harvested from deserts ruled by giant sandworms."
+    }
+   ],
+   "strong_hints": ["DUNE"],
+   "pair_note": "Mainstream sci-fi now; slightly less universal than Disney/Sesame references but fair. Explanation wording tweak suggested."
+  },
+  {
+   "pair_id": "p_trip__wave",
+   "a": "TRIP",
+   "b": "WAVE",
+   "hints": [
+    {
+     "text": "BREAKER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A circuit breaker trips and a breaker is a crashing wave; TRIP read as the electrical verb is a satisfying misdirection.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BREAKER"],
+   "pair_note": "Clever double meaning; the 'trip' misdirection adds delight."
+  }
+ ]
+}
