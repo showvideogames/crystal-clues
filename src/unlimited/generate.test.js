@@ -57,7 +57,8 @@ describe("generateBoard", () => {
       expect(b.reveal.every((r) => r.wordAConnection && r.wordBConnection)).toBe(true);
     }
     expect(filler.size).toBe(LIBRARY.words.length); // every bank word turns up as an extra somewhere
-  });
+  }, 20_000); // fixed 3,000-seed CPU loop: ~2.3 s in plain node at any library size, 4.3-5.1 s under
+  // vitest with the full suite running in parallel, so the 5 s default timed out on a loaded machine.
 
   it("draws the 20 extras uniformly from the whole bank, multiword entries intact", () => {
     const count = new Map(LIBRARY.words.map((w) => [w, 0]));

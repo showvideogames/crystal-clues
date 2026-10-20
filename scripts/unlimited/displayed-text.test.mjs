@@ -378,11 +378,20 @@ test("x16: 210 candidates on unseen pairs; 206 PASS, 4 BORDERLINE coordinator-ac
   assert.doesNotMatch(byId.get("p_new-york__square").clues[0].revealExplanation, /landmarks/);
 });
 
-test("x17: 235 candidates on unseen pairs; 227 served after blind review, 8 BORDERLINE held; WALL-E spelling and text fixes traceable", () => {
+test("x17: 235 candidates on unseen pairs; 227 PASS + 4 BORDERLINE coordinator-accepted; BIG, SWEET, LUCK coordinator selections; WALL-E spelling and text fixes traceable", () => {
   const x17 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x17").map((c) => ({ p, c })));
   assert.equal(x17.length, 235);
   const n = (s) => x17.filter(({ c }) => c.status === s).length;
-  assert.equal(n("ai_reviewed"), 227); assert.equal(n("held"), 8); assert.equal(n("rejected"), 0);
+  // VIRAL, MAD, ABBEY, FRENCH coordinator-accepted; PIXEL, CAVITY, DIE kept held behind BIG, SWEET, LUCK; DELOREAN familiarity-held.
+  assert.equal(n("ai_reviewed"), 231); assert.equal(n("held"), 4); assert.equal(n("rejected"), 0);
+  for (const [id, h, old] of [["p_picture__screen", "BIG", "PIXEL"], ["p_sugar__tooth", "SWEET", "CAVITY"], ["p_dice__hard", "LUCK", "DIE"]]) {
+    const cs = byId.get(id).clues; const sel = cs.find((c) => c.text === h);
+    assert.equal(sel.override.status, "coordinator_accept"); assert.equal(sel.provenance.blindReview, null);
+    assert.equal(cs.find((c) => c.text === old).status, "held");
+    assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), [h]);
+  }
+  assert.match(byId.get("p_dice__hard").clues.find((c) => c.text === "DIE").override.reason, /spelling-rule hold/);
+  assert.ok(!client.pairs.some((x) => x.id === "p_dog__einstein"));
   for (const { p, c } of x17) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const w = byId.get("p_robot__trash").clues;
   assert.equal(w.length, 1); assert.equal(w[0].text, "WALL-E"); assert.equal(w[0].provenance.hintSpelling.from, "WALLE");
