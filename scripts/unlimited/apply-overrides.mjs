@@ -13,6 +13,9 @@ const OVR = "data/unlimited/library/overrides.json";
 const lib = JSON.parse(readFileSync(LIB, "utf8"));
 const overrides = existsSync(OVR) ? JSON.parse(readFileSync(OVR, "utf8")).overrides : [];
 let applied = 0;
+const history = new Map();   // superseded overrides, kept on the hint as history only
+const keyOf = (id, t) => id + "|" + t;
+const rec = (o) => ({ by: o.by, date: o.date, status: o.status, reason: o.reason, superseded: o.superseded });
 for (const p of lib.pairs) delete p.generationHold;   // recomputed from the overrides file every run
 for (const o of overrides) {
   const p = lib.pairs.find((x) => x.pair_id === o.pair_id);
@@ -25,6 +28,9 @@ for (const o of overrides) {
   }
   const c = p?.clues.find((x) => x.text === o.text);
   if (!c) { console.warn(`override target not in library: ${o.pair_id} ${o.text}`); continue; }
+  if (o.superseded) {   // a later decision replaced this one: never applied, recorded as history
+    const k = keyOf(o.pair_id, o.text); history.set(k, [...(history.get(k) || []), rec(o)]); continue;
+  }
   if (o.status === "held") {
     c.status = "held"; c.heldReason = `override: ${o.reason}`;
   } else if (o.status === "human_approved") {
@@ -38,6 +44,7 @@ for (const o of overrides) {
     c.status = c.provenance?.blindReview?.verdict === "PASS" ? "ai_reviewed" : "held"; c.heldReason = c.status === "held" ? "blind review: borderline" : null;
   } else { console.warn(`override for ${o.pair_id} ${o.text} ignored: it can only hold, or release a previous override`); continue; }
   c.override = { by: o.by, date: o.date, status: o.status, reason: o.reason };
+  if (history.has(keyOf(o.pair_id, o.text))) c.override.history = history.get(keyOf(o.pair_id, o.text));
   applied++;
 }
 // Owner rejections and holds (rejections.json) win over any review or override:
@@ -47,6 +54,7 @@ for (const e of loadRejections()) {
   if (!c) continue;   // not in the library: the entry still blocks catalogue add and drafting
   c.status = e.decision; c.heldReason = `owner ${e.decision === "rejected" ? "rejection" : "hold"}: ${e.reason}`;
   c.override = { by: e.by, date: e.date, status: e.decision, reason: e.reason, via: "rejections.json" };
+  if (history.has(keyOf(e.pair_id, e.hint))) c.override.history = history.get(keyOf(e.pair_id, e.hint));
   applied++;
 }
 for (const p of lib.pairs) p.playableHints = p.clues.filter((c) => c.status === "ai_reviewed" || c.status === "human_approved").length;

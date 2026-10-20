@@ -87,15 +87,30 @@ test("x05 owner batch: served choices match the owner's decisions (LURE preferre
   assert.ok(!byId.get("p_camouflage__hook").clues.some((c) => c.text === "FLY"));
 });
 
-test("x06 coordinator corrections: DRIVER and EXCALIBUR accepted by the coordinator with the reviewer verdict kept; POOH explains the sound-alike", (t) => {
+test("x06 corrections: DRIVER accepted by the coordinator; EXCALIBUR (LAKE + SWORD) held again by the owner with its history kept; POOH explains the sound-alike", (t) => {
   const s = (id, h) => client.pairs.find((x) => x.id === id)?.hints.find((x) => x.text === h);
   if (!s("p_bus__golf", "DRIVER")) return t.skip("x06 content not in this export");
-  for (const [id, h] of [["p_bus__golf", "DRIVER"], ["p_lake__sword", "EXCALIBUR"]]) {
-    const c = byId.get(id).clues.find((x) => x.text === h);
-    assert.ok(s(id, h)); assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /^coordinator/);
-    assert.equal(c.provenance.blindReview.verdict, "BORDERLINE", "the independent review stays on record");
-  }
+  const d = byId.get("p_bus__golf").clues.find((x) => x.text === "DRIVER");
+  assert.equal(d.override.status, "coordinator_accept"); assert.match(d.override.by, /^coordinator/);
+  assert.equal(d.provenance.blindReview.verdict, "BORDERLINE", "the independent review stays on record");
+  // Owner correction (2026-10-19): flagged and unserved, not a permanent exclusion; review and acceptance history kept.
+  const e = byId.get("p_lake__sword").clues.find((x) => x.text === "EXCALIBUR");
+  assert.equal(e.status, "held"); assert.equal(s("p_lake__sword", "EXCALIBUR"), undefined);
+  assert.equal(e.override.by, "owner"); assert.equal(e.override.via, "rejections.json"); assert.match(e.override.reason, /not a permanent exclusion/);
+  assert.equal(e.override.history?.[0]?.status, "coordinator_accept"); assert.ok(e.override.history[0].superseded);
+  assert.equal(e.provenance.blindReview.verdict, "BORDERLINE"); assert.equal(e.provenance.blindReview.reviewer, "x06-reviewer-a");
+  assert.match(e.revealExplanation, /Lady of the Lake/);
   const p = s("p_television__toilet", "POOH");
   assert.match(p.revealExplanation, /sounds like "poo,"/); assert.match(p.wordBConnection, /sounds like "poo,"/);
   assert.match(s("p_stone__sword", "EXCALIBUR").revealExplanation, /retellings/);
+});
+
+test("owner rejection: SPEAKER + SWORD → EXCALIBUR (adaptation trivia) is blocked, the pair stays open for other hints", async () => {
+  const { loadRejections, rejectionFor } = await import("./rejections-lib.mjs");
+  const all = loadRejections();
+  const e = rejectionFor(all, "SWORD", "SPEAKER", "excalibur");
+  assert.equal(e?.decision, "rejected"); assert.equal(e.by, "owner"); assert.match(e.reason, /Soul Eater/);
+  assert.equal(rejectionFor(all, "SPEAKER", "SWORD", "SABER"), null, "only this hint is rejected, not the pair");
+  assert.equal(client.pairs.find((x) => x.id === "p_speaker__sword")?.hints.some((h) => h.text === "EXCALIBUR") ?? false, false);
+  assert.equal(rejectionFor(all, "LAKE", "SWORD", "EXCALIBUR")?.decision, "held", "LAKE + SWORD stays review-pending, not rejected");
 });
