@@ -275,8 +275,8 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
     else { assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/); }
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
-  // the hyphen (added 2026-10-20) is served only in the conventional WALL-E title spelling
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)), ["WALL-E"]);
+  // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18)
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["CROCK-POT", "WALL-E"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -409,6 +409,15 @@ test("x18: 219 candidates on unseen pairs; 211 served after blind review, 8 BORD
   assert.equal(n("ai_reviewed"), 211); assert.equal(n("held"), 8); assert.equal(n("rejected"), 0);
   for (const { p, c } of x18) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const pl = byId.get("p_cast__wall").clues[0];
-  assert.doesNotMatch(pl.revealExplanation, /set a broken bone/); assert.match(pl.provenance.textCorrection.from.revealExplanation, /set a broken bone/);
+  // two corrections (reviewer, then parent): the drafted text is kept in the history, the latest correction on top
+  assert.doesNotMatch(pl.revealExplanation, /set a broken bone/); assert.match(pl.revealExplanation, /immobilize and support/);
+  assert.match(pl.provenance.textCorrectionHistory[0].from.revealExplanation, /set a broken bone/);
+  assert.match(pl.provenance.textCorrection.from.revealExplanation, /hold broken bones in place/);
   assert.doesNotMatch(byId.get("p_cast__dice").clues[0].wordBConnection, /one of a pair/);
+  // parent cleanup: RELATIVITY (coordinator selection) serves EINSTEIN + TIME; DELOREAN familiarity-held; CROCK-POT spelling
+  const et = byId.get("p_einstein__time").clues; const rel = et.find((c) => c.text === "RELATIVITY");
+  assert.equal(rel.override.status, "coordinator_accept"); assert.equal(rel.provenance.blindReview, null);
+  assert.equal(et.find((c) => c.text === "DELOREAN").status, "held");
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_einstein__time").hints.map((h) => h.text), ["RELATIVITY"]);
+  const cp = byId.get("p_cook__slow").clues; assert.equal(cp.length, 1); assert.equal(cp[0].text, "CROCK-POT"); assert.equal(cp[0].provenance.hintSpelling.from, "CROCKPOT");
 });
