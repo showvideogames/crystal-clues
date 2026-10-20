@@ -326,7 +326,11 @@ test("x14: 222 candidates on unseen pairs; 219 passed review; EXCALIBUR and THES
   assert.equal(x14.length, 222);
   const n = (s) => x14.filter(({ c }) => c.status === s).length;
   // 219 PASS; THESEUS then familiarity-held, with ESCAPE (coordinator selection, source catalogue add) serving LABYRINTH + THREAD.
-  assert.equal(n("ai_reviewed"), 218); assert.equal(n("held"), 4); assert.equal(n("rejected"), 0);
+  // + JUDY accepted (moderate familiarity); HOTDOG kept as a held option while CONDIMENT (coordinator selection) serves KETCHUP + MUSTARD.
+  assert.equal(n("ai_reviewed"), 219); assert.equal(n("held"), 3); assert.equal(n("rejected"), 0);
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_ketchup__mustard").hints.map((h) => h.text), ["CONDIMENT"]);
+  assert.match(byId.get("p_ketchup__mustard").clues.find((c) => c.text === "HOTDOG").override.reason, /not for a bad connection/);
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_punch__puppet").hints.map((h) => h.text), ["JUDY"]);
   assert.deepEqual(client.pairs.find((x) => x.id === "p_labyrinth__thread").hints.map((h) => h.text), ["ESCAPE"]);
   assert.match(byId.get("p_labyrinth__thread").clues.find((c) => c.text === "THESEUS").override.reason, /familiarity hold/);
   assert.equal(byId.get("p_labyrinth__thread").clues.find((c) => c.text === "ESCAPE").provenance.blindReview, null, "a coordinator selection, not a model verdict");
