@@ -286,8 +286,8 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
   // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19),
-  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "CROCK-POT", "DOUBLE-DECKER", "HEIGH-HO", "HEIGH-HO", "KNOCK-KNOCK", "POST-IT", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
+  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22)
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "CROCK-POT", "DO-RE-MI", "DOUBLE-DECKER", "HEIGH-HO", "HEIGH-HO", "KNOCK-KNOCK", "KOOL-AID", "POST-IT", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -501,4 +501,14 @@ test("x21: 220 candidates on unseen pairs; 215 PASS, 4 BORDERLINE, 1 FAIL; JACK,
   }
   for (const id of ["p_pupil__yoda", "p_north__winter", "p_foot__piano"]) { const c = byId.get(id).clues.find((x) => x.provenance?.source === "x21" && x.provenance.blindReview); assert.doesNotMatch(c.revealExplanation + c.wordAConnection + c.wordBConnection, /\(/); assert.equal(c.reference.recognizability, "moderate"); }
   assert.doesNotMatch(byId.get("p_ghost__song").clues[0].revealExplanation, /three ghosts/);
+});
+
+test("x22: 213 candidates on unseen pairs; 204 served after blind review, 9 BORDERLINE held; reviewer text fixes traceable", () => {
+  const x22 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x22").map((c) => ({ p, c })));
+  assert.equal(x22.length, 213);
+  const n = (s) => x22.filter(({ c }) => c.status === s).length;
+  assert.equal(n("ai_reviewed"), 204); assert.equal(n("held"), 9); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x22) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const g = byId.get("p_virus__wheat").clues[0]; assert.match(g.revealExplanation, /embryo/); assert.match(g.provenance.textCorrection.from.revealExplanation, /core/);
+  assert.match(byId.get("p_mexico__queen").clues[0].revealExplanation, /^Eastern monarch/);
 });

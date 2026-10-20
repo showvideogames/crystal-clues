@@ -1,0 +1,1001 @@
+{
+ "_metadata": {
+  "reviewer": "x22-reviewer-a",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x22-ra-input.json",
+  "rubric": "x22 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the single input file x22-ra-input.json; no other repository file, search, web or API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_air__river",
+   "a": "AIR",
+   "b": "RIVER",
+   "hints": [
+    {
+     "text": "JORDAN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Air Jordan sneakers for AIR and the Jordan River for RIVER; two unrelated, widely known Jordans make a satisfying click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JORDAN"],
+   "pair_note": "Excellent pair; text is accurate."
+  },
+  {
+   "pair_id": "p_animal__disney",
+   "a": "ANIMAL",
+   "b": "DISNEY",
+   "hints": [
+    {
+     "text": "KINGDOM",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The biological animal kingdom for ANIMAL and Disney's Magic Kingdom / Animal Kingdom parks for DISNEY; instantly familiar on both sides.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KINGDOM"],
+   "pair_note": "Solid; the DISNEY side is even stronger via Magic Kingdom, which the text could mention, but the current lines are accurate."
+  },
+  {
+   "pair_id": "p_band__brother",
+   "a": "BAND",
+   "b": "BROTHER",
+   "hints": [
+    {
+     "text": "BLUES",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "A blues band for BAND and the Blues Brothers for BROTHER; classic film reference, instantly familiar.",
+     "fix": "BAND line: \"A blues band plays the blues, like the band the Blues Brothers fronted on screen.\" (the current line overclaims that the Blues Brothers made the blues famous)"
+    }
+   ],
+   "strong_hints": ["BLUES"],
+   "pair_note": "Good classic reference; only the BAND line needs softening."
+  },
+  {
+   "pair_id": "p_baseball__play",
+   "a": "BASEBALL",
+   "b": "PLAY",
+   "hints": [
+    {
+     "text": "FOUL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A foul ball for BASEBALL and foul play (wrongdoing) for PLAY; clean double meaning (FAIR would also work, both fine).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FOUL"],
+   "pair_note": "Clean and fair."
+  },
+  {
+   "pair_id": "p_beef__boot",
+   "a": "BEEF",
+   "b": "BOOT",
+   "hints": [
+    {
+     "text": "WELLINGTON",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["british_only"],
+     "verdict": "PASS",
+     "reason": "Beef Wellington for BEEF and Wellington boots (wellies) for BOOT; both named after the Duke, a lovely aha, though 'Wellington boots' is more British than U.S.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WELLINGTON"],
+   "pair_note": "Beef Wellington is widely known in the U.S.; wellies are known to many U.S. players, so british_only is a familiarity note only."
+  },
+  {
+   "pair_id": "p_bite__hammer",
+   "a": "BITE",
+   "b": "HAMMER",
+   "hints": [
+    {
+     "text": "NAIL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Fingernail biting / nail-biter for BITE and a hammer driving a metal nail for HAMMER; two senses of nail, neat.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NAIL"],
+   "pair_note": "Strong double meaning."
+  },
+  {
+   "pair_id": "p_board__target",
+   "a": "BOARD",
+   "b": "TARGET",
+   "hints": [
+    {
+     "text": "DART",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Dartboard for BOARD and darts thrown at a target for TARGET; same object, easy but clean.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DART"],
+   "pair_note": "Easy, obvious, fair; no double meaning but both sides are direct."
+  },
+  {
+   "pair_id": "p_bowling__hat",
+   "a": "BOWLING",
+   "b": "HAT",
+   "hints": [
+    {
+     "text": "BOWLER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain", "needs_explanation"],
+     "verdict": "BORDERLINE",
+     "reason": "The bowler hat for HAT is a real double meaning, but the BOWLING side is just the target's own stem (bowl -> bowler), close to a contains-target giveaway.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Not a literal contains_target (BOWLER is not inside BOWLING), but it shares the stem BOWL; worth a second opinion. The hat side is genuinely nice."
+  },
+  {
+   "pair_id": "p_bus__short",
+   "a": "BUS",
+   "b": "SHORT",
+   "hints": [
+    {
+     "text": "STOP",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Bus stop for BUS and shortstop for SHORT; instantly familiar compounds, and the baseball turn on SHORT gives a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STOP"],
+   "pair_note": "A phrase-join that earns its place."
+  },
+  {
+   "pair_id": "p_car__spot",
+   "a": "CAR",
+   "b": "SPOT",
+   "hints": [
+    {
+     "text": "JAGUAR",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Jaguar the car brand for CAR and the spotted big cat for SPOT; animal-plus-brand double meaning in the RELATIVE style.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAGUAR"],
+   "pair_note": "Good; lines are accurate."
+  },
+  {
+   "pair_id": "p_cat__comic",
+   "a": "CAT",
+   "b": "COMIC",
+   "hints": [
+    {
+     "text": "GARFIELD",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Garfield is a cat (CAT) and a famous comic strip (COMIC); easy and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GARFIELD"],
+   "pair_note": "Easy but satisfying; no issues."
+  },
+  {
+   "pair_id": "p_chair__game",
+   "a": "CHAIR",
+   "b": "GAME",
+   "hints": [
+    {
+     "text": "THRONE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "A throne is a ruler's chair (CHAIR) and Game of Thrones (GAME); the chair sense plus the TV title clicks nicely.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["THRONE"],
+   "pair_note": "Synonym of one side, but the second connection is strong."
+  },
+  {
+   "pair_id": "p_chest__tree",
+   "a": "CHEST",
+   "b": "TREE",
+   "hints": [
+    {
+     "text": "TRUNK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A trunk is a storage chest (and the torso) for CHEST and a tree trunk for TREE; classic double meaning with a bonus body sense.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TRUNK"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_circus__play",
+   "a": "CIRCUS",
+   "b": "PLAY",
+   "hints": [
+    {
+     "text": "ACT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A circus act (a performance routine) for CIRCUS and the acts a play is divided into for PLAY; fair and familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ACT"],
+   "pair_note": "Clean, modest delight."
+  },
+  {
+   "pair_id": "p_cold__war",
+   "a": "COLD",
+   "b": "WAR",
+   "hints": [
+    {
+     "text": "FRONT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A weather cold front for COLD and the battle front for WAR; weather versus military senses give a nice turn.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FRONT"],
+   "pair_note": "Good; the targets themselves form 'Cold War', which may mislead players toward history hints, which is fine."
+  },
+  {
+   "pair_id": "p_country__mouse",
+   "a": "COUNTRY",
+   "b": "MOUSE",
+   "hints": [
+    {
+     "text": "CITY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "City is the familiar opposite of COUNTRY, and the city mouse of the fable gives MOUSE; the fable ties both together.",
+     "fix": "COUNTRY line: \"City and country are opposites, just like the two mice in the fable.\" (the current line describes the country mouse without linking CITY to COUNTRY)"
+    }
+   ],
+   "strong_hints": ["CITY"],
+   "pair_note": "Nice use of the fable; explanation is true (also told as The Town Mouse and the Country Mouse)."
+  },
+  {
+   "pair_id": "p_desert__star-wars",
+   "a": "DESERT",
+   "b": "STAR WARS",
+   "hints": [
+    {
+     "text": "TATOOINE",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Tatooine is the desert planet (DESERT) of Star Wars (STAR WARS); a well-known franchise detail.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TATOOINE"],
+   "pair_note": "Spelling may trip some players, but the reference is broad."
+  },
+  {
+   "pair_id": "p_down__mother",
+   "a": "DOWN",
+   "b": "MOTHER",
+   "hints": [
+    {
+     "text": "GOOSE",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Goose down feathers for DOWN and Mother Goose for MOTHER; the feather sense of DOWN makes this a satisfying turn.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GOOSE"],
+   "pair_note": "Excellent phrase-join with a hidden sense."
+  },
+  {
+   "pair_id": "p_drop__silence",
+   "a": "DROP",
+   "b": "SILENCE",
+   "hints": [
+    {
+     "text": "PIN",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The idiom 'you could hear a pin drop' covers DROP and its meaning covers SILENCE; one idiom, but instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PIN"],
+   "pair_note": "Both sides ride one idiom; fair and pleasant."
+  },
+  {
+   "pair_id": "p_engine__robin",
+   "a": "ENGINE",
+   "b": "ROBIN",
+   "hints": [
+    {
+     "text": "HOOD",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The car hood over the ENGINE and Robin Hood for ROBIN; a strong unrelated double.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HOOD"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_film__gift",
+   "a": "FILM",
+   "b": "GIFT",
+   "hints": [
+    {
+     "text": "WRAP",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "\"That's a wrap\" ends a FILM shoot and gift wrap for GIFT; well-known industry phrase gives the aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WRAP"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_flash__memory",
+   "a": "FLASH",
+   "b": "MEMORY",
+   "hints": [
+    {
+     "text": "CARD",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Flash card for FLASH and memory card for MEMORY; instantly familiar compounds, and the study-vs-camera split is mildly pleasing.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CARD"],
+   "pair_note": "Plain phrase-join but clean; flash cards also aid memory, which reinforces it."
+  },
+  {
+   "pair_id": "p_friend__tongue",
+   "a": "FRIEND",
+   "b": "TONGUE",
+   "hints": [
+    {
+     "text": "BUD",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Bud as slang for a FRIEND and taste buds on the TONGUE; tidy double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BUD"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_garden__story",
+   "a": "GARDEN",
+   "b": "STORY",
+   "hints": [
+    {
+     "text": "PLOT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A garden plot for GARDEN and a story's plot for STORY; classic double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PLOT"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_glove__knight",
+   "a": "GLOVE",
+   "b": "KNIGHT",
+   "hints": [
+    {
+     "text": "GAUNTLET",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A gauntlet is an armored GLOVE worn by a KNIGHT; one fact covers both, with 'throw down the gauntlet' as a bonus.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GAUNTLET"],
+   "pair_note": "Fair and evocative; single-fact route but both sides direct."
+  },
+  {
+   "pair_id": "p_hat__race",
+   "a": "HAT",
+   "b": "RACE",
+   "hints": [
+    {
+     "text": "DERBY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A derby is a round hat (HAT) and the Kentucky Derby is a horse race (RACE); a crisp, well-known double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DERBY"],
+   "pair_note": "Excellent; lines are accurate."
+  },
+  {
+   "pair_id": "p_hook__loop",
+   "a": "HOOK",
+   "b": "LOOP",
+   "hints": [
+    {
+     "text": "VELCRO",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Velcro is hook-and-loop fastener, hooks on one side (HOOK) and loops on the other (LOOP); true and satisfying once seen.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VELCRO"],
+   "pair_note": "Excellent brand-fact hint."
+  },
+  {
+   "pair_id": "p_instrument__soft",
+   "a": "INSTRUMENT",
+   "b": "SOFT",
+   "hints": [
+    {
+     "text": "PIANO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The piano is an INSTRUMENT and piano is the musical marking for SOFT; a real aha for anyone who had music class.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PIANO"],
+   "pair_note": "The 'soft' sense is moderately known in the U.S. but the explanation lands instantly."
+  },
+  {
+   "pair_id": "p_kiss__treasure",
+   "a": "KISS",
+   "b": "TREASURE",
+   "hints": [
+    {
+     "text": "X",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "X as a kiss in XOXO (KISS) and X marks the spot on a treasure map (TREASURE); short and delightful.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["X"],
+   "pair_note": "Excellent; a single-letter hint is fine here."
+  },
+  {
+   "pair_id": "p_life__screen",
+   "a": "LIFE",
+   "b": "SCREEN",
+   "hints": [
+    {
+     "text": "SAVER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Lifesaver for LIFE and screen saver for SCREEN; instantly familiar compounds (plus Life Savers candy).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAVER"],
+   "pair_note": "Clean phrase-join."
+  },
+  {
+   "pair_id": "p_mexico__queen",
+   "a": "MEXICO",
+   "b": "QUEEN",
+   "hints": [
+    {
+     "text": "MONARCH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "The monarch butterfly's winter migration to MEXICO and a reigning QUEEN as monarch; place-plus-category aha in the PENGUIN style.",
+     "fix": "Explanation: \"Eastern monarch butterflies migrate to Mexico for the winter, and a reigning queen is a monarch.\" (western monarchs winter mainly in California, so the unqualified claim overgeneralizes)"
+    }
+   ],
+   "strong_hints": ["MONARCH"],
+   "pair_note": "Favourite-style indirect link; the MEXICO line is already correctly qualified."
+  },
+  {
+   "pair_id": "p_music__point",
+   "a": "MUSIC",
+   "b": "POINT",
+   "hints": [
+    {
+     "text": "SCORE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A musical or film score for MUSIC and a game score of points for POINT; strong double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCORE"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_note__soda",
+   "a": "NOTE",
+   "b": "SODA",
+   "hints": [
+    {
+     "text": "FLAT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A flat (off-pitch or lowered) NOTE and flat SODA that has lost its fizz; neat double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLAT"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_pajamas__worm",
+   "a": "PAJAMAS",
+   "b": "WORM",
+   "hints": [
+    {
+     "text": "SILK",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Silk pajamas for PAJAMAS and the silkworm for WORM; the worm makes the fabric, giving a small causal click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SILK"],
+   "pair_note": "Pleasant; lines treat 'silkworm' as a name, which is fine."
+  },
+  {
+   "pair_id": "p_picture__window",
+   "a": "PICTURE",
+   "b": "WINDOW",
+   "hints": [
+    {
+     "text": "FRAME",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "A picture frame for PICTURE and a window frame for WINDOW; plain but instantly fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FRAME"],
+   "pair_note": "Flatter phrase-join; acceptable as an easy clue (PANE would be one-sided)."
+  },
+  {
+   "pair_id": "p_pink__yard",
+   "a": "PINK",
+   "b": "YARD",
+   "hints": [
+    {
+     "text": "FLAMINGO",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Flamingos are PINK and plastic pink flamingos are the classic kitschy YARD ornament; a fun cultural aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLAMINGO"],
+   "pair_note": "Excellent; the diet-pigment fact is true."
+  },
+  {
+   "pair_id": "p_pond__wave",
+   "a": "POND",
+   "b": "WAVE",
+   "hints": [
+    {
+     "text": "RIPPLE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A stone tossed in a POND makes ripples, and a ripple is a small WAVE; easy, vivid image.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RIPPLE"],
+   "pair_note": "Easy and fair."
+  },
+  {
+   "pair_id": "p_punch__snail",
+   "a": "PUNCH",
+   "b": "SNAIL",
+   "hints": [
+    {
+     "text": "SLUG",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "To slug is to PUNCH, and a slug is a shell-less cousin of the SNAIL; clean double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SLUG"],
+   "pair_note": "Excellent; 'no outer shell' wording is correctly careful."
+  },
+  {
+   "pair_id": "p_red__war",
+   "a": "RED",
+   "b": "WAR",
+   "hints": [
+    {
+     "text": "MARS",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Mars is the Red Planet (RED) and named for the Roman god of WAR; two well-known facts about one name.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MARS"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_ruler__subway",
+   "a": "RULER",
+   "b": "SUBWAY",
+   "hints": [
+    {
+     "text": "FOOTLONG",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A standard RULER is a foot long and SUBWAY's signature sub is the Footlong; witty brand-plus-measurement aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FOOTLONG"],
+   "pair_note": "Excellent; SUBWAY could also be read as the train, which adds a nice misdirection."
+  },
+  {
+   "pair_id": "p_shield__turtle",
+   "a": "SHIELD",
+   "b": "TURTLE",
+   "hints": [
+    {
+     "text": "SHELL",
+     "mechanism": "shared_property",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["one_sided", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "A turtle's shell is a direct link for TURTLE, but SHIELD only connects by the loose metaphor that both protect, so players are unlikely to land on SHIELD from SHELL.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "The SHIELD side is a metaphor rather than a familiar shared sense; no obviously better one-word hint comes to mind."
+  },
+  {
+   "pair_id": "p_spot__window",
+   "a": "SPOT",
+   "b": "WINDOW",
+   "hints": [
+    {
+     "text": "BLIND",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A driver's blind spot for SPOT and window blinds for WINDOW; two distinct senses of blind.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BLIND"],
+   "pair_note": "Excellent; the WINDOW line's 'slats' fits the common kind of blinds."
+  },
+  {
+   "pair_id": "p_thunder__tool",
+   "a": "THUNDER",
+   "b": "TOOL",
+   "hints": [
+    {
+     "text": "HAMMER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Thor, god of THUNDER, wields a hammer (well known from Marvel), and a hammer is a basic TOOL; indirect route on one side, direct on the other.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HAMMER"],
+   "pair_note": "Good indirect-knowledge hint; TOOL side is a plain category link."
+  }
+ ]
+}
