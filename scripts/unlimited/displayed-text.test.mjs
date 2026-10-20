@@ -126,3 +126,16 @@ test("RECENT + COCKROACH: LARVAE kept as a failed, fact-checked attempt; HATCHLI
   assert.equal(hatch.status, "candidate"); assert.equal(hatch.provenance.source, "coordinator-suggestion"); assert.ok(!hatch.override);
   assert.equal(client.pairs.find((x) => x.id === "p_cockroach__recent"), undefined);
 });
+
+test("owner-selected RECENT + FLY and RECENT + MOSQUITO → LARVAE are served; COCKROACH never gets LARVAE; HATCHLING stays unselected", () => {
+  for (const [id, w] of [["p_fly__recent", "fly"], ["p_mosquito__recent", "mosquito"]]) {
+    const h = client.pairs.find((x) => x.id === id)?.hints;
+    assert.deepEqual(h?.map((x) => x.text), ["LARVAE"]);
+    assert.equal(h[0].wordBConnection, `A recently hatched ${w} is a larva.`);
+    const c = byId.get(id).clues[0];
+    assert.equal(c.status, "human_approved"); assert.equal(c.provenance.addedBy, "owner"); assert.equal(c.override.by, "owner");
+    assert.match(c.provenance.note, /I like those/); assert.match(c.provenance.note, /stretch/);
+  }
+  assert.ok(!client.pairs.some((x) => x.id === "p_cockroach__recent"));
+  assert.equal(byId.get("p_cockroach__recent").clues.find((c) => c.text === "HATCHLING").status, "candidate");
+});
