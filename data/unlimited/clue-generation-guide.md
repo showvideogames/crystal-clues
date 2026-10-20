@@ -80,6 +80,17 @@ seriousness as the literal ones.
 | ROSE + MONSTER | **BEAST** | The enchanted rose is Beauty and the Beast's, and a beast is a monster. |
 | ROSE + SHADOW | **SONIC** | Amy Rose and Shadow the Hedgehog are both Sonic characters. |
 
+### Owner playtest calibration (Deb West, 2026-10-19)
+
+| Pair | Clue | Owner reaction | Lesson |
+|---|---|---|---|
+| EINSTEIN + FAMILY | **RELATIVE** | "Einstein for Relative is CHEF'S KISS"; the game was "SO FUN" / "AMAZING" | Familiar knowledge used indirectly (Einstein → relativity → RELATIVE) for an aha payoff is excellent, not inherently weak. |
+| BUS + GOLF | **DRIVER** | "10/10 hint" | A clear double meaning wins. Other words also fitting one side is not a reason to exclude it. |
+| LAKE + SWORD | EXCALIBUR | Held: the owner does not connect Excalibur to the lake | A legend detail most players won't link to the target is a hold, even when it is true. |
+| SPEAKER + SWORD | EXCALIBUR | Rejected: a talking Excalibur is Soul Eater trivia | Inventive stretches are welcome; obscure adaptation trivia does not justify them. |
+
+Indirect is fine; it is obscure or unsupported routes that fail. A clue still has to be factually right on both sides (RECENT + COCKROACH → LARVAE was rejected because cockroaches have no larval stage).
+
 ### What the reference pass must actively consider
 
 Fictional characters · characters in the same franchise · character relationships · famous people ·
