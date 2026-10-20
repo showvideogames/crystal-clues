@@ -320,3 +320,22 @@ test("x13: 127 candidates on unseen pairs; 122 served from blind review, 4 holds
   const tc = JSON.stringify([shrek.provenance.textCorrection, shrek.provenance.textCorrectionHistory]); assert.match(tc, /parent post-review text cleanup/); assert.match(tc, /reviewer-suggested accuracy fix/, "earlier correction kept as history");
   assert.match(x13.find(({ c }) => c.text === "STEM").c.revealExplanation, /technology, engineering/);
 });
+
+test("x14: 222 candidates on unseen pairs; 219 passed review; EXCALIBUR and THESEUS familiarity-held (ESCAPE serves LABYRINTH + THREAD); wording fixes traceable", () => {
+  const x14 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x14").map((c) => ({ p, c })));
+  assert.equal(x14.length, 222);
+  const n = (s) => x14.filter(({ c }) => c.status === s).length;
+  // 219 PASS; THESEUS then familiarity-held, with ESCAPE (coordinator selection, source catalogue add) serving LABYRINTH + THREAD.
+  assert.equal(n("ai_reviewed"), 218); assert.equal(n("held"), 4); assert.equal(n("rejected"), 0);
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_labyrinth__thread").hints.map((h) => h.text), ["ESCAPE"]);
+  assert.match(byId.get("p_labyrinth__thread").clues.find((c) => c.text === "THESEUS").override.reason, /familiarity hold/);
+  assert.equal(byId.get("p_labyrinth__thread").clues.find((c) => c.text === "ESCAPE").provenance.blindReview, null, "a coordinator selection, not a model verdict");
+  assert.doesNotMatch(byId.get("p_alien__day").clues[0].revealExplanation, /Fourth|July/);
+  assert.doesNotMatch(byId.get("p_car__plot").clues[0].revealExplanation, /wing/);
+  for (const { p, c } of x14) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const ex = byId.get("p_lady__lake").clues.find((c) => c.text === "EXCALIBUR");
+  assert.equal(ex.status, "held"); assert.match(ex.override.reason, /owner-familiarity hold/); assert.match(ex.override.reason, /stays open/);
+  assert.doesNotMatch(byId.get("p_pound__silver").clues[0].revealExplanation, /fine silver/);
+  assert.match(byId.get("p_dream__top").clues[0].revealExplanation, /reality check/);
+  assert.ok(!x14.some(({ c }) => /favourite|colour/.test(c.revealExplanation + c.wordAConnection + c.wordBConnection)));
+});

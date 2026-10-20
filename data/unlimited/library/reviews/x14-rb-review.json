@@ -1,0 +1,327 @@
+{
+ "_metadata": {
+  "reviewer": "x14-reviewer-b",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x14-rb-input.json",
+  "rubric": "x14 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the single input file x14-rb-input.json; no other file, repository search, web or API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_alarm__drill", "a": "ALARM", "b": "DRILL",
+   "hints": [
+    {"text": "FIRE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Fire alarm and fire drill are both instantly familiar and belong to the same school-safety scene, so the phrase-join feels unified rather than arbitrary.", "fix": null}
+   ],
+   "strong_hints": ["FIRE"], "pair_note": "Easy, clean phrase-join; DRILL as the tool is a nice decoy."
+  },
+  {
+   "pair_id": "p_apple__center", "a": "APPLE", "b": "CENTER",
+   "hints": [
+    {"text": "CORE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Apple core is a stock phrase and core means center; the synonym is honest because the apple side is a genuine second connection.", "fix": null}
+   ],
+   "strong_hints": ["CORE"], "pair_note": "Simple and fair; Big Apple/NYC adds no conflict."
+  },
+  {
+   "pair_id": "p_australia__barbie", "a": "AUSTRALIA", "b": "BARBIE",
+   "hints": [
+    {"text": "SHRIMP", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "The 'shrimp on the barbie' catchphrase ties Australia to barbie-as-barbecue, a satisfying flip of BARBIE away from the doll; the explanation's quote is a paraphrase of the real ad line.", "fix": "The famous Australian tourism ad line was \"I'll slip an extra shrimp on the barbie for you,\" with barbie meaning barbecue."}
+   ],
+   "strong_hints": ["SHRIMP"], "pair_note": "Excellent redirect of BARBIE; the popular wording 'throw a shrimp on the barbie' is a misquote, so the explanation should either quote the ad accurately or call it a catchphrase."
+  },
+  {
+   "pair_id": "p_battery__drum", "a": "BATTERY", "b": "DRUM",
+   "hints": [
+    {"text": "ENERGIZER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Energizer is a battery brand and its pink bunny mascot famously beats a drum, so both sides land through one well-known ad image.", "fix": null}
+   ],
+   "strong_hints": ["ENERGIZER"], "pair_note": "Strong brand-mascot clue with a real aha on DRUM."
+  },
+  {
+   "pair_id": "p_bee__cell", "a": "BEE", "b": "CELL",
+   "hints": [
+    {"text": "HONEYCOMB", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Bees build honeycomb and honeycomb is made of hexagonal wax cells, both true and familiar; CELL as a phone or prison reading makes it a pleasant reach.", "fix": null}
+   ],
+   "strong_hints": ["HONEYCOMB"], "pair_note": "Accurate and fair."
+  },
+  {
+   "pair_id": "p_blade__helicopter", "a": "BLADE", "b": "HELICOPTER",
+   "hints": [
+    {"text": "ROTOR", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A helicopter's rotor is the spinning assembly of rotor blades; both links are direct and true.", "fix": null}
+   ],
+   "strong_hints": ["ROTOR"], "pair_note": "Straightforward, correct."
+  },
+  {
+   "pair_id": "p_boot__cat", "a": "BOOT", "b": "CAT",
+   "hints": [
+    {"text": "PUSS", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Puss is a word for a cat and Puss in Boots (fairy tale and Shrek) brings in BOOT; the synonym side is backed by a famous story.", "fix": null}
+   ],
+   "strong_hints": ["PUSS"], "pair_note": "Clean; widely known via Shrek."
+  },
+  {
+   "pair_id": "p_bush__sea", "a": "BUSH", "b": "SEA",
+   "hints": [
+    {"text": "MOSES", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The burning bush and the parting of the Red Sea are the two most famous Moses scenes, so both words click with a nice aha.", "fix": null}
+   ],
+   "strong_hints": ["MOSES"], "pair_note": "Strong; note the same hint text is used for p_snake__staff in this batch."
+  },
+  {
+   "pair_id": "p_canada__leaf", "a": "CANADA", "b": "LEAF",
+   "hints": [
+    {"text": "MAPLE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The maple leaf on Canada's flag ties both words directly; easy but satisfying.", "fix": null}
+   ],
+   "strong_hints": ["MAPLE"], "pair_note": "Very easy, accurate."
+  },
+  {
+   "pair_id": "p_car__purse", "a": "CAR", "b": "PURSE",
+   "hints": [
+    {"text": "CLUTCH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A clutch is both a manual car's pedal and a small handheld purse, a crisp double meaning in the DRIVER mould.", "fix": null}
+   ],
+   "strong_hints": ["CLUTCH"], "pair_note": "Excellent double meaning."
+  },
+  {
+   "pair_id": "p_caterpillar__stroke", "a": "CATERPILLAR", "b": "STROKE",
+   "hints": [
+    {"text": "BUTTERFLY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Caterpillars become butterflies and the butterfly is a swim stroke; STROKE reads medical at first, so the swim sense is a real aha.", "fix": null}
+   ],
+   "strong_hints": ["BUTTERFLY"], "pair_note": "One of the batch's best."
+  },
+  {
+   "pair_id": "p_cheese__hole", "a": "CHEESE", "b": "HOLE",
+   "hints": [
+    {"text": "SWISS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Swiss is a cheese famous for its holes; both sides are immediate.", "fix": null}
+   ],
+   "strong_hints": ["SWISS"], "pair_note": "Easy and fair."
+  },
+  {
+   "pair_id": "p_christmas__deck", "a": "CHRISTMAS", "b": "DECK",
+   "hints": [
+    {"text": "HALLS", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Deck the Halls is an instantly familiar Christmas carol, so one title delivers DECK and the Christmas context together; DECK as cards or a patio is a mild decoy.", "fix": null}
+   ],
+   "strong_hints": ["HALLS"], "pair_note": "Phrase-join, but the carol makes it cohesive."
+  },
+  {
+   "pair_id": "p_closet__lion", "a": "CLOSET", "b": "LION",
+   "hints": [
+    {"text": "WARDROBE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "A wardrobe is closet furniture and The Lion, the Witch and the Wardrobe brings in LION; the near-synonym is rescued by a famous title.", "fix": null}
+   ],
+   "strong_hints": ["WARDROBE"], "pair_note": "Good; NARNIA would also work but is weaker on CLOSET."
+  },
+  {
+   "pair_id": "p_comic__newspaper", "a": "COMIC", "b": "NEWSPAPER",
+   "hints": [
+    {"text": "SUNDAY", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Sunday comics and the Sunday paper are both familiar and the same object, so the join is natural rather than arbitrary.", "fix": null}
+   ],
+   "strong_hints": ["SUNDAY"], "pair_note": "Fair; COMIC as a comedian is a small decoy."
+  },
+  {
+   "pair_id": "p_court__order", "a": "COURT", "b": "ORDER",
+   "hints": [
+    {"text": "GAVEL", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The gavel is the courtroom symbol banged with the cry 'Order in the court', so both words come from one iconic scene.", "fix": null}
+   ],
+   "strong_hints": ["GAVEL"], "pair_note": "Clean scene clue."
+  },
+  {
+   "pair_id": "p_curtain__wizard", "a": "CURTAIN", "b": "WIZARD",
+   "hints": [
+    {"text": "OZ", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "The Wizard of Oz gives WIZARD and the famous man-behind-the-curtain reveal gives CURTAIN; the CURTAIN line slightly misquotes the film.", "fix": "\"Pay no attention to that man behind the curtain.\""}
+   ],
+   "strong_hints": ["OZ"], "pair_note": "Strong; only fix the quote ('that man', not 'the man')."
+  },
+  {
+   "pair_id": "p_dead__zombie", "a": "DEAD", "b": "ZOMBIE",
+   "hints": [
+    {"text": "WALKING", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Walking Dead supplies DEAD by title and ZOMBIE by subject (and 'walking dead' is slang for zombies), so both sides are honest.", "fix": null}
+   ],
+   "strong_hints": ["WALKING"], "pair_note": "Easy; DEAD and ZOMBIE are already close, so this is mainly a confirm-click."
+  },
+  {
+   "pair_id": "p_detective__yard", "a": "DETECTIVE", "b": "YARD",
+   "hints": [
+    {"text": "SCOTLAND", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Scotland Yard is the London police headquarters famous from detective stories like Sherlock Holmes, so YARD is direct and DETECTIVE follows naturally.", "fix": null}
+   ],
+   "strong_hints": ["SCOTLAND"], "pair_note": "Fair; the DETECTIVE side relies on the Holmes-style association, which is broad."
+  },
+  {
+   "pair_id": "p_donkey__tail", "a": "DONKEY", "b": "TAIL",
+   "hints": [
+    {"text": "PIN", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Pin the Tail on the Donkey contains both targets in one instantly familiar party-game title.", "fix": null}
+   ],
+   "strong_hints": ["PIN"], "pair_note": "Easy and fair."
+  },
+  {
+   "pair_id": "p_easter__hunt", "a": "EASTER", "b": "HUNT",
+   "hints": [
+    {"text": "EGG", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "An Easter egg hunt joins both words in a single universal tradition.", "fix": null}
+   ],
+   "strong_hints": ["EGG"], "pair_note": "Very easy but fair."
+  },
+  {
+   "pair_id": "p_evening__morning", "a": "EVENING", "b": "MORNING",
+   "hints": [
+    {"text": "VENUS", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Venus is both the morning star and the evening star, a true and elegant fact that turns two plain time words into an aha.", "fix": null}
+   ],
+   "strong_hints": ["VENUS"], "pair_note": "Lovely indirect clue; STAR would be the obvious alternative but VENUS is more satisfying."
+  },
+  {
+   "pair_id": "p_fence__strike", "a": "FENCE", "b": "STRIKE",
+   "hints": [
+    {"text": "PICKET", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A picket fence and a strike's picket line use two senses of picket, a crisp double meaning.", "fix": null}
+   ],
+   "strong_hints": ["PICKET"], "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_foot__lego", "a": "FOOT", "b": "LEGO",
+   "hints": [
+    {"text": "OUCH", "mechanism": "scene", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["generic", "uncertain"], "verdict": "PASS", "reason": "Stepping barefoot on a LEGO is a famous pain meme, so OUCH points at LEGO and FOOT once seen, though OUCH alone could also suggest other painful board words.", "fix": null}
+   ],
+   "strong_hints": ["OUCH"], "pair_note": "Funny and clicks hard once explained; the hint is broad, so check it against the board for other painful words (BEE, THORN, NEEDLE)."
+  },
+  {
+   "pair_id": "p_ghost__myth", "a": "GHOST", "b": "MYTH",
+   "hints": [
+    {"text": "BUSTERS", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Ghostbusters and MythBusters are both instantly familiar titles, and pairing a movie with a TV show on one suffix is a satisfying click.", "fix": null}
+   ],
+   "strong_hints": ["BUSTERS"], "pair_note": "A phrase-join that earns its place."
+  },
+  {
+   "pair_id": "p_grass__sheep", "a": "GRASS", "b": "SHEEP",
+   "hints": [
+    {"text": "GRAZE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Sheep graze on grass; both sides direct and true.", "fix": null}
+   ],
+   "strong_hints": ["GRAZE"], "pair_note": "Easy, fair; may also fit COW or similar if on the board."
+  },
+  {
+   "pair_id": "p_gum__spear", "a": "GUM", "b": "SPEAR",
+   "hints": [
+    {"text": "TRIDENT", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Trident is a well-known sugar-free gum brand and a three-pronged spear, a satisfying brand-plus-object double meaning.", "fix": null}
+   ],
+   "strong_hints": ["TRIDENT"], "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_hole__rabbit", "a": "HOLE", "b": "RABBIT",
+   "hints": [
+    {"text": "ALICE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Alice follows the White Rabbit down the rabbit hole, so one story delivers both words.", "fix": null}
+   ],
+   "strong_hints": ["ALICE"], "pair_note": "Fair and familiar."
+  },
+  {
+   "pair_id": "p_italy__tower", "a": "ITALY", "b": "TOWER",
+   "hints": [
+    {"text": "PISA", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Pisa is an Italian city famous for its Leaning Tower; both links immediate.", "fix": null}
+   ],
+   "strong_hints": ["PISA"], "pair_note": "Easy, accurate."
+  },
+  {
+   "pair_id": "p_jet__shark", "a": "JET", "b": "SHARK",
+   "hints": [
+    {"text": "GANG", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Jets and the Sharks are the rival gangs of West Side Story, so GANG pulls the two non-obvious words together once the musical comes to mind.", "fix": null}
+   ],
+   "strong_hints": ["GANG"], "pair_note": "Good; the singular board words still read fine as gang names."
+  },
+  {
+   "pair_id": "p_labyrinth__thread", "a": "LABYRINTH", "b": "THREAD",
+   "hints": [
+    {"text": "THESEUS", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "Theseus and the Minotaur's labyrinth is widely taught, and Ariadne's thread is the story's best-known device, though some players will recall the labyrinth more readily than the thread.", "fix": null}
+   ],
+   "strong_hints": ["THESEUS"], "pair_note": "Myth clue that should click for most; thread is the weaker side, but it is the central plot device, unlike the Excalibur/lake detail."
+  },
+  {
+   "pair_id": "p_magician__rabbit", "a": "MAGICIAN", "b": "RABBIT",
+   "hints": [
+    {"text": "HAT", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Pulling a rabbit out of a hat is the classic magician trick; both words come from one image.", "fix": null}
+   ],
+   "strong_hints": ["HAT"], "pair_note": "Easy and fair."
+  },
+  {
+   "pair_id": "p_mask__opera", "a": "MASK", "b": "OPERA",
+   "hints": [
+    {"text": "PHANTOM", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Phantom of the Opera names OPERA and his iconic white half-mask gives MASK.", "fix": null}
+   ],
+   "strong_hints": ["PHANTOM"], "pair_note": "Clean."
+  },
+  {
+   "pair_id": "p_mexico__pepper", "a": "MEXICO", "b": "PEPPER",
+   "hints": [
+    {"text": "JALAPENO", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A jalapeno is a hot pepper strongly associated with Mexico, and the Xalapa naming fact is true.", "fix": null}
+   ],
+   "strong_hints": ["JALAPENO"], "pair_note": "Accurate; the Xalapa detail is a nice bonus."
+  },
+  {
+   "pair_id": "p_month__soldier", "a": "MONTH", "b": "SOLDIER",
+   "hints": [
+    {"text": "MARCH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "March is a month and soldiers march, a classic clean double meaning.", "fix": null}
+   ],
+   "strong_hints": ["MARCH"], "pair_note": "Classic."
+  },
+  {
+   "pair_id": "p_netflix__river", "a": "NETFLIX", "b": "RIVER",
+   "hints": [
+    {"text": "STREAM", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "You stream Netflix and a stream is a small river, a modern-meets-nature double meaning.", "fix": null}
+   ],
+   "strong_hints": ["STREAM"], "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_nightmare__street", "a": "NIGHTMARE", "b": "STREET",
+   "hints": [
+    {"text": "ELM", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A Nightmare on Elm Street contains both targets in one famous horror title, so ELM unlocks the pair at once.", "fix": null}
+   ],
+   "strong_hints": ["ELM"], "pair_note": "Fair title clue; the STREET line ('lots of towns have an Elm Street') is filler, since the title itself is the link."
+  },
+  {
+   "pair_id": "p_oil__olive", "a": "OIL", "b": "OLIVE",
+   "hints": [
+    {"text": "POPEYE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Popeye's sweetheart Olive Oyl is a pun on olive oil, so the cartoon delivers both words with a fun aha.", "fix": null}
+   ],
+   "strong_hints": ["POPEYE"], "pair_note": "Strong indirect clue."
+  },
+  {
+   "pair_id": "p_picture__trash", "a": "PICTURE", "b": "TRASH",
+   "hints": [
+    {"text": "OSCAR", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Best Picture is the top Oscar and Oscar the Grouch lives in a trash can, two unrelated Oscars meeting nicely.", "fix": null}
+   ],
+   "strong_hints": ["OSCAR"], "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_plank__walk", "a": "PLANK", "b": "WALK",
+   "hints": [
+    {"text": "PIRATE", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Pirates making prisoners walk the plank is an iconic story image covering both words, and 'in stories' correctly hedges the history.", "fix": null}
+   ],
+   "strong_hints": ["PIRATE"], "pair_note": "Fair; PLANK as the exercise is a decoy."
+  },
+  {
+   "pair_id": "p_pound__silver", "a": "POUND", "b": "SILVER",
+   "hints": [
+    {"text": "STERLING", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "Pound sterling and sterling silver are both familiar, a good two-sense clue; but the explanation's 'fine silver is sterling silver' is wrong, since fine silver is a separate, purer grade.", "fix": "Britain's money is the pound sterling, and sterling silver is a standard high-grade silver."}
+   ],
+   "strong_hints": ["STERLING"], "pair_note": "Good hint; fix the explanation wording (fine silver is 99.9% pure, sterling is 92.5%)."
+  },
+  {
+   "pair_id": "p_santa__track", "a": "SANTA", "b": "TRACK",
+   "hints": [
+    {"text": "LAP", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Kids sit on Santa's lap and runners do laps of a track, a crisp double meaning with an unexpected pairing.", "fix": null}
+   ],
+   "strong_hints": ["LAP"], "pair_note": "Excellent; short hint, big payoff."
+  },
+  {
+   "pair_id": "p_snake__staff", "a": "SNAKE", "b": "STAFF",
+   "hints": [
+    {"text": "MOSES", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Moses's staff turning into a snake (Exodus 4, at the burning bush) is a well-known miracle, and STAFF as employees makes it a nice redirect.", "fix": null}
+   ],
+   "strong_hints": ["MOSES"], "pair_note": "Accurate; the same hint text also serves p_bush__sea, so avoid both pairs sharing a board or a session."
+  },
+  {
+   "pair_id": "p_target__universe", "a": "TARGET", "b": "UNIVERSE",
+   "hints": [
+    {"text": "MISS", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Miss Universe is the famous pageant and you can miss a target, two senses of miss; TARGET as the store adds a decoy.", "fix": null}
+   ],
+   "strong_hints": ["MISS"], "pair_note": "Pleasant two-sense clue."
+  },
+  {
+   "pair_id": "p_well__wish", "a": "WELL", "b": "WISH",
+   "hints": [
+    {"text": "COIN", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "Tossing a coin into a wishing well to make a wish covers both words in one familiar scene; the WELL line overstates coins being in any well.", "fix": "Coins glitter at the bottom of a wishing well."}
+   ],
+   "strong_hints": ["COIN"], "pair_note": "Fair scene clue; minor line wording fix."
+  }
+ ]
+}
