@@ -89,7 +89,7 @@ No cap and no sampler change were applied, as instructed. This is the decision t
 | Content script tests | 72 / 72 (adds the collapse tests and the extended displayed-text checks) |
 | vitest | 171 / 171 |
 | `check-random` | 1,000 / 1,000 |
-| Browser (port 5192): random-check, long-words, reveal-widths, storage-failure, daily-smoke, home-results, guest | **running when this report was sent**; results will follow |
+| Browser (port 5192): random-check, long-words, reveal-widths, storage-failure, daily-smoke, home-results, guest | **all 7 PASS** (completed after the report was first sent) |
 
 ## Backlog still available
 
