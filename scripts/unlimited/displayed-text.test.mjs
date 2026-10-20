@@ -526,5 +526,6 @@ test("x22: 213 candidates on unseen pairs; 204 PASS, 9 BORDERLINE; parent cleanu
   assert.match(byId.get("p_mexico__queen").clues[0].revealExplanation, /^Eastern monarch/);
   const foul = byId.get("p_baseball__play").clues[0]; assert.match(foul.wordAConnection, /foul balls and foul territory/); assert.match(foul.provenance.textCorrection.from.wordAConnection, /lands outside/);
   assert.match(byId.get("p_nasa__team").clues[0].wordBConnection, /familiar members of/);
+  const tr = byId.get("p_pirate__silver").clues.find((c) => c.text === "TREASURE"); assert.equal(tr.revealExplanation, "Pirates hunt buried treasure, and silver coins can be treasure."); assert.doesNotMatch(tr.revealExplanation + tr.wordBConnection, /Long John/); assert.match(tr.provenance.textCorrection.from.wordBConnection, /Long John Silver/); assert.ok(tr.override.history[0].superseded);
   const ph = byId.get("p_ghost__theater").clues[0]; assert.match(ph.wordBConnection, /the musical .* became Broadway's longest-running show/); assert.ok(ph.provenance.textCorrectionHistory?.length || ph.provenance.textCorrection, "drafted text kept");
 });
