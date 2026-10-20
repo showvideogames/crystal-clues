@@ -1,5 +1,7 @@
 # Offline experiment: "a hint can't show up again within 100 games"
 
+> **Status (coordinator, 2026-10-19):** experiment closed. The 100-game recommendation is saved for a later implementation decision. The shortening fallback described below is **not approved**; it remains a suggestion only. The owner may raise the gap (for example to 500 games) as the collection grows; that is a future option, not tested here.
+
 2026-10-19. This was an offline simulation only. The app's sampler, Daily, Friends, persistence and production are unchanged, and no model calls were made. Script: `scripts/unlimited/cooldown-experiment.mjs`. Raw results: `cooldown-experiment.json`.
 
 ## Recommendation
