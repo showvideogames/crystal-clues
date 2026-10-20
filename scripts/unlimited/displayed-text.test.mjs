@@ -253,7 +253,7 @@ test("x10 owner proposals: CLIFFORD ×2 and CANNON + WORK FIRED accepted; LAUNCH
   assert.equal(byId.get("p_cannon__job"), undefined, "JOB is not in the bank");
 });
 
-test("x11 owner proposals: CAROLING, VOILA, NOAH coordinator-accepted; CAP'N pending on the apostrophe; animal × SHIP family not stored", () => {
+test("x11 owner proposals: CAROLING, VOILA, NOAH coordinator-accepted; CAP'N pending on the apostrophe; animal × SHIP family not stored", async () => {
   for (const [id, h] of [["p_christmas__voice", "CAROLING"], ["p_france__magic", "VOILA"], ["p_sheep__ship", "NOAH"]]) {
     const c = byId.get(id).clues.find((x) => x.text === h);
     assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h)); assert.equal(c.provenance.addedBy, "owner");
@@ -266,6 +266,10 @@ test("x11 owner proposals: CAROLING, VOILA, NOAH coordinator-accepted; CAP'N pen
   const crow = byId.get("p_crow__ship"); assert.deepEqual(crow.clues.map((c) => [c.text, c.status, c.provenance.source]), [["NEST", "held", "x20"]]);
   assert.match(crow.clues[0].override.reason, /proposal-only animal x SHIP family/); assert.ok(!client.pairs.some((x) => x.id === "p_crow__ship"));
   assert.equal(byId.get("p_bird__ship"), undefined, "BIRD + SHIP still only the owner FALCON hold");
+  // the checker and batch builds treat the whole x11 animal x SHIP proposal as reserved for coordinator review
+  const { spawnSync } = await import("node:child_process");
+  for (const [x, y, h] of [["RAT", "SHIP", "SINKING"], ["WHALE", "SHIP", "AHAB"], ["LION", "SHIP", "NOAH"]])
+    assert.match(spawnSync(process.execPath, ["scripts/unlimited/x14-check.mjs", x, y, h], { encoding: "utf8" }).stdout, /reserved for coordinator review/);
 });
 
 test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND → AC/DC, CANNON + CEREAL and PIRATE + CEREAL → CAP'N", () => {
