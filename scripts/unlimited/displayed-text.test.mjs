@@ -213,3 +213,21 @@ test("x08 owner proposals: seven coordinator-accepted, CAIRO / BILL / SWEEP / BE
   assert.match(byId.get("p_gate__science").clues[0].revealExplanation, /GATE with an S/);
   assert.equal(byId.get("p_bread__fool").clues.length, 1, "MONEY and SUCKER are not stored");
 });
+
+test("x09 owner proposals: seven coordinator-accepted, SWALLOWING owner-selected with SWALLOWER / SWALLOW unselected; BEGGAR endorsement kept", () => {
+  const served = (id, h) => client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h);
+  for (const [id, h] of [["p_car__doll", "DUMMY"], ["p_movie__shower", "PSYCHO"], ["p_television__war", "MASH"], ["p_appetite__saber", "JABBA"], ["p_appetite__chest", "STOMACH"], ["p_tree__war", "ENTS"], ["p_fast__photo", "SNAPSHOT"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(served(id, h), `${h} served`); assert.equal(c.provenance.addedBy, "owner");
+    assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/);
+  }
+  assert.doesNotMatch(byId.get("p_appetite__saber").clues[0].revealExplanation, /wields|swings|his (light)?saber/i);
+  assert.doesNotMatch(byId.get("p_appetite__chest").clues[0].revealExplanation, /inside (the|your) chest/i);
+  const k = byId.get("p_drink__knife").clues;
+  const sw = k.find((x) => x.text === "SWALLOWING");
+  assert.equal(sw.status, "human_approved"); assert.equal(sw.override.by, "owner"); assert.ok(served("p_drink__knife", "SWALLOWING"));
+  assert.doesNotMatch(sw.revealExplanation, /usual|usually|how to/i);
+  for (const t of ["SWALLOWER", "SWALLOW"]) { const c = k.find((x) => x.text === t); assert.equal(c.status, "held"); assert.match(c.override.reason, /^not selected/); assert.ok(!served("p_drink__knife", t)); }
+  const b = byId.get("p_bread__fool").clues.find((x) => x.text === "BEGGAR");
+  assert.equal(b.status, "human_approved"); assert.match(b.override.endorsed?.note || "", /I.m confident/);
+});
