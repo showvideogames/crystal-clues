@@ -277,11 +277,17 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/']/.test(h.text))), "only letters, digits, / and ' in served hints");
 });
 
-test("x12: 162 served from blind review, 6 held, 2 rejected; coordinator wording corrections traceable; existing served pairs untouched", () => {
+test("x12: 162 served from blind review, 5 more coordinator-accepted, 1 held, 2 rejected; coordinator wording corrections traceable; existing served pairs untouched", () => {
   const x12 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x12").map((c) => ({ p, c })));
   assert.equal(x12.length, 170);
   const n = (s) => x12.filter(({ c }) => c.status === s).length;
-  assert.equal(n("ai_reviewed"), 162); assert.equal(n("held"), 6); assert.equal(n("rejected"), 2);
+  // 162 PASS, then 5 BORDERLINE accepted by the coordinator (x12 cleanup); RING (BAND + FINGER) still held.
+  assert.equal(n("ai_reviewed"), 167); assert.equal(n("held"), 1); assert.equal(n("rejected"), 2);
+  for (const t of ["SMASHING", "ROCK", "PLANTS", "CONTROLLER", "SOCKET"]) {
+    const c = x12.find(({ c }) => c.text === t && c.override?.status === "coordinator_accept")?.c;
+    assert.ok(c, t); assert.equal(c.provenance.blindReview.verdict, "BORDERLINE", "the raw review stays on record"); assert.match(c.override.by, /not an owner decision/);
+  }
+  assert.match(x12.find(({ c }) => c.text === "CONTROLLER").c.override.reason, /WII .* unselected/);
   for (const { p, c } of x12) {
     const served = client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text);
     assert.equal(!!served, c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
