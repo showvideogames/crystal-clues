@@ -91,6 +91,10 @@ seriousness as the literal ones.
 
 Indirect is fine; it is obscure or unsupported routes that fail. A clue still has to be factually right on both sides (RECENT + COCKROACH → LARVAE was rejected because cockroaches have no larval stage).
 
+### Synonyms (2026-10-20)
+
+A hint that is a synonym of, or names one sense of, ONE target is not an automatic failure. What matters is an honest connection to BOTH targets and whether the clue is useful and fun: BAND + WEDDING -> RING, SOLITARY + PILOT -> SOLO, DRAWING + DOG -> DOODLE and COMPUTER + INSECT -> BUG are all served. A mere rename with no credible second connection may be weak, case by case. The structural rules (one word; never equal to, containing or contained in a target) are separate and unchanged. Reviewer briefs: data/unlimited/reviewer-brief-template.md.
+
 ### What the reference pass must actively consider
 
 Fictional characters · characters in the same franchise · character relationships · famous people ·

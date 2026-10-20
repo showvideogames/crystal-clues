@@ -186,7 +186,8 @@ export function adviseKind({ status, decider, flags = [], reason = "" }) {
   if (decider === "owner") return "owner-decision";
   const f = new Set(flags || []); const r = String(reason || "");
   if (f.has("wrong_fact") || /\b(factually incorrect|false|inaccurate|invent|not true|misdescrib|incorrect|overstat)/i.test(r)) return "factual";
-  if (["contains_target", "synonym_of_target", "not_pg", "british_only"].some((x) => f.has(x)) || /two-word|two words|run together|letters only|contains a target|substring|British/i.test(r)) return "rule";
+  // "synonym_of_target" is a reviewer note, not a rule (synonym audit 2026-10-20), so it is not triaged as one.
+  if (["contains_target", "not_pg", "british_only"].some((x) => f.has(x)) || /two-word|two words|run together|letters only|contains a target|substring|British/i.test(r)) return "rule";
   if (f.has("one_sided") || f.has("phrase_join_weak") || /only via|only through|does not point|doesn't point|no real link|not a real|one-sided|weak link/i.test(r)) return "unsupported";
   if (["obscure", "dated", "needs_explanation", "better_hint_exists", "generic", "uncertain"].some((x) => f.has(x)) || /obscure|niche|familiar|recogni|trivia|remember|depends on|second step|two-step|detour|click|instant|leap|reach|fits (many|any|several)|better hint|secondary|takes a moment/i.test(r)) return "familiarity-or-difficulty";
   return "unclassified";

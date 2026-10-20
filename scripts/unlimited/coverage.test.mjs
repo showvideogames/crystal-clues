@@ -138,3 +138,21 @@ test("owner holds from the owner's own words: TOY + POTATO → HEAD and SHIP + B
   assert.equal(rejectionFor(rejections, "BIRD", "FOOTBALL", "FALCON"), null, "the owner-approved football FALCON is untouched");
   assert.equal(currentState(ix, ix.byId.get("p_bird__football")), "served");
 });
+
+test("synonym audit: naming one sense of one target is not a blanket failure (RING, SOLO, DOODLE, BUG); structural rules unchanged", async () => {
+  const { hintProblem } = await import("./catalogue-lib.mjs");
+  const brief = readFileSync("data/unlimited/reviewer-brief-template.md", "utf8");
+  const failLine = brief.split("\n").find((l) => l.startsWith("- FAIL:"));
+  assert.doesNotMatch(failLine, /synonym/i, "the FAIL list no longer includes synonyms");
+  assert.match(brief, /synonym of, or names one sense of, ONE target is NOT an automatic failure/);
+  for (const h of ["RING", "SOLO", "DOODLE", "BUG"]) assert.match(brief, new RegExp(`-> ${h}\\b`), `${h} is a worked example`);
+  const client = JSON.parse(readFileSync("src/unlimited/random-library.json", "utf8"));
+  for (const [id, h] of [["p_band__wedding", "RING"], ["p_pilot__solitary", "SOLO"], ["p_dog__drawing", "DOODLE"], ["p_computer__insect", "BUG"]])
+    assert.ok(client.pairs.find((p) => p.id === id)?.hints.some((x) => x.text === h), `${id} serves ${h}`);
+  assert.notEqual(adviseKind({ status: "held", decider: "reviewer", flags: ["synonym_of_target"] }), "rule");
+  // structural rules unchanged: equal, containing, contained in a target
+  assert.match(hintProblem("BAND", "BAND", "RING"), /is a target/);
+  assert.match(hintProblem("BANDS", "BAND", "RING"), /contains a target/);
+  assert.match(hintProblem("RIN", "BAND", "RING"), /target contains the hint/);
+  assert.equal(hintProblem("RING", "BAND", "WEDDING"), null);
+});
