@@ -231,3 +231,24 @@ test("x09 owner proposals: seven coordinator-accepted, SWALLOWING owner-selected
   const b = byId.get("p_bread__fool").clues.find((x) => x.text === "BEGGAR");
   assert.equal(b.status, "human_approved"); assert.match(b.override.endorsed?.note || "", /I.m confident/);
 });
+
+test("x10 owner proposals: CLIFFORD ×2 and CANNON + WORK FIRED accepted; LAUNCHED owner-selected; COKE flagged and held out of the default pool", async () => {
+  const { loadRejections, rejectionFor } = await import("./rejections-lib.mjs");
+  const served = (id, h) => client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h);
+  for (const [id, h] of [["p_big__dog", "CLIFFORD"], ["p_dog__large", "CLIFFORD"], ["p_cannon__work", "FIRED"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(served(id, h)); assert.equal(c.provenance.addedBy, "owner"); assert.equal(c.override.status, "coordinator_accept");
+  }
+  for (const id of ["p_cannon__promotion", "p_explosion__promotion"]) {
+    const l = byId.get(id).clues.find((x) => x.text === "LAUNCHED"), f = byId.get(id).clues.find((x) => x.text === "FIRED");
+    assert.ok(served(id, "LAUNCHED")); assert.equal(l.override.by, "owner"); assert.match(l.provenance.addedBy, /^parent/);
+    assert.equal(f.status, "held"); assert.match(f.override.reason, /^not selected/); assert.ok(!served(id, "FIRED"));
+  }
+  const coke = byId.get("p_diet__line").clues.find((x) => x.text === "COKE");
+  assert.deepEqual(coke.contentFlags, ["not-family-friendly"]); assert.equal(coke.status, "held");
+  assert.ok(!client.pairs.some((p) => p.hints.some((h) => h.text === "COKE")), "never in the default pool");
+  const e = rejectionFor(loadRejections(), "LINE", "DIET", "COKE");
+  assert.equal(e.decision, "held"); assert.match(e.holdType, /^content-suitability/); assert.match(e.reason, /not a rejection/);
+  assert.equal(byId.get("p_band__thunder"), undefined, "AC/DC is pending on the hint rule; nothing stored or respelled");
+  assert.equal(byId.get("p_cannon__job"), undefined, "JOB is not in the bank");
+});
