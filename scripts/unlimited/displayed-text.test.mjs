@@ -140,7 +140,7 @@ test("owner-selected RECENT + FLY and RECENT + MOSQUITO → LARVAE are served; C
   assert.equal(byId.get("p_cockroach__recent").clues.find((c) => c.text === "HATCHLING").status, "candidate");
 });
 
-test("x07 owner candidates: four coordinator-accepted from owner suggestions; K9 held on syntax; PURGATORY not accepted; PENGUIN a candidate only", async () => {
+test("x07 owner candidates: four coordinator-accepted from owner suggestions; K9 held on syntax; PURGATORY not accepted; PENGUIN later owner-selected", async () => {
   const { loadRejections, rejectionFor } = await import("./rejections-lib.mjs");
   for (const [id, h] of [["p_laugh__volcano", "ERUPT"], ["p_instrument__pocket", "HARMONICA"], ["p_apple__pumpkin", "PIE"], ["p_calculator__pumpkin", "PI"]]) {
     const c = byId.get(id).clues.find((x) => x.text === h);
@@ -152,8 +152,26 @@ test("x07 owner candidates: four coordinator-accepted from owner suggestions; K9
   assert.match(byId.get("p_calculator__pumpkin").clues[0].revealExplanation, /sounds like pie/);
   assert.equal(byId.get("p_dog__police"), undefined, "K9 is not stored or renamed");
   const pen = byId.get("p_antarctica__rooster").clues.find((x) => x.text === "PENGUIN");
-  assert.equal(pen.status, "candidate"); assert.ok(!client.pairs.some((x) => x.id === "p_antarctica__rooster"));
+  assert.equal(pen.status, "human_approved", "candidate at first; later owner-selected (see the penguin analogy test)");
   const all = loadRejections();
   assert.equal(rejectionFor(all, "DEVIL", "CROSSROADS", "PURGATORY")?.decision, "rejected");
   assert.equal(rejectionFor(all, "DEVIL", "CROSSROADS", "DEAL"), null, "DEAL stays an open candidate");
+});
+
+test("x07 penguin analogy: ANTARCTICA + ROOSTER and ICE + ROOSTER owner-selected and served; the ANTARCTICA + bird family is candidate-only", () => {
+  for (const [id, exp] of [["p_antarctica__rooster", "A rooster is a bird; penguins are the birds strongly associated with Antarctica."], ["p_ice__rooster", /commonly associated with ice/]]) {
+    const c = byId.get(id).clues.find((x) => x.text === "PENGUIN");
+    assert.equal(c.status, "human_approved"); assert.equal(c.override.by, "owner"); assert.equal(c.provenance.addedBy, "owner");
+    const s = client.pairs.find((x) => x.id === id)?.hints.find((x) => x.text === "PENGUIN");
+    assert.ok(s); if (typeof exp === "string") assert.equal(s.revealExplanation, exp); else assert.match(s.revealExplanation, exp);
+  }
+  const fam = ["BIRD", "ROBIN", "CHICK", "KIWI", "TURKEY", "DUCK", "EAGLE", "OWL", "CROW", "PIGEON", "HAWK", "HEN"];
+  for (const w of fam) {
+    const id = ["ANTARCTICA", w].sort().map((x) => x.toLowerCase()).join("__");
+    const c = byId.get(`p_${id}`).clues.find((x) => x.text === "PENGUIN");
+    assert.equal(c.status, "candidate"); assert.ok(!client.pairs.some((x) => x.id === `p_${id}`));
+    assert.doesNotMatch(c.revealExplanation, /penguin is an? (robin|duck|eagle|owl|crow|pigeon|hawk|hen|turkey|kiwi|chick)\b/i);
+  }
+  assert.equal(byId.get("p_frozen__rooster"), undefined, "FROZEN is not in the bank");
+  assert.ok(![...byId.values()].some((p) => p.clues.some((c) => c.text === "WADDLE")), "WADDLE was never selected");
 });
