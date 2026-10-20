@@ -2,6 +2,8 @@
 
 Fill in <BATCH>, <ID>, <N> and <DATE>; adapt the batch description paragraph. Earlier briefs (x03-x12) are kept as they were run; this template is the current wording.
 
+Changed 2026-10-20 (parent, after the x19 scratch-file collision): every scratch file goes in the agent's own folder with an agent-specific name.
+
 Changed 2026-10-20 (parent, after the x16 review): added the per-line accuracy check below question 4. Clever stretches stay allowed and universal familiarity is not required.
 
 Changed 2026-10-20 after the synonym-rule audit (data/unlimited/clue-generation-guide.md, "Synonyms"): the old FAIL item "a plain synonym ... of a target" was an assistant-written review rule, not an owner requirement or a game rule. The structural rules are unchanged and live in code (scripts/unlimited/catalogue-lib.mjs hintProblem: one word, never equal to, containing or contained in a target).
@@ -39,7 +41,7 @@ The owner's current standard (latest calibration, 2026-10-19/20):
 
 For every hint give: mechanism (the MAIN way it works: "phrase_join", "double_meaning", "shared_reference", "shared_property", "scene", "fact", "other"), connection_to_a 0/1/2, connection_to_b 0/1/2, fairness 0/1/2, delight 0/1/2 (0 flat, 1 pleasant, 2 a real "oh, nice" moment), recognizability broad/moderate/niche, better_hint (null or a one-word hint), flags from ["one_sided","generic","contains_target","obscure","needs_explanation","british_only","wrong_fact","synonym_of_target","dated","not_pg","phrase_join_weak","text_fix","better_hint_exists","uncertain"], verdict PASS / BORDERLINE / FAIL, a one-sentence reason naming the route used for each side, and fix: null, or ONE concrete corrected sentence if the text (explanation or a line) states something false or confusing (mark text_fix). Leave fix null when the problem is the idea itself. Then per pair: strong_hints (PASS hints, strongest first), pair_note.
 
-If you need a helper script, create it only inside the folder C:\Users\leviw\AppData\Local\Temp\claude\C--Users-leviw-crystal-clues\180baece-9d2f-4022-a383-58f3561a9405\scratchpad\agents\<BATCH>-reviewer-<ID> (create it) and do not open any other folder in the scratchpad.
+If you need a helper script, create it only inside the folder C:\Users\leviw\AppData\Local\Temp\claude\C--Users-leviw-crystal-clues\180baece-9d2f-4022-a383-58f3561a9405\scratchpad\agents\<BATCH>-reviewer-<ID> (create it) and do not open any other folder in the scratchpad. Other agents run at the same time: never write a file anywhere else in the scratchpad, and give every scratch file an agent-specific name inside that folder (for example <BATCH>-reviewer-<ID>-check.txt), so no other call can overwrite it.
 
 Write JSON to C:\Users\leviw\cluevoyance-unlimited\data\unlimited\library\reviews\<BATCH>-r<ID>-review.json with this shape:
 { "_metadata": { "reviewer": "<BATCH>-reviewer-<ID>", "model": "<exact model id>", "date": "<DATE>", "input": "<BATCH>-r<ID>-input.json", "rubric": "<BATCH> rubric (template 2026-10-20)", "independence": "<one sentence confirming you read only the input file>" }, "pairs": [ { "pair_id", "a", "b", "hints": [ { "text", "mechanism", "connection_to_a", "connection_to_b", "fairness", "delight", "recognizability", "better_hint", "flags": [], "verdict", "reason", "fix" } ], "strong_hints": [], "pair_note" } ] }
