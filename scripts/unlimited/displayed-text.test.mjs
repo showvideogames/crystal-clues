@@ -150,7 +150,7 @@ test("x07 owner candidates: four coordinator-accepted from owner suggestions; K9
     assert.equal(c.provenance.blindReview, null, "no model review was run");
   }
   assert.match(byId.get("p_calculator__pumpkin").clues[0].revealExplanation, /sounds like pie/);
-  assert.equal(byId.get("p_dog__police"), undefined, "K9 is not stored or renamed");
+  assert.equal(byId.get("p_dog__police").clues.find((x) => x.text === "K9")?.text, "K9", "held for the letters-only rule at first; stored as K9 once the owner allowed the spelling, never renamed");
   const pen = byId.get("p_antarctica__rooster").clues.find((x) => x.text === "PENGUIN");
   assert.equal(pen.status, "human_approved", "candidate at first; later owner-selected (see the penguin analogy test)");
   const all = loadRejections();
@@ -249,7 +249,7 @@ test("x10 owner proposals: CLIFFORD ×2 and CANNON + WORK FIRED accepted; LAUNCH
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => h.text === "COKE")), "never in the default pool");
   const e = rejectionFor(loadRejections(), "LINE", "DIET", "COKE");
   assert.equal(e.decision, "held"); assert.match(e.holdType, /^content-suitability/); assert.match(e.reason, /not a rejection/);
-  assert.equal(byId.get("p_band__thunder"), undefined, "AC/DC is pending on the hint rule; nothing stored or respelled");
+  assert.deepEqual(byId.get("p_band__thunder").clues.map((x) => x.text), ["AC/DC"], "pending on the hint rule at first; stored as AC/DC once allowed, never respelled");
   assert.equal(byId.get("p_cannon__job"), undefined, "JOB is not in the bank");
 });
 
@@ -260,7 +260,19 @@ test("x11 owner proposals: CAROLING, VOILA, NOAH coordinator-accepted; CAP'N pen
     assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/);
   }
   assert.match(byId.get("p_sheep__ship").clues[0].revealExplanation, /familiar Bible story/);
-  for (const id of ["p_cannon__cereal", "p_cereal__pirate"]) assert.equal(byId.get(id), undefined, "CAP'N pending, not respelled");
+  for (const id of ["p_cannon__cereal", "p_cereal__pirate"]) assert.deepEqual(byId.get(id).clues.map((x) => x.text), ["CAP'N"], "pending on the apostrophe at first; stored as CAP'N once allowed, never respelled");
   for (const w of ["lion", "giraffe", "rat", "crow", "whale"]) assert.equal(byId.get(`p_${w}__ship`), undefined, "proposal only");
   assert.equal(byId.get("p_bird__ship"), undefined, "BIRD + SHIP still only the owner FALCON hold");
+});
+
+test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND → AC/DC, CANNON + CEREAL and PIRATE + CEREAL → CAP'N", () => {
+  for (const [id, h, owner] of [["p_dog__police", "K9", false], ["p_band__thunder", "AC/DC", true], ["p_cannon__cereal", "CAP'N", false], ["p_cereal__pirate", "CAP'N", false]]) {
+    const s = client.pairs.find((x) => x.id === id)?.hints;
+    assert.deepEqual(s?.map((x) => x.text), [h], `${id} serves the exact spelling`);
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.equal(c.provenance.addedBy, "owner");
+    if (owner) { assert.equal(c.status, "human_approved"); assert.equal(c.override.by, "owner"); }
+    else { assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/); }
+  }
+  assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/']/.test(h.text))), "only letters, digits, / and ' in served hints");
 });
