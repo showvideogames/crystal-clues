@@ -30,6 +30,10 @@ for (const o of overrides) {
   } else if (o.status === "human_approved") {
     // A person's decision that the hint is playable. The independent scores and reasons are untouched.
     c.status = "human_approved"; c.heldReason = null;
+  } else if (o.status === "coordinator_accept") {
+    // A coordinator's decision that a reviewer-held hint is playable (labelled, never an owner
+    // decision); the independent review (verdict, scores, reason) is left exactly as it was.
+    c.status = "ai_reviewed"; c.heldReason = null;
   } else if (o.status === "release" && c.override) {
     c.status = c.provenance?.blindReview?.verdict === "PASS" ? "ai_reviewed" : "held"; c.heldReason = c.status === "held" ? "blind review: borderline" : null;
   } else { console.warn(`override for ${o.pair_id} ${o.text} ignored: it can only hold, or release a previous override`); continue; }

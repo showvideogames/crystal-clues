@@ -86,3 +86,16 @@ test("x05 owner batch: served choices match the owner's decisions (LURE preferre
     for (const c of byId.get(id).clues) { assert.equal(c.status, "human_approved"); assert.equal(c.provenance.addedBy, "owner"); }
   assert.ok(!byId.get("p_camouflage__hook").clues.some((c) => c.text === "FLY"));
 });
+
+test("x06 coordinator corrections: DRIVER and EXCALIBUR accepted by the coordinator with the reviewer verdict kept; POOH explains the sound-alike", (t) => {
+  const s = (id, h) => client.pairs.find((x) => x.id === id)?.hints.find((x) => x.text === h);
+  if (!s("p_bus__golf", "DRIVER")) return t.skip("x06 content not in this export");
+  for (const [id, h] of [["p_bus__golf", "DRIVER"], ["p_lake__sword", "EXCALIBUR"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(s(id, h)); assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /^coordinator/);
+    assert.equal(c.provenance.blindReview.verdict, "BORDERLINE", "the independent review stays on record");
+  }
+  const p = s("p_television__toilet", "POOH");
+  assert.match(p.revealExplanation, /sounds like "poo,"/); assert.match(p.wordBConnection, /sounds like "poo,"/);
+  assert.match(s("p_stone__sword", "EXCALIBUR").revealExplanation, /retellings/);
+});
