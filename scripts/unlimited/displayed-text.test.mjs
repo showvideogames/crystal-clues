@@ -317,6 +317,6 @@ test("x13: 127 candidates on unseen pairs; 122 served from blind review, 4 holds
   for (const { p, c } of x13) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const shrek = x13.find(({ c }) => c.text === "SHREK").c;
   assert.doesNotMatch(shrek.revealExplanation, /wife|marr/i); assert.match(shrek.revealExplanation, /^In the Shrek films/);
-  const tc = JSON.stringify(shrek.provenance.textCorrection); assert.match(tc, /parent post-review text cleanup/); assert.match(tc, /reviewer-suggested accuracy fix/, "earlier correction kept as history");
+  const tc = JSON.stringify([shrek.provenance.textCorrection, shrek.provenance.textCorrectionHistory]); assert.match(tc, /parent post-review text cleanup/); assert.match(tc, /reviewer-suggested accuracy fix/, "earlier correction kept as history");
   assert.match(x13.find(({ c }) => c.text === "STEM").c.revealExplanation, /technology, engineering/);
 });
