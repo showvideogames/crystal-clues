@@ -132,3 +132,154 @@ export function search(ix, text) {
   }
   return out;
 }
+
+// ---------------------------------------------------------------------------
+// Coverage and attempts (read-only). Three separate questions:
+//   - pair evidence: what has ever been recorded for a pair (unseen / candidate-only /
+//     reviewed-or-decided), and whether a recorded generation batch produced any of it;
+//   - current state: is the pair served now, playable but not served, or not playable;
+//   - attempt decision: for each hint, the active status, who decided it (read from the
+//     decision's own `by` provenance, not from which file it sits in) and why.
+// An owner-rejections entry (rejections.json) on a pair with no library record still counts
+// as seen and decided, never as untried or generated. A rejected or held hint never closes
+// its pair; only an explicit pair restriction (generationHold) does. Superseded overrides
+// are inactive and kept as history. The advisory kind is triage only: it never makes a
+// hint playable and does not prove that either connection is true.
+const HUMAN_SOURCES = new Set(["owner-discovery", "friend-play", "coordinator-suggestion", "coordinator-editorial"]);
+export const ADVISORY_KINDS = ["owner-decision", "factual", "rule", "unsupported", "familiarity-or-difficulty", "unclassified"];
+
+/** Who made a decision, from its `by` text: owner / coordinator / main-session / other. */
+export function deciderOf(by) {
+  const s = String(by || "");
+  if (/^owner\b/i.test(s)) return "owner";
+  if (/^(coordinator|parent)\b|coordinator brief/i.test(s)) return "coordinator";
+  if (/main session|editorial bar/i.test(s)) return "main-session";
+  return s ? "other" : "unknown";
+}
+
+const reviewOf = (c) => c.provenance?.correctionReview || c.provenance?.blindReview || null;
+
+/** The decision in force for a library hint: an override if any, else the review, else pending. */
+export function activeDecision(c) {
+  if (c.override) return { status: c.status, by: c.override.by, decider: deciderOf(c.override.by), reason: c.override.reason || c.heldReason || null, via: c.override.via || "overrides.json" };
+  const r = reviewOf(c);
+  if (r) return { status: c.status, by: r.reviewer || r.model || "independent review", decider: "reviewer", reason: r.reason || c.heldReason || null, via: "review" };
+  return { status: c.status, by: c.provenance?.addedBy || null, decider: c.status === "candidate" ? "pending" : "unknown", reason: c.heldReason || null, via: c.provenance?.via || null };
+}
+
+/** Advisory triage for a hint that is not playable (null when playable). Never proof, never a promotion. */
+export function adviseKind({ status, decider, flags = [], reason = "" }) {
+  if (PLAYABLE.has(status)) return null;
+  if (decider === "owner") return "owner-decision";
+  const f = new Set(flags || []); const r = String(reason || "");
+  if (f.has("wrong_fact") || /\b(factually incorrect|false|inaccurate|invent|not true|misdescrib|incorrect|overstat)/i.test(r)) return "factual";
+  if (["contains_target", "synonym_of_target", "not_pg", "british_only"].some((x) => f.has(x)) || /two-word|two words|run together|letters only|contains a target|substring|British/i.test(r)) return "rule";
+  if (f.has("one_sided") || f.has("phrase_join_weak") || /only via|only through|does not point|doesn't point|no real link|not a real|one-sided|weak link/i.test(r)) return "unsupported";
+  if (["obscure", "dated", "needs_explanation", "better_hint_exists", "generic", "uncertain"].some((x) => f.has(x)) || /obscure|niche|familiar|recogni|trivia|remember|depends on|second step|two-step|detour|click|instant|leap|reach|fits (many|any|several)|better hint|secondary|takes a moment/i.test(r)) return "familiarity-or-difficulty";
+  return "unclassified";
+}
+
+function rejectionsByPair(rejections) {
+  const m = new Map();
+  for (const e of rejections) { const id = pairOf(e.a, e.b).id; if (!m.has(id)) m.set(id, []); m.get(id).push(e); }
+  return m;
+}
+
+/** Historical evidence for a pair (stored record and/or owner-rejections entries). */
+export function pairEvidence(p, rejs = []) {
+  const clues = p?.clues || [];
+  if (!clues.length && !rejs.length) return { evidence: "unseen", generated: false, rejectionOnly: false };
+  const decided = rejs.length > 0 || clues.some((c) => c.status !== "candidate" || c.override || reviewOf(c));
+  const generated = clues.some((c) => c.provenance?.source && !HUMAN_SOURCES.has(c.provenance.source));
+  return { evidence: decided ? "reviewed-or-decided" : "candidate-only", generated, rejectionOnly: !clues.length };
+}
+
+/** Current state: served / playable-unserved / not-playable / none (no library record). */
+export function currentState(ix, p) {
+  if (!p) return "none";
+  if (!p.clues.some((c) => PLAYABLE.has(c.status))) return "not-playable";
+  return !p.generationHold && servedHints(ix, p).hints.length ? "served" : "playable-unserved";
+}
+
+function attemptFromClue(p, c, rejs, overrides) {
+  const d = activeDecision(c); const r = reviewOf(c);
+  const t = normWord(c.text);
+  const kept = c.override?.history || [];
+  const extra = overrides.filter((o) => o.superseded && o.pair_id === p.pair_id && normWord(o.text) === t && !kept.some((h) => h.date === o.date && h.by === o.by && h.status === o.status));
+  return {
+    text: c.text, inLibrary: true, status: c.status, decision: d,
+    advisory: adviseKind({ status: c.status, decider: d.decider, flags: r?.flags, reason: [c.heldReason, c.override?.reason, r?.reason].filter(Boolean).join(" | ") }),
+    review: r ? { verdict: r.verdict, a: r.a, b: r.b, fairness: r.fairness, delight: r.delight ?? null, flags: r.flags || [], reason: r.reason || null } : null,
+    source: c.provenance?.source || null, addedBy: c.provenance?.addedBy || null, explanation: c.revealExplanation || "",
+    recorded: rejs.filter((e) => normWord(e.hint) === t), history: [...kept, ...extra],
+  };
+}
+
+function attemptFromRejection(e) {
+  const decider = deciderOf(e.by);
+  return {
+    text: normWord(e.hint), inLibrary: false, status: e.decision, decision: { status: e.decision, by: e.by, decider, reason: e.reason, via: "rejections.json" },
+    advisory: adviseKind({ status: e.decision, decider, reason: e.reason }), review: null, source: null, addedBy: null, explanation: "", recorded: [e], history: [],
+  };
+}
+
+/** Every hint ever recorded for a pair, deduplicated by hint text across the library and rejections.json. */
+export function pairAttempts(ix, x, y, { rejections = [], overrides = [] } = {}) {
+  const { a, b, id } = pairOf(x, y);
+  const p = ix.byId.get(id);
+  const rejs = rejectionsByPair(rejections).get(id) || [];
+  const attempts = (p?.clues || []).map((c) => attemptFromClue(p, c, rejs, overrides));
+  for (const e of rejs) if (!attempts.some((t) => normWord(t.text) === normWord(e.hint))) attempts.push(attemptFromRejection(e));
+  const state = currentState(ix, p);
+  return {
+    a, b, id, inBank: ix.inBank.has(a) && ix.inBank.has(b), ...pairEvidence(p, rejs), state,
+    open: !p?.generationHold, restriction: p?.generationHold || null,
+    served: state === "served" ? servedHints(ix, p).hints.map((c) => c.text) : [], attempts,
+  };
+}
+
+/** Pair-level coverage over the whole bank, with rejection-only pairs reconciled. */
+export function coverageSummary(ix, rejections = []) {
+  const byPair = rejectionsByPair(rejections);
+  const inBankPair = (a, b) => ix.inBank.has(normWord(a)) && ix.inBank.has(normWord(b));
+  const ev = { "candidate-only": 0, "reviewed-or-decided": 0 };
+  const state = { served: 0, "playable-unserved": 0, "not-playable": 0 };
+  let generated = 0, stored = 0, restricted = 0, openUnserved = 0;
+  for (const p of ix.pairs) {
+    if (!inBankPair(p.a, p.b)) continue;
+    stored++;
+    const e = pairEvidence(p, byPair.get(p.pair_id) || []); ev[e.evidence]++; if (e.generated) generated++;
+    const s = currentState(ix, p); state[s]++;
+    if (p.generationHold) restricted++; else if (s !== "served") openUnserved++;
+  }
+  const rejectionOnly = [...byPair.entries()].filter(([id]) => !ix.byId.has(id));
+  const rejectionOnlyInBank = rejectionOnly.filter(([, es]) => inBankPair(es[0].a, es[0].b));
+  ev["reviewed-or-decided"] += rejectionOnlyInBank.length;
+  const possible = pairCount(ix.bank.length);
+  const seen = stored + rejectionOnlyInBank.length;
+  return {
+    possiblePairs: possible,
+    evidence: { unseen: possible - seen, ...ev, generatedByARecordedBatch: generated },
+    rejectionOnlyPairs: { inBank: rejectionOnlyInBank.length, outsideBank: rejectionOnly.length - rejectionOnlyInBank.length, entries: rejectionOnly.reduce((n, [, es]) => n + es.length, 0) },
+    current: { ...state, noLibraryRecord: possible - stored },
+    seenButNotServed: { open: openUnserved + rejectionOnlyInBank.length, pairRestricted: restricted },
+  };
+}
+
+/** Non-playable attempts across the catalogue (held + candidate by default; `all` adds rejected). */
+export function listHolds(ix, { rejections = [], overrides = [], kind = null, unserved = false, decider = null, all = false } = {}) {
+  const pairs = new Map(ix.pairs.map((p) => [p.pair_id, [p.a, p.b]]));
+  for (const e of rejections) { const q = pairOf(e.a, e.b); if (!pairs.has(q.id)) pairs.set(q.id, [q.a, q.b]); }
+  const out = [];
+  for (const [id, [a, b]] of pairs) {
+    const info = pairAttempts(ix, a, b, { rejections, overrides });
+    if (unserved && info.state === "served") continue;
+    for (const t of info.attempts) {
+      if (PLAYABLE.has(t.status) || (!all && t.status === "rejected")) continue;
+      if (kind && t.advisory !== kind) continue;
+      if (decider && t.decision.decider !== decider) continue;
+      out.push({ pair_id: id, a, b, pairState: info.state, ...t });
+    }
+  }
+  return out.sort((x, y) => x.a.localeCompare(y.a) || x.b.localeCompare(y.b) || x.text.localeCompare(y.text));
+}

@@ -8,6 +8,11 @@
 //   node scripts/unlimited/catalogue.mjs thin [--limit 30] [--new]        words with the fewest playable pairs
 //   node scripts/unlimited/catalogue.mjs empty [--word W] [--limit 40]    empty pairs (no record yet)
 //   node scripts/unlimited/catalogue.mjs search <TEXT>                   hints and explanations
+//   node scripts/unlimited/catalogue.mjs coverage                         pair evidence vs current state (read-only)
+//   node scripts/unlimited/catalogue.mjs attempts <WORD> <WORD> [--json] every hint ever recorded for the pair, with the active decision
+//   node scripts/unlimited/catalogue.mjs holds [--kind K] [--by D] [--unserved] [--all] [--limit N] [--json]
+//        non-playable attempts; K = owner-decision|factual|rule|unsupported|familiarity-or-difficulty|unclassified
+//        (advisory triage only: never proof, never a promotion); D = owner|coordinator|main-session|reviewer|pending
 //   node scripts/unlimited/catalogue.mjs add <WORD> <WORD> <HINT> --by <owner|friend|name> --why "<short explanation>"
 //        [--a "<link to first word>"] [--b "<link to second word>"] [--note "<where it came from>"]
 //        [--approve]   owner only: records the owner's decision that it is playable (overrides.json, human_approved)
@@ -18,7 +23,7 @@
 // approves it. Nothing here edits an existing hint's text, review or status.
 // A pair + hint the owner rejected or held (rejections.json) is refused.
 import { readFileSync, writeFileSync } from "node:fs";
-import { PATHS, loadCatalogue, pairOf, pairState, stats, wordCoverage, emptyPairs, servedHints, search, hintProblem, normWord, PLAYABLE } from "./catalogue-lib.mjs";
+import { PATHS, loadCatalogue, pairOf, pairState, stats, wordCoverage, emptyPairs, servedHints, search, hintProblem, normWord, PLAYABLE, coverageSummary, pairAttempts, listHolds, ADVISORY_KINDS } from "./catalogue-lib.mjs";
 import { REJECTIONS, loadRejections, rejectionFor } from "./rejections-lib.mjs";
 
 const [cmd, ...rest] = process.argv.slice(2);
@@ -31,6 +36,7 @@ const ix = loadCatalogue();
 const out = (o) => console.log(typeof o === "string" ? o : JSON.stringify(o, null, 2));
 const need = (cond, msg) => { if (!cond) { console.error(msg); process.exit(2); } };
 const today = () => new Date().toISOString().slice(0, 10);
+const readOverrides = () => JSON.parse(readFileSync(PATHS.overrides, "utf8")).overrides || [];
 
 function showPair(p) {
   const served = servedHints(ix, p);
@@ -79,6 +85,31 @@ if (cmd === "stats") {
   const hits = search(ix, args.join(" "));
   for (const h of hits) out(`  ${h.a} + ${h.b}: ${h.text} [${h.status}] ${h.revealExplanation}`);
   out(`${hits.length} matches`);
+} else if (cmd === "coverage") {
+  out(coverageSummary(ix, loadRejections()));
+} else if (cmd === "attempts") {
+  need(args.length === 2, "usage: attempts <WORD> <WORD>");
+  const info = pairAttempts(ix, args[0], args[1], { rejections: loadRejections(), overrides: readOverrides() });
+  if (flags.json) out(info);
+  else {
+    out(`${info.a} + ${info.b}  (${info.id})${info.inBank ? "" : " — not both in the word bank"}`);
+    out(`  evidence: ${info.evidence}${info.generated ? " (includes a recorded generation batch)" : ""}${info.rejectionOnly ? " (rejections.json only)" : ""}; now: ${info.state}${info.served.length ? ` (${info.served.join(" / ")})` : ""}; ${info.open ? "open for other hints" : `pair restricted: ${info.restriction.reason}`}`);
+    for (const t of info.attempts) {
+      const r = t.review ? ` · review ${t.review.verdict} ${t.review.a}/${t.review.b}/${t.review.fairness}` : "";
+      out(`  ${PLAYABLE.has(t.status) ? "●" : "○"} ${t.text.padEnd(14)} ${t.status} · decided by ${t.decision.decider} (${t.decision.by || "?"})${r}${t.advisory ? ` · advisory: ${t.advisory}` : ""}${t.inLibrary ? "" : " · rejections.json only"}`);
+      if (t.decision.reason) out(`      why: ${t.decision.reason}`);
+      if (t.explanation) out(`      “${t.explanation}”`);
+      for (const h of t.history) out(`      history: ${h.status} by ${h.by} (${h.date})${h.superseded ? `, superseded by ${h.superseded.by} ${h.superseded.date}` : ""}`);
+    }
+  }
+} else if (cmd === "holds") {
+  need(!flags.kind || ADVISORY_KINDS.includes(flags.kind), `--kind is one of ${ADVISORY_KINDS.join(", ")}`);
+  const rows = listHolds(ix, { rejections: loadRejections(), overrides: readOverrides(), kind: flags.kind || null, decider: flags.by || null, unserved: !!flags.unserved, all: !!flags.all });
+  if (flags.json) out(rows);
+  else {
+    for (const r of rows.slice(0, Number(flags.limit || rows.length))) out(`  ${(r.a + " + " + r.b).padEnd(28)} ${r.text.padEnd(14)} ${r.status.padEnd(9)} ${r.decision.decider.padEnd(12)} ${(r.advisory || "").padEnd(25)} ${r.pairState}`);
+    out(`${rows.length} attempts (advisory kinds are triage only)`);
+  }
 } else if (cmd === "add") {
   need(args.length === 3 && flags.by && flags.why, 'usage: add <WORD> <WORD> <HINT> --by <owner|friend|name> --why "<short explanation>"');
   const { a, b, id } = pairOf(args[0], args[1]);
