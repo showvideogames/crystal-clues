@@ -261,7 +261,10 @@ test("x11 owner proposals: CAROLING, VOILA, NOAH coordinator-accepted; CAP'N pen
   }
   assert.match(byId.get("p_sheep__ship").clues[0].revealExplanation, /familiar Bible story/);
   for (const id of ["p_cannon__cereal", "p_cereal__pirate"]) assert.deepEqual(byId.get(id).clues.map((x) => x.text), ["CAP'N"], "pending on the apostrophe at first; stored as CAP'N once allowed, never respelled");
-  for (const w of ["lion", "giraffe", "rat", "crow", "whale"]) assert.equal(byId.get(`p_${w}__ship`), undefined, "proposal only");
+  for (const w of ["lion", "giraffe", "rat", "whale"]) assert.equal(byId.get(`p_${w}__ship`), undefined, "proposal only");
+  // x20 drafted CROW + SHIP -> NEST independently; it matches the proposal family, so it is held, never served, until the parent decides
+  const crow = byId.get("p_crow__ship"); assert.deepEqual(crow.clues.map((c) => [c.text, c.status, c.provenance.source]), [["NEST", "held", "x20"]]);
+  assert.match(crow.clues[0].override.reason, /proposal-only animal x SHIP family/); assert.ok(!client.pairs.some((x) => x.id === "p_crow__ship"));
   assert.equal(byId.get("p_bird__ship"), undefined, "BIRD + SHIP still only the owner FALCON hold");
 });
 
@@ -275,8 +278,8 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
     else { assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/); }
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
-  // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["CROCK-POT", "HEIGH-HO", "HEIGH-HO", "WALL-E", "X-MEN"]);
+  // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19), 1-UP, POST-IT and WALK-IN (x20)
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "CROCK-POT", "HEIGH-HO", "HEIGH-HO", "POST-IT", "WALK-IN", "WALL-E", "X-MEN"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -453,4 +456,17 @@ test("x19: 210 candidates on unseen pairs; 199 PASS + 6 BORDERLINE accepted; SCI
   // wording cleanup for concision (not a false-quote correction): the drafted lyric stays in provenance with the parent's clarification
   assert.doesNotMatch(hh.revealExplanation + hh.wordBConnection, /off to work we go/); assert.match(hh.provenance.textCorrection.from.revealExplanation, /off to work we go/);
   assert.match(hh.provenance.textCorrection.clarification, /not an established false quote/);
+});
+
+test("x20: 221 candidates on unseen pairs; 211 PASS, 10 BORDERLINE held, CROW + SHIP NEST held for the parent; parent and reviewer text fixes traceable", () => {
+  const x20 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x20").map((c) => ({ p, c })));
+  assert.equal(x20.length, 221);
+  const n = (s) => x20.filter(({ c }) => c.status === s).length;
+  // + CROW + SHIP -> NEST (review PASS) held: it belongs to the x11 owner proposal-only animal x SHIP family
+  assert.equal(n("ai_reviewed"), 210); assert.equal(n("held"), 11); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x20) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const hit = byId.get("p_baseball__song").clues[0];
+  assert.doesNotMatch(hit.revealExplanation, /safely reaching base/); assert.match(hit.provenance.textCorrectionHistory[0].from.revealExplanation, /safely reaching base/);
+  assert.match(hit.wordAConnection, /Singles, doubles, triples and home runs/);
+  const tide = byId.get("p_detergent__wave").clues[0]; assert.match(tide.wordBConnection, /very long ocean waves/); assert.match(tide.provenance.textCorrectionHistory[0].from.wordBConnection, /tidal wave/);
 });

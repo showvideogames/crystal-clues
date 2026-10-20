@@ -1,0 +1,452 @@
+{
+ "_metadata": {
+  "reviewer": "x20-reviewer-d",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x20-rd-input.json",
+  "rubric": "x20 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the single input file x20-rd-input.json; no other file, repository search, web or API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_amazon__fire",
+   "a": "AMAZON",
+   "b": "FIRE",
+   "hints": [
+    {"text": "KINDLE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "AMAZON via the Kindle e-reader it makes; FIRE via the verb to kindle a fire (with a bonus echo of the Kindle Fire tablet).", "fix": null}
+   ],
+   "strong_hints": ["KINDLE"],
+   "pair_note": "Excellent double meaning; the Kindle Fire tablet makes it click even harder."
+  },
+  {
+   "pair_id": "p_america__sail",
+   "a": "AMERICA",
+   "b": "SAIL",
+   "hints": [
+    {"text": "YACHT", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["needs_explanation"], "verdict": "BORDERLINE", "reason": "SAIL is immediate (yachts sail), but AMERICA only arrives via the America's Cup yacht race, which YACHT alone does not strongly evoke for most players.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Facts are accurate; the AMERICA side is a one-step-too-far link for a general audience."
+  },
+  {
+   "pair_id": "p_back__cat",
+   "a": "BACK",
+   "b": "CAT",
+   "hints": [
+    {"text": "ARCH", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "BACK via the phrase arch your back; CAT via the classic image of a scared or stretching cat arching its back.", "fix": "To arch your back is to bend it into a curve, as a scared cat does."}
+   ],
+   "strong_hints": ["ARCH"],
+   "pair_note": "Clean, familiar image; the BACK line's 'curve it upward' is confusing for humans, so a small wording fix is suggested."
+  },
+  {
+   "pair_id": "p_barbie__chick",
+   "a": "BARBIE",
+   "b": "CHICK",
+   "hints": [
+    {"text": "GOSLING", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BARBIE via Ryan Gosling playing Ken in the 2023 film; CHICK via a gosling being a baby goose, a young bird.", "fix": null}
+   ],
+   "strong_hints": ["GOSLING"],
+   "pair_note": "Strong pop-culture plus animal double meaning with a real aha."
+  },
+  {
+   "pair_id": "p_baseball__song",
+   "a": "BASEBALL",
+   "b": "SONG",
+   "hints": [
+    {"text": "HIT", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BASEBALL via a base hit; SONG via a hit single.", "fix": null}
+   ],
+   "strong_hints": ["HIT"],
+   "pair_note": "Easy but clean classic double meaning."
+  },
+  {
+   "pair_id": "p_beach__spongebob",
+   "a": "BEACH",
+   "b": "SPONGEBOB",
+   "hints": [
+    {"text": "SANDY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BEACH via sandy beaches; SPONGEBOB via his squirrel friend Sandy Cheeks.", "fix": null}
+   ],
+   "strong_hints": ["SANDY"],
+   "pair_note": "Satisfying adjective-versus-character double meaning."
+  },
+  {
+   "pair_id": "p_big__young",
+   "a": "BIG",
+   "b": "YOUNG",
+   "hints": [
+    {"text": "SHELDON", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BIG via The Big Bang Theory, where Sheldon is a lead; YOUNG via the prequel Young Sheldon.", "fix": null}
+   ],
+   "strong_hints": ["SHELDON"],
+   "pair_note": "Two title words tied by one character; clicks quickly and feels good."
+  },
+  {
+   "pair_id": "p_block__screen",
+   "a": "BLOCK",
+   "b": "SCREEN",
+   "hints": [
+    {"text": "SUN", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BLOCK via sunblock and SCREEN via sunscreen, two instantly familiar compounds for the same product.", "fix": null}
+   ],
+   "strong_hints": ["SUN"],
+   "pair_note": "Phrase-join, but the two compounds being near-synonyms makes it a neat pairing."
+  },
+  {
+   "pair_id": "p_bomb__cloud",
+   "a": "BOMB",
+   "b": "CLOUD",
+   "hints": [
+    {"text": "MUSHROOM", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CLOUD via mushroom cloud and BOMB via the nuclear blast that famously produces one; both come from the same iconic image.", "fix": null}
+   ],
+   "strong_hints": ["MUSHROOM"],
+   "pair_note": "Familiar and fair; subject matter is serious but PG-acceptable."
+  },
+  {
+   "pair_id": "p_brain__young",
+   "a": "BRAIN",
+   "b": "YOUNG",
+   "hints": [
+    {"text": "FRANKENSTEIN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "BRAIN via the creature's stolen brain (also the famous 'Abby Normal' brain gag); YOUNG via Mel Brooks's Young Frankenstein.", "fix": "In the 1931 film, the doctor's assistant steals a brain from a medical college for the creature."}
+   ],
+   "strong_hints": ["FRANKENSTEIN"],
+   "pair_note": "Good route; the BRAIN line's 'stolen from a lab' is imprecise (Fritz takes it from a medical college lecture hall, and the doctor did not steal it himself)."
+  },
+  {
+   "pair_id": "p_brown__time",
+   "a": "BROWN",
+   "b": "TIME",
+   "hints": [
+    {"text": "DELOREAN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BROWN via Doc Brown, who builds the DeLorean time machine; TIME via its time travel at 88 mph.", "fix": null}
+   ],
+   "strong_hints": ["DELOREAN"],
+   "pair_note": "Iconic film reference with a satisfying click."
+  },
+  {
+   "pair_id": "p_business__funny",
+   "a": "BUSINESS",
+   "b": "FUNNY",
+   "hints": [
+    {"text": "MONKEY", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["phrase_join_weak", "needs_explanation"], "verdict": "BORDERLINE", "reason": "BUSINESS via monkey business is instant, but FUNNY arrives only through the synonym chain monkey business = funny business (or monkeys being comic), which few players will reach from MONKEY alone.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Cute equivalence once explained, but the FUNNY side is indirect and many other board words could also fit MONKEY."
+  },
+  {
+   "pair_id": "p_candy__worm",
+   "a": "CANDY",
+   "b": "WORM",
+   "hints": [
+    {"text": "GUMMY", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "WORM via gummy worms and CANDY via gummies being a chewy candy.", "fix": null}
+   ],
+   "strong_hints": ["GUMMY"],
+   "pair_note": "Easy, instantly familiar; fine as a gentle clue."
+  },
+  {
+   "pair_id": "p_charge__china",
+   "a": "CHARGE",
+   "b": "CHINA",
+   "hints": [
+    {"text": "BULL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CHARGE via a charging bull; CHINA via the idiom a bull in a china shop.", "fix": null}
+   ],
+   "strong_hints": ["BULL"],
+   "pair_note": "Strong: an idiom plus a behaviour, and the CHINA side has a nice aha."
+  },
+  {
+   "pair_id": "p_chess__room",
+   "a": "CHESS",
+   "b": "ROOM",
+   "hints": [
+    {"text": "MATE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CHESS via checkmate (often just 'mate'); ROOM via roommate.", "fix": null}
+   ],
+   "strong_hints": ["MATE"],
+   "pair_note": "Compounds, but the chess sense of mate makes it feel like a real double meaning."
+  },
+  {
+   "pair_id": "p_chick__film",
+   "a": "CHICK",
+   "b": "FILM",
+   "hints": [
+    {"text": "FLICK", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "FILM via flick being slang for a film; CHICK via the phrase chick flick.", "fix": null}
+   ],
+   "strong_hints": ["FLICK"],
+   "pair_note": "Synonym plus familiar phrase; honest on both sides."
+  },
+  {
+   "pair_id": "p_clock__smoke",
+   "a": "CLOCK",
+   "b": "SMOKE",
+   "hints": [
+    {"text": "HICKORY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CLOCK via the nursery rhyme Hickory Dickory Dock; SMOKE via hickory wood for smoking meat.", "fix": null}
+   ],
+   "strong_hints": ["HICKORY"],
+   "pair_note": "Lovely pairing of a nursery rhyme and barbecue; real aha."
+  },
+  {
+   "pair_id": "p_club__tea",
+   "a": "CLUB",
+   "b": "TEA",
+   "hints": [
+    {"text": "CADDY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CLUB via the golf caddy who carries clubs; TEA via a tea caddy, a tin for loose tea.", "fix": null}
+   ],
+   "strong_hints": ["CADDY"],
+   "pair_note": "Tea caddy is less common in U.S. speech but widely enough known; a satisfying double meaning."
+  },
+  {
+   "pair_id": "p_conductor__lightning",
+   "a": "CONDUCTOR",
+   "b": "LIGHTNING",
+   "hints": [
+    {"text": "ROD", "mechanism": "phrase_join", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "delight": 0, "recognizability": "broad", "better_hint": null, "flags": ["one_sided", "needs_explanation"], "verdict": "BORDERLINE", "reason": "LIGHTNING via lightning rod is instant, but CONDUCTOR only connects through the technical fact that the rod conducts current; ROD does not bring a conductor (train or orchestra) to mind.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Facts are true, but the CONDUCTOR side is a definition rather than a natural link; no obviously better one-word hint found."
+  },
+  {
+   "pair_id": "p_cool__triangle",
+   "a": "COOL",
+   "b": "TRIANGLE",
+   "hints": [
+    {"text": "DORITOS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "COOL via the Cool Ranch flavour; TRIANGLE via the chips' triangular shape.", "fix": null}
+   ],
+   "strong_hints": ["DORITOS"],
+   "pair_note": "Fun brand clue that clicks immediately."
+  },
+  {
+   "pair_id": "p_cowboy__trunk",
+   "a": "COWBOY",
+   "b": "TRUNK",
+   "hints": [
+    {"text": "BOOT", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["british_only"], "verdict": "PASS", "reason": "COWBOY via cowboy boots; TRUNK via the familiar British word boot for a car trunk.", "fix": null}
+   ],
+   "strong_hints": ["BOOT"],
+   "pair_note": "The owner has explicitly cleared British 'boot'; british_only is a familiarity note only."
+  },
+  {
+   "pair_id": "p_cross__finger",
+   "a": "CROSS",
+   "b": "FINGER",
+   "hints": [
+    {"text": "LUCK", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CROSS and FINGER together via the good-luck gesture of crossing your fingers.", "fix": null}
+   ],
+   "strong_hints": ["LUCK"],
+   "pair_note": "Simple and fair; both targets come from the same gesture."
+  },
+  {
+   "pair_id": "p_dead__thanksgiving",
+   "a": "DEAD",
+   "b": "THANKSGIVING",
+   "hints": [
+    {"text": "GRATEFUL", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DEAD via the band the Grateful Dead; THANKSGIVING via the holiday of being grateful.", "fix": null}
+   ],
+   "strong_hints": ["GRATEFUL"],
+   "pair_note": "Band-name join, but the meaning link to Thanksgiving gives a genuine aha."
+  },
+  {
+   "pair_id": "p_dish__lab",
+   "a": "DISH",
+   "b": "LAB",
+   "hints": [
+    {"text": "PETRI", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DISH via Petri dish; LAB via Petri dishes being a lab staple for growing cultures.", "fix": null}
+   ],
+   "strong_hints": ["PETRI"],
+   "pair_note": "Easy but tight; PETRI has no use outside the lab, so it is precise."
+  },
+  {
+   "pair_id": "p_down__newspaper",
+   "a": "DOWN",
+   "b": "NEWSPAPER",
+   "hints": [
+    {"text": "CROSSWORD", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DOWN via crossword clues listed Across and Down; NEWSPAPER via the daily newspaper crossword.", "fix": null}
+   ],
+   "strong_hints": ["CROSSWORD"],
+   "pair_note": "The DOWN side is a nice indirect aha."
+  },
+  {
+   "pair_id": "p_end__shark",
+   "a": "END",
+   "b": "SHARK",
+   "hints": [
+    {"text": "FIN", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "END via French fin, the closing card of classic films; SHARK via its dorsal fin.", "fix": null}
+   ],
+   "strong_hints": ["FIN"],
+   "pair_note": "Strong cross-language double meaning; 'fin' as 'the end' is widely known from films and cartoons."
+  },
+  {
+   "pair_id": "p_field__soccer",
+   "a": "FIELD",
+   "b": "SOCCER",
+   "hints": [
+    {"text": "PITCH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target", "british_only"], "verdict": "PASS", "reason": "FIELD via pitch meaning a playing field; SOCCER via the familiar phrase soccer pitch.", "fix": null}
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Soccer pitch is well known in the U.S.; the baseball sense of pitch adds a fair misdirect."
+  },
+  {
+   "pair_id": "p_fireworks__wizard",
+   "a": "FIREWORKS",
+   "b": "WIZARD",
+   "hints": [
+    {"text": "GANDALF", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "WIZARD via Gandalf the wizard; FIREWORKS via his famous fireworks at Bilbo's party in the opening of The Fellowship of the Ring.", "fix": null}
+   ],
+   "strong_hints": ["GANDALF"],
+   "pair_note": "The fireworks scene is prominent in book and film, so I lean PASS, but casual viewers may not recall it; a second opinion is welcome."
+  },
+  {
+   "pair_id": "p_full__scarecrow",
+   "a": "FULL",
+   "b": "SCARECROW",
+   "hints": [
+    {"text": "STUFFED", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FULL via feeling stuffed after a meal; SCARECROW via being stuffed with straw.", "fix": null}
+   ],
+   "strong_hints": ["STUFFED"],
+   "pair_note": "Clean double meaning with a pleasant twist."
+  },
+  {
+   "pair_id": "p_hamburger__mint",
+   "a": "HAMBURGER",
+   "b": "MINT",
+   "hints": [
+    {"text": "PATTY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "HAMBURGER via the burger patty; MINT via the peppermint patty candy.", "fix": null}
+   ],
+   "strong_hints": ["PATTY"],
+   "pair_note": "Savoury versus sweet patty; a real 'oh, nice'."
+  },
+  {
+   "pair_id": "p_hospital__potato",
+   "a": "HOSPITAL",
+   "b": "POTATO",
+   "hints": [
+    {"text": "MASH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "HOSPITAL via M*A*S*H, set at a Mobile Army Surgical Hospital; POTATO via mashed potatoes.", "fix": null}
+   ],
+   "strong_hints": ["MASH"],
+   "pair_note": "An older show but still widely known; excellent double meaning."
+  },
+  {
+   "pair_id": "p_jack__wild",
+   "a": "JACK",
+   "b": "WILD",
+   "hints": [
+    {"text": "LONDON", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "JACK via author Jack London; WILD via his novel The Call of the Wild.", "fix": null}
+   ],
+   "strong_hints": ["LONDON"],
+   "pair_note": "Familiar literature link; the city misdirect makes it a nice solve."
+  },
+  {
+   "pair_id": "p_laser__pink",
+   "a": "LASER",
+   "b": "PINK",
+   "hints": [
+    {"text": "FLOYD", "mechanism": "phrase_join", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "PINK via the band name Pink Floyd; LASER via the band's famous laser light shows and the long-running planetarium Laser Floyd shows.", "fix": null}
+   ],
+   "strong_hints": ["FLOYD"],
+   "pair_note": "Pink Floyd is instantly familiar and the laser-show association is real and fairly well known; the LASER side is the weaker half."
+  },
+  {
+   "pair_id": "p_lightning__record",
+   "a": "LIGHTNING",
+   "b": "RECORD",
+   "hints": [
+    {"text": "BOLT", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "LIGHTNING via a lightning bolt; RECORD via Usain Bolt's sprint world records.", "fix": null}
+   ],
+   "strong_hints": ["BOLT"],
+   "pair_note": "Strong, and the lightning-bolt pose ties the two senses together neatly."
+  },
+  {
+   "pair_id": "p_memory__whale",
+   "a": "MEMORY",
+   "b": "WHALE",
+   "hints": [
+    {"text": "DORY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "MEMORY via Dory's short-term memory loss; WHALE via her famous attempt to speak whale in Finding Nemo.", "fix": null}
+   ],
+   "strong_hints": ["DORY"],
+   "pair_note": "Two iconic character traits; delightful."
+  },
+  {
+   "pair_id": "p_milk__stone",
+   "a": "MILK",
+   "b": "STONE",
+   "hints": [
+    {"text": "SKIM", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "MILK via skim milk; STONE via skimming stones across water.", "fix": null}
+   ],
+   "strong_hints": ["SKIM"],
+   "pair_note": "Americans more often say 'skip' stones, but 'skim' is understood; nice double meaning."
+  },
+  {
+   "pair_id": "p_moustache__potato",
+   "a": "MOUSTACHE",
+   "b": "POTATO",
+   "hints": [
+    {"text": "PRINGLES", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "MOUSTACHE via the Pringles mascot Mr. P's big moustache; POTATO via Pringles being potato crisps.", "fix": null}
+   ],
+   "strong_hints": ["PRINGLES"],
+   "pair_note": "Fun brand clue; 'potato crisps' matches Pringles' own U.S. labelling."
+  },
+  {
+   "pair_id": "p_office__shape",
+   "a": "OFFICE",
+   "b": "SHAPE",
+   "hints": [
+    {"text": "OVAL", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "OFFICE via the Oval Office; SHAPE via an oval being a shape.", "fix": null}
+   ],
+   "strong_hints": ["OVAL"],
+   "pair_note": "Easy, clean, and fair."
+  },
+  {
+   "pair_id": "p_picture__puzzle",
+   "a": "PICTURE",
+   "b": "PUZZLE",
+   "hints": [
+    {"text": "JIGSAW", "mechanism": "phrase_join", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "PUZZLE via jigsaw puzzle; PICTURE via the picture a jigsaw builds when completed.", "fix": null}
+   ],
+   "strong_hints": ["JIGSAW"],
+   "pair_note": "PICTURE side is a little softer but natural; easy clue."
+  },
+  {
+   "pair_id": "p_poison__tree",
+   "a": "POISON",
+   "b": "TREE",
+   "hints": [
+    {"text": "HEMLOCK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "POISON via poison hemlock (Socrates' death); TREE via the unrelated hemlock evergreen.", "fix": null}
+   ],
+   "strong_hints": ["HEMLOCK"],
+   "pair_note": "Accurate text, including the note that the tree and the poison plant are unrelated."
+  },
+  {
+   "pair_id": "p_safe__snack",
+   "a": "SAFE",
+   "b": "SNACK",
+   "hints": [
+    {"text": "CRACKER", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SAFE via safecracker; SNACK via crackers as a snack.", "fix": null}
+   ],
+   "strong_hints": ["CRACKER"],
+   "pair_note": "Satisfying double meaning."
+  },
+  {
+   "pair_id": "p_skin__snake",
+   "a": "SKIN",
+   "b": "SNAKE",
+   "hints": [
+    {"text": "SHED", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SKIN and SNAKE together via snakes shedding their skin.", "fix": null}
+   ],
+   "strong_hints": ["SHED"],
+   "pair_note": "Easy and clear."
+  },
+  {
+   "pair_id": "p_staff__thief",
+   "a": "STAFF",
+   "b": "THIEF",
+   "hints": [
+    {"text": "CROOK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "STAFF via a shepherd's crook; THIEF via crook as slang for a criminal.", "fix": null}
+   ],
+   "strong_hints": ["CROOK"],
+   "pair_note": "The shepherd's-staff sense gives a real aha beyond the synonym."
+  },
+  {
+   "pair_id": "p_walk__zombie",
+   "a": "WALK",
+   "b": "ZOMBIE",
+   "hints": [
+    {"text": "DEAD", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "WALK via The Walking Dead; ZOMBIE via zombies being the (un)dead that the show is about.", "fix": null}
+   ],
+   "strong_hints": ["DEAD"],
+   "pair_note": "Familiar title join reinforced by the zombie meaning."
+  }
+ ]
+}
