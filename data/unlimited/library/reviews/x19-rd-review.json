@@ -1,0 +1,978 @@
+{
+ "_metadata": {
+  "reviewer": "x19-reviewer-d",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x19-rd-input.json",
+  "rubric": "x19 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the single input file x19-rd-input.json; I opened no other file, searched nothing and used no web or API."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_america__day",
+   "a": "AMERICA",
+   "b": "DAY",
+   "hints": [
+    {
+     "text": "COLUMBUS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "AMERICA via Columbus's 1492 voyage to the Americas and DAY via the Columbus Day holiday; both are schoolbook-familiar and the text is accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["COLUMBUS"],
+   "pair_note": "Clean, easy history clue."
+  },
+  {
+   "pair_id": "p_arm__wing",
+   "a": "ARM",
+   "b": "WING",
+   "hints": [
+    {
+     "text": "SPAN",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ARM via arm span and WING via wingspan; both compounds are instantly familiar and measure the same tip-to-tip idea, so the join is tidy rather than arbitrary.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPAN"],
+   "pair_note": "A phrase-join that earns its place because both compounds mean the same kind of measurement."
+  },
+  {
+   "pair_id": "p_bark__roll",
+   "a": "BARK",
+   "b": "ROLL",
+   "hints": [
+    {
+     "text": "CINNAMON",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ROLL via the cinnamon roll and BARK via the true, widely known fact that cinnamon is inner tree bark (cinnamon sticks are visibly rolled bark); a nice indirect aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CINNAMON"],
+   "pair_note": "Excellent indirect-knowledge clue in the RELATIVE mold."
+  },
+  {
+   "pair_id": "p_bear__stick",
+   "a": "BEAR",
+   "b": "STICK",
+   "hints": [
+    {
+     "text": "TEDDY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEAR via the teddy bear and STICK via Teddy Roosevelt's 'speak softly and carry a big stick'; the second side is an indirect but familiar history link that clicks hard.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TEDDY"],
+   "pair_note": "Strong; 'motto' is loose (Roosevelt called it a favorite proverb), but it is commonly described that way and not misleading."
+  },
+  {
+   "pair_id": "p_bill__shot",
+   "a": "BILL",
+   "b": "SHOT",
+   "hints": [
+    {
+     "text": "HAMILTON",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BILL via Hamilton on the $10 bill and SHOT via the 1804 Burr duel (with a bonus echo of the musical's 'My Shot'); both true and broadly known.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HAMILTON"],
+   "pair_note": "One of the best in the batch."
+  },
+  {
+   "pair_id": "p_blood__blue",
+   "a": "BLOOD",
+   "b": "BLUE",
+   "hints": [
+    {
+     "text": "ROYAL",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "BLOOD via royal blood and BLUE via royal blue, both instantly familiar, with blue blood as a pleasing third echo; the explanation slightly conflates royal blood with noble blue blood.",
+     "fix": "Royal blood means descent from kings and queens, and royal blue is a deep, bright shade of blue."
+    }
+   ],
+   "strong_hints": ["ROYAL"],
+   "pair_note": "Good phrase-join; tidy the explanation so the royal-blue side is not muddled with blue blood."
+  },
+  {
+   "pair_id": "p_bow__violin",
+   "a": "BOW",
+   "b": "VIOLIN",
+   "hints": [
+    {
+     "text": "FIDDLE",
+     "mechanism": "other",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": "STRING",
+     "flags": ["synonym_of_target", "better_hint_exists"],
+     "verdict": "BORDERLINE",
+     "reason": "VIOLIN is a straight rename (fiddle = violin) and BOW only follows as the violin's accessory, so the hint does no work beyond naming one target; STRING (violin string, bowstring) is a real double link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Fair but flat; if kept, mentioning that a violin bow was once called a fiddlestick would give the BOW side its own hook."
+  },
+  {
+   "pair_id": "p_brown__einstein",
+   "a": "BROWN",
+   "b": "EINSTEIN",
+   "hints": [
+    {
+     "text": "DOC",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BROWN via Doc Brown and EINSTEIN via Doc's dog Einstein in Back to the Future (the time-machine test scene), with Doc-as-genius-scientist as a backup echo; a very satisfying movie aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DOC"],
+   "pair_note": "The dog's name is less universal than Doc Brown himself, but the film is a mainstream classic and the dog is in a central scene."
+  },
+  {
+   "pair_id": "p_button__case",
+   "a": "BUTTON",
+   "b": "CASE",
+   "hints": [
+    {
+     "text": "BENJAMIN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BUTTON and CASE both via the title The Curious Case of Benjamin Button; BENJAMIN pulls BUTTON instantly and the title then delivers CASE.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BENJAMIN"],
+   "pair_note": "A title-join, but the title is famous and the hint sits neatly between the two targets."
+  },
+  {
+   "pair_id": "p_candy__taste",
+   "a": "CANDY",
+   "b": "TASTE",
+   "hints": [
+    {
+     "text": "SKITTLES",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CANDY because Skittles are a candy (category link) and TASTE via the slogan 'Taste the Rainbow'; both broadly known.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SKITTLES"],
+   "pair_note": "Category plus slogan, like PENGUIN; easy and fair."
+  },
+  {
+   "pair_id": "p_card__new",
+   "a": "CARD",
+   "b": "NEW",
+   "hints": [
+    {
+     "text": "DEAL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CARD via dealing cards and NEW via FDR's New Deal; two different senses of DEAL, both familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DEAL"],
+   "pair_note": "Solid."
+  },
+  {
+   "pair_id": "p_chain__link",
+   "a": "CHAIN",
+   "b": "LINK",
+   "hints": [
+    {
+     "text": "WEAKEST",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LINK via 'weakest link' (also the game show) and CHAIN via the proverb 'a chain is only as strong as its weakest link'; one well-known saying carries both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WEAKEST"],
+   "pair_note": "Easy, but the proverb names both targets, so it is not one-sided."
+  },
+  {
+   "pair_id": "p_chimney__clean",
+   "a": "CHIMNEY",
+   "b": "CLEAN",
+   "hints": [
+    {
+     "text": "SWEEP",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHIMNEY via chimney sweep and CLEAN via clean sweep; both instantly familiar, and the cleaning sense ties them together.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SWEEP"],
+   "pair_note": "Good phrase-join."
+  },
+  {
+   "pair_id": "p_coat__turn",
+   "a": "COAT",
+   "b": "TURN",
+   "hints": [
+    {
+     "text": "TRAITOR",
+     "mechanism": "other",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "TRAITOR defines TURNCOAT, which splits into TURN and COAT; TURN also gets its own support from 'turn traitor', making this a satisfying crossword-style aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TRAITOR"],
+   "pair_note": "Unusual mechanism (a definition of the compound both targets form); I like it, but it is worth a second opinion on whether players see the compound split."
+  },
+  {
+   "pair_id": "p_conductor__punch",
+   "a": "CONDUCTOR",
+   "b": "PUNCH",
+   "hints": [
+    {
+     "text": "TICKET",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CONDUCTOR via the train conductor collecting tickets and PUNCH via the ticket punch (and 'punch your ticket'); a classic, familiar scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TICKET"],
+   "pair_note": "Clear and fair."
+  },
+  {
+   "pair_id": "p_cup__knight",
+   "a": "CUP",
+   "b": "KNIGHT",
+   "hints": [
+    {
+     "text": "GRAIL",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CUP via the Holy Grail as a sacred cup and KNIGHT via the Round Table's Grail quest (Monty Python and Indiana Jones keep both broad); the hedged 'usually described as a cup' is accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GRAIL"],
+   "pair_note": "Solid."
+  },
+  {
+   "pair_id": "p_dish__radio",
+   "a": "DISH",
+   "b": "RADIO",
+   "hints": [
+    {
+     "text": "TELESCOPE",
+     "mechanism": "phrase_join",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": "SATELLITE",
+     "flags": ["better_hint_exists"],
+     "verdict": "BORDERLINE",
+     "reason": "RADIO via radio telescope and DISH via the dish shape of that same instrument; true, but most players picture an optical telescope first, and SATELLITE (satellite dish, satellite radio) is a clearly cleaner double hit.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Accurate text; the idea works only once you already think of radio telescopes. SATELLITE is the obvious stronger hint."
+  },
+  {
+   "pair_id": "p_dwarf__mine",
+   "a": "DWARF",
+   "b": "MINE",
+   "hints": [
+    {
+     "text": "HEIGH-HO",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DWARF via the Seven Dwarfs' song and MINE via the scene of them marching home from the diamond mine; iconic Disney and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HEIGH-HO"],
+   "pair_note": "Delightful and fair."
+  },
+  {
+   "pair_id": "p_england__history",
+   "a": "ENGLAND",
+   "b": "HISTORY",
+   "hints": [
+    {
+     "text": "CHANNEL",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ENGLAND via the English Channel (adjective form, still instant) and HISTORY via the History Channel; two very familiar names with different senses of channel.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CHANNEL"],
+   "pair_note": "The network now brands itself just History, but 'the History Channel' is still the common name, so the line is fine."
+  },
+  {
+   "pair_id": "p_fan__grass",
+   "a": "FAN",
+   "b": "GRASS",
+   "hints": [
+    {
+     "text": "BLADE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FAN via fan blades and GRASS via a blade of grass; two different senses of the word, both everyday, and the 'most fans' hedge keeps the line accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BLADE"],
+   "pair_note": "Clean double meaning."
+  },
+  {
+   "pair_id": "p_fire__table",
+   "a": "FIRE",
+   "b": "TABLE",
+   "hints": [
+    {
+     "text": "ELEMENT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TABLE via the periodic table of elements and FIRE via the four classical elements; two senses of element, each familiar, with a nice ancient-vs-modern twist.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ELEMENT"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_fork__hair",
+   "a": "FORK",
+   "b": "HAIR",
+   "hints": [
+    {
+     "text": "ARIEL",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FORK and HAIR via the famous dinglehopper scene in The Little Mermaid, where Ariel combs her hair with a fork; Ariel's red hair adds a second HAIR hook.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ARIEL"],
+   "pair_note": "Excellent pop-culture aha; text is accurate."
+  },
+  {
+   "pair_id": "p_funny__grease",
+   "a": "FUNNY",
+   "b": "GREASE",
+   "hints": [
+    {
+     "text": "ELBOW",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FUNNY via the funny bone at the elbow (a nerve, correctly stated) and GREASE via 'elbow grease'; both familiar and the indirect FUNNY side gives a real click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ELBOW"],
+   "pair_note": "One of the best in the batch."
+  },
+  {
+   "pair_id": "p_god__mercury",
+   "a": "GOD",
+   "b": "MERCURY",
+   "hints": [
+    {
+     "text": "MESSENGER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MERCURY as the Roman messenger god and GOD via 'messenger of the gods'; well known, and NASA's MESSENGER probe to the planet Mercury is a bonus echo.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MESSENGER"],
+   "pair_note": "Fair and easy; the targets are already linked, so delight is modest."
+  },
+  {
+   "pair_id": "p_halloween__shrek",
+   "a": "HALLOWEEN",
+   "b": "SHREK",
+   "hints": [
+    {
+     "text": "MYERS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HALLOWEEN via Michael Myers the slasher villain and SHREK via Mike Myers the voice actor; the two-Myers mix-up is a well-known joke, and naming a horror villain stays PG.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MYERS"],
+   "pair_note": "Great name-collision clue."
+  },
+  {
+   "pair_id": "p_heel__house",
+   "a": "HEEL",
+   "b": "HOUSE",
+   "hints": [
+    {
+     "text": "DOROTHY",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HEEL via clicking her heels three times and HOUSE via her house landing on the Wicked Witch of the East; two iconic Wizard of Oz moments, both stated correctly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DOROTHY"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_horn__viking",
+   "a": "HORN",
+   "b": "VIKING",
+   "hints": [
+    {
+     "text": "HELMET",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HORN and VIKING via the popular horned Viking helmet image (and the Minnesota Vikings' horned football helmets); the text honestly notes real Viking helmets lacked horns.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HELMET"],
+   "pair_note": "Handled the myth correctly; mentioning the Minnesota Vikings helmet would add a true, very U.S. hook."
+  },
+  {
+   "pair_id": "p_italy__nurse",
+   "a": "ITALY",
+   "b": "NURSE",
+   "hints": [
+    {
+     "text": "FLORENCE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ITALY via the city of Florence and NURSE via Florence Nightingale; she really was born in Florence and named after it, a neat bonus fact.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLORENCE"],
+   "pair_note": "Strong place-plus-person clue."
+  },
+  {
+   "pair_id": "p_jet__new-york",
+   "a": "JET",
+   "b": "NEW YORK",
+   "hints": [
+    {
+     "text": "SHARKS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "JET via the Jets-vs-Sharks rivalry of West Side Story and NEW YORK via the musical's well-known Manhattan setting; the NEW YORK side relies on the setting, but the board's JET + NEW YORK (the NFL Jets) pairing reinforces it.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHARKS"],
+   "pair_note": "The New York side is a setting link rather than a direct one; it still clicks once explained."
+  },
+  {
+   "pair_id": "p_leaf__whistle",
+   "a": "LEAF",
+   "b": "WHISTLE",
+   "hints": [
+    {
+     "text": "BLOWER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LEAF via leaf blower and WHISTLE via whistle-blower; both instantly familiar and the literal-vs-figurative contrast makes it fun.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BLOWER"],
+   "pair_note": "Best phrase-join in the batch."
+  },
+  {
+   "pair_id": "p_mario__race",
+   "a": "MARIO",
+   "b": "RACE",
+   "hints": [
+    {
+     "text": "KART",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MARIO via Mario Kart and RACE via kart racing (the whole point of the game); easy and broadly known.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KART"],
+   "pair_note": "Easy but satisfying."
+  },
+  {
+   "pair_id": "p_moon__young",
+   "a": "MOON",
+   "b": "YOUNG",
+   "hints": [
+    {
+     "text": "NEIL",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOON via Neil Armstrong's 1969 Moon walk and YOUNG via Neil Young (whose 'Harvest Moon' is a bonus echo); two famous Neils, both stated correctly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NEIL"],
+   "pair_note": "Strong shared-first-name clue."
+  },
+  {
+   "pair_id": "p_new-york__zoo",
+   "a": "NEW YORK",
+   "b": "ZOO",
+   "hints": [
+    {
+     "text": "BRONX",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "NEW YORK because the Bronx is a city borough and ZOO via the famous Bronx Zoo; easy and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BRONX"],
+   "pair_note": "Easy, clean."
+  },
+  {
+   "pair_id": "p_olive__owl",
+   "a": "OLIVE",
+   "b": "OWL",
+   "hints": [
+    {
+     "text": "ATHENA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "OWL via Athena's well-known owl of wisdom and OLIVE via her gift of the olive tree to Athens; the olive side is school-myth knowledge that fewer players hold, but it clicks once explained.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ATHENA"],
+   "pair_note": "Classical-myth clue; owl is broad, olive is moderate. I lean PASS but it is near the line."
+  },
+  {
+   "pair_id": "p_pepper__rat",
+   "a": "PEPPER",
+   "b": "RAT",
+   "hints": [
+    {
+     "text": "PIPER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PEPPER via the Peter Piper tongue twister and RAT via the Pied Piper of Hamelin; two famous Pipers from childhood, both stated correctly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PIPER"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_prince__rope",
+   "a": "PRINCE",
+   "b": "ROPE",
+   "hints": [
+    {
+     "text": "ALI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PRINCE via 'Prince Ali' from Aladdin and ROPE via Muhammad Ali's rope-a-dope; both true, though rope-a-dope is somewhat less familiar to non-boxing fans.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ALI"],
+   "pair_note": "Fun two-Alis clue; the ROPE side asks a bit more of the player."
+  },
+  {
+   "pair_id": "p_red__wing",
+   "a": "RED",
+   "b": "WING",
+   "hints": [
+    {
+     "text": "BULL",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RED via the brand name Red Bull and WING via its famous slogan 'Red Bull gives you wings'; one brand covers both sides neatly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BULL"],
+   "pair_note": "Strong brand clue."
+  },
+  {
+   "pair_id": "p_scarecrow__short",
+   "a": "SCARECROW",
+   "b": "SHORT",
+   "hints": [
+    {
+     "text": "STRAW",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SCARECROW via straw stuffing (and Oz's Scarecrow) and SHORT via drawing the short straw; literal straw vs the idiom, both familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRAW"],
+   "pair_note": "Solid."
+  },
+  {
+   "pair_id": "p_sister__snowman",
+   "a": "SISTER",
+   "b": "SNOWMAN",
+   "hints": [
+    {
+     "text": "FROZEN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SISTER via Anna and Elsa and SNOWMAN via Olaf (and 'Do You Want to Build a Snowman?'), plus snowmen are literally frozen; broad and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FROZEN"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_staff__wizard",
+   "a": "STAFF",
+   "b": "WIZARD",
+   "hints": [
+    {
+     "text": "GANDALF",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "WIZARD because Gandalf is the archetypal wizard (category link) and STAFF via his iconic staff ('You shall not pass'); fair, though the STAFF line's 'wherever he travels' overstates.",
+     "fix": "Gandalf carries a wizard's staff in The Lord of the Rings."
+    }
+   ],
+   "strong_hints": ["GANDALF"],
+   "pair_note": "Easy and fair; the WIZARD line's 'best-known wizard' superlative is also softer than ideal ('the wizard who guides the Fellowship' would be safer)."
+  },
+  {
+   "pair_id": "p_television__work",
+   "a": "TELEVISION",
+   "b": "WORK",
+   "hints": [
+    {
+     "text": "REMOTE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TELEVISION via the TV remote and WORK via remote work; a clean double meaning, both everyday.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["REMOTE"],
+   "pair_note": "Clean DRIVER-style double meaning."
+  },
+  {
+   "pair_id": "p_watch__white",
+   "a": "WATCH",
+   "b": "WHITE",
+   "hints": [
+    {
+     "text": "RABBIT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "WHITE via the White Rabbit and WATCH via his pocket watch in Alice in Wonderland; iconic and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RABBIT"],
+   "pair_note": "Excellent."
+  }
+ ]
+}

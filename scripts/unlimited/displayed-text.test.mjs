@@ -275,8 +275,8 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
     else { assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/); }
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
-  // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["CROCK-POT", "WALL-E"]);
+  // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19)
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["CROCK-POT", "HEIGH-HO", "HEIGH-HO", "WALL-E", "X-MEN"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -428,4 +428,21 @@ test("x18: 219 candidates on unseen pairs; 211 PASS + CANON, JAZZ, GORILLA accep
   assert.equal(et.find((c) => c.text === "DELOREAN").status, "held");
   assert.deepEqual(client.pairs.find((x) => x.id === "p_einstein__time").hints.map((h) => h.text), ["RELATIVITY"]);
   const cp = byId.get("p_cook__slow").clues; assert.equal(cp.length, 1); assert.equal(cp[0].text, "CROCK-POT"); assert.equal(cp[0].provenance.hintSpelling.from, "CROCKPOT");
+});
+
+test("x19: 210 candidates on unseen pairs; 199 PASS, 11 BORDERLINE held; SCIENTIST serves BROWN + EINSTEIN (DOC held); text fixes traceable", () => {
+  const x19 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x19").map((c) => ({ p, c })));
+  assert.equal(x19.length, 210);
+  const n = (s) => x19.filter(({ c }) => c.status === s).length;
+  // DOC (review PASS) is familiarity-held: it relies on the Back to the Future dog named Einstein.
+  assert.equal(n("ai_reviewed"), 198); assert.equal(n("held"), 12); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x19) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const be = byId.get("p_brown__einstein").clues; const sci = be.find((c) => c.text === "SCIENTIST");
+  assert.equal(sci.override.status, "coordinator_accept"); assert.equal(sci.provenance.blindReview, null);
+  const doc = be.find((c) => c.text === "DOC"); assert.equal(doc.status, "held"); assert.equal(doc.provenance.blindReview.verdict, "PASS");
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_brown__einstein").hints.map((h) => h.text), ["SCIENTIST"]);
+  const hh = byId.get("p_dwarf__work").clues[0];
+  // wording cleanup for concision (not a false-quote correction): the drafted lyric stays in provenance with the parent's clarification
+  assert.doesNotMatch(hh.revealExplanation + hh.wordBConnection, /off to work we go/); assert.match(hh.provenance.textCorrection.from.revealExplanation, /off to work we go/);
+  assert.match(hh.provenance.textCorrection.clarification, /not an established false quote/);
 });
