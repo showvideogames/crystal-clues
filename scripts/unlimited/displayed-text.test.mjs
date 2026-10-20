@@ -175,3 +175,16 @@ test("x07 penguin analogy: ANTARCTICA + ROOSTER and ICE + ROOSTER owner-selected
   assert.equal(byId.get("p_frozen__rooster"), undefined, "FROZEN is not in the bank");
   assert.ok(![...byId.values()].some((p) => p.clues.some((c) => c.text === "WADDLE")), "WADDLE was never selected");
 });
+
+test("editorial-bar holds lifted by the coordinator: ten served with reviews and history kept; GOTHAM, JAWS, SAILOR, SHERLOCK still pending", () => {
+  const T = [["p_boss__dog", "BARK"], ["p_boss__tree", "BARK"], ["p_casino__golf", "CHIP"], ["p_casino__stocks", "CHIP"], ["p_ship__skateboard", "DECK"], ["p_balance__dragon", "SCALE"], ["p_balance__map", "SCALE"], ["p_bird__boat", "SEAGULL"], ["p_angel__stage", "WING"], ["p_buffalo__stage", "WING"]];
+  for (const [id, h] of T) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h), `${id} ${h} served`);
+    assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /^coordinator .*not an owner decision/);
+    assert.equal(c.provenance.blindReview.verdict, "PASS", "the original review is kept");
+    assert.match(c.override.history?.[0]?.by || "", /editorial bar/); assert.ok(c.override.history[0].superseded);
+  }
+  for (const [id, h] of [["p_knight__new-york", "GOTHAM"], ["p_new-york__penguin", "GOTHAM"], ["p_beach__bond", "JAWS"], ["p_moon__sea", "SAILOR"], ["p_london__violin", "SHERLOCK"]])
+    assert.equal(byId.get(id).clues.find((x) => x.text === h).status, "held", `${id} ${h} stays pending`);
+});
