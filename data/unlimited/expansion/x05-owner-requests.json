@@ -3,9 +3,19 @@
   "purpose": "owner-provided combinations recorded for the NEXT local content batch (2026-10-19). Recorded only: not yet added to the library or served. Checked with: REQUESTS=data/unlimited/expansion/x05-owner-requests.json TAG=x05 node scripts/unlimited/x03-requests.mjs check",
   "provenance": "owner Deb West, message Sentinel_70d1fa0d549c8191b5b571dad99aacef (relayed by the coordinator as trusted owner conversation history), exact words and hints preserved",
   "explanations": "drafted by the main session (claude-opus-5-5) as proposals; they need the usual fact/wording check before the entries are applied",
-  "coordinatorComments": "2026-10-19: commentary only, not an owner decision or rejection; all seven exact owner proposals and provenance preserved"
+  "coordinatorComments": "2026-10-19: commentary only, not an owner decision or rejection; all seven exact owner proposals and provenance preserved",
+  "whenApplied": "both owner-approved options for SEA + WITNESS and SALAD + APPETITE become approved equal sets (both served, varied per board); CAMOUFLAGE + HOOK serves LURE only"
  },
- "equalSets": {},
+ "equalSets": {
+  "p_sea__witness": [
+   "LOOKOUT",
+   "SEE"
+  ],
+  "p_appetite__salad": [
+   "VEGETARIAN",
+   "APPETIZER"
+  ]
+ },
  "items": [
   {
    "ref": "O-01",
@@ -35,7 +45,8 @@
     "WITNESS": "A lookout watches events, like a witness."
    },
    "coordinatorComment": "looser (coordinator)",
-   "status": "recorded for the next content batch; not yet applied or served"
+   "status": "recorded for the next content batch; not yet applied or served",
+   "ownerDecision": "LOOKOUT kept; SEE approved as an additional option (O-08)"
   },
   {
    "ref": "O-03",
@@ -50,7 +61,8 @@
     "HOOK": "A fishing lure hides a hook."
    },
    "coordinatorComment": "looser (coordinator)",
-   "status": "recorded for the next content batch; not yet applied or served"
+   "status": "recorded for the next content batch; not yet applied or served",
+   "ownerDecision": "LURE preferred; FLY rejected by the owner (O-10)"
   },
   {
    "ref": "O-04",
@@ -110,7 +122,50 @@
    },
    "note": "loose owner association; the explanation describes it as a typical vegetarian meal, not a rule",
    "coordinatorComment": "coordinator recommends rethinking: appetite is not vegetarian-specific. SALAD + MEAT -> VEGETARIAN was floated as an idea only, NOT an approved replacement; the owner proposal stays as given",
+   "status": "recorded for the next content batch; not yet applied or served",
+   "ownerDecision": "VEGETARIAN kept; APPETIZER approved as an additional option (O-09)"
+  },
+  {
+   "ref": "O-08",
+   "source": "x05 owner decision (approved option)",
+   "a": "SEA",
+   "b": "WITNESS",
+   "hint": "SEE",
+   "intent": "owner_add",
+   "why": "A witness is someone who saw it happen, and \"see\" sounds just like \"sea.\"",
+   "links": {
+    "SEA": "\"Sea\" sounds just like \"see.\"",
+    "WITNESS": "A witness sees what happens."
+   },
+   "provenance": "owner Deb West, message Sentinel_411784a4b9808191b874fb4f5e8ab8db: \"I think Appetizer is fine as an option for that. I hate fly for that. I don't think of flies as camouflage at all and like lure better. See for sea + witness is funny so keep that too\"",
+   "note": "approved by the owner as an additional option; LOOKOUT is kept (not replaced)",
    "status": "recorded for the next content batch; not yet applied or served"
+  },
+  {
+   "ref": "O-09",
+   "source": "x05 owner decision (approved option)",
+   "a": "SALAD",
+   "b": "APPETITE",
+   "hint": "APPETIZER",
+   "intent": "owner_add",
+   "why": "A salad is a classic appetizer, a small dish to whet your appetite.",
+   "links": {
+    "SALAD": "A salad is a classic appetizer.",
+    "APPETITE": "An appetizer whets your appetite."
+   },
+   "provenance": "owner Deb West, message Sentinel_411784a4b9808191b874fb4f5e8ab8db: \"I think Appetizer is fine as an option for that. I hate fly for that. I don't think of flies as camouflage at all and like lure better. See for sea + witness is funny so keep that too\"",
+   "note": "approved by the owner as an additional option; VEGETARIAN is kept (not replaced)",
+   "status": "recorded for the next content batch; not yet applied or served"
+  },
+  {
+   "ref": "O-10",
+   "source": "x05 owner decision (rejection)",
+   "a": "CAMOUFLAGE",
+   "b": "HOOK",
+   "hint": "FLY",
+   "intent": "rejected",
+   "note": "coordinator suggestion rejected by the owner; LURE stays the preferred hint. Recorded in rejections.json so it is never re-proposed",
+   "provenance": "owner Deb West, message Sentinel_411784a4b9808191b874fb4f5e8ab8db: \"I think Appetizer is fine as an option for that. I hate fly for that. I don't think of flies as camouflage at all and like lure better. See for sea + witness is funny so keep that too\""
   }
  ]
 }
