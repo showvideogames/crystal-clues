@@ -1,0 +1,390 @@
+{
+ "_metadata": {
+  "reviewer": "x13-reviewer-c",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x13-rc-input.json",
+  "rubric": "x13 rubric (template 2026-10-20)",
+  "independence": "I read only x13-rc-input.json and no other file, repository content, web page or API."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_apple__snow", "a": "APPLE", "b": "SNOW",
+   "hints": [
+    {"text": "WHITE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "WHITE completes Snow White (SNOW), and Snow White's best-known story beat is the poisoned apple (APPLE); a clean one-step fairy-tale route.", "fix": null}
+   ],
+   "strong_hints": ["WHITE"],
+   "pair_note": "Solid fairy-tale clue; POISON would be an alternative but no stronger."
+  },
+  {
+   "pair_id": "p_band__crown", "a": "BAND", "b": "CROWN",
+   "hints": [
+    {"text": "QUEEN", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Queen the rock band (BAND) and a queen who wears a crown (CROWN); a clear, familiar double meaning.", "fix": null}
+   ],
+   "strong_hints": ["QUEEN"],
+   "pair_note": "Note QUEEN is also a target in p_band__queen; avoid both pairs on one board."
+  },
+  {
+   "pair_id": "p_band__horn", "a": "BAND", "b": "HORN",
+   "hints": [
+    {"text": "BRASS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Brass band is a stock phrase (BAND) and horns are the classic brass instruments (HORN); fair and immediate.", "fix": null}
+   ],
+   "strong_hints": ["BRASS"],
+   "pair_note": "Straightforward, accurate."
+  },
+  {
+   "pair_id": "p_band__queen", "a": "BAND", "b": "QUEEN",
+   "hints": [
+    {"text": "MERCURY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "MERCURY -> Freddie Mercury -> frontman of Queen (QUEEN), which is a band (BAND); indirect familiar knowledge with a real aha, past the planet and element decoys.", "fix": null}
+   ],
+   "strong_hints": ["MERCURY"],
+   "pair_note": "Good RELATIVE-style indirect route; FREDDIE would be more direct but flatter."
+  },
+  {
+   "pair_id": "p_band__school", "a": "BAND", "b": "SCHOOL",
+   "hints": [
+    {"text": "MARCHING", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 0, "recognizability": "broad", "better_hint": "ROCK", "flags": ["phrase_join_weak", "better_hint_exists", "one_sided"], "verdict": "BORDERLINE",
+     "reason": "Marching band nails BAND, but SCHOOL is only a setting where marching bands appear (parades, the military and colleges compete for it), while ROCK gives rock band plus the film School of Rock for both sides.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Prefer ROCK (rock band / School of Rock); MARCHING is accurate but leans on BAND alone."
+  },
+  {
+   "pair_id": "p_band__wind", "a": "BAND", "b": "WIND",
+   "hints": [
+    {"text": "EARTH", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "EARTH -> Earth, Wind & Fire, the famous band (BAND) whose name contains WIND; the band name is instantly familiar and the elements echo helps it click.", "fix": null}
+   ],
+   "strong_hints": ["EARTH"],
+   "pair_note": "Band-name phrase-join, but a well-known one; FIRE would work equally well."
+  },
+  {
+   "pair_id": "p_bath__beach", "a": "BATH", "b": "BEACH",
+   "hints": [
+    {"text": "TOWEL", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Bath towel (BATH) and beach towel (BEACH) are both everyday compounds; easy and clean.", "fix": null}
+   ],
+   "strong_hints": ["TOWEL"],
+   "pair_note": "Easy, satisfying phrase-join."
+  },
+  {
+   "pair_id": "p_beach__king", "a": "BEACH", "b": "KING",
+   "hints": [
+    {"text": "CASTLE", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Sandcastles are built on the beach (BEACH) and a king lives in a castle (KING); both images are immediate.", "fix": null}
+   ],
+   "strong_hints": ["CASTLE"],
+   "pair_note": "CASTLE is also the hint for p_chess__sand; keep them off the same board or batch run."
+  },
+  {
+   "pair_id": "p_bee__hair", "a": "BEE", "b": "HAIR",
+   "hints": [
+    {"text": "HIVE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Bees live in a hive (BEE) and the beehive is a famous tall hairdo (HAIR, think Marge Simpson); a genuine aha.", "fix": null}
+   ],
+   "strong_hints": ["HIVE"],
+   "pair_note": "One of the nicer ones in the batch."
+  },
+  {
+   "pair_id": "p_bike__ghost", "a": "BIKE", "b": "GHOST",
+   "hints": [
+    {"text": "CHAIN", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A bike chain (BIKE) and the rattling chains of ghosts like Marley's (GHOST); two unrelated images joined neatly.", "fix": null}
+   ],
+   "strong_hints": ["CHAIN"],
+   "pair_note": "Pleasant surprise pairing."
+  },
+  {
+   "pair_id": "p_birthday__star", "a": "BIRTHDAY", "b": "STAR",
+   "hints": [
+    {"text": "WISH", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "You make a wish blowing out birthday candles (BIRTHDAY) and wish upon a shooting star (STAR); warm and instantly clear.", "fix": null}
+   ],
+   "strong_hints": ["WISH"],
+   "pair_note": "Lovely, easy clue."
+  },
+  {
+   "pair_id": "p_boat__card", "a": "BOAT", "b": "CARD",
+   "hints": [
+    {"text": "DECK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "A boat's deck (BOAT) and a deck of cards (CARD); a classic double meaning.", "fix": "A boat has a deck, and cards come in a deck."}
+   ],
+   "strong_hints": ["DECK"],
+   "pair_note": "Explanation wording 'so do cards' is slightly loose (cards don't have a deck); suggested fix above."
+  },
+  {
+   "pair_id": "p_boxer__phone", "a": "BOXER", "b": "PHONE",
+   "hints": [
+    {"text": "RING", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Boxers fight in a ring (BOXER) and a phone rings (PHONE); a clean noun/verb double meaning.", "fix": null}
+   ],
+   "strong_hints": ["RING"],
+   "pair_note": "Classic and fair."
+  },
+  {
+   "pair_id": "p_camera__eye", "a": "CAMERA", "b": "EYE",
+   "hints": [
+    {"text": "LENS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Cameras have a lens (CAMERA) and so does the human eye (EYE); accurate and fair.", "fix": null}
+   ],
+   "strong_hints": ["LENS"],
+   "pair_note": "Easy, accurate."
+  },
+  {
+   "pair_id": "p_car__coat", "a": "CAR", "b": "COAT",
+   "hints": [
+    {"text": "HOOD", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A car's hood (CAR, U.S. usage) and a coat's hood (COAT); a good double meaning for a U.S. audience.", "fix": null}
+   ],
+   "strong_hints": ["HOOD"],
+   "pair_note": "Works well in U.S. English (British would say bonnet)."
+  },
+  {
+   "pair_id": "p_card__river", "a": "CARD", "b": "RIVER",
+   "hints": [
+    {"text": "BRIDGE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Bridge the card game (CARD) and a bridge over a river (RIVER); a satisfying double meaning.", "fix": null}
+   ],
+   "strong_hints": ["BRIDGE"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_cat__hand", "a": "CAT", "b": "HAND",
+   "hints": [
+    {"text": "PAW", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "Cats have paws (CAT), and 'paws' is common slang for hands ('keep your paws off') or to paw at something with your hand (HAND); the explanation should state that slang rather than claim a paw is literally a hand.", "fix": "A cat walks on paws, and 'paws' is slang for hands, as in 'Keep your paws off!'"}
+   ],
+   "strong_hints": ["PAW"],
+   "pair_note": "Fine idea; the current HAND line ('A paw is an animal's hand') is loose, since paws are feet; the fix uses the true slang route."
+  },
+  {
+   "pair_id": "p_chess__sand", "a": "CHESS", "b": "SAND",
+   "hints": [
+    {"text": "CASTLE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The rook is commonly called a castle and castling is a chess move (CHESS), and sand builds sandcastles (SAND); both routes are familiar.", "fix": null}
+   ],
+   "strong_hints": ["CASTLE"],
+   "pair_note": "Duplicate hint word with p_beach__king; the CHESS line could say 'The rook is often called a castle' for precision, but it is not false."
+  },
+  {
+   "pair_id": "p_cinderella__shoe", "a": "CINDERELLA", "b": "SHOE",
+   "hints": [
+    {"text": "GLASS", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "GLASS -> the glass slipper, which Cinderella loses (CINDERELLA) and which is a shoe (SHOE); more interesting than SLIPPER, which would be a near-synonym of SHOE.", "fix": null}
+   ],
+   "strong_hints": ["GLASS"],
+   "pair_note": "Good; one-step fairy-tale route."
+  },
+  {
+   "pair_id": "p_computer__doctor", "a": "COMPUTER", "b": "DOCTOR",
+   "hints": [
+    {"text": "VIRUS", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A computer virus (COMPUTER) and doctors treating viral illness (DOCTOR); the same pattern as COMPUTER + INSECT -> BUG.", "fix": null}
+   ],
+   "strong_hints": ["VIRUS"],
+   "pair_note": "'Doctors treat viruses' is acceptable shorthand for viral infections."
+  },
+  {
+   "pair_id": "p_donkey__dragon", "a": "DONKEY", "b": "DRAGON",
+   "hints": [
+    {"text": "SHREK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix", "uncertain"], "verdict": "PASS",
+     "reason": "Donkey is Shrek's sidekick (DONKEY) and Dragon is the dragon who falls for him (DRAGON); a fun, very familiar film route.", "fix": "Dragon falls for Donkey, and by the sequels she is his wife."}
+   ],
+   "strong_hints": ["SHREK"],
+   "pair_note": "Idea is strong; the DRAGON line 'Donkey marries the Dragon' implies an on-screen wedding I am not certain the films show, so a safer wording is offered."
+  },
+  {
+   "pair_id": "p_face__toilet", "a": "FACE", "b": "TOILET",
+   "hints": [
+    {"text": "FLUSH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "You flush a toilet (TOILET) and a flushed face goes red (FACE); a clean double meaning that stays PG.", "fix": null}
+   ],
+   "strong_hints": ["FLUSH"],
+   "pair_note": "Nice."
+  },
+  {
+   "pair_id": "p_fence__mail", "a": "FENCE", "b": "MAIL",
+   "hints": [
+    {"text": "POST", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A fence post (FENCE) and post meaning mail, as in post office and postage (MAIL); a solid double meaning familiar in the U.S.", "fix": null}
+   ],
+   "strong_hints": ["POST"],
+   "pair_note": "'Post a letter' leans slightly British; a MAIL line like 'The post office delivers mail.' would feel more American, but nothing is false."
+  },
+  {
+   "pair_id": "p_fish__teacher", "a": "FISH", "b": "TEACHER",
+   "hints": [
+    {"text": "SCHOOL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A school of fish (FISH) and teachers working at a school (TEACHER); a classic double meaning.", "fix": null}
+   ],
+   "strong_hints": ["SCHOOL"],
+   "pair_note": "Classic."
+  },
+  {
+   "pair_id": "p_flower__spring", "a": "FLOWER", "b": "SPRING",
+   "hints": [
+    {"text": "BLOOM", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 0, "recognizability": "broad", "better_hint": null, "flags": ["generic"], "verdict": "PASS",
+     "reason": "Flowers bloom (FLOWER) and spring is blooming season (SPRING); flat but honest and clear for both.", "fix": null}
+   ],
+   "strong_hints": ["BLOOM"],
+   "pair_note": "Easy, low delight; acceptable."
+  },
+  {
+   "pair_id": "p_football__summer", "a": "FOOTBALL", "b": "SUMMER",
+   "hints": [
+    {"text": "FAN", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A football fan (FOOTBALL) and an electric fan that cools you in summer (SUMMER); the SUMMER side is a use-association rather than a phrase, but the double meaning clicks.", "fix": null}
+   ],
+   "strong_hints": ["FAN"],
+   "pair_note": "SUMMER side is softer than FOOTBALL; still fair."
+  },
+  {
+   "pair_id": "p_game__shirt", "a": "GAME", "b": "SHIRT",
+   "hints": [
+    {"text": "TIE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A game ending in a tie (GAME) and a necktie worn with a dress shirt (SHIRT); tie-dye shirt is a bonus route.", "fix": null}
+   ],
+   "strong_hints": ["TIE"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_golf__night", "a": "GOLF", "b": "NIGHT",
+   "hints": [
+    {"text": "CLUB", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Golf club the stick (GOLF) and nightclub the venue (NIGHT); two senses of CLUB, both instant.", "fix": null}
+   ],
+   "strong_hints": ["CLUB"],
+   "pair_note": "Same shape as BUS + GOLF -> DRIVER."
+  },
+  {
+   "pair_id": "p_hair__lion", "a": "HAIR", "b": "LION",
+   "hints": [
+    {"text": "MANE", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS",
+     "reason": "A lion's mane (LION) is its hair, and people speak of a full mane of hair (HAIR); synonym-of-one-sense, but it honestly links both.", "fix": null}
+   ],
+   "strong_hints": ["MANE"],
+   "pair_note": "Easy; the synonym flag is a note only."
+  },
+  {
+   "pair_id": "p_jack__snow", "a": "JACK", "b": "SNOW",
+   "hints": [
+    {"text": "FROST", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Jack Frost (JACK) is the familiar winter sprite, and frost and snow go together as winter weather (SNOW); the Jack Frost name makes it click.", "fix": null}
+   ],
+   "strong_hints": ["FROST"],
+   "pair_note": "SNOW side is a property association rather than a phrase; fine for an easy clue."
+  },
+  {
+   "pair_id": "p_king__video-game", "a": "KING", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "KONG", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "King Kong the movie ape (KING) and Donkey Kong the classic arcade game (VIDEO GAME); both names are iconic and the pairing is fun.", "fix": null}
+   ],
+   "strong_hints": ["KONG"],
+   "pair_note": "A phrase-join that earns its place."
+  },
+  {
+   "pair_id": "p_knight__turtle", "a": "KNIGHT", "b": "TURTLE",
+   "hints": [
+    {"text": "ARMOR", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A knight in armor (KNIGHT) and a turtle's shell as natural armor (TURTLE); an accepted metaphor, not a false fact.", "fix": null}
+   ],
+   "strong_hints": ["ARMOR"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_lock__music", "a": "LOCK", "b": "MUSIC",
+   "hints": [
+    {"text": "KEY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A key opens a lock (LOCK) and music is written in a key (MUSIC); a classic double meaning.", "fix": null}
+   ],
+   "strong_hints": ["KEY"],
+   "pair_note": "Classic."
+  },
+  {
+   "pair_id": "p_mask__sword", "a": "MASK", "b": "SWORD",
+   "hints": [
+    {"text": "ZORRO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Zorro is the masked hero (MASK, as in The Mask of Zorro) who fights with a sword (SWORD); both are his defining traits.", "fix": null}
+   ],
+   "strong_hints": ["ZORRO"],
+   "pair_note": "Strong character clue."
+  },
+  {
+   "pair_id": "p_music__rat", "a": "MUSIC", "b": "RAT",
+   "hints": [
+    {"text": "PIPER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The Pied Piper plays his pipe (MUSIC) to lead the rats out of town (RAT); a crisp fairy-tale route.", "fix": null}
+   ],
+   "strong_hints": ["PIPER"],
+   "pair_note": "Very good."
+  },
+  {
+   "pair_id": "p_ninja__turtle", "a": "NINJA", "b": "TURTLE",
+   "hints": [
+    {"text": "PIZZA", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "PIZZA -> the pizza-loving Teenage Mutant Ninja Turtles, which supplies both NINJA and TURTLE at once; indirect, familiar and fun.", "fix": null}
+   ],
+   "strong_hints": ["PIZZA"],
+   "pair_note": "Nice indirect route; MUTANT would be more direct but flatter."
+  },
+  {
+   "pair_id": "p_pig__wall", "a": "PIG", "b": "WALL",
+   "hints": [
+    {"text": "BRICK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The third little pig's brick house (PIG) and brick walls (WALL); fairy tale plus everyday material.", "fix": null}
+   ],
+   "strong_hints": ["BRICK"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_pirate__space", "a": "PIRATE", "b": "SPACE",
+   "hints": [
+    {"text": "SHIP", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Pirate ship (PIRATE) and spaceship (SPACE) are both instant compounds; easy but clean.", "fix": null}
+   ],
+   "strong_hints": ["SHIP"],
+   "pair_note": "Simple phrase-join; acceptable."
+  },
+  {
+   "pair_id": "p_princess__video-game", "a": "PRINCESS", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "PEACH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Princess Peach (PRINCESS) is the Mario series princess (VIDEO GAME); the fruit decoy makes the click pleasant.", "fix": null}
+   ],
+   "strong_hints": ["PEACH"],
+   "pair_note": "ZELDA would also work here, but it is used for p_sword__video-game."
+  },
+  {
+   "pair_id": "p_sea__witch", "a": "SEA", "b": "WITCH",
+   "hints": [
+    {"text": "URSULA", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Ursula is The Little Mermaid's sea witch, living under the sea (SEA) and a witch (WITCH); a direct, broadly known Disney route.", "fix": null}
+   ],
+   "strong_hints": ["URSULA"],
+   "pair_note": "Good Disney clue."
+  },
+  {
+   "pair_id": "p_soccer__video-game", "a": "SOCCER", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "FIFA", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "FIFA is soccer's world governing body (SOCCER) and the name of EA's long-running soccer game series (VIDEO GAME); strong, but EA renamed the series EA Sports FC in 2023, so the text should not present FIFA as the current game.", "fix": "FIFA runs world soccer, and its name was on EA's hugely popular soccer video game series for three decades."}
+   ],
+   "strong_hints": ["FIFA"],
+   "pair_note": "Still widely recognized (and FIFA is in the news with the 2026 U.S. World Cup); just past-tense the video game claim."
+  },
+  {
+   "pair_id": "p_sword__video-game", "a": "SWORD", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "ZELDA", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The Legend of Zelda is an iconic video game series (VIDEO GAME), and its hero Link's Master Sword is its emblem (SWORD); the sword side takes one extra step since Zelda herself is not the swordsman.", "fix": null}
+   ],
+   "strong_hints": ["ZELDA"],
+   "pair_note": "SWORD side is one step removed but the Master Sword is famous enough."
+  }
+ ]
+}

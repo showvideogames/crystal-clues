@@ -1,0 +1,51 @@
+{
+ "_metadata": {
+  "purpose": "x13 checkpoint calls under the standing included-usage authorization (extras OFF; stop rather than paid fallback). Used: 0 drafting (in-session), 3 blind reviews (Agent tool, model opus), 0 recovery. get_usage immediately before dispatch: 5h 26%, weekly 75%, extraUsage.enabled=false. Reviewer brief: data/unlimited/reviewer-brief-template.md (corrected synonym guidance).",
+  "date": "2026-10-20",
+  "used": {
+   "drafting": 0,
+   "review": 3,
+   "recovery": 0
+  },
+  "usageAfter": "5h 28%, weekly 76%, extraUsage.enabled=false",
+  "postReview": "17 reviewer-suggested accuracy fixes via correct-text.mjs (SHREK softened to avoid an uncertain claim); raw review files unchanged; holds left for the parent"
+ },
+ "calls": [
+  {
+   "id": "x13-reviewer-a",
+   "kind": "blind review",
+   "input": "data/unlimited/library/reviews/x13-ra-input.json",
+   "output": "data/unlimited/library/reviews/x13-ra-review.json",
+   "modelEcho": "claude-opus-5-5",
+   "verdicts": {
+    "PASS": 42,
+    "BORDERLINE": 1,
+    "FAIL": 0
+   }
+  },
+  {
+   "id": "x13-reviewer-b",
+   "kind": "blind review",
+   "input": "data/unlimited/library/reviews/x13-rb-input.json",
+   "output": "data/unlimited/library/reviews/x13-rb-review.json",
+   "modelEcho": "claude-opus-5-5",
+   "verdicts": {
+    "PASS": 39,
+    "BORDERLINE": 3,
+    "FAIL": 0
+   }
+  },
+  {
+   "id": "x13-reviewer-c",
+   "kind": "blind review",
+   "input": "data/unlimited/library/reviews/x13-rc-input.json",
+   "output": "data/unlimited/library/reviews/x13-rc-review.json",
+   "modelEcho": "claude-opus-5-5",
+   "verdicts": {
+    "PASS": 41,
+    "BORDERLINE": 1,
+    "FAIL": 0
+   }
+  }
+ ]
+}

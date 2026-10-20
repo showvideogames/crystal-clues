@@ -304,3 +304,14 @@ test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, t
   assert.equal(x12.find(({ c }) => c.text === "NINTENDO").c.revealExplanation, "Nintendo makes the Switch video game console.");
   assert.doesNotMatch(x12.find(({ c }) => c.text === "GALAXY").c.revealExplanation, /star system/);
 });
+
+test("x13: 127 candidates on unseen pairs; 122 served from blind review, 5 held; reviewer accuracy fixes traceable", () => {
+  const x13 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x13").map((c) => ({ p, c })));
+  assert.equal(x13.length, 127);
+  const n = (s) => x13.filter(({ c }) => c.status === s).length;
+  assert.equal(n("ai_reviewed"), 122); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x13) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const shrek = x13.find(({ c }) => c.text === "SHREK").c;
+  assert.doesNotMatch(shrek.revealExplanation, /wife|marr/i); assert.match(shrek.provenance.textCorrection.note, /reviewer-suggested accuracy fix/);
+  assert.match(x13.find(({ c }) => c.text === "STEM").c.revealExplanation, /technology, engineering/);
+});
