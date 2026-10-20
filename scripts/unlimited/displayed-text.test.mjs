@@ -115,3 +115,14 @@ test("owner rejection: SPEAKER + SWORD → EXCALIBUR (adaptation trivia) is bloc
   assert.equal(client.pairs.find((x) => x.id === "p_speaker__sword")?.hints.some((h) => h.text === "EXCALIBUR") ?? false, false);
   assert.equal(rejectionFor(all, "LAKE", "SWORD", "EXCALIBUR")?.decision, "held", "LAKE + SWORD stays review-pending, not rejected");
 });
+
+test("RECENT + COCKROACH: LARVAE kept as a failed, fact-checked attempt; HATCHLING is an unapproved candidate; nothing served", async () => {
+  const { loadRejections, rejectionFor } = await import("./rejections-lib.mjs");
+  const p = byId.get("p_cockroach__recent");
+  const larvae = p.clues.find((c) => c.text === "LARVAE"), hatch = p.clues.find((c) => c.text === "HATCHLING");
+  assert.equal(larvae.status, "rejected"); assert.equal(larvae.provenance.addedBy, "owner");
+  assert.match(larvae.heldReason, /^recorded rejection: factually incorrect/, "a fact-check rejection is not labelled as the owner's");
+  assert.match(rejectionFor(loadRejections(), "RECENT", "COCKROACH", "larvae").reason, /egg, nymph, adult/);
+  assert.equal(hatch.status, "candidate"); assert.equal(hatch.provenance.source, "coordinator-suggestion"); assert.ok(!hatch.override);
+  assert.equal(client.pairs.find((x) => x.id === "p_cockroach__recent"), undefined);
+});

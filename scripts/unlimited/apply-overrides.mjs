@@ -53,7 +53,9 @@ for (const o of overrides) {
 for (const e of loadRejections()) {
   const c = lib.pairs.find((x) => x.pair_id === e.pair_id)?.clues.find((x) => x.text === e.hint);
   if (!c) continue;   // not in the library: the entry still blocks catalogue add and drafting
-  c.status = e.decision; c.heldReason = `owner ${e.decision === "rejected" ? "rejection" : "hold"}: ${e.reason}`;
+  // Most entries are the owner's own; the few recorded by a coordinator or a fact check say so.
+  const who = /^owner/.test(e.by || "") ? "owner" : "recorded";
+  c.status = e.decision; c.heldReason = `${who} ${e.decision === "rejected" ? "rejection" : "hold"}: ${e.reason}`;
   c.override = { by: e.by, date: e.date, status: e.decision, reason: e.reason, via: "rejections.json" };
   if (history.has(keyOf(e.pair_id, e.hint))) c.override.history = history.get(keyOf(e.pair_id, e.hint));
   applied++;
