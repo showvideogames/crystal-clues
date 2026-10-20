@@ -286,8 +286,8 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
   // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19),
-  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "CROCK-POT", "DO-RE-MI", "DOUBLE-DECKER", "HEIGH-HO", "HEIGH-HO", "KNOCK-KNOCK", "KOOL-AID", "POST-IT", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
+  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22), HE-MAN and a second DO-RE-MI (x23)
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "KNOCK-KNOCK", "KOOL-AID", "POST-IT", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -528,4 +528,26 @@ test("x22: 213 candidates on unseen pairs; 204 PASS, 9 BORDERLINE; parent cleanu
   assert.match(byId.get("p_nasa__team").clues[0].wordBConnection, /familiar members of/);
   const tr = byId.get("p_pirate__silver").clues.find((c) => c.text === "TREASURE"); assert.equal(tr.revealExplanation, "Pirates hunt buried treasure, and silver coins can be treasure."); assert.doesNotMatch(tr.revealExplanation + tr.wordBConnection, /Long John/); assert.match(tr.provenance.textCorrection.from.wordBConnection, /Long John Silver/); assert.ok(tr.override.history[0].superseded);
   const ph = byId.get("p_ghost__theater").clues[0]; assert.match(ph.wordBConnection, /the musical .* became Broadway's longest-running show/); assert.ok(ph.provenance.textCorrectionHistory?.length || ph.provenance.textCorrection, "drafted text kept");
+});
+
+test("x23: 237 candidates on unseen pairs; 233 PASS, 4 BORDERLINE; parent holds FAWKES, ARCHIMEDES, SNOOPY; SALE accepted; text fixes traceable", () => {
+  const x23 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x23").map((c) => ({ p, c })));
+  assert.equal(x23.length, 237);
+  const v = (s) => x23.filter(({ c }) => c.provenance.blindReview.verdict === s).length;
+  assert.equal(v("PASS"), 233); assert.equal(v("BORDERLINE"), 4); assert.equal(v("FAIL"), 0);
+  const n = (s) => x23.filter(({ c }) => c.status === s).length;
+  // held: FAWKES, ARCHIMEDES (PASS, parent familiarity hold), SNOOPY, PERISCOPE, SAUCE (review BORDERLINE); SALE accepted with a new route
+  assert.equal(n("ai_reviewed"), 232); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x23) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const [id, t, verdict] of [["p_phoenix__plot", "FAWKES", "PASS"], ["p_bath__screw", "ARCHIMEDES", "PASS"], ["p_pilot__spike", "SNOOPY", "BORDERLINE"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === t); assert.equal(c.status, "held"); assert.match(c.override.reason, /familiarity/); assert.equal(c.provenance.blindReview.verdict, verdict, "raw review kept");
+  }
+  const sale = byId.get("p_garage__tag").clues[0]; assert.equal(sale.override.status, "coordinator_accept"); assert.equal(sale.provenance.blindReview.verdict, "BORDERLINE");
+  assert.match(sale.wordBConnection, /price tags/); assert.doesNotMatch(sale.revealExplanation + sale.wordBConnection, /tag sale/i); assert.match(sale.provenance.textCorrection.from.revealExplanation, /tag sale/);
+  assert.match(byId.get("p_airport__illness").clues[0].revealExplanation, /expected to lead to death/);
+  assert.match(byId.get("p_rome__twins").clues[0].revealExplanation, /founding legend/);
+  assert.doesNotMatch(byId.get("p_mark__river").clues[0].revealExplanation, /fathoms/);
+  assert.doesNotMatch(byId.get("p_honey__month").clues[0].revealExplanation, /comes from/);
+  for (const id of ["p_coffee__siren", "p_giraffe__toy", "p_bucket__chocolate"]) assert.equal(byId.get(id).clues[0].reference.recognizability, "moderate");
+  assert.match(byId.get("p_thread__worm").clues[0].provenance.textCorrection.from.wordBConnection, /named worms/);
 });

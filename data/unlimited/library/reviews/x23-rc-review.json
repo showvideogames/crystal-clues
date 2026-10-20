@@ -1,0 +1,341 @@
+{
+ "_metadata": {
+  "reviewer": "x23-reviewer-c",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x23-rc-input.json",
+  "rubric": "x23 rubric (template 2026-10-20)",
+  "independence": "I read only my brief and the single input file x23-rc-input.json; no other files, repository searches, web, git, paid APIs or agents were used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_airport__illness", "a": "AIRPORT", "b": "ILLNESS",
+   "hints": [
+    {"text": "TERMINAL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Classic clean double meaning: an airport terminal and a terminal illness.", "fix": null}
+   ],
+   "strong_hints": ["TERMINAL"], "pair_note": "Textbook double meaning; text accurate."
+  },
+  {
+   "pair_id": "p_australia__restaurant", "a": "AUSTRALIA", "b": "RESTAURANT",
+   "hints": [
+    {"text": "OUTBACK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Australian Outback for AUSTRALIA and the widely known Outback Steakhouse chain for RESTAURANT.", "fix": null}
+   ],
+   "strong_hints": ["OUTBACK"], "pair_note": "Strong brand-plus-place double; text accurate."
+  },
+  {
+   "pair_id": "p_basketball__net", "a": "BASKETBALL", "b": "NET",
+   "hints": [
+    {"text": "SWISH", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A swish is a clean basketball shot, famously 'nothing but net'.", "fix": null}
+   ],
+   "strong_hints": ["SWISH"], "pair_note": "Easy but evocative; the 'nothing but net' line lands well."
+  },
+  {
+   "pair_id": "p_beer__mug", "a": "BEER", "b": "MUG",
+   "hints": [
+    {"text": "STEIN", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A stein is by definition a beer mug, so it names both targets at once.", "fix": null}
+   ],
+   "strong_hints": ["STEIN"], "pair_note": "Straightforward definition clue; easy but fair and pleasant."
+  },
+  {
+   "pair_id": "p_black__wool", "a": "BLACK", "b": "WOOL",
+   "hints": [
+    {"text": "BAA", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": "SHEEP", "flags": ["better_hint_exists"], "verdict": "PASS", "reason": "BAA cues the rhyme 'Baa, Baa, Black Sheep', which names BLACK and asks about WOOL; SHEEP (black sheep, sheep's wool) is more direct but BAA is a fun indirect route.", "fix": null}
+   ],
+   "strong_hints": ["BAA"], "pair_note": "SHEEP would be the obvious alternative; BAA routes through the same rhyme with a bit more charm. 'to share' in the WOOL line is a mild paraphrase of the rhyme's three bags given away; acceptable."
+  },
+  {
+   "pair_id": "p_boxer__squirrel", "a": "BOXER", "b": "SQUIRREL",
+   "hints": [
+    {"text": "ROCKY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Rocky Balboa is the iconic film boxer and Rocky the Flying Squirrel is Bullwinkle's partner.", "fix": null}
+   ],
+   "strong_hints": ["ROCKY"], "pair_note": "Two famous Rockys; older cartoon reference but still broadly known."
+  },
+  {
+   "pair_id": "p_bucket__challenge", "a": "BUCKET", "b": "CHALLENGE",
+   "hints": [
+    {"text": "ICE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Completes the instantly familiar 'Ice Bucket Challenge', which contains both targets.", "fix": null}
+   ],
+   "strong_hints": ["ICE"], "pair_note": "Phrase-join, but the phrase is iconic and the click is immediate."
+  },
+  {
+   "pair_id": "p_bush__washington", "a": "BUSH", "b": "WASHINGTON",
+   "hints": [
+    {"text": "GEORGE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Shared first name of Presidents George Washington and both George Bushes.", "fix": null}
+   ],
+   "strong_hints": ["GEORGE"], "pair_note": "Easy and clean; text accurate."
+  },
+  {
+   "pair_id": "p_calendar__chocolate", "a": "CALENDAR", "b": "CHOCOLATE",
+   "hints": [
+    {"text": "ADVENT", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Advent calendar for CALENDAR, and the familiar chocolate-behind-each-door Advent calendar for CHOCOLATE.", "fix": null}
+   ],
+   "strong_hints": ["ADVENT"], "pair_note": "CHOCOLATE side runs through the calendar, but chocolate Advent calendars are a widely known staple."
+  },
+  {
+   "pair_id": "p_canada__syrup", "a": "CANADA", "b": "SYRUP",
+   "hints": [
+    {"text": "MAPLE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The maple leaf on Canada's flag and maple syrup.", "fix": null}
+   ],
+   "strong_hints": ["MAPLE"], "pair_note": "Obvious but satisfying; text accurate."
+  },
+  {
+   "pair_id": "p_carpet__lava", "a": "CARPET", "b": "LAVA",
+   "hints": [
+    {"text": "FLOOR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Carpet covers a floor, and 'the floor is lava' is the well-known kids' game.", "fix": null}
+   ],
+   "strong_hints": ["FLOOR"], "pair_note": "Playful, nostalgic link; LAVA is an unexpected target that clicks nicely."
+  },
+  {
+   "pair_id": "p_cell__sun", "a": "CELL", "b": "SUN",
+   "hints": [
+    {"text": "SOLAR", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Solar means of the sun, and a solar cell is a common term.", "fix": null}
+   ],
+   "strong_hints": ["SOLAR"], "pair_note": "SOLAR names the adjective form of SUN but honestly connects CELL too; fine."
+  },
+  {
+   "pair_id": "p_christmas__log", "a": "CHRISTMAS", "b": "LOG",
+   "hints": [
+    {"text": "YULE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Yule is an old name for the Christmas season, and the Yule log is a familiar tradition and cake.", "fix": null}
+   ],
+   "strong_hints": ["YULE"], "pair_note": "Easy, festive, accurate."
+  },
+  {
+   "pair_id": "p_clothing__wolf", "a": "CLOTHING", "b": "WOLF",
+   "hints": [
+    {"text": "SHEEP", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Completes the familiar saying 'a wolf in sheep's clothing', which holds both targets.", "fix": null}
+   ],
+   "strong_hints": ["SHEEP"], "pair_note": "Idiom-based phrase-join; instantly familiar, so acceptable."
+  },
+  {
+   "pair_id": "p_comic__novel", "a": "COMIC", "b": "NOVEL",
+   "hints": [
+    {"text": "GRAPHIC", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A graphic novel is a novel-length comic, so GRAPHIC reaches NOVEL by phrase and COMIC by meaning.", "fix": null}
+   ],
+   "strong_hints": ["GRAPHIC"], "pair_note": "Obvious but correct; the pair itself is so close that any hint will be easy."
+  },
+  {
+   "pair_id": "p_cover__spy", "a": "COVER", "b": "SPY",
+   "hints": [
+    {"text": "STORY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A spy's cover story and a magazine's cover story: one phrase, two senses.", "fix": null}
+   ],
+   "strong_hints": ["STORY"], "pair_note": "Nice twist on a common phrase; text accurate."
+  },
+  {
+   "pair_id": "p_deer__shed", "a": "DEER", "b": "SHED",
+   "hints": [
+    {"text": "ANTLER", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Deer grow antlers and shed them yearly, turning SHED from a building into a verb.", "fix": null}
+   ],
+   "strong_hints": ["ANTLER"], "pair_note": "Good misdirection on SHED; 'Male deer grow antlers' is a fair generalization."
+  },
+  {
+   "pair_id": "p_diet__lion", "a": "DIET", "b": "LION",
+   "hints": [
+    {"text": "CARNIVORE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["generic"], "verdict": "PASS", "reason": "A lion is a carnivore, and carnivore describes a meat-based diet (also a trendy 'carnivore diet').", "fix": null}
+   ],
+   "strong_hints": ["CARNIVORE"], "pair_note": "Plain and fair; many animals fit the LION side, but DIET narrows it well."
+  },
+  {
+   "pair_id": "p_double__feather", "a": "DOUBLE", "b": "FEATHER",
+   "hints": [
+    {"text": "DOWN", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "'Double down' for DOUBLE and down feathers for FEATHER.", "fix": null}
+   ],
+   "strong_hints": ["DOWN"], "pair_note": "Strong double meaning with a nice aha; text accurate."
+  },
+  {
+   "pair_id": "p_drill__tooth", "a": "DRILL", "b": "TOOTH",
+   "hints": [
+    {"text": "CAVITY", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A cavity is decay in a tooth, and dentists drill cavities out before filling them.", "fix": null}
+   ],
+   "strong_hints": ["CAVITY"], "pair_note": "DENTIST would also work; CAVITY is equally good and a bit more specific."
+  },
+  {
+   "pair_id": "p_edge__safari", "a": "EDGE", "b": "SAFARI",
+   "hints": [
+    {"text": "BROWSER", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Microsoft Edge and Apple Safari are both web browsers, a neat aha since both targets look like ordinary words.", "fix": null}
+   ],
+   "strong_hints": ["BROWSER"], "pair_note": "Category clue with real misdirection; text accurate."
+  },
+  {
+   "pair_id": "p_fair__pig", "a": "FAIR", "b": "PIG",
+   "hints": [
+    {"text": "CHARLOTTE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Charlotte's Web: Charlotte saves Wilbur the pig and goes with him to the county fair, where he receives a special prize.", "fix": null}
+   ],
+   "strong_hints": ["CHARLOTTE"], "pair_note": "WILBUR is a direct alternative; CHARLOTTE is the more indirect, satisfying route. Wilbur gets a special award rather than a blue ribbon, but 'wins a prize' is fair."
+  },
+  {
+   "pair_id": "p_forest__hood", "a": "FOREST", "b": "HOOD",
+   "hints": [
+    {"text": "SHERWOOD", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Sherwood Forest is Robin Hood's legendary home.", "fix": null}
+   ],
+   "strong_hints": ["SHERWOOD"], "pair_note": "Splitting ROBIN HOOD so HOOD reads as a garment is good misdirection; text accurate."
+  },
+  {
+   "pair_id": "p_garbage__yard", "a": "GARBAGE", "b": "YARD",
+   "hints": [
+    {"text": "JUNK", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "Junk is a synonym for garbage, and junkyard is an instantly familiar compound.", "fix": null}
+   ],
+   "strong_hints": ["JUNK"], "pair_note": "SCRAP works the same way; JUNK is the more natural pick."
+  },
+  {
+   "pair_id": "p_grape__melon", "a": "GRAPE", "b": "MELON",
+   "hints": [
+    {"text": "VINE", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Grapes grow on grapevines and melons on trailing vines.", "fix": null}
+   ],
+   "strong_hints": ["VINE"], "pair_note": "Shared property; GRAPE strongly evokes vine, MELON slightly less but true and fair."
+  },
+  {
+   "pair_id": "p_heel__spike", "a": "HEEL", "b": "SPIKE",
+   "hints": [
+    {"text": "STILETTO", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Stiletto heels are also known as spike heels.", "fix": null}
+   ],
+   "strong_hints": ["STILETTO"], "pair_note": "'Spike heels' is slightly old-fashioned but still widely understood."
+  },
+  {
+   "pair_id": "p_hockey__trophy", "a": "HOCKEY", "b": "TROPHY",
+   "hints": [
+    {"text": "STANLEY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Stanley Cup is the NHL's championship trophy.", "fix": null}
+   ],
+   "strong_hints": ["STANLEY"], "pair_note": "Easy, clean; the 1890s date is correct (donated 1892, first awarded 1893)."
+  },
+  {
+   "pair_id": "p_hospital__military", "a": "HOSPITAL", "b": "MILITARY",
+   "hints": [
+    {"text": "OPERATION", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A surgical operation in a hospital and a military operation.", "fix": null}
+   ],
+   "strong_hints": ["OPERATION"], "pair_note": "Clean double meaning; text accurate."
+  },
+  {
+   "pair_id": "p_insect__tap", "a": "INSECT", "b": "TAP",
+   "hints": [
+    {"text": "BUG", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "A bug is an insect, and to bug a phone is to tap it.", "fix": null}
+   ],
+   "strong_hints": ["BUG"], "pair_note": "TAP reads as faucet or a light touch, so the eavesdropping sense is a nice aha."
+  },
+  {
+   "pair_id": "p_kiss__wake", "a": "KISS", "b": "WAKE",
+   "hints": [
+    {"text": "AURORA", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Disney's Sleeping Beauty, Princess Aurora, is woken by Prince Phillip's true love's kiss.", "fix": null}
+   ],
+   "strong_hints": ["AURORA"], "pair_note": "Aurora is a well-known Disney princess; the 'dawn' sense of aurora adds a subtle bonus. Snow White also fits the theme, which is fine."
+  },
+  {
+   "pair_id": "p_lap__pool", "a": "LAP", "b": "POOL",
+   "hints": [
+    {"text": "SWIMMER", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["generic"], "verdict": "PASS", "reason": "Swimmers swim laps in a pool; LAP is nudged from its sitting sense to its swimming sense.", "fix": null}
+   ],
+   "strong_hints": ["SWIMMER"], "pair_note": "Plain but fair; LANE (lap lane, pool lane) is an alternative of similar strength."
+  },
+  {
+   "pair_id": "p_lion__zebra", "a": "LION", "b": "ZEBRA",
+   "hints": [
+    {"text": "MADAGASCAR", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "In DreamWorks' Madagascar, Alex is a lion and Marty is a zebra.", "fix": null}
+   ],
+   "strong_hints": ["MADAGASCAR"], "pair_note": "Fun because neither animal lives on the real island, so the film is the only route."
+  },
+  {
+   "pair_id": "p_major__minor", "a": "MAJOR", "b": "MINOR",
+   "hints": [
+    {"text": "LEAGUE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Major league and minor league are both instantly familiar baseball phrases.", "fix": null}
+   ],
+   "strong_hints": ["LEAGUE"], "pair_note": "KEY (major key, minor key) would be an equally good second hint."
+  },
+  {
+   "pair_id": "p_mark__yoda", "a": "MARK", "b": "YODA",
+   "hints": [
+    {"text": "LUKE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Mark Hamill played Luke Skywalker (with Mark and Luke also being Gospels), and Yoda trains Luke.", "fix": null}
+   ],
+   "strong_hints": ["LUKE"], "pair_note": "Double route to MARK is a real 'oh, nice'; the MARK line is long but accurate."
+  },
+  {
+   "pair_id": "p_mexico__mole", "a": "MEXICO", "b": "MOLE",
+   "hints": [
+    {"text": "SAUCE", "mechanism": "fact", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["needs_explanation", "synonym_of_target"], "verdict": "BORDERLINE", "reason": "SAUCE names the mole-sauce sense of MOLE, but MEXICO is reached only through mole itself, since 'sauce' alone does not suggest Mexico.", "fix": null}
+   ],
+   "strong_hints": [], "pair_note": "The MEXICO side depends entirely on first decoding MOLE as the sauce rather than the animal; no clearly better one-word hint without containing MOLE (GUACAMOLE fails). Text is accurate."
+  },
+  {
+   "pair_id": "p_mouse__remote", "a": "MOUSE", "b": "REMOTE",
+   "hints": [
+    {"text": "CLICK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "You click a mouse, a remote is a 'clicker', and Adam Sandler's Click is about a magic remote.", "fix": null}
+   ],
+   "strong_hints": ["CLICK"], "pair_note": "Layered and fair; text accurate."
+  },
+  {
+   "pair_id": "p_nerve__spine", "a": "NERVE", "b": "SPINE",
+   "hints": [
+    {"text": "COURAGE", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "'Having the nerve' and 'having a spine' both mean having courage, steering both anatomy words to the same figurative sense.", "fix": null}
+   ],
+   "strong_hints": ["COURAGE"], "pair_note": "Nice misdirection away from anatomy; text accurate."
+  },
+  {
+   "pair_id": "p_outlet__port", "a": "OUTLET", "b": "PORT",
+   "hints": [
+    {"text": "PLUG", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A plug goes into a wall outlet and into a device port.", "fix": null}
+   ],
+   "strong_hints": ["PLUG"], "pair_note": "Easy and fair; PORT's harbor sense gives mild misdirection."
+  },
+  {
+   "pair_id": "p_pig__root", "a": "PIG", "b": "ROOT",
+   "hints": [
+    {"text": "TRUFFLE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "Truffle pigs root out truffles, and truffles grow in partnership with tree roots, so ROOT works as verb and noun.", "fix": "Truffles grow underground in partnership with the roots of certain trees."}
+   ],
+   "strong_hints": ["TRUFFLE"], "pair_note": "Clever double use of ROOT. The ROOT line's 'attached to tree roots' is loose: the truffle is a fungus linked to roots through its underground network, not physically attached, so the line is softened."
+  },
+  {
+   "pair_id": "p_pit__snake", "a": "PIT", "b": "SNAKE",
+   "hints": [
+    {"text": "VIPER", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Pit viper is a familiar compound, and vipers are venomous snakes.", "fix": null}
+   ],
+   "strong_hints": ["VIPER"], "pair_note": "Easy; the heat-sensing pit detail is accurate and a nice bonus."
+  },
+  {
+   "pair_id": "p_pool__triangle", "a": "POOL", "b": "TRIANGLE",
+   "hints": [
+    {"text": "RACK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "You rack the balls to start a game of pool, using the triangle-shaped rack often called the triangle.", "fix": null}
+   ],
+   "strong_hints": ["RACK"], "pair_note": "Good: TRIANGLE reads as geometry or the instrument until the pool sense clicks."
+  },
+  {
+   "pair_id": "p_rat__restaurant", "a": "RAT", "b": "RESTAURANT",
+   "hints": [
+    {"text": "REMY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Remy is the rat chef in Pixar's Ratatouille who cooks at Gusteau's restaurant.", "fix": null}
+   ],
+   "strong_hints": ["REMY"], "pair_note": "RATATOUILLE would contain RAT, so REMY is the right choice; the name is widely known from the film."
+  },
+  {
+   "pair_id": "p_roof__violin", "a": "ROOF", "b": "VIOLIN",
+   "hints": [
+    {"text": "FIDDLER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The musical Fiddler on the Roof, and a fiddler plays a fiddle, which is a violin.", "fix": null}
+   ],
+   "strong_hints": ["FIDDLER"], "pair_note": "Satisfying title-plus-meaning clue; text accurate."
+  },
+  {
+   "pair_id": "p_scissors__sheep", "a": "SCISSORS", "b": "SHEEP",
+   "hints": [
+    {"text": "SHEAR", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Shears are heavy-duty scissors, and sheep are sheared for wool.", "fix": null}
+   ],
+   "strong_hints": ["SHEAR"], "pair_note": "Good noun/verb link; text accurate."
+  },
+  {
+   "pair_id": "p_skate__wake", "a": "SKATE", "b": "WAKE",
+   "hints": [
+    {"text": "BOARD", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Skateboard and wakeboard are both familiar compounds for boards you ride.", "fix": null}
+   ],
+   "strong_hints": ["BOARD"], "pair_note": "Phrase-join, but WAKE's 'wake up' sense makes the wakeboard click a small aha; wakeboard is familiar enough."
+  },
+  {
+   "pair_id": "p_spring__stairs", "a": "SPRING", "b": "STAIRS",
+   "hints": [
+    {"text": "SLINKY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A Slinky is a coiled spring famous for walking down stairs.", "fix": null}
+   ],
+   "strong_hints": ["SLINKY"], "pair_note": "Classic toy, vivid image; text accurate."
+  },
+  {
+   "pair_id": "p_suitcase__tree", "a": "SUITCASE", "b": "TREE",
+   "hints": [
+    {"text": "TRUNK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A trunk is a large travel chest, and a tree's main stem is its trunk.", "fix": null}
+   ],
+   "strong_hints": ["TRUNK"], "pair_note": "Clean double meaning; text accurate."
+  }
+ ]
+}
