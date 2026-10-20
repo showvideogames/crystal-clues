@@ -252,3 +252,15 @@ test("x10 owner proposals: CLIFFORD ×2 and CANNON + WORK FIRED accepted; LAUNCH
   assert.equal(byId.get("p_band__thunder"), undefined, "AC/DC is pending on the hint rule; nothing stored or respelled");
   assert.equal(byId.get("p_cannon__job"), undefined, "JOB is not in the bank");
 });
+
+test("x11 owner proposals: CAROLING, VOILA, NOAH coordinator-accepted; CAP'N pending on the apostrophe; animal × SHIP family not stored", () => {
+  for (const [id, h] of [["p_christmas__voice", "CAROLING"], ["p_france__magic", "VOILA"], ["p_sheep__ship", "NOAH"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h)); assert.equal(c.provenance.addedBy, "owner");
+    assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/);
+  }
+  assert.match(byId.get("p_sheep__ship").clues[0].revealExplanation, /familiar Bible story/);
+  for (const id of ["p_cannon__cereal", "p_cereal__pirate"]) assert.equal(byId.get(id), undefined, "CAP'N pending, not respelled");
+  for (const w of ["lion", "giraffe", "rat", "crow", "whale"]) assert.equal(byId.get(`p_${w}__ship`), undefined, "proposal only");
+  assert.equal(byId.get("p_bird__ship"), undefined, "BIRD + SHIP still only the owner FALCON hold");
+});
