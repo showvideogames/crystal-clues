@@ -485,19 +485,20 @@ test("x20: 221 candidates on unseen pairs; 211 PASS + 9 BORDERLINE accepted; FEE
   const tide = byId.get("p_detergent__wave").clues[0]; assert.match(tide.wordBConnection, /very long ocean waves/); assert.match(tide.provenance.textCorrectionHistory[0].from.wordBConnection, /tidal wave/);
 });
 
-test("x21: 220 candidates on unseen pairs; 215 PASS, 4 BORDERLINE, 1 FAIL; JACK and RAPTOR coordinator selections; LOOFAH accepted; text fixes traceable", () => {
+test("x21: 220 candidates on unseen pairs; 215 PASS, 4 BORDERLINE, 1 FAIL; JACK, RAPTOR, MASTER, FILLING, AIR coordinator selections; text fixes traceable", () => {
   const x21 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x21").map((c) => ({ p, c })));
   assert.equal(x21.length, 220);
   const n = (s) => x21.filter(({ c }) => c.status === s).length;
-  // held: PADAWAN, SHAKESPEARE, CREAM (review BORDERLINE) and LOKI, SCREECH (valid, behind JACK and RAPTOR); DIVING rejected (review FAIL)
-  assert.equal(n("ai_reviewed"), 214); assert.equal(n("held"), 5); assert.equal(n("rejected"), 1);
+  // held: LOKI, SCREECH, PADAWAN, CREAM (valid, behind JACK, RAPTOR, MASTER, FILLING) and DIVING (rule concern; raw FAIL kept); LOOFAH, SHAKESPEARE accepted
+  assert.equal(n("ai_reviewed"), 215); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
+  const dv = byId.get("p_scuba-diver__sky").clues.find((c) => c.text === "DIVING"); assert.equal(dv.status, "held"); assert.equal(dv.provenance.blindReview.verdict, "FAIL");
   for (const { p, c } of x21) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
-  for (const [id, h, old] of [["p_frost__giant", "JACK", "LOKI"], ["p_eagle__hawk", "RAPTOR", "SCREECH"]]) {
+  for (const [id, h, old] of [["p_frost__giant", "JACK", "LOKI"], ["p_eagle__hawk", "RAPTOR", "SCREECH"], ["p_pupil__yoda", "MASTER", "PADAWAN"], ["p_middle__oreo", "FILLING", "CREAM"], ["p_scuba-diver__sky", "AIR", "DIVING"]]) {
     const cs = byId.get(id).clues; const sel = cs.find((c) => c.text === h);
     assert.equal(sel.override.status, "coordinator_accept"); assert.equal(sel.provenance.blindReview, null);
     assert.equal(cs.find((c) => c.text === old).status, "held");
     assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), [h]);
   }
-  for (const id of ["p_pupil__yoda", "p_north__winter", "p_foot__piano"]) { const c = byId.get(id).clues.find((x) => x.provenance?.source === "x21"); assert.doesNotMatch(c.revealExplanation + c.wordAConnection + c.wordBConnection, /\(/); assert.equal(c.reference.recognizability, "moderate"); }
+  for (const id of ["p_pupil__yoda", "p_north__winter", "p_foot__piano"]) { const c = byId.get(id).clues.find((x) => x.provenance?.source === "x21" && x.provenance.blindReview); assert.doesNotMatch(c.revealExplanation + c.wordAConnection + c.wordBConnection, /\(/); assert.equal(c.reference.recognizability, "moderate"); }
   assert.doesNotMatch(byId.get("p_ghost__song").clues[0].revealExplanation, /three ghosts/);
 });
