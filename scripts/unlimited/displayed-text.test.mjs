@@ -191,3 +191,25 @@ test("editorial-bar holds lifted by the coordinator: ten served with reviews and
   for (const [id, h] of [["p_knight__new-york", "GOTHAM"], ["p_new-york__penguin", "GOTHAM"], ["p_beach__bond", "JAWS"], ["p_moon__sea", "SAILOR"], ["p_london__violin", "SHERLOCK"]])
     assert.equal(byId.get(id).clues.find((x) => x.text === h).status, "held", `${id} ${h} stays pending`);
 });
+
+test("x08 owner proposals: seven coordinator-accepted, CAIRO / BILL / SWEEP / BEGGAR owner-selected, EGYPT and BROOM kept unselected", () => {
+  const served = (id, h) => client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h);
+  for (const [id, h] of [["p_flea__ladder", "CIRCUS"], ["p_pilot__solitary", "SOLO"], ["p_business__duck", "AFLAC"], ["p_bird__pirate", "PARROT"], ["p_dog__drawing", "DOODLE"], ["p_bucket__firefighter", "WATER"], ["p_barn__note", "BANJO"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(served(id, h), `${h} served`); assert.equal(c.provenance.addedBy, "owner");
+    assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/);
+  }
+  for (const [id, h] of [["p_archaeology__capital", "CAIRO"], ["p_gate__science", "BILL"], ["p_clean__swing", "SWEEP"], ["p_bread__fool", "BEGGAR"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(served(id, h), `${h} served`); assert.equal(c.status, "human_approved"); assert.equal(c.override.by, "owner");
+  }
+  for (const [id, h] of [["p_archaeology__capital", "EGYPT"], ["p_clean__swing", "BROOM"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.equal(c.status, "held"); assert.match(c.override.reason, /^not selected/); assert.ok(!served(id, h));
+  }
+  const b = byId.get("p_bread__fool").clues.find((x) => x.text === "BEGGAR");
+  assert.equal(b.revealExplanation, "Picture a foolish storybook character begging for a crust of bread.");
+  assert.match(b.provenance.note, /not a proven medieval trope/); assert.match(b.provenance.note, /parent disagreed/);
+  assert.match(byId.get("p_gate__science").clues[0].revealExplanation, /GATE with an S/);
+  assert.equal(byId.get("p_bread__fool").clues.length, 1, "MONEY and SUCKER are not stored");
+});
