@@ -1,0 +1,1024 @@
+{
+ "_metadata": {
+  "reviewer": "x21-reviewer-c",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x21-rc-input.json",
+  "rubric": "x21 rubric (template 2026-10-20)",
+  "independence": "Apart from the brief, I read only x21-rc-input.json and no other repository, scratchpad or web source."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_ant__chess",
+   "a": "ANT",
+   "b": "CHESS",
+   "hints": [
+    {
+     "text": "QUEEN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "Clean double meaning: ANT via the egg-laying queen of a colony, CHESS via the queen piece; the only issue is that the explanation says the colony is 'led by' the queen, which is a popular myth (queens lay eggs, they do not direct the colony).",
+     "fix": "An ant colony usually centers on an egg-laying queen, and the queen is the most powerful chess piece."
+    }
+   ],
+   "strong_hints": ["QUEEN"],
+   "pair_note": "Solid, easy double meaning; fix the 'led by' wording."
+  },
+  {
+   "pair_id": "p_baby__watch",
+   "a": "BABY",
+   "b": "WATCH",
+   "hints": [
+    {
+     "text": "MONITOR",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "BABY via the baby monitor, WATCH via monitor as a synonym for watching closely; the synonym side is honest because the baby-monitor side is a real second connection.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MONITOR"],
+   "pair_note": "Fair and clear; synonym of one target is fine here."
+  },
+  {
+   "pair_id": "p_bar__dance",
+   "a": "BAR",
+   "b": "DANCE",
+   "hints": [
+    {
+     "text": "LIMBO",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DANCE via the limbo as a dance, BAR via the lowering bar dancers lean under; one familiar image covers both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LIMBO"],
+   "pair_note": "Good, instantly clicking scene hint."
+  },
+  {
+   "pair_id": "p_basket__charm",
+   "a": "BASKET",
+   "b": "CHARM",
+   "hints": [
+    {
+     "text": "COBRA",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHARM via the snake charmer and BASKET via the cobra rising out of the wicker basket in the classic scene; a satisfying indirect picture.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["COBRA"],
+   "pair_note": "Nice indirect scene hint; CHARM is reached through 'snake charmer', which is the aha."
+  },
+  {
+   "pair_id": "p_belt__boxing",
+   "a": "BELT",
+   "b": "BOXING",
+   "hints": [
+    {
+     "text": "HEAVYWEIGHT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": "CHAMPION",
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "BOXING via the heavyweight division and BELT via the heavyweight title belt; the belt side is weaker since every class has belts, but 'heavyweight belt' is a common phrase and the hint is fair if flat.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HEAVYWEIGHT"],
+   "pair_note": "Workable but flat; CHAMPION is an equal-or-slightly-better alternative, not clearly superior. Lines are accurate (heavyweight is the top pro division)."
+  },
+  {
+   "pair_id": "p_block__spike",
+   "a": "BLOCK",
+   "b": "SPIKE",
+   "hints": [
+    {
+     "text": "VOLLEYBALL",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BLOCK and SPIKE are both core volleyball plays at the net, so the sport names both cleanly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VOLLEYBALL"],
+   "pair_note": "Easy, clear category hint."
+  },
+  {
+   "pair_id": "p_bone__wish",
+   "a": "BONE",
+   "b": "WISH",
+   "hints": [
+    {
+     "text": "TURKEY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Both targets come from the turkey's wishbone: BONE as the bone itself and WISH as the wish made when pulling it; a pleasant indirect route to the compound.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TURKEY"],
+   "pair_note": "Good; the targets form WISHBONE and TURKEY points there without containing either."
+  },
+  {
+   "pair_id": "p_box__doctor",
+   "a": "BOX",
+   "b": "DOCTOR",
+   "hints": [
+    {
+     "text": "TARDIS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "DOCTOR via the Doctor of Doctor Who and BOX via the TARDIS's blue police-box shape; a great aha for those who know it, and the TARDIS is widely known pop culture, though some U.S. players will not know the show.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TARDIS"],
+   "pair_note": "Familiarity is the only question; I judge Doctor Who mainstream enough, but flag for a second opinion."
+  },
+  {
+   "pair_id": "p_bubble__gift",
+   "a": "BUBBLE",
+   "b": "GIFT",
+   "hints": [
+    {
+     "text": "WRAP",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Phrase join with two instantly familiar compounds: bubble wrap and gift wrap, both packaging, which makes the pairing feel coherent.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WRAP"],
+   "pair_note": "Phrase join, but an instantly familiar and thematically tidy one."
+  },
+  {
+   "pair_id": "p_bus__london",
+   "a": "BUS",
+   "b": "LONDON",
+   "hints": [
+    {
+     "text": "DOUBLE-DECKER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BUS via the double-decker bus type and LONDON via its iconic red double-deckers; clear and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DOUBLE-DECKER"],
+   "pair_note": "Easy but satisfying; hyphenated form is allowed."
+  },
+  {
+   "pair_id": "p_canal__italy",
+   "a": "CANAL",
+   "b": "ITALY",
+   "hints": [
+    {
+     "text": "VENICE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ITALY via Venice as an Italian city and CANAL via its famous canals; a place-plus-property hint that clicks at once.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VENICE"],
+   "pair_note": "Clear, easy and accurate."
+  },
+  {
+   "pair_id": "p_captain__whale",
+   "a": "CAPTAIN",
+   "b": "WHALE",
+   "hints": [
+    {
+     "text": "AHAB",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAPTAIN via Captain Ahab and WHALE via his hunt for Moby Dick; a classic literary reference most players know.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["AHAB"],
+   "pair_note": "Strong, classic reference."
+  },
+  {
+   "pair_id": "p_case__suit",
+   "a": "CASE",
+   "b": "SUIT",
+   "hints": [
+    {
+     "text": "LAWYER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CASE via the legal cases lawyers argue and SUIT via lawsuits (with the business-suit image as a bonus); turning SUIT into its legal sense is a nice aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LAWYER"],
+   "pair_note": "Good reframing of two everyday words into their legal senses."
+  },
+  {
+   "pair_id": "p_charm__fishing",
+   "a": "CHARM",
+   "b": "FISHING",
+   "hints": [
+    {
+     "text": "LURE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "FISHING via the fishing lure and CHARM via lure meaning to attract or entice (the 'lure' or allure of something is its charm); the charm side is a near-synonym rather than an exact one, but it holds.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LURE"],
+   "pair_note": "Fair double meaning; CHARM side is slightly loose but honest."
+  },
+  {
+   "pair_id": "p_church__sister",
+   "a": "CHURCH",
+   "b": "SISTER",
+   "hints": [
+    {
+     "text": "NUN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SISTER via the title nuns are addressed by and CHURCH via nuns' religious orders; turning SISTER away from family is a pleasant twist.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NUN"],
+   "pair_note": "Clear and accurate."
+  },
+  {
+   "pair_id": "p_circus__zoo",
+   "a": "CIRCUS",
+   "b": "ZOO",
+   "hints": [
+    {
+     "text": "MENAGERIE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Both targets are places that keep collections of exotic animals on show, which is exactly what a menagerie is; the word is a bit literary but widely known.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MENAGERIE"],
+   "pair_note": "Apt word choice; history lines are accurate."
+  },
+  {
+   "pair_id": "p_color__triangle",
+   "a": "COLOR",
+   "b": "TRIANGLE",
+   "hints": [
+    {
+     "text": "PRISM",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "COLOR via a prism splitting white light into colors and TRIANGLE via the classic triangular prism shape; the iconic rainbow-prism image covers both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PRISM"],
+   "pair_note": "Excellent; one familiar image delivers both."
+  },
+  {
+   "pair_id": "p_crash__street",
+   "a": "CRASH",
+   "b": "STREET",
+   "hints": [
+    {
+     "text": "WALL",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "STREET via Wall Street and CRASH via the 1929 Wall Street Crash (plus the everyday crash into a wall); familiar phrases, but the 'history's most famous' superlative should be softened.",
+     "fix": "The Wall Street Crash of 1929 is a famous stock market crash that helped set off the Great Depression."
+    }
+   ],
+   "strong_hints": ["WALL"],
+   "pair_note": "Phrase join that works because 'Wall Street Crash' is a real named event; soften the superlative."
+  },
+  {
+   "pair_id": "p_currency__mouth",
+   "a": "CURRENCY",
+   "b": "MOUTH",
+   "hints": [
+    {
+     "text": "MINT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CURRENCY via the mint that makes coins and MOUTH via breath mints; a crisp double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MINT"],
+   "pair_note": "Strong double meaning."
+  },
+  {
+   "pair_id": "p_day__dream",
+   "a": "DAY",
+   "b": "DREAM",
+   "hints": [
+    {
+     "text": "MLK",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DAY via MLK Day and DREAM via the I Have a Dream speech; both are instantly familiar U.S. references, and the dates in the lines are correct.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MLK"],
+   "pair_note": "Excellent; MLK is a conventional single-token form."
+  },
+  {
+   "pair_id": "p_detergent__turn",
+   "a": "DETERGENT",
+   "b": "TURN",
+   "hints": [
+    {
+     "text": "TIDE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DETERGENT via the Tide brand and TURN via the idiom 'turn the tide'; brand-versus-idiom split gives a nice click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TIDE"],
+   "pair_note": "Strong brand double meaning."
+  },
+  {
+   "pair_id": "p_dog__valentine",
+   "a": "DOG",
+   "b": "VALENTINE",
+   "hints": [
+    {
+     "text": "SAINT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VALENTINE via Saint Valentine and DOG indirectly via the Saint Bernard breed; the dog side is a satisfying indirect step.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAINT"],
+   "pair_note": "Good indirect hint; the DOG side via Saint Bernard is the aha."
+  },
+  {
+   "pair_id": "p_eagle__hawk",
+   "a": "EAGLE",
+   "b": "HAWK",
+   "hints": [
+    {
+     "text": "SCREECH",
+     "mechanism": "fact",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "PASS",
+     "reason": "HAWK via the red-tailed hawk's screech and EAGLE via the screech popularly pinned on eagles in films (really a dubbed hawk call); players reach both raptors through the screeching-bird-of-prey image even without the trivia, and the explanation is true and gives a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCREECH"],
+   "pair_note": "Judgement call: the explanation's twist (eagles do not really screech) slightly undercuts the EAGLE side, and 'screech owl' is a decoy, but the facts are correct and the payoff is fun; a second opinion could reasonably land on BORDERLINE."
+  },
+  {
+   "pair_id": "p_face__ship",
+   "a": "FACE",
+   "b": "SHIP",
+   "hints": [
+    {
+     "text": "HELEN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Both targets come from the famous phrase about Helen of Troy, 'the face that launched a thousand ships'; correctly credited to Marlowe.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HELEN"],
+   "pair_note": "Excellent classic reference."
+  },
+  {
+   "pair_id": "p_fireworks__kiss",
+   "a": "FIREWORKS",
+   "b": "KISS",
+   "hints": [
+    {
+     "text": "SPARKS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FIREWORKS via literal sparks and KISS via the romantic idiom 'sparks fly'; a pleasant literal/figurative split.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPARKS"],
+   "pair_note": "Fair and pleasant."
+  },
+  {
+   "pair_id": "p_food__game",
+   "a": "FOOD",
+   "b": "GAME",
+   "hints": [
+    {
+     "text": "HUNGER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FOOD via hunger as the need for food and GAME via The Hunger Games title; the title join is instantly familiar and the food side is a real second connection.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HUNGER"],
+   "pair_note": "Title join plus a direct property link; works well."
+  },
+  {
+   "pair_id": "p_france__pyramid",
+   "a": "FRANCE",
+   "b": "PYRAMID",
+   "hints": [
+    {
+     "text": "LOUVRE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FRANCE via the Louvre in Paris and PYRAMID via its glass pyramid entrance; pulling PYRAMID away from Egypt is a satisfying aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LOUVRE"],
+   "pair_note": "Excellent place-plus-property hint."
+  },
+  {
+   "pair_id": "p_garden__pyramid",
+   "a": "GARDEN",
+   "b": "PYRAMID",
+   "hints": [
+    {
+     "text": "WONDERS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GARDEN via the Hanging Gardens of Babylon and PYRAMID via the Great Pyramid, both on the Seven Wonders of the Ancient World list; the lines are accurate and appropriately hedged.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WONDERS"],
+   "pair_note": "Good indirect knowledge hint; the 'only one still standing' claim is a well-supported fact."
+  },
+  {
+   "pair_id": "p_gift__white",
+   "a": "GIFT",
+   "b": "WHITE",
+   "hints": [
+    {
+     "text": "ELEPHANT",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Both targets come from the white elephant gift exchange; an instantly familiar phrase with a fun reveal since ELEPHANT looks like it should point at an animal.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ELEPHANT"],
+   "pair_note": "Phrase join, but a genuinely satisfying one."
+  },
+  {
+   "pair_id": "p_halloween__thanksgiving",
+   "a": "HALLOWEEN",
+   "b": "THANKSGIVING",
+   "hints": [
+    {
+     "text": "CARVING",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HALLOWEEN via pumpkin carving and THANKSGIVING via carving the turkey; two different traditions sharing one verb is a neat aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CARVING"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_horn__ram",
+   "a": "HORN",
+   "b": "RAM",
+   "hints": [
+    {
+     "text": "SHOFAR",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["text_fix", "uncertain"],
+     "verdict": "PASS",
+     "reason": "HORN and RAM both via the shofar, a ram's horn blown on Jewish holidays; precise and instant for players who know the word, but a share of U.S. players will not, and the explanation should say 'usually' a ram's horn.",
+     "fix": "A shofar is a horn, usually a ram's, blown like a trumpet on Jewish holidays such as Rosh Hashanah."
+    }
+   ],
+   "strong_hints": ["SHOFAR"],
+   "pair_note": "Familiarity is the judgement call; I lean PASS since the shofar is a widely known U.S. cultural item, but BORDERLINE is defensible."
+  },
+  {
+   "pair_id": "p_jungle__umbrella",
+   "a": "JUNGLE",
+   "b": "UMBRELLA",
+   "hints": [
+    {
+     "text": "CANOPY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "JUNGLE via the rainforest canopy and UMBRELLA via an umbrella's fabric canopy; both are real uses of the word, and the overhead-cover image ties them nicely.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CANOPY"],
+   "pair_note": "Excellent double meaning."
+  },
+  {
+   "pair_id": "p_lemon__soap",
+   "a": "LEMON",
+   "b": "SOAP",
+   "hints": [
+    {
+     "text": "ZEST",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LEMON via lemon zest and SOAP via the Zest bar-soap brand; a crisp brand double meaning familiar to U.S. players.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ZEST"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_magic__pool",
+   "a": "MAGIC",
+   "b": "POOL",
+   "hints": [
+    {
+     "text": "EIGHT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MAGIC via the Magic 8 Ball and POOL via the 8-ball; the toy really is modeled on a pool 8-ball, so this is more than a phrase join.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["EIGHT"],
+   "pair_note": "Excellent; the shared object makes it click."
+  },
+  {
+   "pair_id": "p_military__pepper",
+   "a": "MILITARY",
+   "b": "PEPPER",
+   "hints": [
+    {
+     "text": "SERGEANT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MILITARY via sergeant as a rank and PEPPER via the Beatles' Sgt. Pepper's Lonely Hearts Club Band; a classic-rock reference that lands nicely.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SERGEANT"],
+   "pair_note": "Strong; lines accurate (1967 album)."
+  },
+  {
+   "pair_id": "p_mummy__zombie",
+   "a": "MUMMY",
+   "b": "ZOMBIE",
+   "hints": [
+    {
+     "text": "UNDEAD",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "MUMMY and ZOMBIE are both classic undead horror monsters; a plain category hint that is fair and clear though not surprising.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["UNDEAD"],
+   "pair_note": "Flat but fair category hint; no clearly better option."
+  },
+  {
+   "pair_id": "p_olive__soap",
+   "a": "OLIVE",
+   "b": "SOAP",
+   "hints": [
+    {
+     "text": "DOVE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SOAP via the Dove brand and OLIVE via the dove with an olive branch (and Noah's olive leaf); bird-versus-brand is a satisfying split, and the Noah line is accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DOVE"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_pipe__snowman",
+   "a": "PIPE",
+   "b": "SNOWMAN",
+   "hints": [
+    {
+     "text": "FROSTY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNOWMAN via Frosty the Snowman and PIPE via his corncob pipe from the song; the pipe side is a fun recall moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FROSTY"],
+   "pair_note": "Strong; PIPE is the satisfying side."
+  },
+  {
+   "pair_id": "p_rice__roll",
+   "a": "RICE",
+   "b": "ROLL",
+   "hints": [
+    {
+     "text": "SUSHI",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RICE via sushi rice and ROLL via the sushi roll; easy and clear.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SUSHI"],
+   "pair_note": "Easy, fair."
+  },
+  {
+   "pair_id": "p_school__show",
+   "a": "SCHOOL",
+   "b": "SHOW",
+   "hints": [
+    {
+     "text": "TELL",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SHOW via the phrase 'show and tell' and SCHOOL via show and tell as a classroom activity; one instantly familiar phrase with a real setting link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TELL"],
+   "pair_note": "Phrase join, but instantly familiar and the SCHOOL side is a genuine association."
+  },
+  {
+   "pair_id": "p_show__state",
+   "a": "SHOW",
+   "b": "STATE",
+   "hints": [
+    {
+     "text": "MISSOURI",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "STATE via Missouri being a state and SHOW via its Show-Me State nickname; well-known nickname with a pleasant reveal.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MISSOURI"],
+   "pair_note": "Good; the STATE side alone is trivial, but the nickname ties both together."
+  },
+  {
+   "pair_id": "p_snowman__vegetable",
+   "a": "SNOWMAN",
+   "b": "VEGETABLE",
+   "hints": [
+    {
+     "text": "CARROT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNOWMAN via the carrot nose and VEGETABLE via the carrot itself; an easy property-plus-category hint.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CARROT"],
+   "pair_note": "Clear and fair."
+  },
+  {
+   "pair_id": "p_storm__tea",
+   "a": "STORM",
+   "b": "TEA",
+   "hints": [
+    {
+     "text": "TEMPEST",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "STORM via tempest as a synonym and TEA via the American idiom 'a tempest in a teapot'; the idiom gives a real second connection and a nice click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TEMPEST"],
+   "pair_note": "Good; uses the U.S. form of the idiom (British 'storm in a teacup' echoes it)."
+  },
+  {
+   "pair_id": "p_tower__web",
+   "a": "TOWER",
+   "b": "WEB",
+   "hints": [
+    {
+     "text": "TANGLED",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TOWER via Rapunzel's tower in Disney's Tangled and WEB via the 'tangled web we weave' line (correctly credited to Walter Scott); film title versus idiom is a satisfying split.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TANGLED"],
+   "pair_note": "Excellent."
+  }
+ ]
+}
