@@ -458,12 +458,17 @@ test("x19: 210 candidates on unseen pairs; 199 PASS + 6 BORDERLINE accepted; SCI
   assert.match(hh.provenance.textCorrection.clarification, /not an established false quote/);
 });
 
-test("x20: 221 candidates on unseen pairs; 211 PASS, 10 BORDERLINE held, CROW + SHIP NEST held for the parent; parent and reviewer text fixes traceable", () => {
+test("x20: 221 candidates on unseen pairs; 211 PASS + 9 BORDERLINE accepted; FEED serves INTERNET + TROLL; CROW + SHIP NEST reserved; text fixes traceable", () => {
   const x20 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x20").map((c) => ({ p, c })));
   assert.equal(x20.length, 221);
   const n = (s) => x20.filter(({ c }) => c.status === s).length;
   // + CROW + SHIP -> NEST (review PASS) held: it belongs to the x11 owner proposal-only animal x SHIP family
-  assert.equal(n("ai_reviewed"), 210); assert.equal(n("held"), 11); assert.equal(n("rejected"), 0);
+  // the parent then accepted 9 BORDERLINE rows; BAIT is kept held behind the coordinator-selected FEED
+  assert.equal(n("ai_reviewed"), 219); assert.equal(n("held"), 2); assert.equal(n("rejected"), 0);
+  const it = byId.get("p_internet__troll").clues; const feed = it.find((c) => c.text === "FEED");
+  assert.equal(feed.override.status, "coordinator_accept"); assert.equal(feed.provenance.blindReview, null); assert.equal(it.find((c) => c.text === "BAIT").status, "held");
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_internet__troll").hints.map((h) => h.text), ["FEED"]);
+  assert.equal(byId.get("p_date__milk").clues[0].revealExplanation, "An expiration date is a familiar printed label on products such as milk cartons.");
   for (const { p, c } of x20) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const hit = byId.get("p_baseball__song").clues[0];
   assert.doesNotMatch(hit.revealExplanation, /safely reaching base/); assert.match(hit.provenance.textCorrectionHistory[0].from.revealExplanation, /safely reaching base/);
