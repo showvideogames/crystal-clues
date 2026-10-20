@@ -274,7 +274,9 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
     if (owner) { assert.equal(c.status, "human_approved"); assert.equal(c.override.by, "owner"); }
     else { assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /not an owner decision/); }
   }
-  assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/']/.test(h.text))), "only letters, digits, / and ' in served hints");
+  assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
+  // the hyphen (added 2026-10-20) is served only in the conventional WALL-E title spelling
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)), ["WALL-E"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -374,4 +376,19 @@ test("x16: 210 candidates on unseen pairs; 206 PASS, 4 BORDERLINE coordinator-ac
   assert.equal(mav.status, "ai_reviewed"); assert.equal(mav.override.status, "coordinator_accept"); assert.equal(mav.provenance.blindReview.verdict, "BORDERLINE"); assert.equal(mav.reference.recognizability, "moderate"); assert.doesNotMatch(mav.revealExplanation + mav.wordAConnection, /Dallas/);
   assert.match(byId.get("p_bomb__bus").clues[0].revealExplanation, /50 mph/);
   assert.doesNotMatch(byId.get("p_new-york__square").clues[0].revealExplanation, /landmarks/);
+});
+
+test("x17: 235 candidates on unseen pairs; 227 served after blind review, 8 BORDERLINE held; WALL-E spelling and text fixes traceable", () => {
+  const x17 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x17").map((c) => ({ p, c })));
+  assert.equal(x17.length, 235);
+  const n = (s) => x17.filter(({ c }) => c.status === s).length;
+  assert.equal(n("ai_reviewed"), 227); assert.equal(n("held"), 8); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x17) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const w = byId.get("p_robot__trash").clues;
+  assert.equal(w.length, 1); assert.equal(w[0].text, "WALL-E"); assert.equal(w[0].provenance.hintSpelling.from, "WALLE");
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_robot__trash").hints.map((h) => h.text), ["WALL-E"]);
+  const sc = byId.get("p_box__cat").clues[0];
+  assert.doesNotMatch(sc.wordBConnection, /both alive and dead/); assert.match(sc.provenance.textCorrection.from.wordBConnection, /both alive and dead/);
+  assert.doesNotMatch(byId.get("p_bath__gold").clues[0].revealExplanation, /while testing/);
+  assert.match(byId.get("p_bike__pilot").clues[0].revealExplanation, /first controlled, powered airplane flight/);
 });

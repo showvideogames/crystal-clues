@@ -21,7 +21,8 @@ test("hint rule: one word of letters (NYC allowed), never containing or inside a
   assert.equal(hintProblem("NYC", "APPLE", "BIG"), null);
   assert.equal(hintProblem("AMBUSH", "CALCULATOR", "CAMOUFLAGE"), null);
   assert.match(hintProblem("ICE AGE", "MAMMOTH", "SQUIRREL"), /one word/);
-  assert.match(hintProblem("T-REX", "DINOSAUR", "KING"), /one word/);
+  assert.match(hintProblem("T--REX", "DINOSAUR", "KING"), /one word/);
+  assert.equal(hintProblem("T-REX", "DINOSAUR", "KING"), null); // an internal hyphen is allowed since 2026-10-20 (WALL-E)
   assert.match(hintProblem("FIRE", "FIREFIGHTER", "HOSE"), /target contains the hint/);
   assert.match(hintProblem("SUNFLOWER", "SUN", "SEED"), /contains a target/);
   assert.match(hintProblem("ICECREAM", "ICE CREAM", "CONE"), /target/);
@@ -103,12 +104,12 @@ test("add: friend discoveries wait as candidates; only the owner can approve; mi
   assert.match(execFileSync(process.execPath, [CLI, "empty", "--word", "dinosaur"], { cwd: dir, encoding: "utf8" }), /3 shown of 3 empty pairs/);
 });
 
-test("hint rule: owner-allowed conventional spellings (K9, AC/DC, CAP'N) and nothing broader", async () => {
-  for (const [h, a, b] of [["K9", "POLICE", "DOG"], ["AC/DC", "THUNDER", "BAND"], ["CAP'N", "CANNON", "CEREAL"], ["CAP’N", "PIRATE", "CEREAL"], ["C3PO", "GOLD", "ROBOT"], ["R2D2", "ROBOT", "STAR"], ["NYC", "APPLE", "BIG"]])
+test("hint rule: owner-allowed conventional spellings (K9, AC/DC, CAP'N, WALL-E) and nothing broader", async () => {
+  for (const [h, a, b] of [["K9", "POLICE", "DOG"], ["AC/DC", "THUNDER", "BAND"], ["CAP'N", "CANNON", "CEREAL"], ["CAP’N", "PIRATE", "CEREAL"], ["C3PO", "GOLD", "ROBOT"], ["R2D2", "ROBOT", "STAR"], ["NYC", "APPLE", "BIG"], ["WALL-E", "ROBOT", "TRASH"], ["T-REX", "DINOSAUR", "KING"]])
     assert.equal(hintProblem(h, a, b), null, h);
   assert.equal(normHint("cap’n"), "CAP'N"); assert.equal(normHint("CAP‘N"), "CAP'N"); assert.equal(normHint("ac/dc"), "AC/DC");
-  assert.equal(hintKey("AC/DC"), "ACDC"); assert.equal(hintKey("CAP'N"), "CAPN");
-  for (const h of ["ICE AGE", "T-REX", "AC//DC", "/AC", "AC/", "CAP'", "'N", "CAP''N", "99", "9/11", "<B>", "A&W", "WOW!", "HI.", "AC DC"])
+  assert.equal(hintKey("AC/DC"), "ACDC"); assert.equal(hintKey("CAP'N"), "CAPN"); assert.equal(hintKey("WALL-E"), "WALLE");
+  for (const h of ["ICE AGE", "-AC", "AC-", "AC--DC", "AC-/DC", "AC//DC", "/AC", "AC/", "CAP'", "'N", "CAP''N", "99", "9/11", "<B>", "A&W", "WOW!", "HI.", "AC DC"])
     assert.match(hintProblem(h, "APPLE", "BIG") || "", /one word/, h);
   // target checks ignore the punctuation: no smuggling a target through a slash or apostrophe
   assert.match(hintProblem("ACDC", "AC/DC", "BAND"), /is a target/);
@@ -140,5 +141,7 @@ test("add: stores the conventional spelling exactly and refuses another spelling
   r = run("add", "band", "thunder", "ACDC", "--by", "owner", "--why", "x");
   assert.notEqual(r.status, 0); assert.match(r.stderr, /already recorded for BAND \+ THUNDER as AC\/DC/);
   r = run("add", "band", "thunder", "AC-DC", "--by", "owner", "--why", "x");
+  assert.notEqual(r.status, 0); assert.match(r.stderr, /already recorded for BAND \+ THUNDER as AC\/DC/);
+  r = run("add", "band", "thunder", "AC--DC", "--by", "owner", "--why", "x");
   assert.notEqual(r.status, 0); assert.match(r.stderr, /one word/);
 });

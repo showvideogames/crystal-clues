@@ -34,18 +34,19 @@ export const pairCount = (n) => (n * (n - 1)) / 2;
 export const normHint = (t) => normWord(t).replace(/[‘’ʼ]/g, "'");
 /** Letters and digits only: how two spellings of one hint are compared (AC/DC = ACDC, CAP'N = CAPN). */
 export const hintKey = (t) => normHint(t).replace(/[^A-Z0-9]/g, "");
-const HINT_SHAPE = /^[A-Z0-9](?:[A-Z0-9]|[/'](?=[A-Z0-9]))*$/;
+const HINT_SHAPE = /^[A-Z0-9](?:[A-Z0-9]|[/'-](?=[A-Z0-9]))*$/;
 
 /**
  * A hint is one word: letters (a familiar abbreviation such as NYC is letters too), plus the
  * conventional spellings the owner allowed (2026-10-19): digits (K9), a slash (AC/DC) and an
- * apostrophe (CAP'N). A slash or apostrophe sits only between two letters or digits, never
- * doubled, leading or trailing; a hint needs at least one letter. Spaces, hyphens and any
- * other characters are refused. Target checks compare letters and digits only.
+ * apostrophe (CAP'N), plus a hyphen in a conventional title spelling (WALL-E; parent/owner,
+ * 2026-10-20). A slash, apostrophe or hyphen sits only between two letters or digits, never
+ * doubled, leading or trailing; a hint needs at least one letter. Spaces and any other
+ * characters are refused. Target checks compare letters and digits only (WALL-E = WALLE).
  */
 export function hintProblem(text, a, b) {
   const t = normHint(text);
-  if (!HINT_SHAPE.test(t) || !/[A-Z]/.test(t)) return "a hint is one word: letters, with digits, a slash or an apostrophe only inside a conventional spelling (K9, AC/DC, CAP'N)";
+  if (!HINT_SHAPE.test(t) || !/[A-Z]/.test(t)) return "a hint is one word: letters, with digits, a slash, an apostrophe or a hyphen only inside a conventional spelling (K9, AC/DC, CAP'N, WALL-E)";
   const key = hintKey(t);
   for (const w of [a, b]) {
     const bare = hintKey(w);
