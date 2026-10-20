@@ -54,3 +54,20 @@ test("coordinator holds (parent review of x04b) are held, recorded as coordinato
     assert.ok(!client.pairs.find((p) => p.id === id)?.hints.some((h) => h.text === hint), `${id} ${hint} not served`);
   }
 });
+
+test("x04c coordinator cleanup reaches the export (labelled as coordinator, not owner)", (t) => {
+  const serve = (id) => client.pairs.find((x) => x.id === id)?.hints.map((h) => h.text) || null;
+  if (!serve("p_boxing__joke")) return t.skip("x04c content not in this export");
+  assert.deepEqual(serve("p_boxing__joke"), ["PUNCHLINE"]);
+  assert.deepEqual(serve("p_chocolate__hot"), ["FUDGE"]);
+  assert.deepEqual(serve("p_basketball__tennis"), ["SLAM"]);
+  assert.equal(serve("p_moon__sea"), null); assert.equal(serve("p_moon__ship"), null);
+  for (const id of ["p_boxing__joke", "p_chocolate__hot", "p_basketball__tennis"]) assert.match(JSON.parse(readFileSync("data/unlimited/library/preferences.json", "utf8")).pairs[id].by, /^coordinator/);
+  for (const p of client.pairs) for (const h of p.hints) for (const f of FIELDS) assert.ok(!/^in Mario Kart/.test(h[f]), `${p.id} ${f} starts lower-case`);
+});
+
+test("owner rejection: CAMOUFLAGE + HOOK -> FLY is never served or re-proposed", () => {
+  const e = JSON.parse(readFileSync("data/unlimited/library/rejections.json", "utf8")).entries.find((x) => x.pair_id === "p_camouflage__hook" && x.hint === "FLY");
+  assert.equal(e?.decision, "rejected"); assert.equal(e.by, "owner");
+  assert.ok(!client.pairs.find((x) => x.id === "p_camouflage__hook")?.hints.some((h) => h.text === "FLY"));
+});
