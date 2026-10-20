@@ -89,13 +89,13 @@ test("advisory kinds are triage only: playable hints get none, nothing is promot
   assert.equal(JSON.stringify(ix.pairs.map((p) => p.clues.map((c) => c.status))), before);
 });
 
-test("the real data: 16 rejection-only pairs reconcile, served matches the export, owner rejections stay exact", () => {
+test("the real data: rejection-only pairs reconcile (16 at the coverage commit, 17 with BIRD + SHIP → FALCON), served matches the export, owner rejections stay exact", () => {
   const ix = loadCatalogue(); const rejections = loadRejections();
   const s = coverageSummary(ix, rejections); const st = stats(ix);
   const ids = new Set(ix.pairs.map((p) => p.pair_id));
   const only = new Set(rejections.filter((e) => !ids.has(e.pair_id)).map((e) => e.pair_id));
-  assert.equal(only.size, 16);
-  assert.equal(s.rejectionOnlyPairs.inBank + s.rejectionOnlyPairs.outsideBank, 16);
+  assert.equal(only.size, 17);   // 16 + BIRD + SHIP, whose only record is the owner's FALCON hold
+  assert.equal(s.rejectionOnlyPairs.inBank + s.rejectionOnlyPairs.outsideBank, 17);
   assert.equal(s.evidence.unseen, st.possiblePairs - st.storedInBank - s.rejectionOnlyPairs.inBank, "rejection-only pairs are not counted as untried");
   for (const id of only) {
     const e = rejections.find((x) => x.pair_id === id);
@@ -124,4 +124,17 @@ test("CLI: coverage, attempts and holds are read-only", () => {
   const rows = JSON.parse(execFileSync(process.execPath, [CLI, "holds", "--by", "coordinator", "--json"], { encoding: "utf8" }));
   assert.ok(rows.length > 0 && rows.every((r) => r.decision.decider === "coordinator"));
   assert.equal(readFileSync("data/unlimited/library/pairs.json", "utf8"), lib);
+});
+
+test("owner holds from the owner's own words: TOY + POTATO → HEAD and SHIP + BIRD → FALCON, exact hints only", () => {
+  const ix = loadCatalogue(); const rejections = loadRejections();
+  for (const [x, y, h] of [["TOY", "POTATO", "HEAD"], ["SHIP", "BIRD", "FALCON"]]) {
+    const e = rejectionFor(rejections, x, y, h);
+    assert.equal(e?.decision, "held"); assert.equal(e.by, "owner"); assert.match(e.reason, /millennium falcon/);
+    const info = pairAttempts(ix, x, y, { rejections });
+    assert.equal(info.open, true); assert.equal(info.attempts.find((t) => t.text === h).decision.decider, "owner");
+  }
+  assert.equal(ix.byId.get("p_potato__toy").clues.find((c) => c.text === "HEAD").status, "held");
+  assert.equal(rejectionFor(rejections, "BIRD", "FOOTBALL", "FALCON"), null, "the owner-approved football FALCON is untouched");
+  assert.equal(currentState(ix, ix.byId.get("p_bird__football")), "served");
 });
