@@ -139,3 +139,21 @@ test("owner-selected RECENT + FLY and RECENT + MOSQUITO → LARVAE are served; C
   assert.ok(!client.pairs.some((x) => x.id === "p_cockroach__recent"));
   assert.equal(byId.get("p_cockroach__recent").clues.find((c) => c.text === "HATCHLING").status, "candidate");
 });
+
+test("x07 owner candidates: four coordinator-accepted from owner suggestions; K9 held on syntax; PURGATORY not accepted; PENGUIN a candidate only", async () => {
+  const { loadRejections, rejectionFor } = await import("./rejections-lib.mjs");
+  for (const [id, h] of [["p_laugh__volcano", "ERUPT"], ["p_instrument__pocket", "HARMONICA"], ["p_apple__pumpkin", "PIE"], ["p_calculator__pumpkin", "PI"]]) {
+    const c = byId.get(id).clues.find((x) => x.text === h);
+    assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h), `${h} served`);
+    assert.equal(c.provenance.addedBy, "owner", "the source suggestion is the owner's");
+    assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /^coordinator .*not an owner decision/);
+    assert.equal(c.provenance.blindReview, null, "no model review was run");
+  }
+  assert.match(byId.get("p_calculator__pumpkin").clues[0].revealExplanation, /sounds like pie/);
+  assert.equal(byId.get("p_dog__police"), undefined, "K9 is not stored or renamed");
+  const pen = byId.get("p_antarctica__rooster").clues.find((x) => x.text === "PENGUIN");
+  assert.equal(pen.status, "candidate"); assert.ok(!client.pairs.some((x) => x.id === "p_antarctica__rooster"));
+  const all = loadRejections();
+  assert.equal(rejectionFor(all, "DEVIL", "CROSSROADS", "PURGATORY")?.decision, "rejected");
+  assert.equal(rejectionFor(all, "DEVIL", "CROSSROADS", "DEAL"), null, "DEAL stays an open candidate");
+});

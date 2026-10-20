@@ -1,0 +1,88 @@
+{
+  "_metadata": {
+    "purpose": "x07: a bounded batch of owner suggestions (2026-10-19), processed locally with deterministic checks and a main-session critique; no model or review calls",
+    "provenance": "owner Deb West's suggestions and the parent's decisions, relayed by the coordinator (parent)",
+    "workflow": "owner suggestions are candidates, not approvals. One that passes the checks is added with catalogue add --by owner (source: owner suggestion), then accepted by the coordinator through an overrides.json coordinator_accept (not an owner decision). Holds and non-acceptances are recorded with their reasons so they are not proposed again by accident.",
+    "checks": "bank membership (catalogue show), existing hints and preferences for the pair, rejections.json, the catalogue hint rule (hintProblem), served uses of the same hint (random-library.json), facts in the explanation"
+  },
+  "items": [
+    {
+      "ref": "X7-01",
+      "a": "POLICE",
+      "b": "DOG",
+      "hint": "K9",
+      "suggestedBy": "owner",
+      "outcome": "held: hint syntax conflict, not added",
+      "detail": "The catalogue's rule allows letters only, so K9 is refused. Older reviewed batches already hold K9 (DOG + ROBOT, unserved), and C3PO and R2D2 are served, so the rule and the library disagree. Not renamed (no CANINE or KNINE substitution). Needs a parent decision on allowing digits in well-known names; if allowed, K9 is a strong hint here: police dog units are called K-9 units."
+    },
+    {
+      "ref": "X7-02",
+      "a": "VOLCANO",
+      "b": "LAUGH",
+      "hint": "ERUPT",
+      "suggestedBy": "owner",
+      "outcome": "added: owner suggestion, coordinator-accepted, served",
+      "why": "Volcanoes erupt, and a room can erupt in laughter.",
+      "critique": "Strong and natural: 'erupt in laughter' is an everyday phrase. VOLCANO already serves ERUPT once (SODA + VOLCANO), a small variety cost."
+    },
+    {
+      "ref": "X7-03",
+      "a": "POCKET",
+      "b": "INSTRUMENT",
+      "hint": "HARMONICA",
+      "suggestedBy": "owner",
+      "outcome": "added: owner suggestion, coordinator-accepted, served",
+      "why": "A harmonica is a musical instrument small enough to carry in your pocket.",
+      "critique": "Fair and concrete. Another small instrument (KAZOO) would also fit, but HARMONICA is the classic pocket instrument."
+    },
+    {
+      "ref": "X7-04",
+      "a": "APPLE",
+      "b": "PUMPKIN",
+      "hint": "PIE",
+      "suggestedBy": "owner",
+      "outcome": "added: owner suggestion, coordinator-accepted, served",
+      "why": "Apple pie and pumpkin pie are two classic pies.",
+      "critique": "Immediate on both sides. PIE was rejected for many other APPLE pairs where the second word has no pie; here both words are classic pies."
+    },
+    {
+      "ref": "X7-05",
+      "a": "CALCULATOR",
+      "b": "PUMPKIN",
+      "hint": "PI",
+      "suggestedBy": "owner",
+      "outcome": "added: owner suggestion, coordinator-accepted, served",
+      "why": "A calculator has a pi (π) button, and pi sounds like pie, as in pumpkin pie.",
+      "critique": "A sound-alike pun on the PUMPKIN side, said plainly in the explanation. A harder but explainable stretch; the calculator side is direct."
+    },
+    {
+      "ref": "X7-06",
+      "a": "DEVIL",
+      "b": "CROSSROADS",
+      "hint": "PURGATORY",
+      "suggestedBy": "owner",
+      "outcome": "not accepted (parent decision); recorded in rejections.json for this hint only",
+      "detail": "The crossroads legend is about a deal with the devil, not purgatory. CROSSROADS is not in the word bank, so the pair cannot be stored in the library yet; it stays open."
+    },
+    {
+      "ref": "X7-07",
+      "a": "DEVIL",
+      "b": "CROSSROADS",
+      "hint": "DEAL",
+      "suggestedBy": "parent",
+      "outcome": "candidate only (unselected); not stored, because CROSSROADS is not in the word bank",
+      "why": "In the old legend, you make a deal with the devil at the crossroads.",
+      "detail": "Stronger than PURGATORY, but not owner-selected. It can be added as a candidate only if CROSSROADS joins the bank (a separate decision)."
+    },
+    {
+      "ref": "X7-08",
+      "a": "ANTARCTICA",
+      "b": "ROOSTER",
+      "hint": "PENGUIN",
+      "suggestedBy": "owner",
+      "outcome": "candidate only: stored, not served",
+      "why": "Penguins live in Antarctica, and a penguin, like a rooster, is a bird.",
+      "detail": "A real creative candidate, not dismissed: the owner is deliberately exploring ANTARCTICA + bird → PENGUIN analogies. The ROOSTER link is currently the shared bird category, so it needs normal review before it could be served; the pair stays open. Stronger and weaker bird analogies are proposed separately (x07 penguin-analogy proposal). WADDLE (rooster wattle / penguin waddle) was a parent brainstorm only, not approved, and is not recorded as a hint."
+    }
+  ]
+}
