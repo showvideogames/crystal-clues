@@ -402,11 +402,19 @@ test("x17: 235 candidates on unseen pairs; 227 PASS + 4 BORDERLINE coordinator-a
   assert.match(byId.get("p_bike__pilot").clues[0].revealExplanation, /first controlled, powered airplane flight/);
 });
 
-test("x18: 219 candidates on unseen pairs; 211 served after blind review, 8 BORDERLINE held; reviewer text fixes traceable", () => {
+test("x18: 219 candidates on unseen pairs; 211 PASS + CANON, JAZZ, GORILLA accepted; RELATIVITY, DEAD, HAND, ASH coordinator selections; text fixes traceable", () => {
   const x18 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x18").map((c) => ({ p, c })));
   assert.equal(x18.length, 219);
   const n = (s) => x18.filter(({ c }) => c.status === s).length;
-  assert.equal(n("ai_reviewed"), 211); assert.equal(n("held"), 8); assert.equal(n("rejected"), 0);
+  // held: FINISH, HOUR (less preferred), DELOREAN, FAWKES, LANTERN (familiarity; LANTERN's pair stays open, unserved)
+  assert.equal(n("ai_reviewed"), 214); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
+  for (const [id, h, old] of [["p_end__line", "DEAD", "FINISH"], ["p_clock__short", "HAND", "HOUR"], ["p_fireworks__phoenix", "ASH", "FAWKES"]]) {
+    const cs = byId.get(id).clues; const sel = cs.find((c) => c.text === h);
+    assert.equal(sel.override.status, "coordinator_accept"); assert.equal(sel.provenance.blindReview, null);
+    assert.equal(cs.find((c) => c.text === old).status, "held");
+    assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), [h]);
+  }
+  assert.ok(!client.pairs.some((x) => x.id === "p_halloween__turnip"));
   for (const { p, c } of x18) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
   const pl = byId.get("p_cast__wall").clues[0];
   // two corrections (reviewer, then parent): the drafted text is kept in the history, the latest correction on top
