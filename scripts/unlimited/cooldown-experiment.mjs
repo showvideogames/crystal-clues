@@ -20,7 +20,7 @@
 //
 //   node scripts/unlimited/cooldown-experiment.mjs [--players 40] [--games 300] [--lib label=path ...] [--json out.json]
 import { readFileSync, writeFileSync } from "node:fs";
-import { generateBoard, mulberry32, validateBoard, norm } from "../../src/unlimited/generate.js";
+import { generateBoard, validateBoard, norm } from "../../src/unlimited/generate.js";
 
 const argv = process.argv.slice(2);
 const opt = (k, d) => { const i = argv.indexOf(`--${k}`); return i === -1 ? d : argv[i + 1]; };
