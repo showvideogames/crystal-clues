@@ -93,6 +93,7 @@ test("x06 corrections: DRIVER accepted by the coordinator; EXCALIBUR (LAKE + SWO
   const d = byId.get("p_bus__golf").clues.find((x) => x.text === "DRIVER");
   assert.equal(d.override.status, "coordinator_accept"); assert.match(d.override.by, /^coordinator/);
   assert.equal(d.provenance.blindReview.verdict, "BORDERLINE", "the independent review stays on record");
+  assert.equal(d.override.endorsed?.by, "owner", "the owner endorsement is recorded separately from the coordinator acceptance");
   // Owner correction (2026-10-19): flagged and unserved, not a permanent exclusion; review and acceptance history kept.
   const e = byId.get("p_lake__sword").clues.find((x) => x.text === "EXCALIBUR");
   assert.equal(e.status, "held"); assert.equal(s("p_lake__sword", "EXCALIBUR"), undefined);

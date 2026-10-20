@@ -44,6 +44,7 @@ for (const o of overrides) {
     c.status = c.provenance?.blindReview?.verdict === "PASS" ? "ai_reviewed" : "held"; c.heldReason = c.status === "held" ? "blind review: borderline" : null;
   } else { console.warn(`override for ${o.pair_id} ${o.text} ignored: it can only hold, or release a previous override`); continue; }
   c.override = { by: o.by, date: o.date, status: o.status, reason: o.reason };
+  if (o.endorsed) c.override.endorsed = o.endorsed;   // a later endorsement of the same decision (e.g. the owner)
   if (history.has(keyOf(o.pair_id, o.text))) c.override.history = history.get(keyOf(o.pair_id, o.text));
   applied++;
 }

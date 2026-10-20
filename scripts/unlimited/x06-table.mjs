@@ -10,12 +10,21 @@ const C = new Map(client.pairs.map((p) => [p.id, p]));
 const q = (v) => { const s = String(v ?? ""); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
 const md = (r) => "| " + r.map((v) => String(v ?? "").replace(/\|/g, "/")).join(" | ") + " |";
 const H = ["#", "Section", "Hint", "Target A", "Target B", "Final explanation", "Line for A", "Line for B", "Decision", "Verdict", "A/B/fair", "Delight", "Recognizability", "Flags", "Reviewer reason", "Served for this pair (real export)", "Stored options for this pair"];
+// The decision column names who made it playable; the review columns stay the independent review.
+const decision = (c) => {
+  const o = c.override, v = c.provenance?.blindReview?.verdict;
+  if (c.status === "human_approved") return "owner decision (approved)";
+  if (c.status === "ai_reviewed" && o?.status === "coordinator_accept")
+    return `accepted by coordinator (${o.date}), not by the review (${v || "no"} verdict kept)` + (o.endorsed ? `; endorsed by ${o.endorsed.by} (${o.endorsed.date})` : "");
+  if (c.status === "ai_reviewed") return v === "PASS" ? "accepted (review PASS)" : `accepted (${o ? o.status + " by " + o.by : "status ai_reviewed"}; review ${v || "none"})`;
+  return `held (${c.heldReason || c.status})`;
+};
 const rows = []; let n = 0;
 const add = (section, p, c) => {
   const b = c.provenance?.blindReview;
   const served = C.get(p.pair_id)?.hints.map((h) => h.text) || [];
   rows.push([++n, section, c.text, p.a, p.b, c.revealExplanation, c.wordAConnection, c.wordBConnection,
-    c.status === "human_approved" ? "owner decision (approved)" : c.status === "ai_reviewed" ? "accepted (review PASS)" : `held (${c.heldReason || c.status})`,
+    decision(c),
     b?.verdict || "owner (no review)", b ? `${b.a}/${b.b}/${b.fairness}` : "", b?.delight ?? "", b?.recognizability || "", (b?.flags || []).join(" "), b?.reason || "",
     served.length ? served.join(" / ") : "none", p.clues.map((x) => `${x.text} (${x.status})`).join("; ")]);
 };
