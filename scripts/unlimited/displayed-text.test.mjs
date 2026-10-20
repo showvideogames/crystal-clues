@@ -158,7 +158,7 @@ test("x07 owner candidates: four coordinator-accepted from owner suggestions; K9
   assert.equal(rejectionFor(all, "DEVIL", "CROSSROADS", "DEAL"), null, "DEAL stays an open candidate");
 });
 
-test("x07 penguin analogy: ANTARCTICA + ROOSTER and ICE + ROOSTER owner-selected and served; the ANTARCTICA + bird family is candidate-only", () => {
+test("x07 penguin analogy: ANTARCTICA + ROOSTER and ICE + ROOSTER owner-selected; the 12-pair ANTARCTICA + bird family coordinator-accepted, all served", () => {
   for (const [id, exp] of [["p_antarctica__rooster", "A rooster is a bird; penguins are the birds strongly associated with Antarctica."], ["p_ice__rooster", /commonly associated with ice/]]) {
     const c = byId.get(id).clues.find((x) => x.text === "PENGUIN");
     assert.equal(c.status, "human_approved"); assert.equal(c.override.by, "owner"); assert.equal(c.provenance.addedBy, "owner");
@@ -169,7 +169,10 @@ test("x07 penguin analogy: ANTARCTICA + ROOSTER and ICE + ROOSTER owner-selected
   for (const w of fam) {
     const id = ["ANTARCTICA", w].sort().map((x) => x.toLowerCase()).join("__");
     const c = byId.get(`p_${id}`).clues.find((x) => x.text === "PENGUIN");
-    assert.equal(c.status, "candidate"); assert.ok(!client.pairs.some((x) => x.id === `p_${id}`));
+    assert.equal(c.status, "ai_reviewed"); assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /^coordinator .*not an owner decision/);
+    assert.match(c.provenance.addedBy, /^main session/, "drafted by the main session, accepted by the coordinator"); assert.equal(c.provenance.blindReview, null);
+    assert.ok(client.pairs.find((x) => x.id === `p_${id}`)?.hints.some((x) => x.text === "PENGUIN"));
+    assert.doesNotMatch(c.revealExplanation, /all penguins|lives? in Antarctica/i);
     assert.doesNotMatch(c.revealExplanation, /penguin is an? (robin|duck|eagle|owl|crow|pigeon|hawk|hen|turkey|kiwi|chick)\b/i);
   }
   assert.equal(byId.get("p_frozen__rooster"), undefined, "FROZEN is not in the bank");
