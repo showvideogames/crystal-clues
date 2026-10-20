@@ -733,6 +733,24 @@
         "held": 4,
         "rejected": 0,
         "newPairs": 33
+      },
+      {
+        "review": "data/unlimited/library/reviews/x06-ra-review.json",
+        "key": "data/unlimited/library/reviews/x06-review-key.json",
+        "appendOnly": true,
+        "ai_reviewed": 23,
+        "held": 2,
+        "rejected": 0,
+        "newPairs": 25
+      },
+      {
+        "review": "data/unlimited/library/reviews/x06-rb-review.json",
+        "key": "data/unlimited/library/reviews/x06-review-key.json",
+        "appendOnly": true,
+        "ai_reviewed": 26,
+        "held": 0,
+        "rejected": 0,
+        "newPairs": 26
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -814,6 +832,46 @@
               "better_hint": null,
               "flags": [],
               "reason": "AFRICA via the iconic African safari; CAMERA via the photo safari scene of tourists snapping wildlife; clicks naturally.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_africa__dog",
+      "a": "AFRICA",
+      "b": "DOG",
+      "source": "x06",
+      "pairNote": "Excellent double meaning; one of the best in the batch.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TOTO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The band Toto sang \"Africa.\"",
+          "wordBConnection": "Toto is Dorothy's little dog.",
+          "revealExplanation": "Toto is Dorothy's dog in The Wizard of Oz, and the band Toto sang the hit \"Africa.\"",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "AFRICA via the band Toto's hugely familiar (and meme-revived) hit \"Africa\", DOG via Dorothy's dog Toto; two unrelated meanings of one name meeting is a genuine 'oh, nice' click.",
               "fix": null
             }
           }
@@ -9528,6 +9586,46 @@
       ]
     },
     {
+      "pair_id": "p_arrow__baby",
+      "a": "ARROW",
+      "b": "BABY",
+      "source": "x06",
+      "pairNote": "Strong visual-character clue; more satisfying than the ARROW + HEART version because BABY is the less expected side.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CUPID",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Cupid shoots love arrows.",
+          "wordBConnection": "Cupid is pictured as a winged baby.",
+          "revealExplanation": "Cupid is often pictured as a winged baby with a bow and arrow.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "ARROW via Cupid's love arrows, BABY via the standard Valentine image of Cupid as a chubby winged baby; the baby side is a pleasing visual click rather than the obvious heart route.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_arrow__gift",
       "a": "ARROW",
       "b": "GIFT",
@@ -9566,6 +9664,46 @@
               "better_hint": null,
               "flags": [],
               "reason": "Archery bow for ARROW and ribbon bow for GIFT are two instantly familiar senses of the same word.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_arrow__heart",
+      "a": "ARROW",
+      "b": "HEART",
+      "source": "x06",
+      "pairNote": "Easy, clean clue. The explanation 'makes a heart fall in love' is a little awkward; optional rewording (nothing is false): \"Cupid's arrow strikes the heart and makes someone fall in love.\"",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "CUPID",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Cupid shoots love arrows.",
+          "wordBConnection": "Cupid's arrow strikes the heart.",
+          "revealExplanation": "Cupid's arrow makes a heart fall in love.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "ARROW via Cupid's bow and arrow, HEART via the arrow-through-a-heart Valentine image; easy and instantly fair, if less surprising.",
               "fix": null
             }
           }
@@ -17949,6 +18087,46 @@
       }
     },
     {
+      "pair_id": "p_bat__candy",
+      "a": "BAT",
+      "b": "CANDY",
+      "source": "x06",
+      "pairNote": "Nice scene clue with a mild misdirection on BAT. Lines correctly hedge 'bat or stick'.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PINATA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Kids whack the piñata with a bat or stick.",
+          "wordBConnection": "A piñata is stuffed with candy.",
+          "revealExplanation": "Kids whack a piñata with a bat until the candy spills out.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BAT via the bat or stick kids swing at a piñata, CANDY via what spills out; the scene reframes BAT away from baseball or the animal, which makes the click satisfying.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bat__card",
       "a": "BAT",
       "b": "CARD",
@@ -22177,6 +22355,86 @@
       ]
     },
     {
+      "pair_id": "p_beach__whistle",
+      "a": "BEACH",
+      "b": "WHISTLE",
+      "source": "x06",
+      "pairNote": "Solid, easy scene clue. Note the board may also hold POOL (same hint is used for POOL + WHISTLE), so avoid placing both pairs together.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LIFEGUARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A lifeguard watches the beach.",
+          "wordBConnection": "Lifeguards blow a whistle.",
+          "revealExplanation": "A lifeguard watches the beach with a whistle ready.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BEACH via the lifeguard on the beach stand, WHISTLE via the lifeguard's whistle; a clear, familiar scene.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__bed",
+      "a": "BEAR",
+      "b": "BED",
+      "source": "x06",
+      "pairNote": "Clean storybook clue; keep CHAIR and BLOND off the same board since GOLDILOCKS fits them too.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GOLDILOCKS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Goldilocks visits the three bears.",
+          "wordBConnection": "She finds Baby Bear's bed just right.",
+          "revealExplanation": "Goldilocks naps in Baby Bear's bed.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "Storybook route on both sides: the three bears are the story's core and Baby Bear's 'just right' bed is one of its three famous beats, so it clicks instantly.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bear__bell",
       "a": "BEAR",
       "b": "BELL",
@@ -22292,6 +22550,46 @@
               "better_hint": null,
               "flags": [],
               "reason": "Picnic blanket (BLANKET) is instant; BEAR comes via Yogi Bear raiding picnics, which is iconic enough to land with a moment's thought.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bear__blond",
+      "a": "BEAR",
+      "b": "BLOND",
+      "source": "x06",
+      "pairNote": "The strongest of the three Goldilocks pairs because the name itself carries the BLOND side.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GOLDILOCKS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Goldilocks visits the three bears.",
+          "wordBConnection": "Goldilocks is named for her golden hair.",
+          "revealExplanation": "Golden-haired Goldilocks wanders into the three bears' house.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BEAR via the three bears story, BLOND via the name itself (golden locks), giving a nice second-layer 'oh' when the player notices the name spells out her hair.",
               "fix": null
             }
           }
@@ -22529,6 +22827,46 @@
           "PAWS"
         ]
       }
+    },
+    {
+      "pair_id": "p_bear__chair",
+      "a": "BEAR",
+      "b": "CHAIR",
+      "source": "x06",
+      "pairNote": "Good; same board-composition caution as the other Goldilocks pairs (BED, BLOND, PORRIDGE).",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GOLDILOCKS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Goldilocks visits the three bears.",
+          "wordBConnection": "She breaks Baby Bear's chair.",
+          "revealExplanation": "Goldilocks breaks Baby Bear's little chair.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "Storybook route on both sides: the three bears, and Baby Bear's little chair that Goldilocks breaks, a well-known story beat.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_bear__crown",
@@ -29733,6 +30071,48 @@
       ]
     },
     {
+      "pair_id": "p_bird__internet",
+      "a": "BIRD",
+      "b": "INTERNET",
+      "source": "x06",
+      "pairNote": "Dated only mildly; the word is still in everyday use, and the Twitter logo was literally a bird, which reinforces the click.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TWEET",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Birds tweet.",
+          "wordBConnection": "Short posts on Twitter were called tweets.",
+          "revealExplanation": "Birds tweet, and short posts on Twitter were called tweets.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "dated"
+              ],
+              "reason": "BIRD via birdsong (birds tweet), INTERNET via Twitter posts; Twitter's rebrand to X makes it slightly dated, but 'tweet' is still universally understood and the past-tense text is accurate.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bird__mine",
       "a": "BIRD",
       "b": "MINE",
@@ -30042,6 +30422,46 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Both BIRD and WORM through the proverb 'The early bird catches the worm'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_birthday__candy",
+      "a": "BIRTHDAY",
+      "b": "CANDY",
+      "source": "x06",
+      "pairNote": "Good easy scene clue; BAT + CANDY is the more delightful use of PINATA.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PINATA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Piñatas are a birthday party classic.",
+          "wordBConnection": "A piñata is stuffed with candy.",
+          "revealExplanation": "At a birthday party, a piñata bursts open with candy.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BIRTHDAY via the piñata as a birthday-party staple, CANDY via the candy inside; easy and fair, slightly less fun than the BAT + CANDY version.",
+              "fix": null
             }
           }
         }
@@ -30578,6 +30998,46 @@
                 "revealExplanation": "Sonic is a famously fast blue hedgehog."
               },
               "note": "coordinator review: same subject named twice; collapsed naturally; player-facing text only; verdict and status unchanged"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_blue__memory",
+      "a": "BLUE",
+      "b": "MEMORY",
+      "source": "x06",
+      "pairNote": "Excellent Pixar clue; blue tang fact is correct.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DORY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Dory is a blue tang.",
+          "wordBConnection": "Dory has trouble with her short-term memory.",
+          "revealExplanation": "Dory, a blue tang, has trouble with her short-term memory.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BLUE via Dory being a bright blue tang, MEMORY via her famous short-term memory loss; recognizable Pixar character with two defining traits.",
+              "fix": null
             }
           }
         }
@@ -32084,6 +32544,126 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "BOWLING via bowling alley and CAT via alley cat; two common compounds."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bowling__change",
+      "a": "BOWLING",
+      "b": "CHANGE",
+      "source": "x06",
+      "pairNote": "Solid sports double meaning; text is accurate (all ten pins using both rolls of a frame).",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SPARE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A spare knocks down all ten pins in two rolls.",
+          "wordBConnection": "Loose coins are spare change.",
+          "revealExplanation": "In bowling, a spare means knocking down all ten pins in two rolls, and loose coins are spare change.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BOWLING via the scoring term (a spare), CHANGE via the instantly familiar phrase 'spare change'; both sides are immediate.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bowling__rain",
+      "a": "BOWLING",
+      "b": "RAIN",
+      "source": "x06",
+      "pairNote": "Good; avoid ROOF on the same board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GUTTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A gutter ball rolls off the side of the lane.",
+          "wordBConnection": "Rain runs off the roof into the gutter.",
+          "revealExplanation": "A gutter ball rolls off the side of the lane, and rain runs off the roof into the gutter.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BOWLING via the gutter ball, RAIN via the rain gutter on a house; two very different everyday gutters make a satisfying click.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bowling__roof",
+      "a": "BOWLING",
+      "b": "ROOF",
+      "source": "x06",
+      "pairNote": "Slightly less vivid than BOWLING + RAIN but equally fair; avoid RAIN on the same board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "GUTTER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A gutter ball rolls off the side of the lane.",
+          "wordBConnection": "A roof gutter carries away rainwater.",
+          "revealExplanation": "A gutter ball rolls off the side of the lane, and a roof gutter carries away rainwater.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BOWLING via the gutter ball, ROOF via the roof gutter that carries rainwater; both are everyday and immediate.",
+              "fix": null
             }
           }
         }
@@ -38015,6 +38595,46 @@
       ]
     },
     {
+      "pair_id": "p_bug__car",
+      "a": "BUG",
+      "b": "CAR",
+      "source": "x06",
+      "pairNote": "Beetle is a kind of bug, not a synonym, so no synonym problem; keep INSECT off the same board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BEETLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The VW Beetle is nicknamed the Bug.",
+          "wordBConnection": "The Volkswagen Beetle is a classic car.",
+          "revealExplanation": "The Volkswagen Beetle, a classic car, is nicknamed the Bug.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "BUG because a beetle is a bug (and the VW Beetle's nickname is literally 'the Bug'), CAR via the Volkswagen Beetle; the doubled BUG route makes it a neat click.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_bug__music",
       "a": "BUG",
       "b": "MUSIC",
@@ -38096,6 +38716,50 @@
                 "uncertain"
               ],
               "reason": "VAMPIRE is instant via garlic folklore, but BULB reads as a light bulb and U.S. cooks usually say 'head of garlic', so the garlic-bulb side takes effort.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_bus__golf",
+      "a": "BUS",
+      "b": "GOLF",
+      "source": "x06",
+      "pairNote": "Fair but the BUS side is not distinctive; CAR + GOLF is the natural home for DRIVER. Usable only on a board with no other vehicle. I could not name a clearly better one-word hint for this pair.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "DRIVER",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "x06-proposal",
+          "wordAConnection": "A bus driver drives the route.",
+          "wordBConnection": "Golfers tee off with a driver.",
+          "revealExplanation": "Golfers tee off with a driver, and a bus driver drives the route.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "phrase_join",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "phrase_join_weak",
+                "generic",
+                "uncertain"
+              ],
+              "reason": "GOLF via the driver club is strong, but the BUS side rests on 'bus driver', and DRIVER points at CAR, TAXI or TRUCK at least as readily, so the bus link is real but not where most players would land.",
               "fix": null
             }
           }
@@ -40099,6 +40763,46 @@
       ]
     },
     {
+      "pair_id": "p_car__cat",
+      "a": "CAR",
+      "b": "CAT",
+      "source": "x06",
+      "pairNote": "Classic and fair; text accurate (jaguars are rainforest big cats).",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "JAGUAR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Jaguar makes luxury cars.",
+          "wordBConnection": "The jaguar is a big jungle cat.",
+          "revealExplanation": "Jaguar makes luxury cars, and the jaguar is a big jungle cat.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CAR via the luxury car brand, CAT via the jaguar big cat; familiar brand wordplay that clicks immediately.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_car__devil",
       "a": "CAR",
       "b": "DEVIL",
@@ -40328,6 +41032,126 @@
               "better_hint": null,
               "flags": [],
               "reason": "Honking a car horn (CAR) versus a goat's horns (GOAT) is a clean, instant double meaning.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_car__golf",
+      "a": "CAR",
+      "b": "GOLF",
+      "source": "x06",
+      "pairNote": "The natural home for DRIVER; keep BUS/TAXI/TRUCK off the board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DRIVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A driver steers a car.",
+          "wordBConnection": "Golfers tee off with a driver.",
+          "revealExplanation": "Golfers tee off with a driver, and a driver steers a car.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CAR via the person who drives it, GOLF via the driver club used to tee off; a clean everyday double meaning.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_car__horse",
+      "a": "CAR",
+      "b": "HORSE",
+      "source": "x06",
+      "pairNote": "One of the best brand double meanings in the batch.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MUSTANG",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The Ford Mustang is a classic American car.",
+          "wordBConnection": "A mustang is a wild horse of the American West.",
+          "revealExplanation": "The Ford Mustang is a classic car, and a mustang is a wild horse.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CAR via the Ford Mustang, HORSE via the wild mustang (the car's own logo is a galloping horse), so both sides land at once.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_car__insect",
+      "a": "CAR",
+      "b": "INSECT",
+      "source": "x06",
+      "pairNote": "Fine; a touch flatter than BUG + CAR, and BUG should not share the board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BEETLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The Volkswagen Beetle is a classic car.",
+          "wordBConnection": "A beetle is an insect.",
+          "revealExplanation": "The Volkswagen Beetle is a classic car, and a beetle is an insect.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CAR via the Volkswagen Beetle, INSECT because a beetle is an insect; immediate and accurate.",
               "fix": null
             }
           }
@@ -47801,6 +48625,48 @@
       }
     },
     {
+      "pair_id": "p_cat__egypt",
+      "a": "CAT",
+      "b": "EGYPT",
+      "source": "x06",
+      "pairNote": "Flagged as possibly weak by the drafter; I judge it fair because lion-as-big-cat is true and the Sphynx breed adds a second cat route. Uncertain because some players will not jump from CAT to a lion body; the line could mention the Sphynx cat breed if desired.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SPHINX",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The Sphinx has the body of a lion, a big cat.",
+          "wordBConnection": "The Great Sphinx stands in Egypt.",
+          "revealExplanation": "Egypt's Great Sphinx has the body of a lion, a big cat, with a human head.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "uncertain"
+              ],
+              "reason": "EGYPT via the Great Sphinx of Giza, CAT via its lion (big-cat) body, reinforced for many players by the hairless Sphynx cat breed; the cat side takes a beat but clicks once seen.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_cat__fire",
       "a": "CAT",
       "b": "FIRE",
@@ -49239,6 +50105,48 @@
       }
     },
     {
+      "pair_id": "p_cat__pyramid",
+      "a": "CAT",
+      "b": "PYRAMID",
+      "source": "x06",
+      "pairNote": "Same judgement as CAT + EGYPT; avoid boards that hold both EGYPT and PYRAMID with CAT. Facts in the text are accurate.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SPHINX",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The Sphinx has the body of a lion, a big cat.",
+          "wordBConnection": "The Sphinx sits near the pyramids of Giza.",
+          "revealExplanation": "The Great Sphinx, a statue with a lion's body, sits near the pyramids of Giza.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "fact",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "uncertain"
+              ],
+              "reason": "PYRAMID via the Sphinx sitting beside the Giza pyramids (the iconic shared postcard image), CAT via its lion body and the Sphynx cat breed; the cat side is the softer half.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_cat__queen",
       "a": "CAT",
       "b": "QUEEN",
@@ -49709,6 +50617,46 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_cat__shoe",
+      "a": "CAT",
+      "b": "SHOE",
+      "source": "x06",
+      "pairNote": "Flagged as possibly weak in the brief, but Puma remains a mainstream sneaker brand; 'big cat' is colloquial (the puma is not a roaring Panthera cat) but not misleading for players.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PUMA",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The puma is a big cat.",
+          "wordBConnection": "Puma makes sneakers.",
+          "revealExplanation": "Puma is a sneaker brand, and the puma is a big cat.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CAT via the puma (cougar/mountain lion), SHOE via the widely sold Puma sneaker brand with its leaping-cat logo; familiar to a general U.S. audience and not dated.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_cat__snake",
@@ -51790,6 +52738,46 @@
                 "revealExplanation": "Pointy-eared elves are a Christmas tradition."
               },
               "note": "coordinator review: same subject named twice; collapsed naturally; player-facing text only; verdict and status unchanged"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_christmas__ghost",
+      "a": "CHRISTMAS",
+      "b": "GHOST",
+      "source": "x06",
+      "pairNote": "Strong; avoid DUCK or RICH on the same board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCROOGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Scrooge learns the meaning of Christmas.",
+          "wordBConnection": "Ghosts visit Scrooge on Christmas Eve.",
+          "revealExplanation": "In A Christmas Carol, ghosts visit Ebenezer Scrooge on Christmas Eve.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "CHRISTMAS and GHOST both via A Christmas Carol, where the ghosts of Christmas Past, Present and Yet to Come visit Scrooge; universally known.",
+              "fix": null
             }
           }
         }
@@ -60024,6 +61012,86 @@
       ]
     },
     {
+      "pair_id": "p_deer__disney",
+      "a": "DEER",
+      "b": "DISNEY",
+      "source": "x06",
+      "pairNote": "Easy and clean; DEER + ICE is the more delightful BAMBI pairing.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BAMBI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Bambi is a young deer.",
+          "wordBConnection": "Bambi is a Disney classic.",
+          "revealExplanation": "Bambi is Disney's young deer.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DEER via Bambi being a young deer, DISNEY via the 1942 Disney classic; instant and fair, though DISNEY as a target makes it a plain 'name the Disney deer' clue.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_deer__ice",
+      "a": "DEER",
+      "b": "ICE",
+      "source": "x06",
+      "pairNote": "Lovely scene-based character clue; the ice scene is widely remembered.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BAMBI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Bambi is a young deer.",
+          "wordBConnection": "Bambi slides around on the ice.",
+          "revealExplanation": "In Disney's Bambi, the young deer slips and slides on a frozen pond.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DEER via Bambi himself, ICE via the iconic scene of Bambi slipping on the frozen pond with Thumper; a warm, memorable scene that clicks.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_desert__worm",
       "a": "DESERT",
       "b": "WORM",
@@ -65773,6 +66841,46 @@
       ]
     },
     {
+      "pair_id": "p_dog__letter",
+      "a": "DOG",
+      "b": "LETTER",
+      "source": "x06",
+      "pairNote": "Great everyday-scene clue with a smile built in.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "MAILMAN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Dogs famously bark at the mailman.",
+          "wordBConnection": "The mailman delivers letters.",
+          "revealExplanation": "The mailman brings the letters, and dogs famously bark at him.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "LETTER via the mailman delivering letters, DOG via the classic dog-barks-at-the-mailman trope; a funny shared situation that clicks instantly.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_dog__light",
       "a": "DOG",
       "b": "LIGHT",
@@ -67157,6 +68265,46 @@
       }
     },
     {
+      "pair_id": "p_dog__snack",
+      "a": "DOG",
+      "b": "SNACK",
+      "source": "x06",
+      "pairNote": "Excellent character clue.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCOOBY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Scooby-Doo is a cartoon dog.",
+          "wordBConnection": "He'll do anything for a Scooby Snack.",
+          "revealExplanation": "Scooby-Doo is the cartoon dog who will do anything for a Scooby Snack.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DOG via Scooby-Doo the cartoon Great Dane, SNACK via Scooby Snacks; beloved, instantly recognized character with a signature food.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_dog__snake",
       "a": "DOG",
       "b": "SNAKE",
@@ -67870,6 +69018,46 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_dog__wizard",
+      "a": "DOG",
+      "b": "WIZARD",
+      "source": "x06",
+      "pairNote": "Clean, easy. The WIZARD line is accurate but bland; optional livelier line (not a correction): \"Toto pulls back the curtain to reveal the Wizard of Oz.\" Do not place AFRICA + DOG on the same board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TOTO",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Toto is Dorothy's little dog.",
+          "wordBConnection": "Toto travels to see the Wizard of Oz.",
+          "revealExplanation": "Toto is Dorothy's little dog in The Wizard of Oz.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DOG via Toto as Dorothy's dog, WIZARD via The Wizard of Oz; easy and fair, and a nice touch that Toto is the one who pulls back the curtain on the Wizard.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_dog__wolf",
@@ -72989,6 +74177,46 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "DUCK via down feathers and FOOTBALL via downs; a clean double meaning with a nice misdirect."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_duck__rich",
+      "a": "DUCK",
+      "b": "RICH",
+      "source": "x06",
+      "pairNote": "Very satisfying; the DuckTales image of him diving into gold coins sells it.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCROOGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Scrooge McDuck is a cartoon duck.",
+          "wordBConnection": "Scrooge McDuck swims in his money.",
+          "revealExplanation": "Scrooge McDuck is a famously rich cartoon duck.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "DUCK via Scrooge McDuck, RICH via his money bin (and the Dickens miser behind the name), a fun pop-culture click.",
+              "fix": null
             }
           }
         }
@@ -79102,6 +80330,59 @@
       ]
     },
     {
+      "pair_id": "p_feather__laugh",
+      "a": "FEATHER",
+      "b": "LAUGH",
+      "source": "x06",
+      "pairNote": "Good easy clue; the explanation 'A feather tickle makes you laugh' reads awkwardly, so a smoother sentence is offered.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TICKLE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A feather tickles.",
+          "wordBConnection": "A tickle makes you laugh.",
+          "revealExplanation": "Tickling someone with a feather makes them laugh.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_property",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "text_fix"
+              ],
+              "reason": "FEATHER via the classic feather used to tickle, LAUGH via tickling making you laugh; a simple, fair cause-and-effect click.",
+              "fix": "Tickling someone with a feather makes them laugh."
+            },
+            "textCorrection": {
+              "by": "main session (claude-opus-5-5), x06 reviewer fix",
+              "date": "2026-10-20",
+              "from": {
+                "revealExplanation": "A feather tickle makes you laugh."
+              },
+              "to": {
+                "revealExplanation": "Tickling someone with a feather makes them laugh."
+              },
+              "note": "x06-reviewer-b: awkward wording; player-facing text only; verdict and status unchanged"
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_fence__kitchen",
       "a": "FENCE",
       "b": "KITCHEN",
@@ -84824,6 +86105,46 @@
       ]
     },
     {
+      "pair_id": "p_fish__memory",
+      "a": "FISH",
+      "b": "MEMORY",
+      "source": "x06",
+      "pairNote": "Strong; avoid placing with BLUE + MEMORY on one board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "DORY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Dory is a fish in Finding Nemo.",
+          "wordBConnection": "Dory has trouble with her short-term memory.",
+          "revealExplanation": "Dory is the forgetful fish of Finding Nemo.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "FISH via Dory the Finding Nemo fish, MEMORY via her famous forgetfulness; instant Pixar click.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_fish__monster",
       "a": "FISH",
       "b": "MONSTER",
@@ -87838,6 +89159,46 @@
       ]
     },
     {
+      "pair_id": "p_football__plane",
+      "a": "FOOTBALL",
+      "b": "PLANE",
+      "source": "x06",
+      "pairNote": "Excellent; text accurate.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TOUCHDOWN",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A touchdown scores six points.",
+          "wordBConnection": "A plane touches down when it lands.",
+          "revealExplanation": "A touchdown scores six points in football, and a plane touches down when it lands.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "FOOTBALL via the six-point score, PLANE via a plane touching down on landing; a crisp sports double meaning.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_football__stage",
       "a": "FOOTBALL",
       "b": "STAGE",
@@ -87876,6 +89237,46 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Football: the coach on the sidelines; stage: stagecoach. STAGE is cleverly read as half a compound rather than a theatre stage."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_football__truck",
+      "a": "FOOTBALL",
+      "b": "TRUCK",
+      "source": "x06",
+      "pairNote": "Excellent double meaning plus scene.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TAILGATE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Football fans tailgate before the game.",
+          "wordBConnection": "A truck's tailgate folds down at the back.",
+          "revealExplanation": "Football fans tailgate in the parking lot, partying off the back of a truck.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "FOOTBALL via pre-game tailgating in the stadium lot, TRUCK via the truck's literal tailgate; a very American double meaning that clicks right away.",
+              "fix": null
             }
           }
         }
@@ -88279,6 +89680,46 @@
       }
     },
     {
+      "pair_id": "p_friend__pajamas",
+      "a": "FRIEND",
+      "b": "PAJAMAS",
+      "source": "x06",
+      "pairNote": "Easy, pleasant scene clue.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SLEEPOVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A sleepover is a night with friends.",
+          "wordBConnection": "Everyone wears pajamas at a sleepover.",
+          "revealExplanation": "A sleepover is a night in pajamas with friends.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "FRIEND via a sleepover being a night at a friend's, PAJAMAS via everyone in PJs; a warm, familiar scene.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_fruit__joke",
       "a": "FRUIT",
       "b": "JOKE",
@@ -88422,6 +89863,48 @@
               "better_hint": null,
               "flags": [],
               "reason": "Jam is made from fruit, and paper gets stuck in a paper jam; both instant.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_fruit__phone",
+      "a": "FRUIT",
+      "b": "PHONE",
+      "source": "x06",
+      "pairNote": "APPLE (iPhone maker) is the more current alternative and also good; both can live side by side, BLACKBERRY being the more distinctive one. Younger players may need a beat on the phone side.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BLACKBERRY",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A blackberry is a fruit.",
+          "wordBConnection": "BlackBerry made a famous early smartphone.",
+          "revealExplanation": "BlackBerry made a famous early smartphone, and a blackberry is a fruit.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "double_meaning",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": "APPLE",
+              "flags": [
+                "dated"
+              ],
+              "reason": "FRUIT via the blackberry itself, PHONE via the BlackBerry handset; the phone is no longer sold but is still widely remembered, and it is a phone in its own right, which makes the click direct.",
               "fix": null
             }
           }
@@ -91554,6 +93037,46 @@
         "status": "held",
         "stretch": true
       }
+    },
+    {
+      "pair_id": "p_ghost__rich",
+      "a": "GHOST",
+      "b": "RICH",
+      "source": "x06",
+      "pairNote": "Good, though CHRISTMAS, DUCK or MONEY on the board would compete.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SCROOGE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Ghosts visit Scrooge on Christmas Eve.",
+          "wordBConnection": "Ebenezer Scrooge is rich and miserly.",
+          "revealExplanation": "Rich, miserly Ebenezer Scrooge is visited by ghosts in A Christmas Carol.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "GHOST via the Christmas Carol ghosts, RICH via Scrooge's wealth and miserliness; both sides are central to the character.",
+              "fix": null
+            }
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_ghost__ring",
@@ -97719,6 +99242,46 @@
       ]
     },
     {
+      "pair_id": "p_god__lightning",
+      "a": "GOD",
+      "b": "LIGHTNING",
+      "source": "x06",
+      "pairNote": "Easy but satisfying; THOR would compete if HAMMER were in play, but ZEUS is the iconic bolt-thrower.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ZEUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Zeus is king of the Greek gods.",
+          "wordBConnection": "Zeus hurls lightning bolts.",
+          "revealExplanation": "Zeus, king of the Greek gods, hurls lightning bolts.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "GOD via king of the Greek gods, LIGHTNING via his signature lightning bolt; an easy, clean mythology click.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_god__moon",
       "a": "GOD",
       "b": "MOON",
@@ -101990,6 +103553,46 @@
       ]
     },
     {
+      "pair_id": "p_green__puppet",
+      "a": "GREEN",
+      "b": "PUPPET",
+      "source": "x06",
+      "pairNote": "Excellent character clue; 'Muppet puppet' line is accurate.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "KERMIT",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Kermit is green.",
+          "wordBConnection": "Kermit is a Muppet puppet.",
+          "revealExplanation": "Kermit the Frog is the Muppets' famous green puppet.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "GREEN via Kermit the green frog (and 'It's Not Easy Being Green'), PUPPET via him being the most famous Muppet; instantly recognizable.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_green__shrek",
       "a": "GREEN",
       "b": "SHREK",
@@ -103025,6 +104628,46 @@
             "date": "2026-10-19",
             "status": "human_approved",
             "reason": "owner-selected pair, x02 brief 2026-10-19: Buzz Lightyear is Toy Story's space ranger, and a buzz cut is a very short haircut."
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_hair__witch",
+      "a": "HAIR",
+      "b": "WITCH",
+      "source": "x06",
+      "pairNote": "Strong storybook clue; TOWER on the board would compete with WITCH.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RAPUNZEL",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Rapunzel lets down her long hair.",
+          "wordBConnection": "A witch locks Rapunzel in a tower.",
+          "revealExplanation": "A witch locks Rapunzel in a tower, where she lets down her long hair.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "HAIR via 'let down your hair', WITCH via the witch (enchantress, Mother Gothel in Tangled) who locks her in the tower; both are core story elements.",
+              "fix": null
+            }
           }
         }
       ]
@@ -107127,6 +108770,46 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "Sub and hero are both names for the long sandwich; the sub side is instant and the hero side is the small reveal."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_himalayas__monster",
+      "a": "HIMALAYAS",
+      "b": "MONSTER",
+      "source": "x06",
+      "pairNote": "Solid legend clue; MONSTER + SNOW is the slightly more instant YETI pairing.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "YETI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The Yeti is said to roam the Himalayas.",
+          "wordBConnection": "The Yeti is a legendary monster.",
+          "revealExplanation": "The Yeti is a legendary monster said to roam the Himalayas.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "HIMALAYAS via the Yeti of Himalayan legend, MONSTER via its status as a legendary monster; fair and familiar.",
+              "fix": null
             }
           }
         }
@@ -127585,6 +129268,46 @@
       ]
     },
     {
+      "pair_id": "p_king__sword",
+      "a": "KING",
+      "b": "SWORD",
+      "source": "x06",
+      "pairNote": "The default home for EXCALIBUR; keep STONE and LAKE off the board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "EXCALIBUR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Excalibur belongs to King Arthur.",
+          "wordBConnection": "Excalibur is a legendary sword.",
+          "revealExplanation": "Excalibur is King Arthur's legendary sword.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "SWORD because Excalibur is the legendary sword, KING via King Arthur who wields it; instant and accurate.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_king__toy",
       "a": "KING",
       "b": "TOY",
@@ -131406,6 +133129,48 @@
               "better_hint": null,
               "flags": [],
               "reason": "LADYBUG via its black spots and SUN via 'sunspots'; one strong side and one familiar-but-softer side.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_lake__sword",
+      "a": "LAKE",
+      "b": "SWORD",
+      "source": "x06",
+      "pairNote": "Accurate and defensible (Malory's Lady of the Lake gives Arthur Excalibur), and it would work on a board without KING/STONE; the call between PASS and BORDERLINE is genuinely close.",
+      "reviewerBestAvailable": null,
+      "playableHints": 0,
+      "clues": [
+        {
+          "text": "EXCALIBUR",
+          "status": "held",
+          "heldReason": "review: borderline",
+          "type": "x06-proposal",
+          "wordAConnection": "The Lady of the Lake gives Arthur Excalibur.",
+          "wordBConnection": "Excalibur is King Arthur's sword.",
+          "revealExplanation": "In Arthurian legend, the Lady of the Lake gives Arthur his sword, Excalibur.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "BORDERLINE",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 1,
+              "recognizability": "moderate",
+              "better_hint": null,
+              "flags": [
+                "uncertain"
+              ],
+              "reason": "SWORD is immediate, but the LAKE side depends on remembering the Lady of the Lake, which is known but well behind King Arthur and the sword in the stone, so many players would reach for KING or STONE first and some would not see LAKE at all.",
               "fix": null
             }
           }
@@ -139878,6 +141643,46 @@
       ]
     },
     {
+      "pair_id": "p_monster__snow",
+      "a": "MONSTER",
+      "b": "SNOW",
+      "source": "x06",
+      "pairNote": "Clean, easy; avoid placing with HIMALAYAS + MONSTER on the same board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "YETI",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "The Yeti is a legendary monster.",
+          "wordBConnection": "The Yeti is the abominable snowman.",
+          "revealExplanation": "The Yeti, the abominable snowman, is a legendary snow monster.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "MONSTER via the Yeti as a legendary beast, SNOW via its 'abominable snowman' nickname and snowy home; instant and fair.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_monster__toy",
       "a": "MONSTER",
       "b": "TOY",
@@ -144503,6 +146308,48 @@
               "better_hint": null,
               "flags": [],
               "reason": "MOUTH via anatomical jaws and SHARK via the Jaws movie (and the shark's own jaws); instant.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_movie__pajamas",
+      "a": "MOVIE",
+      "b": "PAJAMAS",
+      "source": "x06",
+      "pairNote": "Softer than FRIEND + PAJAMAS because MOVIE is one of several sleepover activities; still a real shared scene, so PASS, but a second opinion is welcome.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "SLEEPOVER",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A sleepover means a late movie.",
+          "wordBConnection": "Everyone wears pajamas at a sleepover.",
+          "revealExplanation": "A sleepover means pajamas and a late movie.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 1,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [
+                "uncertain"
+              ],
+              "reason": "PAJAMAS via everyone in PJs at a sleepover, MOVIE via the late-night movie that is a sleepover staple; the movie side is a common but not defining part of a sleepover.",
               "fix": null
             }
           }
@@ -149848,6 +151695,46 @@
       }
     },
     {
+      "pair_id": "p_olympus__thunder",
+      "a": "OLYMPUS",
+      "b": "THUNDER",
+      "source": "x06",
+      "pairNote": "Good; keep GOD and LIGHTNING off the same board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "ZEUS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Zeus rules from Mount Olympus.",
+          "wordBConnection": "Zeus hurls thunderbolts.",
+          "revealExplanation": "Zeus rules from Mount Olympus and hurls thunderbolts.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "OLYMPUS via Zeus ruling from Mount Olympus (familiar from Disney's Hercules and Percy Jackson), THUNDER via his thunderbolts; both sides are core to Zeus.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_opera__organ",
       "a": "OPERA",
       "b": "ORGAN",
@@ -150485,6 +152372,46 @@
               "better_hint": null,
               "flags": [],
               "reason": "Picnic table (TABLE) and picnics in the park (PARK); plain but instant.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_party__truck",
+      "a": "PARTY",
+      "b": "TRUCK",
+      "source": "x06",
+      "pairNote": "Familiar phrase-join with a literal truck part; passes because both sides are immediate. FOOTBALL + TRUCK is the stronger use of TAILGATE.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "TAILGATE",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A tailgate party happens before a big game.",
+          "wordBConnection": "A truck's tailgate folds down at the back.",
+          "revealExplanation": "A tailgate party happens off the lowered back of a truck.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "phrase_join",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "PARTY via the instantly familiar phrase 'tailgate party', TRUCK via the truck's literal tailgate; both halves are immediate, though less surprising than the FOOTBALL version.",
               "fix": null
             }
           }
@@ -153696,6 +155623,46 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "SCORPION because scorpions sting; POLICE via Sting, frontman of The Police (and 'sting operation' as a bonus)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_pool__whistle",
+      "a": "POOL",
+      "b": "WHISTLE",
+      "source": "x06",
+      "pairNote": "Solid easy scene; the 'no running!' whistle at the pool is arguably even more familiar than the beach version.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "LIFEGUARD",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "A lifeguard watches the pool.",
+          "wordBConnection": "Lifeguards blow a whistle.",
+          "revealExplanation": "A lifeguard watches the pool with a whistle ready.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "POOL via the lifeguard's chair at the pool, WHISTLE via the whistle blown at running kids; clear, familiar scene.",
+              "fix": null
             }
           }
         }
@@ -162739,6 +164706,86 @@
       }
     },
     {
+      "pair_id": "p_school__slide",
+      "a": "SCHOOL",
+      "b": "SLIDE",
+      "source": "x06",
+      "pairNote": "Pleasant scene clue; avoid placing with SCHOOL + SWING on one board.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RECESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Recess is the break in the school day.",
+          "wordBConnection": "Kids line up for the slide at recess.",
+          "revealExplanation": "At school recess, kids line up for the slide.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "SCHOOL via recess as the school-day break, SLIDE via the playground slide at recess; a fair, nostalgic scene.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_school__swing",
+      "a": "SCHOOL",
+      "b": "SWING",
+      "source": "x06",
+      "pairNote": "Same strength as SCHOOL + SLIDE.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "RECESS",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Recess is the break in the school day.",
+          "wordBConnection": "Kids race for the swings at recess.",
+          "revealExplanation": "At school recess, kids race for the swings.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-b",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "scene",
+              "delight": 1,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "SCHOOL via recess in the school day, SWING via the race for the swings at recess; fair and nostalgic.",
+              "fix": null
+            }
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_science__silver",
       "a": "SCIENCE",
       "b": "SILVER",
@@ -168596,6 +170643,46 @@
               "recognizability": "broad",
               "flags": [],
               "reason": "The Statue of Liberty (dedicated 1886) is the statue, and her raised torch is its defining feature."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_stone__sword",
+      "a": "STONE",
+      "b": "SWORD",
+      "source": "x06",
+      "pairNote": "Strong and well hedged.",
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "EXCALIBUR",
+          "status": "ai_reviewed",
+          "heldReason": null,
+          "type": "x06-proposal",
+          "wordAConnection": "Arthur pulls the sword from the stone.",
+          "wordBConnection": "Excalibur is King Arthur's sword.",
+          "revealExplanation": "In many retellings, young Arthur pulls the sword Excalibur from a stone.",
+          "reference": null,
+          "provenance": {
+            "source": "x06",
+            "blindReview": {
+              "reviewer": "x06-reviewer-a",
+              "model": "claude-opus-5-5",
+              "date": "2026-10-19",
+              "verdict": "PASS",
+              "mechanism": "shared_reference",
+              "delight": 2,
+              "a": 2,
+              "b": 2,
+              "fairness": 2,
+              "recognizability": "broad",
+              "better_hint": null,
+              "flags": [],
+              "reason": "SWORD via Excalibur itself, STONE via the sword in the stone (Disney's The Sword in the Stone), the most famous Arthurian image; the explanation correctly hedges 'in many retellings' since some versions separate the two swords.",
+              "fix": null
             }
           }
         }
