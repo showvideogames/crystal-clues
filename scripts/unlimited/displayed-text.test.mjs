@@ -71,3 +71,18 @@ test("owner rejection: CAMOUFLAGE + HOOK -> FLY is never served or re-proposed",
   assert.equal(e?.decision, "rejected"); assert.equal(e.by, "owner");
   assert.ok(!client.pairs.find((x) => x.id === "p_camouflage__hook")?.hints.some((h) => h.text === "FLY"));
 });
+
+test("x05 owner batch: served choices match the owner's decisions (LURE preferred, two equal sets, no FLY)", (t) => {
+  const serve = (id) => client.pairs.find((x) => x.id === id)?.hints.map((h) => h.text) || null;
+  if (!serve("p_hook__perfume")) return t.skip("x05 content not in this export");
+  assert.deepEqual(serve("p_television__toilet"), ["POOH"]);
+  assert.deepEqual(serve("p_camouflage__hook"), ["LURE"]);
+  assert.deepEqual(serve("p_hook__perfume"), ["LURE"]);
+  assert.deepEqual(serve("p_nurse__roll"), ["BANDAGE"]);
+  assert.deepEqual(serve("p_treasure__war"), ["SPOILS"]);
+  assert.deepEqual([...serve("p_sea__witness")].sort(), ["LOOKOUT", "SEE"]);
+  assert.deepEqual([...serve("p_appetite__salad")].sort(), ["APPETIZER", "VEGETARIAN"]);
+  for (const id of ["p_television__toilet", "p_sea__witness", "p_camouflage__hook", "p_hook__perfume", "p_nurse__roll", "p_treasure__war", "p_appetite__salad"])
+    for (const c of byId.get(id).clues) { assert.equal(c.status, "human_approved"); assert.equal(c.provenance.addedBy, "owner"); }
+  assert.ok(!byId.get("p_camouflage__hook").clues.some((c) => c.text === "FLY"));
+});
