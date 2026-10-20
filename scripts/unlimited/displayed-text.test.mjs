@@ -503,12 +503,28 @@ test("x21: 220 candidates on unseen pairs; 215 PASS, 4 BORDERLINE, 1 FAIL; JACK,
   assert.doesNotMatch(byId.get("p_ghost__song").clues[0].revealExplanation, /three ghosts/);
 });
 
-test("x22: 213 candidates on unseen pairs; 204 served after blind review, 9 BORDERLINE held; reviewer text fixes traceable", () => {
+test("x22: 213 candidates on unseen pairs; 204 PASS, 9 BORDERLINE; parent cleanup: 4 accepted, 5 coordinator selections, YORICK and JUMBO replaced; text fixes traceable", () => {
   const x22 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x22").map((c) => ({ p, c })));
   assert.equal(x22.length, 213);
   const n = (s) => x22.filter(({ c }) => c.status === s).length;
-  assert.equal(n("ai_reviewed"), 204); assert.equal(n("held"), 9); assert.equal(n("rejected"), 0);
-  for (const { p, c } of x22) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  assert.equal(x22.filter(({ c }) => c.provenance.blindReview.verdict === "BORDERLINE").length, 9, "raw reviews kept");
+  // held: SUNLIGHT, PARROT, NOCTURNAL, SKITTLES, BOWLER (review BORDERLINE) and YORICK, JUMBO (review PASS, behind BONEHEAD, DUMBO)
+  assert.equal(n("ai_reviewed"), 206); assert.equal(n("held"), 7); assert.equal(n("rejected"), 0);
+  // CARD is an accepted alternate: playable, but FLASH is the pair's canonical hint
+  for (const { p, c } of x22) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed" && p.pair_id !== "p_camera__memory",`${p.pair_id} ${c.text}`);
+  for (const [id, h, old, rule] of [["p_camera__memory", "FLASH", "CARD", "canonical"], ["p_stone__troll", "BRIDGE", "SUNLIGHT", "provisional"], ["p_pirate__silver", "TREASURE", "PARROT", "provisional"], ["p_fool__skull", "BONEHEAD", "YORICK", "canonical"], ["p_circus__jet", "DUMBO", "JUMBO", "canonical"]]) {
+    const cs = byId.get(id).clues; const sel = cs.find((c) => c.text === h);
+    assert.equal(sel.override.status, "coordinator_accept"); assert.equal(sel.provenance.blindReview, null); assert.match(sel.override.by, /not an owner decision/);
+    assert.ok(cs.find((c) => c.text === old).provenance.blindReview, `${old} raw review kept`);
+    const e = client.pairs.find((x) => x.id === id); assert.equal(e.rule, rule); assert.deepEqual(e.hints.map((x) => x.text), [h]);
+  }
+  assert.equal(byId.get("p_camera__memory").clues.find((c) => c.text === "CARD").status, "ai_reviewed");
+  for (const [id, t] of [["p_doctor__history", "MEDICAL"], ["p_comic__mint", "CONDITION"], ["p_shield__turtle", "SHELL"]]) { const c = byId.get(id).clues.find((x) => x.text === t); assert.equal(c.override.status, "coordinator_accept"); assert.equal(c.provenance.blindReview.verdict, "BORDERLINE"); }
+  const bw = byId.get("p_bowling__hat").clues[0]; assert.equal(bw.status, "held"); assert.match(bw.override.reason, /target-stem rule/);
+  for (const id of ["p_einstein__shoe", "p_fox__mask"]) assert.equal(byId.get(id).clues.find((c) => c.provenance?.source === "x22").reference.recognizability, "moderate");
   const g = byId.get("p_virus__wheat").clues[0]; assert.match(g.revealExplanation, /embryo/); assert.match(g.provenance.textCorrection.from.revealExplanation, /core/);
   assert.match(byId.get("p_mexico__queen").clues[0].revealExplanation, /^Eastern monarch/);
+  const foul = byId.get("p_baseball__play").clues[0]; assert.match(foul.wordAConnection, /foul balls and foul territory/); assert.match(foul.provenance.textCorrection.from.wordAConnection, /lands outside/);
+  assert.match(byId.get("p_nasa__team").clues[0].wordBConnection, /familiar members of/);
+  const ph = byId.get("p_ghost__theater").clues[0]; assert.match(ph.wordBConnection, /the musical .* became Broadway's longest-running show/); assert.ok(ph.provenance.textCorrectionHistory?.length || ph.provenance.textCorrection, "drafted text kept");
 });
