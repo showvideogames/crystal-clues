@@ -1,0 +1,1024 @@
+{
+ "_metadata": {
+  "reviewer": "x18-reviewer-a",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x18-ra-input.json",
+  "rubric": "x18 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the input file x18-ra-input.json; no other file, repository search, web or API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_alarm__bark",
+   "a": "ALARM",
+   "b": "BARK",
+   "hints": [
+    {
+     "text": "WATCHDOG",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A watchdog's whole job is to raise the ALARM, and it does so by BARKing; both sides are immediate and the clue is clean.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WATCHDOG"],
+   "pair_note": "Straightforward, fair clue; easy but satisfying."
+  },
+  {
+   "pair_id": "p_arrow__point",
+   "a": "ARROW",
+   "b": "POINT",
+   "hints": [
+    {
+     "text": "CURSOR",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The default cursor is an ARROW and it is the thing you POINT with (point-and-click); both links are everyday computer knowledge.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CURSOR"],
+   "pair_note": "POINTER would contain a target, so CURSOR is the right choice."
+  },
+  {
+   "pair_id": "p_banana__yellow",
+   "a": "BANANA",
+   "b": "YELLOW",
+   "hints": [
+    {
+     "text": "MINIONS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Minions are iconically YELLOW and famously obsessed with BANANAs; a fun pop-culture route that clicks instantly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MINIONS"],
+   "pair_note": "Lively pop-culture clue; better than a flat fruit-colour link."
+  },
+  {
+   "pair_id": "p_bee__butterfly",
+   "a": "BEE",
+   "b": "BUTTERFLY",
+   "hints": [
+    {
+     "text": "ALI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "\"Float like a BUTTERFLY, sting like a BEE\" is Ali's signature line, so the three-letter hint lands both targets with a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ALI"],
+   "pair_note": "Excellent; short hint, famous quote, lifts a plain insect pair."
+  },
+  {
+   "pair_id": "p_board__poison",
+   "a": "BOARD",
+   "b": "POISON",
+   "hints": [
+    {
+     "text": "DART",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "Dartboard for BOARD and poison dart (and poison dart frog) for POISON; two familiar phrases that pull the hint in different directions.",
+     "fix": "Poison dart frogs are named for the toxin some hunters have used to tip blowgun darts."
+    }
+   ],
+   "strong_hints": ["DART"],
+   "pair_note": "Strong. The POISON line is slightly muddled (\"their use\" reads as the frogs being used as darts); the fix clarifies it."
+  },
+  {
+   "pair_id": "p_boot__eraser",
+   "a": "BOOT",
+   "b": "ERASER",
+   "hints": [
+    {
+     "text": "RUBBER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["british_only"],
+     "verdict": "PASS",
+     "reason": "Rubber boots for BOOT, and a rubber is the British word for an ERASER (US erasers are also rubber), so the route works even for players who miss the Britishism.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RUBBER"],
+   "pair_note": "British sense is a bonus, not a requirement, since erasers are commonly made of rubber; the explanation could mention that for U.S. players."
+  },
+  {
+   "pair_id": "p_brush__drum",
+   "a": "BRUSH",
+   "b": "DRUM",
+   "hints": [
+    {
+     "text": "JAZZ",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "JAZZ reaches DRUM only as one of many jazz instruments and BRUSH only via the musician-specific knowledge of wire brushes, so most players would need the explanation to see the pair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "True and pleasant once explained, but JAZZ more naturally evokes sax, trumpet or piano; no clearly better single word came to mind."
+  },
+  {
+   "pair_id": "p_camera__pupil",
+   "a": "CAMERA",
+   "b": "PUPIL",
+   "hints": [
+    {
+     "text": "APERTURE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "APERTURE is a core CAMERA term and the PUPIL is the eye's aperture, a common school-science analogy; PUPIL's student sense adds nice misdirection.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["APERTURE"],
+   "pair_note": "IRIS is an alternative but the camera iris is less familiar; APERTURE is fine."
+  },
+  {
+   "pair_id": "p_card__pool",
+   "a": "CARD",
+   "b": "POOL",
+   "hints": [
+    {
+     "text": "SHARK",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Card shark and pool shark are both instantly familiar idioms for a hustler, and SHARK also misdirects toward the swimming-pool sense.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHARK"],
+   "pair_note": "A phrase-join worth keeping: both phrases share the same figurative sense, which makes it satisfying."
+  },
+  {
+   "pair_id": "p_cast__dice",
+   "a": "CAST",
+   "b": "DICE",
+   "hints": [
+    {
+     "text": "RUBICON",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "text_fix", "uncertain"],
+     "verdict": "PASS",
+     "reason": "Crossing the RUBICON is tied to Caesar's \"the die is CAST\", giving CAST directly and DICE via die, a classic-history aha, though some players know the Rubicon only as \"point of no return\".",
+     "fix": "Die is the singular of dice, as in Caesar's saying at the Rubicon."
+    }
+   ],
+   "strong_hints": ["RUBICON"],
+   "pair_note": "Judgement call: an indirect-knowledge aha of the RELATIVE type, but the quote-to-river link is less universal; the DICE line's \"one of a pair of dice\" is clumsy and dice need not come in pairs."
+  },
+  {
+   "pair_id": "p_chair__ski",
+   "a": "CHAIR",
+   "b": "SKI",
+   "hints": [
+    {
+     "text": "LIFT",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Chairlift and ski lift are instantly familiar compounds that describe the same object, so the pairing is coherent rather than arbitrary.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LIFT"],
+   "pair_note": "Easy but clean phrase-join."
+  },
+  {
+   "pair_id": "p_chest__drum",
+   "a": "CHEST",
+   "b": "DRUM",
+   "hints": [
+    {
+     "text": "GORILLA",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "GORILLA brings CHEST-beating straight to mind, but DRUM is only the description of that sound, so the second side depends on the player thinking \"drumming\" rather than \"beating\" or \"pounding\".",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Facts are true (cupped hands, researchers do call it drumming); the weakness is DRUM being a secondary association. Could reasonably be PASSed by a reviewer who finds the chest-as-drum image vivid."
+  },
+  {
+   "pair_id": "p_clock__swing",
+   "a": "CLOCK",
+   "b": "SWING",
+   "hints": [
+    {
+     "text": "PENDULUM",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A pendulum is defined by its SWING and is the classic timekeeper of a grandfather CLOCK; both sides are immediate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PENDULUM"],
+   "pair_note": "Solid, obvious and fair."
+  },
+  {
+   "pair_id": "p_cocktail__umbrella",
+   "a": "COCKTAIL",
+   "b": "UMBRELLA",
+   "hints": [
+    {
+     "text": "TIKI",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TIKI evokes tropical COCKTAILs and the little paper UMBRELLA garnish together in one vivid image.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TIKI"],
+   "pair_note": "Nice scene clue that rescues UMBRELLA from its rain sense."
+  },
+  {
+   "pair_id": "p_country__state",
+   "a": "COUNTRY",
+   "b": "STATE",
+   "hints": [
+    {
+     "text": "GEORGIA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GEORGIA is both a U.S. STATE and a COUNTRY in the Caucasus, a well-known double that also nods to country music.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GEORGIA"],
+   "pair_note": "Classic and satisfying."
+  },
+  {
+   "pair_id": "p_cross__vampire",
+   "a": "CROSS",
+   "b": "VAMPIRE",
+   "hints": [
+    {
+     "text": "CRUCIFIX",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "A CRUCIFIX is a kind of CROSS and the classic ward against a VAMPIRE in folklore and film, so the second connection is genuine.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CRUCIFIX"],
+   "pair_note": "Synonym on one side but the vampire link carries it."
+  },
+  {
+   "pair_id": "p_dance__turn",
+   "a": "DANCE",
+   "b": "TURN",
+   "hints": [
+    {
+     "text": "PIROUETTE",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "A PIROUETTE is a spinning TURN and a signature ballet DANCE move; essentially a definition, but fair and accurate for both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PIROUETTE"],
+   "pair_note": "Easy, low delight, but honest; \"full turn\" is acceptable since pirouettes are at least one full rotation."
+  },
+  {
+   "pair_id": "p_desert__palm",
+   "a": "DESERT",
+   "b": "PALM",
+   "hints": [
+    {
+     "text": "OASIS",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "An OASIS is by definition in a DESERT and the stock image is a ring of PALM trees around water.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["OASIS"],
+   "pair_note": "Clear and fair."
+  },
+  {
+   "pair_id": "p_dinosaur__sail",
+   "a": "DINOSAUR",
+   "b": "SAIL",
+   "hints": [
+    {
+     "text": "SPINOSAURUS",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SPINOSAURUS is plainly a DINOSAUR, and its back SAIL is its defining feature, well known from Jurassic Park III and dinosaur books.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPINOSAURUS"],
+   "pair_note": "Fair; DINOSAUR side is a category, SAIL side is the satisfying part. Note that the more famous sail-back, Dimetrodon, is not a dinosaur, so Spinosaurus is the correct pick."
+  },
+  {
+   "pair_id": "p_drum__hammer",
+   "a": "DRUM",
+   "b": "HAMMER",
+   "hints": [
+    {
+     "text": "EAR",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The eardrum gives DRUM and the hammer (malleus) of hammer-anvil-stirrup gives HAMMER; school anatomy that turns two tool words into body parts.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["EAR"],
+   "pair_note": "Excellent aha; short hint, both sides accurate."
+  },
+  {
+   "pair_id": "p_einstein__time",
+   "a": "EINSTEIN",
+   "b": "TIME",
+   "hints": [
+    {
+     "text": "DELOREAN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": "RELATIVITY",
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "DELOREAN gives TIME instantly as the Back to the Future time machine, but EINSTEIN depends on remembering Doc Brown's dog, a film detail many players will not recall (though some may reach EINSTEIN via time-travel physics anyway).",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Facts are correct (Einstein is the first time traveller in the test run). Judgement call between mainstream film detail and fandom trivia; a fan reviewer could PASS it."
+  },
+  {
+   "pair_id": "p_fall__spring",
+   "a": "FALL",
+   "b": "SPRING",
+   "hints": [
+    {
+     "text": "CLOCKS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "\"Spring forward, fall back\" is the universal daylight-saving mnemonic for CLOCKS, and it uses the verb senses of both targets, which makes it satisfying.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CLOCKS"],
+   "pair_note": "Strong; the lines speak generally of U.S. clocks, which is acceptable despite Arizona and Hawaii."
+  },
+  {
+   "pair_id": "p_fence__window",
+   "a": "FENCE",
+   "b": "WINDOW",
+   "hints": [
+    {
+     "text": "GATES",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A FENCE has gates, and Bill GATES is the Microsoft Windows founder, so the hint flips from a garden object to a person behind a WINDOW-named product.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GATES"],
+   "pair_note": "Clever double; the FENCE side is plain but the Windows twist earns it."
+  },
+  {
+   "pair_id": "p_fishing__troll",
+   "a": "FISHING",
+   "b": "TROLL",
+   "hints": [
+    {
+     "text": "BAIT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAIT is basic FISHING gear and what an internet TROLL dangles to provoke replies, and trolling is itself a fishing method, so the two senses reinforce each other.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BAIT"],
+   "pair_note": "Good layered clue; trolling uses lures as well as bait, but the explanation's wording is not false."
+  },
+  {
+   "pair_id": "p_gate__water",
+   "a": "GATE",
+   "b": "WATER",
+   "hints": [
+    {
+     "text": "NIXON",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "NIXON calls up Watergate, which splits exactly into WATER and GATE, a fun reassembly aha with a universally known scandal.",
+     "fix": "The scandal is named after Washington's Watergate complex, whose name begins with water."
+    }
+   ],
+   "strong_hints": ["NIXON"],
+   "pair_note": "Excellent; the WATER line is accurate but wordy, so the fix only tightens it."
+  },
+  {
+   "pair_id": "p_grass__tennis",
+   "a": "GRASS",
+   "b": "TENNIS",
+   "hints": [
+    {
+     "text": "WIMBLEDON",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "WIMBLEDON is the most famous TENNIS tournament and the iconic GRASS-court event; obvious and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WIMBLEDON"],
+   "pair_note": "Easy, fair, low delight."
+  },
+  {
+   "pair_id": "p_hair__wave",
+   "a": "HAIR",
+   "b": "WAVE",
+   "hints": [
+    {
+     "text": "PERM",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A PERM is a HAIR treatment and literally short for \"permanent WAVE\", a fact that pays off nicely for players who never knew the expansion.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PERM"],
+   "pair_note": "Good hidden-etymology aha."
+  },
+  {
+   "pair_id": "p_heavy__metal",
+   "a": "HEAVY",
+   "b": "METAL",
+   "hints": [
+    {
+     "text": "LEAD",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LEAD is the textbook HEAVY METAL (toxic heavy metals, heavy as lead), and the music genre and Led Zeppelin echo add flavour.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LEAD"],
+   "pair_note": "Solid; LEAD's lead-guitar sense also nods to the music reading of the pair."
+  },
+  {
+   "pair_id": "p_hood__rich",
+   "a": "HOOD",
+   "b": "RICH",
+   "hints": [
+    {
+     "text": "ROBIN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ROBIN completes Robin HOOD, whose legend is robbing the RICH; both sides are instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ROBIN"],
+   "pair_note": "Easy and fair; RICH side keeps it from being a bare phrase-join."
+  },
+  {
+   "pair_id": "p_instrument__slide",
+   "a": "INSTRUMENT",
+   "b": "SLIDE",
+   "hints": [
+    {
+     "text": "TROMBONE",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A TROMBONE is an INSTRUMENT defined by its SLIDE; the category side is plain but the pair resolves cleanly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TROMBONE"],
+   "pair_note": "Flat but fair; INSTRUMENT is a category target."
+  },
+  {
+   "pair_id": "p_jungle__wolf",
+   "a": "JUNGLE",
+   "b": "WOLF",
+   "hints": [
+    {
+     "text": "MOWGLI",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOWGLI is the boy of The JUNGLE Book who is raised by WOLVES; both are central story facts known from the Disney films.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MOWGLI"],
+   "pair_note": "Clean story clue."
+  },
+  {
+   "pair_id": "p_knight__plate",
+   "a": "KNIGHT",
+   "b": "PLATE",
+   "hints": [
+    {
+     "text": "ARMOR",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ARMOR evokes the KNIGHT in shining armor and \"plate armor\" gives PLATE, turning the dinner-plate sense into metal.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ARMOR"],
+   "pair_note": "Fair, mildly pleasing reframe of PLATE."
+  },
+  {
+   "pair_id": "p_letter__soup",
+   "a": "LETTER",
+   "b": "SOUP",
+   "hints": [
+    {
+     "text": "ALPHABET",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The ALPHABET is made of LETTERs and alphabet SOUP is a familiar staple with letter pasta; obvious and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ALPHABET"],
+   "pair_note": "Easy but satisfying."
+  },
+  {
+   "pair_id": "p_man__small",
+   "a": "MAN",
+   "b": "SMALL",
+   "hints": [
+    {
+     "text": "ANT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ANT completes Ant-MAN and ants are proverbially SMALL, which is also the hero's shrinking power; both sides click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ANT"],
+   "pair_note": "Fair; MAN is a very generic target, but Ant-Man makes the pairing specific."
+  },
+  {
+   "pair_id": "p_memory__trip",
+   "a": "MEMORY",
+   "b": "TRIP",
+   "hints": [
+    {
+     "text": "LANE",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "\"A TRIP down MEMORY lane\" holds both targets in one instantly familiar idiom completed by LANE.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LANE"],
+   "pair_note": "A phrase-join that works because one idiom contains both targets."
+  },
+  {
+   "pair_id": "p_mud__shrek",
+   "a": "MUD",
+   "b": "SHREK",
+   "hints": [
+    {
+     "text": "SWAMP",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SHREK's swamp home is central to the film (\"get out of my swamp\") and swamps are MUDdy wetlands.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SWAMP"],
+   "pair_note": "Fair and fun; OGRE would be a rename with no MUD link, so SWAMP is the better choice."
+  },
+  {
+   "pair_id": "p_ocean__shell",
+   "a": "OCEAN",
+   "b": "SHELL",
+   "hints": [
+    {
+     "text": "CONCH",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "A CONCH is a big SHELL, and holding one to your ear to \"hear the OCEAN\" is a familiar childhood experience; the line correctly notes it is really ambient sound.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CONCH"],
+   "pair_note": "Good; SEASHELL would contain a target."
+  },
+  {
+   "pair_id": "p_pickle__vegetable",
+   "a": "PICKLE",
+   "b": "VEGETABLE",
+   "hints": [
+    {
+     "text": "CUCUMBER",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Familiar PICKLEs are pickled CUCUMBERs, and cucumbers are a salad VEGETABLE in the kitchen sense; the lines correctly hedge the botanical-fruit point.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CUCUMBER"],
+   "pair_note": "Plain but accurate; VEGETABLE is a category target."
+  },
+  {
+   "pair_id": "p_police__song",
+   "a": "POLICE",
+   "b": "SONG",
+   "hints": [
+    {
+     "text": "SIREN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A POLICE car's SIREN and the Sirens' deadly SONG in Greek myth are two distinct, well-known senses of one word.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SIREN"],
+   "pair_note": "Excellent double meaning; also nods to The Police as a band."
+  },
+  {
+   "pair_id": "p_sail__viking",
+   "a": "SAIL",
+   "b": "VIKING",
+   "hints": [
+    {
+     "text": "LONGSHIP",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LONGSHIP is the iconic VIKING vessel, pictured with its big square SAIL; fair, if a direct descriptive link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LONGSHIP"],
+   "pair_note": "Accurate and fair; modest delight."
+  },
+  {
+   "pair_id": "p_short__syrup",
+   "a": "SHORT",
+   "b": "SYRUP",
+   "hints": [
+    {
+     "text": "PANCAKE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A short stack is the diner order of PANCAKEs, giving SHORT a nice twist, and pancakes come with SYRUP.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PANCAKE"],
+   "pair_note": "Good American-diner aha on the SHORT side."
+  },
+  {
+   "pair_id": "p_skin__yard",
+   "a": "SKIN",
+   "b": "YARD",
+   "hints": [
+    {
+     "text": "SHED",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Snakes SHED their SKIN (verb) and a SHED stands in the backyard (noun); a crisp double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SHED"],
+   "pair_note": "Excellent verb/noun double."
+  },
+  {
+   "pair_id": "p_star__state",
+   "a": "STAR",
+   "b": "STATE",
+   "hints": [
+    {
+     "text": "TEXAS",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TEXAS is the Lone STAR STATE, a nickname that contains both targets and is known to nearly every U.S. player.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TEXAS"],
+   "pair_note": "Easy and fair; the flag-origin line is a reasonable simplification."
+  },
+  {
+   "pair_id": "p_swimming__trunk",
+   "a": "SWIMMING",
+   "b": "TRUNK",
+   "hints": [
+    {
+     "text": "SNORKEL",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "uncertain"],
+     "verdict": "PASS",
+     "reason": "SNORKEL gives SWIMMING at once, and TRUNK comes via the true and charming fact that swimming elephants use their trunks as snorkels, an aha that clicks once explained.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SNORKEL"],
+   "pair_note": "Judgement call: the elephant-snorkel fact is real but only moderately known; players may also reach TRUNK via swimming trunks, which helps fairness."
+  }
+ ]
+}

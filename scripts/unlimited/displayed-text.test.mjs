@@ -401,3 +401,14 @@ test("x17: 235 candidates on unseen pairs; 227 PASS + 4 BORDERLINE coordinator-a
   assert.doesNotMatch(byId.get("p_bath__gold").clues[0].revealExplanation, /while testing/);
   assert.match(byId.get("p_bike__pilot").clues[0].revealExplanation, /first controlled, powered airplane flight/);
 });
+
+test("x18: 219 candidates on unseen pairs; 211 served after blind review, 8 BORDERLINE held; reviewer text fixes traceable", () => {
+  const x18 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x18").map((c) => ({ p, c })));
+  assert.equal(x18.length, 219);
+  const n = (s) => x18.filter(({ c }) => c.status === s).length;
+  assert.equal(n("ai_reviewed"), 211); assert.equal(n("held"), 8); assert.equal(n("rejected"), 0);
+  for (const { p, c } of x18) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  const pl = byId.get("p_cast__wall").clues[0];
+  assert.doesNotMatch(pl.revealExplanation, /set a broken bone/); assert.match(pl.provenance.textCorrection.from.revealExplanation, /set a broken bone/);
+  assert.doesNotMatch(byId.get("p_cast__dice").clues[0].wordBConnection, /one of a pair/);
+});
