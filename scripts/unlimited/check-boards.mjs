@@ -55,7 +55,7 @@ for (const b of boards) {
     must(normHint(b.clues[i]) !== normHint(w1) && normHint(b.clues[i]) !== normHint(w2), `clue ${i} differs from its targets`);
     const r = b.reveal?.[i];
     must(r && new Set([r.wordA, r.wordB]).size === 2 && [w1, w2].sort().join("|") === [r.wordA, r.wordB].sort().join("|"), `reveal ${i} matches the words facing clue ${i}`);
-    must(r && r.revealExplanation && r.wordAConnection && r.wordBConnection, `reveal ${i} has player-facing text`);
+    must(r && r.wordAConnection && r.wordBConnection, `reveal ${i} has player-facing text`); // the explanation sentence is optional (shown only when present)
   });
   // 2. winnability
   const answer = slotCards.map((cardId, i) => ({ cardId, orientation: orientations[i] }));

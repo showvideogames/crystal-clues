@@ -183,7 +183,9 @@ test("editorial-bar holds lifted by the coordinator: ten served with reviews and
   const T = [["p_boss__dog", "BARK"], ["p_boss__tree", "BARK"], ["p_casino__golf", "CHIP"], ["p_casino__stocks", "CHIP"], ["p_ship__skateboard", "DECK"], ["p_balance__dragon", "SCALE"], ["p_balance__map", "SCALE"], ["p_bird__boat", "SEAGULL"], ["p_angel__stage", "WING"], ["p_buffalo__stage", "WING"]];
   for (const [id, h] of T) {
     const c = byId.get(id).clues.find((x) => x.text === h);
-    assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h), `${id} ${h} served`);
+    // BOSS + TREE: the owner chose BARKS on 2026-10-22 (consolidated-1022 review); BARK stays stored with this history
+    if (id === "p_boss__tree") assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), ["BARKS"]);
+    else assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h), `${id} ${h} served`);
     assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /^coordinator .*not an owner decision/);
     assert.equal(c.provenance.blindReview.verdict, "PASS", "the original review is kept");
     assert.match(c.override.history?.[0]?.by || "", /editorial bar/); assert.ok(c.override.history[0].superseded);
@@ -286,8 +288,9 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
   // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19),
-  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22), HE-MAN and a second DO-RE-MI (x23)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "KNOCK-KNOCK", "KOOL-AID", "POST-IT", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
+  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22), HE-MAN and a second DO-RE-MI (x23),
+  // A-FRAME, CATCH-UP, ITSY-BITSY, JACK-O-LANTERN, PAC-MAN, PING-PONG, SCI-FI, SPIDER-MAN and a second DOUBLE-DECKER and POST-IT (consolidated-1022 import)
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "A-FRAME", "CATCH-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "ITSY-BITSY", "JACK-O-LANTERN", "KNOCK-KNOCK", "KOOL-AID", "PAC-MAN", "PING-PONG", "POST-IT", "POST-IT", "SCI-FI", "SPIDER-MAN", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -550,4 +553,58 @@ test("x23: 237 candidates on unseen pairs; 233 PASS, 4 BORDERLINE; parent holds 
   assert.doesNotMatch(byId.get("p_honey__month").clues[0].revealExplanation, /comes from/);
   for (const id of ["p_coffee__siren", "p_giraffe__toy", "p_bucket__chocolate"]) assert.equal(byId.get(id).clues[0].reference.recognizability, "moderate");
   assert.match(byId.get("p_thread__worm").clues[0].provenance.textCorrection.from.wordBConnection, /named worms/);
+});
+
+test("consolidated-1022 import: append-only, PASS-only, traceable, no template sentence, labelled; owner decisions replayed from the ledger; set-asides untouched", () => {
+  const DIR = "data/unlimited/imports/consolidated-1022";
+  const imp = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "consolidated-1022").map((c) => ({ p, c })));
+  assert.deepEqual(JSON.parse(readFileSync(`${DIR}/summary.json`, "utf8")).counts, { "new-pair": 6069, alternative: 18, duplicate: 22, "set-aside": 83 });
+  assert.equal(imp.length, 6087);
+  const { decisions } = JSON.parse(readFileSync(`${DIR}/owner-decisions.json`, "utf8"));
+  const key = (x, y) => `p_${[x, y].map((w) => w.toLowerCase().replace(/ /g, "-")).sort().join("__")}`;
+  const approved = new Set(decisions.filter((d) => d.action === "approve").map((d) => `${key(...d.pair)}|${d.hint}`));
+  const prefs = JSON.parse(readFileSync("data/unlimited/library/preferences.json", "utf8")).pairs;
+  const serve = (id) => client.pairs.find((x) => x.id === id)?.hints.map((h) => h.text);
+  const batch = JSON.parse(readFileSync("data/unlimited/library/batches/consolidated-1022-batch.json", "utf8"));
+  const rec = new Map(batch.pairs.map((p) => [p.pair_id, p.clues[0]]));
+  for (const { p, c } of imp) {
+    assert.equal(c.status, approved.has(`${p.pair_id}|${c.text}`) ? "human_approved" : "ai_reviewed", `${p.pair_id} ${c.text}`);
+    assert.equal(c.provenance.blindReview.verdict, "PASS");
+    assert.equal(c.revealExplanation, "", `${p.pair_id} has no template sentence`); assert.ok(c.wordAConnection && c.wordBConnection);
+    const r = rec.get(p.pair_id); assert.equal(r.text, c.text, `${p.pair_id} traceable to the batch`);
+    assert.ok(r.importRecord.candidate_ids.length && r.importRecord.independent.every((e) => /^pass/i.test(e.verdict)));
+    assert.equal(c.provenance.request, r.importRecord.candidate_ids.join(" / "));
+    assert.deepEqual(c.contentFlags, r.contentFlags, `${p.pair_id} labels kept through the merge`);
+  }
+  assert.equal(imp.filter(({ c }) => c.contentFlags).length, 226);
+  // an alternative on an existing pair is served only when the owner made it the pair's canonical hint
+  const alts = imp.filter(({ p }) => p.clues.some((c) => !["consolidated-1022", "owner-discovery"].includes(c.provenance?.source) || (c.provenance?.source === "owner-discovery" && c.provenance.date < "2026-10-21")));
+  assert.equal(alts.length, 18);
+  for (const { p, c } of alts) assert.equal(!!serve(p.pair_id)?.includes(c.text), prefs[p.pair_id]?.canonical === c.text, `${p.pair_id} ${c.text}`);
+  // 17 source records had the two per-word lines on the wrong words: swapped back with the drafted text kept
+  const swapped = imp.filter(({ c }) => c.provenance.textCorrection?.by === "coordinator (consolidated-1022 import)");
+  assert.equal(swapped.length, 17);
+  for (const { c } of swapped) assert.deepEqual([c.wordAConnection, c.wordBConnection], [c.provenance.textCorrection.from.wordBConnection, c.provenance.textCorrection.from.wordAConnection]);
+  // set-asides stay out of the library
+  for (const e of JSON.parse(readFileSync(`${DIR}/editorial-set-aside.json`, "utf8")).entries)
+    assert.ok(!byId.get(key(...e.pair.split(" + ")))?.clues.some((c) => c.text === e.hint && c.provenance?.source === "consolidated-1022"), `${e.pair} ${e.hint} set aside`);
+  // every owner decision is in force; replaced hints stay stored
+  for (const d of decisions) {
+    const id = key(...d.pair); const c = byId.get(id).clues.find((x) => x.text === d.hint);
+    if (d.action === "hold") { assert.equal(c.status, "held"); assert.ok(!serve(id).includes(d.hint)); continue; }
+    assert.equal(c.status, "human_approved", `${id} ${d.hint}`); assert.equal(c.override.by, "owner");
+    if (d.prefer) { assert.deepEqual(serve(id), [d.hint], id); assert.equal(prefs[id].canonical, d.hint); assert.equal(prefs[id].by, "owner"); }
+    else assert.ok(serve(id).length === 1, `${id} serves one hint`);
+    if (d.replaces) assert.ok(byId.get(id).clues.some((x) => x.text === d.replaces), `${d.replaces} kept stored`);
+  }
+  assert.deepEqual(serve("p_shark__swimming"), ["OCEAN"]); assert.deepEqual(serve("p_honey__wood"), ["BEEHIVE"]); assert.deepEqual(serve("p_physical__sport"), ["ATHLETIC"]);
+  assert.deepEqual(byId.get("p_cowboy__pistol").clues.find((c) => c.text === "REVOLVER").contentFlags, ["firearms-explosives"]);
+  const minnie = byId.get("p_mouse__queen").clues.find((c) => c.text === "MINNIE");
+  assert.equal(minnie.provenance.blindReview.verdict, "FAIL", "the earlier review stays recorded"); assert.match(minnie.override.reason, /supersedes/);
+  // final decisions: PARKER for SPIDER + MAN (PETER stays stored), AERIAL for FRAME + HELICOPTER (AIR stays stored)
+  assert.deepEqual(serve("p_man__spider"), ["PARKER"]); assert.ok(byId.get("p_man__spider").clues.some((c) => c.text === "PETER"));
+  assert.deepEqual(serve("p_frame__helicopter"), ["AERIAL"]); assert.ok(byId.get("p_frame__helicopter").clues.some((c) => c.text === "AIR"));
+  assert.doesNotMatch(Object.values(byId.get("p_frame__helicopter").clues.find((c) => c.text === "AERIAL")).join(" "), /aerial frame/i);
+  // left as they were by the owner
+  assert.deepEqual(serve("p_spicy__taco"), ["JALAPENO"]); assert.deepEqual(serve("p_spider__superhero"), ["PARKER"]); assert.deepEqual(serve("p_tap__voice"), ["RECORDING"]);
 });
