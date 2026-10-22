@@ -107,14 +107,16 @@ describe("generateBoard", () => {
 
   it("has no ordering bias: pairs early and late in the library are chosen about equally", () => {
     const count = new Map(LIBRARY.pairs.map((p) => [p.id, 0]));
-    const N = 6000;
+    // 4 pairs per board: keep about 5.2 draws per pair (6,000 boards at 4,638 pairs) so a uniform generator
+    // leaves well under 1% of pairs unseen (Poisson e^-5.2 = 0.55%) at any library size.
+    const N = Math.max(6000, Math.ceil((LIBRARY.pairs.length * 5.2) / 4));
     for (let s = 1; s <= N; s++) for (const r of gen(s * 104729 + 1).reveal) count.set(r.pairId, count.get(r.pairId) + 1);
     const ids = LIBRARY.pairs.map((p) => p.id);
     const avg = (xs) => xs.reduce((a, id) => a + count.get(id), 0) / xs.length;
     const early = avg(ids.slice(0, 200)), late = avg(ids.slice(-200)), all = avg(ids);
     expect(Math.abs(early - late) / all).toBeLessThan(0.12);
     expect([...count.values()].filter((v) => v === 0).length).toBeLessThan(ids.length * 0.01);
-  });
+  }, 60_000); // N grows with the library (about 2.3x the 6,000-board loop at 10,725 pairs)
 });
 
 // Synthetic libraries for the rules the real library does not exercise yet.

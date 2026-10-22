@@ -286,8 +286,9 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   }
   assert.ok(!client.pairs.some((p) => p.hints.some((h) => /[^A-Z0-9/'-]/.test(h.text))), "only letters, digits, /, ' and - in served hints");
   // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19),
-  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22), HE-MAN and a second DO-RE-MI (x23)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "KNOCK-KNOCK", "KOOL-AID", "POST-IT", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
+  // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22), HE-MAN and a second DO-RE-MI (x23),
+  // A-FRAME, CATCH-UP, ITSY-BITSY, JACK-O-LANTERN, PAC-MAN, PING-PONG, SCI-FI, SPIDER-MAN and a second DOUBLE-DECKER and POST-IT (consolidated-1022 import)
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "A-FRAME", "CATCH-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "ITSY-BITSY", "JACK-O-LANTERN", "KNOCK-KNOCK", "KOOL-AID", "PAC-MAN", "PING-PONG", "POST-IT", "POST-IT", "SCI-FI", "SPIDER-MAN", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -550,4 +551,40 @@ test("x23: 237 candidates on unseen pairs; 233 PASS, 4 BORDERLINE; parent holds 
   assert.doesNotMatch(byId.get("p_honey__month").clues[0].revealExplanation, /comes from/);
   for (const id of ["p_coffee__siren", "p_giraffe__toy", "p_bucket__chocolate"]) assert.equal(byId.get(id).clues[0].reference.recognizability, "moderate");
   assert.match(byId.get("p_thread__worm").clues[0].provenance.textCorrection.from.wordBConnection, /named worms/);
+});
+
+test("consolidated-1022 import: append-only, PASS-only, traceable; existing served pairs, set-asides and the owner queue untouched", () => {
+  const imp = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "consolidated-1022").map((c) => ({ p, c })));
+  const sum = JSON.parse(readFileSync("data/unlimited/imports/consolidated-1022/summary.json", "utf8"));
+  assert.deepEqual(sum.counts, { "new-pair": 6087, alternative: 18, duplicate: 22, "set-aside": 65 });
+  assert.equal(imp.length, 6105);
+  const batch = JSON.parse(readFileSync("data/unlimited/library/batches/consolidated-1022-batch.json", "utf8"));
+  const rec = new Map(batch.pairs.map((p) => [p.pair_id, p.clues[0]]));
+  for (const { p, c } of imp) {
+    assert.equal(c.status, "ai_reviewed"); assert.equal(c.provenance.blindReview.verdict, "PASS");
+    const r = rec.get(p.pair_id); assert.equal(r.text, c.text, `${p.pair_id} traceable to the batch`);
+    assert.ok(r.importRecord.candidate_ids.length && r.importRecord.independent.every((e) => /^pass/i.test(e.verdict)), `${p.pair_id} independent pass evidence`);
+    assert.equal(c.provenance.request, r.importRecord.candidate_ids.join(" / "));
+  }
+  // alternatives sit beside the existing hint and never take over the served choice
+  const alts = imp.filter(({ p }) => p.clues.some((c) => c.provenance?.source !== "consolidated-1022"));
+  assert.equal(alts.length, 18);
+  for (const { p, c } of alts) assert.ok(!client.pairs.find((x) => x.id === p.pair_id).hints.some((h) => h.text === c.text), `${p.pair_id} still serves its earlier hint`);
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_bite__shark").hints.map((h) => h.text), ["JAWS"]);
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_owl__wizard").hints.map((h) => h.text), ["POTTER"]);
+  // editorial set-asides are not in the library
+  for (const e of JSON.parse(readFileSync("data/unlimited/imports/consolidated-1022/editorial-set-aside.json", "utf8")).entries) {
+    const [x, y] = e.pair.split(" + "); const id = `p_${[x, y].map((w) => w.toLowerCase().replace(/ /g, "-")).sort().join("__")}`;
+    assert.ok(!byId.get(id)?.clues.some((c) => c.text === e.hint && c.provenance?.source === "consolidated-1022"), `${e.pair} ${e.hint} set aside`);
+  }
+  // 17 source records had the two per-word lines on the wrong words: swapped back with the drafted text kept
+  const swapped = imp.filter(({ c }) => c.provenance.textCorrection?.by === "coordinator (consolidated-1022 import)");
+  assert.equal(swapped.length, 17);
+  for (const { c } of swapped) assert.deepEqual([c.wordAConnection, c.wordBConnection], [c.provenance.textCorrection.from.wordBConnection, c.provenance.textCorrection.from.wordAConnection]);
+  assert.equal(byId.get("p_chest__red").clues.find((c) => c.text === "ROBIN").wordBConnection, "A robin is commonly described as red-breasted.");
+  // the owner-approved queue is proposal-only: nothing from it was applied
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_mouse__queen").hints.map((h) => h.text), ["PUSSYCAT"]);
+  assert.equal(byId.get("p_mouse__queen").clues.find((c) => c.text === "MINNIE").status, "rejected");
+  assert.deepEqual(client.pairs.find((x) => x.id === "p_bell__water").hints.map((h) => h.text), ["DIVING"]);
+  for (const id of ["p_bell__boat", "p_calculator__high", "p_clock__high"]) assert.equal(byId.get(id), undefined, `${id} not added`);
 });
