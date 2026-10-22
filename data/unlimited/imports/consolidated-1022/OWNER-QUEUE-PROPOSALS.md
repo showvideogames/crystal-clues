@@ -1,6 +1,6 @@
 # Owner-approved queue
 
-Round 1 listed these as proposals only. **Round 2 (owner chat, 2026-10-21) applied them**, plus TRANSFORMER, SILK and PARKER. The full ledger is in `owner-decisions-2026-10-21.json`.
+Round 1 listed these as proposals only. **Round 2 (owner chat, 2026-10-21) applied them**, plus TRANSFORMER, SILK and PARKER. The full ledger is in `owner-decisions.json`.
 
 | Pair | Serves now | Replaced (kept stored) |
 |---|---|---|

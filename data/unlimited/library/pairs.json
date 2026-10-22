@@ -1269,10 +1269,10 @@
         "review": "data/unlimited/library/reviews/consolidated-1022-review.json",
         "key": "data/unlimited/library/reviews/consolidated-1022-key.json",
         "appendOnly": true,
-        "ai_reviewed": 6085,
+        "ai_reviewed": 6087,
         "held": 0,
         "rejected": 0,
-        "newPairs": 6067
+        "newPairs": 6069
       }
     ],
     "bestAvailable": "finalBestAvailable = the hint that would be served now (preference rule over playable hints) or the reviewer's best non-playable hint; reviewerBestAvailable = the original blind reviewer's pick; correctionBestAvailable = a correction review's pick over its subset. None of these drives assembly."
@@ -16598,7 +16598,7 @@
         },
         {
           "text": "IPHONE",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "Apple makes the iPhone.",
@@ -16624,6 +16624,12 @@
               "reason": "b07-independent-review.csv: Pocket-sized Apple iPhone is a characteristic familiar product, though many phones fit pockets.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: IPHONE first; PICK retained as an alternative"
           }
         }
       ]
@@ -63949,7 +63955,7 @@
             "source": "owner-discovery",
             "addedBy": "owner",
             "date": "2026-10-22",
-            "note": "owner-approved queue (consolidated archive) and owner chat 2026-10-21",
+            "note": "owner-approved queue (consolidated archive), confirmed 2026-10-21",
             "via": "catalogue add",
             "blindReview": null
           },
@@ -63957,7 +63963,7 @@
             "by": "owner",
             "date": "2026-10-22",
             "status": "human_approved",
-            "reason": "owner-approved queue (consolidated archive) and owner chat 2026-10-21: \"Ding\" is a bell sound, and a dinghy is a small boat."
+            "reason": "owner-approved queue (consolidated archive), confirmed 2026-10-21: \"Ding\" is a bell sound, and a dinghy is a small boat."
           }
         }
       ]
@@ -85568,6 +85574,41 @@
       ]
     },
     {
+      "pair_id": "p_book__paradise",
+      "a": "BOOK",
+      "b": "PARADISE",
+      "source": "owner-discovery",
+      "pairNote": null,
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "BEACH",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "discovery",
+          "wordAConnection": "A \"beach read\" is a light book for vacation.",
+          "wordBConnection": "A sunny beach is a classic picture of paradise.",
+          "revealExplanation": "A beach read is a book for vacation, and a sunny beach is a picture of paradise.",
+          "reference": null,
+          "provenance": {
+            "source": "owner-discovery",
+            "addedBy": "owner",
+            "date": "2026-10-22",
+            "note": "owner review 2026-10-22: instead of LOST (unfamiliar Paradise Lost)",
+            "via": "catalogue add",
+            "blindReview": null
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: instead of LOST (unfamiliar Paradise Lost): A beach read is a book for vacation, and a sunny beach is a picture of paradise."
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_book__photo",
       "a": "BOOK",
       "b": "PHOTO",
@@ -87574,7 +87615,7 @@
       "source": "x04-p",
       "pairNote": "Passes, but the boss side is softer; a second opinion is welcome.",
       "reviewerBestAvailable": null,
-      "playableHints": 2,
+      "playableHints": 3,
       "clues": [
         {
           "text": "BARK",
@@ -87657,6 +87698,30 @@
               "reason": "b02-independent-review.csv: Business branch boss and tree branch are familiar organizational/botanical meanings.",
               "fix": null
             }
+          }
+        },
+        {
+          "text": "BARKS",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "discovery",
+          "wordAConnection": "A boss barks orders.",
+          "wordBConnection": "A tree has bark.",
+          "revealExplanation": "A boss barks orders, and a tree has bark.",
+          "reference": null,
+          "provenance": {
+            "source": "owner-discovery",
+            "addedBy": "owner",
+            "date": "2026-10-22",
+            "note": "owner review 2026-10-22: replaces BARK (BARK and BRANCH stay stored)",
+            "via": "catalogue add",
+            "blindReview": null
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: replaces BARK (BARK and BRANCH stay stored): A boss barks orders, and a tree has bark."
           }
         }
       ]
@@ -112278,7 +112343,7 @@
             "source": "owner-discovery",
             "addedBy": "owner",
             "date": "2026-10-22",
-            "note": "owner-approved queue (consolidated archive) and owner chat 2026-10-21",
+            "note": "owner-approved queue (consolidated archive), confirmed 2026-10-21",
             "via": "catalogue add",
             "blindReview": null
           },
@@ -112286,7 +112351,7 @@
             "by": "owner",
             "date": "2026-10-22",
             "status": "human_approved",
-            "reason": "owner-approved queue (consolidated archive) and owner chat 2026-10-21: Five is a number on a calculator, and \"high five\" is the familiar phrase."
+            "reason": "owner-approved queue (consolidated archive), confirmed 2026-10-21: Five is a number on a calculator, and \"high five\" is the familiar phrase."
           }
         }
       ]
@@ -127432,6 +127497,53 @@
         "provisional": true,
         "alternatives": []
       }
+    },
+    {
+      "pair_id": "p_career__explore",
+      "a": "CAREER",
+      "b": "EXPLORE",
+      "source": "consolidated-1022",
+      "pairNote": null,
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "PATH",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "consolidated-import",
+          "wordAConnection": "A career path is a familiar phrase.",
+          "wordBConnection": "A path is explored or followed.",
+          "revealExplanation": "",
+          "reference": null,
+          "provenance": {
+            "source": "consolidated-1022",
+            "request": "b20-145",
+            "blindReview": {
+              "reviewer": "consolidated-1022 independent review (external offline reviewers; per-hint source in the reason and in the batch importRecord)",
+              "model": null,
+              "date": "2026-10-22",
+              "verdict": "PASS",
+              "mechanism": null,
+              "delight": null,
+              "a": null,
+              "b": null,
+              "fairness": null,
+              "recognizability": null,
+              "better_hint": null,
+              "flags": [],
+              "reason": "b20-independent-review.csv: Career path and exploring path are established figurative/literal routes. Independent editorial judgment; rejected hints leave pairs open.",
+              "fix": null
+            }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner keep (review 2026-10-22): a familiar, fair connection; un-held"
+          }
+        }
+      ]
     },
     {
       "pair_id": "p_career__map",
@@ -158594,7 +158706,7 @@
             "source": "owner-discovery",
             "addedBy": "owner",
             "date": "2026-10-22",
-            "note": "owner-approved queue (consolidated archive) and owner chat 2026-10-21",
+            "note": "owner-approved queue (consolidated archive), confirmed 2026-10-21",
             "via": "catalogue add",
             "blindReview": null
           },
@@ -158602,7 +158714,7 @@
             "by": "owner",
             "date": "2026-10-22",
             "status": "human_approved",
-            "reason": "owner-approved queue (consolidated archive) and owner chat 2026-10-21: Five appears on a clock face, and \"high five\" is the familiar phrase."
+            "reason": "owner-approved queue (consolidated archive), confirmed 2026-10-21: Five appears on a clock face, and \"high five\" is the familiar phrase."
           }
         }
       ]
@@ -159848,7 +159960,7 @@
       "clues": [
         {
           "text": "FASHION",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "Clothing is part of fashion.",
@@ -159874,6 +159986,12 @@
               "reason": "b11-independent-review.csv: Clothing and necklace accessories belong to fashion; characteristic shared domain.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner keep (review 2026-10-22)"
           }
         }
       ]
@@ -175600,6 +175718,44 @@
               "fix": null
             }
           }
+        }
+      ]
+    },
+    {
+      "pair_id": "p_cowboy__pistol",
+      "a": "COWBOY",
+      "b": "PISTOL",
+      "source": "owner-discovery",
+      "pairNote": null,
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "REVOLVER",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "discovery",
+          "wordAConnection": "Cowboys in Westerns carry revolvers.",
+          "wordBConnection": "A revolver is a type of pistol.",
+          "revealExplanation": "Cowboys in Westerns carry revolvers, and a revolver is a pistol.",
+          "reference": null,
+          "provenance": {
+            "source": "owner-discovery",
+            "addedBy": "owner",
+            "date": "2026-10-22",
+            "note": "owner review 2026-10-22: instead of SIX-SHOOTER",
+            "via": "catalogue add",
+            "blindReview": null
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: instead of SIX-SHOOTER: Cowboys in Westerns carry revolvers, and a revolver is a pistol."
+          },
+          "contentFlags": [
+            "firearms-explosives"
+          ]
         }
       ]
     },
@@ -229790,6 +229946,53 @@
       ]
     },
     {
+      "pair_id": "p_entry__window",
+      "a": "ENTRY",
+      "b": "WINDOW",
+      "source": "consolidated-1022",
+      "pairNote": null,
+      "reviewerBestAvailable": null,
+      "playableHints": 1,
+      "clues": [
+        {
+          "text": "OPENING",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "consolidated-import",
+          "wordAConnection": "An entry is an opening into somewhere.",
+          "wordBConnection": "A window is an opening in a wall.",
+          "revealExplanation": "",
+          "reference": null,
+          "provenance": {
+            "source": "consolidated-1022",
+            "request": "b21-080",
+            "blindReview": {
+              "reviewer": "consolidated-1022 independent review (external offline reviewers; per-hint source in the reason and in the batch importRecord)",
+              "model": null,
+              "date": "2026-10-22",
+              "verdict": "PASS",
+              "mechanism": null,
+              "delight": null,
+              "a": null,
+              "b": null,
+              "fairness": null,
+              "recognizability": null,
+              "better_hint": null,
+              "flags": [],
+              "reason": "b21-independent-review.csv: Entry and window are both structural openings; direct meanings. Independent editorial judgment; rejected hints leave pairs open.",
+              "fix": null
+            }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner keep (review 2026-10-22): a familiar, fair connection; un-held"
+          }
+        }
+      ]
+    },
+    {
       "pair_id": "p_envelope__eye",
       "a": "ENVELOPE",
       "b": "EYE",
@@ -263122,7 +263325,7 @@
       "clues": [
         {
           "text": "REPAIR",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "A garage repairs cars.",
@@ -263148,6 +263351,12 @@
               "reason": "b07-independent-review.csv: Garage repairs cars and hospitals repair injuries give a fair concrete medical/mechanical analogy.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner keep (review 2026-10-22)"
           }
         }
       ]
@@ -304975,7 +305184,7 @@
       "source": "x04b-p",
       "pairNote": "The setting link is a pleasant non-obvious second route.",
       "reviewerBestAvailable": null,
-      "playableHints": 2,
+      "playableHints": 3,
       "clues": [
         {
           "text": "POOH",
@@ -305013,7 +305222,7 @@
         },
         {
           "text": "BEEHIVE",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "A beehive contains honey.",
@@ -305039,6 +305248,36 @@
               "reason": "b19-independent-review.csv: Wooden managed beehives containing honey give a familiar concrete construction/source link.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: BEEHIVE first (wooden beehives house honey-producing bees); DIPPER second; supersedes the earlier uncertainty"
+          }
+        },
+        {
+          "text": "DIPPER",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "discovery",
+          "wordAConnection": "A honey dipper drizzles honey.",
+          "wordBConnection": "A honey dipper is commonly made of wood.",
+          "revealExplanation": "A honey dipper is a small, commonly wooden tool for honey.",
+          "reference": null,
+          "provenance": {
+            "source": "owner-discovery",
+            "addedBy": "owner",
+            "date": "2026-10-22",
+            "note": "owner review 2026-10-22: second choice behind BEEHIVE",
+            "via": "catalogue add",
+            "blindReview": null
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: second choice behind BEEHIVE: A honey dipper is a small, commonly wooden tool for honey."
           }
         }
       ]
@@ -358426,7 +358665,7 @@
         },
         {
           "text": "COMPASS",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "A compass contains a magnetized needle.",
@@ -358452,6 +358691,12 @@
               "reason": "cluevoyance-parallel/reviews/m-p-01.csv: A magnetic compass points north; both sides are central functions.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22"
           }
         }
       ]
@@ -379291,7 +379536,7 @@
         },
         {
           "text": "ECLIPSE",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "The Moon is involved in an eclipse.",
@@ -379317,6 +379562,12 @@
               "reason": "cluevoyance-parallel/reviews5/m-p-batch-05-reviewed-independent.csv: Both supplied links are conventional and independently recognizable: The Moon is involved in an eclipse. The Sun is obscured during a solar eclipse.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22"
           }
         }
       ]
@@ -382735,7 +382986,7 @@
                 "wordAConnection": "Minnie Mouse is Disney's famous mouse.",
                 "wordBConnection": "Alongside Mickey, Minnie is playfully Disney's \"queen.\""
               },
-              "note": "owner text 2026-10-21 (Minnie is a mouse and playfully Disney's queen alongside Mickey, not literally a royal); player-facing text only; verdict and status unchanged"
+              "note": "owner text 2026-10-21; player-facing text only; verdict and status unchanged"
             }
           },
           "revealExplanation": "Minnie is a mouse, and playfully Disney's \"queen\" alongside Mickey.",
@@ -407495,7 +407746,7 @@
         },
         {
           "text": "HEDWIG",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "Hedwig is an owl.",
@@ -407521,6 +407772,12 @@
               "reason": "cluevoyance-parallel/reviews/m-p-04.csv: Hedwig is wizard Harry Potter's owl; iconic character/owner.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22"
           }
         }
       ]
@@ -416853,11 +417110,11 @@
       "source": "consolidated-1022",
       "pairNote": null,
       "reviewerBestAvailable": null,
-      "playableHints": 1,
+      "playableHints": 2,
       "clues": [
         {
           "text": "ATHLETIC",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "Physical ability can be athletic ability.",
@@ -416883,6 +417140,36 @@
               "reason": "cluevoyance-parallel/reviews5/m-p-batch-06-reviewed-independent.csv: Both supplied links are conventional and independently recognizable: Physical ability can be athletic ability. Sport is athletic activity.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner keep (review 2026-10-22); FOOTBALL added as a familiar alternative"
+          }
+        },
+        {
+          "text": "FOOTBALL",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "discovery",
+          "wordAConnection": "Football is a famously physical, hard-hitting game.",
+          "wordBConnection": "Football is a sport.",
+          "revealExplanation": "Football is a famously physical sport.",
+          "reference": null,
+          "provenance": {
+            "source": "owner-discovery",
+            "addedBy": "owner",
+            "date": "2026-10-22",
+            "note": "owner review 2026-10-22: familiar alternative behind ATHLETIC",
+            "via": "catalogue add",
+            "blindReview": null
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: familiar alternative behind ATHLETIC: Football is a famously physical sport."
           }
         }
       ]
@@ -472423,8 +472710,8 @@
       "clues": [
         {
           "text": "JAWS",
-          "status": "ai_reviewed",
-          "heldReason": null,
+          "status": "held",
+          "heldReason": "owner hold: owner review 2026-10-22: do not serve JAWS for SHARK + SWIMMING (OCEAN first, FIN alternative)",
           "type": "related-index",
           "wordAConnection": "Jaws is the classic shark movie.",
           "wordBConnection": "Jaws scared a generation out of swimming in the ocean.",
@@ -472464,11 +472751,18 @@
               },
               "note": "coordinator review: same subject named twice; collapsed naturally; player-facing text only; verdict and status unchanged"
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "held",
+            "reason": "owner review 2026-10-22: do not serve JAWS for SHARK + SWIMMING (OCEAN first, FIN alternative)",
+            "via": "rejections.json"
           }
         },
         {
           "text": "FIN",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "A shark has fins.",
@@ -472494,6 +472788,36 @@
               "reason": "cluevoyance-parallel/reviews/q-s-02.csv: Shark fins enable swimming; defining anatomy/function.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: alternative behind OCEAN"
+          }
+        },
+        {
+          "text": "OCEAN",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "discovery",
+          "wordAConnection": "Sharks live in the ocean.",
+          "wordBConnection": "People go swimming in the ocean.",
+          "revealExplanation": "Sharks live in the ocean, and people go swimming in it.",
+          "reference": null,
+          "provenance": {
+            "source": "owner-discovery",
+            "addedBy": "owner",
+            "date": "2026-10-22",
+            "note": "owner review 2026-10-22: OCEAN first, FIN alternative, JAWS not served",
+            "via": "catalogue add",
+            "blindReview": null
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: OCEAN first, FIN alternative, JAWS not served: Sharks live in the ocean, and people go swimming in it."
           }
         }
       ]
@@ -480718,7 +481042,7 @@
         "why": "The most natural shared property of the two creatures.",
         "reviewer": "x02-reviewer-c"
       },
-      "playableHints": 2,
+      "playableHints": 3,
       "clues": [
         {
           "text": "SLIME",
@@ -480779,6 +481103,30 @@
               "reason": "cluevoyance-parallel/reviews/q-s-02.csv: Slugs and snails are mollusks; exact category.",
               "fix": null
             }
+          }
+        },
+        {
+          "text": "SLIMY",
+          "status": "human_approved",
+          "heldReason": null,
+          "type": "discovery",
+          "wordAConnection": "Slugs are slimy.",
+          "wordBConnection": "Snails leave a slimy trail.",
+          "revealExplanation": "Slugs and snails are both slimy.",
+          "reference": null,
+          "provenance": {
+            "source": "owner-discovery",
+            "addedBy": "owner",
+            "date": "2026-10-22",
+            "note": "owner review 2026-10-22: latest preference after MOLLUSK and SLIME (both stay stored)",
+            "via": "catalogue add",
+            "blindReview": null
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22: latest preference after MOLLUSK and SLIME (both stay stored): Slugs and snails are both slimy."
           }
         }
       ]
@@ -516249,7 +516597,7 @@
         },
         {
           "text": "OZ",
-          "status": "ai_reviewed",
+          "status": "human_approved",
           "heldReason": null,
           "type": "consolidated-import",
           "wordAConnection": "A tornado carries Dorothy to Oz.",
@@ -516275,6 +516623,12 @@
               "reason": "cluevoyance-parallel/reviews/t-z-02.csv: Oz joins the iconic tornado arrival and Wizard character.",
               "fix": null
             }
+          },
+          "override": {
+            "by": "owner",
+            "date": "2026-10-22",
+            "status": "human_approved",
+            "reason": "owner review 2026-10-22"
           }
         }
       ]

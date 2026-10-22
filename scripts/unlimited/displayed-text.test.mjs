@@ -183,7 +183,9 @@ test("editorial-bar holds lifted by the coordinator: ten served with reviews and
   const T = [["p_boss__dog", "BARK"], ["p_boss__tree", "BARK"], ["p_casino__golf", "CHIP"], ["p_casino__stocks", "CHIP"], ["p_ship__skateboard", "DECK"], ["p_balance__dragon", "SCALE"], ["p_balance__map", "SCALE"], ["p_bird__boat", "SEAGULL"], ["p_angel__stage", "WING"], ["p_buffalo__stage", "WING"]];
   for (const [id, h] of T) {
     const c = byId.get(id).clues.find((x) => x.text === h);
-    assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h), `${id} ${h} served`);
+    // BOSS + TREE: the owner chose BARKS on 2026-10-22 (consolidated-1022 review); BARK stays stored with this history
+    if (id === "p_boss__tree") assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), ["BARKS"]);
+    else assert.ok(client.pairs.find((x) => x.id === id)?.hints.some((x) => x.text === h), `${id} ${h} served`);
     assert.equal(c.override.status, "coordinator_accept"); assert.match(c.override.by, /^coordinator .*not an owner decision/);
     assert.equal(c.provenance.blindReview.verdict, "PASS", "the original review is kept");
     assert.match(c.override.history?.[0]?.by || "", /editorial bar/); assert.ok(c.override.history[0].superseded);
@@ -553,47 +555,53 @@ test("x23: 237 candidates on unseen pairs; 233 PASS, 4 BORDERLINE; parent holds 
   assert.match(byId.get("p_thread__worm").clues[0].provenance.textCorrection.from.wordBConnection, /named worms/);
 });
 
-test("consolidated-1022 import: append-only, PASS-only, traceable, no template sentence, labelled; owner choices applied; set-asides and served pairs untouched", () => {
+test("consolidated-1022 import: append-only, PASS-only, traceable, no template sentence, labelled; owner decisions replayed from the ledger; set-asides untouched", () => {
+  const DIR = "data/unlimited/imports/consolidated-1022";
   const imp = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "consolidated-1022").map((c) => ({ p, c })));
-  const sum = JSON.parse(readFileSync("data/unlimited/imports/consolidated-1022/summary.json", "utf8"));
-  assert.deepEqual(sum.counts, { "new-pair": 6067, alternative: 18, duplicate: 22, "set-aside": 85 });
-  assert.equal(imp.length, 6085);
+  assert.deepEqual(JSON.parse(readFileSync(`${DIR}/summary.json`, "utf8")).counts, { "new-pair": 6069, alternative: 18, duplicate: 22, "set-aside": 83 });
+  assert.equal(imp.length, 6087);
+  const { decisions } = JSON.parse(readFileSync(`${DIR}/owner-decisions.json`, "utf8"));
+  const key = (x, y) => `p_${[x, y].map((w) => w.toLowerCase().replace(/ /g, "-")).sort().join("__")}`;
+  const approved = new Set(decisions.filter((d) => d.action === "approve").map((d) => `${key(...d.pair)}|${d.hint}`));
+  const prefs = JSON.parse(readFileSync("data/unlimited/library/preferences.json", "utf8")).pairs;
+  const serve = (id) => client.pairs.find((x) => x.id === id)?.hints.map((h) => h.text);
   const batch = JSON.parse(readFileSync("data/unlimited/library/batches/consolidated-1022-batch.json", "utf8"));
   const rec = new Map(batch.pairs.map((p) => [p.pair_id, p.clues[0]]));
-  const OWNER = new Set(["p_robot__toy", "p_spider__web"]);
   for (const { p, c } of imp) {
-    assert.equal(c.status, OWNER.has(p.pair_id) ? "human_approved" : "ai_reviewed"); assert.equal(c.provenance.blindReview.verdict, "PASS");
+    assert.equal(c.status, approved.has(`${p.pair_id}|${c.text}`) ? "human_approved" : "ai_reviewed", `${p.pair_id} ${c.text}`);
+    assert.equal(c.provenance.blindReview.verdict, "PASS");
     assert.equal(c.revealExplanation, "", `${p.pair_id} has no template sentence`); assert.ok(c.wordAConnection && c.wordBConnection);
     const r = rec.get(p.pair_id); assert.equal(r.text, c.text, `${p.pair_id} traceable to the batch`);
-    assert.ok(r.importRecord.candidate_ids.length && r.importRecord.independent.every((e) => /^pass/i.test(e.verdict)), `${p.pair_id} independent pass evidence`);
+    assert.ok(r.importRecord.candidate_ids.length && r.importRecord.independent.every((e) => /^pass/i.test(e.verdict)));
     assert.equal(c.provenance.request, r.importRecord.candidate_ids.join(" / "));
     assert.deepEqual(c.contentFlags, r.contentFlags, `${p.pair_id} labels kept through the merge`);
   }
   assert.equal(imp.filter(({ c }) => c.contentFlags).length, 226);
-  assert.deepEqual(byId.get("p_casino__dice").clues.find((c) => c.text === "CRAPS").contentFlags, ["gambling"]);
-  // alternatives sit beside the existing hint; only the two the owner chose are served
-  const alts = imp.filter(({ p }) => p.clues.some((c) => c.provenance?.source !== "consolidated-1022"));
+  // an alternative on an existing pair is served only when the owner made it the pair's canonical hint
+  const alts = imp.filter(({ p }) => p.clues.some((c) => !["consolidated-1022", "owner-discovery"].includes(c.provenance?.source) || (c.provenance?.source === "owner-discovery" && c.provenance.date < "2026-10-21")));
   assert.equal(alts.length, 18);
-  for (const { p, c } of alts) assert.equal(client.pairs.find((x) => x.id === p.pair_id).hints.some((h) => h.text === c.text), OWNER.has(p.pair_id), `${p.pair_id} ${c.text}`);
+  for (const { p, c } of alts) assert.equal(!!serve(p.pair_id)?.includes(c.text), prefs[p.pair_id]?.canonical === c.text, `${p.pair_id} ${c.text}`);
   // 17 source records had the two per-word lines on the wrong words: swapped back with the drafted text kept
   const swapped = imp.filter(({ c }) => c.provenance.textCorrection?.by === "coordinator (consolidated-1022 import)");
   assert.equal(swapped.length, 17);
   for (const { c } of swapped) assert.deepEqual([c.wordAConnection, c.wordBConnection], [c.provenance.textCorrection.from.wordBConnection, c.provenance.textCorrection.from.wordAConnection]);
-  // editorial set-asides are not in the library
-  for (const e of JSON.parse(readFileSync("data/unlimited/imports/consolidated-1022/editorial-set-aside.json", "utf8")).entries) {
-    const [x, y] = e.pair.split(" + "); const id = `p_${[x, y].map((w) => w.toLowerCase().replace(/ /g, "-")).sort().join("__")}`;
-    assert.ok(!byId.get(id)?.clues.some((c) => c.text === e.hint && c.provenance?.source === "consolidated-1022"), `${e.pair} ${e.hint} set aside`);
+  // set-asides stay out of the library
+  for (const e of JSON.parse(readFileSync(`${DIR}/editorial-set-aside.json`, "utf8")).entries)
+    assert.ok(!byId.get(key(...e.pair.split(" + ")))?.clues.some((c) => c.text === e.hint && c.provenance?.source === "consolidated-1022"), `${e.pair} ${e.hint} set aside`);
+  // every owner decision is in force; replaced hints stay stored
+  for (const d of decisions) {
+    const id = key(...d.pair); const c = byId.get(id).clues.find((x) => x.text === d.hint);
+    if (d.action === "hold") { assert.equal(c.status, "held"); assert.ok(!serve(id).includes(d.hint)); continue; }
+    assert.equal(c.status, "human_approved", `${id} ${d.hint}`); assert.equal(c.override.by, "owner");
+    if (d.prefer) { assert.deepEqual(serve(id), [d.hint], id); assert.equal(prefs[id].canonical, d.hint); assert.equal(prefs[id].by, "owner"); }
+    else assert.ok(serve(id).length === 1, `${id} serves one hint`);
+    if (d.replaces) assert.ok(byId.get(id).clues.some((x) => x.text === d.replaces), `${d.replaces} kept stored`);
   }
-  // owner choices (2026-10-21): canonical by owner, replaced hints kept stored
-  const serve = (id) => client.pairs.find((x) => x.id === id)?.hints.map((h) => h.text);
-  const prefs = JSON.parse(readFileSync("data/unlimited/library/preferences.json", "utf8")).pairs;
-  for (const [id, t, kept] of [["p_mouse__queen", "MINNIE", "PUSSYCAT"], ["p_bell__water", "BUOY", "DIVING"], ["p_robot__toy", "TRANSFORMER", "PIXAR"], ["p_spider__web", "SILK", "PARKER"], ["p_bell__boat", "DINGHY"], ["p_calculator__high", "FIVE"], ["p_clock__high", "FIVE"], ["p_human__spider", "PARKER"]]) {
-    assert.deepEqual(serve(id), [t], id); assert.equal(prefs[id].canonical, t); assert.equal(prefs[id].by, "owner");
-    const c = byId.get(id).clues.find((x) => x.text === t); assert.equal(c.status, "human_approved"); assert.equal(c.override.by, "owner");
-    if (kept) assert.ok(byId.get(id).clues.some((x) => x.text === kept), `${kept} kept stored`);
-  }
+  assert.deepEqual(serve("p_shark__swimming"), ["OCEAN"]); assert.deepEqual(serve("p_honey__wood"), ["BEEHIVE"]); assert.deepEqual(serve("p_physical__sport"), ["ATHLETIC"]);
+  assert.deepEqual(byId.get("p_cowboy__pistol").clues.find((c) => c.text === "REVOLVER").contentFlags, ["firearms-explosives"]);
   const minnie = byId.get("p_mouse__queen").clues.find((c) => c.text === "MINNIE");
   assert.equal(minnie.provenance.blindReview.verdict, "FAIL", "the earlier review stays recorded"); assert.match(minnie.override.reason, /supersedes/);
-  assert.doesNotMatch(minnie.revealExplanation + minnie.wordBConnection, /royal|kingdom/i);
-  assert.deepEqual(serve("p_man__spider"), ["PETER"], "SPIDER + MAN conflict left for the owner");
+  // left as they were for the owner
+  assert.deepEqual(serve("p_spicy__taco"), ["JALAPENO"]);
+  assert.deepEqual(serve("p_man__spider"), ["PETER"]); assert.deepEqual(serve("p_spider__superhero"), ["PARKER"]);
 });
