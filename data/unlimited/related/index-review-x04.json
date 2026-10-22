@@ -1,0 +1,449 @@
+{
+ "_metadata": {
+  "reviewer": "x04-index-reviewer",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "inputs": ["groups.json", "hint-routes.json", "bank-1203.txt"],
+  "independence": "Apart from the instructions file, I read only groups.json, hint-routes.json and bank-1203.txt: no repository search, no other files, no web, no paid API.",
+  "containmentChecked": "Bank words that contain an x04 hint and so can never be its target: SEA (in SEAGULL), SAIL (in SAILOR), PICKLE (PICK), PAJAMAS (JAM), INTERNET and NETFLIX (NET), BOWL, BOWLING (BOW), KEYBOARD (KEY), SPRING, STRING (RING), THORN (HORN), SWING (WING). None of these is proposed below; INTERNET is already listed and must come out."
+ },
+ "hints": [
+  {
+   "hint": "SEAGULL",
+   "missing": [
+    { "word": "SHIP", "route": "coast", "strength": 1, "clause": "seagulls follow ships out of the harbor", "why": "BOAT is listed; ships trailed by gulls are the same picture" },
+    { "word": "FISH", "route": "coast", "strength": 1, "clause": "seagulls dive for fish", "why": "the gull's natural food; quick link" },
+    { "word": "TRASH", "route": "thief", "strength": 1, "clause": "seagulls raid beach trash cans for scraps", "why": "gulls as scavengers is a familiar picture; same route as the snack thief" },
+    { "word": "MINE", "route": "NEW: Finding Nemo's seagulls", "strength": 1, "clause": "the seagulls in Finding Nemo squawk \"Mine! Mine!\"", "why": "a widely quoted Pixar gag; fun second meaning. See senses: MINE reads as a coal mine on a board" }
+   ],
+   "wrong_or_weak": [
+    { "word": "CRANE", "route": "bird", "problem": "'like the crane, the seagull is a waterbird' is a defence, not a click; a crane is a wading bird of marshes, not a seaside bird, and on a board CRANE reads first as the construction machine", "fix": "remove (PIGEON, CROW and BIRD already carry this route)" }
+   ],
+   "senses": [
+    { "word": "PORT", "note": "also the wine, the left side of a ship and a computer port; the harbor sense is the one meant" },
+    { "word": "FRY", "note": "on a board FRY reads as the cooking verb (or baby fish); the clause relies on french fries" },
+    { "word": "CROW", "note": "also a rooster's crow; the bird is meant" }
+   ]
+  },
+  {
+   "hint": "SLAM",
+   "missing": [
+    { "word": "BODY", "route": "NEW: a body slam", "strength": 1, "clause": "a body slam is a classic wrestling move", "why": "familiar pro-wrestling phrase; a separate meaning with no route yet" }
+   ],
+   "wrong_or_weak": [
+    { "word": "TENNIS", "route": "grand", "problem": "clause is accurate but narrow; most fans know the four majors themselves as 'the Grand Slams'", "fix": "clause: \"tennis's four biggest tournaments are the Grand Slams\"" }
+   ],
+   "senses": [
+    { "word": "POETRY", "note": "fine; no rival sense" }
+   ]
+  },
+  {
+   "hint": "PICK",
+   "missing": [
+    { "word": "AXE", "route": "NEW: a pickaxe", "strength": 1, "clause": "a pickaxe is a miner's pointed axe", "why": "pick and pickaxe are the same tool to most people" },
+    { "word": "MINE", "route": "NEW: a pickaxe", "strength": 1, "clause": "miners dig with picks", "why": "the miner's pick (and Minecraft's pickaxe) is a quick link" },
+    { "word": "CARD", "route": "NEW: pick a card", "strength": 1, "clause": "\"pick a card, any card\" opens a magic trick", "why": "stock magician phrase; choose-sense of PICK has no route" },
+    { "word": "BERRY", "route": "harvest", "strength": 1, "clause": "you pick berries off the bush", "why": "berry picking is as familiar as apple picking" },
+    { "word": "TRUCK", "route": "NEW: a pickup truck", "strength": 1, "clause": "a pickup is the classic American truck", "why": "compound link of the same kind as TOOTH (toothpick)" },
+    { "word": "WALLET", "route": "pocket", "strength": 1, "clause": "pickpockets lift wallets", "why": "the thing a pickpocket picks" },
+    { "word": "THIEF", "route": "pocket", "strength": 1, "clause": "thieves pick pockets and locks", "why": "ties the two theft routes; would need to sit in one route only (pocket)" }
+   ],
+   "wrong_or_weak": [
+    { "word": "APPLE", "route": "harvest", "problem": "not wrong; 'apple picking' is so familiar that strength 1 undersells it", "fix": "optionally raise to 2" }
+   ],
+   "senses": [
+    { "word": "DRAFT", "note": "also a breeze, a rough draft and draft beer; only the sports draft works" },
+    { "word": "LOCK", "note": "a lock of hair is a minor rival sense" }
+   ]
+  },
+  {
+   "hint": "LAVA",
+   "missing": [
+    { "word": "ROCK", "route": "volcano", "strength": 2, "clause": "lava is molten rock that cools into stone", "why": "the textbook definition of lava; instant" },
+    { "word": "DESSERT", "route": "cake", "strength": 1, "clause": "molten lava cake is a restaurant dessert classic", "why": "lava cake is the dessert most people order by that name" },
+    { "word": "COUCH", "route": "game", "strength": 1, "clause": "in \"the floor is lava,\" kids leap from couch to couch", "why": "the couch is the iconic safe spot in the game; stronger image than GAME alone" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "HOT", "note": "also 'popular' and 'spicy'; harmless here" },
+    { "word": "ROCK", "note": "if added: also rock music; the stone is meant" }
+   ]
+  },
+  {
+   "hint": "DECK",
+   "missing": [
+    { "word": "HALL", "route": "holly", "strength": 2, "clause": "\"Deck the Halls\" is a classic Christmas carol", "why": "the carol's title word itself; stronger than CHRISTMAS" },
+    { "word": "BASEBALL", "route": "NEW: on deck", "strength": 1, "clause": "the next batter waits on deck in baseball", "why": "the on-deck circle is familiar to U.S. fans" },
+    { "word": "MAGICIAN", "route": "cards", "strength": 1, "clause": "a magician fans out a deck for card tricks", "why": "card tricks are the deck's other famous use" },
+    { "word": "POOL", "route": "patio", "strength": 1, "clause": "a pool deck surrounds the swimming pool", "why": "common U.S. backyard and hotel phrase" },
+    { "word": "WOOD", "route": "patio", "strength": 1, "clause": "a deck is built of wooden boards", "why": "the material of a backyard deck; groups.json already ties DECK to wood" },
+    { "word": "PIRATE", "route": "ship", "strength": 1, "clause": "pirates make the crew swab the deck", "why": "stock pirate phrase" },
+    { "word": "CHAIR", "route": "ship", "strength": 1, "clause": "passengers lounge in deck chairs", "why": "the deck chair is a familiar object" },
+    { "word": "TITANIC", "route": "ship", "strength": 1, "clause": "the Titanic's deck is the most famous in film", "why": "the bow-of-the-ship scene; keep at 1" }
+   ],
+   "wrong_or_weak": [
+    { "word": "PATIO", "route": "patio", "problem": "'a deck is a raised wooden patio' is not quite right: a patio is a paved area at ground level, a deck is a raised wooden platform", "fix": "clause: \"a deck and a patio are both backyard spots to sit outside\"" }
+   ],
+   "senses": [
+    { "word": "YARD", "note": "also the unit of length; the backyard is meant" },
+    { "word": "CARD", "note": "also a greeting card; the playing card is meant" },
+    { "word": "BASEBALL", "note": "if added: BASEBALL must not be read as the ship or card sense; 'on deck' only" }
+   ]
+  },
+  {
+   "hint": "SAILOR",
+   "missing": [
+    { "word": "SEA", "route": "sea", "strength": 2, "clause": "sailors spend their lives at sea", "why": "the route is literally 'life at sea' and SEA is not listed; SEA does not contain SAILOR so it is allowed" },
+    { "word": "HAT", "route": "uniform", "strength": 1, "clause": "the round white sailor hat is iconic", "why": "the sailor hat is the most recognisable part of the outfit" },
+    { "word": "SUIT", "route": "uniform", "strength": 1, "clause": "the sailor suit is a classic outfit", "why": "the route's own label word" },
+    { "word": "CAPTAIN", "route": "sea", "strength": 1, "clause": "sailors take orders from the captain", "why": "ship crew; keep at 1" },
+    { "word": "PORT", "route": "sea", "strength": 1, "clause": "sailors come ashore in port", "why": "shore leave in port is a familiar picture" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "MOON", "note": "on a board MOON reads as the real Moon; only Sailor Moon fans get the route at once, so 2 may be generous" },
+    { "word": "SAIL", "note": "not a listed word, but if the sea route is ever switched to the nautical group, SAIL must be excluded (it is contained in SAILOR)" }
+   ]
+  },
+  {
+   "hint": "JAM",
+   "missing": [
+    { "word": "PAPER", "route": "printer", "strength": 2, "clause": "a paper jam stops the printer", "why": "'paper jam' is the fixed phrase; instant" },
+    { "word": "JAR", "route": "spread", "strength": 1, "clause": "jam comes in a glass jar", "why": "the jam jar is a familiar object" },
+    { "word": "PEARL", "route": "NEW: Pearl Jam", "strength": 1, "clause": "Pearl Jam is a famous Seattle rock band", "why": "well-known band name; a separate meaning" },
+    { "word": "BUS", "route": "traffic", "strength": 1, "clause": "buses crawl through traffic jams", "why": "same picture as CAR and TRUCK" }
+   ],
+   "wrong_or_weak": [
+    { "word": "GRAPE", "route": "spread", "problem": "the U.S. sandwich classic is grape jelly; 'grape jam is a sandwich classic' is not quite what people say", "fix": "clause: \"grape jam and jelly fill the classic PB&J\"" }
+   ],
+   "senses": [
+    { "word": "SPACE", "note": "on a board SPACE reads as outer space; only the movie title makes it work, fine at 2 for most U.S. players" },
+    { "word": "JELLY", "note": "not proposed: near-synonym of the hint (same principle as BOARD for PLANK)" }
+   ]
+  },
+  {
+   "hint": "BARK",
+   "missing": [
+    { "word": "CHOCOLATE", "route": "NEW: candy bark", "strength": 1, "clause": "chocolate bark is a holiday candy", "why": "chocolate and peppermint bark are common U.S. holiday treats" },
+    { "word": "MINT", "route": "NEW: candy bark", "strength": 1, "clause": "peppermint bark is a Christmas favorite", "why": "same candy; MINT is a bank word" },
+    { "word": "TRUNK", "route": "tree", "strength": 1, "clause": "bark covers a tree's trunk", "why": "where bark is; quick link" },
+    { "word": "SEAL", "route": "dog", "strength": 1, "clause": "seals bark like dogs", "why": "the seal's bark is well known; route label could widen to 'the bark sound'" },
+    { "word": "BOSS", "route": "NEW: bark orders", "strength": 1, "clause": "a bossy boss barks orders", "why": "'bark orders' is a stock phrase" }
+   ],
+   "wrong_or_weak": [
+    { "word": "WOOD", "route": "tree", "problem": "'bark is the outer skin of wood' is inaccurate: bark is the tree's outer layer, wrapped around the wood", "fix": "clause: \"bark wraps around the wood of a tree\"" }
+   ],
+   "senses": [
+    { "word": "LOG", "note": "also a ship's or computer log; the wooden log is meant" },
+    { "word": "SEAL", "note": "if added: also a wax seal or seal of approval; the animal is meant" }
+   ]
+  },
+  {
+   "hint": "TRUNK",
+   "missing": [
+    { "word": "MAMMOTH", "route": "NEW: an elephant's trunk", "strength": 1, "clause": "a woolly mammoth had a long trunk like an elephant's", "why": "the bank has no ELEPHANT, so MAMMOTH is the only trunk animal" },
+    { "word": "BRANCH", "route": "tree", "strength": 1, "clause": "branches grow out of a tree's trunk", "why": "trunk and branch are the tree's two parts" },
+    { "word": "BARK", "route": "tree", "strength": 1, "clause": "bark covers a tree's trunk", "why": "quick link; mirror of TRUNK for BARK" },
+    { "word": "HALLOWEEN", "route": "car", "strength": 1, "clause": "at trunk-or-treat, kids collect Halloween candy from car trunks", "why": "trunk-or-treat is widespread in the U.S." }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "POOL", "note": "also billiards; the swimming pool is meant" },
+    { "word": "CHEST", "note": "not proposed: near-synonym of the storage trunk (and the torso)" }
+   ]
+  },
+  {
+   "hint": "PITCH",
+   "missing": [
+    { "word": "DEVIL", "route": "fork", "strength": 1, "clause": "the cartoon devil carries a pitchfork", "why": "the devil's pitchfork is an instant image" },
+    { "word": "SHARK", "route": "sales", "strength": 1, "clause": "entrepreneurs pitch to the Sharks on Shark Tank", "why": "Shark Tank is the best-known pitch show in the U.S." },
+    { "word": "STRIKE", "route": "baseball", "strength": 1, "clause": "a pitch over the plate is a strike", "why": "pitch and strike go together in baseball" },
+    { "word": "MUSIC", "route": "sound", "strength": 1, "clause": "pitch is how high or low a musical note sounds", "why": "the general word for the sound route" }
+   ],
+   "wrong_or_weak": [
+    { "word": "SOCCER", "route": "soccer", "problem": "Americans say soccer field; 'pitch' is British usage, so 2 is generous for a U.S. audience", "fix": "lower to 1" },
+    { "word": "NIGHT", "route": "dark", "problem": "'a pitch-black night' is a fragment, not a clause, and reads oddly in '<clause>, and <clause>.'", "fix": "clause: \"a moonless night can be pitch black\"" }
+   ],
+   "senses": [
+    { "word": "BLACK", "note": "fine" },
+    { "word": "FORK", "note": "a table fork on a board; the pitchfork compound carries it" },
+    { "word": "STRIKE", "note": "if added: also a workers' strike or bowling strike; the baseball strike is meant" }
+   ]
+  },
+  {
+   "hint": "RING",
+   "missing": [
+    { "word": "FINGER", "route": "wedding", "strength": 2, "clause": "you wear a ring on your finger", "why": "the most obvious RING word in the bank; not listed" },
+    { "word": "TREE", "route": "NEW: tree rings", "strength": 1, "clause": "you count a tree's rings to tell its age", "why": "familiar school fact; a separate meaning" },
+    { "word": "BOXER", "route": "boxing", "strength": 1, "clause": "boxers fight in the ring", "why": "same as BOXING; BOXER is a bank word" },
+    { "word": "KEY", "route": "NEW: a key ring", "strength": 1, "clause": "you keep your keys on a key ring", "why": "everyday object" },
+    { "word": "GOLD", "route": "wedding", "strength": 1, "clause": "a wedding band is often a gold ring", "why": "gold ring is a stock phrase" },
+    { "word": "JEWEL", "route": "wedding", "strength": 1, "clause": "a ring is often set with a jewel", "why": "jewelry link; keep at 1" }
+   ],
+   "wrong_or_weak": [
+    { "word": "PLANET", "route": "saturn", "problem": "'Saturn is the planet with rings' is inaccurate: Jupiter, Uranus and Neptune have rings too", "fix": "clause: \"some planets, like Saturn, are circled by rings\"" }
+   ],
+   "senses": [
+    { "word": "DIAMOND", "note": "also a baseball diamond, which clashes with the boxing and circus rings on a board; the gem is meant" },
+    { "word": "BOXER", "note": "if added: also the dog breed and boxer shorts" },
+    { "word": "BELL", "note": "a boxing bell also fits the boxing route; harmless" }
+   ]
+  },
+  {
+   "hint": "FAN",
+   "missing": [
+    { "word": "COOL", "route": "cool", "strength": 2, "clause": "a fan keeps you cool", "why": "the route's own label word; instant" },
+    { "word": "MAIL", "route": "celebrity", "strength": 1, "clause": "stars get stacks of fan mail", "why": "'fan mail' is a fixed phrase" },
+    { "word": "CLUB", "route": "celebrity", "strength": 1, "clause": "devoted fans join a fan club", "why": "'fan club' is a fixed phrase" },
+    { "word": "BLADE", "route": "cool", "strength": 1, "clause": "a fan's blades spin to push air", "why": "fan blades are the fan's main part" },
+    { "word": "FLAME", "route": "NEW: fan the flames", "strength": 1, "clause": "to fan the flames is to make a fire burn hotter", "why": "stock idiom; separate meaning" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "COOL", "note": "if added: also 'awesome'; the temperature sense is meant" },
+    { "word": "CLUB", "note": "if added: also a golf club or nightclub" }
+   ]
+  },
+  {
+   "hint": "NET",
+   "missing": [
+    { "word": "BOAT", "route": "fishing", "strength": 1, "clause": "fishing boats haul in heavy nets", "why": "the fishing net's usual setting" },
+    { "word": "INSECT", "route": "butterfly", "strength": 1, "clause": "kids catch insects with a bug net", "why": "same picture as BUTTERFLY" },
+    { "word": "MOSQUITO", "route": "NEW: a mosquito net", "strength": 1, "clause": "a mosquito net keeps bugs off you while you sleep", "why": "familiar object; separate meaning" },
+    { "word": "HAIR", "route": "NEW: a hairnet", "strength": 1, "clause": "cafeteria workers wear a hairnet", "why": "compound of the same kind as a toothpick" }
+   ],
+   "wrong_or_weak": [
+    { "word": "INTERNET", "route": "internet", "problem": "breaks the containment rule: INTERNET contains NET", "fix": "remove" },
+    { "word": "WEB", "route": "internet", "problem": "with INTERNET gone, WEB is the route's only word and, on a board, reads first as a spider web", "fix": "keep at 1 with clause \"the web is the part of the Net you browse\", or drop the route" },
+    { "word": "SOCCER", "route": "goal", "problem": "'a soccer goal hits the back of the net' is awkward (the ball hits the net, not the goal)", "fix": "clause: \"a soccer goal ends up in the back of the net\"" }
+   ],
+   "senses": [
+    { "word": "WEB", "note": "spider web vs World Wide Web" },
+    { "word": "NETFLIX", "note": "not proposed: contains NET" }
+   ]
+  },
+  {
+   "hint": "BOW",
+   "missing": [
+    { "word": "TARGET", "route": "archery", "strength": 1, "clause": "archers aim a bow at the target", "why": "bow, arrow, target is the standard picture" },
+    { "word": "STRING", "route": "violin", "strength": 1, "clause": "string players draw a bow across the strings", "why": "violin bow and strings; also a bowstring" },
+    { "word": "KING", "route": "stage", "strength": 1, "clause": "subjects bow before the king", "why": "bowing to royalty is a stock image; the route could widen to 'to bow'" },
+    { "word": "RAIN", "route": "NEW: a rainbow", "strength": 1, "clause": "after the rain comes a rainbow", "why": "compound link of the same kind as TOOTH for PICK" },
+    { "word": "SHOE", "route": "gift", "strength": 1, "clause": "you tie your shoelaces in a bow", "why": "the first bow every kid ties" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "TIE", "note": "also a tied score; the bow tie is meant" },
+    { "word": "SHIP", "note": "the ship's bow rhymes with 'cow', the ribbon bow with 'low'; acceptable but worth knowing when pairing SHIP with GIFT or ARROW" },
+    { "word": "BOWL", "note": "not proposed: contains BOW (also BOWLING)" }
+   ]
+  },
+  {
+   "hint": "SHELL",
+   "missing": [
+    { "word": "SEA", "route": "beach", "strength": 2, "clause": "you find seashells by the sea", "why": "'seashell' and 'she sells seashells by the seashore'; instant" },
+    { "word": "PEARL", "route": "armor", "strength": 1, "clause": "pearls grow inside oyster shells", "why": "familiar fact" },
+    { "word": "OIL", "route": "gas", "strength": 1, "clause": "Shell is one of the world's big oil companies", "why": "same brand as GAS" },
+    { "word": "NINJA", "route": "armor", "strength": 1, "clause": "the Teenage Mutant Ninja Turtles are heroes in a half shell", "why": "iconic theme-song line" },
+    { "word": "GUN", "route": "ammo", "strength": 1, "clause": "a shotgun fires shells", "why": "plainer than AMMO; PG" },
+    { "word": "SAND", "route": "beach", "strength": 1, "clause": "you dig seashells out of the sand", "why": "beach-combing picture; keep at 1" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "NUT", "note": "also the hardware nut; the food is meant" },
+    { "word": "GAS", "note": "on a board reads as the gas itself; the clause leans on the Shell station brand" }
+   ]
+  },
+  {
+   "hint": "CRUST",
+   "missing": [
+    { "word": "DOUGH", "route": "pizza", "strength": 1, "clause": "a crust is baked from dough", "why": "what pizza and pie crusts are made of" },
+    { "word": "RICH", "route": "NEW: the upper crust", "strength": 1, "clause": "the rich are called the upper crust", "why": "stock idiom; separate meaning" },
+    { "word": "ROCK", "route": "earth", "strength": 1, "clause": "Earth's crust is a shell of solid rock", "why": "geology-class link" }
+   ],
+   "wrong_or_weak": [
+    { "word": "PLANET", "route": "earth", "problem": "'rocky planets have a crust' is true but needs a moment and leans on EARTH; weakest word in the hint", "fix": "keep at 1; never pair with EARTH (same route anyway)" }
+   ],
+   "senses": [
+    { "word": "TOAST", "note": "also a toast with drinks; the bread is meant" },
+    { "word": "DOUGH", "note": "if added: also slang for money" }
+   ]
+  },
+  {
+   "hint": "ORBIT",
+   "missing": [
+    { "word": "NASA", "route": "space", "strength": 1, "clause": "NASA puts spacecraft into orbit", "why": "same space picture" },
+    { "word": "STATION", "route": "space", "strength": 1, "clause": "the space station orbits Earth", "why": "the best-known thing in orbit with astronauts" },
+    { "word": "SPACE", "route": "space", "strength": 1, "clause": "satellites orbit out in space", "why": "the setting of every orbit" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "MINT", "note": "also money minting; flavor is meant" },
+    { "word": "STATION", "note": "if added: on a board reads as a train station" }
+   ]
+  },
+  {
+   "hint": "MINT",
+   "missing": [
+    { "word": "COOKIE", "route": "flavor", "strength": 1, "clause": "Thin Mints are the top Girl Scout cookie", "why": "huge U.S. brand link" },
+    { "word": "ICE CREAM", "route": "flavor", "strength": 1, "clause": "mint chocolate chip is a classic ice cream", "why": "the flavor's usual form" },
+    { "word": "TEA", "route": "herb", "strength": 1, "clause": "mint leaves steep into tea", "why": "mint tea is common" },
+    { "word": "GREEN", "route": "NEW: mint green", "strength": 1, "clause": "mint green is a pale shade of green", "why": "named color" },
+    { "word": "QUARTER", "route": "money", "strength": 1, "clause": "the U.S. Mint stamps out quarters", "why": "a coin the Mint makes; COIN is not in the bank" },
+    { "word": "CARD", "route": "condition", "strength": 1, "clause": "collectors pay top dollar for baseball cards in mint condition", "why": "the classic mint-condition collectible" },
+    { "word": "STAMP", "route": "condition", "strength": 1, "clause": "stamp collectors prize mint stamps", "why": "'mint' is standard stamp-collector language" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "GUM", "note": "also the gums in your mouth" },
+    { "word": "CURRENCY", "note": "fine; clause correctly says coins" }
+   ]
+  },
+  {
+   "hint": "KEY",
+   "missing": [
+    { "word": "CAR", "route": "lock", "strength": 2, "clause": "you start the car with a key", "why": "car keys are as everyday as door keys" },
+    { "word": "CHAIN", "route": "NEW: a key chain", "strength": 1, "clause": "you clip your keys to a key chain", "why": "everyday compound" },
+    { "word": "RING", "route": "NEW: a key chain", "strength": 1, "clause": "you keep your keys on a key ring", "why": "same object" },
+    { "word": "COMPUTER", "route": "piano", "strength": 1, "clause": "you type on a computer's keys", "why": "keyboard keys; KEYBOARD itself is excluded by containment" },
+    { "word": "MUSIC", "route": "piano", "strength": 1, "clause": "a song is written in a musical key", "why": "the key of C; keep at 1" },
+    { "word": "SKELETON", "route": "lock", "strength": 1, "clause": "a skeleton key opens many locks", "why": "familiar phrase" },
+    { "word": "HOUSE", "route": "lock", "strength": 1, "clause": "you need a key to get into the house", "why": "house key is a stock phrase" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "PIE", "note": "key lime pie only; fine" },
+    { "word": "SKELETON", "note": "if added: reads first as bones" },
+    { "word": "KEYBOARD", "note": "not proposed: contains KEY" }
+   ]
+  },
+  {
+   "hint": "HORN",
+   "missing": [
+    { "word": "TRAIN", "route": "car", "strength": 1, "clause": "a train blasts its horn at crossings", "why": "same honking picture as CAR and TRUCK" },
+    { "word": "FOG", "route": "NEW: a foghorn", "strength": 1, "clause": "a foghorn warns ships in the fog", "why": "compound link" },
+    { "word": "FRANCE", "route": "music", "strength": 1, "clause": "the French horn is named for France", "why": "the route's own label" },
+    { "word": "BUGLE", "route": "music", "strength": 1, "clause": "a bugle is a simple brass horn", "why": "a horn instrument" },
+    { "word": "BUFFALO", "route": "animal", "strength": 1, "clause": "buffalo have big curved horns", "why": "horned animal like GOAT and RAM" },
+    { "word": "SHOE", "route": "NEW: a shoehorn", "strength": 1, "clause": "a shoehorn slides your heel into a shoe", "why": "compound link; keep at 1" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "RAM", "note": "also computer memory and the truck brand" },
+    { "word": "BAND", "note": "also a rubber band; the music group is meant" },
+    { "word": "THORN", "note": "not proposed: contains HORN" }
+   ]
+  },
+  {
+   "hint": "WING",
+   "missing": [
+    { "word": "FEATHER", "route": "flight", "strength": 1, "clause": "a bird's wings are covered in feathers", "why": "quick link" },
+    { "word": "BAT", "route": "flight", "strength": 1, "clause": "bats fly on leathery wings", "why": "the flying mammal" },
+    { "word": "FLY", "route": "flight", "strength": 1, "clause": "wings let you fly", "why": "the route's purpose" },
+    { "word": "HOT", "route": "food", "strength": 1, "clause": "hot wings are spicy chicken wings", "why": "'hot wings' is the usual menu name" },
+    { "word": "STAGE", "route": "NEW: waiting in the wings", "strength": 1, "clause": "actors wait in the wings beside the stage", "why": "stock theater phrase" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "BUFFALO", "note": "the animal on a board; the clause rightly leans on buffalo wings" },
+    { "word": "BAT", "note": "if added: also a baseball bat" },
+    { "word": "FLY", "note": "if added: also the insect" },
+    { "word": "SWING", "note": "not proposed: contains WING" }
+   ]
+  },
+  {
+   "hint": "PUNCH",
+   "missing": [
+    { "word": "BOXER", "route": "boxing", "strength": 2, "clause": "a boxer throws punches", "why": "as strong as BOXING" },
+    { "word": "BOWL", "route": "drink", "strength": 1, "clause": "party punch is served from a punch bowl", "why": "'punch bowl' is a fixed phrase" },
+    { "word": "LINE", "route": "joke", "strength": 1, "clause": "a joke ends with the punchline", "why": "compound link" },
+    { "word": "HOLE", "route": "paper", "strength": 1, "clause": "a hole punch makes holes in paper", "why": "compound link" },
+    { "word": "GLOVE", "route": "boxing", "strength": 1, "clause": "boxers punch in padded gloves", "why": "boxing image" },
+    { "word": "HOOK", "route": "boxing", "strength": 1, "clause": "a left hook is a classic punch", "why": "boxing term" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "CLOCK", "note": "punch the clock only; fine" },
+    { "word": "HOOK", "note": "if added: reads first as a fishing hook or Captain Hook" },
+    { "word": "BOXER", "note": "if added: also the dog breed and boxer shorts" }
+   ]
+  },
+  {
+   "hint": "SCALE",
+   "missing": [
+    { "word": "POUND", "route": "weight", "strength": 1, "clause": "a scale tells you how many pounds you weigh", "why": "U.S. scales read pounds" },
+    { "word": "NOTE", "route": "music", "strength": 1, "clause": "a scale runs up the notes one by one", "why": "do-re-mi" },
+    { "word": "MODEL", "route": "map", "strength": 1, "clause": "a scale model is a small, exact copy", "why": "fixed phrase; sits with 'drawn to scale'" },
+    { "word": "CLIFF", "route": "climb", "strength": 1, "clause": "climbers scale a cliff", "why": "as natural as MOUNTAIN and WALL" },
+    { "word": "BALANCE", "route": "justice", "strength": 1, "clause": "a balance scale weighs one side against the other", "why": "the classic two-pan scale" }
+   ],
+   "wrong_or_weak": [
+    { "word": "COURT", "route": "justice", "problem": "'the scales of justice hang over the court' is not accurate; Lady Justice holds them, often as a statue at courthouses", "fix": "clause: \"Lady Justice holds the scales outside many courthouses\"" }
+   ],
+   "senses": [
+    { "word": "COURT", "note": "also a basketball or tennis court" },
+    { "word": "NOTE", "note": "if added: also a written note" },
+    { "word": "POUND", "note": "if added: also a dog pound and to pound" }
+   ]
+  },
+  {
+   "hint": "BOLT",
+   "missing": [
+    { "word": "FRANKENSTEIN", "route": "hardware", "strength": 1, "clause": "Frankenstein's monster has bolts in his neck", "why": "iconic image" },
+    { "word": "WASHER", "route": "hardware", "strength": 1, "clause": "a washer sits between the bolt and the nut", "why": "nuts, bolts and washers come together" },
+    { "word": "FLASH", "route": "lightning", "strength": 1, "clause": "the Flash wears a lightning bolt on his chest", "why": "famous emblem; also a flash of lightning" },
+    { "word": "OLYMPUS", "route": "lightning", "strength": 1, "clause": "Zeus hurls lightning bolts from Mount Olympus", "why": "familiar myth; ZEUS is not in the bank" },
+    { "word": "HORSE", "route": "run", "strength": 1, "clause": "a startled horse can bolt", "why": "the classic thing that bolts" }
+   ],
+   "wrong_or_weak": [
+    { "word": "RACE", "route": "run", "problem": "the clause is about Usain Bolt the sprinter, not the verb 'to bolt' that the route is labelled with", "fix": "relabel the route 'to bolt / Usain Bolt', or move RACE to its own route 'Usain Bolt'; clause itself is accurate" }
+   ],
+   "senses": [
+    { "word": "NUT", "note": "the food reading competes on a board" },
+    { "word": "FAST", "note": "also to go without food" },
+    { "word": "WASHER", "note": "if added: reads first as a washing machine" }
+   ]
+  },
+  {
+   "hint": "CHIP",
+   "missing": [
+    { "word": "FISH", "route": "snack", "strength": 1, "clause": "fish and chips is the classic British meal", "why": "well known in the U.S." },
+    { "word": "ROULETTE", "route": "casino", "strength": 1, "clause": "you bet chips on the roulette wheel", "why": "casino game played with chips" },
+    { "word": "ICE CREAM", "route": "cookie", "strength": 1, "clause": "chocolate chip ice cream", "why": "chips in ice cream are as familiar as in cookies" },
+    { "word": "MINT", "route": "cookie", "strength": 1, "clause": "mint chocolate chip is a favorite ice cream flavor", "why": "fixed flavor name" },
+    { "word": "STOCKS", "route": "NEW: blue chip", "strength": 1, "clause": "blue-chip stocks come from big, steady companies", "why": "stock phrase for adults; keep at 1" }
+   ],
+   "wrong_or_weak": [],
+   "senses": [
+    { "word": "SALSA", "note": "also the dance" },
+    { "word": "ICE CREAM", "note": "if added together with MINT, keep them in one route" }
+   ]
+  }
+ ],
+ "groups": [
+  {
+   "group": "birds",
+   "missing": [],
+   "wrong": [
+    { "word": "CROW", "problem": "the reason field carries a status note ('back in the bank 2026-10-19'), which would leak into drafted explanations; also add a sense: the bird (not a rooster's crow)" },
+    { "word": "CRANE", "problem": "fine as a bird member at 1 with its sense note, but it is the weakest bird for seaside or city-bird hints (see SEAGULL)" }
+   ]
+  },
+  {
+   "group": "nautical",
+   "missing": [
+    { "word": "OAR", "reason": "you row a boat with oars" },
+    { "word": "RAFT", "reason": "a raft is the simplest boat" },
+    { "word": "LIGHTHOUSE", "reason": "a lighthouse guides ships to shore" },
+    { "word": "TITANIC", "reason": "the most famous ship in history" },
+    { "word": "WAVE", "reason": "ships ride the waves (strength 1)" }
+   ],
+   "wrong": [
+    { "word": "CAPTAIN", "problem": "member is correct at 2, but add a sense: the ship's captain (not a team captain or Captain America; MARVEL is in the bank)" },
+    { "word": "PORT", "problem": "add a sense: the harbor (not the wine, the left side or a computer port)" },
+    { "word": "SAIL", "problem": "correct member, but note it must be excluded if this group ever backs SAILOR's sea route (contained in SAILOR); SEA likewise for SEAGULL" }
+   ]
+  }
+ ],
+ "summary": "The x04 routes are mostly sound; the one hard error is INTERNET under NET, which contains the hint and must be removed, and the most obvious omissions are FINGER for RING, SEA for SAILOR and SHELL, COOL for FAN, CAR for KEY, PAPER for JAM, HALL for DECK, ROCK for LAVA and BOXER for PUNCH. Several clauses state something slightly wrong (Saturn as the only ringed planet, a deck as a patio, bark as the skin of wood, grape jam as the PB&J classic, scales hanging over the court) and SEAGULL's CRANE should go. In groups.json, CROW's reason carries a status note, and the nautical group lacks OAR, RAFT, LIGHTHOUSE and TITANIC."
+}

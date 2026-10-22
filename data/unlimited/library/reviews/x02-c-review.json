@@ -1,0 +1,925 @@
+{
+  "_metadata": {
+    "reviewer": "x02-reviewer-c",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-19",
+    "input": "x02-c-review-input.json",
+    "rubric": "x02 rubric (owner style examples, clicks-when-explained bar, fewer phrase-joins, mechanism labelled, explanation checked), 2026-10-19",
+    "independence": "I read only the instructions file and x02-c-review-input.json; no other repository file, search, web or paid API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_friend__kangaroo",
+      "a": "FRIEND",
+      "b": "KANGAROO",
+      "hints": [
+        {
+          "text": "JOEY",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "FRIEND via Joey Tribbiani of Friends, KANGAROO via joey meaning a baby kangaroo; a BARNEY-style pop-culture double that clicks instantly.",
+          "fix": "Replace the vague 'both live with a lot of hopping around' with: 'Joey is the lovable Friends roommate and also the word for a baby kangaroo.'"
+        }
+      ],
+      "strong_hints": ["JOEY"],
+      "best_available": { "text": "JOEY", "why": "Clean, broad pop-culture double meaning with both sides at full strength." },
+      "pair_note": "Excellent pair; only the explanation's 'hopping' line needs tightening."
+    },
+    {
+      "pair_id": "p_butterfly__caterpillar",
+      "a": "BUTTERFLY",
+      "b": "CATERPILLAR",
+      "hints": [
+        {
+          "text": "CHRYSALIS",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "The chrysalis is the stage between CATERPILLAR and BUTTERFLY, so it points at both equally and specifically.",
+          "fix": null
+        },
+        {
+          "text": "METAMORPHOSIS",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Metamorphosis is the textbook CATERPILLAR-to-BUTTERFLY transformation, though it could also pull toward frogs or other changers on a board.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHRYSALIS", "METAMORPHOSIS"],
+      "best_available": { "text": "CHRYSALIS", "why": "More specific to this exact pair than METAMORPHOSIS, which can also suggest tadpoles or Kafka." },
+      "pair_note": "A natural, easy pair; neither hint is surprising, but both are fair."
+    },
+    {
+      "pair_id": "p_slug__snail",
+      "a": "SLUG",
+      "b": "SNAIL",
+      "hints": [
+        {
+          "text": "SLIME",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "SLUG and SNAIL both leave slime trails, the defining shared property of the two.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SLIME"],
+      "best_available": { "text": "SLIME", "why": "The most natural shared property of the two creatures." },
+      "pair_note": "Straightforward; fine as an easier pair."
+    },
+    {
+      "pair_id": "p_ivory__mammoth",
+      "a": "IVORY",
+      "b": "MAMMOTH",
+      "hints": [
+        {
+          "text": "TUSK",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "IVORY is what tusks are made of and MAMMOTHS are famous for their huge curved tusks; the 10-foot claim is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TUSK"],
+      "best_available": { "text": "TUSK", "why": "Direct, accurate link to both targets." },
+      "pair_note": "Solid; risk only if ELEPHANT is also on the board."
+    },
+    {
+      "pair_id": "p_cactus__phoenix",
+      "a": "CACTUS",
+      "b": "PHOENIX",
+      "hints": [
+        {
+          "text": "ARIZONA",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "PHOENIX is Arizona's capital and the saguaro CACTUS is the Arizona emblem (its blossom is the state flower, correctly stated); a nice misdirect away from the mythical bird.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ARIZONA"],
+      "best_available": { "text": "ARIZONA", "why": "Accurate geography that reframes PHOENIX from bird to city." },
+      "pair_note": "Good pair; the hint quietly flips PHOENIX's meaning."
+    },
+    {
+      "pair_id": "p_medusa__statue",
+      "a": "MEDUSA",
+      "b": "STATUE",
+      "hints": [
+        {
+          "text": "STONE",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "MEDUSA's gaze turns people to stone, and STATUES are carved from stone; the explanation's joke ties them together well.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["STONE"],
+      "best_available": { "text": "STONE", "why": "Natural link with a pleasing myth twist in the explanation." },
+      "pair_note": "Clean; STONE is a common word so board interference is possible but acceptable."
+    },
+    {
+      "pair_id": "p_loch-ness__unicorn",
+      "a": "LOCH NESS",
+      "b": "UNICORN",
+      "hints": [
+        {
+          "text": "SCOTLAND",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 1,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": ["needs_explanation"],
+          "verdict": "PASS",
+          "reason": "LOCH NESS is obviously Scottish, and the UNICORN is Scotland's (true) national animal, a fun fact that players can reach by elimination and enjoy once explained.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SCOTLAND"],
+      "best_available": { "text": "SCOTLAND", "why": "True and delightful once known; the unicorn side is the reveal." },
+      "pair_note": "The unicorn side is less widely known in the U.S., but it is a legitimate, satisfying fact rather than a stretch."
+    },
+    {
+      "pair_id": "p_egypt__elvis",
+      "a": "EGYPT",
+      "b": "ELVIS",
+      "hints": [
+        {
+          "text": "MEMPHIS",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Memphis was a capital of ancient EGYPT and Memphis, Tennessee is home to ELVIS's Graceland; two famous places, one name.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["MEMPHIS"],
+      "best_available": { "text": "MEMPHIS", "why": "A genuine 'oh, nice' double with accurate facts on both sides." },
+      "pair_note": "One of the best in the batch."
+    },
+    {
+      "pair_id": "p_beijing__duck",
+      "a": "BEIJING",
+      "b": "DUCK",
+      "hints": [
+        {
+          "text": "PEKING",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "DUCK via the familiar phrase 'Peking duck', BEIJING because Peking is simply the older romanization of the same city name, which makes that side close to restating the target rather than linking to it.",
+          "fix": null
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "PEKING", "why": "Accurate and instantly familiar on the duck side; the only reservation is that it is nearly another name for BEIJING." },
+      "pair_note": "Judgement call: if the owner treats an old place-name as distinct from the modern one, this is a PASS; I held it at BORDERLINE as near-synonym plus phrase-join."
+    },
+    {
+      "pair_id": "p_fairy__puppet",
+      "a": "FAIRY",
+      "b": "PUPPET",
+      "hints": [
+        {
+          "text": "PINOCCHIO",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "PINOCCHIO is the wooden PUPPET brought to life by the Blue FAIRY; one story covers both targets.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PINOCCHIO"],
+      "best_available": { "text": "PINOCCHIO", "why": "Exactly the owner's preferred character-based style." },
+      "pair_note": "Excellent pair."
+    },
+    {
+      "pair_id": "p_fog__smoke",
+      "a": "FOG",
+      "b": "SMOKE",
+      "hints": [
+        {
+          "text": "SMOG",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SMOG is literally a blend of SMOKE and FOG, both as a word and as the stuff itself; a neat reveal.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SMOG"],
+      "best_available": { "text": "SMOG", "why": "Portmanteau fact that is both obvious and satisfying." },
+      "pair_note": "Strong; SMOG does not contain either full target."
+    },
+    {
+      "pair_id": "p_himalayas__summit",
+      "a": "HIMALAYAS",
+      "b": "SUMMIT",
+      "hints": [
+        {
+          "text": "EVEREST",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "EVEREST is the HIMALAYAS' highest peak and reaching its SUMMIT is the iconic climb; the 29,000-foot figure is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["EVEREST"],
+      "best_available": { "text": "EVEREST", "why": "The obvious, accurate bridge between the two." },
+      "pair_note": "Fair and easy."
+    },
+    {
+      "pair_id": "p_mirage__oasis",
+      "a": "MIRAGE",
+      "b": "OASIS",
+      "hints": [
+        {
+          "text": "WATER",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "An OASIS has real water and a classic desert MIRAGE fakes it; the real-versus-fake contrast gives it some charm, though WATER can pull toward many board words.",
+          "fix": null
+        },
+        {
+          "text": "DESERT",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Both MIRAGE and OASIS are signature desert phenomena, so the scene points at the pair directly.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DESERT", "WATER"],
+      "best_available": { "text": "DESERT", "why": "Points most tightly to exactly these two words; WATER is more evocative but more diffuse." },
+      "pair_note": "Two fair hints; DESERT is safer, WATER has the nicer story."
+    },
+    {
+      "pair_id": "p_maple__pine",
+      "a": "MAPLE",
+      "b": "PINE",
+      "hints": [
+        {
+          "text": "SAP",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "MAPLE sap becomes syrup and PINE sap is the famously sticky resin; the pancakes-versus-hands line is charming and accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SAP"],
+      "best_available": { "text": "SAP", "why": "Specific shared property with a playful explanation." },
+      "pair_note": "Good; better than a generic TREE would be."
+    },
+    {
+      "pair_id": "p_christmas__green",
+      "a": "CHRISTMAS",
+      "b": "GREEN",
+      "hints": [
+        {
+          "text": "GRINCH",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The GREEN Grinch who stole CHRISTMAS; the explanation's heart-grew-three-sizes detail is correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GRINCH"],
+      "best_available": { "text": "GRINCH", "why": "Iconic character covering both sides perfectly." },
+      "pair_note": "Excellent pair."
+    },
+    {
+      "pair_id": "p_electricity__stream",
+      "a": "ELECTRICITY",
+      "b": "STREAM",
+      "hints": [
+        {
+          "text": "CURRENT",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Electric CURRENT and a STREAM's current are two everyday senses of one word.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CURRENT"],
+      "best_available": { "text": "CURRENT", "why": "A clean, familiar double meaning." },
+      "pair_note": "Solid, if expected."
+    },
+    {
+      "pair_id": "p_earth__pie",
+      "a": "EARTH",
+      "b": "PIE",
+      "hints": [
+        {
+          "text": "CRUST",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["wrong_fact", "text_fix"],
+          "verdict": "BORDERLINE",
+          "reason": "The hint itself is PASS-quality (EARTH's crust and a PIE crust), but the explanation says Earth's filling is molten rock, whereas the mantle under the crust is mostly solid rock and the liquid outer core is metal.",
+          "fix": "Change the explanation to: 'Earth and pie both have a crust, though only one has a filling of hot rock you would not want to eat.'"
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "CRUST", "why": "The idea is a clean double meaning; it becomes a PASS once the molten-rock line is corrected." },
+      "pair_note": "Fix the explanation and this pair is fine; held at BORDERLINE only because the rubric fails false facts in explanations."
+    },
+    {
+      "pair_id": "p_baby__delivery",
+      "a": "BABY",
+      "b": "DELIVERY",
+      "hints": [
+        {
+          "text": "STORK",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Folklore's STORK delivers BABIES, linking both targets through one familiar image.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["STORK"],
+      "best_available": { "text": "STORK", "why": "Instantly recognisable folklore that hits both words." },
+      "pair_note": "Excellent pair."
+    },
+    {
+      "pair_id": "p_pizza__wind",
+      "a": "PIZZA",
+      "b": "WIND",
+      "hints": [
+        {
+          "text": "CHICAGO",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CHICAGO is the Windy City (WIND) and the home of deep-dish PIZZA; both are well-known U.S. associations.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHICAGO"],
+      "best_available": { "text": "CHICAGO", "why": "Two famous city associations; a satisfying bridge between unrelated words." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_mass__volume",
+      "a": "MASS",
+      "b": "VOLUME",
+      "hints": [
+        {
+          "text": "DENSITY",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "DENSITY is MASS divided by VOLUME, a school-science fact, and the brick-versus-beach-ball example is sound.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DENSITY"],
+      "best_available": { "text": "DENSITY", "why": "The defining relation between the two words." },
+      "pair_note": "Fair; a little classroom-flavoured but accurate."
+    },
+    {
+      "pair_id": "p_cave__sound",
+      "a": "CAVE",
+      "b": "SOUND",
+      "hints": [
+        {
+          "text": "ECHO",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Shouting in a CAVE produces an ECHO, which is reflected SOUND; a natural scene linking both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ECHO"],
+      "best_available": { "text": "ECHO", "why": "Classic cave-and-sound image." },
+      "pair_note": "Fine; ECHO is a type of sound rather than a synonym."
+    },
+    {
+      "pair_id": "p_gum__satellite",
+      "a": "GUM",
+      "b": "SATELLITE",
+      "hints": [
+        {
+          "text": "ORBIT",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "SATELLITES travel in orbit and Orbit is a major U.S. chewing-GUM brand, a nice brand-plus-science double; the explanation never names the brand, so it reads as if gum goes into space.",
+          "fix": "Change the explanation to: 'Satellites travel in orbit, and Orbit is also a popular brand of chewing gum.'"
+        }
+      ],
+      "strong_hints": ["ORBIT"],
+      "best_available": { "text": "ORBIT", "why": "Fun brand double meaning in the INTERNET+AFRICA->SAFARI mould." },
+      "pair_note": "Good pair; just clarify the brand in the explanation."
+    },
+    {
+      "pair_id": "p_disease__mosquito",
+      "a": "DISEASE",
+      "b": "MOSQUITO",
+      "hints": [
+        {
+          "text": "MALARIA",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "MALARIA is a DISEASE famously spread by MOSQUITO bites; accurate and direct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["MALARIA"],
+      "best_available": { "text": "MALARIA", "why": "The best-known mosquito-borne disease." },
+      "pair_note": "Fair, low surprise; mildly serious subject but acceptable for general audiences."
+    },
+    {
+      "pair_id": "p_lead__pencil",
+      "a": "LEAD",
+      "b": "PENCIL",
+      "hints": [
+        {
+          "text": "GRAPHITE",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "PENCIL 'LEAD' is actually graphite and clay, a correct and enjoyable myth-buster that ties both words together.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GRAPHITE"],
+      "best_available": { "text": "GRAPHITE", "why": "Accurate fun fact that lands the 'oh, nice' moment." },
+      "pair_note": "Strong pair."
+    },
+    {
+      "pair_id": "p_bone__humor",
+      "a": "BONE",
+      "b": "HUMOR",
+      "hints": [
+        {
+          "text": "HUMERUS",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The humerus is an arm BONE and sounds like 'humorous' (HUMOR), with the funny-bone nerve running past it; a classic pun that clicks immediately.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HUMERUS"],
+      "best_available": { "text": "HUMERUS", "why": "Playful sound-alike pun with real anatomy behind it." },
+      "pair_note": "Does not contain HUMOR (spelled differently); one of the most fun hints in the batch."
+    },
+    {
+      "pair_id": "p_brother__flight",
+      "a": "BROTHER",
+      "b": "FLIGHT",
+      "hints": [
+        {
+          "text": "WRIGHT",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Wright BROTHERS, bicycle-shop owners, made the first powered airplane FLIGHT in 1903; facts are correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WRIGHT"],
+      "best_available": { "text": "WRIGHT", "why": "Famous historical pair covering both targets." },
+      "pair_note": "Excellent pair."
+    },
+    {
+      "pair_id": "p_china__fireworks",
+      "a": "CHINA",
+      "b": "FIREWORKS",
+      "hints": [
+        {
+          "text": "GUNPOWDER",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Gunpowder was invented in CHINA and is what makes FIREWORKS go; both facts are correct.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["GUNPOWDER"],
+      "best_available": { "text": "GUNPOWDER", "why": "Accurate invention fact linking both." },
+      "pair_note": "Solid; slight risk if CANNON or similar is on the board."
+    },
+    {
+      "pair_id": "p_cage__scuba-diver",
+      "a": "CAGE",
+      "b": "SCUBA DIVER",
+      "hints": [
+        {
+          "text": "SHARK",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Shark-cage diving is a vivid scene with the diver inside the CAGE and SHARKS outside, and SCUBA DIVERS are the classic shark encounterers.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SHARK"],
+      "best_available": { "text": "SHARK", "why": "A clear, vivid scene; the explanation's role-reversal joke adds charm." },
+      "pair_note": "Good pair."
+    },
+    {
+      "pair_id": "p_litter__pig",
+      "a": "LITTER",
+      "b": "PIG",
+      "hints": [
+        {
+          "text": "WILBUR",
+          "mechanism": "shared_reference",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["one_sided", "needs_explanation"],
+          "verdict": "BORDERLINE",
+          "reason": "PIG is instant via Charlotte's Web's Wilbur, but LITTER depends on recalling that Wilbur was the runt of the litter, so most players would jump to SPIDER or FARM first.",
+          "fix": null
+        },
+        {
+          "text": "RUNT",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "LITTER via the instantly familiar 'runt of the litter', PIG via the runt piglet (Wilbur) image; an exceptional phrase-join because the story backs up both sides.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RUNT"],
+      "best_available": { "text": "RUNT", "why": "Reaches both words directly; WILBUR leaves the litter side too weak." },
+      "pair_note": "RUNT is the natural hint; WILBUR is a nice character but one-sided toward PIG."
+    },
+    {
+      "pair_id": "p_crocodile__tick",
+      "a": "CROCODILE",
+      "b": "TICK",
+      "hints": [
+        {
+          "text": "CLOCK",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Peter Pan's CROCODILE swallowed a ticking CLOCK, and a clock TICKS; story-based and satisfying.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CLOCK"],
+      "best_available": { "text": "CLOCK", "why": "Peter Pan reference that clicks once seen; the tick side is effortless." },
+      "pair_note": "Explanation could mention the croc swallowed the clock, but it is clear enough as written."
+    },
+    {
+      "pair_id": "p_rome__stadium",
+      "a": "ROME",
+      "b": "STADIUM",
+      "hints": [
+        {
+          "text": "COLOSSEUM",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Colosseum is ROME's landmark ancient arena, effectively an ancient STADIUM; the ~50,000 capacity and ~2,000-year age are reasonable.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["COLOSSEUM"],
+      "best_available": { "text": "COLOSSEUM", "why": "Iconic and accurate." },
+      "pair_note": "Fine; technically an amphitheater, but 'stadium' is a fair metaphor."
+    },
+    {
+      "pair_id": "p_greece__labyrinth",
+      "a": "GREECE",
+      "b": "LABYRINTH",
+      "hints": [
+        {
+          "text": "MINOTAUR",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The MINOTAUR is a Greek-myth (GREECE) monster that lived in the LABYRINTH; the Theseus explanation is accurate.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["MINOTAUR"],
+      "best_available": { "text": "MINOTAUR", "why": "Single myth uniting both targets." },
+      "pair_note": "Good; the Greece side is via 'Greek myth', which is standard knowledge."
+    },
+    {
+      "pair_id": "p_japan__poetry",
+      "a": "JAPAN",
+      "b": "POETRY",
+      "hints": [
+        {
+          "text": "HAIKU",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "HAIKU is the famous Japanese (JAPAN) form of POETRY; the 5-7-5 description is the standard school definition.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HAIKU"],
+      "best_available": { "text": "HAIKU", "why": "Direct, accurate, universally known." },
+      "pair_note": "Fair; Japanese counts sound units rather than syllables strictly, but the explanation's simplification is the accepted English description."
+    },
+    {
+      "pair_id": "p_poison__skull",
+      "a": "POISON",
+      "b": "SKULL",
+      "hints": [
+        {
+          "text": "CROSSBONES",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "SKULL via the instantly familiar 'skull and crossbones', and that symbol is the classic POISON warning label; both sides are immediate, so it clears the exceptional phrase-join bar.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CROSSBONES"],
+      "best_available": { "text": "CROSSBONES", "why": "The symbol itself is the link, not just a fill-in." },
+      "pair_note": "Watch for PIRATE on the same board, which the explanation itself mentions."
+    },
+    {
+      "pair_id": "p_movie__trash",
+      "a": "MOVIE",
+      "b": "TRASH",
+      "hints": [
+        {
+          "text": "OSCAR",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "MOVIE via the Oscars (Academy Awards) and TRASH via Oscar the Grouch's Sesame Street trash can; a delightful pop-culture double.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["OSCAR"],
+      "best_available": { "text": "OSCAR", "why": "Two famous Oscars, perfectly in the owner's style." },
+      "pair_note": "One of the best in the batch."
+    },
+    {
+      "pair_id": "p_airport__model",
+      "a": "AIRPORT",
+      "b": "MODEL",
+      "hints": [
+        {
+          "text": "RUNWAY",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "AIRPORT runways for planes and fashion runways for MODELS; a clean, satisfying double meaning.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RUNWAY"],
+      "best_available": { "text": "RUNWAY", "why": "Ideal double meaning with both sides immediate." },
+      "pair_note": "Excellent pair."
+    },
+    {
+      "pair_id": "p_captain__clown",
+      "a": "CAPTAIN",
+      "b": "CLOWN",
+      "hints": [
+        {
+          "text": "NEMO",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "CAPTAIN via Jules Verne's Captain Nemo and CLOWN via Pixar's clownfish Nemo; two famous Nemos, both ocean-themed.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NEMO"],
+      "best_available": { "text": "NEMO", "why": "Two well-known characters sharing one name, with a neat undersea echo." },
+      "pair_note": "Captain Nemo is older but still widely known; strong pair."
+    },
+    {
+      "pair_id": "p_knife__watch",
+      "a": "KNIFE",
+      "b": "WATCH",
+      "hints": [
+        {
+          "text": "SWISS",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Swiss Army KNIVES and Swiss WATCHES are Switzerland's two most famous exports; it reads as a shared origin fact more than a mechanical blank.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SWISS"],
+      "best_available": { "text": "SWISS", "why": "Both associations are iconic and immediate." },
+      "pair_note": "Borders on a phrase-join ('Swiss ___'), but the national-craft fact carries it; risk if CHEESE is on the board."
+    }
+  ]
+}

@@ -1,0 +1,5889 @@
+{
+ "_metadata": {
+  "purpose": "pilot (x03): for each hint, the routes that made its approved pairs good. A route is one meaning of the hint plus the bank words that reach it (from a group in groups.json, or listed here). A candidate pair takes one word from each of two DIFFERENT routes (the double meaning or two-sided picture that made the original work); a route marked sameRoute may also pair with itself (one shared work, e.g. Disney's Frozen: MOVIE + SNOWMAN).",
+  "clauses": "clause.<WORD> is the hint-specific half-sentence for that word (sentence case inside a sentence); without it the group's reason is used. The drafted explanation is '<clause 1>, and <clause 2>.' Reviewers may fix the wording.",
+  "seeds": "approved pairs the routes were built from; the finder must regenerate them (a recall check)",
+  "indexReview": "data/unlimited/related/index-review.json (x03-index-reviewer, claude-opus-5-5): suggestions applied selectively; members added from it carry addedBy",
+  "indexReviewX04": "data/unlimited/related/index-review-x04.json applied by scripts/unlimited/x04-apply-index-review.mjs",
+  "indexReviewX04b": "data/unlimited/related/index-review-x04b.json applied by scripts/unlimited/x04b-apply-index-review.mjs"
+ },
+ "hints": [
+  {
+   "hint": "FROZEN",
+   "seeds": [
+    "STATUE+COMPUTER",
+    "STATUE+ICE",
+    "ICE+COMPUTER"
+   ],
+   "routes": [
+    {
+     "id": "device",
+     "label": "a device that freezes",
+     "group": "devices-that-freeze"
+    },
+    {
+     "id": "water",
+     "label": "frozen water",
+     "group": "frozen-water"
+    },
+    {
+     "id": "icy",
+     "label": "freezing cold",
+     "group": "icy-cold"
+    },
+    {
+     "id": "still",
+     "label": "frozen still",
+     "group": "frozen-still"
+    },
+    {
+     "id": "film",
+     "label": "Disney's Frozen",
+     "group": "disney-frozen",
+     "sameRoute": true
+    },
+    {
+     "id": "food",
+     "label": "frozen food",
+     "group": "frozen-food"
+    },
+    {
+     "id": "money",
+     "label": "frozen assets",
+     "group": "frozen-money"
+    }
+   ],
+   "never": [
+    {
+     "pair": "WATER+ICE",
+     "why": "not routed: WATER is not a frozen thing; ICE + WATER has better hints"
+    },
+    {
+     "pair": "SNOW+SNOWMAN",
+     "why": "one target contains the other"
+    },
+    {
+     "pair": "ICE+ICE CREAM",
+     "why": "one target contains the other"
+    },
+    {
+     "pair": "MOVIE+FILM",
+     "why": "synonyms"
+    }
+   ],
+   "reviewCap": 20
+  },
+  {
+   "hint": "BEANBAG",
+   "seeds": [
+    "FOOD+COUCH",
+    "FOOD+FURNITURE"
+   ],
+   "routes": [
+    {
+     "id": "food",
+     "label": "beans are food",
+     "group": "foods-beans"
+    },
+    {
+     "id": "seat",
+     "label": "a squishy seat",
+     "group": "seating",
+     "clause": {
+      "COUCH": "a beanbag is a squishy seat for lounging, like a couch",
+      "CHAIR": "a beanbag chair is a squishy chair",
+      "FURNITURE": "a beanbag chair is a piece of furniture",
+      "CUSHION": "a beanbag is basically a giant floor cushion"
+     },
+     "exclude": {
+      "BENCH": "a hard seat, nothing like a beanbag"
+     }
+    },
+    {
+     "id": "toss",
+     "label": "the beanbag toss game",
+     "words": [
+      {
+       "word": "CARNIVAL",
+       "strength": 1,
+       "clause": "beanbag toss is a classic carnival game"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "ALCHEMY",
+   "seeds": [
+    "GOLD+SCIENCE",
+    "SILVER+SCIENCE"
+   ],
+   "routes": [
+    {
+     "id": "science",
+     "label": "the forerunner of chemistry",
+     "words": [
+      {
+       "word": "SCIENCE",
+       "strength": 2,
+       "clause": "alchemy was the forerunner of modern chemistry"
+      },
+      {
+       "word": "SCIENTIST",
+       "strength": 1,
+       "clause": "early scientists, Isaac Newton among them, practiced alchemy"
+      },
+      {
+       "word": "LAB",
+       "strength": 1,
+       "clause": "alchemists worked in early laboratories"
+      },
+      {
+       "word": "FLASK",
+       "strength": 1,
+       "clause": "alchemists brewed their experiments in glass flasks",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "metal",
+     "label": "turning one metal into another",
+     "group": "metals",
+     "exclude": {
+      "BRONZE": "an alloy; not part of the alchemy story"
+     },
+     "clause": {
+      "GOLD": "alchemists tried to turn lead into gold",
+      "SILVER": "alchemists tried to turn ordinary metals into silver and gold",
+      "LEAD": "alchemists tried to turn lead into gold",
+      "COPPER": "alchemists tried to turn base metals like copper into gold",
+      "IRON": "alchemists tried to turn base metals like iron into gold",
+      "MERCURY": "alchemists prized mercury as the key to transforming metals",
+      "METAL": "alchemists tried to turn one metal into another"
+     }
+    },
+    {
+     "id": "stone",
+     "label": "the philosopher's stone",
+     "words": [
+      {
+       "word": "STONE",
+       "strength": 1,
+       "clause": "alchemists hunted for the philosopher's stone, said to turn base metals into gold",
+       "fixedBy": "x03-reviewer-pb"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "id": "novel",
+     "label": "The Alchemist",
+     "words": [
+      {
+       "word": "NOVEL",
+       "strength": 1,
+       "clause": "The Alchemist is Paulo Coelho's best-selling novel"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    }
+   ],
+   "never": [
+    {
+     "pair": "MAGIC+SCIENCE",
+     "why": "owner rejection; keep SCIENCE + a metal"
+    },
+    {
+     "pair": "METAL+GOLD",
+     "why": "owner rejection"
+    },
+    {
+     "pair": "LEAD+GOLD",
+     "why": "owner rejection"
+    }
+   ]
+  },
+  {
+   "hint": "PLANK",
+   "seeds": [
+    "PIRATE+GYM",
+    "SHIP+GYM",
+    "WOOD+GYM"
+   ],
+   "routes": [
+    {
+     "id": "pirate",
+     "label": "walk the plank",
+     "group": "pirate-life",
+     "clause": {
+      "PIRATE": "in pirate stories, captives are made to walk the plank",
+      "SHIP": "in pirate stories, prisoners walk the plank off the side of the ship",
+      "CAPTAIN": "in pirate stories, the captain makes prisoners walk the plank",
+      "SHARK": "in pirate stories, prisoners walk the plank into shark-filled water",
+      "SEA": "in pirate stories, prisoners walk the plank into the sea"
+     },
+     "only": [
+      "PIRATE",
+      "SHIP",
+      "CAPTAIN",
+      "SHARK",
+      "SEA"
+     ]
+    },
+    {
+     "id": "wood",
+     "label": "a board of wood",
+     "group": "wood-and-timber",
+     "clause": {
+      "WOOD": "a plank is a long, flat board of wood",
+      "OAK": "oak is sawn into sturdy planks",
+      "PINE": "pine is sawn into planks",
+      "LOG": "logs are sawn into planks",
+      "RAFT": "a simple raft is lashed together from planks",
+      "DECK": "a deck is laid with wooden planks",
+      "BRIDGE": "a simple bridge is a plank laid across a gap"
+     },
+     "only": [
+      "WOOD",
+      "OAK",
+      "PINE",
+      "LOG",
+      "RAFT",
+      "DECK",
+      "BRIDGE"
+     ]
+    },
+    {
+     "id": "exercise",
+     "label": "the core exercise",
+     "group": "gym-exercise",
+     "clause": {
+      "GYM": "at the gym, you hold a plank to build core strength",
+      "STRENGTH": "holding a plank builds core strength",
+      "PHYSICAL": "planks are a staple of physical education class"
+     },
+     "exclude": {
+      "PHYSICAL": "usually read as a checkup; too weak (index review)"
+     }
+    }
+   ]
+  },
+  {
+   "hint": "EAGLE",
+   "seeds": [
+    "BIRD+FOOTBALL",
+    "AMERICA+BIRD"
+   ],
+   "routes": [
+    {
+     "id": "bird",
+     "label": "the bird",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the eagle is a big bird of prey"
+      }
+     ]
+    },
+    {
+     "id": "football",
+     "label": "Philadelphia Eagles",
+     "words": [
+      {
+       "word": "FOOTBALL",
+       "strength": 2,
+       "clause": "the Philadelphia Eagles play football"
+      }
+     ]
+    },
+    {
+     "id": "america",
+     "label": "the national bird",
+     "words": [
+      {
+       "word": "AMERICA",
+       "strength": 2,
+       "clause": "the bald eagle is America's national bird"
+      }
+     ]
+    },
+    {
+     "id": "golf",
+     "label": "two under par",
+     "words": [
+      {
+       "word": "GOLF",
+       "strength": 2,
+       "clause": "an eagle is two under par in golf"
+      }
+     ]
+    },
+    {
+     "id": "moon",
+     "label": "Apollo 11's lunar module",
+     "words": [
+      {
+       "word": "MOON",
+       "strength": 1,
+       "clause": "Apollo 11's lunar module, the Eagle, landed on the Moon"
+      },
+      {
+       "word": "ASTRONAUT",
+       "strength": 1,
+       "clause": "astronauts landed on the Moon in Apollo 11's lunar module, the Eagle"
+      },
+      {
+       "word": "NASA",
+       "strength": 1,
+       "clause": "NASA's Apollo 11 landed on the Moon in a lunar module called the Eagle",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "coin",
+     "label": "the eagle on the quarter",
+     "words": [
+      {
+       "word": "QUARTER",
+       "strength": 1,
+       "clause": "for decades, an eagle was on the back of the U.S. quarter",
+       "fixedBy": "x03-reviewer-pb"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "id": "band",
+     "label": "the Eagles (band)",
+     "words": [
+      {
+       "word": "BAND",
+       "strength": 1,
+       "clause": "the Eagles are the band behind \"Hotel California\""
+      },
+      {
+       "word": "HOTEL",
+       "strength": 1,
+       "clause": "the Eagles sang \"Hotel California\""
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "CARDINAL",
+   "seeds": [
+    "BIRD+FOOTBALL",
+    "BASEBALL+BIRD"
+   ],
+   "routes": [
+    {
+     "id": "bird",
+     "label": "the red bird",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the cardinal is a bright red songbird"
+      },
+      {
+       "word": "RED",
+       "strength": 2,
+       "clause": "the cardinal is a bright red bird"
+      }
+     ]
+    },
+    {
+     "id": "football",
+     "label": "Arizona Cardinals",
+     "words": [
+      {
+       "word": "FOOTBALL",
+       "strength": 2,
+       "clause": "the Arizona Cardinals play football"
+      }
+     ]
+    },
+    {
+     "id": "baseball",
+     "label": "St. Louis Cardinals",
+     "words": [
+      {
+       "word": "BASEBALL",
+       "strength": 2,
+       "clause": "the St. Louis Cardinals play baseball"
+      }
+     ]
+    },
+    {
+     "id": "church",
+     "label": "the church official",
+     "words": [
+      {
+       "word": "CHURCH",
+       "strength": 2,
+       "clause": "a cardinal is a senior official of the Catholic Church"
+      },
+      {
+       "word": "RELIGION",
+       "strength": 1,
+       "clause": "a cardinal is a senior leader in the Catholic religion"
+      }
+     ]
+    },
+    {
+     "id": "direction",
+     "label": "the cardinal directions",
+     "words": [
+      {
+       "word": "NORTH",
+       "strength": 1,
+       "clause": "north is one of the four cardinal directions"
+      },
+      {
+       "word": "MAP",
+       "strength": 1,
+       "clause": "maps mark the four cardinal directions",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "FALCON",
+   "seeds": [
+    "BIRD+FOOTBALL"
+   ],
+   "routes": [
+    {
+     "id": "bird",
+     "label": "the bird",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the falcon is a fast bird of prey"
+      }
+     ]
+    },
+    {
+     "id": "football",
+     "label": "Atlanta Falcons",
+     "words": [
+      {
+       "word": "FOOTBALL",
+       "strength": 2,
+       "clause": "the Atlanta Falcons play football"
+      }
+     ]
+    },
+    {
+     "id": "starwars",
+     "label": "the Millennium Falcon",
+     "words": [
+      {
+       "word": "STAR WARS",
+       "strength": 2,
+       "clause": "the Millennium Falcon is Han Solo's ship in Star Wars"
+      },
+      {
+       "word": "SPACE",
+       "strength": 1,
+       "clause": "the Millennium Falcon races through space in Star Wars"
+      },
+      {
+       "word": "SHIP",
+       "strength": 1,
+       "clause": "the Millennium Falcon is Han Solo's ship in Star Wars",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "marvel",
+     "label": "Marvel's Falcon",
+     "words": [
+      {
+       "word": "MARVEL",
+       "strength": 1,
+       "clause": "the Falcon is Sam Wilson's winged Marvel hero"
+      },
+      {
+       "word": "SUPERHERO",
+       "strength": 1,
+       "clause": "the Falcon is a winged Marvel superhero"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "RAVEN",
+   "seeds": [
+    "BIRD+FOOTBALL"
+   ],
+   "routes": [
+    {
+     "id": "bird",
+     "label": "the bird",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the raven is a big black bird"
+      },
+      {
+       "word": "BLACK",
+       "strength": 1,
+       "clause": "the raven is a big, glossy black bird"
+      },
+      {
+       "word": "HAIR",
+       "strength": 1,
+       "clause": "raven-black hair is glossy and dark",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "football",
+     "label": "Baltimore Ravens",
+     "words": [
+      {
+       "word": "FOOTBALL",
+       "strength": 2,
+       "clause": "the Baltimore Ravens play football"
+      }
+     ]
+    },
+    {
+     "id": "poe",
+     "label": "Poe's The Raven",
+     "words": [
+      {
+       "word": "POETRY",
+       "strength": 2,
+       "clause": "Edgar Allan Poe's \"The Raven\" is one of the most famous poems in America"
+      }
+     ]
+    },
+    {
+     "id": "hogwarts",
+     "label": "Ravenclaw",
+     "words": [
+      {
+       "word": "HOGWARTS",
+       "strength": 1,
+       "clause": "Ravenclaw, the house of the clever, has a raven as its mascot in the films"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "JAY",
+   "seeds": [
+    "BASEBALL+BIRD"
+   ],
+   "routes": [
+    {
+     "id": "bird",
+     "label": "the blue jay",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the blue jay is a common crested bird"
+      },
+      {
+       "word": "BLUE",
+       "strength": 2,
+       "clause": "the blue jay is named for its bright blue feathers"
+      }
+     ]
+    },
+    {
+     "id": "baseball",
+     "label": "Toronto Blue Jays",
+     "words": [
+      {
+       "word": "BASEBALL",
+       "strength": 2,
+       "clause": "the Toronto Blue Jays play baseball"
+      },
+      {
+       "word": "CANADA",
+       "strength": 1,
+       "clause": "the Toronto Blue Jays are Canada's only MLB team",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "jaywalk",
+     "label": "jaywalking",
+     "words": [
+      {
+       "word": "WALK",
+       "strength": 2,
+       "clause": "to jaywalk is to cross the street carelessly"
+      },
+      {
+       "word": "STREET",
+       "strength": 1,
+       "clause": "jaywalkers cross the street wherever they like"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "ORIOLE",
+   "seeds": [],
+   "routes": [
+    {
+     "id": "bird",
+     "label": "the bird",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the oriole is an orange-and-black songbird"
+      },
+      {
+       "word": "ORANGE",
+       "strength": 1,
+       "clause": "the Baltimore oriole is bright orange and black"
+      },
+      {
+       "word": "BLACK",
+       "strength": 1,
+       "clause": "the Baltimore oriole is orange and black",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "baseball",
+     "label": "Baltimore Orioles",
+     "words": [
+      {
+       "word": "BASEBALL",
+       "strength": 2,
+       "clause": "the Baltimore Orioles play baseball"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "HAWK",
+   "seeds": [],
+   "routes": [
+    {
+     "id": "bird",
+     "label": "the bird",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the hawk is a sharp-eyed bird of prey"
+      }
+     ]
+    },
+    {
+     "id": "basketball",
+     "label": "Atlanta Hawks",
+     "words": [
+      {
+       "word": "BASKETBALL",
+       "strength": 2,
+       "clause": "the Atlanta Hawks play basketball"
+      }
+     ]
+    },
+    {
+     "id": "skate",
+     "label": "Tony Hawk",
+     "words": [
+      {
+       "word": "SKATEBOARD",
+       "strength": 2,
+       "clause": "Tony Hawk is the world's most famous skateboarder"
+      },
+      {
+       "word": "VIDEO GAME",
+       "strength": 1,
+       "clause": "Tony Hawk's Pro Skater is a classic video game",
+       "addedBy": "x03-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "football",
+     "label": "Seattle Seahawks",
+     "words": [
+      {
+       "word": "FOOTBALL",
+       "strength": 1,
+       "clause": "the Seattle Seahawks play football"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "id": "hockey",
+     "label": "Chicago Blackhawks",
+     "words": [
+      {
+       "word": "HOCKEY",
+       "strength": 1,
+       "clause": "the Chicago Blackhawks play hockey"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "id": "helicopter",
+     "label": "the Black Hawk helicopter",
+     "words": [
+      {
+       "word": "HELICOPTER",
+       "strength": 1,
+       "clause": "the Black Hawk is the U.S. Army's famous helicopter"
+      }
+     ],
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "SEAGULL",
+   "checkpoint": "x04",
+   "seeds": [
+    "BEACH+PIGEON",
+    "BEACH+CROW",
+    "OCEAN+CROW"
+   ],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "coast",
+     "label": "the seaside",
+     "words": [
+      {
+       "word": "BEACH",
+       "strength": 2,
+       "clause": "seagulls are a familiar sight at the beach"
+      },
+      {
+       "word": "OCEAN",
+       "strength": 2,
+       "clause": "seagulls soar over the ocean"
+      },
+      {
+       "word": "PORT",
+       "strength": 1,
+       "clause": "seagulls crowd every fishing port"
+      },
+      {
+       "word": "LIGHTHOUSE",
+       "strength": 1,
+       "clause": "seagulls wheel around the lighthouse"
+      },
+      {
+       "word": "BOAT",
+       "strength": 1,
+       "clause": "seagulls trail fishing boats for scraps"
+      },
+      {
+       "word": "SHIP",
+       "strength": 1,
+       "clause": "seagulls follow ships out of the harbor",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "FISH",
+       "strength": 1,
+       "clause": "seagulls dive for fish",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "bird",
+     "label": "a bird like these",
+     "words": [
+      {
+       "word": "PIGEON",
+       "strength": 2,
+       "clause": "seagulls beg for scraps like seaside pigeons"
+      },
+      {
+       "word": "CROW",
+       "strength": 2,
+       "clause": "seagulls scavenge like seaside crows"
+      },
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "the seagull is a familiar bird"
+      }
+     ]
+    },
+    {
+     "id": "thief",
+     "label": "the snack thief",
+     "words": [
+      {
+       "word": "FRY",
+       "strength": 2,
+       "clause": "seagulls swoop in to steal your french fries"
+      },
+      {
+       "word": "SNACK",
+       "strength": 2,
+       "clause": "seagulls are famous for snatching snacks"
+      },
+      {
+       "word": "THIEF",
+       "strength": 1,
+       "clause": "seagulls are notorious beach-snack thieves"
+      },
+      {
+       "word": "TRASH",
+       "strength": 1,
+       "clause": "seagulls raid beach trash cans for scraps",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "finding-nemo-s-seagulls",
+     "label": "Finding Nemo's seagulls",
+     "words": [
+      {
+       "word": "MINE",
+       "strength": 1,
+       "clause": "the seagulls in Finding Nemo squawk \"Mine! Mine!\"",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "SLAM",
+   "checkpoint": "x04",
+   "seeds": [
+    "BASKETBALL+POETRY",
+    "DOOR+POETRY"
+   ],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "dunk",
+     "label": "slam dunk",
+     "words": [
+      {
+       "word": "BASKETBALL",
+       "strength": 2,
+       "clause": "a slam dunk is basketball's most exciting shot"
+      }
+     ]
+    },
+    {
+     "id": "poetry",
+     "label": "poetry slam",
+     "words": [
+      {
+       "word": "POETRY",
+       "strength": 2,
+       "clause": "poets compete at a poetry slam"
+      }
+     ]
+    },
+    {
+     "id": "door",
+     "label": "slam the door",
+     "words": [
+      {
+       "word": "DOOR",
+       "strength": 2,
+       "clause": "you slam a door when you're angry"
+      }
+     ]
+    },
+    {
+     "id": "grand",
+     "label": "a grand slam",
+     "words": [
+      {
+       "word": "BASEBALL",
+       "strength": 2,
+       "clause": "a grand slam is a home run with the bases loaded"
+      },
+      {
+       "word": "TENNIS",
+       "strength": 2,
+       "clause": "tennis's four biggest tournaments are the Grand Slams",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "BREAKFAST",
+       "strength": 1,
+       "clause": "Denny's Grand Slam is a famous breakfast"
+      }
+     ]
+    },
+    {
+     "id": "a-body-slam",
+     "label": "a body slam",
+     "words": [
+      {
+       "word": "BODY",
+       "strength": 1,
+       "clause": "a body slam is a classic wrestling move",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "PICK",
+   "checkpoint": "x04",
+   "seeds": [
+    "LOCK+POCKET"
+   ],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "lock",
+     "label": "pick a lock",
+     "words": [
+      {
+       "word": "LOCK",
+       "strength": 2,
+       "clause": "a thief can pick a lock"
+      }
+     ]
+    },
+    {
+     "id": "pocket",
+     "label": "pick a pocket",
+     "words": [
+      {
+       "word": "POCKET",
+       "strength": 2,
+       "clause": "pickpockets pick pockets"
+      },
+      {
+       "word": "WALLET",
+       "strength": 1,
+       "clause": "pickpockets lift wallets",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "THIEF",
+       "strength": 1,
+       "clause": "thieves pick pockets and locks",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "guitar",
+     "label": "a guitar pick",
+     "words": [
+      {
+       "word": "GUITAR",
+       "strength": 2,
+       "clause": "you strum a guitar with a pick"
+      }
+     ]
+    },
+    {
+     "id": "ice",
+     "label": "an ice pick",
+     "words": [
+      {
+       "word": "ICE",
+       "strength": 2,
+       "clause": "an ice pick chips away at ice"
+      }
+     ]
+    },
+    {
+     "id": "harvest",
+     "label": "pick fruit and flowers",
+     "words": [
+      {
+       "word": "ORCHARD",
+       "strength": 2,
+       "clause": "you pick apples in an orchard"
+      },
+      {
+       "word": "APPLE",
+       "strength": 2,
+       "clause": "you pick apples off the tree",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "FLOWER",
+       "strength": 1,
+       "clause": "you pick flowers"
+      },
+      {
+       "word": "BERRY",
+       "strength": 1,
+       "clause": "you pick berries off the bush",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "draft",
+     "label": "a draft pick",
+     "words": [
+      {
+       "word": "DRAFT",
+       "strength": 2,
+       "clause": "teams choose players with draft picks"
+      }
+     ]
+    },
+    {
+     "id": "tooth",
+     "label": "a toothpick",
+     "words": [
+      {
+       "word": "TOOTH",
+       "strength": 1,
+       "clause": "a toothpick cleans between your teeth"
+      }
+     ]
+    },
+    {
+     "id": "a-pickaxe",
+     "label": "a pickaxe",
+     "words": [
+      {
+       "word": "AXE",
+       "strength": 1,
+       "clause": "a pickaxe is a miner's pointed axe",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "MINE",
+       "strength": 1,
+       "clause": "miners dig with picks",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "id": "pick-a-card",
+     "label": "pick a card",
+     "words": [
+      {
+       "word": "CARD",
+       "strength": 1,
+       "clause": "\"pick a card, any card\" opens a magic trick",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "id": "a-pickup-truck",
+     "label": "a pickup truck",
+     "words": [
+      {
+       "word": "TRUCK",
+       "strength": 1,
+       "clause": "a pickup is the classic American truck",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "LAVA",
+   "checkpoint": "x04",
+   "seeds": [
+    "SPICY+LAMP",
+    "ISLAND+LAMP"
+   ],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "volcano",
+     "label": "a volcano's lava",
+     "words": [
+      {
+       "word": "VOLCANO",
+       "strength": 2,
+       "clause": "volcanoes erupt with lava"
+      },
+      {
+       "word": "ISLAND",
+       "strength": 1,
+       "clause": "volcanic islands like Hawaii were built from lava"
+      },
+      {
+       "word": "ROCK",
+       "strength": 2,
+       "clause": "lava is molten rock that cools into stone",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "lamp",
+     "label": "a lava lamp",
+     "words": [
+      {
+       "word": "LAMP",
+       "strength": 2,
+       "clause": "a lava lamp glows with slow-moving blobs"
+      }
+     ]
+    },
+    {
+     "id": "heat",
+     "label": "lava-hot",
+     "words": [
+      {
+       "word": "HOT",
+       "strength": 2,
+       "clause": "lava is molten rock, hot enough to glow red"
+      },
+      {
+       "word": "SPICY",
+       "strength": 1,
+       "clause": "spicy food can feel lava-hot"
+      }
+     ]
+    },
+    {
+     "id": "cake",
+     "label": "lava cake",
+     "words": [
+      {
+       "word": "CAKE",
+       "strength": 2,
+       "clause": "a lava cake has a molten center"
+      },
+      {
+       "word": "CHOCOLATE",
+       "strength": 2,
+       "clause": "chocolate lava cake oozes in the middle"
+      },
+      {
+       "word": "DESSERT",
+       "strength": 1,
+       "clause": "molten lava cake is a restaurant dessert classic",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "game",
+     "label": "the floor is lava",
+     "words": [
+      {
+       "word": "GAME",
+       "strength": 1,
+       "clause": "\"the floor is lava\" is a classic kids' game"
+      },
+      {
+       "word": "COUCH",
+       "strength": 1,
+       "clause": "in \"the floor is lava,\" kids leap from couch to couch",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "DECK",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "cards",
+     "label": "a deck of cards",
+     "words": [
+      {
+       "word": "CARD",
+       "strength": 2,
+       "clause": "a deck holds 52 playing cards"
+      },
+      {
+       "word": "CASINO",
+       "strength": 1,
+       "clause": "casino dealers shuffle the deck"
+      },
+      {
+       "word": "MAGICIAN",
+       "strength": 1,
+       "clause": "a magician fans out a deck for card tricks",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "ship",
+     "label": "a ship's deck",
+     "words": [
+      {
+       "word": "SHIP",
+       "strength": 2,
+       "clause": "sailors stand on a ship's deck"
+      },
+      {
+       "word": "BOAT",
+       "strength": 1,
+       "clause": "you stand on a boat's deck"
+      },
+      {
+       "word": "CAPTAIN",
+       "strength": 1,
+       "clause": "the captain paces the deck"
+      },
+      {
+       "word": "PIRATE",
+       "strength": 1,
+       "clause": "pirates make the crew swab the deck",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "CHAIR",
+       "strength": 1,
+       "clause": "passengers lounge in deck chairs",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "TITANIC",
+       "strength": 1,
+       "clause": "the Titanic's deck is the most famous in film",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "patio",
+     "label": "a backyard deck",
+     "words": [
+      {
+       "word": "PATIO",
+       "strength": 1,
+       "clause": "a deck and a patio are both backyard spots to sit outside",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "YARD",
+       "strength": 1,
+       "clause": "many backyards have a deck"
+      },
+      {
+       "word": "POOL",
+       "strength": 1,
+       "clause": "a pool deck surrounds the swimming pool",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "WOOD",
+       "strength": 1,
+       "clause": "a deck is built of wooden boards",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "skate",
+     "label": "a skateboard deck",
+     "words": [
+      {
+       "word": "SKATEBOARD",
+       "strength": 2,
+       "clause": "the board of a skateboard is called the deck"
+      }
+     ]
+    },
+    {
+     "id": "holly",
+     "label": "deck the halls",
+     "words": [
+      {
+       "word": "CHRISTMAS",
+       "strength": 2,
+       "clause": "\"Deck the Halls\" is a classic Christmas carol"
+      },
+      {
+       "word": "HALL",
+       "strength": 2,
+       "clause": "\"Deck the Halls\" is a classic Christmas carol",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "on-deck",
+     "label": "on deck",
+     "words": [
+      {
+       "word": "BASEBALL",
+       "strength": 1,
+       "clause": "the next batter waits on deck in baseball",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "SAILOR",
+   "checkpoint": "x04",
+   "seeds": [
+    "TATTOO+SHIP",
+    "TATTOO+BOAT"
+   ],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "sea",
+     "label": "life at sea",
+     "words": [
+      {
+       "word": "SHIP",
+       "strength": 2,
+       "clause": "sailors work aboard ships"
+      },
+      {
+       "word": "BOAT",
+       "strength": 2,
+       "clause": "sailors work aboard boats"
+      },
+      {
+       "word": "OCEAN",
+       "strength": 1,
+       "clause": "sailors cross the ocean"
+      },
+      {
+       "word": "SEA",
+       "strength": 2,
+       "clause": "sailors spend their lives at sea",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "CAPTAIN",
+       "strength": 1,
+       "clause": "sailors take orders from the captain",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "PORT",
+       "strength": 1,
+       "clause": "sailors come ashore in port",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "tattoo",
+     "label": "sailor tattoos",
+     "words": [
+      {
+       "word": "TATTOO",
+       "strength": 2,
+       "clause": "sailor tattoos are a classic style"
+      }
+     ]
+    },
+    {
+     "id": "moon",
+     "label": "Sailor Moon",
+     "words": [
+      {
+       "word": "MOON",
+       "strength": 2,
+       "clause": "Sailor Moon is a famous anime heroine"
+      }
+     ]
+    },
+    {
+     "id": "knot",
+     "label": "sailor's knots",
+     "words": [
+      {
+       "word": "KNOT",
+       "strength": 2,
+       "clause": "sailors are expert knot-tiers"
+      }
+     ]
+    },
+    {
+     "id": "uniform",
+     "label": "the sailor suit",
+     "words": [
+      {
+       "word": "UNIFORM",
+       "strength": 1,
+       "clause": "the white sailor uniform is iconic"
+      },
+      {
+       "word": "HAT",
+       "strength": 1,
+       "clause": "the round white sailor hat is iconic",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "SUIT",
+       "strength": 1,
+       "clause": "the sailor suit is a classic outfit",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "JAM",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "traffic",
+     "label": "a traffic jam",
+     "words": [
+      {
+       "word": "CAR",
+       "strength": 2,
+       "clause": "cars crawl in a traffic jam"
+      },
+      {
+       "word": "ROAD",
+       "strength": 1,
+       "clause": "a jam backs up the road"
+      },
+      {
+       "word": "TRUCK",
+       "strength": 1,
+       "clause": "trucks get stuck in traffic jams"
+      },
+      {
+       "word": "BUS",
+       "strength": 1,
+       "clause": "buses crawl through traffic jams",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "spread",
+     "label": "fruit jam",
+     "words": [
+      {
+       "word": "TOAST",
+       "strength": 2,
+       "clause": "you spread jam on toast"
+      },
+      {
+       "word": "FRUIT",
+       "strength": 2,
+       "clause": "jam is made from fruit"
+      },
+      {
+       "word": "BREAD",
+       "strength": 1,
+       "clause": "jam goes on bread"
+      },
+      {
+       "word": "GRAPE",
+       "strength": 1,
+       "clause": "grape jam and jelly fill the classic PB&J",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "BERRY",
+       "strength": 1,
+       "clause": "berry jam is a favorite"
+      },
+      {
+       "word": "JAR",
+       "strength": 1,
+       "clause": "jam comes in a glass jar",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "music",
+     "label": "a jam session",
+     "words": [
+      {
+       "word": "BAND",
+       "strength": 2,
+       "clause": "a band jams together"
+      },
+      {
+       "word": "GUITAR",
+       "strength": 1,
+       "clause": "guitarists jam together"
+      }
+     ]
+    },
+    {
+     "id": "space",
+     "label": "Space Jam",
+     "words": [
+      {
+       "word": "BASKETBALL",
+       "strength": 2,
+       "clause": "Space Jam teams Michael Jordan with the Looney Tunes on the basketball court"
+      },
+      {
+       "word": "SPACE",
+       "strength": 2,
+       "clause": "Space Jam is the classic basketball movie"
+      }
+     ]
+    },
+    {
+     "id": "printer",
+     "label": "a paper jam",
+     "words": [
+      {
+       "word": "PRINTER",
+       "strength": 2,
+       "clause": "printers are infamous for paper jams"
+      },
+      {
+       "word": "PAPER",
+       "strength": 2,
+       "clause": "a paper jam stops the printer",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "pearl-jam",
+     "label": "Pearl Jam",
+     "words": [
+      {
+       "word": "PEARL",
+       "strength": 1,
+       "clause": "Pearl Jam is a famous Seattle rock band",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "BARK",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "dog",
+     "label": "a dog's bark",
+     "words": [
+      {
+       "word": "DOG",
+       "strength": 2,
+       "clause": "a dog barks"
+      },
+      {
+       "word": "BITE",
+       "strength": 1,
+       "clause": "his bark is worse than his bite"
+      },
+      {
+       "word": "SEAL",
+       "strength": 1,
+       "clause": "seals bark like dogs",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "tree",
+     "label": "tree bark",
+     "words": [
+      {
+       "word": "TREE",
+       "strength": 2,
+       "clause": "bark covers a tree's trunk"
+      },
+      {
+       "word": "OAK",
+       "strength": 1,
+       "clause": "oak trees have thick, rough bark"
+      },
+      {
+       "word": "PINE",
+       "strength": 1,
+       "clause": "pine trees have scaly bark"
+      },
+      {
+       "word": "LOG",
+       "strength": 1,
+       "clause": "logs are wrapped in bark"
+      },
+      {
+       "word": "WOOD",
+       "strength": 1,
+       "clause": "bark wraps around the wood of a tree",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "TRUNK",
+       "strength": 1,
+       "clause": "bark covers a tree's trunk",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "candy-bark",
+     "label": "candy bark",
+     "words": [
+      {
+       "word": "CHOCOLATE",
+       "strength": 1,
+       "clause": "chocolate bark is a holiday candy",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "MINT",
+       "strength": 1,
+       "clause": "peppermint bark is a Christmas favorite",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "id": "bark-orders",
+     "label": "bark orders",
+     "words": [
+      {
+       "word": "BOSS",
+       "strength": 1,
+       "clause": "a bossy boss barks orders",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "TRUNK",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "car",
+     "label": "a car trunk",
+     "words": [
+      {
+       "word": "CAR",
+       "strength": 2,
+       "clause": "a car's trunk holds the luggage"
+      },
+      {
+       "word": "HALLOWEEN",
+       "strength": 1,
+       "clause": "at trunk-or-treat, kids collect Halloween candy from car trunks",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "tree",
+     "label": "a tree trunk",
+     "words": [
+      {
+       "word": "TREE",
+       "strength": 2,
+       "clause": "a tree's trunk holds it up"
+      },
+      {
+       "word": "OAK",
+       "strength": 1,
+       "clause": "an oak has a thick trunk"
+      },
+      {
+       "word": "BRANCH",
+       "strength": 1,
+       "clause": "branches grow out of a tree's trunk",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "BARK",
+       "strength": 1,
+       "clause": "bark covers a tree's trunk",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "swim",
+     "label": "swim trunks",
+     "words": [
+      {
+       "word": "SWIMMING",
+       "strength": 2,
+       "clause": "you go swimming in swim trunks"
+      },
+      {
+       "word": "POOL",
+       "strength": 1,
+       "clause": "you wear trunks at the pool"
+      },
+      {
+       "word": "BEACH",
+       "strength": 1,
+       "clause": "you wear trunks at the beach"
+      }
+     ]
+    },
+    {
+     "id": "chest",
+     "label": "a storage trunk",
+     "words": [
+      {
+       "word": "SUITCASE",
+       "strength": 1,
+       "clause": "a trunk is a big old-fashioned suitcase"
+      }
+     ]
+    },
+    {
+     "id": "an-elephant-s-trunk",
+     "label": "an elephant's trunk",
+     "words": [
+      {
+       "word": "MAMMOTH",
+       "strength": 1,
+       "clause": "a woolly mammoth had a long trunk like an elephant's",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "PITCH",
+   "checkpoint": "x04",
+   "seeds": [
+    "FORK+TENT"
+   ],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "baseball",
+     "label": "a pitch",
+     "words": [
+      {
+       "word": "BASEBALL",
+       "strength": 2,
+       "clause": "the pitcher throws the pitch in baseball"
+      },
+      {
+       "word": "STRIKE",
+       "strength": 1,
+       "clause": "a pitch over the plate is a strike",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "tent",
+     "label": "pitch a tent",
+     "words": [
+      {
+       "word": "TENT",
+       "strength": 2,
+       "clause": "you pitch a tent"
+      },
+      {
+       "word": "CAMP",
+       "strength": 1,
+       "clause": "at camp, you pitch your tent"
+      }
+     ]
+    },
+    {
+     "id": "sound",
+     "label": "musical pitch",
+     "words": [
+      {
+       "word": "VOICE",
+       "strength": 2,
+       "clause": "your voice's pitch is how high or low it sounds"
+      },
+      {
+       "word": "SONG",
+       "strength": 1,
+       "clause": "a singer has to hit the right pitch"
+      },
+      {
+       "word": "PIANO",
+       "strength": 1,
+       "clause": "each piano key plays a different pitch"
+      },
+      {
+       "word": "MUSIC",
+       "strength": 1,
+       "clause": "pitch is how high or low a musical note sounds",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "sales",
+     "label": "a sales pitch",
+     "words": [
+      {
+       "word": "BUSINESS",
+       "strength": 2,
+       "clause": "entrepreneurs pitch their business to investors"
+      },
+      {
+       "word": "SHARK",
+       "strength": 1,
+       "clause": "entrepreneurs pitch to the Sharks on Shark Tank",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "dark",
+     "label": "pitch black",
+     "words": [
+      {
+       "word": "BLACK",
+       "strength": 2,
+       "clause": "pitch black means completely dark"
+      },
+      {
+       "word": "NIGHT",
+       "strength": 1,
+       "clause": "a moonless night can be pitch black",
+       "fixedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "soccer",
+     "label": "a soccer pitch",
+     "words": [
+      {
+       "word": "SOCCER",
+       "strength": 1,
+       "clause": "a soccer field is called a pitch",
+       "fixedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "fork",
+     "label": "a pitchfork",
+     "words": [
+      {
+       "word": "FORK",
+       "strength": 2,
+       "clause": "a pitchfork is a giant farm fork"
+      },
+      {
+       "word": "FARM",
+       "strength": 1,
+       "clause": "farmers toss hay with a pitchfork"
+      },
+      {
+       "word": "DEVIL",
+       "strength": 1,
+       "clause": "the cartoon devil carries a pitchfork",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "RING",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "boxing",
+     "label": "the boxing ring",
+     "words": [
+      {
+       "word": "BOXING",
+       "strength": 2,
+       "clause": "boxers fight in a ring"
+      },
+      {
+       "word": "FIGHTER",
+       "strength": 1,
+       "clause": "fighters square off in the ring"
+      },
+      {
+       "word": "BOXER",
+       "strength": 1,
+       "clause": "boxers fight in the ring",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "wedding",
+     "label": "a wedding ring",
+     "words": [
+      {
+       "word": "WEDDING",
+       "strength": 2,
+       "clause": "couples exchange rings at a wedding"
+      },
+      {
+       "word": "MARRIAGE",
+       "strength": 2,
+       "clause": "a wedding ring is a symbol of marriage"
+      },
+      {
+       "word": "DIAMOND",
+       "strength": 1,
+       "clause": "an engagement ring often has a diamond"
+      },
+      {
+       "word": "FINGER",
+       "strength": 2,
+       "clause": "you wear a ring on your finger",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "GOLD",
+       "strength": 1,
+       "clause": "a wedding band is often a gold ring",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "JEWEL",
+       "strength": 1,
+       "clause": "a ring is often set with a jewel",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "sound",
+     "label": "to ring",
+     "words": [
+      {
+       "word": "PHONE",
+       "strength": 2,
+       "clause": "a phone rings"
+      },
+      {
+       "word": "BELL",
+       "strength": 2,
+       "clause": "a bell rings"
+      },
+      {
+       "word": "ALARM",
+       "strength": 1,
+       "clause": "an alarm rings"
+      }
+     ]
+    },
+    {
+     "id": "circus",
+     "label": "the circus ring",
+     "words": [
+      {
+       "word": "CIRCUS",
+       "strength": 2,
+       "clause": "circus acts perform in the ring"
+      }
+     ]
+    },
+    {
+     "id": "saturn",
+     "label": "planetary rings",
+     "words": [
+      {
+       "word": "SATURN",
+       "strength": 2,
+       "clause": "Saturn is famous for its rings"
+      },
+      {
+       "word": "PLANET",
+       "strength": 1,
+       "clause": "some planets, like Saturn, are circled by rings",
+       "fixedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "tree-rings",
+     "label": "tree rings",
+     "words": [
+      {
+       "word": "TREE",
+       "strength": 1,
+       "clause": "you count a tree's rings to tell its age",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "id": "a-key-ring",
+     "label": "a key ring",
+     "words": [
+      {
+       "word": "KEY",
+       "strength": 1,
+       "clause": "you keep your keys on a key ring",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "FAN",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "sports",
+     "label": "a sports fan",
+     "words": [
+      {
+       "word": "STADIUM",
+       "strength": 2,
+       "clause": "fans pack the stadium"
+      },
+      {
+       "word": "TEAM",
+       "strength": 1,
+       "clause": "fans cheer for their team"
+      },
+      {
+       "word": "FOOTBALL",
+       "strength": 1,
+       "clause": "football fans fill the stands"
+      }
+     ]
+    },
+    {
+     "id": "cool",
+     "label": "a cooling fan",
+     "words": [
+      {
+       "word": "SUMMER",
+       "strength": 2,
+       "clause": "a fan keeps you cool in summer"
+      },
+      {
+       "word": "HOT",
+       "strength": 2,
+       "clause": "a fan helps on a hot day"
+      },
+      {
+       "word": "AIR",
+       "strength": 1,
+       "clause": "a fan blows air"
+      },
+      {
+       "word": "WIND",
+       "strength": 1,
+       "clause": "a fan makes a little wind"
+      },
+      {
+       "word": "COOL",
+       "strength": 2,
+       "clause": "a fan keeps you cool",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "BLADE",
+       "strength": 1,
+       "clause": "a fan's blades spin to push air",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "celebrity",
+     "label": "a fan of a star",
+     "words": [
+      {
+       "word": "CONCERT",
+       "strength": 2,
+       "clause": "fans scream at a concert"
+      },
+      {
+       "word": "HOLLYWOOD",
+       "strength": 1,
+       "clause": "Hollywood stars have millions of fans"
+      },
+      {
+       "word": "MAIL",
+       "strength": 1,
+       "clause": "stars get stacks of fan mail",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "CLUB",
+       "strength": 1,
+       "clause": "devoted fans join a fan club",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "fan-the-flames",
+     "label": "fan the flames",
+     "words": [
+      {
+       "word": "FLAME",
+       "strength": 1,
+       "clause": "to fan the flames is to make a fire burn hotter",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "NET",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "fishing",
+     "label": "a fishing net",
+     "words": [
+      {
+       "word": "FISH",
+       "strength": 2,
+       "clause": "fishermen catch fish in nets"
+      },
+      {
+       "word": "FISHING",
+       "strength": 2,
+       "clause": "fishing boats haul in nets"
+      },
+      {
+       "word": "BOAT",
+       "strength": 1,
+       "clause": "fishing boats haul in heavy nets",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "basketball",
+     "label": "the basketball net",
+     "words": [
+      {
+       "word": "BASKETBALL",
+       "strength": 2,
+       "clause": "a basketball swishes through the net"
+      }
+     ]
+    },
+    {
+     "id": "tennis",
+     "label": "the tennis net",
+     "words": [
+      {
+       "word": "TENNIS",
+       "strength": 2,
+       "clause": "you hit the ball over the tennis net"
+      }
+     ]
+    },
+    {
+     "id": "goal",
+     "label": "the back of the net",
+     "words": [
+      {
+       "word": "SOCCER",
+       "strength": 1,
+       "clause": "a soccer goal ends up in the back of the net",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "HOCKEY",
+       "strength": 1,
+       "clause": "a hockey goal ends up in the net"
+      }
+     ]
+    },
+    {
+     "id": "internet",
+     "label": "the Net",
+     "words": [
+      {
+       "word": "WEB",
+       "strength": 1,
+       "clause": "the web is the part of the Net you browse",
+       "fixedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "butterfly",
+     "label": "a butterfly net",
+     "words": [
+      {
+       "word": "BUTTERFLY",
+       "strength": 2,
+       "clause": "you catch butterflies with a net"
+      },
+      {
+       "word": "INSECT",
+       "strength": 1,
+       "clause": "kids catch insects with a bug net",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "safety",
+     "label": "a safety net",
+     "words": [
+      {
+       "word": "CIRCUS",
+       "strength": 1,
+       "clause": "circus trapeze artists perform above a safety net"
+      }
+     ]
+    },
+    {
+     "id": "a-mosquito-net",
+     "label": "a mosquito net",
+     "words": [
+      {
+       "word": "MOSQUITO",
+       "strength": 1,
+       "clause": "a mosquito net keeps bugs off you while you sleep",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "id": "a-hairnet",
+     "label": "a hairnet",
+     "words": [
+      {
+       "word": "HAIR",
+       "strength": 1,
+       "clause": "cafeteria workers wear a hairnet",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "BOW",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "archery",
+     "label": "bow and arrow",
+     "words": [
+      {
+       "word": "ARROW",
+       "strength": 2,
+       "clause": "a bow shoots an arrow"
+      },
+      {
+       "word": "TARGET",
+       "strength": 1,
+       "clause": "archers aim a bow at the target",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "tie",
+     "label": "a bow tie",
+     "words": [
+      {
+       "word": "TIE",
+       "strength": 2,
+       "clause": "a bow tie is a fancy tie"
+      }
+     ]
+    },
+    {
+     "id": "violin",
+     "label": "a violin bow",
+     "words": [
+      {
+       "word": "VIOLIN",
+       "strength": 2,
+       "clause": "a violin is played with a bow"
+      },
+      {
+       "word": "STRING",
+       "strength": 1,
+       "clause": "string players draw a bow across the strings",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "gift",
+     "label": "a gift bow",
+     "words": [
+      {
+       "word": "GIFT",
+       "strength": 2,
+       "clause": "a bow tops off a wrapped gift"
+      },
+      {
+       "word": "HAIR",
+       "strength": 1,
+       "clause": "a bow can decorate your hair"
+      },
+      {
+       "word": "SHOE",
+       "strength": 1,
+       "clause": "you tie your shoelaces in a bow",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "stage",
+     "label": "take a bow",
+     "words": [
+      {
+       "word": "STAGE",
+       "strength": 2,
+       "clause": "performers take a bow on stage"
+      },
+      {
+       "word": "PERFORMANCE",
+       "strength": 1,
+       "clause": "actors bow after a performance"
+      },
+      {
+       "word": "KING",
+       "strength": 1,
+       "clause": "subjects bow before the king",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "ship",
+     "label": "a ship's bow",
+     "words": [
+      {
+       "word": "SHIP",
+       "strength": 1,
+       "clause": "the front of a ship is its bow"
+      },
+      {
+       "word": "BOAT",
+       "strength": 1,
+       "clause": "the front of a boat is its bow"
+      }
+     ]
+    },
+    {
+     "id": "a-rainbow",
+     "label": "a rainbow",
+     "words": [
+      {
+       "word": "RAIN",
+       "strength": 1,
+       "clause": "after the rain comes a rainbow",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "SHELL",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "armor",
+     "label": "an animal's shell",
+     "words": [
+      {
+       "word": "TURTLE",
+       "strength": 2,
+       "clause": "a turtle carries its shell on its back"
+      },
+      {
+       "word": "SNAIL",
+       "strength": 2,
+       "clause": "a snail carries its shell"
+      },
+      {
+       "word": "CRAB",
+       "strength": 2,
+       "clause": "a crab has a hard shell"
+      },
+      {
+       "word": "PEARL",
+       "strength": 1,
+       "clause": "pearls grow inside oyster shells",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "NINJA",
+       "strength": 1,
+       "clause": "the Teenage Mutant Ninja Turtles are heroes in a half shell",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "beach",
+     "label": "seashells",
+     "words": [
+      {
+       "word": "BEACH",
+       "strength": 2,
+       "clause": "you collect seashells on the beach"
+      },
+      {
+       "word": "OCEAN",
+       "strength": 1,
+       "clause": "seashells wash in from the ocean"
+      },
+      {
+       "word": "SEA",
+       "strength": 2,
+       "clause": "you find seashells by the sea",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "SAND",
+       "strength": 1,
+       "clause": "you dig seashells out of the sand",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "egg",
+     "label": "an eggshell",
+     "words": [
+      {
+       "word": "EGG",
+       "strength": 2,
+       "clause": "an egg has a shell"
+      },
+      {
+       "word": "NUT",
+       "strength": 2,
+       "clause": "a nut has a hard shell"
+      }
+     ]
+    },
+    {
+     "id": "taco",
+     "label": "a taco shell",
+     "words": [
+      {
+       "word": "TACO",
+       "strength": 2,
+       "clause": "a crunchy taco comes in a hard shell"
+      }
+     ]
+    },
+    {
+     "id": "mario",
+     "label": "Mario Kart shells",
+     "words": [
+      {
+       "word": "MARIO",
+       "strength": 2,
+       "clause": "in Mario Kart, racers fire Koopa turtle shells at each other"
+      }
+     ]
+    },
+    {
+     "id": "gas",
+     "label": "Shell gas",
+     "words": [
+      {
+       "word": "GAS",
+       "strength": 2,
+       "clause": "Shell is a gas station brand"
+      },
+      {
+       "word": "OIL",
+       "strength": 1,
+       "clause": "Shell is one of the world's big oil companies",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "ammo",
+     "label": "an ammo shell",
+     "words": [
+      {
+       "word": "AMMO",
+       "strength": 1,
+       "clause": "a shell is a round of ammunition"
+      },
+      {
+       "word": "GUN",
+       "strength": 1,
+       "clause": "a shotgun fires shells",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "CRUST",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "pizza",
+     "label": "pizza crust",
+     "words": [
+      {
+       "word": "PIZZA",
+       "strength": 2,
+       "clause": "pizza has a crust"
+      },
+      {
+       "word": "DOUGH",
+       "strength": 1,
+       "clause": "a crust is baked from dough",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "pie",
+     "label": "pie crust",
+     "words": [
+      {
+       "word": "PIE",
+       "strength": 2,
+       "clause": "a pie has a flaky crust"
+      }
+     ]
+    },
+    {
+     "id": "bread",
+     "label": "bread crust",
+     "words": [
+      {
+       "word": "BREAD",
+       "strength": 2,
+       "clause": "bread has a crust"
+      },
+      {
+       "word": "TOAST",
+       "strength": 1,
+       "clause": "toast has a crust"
+      }
+     ]
+    },
+    {
+     "id": "earth",
+     "label": "Earth's crust",
+     "words": [
+      {
+       "word": "EARTH",
+       "strength": 2,
+       "clause": "Earth's crust is its rocky outer layer"
+      },
+      {
+       "word": "PLANET",
+       "strength": 1,
+       "clause": "rocky planets have a crust"
+      },
+      {
+       "word": "ROCK",
+       "strength": 1,
+       "clause": "Earth's crust is a shell of solid rock",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "the-upper-crust",
+     "label": "the upper crust",
+     "words": [
+      {
+       "word": "RICH",
+       "strength": 1,
+       "clause": "the rich are called the upper crust",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "ORBIT",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "space",
+     "label": "going around in space",
+     "words": [
+      {
+       "word": "MOON",
+       "strength": 2,
+       "clause": "the Moon orbits Earth"
+      },
+      {
+       "word": "PLANET",
+       "strength": 2,
+       "clause": "planets orbit the Sun"
+      },
+      {
+       "word": "SATELLITE",
+       "strength": 2,
+       "clause": "satellites orbit Earth"
+      },
+      {
+       "word": "EARTH",
+       "strength": 2,
+       "clause": "Earth orbits the Sun"
+      },
+      {
+       "word": "SUN",
+       "strength": 1,
+       "clause": "the planets orbit the Sun"
+      },
+      {
+       "word": "ASTRONAUT",
+       "strength": 1,
+       "clause": "astronauts circle Earth in orbit"
+      },
+      {
+       "word": "NASA",
+       "strength": 1,
+       "clause": "NASA puts spacecraft into orbit",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "STATION",
+       "strength": 1,
+       "clause": "the space station orbits Earth",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "SPACE",
+       "strength": 1,
+       "clause": "satellites orbit out in space",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "gum",
+     "label": "Orbit gum",
+     "words": [
+      {
+       "word": "GUM",
+       "strength": 2,
+       "clause": "Orbit is a brand of chewing gum"
+      },
+      {
+       "word": "MINT",
+       "strength": 1,
+       "clause": "Orbit gum comes in mint flavors"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "MINT",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "flavor",
+     "label": "a mint",
+     "words": [
+      {
+       "word": "CANDY",
+       "strength": 2,
+       "clause": "mints are little candies"
+      },
+      {
+       "word": "GUM",
+       "strength": 1,
+       "clause": "mint is the classic gum flavor"
+      },
+      {
+       "word": "CHOCOLATE",
+       "strength": 1,
+       "clause": "mint chocolate chip is a favorite flavor"
+      },
+      {
+       "word": "COOKIE",
+       "strength": 1,
+       "clause": "Thin Mints are the top Girl Scout cookie",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "ICE CREAM",
+       "strength": 1,
+       "clause": "mint chocolate chip is a classic ice cream",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "herb",
+     "label": "the mint plant",
+     "words": [
+      {
+       "word": "HERBS",
+       "strength": 2,
+       "clause": "mint is a garden herb"
+      },
+      {
+       "word": "GARDEN",
+       "strength": 1,
+       "clause": "mint grows like crazy in a garden"
+      },
+      {
+       "word": "LEAF",
+       "strength": 1,
+       "clause": "mint leaves garnish drinks"
+      },
+      {
+       "word": "TEA",
+       "strength": 1,
+       "clause": "mint leaves steep into tea",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "money",
+     "label": "the Mint",
+     "words": [
+      {
+       "word": "CURRENCY",
+       "strength": 1,
+       "clause": "the U.S. Mint makes the nation's coins"
+      },
+      {
+       "word": "RICH",
+       "strength": 1,
+       "clause": "something worth a mint is worth a fortune"
+      },
+      {
+       "word": "QUARTER",
+       "strength": 1,
+       "clause": "the U.S. Mint stamps out quarters",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "condition",
+     "label": "mint condition",
+     "words": [
+      {
+       "word": "COMIC",
+       "strength": 1,
+       "clause": "collectors want comics in mint condition"
+      },
+      {
+       "word": "TOY",
+       "strength": 1,
+       "clause": "a toy still in its box is in mint condition"
+      },
+      {
+       "word": "CARD",
+       "strength": 1,
+       "clause": "collectors describe pristine cards as being in mint condition",
+       "addedBy": "x04-index-reviewer",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "STAMP",
+       "strength": 1,
+       "clause": "stamp collectors prize mint stamps",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "mint-green",
+     "label": "mint green",
+     "words": [
+      {
+       "word": "GREEN",
+       "strength": 1,
+       "clause": "mint green is a pale shade of green",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "KEY",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "piano",
+     "label": "piano keys",
+     "words": [
+      {
+       "word": "PIANO",
+       "strength": 2,
+       "clause": "a piano has 88 keys"
+      },
+      {
+       "word": "COMPUTER",
+       "strength": 1,
+       "clause": "you type on a computer's keys",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "MUSIC",
+       "strength": 1,
+       "clause": "a song is written in a musical key",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "lock",
+     "label": "a door key",
+     "words": [
+      {
+       "word": "DOOR",
+       "strength": 2,
+       "clause": "a key opens the door"
+      },
+      {
+       "word": "LOCK",
+       "strength": 2,
+       "clause": "a key opens a lock"
+      },
+      {
+       "word": "CAR",
+       "strength": 2,
+       "clause": "you start the car with a key",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "SKELETON",
+       "strength": 1,
+       "clause": "a skeleton key opens many locks",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "HOUSE",
+       "strength": 1,
+       "clause": "you need a key to get into the house",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "test",
+     "label": "an answer key",
+     "words": [
+      {
+       "word": "TEST",
+       "strength": 2,
+       "clause": "teachers grade a test with an answer key"
+      }
+     ]
+    },
+    {
+     "id": "map",
+     "label": "a map key",
+     "words": [
+      {
+       "word": "MAP",
+       "strength": 2,
+       "clause": "a map key explains the symbols"
+      }
+     ]
+    },
+    {
+     "id": "pie",
+     "label": "key lime pie",
+     "words": [
+      {
+       "word": "PIE",
+       "strength": 2,
+       "clause": "key lime pie is a Florida classic"
+      }
+     ]
+    },
+    {
+     "id": "islands",
+     "label": "the Florida Keys",
+     "words": [
+      {
+       "word": "ISLAND",
+       "strength": 1,
+       "clause": "the Florida Keys are a chain of islands"
+      }
+     ]
+    },
+    {
+     "id": "a-key-chain",
+     "label": "a key chain",
+     "words": [
+      {
+       "word": "CHAIN",
+       "strength": 1,
+       "clause": "you clip your keys to a key chain",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "RING",
+       "strength": 1,
+       "clause": "you keep your keys on a key ring",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "HORN",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "car",
+     "label": "a car horn",
+     "words": [
+      {
+       "word": "CAR",
+       "strength": 2,
+       "clause": "you honk a car's horn"
+      },
+      {
+       "word": "TRUCK",
+       "strength": 1,
+       "clause": "truckers blast the horn"
+      },
+      {
+       "word": "TRAIN",
+       "strength": 1,
+       "clause": "a train blasts its horn at crossings",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "unicorn",
+     "label": "a unicorn's horn",
+     "words": [
+      {
+       "word": "UNICORN",
+       "strength": 2,
+       "clause": "a unicorn has a single horn"
+      }
+     ]
+    },
+    {
+     "id": "animal",
+     "label": "animal horns",
+     "words": [
+      {
+       "word": "GOAT",
+       "strength": 2,
+       "clause": "goats have horns"
+      },
+      {
+       "word": "RAM",
+       "strength": 2,
+       "clause": "rams have big curled horns"
+      },
+      {
+       "word": "DEVIL",
+       "strength": 2,
+       "clause": "the devil is drawn with horns"
+      },
+      {
+       "word": "COW",
+       "strength": 1,
+       "clause": "many cows have horns"
+      },
+      {
+       "word": "VIKING",
+       "strength": 1,
+       "clause": "cartoon Vikings wear horned helmets"
+      },
+      {
+       "word": "BUFFALO",
+       "strength": 1,
+       "clause": "buffalo have big curved horns",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "music",
+     "label": "the French horn",
+     "words": [
+      {
+       "word": "INSTRUMENT",
+       "strength": 1,
+       "clause": "the French horn is a brass instrument"
+      },
+      {
+       "word": "BAND",
+       "strength": 1,
+       "clause": "a band's horn section blasts the brass parts"
+      },
+      {
+       "word": "FRANCE",
+       "strength": 1,
+       "clause": "the French horn is named for France",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "BUGLE",
+       "strength": 1,
+       "clause": "a bugle is a simple brass horn",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "a-foghorn",
+     "label": "a foghorn",
+     "words": [
+      {
+       "word": "FOG",
+       "strength": 1,
+       "clause": "a foghorn warns ships in the fog",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "id": "a-shoehorn",
+     "label": "a shoehorn",
+     "words": [
+      {
+       "word": "SHOE",
+       "strength": 1,
+       "clause": "a shoehorn slides your heel into a shoe",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "WING",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "flight",
+     "label": "wings to fly",
+     "words": [
+      {
+       "word": "BIRD",
+       "strength": 2,
+       "clause": "birds fly with wings"
+      },
+      {
+       "word": "ANGEL",
+       "strength": 2,
+       "clause": "angels are pictured with wings"
+      },
+      {
+       "word": "BUTTERFLY",
+       "strength": 1,
+       "clause": "butterflies have colorful wings"
+      },
+      {
+       "word": "FAIRY",
+       "strength": 1,
+       "clause": "fairies flutter on tiny wings"
+      },
+      {
+       "word": "DRAGON",
+       "strength": 1,
+       "clause": "dragons fly on huge wings"
+      },
+      {
+       "word": "FEATHER",
+       "strength": 1,
+       "clause": "a bird's wings are covered in feathers",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "BAT",
+       "strength": 1,
+       "clause": "bats fly on leathery wings",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "FLY",
+       "strength": 1,
+       "clause": "wings let you fly",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "plane",
+     "label": "a plane's wing",
+     "words": [
+      {
+       "word": "PLANE",
+       "strength": 2,
+       "clause": "a plane has two wings"
+      },
+      {
+       "word": "JET",
+       "strength": 1,
+       "clause": "a jet's wings hold its engines"
+      },
+      {
+       "word": "PILOT",
+       "strength": 1,
+       "clause": "new pilots earn their wings"
+      }
+     ]
+    },
+    {
+     "id": "food",
+     "label": "chicken wings",
+     "words": [
+      {
+       "word": "BUFFALO",
+       "strength": 2,
+       "clause": "buffalo wings are spicy chicken wings"
+      },
+      {
+       "word": "SPICY",
+       "strength": 1,
+       "clause": "hot wings are famously spicy"
+      },
+      {
+       "word": "HOT",
+       "strength": 1,
+       "clause": "hot wings are spicy chicken wings",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "building",
+     "label": "a building's wing",
+     "words": [
+      {
+       "word": "HOSPITAL",
+       "strength": 2,
+       "clause": "big hospitals are divided into wings, like the maternity wing"
+      },
+      {
+       "word": "MUSEUM",
+       "strength": 1,
+       "clause": "a museum has wings for different exhibits"
+      },
+      {
+       "word": "BUILDING",
+       "strength": 1,
+       "clause": "a big building is split into wings"
+      }
+     ]
+    },
+    {
+     "id": "waiting-in-the-wings",
+     "label": "waiting in the wings",
+     "words": [
+      {
+       "word": "STAGE",
+       "strength": 1,
+       "clause": "actors wait in the wings beside the stage",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "PUNCH",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "boxing",
+     "label": "a punch",
+     "words": [
+      {
+       "word": "BOXING",
+       "strength": 2,
+       "clause": "boxers throw punches"
+      },
+      {
+       "word": "FIGHTER",
+       "strength": 1,
+       "clause": "fighters land punches"
+      },
+      {
+       "word": "BOXER",
+       "strength": 2,
+       "clause": "a boxer throws punches",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "GLOVE",
+       "strength": 1,
+       "clause": "boxers punch in padded gloves",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "HOOK",
+       "strength": 1,
+       "clause": "a left hook is a classic punch",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "drink",
+     "label": "fruit punch",
+     "words": [
+      {
+       "word": "FRUIT",
+       "strength": 2,
+       "clause": "fruit punch is a sweet fruit drink"
+      },
+      {
+       "word": "PARTY",
+       "strength": 2,
+       "clause": "a bowl of punch is a party classic"
+      },
+      {
+       "word": "DRINK",
+       "strength": 1,
+       "clause": "punch is a party drink"
+      },
+      {
+       "word": "BOWL",
+       "strength": 1,
+       "clause": "party punch is served from a punch bowl",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "joke",
+     "label": "a punchline",
+     "words": [
+      {
+       "word": "JOKE",
+       "strength": 2,
+       "clause": "a joke ends with the punchline"
+      },
+      {
+       "word": "LINE",
+       "strength": 1,
+       "clause": "a joke ends with the punchline",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "paper",
+     "label": "a hole punch",
+     "words": [
+      {
+       "word": "PAPER",
+       "strength": 2,
+       "clause": "a hole punch makes holes in paper"
+      },
+      {
+       "word": "HOLE",
+       "strength": 1,
+       "clause": "a hole punch makes holes in paper",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "ticket",
+     "label": "punch a ticket",
+     "words": [
+      {
+       "word": "TICKET",
+       "strength": 1,
+       "clause": "a conductor punches your ticket"
+      },
+      {
+       "word": "CLOCK",
+       "strength": 1,
+       "clause": "workers punch the clock"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "SCALE",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "skin",
+     "label": "scales on skin",
+     "words": [
+      {
+       "word": "FISH",
+       "strength": 2,
+       "clause": "fish are covered in scales"
+      },
+      {
+       "word": "SNAKE",
+       "strength": 2,
+       "clause": "snakes have scaly skin"
+      },
+      {
+       "word": "DRAGON",
+       "strength": 2,
+       "clause": "dragons are covered in scales"
+      },
+      {
+       "word": "REPTILE",
+       "strength": 2,
+       "clause": "reptiles have scaly skin"
+      },
+      {
+       "word": "CROCODILE",
+       "strength": 1,
+       "clause": "crocodiles have tough scales"
+      }
+     ]
+    },
+    {
+     "id": "weight",
+     "label": "a bathroom scale",
+     "words": [
+      {
+       "word": "WEIGHT",
+       "strength": 2,
+       "clause": "a scale measures your weight"
+      },
+      {
+       "word": "DIET",
+       "strength": 1,
+       "clause": "dieters step on the scale"
+      },
+      {
+       "word": "POUND",
+       "strength": 1,
+       "clause": "a scale tells you how many pounds you weigh",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "music",
+     "label": "a musical scale",
+     "words": [
+      {
+       "word": "PIANO",
+       "strength": 2,
+       "clause": "piano students practice scales"
+      },
+      {
+       "word": "MUSIC",
+       "strength": 1,
+       "clause": "a scale is a ladder of musical notes"
+      },
+      {
+       "word": "NOTE",
+       "strength": 1,
+       "clause": "a scale runs up the notes one by one",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "map",
+     "label": "a map scale",
+     "words": [
+      {
+       "word": "MAP",
+       "strength": 2,
+       "clause": "a map's scale shows real distances"
+      },
+      {
+       "word": "MODEL",
+       "strength": 1,
+       "clause": "a scale model is a small, exact copy",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "climb",
+     "label": "to scale a wall",
+     "words": [
+      {
+       "word": "MOUNTAIN",
+       "strength": 1,
+       "clause": "to scale a mountain is to climb it"
+      },
+      {
+       "word": "WALL",
+       "strength": 1,
+       "clause": "to scale a wall is to climb over it"
+      },
+      {
+       "word": "CLIFF",
+       "strength": 1,
+       "clause": "climbers scale a cliff",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "justice",
+     "label": "the scales of justice",
+     "words": [
+      {
+       "word": "JUDGE",
+       "strength": 1,
+       "clause": "the scales of justice stand for a fair judge"
+      },
+      {
+       "word": "COURT",
+       "strength": 1,
+       "clause": "Lady Justice holds the scales outside many courthouses",
+       "fixedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "BALANCE",
+       "strength": 1,
+       "clause": "a balance scale weighs one side against the other",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "BOLT",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "lightning",
+     "label": "a lightning bolt",
+     "words": [
+      {
+       "word": "LIGHTNING",
+       "strength": 2,
+       "clause": "lightning strikes as a bolt"
+      },
+      {
+       "word": "THUNDER",
+       "strength": 1,
+       "clause": "thunder follows a bolt of lightning"
+      },
+      {
+       "word": "STORM",
+       "strength": 1,
+       "clause": "storms throw lightning bolts"
+      },
+      {
+       "word": "FLASH",
+       "strength": 1,
+       "clause": "the Flash wears a lightning bolt on his chest",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "OLYMPUS",
+       "strength": 1,
+       "clause": "Zeus hurls lightning bolts from Mount Olympus",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "hardware",
+     "label": "nuts and bolts",
+     "words": [
+      {
+       "word": "SCREW",
+       "strength": 2,
+       "clause": "bolts and screws hold things together"
+      },
+      {
+       "word": "NUT",
+       "strength": 2,
+       "clause": "a bolt twists into a nut"
+      },
+      {
+       "word": "HARDWARE",
+       "strength": 1,
+       "clause": "bolts are basic hardware"
+      },
+      {
+       "word": "FRANKENSTEIN",
+       "strength": 1,
+       "clause": "Frankenstein's monster has bolts in his neck",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "WASHER",
+       "strength": 1,
+       "clause": "a washer sits between the bolt and the nut",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "run",
+     "label": "to bolt",
+     "words": [
+      {
+       "word": "FAST",
+       "strength": 1,
+       "clause": "to bolt is to run off fast"
+      },
+      {
+       "word": "HORSE",
+       "strength": 1,
+       "clause": "a startled horse can bolt",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "lock",
+     "label": "a door bolt",
+     "words": [
+      {
+       "word": "LOCK",
+       "strength": 2,
+       "clause": "you slide a bolt to lock a door"
+      },
+      {
+       "word": "DOOR",
+       "strength": 1,
+       "clause": "a bolt locks the door"
+      }
+     ]
+    },
+    {
+     "id": "dog",
+     "label": "Disney's Bolt",
+     "words": [
+      {
+       "word": "DOG",
+       "strength": 1,
+       "clause": "Bolt is the Disney dog who believes his TV superpowers are real"
+      },
+      {
+       "word": "DISNEY",
+       "strength": 1,
+       "clause": "Bolt is a Disney movie about a TV-star dog who believes his fictional superpowers are real"
+      }
+     ]
+    },
+    {
+     "id": "usain",
+     "label": "Usain Bolt",
+     "words": [
+      {
+       "word": "RACE",
+       "strength": 1,
+       "clause": "Usain Bolt won Olympic sprint races",
+       "fixedBy": "x04-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "CHIP",
+   "checkpoint": "x04",
+   "seeds": [],
+   "reviewCap": 8,
+   "routes": [
+    {
+     "id": "computer",
+     "label": "a computer chip",
+     "words": [
+      {
+       "word": "COMPUTER",
+       "strength": 2,
+       "clause": "a computer runs on chips"
+      },
+      {
+       "word": "PHONE",
+       "strength": 1,
+       "clause": "every phone has computer chips"
+      }
+     ]
+    },
+    {
+     "id": "snack",
+     "label": "potato chips",
+     "words": [
+      {
+       "word": "POTATO",
+       "strength": 2,
+       "clause": "potato chips are a classic snack"
+      },
+      {
+       "word": "SALSA",
+       "strength": 2,
+       "clause": "chips and salsa go together"
+      },
+      {
+       "word": "SNACK",
+       "strength": 1,
+       "clause": "chips are a favorite snack"
+      },
+      {
+       "word": "FISH",
+       "strength": 1,
+       "clause": "fish and chips is the classic British meal",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "casino",
+     "label": "casino chips",
+     "words": [
+      {
+       "word": "CASINO",
+       "strength": 2,
+       "clause": "gamblers bet with casino chips"
+      },
+      {
+       "word": "GAMBLE",
+       "strength": 1,
+       "clause": "you gamble with chips at the table"
+      },
+      {
+       "word": "ROULETTE",
+       "strength": 1,
+       "clause": "you bet chips on the roulette wheel",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "cookie",
+     "label": "chocolate chips",
+     "words": [
+      {
+       "word": "COOKIE",
+       "strength": 2,
+       "clause": "chocolate chips stud classic cookies"
+      },
+      {
+       "word": "CHOCOLATE",
+       "strength": 2,
+       "clause": "chocolate chips go in cookies"
+      },
+      {
+       "word": "ICE CREAM",
+       "strength": 1,
+       "clause": "chocolate chip ice cream",
+       "addedBy": "x04-index-reviewer"
+      },
+      {
+       "word": "MINT",
+       "strength": 1,
+       "clause": "mint chocolate chip is a favorite ice cream flavor",
+       "addedBy": "x04-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "golf",
+     "label": "a chip shot",
+     "words": [
+      {
+       "word": "GOLF",
+       "strength": 1,
+       "clause": "a chip shot pops a golf ball onto the green"
+      }
+     ]
+    },
+    {
+     "id": "wood",
+     "label": "wood chips",
+     "words": [
+      {
+       "word": "WOOD",
+       "strength": 1,
+       "clause": "wood chips cover playgrounds"
+      }
+     ]
+    },
+    {
+     "id": "blue-chip",
+     "label": "blue chip",
+     "words": [
+      {
+       "word": "STOCKS",
+       "strength": 1,
+       "clause": "blue-chip stocks come from big, steady companies",
+       "addedBy": "x04-index-reviewer"
+      }
+     ],
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "POTTER",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "hp",
+     "label": "Harry Potter",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "WIZARD",
+       "strength": 2,
+       "clause": "Harry Potter is the world's most famous boy wizard"
+      },
+      {
+       "word": "WAND",
+       "strength": 2,
+       "clause": "Harry Potter casts spells with his wand"
+      },
+      {
+       "word": "OWL",
+       "strength": 2,
+       "clause": "Harry Potter's owl Hedwig delivers his mail"
+      },
+      {
+       "word": "BROOM",
+       "strength": 2,
+       "clause": "Harry Potter flies a broom at Quidditch"
+      },
+      {
+       "word": "HOGWARTS",
+       "strength": 2,
+       "clause": "Harry Potter studies at Hogwarts"
+      },
+      {
+       "word": "GLASSES",
+       "strength": 2,
+       "clause": "Harry Potter wears round glasses"
+      },
+      {
+       "word": "LIGHTNING",
+       "strength": 2,
+       "clause": "Harry Potter has a lightning-bolt scar"
+      },
+      {
+       "word": "CLOAK",
+       "strength": 1,
+       "clause": "Harry Potter hides under an invisibility cloak"
+      },
+      {
+       "word": "TRAIN",
+       "strength": 1,
+       "clause": "Harry Potter rides the Hogwarts Express"
+      },
+      {
+       "word": "MAGIC",
+       "strength": 1,
+       "clause": "Harry Potter goes to a school of magic"
+      },
+      {
+       "word": "SPELL",
+       "strength": 2,
+       "clause": "Harry Potter learns to cast spells",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "WITCH",
+       "strength": 1,
+       "clause": "Harry Potter's friend Hermione is a brilliant witch",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "HAT",
+       "strength": 1,
+       "clause": "the Sorting Hat puts Harry Potter in Gryffindor",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "STONE",
+       "strength": 1,
+       "clause": "the first book is Harry Potter and the Sorcerer's Stone",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "PHOENIX",
+       "strength": 1,
+       "clause": "Harry Potter and the Order of the Phoenix is the fifth book",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "CASTLE",
+       "strength": 1,
+       "clause": "Harry Potter's school, Hogwarts, is a castle",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SNAKE",
+       "strength": 1,
+       "clause": "Harry Potter can talk to snakes, the symbol of Slytherin",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "pottery",
+     "label": "a potter",
+     "words": [
+      {
+       "word": "BOWL",
+       "strength": 2,
+       "clause": "a potter shapes bowls from clay"
+      },
+      {
+       "word": "WHEEL",
+       "strength": 2,
+       "clause": "a potter shapes clay on a spinning wheel"
+      },
+      {
+       "word": "MUG",
+       "strength": 1,
+       "clause": "a potter makes clay mugs"
+      },
+      {
+       "word": "PLATE",
+       "strength": 1,
+       "clause": "a potter makes clay plates",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "CUP",
+       "strength": 1,
+       "clause": "a potter shapes cups from clay",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "JAR",
+       "strength": 1,
+       "clause": "a potter throws clay jars",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "PORCELAIN",
+       "strength": 1,
+       "clause": "a potter can work in fine porcelain",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "beatrix-potter",
+     "label": "Beatrix Potter",
+     "words": [
+      {
+       "word": "RABBIT",
+       "strength": 1,
+       "clause": "Beatrix Potter wrote The Tale of Peter Rabbit",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "GOTHAM",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "city",
+     "label": "Batman's Gotham City",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "BAT",
+       "strength": 2,
+       "clause": "Batman protects Gotham City"
+      },
+      {
+       "word": "PENGUIN",
+       "strength": 2,
+       "clause": "the Penguin is a Gotham City villain"
+      },
+      {
+       "word": "CAT",
+       "strength": 1,
+       "clause": "Catwoman prowls the rooftops of Gotham"
+      },
+      {
+       "word": "CAVE",
+       "strength": 1,
+       "clause": "the Batcave is hidden beneath Wayne Manor, just outside Gotham City"
+      },
+      {
+       "word": "NIGHT",
+       "strength": 1,
+       "clause": "Batman patrols Gotham by night"
+      },
+      {
+       "word": "SUPERHERO",
+       "strength": 1,
+       "clause": "Batman is Gotham City's superhero"
+      },
+      {
+       "word": "KNIGHT",
+       "strength": 2,
+       "clause": "the Dark Knight protects Gotham City",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "ROBIN",
+       "strength": 1,
+       "clause": "Robin fights crime in Gotham beside Batman",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "COMIC",
+       "strength": 1,
+       "clause": "Gotham City comes from the Batman comics",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SCARECROW",
+       "strength": 1,
+       "clause": "the Scarecrow is a Gotham City villain",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "CLOWN",
+       "strength": 1,
+       "clause": "the Joker is the clown who terrorizes Gotham",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "nickname-for-new-york-city",
+     "label": "nickname for New York City",
+     "words": [
+      {
+       "word": "NEW YORK",
+       "strength": 1,
+       "clause": "Gotham is an old nickname for New York City",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "OGRE",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "shrek",
+     "label": "Shrek",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "SHREK",
+       "strength": 2,
+       "clause": "Shrek is the world's most famous ogre"
+      },
+      {
+       "word": "DONKEY",
+       "strength": 2,
+       "clause": "Donkey is the ogre Shrek's best friend"
+      },
+      {
+       "word": "LAYER",
+       "strength": 2,
+       "clause": "Shrek says ogres are like onions: they have layers"
+      },
+      {
+       "word": "PRINCESS",
+       "strength": 1,
+       "clause": "Princess Fiona turns out to be an ogre too"
+      },
+      {
+       "word": "GREEN",
+       "strength": 2,
+       "clause": "Shrek is a big green ogre",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "DRAGON",
+       "strength": 1,
+       "clause": "in Shrek, the ogre rescues Fiona from a dragon's castle",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "monster",
+     "label": "a fairy-tale brute",
+     "words": [
+      {
+       "word": "FAIRYTALE",
+       "strength": 2,
+       "clause": "ogres are fairy-tale monsters"
+      },
+      {
+       "word": "GIANT",
+       "strength": 1,
+       "clause": "ogres are giant brutes from old stories"
+      },
+      {
+       "word": "MONSTER",
+       "strength": 1,
+       "clause": "an ogre is a hulking monster"
+      },
+      {
+       "word": "TROLL",
+       "strength": 1,
+       "clause": "ogres and trolls are both fairy-tale brutes"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "PIXAR",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "films",
+     "label": "Pixar movies",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "TOY",
+       "strength": 2,
+       "clause": "Toy Story was Pixar's first feature film"
+      },
+      {
+       "word": "LAMP",
+       "strength": 2,
+       "clause": "Pixar's logo is a hopping desk lamp"
+      },
+      {
+       "word": "CAR",
+       "strength": 2,
+       "clause": "Pixar made Cars"
+      },
+      {
+       "word": "FISH",
+       "strength": 2,
+       "clause": "Pixar's Finding Nemo follows a lost clownfish"
+      },
+      {
+       "word": "ROBOT",
+       "strength": 2,
+       "clause": "Pixar's WALL-E is a lonely little robot"
+      },
+      {
+       "word": "MONSTER",
+       "strength": 2,
+       "clause": "Pixar made Monsters, Inc."
+      },
+      {
+       "word": "RAT",
+       "strength": 2,
+       "clause": "Pixar's Ratatouille stars a rat who cooks"
+      },
+      {
+       "word": "HOUSE",
+       "strength": 1,
+       "clause": "in Pixar's Up, a house floats away on balloons"
+      },
+      {
+       "word": "DISNEY",
+       "strength": 1,
+       "clause": "Pixar is part of Disney"
+      },
+      {
+       "word": "COWBOY",
+       "strength": 1,
+       "clause": "Pixar's Woody is a toy cowboy",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SPACE",
+       "strength": 1,
+       "clause": "Pixar's Buzz Lightyear is a space ranger",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "BUG",
+       "strength": 1,
+       "clause": "Pixar made A Bug's Life",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SUPERHERO",
+       "strength": 1,
+       "clause": "Pixar's The Incredibles are a family of superheroes",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "CHEF",
+       "strength": 1,
+       "clause": "in Pixar's Ratatouille, a rat dreams of becoming a chef",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SOUL",
+       "strength": 1,
+       "clause": "Pixar made Soul",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "INSIDE",
+       "strength": 1,
+       "clause": "Pixar made Inside Out",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "SHERLOCK",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "holmes",
+     "label": "Sherlock Holmes",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "DETECTIVE",
+       "strength": 2,
+       "clause": "Sherlock Holmes is the most famous fictional detective"
+      },
+      {
+       "word": "PIPE",
+       "strength": 2,
+       "clause": "Sherlock Holmes is pictured puffing a pipe"
+      },
+      {
+       "word": "LONDON",
+       "strength": 2,
+       "clause": "Sherlock Holmes lives on Baker Street in London"
+      },
+      {
+       "word": "HAT",
+       "strength": 1,
+       "clause": "Sherlock Holmes wears a deerstalker hat"
+      },
+      {
+       "word": "VIOLIN",
+       "strength": 1,
+       "clause": "Sherlock Holmes plays the violin"
+      },
+      {
+       "word": "SUSPECT",
+       "strength": 1,
+       "clause": "Sherlock Holmes unmasks the guilty suspect"
+      },
+      {
+       "word": "GLASS",
+       "strength": 1,
+       "clause": "Sherlock Holmes peers through a magnifying glass",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "DOCTOR",
+       "strength": 1,
+       "clause": "Dr. Watson is Sherlock Holmes's partner",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "CASE",
+       "strength": 1,
+       "clause": "Sherlock Holmes cracks every case",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "STREET",
+       "strength": 1,
+       "clause": "Sherlock Holmes lives at 221B Baker Street",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "APOLLO",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "moon",
+     "label": "the Apollo missions",
+     "words": [
+      {
+       "word": "MOON",
+       "strength": 2,
+       "clause": "Apollo 11 landed on the Moon"
+      },
+      {
+       "word": "NASA",
+       "strength": 2,
+       "clause": "Apollo was NASA's Moon program"
+      },
+      {
+       "word": "ASTRONAUT",
+       "strength": 2,
+       "clause": "Apollo astronauts walked on the Moon"
+      },
+      {
+       "word": "SPACE",
+       "strength": 1,
+       "clause": "the Apollo missions flew into space"
+      }
+     ]
+    },
+    {
+     "id": "god",
+     "label": "the Greek god",
+     "words": [
+      {
+       "word": "SUN",
+       "strength": 2,
+       "clause": "Apollo is the Greek god of light, often linked with the sun"
+      },
+      {
+       "word": "GOD",
+       "strength": 1,
+       "clause": "Apollo is a Greek god"
+      },
+      {
+       "word": "MUSIC",
+       "strength": 1,
+       "clause": "Apollo is also the Greek god of music"
+      },
+      {
+       "word": "GREECE",
+       "strength": 1,
+       "clause": "Apollo was worshipped in ancient Greece"
+      },
+      {
+       "word": "OLYMPUS",
+       "strength": 1,
+       "clause": "Apollo is one of the gods of Mount Olympus",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "theater",
+     "label": "Harlem's Apollo",
+     "words": [
+      {
+       "word": "THEATER",
+       "strength": 1,
+       "clause": "Harlem's Apollo Theater is a legendary music hall"
+      }
+     ]
+    },
+    {
+     "id": "apollo-creed-rocky",
+     "label": "Apollo Creed (Rocky)",
+     "words": [
+      {
+       "word": "BOXER",
+       "strength": 1,
+       "clause": "Apollo Creed is the champion boxer Rocky fights",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "ICEBERG",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "titanic",
+     "label": "the Titanic",
+     "words": [
+      {
+       "word": "TITANIC",
+       "strength": 2,
+       "clause": "the Titanic sank after hitting an iceberg"
+      },
+      {
+       "word": "SHIP",
+       "strength": 2,
+       "clause": "icebergs are a hazard for ships at sea"
+      },
+      {
+       "word": "BOAT",
+       "strength": 1,
+       "clause": "icebergs are a danger to every boat at sea",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SINK",
+       "strength": 1,
+       "clause": "the Titanic sank after hitting an iceberg",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "polar",
+     "label": "polar seas",
+     "words": [
+      {
+       "word": "ANTARCTICA",
+       "strength": 2,
+       "clause": "giant icebergs break off Antarctica"
+      },
+      {
+       "word": "POLAR",
+       "strength": 2,
+       "clause": "icebergs float in polar seas"
+      },
+      {
+       "word": "PENGUIN",
+       "strength": 1,
+       "clause": "penguins ride on icebergs"
+      },
+      {
+       "word": "OCEAN",
+       "strength": 1,
+       "clause": "icebergs drift across the ocean"
+      },
+      {
+       "word": "SEAL",
+       "strength": 1,
+       "clause": "seals haul out on floating icebergs",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "iceberg-lettuce",
+     "label": "iceberg lettuce",
+     "words": [
+      {
+       "word": "SALAD",
+       "strength": 1,
+       "clause": "iceberg lettuce is the classic salad lettuce",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "PICNIC",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "gear",
+     "label": "the picnic spread",
+     "words": [
+      {
+       "word": "BASKET",
+       "strength": 2,
+       "clause": "you pack lunch in a picnic basket"
+      },
+      {
+       "word": "BLANKET",
+       "strength": 2,
+       "clause": "you spread out a picnic blanket"
+      },
+      {
+       "word": "TABLE",
+       "strength": 2,
+       "clause": "families gather at a picnic table",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "place",
+     "label": "where you picnic",
+     "words": [
+      {
+       "word": "PARK",
+       "strength": 2,
+       "clause": "people picnic in the park"
+      },
+      {
+       "word": "GRASS",
+       "strength": 1,
+       "clause": "a picnic is lunch on the grass"
+      },
+      {
+       "word": "SUMMER",
+       "strength": 1,
+       "clause": "summer is picnic season"
+      }
+     ]
+    },
+    {
+     "id": "pests",
+     "label": "uninvited guests",
+     "words": [
+      {
+       "word": "ANT",
+       "strength": 2,
+       "clause": "ants always crash a picnic"
+      },
+      {
+       "word": "BEAR",
+       "strength": 2,
+       "clause": "Yogi Bear steals \"pic-a-nic\" baskets"
+      },
+      {
+       "word": "FLY",
+       "strength": 1,
+       "clause": "flies buzz around every picnic",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "CAMPFIRE",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "stories",
+     "label": "campfire stories",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "STORY",
+       "strength": 2,
+       "clause": "ghost stories are told around the campfire"
+      },
+      {
+       "word": "GHOST",
+       "strength": 2,
+       "clause": "spooky ghost stories are a campfire tradition"
+      },
+      {
+       "word": "SONG",
+       "strength": 1,
+       "clause": "campers sing campfire songs"
+      },
+      {
+       "word": "GUITAR",
+       "strength": 1,
+       "clause": "someone always strums a guitar by the campfire",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "setup",
+     "label": "building the fire",
+     "words": [
+      {
+       "word": "LOG",
+       "strength": 2,
+       "clause": "logs keep a campfire burning"
+      },
+      {
+       "word": "WOOD",
+       "strength": 2,
+       "clause": "you gather wood for the campfire"
+      },
+      {
+       "word": "SMOKE",
+       "strength": 1,
+       "clause": "campfire smoke drifts into the night"
+      },
+      {
+       "word": "FLAME",
+       "strength": 1,
+       "clause": "campfire flames dance in the dark",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "STICK",
+       "strength": 1,
+       "clause": "you roast marshmallows on a stick over the campfire",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "s-mores",
+     "label": "s'mores",
+     "words": [
+      {
+       "word": "CHOCOLATE",
+       "strength": 1,
+       "clause": "s'mores are made with chocolate melted over a campfire",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    },
+    {
+     "id": "camp",
+     "label": "the campsite",
+     "words": [
+      {
+       "word": "TENT",
+       "strength": 2,
+       "clause": "a campfire crackles outside the tent",
+       "fixedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "STRIPES",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "animals",
+     "label": "striped animals",
+     "words": [
+      {
+       "word": "ZEBRA",
+       "strength": 2,
+       "clause": "zebras are covered in black and white stripes"
+      },
+      {
+       "word": "TIGER",
+       "strength": 2,
+       "clause": "tigers have orange and black stripes"
+      },
+      {
+       "word": "BEE",
+       "strength": 1,
+       "clause": "bees have yellow and black stripes"
+      }
+     ]
+    },
+    {
+     "id": "uniform",
+     "label": "striped uniforms",
+     "words": [
+      {
+       "word": "REFEREE",
+       "strength": 2,
+       "clause": "referees wear black-and-white stripes"
+      },
+      {
+       "word": "PRISON",
+       "strength": 1,
+       "clause": "old-time prison uniforms had stripes"
+      }
+     ]
+    },
+    {
+     "id": "candy",
+     "label": "a candy cane",
+     "words": [
+      {
+       "word": "CANE",
+       "strength": 2,
+       "clause": "a candy cane has red-and-white stripes"
+      },
+      {
+       "word": "CANDY",
+       "strength": 1,
+       "clause": "candy canes have red-and-white stripes"
+      }
+     ]
+    },
+    {
+     "id": "the-stars-and-stripes",
+     "label": "the Stars and Stripes",
+     "words": [
+      {
+       "word": "STAR",
+       "strength": 2,
+       "clause": "the U.S. flag is the Stars and Stripes",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "AMERICA",
+       "strength": 1,
+       "clause": "America's flag is the Stars and Stripes",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "SPOTS",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "animals",
+     "label": "spotted animals",
+     "words": [
+      {
+       "word": "LADYBUG",
+       "strength": 2,
+       "clause": "a ladybug has black spots"
+      },
+      {
+       "word": "GIRAFFE",
+       "strength": 2,
+       "clause": "a giraffe is covered in brown spots"
+      },
+      {
+       "word": "DOG",
+       "strength": 1,
+       "clause": "Dalmatians are spotted dogs"
+      },
+      {
+       "word": "COW",
+       "strength": 1,
+       "clause": "many cows have black-and-white spots"
+      },
+      {
+       "word": "DEER",
+       "strength": 1,
+       "clause": "a baby deer is covered in white spots",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "dice",
+     "label": "dots on dice",
+     "words": [
+      {
+       "word": "DICE",
+       "strength": 2,
+       "clause": "dice show their numbers as spots"
+      }
+     ]
+    },
+    {
+     "id": "sunspots",
+     "label": "sunspots",
+     "words": [
+      {
+       "word": "SUN",
+       "strength": 1,
+       "clause": "dark sunspots dot the face of the sun",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "POOH",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "hundredacre",
+     "label": "Winnie the Pooh",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "BEAR",
+       "strength": 2,
+       "clause": "Winnie the Pooh is a teddy bear"
+      },
+      {
+       "word": "HONEY",
+       "strength": 2,
+       "clause": "Winnie the Pooh loves honey"
+      },
+      {
+       "word": "TIGER",
+       "strength": 1,
+       "clause": "Tigger, Pooh's bouncy friend, is a tiger"
+      },
+      {
+       "word": "DONKEY",
+       "strength": 1,
+       "clause": "Eeyore, Pooh's gloomy friend, is a donkey"
+      },
+      {
+       "word": "PIG",
+       "strength": 1,
+       "clause": "Piglet, Pooh's tiny friend, is a pig"
+      },
+      {
+       "word": "OWL",
+       "strength": 1,
+       "clause": "Owl is one of Pooh's friends"
+      },
+      {
+       "word": "RABBIT",
+       "strength": 1,
+       "clause": "Rabbit is one of Pooh's friends"
+      },
+      {
+       "word": "WOOD",
+       "strength": 1,
+       "clause": "Pooh lives in the Hundred Acre Wood"
+      },
+      {
+       "word": "KANGAROO",
+       "strength": 1,
+       "clause": "Kanga, Pooh's motherly friend, is a kangaroo",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "ROBIN",
+       "strength": 1,
+       "clause": "Christopher Robin is Pooh's best friend",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "BEE",
+       "strength": 1,
+       "clause": "Pooh gets chased by bees while stealing honey",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "DISNEY",
+       "strength": 1,
+       "clause": "Winnie the Pooh is a beloved Disney character",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "ELF",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "santa",
+     "label": "Santa's helpers",
+     "words": [
+      {
+       "word": "SANTA",
+       "strength": 2,
+       "clause": "elves help Santa get ready for Christmas"
+      },
+      {
+       "word": "TOY",
+       "strength": 2,
+       "clause": "Santa's elves build the toys"
+      },
+      {
+       "word": "CHRISTMAS",
+       "strength": 2,
+       "clause": "elves are a Christmas tradition"
+      },
+      {
+       "word": "NORTH",
+       "strength": 1,
+       "clause": "Santa's elves live at the North Pole"
+      },
+      {
+       "word": "GIFT",
+       "strength": 1,
+       "clause": "Santa's elves wrap the gifts",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "GREEN",
+       "strength": 1,
+       "clause": "Santa's elves dress in green",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "movie",
+     "label": "the movie Elf",
+     "words": [
+      {
+       "word": "MOVIE",
+       "strength": 1,
+       "clause": "Elf is the Christmas movie starring Will Ferrell"
+      },
+      {
+       "word": "SYRUP",
+       "strength": 1,
+       "clause": "Buddy the Elf pours syrup on his spaghetti",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "fantasy",
+     "label": "fantasy elves",
+     "words": [
+      {
+       "word": "EAR",
+       "strength": 2,
+       "clause": "elves have pointy ears"
+      },
+      {
+       "word": "ARROW",
+       "strength": 1,
+       "clause": "fantasy elves like Legolas are master archers"
+      },
+      {
+       "word": "FAIRY",
+       "strength": 1,
+       "clause": "elves and fairies are magical folk"
+      },
+      {
+       "word": "SHOE",
+       "strength": 1,
+       "clause": "in the fairy tale, elves secretly make the shoemaker's shoes"
+      },
+      {
+       "word": "DWARF",
+       "strength": 1,
+       "clause": "elves and dwarves are classic fantasy races",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "the-keebler-elves",
+     "label": "the Keebler elves",
+     "words": [
+      {
+       "word": "COOKIE",
+       "strength": 1,
+       "clause": "the Keebler elves bake cookies in a hollow tree",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "GARLIC",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "vampire",
+     "label": "warding off vampires",
+     "words": [
+      {
+       "word": "VAMPIRE",
+       "strength": 2,
+       "clause": "garlic is said to keep vampires away"
+      }
+     ]
+    },
+    {
+     "id": "cooking",
+     "label": "in the kitchen",
+     "words": [
+      {
+       "word": "BREAD",
+       "strength": 2,
+       "clause": "garlic bread is a favorite side"
+      },
+      {
+       "word": "PIZZA",
+       "strength": 1,
+       "clause": "garlic tops plenty of pizzas"
+      },
+      {
+       "word": "ITALY",
+       "strength": 1,
+       "clause": "Italian cooking loves garlic"
+      },
+      {
+       "word": "PRESS",
+       "strength": 1,
+       "clause": "a garlic press crushes the cloves",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SALT",
+       "strength": 1,
+       "clause": "garlic salt is a pantry staple",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "POWDER",
+       "strength": 1,
+       "clause": "garlic powder is a pantry staple",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "BULB",
+       "strength": 1,
+       "clause": "garlic grows as a bulb of cloves",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "smell",
+     "label": "the smell",
+     "words": [
+      {
+       "word": "SMELL",
+       "strength": 2,
+       "clause": "garlic has a strong smell"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "SONIC",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "hedgehog",
+     "label": "Sonic the Hedgehog",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "VIDEO GAME",
+       "strength": 2,
+       "clause": "Sonic is Sega's video game hedgehog"
+      },
+      {
+       "word": "BLUE",
+       "strength": 2,
+       "clause": "Sonic is a blue hedgehog"
+      },
+      {
+       "word": "FAST",
+       "strength": 2,
+       "clause": "Sonic is famously fast"
+      },
+      {
+       "word": "RING",
+       "strength": 2,
+       "clause": "Sonic collects golden rings"
+      },
+      {
+       "word": "FOX",
+       "strength": 1,
+       "clause": "Sonic's sidekick Tails is a two-tailed fox",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "sound",
+     "label": "the speed of sound",
+     "words": [
+      {
+       "word": "BOOM",
+       "strength": 2,
+       "clause": "a jet breaking the sound barrier makes a sonic boom"
+      },
+      {
+       "word": "SOUND",
+       "strength": 1,
+       "clause": "sonic means having to do with sound"
+      },
+      {
+       "word": "JET",
+       "strength": 1,
+       "clause": "a jet can break the sound barrier with a sonic boom"
+      }
+     ]
+    },
+    {
+     "id": "sonic-drive-in",
+     "label": "Sonic Drive-In",
+     "words": [
+      {
+       "word": "HAMBURGER",
+       "strength": 1,
+       "clause": "Sonic Drive-In serves burgers to your car",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "DISCO",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "dance",
+     "label": "the disco era",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "DANCE",
+       "strength": 2,
+       "clause": "disco is music made for dancing"
+      },
+      {
+       "word": "BALL",
+       "strength": 2,
+       "clause": "a disco ball spins over the dance floor"
+      },
+      {
+       "word": "MIRROR",
+       "strength": 2,
+       "clause": "a disco ball is covered in tiny mirrors"
+      },
+      {
+       "word": "FEVER",
+       "strength": 2,
+       "clause": "Saturday Night Fever is the classic disco movie"
+      },
+      {
+       "word": "LIGHT",
+       "strength": 1,
+       "clause": "disco floors flash with colored lights"
+      },
+      {
+       "word": "MUSIC",
+       "strength": 1,
+       "clause": "disco is 1970s dance music"
+      },
+      {
+       "word": "PARTY",
+       "strength": 1,
+       "clause": "a disco is a dance party"
+      },
+      {
+       "word": "CLUB",
+       "strength": 1,
+       "clause": "a disco is a dance club",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SUIT",
+       "strength": 1,
+       "clause": "John Travolta's white suit is the iconic disco look",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "MIDNIGHT",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "cinderella",
+     "label": "Cinderella's deadline",
+     "words": [
+      {
+       "word": "CINDERELLA",
+       "strength": 2,
+       "clause": "Cinderella must leave the ball by midnight"
+      },
+      {
+       "word": "PUMPKIN",
+       "strength": 1,
+       "clause": "at midnight, Cinderella's coach turns back into a pumpkin",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "clock",
+     "label": "the stroke of twelve",
+     "words": [
+      {
+       "word": "CLOCK",
+       "strength": 2,
+       "clause": "the clock strikes twelve at midnight"
+      },
+      {
+       "word": "NEW YEAR",
+       "strength": 2,
+       "clause": "the New Year begins at midnight"
+      },
+      {
+       "word": "BALL",
+       "strength": 1,
+       "clause": "the Times Square ball drops at midnight on New Year's Eve",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "KISS",
+       "strength": 1,
+       "clause": "couples share a kiss at midnight on New Year's",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "snack",
+     "label": "a midnight snack",
+     "words": [
+      {
+       "word": "SNACK",
+       "strength": 2,
+       "clause": "a late-night bite is a midnight snack"
+      }
+     ]
+    },
+    {
+     "id": "color",
+     "label": "midnight blue",
+     "words": [
+      {
+       "word": "BLUE",
+       "strength": 1,
+       "clause": "midnight blue is a very dark blue"
+      }
+     ]
+    },
+    {
+     "id": "burning-the-midnight-oil",
+     "label": "burning the midnight oil",
+     "words": [
+      {
+       "word": "OIL",
+       "strength": 1,
+       "clause": "working late is burning the midnight oil",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "JAWS",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "movie",
+     "label": "the movie Jaws",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "SHARK",
+       "strength": 2,
+       "clause": "Jaws is the classic shark movie"
+      },
+      {
+       "word": "BEACH",
+       "strength": 2,
+       "clause": "Jaws made beachgoers afraid to swim"
+      },
+      {
+       "word": "MOVIE",
+       "strength": 1,
+       "clause": "Jaws was the first summer blockbuster"
+      },
+      {
+       "word": "BOAT",
+       "strength": 1,
+       "clause": "in Jaws, 'you're gonna need a bigger boat'",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "SWIMMING",
+       "strength": 1,
+       "clause": "Jaws scared a generation out of swimming in the ocean",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "bond",
+     "label": "the Bond villain",
+     "words": [
+      {
+       "word": "BOND",
+       "strength": 1,
+       "clause": "Jaws is the steel-toothed henchman from the James Bond films"
+      }
+     ]
+    },
+    {
+     "id": "mouth",
+     "label": "your jaws",
+     "words": [
+      {
+       "word": "MOUTH",
+       "strength": 2,
+       "clause": "your jaws open and close your mouth"
+      },
+      {
+       "word": "TOOTH",
+       "strength": 1,
+       "clause": "your teeth sit in your jaws"
+      },
+      {
+       "word": "BITE",
+       "strength": 2,
+       "clause": "your jaws clamp shut when you bite"
+      },
+      {
+       "word": "CROCODILE",
+       "strength": 1,
+       "clause": "a crocodile's powerful jaws snap shut",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "the-jaws-of-life",
+     "label": "the Jaws of Life",
+     "words": [
+      {
+       "word": "FIREFIGHTER",
+       "strength": 1,
+       "clause": "firefighters use the Jaws of Life to free people from wrecks",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "WALRUS",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "look",
+     "label": "the walrus look",
+     "words": [
+      {
+       "word": "MOUSTACHE",
+       "strength": 2,
+       "clause": "a big droopy mustache is called a walrus mustache"
+      },
+      {
+       "word": "IVORY",
+       "strength": 1,
+       "clause": "a walrus's tusks are ivory",
+       "fixedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "habitat",
+     "label": "life on the ice",
+     "words": [
+      {
+       "word": "SEAL",
+       "strength": 2,
+       "clause": "the walrus is a big cousin of the seal"
+      },
+      {
+       "word": "ICE",
+       "strength": 1,
+       "clause": "walruses haul out onto the ice"
+      },
+      {
+       "word": "POLAR",
+       "strength": 1,
+       "clause": "walruses live in polar waters"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "RAINBOW",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "gold",
+     "label": "the end of the rainbow",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "LEPRECHAUN",
+       "strength": 2,
+       "clause": "a leprechaun's pot of gold waits at the end of the rainbow"
+      },
+      {
+       "word": "GOLD",
+       "strength": 2,
+       "clause": "legend says there's a pot of gold at the end of the rainbow"
+      }
+     ]
+    },
+    {
+     "id": "sky",
+     "label": "in the sky",
+     "words": [
+      {
+       "word": "COLOR",
+       "strength": 2,
+       "clause": "a rainbow spreads sunlight into a band of colors"
+      },
+      {
+       "word": "STORM",
+       "strength": 1,
+       "clause": "a rainbow can appear after a storm"
+      },
+      {
+       "word": "SKY",
+       "strength": 1,
+       "clause": "a rainbow arcs across the sky"
+      },
+      {
+       "word": "SUN",
+       "strength": 1,
+       "clause": "a rainbow appears when the sun shines through rain",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "LIGHT",
+       "strength": 1,
+       "clause": "a rainbow is sunlight split into colors",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "oz",
+     "label": "Over the Rainbow",
+     "words": [
+      {
+       "word": "WIZARD",
+       "strength": 1,
+       "clause": "\"Over the Rainbow\" is the famous song from The Wizard of Oz"
+      }
+     ]
+    },
+    {
+     "id": "magic",
+     "label": "unicorns and rainbows",
+     "words": [
+      {
+       "word": "UNICORN",
+       "strength": 2,
+       "clause": "unicorns and rainbows go together",
+       "fixedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "UMBRELLA",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "rain",
+     "label": "keeping dry",
+     "words": [
+      {
+       "word": "RAIN",
+       "strength": 2,
+       "clause": "an umbrella keeps off the rain"
+      },
+      {
+       "word": "STORM",
+       "strength": 1,
+       "clause": "you open an umbrella in a storm"
+      },
+      {
+       "word": "WIND",
+       "strength": 1,
+       "clause": "a gust of wind can flip your umbrella inside out",
+       "fixedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "sun",
+     "label": "keeping cool",
+     "words": [
+      {
+       "word": "BEACH",
+       "strength": 2,
+       "clause": "a beach umbrella keeps off the sun"
+      },
+      {
+       "word": "SHADE",
+       "strength": 2,
+       "clause": "an umbrella gives shade"
+      },
+      {
+       "word": "SUN",
+       "strength": 1,
+       "clause": "an umbrella shields you from the sun",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "PATIO",
+       "strength": 1,
+       "clause": "a patio umbrella shades the table",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "drink",
+     "label": "the cocktail umbrella",
+     "words": [
+      {
+       "word": "DRINK",
+       "strength": 2,
+       "clause": "tropical drinks are often garnished with tiny paper umbrellas"
+      },
+      {
+       "word": "COCKTAIL",
+       "strength": 2,
+       "clause": "a tiny paper umbrella tops a tropical cocktail",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "poppins",
+     "label": "Mary Poppins",
+     "words": [
+      {
+       "word": "FLY",
+       "strength": 1,
+       "clause": "Mary Poppins flies with her umbrella",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "PHARAOH",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "egypt",
+     "label": "ancient Egypt",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "EGYPT",
+       "strength": 2,
+       "clause": "pharaohs ruled ancient Egypt"
+      },
+      {
+       "word": "PYRAMID",
+       "strength": 2,
+       "clause": "many pharaohs, especially in the Old Kingdom, were buried in pyramids"
+      },
+      {
+       "word": "MUMMY",
+       "strength": 2,
+       "clause": "pharaohs were preserved as mummies"
+      },
+      {
+       "word": "KING",
+       "strength": 2,
+       "clause": "a pharaoh was an Egyptian king"
+      },
+      {
+       "word": "GOLD",
+       "strength": 1,
+       "clause": "King Tut was buried with a solid gold mask"
+      },
+      {
+       "word": "TREASURE",
+       "strength": 1,
+       "clause": "King Tut's tomb was packed with treasure"
+      },
+      {
+       "word": "MASK",
+       "strength": 1,
+       "clause": "King Tut was buried in a gold death mask",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "GOD",
+       "strength": 1,
+       "clause": "pharaohs were worshipped as living gods",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "LUIGI",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "mario",
+     "label": "Mario's brother",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "MARIO",
+       "strength": 2,
+       "clause": "Luigi is Mario's younger brother"
+      },
+      {
+       "word": "BROTHER",
+       "strength": 2,
+       "clause": "Luigi is one of the Super Mario Bros."
+      },
+      {
+       "word": "GREEN",
+       "strength": 2,
+       "clause": "Luigi wears green"
+      },
+      {
+       "word": "GHOST",
+       "strength": 2,
+       "clause": "in Luigi's Mansion, Luigi hunts ghosts"
+      },
+      {
+       "word": "PIPE",
+       "strength": 1,
+       "clause": "Luigi travels through green warp pipes"
+      },
+      {
+       "word": "VIDEO GAME",
+       "strength": 1,
+       "clause": "Luigi is a Nintendo video game hero"
+      },
+      {
+       "word": "MUSHROOM",
+       "strength": 1,
+       "clause": "Luigi grows big by eating a Super Mushroom",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "PRINCESS",
+       "strength": 1,
+       "clause": "Luigi helps rescue Princess Peach",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "MOUSTACHE",
+       "strength": 1,
+       "clause": "Luigi sports a bushy mustache",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "VACUUM",
+       "strength": 1,
+       "clause": "in Luigi's Mansion, Luigi sucks up ghosts with a vacuum",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hint": "FROSTY",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "snowman",
+     "label": "Frosty the Snowman",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "SNOWMAN",
+       "strength": 2,
+       "clause": "Frosty is the famous snowman of the Christmas song"
+      },
+      {
+       "word": "HAT",
+       "strength": 2,
+       "clause": "Frosty comes to life when the children place a magic silk hat on his head"
+      },
+      {
+       "word": "MAGIC",
+       "strength": 1,
+       "clause": "Frosty's magic silk hat brings him to life"
+      },
+      {
+       "word": "CHRISTMAS",
+       "strength": 1,
+       "clause": "Frosty the Snowman is a Christmas classic"
+      },
+      {
+       "word": "PIPE",
+       "strength": 1,
+       "clause": "Frosty the Snowman has a corncob pipe",
+       "addedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "BUTTON",
+       "strength": 1,
+       "clause": "Frosty the Snowman has a button nose",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "cold",
+     "label": "frosty weather",
+     "words": [
+      {
+       "word": "COLD",
+       "strength": 2,
+       "clause": "frosty means icy cold"
+      },
+      {
+       "word": "WINTER",
+       "strength": 1,
+       "clause": "a frosty winter morning"
+      },
+      {
+       "word": "MORNING",
+       "strength": 1,
+       "clause": "a frosty morning glitters with ice"
+      },
+      {
+       "word": "MUG",
+       "strength": 1,
+       "clause": "a frosty mug comes straight from the freezer"
+      }
+     ]
+    },
+    {
+     "id": "the-wendy-s-frosty",
+     "label": "the Wendy's Frosty",
+     "words": [
+      {
+       "word": "CHOCOLATE",
+       "strength": 1,
+       "clause": "a chocolate Frosty from Wendy's is a thick, frozen dairy dessert you eat with a spoon",
+       "addedBy": "x04b-index-reviewer",
+       "fixedBy": "x04b-index-reviewer"
+      },
+      {
+       "word": "ICE CREAM",
+       "strength": 1,
+       "clause": "a Wendy's Frosty is a frozen dairy dessert much like soft-serve ice cream",
+       "addedBy": "x04b-index-reviewer",
+       "fixedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ]
+  },
+  {
+   "hint": "PARKER",
+   "checkpoint": "x04b",
+   "seeds": [],
+   "reviewCap": 7,
+   "routes": [
+    {
+     "id": "spiderman",
+     "label": "Peter Parker",
+     "sameRoute": true,
+     "words": [
+      {
+       "word": "SPIDER",
+       "strength": 2,
+       "clause": "Peter Parker is Spider-Man"
+      },
+      {
+       "word": "WEB",
+       "strength": 2,
+       "clause": "as Spider-Man, Peter Parker shoots webs"
+      },
+      {
+       "word": "NEWSPAPER",
+       "strength": 1,
+       "clause": "Peter Parker sells photos to the Daily Bugle newspaper"
+      },
+      {
+       "word": "CAMERA",
+       "strength": 1,
+       "clause": "Peter Parker is a newspaper photographer"
+      },
+      {
+       "word": "PHOTO",
+       "strength": 1,
+       "clause": "Peter Parker snaps photos of Spider-Man for the Daily Bugle"
+      },
+      {
+       "word": "MARVEL",
+       "strength": 1,
+       "clause": "Peter Parker is Marvel's Spider-Man"
+      },
+      {
+       "word": "SUPERHERO",
+       "strength": 1,
+       "clause": "Peter Parker leads a double life as a superhero"
+      },
+      {
+       "word": "NEW YORK",
+       "strength": 1,
+       "clause": "Peter Parker swings through New York City",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ]
+    },
+    {
+     "id": "parker-brothers",
+     "label": "Parker Brothers",
+     "words": [
+      {
+       "word": "GAME",
+       "strength": 1,
+       "clause": "Parker Brothers made classic board games like Monopoly",
+       "addedBy": "x04b-index-reviewer"
+      }
+     ],
+     "addedBy": "x04b-index-reviewer"
+    }
+   ],
+   "never": [
+    {
+     "pair": "CAMERA+PHOTO",
+     "why": "near-synonyms (index review)"
+    }
+   ]
+  }
+ ]
+}

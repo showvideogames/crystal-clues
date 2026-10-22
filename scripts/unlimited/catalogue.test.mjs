@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync, mkdtempSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
-import { pairOf, hintProblem, buildIndex, stats, emptyPairs, servedHints, pairState, pairCount, search, loadCatalogue } from "./catalogue-lib.mjs";
+import { pairOf, hintProblem, normHint, hintKey, buildIndex, stats, emptyPairs, servedHints, pairState, pairCount, search, loadCatalogue } from "./catalogue-lib.mjs";
 
 const CLI = resolve("scripts/unlimited/catalogue.mjs");
 const clue = (text, status, a = 2, b = 2, f = 2) => ({ text, status, revealExplanation: `${text} explained`, provenance: { blindReview: { verdict: status === "ai_reviewed" ? "PASS" : "BORDERLINE", a, b, fairness: f } } });
@@ -21,7 +21,8 @@ test("hint rule: one word of letters (NYC allowed), never containing or inside a
   assert.equal(hintProblem("NYC", "APPLE", "BIG"), null);
   assert.equal(hintProblem("AMBUSH", "CALCULATOR", "CAMOUFLAGE"), null);
   assert.match(hintProblem("ICE AGE", "MAMMOTH", "SQUIRREL"), /one word/);
-  assert.match(hintProblem("T-REX", "DINOSAUR", "KING"), /one word/);
+  assert.match(hintProblem("T--REX", "DINOSAUR", "KING"), /one word/);
+  assert.equal(hintProblem("T-REX", "DINOSAUR", "KING"), null); // an internal hyphen is allowed since 2026-10-20 (WALL-E)
   assert.match(hintProblem("FIRE", "FIREFIGHTER", "HOSE"), /target contains the hint/);
   assert.match(hintProblem("SUNFLOWER", "SUN", "SEED"), /contains a target/);
   assert.match(hintProblem("ICECREAM", "ICE CREAM", "CONE"), /target/);
@@ -54,8 +55,9 @@ test("served hint: an approved canonical wins, otherwise the strongest playable 
 test("the real catalogue: full bank, every library pair inside it, owner examples recorded", () => {
   const ix = loadCatalogue();
   const s = stats(ix);
-  assert.equal(s.bankWords, 1196);
-  assert.equal(s.possiblePairs, 714610);
+  const snap = JSON.parse(readFileSync("data/unlimited/wordbank/wordbank.json", "utf8"))._metadata;
+  assert.equal(s.bankWords, snap.databaseCount);              // the paged, count-verified snapshot
+  assert.equal(s.possiblePairs, pairCount(snap.databaseCount));
   assert.deepEqual(s.pairWordsOutsideBank, []);
   for (const [id, hint] of [["p_food__zombie", "BRAINS"], ["p_apple__big", "NYC"], ["p_calculator__camouflage", "AMBUSH"], ["p_dinosaur__friend", "BARNEY"], ["p_christmas__robot", "EVE"]]) {
     const p = ix.byId.get(id);
@@ -100,4 +102,46 @@ test("add: friend discoveries wait as candidates; only the owner can approve; mi
   // show / empty work against the same files
   assert.match(execFileSync(process.execPath, [CLI, "show", "ice cream", "penguin"], { cwd: dir, encoding: "utf8" }), /TUXEDO\s+candidate/);
   assert.match(execFileSync(process.execPath, [CLI, "empty", "--word", "dinosaur"], { cwd: dir, encoding: "utf8" }), /3 shown of 3 empty pairs/);
+});
+
+test("hint rule: owner-allowed conventional spellings (K9, AC/DC, CAP'N, WALL-E) and nothing broader", async () => {
+  for (const [h, a, b] of [["K9", "POLICE", "DOG"], ["AC/DC", "THUNDER", "BAND"], ["CAP'N", "CANNON", "CEREAL"], ["CAP’N", "PIRATE", "CEREAL"], ["C3PO", "GOLD", "ROBOT"], ["R2D2", "ROBOT", "STAR"], ["NYC", "APPLE", "BIG"], ["WALL-E", "ROBOT", "TRASH"], ["T-REX", "DINOSAUR", "KING"]])
+    assert.equal(hintProblem(h, a, b), null, h);
+  assert.equal(normHint("cap’n"), "CAP'N"); assert.equal(normHint("CAP‘N"), "CAP'N"); assert.equal(normHint("ac/dc"), "AC/DC");
+  assert.equal(hintKey("AC/DC"), "ACDC"); assert.equal(hintKey("CAP'N"), "CAPN"); assert.equal(hintKey("WALL-E"), "WALLE");
+  for (const h of ["ICE AGE", "-AC", "AC-", "AC--DC", "AC-/DC", "AC//DC", "/AC", "AC/", "CAP'", "'N", "CAP''N", "99", "9/11", "<B>", "A&W", "WOW!", "HI.", "AC DC"])
+    assert.match(hintProblem(h, "APPLE", "BIG") || "", /one word/, h);
+  // target checks ignore the punctuation: no smuggling a target through a slash or apostrophe
+  assert.match(hintProblem("ACDC", "AC/DC", "BAND"), /is a target/);
+  assert.match(hintProblem("CAP'NS", "CAPNS", "SHIP"), /is a target/);
+  assert.match(hintProblem("DOG/HOUSE", "DOG", "ROOF"), /contains a target/);
+  assert.match(hintProblem("K9", "K9 UNIT", "DOG") || "", /target contains the hint/);
+  // one hint in any spelling for rejections and duplicates
+  const { rejectionFor } = await import("./rejections-lib.mjs");
+  const e = [{ a: "CANNON", b: "CEREAL", pair_id: "p_cannon__cereal", hint: "CAP'N", decision: "held", by: "owner", reason: "x" }];
+  for (const h of ["CAP'N", "CAP’N", "CAPN", "cap'n"]) assert.equal(rejectionFor(e, "CEREAL", "CANNON", h)?.decision, "held", h);
+});
+
+test("add: stores the conventional spelling exactly and refuses another spelling of a recorded hint", () => {
+  const dir = mkdtempSync(join(tmpdir(), "cv-spell-"));
+  mkdirSync(join(dir, "data/unlimited/wordbank"), { recursive: true }); mkdirSync(join(dir, "data/unlimited/library"), { recursive: true });
+  writeFileSync(join(dir, "data/unlimited/wordbank/wordbank.json"), JSON.stringify({ words: ["BAND", "THUNDER", "CANNON", "CEREAL"] }));
+  writeFileSync(join(dir, "data/unlimited/library/pairs.json"), JSON.stringify({ _metadata: {}, pairs: [] }));
+  writeFileSync(join(dir, "data/unlimited/library/preferences.json"), JSON.stringify({ _metadata: {}, pairs: {} }));
+  writeFileSync(join(dir, "data/unlimited/library/overrides.json"), JSON.stringify({ _metadata: {}, overrides: [] }));
+  writeFileSync(join(dir, "data/unlimited/library/shortlist-50.json"), JSON.stringify({ words: [] }));
+  const run = (...a) => spawnSync(process.execPath, [CLI, ...a], { cwd: dir, encoding: "utf8" });
+  const read = () => JSON.parse(readFileSync(join(dir, "data/unlimited/library/pairs.json"), "utf8"));
+  let r = run("add", "thunder", "band", "ac/dc", "--by", "owner", "--why", "Thunderstruck");
+  assert.equal(r.status, 0, r.stderr);
+  r = run("add", "cannon", "cereal", "Cap’n", "--by", "owner", "--why", "Cap'n Crunch");
+  assert.equal(r.status, 0, r.stderr);
+  const texts = read().pairs.flatMap((p) => p.clues.map((x) => x.text)).sort();
+  assert.deepEqual(texts, ["AC/DC", "CAP'N"]);
+  r = run("add", "band", "thunder", "ACDC", "--by", "owner", "--why", "x");
+  assert.notEqual(r.status, 0); assert.match(r.stderr, /already recorded for BAND \+ THUNDER as AC\/DC/);
+  r = run("add", "band", "thunder", "AC-DC", "--by", "owner", "--why", "x");
+  assert.notEqual(r.status, 0); assert.match(r.stderr, /already recorded for BAND \+ THUNDER as AC\/DC/);
+  r = run("add", "band", "thunder", "AC--DC", "--by", "owner", "--why", "x");
+  assert.notEqual(r.status, 0); assert.match(r.stderr, /one word/);
 });

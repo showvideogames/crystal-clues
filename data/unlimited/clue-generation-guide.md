@@ -80,6 +80,23 @@ seriousness as the literal ones.
 | ROSE + MONSTER | **BEAST** | The enchanted rose is Beauty and the Beast's, and a beast is a monster. |
 | ROSE + SHADOW | **SONIC** | Amy Rose and Shadow the Hedgehog are both Sonic characters. |
 
+### Owner playtest calibration (Deb West, 2026-10-19)
+
+| Pair | Clue | Owner reaction | Lesson |
+|---|---|---|---|
+| EINSTEIN + FAMILY | **RELATIVE** | "Einstein for Relative is CHEF'S KISS"; the game was "SO FUN" / "AMAZING" | Familiar knowledge used indirectly (Einstein → relativity → RELATIVE) for an aha payoff is excellent, not inherently weak. |
+| BUS + GOLF | **DRIVER** | "10/10 hint" | A clear double meaning wins. Other words also fitting one side is not a reason to exclude it. |
+| LAKE + SWORD | EXCALIBUR | Held: the owner does not connect Excalibur to the lake | A legend detail most players won't link to the target is a hold, even when it is true. |
+| SPEAKER + SWORD | EXCALIBUR | Rejected: a talking Excalibur is Soul Eater trivia | Inventive stretches are welcome; obscure adaptation trivia does not justify them. |
+
+Indirect is fine; it is obscure or unsupported routes that fail. A clue still has to be factually right on both sides (RECENT + COCKROACH → LARVAE was rejected because cockroaches have no larval stage).
+
+Owner review of the consolidated import (2026-10-22): do not reject a clue merely because it is a definition, a category word or a straightforward connection (kept: ENTRY + WINDOW → OPENING, CAREER + EXPLORE → PATH, CLOTHING + NECKLACE → FASHION, GARAGE + HOSPITAL → REPAIR). Familiar, fair connections are welcome alongside clever stretches. Do not use an obscure reference to make an easy pair harder (BOOK + PARADISE → BEACH, a beach read and a beach paradise, instead of LOST via Paradise Lost). The owner's preferred picks include BOSS + TREE → BARKS and SLUG + SNAIL → SLIMY.
+
+### Synonyms (2026-10-20)
+
+A hint that is a synonym of, or names one sense of, ONE target is not an automatic failure. What matters is an honest connection to BOTH targets and whether the clue is useful and fun: BAND + WEDDING -> RING, SOLITARY + PILOT -> SOLO, DRAWING + DOG -> DOODLE and COMPUTER + INSECT -> BUG are all served. A mere rename with no credible second connection may be weak, case by case. The structural rules (one word; never equal to, containing or contained in a target) are separate and unchanged. Reviewer briefs: data/unlimited/reviewer-brief-template.md.
+
 ### What the reference pass must actively consider
 
 Fictional characters · characters in the same franchise · character relationships · famous people ·

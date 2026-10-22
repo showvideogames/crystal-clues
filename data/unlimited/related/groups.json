@@ -1,0 +1,984 @@
+{
+ "_metadata": {
+  "purpose": "pilot related-word index (x03): small, reusable groups of WORD-BANK words with the reason each word belongs. Not an ontology: a group says only what its label says, and two members of one group are not interchangeable in general.",
+  "kinds": {
+   "category": "membership: COUCH is FURNITURE",
+   "shared_property": "a property the members share: ICE and SNOW are frozen water",
+   "association": "a familiar association, not membership: PENGUIN goes with icy places",
+   "sense": "one meaning of a word that has several (see senses below): BAT the animal vs BAT the sports equipment",
+   "cultural": "a familiar work, brand, team or person that ties the members together"
+  },
+  "strength": "2 = the link comes to mind at once; 1 = real but needs a moment (reviewed only when paired with a 2)",
+  "status": "draft = written by the author; index_reviewed = checked by an independent reviewer against the whole bank (see index-review.json); members marked rejected stay listed with the reason",
+  "bank": "every member must be a word in data/unlimited/wordbank/wordbank.json (checked by scripts/unlimited/related-variations.mjs)",
+  "indexReview": "data/unlimited/related/index-review.json (x03-index-reviewer, claude-opus-5-5): suggestions applied selectively; members added from it carry addedBy"
+ },
+ "groups": [
+  {
+   "id": "frozen-water",
+   "kind": "shared_property",
+   "label": "frozen water",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "ICE",
+     "strength": 2,
+     "reason": "ice is frozen water"
+    },
+    {
+     "word": "SNOW",
+     "strength": 2,
+     "reason": "snow is frozen water"
+    },
+    {
+     "word": "FROST",
+     "strength": 2,
+     "reason": "frost is a coat of tiny ice crystals"
+    },
+    {
+     "word": "PIPE",
+     "strength": 2,
+     "reason": "water pipes can freeze solid and burst in winter",
+     "note": "frozen pipes: placed with frozen water",
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "id": "icy-cold",
+   "kind": "association",
+   "label": "freezing cold places, weather and animals",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "WINTER",
+     "strength": 2,
+     "reason": "winter freezes lakes and ponds solid"
+    },
+    {
+     "word": "COLD",
+     "strength": 2,
+     "reason": "freezing cold turns water to ice"
+    },
+    {
+     "word": "ANTARCTICA",
+     "strength": 2,
+     "reason": "Antarctica is a frozen continent"
+    },
+    {
+     "word": "POLAR",
+     "strength": 2,
+     "reason": "the polar regions stay frozen all year"
+    },
+    {
+     "word": "BLIZZARD",
+     "strength": 1,
+     "reason": "a blizzard leaves everything frozen"
+    },
+    {
+     "word": "PENGUIN",
+     "strength": 1,
+     "reason": "many penguins live in frozen Antarctica"
+    },
+    {
+     "word": "CHILL",
+     "strength": 1,
+     "reason": "a deep chill leaves you frozen"
+    },
+    {
+     "word": "LAKE",
+     "strength": 1,
+     "reason": "a frozen lake is perfect for skating"
+    },
+    {
+     "word": "POND",
+     "strength": 1,
+     "reason": "a frozen pond is perfect for skating"
+    },
+    {
+     "word": "MAMMOTH",
+     "strength": 1,
+     "reason": "woolly mammoths have been found frozen in Siberian permafrost"
+    },
+    {
+     "word": "SKATE",
+     "strength": 1,
+     "reason": "you skate on a frozen pond",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "NORTH",
+     "strength": 1,
+     "reason": "the far north is frozen most of the year",
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "id": "devices-that-freeze",
+   "kind": "sense",
+   "label": "devices that freeze (stop responding)",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "COMPUTER",
+     "strength": 2,
+     "reason": "a frozen computer stops responding"
+    },
+    {
+     "word": "PHONE",
+     "strength": 2,
+     "reason": "a frozen phone stops responding"
+    },
+    {
+     "word": "SCREEN",
+     "strength": 2,
+     "reason": "a frozen screen is stuck on one picture"
+    },
+    {
+     "word": "TABLET",
+     "strength": 1,
+     "reason": "a frozen tablet stops responding"
+    },
+    {
+     "word": "CONSOLE",
+     "strength": 1,
+     "reason": "a frozen game console stops mid-game"
+    },
+    {
+     "word": "VIDEO GAME",
+     "strength": 1,
+     "reason": "a frozen video game stops mid-play"
+    },
+    {
+     "word": "TELEVISION",
+     "strength": 1,
+     "reason": "a frozen TV picture is stuck on one frame",
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "id": "disney-frozen",
+   "kind": "cultural",
+   "label": "Disney's Frozen (2013)",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "MOVIE",
+     "strength": 2,
+     "reason": "Frozen is Disney's hit animated movie"
+    },
+    {
+     "word": "FILM",
+     "strength": 2,
+     "reason": "Frozen is Disney's hit animated film"
+    },
+    {
+     "word": "DISNEY",
+     "strength": 2,
+     "reason": "Frozen is one of Disney's biggest hits"
+    },
+    {
+     "word": "SNOWMAN",
+     "strength": 2,
+     "reason": "Olaf is Frozen's lovable snowman"
+    },
+    {
+     "word": "SISTER",
+     "strength": 2,
+     "reason": "Frozen is the story of sisters Anna and Elsa"
+    },
+    {
+     "word": "QUEEN",
+     "strength": 2,
+     "reason": "Elsa is Frozen's ice-powered queen"
+    },
+    {
+     "word": "PRINCESS",
+     "strength": 1,
+     "reason": "Anna is Frozen's princess"
+    },
+    {
+     "word": "TROLL",
+     "strength": 1,
+     "reason": "trolls raise Kristoff in Frozen"
+    },
+    {
+     "word": "SONG",
+     "strength": 1,
+     "reason": "\"Let It Go\" is Frozen's famous song"
+    },
+    {
+     "word": "HEART",
+     "strength": 1,
+     "reason": "Elsa accidentally freezes Anna's heart in Frozen",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "CASTLE",
+     "strength": 1,
+     "reason": "Elsa builds an ice castle in Frozen",
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "id": "frozen-still",
+   "kind": "shared_property",
+   "label": "frozen = perfectly still",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "STATUE",
+     "strength": 2,
+     "reason": "someone frozen in place stands as still as a statue"
+    },
+    {
+     "word": "TAG",
+     "strength": 1,
+     "reason": "in freeze tag, tagged players are frozen in place"
+    },
+    {
+     "word": "PHOTO",
+     "strength": 1,
+     "reason": "a photo is a moment frozen in time"
+    },
+    {
+     "word": "TIME",
+     "strength": 1,
+     "reason": "some moments feel frozen in time"
+    },
+    {
+     "word": "DEER",
+     "strength": 1,
+     "reason": "a deer in the headlights is frozen in place"
+    },
+    {
+     "word": "DANCE",
+     "strength": 1,
+     "reason": "in freeze dance, you stop dead when the music stops",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "STAR WARS",
+     "strength": 1,
+     "reason": "in Star Wars, Han Solo is frozen in carbonite",
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "id": "frozen-food",
+   "kind": "category",
+   "label": "frozen foods from the freezer aisle",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "PIZZA",
+     "strength": 2,
+     "reason": "frozen pizza is a freezer-aisle staple"
+    },
+    {
+     "word": "ICE CREAM",
+     "strength": 2,
+     "reason": "ice cream is a frozen dessert"
+    },
+    {
+     "word": "FOOD",
+     "strength": 1,
+     "reason": "every grocery store has a frozen food aisle"
+    },
+    {
+     "word": "VEGETABLE",
+     "strength": 1,
+     "reason": "frozen vegetables keep for months"
+    },
+    {
+     "word": "DESSERT",
+     "strength": 1,
+     "reason": "ice cream and popsicles are frozen desserts"
+    }
+   ]
+  },
+  {
+   "id": "frozen-money",
+   "kind": "sense",
+   "label": "frozen accounts and assets",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "BANK",
+     "strength": 1,
+     "reason": "a bank can freeze your account"
+    },
+    {
+     "word": "ASSET",
+     "strength": 1,
+     "reason": "a court can freeze someone's assets"
+    }
+   ]
+  },
+  {
+   "id": "seating",
+   "kind": "category",
+   "label": "seats, and furniture as the category",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "COUCH",
+     "strength": 2,
+     "reason": "a couch is a seat for lounging"
+    },
+    {
+     "word": "CHAIR",
+     "strength": 2,
+     "reason": "a chair is a seat"
+    },
+    {
+     "word": "FURNITURE",
+     "strength": 2,
+     "reason": "the category itself"
+    },
+    {
+     "word": "CUSHION",
+     "strength": 1,
+     "reason": "a cushion is a soft seat or pad"
+    }
+   ],
+   "notMembers": [
+    {
+     "word": "BED",
+     "reason": "furniture, but for sleeping; a beanbag is not a bed (owner example: FOOD + BED is not automatically good)"
+    },
+    {
+     "word": "TABLE",
+     "reason": "furniture you sit at, not on"
+    },
+    {
+     "word": "DRESSER",
+     "reason": "furniture, not a seat"
+    },
+    {
+     "word": "SHELF",
+     "reason": "furniture, not a seat"
+    }
+   ]
+  },
+  {
+   "id": "foods-beans",
+   "kind": "category",
+   "label": "food words beans belong to",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "FOOD",
+     "strength": 2,
+     "reason": "beans are a food"
+    },
+    {
+     "word": "VEGETABLE",
+     "strength": 1,
+     "reason": "beans are usually counted as vegetables"
+    }
+   ]
+  },
+  {
+   "id": "metals",
+   "kind": "category",
+   "label": "metals",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "GOLD",
+     "strength": 2,
+     "reason": "gold is a precious metal"
+    },
+    {
+     "word": "SILVER",
+     "strength": 2,
+     "reason": "silver is a precious metal"
+    },
+    {
+     "word": "LEAD",
+     "sense": "the metal (not to lead)",
+     "strength": 2,
+     "reason": "lead is a heavy, dull metal"
+    },
+    {
+     "word": "COPPER",
+     "strength": 2,
+     "reason": "copper is a reddish metal"
+    },
+    {
+     "word": "IRON",
+     "sense": "the metal (not the appliance)",
+     "strength": 2,
+     "reason": "iron is a strong grey metal"
+    },
+    {
+     "word": "MERCURY",
+     "sense": "the liquid metal (not the planet or god)",
+     "strength": 1,
+     "reason": "mercury is the metal that is liquid at room temperature"
+    },
+    {
+     "word": "BRONZE",
+     "strength": 1,
+     "reason": "bronze is an alloy of copper and tin"
+    },
+    {
+     "word": "METAL",
+     "strength": 1,
+     "reason": "the category word itself"
+    }
+   ]
+  },
+  {
+   "id": "wood-and-timber",
+   "kind": "association",
+   "label": "wood and what is made of it",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "WOOD",
+     "strength": 2,
+     "reason": "planks and boards are cut from wood"
+    },
+    {
+     "word": "OAK",
+     "strength": 1,
+     "reason": "oak is a classic hardwood"
+    },
+    {
+     "word": "PINE",
+     "strength": 1,
+     "reason": "pine is a common softwood"
+    },
+    {
+     "word": "LOG",
+     "strength": 1,
+     "reason": "logs are sawn into boards"
+    },
+    {
+     "word": "RAFT",
+     "strength": 1,
+     "reason": "a simple raft is lashed together from wood"
+    },
+    {
+     "word": "DECK",
+     "sense": "a ship's or porch deck (not a deck of cards)",
+     "strength": 1,
+     "reason": "a deck is laid with wooden boards"
+    },
+    {
+     "word": "BRIDGE",
+     "strength": 1,
+     "reason": "a simple bridge is a plank laid across a gap",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "TREE",
+     "strength": 1,
+     "reason": "wood comes from trees",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "MAPLE",
+     "strength": 1,
+     "reason": "maple is a hardwood",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "CABIN",
+     "strength": 1,
+     "reason": "log cabins are built of wood",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "FENCE",
+     "strength": 1,
+     "reason": "many fences are wooden",
+     "addedBy": "x03-index-reviewer"
+    }
+   ],
+   "notMembers": [
+    {
+     "word": "BOARD",
+     "reason": "a plank IS a board: too close to a synonym of the hint"
+    }
+   ]
+  },
+  {
+   "id": "pirate-life",
+   "kind": "association",
+   "label": "pirates and their ships",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "PIRATE",
+     "strength": 2,
+     "reason": "pirates sail the seas in search of treasure"
+    },
+    {
+     "word": "SHIP",
+     "strength": 2,
+     "reason": "pirates sail ships"
+    },
+    {
+     "word": "CAPTAIN",
+     "strength": 1,
+     "reason": "a pirate captain commands the ship"
+    },
+    {
+     "word": "SHARK",
+     "strength": 1,
+     "reason": "sharks circle below pirate ships in stories"
+    },
+    {
+     "word": "SEA",
+     "strength": 2,
+     "reason": "pirates sail the open sea",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "TREASURE",
+     "strength": 2,
+     "reason": "pirates hunt for buried treasure",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "HOOK",
+     "strength": 2,
+     "reason": "Captain Hook is the famous pirate",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "CANNON",
+     "strength": 2,
+     "reason": "pirate ships fire cannons",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "SKULL",
+     "strength": 2,
+     "reason": "the skull and crossbones is the pirate flag",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "SAIL",
+     "strength": 2,
+     "reason": "pirate ships sail the seas",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "ISLAND",
+     "strength": 2,
+     "reason": "pirates bury treasure on islands",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "MAP",
+     "strength": 2,
+     "reason": "pirates follow treasure maps",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "SWORD",
+     "strength": 2,
+     "reason": "pirates fight with swords",
+     "addedBy": "x03-index-reviewer"
+    }
+   ]
+  },
+  {
+   "id": "gym-exercise",
+   "kind": "association",
+   "label": "exercise and the gym",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "GYM",
+     "strength": 2,
+     "reason": "you work out at the gym"
+    },
+    {
+     "word": "STRENGTH",
+     "strength": 1,
+     "reason": "exercise builds strength"
+    },
+    {
+     "word": "PHYSICAL",
+     "strength": 1,
+     "reason": "physical education is exercise class"
+    }
+   ]
+  },
+  {
+   "id": "birds",
+   "kind": "category",
+   "label": "birds",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "BIRD",
+     "strength": 2,
+     "reason": "the category itself"
+    },
+    {
+     "word": "EAGLE",
+     "strength": 2,
+     "reason": "a bird of prey"
+    },
+    {
+     "word": "HAWK",
+     "strength": 2,
+     "reason": "a bird of prey"
+    },
+    {
+     "word": "OWL",
+     "strength": 2,
+     "reason": "a night bird"
+    },
+    {
+     "word": "PENGUIN",
+     "strength": 2,
+     "reason": "a flightless bird"
+    },
+    {
+     "word": "DUCK",
+     "sense": "the bird (not to dodge)",
+     "strength": 2,
+     "reason": "a water bird"
+    },
+    {
+     "word": "ROBIN",
+     "sense": "the bird (not Batman's sidekick)",
+     "strength": 2,
+     "reason": "a red-breasted songbird"
+    },
+    {
+     "word": "PIGEON",
+     "strength": 2,
+     "reason": "a city bird",
+     "verifiedBy": "x04 brief"
+    },
+    {
+     "word": "TURKEY",
+     "sense": "the bird (not the country)",
+     "strength": 2,
+     "reason": "a big farm and Thanksgiving bird"
+    },
+    {
+     "word": "CRANE",
+     "sense": "the bird (not the machine)",
+     "strength": 1,
+     "reason": "a tall wading bird",
+     "verifiedBy": "x04 brief"
+    },
+    {
+     "word": "ROOSTER",
+     "strength": 2,
+     "reason": "a male chicken"
+    },
+    {
+     "word": "HEN",
+     "strength": 2,
+     "reason": "a female chicken"
+    },
+    {
+     "word": "CHICK",
+     "strength": 2,
+     "reason": "a baby chicken",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "KIWI",
+     "strength": 1,
+     "reason": "a flightless New Zealand bird",
+     "sense": "the bird (not the fruit)",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "PHOENIX",
+     "strength": 1,
+     "reason": "the mythical firebird",
+     "addedBy": "x03-index-reviewer"
+    },
+    {
+     "word": "CROW",
+     "strength": 2,
+     "reason": "a big black bird",
+     "addedBy": "x04 brief",
+     "sense": "the bird (not a rooster's crow)",
+     "note": "back in the word bank 2026-10-19",
+     "fixedBy": "x04-index-reviewer"
+    }
+   ]
+  },
+  {
+   "id": "sports",
+   "kind": "category",
+   "label": "team sports with U.S. pro leagues",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "FOOTBALL",
+     "strength": 2,
+     "reason": "the NFL"
+    },
+    {
+     "word": "BASEBALL",
+     "strength": 2,
+     "reason": "MLB"
+    },
+    {
+     "word": "BASKETBALL",
+     "strength": 2,
+     "reason": "the NBA"
+    },
+    {
+     "word": "HOCKEY",
+     "strength": 2,
+     "reason": "the NHL"
+    },
+    {
+     "word": "SOCCER",
+     "strength": 1,
+     "reason": "MLS"
+    }
+   ]
+  },
+  {
+   "id": "bat-animal",
+   "kind": "sense",
+   "label": "BAT the animal",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "VAMPIRE",
+     "strength": 2,
+     "reason": "vampires turn into bats"
+    },
+    {
+     "word": "CAVE",
+     "strength": 2,
+     "reason": "bats roost in caves"
+    },
+    {
+     "word": "HALLOWEEN",
+     "strength": 1,
+     "reason": "bats are a Halloween symbol"
+    },
+    {
+     "word": "NIGHT",
+     "strength": 1,
+     "reason": "bats fly at night"
+    }
+   ]
+  },
+  {
+   "id": "bat-equipment",
+   "kind": "sense",
+   "label": "BAT the sports equipment",
+   "status": "index_reviewed",
+   "members": [
+    {
+     "word": "BASEBALL",
+     "strength": 2,
+     "reason": "baseball players swing a bat"
+    },
+    {
+     "word": "CRICKET",
+     "sense": "the sport (not the insect)",
+     "strength": 1,
+     "reason": "cricket is played with a flat bat"
+    },
+    {
+     "word": "BALL",
+     "strength": 1,
+     "reason": "you hit the ball with a bat"
+    }
+   ]
+  },
+  {
+   "id": "nautical",
+   "kind": "association",
+   "label": "ships, boats and life at sea",
+   "status": "draft",
+   "note": "BOAT and SHIP often substitute in nautical pairs, but not blindly in every idiom (a ship's deck yes; 'missed the boat' no)",
+   "members": [
+    {
+     "word": "SHIP",
+     "strength": 2,
+     "reason": "a big seagoing vessel"
+    },
+    {
+     "word": "BOAT",
+     "strength": 2,
+     "reason": "a smaller vessel"
+    },
+    {
+     "word": "CAPTAIN",
+     "strength": 2,
+     "reason": "commands the ship",
+     "sense": "a ship's captain (not a team captain or Captain America)",
+     "fixedBy": "x04-index-reviewer"
+    },
+    {
+     "word": "OCEAN",
+     "strength": 2,
+     "reason": "where ships sail"
+    },
+    {
+     "word": "SEA",
+     "strength": 2,
+     "reason": "where ships sail"
+    },
+    {
+     "word": "SAIL",
+     "strength": 2,
+     "reason": "what catches the wind"
+    },
+    {
+     "word": "PORT",
+     "strength": 2,
+     "reason": "where ships dock"
+    },
+    {
+     "word": "DECK",
+     "strength": 1,
+     "sense": "a ship's deck (not cards)",
+     "reason": "the floor of a ship"
+    },
+    {
+     "word": "KNOT",
+     "strength": 1,
+     "reason": "sailors tie knots and measure speed in knots"
+    },
+    {
+     "word": "OAR",
+     "strength": 2,
+     "reason": "you row a boat with oars",
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "word": "RAFT",
+     "strength": 2,
+     "reason": "a simple boat",
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "word": "LIGHTHOUSE",
+     "strength": 2,
+     "reason": "guides ships to shore",
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "word": "TITANIC",
+     "strength": 2,
+     "reason": "the most famous ship",
+     "addedBy": "x04-index-reviewer"
+    },
+    {
+     "word": "WAVE",
+     "strength": 1,
+     "reason": "ships ride the waves",
+     "addedBy": "x04-index-reviewer"
+    }
+   ]
+  }
+ ],
+ "senses": [
+  {
+   "word": "BAT",
+   "senses": [
+    {
+     "sense": "the animal",
+     "group": "bat-animal"
+    },
+    {
+     "sense": "sports equipment",
+     "group": "bat-equipment"
+    },
+    {
+     "sense": "Batman (compound)",
+     "note": "used by GUITAR + BAT -> HERO"
+    }
+   ]
+  },
+  {
+   "word": "CRICKET",
+   "senses": [
+    {
+     "sense": "the insect",
+     "note": "Jiminy Cricket (CRICKET + WHALE -> PINOCCHIO)"
+    },
+    {
+     "sense": "the sport",
+     "group": "bat-equipment"
+    }
+   ]
+  },
+  {
+   "word": "CARDINAL",
+   "note": "a hint, not a bank word",
+   "senses": [
+    {
+     "sense": "the red bird"
+    },
+    {
+     "sense": "a Catholic church official"
+    },
+    {
+     "sense": "Arizona Cardinals (NFL) and St. Louis Cardinals (MLB)"
+    },
+    {
+     "sense": "the four cardinal directions"
+    }
+   ]
+  },
+  {
+   "word": "MERCURY",
+   "senses": [
+    {
+     "sense": "the liquid metal",
+     "group": "metals"
+    },
+    {
+     "sense": "the planet"
+    },
+    {
+     "sense": "the Roman messenger god"
+    }
+   ]
+  },
+  {
+   "word": "LEAD",
+   "senses": [
+    {
+     "sense": "the metal",
+     "group": "metals"
+    },
+    {
+     "sense": "to guide; the lead role"
+    },
+    {
+     "sense": "pencil lead (really graphite)"
+    }
+   ]
+  },
+  {
+   "word": "DECK",
+   "senses": [
+    {
+     "sense": "a ship's or porch deck",
+     "group": "wood-and-timber"
+    },
+    {
+     "sense": "a deck of cards"
+    }
+   ]
+  }
+ ]
+}

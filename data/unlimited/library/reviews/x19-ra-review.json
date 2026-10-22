@@ -1,0 +1,348 @@
+{
+ "_metadata": {
+  "reviewer": "x19-reviewer-a",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x19-ra-input.json",
+  "rubric": "x19 rubric (template 2026-10-20)",
+  "independence": "Apart from the brief, I read only x19-ra-input.json and judged every hint independently, without opening any other repository file, search or web source."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_air__apple", "a": "AIR", "b": "APPLE",
+   "hints": [
+    {"text": "MACBOOK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "AIR via the MacBook Air product name and APPLE as the maker of the MacBook; one familiar product reaches both cleanly.", "fix": null}
+   ],
+   "strong_hints": ["MACBOOK"],
+   "pair_note": "Clean, easy brand clue."
+  },
+  {
+   "pair_id": "p_apple__genius", "a": "APPLE", "b": "GENIUS",
+   "hints": [
+    {"text": "BAR", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["generic"], "verdict": "PASS", "reason": "GENIUS via the Genius Bar and APPLE because the Genius Bar is Apple's in-store help desk; both sides hang on one well-known phrase, and BAR alone is wide open on a board, but it clicks once GENIUS is spotted.", "fix": null}
+   ],
+   "strong_hints": ["BAR"],
+   "pair_note": "Single-route clue (Genius Bar); fair but not a big aha."
+  },
+  {
+   "pair_id": "p_baby__work", "a": "BABY", "b": "WORK",
+   "hints": [
+    {"text": "LABOR", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BABY via labor as childbirth and WORK via labor as toil; a true double meaning that clicks instantly.", "fix": null}
+   ],
+   "strong_hints": ["LABOR"],
+   "pair_note": "Textbook double meaning; one of the best in the batch."
+  },
+  {
+   "pair_id": "p_bath__bed", "a": "BATH", "b": "BED",
+   "hints": [
+    {"text": "BEYOND", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BED and BATH both via the store name Bed Bath & Beyond; the phrase is instantly familiar to U.S. players and the brand-completion has a pleasant click.", "fix": null}
+   ],
+   "strong_hints": ["BEYOND"],
+   "pair_note": "Phrase-join, but an iconic one; passes the 'instantly familiar' bar."
+  },
+  {
+   "pair_id": "p_beat__rope", "a": "BEAT", "b": "ROPE",
+   "hints": [
+    {"text": "SKIP", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "BEAT via the idiom 'skip a beat' (omit) and ROPE via skipping rope (jump); two senses of skip, both familiar, though Americans more often say 'jump rope'.", "fix": "A heart is said to skip a beat from excitement or surprise."}
+   ],
+   "strong_hints": ["SKIP"],
+   "pair_note": "BEAT line says 'a racing heart' skips a beat, which mixes two different heart idioms; suggested fix uses excitement or surprise."
+  },
+  {
+   "pair_id": "p_birthday__wish", "a": "BIRTHDAY", "b": "WISH",
+   "hints": [
+    {"text": "CANDLE", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BIRTHDAY via candles on the cake and WISH via making a wish while blowing them out; a universal scene.", "fix": null}
+   ],
+   "strong_hints": ["CANDLE"],
+   "pair_note": "Easy, warm, fair."
+  },
+  {
+   "pair_id": "p_book__club", "a": "BOOK", "b": "CLUB",
+   "hints": [
+    {"text": "OPRAH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BOOK and CLUB both via Oprah's Book Club, one of the most famous pop-culture book clubs; a person-to-phrase route that clicks quickly.", "fix": null}
+   ],
+   "strong_hints": ["OPRAH"],
+   "pair_note": "Good pop-culture route; facts (1996 start, bestseller effect) are accurate."
+  },
+  {
+   "pair_id": "p_boxing__table", "a": "BOXING", "b": "TABLE",
+   "hints": [
+    {"text": "ROUND", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BOXING via rounds of a bout and TABLE via King Arthur's Round Table; two distinct senses of round.", "fix": null}
+   ],
+   "strong_hints": ["ROUND"],
+   "pair_note": "Solid double meaning."
+  },
+  {
+   "pair_id": "p_bubble__tea", "a": "BUBBLE", "b": "TEA",
+   "hints": [
+    {"text": "BOBA", "mechanism": "other", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "BUBBLE and TEA both via boba as the common name for bubble tea; essentially a rename of the joined phrase, but it lands instantly and has a fun 'oh, of course' feel.", "fix": "Boba drinks are usually tea-based and served with chewy tapioca pearls."}
+   ],
+   "strong_hints": ["BOBA"],
+   "pair_note": "TEA line says boba 'is a tea drink'; boba also names the pearls and some boba drinks are not tea, so the line should be hedged."
+  },
+  {
+   "pair_id": "p_cage__wheel", "a": "CAGE", "b": "WHEEL",
+   "hints": [
+    {"text": "HAMSTER", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CAGE via the pet hamster's cage and WHEEL via its exercise wheel; a vivid, universally known pairing.", "fix": null}
+   ],
+   "strong_hints": ["HAMSTER"],
+   "pair_note": "Easy and satisfying."
+  },
+  {
+   "pair_id": "p_capital__case", "a": "CAPITAL", "b": "CASE",
+   "hints": [
+    {"text": "UPPER", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CASE via 'upper case' and CAPITAL because uppercase letters are capitals; the printer's type-case history in the explanation is true and adds a nice extra.", "fix": null}
+   ],
+   "strong_hints": ["UPPER"],
+   "pair_note": "Phrase-join plus synonym; familiar and tidy."
+  },
+  {
+   "pair_id": "p_cereal__rice", "a": "CEREAL", "b": "RICE",
+   "hints": [
+    {"text": "KRISPIES", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "RICE via the name Rice Krispies and CEREAL because Rice Krispies is a classic breakfast cereal; brand plus category, like PENGUIN for ANTARCTICA + ROOSTER.", "fix": null}
+   ],
+   "strong_hints": ["KRISPIES"],
+   "pair_note": "Fine brand clue."
+  },
+  {
+   "pair_id": "p_charm__top", "a": "CHARM", "b": "TOP",
+   "hints": [
+    {"text": "QUARK", "mechanism": "shared_property", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "delight": 1, "recognizability": "niche", "better_hint": null, "flags": ["obscure", "needs_explanation", "uncertain"], "verdict": "BORDERLINE", "reason": "CHARM and TOP are both quark flavors, which is true and a lovely aha for science-minded players, but most general U.S. players know 'quark' without knowing the flavor names, so neither side is reachable without the explanation.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Facts are correct (top is the heaviest known quark). The doubt is familiarity, not accuracy; worth a second opinion on whether 'quark flavors' counts as general knowledge."
+  },
+  {
+   "pair_id": "p_circle__life", "a": "CIRCLE", "b": "LIFE",
+   "hints": [
+    {"text": "PI", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CIRCLE via pi as the circumference-to-diameter ratio and LIFE via the novel and film Life of Pi; two unrelated worlds meeting in one tiny word.", "fix": null}
+   ],
+   "strong_hints": ["PI"],
+   "pair_note": "Very nice. LION (The Lion King's 'Circle of Life') would be a second valid route, but PI is the more satisfying one."
+  },
+  {
+   "pair_id": "p_cold__soup", "a": "COLD", "b": "SOUP",
+   "hints": [
+    {"text": "CHICKEN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SOUP via chicken soup and COLD via chicken soup as the classic cold remedy; an everyday cultural link.", "fix": null}
+   ],
+   "strong_hints": ["CHICKEN"],
+   "pair_note": "Easy and fair."
+  },
+  {
+   "pair_id": "p_cow__new", "a": "COW", "b": "NEW",
+   "hints": [
+    {"text": "BRAND", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "COW via ranchers branding cattle and NEW via 'brand-new'; a genuine double meaning with a good click.", "fix": null}
+   ],
+   "strong_hints": ["BRAND"],
+   "pair_note": "Strong double meaning."
+  },
+  {
+   "pair_id": "p_detective__seal", "a": "DETECTIVE", "b": "SEAL",
+   "hints": [
+    {"text": "MONK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DETECTIVE via the TV series Monk and its detective Adrian Monk, SEAL via the monk seal; both are reasonably well known and the pairing is a pleasing surprise.", "fix": null}
+   ],
+   "strong_hints": ["MONK"],
+   "pair_note": "Monk (2002-09) and Hawaiian monk seals are both moderately familiar; facts are accurate."
+  },
+  {
+   "pair_id": "p_dream__team", "a": "DREAM", "b": "TEAM",
+   "hints": [
+    {"text": "OLYMPICS", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "TEAM via an Olympic team and DREAM via the 1992 U.S. Olympic basketball Dream Team; DREAM leans entirely on that one famous nickname, but it is famous enough to click.", "fix": "The 1992 U.S. Olympic basketball team, with Michael Jordan and Magic Johnson, was nicknamed the Dream Team."}
+   ],
+   "strong_hints": ["OLYMPICS"],
+   "pair_note": "DREAM line names the players but never ties the hint (the Olympics) to DREAM; suggested fix connects them."
+  },
+  {
+   "pair_id": "p_dynamite__match", "a": "DYNAMITE", "b": "MATCH",
+   "hints": [
+    {"text": "FUSE", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DYNAMITE via the fuse on a stick of dynamite and MATCH via striking a match to light it; a classic cartoon image.", "fix": null}
+   ],
+   "strong_hints": ["FUSE"],
+   "pair_note": "Clear scene clue."
+  },
+  {
+   "pair_id": "p_fair__play", "a": "FAIR", "b": "PLAY",
+   "hints": [
+    {"text": "FOUL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FAIR via baseball's fair-or-foul call and PLAY via 'foul play'; neat that the opposite of fair play still points at both words.", "fix": null}
+   ],
+   "strong_hints": ["FOUL"],
+   "pair_note": "Clever: the antonym route works on both sides."
+  },
+  {
+   "pair_id": "p_fast__sound", "a": "FAST", "b": "SOUND",
+   "hints": [
+    {"text": "SONIC", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SOUND via sonic meaning 'of sound' (sonic boom) and FAST via Sonic the Hedgehog's famous speed; a real 'oh, nice'.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"],
+   "pair_note": "Excellent; Sonic Drive-In fast food is a bonus echo."
+  },
+  {
+   "pair_id": "p_first__washington", "a": "FIRST", "b": "WASHINGTON",
+   "hints": [
+    {"text": "PRESIDENT", "mechanism": "fact", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 0, "recognizability": "broad", "better_hint": null, "flags": ["generic"], "verdict": "PASS", "reason": "WASHINGTON via George Washington as president and FIRST via his being the first president; true and universally known, though flat and FIRST is reached only through the fact.", "fix": null}
+   ],
+   "strong_hints": ["PRESIDENT"],
+   "pair_note": "Easy fact clue with low delight; acceptable under the 'clear easy clue' standard, but no aha."
+  },
+  {
+   "pair_id": "p_frankenstein__torch", "a": "FRANKENSTEIN", "b": "TORCH",
+   "hints": [
+    {"text": "MOB", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FRANKENSTEIN via the villager mob hunting the monster in the 1931 film and TORCH via the torch-wielding angry mob trope that film made iconic.", "fix": null}
+   ],
+   "strong_hints": ["MOB"],
+   "pair_note": "Good image clue; windmill detail is accurate to the 1931 film."
+  },
+  {
+   "pair_id": "p_gate__pearl", "a": "GATE", "b": "PEARL",
+   "hints": [
+    {"text": "HEAVEN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GATE and PEARL both via heaven's 'pearly gates'; universal imagery, and the Revelation detail (each gate a single pearl) is accurate.", "fix": null}
+   ],
+   "strong_hints": ["HEAVEN"],
+   "pair_note": "Clean and fair."
+  },
+  {
+   "pair_id": "p_gold__sugar", "a": "GOLD", "b": "SUGAR",
+   "hints": [
+    {"text": "RUSH", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GOLD via the California Gold Rush and SUGAR via a sugar rush; both phrases are instantly familiar and the history-versus-candy contrast is fun.", "fix": null}
+   ],
+   "strong_hints": ["RUSH"],
+   "pair_note": "Strong phrase-join."
+  },
+  {
+   "pair_id": "p_hard__heavy", "a": "HARD", "b": "HEAVY",
+   "hints": [
+    {"text": "HITTER", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "HARD via 'hard hitter' and HEAVY via 'heavy hitter'; both are common expressions, though the pair is near-synonymous so the click is mild.", "fix": null}
+   ],
+   "strong_hints": ["HITTER"],
+   "pair_note": "Fair phrase-join; pleasant rather than delightful."
+  },
+  {
+   "pair_id": "p_hole__sock", "a": "HOLE", "b": "SOCK",
+   "hints": [
+    {"text": "DARN", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["dated"], "verdict": "PASS", "reason": "SOCK via darning socks and HOLE as what darning mends; old-fashioned but still widely known, and the mild-exclamation sense of 'darn' adds charm.", "fix": null}
+   ],
+   "strong_hints": ["DARN"],
+   "pair_note": "Darning is a fading skill, but 'darn your socks' is common knowledge."
+  },
+  {
+   "pair_id": "p_ice-cream__rice", "a": "ICE CREAM", "b": "RICE",
+   "hints": [
+    {"text": "MOCHI", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "ICE CREAM via mochi ice cream and RICE because mochi is made from glutinous rice; mochi ice cream is now a supermarket staple, and the rice side is a satisfying reveal.", "fix": null}
+   ],
+   "strong_hints": ["MOCHI"],
+   "pair_note": "Good food clue; recognizability moderate-to-broad in the U.S. today."
+  },
+  {
+   "pair_id": "p_jam__space", "a": "JAM", "b": "SPACE",
+   "hints": [
+    {"text": "JORDAN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SPACE and JAM via Michael Jordan's film Space Jam, with JAM doubled by his famous slam-dunk jams; a fun aha.", "fix": null}
+   ],
+   "strong_hints": ["JORDAN"],
+   "pair_note": "Strong pop-culture clue."
+  },
+  {
+   "pair_id": "p_knife__tool", "a": "KNIFE", "b": "TOOL",
+   "hints": [
+    {"text": "SWISS", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "KNIFE via the Swiss Army knife and TOOL via its many folding tools; the iconic multi-tool reaches both.", "fix": null}
+   ],
+   "strong_hints": ["SWISS"],
+   "pair_note": "Fair and clear."
+  },
+  {
+   "pair_id": "p_london__show", "a": "LONDON", "b": "SHOW",
+   "hints": [
+    {"text": "WESTMINSTER", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "LONDON via Westminster (Parliament, the Abbey) and SHOW via the Westminster Kennel Club Dog Show in New York; two well-known namesakes on opposite sides of the Atlantic.", "fix": null}
+   ],
+   "strong_hints": ["WESTMINSTER"],
+   "pair_note": "Lovely double reference."
+  },
+  {
+   "pair_id": "p_mercury__metal", "a": "MERCURY", "b": "METAL",
+   "hints": [
+    {"text": "LIQUID", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "MERCURY via being liquid at room temperature and METAL via mercury being a liquid metal (also the familiar phrase 'liquid metal'); a true, well-known fact.", "fix": null}
+   ],
+   "strong_hints": ["LIQUID"],
+   "pair_note": "Straightforward science fact; lines are accurate and appropriately hedged."
+  },
+  {
+   "pair_id": "p_nest__robin", "a": "NEST", "b": "ROBIN",
+   "hints": [
+    {"text": "EGG", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "ROBIN via the robin's blue eggs and NEST via both a nest of eggs and the savings sense 'nest egg'; easy but layered.", "fix": "American robins lay blue eggs, the source of the color robin's-egg blue."}
+   ],
+   "strong_hints": ["EGG"],
+   "pair_note": "ROBIN line should say American robins: the European robin's eggs are whitish with speckles."
+  },
+  {
+   "pair_id": "p_office__pass", "a": "OFFICE", "b": "PASS",
+   "hints": [
+    {"text": "WORD", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "OFFICE via Microsoft Word in Microsoft Office and PASS via the compound password; software name and plain word meet nicely.", "fix": null}
+   ],
+   "strong_hints": ["WORD"],
+   "pair_note": "Clever and fair; the computer theme ties both sides together."
+  },
+  {
+   "pair_id": "p_pass__stairs", "a": "PASS", "b": "STAIRS",
+   "hints": [
+    {"text": "SPIRAL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "PASS via the quarterback's spiral and STAIRS via a spiral staircase; two concrete, familiar spirals from unrelated worlds.", "fix": null}
+   ],
+   "strong_hints": ["SPIRAL"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_pizza__spot", "a": "PIZZA", "b": "SPOT",
+   "hints": [
+    {"text": "DOMINO", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "PIZZA via Domino's and SPOT via the spots (pips) on domino tiles, tied together by the three-dot Domino's logo; a satisfying click.", "fix": null}
+   ],
+   "strong_hints": ["DOMINO"],
+   "pair_note": "Logo detail is accurate (three dots)."
+  },
+  {
+   "pair_id": "p_rabbit__sock", "a": "RABBIT", "b": "SOCK",
+   "hints": [
+    {"text": "HOP", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "RABBIT via how rabbits move and SOCK via the 1950s sock hop dance; the retro reference is still widely known (Grease, Happy Days) and the pairing is fun.", "fix": null}
+   ],
+   "strong_hints": ["HOP"],
+   "pair_note": "Good; sock-hop detail (dancing in socks) is accurate."
+  },
+  {
+   "pair_id": "p_round__square", "a": "ROUND", "b": "SQUARE",
+   "hints": [
+    {"text": "PEG", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "ROUND and SQUARE both via the idiom 'a square peg in a round hole'; instantly familiar and the idiom uses both shapes.", "fix": null}
+   ],
+   "strong_hints": ["PEG"],
+   "pair_note": "Idiom clue; the two lines are near-duplicates but accurate."
+  },
+  {
+   "pair_id": "p_sheep__work", "a": "SHEEP", "b": "WORK",
+   "hints": [
+    {"text": "DOLLY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["needs_explanation", "uncertain"], "verdict": "BORDERLINE", "reason": "SHEEP via Dolly the cloned sheep is strong, but WORK needs two hops (Dolly Parton, then her song '9 to 5'), and WORK is such a broad board word that few players will land on it from DOLLY.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Facts are correct. A stronger WORK route the explanation ignores: a dolly is a wheeled hand truck used for moving loads at work; owner may prefer that or the Parton route. Flagged uncertain because the RELATIVE-style indirect aha could argue for PASS."
+  },
+  {
+   "pair_id": "p_slow__thunder", "a": "SLOW", "b": "THUNDER",
+   "hints": [
+    {"text": "CLAP", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SLOW via the slow clap and THUNDER via a thunderclap; both are instantly familiar and the applause-versus-storm contrast is pleasant.", "fix": null}
+   ],
+   "strong_hints": ["CLAP"],
+   "pair_note": "Good phrase-join."
+  },
+  {
+   "pair_id": "p_storm__weather", "a": "STORM", "b": "WEATHER",
+   "hints": [
+    {"text": "X-MEN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "STORM via the X-Men member Storm and WEATHER via her weather-controlling power; widely known from the films and cartoons, and more fun than a literal weather clue.", "fix": null}
+   ],
+   "strong_hints": ["X-MEN"],
+   "pair_note": "The targets are already related as weather words; X-MEN adds a pop-culture twist. FRONT (storm front, weather front) would be a plainer alternative."
+  },
+  {
+   "pair_id": "p_thin__wall", "a": "THIN", "b": "WALL",
+   "hints": [
+    {"text": "PAPER", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "THIN via 'paper-thin' and WALL via wallpaper; both familiar compounds, with a bonus echo of 'paper-thin walls'.", "fix": null}
+   ],
+   "strong_hints": ["PAPER"],
+   "pair_note": "Fair phrase-join."
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+  "_metadata": {
+    "purpose": "x04c backlog checkpoint content calls (ceiling 6 incl. recovery; 5 planned). Agent tool, model opus (echo claude-opus-5-5); extraUsage.enabled=false verified via get_usage before dispatch (5h 20%, weekly 70%). No generation call: the 187 proposals already carry index-drafted explanations. Each reviewer has its own scratch folder and sees only its own input.",
+    "totals": {
+      "calls": 5,
+      "ceiling": 6,
+      "tokens": 455743
+    }
+  },
+  "calls": [
+    {
+      "n": 1,
+      "id": "x04c-reviewer-a",
+      "purpose": "backlog review (POTTER (37), STRIPES (1))",
+      "input": "data/unlimited/library/reviews/x04c-ra-input.json",
+      "output": "data/unlimited/library/reviews/x04c-ra-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 87391,
+      "durationMs": 116142,
+      "result": "38 PASS"
+    },
+    {
+      "n": 2,
+      "id": "x04c-reviewer-b",
+      "purpose": "backlog review (SHELL (24), PIXAR (14))",
+      "input": "data/unlimited/library/reviews/x04c-rb-input.json",
+      "output": "data/unlimited/library/reviews/x04c-rb-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 93842,
+      "durationMs": 173261,
+      "result": "38 PASS; 6 text fixes"
+    },
+    {
+      "n": 3,
+      "id": "x04c-reviewer-c",
+      "purpose": "backlog review (JAM (15), RING (13), KEY (8), UMBRELLA (1))",
+      "input": "data/unlimited/library/reviews/x04c-rc-input.json",
+      "output": "data/unlimited/library/reviews/x04c-rc-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 90691,
+      "durationMs": 147244,
+      "result": "37 PASS; 1 text fix"
+    },
+    {
+      "n": 4,
+      "id": "x04c-reviewer-d",
+      "purpose": "backlog review (SCALE SEAGULL LAVA PUNCH PICK CHIP CAMPFIRE)",
+      "input": "data/unlimited/library/reviews/x04c-rd-input.json",
+      "output": "data/unlimited/library/reviews/x04c-rd-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 91854,
+      "durationMs": 151468,
+      "result": "35 PASS, 4 BORDERLINE (bird-for-bird SEAGULL); 5 text fixes"
+    },
+    {
+      "n": 5,
+      "id": "x04c-reviewer-e",
+      "purpose": "backlog review (SLAM DECK SAILOR FAN NET HORN WING BOLT OGRE PICNIC SONIC)",
+      "input": "data/unlimited/library/reviews/x04c-re-input.json",
+      "output": "data/unlimited/library/reviews/x04c-re-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 91965,
+      "durationMs": 235325,
+      "result": "31 PASS, 4 BORDERLINE; 1 text fix"
+    }
+  ]
+}

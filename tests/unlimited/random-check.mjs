@@ -104,7 +104,7 @@ try {
     await page.locator("[data-testid=ul-why]").click();
     await page.waitForSelector("[data-testid=ul-why-item]");
     const items = await page.$$eval("[data-testid=ul-why-item]", (els) => els.map((e) => e.innerText));
-    b1.reveal.forEach((r, i) => assert.ok(items[i].includes(r.clue) && items[i].includes(r.wordAConnection) && items[i].includes(r.wordBConnection), `reveal ${i} is the frozen snapshot`));
+    b1.reveal.forEach((r, i) => assert.ok(items[i].includes(r.clue) && items[i].includes(r.revealExplanation) && items[i].includes(r.wordAConnection) && items[i].includes(r.wordBConnection), `reveal ${i} is the frozen snapshot, explanation shown`));
     await shot(page, `${vp.name}-03-why-these-clues`, `${vp.name} · reveal for ${b1.id}`);
     await page.keyboard.press("Escape"); await page.waitForSelector("[data-testid=ul-why-item]", { hidden: true });
 

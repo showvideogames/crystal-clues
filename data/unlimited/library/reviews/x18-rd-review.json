@@ -1,0 +1,408 @@
+{
+ "_metadata": {
+  "reviewer": "x18-reviewer-d",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x18-rd-input.json",
+  "rubric": "x18 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the single input file x18-rd-input.json; no other repository files, searches, web or paid APIs were used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_antarctica__umbrella", "a": "ANTARCTICA", "b": "UMBRELLA",
+   "hints": [
+    {"text": "PENGUIN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "ANTARCTICA via real penguins living there, UMBRELLA via Batman's Penguin and his trick umbrellas; an unexpected pairing that clicks at once.", "fix": null}
+   ],
+   "strong_hints": ["PENGUIN"],
+   "pair_note": "Excellent pop-culture plus nature double; true and broad."
+  },
+  {
+   "pair_id": "p_back__jet", "a": "BACK", "b": "JET",
+   "hints": [
+    {"text": "PACK", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "BACK via backpack, JET via jetpack; both compounds are instantly familiar and the shared 'worn on your back' idea makes it more than a bare blank-fill.", "fix": "JET line: A jetpack is a pack worn on the back that uses jet thrust to fly."}
+   ],
+   "strong_hints": ["PACK"],
+   "pair_note": "Clean, easy phrase-join; the JET line's 'a pack of jets' is loose wording."
+  },
+  {
+   "pair_id": "p_base__lemon", "a": "BASE", "b": "LEMON",
+   "hints": [
+    {"text": "LITMUS", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BASE via litmus turning blue in a base, LEMON via lemon juice being the classic acid that turns litmus red; a school-science aha with accurate text.", "fix": null}
+   ],
+   "strong_hints": ["LITMUS"],
+   "pair_note": "Indirect familiar knowledge (lemon -> acid -> litmus) in the owner's favoured style."
+  },
+  {
+   "pair_id": "p_belt__punch", "a": "BELT", "b": "PUNCH",
+   "hints": [
+    {"text": "FOUL", "mechanism": "fact", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BELT via the idiom 'below the belt' meaning a foul blow, PUNCH via an illegal punch being a foul; the BELT side needs the idiom but it is very familiar.", "fix": null}
+   ],
+   "strong_hints": ["FOUL"],
+   "pair_note": "Solid if modest; BELT is the softer side."
+  },
+  {
+   "pair_id": "p_book__judge", "a": "BOOK", "b": "JUDGE",
+   "hints": [
+    {"text": "COVER", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "Both targets sit in the instantly familiar proverb 'don't judge a book by its cover', and BOOK also has a literal cover; a satisfying phrase-join.", "fix": "JUDGE line: The proverb says not to judge a book by its cover."}
+   ],
+   "strong_hints": ["COVER"],
+   "pair_note": "The JUDGE line never mentions the cover; tie it back to the hint."
+  },
+  {
+   "pair_id": "p_boxing__round", "a": "BOXING", "b": "ROUND",
+   "hints": [
+    {"text": "BELL", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BOXING via the ring bell, ROUND via the bell starting and ending each round; clear and true, if not surprising since the targets are already related.", "fix": null}
+   ],
+   "strong_hints": ["BELL"],
+   "pair_note": "Easy and fair; low novelty because BOXING and ROUND are near-associates."
+  },
+  {
+   "pair_id": "p_butterfly__change", "a": "BUTTERFLY", "b": "CHANGE",
+   "hints": [
+    {"text": "METAMORPHOSIS", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS",
+     "reason": "BUTTERFLY via caterpillar-to-butterfly metamorphosis, CHANGE because metamorphosis means a transformation; near-synonym for CHANGE but the butterfly side makes it a real two-way link.", "fix": null}
+   ],
+   "strong_hints": ["METAMORPHOSIS"],
+   "pair_note": "Straightforward and accurate."
+  },
+  {
+   "pair_id": "p_capital__soul", "a": "CAPITAL", "b": "SOUL",
+   "hints": [
+    {"text": "SEOUL", "mechanism": "other", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CAPITAL via Seoul being South Korea's capital, SOUL via the homophone; does not contain the target as a substring and gives a real 'oh, nice' moment.", "fix": null}
+   ],
+   "strong_hints": ["SEOUL"],
+   "pair_note": "Standout sound-alike hint."
+  },
+  {
+   "pair_id": "p_carpet__track", "a": "CARPET", "b": "TRACK",
+   "hints": [
+    {"text": "RUNNER", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CARPET via a runner rug for halls and stairs, TRACK via track runners; a clean double meaning.", "fix": null}
+   ],
+   "strong_hints": ["RUNNER"],
+   "pair_note": "Classic DRIVER-style double meaning."
+  },
+  {
+   "pair_id": "p_cat__engine", "a": "CAT", "b": "ENGINE",
+   "hints": [
+    {"text": "PURR", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CAT via a cat's purr, ENGINE via the common phrase 'the engine purrs'; familiar and pleasant.", "fix": null}
+   ],
+   "strong_hints": ["PURR"],
+   "pair_note": "Easy, satisfying shared-sound clue."
+  },
+  {
+   "pair_id": "p_change__short", "a": "CHANGE", "b": "SHORT",
+   "hints": [
+    {"text": "CASHIER", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["needs_explanation", "uncertain"], "verdict": "PASS",
+     "reason": "CHANGE via the cashier handing you change, SHORT via a cashier shortchanging you; once CHANGE is found the compound 'shortchange' makes SHORT click, though SHORT alone is a weaker pull from CASHIER.", "fix": null}
+   ],
+   "strong_hints": ["CASHIER"],
+   "pair_note": "Close to BORDERLINE: the SHORT side depends on the player assembling 'shortchange'. I lean PASS because that compound is common and the pair forms it directly."
+  },
+  {
+   "pair_id": "p_claw__crane", "a": "CLAW", "b": "CRANE",
+   "hints": [
+    {"text": "ARCADE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CLAW via the arcade claw machine, CRANE via its other name, the crane game; both names of the same arcade staple.", "fix": null}
+   ],
+   "strong_hints": ["ARCADE"],
+   "pair_note": "Fair and easy; both sides route through one machine."
+  },
+  {
+   "pair_id": "p_clown__cream", "a": "CLOWN", "b": "CREAM",
+   "hints": [
+    {"text": "PIE", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CLOWN via the pie-in-the-face gag, CREAM via cream pie; a vivid, familiar slapstick image.", "fix": null}
+   ],
+   "strong_hints": ["PIE"],
+   "pair_note": "Good, easy, fun."
+  },
+  {
+   "pair_id": "p_comic__funny", "a": "COMIC", "b": "FUNNY",
+   "hints": [
+    {"text": "JOKER", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "COMIC via the Joker of DC comics (and a comic being a joker), FUNNY via a joker being a funny person; clear double sense.", "fix": null}
+   ],
+   "strong_hints": ["JOKER"],
+   "pair_note": "COMIC and FUNNY are already near-synonyms, so the clue is easy; the comic-book sense adds a little twist."
+  },
+  {
+   "pair_id": "p_cross__easter", "a": "CROSS", "b": "EASTER",
+   "hints": [
+    {"text": "BUN", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CROSS via hot cross buns, EASTER via those buns being a traditional Easter (Good Friday) treat; accurate and familiar.", "fix": null}
+   ],
+   "strong_hints": ["BUN"],
+   "pair_note": "Familiar food tradition; lines are accurate."
+  },
+  {
+   "pair_id": "p_dance__high", "a": "DANCE", "b": "HIGH",
+   "hints": [
+    {"text": "PROM", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DANCE via prom being a formal dance, HIGH via the high school prom; very clear for a U.S. audience.", "fix": null}
+   ],
+   "strong_hints": ["PROM"],
+   "pair_note": "Easy, apt American clue."
+  },
+  {
+   "pair_id": "p_deck__pirate", "a": "DECK", "b": "PIRATE",
+   "hints": [
+    {"text": "SWAB", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DECK via 'swab the deck', PIRATE via the stock pirate-ship order and 'swabbie' crew; familiar storybook image.", "fix": null}
+   ],
+   "strong_hints": ["SWAB"],
+   "pair_note": "Fun nautical flavour; lines are fine."
+  },
+  {
+   "pair_id": "p_diamond__pink", "a": "DIAMOND", "b": "PINK",
+   "hints": [
+    {"text": "PANTHER", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "PINK via The Pink Panther, DIAMOND via the film's title being a pink diamond with a panther-shaped flaw; the diamond fact is moderately known but satisfying once explained.", "fix": null}
+   ],
+   "strong_hints": ["PANTHER"],
+   "pair_note": "Lines are accurate; DIAMOND side is the softer, but the film's jewel-heist premise is widely known."
+  },
+  {
+   "pair_id": "p_drop__new-year", "a": "DROP", "b": "NEW YEAR",
+   "hints": [
+    {"text": "BALL", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DROP via the Times Square ball drop, NEW YEAR via that midnight countdown tradition; instantly clear.", "fix": null}
+   ],
+   "strong_hints": ["BALL"],
+   "pair_note": "Easy and accurate."
+  },
+  {
+   "pair_id": "p_easter__statue", "a": "EASTER", "b": "STATUE",
+   "hints": [
+    {"text": "MOAI", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS",
+     "reason": "EASTER via the moai of Easter Island, STATUE via the moai being giant carved statues; the image is famous though the word 'moai' is less universal.", "fix": null}
+   ],
+   "strong_hints": ["MOAI"],
+   "pair_note": "Players who know the word get a lovely aha; those who do not are stuck, so familiarity of 'moai' is the judgement call."
+  },
+  {
+   "pair_id": "p_engine__number", "a": "ENGINE", "b": "NUMBER",
+   "hints": [
+    {"text": "GOOGLE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "ENGINE via Google the search engine, NUMBER via its name playing on googol (10 to the 100th); true and a fine indirect aha.", "fix": null}
+   ],
+   "strong_hints": ["GOOGLE"],
+   "pair_note": "RELATIVE-style indirect link; googol is widely known trivia."
+  },
+  {
+   "pair_id": "p_family__yellow", "a": "FAMILY", "b": "YELLOW",
+   "hints": [
+    {"text": "SIMPSONS", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "FAMILY via the Simpson family, YELLOW via their famously yellow skin; very clear.", "fix": "YELLOW line: The Simpson family and most of Springfield are drawn with yellow skin."}
+   ],
+   "strong_hints": ["SIMPSONS"],
+   "pair_note": "Not every Simpsons character is yellow, so the YELLOW line should not imply all are."
+  },
+  {
+   "pair_id": "p_fireworks__phoenix", "a": "FIREWORKS", "b": "PHOENIX",
+   "hints": [
+    {"text": "FAWKES", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 1, "fairness": 1, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["british_only", "needs_explanation", "uncertain"], "verdict": "BORDERLINE",
+     "reason": "PHOENIX via Dumbledore's phoenix Fawkes, FIREWORKS via Britain's Guy Fawkes Night; both sides need specific knowledge, and the fireworks tradition is not well known to many U.S. players.", "fix": null}
+   ],
+   "strong_hints": [],
+   "pair_note": "Clever and accurate, but both routes are moderate-familiarity (a Harry Potter detail and a British holiday); could PASS for an audience of Potter readers."
+  },
+  {
+   "pair_id": "p_full__wolf", "a": "FULL", "b": "WOLF",
+   "hints": [
+    {"text": "MOON", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "FULL via full moon, WOLF via werewolves changing under it and the image of wolves howling at the moon; broad and clear.", "fix": "WOLF line: Wolves are pictured howling at the moon, and in movies werewolves change under a full one."}
+   ],
+   "strong_hints": ["MOON"],
+   "pair_note": "The full-moon trigger is mainly a modern-fiction convention, so 'in folklore' overstates it; the howling image is the more direct WOLF link."
+  },
+  {
+   "pair_id": "p_gold__pan", "a": "GOLD", "b": "PAN",
+   "hints": [
+    {"text": "PROSPECTOR", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "GOLD via gold-rush prospectors, PAN via panning for gold; clear and accurate.", "fix": null}
+   ],
+   "strong_hints": ["PROSPECTOR"],
+   "pair_note": "Easy and satisfying."
+  },
+  {
+   "pair_id": "p_guitar__scale", "a": "GUITAR", "b": "SCALE",
+   "hints": [
+    {"text": "BASS", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "GUITAR via the bass guitar, SCALE via bass fish having scales (and SCALE also hides a musical pun); a neat double meaning.", "fix": null}
+   ],
+   "strong_hints": ["BASS"],
+   "pair_note": "Nice misdirection: SCALE looks musical but resolves through the fish."
+  },
+  {
+   "pair_id": "p_head__island", "a": "HEAD", "b": "ISLAND",
+   "hints": [
+    {"text": "EASTER", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "ISLAND via Easter Island, HEAD via its famous giant stone heads; the line correctly notes many statues have buried bodies.", "fix": null}
+   ],
+   "strong_hints": ["EASTER"],
+   "pair_note": "Good and accurate; note EASTER is also a target word in two other pairs in this batch, so avoid sharing a board."
+  },
+  {
+   "pair_id": "p_high__moon", "a": "HIGH", "b": "MOON",
+   "hints": [
+    {"text": "TIDE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "HIGH via high tide, MOON via the Moon's gravity driving the tides; true and familiar.", "fix": null}
+   ],
+   "strong_hints": ["TIDE"],
+   "pair_note": "Solid science-plus-phrase clue."
+  },
+  {
+   "pair_id": "p_horse__pool", "a": "HORSE", "b": "POOL",
+   "hints": [
+    {"text": "POLO", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "HORSE via polo played on horseback, POOL via the swimming-pool game Marco Polo (and water polo); a delightful two-sided twist.", "fix": null}
+   ],
+   "strong_hints": ["POLO"],
+   "pair_note": "Strong; water polo also backs the POOL side."
+  },
+  {
+   "pair_id": "p_jump__thumb", "a": "JUMP", "b": "THUMB",
+   "hints": [
+    {"text": "FONZIE", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["dated", "text_fix"], "verdict": "PASS",
+     "reason": "THUMB via Fonzie's iconic thumbs-up, JUMP via 'jump the shark' coming from his water-ski shark jump on Happy Days; dated but widely known.", "fix": "Explanation: The phrase jump the shark comes from a Happy Days episode in which Fonzie water-skis over a shark, and he is famous for his thumbs-up."}
+   ],
+   "strong_hints": ["FONZIE"],
+   "pair_note": "Fonzie did not coin the phrase (it was coined years later about the episode), so the explanation should credit the episode rather than him."
+  },
+  {
+   "pair_id": "p_kiwi__tennis", "a": "KIWI", "b": "TENNIS",
+   "hints": [
+    {"text": "FUZZ", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "KIWI via the fuzzy skin of kiwi fruit, TENNIS via the fuzzy felt on tennis balls; a pleasing shared texture.", "fix": null}
+   ],
+   "strong_hints": ["FUZZ"],
+   "pair_note": "Simple and satisfying."
+  },
+  {
+   "pair_id": "p_lego__wall", "a": "LEGO", "b": "WALL",
+   "hints": [
+    {"text": "BRICK", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "LEGO via LEGO bricks, WALL via brick walls; clear and accurate.", "fix": null}
+   ],
+   "strong_hints": ["BRICK"],
+   "pair_note": "Easy, fair."
+  },
+  {
+   "pair_id": "p_magician__top", "a": "MAGICIAN", "b": "TOP",
+   "hints": [
+    {"text": "HAT", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "TOP via top hat, MAGICIAN via the rabbit-from-a-hat trick; the classic image ties both together.", "fix": null}
+   ],
+   "strong_hints": ["HAT"],
+   "pair_note": "Familiar and fair."
+  },
+  {
+   "pair_id": "p_mask__trash", "a": "MASK", "b": "TRASH",
+   "hints": [
+    {"text": "RACCOON", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "MASK via the raccoon's bandit-mask markings, TRASH via raccoons raiding trash cans ('trash panda'); vivid and fun.", "fix": null}
+   ],
+   "strong_hints": ["RACCOON"],
+   "pair_note": "Delightful animal clue; lines avoid literal-mask claims."
+  },
+  {
+   "pair_id": "p_mirror__smoke", "a": "MIRROR", "b": "SMOKE",
+   "hints": [
+    {"text": "ILLUSION", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Both targets form the idiom 'smoke and mirrors', which means an illusion, and both are real stage-illusion tools; instantly familiar.", "fix": null}
+   ],
+   "strong_hints": ["ILLUSION"],
+   "pair_note": "Fair idiom clue."
+  },
+  {
+   "pair_id": "p_new-york__theater", "a": "NEW YORK", "b": "THEATER",
+   "hints": [
+    {"text": "BROADWAY", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "NEW YORK via Broadway in Manhattan, THEATER via the Broadway theater district; obvious and correct.", "fix": null}
+   ],
+   "strong_hints": ["BROADWAY"],
+   "pair_note": "Easy, accurate."
+  },
+  {
+   "pair_id": "p_party__tea", "a": "PARTY", "b": "TEA",
+   "hints": [
+    {"text": "HATTER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "PARTY and TEA both via the Mad Hatter's tea party in Alice in Wonderland; broad and clear.", "fix": "TEA line: At the Hatter's tea party it is always six o'clock, so it is always tea time."}
+   ],
+   "strong_hints": ["HATTER"],
+   "pair_note": "'The Hatter keeps pouring tea' is an invented scene detail; use the always-tea-time fact instead."
+  },
+  {
+   "pair_id": "p_plate__slide", "a": "PLATE", "b": "SLIDE",
+   "hints": [
+    {"text": "HOME", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "PLATE via home plate, SLIDE via sliding home in baseball; one baseball scene unifies both phrases.", "fix": null}
+   ],
+   "strong_hints": ["HOME"],
+   "pair_note": "Familiar phrase-join with a satisfying single scene."
+  },
+  {
+   "pair_id": "p_river__triangle", "a": "RIVER", "b": "TRIANGLE",
+   "hints": [
+    {"text": "DELTA", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "RIVER via a river delta, TRIANGLE via the triangular Greek capital delta that gave the landform its name; true and elegant.", "fix": null}
+   ],
+   "strong_hints": ["DELTA"],
+   "pair_note": "Strong double meaning with a real etymological link."
+  },
+  {
+   "pair_id": "p_shell__soft", "a": "SHELL", "b": "SOFT",
+   "hints": [
+    {"text": "CRAB", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "SOFT and SHELL together name the soft-shell crab, and SHELL also links directly to crabs' shells; familiar food term.", "fix": null}
+   ],
+   "strong_hints": ["CRAB"],
+   "pair_note": "Accurate molting lines; easy clue."
+  },
+  {
+   "pair_id": "p_sink__titanic", "a": "SINK", "b": "TITANIC",
+   "hints": [
+    {"text": "ICEBERG", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "TITANIC via its 1912 iceberg collision, SINK via the iceberg causing it to sink; very easy and true.", "fix": null}
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "Obvious but clean."
+  },
+  {
+   "pair_id": "p_sponge__star", "a": "SPONGE", "b": "STAR",
+   "hints": [
+    {"text": "PATRICK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "STAR via Patrick Star the starfish, SPONGE via his best friend SpongeBob; broad cartoon knowledge with a fun click.", "fix": null}
+   ],
+   "strong_hints": ["PATRICK"],
+   "pair_note": "Strong pop-culture clue."
+  },
+  {
+   "pair_id": "p_strike__turkey", "a": "STRIKE", "b": "TURKEY",
+   "hints": [
+    {"text": "BOWLING", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "STRIKE via a bowling strike, TURKEY via three strikes in a row; the TURKEY sense is a satisfying aha.", "fix": null}
+   ],
+   "strong_hints": ["BOWLING"],
+   "pair_note": "Good misdirection away from Thanksgiving."
+  },
+  {
+   "pair_id": "p_tree__vegetable", "a": "TREE", "b": "VEGETABLE",
+   "hints": [
+    {"text": "BROCCOLI", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "VEGETABLE via broccoli being a vegetable, TREE via florets looking like little trees; a familiar kid-friendly image.", "fix": null}
+   ],
+   "strong_hints": ["BROCCOLI"],
+   "pair_note": "Category plus property, in the PENGUIN/ANTARCTICA style; fine."
+  }
+ ]
+}

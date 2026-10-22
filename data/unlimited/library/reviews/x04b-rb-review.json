@@ -1,0 +1,955 @@
+{
+ "_metadata": {
+  "reviewer": "x04b-reviewer-b",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "input": "x04b-rb-input.json",
+  "rubric": "x04 rubric (natural-click standard + five content questions), 2026-10-19",
+  "independence": "I read only the instructions file and the single input file x04b-rb-input.json; no other file, repository search, web or paid API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_ant__park",
+   "a": "ANT",
+   "b": "PARK",
+   "hints": [
+    {
+     "text": "PICNIC",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Classic picnic scene: ants invade picnics (ANT) and picnics happen in the park (PARK); instant and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PICNIC"],
+   "pair_note": "Easy, clean scene clue."
+  },
+  {
+   "pair_id": "p_antarctica__ship",
+   "a": "ANTARCTICA",
+   "b": "SHIP",
+   "hints": [
+    {
+     "text": "ICEBERG",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Icebergs calve off Antarctica (ANTARCTICA) and are the famous hazard to ships, Titanic-style (SHIP); both sides are immediate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "Solid; slightly less vivid than the TITANIC version of the same idea."
+  },
+  {
+   "pair_id": "p_antarctica__titanic",
+   "a": "ANTARCTICA",
+   "b": "TITANIC",
+   "hints": [
+    {
+     "text": "ICEBERG",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Icebergs break off Antarctica (ANTARCTICA) and an iceberg sank the Titanic (TITANIC); the Titanic side is about as instant as a clue gets.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "Strong, easy click."
+  },
+  {
+   "pair_id": "p_astronaut__sun",
+   "a": "ASTRONAUT",
+   "b": "SUN",
+   "hints": [
+    {
+     "text": "APOLLO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "Apollo astronauts (ASTRONAUT) plus Apollo the Greek sun/light god (SUN); the mythology side takes a beat but is widely known, and the double meaning is satisfying.",
+     "fix": "Apollo is the Greek god of light, often linked with the sun."
+    }
+   ],
+   "strong_hints": ["APOLLO"],
+   "pair_note": "Good double meaning. Strictly, Helios is the Greek sun god and Apollo was later identified with him; the softer line avoids overstating it."
+  },
+  {
+   "pair_id": "p_astronaut__theater",
+   "a": "ASTRONAUT",
+   "b": "THEATER",
+   "hints": [
+    {
+     "text": "APOLLO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Apollo program astronauts (ASTRONAUT) and Harlem's Apollo Theater (THEATER); the theater is a well-known American landmark, so the second side clicks after a moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["APOLLO"],
+   "pair_note": "Anchored by the strong astronaut side; Apollo Theater is moderately but broadly known in the U.S."
+  },
+  {
+   "pair_id": "p_basket__bear",
+   "a": "BASKET",
+   "b": "BEAR",
+   "hints": [
+    {
+     "text": "PICNIC",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Picnic basket (BASKET) and Yogi Bear's \"pic-a-nic basket\" thefts (BEAR); the pair itself is Yogi's catchphrase, a real oh-nice moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PICNIC"],
+   "pair_note": "Best of the PICNIC pairs: BASKET + BEAR is the Yogi Bear image in full."
+  },
+  {
+   "pair_id": "p_basket__park",
+   "a": "BASKET",
+   "b": "PARK",
+   "hints": [
+    {
+     "text": "PICNIC",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Picnic basket (BASKET) and picnics in the park (PARK); plain but instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PICNIC"],
+   "pair_note": "Easy scene clue."
+  },
+  {
+   "pair_id": "p_bear__blanket",
+   "a": "BEAR",
+   "b": "BLANKET",
+   "hints": [
+    {
+     "text": "PICNIC",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Picnic blanket (BLANKET) is instant; BEAR comes via Yogi Bear raiding picnics, which is iconic enough to land with a moment's thought.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PICNIC"],
+   "pair_note": "Bear side relies on Yogi; fine for a U.S. audience."
+  },
+  {
+   "pair_id": "p_bear__park",
+   "a": "BEAR",
+   "b": "PARK",
+   "hints": [
+    {
+     "text": "PICNIC",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Yogi Bear's picnic-basket raids (BEAR) and picnics in the park (PARK); Yogi also lives in Jellystone Park, which reinforces the pair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PICNIC"],
+   "pair_note": "Could mention Jellystone Park in the explanation for extra payoff, but the current text is accurate."
+  },
+  {
+   "pair_id": "p_black__voice",
+   "a": "BLACK",
+   "b": "VOICE",
+   "hints": [
+    {
+     "text": "PITCH",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "\"Pitch black\" (BLACK) is an instant phrase and a voice's pitch (VOICE) is everyday vocabulary; two different senses of PITCH, both instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Phrase join on one side, but both halves are immediate and the sense shift is pleasant."
+  },
+  {
+   "pair_id": "p_blanket__park",
+   "a": "BLANKET",
+   "b": "PARK",
+   "hints": [
+    {
+     "text": "PICNIC",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Picnic blanket (BLANKET) spread out in the park (PARK); a clear, easy scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PICNIC"],
+   "pair_note": "Easy scene clue."
+  },
+  {
+   "pair_id": "p_boxer__nasa",
+   "a": "BOXER",
+   "b": "NASA",
+   "hints": [
+    {
+     "text": "APOLLO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Apollo Creed, Rocky's rival champion (BOXER), and NASA's Apollo Moon program (NASA); both meanings are famous and the pop-culture swerve is fun.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["APOLLO"],
+   "pair_note": "One of the best in the batch: two well-known, unrelated Apollos."
+  },
+  {
+   "pair_id": "p_business__fork",
+   "a": "BUSINESS",
+   "b": "FORK",
+   "hints": [
+    {
+     "text": "PITCH",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A business pitch to investors, Shark Tank-style (BUSINESS), and the compound pitchfork (FORK); both are instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Fork side is a compound join, but pitchfork is about as familiar as compounds get."
+  },
+  {
+   "pair_id": "p_business__tent",
+   "a": "BUSINESS",
+   "b": "TENT",
+   "hints": [
+    {
+     "text": "PITCH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "You pitch a business idea (BUSINESS) and you pitch a tent (TENT); the same verb in two unrelated senses, a neat click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Clean verb double meaning."
+  },
+  {
+   "pair_id": "p_business__voice",
+   "a": "BUSINESS",
+   "b": "VOICE",
+   "hints": [
+    {
+     "text": "PITCH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A sales or investor pitch (BUSINESS) and vocal pitch (VOICE); two everyday senses of the word.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Solid double meaning."
+  },
+  {
+   "pair_id": "p_cane__referee",
+   "a": "CANE",
+   "b": "REFEREE",
+   "hints": [
+    {
+     "text": "STRIPES",
+     "mechanism": "shared_property",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A referee's striped shirt (REFEREE) is instant; CANE needs the step to candy cane stripes, which comes quickly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRIPES"],
+   "pair_note": "CANE is the weaker side across all STRIPES pairs because the board shows CANE, not CANDY CANE; still a fair visual link."
+  },
+  {
+   "pair_id": "p_cane__star",
+   "a": "CANE",
+   "b": "STAR",
+   "hints": [
+    {
+     "text": "STRIPES",
+     "mechanism": "shared_property",
+     "connection_to_a": 1,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": "CHRISTMAS",
+     "flags": ["better_hint_exists"],
+     "verdict": "BORDERLINE",
+     "reason": "CANE needs the candy-cane step and STAR comes only through the phrase \"Stars and Stripes\" (stars themselves are not striped), so both sides are second-step; CHRISTMAS (candy canes on the tree, a star on top) is a clearly stronger single scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Text is accurate, but CHRISTMAS (or TREE) unifies this pair far better than STRIPES."
+  },
+  {
+   "pair_id": "p_cane__tiger",
+   "a": "CANE",
+   "b": "TIGER",
+   "hints": [
+    {
+     "text": "STRIPES",
+     "mechanism": "shared_property",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Tiger stripes (TIGER) are instant and candy cane stripes (CANE) follow with a moment's thought; a fair visual link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRIPES"],
+   "pair_note": "Easy shared-property clue; cane side slightly softer."
+  },
+  {
+   "pair_id": "p_cane__zebra",
+   "a": "CANE",
+   "b": "ZEBRA",
+   "hints": [
+    {
+     "text": "STRIPES",
+     "mechanism": "shared_property",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Zebra stripes (ZEBRA) are the defining image and candy cane stripes (CANE) come quickly; simple but fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRIPES"],
+   "pair_note": "Easy; the striped-candy image is a pleasant contrast with the zebra."
+  },
+  {
+   "pair_id": "p_fork__voice",
+   "a": "FORK",
+   "b": "VOICE",
+   "hints": [
+    {
+     "text": "PITCH",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Pitchfork (FORK) as a compound and vocal pitch (VOICE); both instantly familiar, with a bonus that a tuning fork sets pitch.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Tuning fork gives a second, musical route to FORK; the explanation could mention it, but the current text is accurate."
+  },
+  {
+   "pair_id": "p_ghost__story",
+   "a": "GHOST",
+   "b": "STORY",
+   "hints": [
+    {
+     "text": "CAMPFIRE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "The two targets together make \"ghost story\", the classic campfire tale (GHOST and STORY), much like PAPER + CRANE -> ORIGAMI; instant and satisfying.",
+     "fix": "Telling ghost stories is a classic campfire tradition."
+    }
+   ],
+   "strong_hints": ["CAMPFIRE"],
+   "pair_note": "Strong idea, but the explanation repeats the same fact twice; a single sentence (the fix) reads better, and the two lines could become \"Spooky tales of ghosts...\" and \"...are classic campfire stories.\""
+  },
+  {
+   "pair_id": "p_ghost__tent",
+   "a": "GHOST",
+   "b": "TENT",
+   "hints": [
+    {
+     "text": "CAMPFIRE",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Camping scene: a tent by the campfire (TENT) and ghost stories told around it (GHOST); the ghost side goes through \"ghost stories\" but lands quickly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAMPFIRE"],
+   "pair_note": "Fine camping scene; ghost is one step removed."
+  },
+  {
+   "pair_id": "p_ghost__wood",
+   "a": "GHOST",
+   "b": "WOOD",
+   "hints": [
+    {
+     "text": "CAMPFIRE",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Firewood for the campfire (WOOD) and ghost stories around it (GHOST); a familiar scene, ghost side one step removed.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAMPFIRE"],
+   "pair_note": "Acceptable scene clue."
+  },
+  {
+   "pair_id": "p_god__moon",
+   "a": "GOD",
+   "b": "MOON",
+   "hints": [
+    {
+     "text": "APOLLO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Apollo the Greek god (GOD) and Apollo 11's Moon landing (MOON); both meanings are widely known and the lines are accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["APOLLO"],
+   "pair_note": "Cleanest of the mythology-side APOLLO pairs because it does not need the sun claim."
+  },
+  {
+   "pair_id": "p_log__tent",
+   "a": "LOG",
+   "b": "TENT",
+   "hints": [
+    {
+     "text": "CAMPFIRE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Logs on the campfire (LOG) and the tent beside it (TENT); a clear camping scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAMPFIRE"],
+   "pair_note": "Easy scene clue."
+  },
+  {
+   "pair_id": "p_moon__sun",
+   "a": "MOON",
+   "b": "SUN",
+   "hints": [
+    {
+     "text": "APOLLO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "Apollo 11 on the Moon (MOON) and Apollo the sun/light god (SUN); a nice twist on an otherwise obvious sky pairing.",
+     "fix": "Apollo is the Greek god of light, often linked with the sun."
+    }
+   ],
+   "strong_hints": ["APOLLO"],
+   "pair_note": "Fun bonus: Apollo's twin Artemis is the Moon goddess. Soften the sun line as with the other APOLLO/SUN pairs."
+  },
+  {
+   "pair_id": "p_nasa__sun",
+   "a": "NASA",
+   "b": "SUN",
+   "hints": [
+    {
+     "text": "APOLLO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "NASA's Apollo program (NASA) and Apollo the sun/light god (SUN); strong space side, mythology side takes a beat.",
+     "fix": "Apollo is the Greek god of light, often linked with the sun."
+    }
+   ],
+   "strong_hints": ["APOLLO"],
+   "pair_note": "Same structure as ASTRONAUT + SUN."
+  },
+  {
+   "pair_id": "p_ocean__titanic",
+   "a": "OCEAN",
+   "b": "TITANIC",
+   "hints": [
+    {
+     "text": "ICEBERG",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "The iceberg that sank the Titanic (TITANIC) is instant; OCEAN is a looser fit (icebergs float at sea) but the scene is coherent.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "ATLANTIC is a fair alternative (Titanic sank in the North Atlantic Ocean), but not clearly better; ICEBERG is fine."
+  },
+  {
+   "pair_id": "p_park__table",
+   "a": "PARK",
+   "b": "TABLE",
+   "hints": [
+    {
+     "text": "PICNIC",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Picnic table (TABLE) and picnics in the park (PARK); plain but instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PICNIC"],
+   "pair_note": "Easy scene clue."
+  },
+  {
+   "pair_id": "p_polar__salad",
+   "a": "POLAR",
+   "b": "SALAD",
+   "hints": [
+    {
+     "text": "ICEBERG",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Icebergs in polar seas (POLAR) and iceberg lettuce (SALAD); the lettuce swerve gives a real oh-nice moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "One of the best in the batch."
+  },
+  {
+   "pair_id": "p_polar__ship",
+   "a": "POLAR",
+   "b": "SHIP",
+   "hints": [
+    {
+     "text": "ICEBERG",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Icebergs in polar waters (POLAR) and the classic iceberg-versus-ship danger (SHIP); clear and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "Plain but solid. ICEBREAKER (a polar ship) is an alternative but no clearer."
+  },
+  {
+   "pair_id": "p_polar__titanic",
+   "a": "POLAR",
+   "b": "TITANIC",
+   "hints": [
+    {
+     "text": "ICEBERG",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Icebergs in polar seas (POLAR) and the iceberg that sank the Titanic (TITANIC); both immediate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "Text correctly avoids claiming the Titanic sank in polar waters."
+  },
+  {
+   "pair_id": "p_referee__star",
+   "a": "REFEREE",
+   "b": "STAR",
+   "hints": [
+    {
+     "text": "STRIPES",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Referee's striped shirt (REFEREE) and \"Stars and Stripes\" (STAR); both are instantly familiar to a U.S. audience.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRIPES"],
+   "pair_note": "Star side is a phrase link via the flag, but it is one of the most familiar phrases in American English."
+  },
+  {
+   "pair_id": "p_referee__tiger",
+   "a": "REFEREE",
+   "b": "TIGER",
+   "hints": [
+    {
+     "text": "STRIPES",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Referee stripes (REFEREE) and tiger stripes (TIGER); simple shared visual, instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRIPES"],
+   "pair_note": "Easy, clean."
+  },
+  {
+   "pair_id": "p_salad__ship",
+   "a": "SALAD",
+   "b": "SHIP",
+   "hints": [
+    {
+     "text": "ICEBERG",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Iceberg lettuce (SALAD) and the iceberg that threatens ships (SHIP); a fun double meaning with a Titanic echo.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ICEBERG"],
+   "pair_note": "Strong double meaning."
+  },
+  {
+   "pair_id": "p_star__tiger",
+   "a": "STAR",
+   "b": "TIGER",
+   "hints": [
+    {
+     "text": "STRIPES",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "\"Stars and Stripes\" (STAR) and tiger stripes (TIGER); both instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRIPES"],
+   "pair_note": "Fine; star side is the flag phrase."
+  },
+  {
+   "pair_id": "p_story__tent",
+   "a": "STORY",
+   "b": "TENT",
+   "hints": [
+    {
+     "text": "CAMPFIRE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Campfire stories (STORY) and the tent beside the fire (TENT); a familiar camping scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAMPFIRE"],
+   "pair_note": "Easy scene clue."
+  },
+  {
+   "pair_id": "p_story__wood",
+   "a": "STORY",
+   "b": "WOOD",
+   "hints": [
+    {
+     "text": "CAMPFIRE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Campfire stories (STORY) and firewood (WOOD); clear and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAMPFIRE"],
+   "pair_note": "Easy scene clue."
+  },
+  {
+   "pair_id": "p_sun__theater",
+   "a": "SUN",
+   "b": "THEATER",
+   "hints": [
+    {
+     "text": "APOLLO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["needs_explanation", "text_fix", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "Both sides use APOLLO's secondary meanings, the sun/light god (SUN) and Harlem's Apollo Theater (THEATER), while the dominant space meaning points elsewhere, so most players will hunt for MOON or ROCKET first and reach this pair only with real effort.",
+     "fix": "Apollo is the Greek god of light, often linked with the sun."
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Accurate and defensible, but neither side is the first thing APOLLO brings to mind; genuinely unsure whether players would find it, hence uncertain."
+  },
+  {
+   "pair_id": "p_tent__voice",
+   "a": "TENT",
+   "b": "VOICE",
+   "hints": [
+    {
+     "text": "PITCH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Pitching a tent (TENT) and vocal pitch (VOICE); two unrelated everyday senses, a satisfying swap.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PITCH"],
+   "pair_note": "Clean double meaning."
+  },
+  {
+   "pair_id": "p_tent__wood",
+   "a": "TENT",
+   "b": "WOOD",
+   "hints": [
+    {
+     "text": "CAMPFIRE",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Tent beside the campfire (TENT) and wood gathered for it (WOOD); clear camping scene.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAMPFIRE"],
+   "pair_note": "Easy scene clue."
+  }
+ ]
+}

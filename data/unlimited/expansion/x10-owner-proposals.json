@@ -1,0 +1,26 @@
+{
+  "_metadata": {
+    "purpose": "x10: a bounded batch of seven owner proposals (2026-10-19), processed locally with deterministic checks and a main-session critique; no model or review calls, no bank additions, no hint-rule change",
+    "provenance": {
+      "proposals": "Deb West, Sentinel_b10fa79b184c8191b1ec3f5151d6f246",
+      "launched": "Deb West, Sentinel_373ba15ee6f481918dfb75ed1704e09a: 'I like your launched one, let's go wit that'",
+      "coke": "Deb West, Sentinel_109007231cb08191a6b4e32f9532aa12: 'Add it in, but mark it as not family-friendly. Maybe we'll make a setting one day to hide thos'",
+      "acdc": "Deb West, Sentinel_1b0302911b248191806569686899e52d: 'Add AC/DC as well in the future. That's a great one.'"
+    },
+    "workflow": "An owner proposal is the source. 'coordinator-accepted' = the parent approved it after local checks (overrides.json coordinator_accept, not an owner decision). 'owner-selected' = the owner chose it explicitly (human_approved, by owner).",
+    "familyFriendly": "No family-friendly flag or filter existed. COKE carries contentFlags: [\"not-family-friendly\"] on the hint for a future optional setting, and an owner content-suitability hold in rejections.json keeps it out of every export until then. It is not a quality rejection. No setting was built."
+  },
+  "items": [
+    { "ref": "X10-01", "a": "LINE", "b": "DIET", "hint": "COKE", "outcome": "stored, flagged not-family-friendly, held out of the default pool (owner content-suitability hold)", "why": "Diet Coke is a famous soda; LINE points to the drug-slang sense of coke, which is why this hint is marked not family-friendly.", "detail": "Wordplay explanation only; no instructions." },
+    { "ref": "X10-02a", "a": "EXPLOSION", "b": "PROMOTION", "hint": "FIRED", "outcome": "the owner's original proposal: held, not selected" },
+    { "ref": "X10-02b", "a": "EXPLOSION", "b": "PROMOTION", "hint": "LAUNCHED", "outcome": "owner-selected (suggested by the parent), served", "why": "An explosion can launch things into the air, and a company launches a promotion." },
+    { "ref": "X10-03a", "a": "CANNON", "b": "PROMOTION", "hint": "FIRED", "outcome": "the owner's original proposal: held, not selected" },
+    { "ref": "X10-03b", "a": "CANNON", "b": "PROMOTION", "hint": "LAUNCHED", "outcome": "owner-selected (suggested by the parent), served", "why": "A cannon launches a cannonball, and a company launches a promotion." },
+    { "ref": "X10-04", "a": "CANNON", "b": "WORK", "hint": "FIRED", "outcome": "coordinator-accepted, served", "why": "A cannon is fired, and you can get fired from work." },
+    { "ref": "X10-05", "a": "CANNON", "b": "JOB", "hint": "FIRED", "outcome": "not stored: JOB is not in the word bank (the proposal said 'if JOB exists'); the bank is unchanged" },
+    { "ref": "X10-06", "a": "BIG", "b": "DOG", "hint": "CLIFFORD", "outcome": "coordinator-accepted, served", "why": "Clifford the Big Red Dog is the famous storybook dog.", "critique": "Very easy: BIG is in the title itself." },
+    { "ref": "X10-07", "a": "LARGE", "b": "DOG", "hint": "CLIFFORD", "outcome": "coordinator-accepted, served", "why": "Clifford the Big Red Dog is a very large storybook dog." },
+    { "ref": "X10-08", "a": "THUNDER", "b": "BAND", "hint": "AC/DC", "outcome": "owner-selected for future eligibility; pending: the hint rule is letters only, so the slash is refused. Not stored, not respelled", "why": "AC/DC is the band behind 'Thunderstruck'.", "detail": "Pending syntax choice alongside POLICE + DOG → K9 (x07). No ACDC substitution." },
+    { "ref": "X10-09", "a": "THUNDER", "b": "BAND", "hint": "IMAGINE", "outcome": "parent brainstorm (Imagine Dragons, 'Thunder'); not selected, not stored" }
+  ]
+}

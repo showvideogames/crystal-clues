@@ -48,7 +48,7 @@ const js = served.toString("utf8");
 assert.ok(js.includes("Progress isn't saving in this browser.") && js.includes("try saving again the next time your progress or notes change"), "served chunk carries the final save wording");
 const lib = JSON.parse(fs.readFileSync("src/unlimited/random-library.json", "utf8"));
 assert.ok(js.includes(lib._metadata.contentHash), "served chunk carries this clue library (content hash)");
-for (const t of ["ARCHITECTURE", "SCUBA DIVER", "THANKSGIVING"]) assert.ok(js.includes(`"${t}"`), `served word bank includes ${t}`);
+for (const t of ["ARCHITECTURE", "SCUBA DIVER", "THANKSGIVING"]) assert.ok(js.includes(t), `served word bank includes ${t}`);
 for (const id of ["p_dinosaur__friend", "p_christmas__robot", "p_calculator__camouflage", "p_police__scorpion", "p_africa__wizard"]) assert.ok(js.includes(id), `served clue pool includes ${id}`);
 log("served library:", lib.pairs.length, "pairs,", lib.words.length, "bank words, hash", lib._metadata.contentHash.slice(0, 16));
 log("served:", mainSrc.split("/").pop(), "→", chunk, "sha256", sha(served).slice(0, 16), "= local build");

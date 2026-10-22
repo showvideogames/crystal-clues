@@ -1,0 +1,348 @@
+{
+ "_metadata": {
+  "reviewer": "x23-reviewer-b",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x23-rb-input.json",
+  "rubric": "x23 rubric (template 2026-10-20)",
+  "independence": "Apart from my brief, I read only x23-rb-input.json; I opened no other file, searched nothing, and used no web, git, paid API or other agent."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_airport__fashion", "a": "AIRPORT", "b": "FASHION",
+   "hints": [
+    {"text": "RUNWAY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Airport runway for planes and fashion runway for models: a clean, instant double meaning.", "fix": null}
+   ],
+   "strong_hints": ["RUNWAY"], "pair_note": "Textbook double meaning; ship as is."
+  },
+  {
+   "pair_id": "p_australia__opera", "a": "AUSTRALIA", "b": "OPERA",
+   "hints": [
+    {"text": "SYDNEY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Sydney is Australia's best-known city, and the Sydney Opera House is its world-famous landmark.", "fix": null}
+   ],
+   "strong_hints": ["SYDNEY"], "pair_note": "Place plus landmark; clear and fair."
+  },
+  {
+   "pair_id": "p_barn__spider", "a": "BARN", "b": "SPIDER",
+   "hints": [
+    {"text": "CHARLOTTE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Charlotte is the spider of Charlotte's Web, and she lives in Zuckerman's barn; a beloved U.S. classic.", "fix": null}
+   ],
+   "strong_hints": ["CHARLOTTE"], "pair_note": "Lovely literary aha; lines are accurate."
+  },
+  {
+   "pair_id": "p_bear__stream", "a": "BEAR", "b": "STREAM",
+   "hints": [
+    {"text": "SALMON", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The iconic image of a bear catching salmon, and salmon swimming upstream to spawn.", "fix": null}
+   ],
+   "strong_hints": ["SALMON"], "pair_note": "Familiar nature scene; both sides solid."
+  },
+  {
+   "pair_id": "p_bird__speaker", "a": "BIRD", "b": "SPEAKER",
+   "hints": [
+    {"text": "TWEETER", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Birds tweet (a tweeter), and a tweeter is the high-frequency speaker driver; a satisfying double.", "fix": null}
+   ],
+   "strong_hints": ["TWEETER"], "pair_note": "Strong double meaning; the BIRD line could name 'tweeter' more directly but is not wrong."
+  },
+  {
+   "pair_id": "p_bowling__console", "a": "BOWLING", "b": "CONSOLE",
+   "hints": [
+    {"text": "WII", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "The Wii is a Nintendo console, and Wii Sports bowling is its signature game.", "fix": "In Wii Sports bowling, players swing the Wii Remote as if rolling a bowling ball."}
+   ],
+   "strong_hints": ["WII"], "pair_note": "Great pop-culture link; the BOWLING line's 'swing the remote like a ball' reads oddly, so a small wording fix is offered."
+  },
+  {
+   "pair_id": "p_buck__horse", "a": "BUCK", "b": "HORSE",
+   "hints": [
+    {"text": "BRONCO", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A bronco is a wild or untamed horse, and the 'bucking bronco' is the classic image of a horse that bucks.", "fix": null}
+   ],
+   "strong_hints": ["BRONCO"], "pair_note": "Clear and fair; rodeo imagery is familiar."
+  },
+  {
+   "pair_id": "p_bus__teacher", "a": "BUS", "b": "TEACHER",
+   "hints": [
+    {"text": "FRIZZLE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Ms. Frizzle is the teacher who drives The Magic School Bus; both sides click at once for most U.S. players under about 45.", "fix": null}
+   ],
+   "strong_hints": ["FRIZZLE"], "pair_note": "Nostalgic, specific and delightful."
+  },
+  {
+   "pair_id": "p_calculator__cell", "a": "CALCULATOR", "b": "CELL",
+   "hints": [
+    {"text": "DIVISION", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Calculators do arithmetic division, and cells reproduce by cell division; a neat math/biology double.", "fix": null}
+   ],
+   "strong_hints": ["DIVISION"], "pair_note": "Good aha from two school subjects."
+  },
+  {
+   "pair_id": "p_canada__fry", "a": "CANADA", "b": "FRY",
+   "hints": [
+    {"text": "POUTINE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Poutine is Canada's signature dish from Quebec, and it is built on french fries.", "fix": null}
+   ],
+   "strong_hints": ["POUTINE"], "pair_note": "Most U.S. players know poutine now; fun and specific."
+  },
+  {
+   "pair_id": "p_captain__log", "a": "CAPTAIN", "b": "LOG",
+   "hints": [
+    {"text": "STARDATE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "The Star Trek catchphrase 'Captain's log, stardate...' brings both CAPTAIN and LOG straight to mind.", "fix": "On Star Trek, a captain's log entry begins \"Captain's log, stardate...\""}
+   ],
+   "strong_hints": ["STARDATE"], "pair_note": "Excellent indirect hint; the explanation says the entry 'opens with the stardate' when it actually opens with 'Captain's log' and then the stardate, so a precise wording is offered."
+  },
+  {
+   "pair_id": "p_cave__diet", "a": "CAVE", "b": "DIET",
+   "hints": [
+    {"text": "PALEO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The paleo diet is widely nicknamed the caveman diet, linking DIET directly and CAVE through the nickname.", "fix": null}
+   ],
+   "strong_hints": ["PALEO"], "pair_note": "Nice indirect route to CAVE."
+  },
+  {
+   "pair_id": "p_christmas__hollywood", "a": "CHRISTMAS", "b": "HOLLYWOOD",
+   "hints": [
+    {"text": "TINSEL", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Tinsel decorates Christmas trees, and Hollywood is nicknamed Tinseltown.", "fix": null}
+   ],
+   "strong_hints": ["TINSEL"], "pair_note": "Classic satisfying aha."
+  },
+  {
+   "pair_id": "p_cliff__dynamite", "a": "CLIFF", "b": "DYNAMITE",
+   "hints": [
+    {"text": "COYOTE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "Wile E. Coyote is famous both for plunging off cliffs and for Acme dynamite blowing up in his face.", "fix": "Wile E. Coyote's Acme dynamite tends to blow up on him."}
+   ],
+   "strong_hints": ["COYOTE"], "pair_note": "Great cartoon link; the DYNAMITE line starts with an unanchored 'His', so the fix names the Coyote."
+  },
+  {
+   "pair_id": "p_column__row", "a": "COLUMN", "b": "ROW",
+   "hints": [
+    {"text": "SPREADSHEET", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A spreadsheet is a grid of rows and columns; easy but clear and clean.", "fix": null}
+   ],
+   "strong_hints": ["SPREADSHEET"], "pair_note": "An easy clue; GRID or TABLE would work too but are not clearly better."
+  },
+  {
+   "pair_id": "p_cover__sewer", "a": "COVER", "b": "SEWER",
+   "hints": [
+    {"text": "MANHOLE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "'Manhole cover' is an instant compound for COVER, and manholes are the access points to the sewer.", "fix": null}
+   ],
+   "strong_hints": ["MANHOLE"], "pair_note": "Phrase-join on one side backed by a real fact on the other; solid."
+  },
+  {
+   "pair_id": "p_dance__oreo", "a": "DANCE", "b": "OREO",
+   "hints": [
+    {"text": "TWIST", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Twist is the famous Chubby Checker dance, and twisting an Oreo apart is the classic way to eat it.", "fix": null}
+   ],
+   "strong_hints": ["TWIST"], "pair_note": "Fun, very American double; lines are accurate."
+  },
+  {
+   "pair_id": "p_degree__major", "a": "DEGREE", "b": "MAJOR",
+   "hints": [
+    {"text": "COLLEGE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["generic"], "verdict": "PASS", "reason": "In college you pick a major and earn a degree; a plain but honest link to both.", "fix": null}
+   ],
+   "strong_hints": ["COLLEGE"], "pair_note": "Straightforward and fair; low delight but not weak."
+  },
+  {
+   "pair_id": "p_dog__vet", "a": "DOG", "b": "VET",
+   "hints": [
+    {"text": "CONE", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The dog in a 'cone of shame' after a vet visit is an instantly recognizable, funny image.", "fix": null}
+   ],
+   "strong_hints": ["CONE"], "pair_note": "Charming indirect hint."
+  },
+  {
+   "pair_id": "p_dresser__file", "a": "DRESSER", "b": "FILE",
+   "hints": [
+    {"text": "DRAWER", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A dresser is a chest of drawers, and a file drawer holds folders; both are familiar.", "fix": null}
+   ],
+   "strong_hints": ["DRAWER"], "pair_note": "Simple and clean."
+  },
+  {
+   "pair_id": "p_edge__guitar", "a": "EDGE", "b": "GUITAR",
+   "hints": [
+    {"text": "U2", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "U2's guitarist is The Edge, so EDGE comes from his stage name and GUITAR from his instrument; the GUITAR side leans on knowing The Edge's role.", "fix": null}
+   ],
+   "strong_hints": ["U2"], "pair_note": "Neat rock-trivia aha for the many who know The Edge; GUITAR alone is generic to any band, which is why this is marked uncertain."
+  },
+  {
+   "pair_id": "p_eye__stream", "a": "EYE", "b": "STREAM",
+   "hints": [
+    {"text": "TWITCH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "An eye twitch, and Twitch the live-streaming platform; a crisp modern double.", "fix": null}
+   ],
+   "strong_hints": ["TWITCH"], "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_football__trophy", "a": "FOOTBALL", "b": "TROPHY",
+   "hints": [
+    {"text": "HEISMAN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Heisman Trophy is college football's best-known individual award.", "fix": null}
+   ],
+   "strong_hints": ["HEISMAN"], "pair_note": "Clear U.S. sports link; lines are accurate (stiff-arm pose)."
+  },
+  {
+   "pair_id": "p_garbage__truck", "a": "GARBAGE", "b": "TRUCK",
+   "hints": [
+    {"text": "DUMP", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "'Dump truck' for TRUCK and the garbage dump for GARBAGE; both phrases are instant.", "fix": null}
+   ],
+   "strong_hints": ["DUMP"], "pair_note": "Easy phrase-join, but the pairing is natural."
+  },
+  {
+   "pair_id": "p_goat__wool", "a": "GOAT", "b": "WOOL",
+   "hints": [
+    {"text": "CASHMERE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Cashmere is a luxury wool combed from the undercoat of cashmere goats; a nice surprise for those who assume it comes from sheep.", "fix": null}
+   ],
+   "strong_hints": ["CASHMERE"], "pair_note": "Good knowledge aha; MOHAIR or ANGORA would be weaker."
+  },
+  {
+   "pair_id": "p_ham__melon", "a": "HAM", "b": "MELON",
+   "hints": [
+    {"text": "PROSCIUTTO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Prosciutto is Italian dry-cured ham, and prosciutto with melon is a classic starter.", "fix": null}
+   ],
+   "strong_hints": ["PROSCIUTTO"], "pair_note": "Foodie but widely known; the MELON side needs the classic pairing, which most adults have seen."
+  },
+  {
+   "pair_id": "p_hockey__maple", "a": "HOCKEY", "b": "MAPLE",
+   "hints": [
+    {"text": "TORONTO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Toronto Maple Leafs are a famous NHL hockey team.", "fix": null}
+   ],
+   "strong_hints": ["TORONTO"], "pair_note": "CANADA (maple leaf flag, hockey nation) would also work, but TORONTO is sharper."
+  },
+  {
+   "pair_id": "p_horse__shirt", "a": "HORSE", "b": "SHIRT",
+   "hints": [
+    {"text": "POLO", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Polo is played on horseback, and the polo shirt takes its name from the sport.", "fix": null}
+   ],
+   "strong_hints": ["POLO"], "pair_note": "Clean and satisfying."
+  },
+  {
+   "pair_id": "p_ice-cream__root", "a": "ICE CREAM", "b": "ROOT",
+   "hints": [
+    {"text": "FLOAT", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A root beer float is ice cream in root beer, so FLOAT reaches ROOT via 'root beer float' and ICE CREAM as the scoop.", "fix": null}
+   ],
+   "strong_hints": ["FLOAT"], "pair_note": "Two-step phrase route that clicks nicely."
+  },
+  {
+   "pair_id": "p_kangaroo__purse", "a": "KANGAROO", "b": "PURSE",
+   "hints": [
+    {"text": "POUCH", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Kangaroo mothers carry joeys in a pouch, and a coin purse is a small pouch.", "fix": null}
+   ],
+   "strong_hints": ["POUCH"], "pair_note": "Fair; the PURSE side is a little softer but true."
+  },
+  {
+   "pair_id": "p_lady__torch", "a": "LADY", "b": "TORCH",
+   "hints": [
+    {"text": "LIBERTY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Lady Liberty, the Statue of Liberty, raises a torch in her right hand.", "fix": null}
+   ],
+   "strong_hints": ["LIBERTY"], "pair_note": "Iconic and accurate."
+  },
+  {
+   "pair_id": "p_line__truck", "a": "LINE", "b": "TRUCK",
+   "hints": [
+    {"text": "PICKUP", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A pickup truck and a cheesy pickup line; two instantly familiar compounds with very different senses.", "fix": null}
+   ],
+   "strong_hints": ["PICKUP"], "pair_note": "Phrase-join that earns its place through the sense contrast."
+  },
+  {
+   "pair_id": "p_magician__stunt", "a": "MAGICIAN", "b": "STUNT",
+   "hints": [
+    {"text": "HOUDINI", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Houdini is the archetypal magician, and his escapes, such as the suspended straitjacket escape, were famous stunts.", "fix": null}
+   ],
+   "strong_hints": ["HOUDINI"], "pair_note": "Solid and accurate."
+  },
+  {
+   "pair_id": "p_mark__treasure", "a": "MARK", "b": "TREASURE",
+   "hints": [
+    {"text": "X", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "'X marks the spot' gives MARK, and the X on a pirate map gives TREASURE.", "fix": null}
+   ],
+   "strong_hints": ["X"], "pair_note": "Elegant; confirm the app handles a one-letter hint well in display and sharing."
+  },
+  {
+   "pair_id": "p_melon__squash", "a": "MELON", "b": "SQUASH",
+   "hints": [
+    {"text": "GOURD", "mechanism": "fact", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Melons and squash both belong to the gourd family (Cucurbitaceae); SQUASH is obvious, MELON is a true fact many will enjoy learning.", "fix": null}
+   ],
+   "strong_hints": ["GOURD"], "pair_note": "True botanical link; MELON side is slightly less intuitive."
+  },
+  {
+   "pair_id": "p_mosquito__vampire", "a": "MOSQUITO", "b": "VAMPIRE",
+   "hints": [
+    {"text": "BLOODSUCKER", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Female mosquitoes suck blood and vampires drink it; both are the classic bloodsuckers.", "fix": null}
+   ],
+   "strong_hints": ["BLOODSUCKER"], "pair_note": "Obvious but fair; the line correctly limits blood-feeding to females."
+  },
+  {
+   "pair_id": "p_necklace__vampire", "a": "NECKLACE", "b": "VAMPIRE",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Garlic repels vampires in folklore, and the garlic necklace is the classic way to wear it.", "fix": null}
+   ],
+   "strong_hints": ["GARLIC"], "pair_note": "Fun, vivid image."
+  },
+  {
+   "pair_id": "p_octopus__spider", "a": "OCTOPUS", "b": "SPIDER",
+   "hints": [
+    {"text": "EIGHT", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "An octopus has eight arms and a spider has eight legs.", "fix": null}
+   ],
+   "strong_hints": ["EIGHT"], "pair_note": "Easy, clean shared property."
+  },
+  {
+   "pair_id": "p_phoenix__plot", "a": "PHOENIX", "b": "PLOT",
+   "hints": [
+    {"text": "FAWKES", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "Fawkes is Dumbledore's phoenix in Harry Potter, and Guy Fawkes was a Gunpowder Plot conspirator; the PLOT side relies on British history many Americans know mainly through the Guy Fawkes mask.", "fix": null}
+   ],
+   "strong_hints": ["FAWKES"], "pair_note": "Clever two-world hint (the Potter name is itself a nod to Guy Fawkes); U.S. familiarity with the Gunpowder Plot is the open question."
+  },
+  {
+   "pair_id": "p_pirate__viking", "a": "PIRATE", "b": "VIKING",
+   "hints": [
+    {"text": "RAIDER", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Pirates and Vikings were both seaborne raiders (with a bonus NFL echo of the Raiders' pirate logo and the Vikings).", "fix": null}
+   ],
+   "strong_hints": ["RAIDER"], "pair_note": "Fair category link."
+  },
+  {
+   "pair_id": "p_polar__train", "a": "POLAR", "b": "TRAIN",
+   "hints": [
+    {"text": "EXPRESS", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Polar Express is the famous Christmas story about a magical train, and 'express' is itself a kind of train.", "fix": null}
+   ],
+   "strong_hints": ["EXPRESS"], "pair_note": "Title-based but doubly supported on the TRAIN side; the POLAR line only restates the title, which is fine."
+  },
+  {
+   "pair_id": "p_pumpkin__racket", "a": "PUMPKIN", "b": "RACKET",
+   "hints": [
+    {"text": "SQUASH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "A pumpkin is a type of squash, and squash is a racket sport.", "fix": null}
+   ],
+   "strong_hints": ["SQUASH"], "pair_note": "Strong double meaning."
+  },
+  {
+   "pair_id": "p_rome__violin", "a": "ROME", "b": "VIOLIN",
+   "hints": [
+    {"text": "NERO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "'Nero fiddled while Rome burned' gives both ROME and the fiddle/VIOLIN, and the text honestly flags the legend as anachronistic.", "fix": null}
+   ],
+   "strong_hints": ["NERO"], "pair_note": "Excellent indirect aha with careful wording."
+  },
+  {
+   "pair_id": "p_ruler__worm", "a": "RULER", "b": "WORM",
+   "hints": [
+    {"text": "INCH", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Rulers are marked in inches, and the inchworm gives WORM; the line correctly notes an inchworm is a caterpillar.", "fix": null}
+   ],
+   "strong_hints": ["INCH"], "pair_note": "Charming; mechanism is part phrase-join (inchworm), part fact (ruler)."
+  },
+  {
+   "pair_id": "p_size__spirit", "a": "SIZE", "b": "SPIRIT",
+   "hints": [
+    {"text": "MEDIUM", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "Medium is the middle size, and a medium claims to talk with spirits.", "fix": null}
+   ],
+   "strong_hints": ["MEDIUM"], "pair_note": "Classic double meaning."
+  },
+  {
+   "pair_id": "p_spine__worm", "a": "SPINE", "b": "WORM",
+   "hints": [
+    {"text": "INVERTEBRATE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS", "reason": "An invertebrate is defined by having no spine, and a worm is the textbook invertebrate; the WORM side competes with any other invertebrate on the board.", "fix": null}
+   ],
+   "strong_hints": ["INVERTEBRATE"], "pair_note": "Reaching SPINE through its absence is a modest aha; could drop to BORDERLINE if the board carries several other invertebrates (spider, octopus, mosquito)."
+  },
+  {
+   "pair_id": "p_sub__yellow", "a": "SUB", "b": "YELLOW",
+   "hints": [
+    {"text": "BEATLES", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "The Beatles' 'Yellow Submarine' gives YELLOW and SUB (short for submarine).", "fix": null}
+   ],
+   "strong_hints": ["BEATLES"], "pair_note": "Fun two-step via the song title."
+  },
+  {
+   "pair_id": "p_undertaker__wake", "a": "UNDERTAKER", "b": "WAKE",
+   "hints": [
+    {"text": "FUNERAL", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "An undertaker is a funeral director, and a wake is often held before the funeral.", "fix": null}
+   ],
+   "strong_hints": ["FUNERAL"], "pair_note": "Plain but accurate; the funeral topic is handled neutrally."
+  }
+ ]
+}

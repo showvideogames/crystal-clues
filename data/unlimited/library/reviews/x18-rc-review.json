@@ -1,0 +1,364 @@
+{
+ "_metadata": {
+  "reviewer": "x18-reviewer-c",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x18-rc-input.json",
+  "rubric": "x18 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the input file x18-rc-input.json; no other file, repository search, web or API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_ant__summer", "a": "ANT", "b": "SUMMER",
+   "hints": [
+    {"text": "GRASSHOPPER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Aesop's The Ant and the Grasshopper gives ANT directly, and the grasshopper famously idling away the summer gives SUMMER; a clean, familiar fable link.", "fix": null}
+   ],
+   "strong_hints": ["GRASSHOPPER"], "pair_note": "Solid fable clue; summer also fits grasshoppers generally, which only helps."
+  },
+  {
+   "pair_id": "p_baby__yoda", "a": "BABY", "b": "YODA",
+   "hints": [
+    {"text": "GROGU", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Grogu is the character everyone calls Baby Yoda, so the nickname supplies both BABY and YODA at once; the official name is widely publicised, though some casual players know only the nickname.", "fix": null}
+   ],
+   "strong_hints": ["GROGU"], "pair_note": "Works because the targets together are the nickname; familiarity with the name Grogu is the only risk."
+  },
+  {
+   "pair_id": "p_base__camp", "a": "BASE", "b": "CAMP",
+   "hints": [
+    {"text": "EVEREST", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Everest Base Camp is an instantly familiar proper name that holds both BASE and CAMP, and the mountain makes a nicer key than a bare phrase completion.", "fix": null}
+   ],
+   "strong_hints": ["EVEREST"], "pair_note": "A phrase-join, but the phrase is famous and the hint feels like a real place-clue."
+  },
+  {
+   "pair_id": "p_belt__jupiter", "a": "BELT", "b": "JUPITER",
+   "hints": [
+    {"text": "ASTEROID", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The asteroid belt gives BELT, and the school-science fact that it lies between Mars and Jupiter gives JUPITER; accurate and fair.", "fix": null}
+   ],
+   "strong_hints": ["ASTEROID"], "pair_note": "Lines are accurate (most known asteroids are in the main belt)."
+  },
+  {
+   "pair_id": "p_bone__turkey", "a": "BONE", "b": "TURKEY",
+   "hints": [
+    {"text": "WISH", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "WISH + BONE makes wishbone, and the Thanksgiving turkey wishbone tug brings TURKEY; one familiar image covers both.", "fix": null}
+   ],
+   "strong_hints": ["WISH"], "pair_note": "Compound plus a well-known tradition; pleasant and fair."
+  },
+  {
+   "pair_id": "p_boxing__deck", "a": "BOXING", "b": "DECK",
+   "hints": [
+    {"text": "FLOOR", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "To floor someone is a boxing knockdown, and DECK works both as a ship's floor and as the verb meaning to floor someone; a neat layered double meaning.", "fix": null}
+   ],
+   "strong_hints": ["FLOOR"], "pair_note": "Nice aha: deck and floor are synonyms in both the noun and the punch sense."
+  },
+  {
+   "pair_id": "p_buck__pass", "a": "BUCK", "b": "PASS",
+   "hints": [
+    {"text": "TRUMAN", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["needs_explanation", "uncertain"], "verdict": "PASS",
+     "reason": "Truman's 'The Buck Stops Here' sign gives BUCK directly, and PASS comes via the idiom the sign answers (passing the buck); an indirect history aha, though some players may not recall Truman's sign.", "fix": null}
+   ],
+   "strong_hints": ["TRUMAN"], "pair_note": "Indirect-knowledge style the owner likes; the PASS side relies on knowing the sign rebuts 'pass the buck'. Worth a second opinion on familiarity."
+  },
+  {
+   "pair_id": "p_cap__noodle", "a": "CAP", "b": "NOODLE",
+   "hints": [
+    {"text": "MACARONI", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Yankee Doodle sticks a feather in his cap and calls it macaroni (CAP), and macaroni is a pasta noodle (NOODLE); a fun song-plus-food aha with a Doodle/Noodle echo.", "fix": null}
+   ],
+   "strong_hints": ["MACARONI"], "pair_note": "One of the best of the batch; lines are accurate."
+  },
+  {
+   "pair_id": "p_carpet__dance", "a": "CARPET", "b": "DANCE",
+   "hints": [
+    {"text": "RUG", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS",
+     "reason": "A rug is a carpet (CARPET), and 'cut a rug' means to dance (DANCE); the synonym side is balanced by a well-known idiom.", "fix": null}
+   ],
+   "strong_hints": ["RUG"], "pair_note": "Classic double meaning; the synonym flag is a note only."
+  },
+  {
+   "pair_id": "p_cast__wall", "a": "CAST", "b": "WALL",
+   "hints": [
+    {"text": "PLASTER", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "Plaster casts hold broken limbs (CAST), and plaster is a traditional wall finish (WALL); a sound material link, but the explanation wrongly says plaster sets the bone.", "fix": "Plaster is molded into casts that hold broken bones in place, and it is also used to finish walls."}
+   ],
+   "strong_hints": ["PLASTER"], "pair_note": "Route is fine; doctors set the bone, the plaster cast only holds it, so the explanation needs the fix."
+  },
+  {
+   "pair_id": "p_change__purse", "a": "CHANGE", "b": "PURSE",
+   "hints": [
+    {"text": "COIN", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Coins are loose change (CHANGE), and a coin purse holds them (PURSE); easy, clear, and the targets themselves echo 'change purse'.", "fix": null}
+   ],
+   "strong_hints": ["COIN"], "pair_note": "Easy but satisfying; no clearly better hint."
+  },
+  {
+   "pair_id": "p_china__cup", "a": "CHINA", "b": "CUP",
+   "hints": [
+    {"text": "TEA", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Tea originated in China (CHINA) and is drunk from a teacup (CUP); china also means the porcelain teacups are made of, which strengthens the link.", "fix": null}
+   ],
+   "strong_hints": ["TEA"], "pair_note": "Text is accurate; the explanation could optionally also mention fine-china teacups and tea sets, which is the stronger double sense."
+  },
+  {
+   "pair_id": "p_cloud__storm", "a": "CLOUD", "b": "STORM",
+   "hints": [
+    {"text": "CUMULONIMBUS", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS",
+     "reason": "Cumulonimbus is a cloud type (CLOUD) known as the thunderstorm cloud (STORM); accurate school science, though flatter than a wordplay clue.", "fix": null}
+   ],
+   "strong_hints": ["CUMULONIMBUS"], "pair_note": "Fair and correct; THUNDER (thundercloud, thunderstorm) is an alternative double phrase-join but not clearly better. Unsure how many players recall the term instantly."
+  },
+  {
+   "pair_id": "p_coffee__washington", "a": "COFFEE", "b": "WASHINGTON",
+   "hints": [
+    {"text": "SEATTLE", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Seattle's coffee culture and Starbucks origin give COFFEE, and Seattle is Washington's largest city (WASHINGTON); a fair place-plus-property clue.", "fix": null}
+   ],
+   "strong_hints": ["SEATTLE"], "pair_note": "WASHINGTON may first read as George or D.C., which adds a small, fair aha."
+  },
+  {
+   "pair_id": "p_cow__jump", "a": "COW", "b": "JUMP",
+   "hints": [
+    {"text": "MOON", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Hey Diddle Diddle's cow jumped over the moon, giving COW and JUMP from one universally known line.", "fix": null}
+   ],
+   "strong_hints": ["MOON"], "pair_note": "Easy, clear, satisfying."
+  },
+  {
+   "pair_id": "p_cup__phone", "a": "CUP", "b": "PHONE",
+   "hints": [
+    {"text": "STRING", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "The string-and-cups toy telephone ties a cup to each end of a string (CUP) to make a homemade phone (PHONE); the CUP line does not mention the string and calls the cup the voice carrier.", "fix": "In a string phone, a cup or tin can tied to each end of the string is what you speak into and listen through."}
+   ],
+   "strong_hints": ["STRING"], "pair_note": "Good childhood-memory clue; CUP line fix makes it connect the hint."
+  },
+  {
+   "pair_id": "p_day__mother", "a": "DAY", "b": "MOTHER",
+   "hints": [
+    {"text": "MAY", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "May Day gives DAY, and U.S. Mother's Day falls in May giving MOTHER; facts are correct and the click is quick.", "fix": null}
+   ],
+   "strong_hints": ["MAY"], "pair_note": "Pleasant; the targets also form Mother's Day, which the hint dates neatly."
+  },
+  {
+   "pair_id": "p_devil__soul", "a": "DEVIL", "b": "SOUL",
+   "hints": [
+    {"text": "DEAL", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A 'deal with the devil' gives DEVIL, and the classic price of that deal is your SOUL; a familiar folklore trope.", "fix": null}
+   ],
+   "strong_hints": ["DEAL"], "pair_note": "Clear and PG; FAUST would be more specific but less familiar."
+  },
+  {
+   "pair_id": "p_dream__washington", "a": "DREAM", "b": "WASHINGTON",
+   "hints": [
+    {"text": "MARCH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The 1963 March on Washington gives WASHINGTON, and it is where Martin Luther King Jr. gave 'I Have a Dream' (DREAM); an accurate, widely taught history aha.", "fix": null}
+   ],
+   "strong_hints": ["MARCH"], "pair_note": "Excellent indirect-knowledge clue; MARCH also misleads toward the month."
+  },
+  {
+   "pair_id": "p_earth__middle", "a": "EARTH", "b": "MIDDLE",
+   "hints": [
+    {"text": "HOBBIT", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Hobbits live in Tolkien's Middle-earth, which supplies both MIDDLE and EARTH; widely known through the books and films.", "fix": null}
+   ],
+   "strong_hints": ["HOBBIT"], "pair_note": "Fair; the board must have the two words split, which makes the reunion satisfying."
+  },
+  {
+   "pair_id": "p_end__line", "a": "END", "b": "LINE",
+   "hints": [
+    {"text": "FINISH", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 0, "recognizability": "broad", "better_hint": "DEAD", "flags": ["synonym_of_target", "better_hint_exists", "uncertain"], "verdict": "BORDERLINE",
+     "reason": "FINISH is a plain synonym of END and completes 'finish line' (LINE); correct but flat, and DEAD (dead end, deadline) gives a crisper twin phrase click.", "fix": null}
+   ],
+   "strong_hints": [], "pair_note": "Accurate but unremarkable; DEAD is the stronger option. Could reasonably be called PASS as an easy clue."
+  },
+  {
+   "pair_id": "p_family__tree", "a": "FAMILY", "b": "TREE",
+   "hints": [
+    {"text": "ROOTS", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Family roots are your ancestry (FAMILY) and trees have roots (TREE), neatly echoing the 'family tree' the targets form.", "fix": null}
+   ],
+   "strong_hints": ["ROOTS"], "pair_note": "Strong double meaning."
+  },
+  {
+   "pair_id": "p_fireworks__force", "a": "FIREWORKS", "b": "FORCE",
+   "hints": [
+    {"text": "FOURTH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The Fourth of July means FIREWORKS, and 'May the Fourth be with you' is the Star Wars pun on the FORCE; two different Fourths, a real aha.", "fix": null}
+   ],
+   "strong_hints": ["FOURTH"], "pair_note": "One of the batch's best."
+  },
+  {
+   "pair_id": "p_flash__slow", "a": "FLASH", "b": "SLOW",
+   "hints": [
+    {"text": "SLOTH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Sloths are famously SLOW, and Zootopia's sloth DMV clerk is named FLASH as the joke; the scene is a widely shared movie moment.", "fix": null}
+   ],
+   "strong_hints": ["SLOTH"], "pair_note": "Relies on knowing the sloth's name is Flash; the DMV scene is very well known, so I pass it."
+  },
+  {
+   "pair_id": "p_glove__mouse", "a": "GLOVE", "b": "MOUSE",
+   "hints": [
+    {"text": "MICKEY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Mickey Mouse gives MOUSE, and his signature white gloves give GLOVE; instantly familiar.", "fix": null}
+   ],
+   "strong_hints": ["MICKEY"], "pair_note": "Easy, fair."
+  },
+  {
+   "pair_id": "p_ground__wind", "a": "GROUND", "b": "WIND",
+   "hints": [
+    {"text": "MILL", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Windmill gives WIND, and grain is ground at a mill (GROUND, read as the past tense of grind); a tidy click once GROUND is read as a verb.", "fix": null}
+   ],
+   "strong_hints": ["MILL"], "pair_note": "The GROUND-as-grind reading adds a small aha."
+  },
+  {
+   "pair_id": "p_hand__high", "a": "HAND", "b": "HIGH",
+   "hints": [
+    {"text": "FIVE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "High five gives HIGH, and a hand's five fingers (and 'give me five') give HAND; quick and satisfying.", "fix": null}
+   ],
+   "strong_hints": ["FIVE"], "pair_note": "Easy, clear; lines accurate."
+  },
+  {
+   "pair_id": "p_hero__subway", "a": "HERO", "b": "SUBWAY",
+   "hints": [
+    {"text": "SANDWICH", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A hero is a long sandwich (HERO), and Subway is the sandwich chain (SUBWAY); both targets read as non-food at first, giving a mild aha.", "fix": null}
+   ],
+   "strong_hints": ["SANDWICH"], "pair_note": "SUB would be ideal but is contained in SUBWAY, so SANDWICH is the right call."
+  },
+  {
+   "pair_id": "p_horse__mouth", "a": "HORSE", "b": "MOUTH",
+   "hints": [
+    {"text": "GIFT", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "'Don't look a gift horse in the mouth' contains both HORSE and MOUTH, and GIFT is the unmistakable key word; lines about checking teeth for age are accurate.", "fix": null}
+   ],
+   "strong_hints": ["GIFT"], "pair_note": "Familiar proverb; fair."
+  },
+  {
+   "pair_id": "p_judge__scale", "a": "JUDGE", "b": "SCALE",
+   "hints": [
+    {"text": "JUSTICE", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The scales of justice give SCALE, and judges serve justice (and Supreme Court judges are titled Justices) for JUDGE; clear and accurate.", "fix": null}
+   ],
+   "strong_hints": ["JUSTICE"], "pair_note": "Optional improvement: the JUDGE line could mention that Supreme Court judges are called justices."
+  },
+  {
+   "pair_id": "p_kiwi__shoe", "a": "KIWI", "b": "SHOE",
+   "hints": [
+    {"text": "POLISH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Kiwi is a long-running shoe polish brand (KIWI), and shoe polish gives SHOE; KIWI first reads as fruit or bird, so the brand reveal is a nice aha.", "fix": null}
+   ],
+   "strong_hints": ["POLISH"], "pair_note": "Brand is widely sold in the U.S.; younger players may know it less."
+  },
+  {
+   "pair_id": "p_laser__shark", "a": "LASER", "b": "SHARK",
+   "hints": [
+    {"text": "EVIL", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["needs_explanation"], "verdict": "PASS",
+     "reason": "Dr. Evil's famous demand for sharks with laser beams on their heads gives both SHARK and LASER; a much-quoted comedy meme, though the bare word EVIL takes a moment to land.", "fix": null}
+   ],
+   "strong_hints": ["EVIL"], "pair_note": "Big payoff for those who know the line; the SHARK line ('for his evil lair') is vague but not false."
+  },
+  {
+   "pair_id": "p_luck__magnet", "a": "LUCK", "b": "MAGNET",
+   "hints": [
+    {"text": "HORSESHOE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "A horseshoe is a classic good-luck charm (LUCK), and the U-shaped horseshoe magnet is the iconic magnet (MAGNET); two familiar senses of one object.", "fix": null}
+   ],
+   "strong_hints": ["HORSESHOE"], "pair_note": "Strong and satisfying."
+  },
+  {
+   "pair_id": "p_mario__switch", "a": "MARIO", "b": "SWITCH",
+   "hints": [
+    {"text": "NINTENDO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Nintendo created MARIO and makes the SWITCH console; obvious but correct, and SWITCH reads as a light switch on a board, which helps.", "fix": null}
+   ],
+   "strong_hints": ["NINTENDO"], "pair_note": "Easy clue; fine as an obvious one."
+  },
+  {
+   "pair_id": "p_mind__underground", "a": "MIND", "b": "UNDERGROUND",
+   "hints": [
+    {"text": "GAP", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["british_only"], "verdict": "PASS",
+     "reason": "'Mind the gap' gives MIND and is the London Underground's famous announcement (UNDERGROUND); British, but well known to many Americans from travel, film and merch.", "fix": null}
+   ],
+   "strong_hints": ["GAP"], "pair_note": "british_only is a familiarity note; GAP also misdirects to the clothing store, which is fun."
+  },
+  {
+   "pair_id": "p_new-year__square", "a": "NEW YEAR", "b": "SQUARE",
+   "hints": [
+    {"text": "TIMES", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Times Square gives SQUARE, and its New Year's Eve ball drop gives NEW YEAR; very familiar U.S. reference.", "fix": null}
+   ],
+   "strong_hints": ["TIMES"], "pair_note": "Clear and fair."
+  },
+  {
+   "pair_id": "p_orange__prison", "a": "ORANGE", "b": "PRISON",
+   "hints": [
+    {"text": "JUMPSUIT", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "The orange jumpsuit (ORANGE) is the familiar U.S. inmate uniform (PRISON); one instantly recognisable image, and the lines avoid overclaiming.", "fix": null}
+   ],
+   "strong_hints": ["JUMPSUIT"], "pair_note": "PG and accessible."
+  },
+  {
+   "pair_id": "p_pizza__punch", "a": "PIZZA", "b": "PUNCH",
+   "hints": [
+    {"text": "HAWAIIAN", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Hawaiian pizza (PIZZA) and the Hawaiian Punch drink brand (PUNCH) are both instantly familiar, and PUNCH first reads as a hit, so the pairing clicks.", "fix": null}
+   ],
+   "strong_hints": ["HAWAIIAN"], "pair_note": "A pure phrase-join, but both phrases are household names and the pairing is genuinely fun."
+  },
+  {
+   "pair_id": "p_right__square", "a": "RIGHT", "b": "SQUARE",
+   "hints": [
+    {"text": "ANGLE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Right angle gives RIGHT, and a square's four right-angle corners give SQUARE; basic, accurate geometry.", "fix": null}
+   ],
+   "strong_hints": ["ANGLE"], "pair_note": "Easy, clear."
+  },
+  {
+   "pair_id": "p_shadow__weather", "a": "SHADOW", "b": "WEATHER",
+   "hints": [
+    {"text": "GROUNDHOG", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "On Groundhog Day the groundhog seeing its SHADOW is folklore's six-more-weeks-of-winter WEATHER forecast; text is properly framed as tradition.", "fix": null}
+   ],
+   "strong_hints": ["GROUNDHOG"], "pair_note": "Solid."
+  },
+  {
+   "pair_id": "p_shower__star", "a": "SHOWER", "b": "STAR",
+   "hints": [
+    {"text": "METEOR", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Meteor shower gives SHOWER, and meteors are popularly called shooting stars (STAR); accurate, with SHOWER's bathroom sense as misdirection.", "fix": null}
+   ],
+   "strong_hints": ["METEOR"], "pair_note": "Lines correctly say 'popularly called'."
+  },
+  {
+   "pair_id": "p_sock__white", "a": "SOCK", "b": "WHITE",
+   "hints": [
+    {"text": "CHICAGO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "The Chicago White Sox supply WHITE and SOCK (Sox), and CHICAGO rules out the Boston Red Sox; the SOCK line defines Sox without tying it to the hint.", "fix": "The Chicago White Sox spell socks as Sox."}
+   ],
+   "strong_hints": ["CHICAGO"], "pair_note": "Good sports clue; SOCK line fix connects it to Chicago."
+  },
+  {
+   "pair_id": "p_star-wars__tie", "a": "STAR WARS", "b": "TIE",
+   "hints": [
+    {"text": "FIGHTER", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS",
+     "reason": "The TIE fighter gives TIE and is the Empire's iconic STAR WARS ship; TIE first reads as a necktie or a draw, a nice twist. The TIE line defines the acronym without mentioning the fighter.", "fix": "The TIE fighter is named for its twin ion engines."}
+   ],
+   "strong_hints": ["FIGHTER"], "pair_note": "Fair; the fix just ties the TIE line to the hint."
+  },
+  {
+   "pair_id": "p_team__vampire", "a": "TEAM", "b": "VAMPIRE",
+   "hints": [
+    {"text": "EDWARD", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Edward Cullen is Twilight's VAMPIRE, and 'Team Edward' versus 'Team Jacob' was a huge fan catchphrase (TEAM); a fun pop-culture aha.", "fix": null}
+   ],
+   "strong_hints": ["EDWARD"], "pair_note": "Widely known pop culture; lines accurate."
+  }
+ ]
+}

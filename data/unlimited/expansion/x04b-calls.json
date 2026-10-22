@@ -1,0 +1,77 @@
+{
+  "_metadata": {
+    "purpose": "x04b checkpoint content calls (ceiling 10). Agent tool, model opus (echo claude-opus-5-5); extraUsage.enabled=false verified via get_usage before dispatch (5h 13%, weekly 69%). Each agent gets its own scratch folder and may not open others.",
+    "totals": {
+      "calls": 6,
+      "ceiling": 10,
+      "tokens": 600377
+    }
+  },
+  "calls": [
+    {
+      "n": 1,
+      "id": "x04b-index-reviewer",
+      "purpose": "check the 25 x04b families against the whole 1,203-word bank",
+      "output": "data/unlimited/related/index-review-x04b.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 117666,
+      "durationMs": 371982,
+      "result": "90 missing words, 13 new meanings, route fixes (TENT, UNICORN, WIND), removals (KITCHEN, SNAKE, JOKE->CLOWN, X marks the spot); applied by x04b-apply-index-review.mjs"
+    },
+    {
+      "n": 2,
+      "id": "x04b-reviewer-a",
+      "purpose": "review of x04b proposals (POTTER GOTHAM OGRE PIXAR SHERLOCK + omitted PICK JAM)",
+      "input": "data/unlimited/library/reviews/x04b-ra-input.json",
+      "output": "data/unlimited/library/reviews/x04b-ra-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 101462,
+      "durationMs": 236132,
+      "result": "40 PASS, 3 BORDERLINE"
+    },
+    {
+      "n": 3,
+      "id": "x04b-reviewer-b",
+      "purpose": "review of x04b proposals (APOLLO ICEBERG PICNIC CAMPFIRE STRIPES + omitted PITCH)",
+      "input": "data/unlimited/library/reviews/x04b-rb-input.json",
+      "output": "data/unlimited/library/reviews/x04b-rb-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 96550,
+      "durationMs": 203855,
+      "result": "39 PASS, 2 BORDERLINE"
+    },
+    {
+      "n": 4,
+      "id": "x04b-reviewer-c",
+      "purpose": "review of x04b proposals (SPOTS POOH ELF GARLIC SONIC + omitted RING BOW KEY PUNCH)",
+      "input": "data/unlimited/library/reviews/x04b-rc-input.json",
+      "output": "data/unlimited/library/reviews/x04b-rc-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 93083,
+      "durationMs": 171459,
+      "result": "39 PASS, 2 BORDERLINE"
+    },
+    {
+      "n": 5,
+      "id": "x04b-reviewer-d",
+      "purpose": "review of x04b proposals (DISCO MIDNIGHT JAWS WALRUS RAINBOW + omitted SHELL)",
+      "input": "data/unlimited/library/reviews/x04b-rd-input.json",
+      "output": "data/unlimited/library/reviews/x04b-rd-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 94131,
+      "durationMs": 172566,
+      "result": "39 PASS, 1 BORDERLINE"
+    },
+    {
+      "n": 6,
+      "id": "x04b-reviewer-e",
+      "purpose": "review of x04b proposals (UMBRELLA PHARAOH LUIGI FROSTY PARKER)",
+      "input": "data/unlimited/library/reviews/x04b-re-input.json",
+      "output": "data/unlimited/library/reviews/x04b-re-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 97485,
+      "durationMs": 227815,
+      "result": "25 PASS, 10 BORDERLINE"
+    }
+  ]
+}

@@ -1,0 +1,1001 @@
+{
+ "_metadata": {
+  "reviewer": "x18-reviewer-e",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x18-re-input.json",
+  "rubric": "x18 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the single input file x18-re-input.json; no other files, searches, web or APIs were used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_arm__bear",
+   "a": "ARM",
+   "b": "BEAR",
+   "hints": [
+    {
+     "text": "HUG",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ARM via hugging with your arms, BEAR via the instantly familiar bear hug; clear and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HUG"],
+   "pair_note": "Clean, easy pair. RIGHT (right arm / right to bear arms) is a cleverer alternative but brushes a political topic; HUG is the safer pick."
+  },
+  {
+   "pair_id": "p_banana__donkey",
+   "a": "BANANA",
+   "b": "DONKEY",
+   "hints": [
+    {
+     "text": "KONG",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DONKEY via the name Donkey Kong, BANANA via the bananas he collects in the Donkey Kong Country games; a broadly known reference.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KONG"],
+   "pair_note": "Solid pop-culture pair; bananas are a series staple from Donkey Kong Country onward, not the original arcade game, which the text does not claim."
+  },
+  {
+   "pair_id": "p_baseball__cricket",
+   "a": "BASEBALL",
+   "b": "CRICKET",
+   "hints": [
+    {
+     "text": "BAT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL and CRICKET are both bat-and-ball sports; obvious but correct, with a small bonus that bat and cricket are also both animals.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BAT"],
+   "pair_note": "Easy, fair clue; lines are accurate."
+  },
+  {
+   "pair_id": "p_big__foot",
+   "a": "BIG",
+   "b": "FOOT",
+   "hints": [
+    {
+     "text": "SASQUATCH",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Sasquatch is Bigfoot, so BIG and FOOT snap together as the two halves of its other name; a satisfying click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SASQUATCH"],
+   "pair_note": "Nice aha: the hint is the synonym of the compound the two targets form."
+  },
+  {
+   "pair_id": "p_book__new",
+   "a": "BOOK",
+   "b": "NEW",
+   "hints": [
+    {
+     "text": "NOVEL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Classic double meaning: a novel is a BOOK and novel means NEW.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NOVEL"],
+   "pair_note": "Textbook double meaning; strong."
+  },
+  {
+   "pair_id": "p_broom__clean",
+   "a": "BROOM",
+   "b": "CLEAN",
+   "hints": [
+    {
+     "text": "SWEEP",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BROOM via sweeping, CLEAN via the idiom clean sweep (and literal cleaning); fair and familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SWEEP"],
+   "pair_note": "Good easy clue; the sports sense of clean sweep adds a light second layer."
+  },
+  {
+   "pair_id": "p_camera__cannon",
+   "a": "CAMERA",
+   "b": "CANNON",
+   "hints": [
+    {
+     "text": "CANON",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": "SHOOT",
+     "flags": ["better_hint_exists", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "CAMERA via the Canon brand is solid, but CANNON is reached only as a one-letter-off sound-alike of the target, which nearly gives the target away and sits close to the contained-in-target rule; SHOOT (shoot a photo, shoot a cannon) is a true double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Homophone near-spelling of a target; would prefer SHOOT. Second opinion welcome on whether a sound-alike of a target should count as near-containment."
+  },
+  {
+   "pair_id": "p_captain__penguin",
+   "a": "CAPTAIN",
+   "b": "PENGUIN",
+   "hints": [
+    {
+     "text": "SKIPPER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "CAPTAIN via skipper as a synonym, PENGUIN via Skipper, leader of the Madagascar penguins; the synonym is earned by a real second link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SKIPPER"],
+   "pair_note": "Fun aha; Madagascar penguins are widely known."
+  },
+  {
+   "pair_id": "p_case__letter",
+   "a": "CASE",
+   "b": "LETTER",
+   "hints": [
+    {
+     "text": "CAPITAL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LETTER via capital letter, CASE via upper case = capital letters and also capital case (a death-penalty case); two true routes to CASE.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAPITAL"],
+   "pair_note": "The uppercase route is the one most players will see; the legal sense is a true bonus."
+  },
+  {
+   "pair_id": "p_cereal__snow",
+   "a": "CEREAL",
+   "b": "SNOW",
+   "hints": [
+    {
+     "text": "FLAKE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNOW via snowflakes, CEREAL via corn flakes and Frosted Flakes; clear and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLAKE"],
+   "pair_note": "Easy, pleasant clue."
+  },
+  {
+   "pair_id": "p_chess__first",
+   "a": "CHESS",
+   "b": "FIRST",
+   "hints": [
+    {
+     "text": "WHITE",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHESS via the white pieces, FIRST via the well-known rule that white moves first; indirect but it clicks once you think of chess.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WHITE"],
+   "pair_note": "OPENING (a chess opening; opening = first) is a double-meaning alternative that could also pass; WHITE is the more aha-style fact link."
+  },
+  {
+   "pair_id": "p_clock__short",
+   "a": "CLOCK",
+   "b": "SHORT",
+   "hints": [
+    {
+     "text": "HOUR",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": "HAND",
+     "flags": ["better_hint_exists"],
+     "verdict": "BORDERLINE",
+     "reason": "CLOCK via telling the hour is fine, but SHORT is reached only through the hour hand being the short hand; HAND (clock hand, shorthand) is a clearly stronger double meaning and HOUR is unremarkable beside it.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Swap to HAND: clock hand + shorthand is a real 10/10 candidate."
+  },
+  {
+   "pair_id": "p_cocktail__cotton",
+   "a": "COCKTAIL",
+   "b": "COTTON",
+   "hints": [
+    {
+     "text": "GIN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "COCKTAIL via gin as a spirit, COTTON via the cotton gin machine; a crisp double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GIN"],
+   "pair_note": "Strong double meaning with accurate lines."
+  },
+  {
+   "pair_id": "p_cook__slow",
+   "a": "COOK",
+   "b": "SLOW",
+   "hints": [
+    {
+     "text": "CROCKPOT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "A Crock-Pot is a slow cooker, so SLOW and COOK combine into the thing the hint names; clear and familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CROCKPOT"],
+   "pair_note": "Brand is normally written Crock-Pot; the closed-up CROCKPOT is a common informal spelling and reads fine."
+  },
+  {
+   "pair_id": "p_cross__luck",
+   "a": "CROSS",
+   "b": "LUCK",
+   "hints": [
+    {
+     "text": "FINGERS",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CROSS via crossing your fingers, LUCK via the gesture's meaning of wishing for luck; one instantly familiar custom joins both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FINGERS"],
+   "pair_note": "Easy and fair."
+  },
+  {
+   "pair_id": "p_dance__slide",
+   "a": "DANCE",
+   "b": "SLIDE",
+   "hints": [
+    {
+     "text": "ELECTRIC",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SLIDE completes Electric Slide and DANCE is what the Electric Slide is; an instantly familiar party-dance name.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ELECTRIC"],
+   "pair_note": "Phrase-join but the phrase is iconic and the category side makes it click."
+  },
+  {
+   "pair_id": "p_deck__titanic",
+   "a": "DECK",
+   "b": "TITANIC",
+   "hints": [
+    {
+     "text": "CHAIRS",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "One idiom carries both: rearranging the DECK chairs on the TITANIC; satisfying for adults who know the saying, and deck chairs alone gets DECK.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CHAIRS"],
+   "pair_note": "Idiom is well known to U.S. adults, less so to younger players; SHIP would be safer but flat."
+  },
+  {
+   "pair_id": "p_dinosaur__plate",
+   "a": "DINOSAUR",
+   "b": "PLATE",
+   "hints": [
+    {
+     "text": "STEGOSAURUS",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DINOSAUR as the category, PLATE via the stegosaurus's famous back plates; category plus property, like PENGUIN for Antarctica.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STEGOSAURUS"],
+   "pair_note": "Accurate and fair."
+  },
+  {
+   "pair_id": "p_drop__pin",
+   "a": "DROP",
+   "b": "PIN",
+   "hints": [
+    {
+     "text": "QUIET",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "QUIET calls up 'you could hear a PIN DROP', which holds both targets in one idiom; indirect with a nice payoff.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["QUIET"],
+   "pair_note": "Good indirect idiom clue; SILENCE would work similarly."
+  },
+  {
+   "pair_id": "p_egypt__mexico",
+   "a": "EGYPT",
+   "b": "MEXICO",
+   "hints": [
+    {
+     "text": "PYRAMID",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "EGYPT via Giza and MEXICO via Teotihuacan and Chichen Itza; both are famous for ancient pyramids.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PYRAMID"],
+   "pair_note": "Mexico side is a mild aha for players who default to Egypt only."
+  },
+  {
+   "pair_id": "p_face__fire",
+   "a": "FACE",
+   "b": "FIRE",
+   "hints": [
+    {
+     "text": "POKER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FACE via poker face, FIRE via the fireplace poker; a clean double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["POKER"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_father__mask",
+   "a": "FATHER",
+   "b": "MASK",
+   "hints": [
+    {
+     "text": "VADER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FATHER via 'I am your father' and MASK via Vader's iconic black mask; two of the most famous facts about him.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["VADER"],
+   "pair_note": "Excellent pop-culture clue."
+  },
+  {
+   "pair_id": "p_first__quarter",
+   "a": "FIRST",
+   "b": "QUARTER",
+   "hints": [
+    {
+     "text": "WASHINGTON",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FIRST via the first U.S. president, QUARTER via his profile on the coin; indirect familiar knowledge with a real click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WASHINGTON"],
+   "pair_note": "RELATIVE-style indirect aha; strong."
+  },
+  {
+   "pair_id": "p_garden__thumb",
+   "a": "GARDEN",
+   "b": "THUMB",
+   "hints": [
+    {
+     "text": "GREEN",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "THUMB via green thumb, GARDEN via what a green thumb is good at (and green as the garden's color); instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GREEN"],
+   "pair_note": "Easy, satisfying idiom clue."
+  },
+  {
+   "pair_id": "p_golf__metal",
+   "a": "GOLF",
+   "b": "METAL",
+   "hints": [
+    {
+     "text": "IRON",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "METAL via iron the element, GOLF via irons the clubs; same shape as the owner's DRIVER favourite.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["IRON"],
+   "pair_note": "Clear double meaning."
+  },
+  {
+   "pair_id": "p_gym__police",
+   "a": "GYM",
+   "b": "POLICE",
+   "hints": [
+    {
+     "text": "BADGE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "PASS",
+     "reason": "POLICE via the police badge is instant; GYM rests on Pokemon gym badges, a core and hugely popular mechanic but one that older or non-gaming players may not link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BADGE"],
+   "pair_note": "Judgement call: Pokemon gym badges are mainstream pop culture, not niche fandom, so PASS, but it could reasonably be BORDERLINE for an older audience. No obviously better hint found."
+  },
+  {
+   "pair_id": "p_head__tail",
+   "a": "HEAD",
+   "b": "TAIL",
+   "hints": [
+    {
+     "text": "COIN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "HEAD and TAIL via heads or tails on a coin flip; obvious but correct and fair.",
+     "fix": "HEAD line: Heads is one side of a coin."
+    }
+   ],
+   "strong_hints": ["COIN"],
+   "pair_note": "Very easy; the HEAD line's 'the other side' reads oddly when shown on its own."
+  },
+  {
+   "pair_id": "p_high__opera",
+   "a": "HIGH",
+   "b": "OPERA",
+   "hints": [
+    {
+     "text": "SOPRANO",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HIGH via soprano as the highest standard voice, OPERA via sopranos singing leading opera roles; accurate and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SOPRANO"],
+   "pair_note": "Solid."
+  },
+  {
+   "pair_id": "p_ice__puzzle",
+   "a": "ICE",
+   "b": "PUZZLE",
+   "hints": [
+    {
+     "text": "CUBE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ICE via ice cube, PUZZLE via Rubik's Cube; a neat pairing.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CUBE"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_jungle__swing",
+   "a": "JUNGLE",
+   "b": "SWING",
+   "hints": [
+    {
+     "text": "TARZAN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "JUNGLE via where Tarzan lives, SWING via his vine-swinging; both are signature traits.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TARZAN"],
+   "pair_note": "Classic, fair."
+  },
+  {
+   "pair_id": "p_knight__middle",
+   "a": "KNIGHT",
+   "b": "MIDDLE",
+   "hints": [
+    {
+     "text": "MEDIEVAL",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "KNIGHT via medieval times, MIDDLE via the Middle Ages that medieval names; a satisfying indirect click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MEDIEVAL"],
+   "pair_note": "Good aha; MIDDLE is the side players have to work for."
+  },
+  {
+   "pair_id": "p_letter__red",
+   "a": "LETTER",
+   "b": "RED",
+   "hints": [
+    {
+     "text": "SCARLET",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RED via scarlet as a shade, LETTER via The Scarlet Letter; a familiar classic that clicks.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCARLET"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_man__moon",
+   "a": "MAN",
+   "b": "MOON",
+   "hints": [
+    {
+     "text": "ARMSTRONG",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOON via the Apollo 11 walk, MAN via 'first man on the Moon' and 'one small step for man'; clear and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ARMSTRONG"],
+   "pair_note": "Fair; note ARMSTRONG contains ARM, which matters only if ARM shares a board with this pair."
+  },
+  {
+   "pair_id": "p_mask__turtle",
+   "a": "MASK",
+   "b": "TURTLE",
+   "hints": [
+    {
+     "text": "NINJA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TURTLE via the Ninja Turtles, MASK via their signature colored eye masks; broadly known.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NINJA"],
+   "pair_note": "Good; colored masks are the famous cartoon version, which is what most players know."
+  },
+  {
+   "pair_id": "p_mouth__soap",
+   "a": "MOUTH",
+   "b": "SOAP",
+   "hints": [
+    {
+     "text": "WASH",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOUTH via mouthwash, SOAP via washing, and the old threat 'wash your mouth out with soap' ties both targets into one phrase.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WASH"],
+   "pair_note": "Nice that a single familiar saying holds both targets."
+  },
+  {
+   "pair_id": "p_note__scale",
+   "a": "NOTE",
+   "b": "SCALE",
+   "hints": [
+    {
+     "text": "OCTAVE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "NOTE via the octave running from a note to its namesake, SCALE via a major scale filling an octave; correct music link, if plain.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["OCTAVE"],
+   "pair_note": "Accurate but low-delight; a double-meaning hint using SCALE's fish or weight sense would be more fun if one exists."
+  },
+  {
+   "pair_id": "p_penguin__suit",
+   "a": "PENGUIN",
+   "b": "SUIT",
+   "hints": [
+    {
+     "text": "TUXEDO",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SUIT via a tuxedo being a formal suit, PENGUIN via its tuxedo-like coloring (a tux is even called a penguin suit); clicks instantly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TUXEDO"],
+   "pair_note": "Strong; the text stays metaphorical, which is correct."
+  },
+  {
+   "pair_id": "p_pokemon__team",
+   "a": "POKEMON",
+   "b": "TEAM",
+   "hints": [
+    {
+     "text": "ROCKET",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "TEAM via the name Team Rocket, POKEMON via the villains of the Pokemon anime; the name is iconic enough to click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ROCKET"],
+   "pair_note": "Name-contains-target phrase-join, but Team Rocket is one of the best-known parts of Pokemon."
+  },
+  {
+   "pair_id": "p_roll__stone",
+   "a": "ROLL",
+   "b": "STONE",
+   "hints": [
+    {
+     "text": "MOSS",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOSS calls up 'a rolling stone gathers no moss', which carries both ROLL and STONE; indirect with a good payoff.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MOSS"],
+   "pair_note": "Good indirect proverb clue; the STONE line's 'says the proverb' is an implication rather than the wording, but acceptable."
+  },
+  {
+   "pair_id": "p_short__straw",
+   "a": "SHORT",
+   "b": "STRAW",
+   "hints": [
+    {
+     "text": "DRAW",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "One idiom holds both: draw the SHORT STRAW; instantly familiar.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DRAW"],
+   "pair_note": "Easy idiom clue; fine."
+  },
+  {
+   "pair_id": "p_sister__snow",
+   "a": "SISTER",
+   "b": "SNOW",
+   "hints": [
+    {
+     "text": "ELSA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNOW via Elsa's snow and ice powers, SISTER via her sister Anna; Frozen is near-universal.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ELSA"],
+   "pair_note": "Solid."
+  },
+  {
+   "pair_id": "p_spy__stock",
+   "a": "SPY",
+   "b": "STOCK",
+   "hints": [
+    {
+     "text": "BOND",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SPY via James Bond, STOCK via stocks and bonds; a crisp double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BOND"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_strong__vegetable",
+   "a": "STRONG",
+   "b": "VEGETABLE",
+   "hints": [
+    {
+     "text": "POPEYE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VEGETABLE via Popeye's spinach, STRONG via the strength it gives him; a classic cartoon link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["POPEYE"],
+   "pair_note": "Older but widely known; fine."
+  }
+ ]
+}

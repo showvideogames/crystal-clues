@@ -1,0 +1,978 @@
+{
+ "_metadata": {
+  "reviewer": "x12-reviewer-d",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x12-rd-input.json",
+  "rubric": "x12 rubric (latest owner calibration: RELATIVE/DRIVER/PENGUIN), 2026-10-20",
+  "independence": "I read only x12-rd-input.json and judged each hint on its merits, without opening any other file, searching the repository or using the web."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_apple__earth",
+   "a": "APPLE",
+   "b": "EARTH",
+   "hints": [
+    {
+     "text": "CORE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "APPLE via the apple core and EARTH via the planet's core; a clean, instantly fair shared property.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CORE"],
+   "pair_note": "Solid, easy clue; no better single word."
+  },
+  {
+   "pair_id": "p_band__bus",
+   "a": "BAND",
+   "b": "BUS",
+   "hints": [
+    {
+     "text": "TOUR",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via going on tour and BUS via the tour bus; one coherent scene that clicks at once.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TOUR"],
+   "pair_note": "Natural, easy pairing."
+  },
+  {
+   "pair_id": "p_band__dog",
+   "a": "BAND",
+   "b": "DOG",
+   "hints": [
+    {
+     "text": "TOTO",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via Toto, the band behind \"Africa,\" and DOG via Dorothy's dog in The Wizard of Oz; two famous, unrelated referents for one name, a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TOTO"],
+   "pair_note": "One of the best in the batch; both facts are accurate."
+  },
+  {
+   "pair_id": "p_band__fan",
+   "a": "BAND",
+   "b": "FAN",
+   "hints": [
+    {
+     "text": "GROUPIE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FAN via a groupie being a devoted fan and BAND via groupies following bands; close to a definition, but a specific word, not a plain synonym of FAN, and it points squarely at both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GROUPIE"],
+   "pair_note": "Easy and fair. Groupie has a mild rock-culture connotation but is an everyday PG word; the text keeps it innocent."
+  },
+  {
+   "pair_id": "p_band__hotel",
+   "a": "BAND",
+   "b": "HOTEL",
+   "hints": [
+    {
+     "text": "EAGLES",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via the Eagles as a classic rock band and HOTEL via their signature song \"Hotel California\"; an indirect route with a good click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["EAGLES"],
+   "pair_note": "Good indirect band clue; the song is widely known."
+  },
+  {
+   "pair_id": "p_band__pepper",
+   "a": "BAND",
+   "b": "PEPPER",
+   "hints": [
+    {
+     "text": "SERGEANT",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PEPPER via Sgt. Pepper and BAND via the album title ending \"Lonely Hearts Club Band\"; one famous title covers both, and SERGEANT is an unexpected word that lands.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SERGEANT"],
+   "pair_note": "The spelled-out SERGEANT is fine for the \"Sgt.\" title. Lines are accurate."
+  },
+  {
+   "pair_id": "p_band__rose",
+   "a": "BAND",
+   "b": "ROSE",
+   "hints": [
+    {
+     "text": "GUNS",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND and ROSE both via the band name Guns N' Roses; a phrase-join, but the name is instantly familiar and GUNS on its own points nowhere else on a board like this.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GUNS"],
+   "pair_note": "Plain phrase-join that still passes on familiarity. SLASH (the guitarist) is a more indirect alternative but less broadly known; not clearly better."
+  },
+  {
+   "pair_id": "p_band__turkey",
+   "a": "BAND",
+   "b": "TURKEY",
+   "hints": [
+    {
+     "text": "DRUMSTICK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via the drummer's drumsticks and TURKEY via the turkey leg; a clean double meaning with a real \"oh, nice\" moment.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DRUMSTICK"],
+   "pair_note": "Excellent; DRIVER-style double meaning."
+  },
+  {
+   "pair_id": "p_band__window",
+   "a": "BAND",
+   "b": "WINDOW",
+   "hints": [
+    {
+     "text": "DOORS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via the Doors, the classic rock band, and WINDOW via doors and windows as the paired openings of a house; the window side is a sibling association rather than an identity, but it is a very strong pair and clicks at once.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DOORS"],
+   "pair_note": "The WINDOW side is the softer one (other words could share it), but per the DRIVER calibration that alone is not a reason to fail."
+  },
+  {
+   "pair_id": "p_baseball__church",
+   "a": "BASEBALL",
+   "b": "CHURCH",
+   "hints": [
+    {
+     "text": "CARDINAL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL via the St. Louis Cardinals and CHURCH via a cardinal as a senior Catholic official; a satisfying double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CARDINAL"],
+   "pair_note": "Strong; both facts accurate."
+  },
+  {
+   "pair_id": "p_baseball__ring",
+   "a": "BASEBALL",
+   "b": "RING",
+   "hints": [
+    {
+     "text": "DIAMOND",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL via the baseball diamond and RING via the diamond in an engagement ring; a classic, clean double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DIAMOND"],
+   "pair_note": "Strong and easy."
+  },
+  {
+   "pair_id": "p_beach__internet",
+   "a": "BEACH",
+   "b": "INTERNET",
+   "hints": [
+    {
+     "text": "SURF",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEACH via surfing the waves and INTERNET via surfing the web; a familiar double meaning, easy but satisfying.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SURF"],
+   "pair_note": "\"Surf the web\" is a little dated but still universally understood."
+  },
+  {
+   "pair_id": "p_bird__building",
+   "a": "BIRD",
+   "b": "BUILDING",
+   "hints": [
+    {
+     "text": "CRANE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BIRD via the long-legged crane and BUILDING via the construction crane; a neat double meaning (the machine is even named after the bird).",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CRANE"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_bowling__match",
+   "a": "BOWLING",
+   "b": "MATCH",
+   "hints": [
+    {
+     "text": "STRIKE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOWLING via a strike knocking down all ten pins and MATCH via striking a match; a clean double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["STRIKE"],
+   "pair_note": "Strong; MATCH could also be read as a sports match, which gives a nice misdirection."
+  },
+  {
+   "pair_id": "p_bridge__internet",
+   "a": "BRIDGE",
+   "b": "INTERNET",
+   "hints": [
+    {
+     "text": "TROLL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BRIDGE via the troll under the bridge in \"Three Billy Goats Gruff\" and INTERNET via online trolls; folklore meets modern slang, a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TROLL"],
+   "pair_note": "Excellent; facts accurate."
+  },
+  {
+   "pair_id": "p_candy__video-game",
+   "a": "CANDY",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "CRUSH",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CANDY and VIDEO GAME both via the title Candy Crush, the famous mobile game; a phrase-join, but the title is instantly familiar and the game side is not a mere blank-fill.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CRUSH"],
+   "pair_note": "Note: CRUSH is also the hint for p_love__orange in this batch; avoid serving both close together."
+  },
+  {
+   "pair_id": "p_card__court",
+   "a": "CARD",
+   "b": "COURT",
+   "hints": [
+    {
+     "text": "SUIT",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CARD via the four card suits and COURT via a lawsuit (a \"suit\") going to court; a good double meaning that needs one small step on the court side.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SUIT"],
+   "pair_note": "Strong. Players may also try the court-card/face-card route, which is a pleasant red herring."
+  },
+  {
+   "pair_id": "p_card__tennis",
+   "a": "CARD",
+   "b": "TENNIS",
+   "hints": [
+    {
+     "text": "ACE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "CARD via the ace playing card and TENNIS via an ace serve; a well-known double meaning. The tennis wording is slightly loose: an ace is a serve the receiver cannot touch, not any unreturned serve.",
+     "fix": "In tennis, an ace is a serve the opponent can't even touch."
+    }
+   ],
+   "strong_hints": ["ACE"],
+   "pair_note": "Classic and fair; the text fix is minor precision only."
+  },
+  {
+   "pair_id": "p_cat__lazy",
+   "a": "CAT",
+   "b": "LAZY",
+   "hints": [
+    {
+     "text": "GARFIELD",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAT via Garfield the cartoon cat and LAZY via his famous laziness; an easy, obvious, satisfying character clue.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GARFIELD"],
+   "pair_note": "Easy but excellent fit."
+  },
+  {
+   "pair_id": "p_cereal__rabbit",
+   "a": "CEREAL",
+   "b": "RABBIT",
+   "hints": [
+    {
+     "text": "TRIX",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CEREAL via Trix cereal and RABBIT via the Trix rabbit mascot (\"Silly rabbit...\"); a classic mascot clue with a nostalgic click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TRIX"],
+   "pair_note": "Cereal mascots are explicitly in scope; strong."
+  },
+  {
+   "pair_id": "p_chocolate__laugh",
+   "a": "CHOCOLATE",
+   "b": "LAUGH",
+   "hints": [
+    {
+     "text": "SNICKERS",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHOCOLATE via the Snickers bar and LAUGH via a snicker being a sly laugh; brand plus everyday word, a nice aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SNICKERS"],
+   "pair_note": "Strong. (Chuckles candy would be another route, but Snickers is far better known.)"
+  },
+  {
+   "pair_id": "p_code__coffee",
+   "a": "CODE",
+   "b": "COFFEE",
+   "hints": [
+    {
+     "text": "JAVA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CODE via the Java programming language and COFFEE via \"java\" as slang for coffee; a well-known double meaning with a satisfying click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAVA"],
+   "pair_note": "Strong; both lines accurate."
+  },
+  {
+   "pair_id": "p_computer__soccer",
+   "a": "COMPUTER",
+   "b": "SOCCER",
+   "hints": [
+    {
+     "text": "SAVE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "COMPUTER via saving a file and SOCCER via a goalkeeper's save; a clean, everyday double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SAVE"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_deer__red",
+   "a": "DEER",
+   "b": "RED",
+   "hints": [
+    {
+     "text": "RUDOLPH",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "DEER via Rudolph being a reindeer (reindeer are deer) and RED via his red nose; instantly familiar. The explanation is only the song title and does not state the link.",
+     "fix": "Rudolph the Red-Nosed Reindeer is a deer with a shining red nose."
+    }
+   ],
+   "strong_hints": ["RUDOLPH"],
+   "pair_note": "Easy, fair holiday clue; facts accurate (reindeer belong to the deer family)."
+  },
+  {
+   "pair_id": "p_disney__snowman",
+   "a": "DISNEY",
+   "b": "SNOWMAN",
+   "hints": [
+    {
+     "text": "OLAF",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNOWMAN via Olaf being a snowman and DISNEY via Frozen; an easy, exact character fit.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["OLAF"],
+   "pair_note": "Easy but clean."
+  },
+  {
+   "pair_id": "p_donkey__video-game",
+   "a": "DONKEY",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "KONG",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "DONKEY and VIDEO GAME both via the classic arcade game Donkey Kong; a phrase-join (KONG may first suggest King Kong) but the title is instantly familiar. The DONKEY line wrongly implies the ape's name is just \"Donkey.\"",
+     "fix": "The game's giant ape is called Donkey Kong."
+    }
+   ],
+   "strong_hints": ["KONG"],
+   "pair_note": "Passes on familiarity; fix the DONKEY line, since the character's name is Donkey Kong, not \"Donkey.\""
+  },
+  {
+   "pair_id": "p_england__television",
+   "a": "ENGLAND",
+   "b": "TELEVISION",
+   "hints": [
+    {
+     "text": "CHANNEL",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "ENGLAND via the English Channel and TELEVISION via TV channels; geography plus everyday tech, a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CHANNEL"],
+   "pair_note": "Strong; the English Channel fact is correct."
+  },
+  {
+   "pair_id": "p_eye__outlet",
+   "a": "EYE",
+   "b": "OUTLET",
+   "hints": [
+    {
+     "text": "SOCKET",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "EYE via the eye socket gives the aha, but OUTLET is reached only because socket is essentially a synonym for an electrical outlet (the line even says \"An outlet is a socket\"); a strict reading of the synonym rule could fail it, while the eye side makes it feel like a fair double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Uncertain call worth a second opinion: SOCKET is the natural hint for this pair and plays well, but one side is a near-synonym of the target. No clearly better single word."
+  },
+  {
+   "pair_id": "p_fish__shoe",
+   "a": "FISH",
+   "b": "SHOE",
+   "hints": [
+    {
+     "text": "SOLE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FISH via sole the flatfish and SHOE via the sole of a shoe; a crisp double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SOLE"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_football__ocean",
+   "a": "FOOTBALL",
+   "b": "OCEAN",
+   "hints": [
+    {
+     "text": "DOLPHIN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FOOTBALL via the Miami Dolphins and OCEAN via dolphins swimming in the sea; a familiar team-plus-animal clue.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DOLPHIN"],
+   "pair_note": "Fair and easy; sports teams are in scope."
+  },
+  {
+   "pair_id": "p_garden__spy",
+   "a": "GARDEN",
+   "b": "SPY",
+   "hints": [
+    {
+     "text": "MOLE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GARDEN via moles tunnelling through gardens and SPY via a mole as an infiltrator; a satisfying double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MOLE"],
+   "pair_note": "Strong; both lines accurate."
+  },
+  {
+   "pair_id": "p_hair__hamburger",
+   "a": "HAIR",
+   "b": "HAMBURGER",
+   "hints": [
+    {
+     "text": "BUN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HAIR via the bun hairstyle and HAMBURGER via the burger bun; a neat, everyday double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BUN"],
+   "pair_note": "Strong."
+  },
+  {
+   "pair_id": "p_heel__hero",
+   "a": "HEEL",
+   "b": "HERO",
+   "hints": [
+    {
+     "text": "ACHILLES",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HEEL via the Achilles heel and HERO via Achilles the Greek hero; the idiom is universal and the hero side adds a small aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ACHILLES"],
+   "pair_note": "Strong; the weak-heel detail is the standard legend."
+  },
+  {
+   "pair_id": "p_love__orange",
+   "a": "LOVE",
+   "b": "ORANGE",
+   "hints": [
+    {
+     "text": "CRUSH",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LOVE via having a crush and ORANGE via Orange Crush soda; a brand-plus-feeling double meaning that clicks.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CRUSH"],
+   "pair_note": "Good. CRUSH also serves p_candy__video-game; space them apart."
+  },
+  {
+   "pair_id": "p_monster__video-game",
+   "a": "MONSTER",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "POKEMON",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME via the Pokemon series and MONSTER via the name coming from \"Pocket Monsters\"; a true origin fact that gives a RELATIVE-style aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["POKEMON"],
+   "pair_note": "Strong; the Pocket Monsters origin is accurate and fairly well known, and Pokemon read as monsters even without it."
+  },
+  {
+   "pair_id": "p_music__soda",
+   "a": "MUSIC",
+   "b": "SODA",
+   "hints": [
+    {
+     "text": "POP",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "MUSIC via pop music and SODA via \"pop\" as a word for soda; a fair, familiar double meaning. The SODA line overstates a regional usage as universal.",
+     "fix": "In many parts of the U.S., soda is called pop."
+    }
+   ],
+   "strong_hints": ["POP"],
+   "pair_note": "Easy and fair; soda-vs-pop regional debate is itself a well-known bit of U.S. culture."
+  },
+  {
+   "pair_id": "p_phone__space",
+   "a": "PHONE",
+   "b": "SPACE",
+   "hints": [
+    {
+     "text": "GALAXY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PHONE via the Samsung Galaxy and SPACE via galaxies; a brand-plus-science double meaning, easy but satisfying.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GALAXY"],
+   "pair_note": "Fair; \"huge star system\" is loose but acceptable wording for a galaxy."
+  },
+  {
+   "pair_id": "p_pipe__video-game",
+   "a": "PIPE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "MARIO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME via Mario as the iconic game hero and PIPE via his green warp pipes (and his job as a plumber); an indirect, satisfying click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MARIO"],
+   "pair_note": "Strong; the plumber angle doubles the PIPE link."
+  },
+  {
+   "pair_id": "p_princess__sea",
+   "a": "PRINCESS",
+   "b": "SEA",
+   "hints": [
+    {
+     "text": "ARIEL",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PRINCESS via Ariel the Disney princess and SEA via her life \"under the sea\"; an easy, exact character fit.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ARIEL"],
+   "pair_note": "Easy but clean; facts accurate."
+  },
+  {
+   "pair_id": "p_remote__video-game",
+   "a": "REMOTE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "CONTROLLER",
+     "mechanism": "shared_property",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": "WII",
+     "flags": ["better_hint_exists", "generic"],
+     "verdict": "BORDERLINE",
+     "reason": "VIDEO GAME via the game controller is strong, but REMOTE comes only via a remote being a kind of controller, a near-definitional and flat link; WII (whose controller is literally the Wii Remote) hits both with a real aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Swap to WII: the Wii Remote is a widely known video game controller, giving both sides through one familiar product."
+  },
+  {
+   "pair_id": "p_space__video-game",
+   "a": "SPACE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "INVADERS",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SPACE and VIDEO GAME both via the classic arcade game Space Invaders; a phrase-join, but the title is instantly familiar and the alien-invaders-from-space reading adds a little texture.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["INVADERS"],
+   "pair_note": "Passes on familiarity; classic arcade games are in scope."
+  },
+  {
+   "pair_id": "p_tennis__video-game",
+   "a": "TENNIS",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "PONG",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME via Pong as one of the first hit video games and TENNIS via Pong being a simple table-tennis (ping-pong) game; a satisfying indirect link.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PONG"],
+   "pair_note": "Strong; both facts accurate."
+  }
+ ]
+}

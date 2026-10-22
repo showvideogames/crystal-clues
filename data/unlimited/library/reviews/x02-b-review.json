@@ -1,0 +1,922 @@
+{
+  "_metadata": {
+    "reviewer": "x02-reviewer-b",
+    "model": "claude-opus-5-5",
+    "date": "2026-10-19",
+    "input": "x02-b-review-input.json",
+    "rubric": "x02 rubric (owner style examples, clicks-when-explained bar, fewer phrase-joins, mechanism labelled, explanation checked), 2026-10-19",
+    "independence": "I read only the instructions file and the single input file x02-b-review-input.json; no other file, repository search, web or paid API was used."
+  },
+  "pairs": [
+    {
+      "pair_id": "p_clown__hamburger",
+      "a": "CLOWN",
+      "b": "HAMBURGER",
+      "hints": [
+        {
+          "text": "RONALD",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Ronald McDonald is the iconic clown (CLOWN) and the face of McDonald's hamburgers (HAMBURGER); one character cleanly reaches both.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["RONALD"],
+      "best_available": { "text": "RONALD", "why": "One instantly known character covers both words with no explanation needed." },
+      "pair_note": "Solid character link in the BARNEY mould."
+    },
+    {
+      "pair_id": "p_grape__tomato",
+      "a": "GRAPE",
+      "b": "TOMATO",
+      "hints": [
+        {
+          "text": "VINE",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Grapes grow on vines (GRAPE) and tomatoes are sold as vine-ripened (TOMATO); the grape-tomato aside in the explanation is a nice bonus click.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["VINE"],
+      "best_available": { "text": "VINE", "why": "Natural shared property that both words share strongly." },
+      "pair_note": "Watch board composition: other vine produce (melon, pumpkin, cucumber) on the same board could compete."
+    },
+    {
+      "pair_id": "p_china__rice",
+      "a": "CHINA",
+      "b": "RICE",
+      "hints": [
+        {
+          "text": "CHOPSTICKS",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Chopsticks originated in China (CHINA) and are the classic way to eat a bowl of rice (RICE); a clear shared scene.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHOPSTICKS"],
+      "best_available": { "text": "CHOPSTICKS", "why": "Direct, accurate and points at both words." },
+      "pair_note": "Explanation's 'rice is their perfect test' is slightly odd but not false."
+    },
+    {
+      "pair_id": "p_movie__snack",
+      "a": "MOVIE",
+      "b": "SNACK",
+      "hints": [
+        {
+          "text": "POPCORN",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 0,
+          "recognizability": "broad",
+          "flags": ["generic", "text_fix"],
+          "verdict": "PASS",
+          "reason": "Popcorn is the movie-theater treat (MOVIE) and is itself a snack (SNACK); obvious but the natural best hint.",
+          "fix": "Mention the snack side in the explanation, e.g. 'Popcorn is the snack that makes a movie night feel complete.'"
+        }
+      ],
+      "strong_hints": ["POPCORN"],
+      "best_available": { "text": "POPCORN", "why": "The perfect natural hint; little delight but no doubt." },
+      "pair_note": "Easy pair; POPCORN is a hyponym of SNACK, not a synonym, so it is allowed."
+    },
+    {
+      "pair_id": "p_spicy__taco",
+      "a": "SPICY",
+      "b": "TACO",
+      "hints": [
+        {
+          "text": "JALAPENO",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Jalapenos are the everyday hot pepper (SPICY) and a standard taco topping (TACO).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["JALAPENO"],
+      "best_available": { "text": "JALAPENO", "why": "Natural, accurate, reaches both words." },
+      "pair_note": "Fine; competes only if another Mexican food or hot item is on the board."
+    },
+    {
+      "pair_id": "p_basketball__curry",
+      "a": "BASKETBALL",
+      "b": "CURRY",
+      "hints": [
+        {
+          "text": "WARRIORS",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Warriors are an NBA team (BASKETBALL) and Steph Curry's only team (CURRY), so it reaches basketball directly as well as through Curry.",
+          "fix": null
+        },
+        {
+          "text": "STEPH",
+          "mechanism": "shared_reference",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "STEPH is Curry's first name (CURRY) and he is a basketball superstar (BASKETBALL), but the basketball side only comes via the person.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WARRIORS", "STEPH"],
+      "best_available": { "text": "WARRIORS", "why": "Touches basketball independently, while STEPH leans almost entirely on completing the name." },
+      "pair_note": "Both work; the explanation's claim about his whole career with Golden State is correct as far as I know but should be rechecked if he ever changes teams."
+    },
+    {
+      "pair_id": "p_mario__mushroom",
+      "a": "MARIO",
+      "b": "MUSHROOM",
+      "hints": [
+        {
+          "text": "TOAD",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Toad is Mario's mushroom-headed sidekick (MARIO) and a mushroom character, with a 'toadstool' echo (MUSHROOM).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["TOAD"],
+      "best_available": { "text": "TOAD", "why": "Character link plus the toadstool echo gives a real click." },
+      "pair_note": "'Since 1985' is fair: the Mushroom Retainers (Toads) were in the original Super Mario Bros., though Toad as a named playable character came later."
+    },
+    {
+      "pair_id": "p_belgium__breakfast",
+      "a": "BELGIUM",
+      "b": "BREAKFAST",
+      "hints": [
+        {
+          "text": "WAFFLE",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Belgium is famous for waffles (Belgian waffle, BELGIUM) and waffles are a breakfast staple (BREAKFAST).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WAFFLE"],
+      "best_available": { "text": "WAFFLE", "why": "The natural answer, rooted in a well-known food fact rather than a fill-in." },
+      "pair_note": "Clean."
+    },
+    {
+      "pair_id": "p_brown__chocolate",
+      "a": "BROWN",
+      "b": "CHOCOLATE",
+      "hints": [
+        {
+          "text": "CHARLIE",
+          "mechanism": "other",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Two famous Charlies: Charlie Brown of Peanuts (BROWN) and Charlie of Charlie and the Chocolate Factory (CHOCOLATE); both are instantly familiar and the reveal is satisfying.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CHARLIE"],
+      "best_available": { "text": "CHARLIE", "why": "Two broad pop-culture characters, a playful double route." },
+      "pair_note": "Name-join across two works rather than one shared reference; I labelled it 'other'. It is name-based but exceptional enough to pass under the phrase-join guidance."
+    },
+    {
+      "pair_id": "p_camp__chocolate",
+      "a": "CAMP",
+      "b": "CHOCOLATE",
+      "hints": [
+        {
+          "text": "SMORES",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "S'mores are the campfire treat (CAMP) built around a chocolate square (CHOCOLATE).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SMORES"],
+      "best_available": { "text": "SMORES", "why": "Classic camp scene with chocolate as a core ingredient." },
+      "pair_note": "Apostrophe dropped for the one-word format; fine."
+    },
+    {
+      "pair_id": "p_comedy__turkey",
+      "a": "COMEDY",
+      "b": "TURKEY",
+      "hints": [
+        {
+          "text": "ROAST",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A comedy roast (COMEDY) versus a roast turkey (TURKEY); a true double meaning that clicks.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ROAST"],
+      "best_available": { "text": "ROAST", "why": "Exactly the double-meaning style the owner wants." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_bakery__crescent",
+      "a": "BAKERY",
+      "b": "CRESCENT",
+      "hints": [
+        {
+          "text": "CROISSANT",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Croissants are a bakery staple (BAKERY) and are crescent-shaped, the word itself meaning crescent in French (CRESCENT).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["CROISSANT"],
+      "best_available": { "text": "CROISSANT", "why": "Visual plus an etymology fact that is accurate and satisfying." },
+      "pair_note": "Explanation fact checks out."
+    },
+    {
+      "pair_id": "p_cake__lava",
+      "a": "CAKE",
+      "b": "LAVA",
+      "hints": [
+        {
+          "text": "MOLTEN",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["phrase_join_weak"],
+          "verdict": "BORDERLINE",
+          "reason": "Lava is molten (LAVA) and the cake side rests entirely on the dish name 'molten lava cake' (CAKE), so the hint is basically the missing word of one phrase that already contains both targets.",
+          "fix": null
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "MOLTEN", "why": "Familiar and fair; it falls short only under the owner's fewer-phrase-joins rule because it is a mechanical fill-in of a single dish name." },
+      "pair_note": "Judgment call: some reviewers will pass this as the perfect natural hint. A less mechanical route for CAKE + LAVA is hard to find; VOLCANO (lava; volcano cake) is another option but is also a near phrase-join."
+    },
+    {
+      "pair_id": "p_appetite__caterpillar",
+      "a": "APPETITE",
+      "b": "CATERPILLAR",
+      "hints": [
+        {
+          "text": "HUNGRY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Being hungry means having an appetite (APPETITE) and The Very Hungry Caterpillar is a beloved picture book (CATERPILLAR).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HUNGRY"],
+      "best_available": { "text": "HUNGRY", "why": "Book reference gives a warm 'oh, nice' on the caterpillar side." },
+      "pair_note": "HUNGRY is related to APPETITE but not a plain synonym (adjective vs noun), so no synonym flag."
+    },
+    {
+      "pair_id": "p_slide__swing",
+      "a": "SLIDE",
+      "b": "SWING",
+      "hints": [
+        {
+          "text": "PLAYGROUND",
+          "mechanism": "scene",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 0,
+          "recognizability": "broad",
+          "flags": ["generic"],
+          "verdict": "PASS",
+          "reason": "Slides (SLIDE) and swings (SWING) are the two defining pieces of playground equipment.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PLAYGROUND"],
+      "best_available": { "text": "PLAYGROUND", "why": "Obvious but correct and fair." },
+      "pair_note": "Flat but natural; a more playful option would rely on the dance or baseball senses of SWING and SLIDE (e.g. BASEBALL: slide into base, swing the bat), which might be worth trialling."
+    },
+    {
+      "pair_id": "p_comforter__duck",
+      "a": "COMFORTER",
+      "b": "DUCK",
+      "hints": [
+        {
+          "text": "DOWN",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Down comforters (COMFORTER) are filled with duck down (DUCK), and 'duck down' as in crouching adds a bonus pun.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DOWN"],
+      "best_available": { "text": "DOWN", "why": "Accurate material fact with a built-in double meaning." },
+      "pair_note": "The explanation could optionally nod to 'duck down!' for extra delight, but it is accurate as written."
+    },
+    {
+      "pair_id": "p_candle__crayon",
+      "a": "CANDLE",
+      "b": "CRAYON",
+      "hints": [
+        {
+          "text": "WAX",
+          "mechanism": "shared_property",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Both candles (CANDLE) and crayons (CRAYON) are made mostly of wax.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["WAX"],
+      "best_available": { "text": "WAX", "why": "Accurate shared material; clicks immediately." },
+      "pair_note": "Clean."
+    },
+    {
+      "pair_id": "p_bill__buck",
+      "a": "BILL",
+      "b": "BUCK",
+      "hints": [
+        {
+          "text": "DOLLAR",
+          "mechanism": "phrase_join",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 1,
+          "delight": 0,
+          "recognizability": "broad",
+          "flags": ["synonym_of_target", "generic"],
+          "verdict": "FAIL",
+          "reason": "A buck is simply slang for a dollar (BUCK, plain synonym) and 'dollar bill' is a mechanical compound (BILL), so the hint is a synonym of one target plus a fill-in.",
+          "fix": null
+        }
+      ],
+      "strong_hints": [],
+      "best_available": { "text": "DOLLAR", "why": "Only hint offered; it reaches both words but breaks the synonym rule." },
+      "pair_note": "Needs a new hint that avoids the money sense of BUCK, or uses both money words indirectly, e.g. WASHINGTON (face on the one-dollar bill, the buck) or a route through the animal senses (bird's bill, male deer)."
+    },
+    {
+      "pair_id": "p_flower__shower",
+      "a": "FLOWER",
+      "b": "SHOWER",
+      "hints": [
+        {
+          "text": "APRIL",
+          "mechanism": "shared_reference",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The saying 'April showers bring May flowers' links April directly to showers (SHOWER) and, through the saying, to flowers (FLOWER).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["APRIL"],
+      "best_available": { "text": "APRIL", "why": "Rides an instantly familiar saying that names both targets." },
+      "pair_note": "Flower side technically belongs to May in the saying; some players may expect MAY, but April is also a spring-flower month so it holds."
+    },
+    {
+      "pair_id": "p_magnet__north",
+      "a": "MAGNET",
+      "b": "NORTH",
+      "hints": [
+        {
+          "text": "POLE",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "A magnet has north and south poles (MAGNET) and the North Pole is the planet's top (NORTH); the magnetic and geographic senses of pole meet neatly.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["POLE"],
+      "best_available": { "text": "POLE", "why": "Physics plus geography, both broad." },
+      "pair_note": "The explanation is a fair simplification: a compass's north-seeking pole points roughly toward the geographic North Pole (strictly toward Earth's north magnetic pole)."
+    },
+    {
+      "pair_id": "p_office__paper",
+      "a": "OFFICE",
+      "b": "PAPER",
+      "hints": [
+        {
+          "text": "DWIGHT",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dwight Schrute is a star of The Office (OFFICE) and a Dunder Mifflin paper salesman (PAPER).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DWIGHT"],
+      "best_available": { "text": "DWIGHT", "why": "Pop-culture character link that rewards fans and is still broad." },
+      "pair_note": "Good TV reference; The Office is widely known to a U.S. audience."
+    },
+    {
+      "pair_id": "p_shed__skin",
+      "a": "SHED",
+      "b": "SKIN",
+      "hints": [
+        {
+          "text": "SNAKE",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Snakes famously shed (SHED) their skin (SKIN).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["SNAKE"],
+      "best_available": { "text": "SNAKE", "why": "The natural animal fact for 'shed skin'." },
+      "pair_note": "'Sometimes in one piece' understates it (healthy sheds are usually one piece) but is not false."
+    },
+    {
+      "pair_id": "p_film__garbage",
+      "a": "FILM",
+      "b": "GARBAGE",
+      "hints": [
+        {
+          "text": "OSCAR",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The Oscar is the top film award (FILM) and Oscar the Grouch lives in a trash can (GARBAGE).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["OSCAR"],
+      "best_available": { "text": "OSCAR", "why": "A delightful two-way name pun; one of the best in the batch." },
+      "pair_note": "Excellent."
+    },
+    {
+      "pair_id": "p_backpack__map",
+      "a": "BACKPACK",
+      "b": "MAP",
+      "hints": [
+        {
+          "text": "DORA",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dora the Explorer's sidekicks are literally Backpack (BACKPACK) and Map (MAP).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DORA"],
+      "best_available": { "text": "DORA", "why": "Exact character link; a big 'oh, of course' moment." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_father__star-wars",
+      "a": "FATHER",
+      "b": "STAR WARS",
+      "hints": [
+        {
+          "text": "VADER",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Darth Vader is the Star Wars villain (STAR WARS) famous for revealing he is Luke's father (FATHER).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["VADER"],
+      "best_available": { "text": "VADER", "why": "The most famous father reveal in film." },
+      "pair_note": "The film line is 'No, I am your father'; quoting the familiar fragment is acceptable."
+    },
+    {
+      "pair_id": "p_sugar__umbrella",
+      "a": "SUGAR",
+      "b": "UMBRELLA",
+      "hints": [
+        {
+          "text": "POPPINS",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Mary Poppins floats in with her umbrella (UMBRELLA) and sings 'A Spoonful of Sugar' (SUGAR).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["POPPINS"],
+      "best_available": { "text": "POPPINS", "why": "Two iconic details of one character; satisfying reveal." },
+      "pair_note": "Strong."
+    },
+    {
+      "pair_id": "p_agent__platypus",
+      "a": "AGENT",
+      "b": "PLATYPUS",
+      "hints": [
+        {
+          "text": "PERRY",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "moderate",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Perry the Platypus (PLATYPUS) is secret Agent P (AGENT) in Phineas and Ferb.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["PERRY"],
+      "best_available": { "text": "PERRY", "why": "Exact character link, very satisfying for anyone who knows the show." },
+      "pair_note": "Kids' cartoon is widely known to younger adults and families; older players may need the explanation, hence moderate."
+    },
+    {
+      "pair_id": "p_genie__lamp",
+      "a": "GENIE",
+      "b": "LAMP",
+      "hints": [
+        {
+          "text": "ALADDIN",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Aladdin rubs the magic lamp (LAMP) and frees the Genie (GENIE).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ALADDIN"],
+      "best_available": { "text": "ALADDIN", "why": "The defining story for both words." },
+      "pair_note": "Easy but correct; three wishes matches the Disney version."
+    },
+    {
+      "pair_id": "p_hogwarts__owl",
+      "a": "HOGWARTS",
+      "b": "OWL",
+      "hints": [
+        {
+          "text": "HEDWIG",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Hedwig is Harry Potter's snowy owl (OWL) who lives with him at Hogwarts (HOGWARTS).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["HEDWIG"],
+      "best_available": { "text": "HEDWIG", "why": "Named character beats a generic word like MAIL; a nice reveal." },
+      "pair_note": "Harry Potter is broad enough for a U.S. audience."
+    },
+    {
+      "pair_id": "p_battery__rabbit",
+      "a": "BATTERY",
+      "b": "RABBIT",
+      "hints": [
+        {
+          "text": "ENERGIZER",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Energizer is a battery brand (BATTERY) whose mascot is the drumming pink bunny (RABBIT).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["ENERGIZER"],
+      "best_available": { "text": "ENERGIZER", "why": "Iconic brand mascot linking both words." },
+      "pair_note": "Bunny vs rabbit is close enough."
+    },
+    {
+      "pair_id": "p_archaeology__whip",
+      "a": "ARCHAEOLOGY",
+      "b": "WHIP",
+      "hints": [
+        {
+          "text": "INDIANA",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Indiana Jones is an archaeology professor (ARCHAEOLOGY) whose signature tool is his bullwhip (WHIP).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["INDIANA"],
+      "best_available": { "text": "INDIANA", "why": "Character with both traits as signatures; the state reading adds a light misdirect." },
+      "pair_note": "'By night' is playful shorthand for his adventurer side, not a literal claim; acceptable."
+    },
+    {
+      "pair_id": "p_casino__elvis",
+      "a": "CASINO",
+      "b": "ELVIS",
+      "hints": [
+        {
+          "text": "VEGAS",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "Las Vegas is casino capital (CASINO) and Elvis is tied to it through 'Viva Las Vegas', his famous residency and the city's impersonators and Elvis chapels (ELVIS).",
+          "fix": "Replace the unverifiable 'more Elvis impersonators than anywhere else' with a solid fact, e.g. 'Las Vegas is famous for its casinos, and Elvis sang Viva Las Vegas and headlined there for years.'"
+        }
+      ],
+      "strong_hints": ["VEGAS"],
+      "best_available": { "text": "VEGAS", "why": "Natural place link that covers both words." },
+      "pair_note": "Good hint; just firm up the explanation."
+    },
+    {
+      "pair_id": "p_chimney__pig",
+      "a": "CHIMNEY",
+      "b": "PIG",
+      "hints": [
+        {
+          "text": "WOLF",
+          "mechanism": "shared_reference",
+          "connection_to_a": 1,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": ["text_fix"],
+          "verdict": "PASS",
+          "reason": "In The Three Little Pigs (PIG) the big bad wolf climbs down the brick house's chimney (CHIMNEY) and lands in boiling water.",
+          "fix": "Name the pigs in the explanation, e.g. 'In The Three Little Pigs, the big bad wolf climbed down the brick house's chimney and landed in a pot of hot water.'"
+        }
+      ],
+      "strong_hints": ["WOLF"],
+      "best_available": { "text": "WOLF", "why": "A story-scene link that clicks once the chimney ending is remembered." },
+      "pair_note": "Chimney side is the weaker half since some retellings skip it, but the traditional story is well known."
+    },
+    {
+      "pair_id": "p_animal__puppet",
+      "a": "ANIMAL",
+      "b": "PUPPET",
+      "hints": [
+        {
+          "text": "MUPPET",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Animal is the wild Muppet drummer (ANIMAL, read as a name) and Muppets are puppets (PUPPET).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["MUPPET"],
+      "best_available": { "text": "MUPPET", "why": "Turns the board word ANIMAL into a character name, a real 'oh, nice'." },
+      "pair_note": "Judgment call: MUPPET is one letter from PUPPET and a type of puppet, but it is neither a contained string nor a plain synonym."
+    },
+    {
+      "pair_id": "p_balcony__shakespeare",
+      "a": "BALCONY",
+      "b": "SHAKESPEARE",
+      "hints": [
+        {
+          "text": "JULIET",
+          "mechanism": "shared_reference",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 1,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Juliet is Shakespeare's heroine (SHAKESPEARE) whose balcony scene is the play's most famous moment (BALCONY).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["JULIET"],
+      "best_available": { "text": "JULIET", "why": "Better than ROMEO because the balcony is hers." },
+      "pair_note": "The script says 'window' rather than balcony, but 'the balcony scene' is the universal name, so the explanation is fair."
+    },
+    {
+      "pair_id": "p_unicorn__whale",
+      "a": "UNICORN",
+      "b": "WHALE",
+      "hints": [
+        {
+          "text": "NARWHAL",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "The narwhal is a toothed whale (WHALE) nicknamed the unicorn of the sea for its long tusk (UNICORN).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NARWHAL"],
+      "best_available": { "text": "NARWHAL", "why": "A real animal that is literally both; a delightful fact." },
+      "pair_note": "NARWHAL shares the letters WHAL with WHALE but does not contain the target, so no contains_target flag; worth a second look by the owner."
+    },
+    {
+      "pair_id": "p_firefighter__spot",
+      "a": "FIREFIGHTER",
+      "b": "SPOT",
+      "hints": [
+        {
+          "text": "DALMATIAN",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Dalmatians are the classic firehouse dog (FIREFIGHTER) and are famous for their spots (SPOT).",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["DALMATIAN"],
+      "best_available": { "text": "DALMATIAN", "why": "Accurate history and an iconic look; clicks immediately." },
+      "pair_note": "Explanation about running beside horse-drawn fire wagons is accurate."
+    },
+    {
+      "pair_id": "p_dynamite__peace",
+      "a": "DYNAMITE",
+      "b": "PEACE",
+      "hints": [
+        {
+          "text": "NOBEL",
+          "mechanism": "fact",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Alfred Nobel invented dynamite (DYNAMITE) and endowed the Nobel Peace Prize (PEACE); the irony makes the reveal memorable.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["NOBEL"],
+      "best_available": { "text": "NOBEL", "why": "A true, ironic fact that delivers a strong 'oh, nice'." },
+      "pair_note": "Explanation is accurate."
+    },
+    {
+      "pair_id": "p_astronaut__mosquito",
+      "a": "ASTRONAUT",
+      "b": "MOSQUITO",
+      "hints": [
+        {
+          "text": "BUZZ",
+          "mechanism": "double_meaning",
+          "connection_to_a": 2,
+          "connection_to_b": 2,
+          "fairness": 2,
+          "delight": 2,
+          "recognizability": "broad",
+          "flags": [],
+          "verdict": "PASS",
+          "reason": "Buzz Aldrin (and Buzz Lightyear) for the astronaut side (ASTRONAUT) and the buzz of a mosquito (MOSQUITO); a clean name-versus-sound double.",
+          "fix": null
+        }
+      ],
+      "strong_hints": ["BUZZ"],
+      "best_available": { "text": "BUZZ", "why": "Playful double meaning that lands instantly once seen." },
+      "pair_note": "Excellent; Buzz Lightyear reinforces the astronaut side for younger players."
+    }
+  ]
+}

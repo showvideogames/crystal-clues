@@ -1,0 +1,340 @@
+{
+ "_metadata": {
+  "reviewer": "x04b-reviewer-c",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "input": "x04b-rc-input.json",
+  "rubric": "x04 rubric (natural-click standard + five content questions), 2026-10-19",
+  "independence": "I read only the instructions file and the input file x04b-rc-input.json; no other file, repository search, web or paid API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_bear__rabbit", "a": "BEAR", "b": "RABBIT",
+   "hints": [
+    {"text": "POOH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Pooh is the famous bear, and Rabbit is a well-known Hundred Acre Wood friend, so both sides click through the Pooh cast.", "fix": null}
+   ],
+   "strong_hints": ["POOH"], "pair_note": "Clean character-cast clue; Rabbit is slightly less iconic than Piglet or Tigger but still broadly known."
+  },
+  {
+   "pair_id": "p_bear__robin", "a": "BEAR", "b": "ROBIN",
+   "hints": [
+    {"text": "POOH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Pooh is a bear, and ROBIN resolves to Christopher Robin, a nice 'oh' moment since the board word looks like the bird.", "fix": null}
+   ],
+   "strong_hints": ["POOH"], "pair_note": "Good misdirection: ROBIN reads as a bird until Christopher Robin lands."
+  },
+  {
+   "pair_id": "p_bear__tiger", "a": "BEAR", "b": "TIGER",
+   "hints": [
+    {"text": "POOH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Pooh is a bear and Tigger is a tiger, two of the most iconic Hundred Acre Wood animals.", "fix": null}
+   ],
+   "strong_hints": ["POOH"], "pair_note": "Strong, warm clue; Tigger makes the TIGER side instant."
+  },
+  {
+   "pair_id": "p_blue__fast", "a": "BLUE", "b": "FAST",
+   "hints": [
+    {"text": "SONIC", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Sonic the Hedgehog is defined by being blue and being fast, both core traits of the character.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"], "pair_note": "Easy but clean; Sonic's two defining traits."
+  },
+  {
+   "pair_id": "p_blue__ring", "a": "BLUE", "b": "RING",
+   "hints": [
+    {"text": "SONIC", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Sonic is the blue hedgehog, and collecting golden rings is the signature mechanic of the games.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"], "pair_note": "Rings are well known to anyone who has seen the games; fair and pleasant."
+  },
+  {
+   "pair_id": "p_boom__fast", "a": "BOOM", "b": "FAST",
+   "hints": [
+    {"text": "SONIC", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BOOM via 'sonic boom' and FAST via Sonic the speedy hedgehog (and supersonic speed itself), a satisfying two-way click.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"], "pair_note": "Both readings of SONIC reinforce speed, so the click is very natural."
+  },
+  {
+   "pair_id": "p_boom__ring", "a": "BOOM", "b": "RING",
+   "hints": [
+    {"text": "SONIC", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BOOM via the physics term 'sonic boom' and RING via the hedgehog's golden rings, a real double meaning.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"], "pair_note": "Nice split between science and the video game."
+  },
+  {
+   "pair_id": "p_boom__video-game", "a": "BOOM", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "SONIC", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BOOM via 'sonic boom' and VIDEO GAME via Sega's Sonic the Hedgehog; fair, though VIDEO GAME is a broad target.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"], "pair_note": "Bonus: 'Sonic Boom' is also a Sonic spin-off title, which tightens the link."
+  },
+  {
+   "pair_id": "p_boxing__party", "a": "BOXING", "b": "PARTY",
+   "hints": [
+    {"text": "PUNCH", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "Boxers throw punches and a punch bowl is a party staple, a classic instant double meaning.", "fix": null}
+   ],
+   "strong_hints": ["PUNCH"], "pair_note": "Textbook double meaning; one of the best in the batch."
+  },
+  {
+   "pair_id": "p_bread__smell", "a": "BREAD", "b": "SMELL",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BREAD via the very familiar 'garlic bread' and SMELL via garlic's notorious odor (garlic breath).", "fix": null}
+   ],
+   "strong_hints": ["GARLIC"], "pair_note": "Easy and fair; the SMELL side is a property rather than a phrase, which keeps it from feeling mechanical."
+  },
+  {
+   "pair_id": "p_bread__vampire", "a": "BREAD", "b": "VAMPIRE",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "BREAD via 'garlic bread' and VAMPIRE via the famous folklore that garlic repels vampires; the contrast is fun.", "fix": null}
+   ],
+   "strong_hints": ["GARLIC"], "pair_note": "Funny juxtaposition (a vampire's worst side dish)."
+  },
+  {
+   "pair_id": "p_bulb__vampire", "a": "BULB", "b": "VAMPIRE",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "fact", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "BORDERLINE",
+     "reason": "VAMPIRE is instant via garlic folklore, but BULB reads as a light bulb and U.S. cooks usually say 'head of garlic', so the garlic-bulb side takes effort.", "fix": null}
+   ],
+   "strong_hints": [], "pair_note": "True and defensible once explained, but the BULB side is weak for most players; genuinely close to PASS."
+  },
+  {
+   "pair_id": "p_christmas__cookie", "a": "CHRISTMAS", "b": "COOKIE",
+   "hints": [
+    {"text": "ELF", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CHRISTMAS via Santa's elves and COOKIE via the Keebler elves' hollow-tree bakery, a familiar U.S. brand mascot.", "fix": null}
+   ],
+   "strong_hints": ["ELF"], "pair_note": "Keebler gives a fun second route; SANTA (milk and cookies) would also work, but ELF is more interesting."
+  },
+  {
+   "pair_id": "p_christmas__ear", "a": "CHRISTMAS", "b": "EAR",
+   "hints": [
+    {"text": "ELF", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "CHRISTMAS via Santa's elves and EAR via the iconic pointy elf ears, both instantly pictured.", "fix": null}
+   ],
+   "strong_hints": ["ELF"], "pair_note": "Simple visual clue; pleasant rather than surprising."
+  },
+  {
+   "pair_id": "p_cow__dice", "a": "COW", "b": "DICE",
+   "hints": [
+    {"text": "SPOTS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "COW via black-and-white Holstein spots and DICE via the spots (pips) on each face, a neat visual analogy.", "fix": null}
+   ],
+   "strong_hints": ["SPOTS"], "pair_note": "Cow print plus dice dots is a nice visual pairing."
+  },
+  {
+   "pair_id": "p_deer__dice", "a": "DEER", "b": "DICE",
+   "hints": [
+    {"text": "SPOTS", "mechanism": "shared_property", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DICE via pips and DEER via a spotted fawn (think Bambi); the deer side needs a beat because adult deer are unspotted, but it clicks.", "fix": null}
+   ],
+   "strong_hints": ["SPOTS"], "pair_note": "Slightly weaker than the ladybug/giraffe/cow SPOTS pairs; still fair."
+  },
+  {
+   "pair_id": "p_dice__giraffe", "a": "DICE", "b": "GIRAFFE",
+   "hints": [
+    {"text": "SPOTS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DICE via pips and GIRAFFE via its famous brown spot pattern, both strong visual images.", "fix": null}
+   ],
+   "strong_hints": ["SPOTS"], "pair_note": "Solid visual analogy."
+  },
+  {
+   "pair_id": "p_dice__ladybug", "a": "DICE", "b": "LADYBUG",
+   "hints": [
+    {"text": "SPOTS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DICE via black pips and LADYBUG via its black spots; the two even look alike (black dots on a solid shell/face).", "fix": null}
+   ],
+   "strong_hints": ["SPOTS"], "pair_note": "Best of the SPOTS family: a ladybug genuinely resembles a die face."
+  },
+  {
+   "pair_id": "p_dice__sun", "a": "DICE", "b": "SUN",
+   "hints": [
+    {"text": "SPOTS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DICE via pips and SUN via the well-known word 'sunspots'; the sun side takes a moment but is a real, familiar fact.", "fix": null}
+   ],
+   "strong_hints": ["SPOTS"], "pair_note": "SUN is the least visual of the SPOTS targets but 'sunspots' is common knowledge."
+  },
+  {
+   "pair_id": "p_disney__honey", "a": "DISNEY", "b": "HONEY",
+   "hints": [
+    {"text": "POOH", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS",
+     "reason": "HONEY via Pooh's honey pots is instant, and DISNEY via the Disney Winnie the Pooh franchise is true though DISNEY is a broad umbrella target.", "fix": null}
+   ],
+   "strong_hints": ["POOH"], "pair_note": "Fair, but the DISNEY side is categorical rather than specific; flagged uncertain."
+  },
+  {
+   "pair_id": "p_dwarf__santa", "a": "DWARF", "b": "SANTA",
+   "hints": [
+    {"text": "ELF", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "DWARF via the classic elves-and-dwarves fantasy pairing (Tolkien, D&D) and SANTA via his workshop elves.", "fix": null}
+   ],
+   "strong_hints": ["ELF"], "pair_note": "Both sides familiar; pleasant fantasy-meets-holiday split."
+  },
+  {
+   "pair_id": "p_ear__movie", "a": "EAR", "b": "MOVIE",
+   "hints": [
+    {"text": "ELF", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "EAR via pointy elf ears and MOVIE via Will Ferrell's hugely popular 'Elf'; MOVIE is broad but the film is iconic.", "fix": null}
+   ],
+   "strong_hints": ["ELF"], "pair_note": "MOVIE is a generic target, but 'Elf' is a top-tier U.S. Christmas film."
+  },
+  {
+   "pair_id": "p_ear__santa", "a": "EAR", "b": "SANTA",
+   "hints": [
+    {"text": "ELF", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "EAR via pointy elf ears and SANTA via his elf helpers; easy and clean.", "fix": null}
+   ],
+   "strong_hints": ["ELF"], "pair_note": "Easy, fair."
+  },
+  {
+   "pair_id": "p_ear__toy", "a": "EAR", "b": "TOY",
+   "hints": [
+    {"text": "ELF", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "EAR via pointy elf ears and TOY via elves building toys in Santa's workshop.", "fix": null}
+   ],
+   "strong_hints": ["ELF"], "pair_note": "Easy, fair."
+  },
+  {
+   "pair_id": "p_fast__video-game", "a": "FAST", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "SONIC", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "FAST via Sonic's trademark speed and VIDEO GAME via Sega's Sonic the Hedgehog series.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"], "pair_note": "Straightforward and fair."
+  },
+  {
+   "pair_id": "p_giraffe__sun", "a": "GIRAFFE", "b": "SUN",
+   "hints": [
+    {"text": "SPOTS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "GIRAFFE via its spot pattern and SUN via 'sunspots'; the sun side needs a beat but is familiar.", "fix": null}
+   ],
+   "strong_hints": ["SPOTS"], "pair_note": "Fine; SUN is the softer side."
+  },
+  {
+   "pair_id": "p_honey__owl", "a": "HONEY", "b": "OWL",
+   "hints": [
+    {"text": "POOH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "HONEY via Pooh's honey pots and OWL via Owl, a recognizable member of the Hundred Acre Wood cast.", "fix": null}
+   ],
+   "strong_hints": ["POOH"], "pair_note": "Owl is a second-tier character but still widely known."
+  },
+  {
+   "pair_id": "p_honey__pig", "a": "HONEY", "b": "PIG",
+   "hints": [
+    {"text": "POOH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "HONEY via Pooh's love of honey and PIG via Piglet, his best-known companion.", "fix": null}
+   ],
+   "strong_hints": ["POOH"], "pair_note": "Warm and instant once Piglet surfaces."
+  },
+  {
+   "pair_id": "p_honey__wood", "a": "HONEY", "b": "WOOD",
+   "hints": [
+    {"text": "POOH", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "HONEY via Pooh's honey and WOOD via the Hundred Acre Wood, a well-known setting that gives a nice 'oh' moment.", "fix": null}
+   ],
+   "strong_hints": ["POOH"], "pair_note": "The setting link is a pleasant non-obvious second route."
+  },
+  {
+   "pair_id": "p_ladybug__sun", "a": "LADYBUG", "b": "SUN",
+   "hints": [
+    {"text": "SPOTS", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "LADYBUG via its black spots and SUN via 'sunspots'; one strong side and one familiar-but-softer side.", "fix": null}
+   ],
+   "strong_hints": ["SPOTS"], "pair_note": "Fine; same SUN softness as the other sunspot pairs."
+  },
+  {
+   "pair_id": "p_marriage__phone", "a": "MARRIAGE", "b": "PHONE",
+   "hints": [
+    {"text": "RING", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "MARRIAGE via the wedding ring (noun) and PHONE via a phone ringing (verb), an instant double meaning.", "fix": null}
+   ],
+   "strong_hints": ["RING"], "pair_note": "Classic noun/verb split; easy and satisfying."
+  },
+  {
+   "pair_id": "p_piano__test", "a": "PIANO", "b": "TEST",
+   "hints": [
+    {"text": "KEY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "PIANO via its 88 keys and TEST via the answer key, two clearly different senses of KEY.", "fix": null}
+   ],
+   "strong_hints": ["KEY"], "pair_note": "Clean double meaning; facts correct (88 keys)."
+  },
+  {
+   "pair_id": "p_pie__test", "a": "PIE", "b": "TEST",
+   "hints": [
+    {"text": "KEY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "PIE via the familiar 'key lime pie' and TEST via the answer key; both phrases are everyday U.S. usage.", "fix": null}
+   ],
+   "strong_hints": ["KEY"], "pair_note": "Half phrase-join, half double meaning; fair and pleasant."
+  },
+  {
+   "pair_id": "p_powder__smell", "a": "POWDER", "b": "SMELL",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "phrase_join", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 0, "recognizability": "broad", "better_hint": null, "flags": ["phrase_join_weak"], "verdict": "BORDERLINE",
+     "reason": "SMELL via garlic's strong odor works, but POWDER via 'garlic powder' is a flat spice-jar join that GARLIC does not naturally summon, so the pairing feels mechanical.", "fix": null}
+   ],
+   "strong_hints": [], "pair_note": "True but unsatisfying; POWDER more readily evokes baby powder or snow, and the pairing lacks a fun click."
+  },
+  {
+   "pair_id": "p_press__smell", "a": "PRESS", "b": "SMELL",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS",
+     "reason": "PRESS via the garlic press, a garlic-specific kitchen gadget, and SMELL via garlic's strong odor; a modest but real click.", "fix": null}
+   ],
+   "strong_hints": ["GARLIC"], "pair_note": "Stronger than POWDER+SMELL because a garlic press is a distinctive object, but still on the easy/flat side; second opinion welcome."
+  },
+  {
+   "pair_id": "p_ring__video-game", "a": "RING", "b": "VIDEO GAME",
+   "hints": [
+    {"text": "SONIC", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "RING via the golden rings Sonic collects and VIDEO GAME via Sega's Sonic series.", "fix": null}
+   ],
+   "strong_hints": ["SONIC"], "pair_note": "Fair; both sides from the same game."
+  },
+  {
+   "pair_id": "p_salt__vampire", "a": "SALT", "b": "VAMPIRE",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "SALT via the familiar seasoning 'garlic salt' and VAMPIRE via garlic-repels-vampires folklore; the vampire side carries the fun.", "fix": null}
+   ],
+   "strong_hints": ["GARLIC"], "pair_note": "Garlic salt is common in U.S. kitchens; pleasant."
+  },
+  {
+   "pair_id": "p_saturn__wedding", "a": "SATURN", "b": "WEDDING",
+   "hints": [
+    {"text": "RING", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "SATURN via its famous planetary rings and WEDDING via exchanged wedding rings; a lovely cosmic-meets-romantic split.", "fix": null}
+   ],
+   "strong_hints": ["RING"], "pair_note": "One of the nicest in the batch."
+  },
+  {
+   "pair_id": "p_smell__vampire", "a": "SMELL", "b": "VAMPIRE",
+   "hints": [
+    {"text": "GARLIC", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "SMELL via garlic's pungent odor and VAMPIRE via the garlic folklore; the two are linked in popular culture (vampires recoil from the stench).", "fix": null}
+   ],
+   "strong_hints": ["GARLIC"], "pair_note": "Best of the GARLIC pairs: both sides are things everyone knows about garlic."
+  },
+  {
+   "pair_id": "p_syrup__toy", "a": "SYRUP", "b": "TOY",
+   "hints": [
+    {"text": "ELF", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["uncertain"], "verdict": "PASS",
+     "reason": "TOY via Santa's toy-building elves and SYRUP via Buddy the Elf's maple-syrup spaghetti, a beloved scene that delights fans though non-viewers may miss it.", "fix": null}
+   ],
+   "strong_hints": ["ELF"], "pair_note": "Big payoff for anyone who has seen 'Elf'; the SYRUP side depends on that film memory, hence uncertain."
+  },
+  {
+   "pair_id": "p_tie__violin", "a": "TIE", "b": "VIOLIN",
+   "hints": [
+    {"text": "BOW", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS",
+     "reason": "TIE via the bow tie and VIOLIN via the violin bow, a crisp double meaning.", "fix": null}
+   ],
+   "strong_hints": ["BOW"], "pair_note": "Excellent, instant double meaning."
+  }
+ ]
+}

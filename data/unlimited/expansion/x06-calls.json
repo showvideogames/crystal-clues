@@ -1,0 +1,32 @@
+{
+  "_metadata": {
+    "purpose": "x06 review calls (approved: 2, max 3 incl. recovery). Agent tool, model opus (echo claude-opus-5-5), included allowance only; extraUsage.enabled=false verified via get_usage immediately before dispatch (5h 6%, weekly 72%) and after (5h 8%, weekly 72%)."
+  },
+  "calls": [
+    {
+      "n": 1,
+      "id": "x06-reviewer-a",
+      "input": "data/unlimited/library/reviews/x06-ra-input.json",
+      "output": "data/unlimited/library/reviews/x06-ra-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 86758,
+      "durationMs": 151977,
+      "result": "23 PASS, 2 BORDERLINE (DRIVER for BUS + GOLF, EXCALIBUR for LAKE + SWORD)"
+    },
+    {
+      "n": 2,
+      "id": "x06-reviewer-b",
+      "input": "data/unlimited/library/reviews/x06-rb-input.json",
+      "output": "data/unlimited/library/reviews/x06-rb-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 87186,
+      "durationMs": 167578,
+      "result": "26 PASS; 1 text fix (TICKLE)"
+    }
+  ],
+  "totals": {
+    "calls": 2,
+    "ceiling": 3,
+    "tokens": 173944
+  }
+}

@@ -1,0 +1,588 @@
+{
+ "_metadata": {
+  "reviewer": "x06-reviewer-a",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-19",
+  "input": "x06-ra-input.json",
+  "rubric": "x06 rubric (balanced owner standard; hand-proposed distinct hints), 2026-10-19",
+  "independence": "I read only the instructions file and the single input file x06-ra-input.json; no other file, repository search, web or paid API was used.",
+  "notes": "No pair in the input carried an already_served hint, and no SPHINX hint was present in the input despite the brief mentioning it. Several hint words repeat across pairs (GOLDILOCKS x3, SCROOGE x3, EXCALIBUR x3, ZEUS x2, GUTTER x2, BEETLE x2, DRIVER x2); each is judged per pair, but the board builder should avoid placing a third word that the same hint also fits (e.g. CAR on a BUS+GOLF DRIVER board, KING or STONE on a LAKE+SWORD EXCALIBUR board)."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_bear__bed",
+   "a": "BEAR",
+   "b": "BED",
+   "hints": [
+    {
+     "text": "GOLDILOCKS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Storybook route on both sides: the three bears are the story's core and Baby Bear's 'just right' bed is one of its three famous beats, so it clicks instantly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GOLDILOCKS"],
+   "pair_note": "Clean storybook clue; keep CHAIR and BLOND off the same board since GOLDILOCKS fits them too."
+  },
+  {
+   "pair_id": "p_bear__blond",
+   "a": "BEAR",
+   "b": "BLOND",
+   "hints": [
+    {
+     "text": "GOLDILOCKS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEAR via the three bears story, BLOND via the name itself (golden locks), giving a nice second-layer 'oh' when the player notices the name spells out her hair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GOLDILOCKS"],
+   "pair_note": "The strongest of the three Goldilocks pairs because the name itself carries the BLOND side."
+  },
+  {
+   "pair_id": "p_bear__chair",
+   "a": "BEAR",
+   "b": "CHAIR",
+   "hints": [
+    {
+     "text": "GOLDILOCKS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Storybook route on both sides: the three bears, and Baby Bear's little chair that Goldilocks breaks, a well-known story beat.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GOLDILOCKS"],
+   "pair_note": "Good; same board-composition caution as the other Goldilocks pairs (BED, BLOND, PORRIDGE)."
+  },
+  {
+   "pair_id": "p_bird__internet",
+   "a": "BIRD",
+   "b": "INTERNET",
+   "hints": [
+    {
+     "text": "TWEET",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["dated"],
+     "verdict": "PASS",
+     "reason": "BIRD via birdsong (birds tweet), INTERNET via Twitter posts; Twitter's rebrand to X makes it slightly dated, but 'tweet' is still universally understood and the past-tense text is accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TWEET"],
+   "pair_note": "Dated only mildly; the word is still in everyday use, and the Twitter logo was literally a bird, which reinforces the click."
+  },
+  {
+   "pair_id": "p_bowling__change",
+   "a": "BOWLING",
+   "b": "CHANGE",
+   "hints": [
+    {
+     "text": "SPARE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOWLING via the scoring term (a spare), CHANGE via the instantly familiar phrase 'spare change'; both sides are immediate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPARE"],
+   "pair_note": "Solid sports double meaning; text is accurate (all ten pins using both rolls of a frame)."
+  },
+  {
+   "pair_id": "p_bowling__rain",
+   "a": "BOWLING",
+   "b": "RAIN",
+   "hints": [
+    {
+     "text": "GUTTER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOWLING via the gutter ball, RAIN via the rain gutter on a house; two very different everyday gutters make a satisfying click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GUTTER"],
+   "pair_note": "Good; avoid ROOF on the same board."
+  },
+  {
+   "pair_id": "p_bowling__roof",
+   "a": "BOWLING",
+   "b": "ROOF",
+   "hints": [
+    {
+     "text": "GUTTER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOWLING via the gutter ball, ROOF via the roof gutter that carries rainwater; both are everyday and immediate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GUTTER"],
+   "pair_note": "Slightly less vivid than BOWLING + RAIN but equally fair; avoid RAIN on the same board."
+  },
+  {
+   "pair_id": "p_bug__car",
+   "a": "BUG",
+   "b": "CAR",
+   "hints": [
+    {
+     "text": "BEETLE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BUG because a beetle is a bug (and the VW Beetle's nickname is literally 'the Bug'), CAR via the Volkswagen Beetle; the doubled BUG route makes it a neat click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BEETLE"],
+   "pair_note": "Beetle is a kind of bug, not a synonym, so no synonym problem; keep INSECT off the same board."
+  },
+  {
+   "pair_id": "p_bus__golf",
+   "a": "BUS",
+   "b": "GOLF",
+   "hints": [
+    {
+     "text": "DRIVER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["phrase_join_weak", "generic", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "GOLF via the driver club is strong, but the BUS side rests on 'bus driver', and DRIVER points at CAR, TAXI or TRUCK at least as readily, so the bus link is real but not where most players would land.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Fair but the BUS side is not distinctive; CAR + GOLF is the natural home for DRIVER. Usable only on a board with no other vehicle. I could not name a clearly better one-word hint for this pair."
+  },
+  {
+   "pair_id": "p_car__cat",
+   "a": "CAR",
+   "b": "CAT",
+   "hints": [
+    {
+     "text": "JAGUAR",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAR via the luxury car brand, CAT via the jaguar big cat; familiar brand wordplay that clicks immediately.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JAGUAR"],
+   "pair_note": "Classic and fair; text accurate (jaguars are rainforest big cats)."
+  },
+  {
+   "pair_id": "p_car__golf",
+   "a": "CAR",
+   "b": "GOLF",
+   "hints": [
+    {
+     "text": "DRIVER",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAR via the person who drives it, GOLF via the driver club used to tee off; a clean everyday double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["DRIVER"],
+   "pair_note": "The natural home for DRIVER; keep BUS/TAXI/TRUCK off the board."
+  },
+  {
+   "pair_id": "p_car__horse",
+   "a": "CAR",
+   "b": "HORSE",
+   "hints": [
+    {
+     "text": "MUSTANG",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAR via the Ford Mustang, HORSE via the wild mustang (the car's own logo is a galloping horse), so both sides land at once.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MUSTANG"],
+   "pair_note": "One of the best brand double meanings in the batch."
+  },
+  {
+   "pair_id": "p_car__insect",
+   "a": "CAR",
+   "b": "INSECT",
+   "hints": [
+    {
+     "text": "BEETLE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAR via the Volkswagen Beetle, INSECT because a beetle is an insect; immediate and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BEETLE"],
+   "pair_note": "Fine; a touch flatter than BUG + CAR, and BUG should not share the board."
+  },
+  {
+   "pair_id": "p_cat__shoe",
+   "a": "CAT",
+   "b": "SHOE",
+   "hints": [
+    {
+     "text": "PUMA",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAT via the puma (cougar/mountain lion), SHOE via the widely sold Puma sneaker brand with its leaping-cat logo; familiar to a general U.S. audience and not dated.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PUMA"],
+   "pair_note": "Flagged as possibly weak in the brief, but Puma remains a mainstream sneaker brand; 'big cat' is colloquial (the puma is not a roaring Panthera cat) but not misleading for players."
+  },
+  {
+   "pair_id": "p_christmas__ghost",
+   "a": "CHRISTMAS",
+   "b": "GHOST",
+   "hints": [
+    {
+     "text": "SCROOGE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHRISTMAS and GHOST both via A Christmas Carol, where the ghosts of Christmas Past, Present and Yet to Come visit Scrooge; universally known.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCROOGE"],
+   "pair_note": "Strong; avoid DUCK or RICH on the same board."
+  },
+  {
+   "pair_id": "p_duck__rich",
+   "a": "DUCK",
+   "b": "RICH",
+   "hints": [
+    {
+     "text": "SCROOGE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DUCK via Scrooge McDuck, RICH via his money bin (and the Dickens miser behind the name), a fun pop-culture click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCROOGE"],
+   "pair_note": "Very satisfying; the DuckTales image of him diving into gold coins sells it."
+  },
+  {
+   "pair_id": "p_football__plane",
+   "a": "FOOTBALL",
+   "b": "PLANE",
+   "hints": [
+    {
+     "text": "TOUCHDOWN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "FOOTBALL via the six-point score, PLANE via a plane touching down on landing; a crisp sports double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TOUCHDOWN"],
+   "pair_note": "Excellent; text accurate."
+  },
+  {
+   "pair_id": "p_fruit__phone",
+   "a": "FRUIT",
+   "b": "PHONE",
+   "hints": [
+    {
+     "text": "BLACKBERRY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": "APPLE",
+     "flags": ["dated"],
+     "verdict": "PASS",
+     "reason": "FRUIT via the blackberry itself, PHONE via the BlackBerry handset; the phone is no longer sold but is still widely remembered, and it is a phone in its own right, which makes the click direct.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BLACKBERRY"],
+   "pair_note": "APPLE (iPhone maker) is the more current alternative and also good; both can live side by side, BLACKBERRY being the more distinctive one. Younger players may need a beat on the phone side."
+  },
+  {
+   "pair_id": "p_ghost__rich",
+   "a": "GHOST",
+   "b": "RICH",
+   "hints": [
+    {
+     "text": "SCROOGE",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GHOST via the Christmas Carol ghosts, RICH via Scrooge's wealth and miserliness; both sides are central to the character.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCROOGE"],
+   "pair_note": "Good, though CHRISTMAS, DUCK or MONEY on the board would compete."
+  },
+  {
+   "pair_id": "p_god__lightning",
+   "a": "GOD",
+   "b": "LIGHTNING",
+   "hints": [
+    {
+     "text": "ZEUS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GOD via king of the Greek gods, LIGHTNING via his signature lightning bolt; an easy, clean mythology click.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ZEUS"],
+   "pair_note": "Easy but satisfying; THOR would compete if HAMMER were in play, but ZEUS is the iconic bolt-thrower."
+  },
+  {
+   "pair_id": "p_hair__witch",
+   "a": "HAIR",
+   "b": "WITCH",
+   "hints": [
+    {
+     "text": "RAPUNZEL",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HAIR via 'let down your hair', WITCH via the witch (enchantress, Mother Gothel in Tangled) who locks her in the tower; both are core story elements.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["RAPUNZEL"],
+   "pair_note": "Strong storybook clue; TOWER on the board would compete with WITCH."
+  },
+  {
+   "pair_id": "p_king__sword",
+   "a": "KING",
+   "b": "SWORD",
+   "hints": [
+    {
+     "text": "EXCALIBUR",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SWORD because Excalibur is the legendary sword, KING via King Arthur who wields it; instant and accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["EXCALIBUR"],
+   "pair_note": "The default home for EXCALIBUR; keep STONE and LAKE off the board."
+  },
+  {
+   "pair_id": "p_lake__sword",
+   "a": "LAKE",
+   "b": "SWORD",
+   "hints": [
+    {
+     "text": "EXCALIBUR",
+     "mechanism": "shared_reference",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "SWORD is immediate, but the LAKE side depends on remembering the Lady of the Lake, which is known but well behind King Arthur and the sword in the stone, so many players would reach for KING or STONE first and some would not see LAKE at all.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Accurate and defensible (Malory's Lady of the Lake gives Arthur Excalibur), and it would work on a board without KING/STONE; the call between PASS and BORDERLINE is genuinely close."
+  },
+  {
+   "pair_id": "p_olympus__thunder",
+   "a": "OLYMPUS",
+   "b": "THUNDER",
+   "hints": [
+    {
+     "text": "ZEUS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "OLYMPUS via Zeus ruling from Mount Olympus (familiar from Disney's Hercules and Percy Jackson), THUNDER via his thunderbolts; both sides are core to Zeus.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ZEUS"],
+   "pair_note": "Good; keep GOD and LIGHTNING off the same board."
+  },
+  {
+   "pair_id": "p_stone__sword",
+   "a": "STONE",
+   "b": "SWORD",
+   "hints": [
+    {
+     "text": "EXCALIBUR",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SWORD via Excalibur itself, STONE via the sword in the stone (Disney's The Sword in the Stone), the most famous Arthurian image; the explanation correctly hedges 'in many retellings' since some versions separate the two swords.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["EXCALIBUR"],
+   "pair_note": "Strong and well hedged."
+  }
+ ]
+}

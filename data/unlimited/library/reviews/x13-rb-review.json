@@ -1,0 +1,978 @@
+{
+ "_metadata": {
+  "reviewer": "x13-reviewer-b",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x13-rb-input.json",
+  "rubric": "x13 rubric (template 2026-10-20)",
+  "independence": "I read only x13-rb-input.json (plus re-reading it in a scratch script solely to verify pair_ids and hint texts match); no other repository file, search, web or paid API was used."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_america__shield",
+   "a": "AMERICA",
+   "b": "SHIELD",
+   "hints": [
+    {
+     "text": "CAPTAIN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "AMERICA via the name Captain America, SHIELD via his iconic round shield; one huge Marvel reference that lands both instantly.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CAPTAIN"],
+   "pair_note": "Clean, easy shared reference; fine as is."
+  },
+  {
+   "pair_id": "p_band__beach",
+   "a": "BAND",
+   "b": "BEACH",
+   "hints": [
+    {
+     "text": "BOYS",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "BEACH via the Beach Boys, BAND both because the Beach Boys are a band and via the everyday phrase 'boy band', which gives BAND an independent second route the text does not mention.",
+     "fix": "BAND line: \"The Beach Boys are a band, and so is any boy band.\""
+    }
+   ],
+   "strong_hints": ["BOYS"],
+   "pair_note": "Works better than a plain 'name contains the target' join because 'boy band' independently reaches BAND; worth saying so in the line."
+  },
+  {
+   "pair_id": "p_band__guitar",
+   "a": "BAND",
+   "b": "GUITAR",
+   "hints": [
+    {
+     "text": "SOLO",
+     "mechanism": "scene",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GUITAR via the guitar solo (strong), BAND via solos taken inside a band and the familiar contrast of a singer leaving the band to go solo; the BAND side is softer but honest.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SOLO"],
+   "pair_note": "The 'going solo vs. staying in the band' idea is the more satisfying BAND route; the explanation could lean on it, but the current text is accurate."
+  },
+  {
+   "pair_id": "p_band__jungle",
+   "a": "BAND",
+   "b": "JUNGLE",
+   "hints": [
+    {
+     "text": "GUNS",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["needs_explanation"],
+     "verdict": "PASS",
+     "reason": "BAND via Guns N' Roses as a classic rock band, JUNGLE via their signature hit 'Welcome to the Jungle' (a stadium and sports staple); it takes a beat to get from GUNS to the band, but it clicks hard once it does.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["GUNS"],
+   "pair_note": "Category (BAND) plus a famous song title; the song is widely known even to non-fans. Fair for a general U.S. audience, though the bare word GUNS needs the leap to the band name."
+  },
+  {
+   "pair_id": "p_band__rock",
+   "a": "BAND",
+   "b": "ROCK",
+   "hints": [
+    {
+     "text": "ROLL",
+     "mechanism": "phrase_join",
+     "connection_to_a": 1,
+     "connection_to_b": 2,
+     "fairness": 1,
+     "delight": 0,
+     "recognizability": "broad",
+     "better_hint": "GARAGE",
+     "flags": ["one_sided", "phrase_join_weak", "better_hint_exists"],
+     "verdict": "BORDERLINE",
+     "reason": "ROCK via 'rock and roll' is instant, but BAND is reached only by tacking 'band' onto the whole phrase (or a stretch to 'drum roll'); ROLL on its own does not call up BAND.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "GARAGE (garage band, garage rock) would be a true two-sided phrase join for this pair; ROLL leans almost entirely on ROCK."
+  },
+  {
+   "pair_id": "p_band__star",
+   "a": "BAND",
+   "b": "STAR",
+   "hints": [
+    {
+     "text": "ROCK",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BAND via 'rock band' and STAR via 'rock star', both instantly familiar phrases that also belong to one coherent world.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["ROCK"],
+   "pair_note": "Easy but clean; the two phrases reinforce each other thematically, which lifts it above a bare phrase join."
+  },
+  {
+   "pair_id": "p_baseball__park",
+   "a": "BASEBALL",
+   "b": "PARK",
+   "hints": [
+    {
+     "text": "SLIDE",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BASEBALL via sliding into a base, PARK via the playground slide; a clear verb/noun double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SLIDE"],
+   "pair_note": "Solid double meaning."
+  },
+  {
+   "pair_id": "p_beach__hand",
+   "a": "BEACH",
+   "b": "HAND",
+   "hints": [
+    {
+     "text": "PALM",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "HAND via the palm of the hand, BEACH via palm trees; a classic, clean double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PALM"],
+   "pair_note": "Classic; nothing to change."
+  },
+  {
+   "pair_id": "p_bee__chess",
+   "a": "BEE",
+   "b": "CHESS",
+   "hints": [
+    {
+     "text": "QUEEN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BEE via the queen bee, CHESS via the queen piece (accurately called the strongest); both instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["QUEEN"],
+   "pair_note": "Classic and accurate."
+  },
+  {
+   "pair_id": "p_bee__phone",
+   "a": "BEE",
+   "b": "PHONE",
+   "hints": [
+    {
+     "text": "BUZZ",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "BEE via bees buzzing, PHONE via a vibrating phone buzzing; both are the everyday sense of the word.",
+     "fix": "Bees buzz, and so does a phone on vibrate."
+    }
+   ],
+   "strong_hints": ["BUZZ"],
+   "pair_note": "Minor wording: a phone buzzes on vibrate; 'on silent' can mean no vibration at all on some phones."
+  },
+  {
+   "pair_id": "p_birthday__magic",
+   "a": "BIRTHDAY",
+   "b": "MAGIC",
+   "hints": [
+    {
+     "text": "HAT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BIRTHDAY via the cone party hat, MAGIC via the magician's top hat and the rabbit pulled from it; both iconic images.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HAT"],
+   "pair_note": "Easy, pleasant; HAT is broad on a board but both targets are the most iconic hats."
+  },
+  {
+   "pair_id": "p_block__ghost",
+   "a": "BLOCK",
+   "b": "GHOST",
+   "hints": [
+    {
+     "text": "BUSTER",
+     "mechanism": "phrase_join",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "GHOST via Ghostbusters, BLOCK via Blockbuster (the movie term and the video store); two instantly familiar names with a fun nostalgic snap.",
+     "fix": "Ghostbusters and Blockbuster are both built on the word \"buster.\""
+    }
+   ],
+   "strong_hints": ["BUSTER"],
+   "pair_note": "A phrase join that earns its PASS: both compounds are household names. Explanation is slightly off because Ghostbusters ends in 'busters', not 'buster'."
+  },
+  {
+   "pair_id": "p_box__car",
+   "a": "BOX",
+   "b": "CAR",
+   "hints": [
+    {
+     "text": "JACK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BOX via the jack-in-the-box toy, CAR via the car jack used to change a tire; two distinct, familiar senses.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JACK"],
+   "pair_note": "Good double meaning. Note JACK is also used for CARD + GIANT in this batch; avoid both on one board."
+  },
+  {
+   "pair_id": "p_bubble__music",
+   "a": "BUBBLE",
+   "b": "MUSIC",
+   "hints": [
+    {
+     "text": "POP",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "BUBBLE via bubbles popping, MUSIC via pop music; classic double meaning.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["POP"],
+   "pair_note": "Classic."
+  },
+  {
+   "pair_id": "p_car__cheese",
+   "a": "CAR",
+   "b": "CHEESE",
+   "hints": [
+    {
+     "text": "WHEEL",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CAR via its wheels, CHEESE via a wheel of cheese; the cheese side gives a small pleasant surprise.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["WHEEL"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_card__giant",
+   "a": "CARD",
+   "b": "GIANT",
+   "hints": [
+    {
+     "text": "JACK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CARD via the jack playing card, GIANT via Jack and the Beanstalk; a fairy tale plus a deck of cards is a satisfying aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["JACK"],
+   "pair_note": "Strong. Shares the hint JACK with BOX + CAR; keep them off the same board."
+  },
+  {
+   "pair_id": "p_castle__video-game",
+   "a": "CASTLE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "MARIO",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "VIDEO GAME via Mario as gaming's best-known hero, CASTLE via Bowser's castles and the famous 'princess is in another castle' line.",
+     "fix": "VIDEO GAME line: \"Mario is one of the most famous video game heroes.\""
+    }
+   ],
+   "strong_hints": ["MARIO"],
+   "pair_note": "Strong. 'The most famous' is a defensible but arguable superlative; 'one of the most famous' is safer."
+  },
+  {
+   "pair_id": "p_chess__lion",
+   "a": "CHESS",
+   "b": "LION",
+   "hints": [
+    {
+     "text": "KING",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "CHESS via the king piece, LION via 'king of the jungle' (and The Lion King); both instant.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KING"],
+   "pair_note": "'King of the jungle' is an idiom, not a habitat claim, so the line is fine."
+  },
+  {
+   "pair_id": "p_chocolate__gold",
+   "a": "CHOCOLATE",
+   "b": "GOLD",
+   "hints": [
+    {
+     "text": "BAR",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "CHOCOLATE via a chocolate bar, GOLD via a gold bar; both are the most common pairing for the word.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BAR"],
+   "pair_note": "BAR is broad on a board, but both targets are its strongest partners. COIN (chocolate coins, gold coins) is an equally good alternative, not clearly better."
+  },
+  {
+   "pair_id": "p_coat__dog",
+   "a": "COAT",
+   "b": "DOG",
+   "hints": [
+    {
+     "text": "CRUELLA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DOG via the Dalmatian puppies of 101 Dalmatians, COAT via her scheme to make a fur coat from them; one iconic villain covers both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CRUELLA"],
+   "pair_note": "Excellent family-film clue; accurate."
+  },
+  {
+   "pair_id": "p_dog__magic",
+   "a": "DOG",
+   "b": "MAGIC",
+   "hints": [
+    {
+     "text": "TRICK",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "DOG via teaching a dog tricks, MAGIC via a magic trick; clean and fair.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["TRICK"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_eye__pirate",
+   "a": "EYE",
+   "b": "PIRATE",
+   "hints": [
+    {
+     "text": "PATCH",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "EYE via 'eye patch', PIRATE via the stock image of a pirate wearing one; both arrive together.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PATCH"],
+   "pair_note": "Easy, clean."
+  },
+  {
+   "pair_id": "p_family__lion",
+   "a": "FAMILY",
+   "b": "LION",
+   "hints": [
+    {
+     "text": "PRIDE",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "LION via a pride of lions, FAMILY because a pride is essentially a lion family (plus family pride); a nice indirect aha.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["PRIDE"],
+   "pair_note": "The stronger FAMILY route is 'a pride is a lion family group' rather than 'taking pride in your family'; the current text is accurate, just undersells it."
+  },
+  {
+   "pair_id": "p_fish__sun",
+   "a": "FISH",
+   "b": "SUN",
+   "hints": [
+    {
+     "text": "RAY",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "SUN via sun rays, FISH via rays such as the stingray; clean double meaning.",
+     "fix": "FISH line: \"A ray, like a stingray, is a flat-bodied fish.\""
+    }
+   ],
+   "strong_hints": ["RAY"],
+   "pair_note": "'Flat fish' could be confused with flatfish (flounder, halibut), a different group; 'flat-bodied fish' is precise."
+  },
+  {
+   "pair_id": "p_flower__science",
+   "a": "FLOWER",
+   "b": "SCIENCE",
+   "hints": [
+    {
+     "text": "STEM",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "FLOWER via the flower's stem, SCIENCE via STEM education (science, technology, engineering and math); a satisfying click.",
+     "fix": "A flower has a stem, and STEM stands for science, technology, engineering and math."
+    }
+   ],
+   "strong_hints": ["STEM"],
+   "pair_note": "Excellent; the text should spell out the full acronym rather than 'science and math'."
+  },
+  {
+   "pair_id": "p_foot__rabbit",
+   "a": "FOOT",
+   "b": "RABBIT",
+   "hints": [
+    {
+     "text": "LUCKY",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "Both FOOT and RABBIT via the lucky rabbit's foot charm; one familiar superstition holds the pair together.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LUCKY"],
+   "pair_note": "LUCKY also suggests clovers or horseshoes, but the rabbit's foot is the charm that contains both targets; fair."
+  },
+  {
+   "pair_id": "p_fox__video-game",
+   "a": "FOX",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "STAR",
+     "mechanism": "phrase_join",
+     "connection_to_a": 1,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["phrase_join_weak", "needs_explanation", "uncertain"],
+     "verdict": "BORDERLINE",
+     "reason": "Both sides go only through the title Star Fox (FOX by completing the name, VIDEO GAME because it is a game); Star Fox is known to gamers but less so to a general audience, and STAR is such a broad word that it rarely calls up this title first.",
+     "fix": null
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "Facts are correct (Fox McCloud). The issue is that STAR fans out in every direction on a 28-word board. TAILS (the fox from Sonic, and a fox's tail) is a possible alternative but not clearly better; uncertain how well Star Fox lands with non-gamers."
+  },
+  {
+   "pair_id": "p_ghost__paper",
+   "a": "GHOST",
+   "b": "PAPER",
+   "hints": [
+    {
+     "text": "SHEET",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "GHOST via the classic bedsheet ghost costume, PAPER via a sheet of paper; two clear senses.",
+     "fix": "A bedsheet makes a classic ghost costume, and paper comes in sheets."
+    }
+   ],
+   "strong_hints": ["SHEET"],
+   "pair_note": "Good idea; explanation wording 'and so is paper' is awkward."
+  },
+  {
+   "pair_id": "p_gum__soap",
+   "a": "GUM",
+   "b": "SOAP",
+   "hints": [
+    {
+     "text": "BUBBLE",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "GUM via bubble gum, SOAP via soap bubbles; both everyday.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BUBBLE"],
+   "pair_note": "Easy, fine."
+  },
+  {
+   "pair_id": "p_island__video-game",
+   "a": "ISLAND",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "CROSSING",
+     "mechanism": "phrase_join",
+     "connection_to_a": 1,
+     "connection_to_b": 1,
+     "fairness": 1,
+     "delight": 1,
+     "recognizability": "moderate",
+     "better_hint": null,
+     "flags": ["phrase_join_weak", "needs_explanation", "text_fix"],
+     "verdict": "BORDERLINE",
+     "reason": "VIDEO GAME only via recalling the title Animal Crossing from its second word, ISLAND via the island setting of New Horizons specifically; CROSSING alone suggests crosswalks or railroads first, so the player must do real work.",
+     "fix": "In Animal Crossing: New Horizons, you build a life on a deserted island."
+    }
+   ],
+   "strong_hints": [],
+   "pair_note": "New Horizons was a mainstream hit, so the reference is fair once explained, but a title fragment as hint is a weak phrase join; earlier Animal Crossing games were set in villages, so the text should name New Horizons."
+  },
+  {
+   "pair_id": "p_king__tooth",
+   "a": "KING",
+   "b": "TOOTH",
+   "hints": [
+    {
+     "text": "CROWN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "KING via the royal crown, TOOTH via a dental crown; the dental sense gives a real 'oh, nice'.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["CROWN"],
+   "pair_note": "Excellent."
+  },
+  {
+   "pair_id": "p_knight__police",
+   "a": "KNIGHT",
+   "b": "POLICE",
+   "hints": [
+    {
+     "text": "SHIELD",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["text_fix"],
+     "verdict": "PASS",
+     "reason": "KNIGHT via a knight's shield, POLICE via riot shields and the badge-as-'shield' usage from cop shows; the badge sense is mostly NYPD/TV slang, but riot shields make the POLICE side broadly reachable.",
+     "fix": "A knight carries a shield, and police carry riot shields and often call their badges shields."
+    }
+   ],
+   "strong_hints": ["SHIELD"],
+   "pair_note": "Accurate as written (NYPD badges are called shields), but adding riot shields gives most players the easier route."
+  },
+  {
+   "pair_id": "p_light__pumpkin",
+   "a": "LIGHT",
+   "b": "PUMPKIN",
+   "hints": [
+    {
+     "text": "LANTERN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "PUMPKIN via the jack-o'-lantern, LIGHT because a lantern is a light (and the jack-o'-lantern is lit inside); clean.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["LANTERN"],
+   "pair_note": "Good; the jack-o'-lantern ties both sides together."
+  },
+  {
+   "pair_id": "p_mail__owl",
+   "a": "MAIL",
+   "b": "OWL",
+   "hints": [
+    {
+     "text": "HEDWIG",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "OWL via Hedwig being Harry's snowy owl, MAIL via her delivering his letters; Harry Potter is mainstream and Hedwig is one of its best-known characters.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["HEDWIG"],
+   "pair_note": "Not niche fandom: Hedwig and owl post are among the most widely known Harry Potter details."
+  },
+  {
+   "pair_id": "p_movie__window",
+   "a": "MOVIE",
+   "b": "WINDOW",
+   "hints": [
+    {
+     "text": "SCREEN",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "MOVIE via the movie screen, WINDOW via the window screen that keeps bugs out; two distinct senses.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SCREEN"],
+   "pair_note": "Good."
+  },
+  {
+   "pair_id": "p_ninja__rat",
+   "a": "NINJA",
+   "b": "RAT",
+   "hints": [
+    {
+     "text": "SPLINTER",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "RAT via Splinter being a rat, NINJA via his role as the Ninja Turtles' sensei; TMNT is broadly known in the U.S.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["SPLINTER"],
+   "pair_note": "Excellent; the everyday meaning of 'splinter' makes the TMNT click satisfying."
+  },
+  {
+   "pair_id": "p_ocean__princess",
+   "a": "OCEAN",
+   "b": "PRINCESS",
+   "hints": [
+    {
+     "text": "MOANA",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "OCEAN via the ocean choosing Moana, PRINCESS via her place in the official Disney Princess lineup; both accurate.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MOANA"],
+   "pair_note": "Accurate and broad."
+  },
+  {
+   "pair_id": "p_pirate__skull",
+   "a": "PIRATE",
+   "b": "SKULL",
+   "hints": [
+    {
+     "text": "FLAG",
+     "mechanism": "scene",
+     "connection_to_a": 2,
+     "connection_to_b": 1,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["generic"],
+     "verdict": "PASS",
+     "reason": "PIRATE via the pirate flag (Jolly Roger), SKULL via the skull and crossbones on it; FLAG is broad, but the pirate flag is an iconic image.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["FLAG"],
+   "pair_note": "CROSSBONES would be more pointed but also more obvious; FLAG is fine."
+  },
+  {
+   "pair_id": "p_princess__soldier",
+   "a": "PRINCESS",
+   "b": "SOLDIER",
+   "hints": [
+    {
+     "text": "MULAN",
+     "mechanism": "shared_reference",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SOLDIER via Mulan disguising herself to serve in the army, PRINCESS via her official Disney Princess status; the text carefully says 'counted among', which is accurate since she is not royalty.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["MULAN"],
+   "pair_note": "Strong; the soldier/princess contrast is part of the fun."
+  },
+  {
+   "pair_id": "p_rope__tie",
+   "a": "ROPE",
+   "b": "TIE",
+   "hints": [
+    {
+     "text": "KNOT",
+     "mechanism": "shared_property",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": ["synonym_of_target"],
+     "verdict": "PASS",
+     "reason": "ROPE via knots tied in rope, TIE both via tying a knot and via the necktie knot (Windsor etc.); close to one sense of TIE but honestly connects both.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["KNOT"],
+   "pair_note": "KNOT is near a synonym of the verb 'tie', but the necktie route keeps it a real two-sided clue."
+  },
+  {
+   "pair_id": "p_snake__video-game",
+   "a": "SNAKE",
+   "b": "VIDEO GAME",
+   "hints": [
+    {
+     "text": "NOKIA",
+     "mechanism": "fact",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 2,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SNAKE via the game Snake preloaded on Nokia phones, VIDEO GAME because Snake is the famous phone game; a nostalgic aha that most adults recognise.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["NOKIA"],
+   "pair_note": "Excellent indirect clue; younger players may know it as a meme, which still works."
+  },
+  {
+   "pair_id": "p_sun__wood",
+   "a": "SUN",
+   "b": "WOOD",
+   "hints": [
+    {
+     "text": "BEAM",
+     "mechanism": "double_meaning",
+     "connection_to_a": 2,
+     "connection_to_b": 2,
+     "fairness": 2,
+     "delight": 1,
+     "recognizability": "broad",
+     "better_hint": null,
+     "flags": [],
+     "verdict": "PASS",
+     "reason": "SUN via a sunbeam, WOOD via a wooden beam; two distinct senses of the word.",
+     "fix": null
+    }
+   ],
+   "strong_hints": ["BEAM"],
+   "pair_note": "Good."
+  }
+ ]
+}

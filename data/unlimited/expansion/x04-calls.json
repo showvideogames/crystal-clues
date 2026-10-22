@@ -1,0 +1,104 @@
+{
+  "_metadata": {
+    "purpose": "x04 content calls (ceiling 12, planned 8). Agent tool, model opus (echo claude-opus-5-5), included Max allowance; extraUsage.enabled=false verified via get_usage before dispatch (5h 2%, weekly 68%).",
+    "totals": {
+      "calls": 8,
+      "ceiling": 12,
+      "tokens": 831497
+    }
+  },
+  "calls": [
+    {
+      "n": 1,
+      "id": "x04-text-checker",
+      "purpose": "fact/wording check: 96 supplement explanations + 16 phase-1 rewrites",
+      "input": "data/unlimited/library/reviews/x04-text-input.json",
+      "output": "data/unlimited/library/reviews/x04-text-check.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 98422,
+      "durationMs": 122884,
+      "result": "103 ok, 9 fixed"
+    },
+    {
+      "n": 2,
+      "id": "x04-reviewer-v",
+      "purpose": "review of 21 assistant suggestions + owner proposals TELESCOPE, ARMORY",
+      "input": "data/unlimited/library/reviews/x04-v-review-input.json",
+      "output": "data/unlimited/library/reviews/x04-v-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 88099,
+      "durationMs": 155507,
+      "result": "16 PASS, 5 BORDERLINE, 2 FAIL (TELESCOPE, ARMORY kept held as owner proposals)"
+    },
+    {
+      "n": 3,
+      "id": "x04-index-reviewer",
+      "purpose": "check the 25 x04 families against the whole 1,203-word bank",
+      "input": [
+        "data/unlimited/related/groups.json",
+        "data/unlimited/related/hint-routes.json",
+        "bank word list"
+      ],
+      "output": "data/unlimited/related/index-review-x04.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 170050,
+      "durationMs": 475676,
+      "result": "122 missing words (23 new meanings), 14 clause/strength fixes, group notes; applied by x04-apply-index-review.mjs"
+    },
+    {
+      "n": 4,
+      "id": "x04-reviewer-pa",
+      "purpose": "review of capped related-index proposals (SEAGULL SLAM PICK LAVA DECK)",
+      "input": "data/unlimited/library/reviews/x04-pa-review-input.json",
+      "output": "data/unlimited/library/reviews/x04-pa-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 102147,
+      "durationMs": 252611,
+      "result": "36 PASS, 4 BORDERLINE; reported opening another reviewer's scratch helper by mistake (no effect claimed)"
+    },
+    {
+      "n": 5,
+      "id": "x04-reviewer-pb",
+      "purpose": "review of capped related-index proposals (SAILOR JAM BARK TRUNK PITCH)",
+      "input": "data/unlimited/library/reviews/x04-pb-review-input.json",
+      "output": "data/unlimited/library/reviews/x04-pb-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 89522,
+      "durationMs": 168546,
+      "result": "39 PASS, 1 BORDERLINE"
+    },
+    {
+      "n": 6,
+      "id": "x04-reviewer-pc",
+      "purpose": "review of capped related-index proposals (RING FAN NET BOW SHELL)",
+      "input": "data/unlimited/library/reviews/x04-pc-review-input.json",
+      "output": "data/unlimited/library/reviews/x04-pc-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 94282,
+      "durationMs": 178864,
+      "result": "39 PASS, 1 BORDERLINE"
+    },
+    {
+      "n": 7,
+      "id": "x04-reviewer-pd",
+      "purpose": "review of capped related-index proposals (CRUST ORBIT MINT KEY HORN)",
+      "input": "data/unlimited/library/reviews/x04-pd-review-input.json",
+      "output": "data/unlimited/library/reviews/x04-pd-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 92330,
+      "durationMs": 180204,
+      "result": "36 PASS, 4 BORDERLINE"
+    },
+    {
+      "n": 8,
+      "id": "x04-reviewer-pe",
+      "purpose": "review of capped related-index proposals (WING PUNCH SCALE BOLT CHIP)",
+      "input": "data/unlimited/library/reviews/x04-pe-review-input.json",
+      "output": "data/unlimited/library/reviews/x04-pe-review.json",
+      "modelEcho": "claude-opus-5-5",
+      "tokens": 96645,
+      "durationMs": 214232,
+      "result": "37 PASS, 3 BORDERLINE"
+    }
+  ]
+}

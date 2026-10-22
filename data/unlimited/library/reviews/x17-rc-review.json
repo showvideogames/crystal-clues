@@ -1,0 +1,341 @@
+{
+ "_metadata": {
+  "reviewer": "x17-reviewer-c",
+  "model": "claude-opus-5-5",
+  "date": "2026-10-20",
+  "input": "x17-rc-input.json",
+  "rubric": "x17 rubric (template 2026-10-20)",
+  "independence": "I read only the brief and the input file x17-rc-input.json; no other repository file, search, web page or API was consulted."
+ },
+ "pairs": [
+  {
+   "pair_id": "p_alien__vacuum", "a": "ALIEN", "b": "VACUUM",
+   "hints": [
+    {"text": "SCREAM", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "ALIEN via the famous tagline 'In space no one can hear you scream'; VACUUM via the true reason, sound cannot travel through a vacuum, so the tagline itself ties both together.", "fix": null}
+   ],
+   "strong_hints": ["SCREAM"], "pair_note": "Excellent indirect aha; the tagline is widely quoted and the physics is true."
+  },
+  {
+   "pair_id": "p_apple__caterpillar", "a": "APPLE", "b": "CATERPILLAR",
+   "hints": [
+    {"text": "HUNGRY", "mechanism": "shared_reference", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CATERPILLAR via The Very Hungry Caterpillar; APPLE via the book's first food (one apple on Monday), a detail most U.S. readers remember from the hole-punched page.", "fix": null}
+   ],
+   "strong_hints": ["HUNGRY"], "pair_note": "Apple side leans on a book detail, but it is the iconic first page; facts are correct."
+  },
+  {
+   "pair_id": "p_axe__dwarf", "a": "AXE", "b": "DWARF",
+   "hints": [
+    {"text": "GIMLI", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "DWARF via Gimli, the Fellowship's dwarf; AXE via his signature weapon, both well known from the Lord of the Rings films.", "fix": null}
+   ],
+   "strong_hints": ["GIMLI"], "pair_note": "Solid character hint; requires knowing the films but they are mainstream."
+  },
+  {
+   "pair_id": "p_balcony__poison", "a": "BALCONY", "b": "POISON",
+   "hints": [
+    {"text": "ROMEO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BALCONY via the famous balcony scene; POISON via Romeo drinking poison at the tragic end.", "fix": null}
+   ],
+   "strong_hints": ["ROMEO"], "pair_note": "Classic, fair and satisfying."
+  },
+  {
+   "pair_id": "p_bath__gold", "a": "BATH", "b": "GOLD",
+   "hints": [
+    {"text": "EUREKA", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "BATH via Archimedes' bath-time 'Eureka!'; GOLD via both the gold crown in that legend and California's gold-rush motto 'Eureka'.", "fix": "Archimedes is said to have shouted \"Eureka!\" in his bath when he realized how to test a gold crown, and \"Eureka\" is California's motto from its gold rush."}
+   ],
+   "strong_hints": ["EUREKA"], "pair_note": "Double route to GOLD makes this strong; the legend has him realizing the method in the bath, not testing the crown there."
+  },
+  {
+   "pair_id": "p_bee__jelly", "a": "BEE", "b": "JELLY",
+   "hints": [
+    {"text": "ROYAL", "mechanism": "phrase_join", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "JELLY via 'royal jelly'; BEE because royal jelly is the bee food that makes a queen, so ROYAL also echoes the queen bee.", "fix": null}
+   ],
+   "strong_hints": ["ROYAL"], "pair_note": "Royal jelly is familiar enough as a health-store product; text is accurate."
+  },
+  {
+   "pair_id": "p_bird__watch", "a": "BIRD", "b": "WATCH",
+   "hints": [
+    {"text": "BINOCULARS", "mechanism": "scene", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["generic"], "verdict": "PASS", "reason": "BIRD and WATCH together via birdwatching, the classic binoculars activity; WATCH alone is only the generic act of looking through them.", "fix": null}
+   ],
+   "strong_hints": ["BINOCULARS"], "pair_note": "Easy, clear scene clue; WATCH is carried by the compound 'bird watching' rather than a standalone link."
+  },
+  {
+   "pair_id": "p_board__pirate", "a": "BOARD", "b": "PIRATE",
+   "hints": [
+    {"text": "PLANK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "BOARD via plank as a long board; PIRATE via walking the plank, with the explanation rightly framing it as 'in stories'.", "fix": null}
+   ],
+   "strong_hints": ["PLANK"], "pair_note": "Synonym on one side, iconic pirate image on the other; satisfying."
+  },
+  {
+   "pair_id": "p_bone__record", "a": "BONE", "b": "RECORD",
+   "hints": [
+    {"text": "BREAK", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BONE via breaking a bone; RECORD via breaking a record; clean double use of the verb.", "fix": null}
+   ],
+   "strong_hints": ["BREAK"], "pair_note": "Simple and fair."
+  },
+  {
+   "pair_id": "p_brain__finger", "a": "BRAIN", "b": "FINGER",
+   "hints": [
+    {"text": "PINKY", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "BRAIN via the cartoon Pinky and the Brain; FINGER via the pinky as the little finger.", "fix": null}
+   ],
+   "strong_hints": ["PINKY"], "pair_note": "Fun pop-culture double meaning."
+  },
+  {
+   "pair_id": "p_bug__love", "a": "BUG", "b": "LOVE",
+   "hints": [
+    {"text": "HERBIE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "LOVE and BUG via Herbie's film The Love Bug; BUG also via Herbie being a VW Beetle, nicknamed a Bug.", "fix": null}
+   ],
+   "strong_hints": ["HERBIE"], "pair_note": "Older Disney reference but still widely known (and revived in 2005)."
+  },
+  {
+   "pair_id": "p_cake__frost", "a": "CAKE", "b": "FROST",
+   "hints": [
+    {"text": "ICING", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "CAKE via icing on a cake; FROST via icing as frosting (to frost a cake), with icing/frost also sharing the ice sense.", "fix": null}
+   ],
+   "strong_hints": ["ICING"], "pair_note": "Easy, honest link; low delight but clear."
+  },
+  {
+   "pair_id": "p_cap__dress", "a": "CAP", "b": "DRESS",
+   "hints": [
+    {"text": "GOWN", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "CAP via graduation 'cap and gown'; DRESS via a gown being a formal dress.", "fix": null}
+   ],
+   "strong_hints": ["GOWN"], "pair_note": "Clean and fair."
+  },
+  {
+   "pair_id": "p_carpet__rice", "a": "CARPET", "b": "RICE",
+   "hints": [
+    {"text": "JASMINE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CARPET via Princess Jasmine's magic-carpet ride in Aladdin; RICE via jasmine rice.", "fix": null}
+   ],
+   "strong_hints": ["JASMINE"], "pair_note": "Strong double meaning with a nice aha."
+  },
+  {
+   "pair_id": "p_champion__goat", "a": "CHAMPION", "b": "GOAT",
+   "hints": [
+    {"text": "GREATEST", "mechanism": "double_meaning", "connection_to_a": 1, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GOAT via the acronym Greatest Of All Time; CHAMPION via 'the greatest' as the label for top champions (Ali's 'I am the greatest').", "fix": null}
+   ],
+   "strong_hints": ["GREATEST"], "pair_note": "GOAT side is a real aha; champion side is a looser near-synonym but honest."
+  },
+  {
+   "pair_id": "p_chocolate__soap", "a": "CHOCOLATE", "b": "SOAP",
+   "hints": [
+    {"text": "DOVE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CHOCOLATE via Dove chocolate (Mars); SOAP via the Dove beauty bar; one brand name, two unrelated products.", "fix": null}
+   ],
+   "strong_hints": ["DOVE"], "pair_note": "Excellent brand double; facts are correct."
+  },
+  {
+   "pair_id": "p_closet__monster", "a": "CLOSET", "b": "MONSTER",
+   "hints": [
+    {"text": "BOO", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CLOSET and MONSTER via Monsters, Inc., where Boo meets the monsters through her closet door; MONSTER also via 'boo' as the classic scare.", "fix": null}
+   ],
+   "strong_hints": ["BOO"], "pair_note": "Layered and satisfying; the monster-in-the-closet trope supports it even without the film."
+  },
+  {
+   "pair_id": "p_coffee__whale", "a": "COFFEE", "b": "WHALE",
+   "hints": [
+    {"text": "STARBUCK", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 1, "delight": 2, "recognizability": "moderate", "better_hint": null, "flags": ["needs_explanation"], "verdict": "PASS", "reason": "COFFEE via Starbucks, named after Starbuck; WHALE via Starbuck as first mate of the Pequod hunting Moby Dick, a well-circulated naming fact.", "fix": null}
+   ],
+   "strong_hints": ["STARBUCK"], "pair_note": "The whale side needs the Moby-Dick naming trivia, but it is widely repeated and the click is strong once seen."
+  },
+  {
+   "pair_id": "p_country__road", "a": "COUNTRY", "b": "ROAD",
+   "hints": [
+    {"text": "DENVER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 1, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "COUNTRY and ROAD via John Denver's 'Take Me Home, Country Roads'; the hint first reads as the city, so the aha comes from switching to the singer.", "fix": "\"Take Me Home, Country Roads\" is one of John Denver's best-known songs."}
+   ],
+   "strong_hints": ["DENVER"], "pair_note": "Song is hugely familiar; the COUNTRY line's 'best-known' superlative is softened in the fix."
+  },
+  {
+   "pair_id": "p_crown__virus", "a": "CROWN", "b": "VIRUS",
+   "hints": [
+    {"text": "CORONA", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "CROWN via corona as Latin for crown; VIRUS via coronavirus, named for its crown-like fringe of spikes.", "fix": null}
+   ],
+   "strong_hints": ["CORONA"], "pair_note": "True and satisfying; pandemic context is widely known and PG."
+  },
+  {
+   "pair_id": "p_dead__play", "a": "DEAD", "b": "PLAY",
+   "hints": [
+    {"text": "POSSUM", "mechanism": "fact", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "PLAY via the idiom 'playing possum'; DEAD via opossums appearing dead when threatened, so the hint lands on 'play dead'.", "fix": null}
+   ],
+   "strong_hints": ["POSSUM"], "pair_note": "Neat: the hint reconstructs the targets' own phrase 'play dead'."
+  },
+  {
+   "pair_id": "p_dinosaur__internet", "a": "DINOSAUR", "b": "INTERNET",
+   "hints": [
+    {"text": "OFFLINE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "INTERNET via offline meaning no connection; DINOSAUR via Chrome's offline T. rex jumping game.", "fix": null}
+   ],
+   "strong_hints": ["OFFLINE"], "pair_note": "Great modern aha that most players have seen."
+  },
+  {
+   "pair_id": "p_dog__target", "a": "DOG", "b": "TARGET",
+   "hints": [
+    {"text": "BULLSEYE", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "TARGET via the bullseye at a target's center (and Target's logo); DOG via Bullseye, Target's dog mascot.", "fix": null}
+   ],
+   "strong_hints": ["BULLSEYE"], "pair_note": "Excellent; uses both the object and the store sense of TARGET."
+  },
+  {
+   "pair_id": "p_dream__king", "a": "DREAM", "b": "KING",
+   "hints": [
+    {"text": "LUTHER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "KING via Martin Luther King Jr.'s name; DREAM via his 1963 'I Have a Dream' speech.", "fix": null}
+   ],
+   "strong_hints": ["LUTHER"], "pair_note": "Respectful, broad and clean."
+  },
+  {
+   "pair_id": "p_easter__secret", "a": "EASTER", "b": "SECRET",
+   "hints": [
+    {"text": "EGG", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "EASTER via Easter egg hunts; SECRET via 'Easter egg' as a hidden secret in a game or film.", "fix": null}
+   ],
+   "strong_hints": ["EGG"], "pair_note": "Familiar phrase used in two senses; satisfying."
+  },
+  {
+   "pair_id": "p_fairy__sugar", "a": "FAIRY", "b": "SUGAR",
+   "hints": [
+    {"text": "NUTCRACKER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FAIRY and SUGAR together via the Sugar Plum Fairy, The Nutcracker's famous character and dance.", "fix": null}
+   ],
+   "strong_hints": ["NUTCRACKER"], "pair_note": "Both sides come through one character name; clear and fair."
+  },
+  {
+   "pair_id": "p_farm__spider", "a": "FARM", "b": "SPIDER",
+   "hints": [
+    {"text": "CHARLOTTE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SPIDER via Charlotte the spider of Charlotte's Web; FARM via the Zuckerman farm barn where she saves Wilbur.", "fix": null}
+   ],
+   "strong_hints": ["CHARLOTTE"], "pair_note": "Classic and accurate."
+  },
+  {
+   "pair_id": "p_film__plastic", "a": "FILM", "b": "PLASTIC",
+   "hints": [
+    {"text": "WRAP", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FILM via 'That's a wrap' at the end of filming; PLASTIC via plastic wrap, itself a thin film (cling film).", "fix": null}
+   ],
+   "strong_hints": ["WRAP"], "pair_note": "Lovely double meaning with the bonus that cling film loops back to FILM."
+  },
+  {
+   "pair_id": "p_flame__lab", "a": "FLAME", "b": "LAB",
+   "hints": [
+    {"text": "BUNSEN", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "FLAME via the Bunsen burner's gas flame; LAB via the burner as classic school-lab equipment.", "fix": null}
+   ],
+   "strong_hints": ["BUNSEN"], "pair_note": "Easy, clear clue."
+  },
+  {
+   "pair_id": "p_foot__mouth", "a": "FOOT", "b": "MOUTH",
+   "hints": [
+    {"text": "GAFFE", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": ["text_fix"], "verdict": "PASS", "reason": "FOOT and MOUTH together via the idiom 'put your foot in your mouth', which means making a gaffe.", "fix": "Putting your foot in your mouth means saying something embarrassing: a gaffe."}
+   ],
+   "strong_hints": ["GAFFE"], "pair_note": "Good definitional aha; the MOUTH line's 'slip of the mouth' is not a real idiom, so the fix rewrites it."
+  },
+  {
+   "pair_id": "p_friend__thin", "a": "FRIEND", "b": "THIN",
+   "hints": [
+    {"text": "THICK", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "THIN via its opposite and the phrase 'through thick and thin'; FRIEND via loyal friends through thick and thin, plus 'thick' meaning close friends ('thick as thieves').", "fix": null}
+   ],
+   "strong_hints": ["THICK"], "pair_note": "Instantly familiar phrase with a bonus friendship sense of 'thick'."
+  },
+  {
+   "pair_id": "p_glove__marvel", "a": "GLOVE", "b": "MARVEL",
+   "hints": [
+    {"text": "GAUNTLET", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "GLOVE via a gauntlet as an armored glove; MARVEL via Thanos's Infinity Gauntlet.", "fix": null}
+   ],
+   "strong_hints": ["GAUNTLET"], "pair_note": "Strong, thanks to the Avengers films."
+  },
+  {
+   "pair_id": "p_green__strong", "a": "GREEN", "b": "STRONG",
+   "hints": [
+    {"text": "HULK", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": "SPINACH", "flags": [], "verdict": "PASS", "reason": "GREEN via the Hulk's skin; STRONG via his enormous strength.", "fix": null}
+   ],
+   "strong_hints": ["HULK"], "pair_note": "Easy and obvious; SPINACH (green leaf, Popeye's strength) is an alternative with a little more aha, but both are good."
+  },
+  {
+   "pair_id": "p_hawk__tiger", "a": "HAWK", "b": "TIGER",
+   "hints": [
+    {"text": "TONY", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "HAWK via skateboarder Tony Hawk; TIGER via Tony the Tiger of Frosted Flakes.", "fix": null}
+   ],
+   "strong_hints": ["TONY"], "pair_note": "Fun shared-name clue; both Tonys are household names."
+  },
+  {
+   "pair_id": "p_hole__knife", "a": "HOLE", "b": "KNIFE",
+   "hints": [
+    {"text": "SWISS", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "HOLE via holey Swiss cheese; KNIFE via the Swiss Army knife; both instantly familiar.", "fix": null}
+   ],
+   "strong_hints": ["SWISS"], "pair_note": "Phrase-join that genuinely satisfies because the HOLE side goes through cheese, not a direct compound."
+  },
+  {
+   "pair_id": "p_jack__skeleton", "a": "JACK", "b": "SKELETON",
+   "hints": [
+    {"text": "NIGHTMARE", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "JACK and SKELETON via Jack Skellington, the skeleton hero of The Nightmare Before Christmas.", "fix": null}
+   ],
+   "strong_hints": ["NIGHTMARE"], "pair_note": "Clear film clue; accurate lines."
+  },
+  {
+   "pair_id": "p_kitchen__sink", "a": "KITCHEN", "b": "SINK",
+   "hints": [
+    {"text": "EVERYTHING", "mechanism": "phrase_join", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "KITCHEN and SINK together via 'everything but the kitchen sink', an instantly familiar saying.", "fix": null}
+   ],
+   "strong_hints": ["EVERYTHING"], "pair_note": "Phrase-based but the saying is universal and the pairing clicks."
+  },
+  {
+   "pair_id": "p_link__mouse", "a": "LINK", "b": "MOUSE",
+   "hints": [
+    {"text": "CLICK", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "LINK via clicking a link; MOUSE via the mouse click.", "fix": null}
+   ],
+   "strong_hints": ["CLICK"], "pair_note": "Easy computing clue; fair."
+  },
+  {
+   "pair_id": "p_memory__trunk", "a": "MEMORY", "b": "TRUNK",
+   "hints": [
+    {"text": "ELEPHANT", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "MEMORY via 'an elephant never forgets'; TRUNK via the elephant's trunk.", "fix": null}
+   ],
+   "strong_hints": ["ELEPHANT"], "pair_note": "Nice mix of saying and anatomy."
+  },
+  {
+   "pair_id": "p_mother__queen", "a": "MOTHER", "b": "QUEEN",
+   "hints": [
+    {"text": "HIVE", "mechanism": "fact", "connection_to_a": 1, "connection_to_b": 2, "fairness": 1, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["needs_explanation", "text_fix", "uncertain"], "verdict": "PASS", "reason": "QUEEN via the hive's queen bee; MOTHER via the true fact that the queen lays the colony's eggs, a real but less immediate second step.", "fix": "A hive's queen bee lays nearly all its eggs, so she is mother to the colony."}
+   ],
+   "strong_hints": ["HIVE"], "pair_note": "Mother side is indirect but true and clicks once explained; borderline-leaning, worth a second opinion."
+  },
+  {
+   "pair_id": "p_pan__web", "a": "PAN", "b": "WEB",
+   "hints": [
+    {"text": "PETER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 1, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "PAN via Peter Pan; WEB via Peter Parker, Spider-Man, slinging webs (one extra step).", "fix": null}
+   ],
+   "strong_hints": ["PETER"], "pair_note": "Two famous Peters; satisfying once Parker clicks."
+  },
+  {
+   "pair_id": "p_prince__switch", "a": "PRINCE", "b": "SWITCH",
+   "hints": [
+    {"text": "PAUPER", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "PRINCE via the title The Prince and the Pauper; SWITCH via the look-alike boys swapping lives.", "fix": null}
+   ],
+   "strong_hints": ["PAUPER"], "pair_note": "Familiar story; both lines accurate."
+  },
+  {
+   "pair_id": "p_record__track", "a": "RECORD", "b": "TRACK",
+   "hints": [
+    {"text": "ALBUM", "mechanism": "shared_property", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 1, "recognizability": "broad", "better_hint": null, "flags": ["synonym_of_target"], "verdict": "PASS", "reason": "RECORD via an album as a record; TRACK via the songs on an album being tracks.", "fix": null}
+   ],
+   "strong_hints": ["ALBUM"], "pair_note": "Clear, honest music clue."
+  },
+  {
+   "pair_id": "p_rock__roll", "a": "ROCK", "b": "ROLL",
+   "hints": [
+    {"text": "STONES", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "ROCK via stones being rocks and the Stones being a rock band; ROLL via the Rolling Stones (and the targets' own 'rock and roll').", "fix": null}
+   ],
+   "strong_hints": ["STONES"], "pair_note": "Layered: rocks, rolling, and rock 'n' roll all line up; Muddy Waters naming fact is correct."
+  },
+  {
+   "pair_id": "p_secret__spongebob", "a": "SECRET", "b": "SPONGEBOB",
+   "hints": [
+    {"text": "PLANKTON", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SPONGEBOB via Plankton, the show's tiny villain; SECRET via his endless schemes to steal the secret Krabby Patty formula.", "fix": null}
+   ],
+   "strong_hints": ["PLANKTON"], "pair_note": "Broad cartoon reference; accurate."
+  },
+  {
+   "pair_id": "p_skin__tool", "a": "SKIN", "b": "TOOL",
+   "hints": [
+    {"text": "SHED", "mechanism": "double_meaning", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "SKIN via snakes shedding skin (verb); TOOL via a tool shed (noun).", "fix": null}
+   ],
+   "strong_hints": ["SHED"], "pair_note": "Classic verb/noun double meaning."
+  },
+  {
+   "pair_id": "p_street__thief", "a": "STREET", "b": "THIEF",
+   "hints": [
+    {"text": "SESAME", "mechanism": "shared_reference", "connection_to_a": 2, "connection_to_b": 2, "fairness": 2, "delight": 2, "recognizability": "broad", "better_hint": null, "flags": [], "verdict": "PASS", "reason": "STREET via Sesame Street; THIEF via 'open sesame' opening the forty thieves' cave in Ali Baba.", "fix": null}
+   ],
+   "strong_hints": ["SESAME"], "pair_note": "Excellent aha; both references are widely known."
+  }
+ ]
+}
