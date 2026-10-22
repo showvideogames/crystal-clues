@@ -47,6 +47,9 @@ const raw = readFileSync(src, "utf8");
 const picks = parseCSV(raw);
 const ix = loadCatalogue(); const rejections = loadRejections(); const reserved = reservedPairIds();
 const setAside = JSON.parse(readFileSync(`${DIR}/editorial-set-aside.json`, "utf8")).entries;
+// Content labels for a possible future family-friendly setting: labels only, nothing is held by them.
+const LABELS = Object.entries(JSON.parse(readFileSync(`${DIR}/content-labels.json`, "utf8")).labels).map(([k, re]) => [k, new RegExp(re)]);
+const labelsFor = (...texts) => { const t = texts.join(" | ").toUpperCase(); return LABELS.filter(([, re]) => re.test(t)).map(([k]) => k); };
 const setAsideFor = (id, h) => setAside.find((e) => { const [x, y] = e.pair.split(" + "); return pairOf(x, y).id === id && hintKey(e.hint) === hintKey(h); });
 const OWNER_QUEUE = ["BELL + BOAT", "BELL + WATER", "CALCULATOR + HIGH", "CLOCK + HIGH", "MOUSE + QUEEN"].map((k) => pairOf(...k.split(" + ")).id);
 const CALIBRATION = ["LIMOUSINE + SUGAR", "CLOUD + LAWYER"].map((k) => pairOf(...k.split(" + ")).id);
@@ -83,13 +86,14 @@ for (const p of picks) {
     const clue = {
       text: hint, type: "consolidated-import",
       wordAConnection: lines[a], wordBConnection: lines[b],
-      // The batch has per-word lines only; the reveal sentence is a plain template, no new claims.
-      revealExplanation: `${hint} connects ${a} and ${b}.`, reference: null,
+      // The batch has per-word lines only and no explanation sentence (owner 2026-10-21: no template sentence).
+      revealExplanation: "", reference: null,
+      ...(labelsFor(a, b, hint, lines[a], lines[b]).length ? { contentFlags: labelsFor(a, b, hint, lines[a], lines[b]) } : {}),
       importRecord: {
         candidate_ids: prov.map((r) => r.candidate_id), sources: prov.map((r) => r.source),
         difficulty: rec.difficulty || null, selfReview: { status: first.self_review_status, by: first.self_reviewer || rec.reviewer || null, note: rec.review_note || null },
         alternativesNote: rec.alternatives_and_choice || rec.alternatives_considered || null, independent: evidence,
-        cloudEffectiveStatus: first.cloud_effective_status || null, revealExplanation: "template (the batch has no explanation sentence)",
+        cloudEffectiveStatus: first.cloud_effective_status || null, revealExplanation: "none: the batch has no explanation sentence; the two per-word lines are shown",
       },
     };
     batchPairs.set(id, { pair_id: id, a, b, clues: [clue] });

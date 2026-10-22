@@ -63,7 +63,7 @@ if (cmd === "input") {
     counts[status]++;
     p.clues.push({
       text: normWord(h.text), status, heldReason: status === "held" ? "review: borderline" : null,
-      type: k.type, wordAConnection: k.wordAConnection, wordBConnection: k.wordBConnection, revealExplanation: k.revealExplanation, reference: k.reference || null,
+      type: k.type, wordAConnection: k.wordAConnection, wordBConnection: k.wordBConnection, revealExplanation: k.revealExplanation, reference: k.reference || null, ...(k.contentFlags ? { contentFlags: k.contentFlags } : {}),
       provenance: {
         source: k.batch, ...(k.request ? { request: k.request } : {}), ...(k.routes ? { routes: k.routes, strength: k.strength } : {}),
         blindReview: { reviewer: meta.reviewer || "x03-reviewer", model: meta.model || null, date: meta.date || null, verdict: h.verdict, mechanism: h.mechanism, delight: h.delight, a: h.connection_to_a, b: h.connection_to_b, fairness: h.fairness, recognizability: h.recognizability, better_hint: h.better_hint || null, flags: h.flags || [], reason: h.reason, fix: h.fix || null },
