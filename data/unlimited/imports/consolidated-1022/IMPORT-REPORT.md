@@ -1,11 +1,12 @@
 # Consolidated offline batch import (consolidated-1022)
 
-**Status: under review. Not merged, not published, not deployed to production.** Branch `feature/unlimited-import-consolidated`, stacked on `feature/unlimited-x04` (6984f62, the X23 pause checkpoint); PR #30 targets `feature/unlimited-x04`. No model calls: no drafting, no generation and no new reviews in any round.
+**Status: final decisions applied; release route prepared and awaiting the owner's approval. Not merged, not deployed to production.** Branch `feature/unlimited-import-consolidated`, stacked on `feature/unlimited-x04` (6984f62, the X23 pause checkpoint); PR #30 targets `feature/unlimited-x04`. No model calls: no drafting, no generation and no new reviews in any round.
 
 Rounds:
 - **Round 1:** the import.
 - **Round 2 (owner, 2026-10-21):** no template sentence, the hyphen rule, content labels, the first owner choices.
-- **Round 3 (owner review, 2026-10-22):** keeps, replacements and alternatives; Spider choices left open.
+- **Round 3 (owner review, 2026-10-22):** keeps, replacements and alternatives.
+- **Final decisions (owner, 2026-10-22):** SPIDER + MAN → PARKER (PETER stays stored); FRAME + HELICOPTER → AERIAL (AIR stays stored); TAP + VOICE keeps RECORDING; SPICY + TACO stays JALAPENO.
 
 Each round rebuilds the library from the x04 base, so the steps below reproduce it exactly.
 
@@ -25,13 +26,13 @@ Each round rebuilds the library from the x04 base, so the steps below reproduce 
 | **Held back** (`editorial-set-aside.json`) | **83** |
 | **Total** | **6,192** |
 
-**Owner decisions** (`owner-decisions.json`, 28 decisions):
-- 11 owner-written hints. Six of them are new pairs: DINGHY, FIVE ×2, PARKER (HUMAN), BEACH, REVOLVER.
+**Owner decisions** (`owner-decisions.json`, 31 decisions):
+- 13 owner-written hints. Six of them are new pairs: DINGHY, FIVE ×2, PARKER (HUMAN), BEACH, REVOLVER. PARKER (MAN) and AERIAL serve on imported pairs, in place of PETER and AIR.
 - 1 owner hold: JAWS for SHARK + SWIMMING.
 
 **Result:**
 - Served export: 4,638 → **10,713 pairs, 10,726 served hint entries**, 1,203 words (unchanged).
-- Library: 4,957 → 11,032 pair records, 12,876 stored hint entries.
+- Library: 4,957 → 11,032 pair records, 12,878 stored hint entries.
 
 **Previously served pairs that now serve a different hint (13, all owner choices; replaced hints stay stored):**
 MOUSE + QUEEN → MINNIE, BELL + WATER → BUOY, ROBOT + TOY → TRANSFORMER, SPIDER + WEB → SILK, BOSS + TREE → BARKS, HONEY + WOOD → BEEHIVE, APPLE + POCKET → IPHONE, MAGNET + NORTH → COMPASS, MOON + SUN → ECLIPSE, OWL + WIZARD → HEDWIG, SHARK + SWIMMING → OCEAN, SLUG + SNAIL → SLIMY, TORNADO + WIZARD → OZ.
@@ -59,7 +60,7 @@ The other 4,625 previously served pairs are byte-identical. Stored hints that ch
 | SLUG + SNAIL | SLIMY | SLIME, MOLLUSK | owner hint, canonical |
 | TORNADO + WIZARD | OZ | KANSAS | canonical |
 
-Unchanged as asked: SPICY + TACO (JALAPENO; CHILI stored) and the Spider choices below. The owner's calibration is recorded in `clue-generation-guide.md`: definition, category and straightforward links are welcome, and obscure references should not be used to make easy pairs harder.
+Unchanged as asked: SPICY + TACO (JALAPENO; CHILI stored). Spider choices are settled in the final decisions: SPIDER + MAN → PARKER, HUMAN + SPIDER → PARKER, SPIDER + WEB → SILK, SPIDER + SUPERHERO → PARKER (unchanged). The owner's calibration is recorded in `clue-generation-guide.md`: definition, category and straightforward links are welcome, and obscure references should not be used to make easy pairs harder.
 
 ## Reproduce
 
@@ -72,19 +73,24 @@ node scripts/unlimited/import-consolidated-owner.mjs      # replays owner-decisi
 node scripts/unlimited/apply-overrides.mjs && node scripts/unlimited/export-random-library.mjs
 ```
 
-## Still open (short list)
+## Held out of this release (for separate review)
 
-1. **Spider choices, together:**
-   - SPIDER + MAN serves PETER (import).
-   - SPIDER + SUPERHERO serves PARKER, with PETER stored.
-   - HUMAN + SPIDER serves PARKER (owner, round 2).
-   - SPIDER + WEB serves SILK (settled).
-   - Held respellings: CLIMBING + MARVEL and SUPERHERO + WEB → SPIDERMAN would become SPIDER-MAN.
-2. **AIR** (FRAME + HELICOPTER) and **RECORDING** (TAP + VOICE): currently served; keep or hold?
-3. **Spellings:** E-T → ET? BLACK-AND-WHITE? FAIRYTALE ×2? HALF-PIPE respelling?
-4. **Set-asides made only on generic/definition grounds**, now worth a second look under your calibration: BAR + CAGE → METAL, FOREST + LAKE → PARK, MOTOR + PUMP → ELECTRIC, TIME + WEIGHT → MEASURE, DISTRICT + PRESS → NEWS, EDGE + ROW → BORDER, MISSILE + TARGET → GUIDANCE, FULL + SERVER → CAPACITY.
-5. **Content:** confirm the 8 content holds (VAPE, HOOKAH, TEQUILA, ASSAULT, GORE, DROWN, AUTOPSY, HELL). Should labels later cover the older library?
-6. **SPICY + TACO:** JALAPENO or CHILI, when you're ready.
+- **Spelling holds:** E-T ×2, BLACK-AND-WHITE, FAIRYTALE ×2, the respellings (SPIDERMAN ×2 → SPIDER-MAN, HALFPIPE → HALF-PIPE), and the two-word phrases (IRON-MAN, HOT-DOG…).
+- **Content holds:** VAPE, HOOKAH, TEQUILA, ASSAULT, GORE, DROWN, AUTOPSY, HELL, plus the earlier sensitive holds. Content labels stay on the served hints; no filter.
+- **Definition-style holds** (batch text unchanged; to review separately):
+
+| Pair | Hint | First word | Second word | Candidate |
+|---|---|---|---|---|
+| BAR + CAGE | METAL | A bar can be made of metal. | A cage is often made from metal bars or wire. | b07-185 |
+| FOREST + LAKE | PARK | A park may contain a forest. | A park may contain a lake. | b08-178 |
+| MOTOR + PUMP | ELECTRIC | A motor can be electric. | A pump can be electric. | mp-0848 |
+| TIME + WEIGHT | MEASURE | Time can be measured. | Weight can be measured. | tz-0751 |
+| DISTRICT + PRESS | NEWS | A district has local news. | The press reports news. | b12-091 |
+| EDGE + ROW | BORDER | A border is an edge. | A border row can line the edge of a garden or arrangement. | b12-132 |
+| MISSILE + TARGET | GUIDANCE | A guided missile uses guidance. | Guidance directs it toward a target. | mp-0094 |
+| FULL + SERVER | CAPACITY | Full means at capacity. | A server has a capacity for users or requests. | b18-175 |
+
+- Also not in this release: the separate future hint batch, and any further word-bank change.
 
 ## Loading
 
@@ -102,18 +108,17 @@ node scripts/unlimited/apply-overrides.mjs && node scripts/unlimited/export-rand
   - The Unlimited word-bank snapshot grows from 1,196 to 1,203 words (BEE, CLOCK, CROW, GUN, GYM, NUMBER, PINK), so they can appear as Unlimited extras.
   - Everything else (scripts, tests, reports, previews, the 18 MB `pairs.json`) is repo-only and not bundled. `unlimited-preview/` is not in `public/`.
 - **Daily does not change.** A local build of `main` reproduces production exactly (same Unlimited chunk name as live). Against this branch's build, every non-Unlimited file is byte-identical: Daily/home `index` code (apart from the Unlimited chunk filenames it references), the word-bank chunk, Friends, styles and images. Saved Unlimited boards are frozen snapshots and do not change.
-- **Smallest safe route (not done; needs your approval):**
-  1. Merge PR #30 into `feature/unlimited-x04`.
-  2. Open a PR from `feature/unlimited-x04` to `main`. Its diff is x02–x23 plus this import, all inside the paths above.
-  3. Check the Vercel **Preview** of that PR at /unlimited (a few boards, the reveal sheet) and confirm Daily looks the same.
-  4. Merge to `main`. Vercel deploys `main` to production; no manual `vercel --prod` is needed.
-  5. Rollback is a Vercel "promote previous deployment" (`251e414`) or a revert of the merge commit.
-- **Alternative:** a hint-only branch from `main` that copies just `random-library.json` and the word-bank snapshot, plus the three small `src/unlimited` changes. The production result is the same, but provenance and the scripts stay off `main`, and x04 would conflict later. I do not recommend it, because x04 contains no non-Unlimited changes to avoid.
+- **Release route, prepared (needs the owner's approval; nothing merged or deployed):**
+  1. Merge PR #30 (`feature/unlimited-import-consolidated` → `feature/unlimited-x04`). x04 has not moved since this branch was cut, so the merge has no conflicts.
+  2. Merge draft PR #31 (`feature/unlimited-x04` → `main`). `main` is still `251e414`, the base of x04, so there are no conflicts. #31 picks up #30 automatically after step 1.
+  3. Vercel deploys `main` to cluevoyance.com. Then playtest /unlimited: its library metadata should report 10,713 pairs. Confirm Daily is unchanged.
+  4. Rollback: promote the previous Vercel production deployment (`251e414`), or revert the merge commit on `main`.
+- **Since the round-3 comparison:** only library data changed (PARKER for SPIDER + MAN, AERIAL for FRAME + HELICOPTER, RECORDING owner-approved), plus tests and this report. A fresh build of `main` against this branch again shows every non-Unlimited file byte-identical. The Unlimited chunk is 3.06 MB raw (511 KB at brotli level 5, 616 KB gzip).
 
 ## Checks (this branch)
 
-- `node --test scripts/unlimited/*.test.mjs`: 113/113. The consolidated-1022 test now checks every owner decision against `owner-decisions.json`. The x04 editorial-bar test now expects BARKS on BOSS + TREE; BARK and its history stay stored.
-- `npx vitest run`: 172/172. A run overlapping a parallel `main` build timed out three tests; a clean rerun passed.
+- `node --test scripts/unlimited/*.test.mjs`: 113/113. The consolidated-1022 test now checks every owner decision against `owner-decisions.json`. The x04 editorial-bar test now expects BARKS on BOSS + TREE; BARK and its history stay stored. The final decisions (PARKER for SPIDER + MAN, AERIAL, RECORDING) are asserted.
+- `npx vitest run`: 172/172.
 - `check-random.mjs`: 500/500 boards pass every check.
-- `eslint scripts/unlimited src/unlimited`: clean.
+- `eslint scripts/unlimited src/unlimited`: clean. The full `eslint .` still shows only the 4 existing `src/App.jsx` errors (file untouched).
 - `npm run build`: OK.

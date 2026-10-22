@@ -601,7 +601,10 @@ test("consolidated-1022 import: append-only, PASS-only, traceable, no template s
   assert.deepEqual(byId.get("p_cowboy__pistol").clues.find((c) => c.text === "REVOLVER").contentFlags, ["firearms-explosives"]);
   const minnie = byId.get("p_mouse__queen").clues.find((c) => c.text === "MINNIE");
   assert.equal(minnie.provenance.blindReview.verdict, "FAIL", "the earlier review stays recorded"); assert.match(minnie.override.reason, /supersedes/);
-  // left as they were for the owner
-  assert.deepEqual(serve("p_spicy__taco"), ["JALAPENO"]);
-  assert.deepEqual(serve("p_man__spider"), ["PETER"]); assert.deepEqual(serve("p_spider__superhero"), ["PARKER"]);
+  // final decisions: PARKER for SPIDER + MAN (PETER stays stored), AERIAL for FRAME + HELICOPTER (AIR stays stored)
+  assert.deepEqual(serve("p_man__spider"), ["PARKER"]); assert.ok(byId.get("p_man__spider").clues.some((c) => c.text === "PETER"));
+  assert.deepEqual(serve("p_frame__helicopter"), ["AERIAL"]); assert.ok(byId.get("p_frame__helicopter").clues.some((c) => c.text === "AIR"));
+  assert.doesNotMatch(Object.values(byId.get("p_frame__helicopter").clues.find((c) => c.text === "AERIAL")).join(" "), /aerial frame/i);
+  // left as they were by the owner
+  assert.deepEqual(serve("p_spicy__taco"), ["JALAPENO"]); assert.deepEqual(serve("p_spider__superhero"), ["PARKER"]); assert.deepEqual(serve("p_tap__voice"), ["RECORDING"]);
 });
