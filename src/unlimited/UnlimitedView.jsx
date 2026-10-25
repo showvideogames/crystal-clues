@@ -18,7 +18,7 @@ import POOL from "./pool.json";
 import LIBRARY from "./random-library.json";
 import { generateBoard, freshSeed, validateBoard } from "./generate.js";
 import { useFitCardWords } from "./fitWords.js";
-import { RATINGS, SAVE_HEADLINE, SAVE_DETAIL, readStore, writeStore, storageStatus, nextBoard, playedTotal, resolveBoard, recentPairIds, startBoard, finishBoard, rateClue, notePuzzle, feedbackFor, feedbackText, feedbackJson } from "./history.js";
+import { RATINGS, SAVE_HEADLINE, SAVE_DETAIL, readStore, writeStore, storageStatus, nextFallbackBoard, playedTotal, resolveBoard, recentPairIds, startBoard, finishBoard, rateClue, notePuzzle, feedbackFor, feedbackText, feedbackJson } from "./history.js";
 import "../friends/friends.css";
 import "./unlimited.css";
 
@@ -31,7 +31,8 @@ const boardName = (b) => (isRandom(b) ? "Random puzzle" : `Puzzle ${b.index}`);
 /**
  * A new random board, checked before it is offered. A fresh secure seed each
  * time; pairs from the last few random boards are avoided when possible. If the
- * library somehow cannot make one, the next unplayed fixed board is the fallback.
+ * library somehow cannot make one, the next unplayed fixed board is the fallback,
+ * skipping pool boards whose hint equals one of their own words (board-word rule).
  */
 function newBoard(store){
   const avoid = recentPairIds(store, 3);
@@ -39,7 +40,7 @@ function newBoard(store){
     const b = generateBoard(LIBRARY, { seed: freshSeed(), avoid });
     if(b && !store.boards?.[b.id] && validateBoard(b, LIBRARY).length === 0) return b;
   }
-  return nextBoard(boards, store);
+  return nextFallbackBoard(boards, store);
 }
 const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
 const livesPhrase = (n) => `${n} ${n === 1 ? "life" : "lives"}`;

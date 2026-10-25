@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import LIBRARY from "./random-library.json";
-import { generateBoard, validateBoard, choosePairs, mulberry32, shuffle, norm, hintKey } from "./generate.js";
+import { generateBoard, validateBoard, choosePairs, mulberry32, shuffle, norm, hintKey, hintWordClashes, GENERATOR_VERSION } from "./generate.js";
 import { DIFFICULTY_EXTRA } from "../game/shared";
 import BANK from "../../data/unlimited/wordbank/wordbank.json";
 import V1 from "./fixtures/generator-v1-board.json";
@@ -50,6 +50,7 @@ describe("generateBoard", () => {
       const fillers = words.filter((w) => !targets.has(w));
       expect(targets.size).toBe(8);
       expect(fillers).toHaveLength(20);
+      expect(hintWordClashes(b.clues, words)).toEqual([]); // no hint equals a target or a decoy (generator 3)
       for (const w of fillers) filler.set(w, (filler.get(w) || 0) + 1);
       // every difficulty deals 0..3 of the three extra cards
       for (const n of Object.values(DIFFICULTY_EXTRA)) expect(b.solution.extraCards.slice(0, n)).toHaveLength(n);
@@ -196,5 +197,129 @@ describe("hint choice rules", () => {
     const rng = mulberry32(3); const pos = [0, 0, 0, 0];
     for (let i = 0; i < 40000; i++) pos[shuffle([0, 1, 2, 3], rng).indexOf(0)]++;
     for (const n of pos) expect(Math.abs(n - 10000)).toBeLessThan(500);
+  });
+});
+
+// Owner rule (2026-10-22), generator 3: in Unlimited no displayed hint may exactly equal ANY of the 28
+// board words (the 8 targets and the 20 decoys), with case and whitespace folded (norm), nothing broader.
+describe("board-word rule: no hint equals a target or a decoy (generator 3)", () => {
+  const boardWords = (b) => Object.values(b.cards).flatMap((c) => c.words);
+  const pairIds = (b) => b.reveal.map((r) => r.pairId);
+  const words29 = words50.slice(0, 29); // 8 targets + 21 others: a board uses 20 of the 21
+
+  it("compares exactly, folding only case and whitespace (no stems, substrings, containment or punctuation)", () => {
+    expect(hintWordClashes(["MOON"], ["HONEY", "MOON"])).toEqual([{ clue: "MOON", word: "MOON" }]);
+    expect(hintWordClashes([" moon "], ["MOON"])).toHaveLength(1);
+    expect(hintWordClashes(["ice  age"], ["ICE AGE"])).toHaveLength(1);
+    expect(hintWordClashes(["Ice\tAge"], ["ice age"])).toHaveLength(1);
+    expect(hintWordClashes(["FIRE"], ["FIRES", "FIREMAN", "CAMPFIRE", "FIR"])).toEqual([]);
+    expect(hintWordClashes(["AC/DC", "ICEAGE"], ["ACDC", "ICE AGE"])).toEqual([]); // punctuation and spaces inside are not folded
+    expect(GENERATOR_VERSION).toBe(3);
+  });
+
+  it("a hint equal to a decoy: the decoy is redrawn, the hint and all four pairs stay", () => {
+    // W28 is the only hint of W00+W01 (written in lower case with spaces) and one of the 21 non-targets,
+    // so without the rule it would be one of the 20 decoys on 20 boards in 21.
+    const lib = { words: words29, pairs: [pair("W00", "W01", "canonical", " w28 "), pair("W02", "W03", "provisional", "G1"), pair("W04", "W05", "provisional", "G2"), pair("W06", "W07", "provisional", "G3")] };
+    for (let s = 1; s <= 200; s++) {
+      const b = generateBoard(lib, { seed: s, createdAt: AT });
+      expect(b.clues).toContain("W28");
+      expect(new Set(boardWords(b))).toEqual(new Set(words29.filter((w) => w !== "W28"))); // 28 tiles, the hint word is not one
+      expect(new Set(pairIds(b)).size).toBe(4);
+      expect(validateBoard(b, lib)).toEqual([]);
+    }
+    // With no spare word left the generator makes no board rather than drop a tile or keep the clash.
+    expect(generateBoard({ ...lib, words: words29.filter((w) => w !== "W27") }, { seed: 1, createdAt: AT })).toBeNull();
+  });
+
+  it("a substring or stem of a hint is not a clash: such decoys are drawn as before", () => {
+    const words = [...words50.slice(0, 8), "FIRES", "FIREMAN", "CAMPFIRE", ...words50.slice(8, 26)];
+    const lib = { words, pairs: [pair("W00", "W01", "canonical", "FIRE"), pair("W02", "W03", "provisional", "G1"), pair("W04", "W05", "provisional", "G2"), pair("W06", "W07", "provisional", "G3")] };
+    const seen = new Set();
+    for (let s = 1; s <= 100; s++) {
+      const b = generateBoard(lib, { seed: s, createdAt: AT });
+      for (const w of boardWords(b)) if (w.includes("FIRE")) seen.add(w);
+      expect(validateBoard(b, lib)).toEqual([]);
+    }
+    expect([...seen].sort()).toEqual(["CAMPFIRE", "FIREMAN", "FIRES"]);
+  });
+
+  it("a hint equal to another pair's target: an equal-tier set serves its other playable member", () => {
+    // Only four pairs, so every board holds all of them and W02 is always a target.
+    const lib = { words: words50, pairs: [pair("W00", "W01", "equal-tier", "w02", "ALT"), pair("W02", "W03", "canonical", "K1"), pair("W04", "W05", "provisional", "K2"), pair("W06", "W07", "provisional", "K3")] };
+    for (let s = 1; s <= 100; s++) {
+      const b = generateBoard(lib, { seed: s, createdAt: AT });
+      expect(b.reveal.find((r) => r.pairId === "p_w00__w01").clue).toBe("ALT");
+      expect(validateBoard(b, lib)).toEqual([]);
+    }
+  });
+
+  it("a single-choice hint equal to another pair's target: that combination is not used; pairs are never dropped or weakened", () => {
+    const lib = { words: words50, pairs: [pair("W00", "W01", "canonical", "W02"), pair("W02", "W03", "provisional", "K1"),
+      pair("W04", "W05", "provisional", "K2"), pair("W06", "W07", "provisional", "K3"), pair("W08", "W09", "provisional", "K4")] };
+    const used = new Set();
+    for (let s = 1; s <= 200; s++) {
+      const b = generateBoard(lib, { seed: s, createdAt: AT });
+      const ids = pairIds(b);
+      expect(ids.includes("p_w00__w01") && ids.includes("p_w02__w03")).toBe(false);
+      expect(new Set(ids).size).toBe(4);
+      expect(hintWordClashes(b.clues, boardWords(b))).toEqual([]);
+      expect(validateBoard(b, lib)).toEqual([]);
+      ids.forEach((id) => used.add(id));
+    }
+    expect(used.has("p_w00__w01") && used.has("p_w02__w03")).toBe(true); // each still plays, just not together
+    // The exhaustive fallback applies the same rule, and only fails when no clash-free set exists.
+    const four = { words: words50, pairs: lib.pairs.slice(0, 4) };
+    expect(choosePairs(four.pairs, mulberry32(1), { tries: 0 })).toBeNull();
+    expect(generateBoard(four, { seed: 1, createdAt: AT })).toBeNull();
+    expect(choosePairs(lib.pairs, mulberry32(1), { tries: 0 }).method).toBe("exhaustive");
+  });
+
+  it("validateBoard reports a hint equal to any board word, and still reports a hint equal to its own target", () => {
+    const lib = { words: words50, pairs: [pair("W00", "W01", "canonical", "Q1"), pair("W02", "W03", "provisional", "Q2"), pair("W04", "W05", "provisional", "Q3"), pair("W06", "W07", "provisional", "Q4")] };
+    const b = generateBoard(lib, { seed: 7, createdAt: AT });
+    expect(validateBoard(b, lib)).toEqual([]);
+    const extra = b.cards[b.solution.extraCards[0]].words[0];
+    const decoyClash = JSON.parse(JSON.stringify(b));
+    decoyClash.clues[0] = decoyClash.reveal[0].clue = extra;
+    expect(validateBoard(decoyClash, lib)).toContain(`clue ${extra} equals board word ${extra}`);
+    const own = JSON.parse(JSON.stringify(b));
+    own.clues[1] = own.reveal[1].clue = own.reveal[1].wordA;
+    expect(validateBoard(own, lib)).toContain("clue 1 differs from its words");
+  });
+
+  it("is deterministic per seed, including boards that needed a redraw", () => {
+    const lib = { words: words29, pairs: [pair("W00", "W01", "equal-tier", "W28", "W02", "ALT"), pair("W02", "W03", "canonical", "K1"), pair("W04", "W05", "provisional", "K2"), pair("W06", "W07", "provisional", "K3")] };
+    for (let s = 1; s <= 50; s++) expect(JSON.stringify(generateBoard(lib, { seed: s, createdAt: AT }))).toBe(JSON.stringify(generateBoard(lib, { seed: s, createdAt: AT })));
+    for (let s = 1; s <= 50; s++) expect(JSON.stringify(gen(s * 31337))).toBe(JSON.stringify(gen(s * 31337)));
+  });
+
+  it("leaves the Daily game alone: no Daily or Friends module imports the Unlimited generator", async () => {
+    const fs = await import("node:fs");
+    const path = await import("node:path");
+    const { fileURLToPath } = await import("node:url");
+    const src = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+    const files = ["App.jsx", ...["game", "friends", "home", "utils"].flatMap((d) => fs.readdirSync(path.join(src, d)).filter((f) => /\.jsx?$/.test(f)).map((f) => `${d}/${f}`))];
+    expect(files.length).toBeGreaterThan(20);
+    for (const f of files) expect(`${f}: ${/unlimited\/generate/.test(fs.readFileSync(path.join(src, f), "utf8"))}`).toBe(`${f}: false`);
+  });
+});
+
+describe("exhaustive fallback", () => {
+  it("never returns a set without hints, even when the seeded equal-tier pick dead-ends ({X,Y},{Y,Z},{X,Z})", () => {
+    const lib = { words: words50, pairs: [pair("W00", "W01", "equal-tier", "X", "Y"), pair("W02", "W03", "equal-tier", "Y", "Z"),
+      pair("W04", "W05", "equal-tier", "X", "Z"), pair("W06", "W07", "canonical", "K")] };
+    let found = 0; // the greedy feasibility check can still miss this set for some orders (null, as before); a found set must carry its hints
+    for (let s = 1; s <= 1000; s++) {
+      const pick = choosePairs(lib.pairs, mulberry32(s), { tries: 0 }); // straight to the exhaustive search
+      if (!pick) continue;
+      found++;
+      expect(pick.method).toBe("exhaustive");
+      expect(pick.hints).toHaveLength(4);
+      expect(new Set(pick.hints.map((h) => hintKey(h.text))).size).toBe(4);
+      expect(JSON.stringify(choosePairs(lib.pairs, mulberry32(s), { tries: 0 }))).toBe(JSON.stringify(pick)); // deterministic
+    }
+    expect(found).toBeGreaterThan(100);
+    for (let s = 1; s <= 200; s++) expect(validateBoard(generateBoard(lib, { seed: s, createdAt: AT }), lib)).toEqual([]);
   });
 });

@@ -89,13 +89,13 @@ test("advisory kinds are triage only: playable hints get none, nothing is promot
   assert.equal(JSON.stringify(ix.pairs.map((p) => p.clues.map((c) => c.status))), before);
 });
 
-test("the real data: rejection-only pairs reconcile (16 at the coverage commit, 17 with BIRD + SHIP → FALCON), served matches the export, owner rejections stay exact", () => {
+test("the real data: rejection-only pairs reconcile (16 at the coverage commit, 18 with BIRD/SHIP FALCON and ARCADE/FIGHTER STREET), served matches the export, owner rejections stay exact", () => {
   const ix = loadCatalogue(); const rejections = loadRejections();
   const s = coverageSummary(ix, rejections); const st = stats(ix);
   const ids = new Set(ix.pairs.map((p) => p.pair_id));
   const only = new Set(rejections.filter((e) => !ids.has(e.pair_id)).map((e) => e.pair_id));
-  assert.equal(only.size, 17);   // 16 + BIRD + SHIP, whose only record is the owner's FALCON hold
-  assert.equal(s.rejectionOnlyPairs.inBank + s.rejectionOnlyPairs.outsideBank, 17);
+  assert.equal(only.size, 18);   // 16 + BIRD + SHIP, whose only record is the owner's FALCON hold
+  assert.equal(s.rejectionOnlyPairs.inBank + s.rejectionOnlyPairs.outsideBank, 18);
   assert.equal(s.evidence.unseen, st.possiblePairs - st.storedInBank - s.rejectionOnlyPairs.inBank, "rejection-only pairs are not counted as untried");
   for (const id of only) {
     const e = rejections.find((x) => x.pair_id === id);

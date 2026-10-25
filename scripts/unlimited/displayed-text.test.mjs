@@ -6,11 +6,19 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { hintProblem } from "./catalogue-lib.mjs";
+import { hintProblem, pairOf } from "./catalogue-lib.mjs";
 
 const lib = JSON.parse(readFileSync("data/unlimited/library/pairs.json", "utf8"));
 const client = JSON.parse(readFileSync("src/unlimited/random-library.json", "utf8"));
 const byId = new Map(lib.pairs.map((p) => [p.pair_id, p]));
+// Historical batch counts still describe the pre-owner review verdicts. Later
+// decisions are explicit in the owner ledger, and are tested against the current
+// served export separately (owner-20261024.test.mjs).
+const ownerLedger = JSON.parse(readFileSync("data/unlimited/imports/owner-20261024/decisions.json", "utf8"));
+const ownerDecisions = new Map(ownerLedger.decisions.map(d => [pairOf(...d.pair).id,d]));
+const ownerRejected = new Set(ownerLedger.rejections.map(r => `${pairOf(...r.pair).id}|${r.hint}`));
+const previousStatus = c => c.provenance?.owner20261024?.previousStatus || c.status;
+const shouldServe = (p,c) => ownerRejected.has(`${p.pair_id}|${c.text}`) ? false : ownerDecisions.has(p.pair_id) ? ownerDecisions.get(p.pair_id).primary === c.text : c.status === "ai_reviewed";
 const FIELDS = ["revealExplanation", "wordAConnection", "wordBConnection"];
 
 test("every served hint shows exactly the library's current text", () => {
@@ -290,13 +298,13 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19),
   // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22), HE-MAN and a second DO-RE-MI (x23),
   // A-FRAME, CATCH-UP, ITSY-BITSY, JACK-O-LANTERN, PAC-MAN, PING-PONG, SCI-FI, SPIDER-MAN and a second DOUBLE-DECKER and POST-IT (consolidated-1022 import)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "A-FRAME", "CATCH-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "ITSY-BITSY", "JACK-O-LANTERN", "KNOCK-KNOCK", "KOOL-AID", "PAC-MAN", "PING-PONG", "POST-IT", "POST-IT", "SCI-FI", "SPIDER-MAN", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "A-FRAME", "CATCH-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "ITSY-BITSY", "JACK-O-LANTERN", "KNOCK-KNOCK", "KOOL-AID", "PAC-MAN", "PAC-MAN", "PING-PONG", "POST-IT", "POST-IT", "SCI-FI", "SPIDER-MAN", "SPIT-TAKE", "SPIT-TAKE", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
   const x12 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x12").map((c) => ({ p, c })));
   assert.equal(x12.length, 170);
-  const n = (s) => x12.filter(({ c }) => c.status === s).length;
+  const n = (s) => x12.filter(({ c }) => previousStatus(c) === s).length;
   // 162 PASS, then 5 BORDERLINE accepted by the coordinator (x12 cleanup); RING (BAND + FINGER) still held.
   // + RING (BAND + WEDDING, BAND + FINGER) and STRAP (BAND + WATCH) accepted by the coordinator after the synonym-rule audit.
   assert.equal(n("ai_reviewed"), 170); assert.equal(n("held"), 0); assert.equal(n("rejected"), 0);
@@ -312,7 +320,7 @@ test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, t
   assert.match(x12.find(({ c }) => c.text === "CONTROLLER").c.override.reason, /WII .* unselected/);
   for (const { p, c } of x12) {
     const served = client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text);
-    assert.equal(!!served, c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+    assert.equal(!!served, shouldServe(p,c), `${p.pair_id} ${c.text}`);
   }
   const spam = x12.find(({ c }) => c.text === "SPAM").c;
   assert.match(spam.revealExplanation, /canned pork with ham/); assert.match(spam.provenance.textCorrection.note, /parent post-review correction/);
@@ -324,13 +332,13 @@ test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, t
 test("x13: 127 candidates on unseen pairs; 122 served from blind review, 4 holds accepted, MARCHING replaced by ROCK; reviewer accuracy fixes traceable", () => {
   const x13 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x13").map((c) => ({ p, c })));
   assert.equal(x13.length, 127);
-  const n = (s) => x13.filter(({ c }) => c.status === s).length;
+  const n = (s) => x13.filter(({ c }) => previousStatus(c) === s).length;
   // 122 PASS, then PURPLE, ROLL, STAR and CROSSING accepted by the coordinator; MARCHING kept (held) as a less-preferred proposal, ROCK serves BAND + SCHOOL.
   assert.equal(n("ai_reviewed"), 126); assert.equal(n("held"), 1); assert.equal(n("rejected"), 0);
   assert.deepEqual(client.pairs.find((x) => x.id === "p_band__school").hints.map((h) => h.text), ["ROCK"]);
   assert.match(byId.get("p_band__school").clues.find((c) => c.text === "MARCHING").override.reason, /not a rejection/);
   assert.equal(byId.get("p_chess__sand").clues.find((c) => c.text === "CASTLE").wordAConnection, "You can castle in chess.");
-  for (const { p, c } of x13) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x13) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   const shrek = x13.find(({ c }) => c.text === "SHREK").c;
   assert.doesNotMatch(shrek.revealExplanation, /wife|marr/i); assert.match(shrek.revealExplanation, /^In the Shrek films/);
   const tc = JSON.stringify([shrek.provenance.textCorrection, shrek.provenance.textCorrectionHistory]); assert.match(tc, /parent post-review text cleanup/); assert.match(tc, /reviewer-suggested accuracy fix/, "earlier correction kept as history");
@@ -340,7 +348,7 @@ test("x13: 127 candidates on unseen pairs; 122 served from blind review, 4 holds
 test("x14: 222 candidates on unseen pairs; 219 passed review; EXCALIBUR and THESEUS familiarity-held (ESCAPE serves LABYRINTH + THREAD); wording fixes traceable", () => {
   const x14 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x14").map((c) => ({ p, c })));
   assert.equal(x14.length, 222);
-  const n = (s) => x14.filter(({ c }) => c.status === s).length;
+  const n = (s) => x14.filter(({ c }) => previousStatus(c) === s).length;
   // 219 PASS; THESEUS then familiarity-held, with ESCAPE (coordinator selection, source catalogue add) serving LABYRINTH + THREAD.
   // + JUDY accepted (moderate familiarity); HOTDOG kept as a held option while CONDIMENT (coordinator selection) serves KETCHUP + MUSTARD.
   assert.equal(n("ai_reviewed"), 219); assert.equal(n("held"), 3); assert.equal(n("rejected"), 0);
@@ -352,7 +360,7 @@ test("x14: 222 candidates on unseen pairs; 219 passed review; EXCALIBUR and THES
   assert.equal(byId.get("p_labyrinth__thread").clues.find((c) => c.text === "ESCAPE").provenance.blindReview, null, "a coordinator selection, not a model verdict");
   assert.doesNotMatch(byId.get("p_alien__day").clues[0].revealExplanation, /Fourth|July/);
   assert.doesNotMatch(byId.get("p_car__plot").clues[0].revealExplanation, /wing/);
-  for (const { p, c } of x14) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x14) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   const ex = byId.get("p_lady__lake").clues.find((c) => c.text === "EXCALIBUR");
   assert.equal(ex.status, "held"); assert.match(ex.override.reason, /owner-familiarity hold/); assert.match(ex.override.reason, /stays open/);
   assert.doesNotMatch(byId.get("p_pound__silver").clues[0].revealExplanation, /fine silver/);
@@ -363,10 +371,10 @@ test("x14: 222 candidates on unseen pairs; 219 passed review; EXCALIBUR and THES
 test("x15: 213 candidates on unseen pairs; 207 served after blind review, 5 held, 1 rejected; parent text fixes traceable", () => {
   const x15 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x15").map((c) => ({ p, c })));
   assert.equal(x15.length, 213);
-  const n = (s) => x15.filter(({ c }) => c.status === s).length;
+  const n = (s) => x15.filter(({ c }) => previousStatus(c) === s).length;
   // + BOOT, PUPPET, ROOK, WIMBLEDON x2 coordinator-accepted; JAR kept (held) while TROUBLE serves JAM + PICKLE.
   assert.equal(n("ai_reviewed"), 212); assert.equal(n("held"), 1); assert.equal(n("rejected"), 0);
-  for (const { p, c } of x15) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x15) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   assert.doesNotMatch(byId.get("p_japan__penguin").clues[0].revealExplanation, /last country/);
   assert.match(byId.get("p_ball__ram").clues[0].revealExplanation, /Dodge Ram/);
 });
@@ -374,10 +382,10 @@ test("x15: 213 candidates on unseen pairs; 207 served after blind review, 5 held
 test("x16: 210 candidates on unseen pairs; 206 PASS, 4 BORDERLINE coordinator-accepted; RUSSIAN serves DOLL + NEST (BABUSHKA held); text fixes traceable", () => {
   const x16 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x16").map((c) => ({ p, c })));
   assert.equal(x16.length, 210);
-  const n = (s) => x16.filter(({ c }) => c.status === s).length;
+  const n = (s) => x16.filter(({ c }) => previousStatus(c) === s).length;
   // + VICTORIA, MAVERICK, DAREDEVIL, TREAD coordinator-accepted; BABUSHKA (review PASS) kept as a held option while RUSSIAN serves DOLL + NEST.
   assert.equal(n("ai_reviewed"), 209); assert.equal(n("held"), 1); assert.equal(n("rejected"), 0);
-  for (const { p, c } of x16) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x16) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   const dn = byId.get("p_doll__nest");
   const ru = dn.clues.find((c) => c.text === "RUSSIAN");
   assert.equal(ru.status, "ai_reviewed"); assert.equal(ru.override.status, "coordinator_accept"); assert.equal(ru.provenance.blindReview, null);
@@ -395,7 +403,7 @@ test("x16: 210 candidates on unseen pairs; 206 PASS, 4 BORDERLINE coordinator-ac
 test("x17: 235 candidates on unseen pairs; 227 PASS + 4 BORDERLINE coordinator-accepted; BIG, SWEET, LUCK coordinator selections; WALL-E spelling and text fixes traceable", () => {
   const x17 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x17").map((c) => ({ p, c })));
   assert.equal(x17.length, 235);
-  const n = (s) => x17.filter(({ c }) => c.status === s).length;
+  const n = (s) => x17.filter(({ c }) => previousStatus(c) === s).length;
   // VIRAL, MAD, ABBEY, FRENCH coordinator-accepted; PIXEL, CAVITY, DIE kept held behind BIG, SWEET, LUCK; DELOREAN familiarity-held.
   assert.equal(n("ai_reviewed"), 231); assert.equal(n("held"), 4); assert.equal(n("rejected"), 0);
   for (const [id, h, old] of [["p_picture__screen", "BIG", "PIXEL"], ["p_sugar__tooth", "SWEET", "CAVITY"], ["p_dice__hard", "LUCK", "DIE"]]) {
@@ -406,7 +414,7 @@ test("x17: 235 candidates on unseen pairs; 227 PASS + 4 BORDERLINE coordinator-a
   }
   assert.match(byId.get("p_dice__hard").clues.find((c) => c.text === "DIE").override.reason, /spelling-rule hold/);
   assert.ok(!client.pairs.some((x) => x.id === "p_dog__einstein"));
-  for (const { p, c } of x17) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x17) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   const w = byId.get("p_robot__trash").clues;
   assert.equal(w.length, 1); assert.equal(w[0].text, "WALL-E"); assert.equal(w[0].provenance.hintSpelling.from, "WALLE");
   assert.deepEqual(client.pairs.find((x) => x.id === "p_robot__trash").hints.map((h) => h.text), ["WALL-E"]);
@@ -419,7 +427,7 @@ test("x17: 235 candidates on unseen pairs; 227 PASS + 4 BORDERLINE coordinator-a
 test("x18: 219 candidates on unseen pairs; 211 PASS + CANON, JAZZ, GORILLA accepted; RELATIVITY, DEAD, HAND, ASH coordinator selections; text fixes traceable", () => {
   const x18 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x18").map((c) => ({ p, c })));
   assert.equal(x18.length, 219);
-  const n = (s) => x18.filter(({ c }) => c.status === s).length;
+  const n = (s) => x18.filter(({ c }) => previousStatus(c) === s).length;
   // held: FINISH, HOUR (less preferred), DELOREAN, FAWKES, LANTERN (familiarity; LANTERN's pair stays open, unserved)
   assert.equal(n("ai_reviewed"), 214); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
   for (const [id, h, old] of [["p_end__line", "DEAD", "FINISH"], ["p_clock__short", "HAND", "HOUR"], ["p_fireworks__phoenix", "ASH", "FAWKES"]]) {
@@ -429,7 +437,7 @@ test("x18: 219 candidates on unseen pairs; 211 PASS + CANON, JAZZ, GORILLA accep
     assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), [h]);
   }
   assert.ok(!client.pairs.some((x) => x.id === "p_halloween__turnip"));
-  for (const { p, c } of x18) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x18) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   const pl = byId.get("p_cast__wall").clues[0];
   // two corrections (reviewer, then parent): the drafted text is kept in the history, the latest correction on top
   assert.doesNotMatch(pl.revealExplanation, /set a broken bone/); assert.match(pl.revealExplanation, /immobilize and support/);
@@ -447,7 +455,7 @@ test("x18: 219 candidates on unseen pairs; 211 PASS + CANON, JAZZ, GORILLA accep
 test("x19: 210 candidates on unseen pairs; 199 PASS + 6 BORDERLINE accepted; SCIENTIST, ARES, STRING, SATELLITE, SANDERSON coordinator selections; text fixes traceable", () => {
   const x19 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x19").map((c) => ({ p, c })));
   assert.equal(x19.length, 210);
-  const n = (s) => x19.filter(({ c }) => c.status === s).length;
+  const n = (s) => x19.filter(({ c }) => previousStatus(c) === s).length;
   // DOC (review PASS) is familiarity-held: it relies on the Back to the Future dog named Einstein.
   // + CAFE, POINT, ROMAN, ISLAND, DOLLY, SLEDGE accepted; held: DOC, KRATOS, FIDDLE, TELESCOPE, MACBETH (valid alternatives) and QUARK (familiarity, pair open)
   assert.equal(n("ai_reviewed"), 204); assert.equal(n("held"), 6); assert.equal(n("rejected"), 0);
@@ -458,7 +466,7 @@ test("x19: 210 candidates on unseen pairs; 199 PASS + 6 BORDERLINE accepted; SCI
     assert.deepEqual(client.pairs.find((x) => x.id === id).hints.map((x) => x.text), [h]);
   }
   assert.ok(!client.pairs.some((x) => x.id === "p_charm__top"));
-  for (const { p, c } of x19) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x19) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   const be = byId.get("p_brown__einstein").clues; const sci = be.find((c) => c.text === "SCIENTIST");
   assert.equal(sci.override.status, "coordinator_accept"); assert.equal(sci.provenance.blindReview, null);
   const doc = be.find((c) => c.text === "DOC"); assert.equal(doc.status, "held"); assert.equal(doc.provenance.blindReview.verdict, "PASS");
@@ -472,7 +480,7 @@ test("x19: 210 candidates on unseen pairs; 199 PASS + 6 BORDERLINE accepted; SCI
 test("x20: 221 candidates on unseen pairs; 211 PASS + 9 BORDERLINE accepted; FEED serves INTERNET + TROLL; CROW + SHIP NEST reserved; text fixes traceable", () => {
   const x20 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x20").map((c) => ({ p, c })));
   assert.equal(x20.length, 221);
-  const n = (s) => x20.filter(({ c }) => c.status === s).length;
+  const n = (s) => x20.filter(({ c }) => previousStatus(c) === s).length;
   // + CROW + SHIP -> NEST (review PASS) held: it belongs to the x11 owner proposal-only animal x SHIP family
   // the parent then accepted 9 BORDERLINE rows; BAIT is kept held behind the coordinator-selected FEED
   // CROW + SHIP -> NEST then approved by the parent's source audit; only BAIT stays held
@@ -481,7 +489,7 @@ test("x20: 221 candidates on unseen pairs; 211 PASS + 9 BORDERLINE accepted; FEE
   assert.equal(feed.override.status, "coordinator_accept"); assert.equal(feed.provenance.blindReview, null); assert.equal(it.find((c) => c.text === "BAIT").status, "held");
   assert.deepEqual(client.pairs.find((x) => x.id === "p_internet__troll").hints.map((h) => h.text), ["FEED"]);
   assert.equal(byId.get("p_date__milk").clues[0].revealExplanation, "An expiration date is a familiar printed label on products such as milk cartons.");
-  for (const { p, c } of x20) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x20) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   const hit = byId.get("p_baseball__song").clues[0];
   assert.doesNotMatch(hit.revealExplanation, /safely reaching base/); assert.match(hit.provenance.textCorrectionHistory[0].from.revealExplanation, /safely reaching base/);
   assert.match(hit.wordAConnection, /Singles, doubles, triples and home runs/);
@@ -491,11 +499,11 @@ test("x20: 221 candidates on unseen pairs; 211 PASS + 9 BORDERLINE accepted; FEE
 test("x21: 220 candidates on unseen pairs; 215 PASS, 4 BORDERLINE, 1 FAIL; JACK, RAPTOR, MASTER, FILLING, AIR coordinator selections; text fixes traceable", () => {
   const x21 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x21").map((c) => ({ p, c })));
   assert.equal(x21.length, 220);
-  const n = (s) => x21.filter(({ c }) => c.status === s).length;
+  const n = (s) => x21.filter(({ c }) => previousStatus(c) === s).length;
   // held: LOKI, SCREECH, PADAWAN, CREAM (valid, behind JACK, RAPTOR, MASTER, FILLING) and DIVING (rule concern; raw FAIL kept); LOOFAH, SHAKESPEARE accepted
   assert.equal(n("ai_reviewed"), 215); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
   const dv = byId.get("p_scuba-diver__sky").clues.find((c) => c.text === "DIVING"); assert.equal(dv.status, "held"); assert.equal(dv.provenance.blindReview.verdict, "FAIL");
-  for (const { p, c } of x21) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x21) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   for (const [id, h, old] of [["p_frost__giant", "JACK", "LOKI"], ["p_eagle__hawk", "RAPTOR", "SCREECH"], ["p_pupil__yoda", "MASTER", "PADAWAN"], ["p_middle__oreo", "FILLING", "CREAM"], ["p_scuba-diver__sky", "AIR", "DIVING"]]) {
     const cs = byId.get(id).clues; const sel = cs.find((c) => c.text === h);
     assert.equal(sel.override.status, "coordinator_accept"); assert.equal(sel.provenance.blindReview, null);
@@ -509,12 +517,12 @@ test("x21: 220 candidates on unseen pairs; 215 PASS, 4 BORDERLINE, 1 FAIL; JACK,
 test("x22: 213 candidates on unseen pairs; 204 PASS, 9 BORDERLINE; parent cleanup: 4 accepted, 5 coordinator selections, YORICK and JUMBO replaced; text fixes traceable", () => {
   const x22 = [...byId.values()].flatMap((p) => p.clues.filter((c) => c.provenance?.source === "x22").map((c) => ({ p, c })));
   assert.equal(x22.length, 213);
-  const n = (s) => x22.filter(({ c }) => c.status === s).length;
+  const n = (s) => x22.filter(({ c }) => previousStatus(c) === s).length;
   assert.equal(x22.filter(({ c }) => c.provenance.blindReview.verdict === "BORDERLINE").length, 9, "raw reviews kept");
   // held: SUNLIGHT, PARROT, NOCTURNAL, SKITTLES, BOWLER (review BORDERLINE) and YORICK, JUMBO (review PASS, behind BONEHEAD, DUMBO)
   assert.equal(n("ai_reviewed"), 206); assert.equal(n("held"), 7); assert.equal(n("rejected"), 0);
   // CARD is an accepted alternate: playable, but FLASH is the pair's canonical hint
-  for (const { p, c } of x22) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed" && p.pair_id !== "p_camera__memory",`${p.pair_id} ${c.text}`);
+  for (const { p, c } of x22) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c) && p.pair_id !== "p_camera__memory",`${p.pair_id} ${c.text}`);
   for (const [id, h, old, rule] of [["p_camera__memory", "FLASH", "CARD", "canonical"], ["p_stone__troll", "BRIDGE", "SUNLIGHT", "provisional"], ["p_pirate__silver", "TREASURE", "PARROT", "provisional"], ["p_fool__skull", "BONEHEAD", "YORICK", "canonical"], ["p_circus__jet", "DUMBO", "JUMBO", "canonical"]]) {
     const cs = byId.get(id).clues; const sel = cs.find((c) => c.text === h);
     assert.equal(sel.override.status, "coordinator_accept"); assert.equal(sel.provenance.blindReview, null); assert.match(sel.override.by, /not an owner decision/);
@@ -527,7 +535,7 @@ test("x22: 213 candidates on unseen pairs; 204 PASS, 9 BORDERLINE; parent cleanu
   for (const id of ["p_einstein__shoe", "p_fox__mask"]) assert.equal(byId.get(id).clues.find((c) => c.provenance?.source === "x22").reference.recognizability, "moderate");
   const g = byId.get("p_virus__wheat").clues[0]; assert.match(g.revealExplanation, /embryo/); assert.match(g.provenance.textCorrection.from.revealExplanation, /core/);
   assert.match(byId.get("p_mexico__queen").clues[0].revealExplanation, /^Eastern monarch/);
-  const foul = byId.get("p_baseball__play").clues[0]; assert.match(foul.wordAConnection, /foul balls and foul territory/); assert.match(foul.provenance.textCorrection.from.wordAConnection, /lands outside/);
+  const foul = byId.get("p_baseball__play").clues.find((c) => c.text === "FOUL"); assert.ok(foul, "replaced FOUL remains stored with its correction provenance"); assert.match(foul.wordAConnection, /foul balls and foul territory/); assert.match(foul.provenance.textCorrection.from.wordAConnection, /lands outside/);
   assert.match(byId.get("p_nasa__team").clues[0].wordBConnection, /familiar members of/);
   const tr = byId.get("p_pirate__silver").clues.find((c) => c.text === "TREASURE"); assert.equal(tr.revealExplanation, "Pirates hunt buried treasure, and silver coins can be treasure."); assert.doesNotMatch(tr.revealExplanation + tr.wordBConnection, /Long John/); assert.match(tr.provenance.textCorrection.from.wordBConnection, /Long John Silver/); assert.ok(tr.override.history[0].superseded);
   const ph = byId.get("p_ghost__theater").clues[0]; assert.match(ph.wordBConnection, /the musical .* became Broadway's longest-running show/); assert.ok(ph.provenance.textCorrectionHistory?.length || ph.provenance.textCorrection, "drafted text kept");
@@ -538,10 +546,10 @@ test("x23: 237 candidates on unseen pairs; 233 PASS, 4 BORDERLINE; parent holds 
   assert.equal(x23.length, 237);
   const v = (s) => x23.filter(({ c }) => c.provenance.blindReview.verdict === s).length;
   assert.equal(v("PASS"), 233); assert.equal(v("BORDERLINE"), 4); assert.equal(v("FAIL"), 0);
-  const n = (s) => x23.filter(({ c }) => c.status === s).length;
+  const n = (s) => x23.filter(({ c }) => previousStatus(c) === s).length;
   // held: FAWKES, ARCHIMEDES (PASS, parent familiarity hold), SNOOPY, PERISCOPE, SAUCE (review BORDERLINE); SALE accepted with a new route
   assert.equal(n("ai_reviewed"), 232); assert.equal(n("held"), 5); assert.equal(n("rejected"), 0);
-  for (const { p, c } of x23) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), c.status === "ai_reviewed", `${p.pair_id} ${c.text}`);
+  for (const { p, c } of x23) assert.equal(!!client.pairs.find((x) => x.id === p.pair_id)?.hints.some((h) => h.text === c.text), shouldServe(p,c), `${p.pair_id} ${c.text}`);
   for (const [id, t, verdict] of [["p_phoenix__plot", "FAWKES", "PASS"], ["p_bath__screw", "ARCHIMEDES", "PASS"], ["p_pilot__spike", "SNOOPY", "BORDERLINE"]]) {
     const c = byId.get(id).clues.find((x) => x.text === t); assert.equal(c.status, "held"); assert.match(c.override.reason, /familiarity/); assert.equal(c.provenance.blindReview.verdict, verdict, "raw review kept");
   }
@@ -568,9 +576,9 @@ test("consolidated-1022 import: append-only, PASS-only, traceable, no template s
   const batch = JSON.parse(readFileSync("data/unlimited/library/batches/consolidated-1022-batch.json", "utf8"));
   const rec = new Map(batch.pairs.map((p) => [p.pair_id, p.clues[0]]));
   for (const { p, c } of imp) {
-    assert.equal(c.status, approved.has(`${p.pair_id}|${c.text}`) ? "human_approved" : "ai_reviewed", `${p.pair_id} ${c.text}`);
+    assert.equal(c.status, ownerRejected.has(`${p.pair_id}|${c.text}`) ? "rejected" : approved.has(`${p.pair_id}|${c.text}`) || ownerDecisions.get(p.pair_id)?.hints.some(h=>h.text===c.text) ? "human_approved" : "ai_reviewed", `${p.pair_id} ${c.text}`);
     assert.equal(c.provenance.blindReview.verdict, "PASS");
-    assert.equal(c.revealExplanation, "", `${p.pair_id} has no template sentence`); assert.ok(c.wordAConnection && c.wordBConnection);
+    if (!ownerDecisions.get(p.pair_id)?.hints.some(h=>h.text===c.text)) assert.equal(c.revealExplanation, "", `${p.pair_id} has no template sentence`); assert.ok(c.wordAConnection && c.wordBConnection);
     const r = rec.get(p.pair_id); assert.equal(r.text, c.text, `${p.pair_id} traceable to the batch`);
     assert.ok(r.importRecord.candidate_ids.length && r.importRecord.independent.every((e) => /^pass/i.test(e.verdict)));
     assert.equal(c.provenance.request, r.importRecord.candidate_ids.join(" / "));
