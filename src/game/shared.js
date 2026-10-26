@@ -148,12 +148,8 @@ export function isClueRotation(clues, original) {
   return false;
 }
 
-// Judges the four board slots against the stored answer, at whatever rotation
-// the board is currently showing (found by matching the clues). Returns
-// { correct, wrong } as Sets of slot indices. A guess that would unlock a
-// slot already locked is never produced: if any locked slot is not correct in
-// this rotation the whole guess is judged wrong.
-export function bestSubmit(slots4, solution, locked, currentClues, originalClues) {
+// Express the stored answer in the visible clue frame for judging and reveal.
+export function solutionForClues(solution, currentClues, originalClues) {
   // Determine which rotation of the board we're currently on by matching clues
   // Only check that specific rotation — prevents false positives from shuffled cards
   // accidentally matching a different rotation of the solution
@@ -173,6 +169,16 @@ export function bestSubmit(slots4, solution, locked, currentClues, originalClues
     sc=ns; or=no;
   }
 
+  return { ...solution, slotCards:sc, orientations:or };
+}
+
+// Judges the four board slots against the stored answer, at whatever rotation
+// the board is currently showing (found by matching the clues). Returns
+// { correct, wrong } as Sets of slot indices. A guess that would unlock a
+// slot already locked is never produced: if any locked slot is not correct in
+// this rotation the whole guess is judged wrong.
+export function bestSubmit(slots4, solution, locked, currentClues, originalClues) {
+  const { slotCards:sc, orientations:or } = solutionForClues(solution, currentClues, originalClues);
   const correct=new Set(), wrong=new Set();
   for(let i=0;i<4;i++){
     if(slots4[i]?.cardId===sc[i]&&slots4[i]?.orientation===or[i]) correct.add(i);
