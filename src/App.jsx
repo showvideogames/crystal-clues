@@ -28,6 +28,9 @@ const FriendsView = lazy(() => import("./friends/FriendsView.jsx"));
 const SharedPuzzle = lazy(() => import("./friends/SharedPuzzle.jsx"));
 // Unlimited guest beta (/unlimited): a local pool of checked boards, no account.
 const UnlimitedView = lazy(() => import("./unlimited/UnlimitedView.jsx"));
+// Random-Pair Pilot Beta (/unlimited-beta): a finite, fixed list of test boards
+// from the pilot library only. Reached by direct address; linked from nowhere.
+const PilotBetaView = lazy(() => import("./unlimited/beta/PilotBetaView.jsx"));
 // Friends settings outside the Friends page: notifications (in Settings) and
 // the profile editor (from the account menu).
 const FriendsNotifications = lazy(() => import("./friends/Notifications.jsx"));
@@ -2293,6 +2296,10 @@ export function GameView({
   // what the parent shows under the board once the game is over.
   unlimited=false,
   endControls=null,
+  // Where this game's progress is kept, instead of clover_progress_<id>. Only
+  // the Random-Pair Pilot Beta (src/unlimited/beta) passes it, to keep its
+  // games in its own storage namespace; every other caller leaves it unset.
+  progressStorageKey=null,
   // The animated replay of a finished friend puzzle (friends/AnimatedReplay.jsx):
   // { init:{slots,clues}, apiRef, still, feedback }. The board starts at init,
   // ignores the player's input, and is driven through apiRef; `friend` then
@@ -2353,7 +2360,7 @@ export function GameView({
   const official = !friendPuzzle && !sandbox && !tutorialActive && !replay && !admireMode && !unlimited;
   // Official and Unlimited games end the same way on screen: the result under the board.
   const scored = official || unlimited;
-  const progressKey = `clover_progress_${puzzle.id}`;
+  const progressKey = progressStorageKey || `clover_progress_${puzzle.id}`;
   const friendProgressKey = friendPuzzle && !replayMode ? `clover_friend_progress_${friendPuzzle.id}` : null;
   const [friendInit] = useState(()=> friendPuzzle && !replayMode
     ? restoreFriendBoard(friendPuzzle, loadLS(friendProgressKey, null))
@@ -5408,6 +5415,11 @@ export default function App() {
       {view==="unlimited" && (
         <Suspense fallback={<div className="mhint" style={{padding:28,textAlign:"center"}}>Opening Unlimited…</div>}>
           <UnlimitedView kit={GAME_KIT} onHome={()=>setView("home")} onHowToPlay={openTutorial}/>
+        </Suspense>
+      )}
+      {view==="unlimitedBeta" && (
+        <Suspense fallback={<div className="mhint" style={{padding:28,textAlign:"center"}}>Opening the pilot beta…</div>}>
+          <PilotBetaView kit={GAME_KIT} onHome={()=>setView("home")}/>
         </Suspense>
       )}
       {showTutorial && <TutorialPracticeOverlay onClose={closeTutorial} />}
