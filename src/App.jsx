@@ -14,7 +14,7 @@ import { usePath, parsePath, navigate, paths, adoptLegacyLink } from "./route";
 import { THEME_CHOICES, useThemeChoice } from "./theme";
 import {
   CW_FROM, DIFFICULTY_EXTRA, DIFFICULTY_LABELS, DIFF_OPTIONS, DIFF_RANK, MAX_LIVES, vw, dealCardsFromBank, checkBoard,
-  biasedShuffle, isClueRotation, bestSubmit,
+  biasedShuffle, isClueRotation, bestSubmit, solutionForClues,
 } from "./game/shared";
 import { loadWordBank, wordBankPagePath } from "./game/wordBank";
 import { initialMode, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinal } from "./game/dailyResults";
@@ -2262,7 +2262,7 @@ function PuzzleLobby({ puzzle, difficulty, onChangeDifficulty, onStart, onOpenTu
 //  GAME VIEW
 // ═══════════════════════════════════════════════════════════════
 
-function GameView({
+export function GameView({
   puzzle,
   onGameStart,
   forceFresh=false,
@@ -3183,13 +3183,15 @@ function GameView({
                 playWrongSound();
 
                 if(newLives<=0){
+                  // Keep confirmed cards and the answer in the same frame as the visible clues.
+                  const answer = solutionForClues(server ? server.solution : puzzle.solution, clues, puzzle.clues);
                   // Recorded now, not after the reveal, so leaving mid-animation can't lose it.
                   if(reportsFinish){
-                    const answerIds = puzzle.solution.slotCards;
+                    const answerIds = answer.slotCards;
                     const rest = slots.filter(s=>s && !answerIds.includes(s.cardId)).map(s=>({ cardId:s.cardId, orientation:s.orientation }));
                     onFinished?.({ won:false, livesUsed:MAX_LIVES, difficulty, guessHistory:newHistory,
-                      slots:[...answerIds.map((cardId,i)=>({ cardId, orientation:puzzle.solution.orientations[i] })), ...rest],
-                      clues:[...puzzle.clues] });
+                      slots:[...answerIds.map((cardId,i)=>({ cardId, orientation:answer.orientations[i] })), ...rest],
+                      clues:[...clues] });
                   }
                   if(wTimer.current) clearTimeout(wTimer.current);
                   wTimer.current=setTimeout(()=>{
@@ -3218,11 +3220,7 @@ function GameView({
                       }
                     };
 
-                    // Reset clues to original orientation so board matches solution
-                    setClues([...puzzle.clues]);
-
-                    // Snap ALL solution cards into place upfront (hidden before flips start)
-                    const answer = server ? server.solution : puzzle.solution;
+                    // Reveal only missing cards; locked cards already match this rotated answer.
                     const solutionSlotCards = answer.slotCards;
                     const solutionOrientations = answer.orientations;
 
