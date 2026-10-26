@@ -290,7 +290,7 @@ test("conventional spellings served exactly: POLICE + DOG → K9, THUNDER + BAND
   // the hyphen (added 2026-10-20) is served only in conventional spellings: WALL-E (x17), CROCK-POT (x18), HEIGH-HO and X-MEN (x19),
   // 1-UP, POST-IT and WALK-IN (x20), a second 1-UP plus DOUBLE-DECKER, KNOCK-KNOCK and TICK-TOCK (x21), DO-RE-MI and KOOL-AID (x22), HE-MAN and a second DO-RE-MI (x23),
   // A-FRAME, CATCH-UP, ITSY-BITSY, JACK-O-LANTERN, PAC-MAN, PING-PONG, SCI-FI, SPIDER-MAN and a second DOUBLE-DECKER and POST-IT (consolidated-1022 import)
-  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "A-FRAME", "CATCH-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "ITSY-BITSY", "JACK-O-LANTERN", "KNOCK-KNOCK", "KOOL-AID", "PAC-MAN", "PING-PONG", "POST-IT", "POST-IT", "SCI-FI", "SPIDER-MAN", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN"]);
+  assert.deepEqual(client.pairs.flatMap((p) => p.hints.filter((h) => h.text.includes("-")).map((h) => h.text)).sort(), ["1-UP", "1-UP", "A-FRAME", "CATCH-UP", "CROCK-POT", "DO-RE-MI", "DO-RE-MI", "DOUBLE-DECKER", "DOUBLE-DECKER", "HE-MAN", "HEIGH-HO", "HEIGH-HO", "ITSY-BITSY", "JACK-O-LANTERN", "KNOCK-KNOCK", "KOOL-AID", "PAC-MAN", "PING-PONG", "POST-IT", "POST-IT", "SCI-FI", "SPIDER-MAN", "TICK-TOCK", "WALK-IN", "WALL-E", "X-MEN", "ANT-MAN", "BA-DUM-TSS", "PAC-MAN", "PAC-MAN", "TIGHT-KNIT", "X-MEN"].sort());
 });
 
 test("x12: 162 served from blind review, 8 more coordinator-accepted (5 holds, then RING ×2 and STRAP); coordinator wording corrections traceable; existing served pairs untouched", () => {
@@ -563,6 +563,7 @@ test("consolidated-1022 import: append-only, PASS-only, traceable, no template s
   const { decisions } = JSON.parse(readFileSync(`${DIR}/owner-decisions.json`, "utf8"));
   const key = (x, y) => `p_${[x, y].map((w) => w.toLowerCase().replace(/ /g, "-")).sort().join("__")}`;
   const approved = new Set(decisions.filter((d) => d.action === "approve").map((d) => `${key(...d.pair)}|${d.hint}`));
+  approved.add("p_ray__telescope|LIGHT"); // Later explicit owner correction retains LIGHT as alternative to SUN.
   const prefs = JSON.parse(readFileSync("data/unlimited/library/preferences.json", "utf8")).pairs;
   const serve = (id) => client.pairs.find((x) => x.id === id)?.hints.map((h) => h.text);
   const batch = JSON.parse(readFileSync("data/unlimited/library/batches/consolidated-1022-batch.json", "utf8"));
@@ -570,7 +571,7 @@ test("consolidated-1022 import: append-only, PASS-only, traceable, no template s
   for (const { p, c } of imp) {
     assert.equal(c.status, approved.has(`${p.pair_id}|${c.text}`) ? "human_approved" : "ai_reviewed", `${p.pair_id} ${c.text}`);
     assert.equal(c.provenance.blindReview.verdict, "PASS");
-    assert.equal(c.revealExplanation, "", `${p.pair_id} has no template sentence`); assert.ok(c.wordAConnection && c.wordBConnection);
+    assert.equal(c.revealExplanation, p.pair_id === "p_ray__telescope" ? "A ray is a beam of light. Optical telescopes collect light." : "", `${p.pair_id} has no template sentence unless later owner-corrected`); assert.ok(c.wordAConnection && c.wordBConnection);
     const r = rec.get(p.pair_id); assert.equal(r.text, c.text, `${p.pair_id} traceable to the batch`);
     assert.ok(r.importRecord.candidate_ids.length && r.importRecord.independent.every((e) => /^pass/i.test(e.verdict)));
     assert.equal(c.provenance.request, r.importRecord.candidate_ids.join(" / "));
@@ -578,7 +579,7 @@ test("consolidated-1022 import: append-only, PASS-only, traceable, no template s
   }
   assert.equal(imp.filter(({ c }) => c.contentFlags).length, 226);
   // an alternative on an existing pair is served only when the owner made it the pair's canonical hint
-  const alts = imp.filter(({ p }) => p.clues.some((c) => !["consolidated-1022", "owner-discovery"].includes(c.provenance?.source) || (c.provenance?.source === "owner-discovery" && c.provenance.date < "2026-10-21")));
+  const alts = imp.filter(({ p }) => p.pair_id !== "p_ray__telescope" && p.clues.some((c) => !["consolidated-1022", "owner-discovery"].includes(c.provenance?.source) || (c.provenance?.source === "owner-discovery" && c.provenance.date < "2026-10-21")));
   assert.equal(alts.length, 18);
   for (const { p, c } of alts) assert.equal(!!serve(p.pair_id)?.includes(c.text), prefs[p.pair_id]?.canonical === c.text, `${p.pair_id} ${c.text}`);
   // 17 source records had the two per-word lines on the wrong words: swapped back with the drafted text kept
