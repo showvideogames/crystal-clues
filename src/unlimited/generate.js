@@ -6,22 +6,46 @@
 // hint texts. Each pair serves exactly the library's choice for it; only an
 // approved equal-tier set is varied (randomly among its playable members).
 // The 20 other words are drawn uniformly without replacement from the complete
-// word bank (library.words) minus the eight targets; there is no semantic
-// filtering against the rest of the board (the clue rules allow a hint to match
-// another word on the board, see scripts/unlimited/puzzle-clue-rules.mjs).
-// Generator 1 drew the extras from the original 50 words; boards it made keep
-// their saved snapshot unchanged. Geometry is the game's own (FriendCreator.jsx):
+// word bank (library.words) minus the eight targets and minus any word equal to
+// one of the four displayed hints.
+// Board-word rule (owner, 2026-10-22; generator 3): no displayed hint may equal
+// ANY of the 28 board words (the 8 targets and the 20 decoys), compared with
+// norm() (case and whitespace only: punctuation is not folded, and stems,
+// substrings and containment are not conflicts). A hint equal to another pair's
+// target is resolved at clue selection (another playable member of an equal-tier
+// set, else that combination of pairs is not used and the seeded draw moves on);
+// a decoy equal to a hint is skipped at decoy selection (the next word of the
+// same seeded shuffle takes its place). No pair or tile is ever dropped. The rule
+// is a selection rule for Unlimited only: the master data may still hold such
+// hints (scripts/unlimited/puzzle-clue-rules.mjs) and the Daily game never uses
+// this file. Generator 1 drew the extras from the original 50 words; generator 2
+// allowed a hint to equal another board word. Boards they made keep their saved
+// snapshot unchanged (nothing re-derives a saved board).
+// Geometry is the game's own (FriendCreator.jsx):
 //   clue i links [slot,edge] pairs 0:[0,0],[1,0] 1:[1,1],[2,1] 2:[3,2],[2,2] 3:[0,3],[3,3]
 //   and a card with orientation o shows words[(e-o+4)%4] at edge e.
 // The board is created once and frozen: the caller saves the whole object and
 // never re-derives it (refresh, Continue, history and Replay reuse the snapshot).
 
-export const GENERATOR_VERSION = 2;
+export const GENERATOR_VERSION = 3;
 const CLUE_LINKS = [[[0, 0], [1, 0]], [[1, 1], [2, 1]], [[3, 2], [2, 2]], [[0, 3], [3, 3]]];
 const CARD_IDS = ["c1", "c2", "c3", "c4", "c5", "c6", "c7"];
-export const norm = (t) => String(t ?? "").trim().toUpperCase().replace(/\s+/g, " ");
+export const norm = (t) => String(t ?? "").normalize("NFC").trim().toUpperCase().replace(/\s+/g, " ");
 // Letters and digits only, for "same hint" checks: AC/DC and ACDC, or CAP'N and CAP’N, are one hint.
-export const hintKey = (t) => norm(t).replace(/[^A-Z0-9]/g, "");
+export const hintKey = (t) => norm(t).normalize("NFD").replace(/\p{M}/gu, "").replace(/[^\p{L}0-9]/gu, "");
+
+/**
+ * The board-word rule: the displayed hints that exactly equal a board word under
+ * norm() (case and whitespace only). Returns [{ clue, word }], empty when none.
+ * "FIRE" against FIRES or CAMPFIRE, or "AC/DC" against ACDC, is not a clash.
+ */
+export function hintWordClashes(clues, words) {
+  const shown = new Map(words.map((w) => [norm(w), w]));
+  return clues.filter((c) => shown.has(norm(c))).map((c) => ({ clue: c, word: shown.get(norm(c)) }));
+}
+
+/** The same check on a whole board (random or fixed-pool): its clues against all its card words. */
+export const boardHintClashes = (board) => hintWordClashes(board.clues || [], Object.values(board.cards || {}).flatMap((c) => c.words));
 
 export function mulberry32(seed) {
   let a = seed >>> 0;
@@ -42,15 +66,19 @@ export function freshSeed() {
 
 // Can these four pairs take four distinct hints? Each pair needs one of its
 // served hints; a collision is resolved only within an approved equal set,
-// never by serving something weaker. Returns the chosen hints or null.
+// never by serving something weaker. No hint may equal one of the eight targets
+// (its own, by the data; another pair's, by the board-word rule): an equal set
+// uses another playable member, a single choice rejects this combination.
+// Returns the chosen hints or null.
 function pickHints(chosen, rng) {
   const used = new Set();
+  const targets = new Set(chosen.flatMap((p) => [norm(p.a), norm(p.b)]));
   const out = [];
   // Single-choice pairs first (they cannot move), then equal sets.
   const order = chosen.map((p, i) => i).sort((x, y) => (chosen[x].hints.length - chosen[y].hints.length) || (x - y));
   const picked = new Array(chosen.length);
   for (const i of order) {
-    const free = chosen[i].hints.filter((h) => !used.has(hintKey(h.text)));
+    const free = chosen[i].hints.filter((h) => !used.has(hintKey(h.text)) && !targets.has(norm(h.text)));
     if (!free.length) return null;
     const h = chosen[i].rule === "equal-tier" ? free[Math.floor(rng() * free.length)] : free[0];
     used.add(hintKey(h.text)); picked[i] = h;
@@ -62,7 +90,7 @@ function pickHints(chosen, rng) {
 const compatible = (p, words) => !words.has(p.a) && !words.has(p.b);
 
 /**
- * Chooses four disjoint pairs with four distinct hints.
+ * Chooses four disjoint pairs with four distinct hints, none equal to one of the eight targets.
  * 1. Up to `tries` random draws: shuffle all eligible pairs uniformly, take them
  *    greedily (recently used pairs are skipped first, then allowed if needed).
  * 2. If every draw dead-ends, an exhaustive backtracking search over one random
@@ -98,13 +126,17 @@ export function choosePairs(pairs, rng, { avoid = new Set(), tries = 60 } = {}) 
     }
     return false;
   };
-  if (dfs(0)) return { chosen: [...chosen], hints: pickHints(chosen, rng), method: "exhaustive", tries: null };
+  // The seeded pick varies an equal set; if its greedy order dead-ends (e.g. sets {X,Y},{Y,Z},{X,Z}),
+  // the assignment the search just proved is used instead, so a found set always has its hints.
+  if (dfs(0)) return { chosen: [...chosen], hints: pickHints(chosen, rng) || pickHints(chosen, () => 0), method: "exhaustive", tries: null };
   return null;
 }
 
 /**
- * Builds one random board. Returns null only if the library cannot make any
- * valid board (fewer than four disjoint pairs with distinct hints).
+ * Builds one random board. Returns null (never throws) only if the library cannot
+ * make any valid board: fewer than four disjoint pairs with distinct hints that
+ * avoid the eight targets, or fewer than 20 bank words left for decoys once the
+ * targets and any word equal to a displayed hint are set aside.
  *   library: { words: string[] (the word bank), pairs: [{ id, a, b, rule, hints:[{ text, ... }] }] }
  *   seed:    32-bit integer (freshSeed() in the browser; fixed in tests)
  *   avoid:   pair ids to skip when possible (e.g. the last few boards)
@@ -112,11 +144,17 @@ export function choosePairs(pairs, rng, { avoid = new Set(), tries = 60 } = {}) 
 export function generateBoard(library, { seed, avoid = new Set(), createdAt = new Date().toISOString(), idSuffix } = {}) {
   const rng = mulberry32(seed);
   const pick = choosePairs(library.pairs, rng, { avoid });
-  if (!pick) return null;
+  if (!pick?.hints) return null;
   const { chosen, hints, method } = pick;
   const targets = new Set(chosen.flatMap((p) => [p.a, p.b]));
-  const fillers = shuffle(library.words.filter((w) => !targets.has(w)), rng).slice(0, 20);
+  const shown = hints.map((h) => norm(h.text));
+  if (hintWordClashes(shown, [...targets]).length) return null; // check 1, after clue selection (pickHints ensures it)
+  // The same uniform shuffle as generator 2, skipping any word equal to a displayed
+  // hint: the rest of the seeded stream, and every board without a clash, is unchanged.
+  const hinted = new Set(shown);
+  const fillers = shuffle(library.words.filter((w) => !targets.has(w)), rng).filter((w) => !hinted.has(norm(w))).slice(0, 20);
   if (fillers.length < 20) return null;
+  if (hintWordClashes(shown, [...targets, ...fillers]).length) return null; // check 2, after decoy selection
 
   const visual = [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]];
   const reveal = [];
@@ -181,5 +219,6 @@ export function validateBoard(board, library) {
     targets.add(p.a); targets.add(p.b);
   });
   if (targets.size !== 8) errs.push("eight distinct targets");
+  for (const { clue, word } of hintWordClashes(board.clues, all)) errs.push(`clue ${clue} equals board word ${word}`);
   return errs;
 }

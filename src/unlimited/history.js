@@ -5,6 +5,8 @@
 // refresh, Continue, the history list and Replay always reuse the exact board.
 // Fixed-pool boards (pool.json) are never copied: their ids resolve to the pool.
 // Pure functions over a plain store object, so they can be unit-tested.
+import { boardHintClashes } from "./generate.js";
+
 export const STORE_KEY = "cv_unlimited_v1";
 export const RATINGS = [
   { key: "great",     label: "Great clue" },
@@ -86,6 +88,18 @@ export function writeStore(store) {
 /** The next unplayed board, in batch order (so testers can compare "puzzle 3"); null when every board has been played. */
 export function nextBoard(pool, store) {
   return [...pool].sort((x, y) => x.index - y.index).find((b) => !store.played[b.id]) || null;
+}
+
+/**
+ * The fixed-pool board offered as a NEW game when no random board could be made:
+ * the next unplayed one that keeps the board-word rule (no hint equals a word on
+ * that board; five beta pool boards break it). Null when none is left, the same
+ * "couldn't make a puzzle" outcome as an empty pool. Choosing only: the pool
+ * boards themselves are never changed, and resolveBoard (refresh, Continue,
+ * history, Replay) still returns any pool board by id, clash or not.
+ */
+export function nextFallbackBoard(pool, store) {
+  return nextBoard(pool.filter((b) => boardHintClashes(b).length === 0), store);
 }
 
 export const playedCount = (pool, store) => pool.filter((b) => store.played[b.id]).length;

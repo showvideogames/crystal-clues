@@ -82,6 +82,11 @@ Everything else is allowed on purpose:
 - A clue may be identical to another word in the pool.
 - A clue may be identical to a **different visible card word** in the same puzzle. This is
   intentional — it gives the player deduction to do, and sometimes misdirection.
+  **Superseded for random Unlimited boards (owner, 2026-10-22; generator 3):** a displayed hint
+  never equals any of the board's 28 words (8 targets, 20 decoys), compared with case and
+  whitespace folded only. `src/unlimited/generate.js` resolves it at selection time (another
+  equal-tier member, another pair combination, or the next decoy of the same seeded shuffle);
+  the master data keeps such clues, and the Daily game is unchanged.
 - The same clue text may appear in any number of pair records.
 
 `HONEY + SHADOW → MOON` is the reference case: valid through *honeymoon* and *moon shadow*, and

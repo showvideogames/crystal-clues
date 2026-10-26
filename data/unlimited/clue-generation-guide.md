@@ -14,6 +14,8 @@ wrong and has been removed.**
 1. A clue **may** be identical to another word in the overall word pool.
 2. A clue **may** be identical to a different visible card word in the current puzzle. This is
    intentional and can give the player useful deduction or misdirection.
+   (Random Unlimited boards, since 2026-10-22: the generator never shows a hint equal to any
+   word on that board. Write the clue anyway; the board is chosen around it.)
 3. A clue **must not** be identical to either of the two target words it points toward.
 4. Within one generated puzzle, the same clue text cannot be assigned to two different clue
    positions.
@@ -27,8 +29,9 @@ wrong and has been removed.**
 
 > **HONEY + SHADOW → MOON** is valid, because of *honeymoon* and *moon shadow*.
 >
-> MOON may even appear as a different visible card word in the same puzzle. That is allowed, and
-> it may help the player work out the correct arrangement.
+> As a clue in the master data it stays valid even though MOON is itself a word in the pool. On a
+> random Unlimited board (since 2026-10-22, generator 3), MOON is never shown as a card word on a
+> board where MOON is a clue: the generator picks the board around the clue, and the clue is kept.
 >
 > MOON would be invalid **only** if MOON were one of that clue's own two target words.
 

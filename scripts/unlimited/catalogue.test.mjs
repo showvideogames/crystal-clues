@@ -109,7 +109,7 @@ test("hint rule: owner-allowed conventional spellings (K9, AC/DC, CAP'N, WALL-E)
     assert.equal(hintProblem(h, a, b), null, h);
   assert.equal(normHint("cap’n"), "CAP'N"); assert.equal(normHint("CAP‘N"), "CAP'N"); assert.equal(normHint("ac/dc"), "AC/DC");
   assert.equal(hintKey("AC/DC"), "ACDC"); assert.equal(hintKey("CAP'N"), "CAPN"); assert.equal(hintKey("WALL-E"), "WALLE");
-  for (const h of ["ICE AGE", "-AC", "AC-", "AC--DC", "AC-/DC", "AC//DC", "/AC", "AC/", "CAP'", "'N", "CAP''N", "99", "9/11", "<B>", "A&W", "WOW!", "HI.", "AC DC"])
+  for (const h of ["ICE AGE", "-AC", "AC-", "AC--DC", "AC-/DC", "AC//DC", "/AC", "AC/", "CAP'", "'N", "CAP''N", "<B>", "A&W", "WOW!", "HI.", "AC DC"])
     assert.match(hintProblem(h, "APPLE", "BIG") || "", /one word/, h);
   // target checks ignore the punctuation: no smuggling a target through a slash or apostrophe
   assert.match(hintProblem("ACDC", "AC/DC", "BAND"), /is a target/);
@@ -145,3 +145,13 @@ test("add: stores the conventional spelling exactly and refuses another spelling
   r = run("add", "band", "thunder", "AC--DC", "--by", "owner", "--why", "x");
   assert.notEqual(r.status, 0); assert.match(r.stderr, /one word/);
 });
+
+ test("owner numeric and Unicode hints preserve spelling without escaping target protection", async () => {
+  for (const h of ["007", "NÜWA", "NU\u0308WA", "SPIT-TAKE"]) assert.equal(hintProblem(h, "CHINA", "SNAKE"), null);
+  assert.equal(normHint("007"), "007"); assert.equal(normHint("nu\u0308wa"), "NÜWA");
+  assert.equal(hintKey("NÜWA"), "NUWA"); assert.equal(hintKey("女媧"), "女媧");
+  for (const [h,a] of [["EARRING","EAR"],["NÜWA","NUWA"],["NÜWAS","NUWA"],["007","007 AGENT"],["ÉAR-RING","EAR"],["女媧","女媧"]]) assert.match(hintProblem(h,a,"OTHER"), /target/);
+  for (const h of ["", "\u0308", "007-", "NÜ--WA", "NÜ WA", "😀", "<007>"]) assert.match(hintProblem(h,"CHINA","SNAKE"), /one word/);
+  const { rejectionFor } = await import("./rejections-lib.mjs");
+  assert.ok(rejectionFor([{pair_id:"p_china__snake",hint:"NÜWA",decision:"held"}],"CHINA","SNAKE","NU\u0308WA"));
+ });

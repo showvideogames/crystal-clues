@@ -123,7 +123,7 @@ describe("random boards in the history store", () => {
     let s = readStore();
     expect(JSON.stringify(resolveBoard(poolById, s, s.current.id))).toBe(before);   // Continue: same board
     const fresh = rnd(31);                                                             // a new game uses the new library
-    expect(fresh.generator).toBe(2); expect(fresh.id).not.toBe(v1.id);
+    expect(fresh.generator).toBe(3); expect(fresh.id).not.toBe(v1.id);                // 3: the board-word rule (2026-10-22)
     s = finishBoard(s, v1, { won: true, livesUsed: 2, difficulty: "expert" });
     s = startBoard(s, { ...fresh, id: v1.id }, "easy", { replay: true });              // Replay: snapshot kept
     expect(JSON.stringify(s.boards[v1.id])).toBe(before);
@@ -237,5 +237,62 @@ describe("malformed saved data stays untouched", () => {
       expect(Array.isArray(s.feedback) && s.boards && typeof s.boards === "object").toBe(true);
       expect(writeStore(s)).toBe(true);
     }
+  });
+});
+
+// Board-word rule (generator 3): new fallback games skip clashing pool boards; saved boards never change.
+import { nextFallbackBoard } from "./history.js";
+import { boardHintClashes } from "./generate.js";
+import V2CLASH from "./fixtures/generator-v2-clash-board.json";
+
+describe("board-word rule and the boards a player already has", () => {
+  beforeEach(() => localStorage.clear());
+  const poolById = new Map(POOL.boards.map((b) => [b.id, b]));
+  const done = { won: true, livesUsed: 0, difficulty: "standard" };
+  const CLASHING = ["beta-01-002", "beta-03-005", "beta-03-008", "beta-03-012", "beta-03-013"]; // QUEEN, NIGHT, BEAR, FISH, MOON
+
+  it("a new fallback game skips the pool boards whose hint equals one of their own words", () => {
+    expect(POOL.boards.filter((b) => boardHintClashes(b).length).map((b) => b.id).sort()).toEqual(CLASHING);
+    let s = emptyStore(); const served = [];
+    for (let b = nextFallbackBoard(POOL.boards, s); b; b = nextFallbackBoard(POOL.boards, s)) { served.push(b.id); s = finishBoard(startBoard(s, b, "standard"), b, done); }
+    expect(served).toHaveLength(POOL.boards.length - CLASHING.length);
+    expect(served.filter((id) => CLASHING.includes(id))).toEqual([]);
+    expect(served[0]).toBe("beta-01-001"); expect(served[1]).toBe("beta-01-003"); // batch order otherwise kept
+    expect(nextBoard(POOL.boards, s).id).toBe("beta-01-002");                   // the plain pool order is unchanged
+  });
+
+  it("when every unplayed pool board clashes there is no fallback board (null, as for an empty pool)", () => {
+    expect(nextFallbackBoard(POOL.boards.filter((b) => CLASHING.includes(b.id)), emptyStore())).toBeNull();
+    expect(nextFallbackBoard([], emptyStore())).toBeNull();
+  });
+
+  it("refresh, Continue, history and Replay still resolve a clashing pool board exactly", () => {
+    const moon = poolById.get("beta-03-013");
+    const before = JSON.stringify(moon);
+    expect(boardHintClashes(moon).map((c) => c.clue)).toEqual(["MOON"]);
+    writeStore(startBoard(emptyStore(), moon, "expert"));
+    let s = readStore();
+    expect(resolveBoard(poolById, s, s.current.id)).toBe(moon);
+    s = startBoard(finishBoard(s, moon, done), moon, "easy", { replay: true });
+    expect(resolveBoard(poolById, s, "beta-03-013")).toBe(moon);
+    expect(JSON.stringify(moon)).toBe(before);
+  });
+
+  it("a saved generator-2 board whose hints equal two of its decoys comes back unchanged on Continue and Replay", () => {
+    const v2 = V2CLASH.board;
+    const before = JSON.stringify(v2);
+    expect(v2.generator).toBe(2);
+    expect(boardHintClashes(v2).map((c) => c.clue)).toEqual(["BAG", "NET"]);
+    localStorage.setItem(STORE_KEY, JSON.stringify(startBoard(emptyStore(), v2, "standard")));
+    let s = readStore();
+    expect(JSON.stringify(resolveBoard(poolById, s, s.current.id))).toBe(before);       // Continue
+    s = finishBoard(s, v2, done);
+    const again = generateBoard(LIBRARY, { seed: v2.seed, createdAt: v2.createdAt });  // the same seed today
+    expect(again.id).toBe(v2.id); expect(again.generator).toBe(3); expect(boardHintClashes(again)).toEqual([]);
+    s = startBoard(s, again, "easy", { replay: true });                                // Replay: the snapshot wins
+    expect(JSON.stringify(s.boards[v2.id])).toBe(before);
+    expect(JSON.stringify(resolveBoard(poolById, s, v2.id))).toBe(before);
+    expect(writeStore(s)).toBe(true);
+    expect(JSON.stringify(readStore().boards[v2.id])).toBe(before);
   });
 });
