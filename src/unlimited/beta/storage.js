@@ -62,5 +62,45 @@ export function pilotExportJson(state, data, now = new Date().toISOString()) {
       id: b.id, index: b.index, result: state.results[b.id] || null,
       clues: b.reveal.map((r) => ({ position: r.position, pairId: r.pairId, clue: r.clue, wordA: r.wordA, wordB: r.wordB, rating: state.ratings[b.id]?.[r.position] || null })),
     })),
+    difficultySwitches: state.switches || [],
   }, null, 2);
+}
+
+// ---- Difficulty (the same four levels and rules as normal Unlimited) ----------
+// Normal Unlimited asks for the difficulty before a board starts and never changes
+// it mid-board. The pilot does the same: each board records the difficulty it was
+// started on, and switching an unfinished board starts a fresh attempt of the SAME
+// board (same cards and clues) on the new level. Results and ratings are untouched.
+// The beta's preferred level is remembered under its own key, never clover_difficulty.
+export const PILOT_DIFFICULTY_KEY = `${PILOT_NS}difficulty`;
+const LEVELS = ["easy", "standard", "expert", "hardcore"];
+export const isPilotDifficulty = (d) => LEVELS.includes(d);
+
+export function readPilotDifficulty(storage = globalThis.localStorage) {
+  try { const d = JSON.parse(storage.getItem(PILOT_DIFFICULTY_KEY)); return isPilotDifficulty(d) ? d : "standard"; }
+  catch { return "standard"; }
+}
+export function writePilotDifficulty(d, storage = globalThis.localStorage) {
+  if (!isPilotDifficulty(d)) return false;
+  try { storage.setItem(PILOT_DIFFICULTY_KEY, JSON.stringify(d)); return true; } catch { return false; }
+}
+
+/** The level an unfinished board is being played on, or null if it hasn't started. */
+export function pilotBoardStart(s, dataId, boardId, storage = globalThis.localStorage) {
+  const started = s.started?.[boardId];
+  if (started && isPilotDifficulty(started.difficulty)) return started;
+  // Boards begun before difficulty was offered were all Standard; their saved
+  // arrangement says so (or says nothing, which meant Standard).
+  try {
+    const p = JSON.parse(storage.getItem(pilotProgressKey(dataId, boardId)));
+    if (p && typeof p === "object") return { difficulty: isPilotDifficulty(p.difficulty) ? p.difficulty : "standard", attempt: 1, legacy: true };
+  } catch { /* unreadable progress: treat as not started */ }
+  return null;
+}
+
+/** Starts (or, if already started, restarts as a fresh attempt) a board on a level. */
+export function startPilotBoard(s, boardId, difficulty, prev = null, now = new Date().toISOString()) {
+  const attempt = (prev?.attempt || 0) + 1;
+  const switches = prev ? [...(s.switches || []), { boardId, from: prev.difficulty, to: difficulty, at: now }] : (s.switches || []);
+  return { ...s, started: { ...(s.started || {}), [boardId]: { difficulty, attempt, startedAt: now } }, switches };
 }
