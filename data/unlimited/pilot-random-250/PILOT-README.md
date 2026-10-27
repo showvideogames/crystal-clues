@@ -24,7 +24,7 @@ The handoff was reconciled first:
 | Independent review of attempt 1: 4 separate reviewer agents (`review/cp-*.review.jsonl`) | PASS 156 · FIX 10 · RESCUE 7 · FAIL 77 |
 | Attempt 2: blind fresh drafter on the 77 failures (`retry1/draft-a2-*`) | 57 drafted, 20 NO_GOOD_HINT |
 | Independent review of attempt 2 (`retry1/review-a2-*`) | PASS 31 · FIX 2 · RESCUE 1 · FAIL 43 |
-| Coordinator override (`coordinator-overrides.json`) | 1: TEA + VIDEO GAME served HIGH instead of STEAM, because STEAM contains the letters TEA |
+| Owner decision (`coordinator-overrides.json`, 2026-10-27) | TEA + VIDEO GAME serves STEAM, with HIGH as the alternative. STEAM contains the letters TEA, and the owner explicitly accepted that edge case. |
 | **Reviewed and playable** | **207 / 250 (82.8%)**: 173 from attempt 1, 34 from attempt 2 |
 | **Unresolved: hard-pair list** | **43**, each with both attempts preserved (`retry-queue.json`) |
 
@@ -32,7 +32,7 @@ The handoff was reconciled first:
 - `pilot-results.json` keeps, for every pair: the original draft, every review, each attempt and the final text.
 - `beta-input.json` holds only the reviewed, playable clues.
 
-**Reference hints:** 19 of the 207 primaries are reference-based. 7 have a strong reference-free alternative. 12 have none, because none strong was found and none was forced: TIN, SURFER, LANDING, OCTOPUS, OLIVE, BOTTOM, IRON, GOLDEN, BBC, STERLING, STRONG, DEAD. Several of those are generic on one side and reference-based only on the other.
+**Reference hints:** 20 of the 207 primaries are reference-based. 8 have a strong reference-free alternative. 12 have none, because none strong was found and none was forced: TIN, SURFER, LANDING, OCTOPUS, OLIVE, BOTTOM, IRON, GOLDEN, BBC, STERLING, STRONG, DEAD. Several of those are generic on one side and reference-based only on the other.
 
 **Repeated hint words** across different pairs: HEAD ×3, plus 18 hint words used twice. Every beta board still has four distinct hints.
 

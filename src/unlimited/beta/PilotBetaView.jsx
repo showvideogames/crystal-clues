@@ -1,4 +1,4 @@
-// Random-Pair Pilot Beta at /unlimited-beta (src/route.js): reached by direct
+// Random-Pair Pilot Beta at /beta (src/route.js): reached by direct
 // address only, linked from no menu. NOT normal Unlimited:
 //   - a finite, fixed list of boards built at build time from the pilot library
 //     only (pilot-boards.json, scripts/unlimited/build-pilot-beta.mjs), played in

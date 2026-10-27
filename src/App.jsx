@@ -28,7 +28,7 @@ const FriendsView = lazy(() => import("./friends/FriendsView.jsx"));
 const SharedPuzzle = lazy(() => import("./friends/SharedPuzzle.jsx"));
 // Unlimited guest beta (/unlimited): a local pool of checked boards, no account.
 const UnlimitedView = lazy(() => import("./unlimited/UnlimitedView.jsx"));
-// Random-Pair Pilot Beta (/unlimited-beta): a finite, fixed list of test boards
+// Random-Pair Pilot Beta (/beta): a finite, fixed list of test boards
 // from the pilot library only. Reached by direct address; linked from nowhere.
 const PilotBetaView = lazy(() => import("./unlimited/beta/PilotBetaView.jsx"));
 // Friends settings outside the Friends page: notifications (in Settings) and

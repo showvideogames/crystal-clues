@@ -10,7 +10,8 @@
 //   /archive/:puzzleId             an archive puzzle
 //   /admin                         puzzle admin (open to everyone during the beta)
 //   /unlimited                     Unlimited guest beta (src/unlimited): not linked from anywhere yet
-//   /unlimited-beta                Random-Pair Pilot Beta (src/unlimited/beta): direct address only, never linked
+//   /beta                          Random-Pair Pilot Beta (src/unlimited/beta): public test page, not linked from menus
+//   /unlimited-beta                the same pilot beta (earlier address, kept as an alias)
 //   /friends                       Friends hub
 //   /friends/details/:friendshipId the hub with one friend's details open
 //   /friends/play/:puzzleId        a friend's puzzle (or, for its creator, its status)
@@ -68,7 +69,7 @@ export function parsePath(pathname, { friends = false } = {}) {
   if (a === "archive" && parts.length === 2 && /^\d{1,20}$/.test(b)) return { view: "game", archiveId: b };
   if (a === "admin" && parts.length === 1) return { view: "admin" };
   if (a === "unlimited" && parts.length === 1) return { view: "unlimited" };
-  if (a === "unlimited-beta" && parts.length === 1) return { view: "unlimitedBeta" };
+  if ((a === "beta" || a === "unlimited-beta") && parts.length === 1) return { view: "unlimitedBeta" };
   if (friends && a === "p" && parts.length === 2 && /^[A-Za-z0-9_-]{16,64}$/.test(b)) return { view: "shared", token: b };
   if (friends && a === "friends") {
     if (parts.length === 1) return { view: "friends", screen: { name: "inbox" } };

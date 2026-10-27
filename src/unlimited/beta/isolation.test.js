@@ -79,7 +79,10 @@ describe("pilot beta storage", () => {
 
 describe("pilot beta screen", () => {
   it("is its own route, separate from /unlimited", () => {
+    expect(parsePath("/beta")).toEqual({ view: "unlimitedBeta" });
+    expect(parsePath("/beta/")).toEqual({ view: "unlimitedBeta" });
     expect(parsePath("/unlimited-beta")).toEqual({ view: "unlimitedBeta" });
+    expect(parsePath("/beta/x")).toEqual({ view: "unknown" });
     expect(parsePath("/unlimited")).toEqual({ view: "unlimited" });
   });
 

@@ -63,7 +63,7 @@ for (const p of assign.pairs) {
   if (ok) {
     const hint = norm(r.hint);
     const rep = [p.a, p.b].filter(w => repeats(hint, w));
-    if (rep.length) problems.push(`${p.pilot_id} hint ${hint} repeats ${rep}`);
+    if (rep.length && !(OV[p.pilot_id] && OV[p.pilot_id].allow_target_letter_overlap)) problems.push(`${p.pilot_id} hint ${hint} repeats ${rep}`);
     // Reference flag: the drafter's flag holds when the hint survived unchanged; a rescued hint is judged by the reviewer's text.
     const ref = r.verdict === 'RESCUE' ? false : !!d.ref;
     const alt = r.alt && r.alt.h ? [{ text: norm(r.alt.h), wordAConnection: r.alt.a, wordBConnection: r.alt.b }] : [];
