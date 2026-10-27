@@ -4,21 +4,29 @@
 //     only (pilot-boards.json, scripts/unlimited/build-pilot-beta.mjs), played in
 //     order 1..M, then "Pilot complete" (no looping, no regeneration);
 //   - if that data is missing or empty, it says so: never normal Unlimited's clues;
+//   - each board starts with the same difficulty choice as normal Unlimited
+//     (remembered under this beta's own key); switching mid-board restarts that
+//     board's attempt after a warning (never skips it);
 //   - the board is the game's own (GameView, Unlimited mode) with its progress
 //     kept under this beta's storage namespace (storage.js), and the results,
 //     ratings and export live there too. Nothing is written to normal Unlimited's
 //     history, Daily stats or streaks, and nothing is sent to any server.
 import { useCallback, useRef, useState } from "react";
-import { DIFFICULTY_LABELS } from "../../game/shared";
+import { DIFF_OPTIONS, DIFFICULTY_LABELS } from "../../game/shared";
 import { Icon, Sheet } from "../../friends/ui.jsx";
 import { useFitCardWords } from "../fitWords.js";
 import { PILOT } from "./data.js";
-import { pilotDataId, pilotProgressKey, clearPilotProgress, readPilotState, writePilotState, finishPilotBoard, advancePilot, ratePilotClue, pilotExportJson } from "./storage.js";
+import { pilotDataId, pilotProgressKey, clearPilotProgress, readPilotState, writePilotState, finishPilotBoard, advancePilot, ratePilotClue, pilotExportJson,
+  readPilotDifficulty, writePilotDifficulty, pilotBoardStart, startPilotBoard } from "./storage.js";
 import "../../friends/friends.css";
 import "../unlimited.css";
 import "./pilot-beta.css";
 
-const DIFFICULTY = "standard";
+// Boards begun before difficulty was offered have no recorded start; record it at
+// the finish so the finished board keeps its level once its progress is cleared.
+const keepStart = (s, boardId, difficulty)=> s.started?.[boardId] ? s
+  : { ...s, started: { ...(s.started || {}), [boardId]: { difficulty: difficulty || "standard", attempt: 1, legacy: true } } };
+
 const RATES = [{ key: "up", label: "👍", name: "Good clue" }, { key: "down", label: "👎", name: "Bad clue" }];
 
 function download(name, text){
@@ -70,6 +78,9 @@ function PilotRun({ kit, data, onHome }){
     setSaved(writePilotState(next));
   },[]);
   const [showWhy, setShowWhy] = useState(false);
+  // The beta's own remembered level (never normal Unlimited's or Daily's).
+  const [pref, setPref] = useState(()=>readPilotDifficulty());
+  const [changing, setChanging] = useState(false);
   // The board finished on screen just now stays on screen (its win, its answer); a
   // board finished before a reload shows a short summary in its place.
   const [finishedHere, setFinishedHere] = useState(null);
@@ -78,12 +89,28 @@ function PilotRun({ kit, data, onHome }){
   const shellRef = useRef(null);
   useFitCardWords(shellRef, [state.current, !!result]);
 
-  const handleFinished = useCallback((r)=>{ if(!board) return; setFinishedHere(board.id); update((s)=>finishPilotBoard(s, board, r)); },[board, update]);
+  const handleFinished = useCallback((r)=>{ if(!board) return; setFinishedHere(board.id); update((s)=>finishPilotBoard(keepStart(s, board.id, r.difficulty), board, r)); },[board, update]);
   const next = useCallback(()=>{
     setShowWhy(false); setFinishedHere(null);
     if(board) clearPilotProgress(dataId, board.id);
     update((s)=>advancePilot(s, total));
   },[update, total, board, dataId]);
+  const start = board ? pilotBoardStart(state, dataId, board.id) : null;
+  const inPlay = !!start && !result;
+  // The board just finished here keeps showing (its win, its answer) on the level
+  // and attempt it was played on: that start stays recorded after the finish.
+  const shown = start;
+  const choose = (d)=>{ setPref(d); writePilotDifficulty(d); };
+  const startBoard = ()=>{ if(board) update((s)=>startPilotBoard(s, board.id, pref)); };
+  // Switching an unfinished board: a fresh attempt of the same board on the new level
+  // (normal Unlimited never changes a board's level mid-play). Results and ratings stay.
+  const restartOn = (d)=>{
+    if(!board || !inPlay) return;
+    choose(d);
+    clearPilotProgress(dataId, board.id);
+    update((s)=>startPilotBoard(s, board.id, d, start));
+    setChanging(false);
+  };
   const exportRatings = ()=>download(`cluevoyance-pilot-beta-ratings-${dataId}.json`, pilotExportJson(stateRef.current, data));
   const last = state.current === total - 1;
 
@@ -122,11 +149,25 @@ function PilotRun({ kit, data, onHome }){
           <p className="fr-lede">Board {state.current + 1} {result.won ? "solved" : "not solved"}.</p>
           {endControls}
         </div>
+      ) : !shown ? (
+        <div className="fr-card pb-card" data-testid="pb-start">
+          <p className="fr-lede">Board {state.current + 1}: choose your difficulty.</p>
+          <DifficultyChoice value={pref} onChange={choose} labelId="pb-diff-label"/>
+          <button type="button" className="fr-btn primary" onClick={startBoard} data-testid="pb-start-btn">
+            <span className="fr-btn-ico"><Icon name="play"/></span>Start board {state.current + 1} on {DIFFICULTY_LABELS[pref]}
+          </button>
+        </div>
       ) : (
-        <GameView key={`${dataId}-${board.id}`} puzzle={puzzle} difficulty={DIFFICULTY} unlimited
+        <GameView key={`${dataId}-${board.id}-${shown.attempt}`} puzzle={puzzle} difficulty={shown.difficulty} unlimited
           progressStorageKey={pilotProgressKey(dataId, board.id)} onFinished={handleFinished} endControls={endControls}/>
       )}
-      <p className="fr-help pb-foot">{DIFFICULTY_LABELS[DIFFICULTY]} · saved in this browser only · <button type="button" className="fr-link" onClick={exportRatings} data-testid="pb-export">Export ratings (JSON)</button></p>
+      <p className="fr-help pb-foot">
+        {inPlay ? <>{DIFFICULTY_LABELS[start.difficulty]} · <button type="button" className="fr-link" onClick={()=>setChanging(true)} data-testid="pb-change-diff">Change difficulty</button> · </> : null}
+        saved in this browser only · <button type="button" className="fr-link" onClick={exportRatings} data-testid="pb-export">Export ratings (JSON)</button>
+      </p>
+      {changing && inPlay && (
+        <ChangeSheet boardNumber={state.current + 1} current={start.difficulty} onRestart={restartOn} onClose={()=>setChanging(false)}/>
+      )}
       {showWhy && (
         <RevealSheet board={board} result={result} ratings={state.ratings[board.id] || {}} nextLabel={nextLabel}
           onRate={(pos, rating)=>update((s)=>ratePilotClue(s, board.id, pos, rating))} onClose={()=>setShowWhy(false)} onNext={next}/>
@@ -161,6 +202,56 @@ function RevealSheet({ board, result, ratings, nextLabel, onRate, onClose, onNex
       <div className="fr-row ul-why-actions">
         <button type="button" className="fr-btn quiet sm" onClick={onClose}>Close</button>
         <button type="button" className="fr-btn primary sm" onClick={onNext} data-testid="pb-why-next">{nextLabel}</button>
+      </div>
+    </Sheet>
+  );
+}
+
+// The same difficulty choice as normal Unlimited's lobby (DIFF_OPTIONS, its markup and
+// its .fr-choose styles).
+function DifficultyChoice({ value, onChange, labelId, exclude = null }){
+  return (
+    <div className="fr-choose pb-diff">
+      <div className="fr-eyebrow" id={labelId}>Choose your difficulty</div>
+      <div className="lobby-diff-opts" role="radiogroup" aria-labelledby={labelId}>
+        {DIFF_OPTIONS.filter((o)=>o.key !== exclude).map((opt)=>(
+          <button key={opt.key} type="button" role="radio" aria-checked={value === opt.key} data-testid={`pb-diff-${opt.key}`}
+            className={`lobby-diff-opt${value === opt.key ? " active" : ""}${opt.key === "standard" ? " recommended" : ""}`}
+            onClick={()=>onChange(opt.key)}>
+            <span className="lobby-diff-icon" aria-hidden="true">{opt.icon}</span>
+            <span className="lobby-diff-text">
+              <span className="lobby-diff-name">{opt.name}{opt.key === "standard" && <span className="lobby-recommended-tag">Recommended</span>}</span>
+              <span className="lobby-diff-desc">{opt.desc}</span>
+            </span>
+            <span className="lobby-diff-check" aria-hidden="true">{value === opt.key ? "✓" : ""}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Changing level on a board already in play: says plainly that the attempt restarts
+// (same board, same clues; cards back to the start, lives back to full; ratings and
+// earlier results kept), and only restarts after the player confirms.
+function ChangeSheet({ boardNumber, current, onRestart, onClose }){
+  const [pick, setPick] = useState(null);
+  return (
+    <Sheet labelledBy="pb-change-title" className="pb-change" onClose={onClose}
+      head={<h2 className="fr-sheet-title" id="pb-change-title">Change difficulty</h2>}>
+      <p className="fr-help">Board {boardNumber} is in progress on {DIFFICULTY_LABELS[current]}.</p>
+      <DifficultyChoice value={pick} onChange={setPick} labelId="pb-change-label" exclude={current}/>
+      {pick && (
+        <div className="fr-card pb-warn" role="alert" data-testid="pb-restart-warning">
+          <p className="fr-lede">Switching restarts board {boardNumber} on {DIFFICULTY_LABELS[pick]}.</p>
+          <p className="fr-help">It is the same board with the same clues; it is not skipped. Your cards go back to the start and your lives reset to full, as a new attempt. Your clue ratings and earlier boards' results are kept.</p>
+        </div>
+      )}
+      <div className="fr-row ul-why-actions">
+        <button type="button" className="fr-btn quiet sm" onClick={onClose}>Keep {DIFFICULTY_LABELS[current]}</button>
+        <button type="button" className="fr-btn primary sm" disabled={!pick} onClick={()=>pick && onRestart(pick)} data-testid="pb-restart-confirm">
+          {pick ? `Restart on ${DIFFICULTY_LABELS[pick]}` : "Choose a level"}
+        </button>
       </div>
     </Sheet>
   );
