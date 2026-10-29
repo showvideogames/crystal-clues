@@ -15,6 +15,7 @@ const fake = {
   }),
   getSession: vi.fn(async () => ({ data: { session: null } })),
   rpc: vi.fn(async () => ({ data: null, error: null })),
+  headers: [],
   rows: [],
   fromError: null,
 };
@@ -27,7 +28,11 @@ vi.mock("./supabaseClient", () => ({
       signOut: (...a) => fake.signOut(...a),
       getSession: (...a) => fake.getSession(...a),
     },
-    rpc: (...a) => fake.rpc(...a),
+    rpc: (...a) => {
+      const request = fake.rpc(...a);
+      request.setHeader = (name, value) => { fake.headers.push([name, value]); return request; };
+      return request;
+    },
     from: () => ({ select: () => ({ eq: async () => ({ data: fake.rows, error: fake.fromError }) }) }),
   },
   getAccessToken: async () => null,
@@ -59,6 +64,8 @@ beforeEach(() => {
   fake.signOut.mockClear();
   fake.rpc.mockReset();
   fake.rpc.mockImplementation(async () => ({ data: null, error: null }));
+  fake.headers = [];
+  fake.getSession.mockReset().mockResolvedValue({ data: { session: { user: { id: "u1" }, access_token: "token-u1" } } });
   fake.rows = [];
   fake.fromError = null;
   window.history.replaceState(null, "", "/");
@@ -414,5 +421,68 @@ describe("historyStore routes guests to the guest code and accounts to plays", (
     const guestSave = vi.fn();
     store.saveCompletionFor(guestSave);
     expect(guestSave).not.toHaveBeenCalled();
+  });
+});
+
+
+describe("account identity transitions", () => {
+  it("clears the published account when another tab signs out", async () => {
+    const auth = await import("./platformSignIn");
+    fake.rpc.mockResolvedValueOnce({ data: [{ outcome: "ok", user_id: "old" }], error: null });
+    await auth.ensureAccount();
+    auth.observeAccountSession(null);
+    expect(auth.getCurrentAccount()).toBeNull();
+  });
+
+  it("does not republish an account response that arrives after sign-out", async () => {
+    const auth = await import("./platformSignIn");
+    let release;
+    fake.rpc.mockImplementationOnce(() => new Promise(resolve => { release = resolve; }));
+    const pending = auth.ensureAccount();
+    auth.observeAccountSession(null);
+    release({ data: [{ outcome: "ok", user_id: "old" }], error: null });
+    expect((await pending).ok).toBe(false);
+    expect(auth.getCurrentAccount()).toBeNull();
+  });
+
+  it("does not sign out a replacement session when an old rejection arrives", async () => {
+    const auth = await import("./platformSignIn");
+    let release;
+    fake.rpc.mockImplementationOnce(() => new Promise(resolve => { release = resolve; }));
+    const pending = auth.ensureAccount();
+    auth.observeAccountSession({ user: { id: "replacement" } });
+    release({ data: [{ outcome: "not_platform_linked" }], error: null });
+    expect((await pending).ok).toBe(false);
+    expect(fake.signOut).not.toHaveBeenCalled();
+  });
+});
+
+
+describe("play sync identity boundaries", () => {
+  it("never sends an old account's queued play using a replacement session", async () => {
+    const { flushUnsynced } = await import("./plays");
+    const { writeAccountCache, readAccountCache } = await import("./localHistory");
+    writeAccountCache({ user_id: "old", plays: [], unsynced: [{ user_id: "old", puzzle_id: 42 }] });
+    await flushUnsynced("old");
+    expect(fake.rpc).not.toHaveBeenCalled();
+    expect(readAccountCache("old").unsynced).toHaveLength(1);
+  });
+  it("pins the request to the same session that supplied its player id", async () => {
+    const { recordPlay } = await import("./plays");
+    fake.rpc.mockResolvedValueOnce({ data: [{ outcome: "ok" }], error: null });
+    await recordPlay("u1", { puzzleId: 42, solved: true, difficulty: "standard" });
+    expect(fake.headers).toContainEqual(["Authorization", "Bearer token-u1"]);
+  });
+  it("cannot repopulate the cleared cache when a failed save arrives after logout", async () => {
+    const { recordPlay } = await import("./plays");
+    const { signOutOfCluevoyance } = await import("./platformSignIn");
+    let release;
+    fake.rpc.mockImplementationOnce(() => new Promise(resolve => { release = resolve; }));
+    const pending = recordPlay("u1", { puzzleId: 42, solved: true, difficulty: "standard" });
+    await vi.waitFor(() => expect(release).toBeTypeOf("function"));
+    await signOutOfCluevoyance();
+    release({ error: { message: "offline" } });
+    expect(await pending).toBe("session_changed");
+    expect(localStorage.getItem("cv_account_plays")).toBeNull();
   });
 });

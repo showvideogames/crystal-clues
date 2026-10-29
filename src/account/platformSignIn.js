@@ -121,6 +121,25 @@ export function forgetHubTokens() {
 // object, whose email is stale after a change at the shared provider.
 
 let currentAccount = null;
+let sessionVersion = 0;
+let sessionUserId = null;
+
+// Called synchronously by the auth listener, before any asynchronous work.
+// In-flight account RPCs from the old session must never restore its identity.
+export function observeAccountSession(session) {
+  const userId = session?.user?.id ?? null;
+  if (userId && userId === sessionUserId) return;
+  sessionVersion += 1;
+  sessionUserId = userId;
+  if (currentAccount && currentAccount.user_id !== userId) {
+    clearAccountCache();
+    publishAccount(null);
+  }
+}
+
+export const getAccountSessionVersion = () => sessionVersion;
+
+const staleAccount = () => ({ ok: false, account: null, reason: "session_changed", message: "" });
 const listeners = new Set();
 
 function publishAccount(account) {
@@ -143,7 +162,9 @@ const toAccount = (row) => ({
 /** Re-read the account row (my_account) and publish it; used after an import changed it. */
 export async function refreshAccount() {
   if (!supabase) return null;
+  const version = sessionVersion;
   const { data, error } = await supabase.rpc("my_account");
+  if (version !== sessionVersion) return null;
   const row = Array.isArray(data) ? data[0] : data;
   if (error || !row?.user_id) return null;
   const account = toAccount(row);
@@ -164,7 +185,9 @@ export function subscribeToCurrentAccount(listener) {
  */
 export async function ensureAccount() {
   if (!supabase) return { ok: false, account: null, reason: "unavailable", message: HUB_UNAVAILABLE };
+  const version = sessionVersion;
   const { data, error } = await supabase.rpc("ensure_account");
+  if (version !== sessionVersion) return staleAccount();
   if (error) return { ok: false, account: null, reason: "unavailable", message: error.message };
   const row = Array.isArray(data) ? data[0] : data;
   switch (row?.outcome) {
@@ -193,6 +216,7 @@ export async function ensureAccount() {
  * games to the next.
  */
 export async function signOutOfCluevoyance() {
+  observeAccountSession(null);
   try {
     if (supabase) await supabase.auth.signOut({ scope: "local" });
   } finally {
