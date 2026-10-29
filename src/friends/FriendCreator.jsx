@@ -85,8 +85,7 @@ function useKeyboardInset(){
 // The editor: one horizontal text field, what it connects to, and Done.
 // Docked to the bottom of the visible screen, just above the keyboard.
 // Nothing is lost if the keyboard closes: every keystroke is already on the board.
-function EditSheet({ editKey, title, context, value, maxLength, placeholder, inputLabel, onChange, onDone, onSize }) {
-  const inputRef = useRef(null);
+function EditSheet({ inputRef, editKey, title, context, value, maxLength, placeholder, inputLabel, onChange, onDone, onSize }) {
   const sheetRef = useRef(null);
   const inset = useKeyboardInset();
   // Focus as part of the tap that opened it, so phones raise the keyboard,
@@ -97,7 +96,7 @@ function EditSheet({ editKey, title, context, value, maxLength, placeholder, inp
     el.focus({ preventScroll:true });
     const end = el.value.length;
     try { el.setSelectionRange(end, end); } catch { /* not a text field */ }
-  },[editKey]);
+  },[editKey, inputRef]);
   // Tell the page how much room to keep clear below its content.
   useLayoutEffect(()=>{
     const el = sheetRef.current;
@@ -156,6 +155,7 @@ export default function FriendCreator({ kit, friend, notice, onBack, onSent, onS
   const slotRefs = useRef({});
   const dragRef  = useRef(null);
   const wrapRef  = useRef(null);
+  const sheetInputRef = useRef(null);
 
   const load = useCallback(async ()=>{
     setMessage(null);
@@ -212,6 +212,12 @@ export default function FriendCreator({ kit, friend, notice, onBack, onSent, onS
     });
   };
   const openClue = (index) => {
+    if(editor?.kind === "clue" && editor.index === index){
+      // Refocus within this activation (also raises the mobile keyboard),
+      // without finishing or replacing the text they're still writing.
+      sheetInputRef.current?.focus({ preventScroll:true });
+      return;
+    }
     finish(editor);
     setEditor({ kind:"clue", index });
     setEditText(board.clues[index] || "");
@@ -538,7 +544,7 @@ export default function FriendCreator({ kit, friend, notice, onBack, onSent, onS
         )}
       </div>
       {sheet && (
-        <EditSheet editKey={editor.kind === "clue" ? `c${editor.index}` : `w${editor.cardId}${editor.raw}`}
+        <EditSheet inputRef={sheetInputRef} editKey={editor.kind === "clue" ? `c${editor.index}` : `w${editor.cardId}${editor.raw}`}
           title={sheet.title} context={sheet.context} value={editText} maxLength={sheet.maxLength}
           placeholder={sheet.placeholder} inputLabel={sheet.inputLabel}
           onChange={typeInEditor} onDone={closeEditor} onSize={setSheetSpace}/>
