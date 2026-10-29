@@ -10,7 +10,7 @@ export default function MoreGames() {
       <a href={game.url} target="_blank" rel="noopener noreferrer">
         <img src={game.asset} width="40" height="40" alt=""/>
         <span><strong>{game.title}</strong><small>{game.subtitle}</small></span>
-        <span aria-hidden="true">↗</span><span className="more-games-sr"> (opens in a new tab)</span>
+        <span className="more-games-sr"> (opens in a new tab)</span>
       </a>
     </li>)}</ul>
   </section>;
