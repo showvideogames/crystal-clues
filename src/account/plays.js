@@ -14,7 +14,7 @@ import {
   readAccountCache,
   writeAccountCache,
 } from "./localHistory";
-import { refreshAccount } from "./platformSignIn";
+import { getAccountSessionVersion, refreshAccount } from "./platformSignIn";
 
 const pad2 = (n) => String(n).padStart(2, "0");
 export const localISODate = (d = new Date()) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
@@ -120,11 +120,12 @@ function rpcOutcome(res) {
 
 /** Load the account's plays from the server; falls back to the cache when the server is unreachable. */
 export async function loadPlays(userId) {
+  const version = getAccountSessionVersion();
   const cache = readAccountCache(userId);
   if (!supabase) return { plays: cache.plays, fromCache: true };
   const { data, error } = await supabase.from("plays").select("*").eq("user_id", userId);
   if (error) return { plays: cache.plays, fromCache: true };
-  writeAccountCache({ ...cache, plays: data || [] });
+  if (version === getAccountSessionVersion()) writeAccountCache({ ...cache, plays: data || [] });
   return { plays: data || [], fromCache: false };
 }
 
@@ -142,6 +143,7 @@ function mergeIntoCache(cache, play) {
  * 'unsynced' when the call failed.
  */
 export async function recordPlay(userId, { puzzleId, puzzleDate, solved, livesUsed, difficulty }) {
+  const version = getAccountSessionVersion();
   const play = {
     user_id: userId,
     puzzle_id: Number(puzzleId),
@@ -157,6 +159,7 @@ export async function recordPlay(userId, { puzzleId, puzzleDate, solved, livesUs
   writeAccountCache(cache);
 
   const outcome = await sendPlay(play);
+  if (version !== getAccountSessionVersion()) return "session_changed";
   if (outcome !== "ok") {
     const c = readAccountCache(userId);
     c.unsynced = c.unsynced.filter((u) => String(u.puzzle_id) !== String(play.puzzle_id)).concat([play]);
@@ -166,11 +169,22 @@ export async function recordPlay(userId, { puzzleId, puzzleDate, solved, livesUs
   return "ok";
 }
 
+// Pin the account id and token to one session read. A later tab switch must
+// not cause a queued play (whose RPC takes no user id) to be saved as someone else.
+async function accountRpc(userId, name, args) {
+  const { data } = await supabase.auth.getSession();
+  const session = data?.session;
+  if (session?.user?.id !== userId || !session?.access_token) {
+    return { error: { message: "Account changed. Please sign in again before syncing." } };
+  }
+  return supabase.rpc(name, args).setHeader("Authorization", `Bearer ${session.access_token}`);
+}
+
 /** null = network/transport failure (retry later); otherwise the server's outcome string. */
 async function sendPlay(play) {
   if (!supabase) return null;
   try {
-    const res = await supabase.rpc("record_play", {
+    const res = await accountRpc(play.user_id, "record_play", {
       _puzzle_id: play.puzzle_id,
       _solved: play.solved,
       _lives_used: play.lives_used,
@@ -185,16 +199,18 @@ async function sendPlay(play) {
 
 /** Replay plays that could not be sent earlier. Keeps the ones that still fail. */
 export async function flushUnsynced(userId) {
+  const version = getAccountSessionVersion();
   const cache = readAccountCache(userId);
   if (!cache.unsynced.length) return 0;
   const still = [];
   let sent = 0;
   for (const play of cache.unsynced) {
+    if (version !== getAccountSessionVersion()) return sent;
     const outcome = await sendPlay(play);
     if (outcome === null) still.push(play);
     else sent += 1; // 'ok', or a definitive refusal (unknown_puzzle/invalid) that retrying cannot fix
   }
-  writeAccountCache({ ...readAccountCache(userId), unsynced: still });
+  if (version === getAccountSessionVersion()) writeAccountCache({ ...readAccountCache(userId), unsynced: still });
   return sent;
 }
 
@@ -205,6 +221,7 @@ export async function flushUnsynced(userId) {
  * never overwrites a solved row anyway.
  */
 export async function importGuestHistory(userId) {
+  const version = getAccountSessionVersion();
   if (!supabase) return { ok: false, message: "Not configured." };
   const elements = guestCompletionsToPlays();
   const losses = guestLossCount();
@@ -212,7 +229,8 @@ export async function importGuestHistory(userId) {
     clearGuestHistory();
     return { ok: true, imported: 0, skipped: 0, losses: 0 };
   }
-  const res = await supabase.rpc("import_plays", { _plays: elements, _losses: losses });
+  const res = await accountRpc(userId, "import_plays", { _plays: elements, _losses: losses });
+  if (version !== getAccountSessionVersion()) return { ok: false, message: "Account changed during import." };
   if (res.error) return { ok: false, message: res.error.message };
   const row = Array.isArray(res.data) ? res.data[0] : res.data;
   if (row?.outcome !== "ok") return { ok: false, message: `Import refused: ${row?.outcome ?? "unknown"}` };
