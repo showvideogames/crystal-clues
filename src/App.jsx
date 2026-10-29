@@ -1,3 +1,4 @@
+import MoreGamesMenu from "./MoreGamesMenu.jsx";
 import { useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo, lazy, Suspense } from "react";
 import { flushSync } from "react-dom";
 import { seeded01, shuffleArr } from "./utils/random";
@@ -5307,6 +5308,7 @@ export default function App() {
           <img src="/assets/cluevoyance-logo-dark.png" alt="" className="logo-img on-dark" />
         </button>
           <div className="nav">
+            <MoreGamesMenu/>
             {isArchivePlay && (
               <button className="nbtn today-nav-btn" onClick={()=>setView("game")}>
                 Today's Puzzle

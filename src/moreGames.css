@@ -1,0 +1,19 @@
+.more-games { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line, #bcae9c); }
+.more-games h3 { margin: 0 10px 8px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.more-games ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.more-games a { display: flex; align-items: center; gap: 10px; min-height: 60px; padding: 8px; border-radius: 12px; color: inherit; text-decoration: none; }
+.more-games a:hover { background: var(--cs-pink-soft, rgba(139,92,246,.12)); }
+.more-games a:focus-visible { outline: 3px solid var(--purple-bright, #8b32ab); outline-offset: -3px; }
+.more-games img { width: 40px; height: 40px; flex: none; object-fit: contain; border-radius: 9px; }
+.more-games a > span:first-of-type { flex: 1; min-width: 0; }
+.more-games strong { display: block; font-size: 14px; line-height: 1.3; }
+.more-games small { display: block; font-size: 12px; line-height: 1.4; margin-top: 2px; }
+.more-games-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.cv-games-dialog { margin: auto; width: min(360px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); box-sizing: border-box; padding: 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface, #fff); color: var(--text); font-family: var(--fu); overscroll-behavior: contain; }
+.cv-games-dialog::backdrop { background: rgba(8,5,20,.55); }
+.cv-games-dialog form { display: flex; justify-content: flex-end; }
+.cv-games-dialog .more-games { margin-top: 0; padding-top: 0; border-top: 0; }
+/* Let the wordmark use the space left by the existing controls on phones,
+   including Archive's extra Today's Puzzle action. */
+.hdr .logo { flex-shrink: 1; }
+.hdr .logo-img { max-width: 100%; object-fit: contain; }
