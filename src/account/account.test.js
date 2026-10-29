@@ -486,3 +486,13 @@ describe("play sync identity boundaries", () => {
     expect(localStorage.getItem("cv_account_plays")).toBeNull();
   });
 });
+
+
+it("sign-out clears guest drafts without erasing account-owned drafts", async () => {
+  const { signOutOfCluevoyance } = await import("./platformSignIn");
+  localStorage.setItem("clover_progress_v2_guest_42", "guest");
+  localStorage.setItem("clover_progress_v2_alice_42", "alice");
+  await signOutOfCluevoyance();
+  expect(localStorage.getItem("clover_progress_v2_guest_42")).toBeNull();
+  expect(localStorage.getItem("clover_progress_v2_alice_42")).toBe("alice");
+});

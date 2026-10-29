@@ -27,7 +27,7 @@
 import { ACCOUNTS_ENABLED, PLATFORM_DISCOVERY_URL } from "../game/config";
 import { AUTH_STORAGE_KEY, supabase } from "./supabaseClient";
 import { rememberReturnPath, takeReturnPath } from "./safePath";
-import { clearAccountCache, clearGuestHistory } from "./localHistory";
+import { clearAccountCache, clearGuestHistory, clearGuestProgress } from "./localHistory";
 
 export const PLATFORM_PROVIDER = "custom:platform";
 export const HUB_UNAVAILABLE = "Sign-in is temporarily unavailable. You can keep playing and try again later.";
@@ -133,6 +133,7 @@ export function observeAccountSession(session) {
   sessionUserId = userId;
   if (currentAccount && currentAccount.user_id !== userId) {
     clearAccountCache();
+    if (!userId) clearGuestProgress();
     publishAccount(null);
   }
 }
@@ -223,6 +224,7 @@ export async function signOutOfCluevoyance() {
     publishAccount(null);
     clearAccountCache();
     clearGuestHistory();
+    clearGuestProgress();
   }
 }
 

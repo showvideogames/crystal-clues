@@ -17,7 +17,7 @@ import {
   biasedShuffle, isClueRotation, bestSubmit, solutionForClues,
 } from "./game/shared";
 import { loadWordBank, wordBankPagePath } from "./game/wordBank";
-import { initialMode, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinal } from "./game/dailyResults";
+import { initialMode, progressDifficulty, progressKey as accountProgressKey, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinal } from "./game/dailyResults";
 import Results from "./game/Results.jsx";
 import Home from "./home/Home.jsx";
 
@@ -5216,6 +5216,7 @@ export default function App() {
 
   // Accounts settle first (a signed-in player's history is the account's), then the puzzle.
   const historyReady = acct.status !== "checking";
+  const historyOwner = acct.account?.user_id || null;
   const isDaily = view === "game" && !archiveId;
   const isArchivePlay = view === "game" && archiveReady && !archiveIsToday;
   const officialPuzzle = (isDaily && todayLoaded && historyReady) ? todayPuzzle
@@ -5228,13 +5229,13 @@ export default function App() {
   const resolvedGame = useMemo(()=>{
     if(!officialPuzzle) return null;
     const id = officialPuzzle.id;
-    const stale = game?.puzzleId !== id
+    const stale = game?.owner !== historyOwner || game?.puzzleId !== id
       || (game.mode === "review" && !record)                                                // signed out, or another account
       || (!!record && (game.mode === "setup" || (game.mode === "play" && !game.finished)));  // finished elsewhere
     if(!stale) return game;
-    return { puzzleId:id, run:(game?.run || 0) + 1, finished:false,
-      ...initialMode({ record, progress:readProgress(id), daily:isDaily, preference:difficulty }) };
-  },[officialPuzzle, game, record, isDaily, difficulty]);
+    return { puzzleId:id, owner:historyOwner, run:(game?.run || 0) + 1, finished:false,
+      ...initialMode({ record, progress:readProgress(id, historyOwner), daily:isDaily, preference:difficulty }) };
+  },[officialPuzzle, game, record, isDaily, difficulty, historyOwner]);
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(()=>{ if(resolvedGame !== game) setGame(resolvedGame); },[resolvedGame, game]);
   // Leaving the puzzle: next time it opens as it stands then.
@@ -5250,7 +5251,8 @@ export default function App() {
     setGame(g=>g && g.mode === "play" && !g.finished && (DIFF_RANK[d] ?? 1) < (DIFF_RANK[g.difficulty] ?? 1) ? { ...g, difficulty:d } : g);
   },[]);
 
-  const handleFinished = useCallback((puzzle, result)=>{
+  const handleFinished = useCallback((puzzle, result, owner)=>{
+    if(owner !== (getCurrentAccount()?.user_id || null)) return;
     setGame(g=>g && g.puzzleId === puzzle.id ? { ...g, finished:true } : g);
     if(recordFirstFinish(puzzle, result)) setCompsTick(t=>t+1);
   },[]);
@@ -5285,7 +5287,7 @@ export default function App() {
 
   // The front page's daily button follows today's saved state.
   const todayRecord = completions[todayPuzzle.id] || null;
-  const todayProgress = view === "home" && todayLoaded && historyReady && !todayRecord ? readProgress(todayPuzzle.id) : null;
+  const todayProgress = view === "home" && todayLoaded && historyReady && !todayRecord ? readProgress(todayPuzzle.id, historyOwner) : null;
   const dailyState = !(todayLoaded && historyReady) ? { status:"loading" }
     : todayRecord ? { status:"done", record:todayRecord }
     : todayProgress ? { status:"progress", difficulty:progressDifficulty(todayProgress), livesUsed:progressLivesUsed(todayProgress) }
@@ -5293,7 +5295,7 @@ export default function App() {
 
   const gameDifficulty = game?.difficulty || difficulty;
   const gameInProgress = view === "game" && game?.mode === "play" && !game.finished && !record;
-  const gamePuzzle = officialPuzzle && game?.puzzleId === officialPuzzle.id ? { ...officialPuzzle, difficulty:gameDifficulty } : null;
+  const gamePuzzle = officialPuzzle && game?.owner === historyOwner && game?.puzzleId === officialPuzzle.id ? { ...officialPuzzle, difficulty:gameDifficulty } : null;
   const review = gamePuzzle && game.mode === "review" && record
     ? { ...reviewBoard(gamePuzzle, record, readFinal(gamePuzzle.id, getCurrentAccount()?.user_id, record)), record } : null;
 
@@ -5375,13 +5377,14 @@ export default function App() {
             onStart={()=>setGame(g=>({ ...g, mode:"play", difficulty, run:g.run + 1 }))}
             onOpenTutorial={openTutorial}
           />
-        : <GameView key={`${gamePuzzle.id}-${game.mode}-${game.run}`}
+        : <GameView key={`${historyOwner || "guest"}-${gamePuzzle.id}-${game.mode}-${game.run}`}
+            progressStorageKey={accountProgressKey(gamePuzzle.id, historyOwner)}
             puzzle={gamePuzzle}
             difficulty={review ? review.difficulty : gameDifficulty}
             review={review}
             practice={game.mode === "practice"}
             forceFresh={game.mode === "practice"}
-            onFinished={(r)=>handleFinished(gamePuzzle, r)}
+            onFinished={(r)=>handleFinished(gamePuzzle, r, historyOwner)}
             onShowResults={()=>setResults("result")}
             onPractice={startPractice}
             onExitPractice={exitPractice}
