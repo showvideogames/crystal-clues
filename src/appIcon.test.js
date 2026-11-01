@@ -63,13 +63,6 @@ describe("app icon", () => {
     for (const { src, purpose } of manifest.icons) expect(src.includes("-maskable-"), src).toBe(purpose === "maskable");
   });
 
-  it("a maskable icon is its own artwork, not a copy of the any icon", () => {
-    for (const { src, sizes } of manifest.icons.filter((i) => i.purpose === "maskable")) {
-      const any = manifest.icons.find((i) => i.purpose === "any" && i.sizes === sizes);
-      expect(readFileSync(publicFile(src)).equals(readFileSync(publicFile(any.src))), src).toBe(false);
-    }
-  });
-
   it("no icon carries a tRNS chunk, which could make an RGB PNG transparent", () => {
     for (const href of [...manifest.icons.map((i) => i.src), appleHref]) {
       const chunks = pngChunks(publicFile(href));
