@@ -96,3 +96,21 @@ describe("renewingFetch recognises the expiry wording alone", () => {
     expect(res.status).toBe(200);
   });
 });
+
+// Native fetch consumes Request bodies, unlike a mock that only returns a response.
+it("replays a consumed Request body after renewal", async () => {
+  const bodies = [];
+  const base = vi.fn(async (input, init) => {
+    const request = new Request(input, init);
+    bodies.push(await request.text());
+    return bodies.length === 1 ? expiredRest() : ok();
+  });
+  const request = new Request(REST, {
+    method: "POST", body: '{"answer":42}',
+    headers: { Authorization: `Bearer ${pass("u1")}`, "Content-Type": "application/json" },
+  });
+  const response = await renewingFetch(async () => ({ token: "fresh", userId: "u1" }), base)(request);
+  expect(response.status).toBe(200);
+  expect(bodies).toEqual(['{"answer":42}', '{"answer":42}']);
+  expect(authOf(base.mock.calls[1][1])).toBe("Bearer fresh");
+});

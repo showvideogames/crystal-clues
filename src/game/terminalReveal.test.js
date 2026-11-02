@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { GameView } from '../App.jsx';
 import { vw } from './shared.js';
+import { progressKey } from './dailyResults.js';
 
 const puzzle = {
   id: 'local-reveal-fixture', clues: ['STAR', 'TROUSERS', 'LASSO', 'POPE'],
@@ -79,4 +80,21 @@ for (const unlimited of [false,true]) describe(unlimited ? 'Unlimited terminal r
     });
     expect(new Set(result.slots.map(s=>s.cardId)).size).toBe(7);
   });
+});
+
+
+it('restores only the draft selected for the current account', async () => {
+  const draft = lives => ({
+    totalSlots:7, slots:['a','e','c','d','b','f','g'].map(cardId=>({cardId,orientation:0})),
+    clues:puzzle.clues, lives, locked:[], guessHistory:[],
+  });
+  localStorage.setItem(progressKey(puzzle.id, 'alice'), JSON.stringify(draft(1)));
+  localStorage.setItem(progressKey(puzzle.id, 'bob'), JSON.stringify(draft(2)));
+  for (const [owner, lives] of [['alice', 1], ['bob', 2]]) {
+    await act(async () => root.render(createElement(GameView, {
+      key:owner, puzzle, difficulty:'hardcore', progressStorageKey:progressKey(puzzle.id, owner),
+    })));
+    expect(host.querySelector('.game-stars').getAttribute('aria-label')).toBe(`${lives} of 3 lives left`);
+  }
+  expect(JSON.parse(localStorage.getItem(progressKey(puzzle.id, 'alice'))).lives).toBe(1);
 });

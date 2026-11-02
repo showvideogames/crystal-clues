@@ -3,7 +3,7 @@
 // text, and the rows of the "Lives used" charts.
 //
 // Storage (this browser):
-//   clover_progress_<id>   a puzzle in progress (App.jsx GameView writes it)
+//   clover_progress_v2_<who>_<id>   an owner-scoped puzzle in progress (App.jsx GameView writes it)
 //   clover_final_<who>_<id>  the round a player's FIRST attempt finished with:
 //                          { owner, difficulty, solved, livesUsed, slots, clues, guessHistory, finishedAt }
 //                          <who> is the signed-in account's id, or "guest". One per
@@ -42,7 +42,9 @@ const write = (k, v) => {
   }
 };
 
-export const progressKey = (id) => `clover_progress_${id}`;
+// Legacy progress had no owner and could have been written by any account.
+// Keep it untouched, but never guess ownership or restore it for a new player.
+export const progressKey = (id, who) => `clover_progress_v2_${who || "guest"}_${id}`;
 export const finalKey = (id, who) => (who ? `clover_final_${who}_${id}` : `clover_final_${id}`);
 
 const DIFFICULTIES = Object.keys(DIFFICULTY_EXTRA);
@@ -50,8 +52,8 @@ const BY_SLOTS = Object.fromEntries(DIFFICULTIES.map((d) => [4 + DIFFICULTY_EXTR
 export const isDifficulty = (d) => DIFFICULTIES.includes(d);
 
 /** A saved game in progress, or null when there's none worth resuming. */
-export function readProgress(id) {
-  const p = read(progressKey(id));
+export function readProgress(id, who) {
+  const p = read(progressKey(id, who));
   if (!p || typeof p !== "object" || p.solved || p.lost) return null;
   if (!Array.isArray(p.slots) || !Array.isArray(p.clues) || !BY_SLOTS[p.totalSlots]) return null;
   return p;

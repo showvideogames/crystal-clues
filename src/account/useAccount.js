@@ -3,13 +3,14 @@
 // content, and the actions the header and the prompt call.
 // Availability-first: when accounts are off or the server is unreachable,
 // the game simply stays a guest.
-import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ACCOUNTS_ENABLED } from "../game/config";
 import { supabase } from "./supabaseClient";
 import {
   deleteMyAccount,
   ensureAccount,
   getCurrentAccount,
+  observeAccountSession,
   signInWithPlatform,
   signOutOfCluevoyance,
   subscribeToCurrentAccount,
@@ -40,6 +41,7 @@ async function checkAdmin() {
  */
 export function useAccount() {
   const account = useCurrentAccount();
+  const transition = useRef(0);
   const [status, setStatus] = useState(ACCOUNTS_ENABLED ? "checking" : "off");
   const [isAdmin, setIsAdmin] = useState(false);
   const [importPending, setImportPending] = useState(false);
@@ -50,6 +52,8 @@ export function useAccount() {
   // After the account is known: replay unsynced plays, refresh the cache, and
   // ask about guest history exactly once per sign-in on this browser.
   const settle = useCallback(async (acct) => {
+    const ticket = transition.current;
+    const current = () => ticket === transition.current && getCurrentAccount()?.user_id === acct?.user_id;
     if (!acct) {
       setStatus("guest");
       setIsAdmin(false);
@@ -58,8 +62,12 @@ export function useAccount() {
       return;
     }
     await flushUnsynced(acct.user_id).catch(() => 0);
+    if (!current()) return;
     await loadPlays(acct.user_id).catch(() => null);
-    setIsAdmin(await checkAdmin());
+    if (!current()) return;
+    const admin = await checkAdmin();
+    if (!current()) return;
+    setIsAdmin(admin);
     setImportPending(guestHistoryExists());
     setStatus("signed_in");
     bump();
@@ -68,32 +76,50 @@ export function useAccount() {
   useEffect(() => {
     if (!ACCOUNTS_ENABLED || !supabase) return undefined;
     let alive = true;
-    (async () => {
-      const { data } = await supabase.auth.getSession();
-      if (!alive) return;
-      if (!data?.session) {
-        setStatus("guest");
+    let timer;
+    const resolve = async (session, ticket) => {
+      if (!alive || ticket !== transition.current) return;
+      observeAccountSession(session);
+      if (!session) {
+        await settle(null);
         return;
       }
-      const result = await ensureAccount();
-      if (!alive) return;
-      if (result.ok) await settle(result.account);
-      else {
-        // not_platform_linked has already signed out locally; 'unavailable'
-        // keeps the session for a retry on the next load. Either way the app
-        // is a guest for now.
-        if (result.reason === "not_platform_linked") setMessage(result.message);
-        setStatus("guest");
+      try {
+        const result = await ensureAccount();
+        if (!alive || ticket !== transition.current) return;
+        if (result.ok) await settle(result.account);
+        else {
+          if (result.reason === "not_platform_linked") setMessage(result.message);
+          setStatus("guest");
+        }
+      } catch {
+        if (alive && ticket === transition.current) setStatus("guest");
       }
-    })();
-    const { data: sub } = supabase.auth.onAuthStateChange((event) => {
-      if (event === "SIGNED_OUT" && alive) settle(null);
+    };
+    const initial = ++transition.current;
+    supabase.auth.getSession().then(({ data }) => resolve(data?.session, initial)).catch(() => {
+      if (alive && initial === transition.current) setStatus("guest");
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!alive || !["SIGNED_IN", "SIGNED_OUT"].includes(event)) return;
+      if (event === "SIGNED_IN" && session?.user?.id === getCurrentAccount()?.user_id) return;
+      const ticket = ++transition.current;
+      observeAccountSession(session);
+      setIsAdmin(false);
+      setImportPending(false);
+      setStatus(session ? "checking" : "guest");
+      bump();
+      clearTimeout(timer);
+      // Supabase auth callbacks hold its session lock; perform RPCs afterwards.
+      timer = setTimeout(() => { void resolve(session, ticket); }, 0);
     });
     return () => {
       alive = false;
+      transition.current += 1;
+      clearTimeout(timer);
       sub?.subscription?.unsubscribe();
     };
-  }, [settle]);
+  }, [settle, bump]);
 
   const signIn = useCallback(async () => {
     setMessage(null);
@@ -102,6 +128,7 @@ export function useAccount() {
   }, []);
 
   const signOut = useCallback(async () => {
+    transition.current += 1;
     await signOutOfCluevoyance();
     await settle(null);
   }, [settle]);

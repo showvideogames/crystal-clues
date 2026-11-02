@@ -45,6 +45,9 @@ export function renewingFetch(renew, base = (...a) => fetch(...a)) {
   };
 
   return async (input, init) => {
+    // Preserve the body before fetch consumes a Request. Cloning after the
+    // expired response throws for POST/PATCH requests and uploads.
+    const retryInput = input instanceof Request ? input.clone() : input;
     const res = await base(input, init);
     if (res.status !== 401 && res.status !== 400 && res.status !== 403) return res;
     const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
@@ -59,6 +62,6 @@ export function renewingFetch(renew, base = (...a) => fetch(...a)) {
     const renewed = await renewOnce().catch(() => null);
     if (!renewed?.token || renewed.userId !== sub) return res;
     headers.set("Authorization", `Bearer ${renewed.token}`);
-    return base(input instanceof Request ? input.clone() : input, { ...init, headers });
+    return base(retryInput, { ...init, headers });
   };
 }

@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import {
-  initialMode, livesRows, progressDifficulty, progressLivesUsed, readFinal, readProgress,
+  initialMode, livesRows, progressKey, progressDifficulty, progressLivesUsed, readFinal, readProgress,
   finalMatches, resultRowKey, resultWords, reviewBoard, shareText, writeFinal,
 } from "./dailyResults.js";
 import { dailyCopy, friendsCopy } from "../home/copy.js";
@@ -35,12 +35,12 @@ describe("which screen a puzzle opens on", () => {
 
 describe("saved progress", () => {
   it("only an unfinished, well-formed save is resumable", () => {
-    localStorage.setItem("clover_progress_42", JSON.stringify({ totalSlots: 5, slots: [], clues: [], lives: 2 }));
+    localStorage.setItem(progressKey(42), JSON.stringify({ totalSlots: 5, slots: [], clues: [], lives: 2 }));
     expect(readProgress(42)).toBeTruthy();
     expect(progressLivesUsed(readProgress(42))).toBe(1);
-    localStorage.setItem("clover_progress_42", JSON.stringify({ totalSlots: 5, slots: [], clues: [], lost: true }));
+    localStorage.setItem(progressKey(42), JSON.stringify({ totalSlots: 5, slots: [], clues: [], lost: true }));
     expect(readProgress(42)).toBe(null);
-    localStorage.setItem("clover_progress_42", "not json");
+    localStorage.setItem(progressKey(42), "not json");
     expect(readProgress(42)).toBe(null);
   });
   it("a save without lives counts none used", () => {
@@ -174,5 +174,25 @@ describe("front page copy", () => {
     expect(friendsCopy({ waiting: 2, results: 1 })).toBe("2 puzzles waiting");
     expect(friendsCopy({ waiting: 1 })).toBe("1 puzzle waiting");
     expect(friendsCopy({ waiting: 0, results: 1 })).toBe("1 new result to watch");
+  });
+});
+
+
+describe("unfinished board ownership", () => {
+  const draft = { totalSlots: 5, slots: [], clues: ["private hint"], lives: 2 };
+  it("accounts and guests cannot resume each other's unfinished boards", () => {
+    localStorage.setItem(progressKey(42, "alice"), JSON.stringify(draft));
+    expect(readProgress(42, "alice")).toEqual(draft);
+    expect(readProgress(42, "bob")).toBeNull();
+    expect(readProgress(42)).toBeNull();
+    localStorage.setItem(progressKey(42), JSON.stringify({ ...draft, clues: ["guest hint"] }));
+    expect(readProgress(42, "alice").clues).toEqual(["private hint"]);
+    expect(readProgress(42).clues).toEqual(["guest hint"]);
+  });
+  it("does not attribute an old unowned board to any current player", () => {
+    localStorage.setItem("clover_progress_42", JSON.stringify(draft));
+    expect(readProgress(42, "alice")).toBeNull();
+    expect(readProgress(42)).toBeNull();
+    expect(localStorage.getItem("clover_progress_42")).not.toBeNull();
   });
 });

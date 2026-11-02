@@ -4,8 +4,9 @@
 // chooses to sign in):
 //   clover_completions   { [puzzleId]: { solved:true, livesUsed, difficulty, solvedAt } }  wins only
 //   clover_stats         the counters shown in the Stats overlay
-// Not history (left alone in every mode): clover_progress_<id> (a puzzle in
-// progress), clover_difficulty, clover_tutorial_seen.
+// Preferences are left alone: clover_difficulty, clover_tutorial_seen.
+// Official drafts use owner-scoped keys; only guest drafts are cleared at logout.
+// Legacy unowned progress remains stored but is no longer auto-restored.
 //
 // ACCOUNT CACHE (signed in): cv_account_plays = { user_id, plays:[...], unsynced:[...] }
 // A mirror of the server's plays rows so archive and stats render at once
@@ -135,4 +136,16 @@ export function writeAccountCache(cache) {
 
 export function clearAccountCache() {
   remove(ACCOUNT_CACHE_KEY);
+}
+
+
+/** A signed-out browser starts a new guest; account-owned drafts remain private. */
+export function clearGuestProgress() {
+  try {
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith("clover_progress_v2_guest_")) remove(key);
+    }
+  } catch {
+    // storage unavailable
+  }
 }
