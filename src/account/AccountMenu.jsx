@@ -7,8 +7,7 @@ import "./account.css";
  * small menu with the account's CURRENT email (as the server reports it),
  * "Change name or avatar" (when the player has a Friends profile), Sign out,
  * and "Delete account…" with a confirmation. `profile` (the player's
- * Friends name and avatar, when known) puts their avatar on the button in place
- * of the email initial. Renders nothing when
+ * Friends name and avatar, when known) remains inside the menu. Renders nothing when
  * accounts are off, so a guest-only build looks exactly like today.
  */
 export default function AccountMenu({ status, account, profile, message, onSignIn, onSignOut, onEditProfile, onDelete, onDismissMessage }) {
@@ -40,19 +39,19 @@ export default function AccountMenu({ status, account, profile, message, onSignI
       <>
         <button
           type="button"
-          className="nbtn"
+          className="gear-btn cv-avatar"
+          aria-label="Sign in" title="Sign in"
           data-testid="platform-sign-in"
           disabled={busy || status === "checking"}
           onClick={async () => { setBusy(true); try { await onSignIn(); } finally { setBusy(false); } }}
         >
-          Sign in
+          <AccountIcon filled={false} />
         </button>
         {notice}
       </>
     );
   }
 
-  const initial = (account.email || "?").trim().charAt(0).toUpperCase() || "?";
   return (
     <div className="cv-account" ref={wrapRef}>
       <button
@@ -64,7 +63,7 @@ export default function AccountMenu({ status, account, profile, message, onSignI
         data-testid="account-menu-button"
         onClick={() => { setOpen((v) => !v); setConfirming(false); }}
       >
-        {profile ? <Avatar name={profile.display_name} avatar={profile.avatar} size={28}/> : initial}
+        <AccountIcon filled />
       </button>
       {open && (
         <div className="cv-menu" data-testid="account-menu">
@@ -115,4 +114,8 @@ export default function AccountMenu({ status, account, profile, message, onSignI
       {notice}
     </div>
   );
+}
+
+function AccountIcon({ filled }) {
+  return <svg width="24" height="24" viewBox="0 0 24 24" style={{ fill: filled ? "currentColor" : "none", stroke: "currentColor", strokeWidth: 1.75 }} strokeLinejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="7" r="4" /><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7Z" /></svg>;
 }
