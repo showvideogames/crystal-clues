@@ -1413,12 +1413,16 @@ body::before{
 .tut-card .play-fit-outer{overflow:hidden;touch-action:none}
 
 /* ── One-row header ─────────────────────────────────────────────────────
-   The logo mark on the left, the remaining controls on the right. Removing
+   The menu and logo sit together on the left, game and account controls on the right. Removing
    the old Play button (the logo itself now returns to today's puzzle) buys
    back the width the extra ? button needs; the rest comes from tighter
    button padding as the screen narrows. Nothing is hidden at any tested width. */
 .hdr{height:54px;flex-direction:row;justify-content:space-between;align-items:center;
   gap:6px;padding:0 8px 0 13px;overflow:visible}
+.hdr-start{display:flex;align-items:center;gap:3px;min-width:0;flex:1}
+.hdr-start>.gear-btn{flex-shrink:0}
+.hdr-start .logo{flex-shrink:1;min-width:40px}
+.hdr-start .logo-img{max-width:100%;object-fit:contain}
 .logo{width:auto;justify-content:flex-start;overflow:visible;
   flex-shrink:0;min-width:0;
   border:none;background:transparent;padding:0;margin:0;cursor:pointer;
@@ -5301,14 +5305,16 @@ export default function App() {
     return (
       <div style={{height:"100vh",height:"100dvh",width:"100%",display:"flex",flexDirection:"column"}}>
       <header className="hdr">
+        <div className="hdr-start">
+          <MoreGamesMenu/>
         <button type="button" className="logo logo-link"
           onClick={()=>setView("home")}
           aria-label="Cluevoyance — home">
           <img src="/assets/cluevoyance-logo-b.png" alt="" className="logo-img on-light" />
           <img src="/assets/cluevoyance-logo-dark.png" alt="" className="logo-img on-dark" />
         </button>
+        </div>
           <div className="nav">
-            <MoreGamesMenu/>
             {isArchivePlay && (
               <button className="nbtn today-nav-btn" onClick={()=>setView("game")}>
                 Today's Puzzle
