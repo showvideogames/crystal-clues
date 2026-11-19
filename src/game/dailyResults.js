@@ -23,7 +23,7 @@
 // record (clover_completions, or the account's plays), so it's the same on
 // every device; the final board is a nicety for this browser, and the screens
 // fall back to the answer laid out at the right difficulty without it.
-import { DIFFICULTY_EXTRA, MAX_LIVES } from "./shared.js";
+import { CW_FROM, DIFFICULTY_EXTRA, MAX_LIVES, isClueRotation, solutionForClues } from "./shared.js";
 import { dailyName } from "./dailyNumber.js";
 
 const read = (k, fallback = null) => {
@@ -126,6 +126,11 @@ export function initialMode({ record, progress, daily, preference }) {
   return { mode: daily ? "setup" : "play", difficulty: preference };
 }
 
+/** Keep local board moves out of judging and the entire timed loss reveal. */
+export function localBoardJudging(revealPhase, lives, lost) {
+  return revealPhase === "grey" || revealPhase === "revealing" || (lives <= 0 && !lost);
+}
+
 /** The board a finished puzzle is shown with: as it ended here, else the answer with the round's own cards. */
 export function reviewBoard(puzzle, record, final) {
   const difficulty = isDifficulty(record?.difficulty) ? record.difficulty : "standard";
@@ -136,13 +141,32 @@ export function reviewBoard(puzzle, record, final) {
   const lives = record?.solved ? Math.max(1, MAX_LIVES - (Number(record.livesUsed) || 0)) : 0;
   const okFinal = final && final.slots.length === total && Array.isArray(final.clues) && final.clues.length === 4
     && final.slots.every((s) => s && puzzle.cards[s.cardId]);
+  const savedSlots = okFinal ? final.slots.map((s) => ({ cardId: s.cardId, orientation: s.orientation })) : null;
+  const clues = okFinal ? [...final.clues] : [...puzzle.clues];
+  // An older loss reveal could place cards in the captured solution frame
+  // after the player rotated the visible clue ring. Repair that exact shape
+  // for display only; leave genuine rotated finishes and saved data intact.
+  if (savedSlots && !record?.solved && new Set(puzzle.clues).size === 4 && isClueRotation(clues, puzzle.clues)) {
+    const matches = ({ slotCards, orientations }) => slotCards.every((id, i) =>
+      savedSlots[i].cardId === id && savedSlots[i].orientation === orientations[i]);
+    const answer = solutionForClues(puzzle.solution, clues, puzzle.clues);
+    let ring = [...puzzle.clues];
+    if (!matches(answer) && [0, 1, 2, 3].some(() => {
+      const candidate = solutionForClues(puzzle.solution, ring, puzzle.clues);
+      ring = CW_FROM.map((i) => ring[i]);
+      return matches(candidate);
+    })) {
+      answer.slotCards.forEach((cardId, i) => {
+        savedSlots[i] = { cardId, orientation: answer.orientations[i] };
+      });
+    }
+  }
   return {
     difficulty,
     lives,
-    slots: okFinal ? final.slots.map((s) => ({ cardId: s.cardId, orientation: s.orientation }))
-      : [...puzzle.solution.slotCards.map((cardId, i) => ({ cardId, orientation: puzzle.solution.orientations[i] })),
+    slots: savedSlots ?? [...puzzle.solution.slotCards.map((cardId, i) => ({ cardId, orientation: puzzle.solution.orientations[i] })),
          ...extras.map((cardId) => ({ cardId, orientation: 0 }))],
-    clues: okFinal ? [...final.clues] : [...puzzle.clues],
+    clues,
     guessHistory: okFinal && Array.isArray(final.guessHistory) ? final.guessHistory : [],
   };
 }
