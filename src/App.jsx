@@ -18,7 +18,7 @@ import {
   biasedShuffle, isClueRotation, bestSubmit, solutionForClues,
 } from "./game/shared";
 import { loadWordBank, wordBankPagePath } from "./game/wordBank";
-import { initialMode, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinal } from "./game/dailyResults";
+import { initialMode, localBoardJudging, progressDifficulty, progressLivesUsed, readFinal, readProgress, reviewBoard, writeFinal } from "./game/dailyResults";
 import Results from "./game/Results.jsx";
 import Home from "./home/Home.jsx";
 
@@ -2440,6 +2440,7 @@ export function GameView({
   // A friend guess is judged over the network: hold the board still until
   // the verdict is showing (the red/green "done" phase stays playable, as in
   // the daily game).
+  const localJudging = !friendPuzzle && !tutorialActive && localBoardJudging(revealPhase, lives, lost);
   const friendJudging = !!friendPuzzle && (revealPhase === 'grey' || revealPhase === 'revealing');
   const [showParticles,setShowParticles] = useState(false);
   const tapRotateTimers = useRef(new Map());
@@ -2849,7 +2850,7 @@ export function GameView({
   },[record]);
 
   const handlePD = useCallback((e,si)=>{
-    if(replayMode || locked.has(si) || lost || tutorialComplete) return;
+    if(replayMode || locked.has(si) || lost || tutorialComplete || localJudging) return;
     // A friend guess is judged over the network; hold the board still meanwhile.
     if(friendJudging || (friendPuzzle && solved)) return;
     if(tutorialActive && tutorialStepIndex === 0){
@@ -2929,7 +2930,7 @@ export function GameView({
   },[
     slots, locked, lost, puzzle, getSlotAt, tutorialActive, tutorialAllowTapSlots,
     tutorialAllowDragPairs, tutorialPairAllowed, tutorialStepIndex, tutorialComplete, tutorialReadyForNext,
-    startTapRotation, rotateAnimating, friendPuzzle, friendJudging, solved, replayMode, record
+    startTapRotation, rotateAnimating, friendPuzzle, friendJudging, localJudging, solved, replayMode, record
   ]);
 
   // The board turn itself (Rotate's animation runs around it).
@@ -2945,7 +2946,7 @@ export function GameView({
 
   const handleRotate = useCallback(()=>{
     if(tutorialActive) return;
-    if(rotateAnimating) return;
+    if(rotateAnimating || localJudging) return;
     if(friendJudging || (friendPuzzle && (solved || lost))) return;
     setRotateAnimating(true);
     setClueRotatePhase("out");
@@ -2961,7 +2962,7 @@ export function GameView({
         clueRotateTimer.current = null;
       }, 255);
     }, 360);
-  },[rotateAnimating, tutorialActive, friendPuzzle, friendJudging, solved, lost, applyRotate, record]);
+  },[rotateAnimating, tutorialActive, friendPuzzle, friendJudging, localJudging, solved, lost, applyRotate, record]);
 
   const prevDifficultyRef = useRef(puzzle.difficulty);
 
@@ -3012,7 +3013,7 @@ export function GameView({
   // target: the replay's recorded result; otherwise a random one.
   const triggerShuffle = useCallback((target=null)=>{
     if(tutorialActive) return;
-    if(shuffleBusy.current) return;
+    if(shuffleBusy.current || localJudging) return;
     if(friendJudging || (friendPuzzle && (solved || lost))) return;
     const free=Array.from({length:totalSlots},(_,i)=>i).filter(i=>!locked.has(i));
     if(free.length<2) return;
@@ -3047,7 +3048,7 @@ export function GameView({
       shuffleBusy.current = false;
       shuffleEndTimer.current = null;
     },440);
-  },[totalSlots,locked,tutorialActive,friendPuzzle,friendJudging,solved,lost,record]);
+  },[totalSlots,locked,tutorialActive,friendPuzzle,friendJudging,localJudging,solved,lost,record]);
 
   const handleShuffle = useCallback(()=>{
     triggerShuffle();
@@ -3111,7 +3112,8 @@ export function GameView({
       return;
     }
     // lives <= 0: the last guess was wrong and the answer is being revealed.
-    if(solved || lost || revealPhase || lives <= 0) return;
+    if(solved || lost || revealPhase || lives <= 0 || (!friendPuzzle &&
+      (rotateAnimating || introShuffleTimer.current || shuffleBusy.current || tapRotateActive.current.size || dragRef.current))) return;
     if(repeatedBad.size > 0 && !replayMode){ setShowRepeatWarning(true); setWarnFading(false); setWarnCount(c=>c+1); return; }
     onGameStart?.();
     // Daily and preview games are judged here; friend puzzles by the server.
@@ -3332,7 +3334,7 @@ export function GameView({
 
     const res=bestSubmit(slots.slice(0,4),puzzle.solution,locked,clues,puzzle.clues);
     setTimeout(()=>reveal(res), 480);
-  },[solved,lost,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onFinished,onShowResults,official,unlimited,practice,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox,replayMode,record]);
+  },[solved,lost,rotateAnimating,slots,puzzle,locked,repeatedBad,revealPhase,lives,guessHistory,clues,playVictorySound,playWrongSound,difficulty,onFinished,onShowResults,official,unlimited,practice,fadeFeedback,onGameStart,tutorialActive,friendPuzzle,friend,friendGuessCount,sandbox,replayMode,record]);
 
   // ── The replay's controls (friends/AnimatedReplay.jsx) ──────────────
   // Each returns a promise that settles when the move has finished on screen.
@@ -3645,11 +3647,11 @@ export function GameView({
       <div className={`fbk${lost ? "" : " ok"}`} role="status">{feedback}</div>
       </>) : (<>
       <div className="ctrls" inert={replayMode || undefined}>
-        <button className={`cbtn${replayPress==="rotate"?" replay-press":""}`} onClick={handleRotate}>
+        <button className={`cbtn${replayPress==="rotate"?" replay-press":""}`} onClick={handleRotate} disabled={localJudging || rotateAnimating}>
           <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-9-9c2.52 0 4.8 1 6.46 2.54L21 8"/><path d="M21 3v5h-5"/></svg>
           Rotate
         </button>
-        <button className={`cbtn${replayPress==="shuffle"?" replay-press":""}`} onClick={handleShuffle}>
+        <button className={`cbtn${replayPress==="shuffle"?" replay-press":""}`} onClick={handleShuffle} disabled={localJudging}>
           <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
           Shuffle
         </button>
@@ -3672,7 +3674,7 @@ export function GameView({
         <button
           className={`sbtn${solved?" solved":""}${lost?" blocked":""}${repeatedBad.size>0?" blocked":""}${replayPress==="submit"?" replay-press":""}`}
           onClick={handleSubmit}
-          disabled={gameOver || isRevealing || lives <= 0}
+          disabled={gameOver || isRevealing || lives <= 0 || (!friendPuzzle && rotateAnimating)}
         >
           {solved ? "✓ Solved!" : lost || lives <= 0 ? "No lives left" : admireMode ? "Gazing 🔮" : "Submit"}
         </button>
